@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Water resource licensing service prototype
+        <span class="govuk-caption-xl">{{releaseVersion}}</span>
+      </h1>{{releaseVersion | log }}
+      <p>
+        This is a new version of the prototype and contains a limited set of views.
+      </p>
+
+      <p>
+        <a href="https://water-resource-licensing.herokuapp.com/" target="_blank">
+          See the previous prototype views here.
+        </a>
+      </p>
+
+      <h2 class="govuk-heading-m">Versions of this prototype</h2>
+
+      <p>The version numbers here relate to sprints.</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/v20/admin/licences-internal">Internal licences (search)</a></li>
+        <li><a href="/v20/licences-internal">Internal licences (search)</a></li>
+
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

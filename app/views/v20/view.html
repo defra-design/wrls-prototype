@@ -1,0 +1,54 @@
+{% extends "govuk_template.html" %}
+
+{% block head %}
+  <link href="/public/v6/stylesheets/application_additions.css" media="screen" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block cookie_message %}
+  <p>{{cookieText | safe }}</p>
+{% endblock %}
+
+{% block proposition_header %}
+
+  <div class="header-proposition">
+    <div class="content">
+      <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+      <nav id="proposition-menu">
+        <a href="/" id="proposition-name">Manage your water abstraction or impoundment licence</a>
+
+        <ul id="proposition-links">
+          <!-- <li><a href="/v19/pages/change_password/change_password" class="active right">Change password</a></li> -->
+
+          <!-- left aligned version -->
+          <li><a href="/v19/pages/change_password/change_password">Change password</a></li>
+          <li><a href="/v19/pages/signin">Sign out</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block header_class %}
+  with-proposition
+{% endblock %}
+
+{% block content %}
+  <p>No content available</p>
+{% endblock %}
+
+{% block footer_support_links %}
+  {% if useAutoStoreData %}
+    <ul>
+      <li>
+        <a href="/prototype-admin/clear-data">Clear data</a>
+      </li>
+    </ul>
+  {% endif %}
+{% endblock %}
+
+{% block body_end %}
+  {% include "includes/scripts.html" %}
+  <!-- GOV.UK Prototype kit {{releaseVersion}} -->
+{% endblock %}

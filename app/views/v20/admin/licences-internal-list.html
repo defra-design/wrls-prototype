@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+<!-- page title -->
+{% block page_title %}
+  View licences - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+ {% include "includes/feedback-banner.html" %}
+ {% include "includes/nav/nav-admin-view.html" %}
+
+ <!--
+ {{ govukBackLink({
+   text: "Back",
+   href: "javascript:history.back()"
+ }) }}
+-->
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- navigation block -->
+
+
+  <!-- page title -->
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        View licences
+      </h1>
+    </div>
+  </div>
+
+  <!-- search for licences -->
+  <form action="licences-internal-list">
+    <fieldset class="govuk-fieldset">
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="email">
+          Search for a licence
+        </label>
+        <span id="email-hint" class="govuk-hint">
+          Search by registered email address or licence number
+        </span>
+        <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="email" name="email" type="text" aria-describedby="email-hint">
+        <button type="submit" class="govuk-button inline-button">
+          Save and continue
+        </button>
+      </div>
+
+    </fieldset>
+  </form>
+
+  dasdsadasdsadsa
+<!--
+  <script src="/public/v6/javascripts/underscore.min.js"></script>
+  <script src="/public/v6/javascripts/jquery-1.11.3.js"></script>
+  <script src="/public/v6/javascripts/license_results.js"></script> -->
+
+{% endblock %}
