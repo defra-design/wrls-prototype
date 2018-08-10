@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 
-<!-- page title -->
-{% block page_title %}
-  View licences - GOV.UK
+{% set title = "View licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -10,7 +11,7 @@
   {% include "includes/feedback-banner.html" %}
 
   <!-- navigation block -->
-  {% include "includes/nav/nav-admin-view.html" %}
+  {% include "includes/nav/nav-br-view.html" %}
 
  <!--
  {{ govukBackLink({
@@ -20,6 +21,8 @@
 -->
 
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -33,7 +36,7 @@
   </div>
 
   <!-- search for licences -->
-  <form action="licences-internal-list">
+  <form action="licences-list">
     <fieldset class="govuk-fieldset">
 
       <div class="govuk-form-group">
@@ -45,7 +48,7 @@
         </span>
         <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
         <button type="submit" class="govuk-button inline-button">
-          Save and continue
+          Search
         </button>
       </div>
 

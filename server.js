@@ -85,6 +85,20 @@ var nunjucksAppEnv = nunjucks.configure(appViews, {
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
 
+
+const permitData = require('./app/permits.json');
+app.use((req, res, next) => {
+
+  res.locals.permits = permitData;
+
+  if(req.query.wid) {
+    res.locals.permit = permitData[req.query.wid];
+  }
+
+  // console.log('hello!');
+  next();
+});
+
 // Set views engine
 app.set('view engine', 'html')
 
