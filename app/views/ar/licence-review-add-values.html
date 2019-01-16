@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% set title = "Further condition data" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--big">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-ar-edit.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Link data to this condition
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        8.1 Level cessation
+      </h2>
+
+      <div class="govuk-inset-text">
+        Abstraction of water during the period <span class="govuk-body govuk-!-font-weight-bold">[linked abstraction period]</span> inclusive pursuant to this licence shall be reduced to <span class="govuk-body govuk-!-font-weight-bold">[abstraction rate]</span> in any one day upon receipt by the licence holder of a notice in writing from the Authority that the average daily mean level measured by the gauge is less than the prescribed level and abstraction from <span class="govuk-body govuk-!-font-weight-bold">[linked abstraction point]</span> shall not be resumed until receipt by the licence holder of a further notice in writing from the Authority that the average daily mean level measured by the gauge is greater than the prescribed level.
+      </div>
+
+    </div>
+  </div>
+
+  <form>
+    <fieldset class="govuk-fieldset space--small">
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="linked-condition">
+          Linked to condition
+        </label>
+        <select class="govuk-select" id="linked-condition" name="linked-condition">
+          <option value="linked-condition-0">not linked</option>
+          <option value="linked-condition-1">1411</option>
+          <option value="linked-condition-2">1412</option>
+        </select>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="sort">
+          Water body
+        </label>
+        <select class="govuk-select" id="sort" name="sort">
+          <option value="published">Great Ouse</option>
+          <option value="updated" selected>Hershey Brooke</option>
+          <option value="views">Aquifer at Temple Point</option>
+        </select>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="sort">
+          Point of abstraction
+        </label>
+        <select class="govuk-select" id="sort" name="sort">
+          <option value="published">Point A</option>
+          <option value="updated" selected>Point B</option>
+          <option value="views">Point C</option>
+          <option value="comments">Point D</option>
+        </select>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="national-grid-reference">
+          National grid reference
+        </label>
+        <span id="more-detail-hint" class="govuk-hint">
+         For example: ST 59524 72659
+       </span>
+        <input class="govuk-input govuk-input--width-10 space--small" id="national-grid-reference" name="national-grid-reference" type="text">
+        <br><a href="">Add a point</a> <!-- the intention here is that this link adds a reference field, up to a maximum of 4 -->
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="national-grid-reference">
+          Hands-off level (metres)
+        </label>
+        <input class="govuk-input govuk-input--width-10" id="hof-rate" name="hof-rate" type="number" pattern="[1-0]">
+      </div>
+
+    </fieldset>
+  </form>
+
+  <p class="govuk-body">
+    This data will be linked to the condition.
+  </p>
+
+  <a href="licence-review-with-further-conditions" class="govuk-button">
+    Add this condition
+  </a>
+
+{% endblock %}

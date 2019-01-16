@@ -1,0 +1,283 @@
+{% import "includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = "Returns list" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Water service patterns",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Returns list
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2  class="govuk-heading-m">
+        April 2017 to March 2018
+      </h2>
+    </div>
+  </div>
+
+  <!-- table with three columns -->
+  <div class="table space--big">                                                <!-- a table -->
+
+    <div class="table__row--head">                                              <!-- the table head -->
+      <div class="table__cell bold-small column--33">
+        Licence
+      </div>
+      <div class="table__cell bold-small column--33">
+        Purpose
+      </div>
+      <div class="table__cell bold-small column--33">
+        Site description
+      </div>
+      <div class="table__cell bold-small column--10">
+        Status
+      </div>
+    </div>
+
+    <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+      <div class="table__cell">
+        <h3 class="screen-reader-only">
+          Row 1
+        </h3>
+        <h4 class="table__context">
+          Licence
+        </h4>
+        <a href="">
+          <!-- uses the licence name if there is one, otherwise number -->
+          Brickleigh Court
+        </a>
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Purpose
+        </h4>
+        Irrigation
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Site description
+        </h4>
+        Small Barn and lower shed next to the river
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Status
+        </h4>
+        <strong class="table__status table__status--todo">
+          Due
+        </strong>
+      </div>
+    </div>
+
+    <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+      <div class="table__cell">
+        <h3 class="screen-reader-only">
+          Row 2
+        </h3>
+        <h4 class="table__context">
+          Licence
+        </h4>
+        <a href="">
+          <!-- uses the licence name if there is one, otherwise number -->
+          Sandingham Vale
+        </a>
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Purpose
+        </h4>
+          Spray irrigation
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Site description
+        </h4>
+        Red House
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Status
+        </h4>
+        <strong class="table__status table__status--open">
+          Received
+        </strong>
+      </div>
+    </div>
+
+    <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+      <div class="table__cell">
+        <h3 class="screen-reader-only">
+          Row 3
+        </h3>
+        <h4 class="table__context">
+          Licence
+        </h4>
+        <a href="">
+          <!-- uses the licence name if there is one, otherwise number -->
+          03/28/60/0033
+        </a>
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Purpose
+        </h4>
+        Spray irrigation
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Site description
+        </h4>
+        Pump House
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Status
+        </h4>
+        <strong class="table__status">
+          Complete
+        </strong>
+      </div>
+    </div>
+
+    <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+      <div class="table__cell">
+        <h3 class="screen-reader-only">
+          Row 4
+        </h3>
+        <h4 class="table__context">
+          Licence
+        </h4>
+        <a href="">
+          <!-- uses the licence name if there is one, otherwise number -->
+          Jipply Road Farm
+        </a>
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Purpose
+        </h4>
+        Spray irrigation
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Site description
+        </h4>
+        Small shed by weir
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Status
+        </h4>
+        <strong class="table__status">
+          Complete
+        </strong>
+      </div>
+    </div>
+
+    <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+      <div class="table__cell">
+        <h3 class="screen-reader-only">
+          Row 5
+        </h3>
+        <h4 class="table__context">
+          Licence
+        </h4>
+        <a href="">
+          <!-- uses the licence name if there is one, otherwise number -->
+          01/04/12/0047
+        </a>
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Purpose
+        </h4>
+        Trickle irrigation
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Site description
+        </h4>
+        Top field pump
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Status
+        </h4>
+        <strong class="table__status">
+          Complete
+        </strong>
+      </div>
+    </div>
+    <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+      <div class="table__cell">
+        <h3 class="screen-reader-only">
+          Row 6
+        </h3>
+        <h4 class="table__context">
+          Licence
+        </h4>
+        <a href="">
+          <!-- uses the licence name if there is one, otherwise number -->
+          01/04/12/0048
+        </a>
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Purpose
+        </h4>
+        Irrigation
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Site description
+        </h4>
+        River Denny
+      </div>
+      <div class="table__cell">
+        <h4 class="table__context">
+          Status
+        </h4>
+        <strong class="table__status">
+          Complete
+        </strong>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

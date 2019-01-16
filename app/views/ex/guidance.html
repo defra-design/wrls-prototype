@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if gt IE 8]><!--><html lang="en">
+<!--<![endif]-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+      Report landfill data (England only) - GOV.UK
+  </title>
+
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/govuk-template-2775f99eaec64ff8121bfbfb3eb67b0c2b4b7c3fc78d25da30e12db2a09d30d6.css" crossorigin="anonymous" integrity="sha256-J3X5nq7GT/gSG/v7PrZ7DCtLfD/HjSXaMOEtsqCdMNY=">
+    <!--<![endif]-->
+    <!--[if IE 6]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/govuk-template-ie6-5bb08c355a12ac38b0ac9d2446da122ec0f81c78e02dcd2a98766f53c23793c8.css" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/govuk-template-ie7-be1ea757827710f20eae59ae3ebfd172b7dbeabb171a79945ba610947eebb3cc.css" /><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/govuk-template-ie8-5ab4d0c7b42f2bf10f8c7aadf331a11f7399be832b0ee2c68c94071195a1e36e.css" /><![endif]-->
+    <link rel="stylesheet" media="print" href="https://assets.publishing.service.gov.uk/static/govuk-template-print-1076519521c2fffbbf75ab3b0d3b32ee2d96ac7e9778f1cdfac1771eefd1a1c0.css" crossorigin="anonymous" integrity="sha256-EHZRlSHC//u/das7DTsy7i2WrH6XePHN+sF3Hu/RocA=">
+
+    <!--[if IE 8]><link rel="stylesheet" media="all" href="https://assets.publishing.service.gov.uk/static/fonts-ie8-f5e3c18a96ecb0f37246556a27330202d6e18feffa05a3b67825024609629ac8.css" /><![endif]-->
+    <!--[if gte IE 9]><!-->
+    <link rel="stylesheet" media="all" href="https://assets.publishing.service.gov.uk/static/fonts-5ff8c53913434afd0072a480d7cfca67cace4c8d03f6ef96b78a4455728ce745.css" crossorigin="anonymous" integrity="sha256-X/jFORNDSv0AcqSA18/KZ8rOTI0D9u+Wt4pEVXKM50U=">
+    <!--<![endif]-->
+    <!--[if lt IE 9]><script src="https://assets.publishing.service.gov.uk/static/ie-a4524544a53d57a7e259b4bb966b9c32557c98c920b77e52d09304642b68401a.js" crossorigin="anonymous" integrity="sha256-pFJFRKU9V6fiWbS7lmucMlV8mMkgt35S0JMEZCtoQBo="></script><![endif]-->
+
+    <link rel="shortcut icon" href="https://assets.publishing.service.gov.uk/static/favicon-8d811b8c3badbc0b0e2f6e25d3660a96cc0cca7993e6f32e98785f205fc40907.ico" type="image/x-icon">
+    <link rel="mask-icon" href="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown-de738c3fcce8ce2a91b67e89787090dc24a5cda0275ab6b75f6226c5b9619d3d.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://assets.publishing.service.gov.uk/static/apple-touch-icon-180x180-ea1cbb1cbbeddfff275dfa6e8e46b84cd530892df79dc4882a8f99b802b49a90.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="https://assets.publishing.service.gov.uk/static/apple-touch-icon-167x167-181e404a50c572923285fb83f0fbd78da6b4e38e3ce52f8e6b8e29da8586450a.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://assets.publishing.service.gov.uk/static/apple-touch-icon-152x152-02457fcdcee8d309276305af2233d41bfb8fd055e855727d355e61bce7ffa9bb.png">
+    <link rel="apple-touch-icon" href="https://assets.publishing.service.gov.uk/static/apple-touch-icon-a318f305290c523aed80082456175b46c95350c0eeac93f42e78a71c7a55544e.png">
+
+    <meta name="theme-color" content="#0b0c0c">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="https://assets.publishing.service.gov.uk/static/opengraph-image-a1f7d89ffd0782738b1aeb0da37842d8bd0addbd724b8e58c3edbc7287cc11de.png">
+
+    <!--[if gt IE 8]><!--><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/core-layout-8ddb71b3be4fc568988b8ed41334d3a733fec66bb329b6257bc37e7d8d3becdf.css" crossorigin="anonymous" integrity="sha256-jdtxs75PxWiYi47UEzTTpzP+xmuzKbYle8N+fY077N8=">
+    <!--<![endif]-->
+    <!--[if IE 6]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/core-layout-ie6-d3691059a12cddfd1d1a52d5bce5930410983abd4bf2a1dfbf37c3bda15d4703.css" /><script>var ieVersion = 6;</script><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/core-layout-ie7-8eed703f45167cda9a862c02481776d9a5d8e0660ee7edfb287d017f346105a0.css" /><script>var ieVersion = 7;</script><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/static/core-layout-ie8-a67cc07ab4c8c0b22bb322e2585094b1f291c4c8ba6f7e02e411ac31cb196706.css" /><script>var ieVersion = 8;</script><![endif]-->
+
+    <link rel="stylesheet" media="print" href="https://assets.publishing.service.gov.uk/static/core-layout-print-07d9f2ae45b9bf761acf17c7ec414a9493f1a7cf1c8278b7ad5497cdd73eee84.css" crossorigin="anonymous" integrity="sha256-B9nyrkW5v3YazxfH7EFKlJPxp88cgni3rVSXzdc+7oQ=">
+
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/government-frontend/application-10fdb710a7edb91b663301b87337b2f1ce2d71ab6a84fee257e29be1caa05727.css" crossorigin="anonymous" integrity="sha256-EP23EKftuRtmMwG4czey8c4tcatqhP7iV+Kb4cqgVyc=">
+    <!--<![endif]-->
+    <link rel="stylesheet" media="print" href="https://assets.publishing.service.gov.uk/government-frontend/print-4fc3f9ed284ff730df003d3971319ae4f3ca1708476a06c6d6690bdfa626aa64.css" crossorigin="anonymous" integrity="sha256-T8P57ShP9zDfAD05cTGa5PPKFwhHagbG1mkL36YmqmQ=">
+    <meta name="csrf-param" content="authenticity_token">
+    <meta name="csrf-token" content="tkaWZRouCxW9eRRTkFEN/ddu61w6eg/4xC3JUR7t/eBX182tMu8SqDrXApx+AnzWvp0xxYVdFR8/5u7ayxn+Nw==">
+    <meta name="govuk:format" content="detailed_guide">
+    <meta name="govuk:schema-name" content="detailed_guide">
+    <meta name="govuk:analytics:organisations" content="&lt;EA199&gt;">
+    <meta name="govuk:political-status" content="non-political">
+    <meta name="govuk:publishing-government" content="2015-conservative-government">
+    <meta name="govuk:user-journey-stage" content="thing">
+    <meta name="govuk:navigation-document-type" content="guidance">
+    <meta name="govuk:themes" content="environment">
+    <meta name="govuk:taxon-id" content="f4e9e92d-9192-4e17-90c6-553339bc04c3">
+    <meta name="govuk:taxon-ids" content="f4e9e92d-9192-4e17-90c6-553339bc04c3">
+    <meta name="govuk:taxon-slug" content="waste-and-recycling">
+    <meta name="govuk:taxon-slugs" content="waste-and-recycling">
+    <meta name="govuk:content-has-history" content="true">
+    <meta name="description" content="How to send landfill emissions and monitoring data to the Environment Agency.">
+    <meta name="govuk:content-id" content="d676e791-3077-4f03-b8cb-7a75993ad151">
+    <!--[if IE 6]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/government-frontend/application-ie6-97ba5b03d18c14f1ee7e83d89e8483ce672ecc863fb7f9c00a94d9de62fe8285.css" /><script>var ieVersion = 6;</script><![endif]--><!--[if IE 7]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/government-frontend/application-ie7-06df0e38e3e56119613a173e3853bd88f3e8a29a3168f0528adde56caabe0a4c.css" /><script>var ieVersion = 7;</script><![endif]--><!--[if IE 8]><link rel="stylesheet" media="screen" href="https://assets.publishing.service.gov.uk/government-frontend/application-ie8-02b890d3d2aff5dfad477708fc9594c997130b1067cab5aabf019315ccd10398.css" /><script>var ieVersion = 8;</script><![endif]-->
+    <meta name="govuk:rendering-application" content="government-frontend">
+  </head>
+
+  <body>
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    <div id="skiplink-container">
+      <div>
+        <a href="#content" class="skiplink">Skip to main content</a>
+      </div>
+    </div>
+
+    <div id="global-cookie-message">
+      <p>GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
+    </div>
+
+    <header role="banner" id="global-header" class=" with-proposition">
+      <div class="header-wrapper">
+        <div class="header-global">
+          <div class="header-logo">
+            <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
+              <img src="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown_invert_trans-203e1db49d3eff430d7dc450ce723c1002542fe1d2bce661b6d8571f14c1043c.png" width="36" height="32" alt=""> GOV.UK
+            </a>
+          </div>
+
+          <a href="#search" class="search-toggle js-header-toggle">Search</a>
+
+          <form id="search" class="site-search" action="/search" method="get" role="search">
+            <div class="content">
+              <label for="site-search-text">Search</label>
+              <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus">
+              <input class="submit" type="submit" value="Search">
+            </div>
+          </form>
+
+        </div>
+
+        <div class="header-proposition">
+          <div class="content">
+            <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+            <nav id="proposition-menu" class="no-proposition-name">
+            <ul id="proposition-links">
+              <li>
+                <a class="" href="https://www.gov.uk/government/organisations">
+                  Departments
+                </a>
+              </li>
+              <li>
+                <a class="" href="https://www.gov.uk/government/world">
+                  Worldwide
+                </a>
+              </li>
+              <li>
+                <a class="" href="https://www.gov.uk/government/how-government-works">
+                  How government works
+                </a>
+              </li>
+              <li>
+                <a class="" href="https://www.gov.uk/government/get-involved">
+                  Get involved
+                </a>
+              </li>
+              <li>
+                <a class="" href="https://www.gov.uk/government/publications">
+                  Publications
+                </a>
+              </li>
+              <li>
+                <a class="" href="https://www.gov.uk/government/publications?publication_filter_option=consultations">
+                  Consultations
+                </a>
+              </li>
+              <li>
+                <a class="" href="https://www.gov.uk/government/statistics">
+                  Statistics
+                </a>
+              </li>
+              <li>
+                <a class="" href="https://www.gov.uk/government/announcements">
+                  Announcements
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <div id="user-satisfaction-survey-container"></div>
+
+  <div id="global-header-bar"></div>
+
+  <div id="wrapper" class="direction-ltr">
+
+  <div class="govuk-breadcrumbs " data-module="track-click">
+    <ol>
+      <li class="">
+        <a data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/" data-track-options='{"dimension28":"1","dimension29":"Home"}' class="" aria-current="false" href="/">Home</a>
+      </li>
+      <li class="">
+        <a data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/" data-track-options='{"dimension28":"1","dimension29":"Home"}' class="" aria-current="false" href="/">Environment</a>
+      </li>
+      <li class="">
+        <a data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/" data-track-options='{"dimension28":"1","dimension29":"Home"}' class="" aria-current="false" href="/">Water industry</a>
+      </li>
+      <li class="">
+        <a data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/" data-track-options='{"dimension28":"1","dimension29":"Home"}' class="" aria-current="false" href="/">Abstract (take) water</a>
+      </li>
+    </ol>
+  </div>
+
+  <main role="main" id="content" class="detailed-guide" lang="en">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <div class="pub-c-title pub-c-title--bottom-margin">
+          <p class="pub-c-title__context">
+            Guidance
+          </p>
+          <h1 class="pub-c-title__text pub-c-title__text--long">
+            Manage your water abstraction or impoundment licence online
+          </h1>
+        </div>
+      </div>
+
+      <div class="column-two-thirds">
+        <p class="pub-c-lead-paragraph ">
+          Use this service to view and share your licence information and to submit abstraction returns.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="metadata-logo-wrapper">
+        <div class="column-two-thirds metadata-column">
+          <div class="app-c-publisher-metadata">
+            <div class="app-c-published-dates ">
+              Published 1 August 2017
+            </div>
+
+            <div class="app-c-publisher-metadata__other">
+              <dl data-module="track-click">
+                <dt class="app-c-publisher-metadata__term">
+                  Last updated 1 November 2018
+                </dt>
+                <dd class="app-c-publisher-metadata__definition">
+                   —
+                  <a href="">
+                    See all updates
+                  </a>
+                </dd>
+              </dl>
+            </div>
+
+            <div class="app-c-publisher-metadata__other">
+              <dl data-module="track-click">
+                <dt class="app-c-publisher-metadata__term">
+                  From:
+                </dt>
+                <dd class="app-c-publisher-metadata__definition">
+                  <a href="https://www.gov.uk/government/organisations/environment-agency">
+                    Environment Agency
+                  </a>
+                </dd>
+              </dl>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+          <div class="app-c-important-metadata app-c-important-metadata--bottom-margin">
+            <dl data-module="track-click">
+              <dt class="app-c-important-metadata__term">
+                Applies to:
+              </dt>
+              <dd class="app-c-important-metadata__definition">
+                England
+              </dd>
+            </dl>
+          </div>
+
+          <div id="contents" class="app-c-contents-list-with-body" data-module="sticky-element-container">
+
+            <!-- <div class="responsive-bottom-margin">
+
+              <nav role="navigation" class="app-c-contents-list" data-module="track-click">
+                <h2>
+                  Contents
+                </h2>
+
+                <ol class="app-c-contents-list__list">
+                  <li class="app-c-contents-list__list-item app-c-contents-list__list-item--dashed ">
+                    <a class="app-c-contents-list__link" data-track-category="contentsClicked" data-track-action="content_item 1" data-track-label="#report-landfill-emissions-and-monitoring-data" data-track-options='{"dimension29":"Report landfill emissions and monitoring data"}' href="#report-landfill-emissions-and-monitoring-data">Report landfill emissions and monitoring data</a>
+                  </li>
+                  <li class="app-c-contents-list__list-item app-c-contents-list__list-item--dashed ">
+                    <a class="app-c-contents-list__link" data-track-category="contentsClicked" data-track-action="content_item 2" data-track-label="#schedule-5-6" data-track-options='{"dimension29":"Send schedule 5 or 6 notifications"}' href="#schedule-5-6">Send schedule 5 or 6 notifications</a>
+                  </li>
+                  <li class="app-c-contents-list__list-item app-c-contents-list__list-item--dashed ">
+                    <a class="app-c-contents-list__link" data-track-category="contentsClicked" data-track-action="content_item 3" data-track-label="#annual-reports" data-track-options='{"dimension29":"Send annual or other interpretive reports"}' href="#annual-reports">Send annual or other interpretive reports</a>
+                  </li>
+                  <li class="app-c-contents-list__list-item app-c-contents-list__list-item--dashed ">
+                    <a class="app-c-contents-list__link" data-track-category="contentsClicked" data-track-action="content_item 4" data-track-label="#waste-returns" data-track-options='{"dimension29":"Send waste returns"}' href="#waste-returns">Send waste returns</a>
+                  </li>
+                  <li class="app-c-contents-list__list-item app-c-contents-list__list-item--dashed ">
+                    <a class="app-c-contents-list__link" data-track-category="contentsClicked" data-track-action="content_item 5" data-track-label="#other-guidance" data-track-options='{"dimension29":"Other guidance"}' href="#other-guidance">Other guidance</a>
+                  </li>
+                </ol>
+
+              </nav>
+
+            </div> -->
+
+            <div class="govuk-govspeak direction-ltr">
+              <div class="govspeak">
+                <p>
+                  You can manage your licences by creating an online account. Once you have an account you will be able to:
+                </p>
+
+                <!-- <h2 id="report-landfill-emissions-and-monitoring-data">
+                  Report landfill emissions and monitoring data
+                </h2> -->
+
+                <p>
+                  You can also:
+                  <ul class="list list-bullet">
+                    <li>
+                      submit returns
+                    </li>
+                    <li>
+                      view your licence information
+                    </li>
+                    <li>
+                      give other people access to view your licence information
+                    </li>
+                  </ul>
+
+                  <h2 class="govuk-heading-m">
+                    Submit abstraction returns
+                  </h2>
+
+                  <p>
+                    Most abstraction licences will ask you to submit a record of your abstraction (a return) to the Environment Agency. Even if you have not taken any water, you must submit a nil return if your licence states that you must report your water use.
+                  </p>
+
+                  <p>
+                    You can now do this online. If you usually submit your returns via the Generic Operator Returns (GOR) online system, sign up to the new service.
+                  </p>
+
+                  <div class="call-to-action">
+                    <p>
+                      <a rel="external" href="pages/start_option">
+                        Manage your licences and submit returns.
+                      </a>
+                    </p>
+                  </div>
+
+                  <p>
+                    If you want to submit an XML file with your return information you will need to <a href="">contact us</a>.
+                  </p>
+
+                  <h2 class="govuk-heading-m">
+                    Deadlines for returns
+                  </h2>
+
+                  <p>
+                    Returns are due on 28 April and 28 November, depending on the terms of your licence.
+                  </p>
+
+                  <h2 class="govuk-heading-m">
+                    Your paper licences
+                  </h2>
+
+                  <p>
+                    The information included in this service does not replace or affect the legal (paper) copy of the licence issued to you. The information must be used for reference only. You must refer to and comply with the licence issued to you as a paper copy when you make decisions about abstracting or impounding water.
+                  </p>
+
+                  <h2 class="govuk-heading-m">
+                    Improving the service
+                  </h2>
+
+                  <p>
+                    Find out how we are modernising the Water resources licensing service in the Water abstraction plan: Abstraction licensing service.
+                  </p>
+
+
+                </div>
+              </div>
+
+
+              <div class="responsive-bottom-margin">
+                <div class="app-c-published-dates ">
+                  Published 1 January 2019
+                </div>
+              </div>
+
+              <div data-sticky-element class="app-c-contents-list-with-body__link-wrapper">
+                <div class="app-c-contents-list-with-body__link-container">
+                  <a class="app-c-back-to-top dont-print" href="#contents">
+                    <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewbox="0 0 13 17">
+                      <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+                    </svg>
+                    Contents
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column-third">
+          <!-- Rendering the related navigation -->
+            <div class="gem-c-related-navigation">
+              <h2 id="related-nav-related_items-999115c1" class="gem-c-related-navigation__main-heading" data-track-count="sidebarRelatedItemSection">
+                Related content
+              </h2>
+              <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-policies-999115c1" data-module="toggle">
+              <h3 id="related-nav-policies-999115c1" data-track-count="sidebarRelatedItemSection" class="gem-c-related-navigation__sub-heading">
+                Policy
+              </h3>
+              <ul class="gem-c-related-navigation_link-list" data-module="track-click">
+                <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link" data-track-category="relatedLinkClicked" data-track-action="1.1 Policy" data-track-label="/government/policies/waste-and-recycling" data-track-options='{"dimension28":"1","dimension29":"Waste and recycling"}' href="https://www.gov.uk/government/policies/waste-and-recycling">Waste and recycling</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <div class="gem-c-feedback" data-module="feedback">
+      <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
+        <div class="js-prompt-questions">
+          <h3 class="gem-c-feedback__prompt-question">Is this page useful?</h3>
+
+            <a class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" href="https://www.gov.uk/contact/govuk">
+              Yes <span class="visually-hidden">this page is useful</span>
+            </a>
+
+            <a class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false" role="button" href="https://www.gov.uk/contact/govuk">
+              No <span class="visually-hidden">this page is not useful</span>
+            </a>
+
+            <a class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" aria-expanded="false" role="button" href="https://www.gov.uk/contact/govuk">
+              Is there anything wrong with this page?
+            </a>
+          </div>
+
+          <div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
+            Thank you for your feedback
+          </div>
+        </div>
+
+        <form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form" method="post">
+          <a href="#" class="gem-c-feedback__close gem-c-feedback__js-show js-close-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Close Form" aria-controls="something-is-wrong" aria-expanded="true" role="button">Close</a>
+
+          <div class="gem-c-feedback__grid-row">
+            <div class="gem-c-feedback__column-two-thirds">
+              <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-hidden js-errors" tabindex="-1"></div>
+
+              <input type="hidden" name="url" value="https://www.gov.uk/guidance/report-landfill-data-england-only">
+              <input type="hidden" name="user_agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:59.0) Gecko/20100101 Firefox/59.0">
+
+              <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+              <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Do not include personal or financial information like your National Insurance number or credit card details.</p>
+
+              <div class="gem-c-label">
+                <label class="gem-c-label__text" for="input-5d6d82b6">
+                  What were you doing?
+                </label>
+              </div>
+
+              <input class="gem-c-input " id="input-5d6d82b6" name="what_doing" type="text" aria-describedby="feedback_explanation">
+
+              <div class="gem-c-label">
+                <label class="gem-c-label__text" for="input-f2e907fb">
+                  What went wrong?
+                </label>
+              </div>
+
+              <input class="gem-c-input " id="input-f2e907fb" name="what_wrong" type="text">
+              <input class="gem-c-feedback__submit" type="submit" value="Send">
+            </div>
+          </div>
+        </form>
+
+        <form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form js-hidden" data-track-category="yesNoFeedbackForm" data-track-action="Send Form" method="post">
+          <a href="#" class="gem-c-feedback__close js-close-form" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose" aria-controls="page-is-not-useful" aria-expanded="true" role="button">Close</a>
+
+          <div class="gem-c-feedback__grid-row">
+            <div class="gem-c-feedback__column-two-thirds">
+              <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
+
+              <input type="hidden" name="url" value="https://www.gov.uk/guidance/report-landfill-data-england-only">
+              <input type="hidden" name="user_agent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:59.0) Gecko/20100101 Firefox/59.0">
+
+              <input name="email_survey_signup[survey_id]" type="hidden" value="user_satisfaction_survey">
+              <input name="email_survey_signup[survey_source]" type="hidden" value="https://www.gov.uk/guidance/report-landfill-data-england-only">
+              <input name="email_survey_signup[ga_client_id]" type="hidden" value="1627485790.1515403243">
+
+              <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+              <p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we’d like to know more about your visit today. We will send you a link to a feedback form. It will take only 2 minutes to fill in. Do not worry we will not send you spam or share your email address with anyone.</p>
+
+              <div class="gem-c-label">
+                <label class="gem-c-label__text" for="input-290dd7ca">
+                  Email address
+                </label>
+              </div>
+
+              <input class="gem-c-input " id="input-290dd7ca" name="email_survey_signup[email_address]" type="email" aria-describedby="survey_explanation">
+              <input class="gem-c-feedback__submit" type="submit" value="Send me the survey">
+              <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/guidance/report-landfill-data-england-only&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link" id="take-survey" target="_blank" rel="noopener noreferrer">Do not have an email address?</a>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <footer class="group js-footer" id="footer" role="contentinfo">
+
+      <div class="footer-wrapper">
+        <div class="footer-categories">
+          <div class="footer-explore">
+
+            <h2>Services and information</h2>
+
+              <ul>
+                <li><a href="https://www.gov.uk/browse/benefits">Benefits</a></li>
+                <li><a href="https://www.gov.uk/browse/births-deaths-marriages">Births, deaths, marriages and care</a></li>
+                <li><a href="https://www.gov.uk/browse/business">Business and self-employed</a></li>
+                <li><a href="https://www.gov.uk/browse/childcare-parenting">Childcare and parenting</a></li>
+                <li><a href="https://www.gov.uk/browse/citizenship">Citizenship and living in the UK</a></li>
+                <li><a href="https://www.gov.uk/browse/justice">Crime, justice and the law</a></li>
+                <li><a href="https://www.gov.uk/browse/disabilities">Disabled people</a></li>
+                <li><a href="https://www.gov.uk/browse/driving">Driving and transport</a></li>
+              </ul>
+              <ul>
+                <li><a href="https://www.gov.uk/browse/education">Education and learning</a></li>
+                <li><a href="https://www.gov.uk/browse/employing-people">Employing people</a></li>
+                <li><a href="https://www.gov.uk/browse/environment-countryside">Environment and countryside</a></li>
+                <li><a href="https://www.gov.uk/browse/housing-local-services">Housing and local services</a></li>
+                <li><a href="https://www.gov.uk/browse/tax">Money and tax</a></li>
+                <li><a href="https://www.gov.uk/browse/abroad">Passports, travel and living abroad</a></li>
+                <li><a href="https://www.gov.uk/browse/visas-immigration">Visas and immigration</a></li>
+                <li><a href="https://www.gov.uk/browse/working">Working, jobs and pensions</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-inside-government">
+              <h2>Departments and policy</h2>
+
+              <ul>
+                <li><a href="https://www.gov.uk/government/how-government-works">How government works</a></li>
+                <li><a href="https://www.gov.uk/government/organisations">Departments</a></li>
+                <li><a href="https://www.gov.uk/world">Worldwide</a></li>
+                <li><a href="https://www.gov.uk/government/policies">Policies</a></li>
+                <li><a href="https://www.gov.uk/government/publications">Publications</a></li>
+                <li><a href="https://www.gov.uk/government/announcements">Announcements</a></li>
+              </ul>
+            </div>
+            <hr>
+          </div>
+
+          <div class="footer-meta">
+            <div class="footer-meta-inner">
+              <h2 class="visuallyhidden">Support links</h2>
+
+                <ul>
+                  <li><a href="https://www.gov.uk/help">Help</a></li>
+                  <li><a href="https://www.gov.uk/help/cookies">Cookies</a></li>
+                  <li><a href="https://www.gov.uk/contact">Contact</a></li>
+                  <li><a href="https://www.gov.uk/help/terms-conditions">Terms and conditions</a></li>
+                  <li><a href="https://www.gov.uk/cymraeg" lang="cy" hreflang="cy">Rhestr o Wasanaethau Cymraeg</a></li>
+                  <li>Built by the <a href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service</a>
+                </li>
+                </ul>
+                <div class="open-government-licence">
+                  <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+                  <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+                </div>
+              </div>
+
+              <div class="copyright">
+                <a href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        <div id="global-app-error" class="app-error hidden"></div>
+
+        <script src="https://assets.publishing.service.gov.uk/static/govuk-template-d4ba5ab8f60c9df5c733e7d3c7c469ff93dc6b64d2b2a8feb94afa8f77c66193.js" crossorigin="anonymous" integrity="sha256-1LpauPYMnfXHM+fTx8Rp/5Pca2TSsqj+uUr6j3fGYZM="></script>
+        <script src="https://assets.publishing.service.gov.uk/static/libs/jquery/jquery-1.12.4-5f1157a433c276bcb98f3651434f7cb1f49ff45fe2ec2808b46ee088e61159b5.js" crossorigin="anonymous" integrity="sha256-XxFXpDPCdry5jzZRQ098sfSf9F/i7CgItG7giOYRWbU="></script>
+        <script src="https://assets.publishing.service.gov.uk/static/header-footer-only-45b84379eb7e705803e25008a3d3f218fd0bd8baf351c5dd6932224f123a099e.js" crossorigin="anonymous" integrity="sha256-RbhDeet+cFgD4lAIo9PyGP0L2LrzUcXdaTIiTxI6CZ4="></script>
+        <script src="https://assets.publishing.service.gov.uk/static/surveys-8e4ed64fa8a9a50bab151774050ca745198339ff961e99e9191602de54abd4d7.js" crossorigin="anonymous" integrity="sha256-jk7WT6ippQurFRd0BQynRRmDOf+WHpnpGRYC3lSr1Nc="></script>
+        <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>
+        <script src="https://assets.publishing.service.gov.uk/government-frontend/application-fc932800b028f90f4fb3a6ca7960d5b0b0d42a147bed41fb79057fb355d5dccf.js" crossorigin="anonymous" integrity="sha256-/JMoALAo+Q9Ps6bKeWDVsLDUKhR77UH7eQV/s1XV3M8="></script>
+  </body>
+</html>

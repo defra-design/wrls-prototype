@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Table examples - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  <!-- page title -->
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        View licences
+      </h1>
+    </div>
+  </div>
+
+  <h2 class="govuk-heading-m">
+    Table types
+  </h2>
+
+  <table class="govuk-table space--medium">
+    <caption class="govuk-table__caption space--small">A left aligned table</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col">Licence Name or Number</th>
+        <th class="govuk-table__header" scope="col">Site description</th>
+        <th class="govuk-table__header" scope="col">Purpose</th>
+        <th class="govuk-table__header" scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row"><a href="">Greenwood Farm</a></th>
+        <td class="govuk-table__row__cell ">Borehole on East Hill</td>
+        <td class="govuk-table__row__cell ">Spray irrigation</td>
+        <td class="govuk-table__row__cell ">Completed</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row"><a href="">Sparrow Barn</a></th>
+        <td class="govuk-table__row__cell ">Sparrow Gurney Well</td>
+        <td class="govuk-table__row__cell ">Spray irrigation</td>
+        <td class="govuk-table__row__cell ">Return due</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row"><a href="">TH01/005/32/14/01</a></th>
+        <td class="govuk-table__row__cell ">Borehole A, Woodbarn side</td>
+        <td class="govuk-table__row__cell ">Spray irrigation</td>
+        <td class="govuk-table__row__cell ">Return due</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="govuk-table">
+    <caption class="govuk-table__caption space--small">A numeric table</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col">Month you apply</th>
+        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Rate for bicycles</th>
+        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Rate for vehicles</th>
+        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Other rate</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">January</th>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£85</td>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£95</td>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£90</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">February</th>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£75</td>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£55</td>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£90</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">March</th>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£165</td>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£125</td>
+        <td class="govuk-table__row__cell govuk-table__row__cell--numeric">£90</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</main>
+{% endblock %}

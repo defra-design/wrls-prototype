@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+{% set title = "Search for licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-eo-view.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        View licences
+      </h1>
+    </div>
+  </div>
+
+  <!-- search for licences -->
+  <form action="licences-list">
+    <fieldset class="govuk-fieldset">
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="search">
+          Search for a licence
+        </label>
+        <span id="search-hint" class="govuk-hint">
+          Search by registered email address, licence number or licence name
+        </span>
+        <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
+        <button type="submit" class="govuk-button inline-button">
+          Search
+        </button>
+      </div>
+
+    </fieldset>
+  </form>
+
+{% endblock %}

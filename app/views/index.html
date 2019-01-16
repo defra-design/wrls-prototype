@@ -1,44 +1,165 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
   GOV.UK Prototype Kit
 {% endblock %}
 
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
 {% block content %}
+
+  <div class="govuk-grid-row space--medium">
+    <!-- hacky hack -->
+  </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        The GOV.UK Prototype Kit
+        Water resource licensing service prototype
         <span class="govuk-caption-xl">{{releaseVersion}}</span>
       </h1>{{releaseVersion | log }}
       <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
+        This is a new version of the prototype and contains a limited set of views.
       </p>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
+      <p class="space--big">
+        <a href="https://water-resource-licensing.herokuapp.com/" target="_blank">
+          See the previous prototype views here.
+        </a>
       </p>
 
-      <h2 class="govuk-heading-m">About this page</h2>
-
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
-
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
-
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/docs/tutorials-and-examples">Example pages and documentation</a></li>
-        <li>
-          <a href="https://design-system.service.gov.uk">
-            GOV.UK Design System
-          </a>
-        </li>
-      </ul>
     </div>
-</div>
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <div class="space--big">
+        <h2 class="govuk-heading-m">Versions of this prototype</h2>
+
+        <h3 class="govuk-heading-s">Send final return reminder letters</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/bd/manage">See a link to send return reminders</a></li>
+          <li><a href="/bd/send-return-reminders">Sending the return reminders (link to licence holders CSV)</a></li>
+          <li><a href="/bd/return-reminders-sent">Confirmation of reminders sent</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-s">Billing & Data (Billing & returns)</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/bd/search">Licence search</a></li>
+          <li><a href="/bd/manage">Manage view</a></li>
+          <li><a href="/bd/find-return">Find a return</a></li>
+          <li><a href="/bd/returns-overview">Returns overview</a></li>
+          <li><a href="/bd/returns-statistics">Return statistics (current/recent cycle)</a></li>
+          <li><a href="/bd/void-returns">See void returns</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-s">Void returns</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/bd/licence-summary?wid=31#returns">Licence returns showing a void return (internal only)</a></li>
+          <li><a href="/bd/void-returns">List of void returns</a></li>
+          <li><a href="/bd/return-status-void">Void return status</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-s">Environment officers</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="eo/licence-search">Search for licences</a></li>
+          <li><a href="eo/licences-list">Licence results</a></li>
+          <li><a href="eo/licence-summary">Licence summary</a></li>
+          <li><a href="eo/licence-summary#communications">Licence communications summary</a></li>
+          <li><a href="eo/notification-review">Notification review</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-s">Abstraction reform</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="ar/licence-review-list">Abstraction reform review list (inbox)</a></li>
+          <li><a href="ar/licence-review">Abstraction reform licence review</a></li>
+          <li><a href="ar/further-condition-groups">Select the conditions group</a></li>
+          <li><a href="/ar/licence-review-add-condition">Add a further condition</a></li>
+          <li><a href="/ar/licence-review-add-values">Link data to the condition</a></li>
+          <li><a href="/ar/licence-review-with-further-conditions#wr22">Licence review with further conditions</a></li>
+          <li><a href="/ar/licence-review-change-values">Change further conditions</a></li>
+          <li><a href="/ar/confirm-remove-further-condition">Confirm removal of further condition</a></li>
+        </ul>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/ar/manage">Abstraction reform manage view</a></li>
+          <li><a href="/ar/ar-report">Download abstraction reform Comma Separated Values</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-s">External user</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/ex/guidance">Guidance page</a></li>
+          <li><a href="/ex/licences">Licence list</a></li>
+          <li><a href="/ex/confirm-return">Inset meter details</a></li>
+        </ul>
+
+        <h4 class="govuk-heading-s">Licenceless registration</h4>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/ex/registration/postcode">Access to licences & returns (sign up)</a></li>
+          <li><a href="/ex/registration/licence-holder">Licence holder</a></li>
+          <li><a href="/ex/registration/send-code">Send a code</a></li>
+          <li><a href="/ex/registration/code-sent">Letter sent</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-s">Waste and Industry Regulatory Services</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/wirs/returns/find-return">Find a return</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third float-right">
+
+      <div class="space--big">
+        <h2 class="govuk-heading-m">Start points</h2>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/ex/licences">External</a></li>
+          <li><a href="/bd/licences-list">Billing & Data</a></li>
+          <li><a href="/ar/licence-review-list">Abstraction reform editor</a></li>
+          <li><a href="/ar/licence-review">Abstraction reform approver</a></li>
+          <li><a href="/wirs/returns/find-return">Waste and Industry Regulatory Services</a></li>
+          <li><a href="/eo/licence-search">Environment Officer</a></li>
+        </ul>
+      </div>
+
+      <div class="space--big">
+        <h2 class="govuk-heading-m">Patterns</h2>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/patterns/licence-search">Licence search</a></li>
+          <li><a href="/patterns/licence-data">Licence data</a></li>
+          <li><a href="/patterns/licence-condition">Licence condition</a></li>
+          <li><a href="/patterns/table-checkbox">Checkbox tables</a></li>
+          <li><a href="/patterns/table-three-columns">Table with three columns</a></li>
+          <li><a href="/patterns/returns-list">Returns list</a></li>
+          <li><a href="/patterns/licence-returns">Licence returns</a></li>
+          <li><a href="/patterns/access-list">Access list</a></li>
+          <li><a href="/patterns/return-data">Return data</a></li>
+
+        </ul>
+      </div>
+
+    </div>
+
+  </div><!-- row -->
 
 {% endblock %}

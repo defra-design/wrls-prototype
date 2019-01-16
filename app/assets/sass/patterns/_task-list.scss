@@ -16,7 +16,7 @@
 }
 
 .app-task-list__section-number {
-  display: table-cell;
+  display: table__row__cell;
 
   @include govuk-media-query($from: tablet) {
     min-width: govuk-spacing(6);

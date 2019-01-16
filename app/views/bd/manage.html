@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% set title = "Manage returns" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+          Manage returns
+        </h1>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <ul class="grid-container">
+          <!-- <a href="find-return" class="grid-container__link">
+            <li>
+              Find a return
+            </li>
+          </a> -->
+          <a href="returns-overview" class="grid-container__link">
+            <li>
+              Returns overview
+            </li>
+          </a>
+          <a href="send-return-reminders" class="grid-container__link">
+            <li>
+              Send return reminders
+            </li>
+          </a>
+          <a href="void-returns" class="grid-container__link">
+            <li>
+              Void returns
+            </li>
+          </a>
+          <!-- <a href="ar-report" class="grid-container__link">
+            <li>
+              Abstraction reform report
+            </li>
+          </a> -->
+          <!-- part of a three columns css grid -->
+          <!-- other links will go here -->
+        </ul>
+
+      </div>
+    </div>
+
+  </main>
+
+</div>
+{% endblock %}

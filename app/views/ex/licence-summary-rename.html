@@ -1,0 +1,435 @@
+{% extends "layout.html" %}
+
+{% set title = "Scrifford Pike Licence summary" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--medium">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-ex-view.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">Scrifford Pike</h1>
+    </div>
+  </div>
+
+  <div class="govuk-tabs" data-module="tabs">
+    <h2 class="govuk-tabs__title">
+      Licence views
+    </h2>
+
+    <ul class="govuk-tabs__list">
+      <li class="govuk-tabs__list-item">
+        <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary">
+          Summary
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item">
+        <a class="govuk-tabs__tab" href="#returns">
+          Returns
+        </a>
+      </li>
+    </ul>
+
+    <!-- tab 1 -->
+    <section class="govuk-tabs__panel" id="summary">
+
+      <h2 class="govuk-heading-m">Summary</h2>
+
+      <section class="space--big">
+
+        <!-- rename licence form -->
+        <div class="" id="main-contact">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="licence-name">
+              Licence name
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="licence-name" name="licence-name" type="text" id="width-20">
+          </div>
+
+          <a class="govuk-button space--small" href="licence-summary" role="button">
+            Save
+          </a>
+          <p class="form-cancel space--small">
+            <a href="#" onclick="history.go(-1)">
+              Cancel
+            </a>
+          </p>
+        </div>
+
+        <!-- licence holder -->
+        <div class="data-row data-row--top">
+          <div class="data-row__param">Licence holder</div>
+          <div class="data-row__value">
+            Daniel Caan
+            <br><a href="licence/contacts">View licence contact details</a>
+          </div>
+        </div>
+
+        <!-- licence start -->
+        <div class="data-row">
+          <div class="data-row__param">Effective from</div>
+          <div class="data-row__value">
+            31 December 1983
+          </div>
+        </div>
+
+        <!-- licence end -->
+        <div class="data-row">
+          <div class="data-row__param">End date</div>
+          <div class="data-row__value">
+            31 December 2025
+          </div>
+        </div>
+
+        <!-- water body / source -->
+        <div class="data-row">
+          <div class="data-row__param">Source of supply</div>
+          <div class="data-row__value">
+            Underground strata comprising of Mercia Mudstone at Anarea, Atown.
+          </div>
+        </div>
+
+        <!-- purpose -->
+        <div class="data-row">
+          <div class="data-row__param">Purpose</div>
+          <div class="data-row__value">
+            Spray irrigation
+          </div>
+        </div>
+
+        <!-- period -->
+        <div class="data-row">
+          <div class="data-row__param">Period of abstraction</div>
+          <div class="data-row__value">
+            March to September
+          </div>
+        </div>
+
+        <!-- points -->
+        <div class="data-row">
+          <div class="data-row__param">Points of abstraction</div>
+          <div class="data-row__value">
+            At National Grid Reference SK 675 124
+            <br>At National Grid Reference SK 675 343
+            <br>At National Grid Reference SK 675 241
+            <br><a href="licence/points">View details of abstraction points</a>
+          </div>
+        </div>
+
+        <!-- conditions -->
+        <div class="data-row">
+          <div class="data-row__param">Abstraction conditions</div>
+          <div class="data-row__value">
+            Eel screening condition
+            <br>Flow cessation condition
+            <br>Chemical cessation condition
+            <br><a href="licence/conditions">View details of abstraction conditions</a>
+          </div>
+        </div>
+
+        <!-- amounts -->
+        <div class="data-row">
+          <div class="data-row__param">Abstraction amounts</div>
+          <div class="data-row__value">
+            900 cubic metres per hour
+            <br>1,250 cubic metres per day
+            <br>1,250,000 cubic metres per year
+          </div>
+        </div>
+
+      </section>
+
+    </section>
+
+    <!-- tab 2 -->
+    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
+      <h2 class="govuk-heading-l">
+        Returns
+      </h2>
+
+      <!-- table with returns with statuses -->
+      <div class="table space--big">                                                <!-- a table -->
+
+        <div class="table__row--head">                                              <!-- the table head -->
+          <div class="table__cell bold-small column--33">
+            Return period
+          </div>
+          <div class="table__cell bold-small column--33">
+            Purpose
+          </div>
+          <div class="table__cell bold-small column--33">
+            Amount
+          </div>
+          <div class="table__cell bold-small column--10">
+            Status
+          </div>
+        </div>
+
+        <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 1
+            </h3>
+            <h4 class="table__context">
+              Return period
+            </h4>
+            <a href="">
+              April 2018 to March 2019
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Amount
+            </h4>
+            <!-- reported amount -->
+            <!-- nothing shown for due returns -->
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status table__status--todo">
+              Due
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 2
+            </h3>
+            <h4 class="table__context">
+              Return period
+            </h4>
+            <a href="">
+              April 2017 to March 2018
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+              Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Amount
+            </h4>
+            <!-- reported amount -->
+            <!-- nothing shown for due returns -->
+              10,0105 gallons
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 3
+            </h3>
+            <h4 class="table__context">
+              Return period
+            </h4>
+            <a href="">
+              April 2016 to March 2017
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Amount
+            </h4>
+            <!-- reported amount -->
+            <!-- nothing shown for due returns -->
+            9,942 gallons
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 4
+            </h3>
+            <h4 class="table__context">
+              Return period
+            </h4>
+            <a href="">
+              April 2015 to March 2016
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Amount
+            </h4>
+            <!-- reported amount -->
+            <!-- nothing shown for due returns -->
+            8,175 gallons
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 5
+            </h3>
+            <h4 class="table__context">
+              Return period
+            </h4>
+            <a href="">
+              April 2014 to March 2015
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Amount
+            </h4>
+            <!-- reported amount -->
+            <!-- nothing shown for due returns -->
+            7,781 gallons
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+        <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 6
+            </h3>
+            <h4 class="table__context">
+              Return period
+            </h4>
+            <a href="">
+              April 2013 to March 2014
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Amount
+            </h4>
+            <!-- reported amount -->
+            <!-- nothing shown for due returns -->
+            9,281 gallons
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+{% endblock %}

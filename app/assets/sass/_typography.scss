@@ -1,0 +1,43 @@
+body {
+  font-family: "nta", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.31579;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1 a:link {
+  font-weight: normal;
+  text-decoration: none;
+}
+
+h1 a:link, h1 a:visited {
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.sub-head {
+  font-size: 30px;
+  color: #6f777b;
+  margin: 0;
+  padding: 0;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+// ========== ========== ========== ========== ==========
+// licence search styles
+// ========== ========== ========== ========== ==========
+
+#search {
+  // max-width: 41ex;
+  margin-bottom: 1rem;
+  width: 100%;
+}

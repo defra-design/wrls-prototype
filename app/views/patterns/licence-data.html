@@ -1,0 +1,58 @@
+{% import "includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = "Licence data" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Water service patterns",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Licence data
+      </h1>
+    </div>
+  </div>
+
+  <!-- licence data -->
+  <div class="data-row">
+    <!-- the data label -->
+    <div class="data-row__param">Points of abstraction</div>
+    <div class="data-row__value">
+
+      <!-- multiple points of data -->
+      <!-- if there are more than 5, we show the first 5 and change the link text to ‘see all N x’ -->
+      <ul class="data-row__sub-list">
+        <li>At National Grid Reference SK 993  900 (GLENTHAM BOREHOLE  NO.2) (GLENTHAM BOREHOLE  NO.2)</li>
+        <li>At National Grid Reference SK 995  894 (GLENTHAM BOREHOLE  NO.3)</li>
+      </ul>
+
+      <a href="">View details of your abstraction points</a>
+
+    </div>
+  </div>
+
+{% endblock %}
