@@ -44,309 +44,131 @@
 {% endblock %}
 
 {% block content %}
-  <!-- page title -->
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <h1  class="heading-large govuk-heading-l">
-        Returns and licences
-      </h1>
-    </div>
-  </div>
-
-  <!-- search for licences -->
-  <form action="licences-list">
-    <fieldset class="govuk-fieldset">
-
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="search">
-          Search for a licence
-        </label>
-        <span id="search-hint" class="govuk-hint">
-          Search by registered email address, licence number or licence name
-        </span>
-        <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint" value="123">
-        <button type="submit" class="govuk-button inline-button">
-          Search
-        </button>
-      </div>
-
-    </fieldset>
-  </form>
-
-  <h2 class="govuk-heading-m">
-    Returns
-  </h2>
-
-  <!-- table with returns with statuses -->
-  <div class="table space--big">                                                <!-- a table -->
-
-    <div class="table__row--head">                                              <!-- the table head -->
-      <div class="table__cell bold-small column--25">
-        Return reference
-      </div>
-      <div class="table__cell bold-small">
-        Region
-      </div>
-      <div class="table__cell bold-small column--25">
-        Due
-      </div>
-      <div class="table__cell bold-small column--20">
-        Status
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <!-- page title -->
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h1  class="heading-large govuk-heading-l">
+          Returns and licences
+        </h1>
       </div>
     </div>
 
-    <div class="table__row space--medium">                                      <!-- a data row starts -->
-      <div class="table__cell">
-        <h3 class="screen-reader-only">
-          Row 1
-        </h3>
-        <h4 class="table__context">
+    <!-- search for licences -->
+    <form action="licences-list">
+      <fieldset class="govuk-fieldset">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="search">
+            Search for a licence
+          </label>
+          <span id="search-hint" class="govuk-hint">
+            Search by registered email address, licence number or licence name
+          </span>
+          <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint" value="01236352">
+          <button type="submit" class="govuk-button inline-button">
+            Search
+          </button>
+        </div>
+
+      </fieldset>
+    </form>
+
+    <h2 class="govuk-heading-m">
+      Returns
+    </h2>
+
+    <!-- table with returns with statuses -->
+    <div class="table space--big">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--25">
           Return reference
-        </h4>
-        <a href="return-status">
-          <span class="screen-reader-only">View return status for return reference</span>
-          12389122
-        </a>
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
+        </div>
+        <div class="table__cell bold-small">
           Region
-        </h4>
-        Anglian
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
+        </div>
+        <div class="table__cell bold-small column--25">
           Due
-        </h4>
-        March 2019
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
+        </div>
+        <div class="table__cell bold-small column--20">
           Status
-        </h4>
-        <strong class="table__status">
-          Complete
-        </strong>
+        </div>
       </div>
+
+      <div class="table__row space--medium">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 1
+          </h3>
+          <h4 class="table__context">
+            Return reference
+          </h4>
+          <a href="return-status">
+            <span class="screen-reader-only">View return status for return reference</span>
+            01236352
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Region
+          </h4>
+          Anglian
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Due
+          </h4>
+          March 2019
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Status
+          </h4>
+          <strong class="table__status">
+            Complete
+          </strong>
+        </div>
+      </div>
+
+      <div class="table__row space--medium">                                      <!-- a data row starts -->
+
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 2
+          </h3>
+          <h4 class="table__context">
+            Return reference
+          </h4>
+          <a href="returns/return-report">
+            <span class="screen-reader-only">View return status for return reference</span>
+            01236352
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Region
+          </h4>
+            South West
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Due
+          </h4>
+          March 2018
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Status
+          </h4>
+          <strong class="table__status">
+            Complete
+          </strong>
+        </div>
+      </div>
+
     </div>
-
-    <div class="table__row space--medium">                                      <!-- a data row starts -->
-      <div class="table__cell">
-        <h3 class="screen-reader-only">
-          Row 2
-        </h3>
-        <h4 class="table__context">
-          Return reference
-        </h4>
-          <a href="return-status-void">
-          <span class="screen-reader-only">View return status for return reference</span>
-          12367512
-        </a>
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Region
-        </h4>
-        Anglian
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Due
-        </h4>
-        March 2019
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Status
-        </h4>
-        <strong class="table__status">
-          Complete
-        </strong>
-      </div>
-    </div>
-
-    <div class="table__row space--medium">                                      <!-- a data row starts -->
-
-      <div class="table__cell">
-        <h3 class="screen-reader-only">
-          Row 3
-        </h3>
-        <h4 class="table__context">
-          Return reference
-        </h4>
-        <a href="returns/return-report">
-          <span class="screen-reader-only">View return status for return reference</span>
-          01236352
-        </a>
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Region
-        </h4>
-          South West
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Due
-        </h4>
-        March 2018
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Status
-        </h4>
-        <strong class="table__status">
-          Complete
-        </strong>
-      </div>
-    </div>
-
-    <div class="table__row space--medium">                                      <!-- a data row starts -->
-
-      <div class="table__cell">
-        <h3 class="screen-reader-only">
-          Row 4
-        </h3>
-        <h4 class="table__context">
-          Return reference
-        </h4>
-        <a href="returns/return-report">
-          <span class="screen-reader-only">View return status for return reference</span>
-          01721234
-        </a>
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Region
-        </h4>
-        North-East
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Due
-        </h4>
-        March 2017
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Status
-        </h4>
-        <strong class="table__status">
-          Complete
-        </strong>
-      </div>
-    </div>
-
-    <div class="table__row space--medium">                                      <!-- a data row starts -->
-
-      <div class="table__cell">
-        <h3 class="screen-reader-only">
-          Row 5
-        </h3>
-        <h4 class="table__context">
-          Return reference
-        </h4>
-        <a href="returns/return-report">
-          <span class="screen-reader-only">View return status for return reference</span>
-          15261235
-        </a>
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Region
-        </h4>
-        Midlands Central
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Due
-        </h4>
-        March 2016
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Status
-        </h4>
-        <strong class="table__status">
-          Complete
-        </strong>
-      </div>
-    </div>
-
-    <div class="table__row space--medium">                                      <!-- a data row starts -->
-
-      <div class="table__cell">
-        <h3 class="screen-reader-only">
-          Row 6
-        </h3>
-        <h4 class="table__context">
-          Return reference
-        </h4>
-        <a href="returns/return-report">
-          <span class="screen-reader-only">View return status for return reference</span>
-          83655123
-        </a>
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Region
-        </h4>
-        Anglian
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Due
-        </h4>
-        March 2015
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Status
-        </h4>
-        <strong class="table__status table__status--todo">
-          Due
-        </strong>
-      </div>
-    </div>
-    <div class="table__row space--medium">                                      <!-- a data row starts -->
-
-      <div class="table__cell">
-        <h3 class="screen-reader-only">
-          Row 7
-        </h3>
-        <h4 class="table__context">
-          Return reference
-        </h4>
-        <a href="returns/return-report">
-          <span class="screen-reader-only">View return status for return reference</span>
-          12635123
-        </a>
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Region
-        </h4>
-        London and Kent
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Due
-        </h4>
-        March 2014
-      </div>
-      <div class="table__cell">
-        <h4 class="table__context">
-          Status
-        </h4>
-        <strong class="table__status table__status--error">
-          Void
-        </strong>
-      </div>
-    </div>
-
-  </div>
-
-
 
     <h2 class="govuk-heading-m">
       Licences
@@ -377,13 +199,12 @@
           <h2 class="screen-reader-only">
             Row 1
           </h2>
-          <span class="screen-reader-only">See Scrifford Pike licence, 12/38/60/0032</span>
+          <span class="screen-reader-only">See Scrifford Pike licence, 12/36/35/20</span>
           <h3 class="table__context">
             Licence number
           </h3>
           <span class="table__link">
-            12/38/60/0032
-
+            12/36/35/20
           </span>
         </div>
         <div class="table__cell">
@@ -399,7 +220,7 @@
             Licence holder
           </h3>
           <p class="table__row--text">
-            Mike Mensabonsu
+            Venezuela Gamboni
           </p>
         </div>
         <div class="table__cell">
@@ -418,12 +239,12 @@
           <h2 class="screen-reader-only">
             Row 2
           </h2>
-          <span class="screen-reader-only">See Honeydew Crescent licence, 01/23/60/0033</span>
+          <span class="screen-reader-only">See Leigh Brook licence, 01/23/63/520</span>
           <h3 class="table__context">
             Licence number
           </h3>
           <span class="table__link">
-            01/23/60/0039
+            01/23/63/520
           </span>
         </div>
         <div class="table__cell">
@@ -431,7 +252,7 @@
             Licence name
           </h3>
           <p class="table__row--text">
-            Honeydew Crescent
+            Leigh Brook
           </p>
         </div>
         <div class="table__cell">
@@ -439,7 +260,7 @@
             Licence holder
           </h3>
           <p class="table__row--text">
-            Big Smith Farms Ltd.
+            Jambalaya Ltd
           </p>
         </div>
         <div class="table__cell">
@@ -447,7 +268,7 @@
             End date
           </h3>
           <p class="table__row--text">
-            15 September 2022
+            31 July 2032
           </p>
         </div>
       </a>
@@ -458,12 +279,12 @@
           <h2 class="screen-reader-only">
             Row 3
           </h2>
-          <span class="screen-reader-only">See licence 01/23/60/0072</span>
+          <span class="screen-reader-only">See licence 50/12/36/352</span>
           <h3 class="table__context">
             Licence number
           </h3>
           <span class="table__link">
-            01/23/60/0072
+            50/12/36/352
           </span>
         </div>
         <div class="table__cell">
@@ -471,7 +292,7 @@
             Licence name
           </h3>
           <p class="table__row--text">
-            Glindenfold Lake
+            Gleffen Lake
           </p>
         </div>
         <div class="table__cell">
@@ -479,7 +300,7 @@
             Licence holder
           </h3>
           <p class="table__row--text">
-            Dina Smithson
+            Onions Co.
           </p>
         </div>
         <div class="table__cell">
@@ -487,7 +308,7 @@
             End date
           </h3>
           <p class="table__row--text">
-            30 April 2022
+            1 May 2020
           </p>
         </div>
       </a>
@@ -498,12 +319,12 @@
           <h2 class="screen-reader-only">
             Row 4
           </h2>
-          <span class="screen-reader-only">See Bridge Farm licence, 03/28/123/0034</span>
+          <span class="screen-reader-only">See Bridge Farm licence, 01/23/635/22</span>
           <h3 class="table__context">
             Licence number
           </h3>
           <span class="table__link">
-            03/28/123/0033
+            01/23/635/22
           </span>
         </div>
         <div class="table__cell">
@@ -519,7 +340,7 @@
             Licence holder
           </h3>
           <p class="table__row--text">
-            D. B. Beecham-Smith
+            G. F. Gordon.
           </p>
         </div>
         <div class="table__cell">
@@ -527,92 +348,14 @@
             End date
           </h3>
           <p class="table__row--text">
-            30 September 2025
+            30 November 2024
           </p>
         </div>
       </a>
-
-      <!-- table row -->
-      <a href="licence-summary?wid=35" class="table__row space--medium">
-        <div class="table__cell">
-          <h2 class="screen-reader-only">
-            Row 5
-          </h2>
-          <span class="screen-reader-only">See River House licence, 03/28/61/237</span>
-          <h3 class="table__context">
-            Licence number
-          </h3>
-          <span class="table__link">
-            01/04/61/237
-          </span>
-        </div>
-        <div class="table__cell">
-          <h3 class="table__context">
-            Licence name
-          </h3>
-          <p class="table__row--text">
-            River House
-          </p>
-        </div>
-        <div class="table__cell">
-          <h3 class="table__context">
-            Licence holder
-          </h3>
-          <p class="table__row--text">
-            Cecile Smith
-          </p>
-        </div>
-        <div class="table__cell">
-          <h3 class="table__context">
-            End date
-          </h3>
-          <p class="table__row--text">
-            1 March 2023
-          </p>
-        </div>
-      </a>
-
-      <!-- table row -->
-      <a href="unregistered-licence-summary?wid=35" class="table__row space--medium">
-        <div class="table__cell">
-          <h2 class="screen-reader-only">
-            Row 6
-          </h2>
-          <span class="screen-reader-only">See Brickleigh Court licence, 03/28/60/1238</span>
-          <h3 class="table__context">
-            Licence number
-          </h3>
-          <span class="table__link">
-            03/28/60/1238
-          </span>
-        </div>
-        <div class="table__cell">
-          <h3 class="table__context">
-            Licence name
-          </h3>
-          <p class="table__row--text">
-            <!-- Brickleigh Court -->
-          </p>
-        </div>
-        <div class="table__cell">
-          <h3 class="table__context">
-            Licence holder
-          </h3>
-          <p class="table__row--text">
-            Riversmith Co.
-          </p>
-        </div>
-        <div class="table__cell">
-          <h3 class="table__context">
-            End date
-          </h3>
-          <p class="table__row--text">
-            1 September 2019
-          </p>
-        </div>
-      </a>
-
 
     </div>
+
+  </div>
+</div>
 
 {% endblock %}
