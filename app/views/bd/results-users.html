@@ -97,6 +97,71 @@
       </li>
     </ul>
 
+    <h2 class="govuk-heading-m">
+      Licences
+    </h2>
+
+    <!-- table with four columns -->
+    <div class="table space--big">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--25">
+          Licence number
+          <!-- licence name if it exists, otherwise licence number -->
+        </div>
+        <div class="table__cell bold-small">
+          Licence name
+        </div>
+        <div class="table__cell bold-small column--25">
+          Licence holder
+        </div>
+        <div class="table__cell bold-small column--20">
+          End date
+        </div>
+      </div>
+
+      <!-- table row -->
+      <a href="licence-summary?wid=32" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <span class="screen-reader-only">See Riversmith licence, 45/01/*G/13</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            45/01/*G/13
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            Riversmith
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Felicity Smith
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            2 Feb 2022
+          </p>
+        </div>
+      </a>
+
+    </div>
+
   </div>
 </div>
 {% endblock %}
