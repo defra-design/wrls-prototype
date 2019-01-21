@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% set title = "View licences" %}
@@ -60,12 +59,10 @@
       <fieldset class="govuk-fieldset">
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="search">
-            Search for a licence
-          </label>
-          <span id="search-hint" class="govuk-hint">
-            Search by registered email address, licence number or licence name
-          </span>
+
+          <!-- standard search text -->
+          {% include "includes/search-text.html" %}
+
           <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint" value="smith@">
           <button type="submit" class="govuk-button inline-button">
             Search
