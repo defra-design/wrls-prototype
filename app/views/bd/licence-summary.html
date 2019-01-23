@@ -35,10 +35,10 @@
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
 
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
 
 {% endblock %}
 
@@ -46,13 +46,14 @@
   <!-- page title -->
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
       <h1 class="govuk-heading-l">Scrifford Pike</h1>
     </div>
   </div>
 
-
+  <div class="space--medium">
+    <p class="govuk-body">Registered to <a href="user-status">allthingsbeingeven@gmail.com</a></p>
+  </div>
 
   <div class="govuk-tabs" data-module="tabs">
     <h2 class="govuk-tabs__title">
@@ -98,7 +99,7 @@
           <div class="data-row">
             <div class="data-row__param">Licence holder</div>
             <div class="data-row__value">
-              <a href="user-status">Daniel Caan</a>
+              Daniel Caan
               <br><a href="licence/contacts">View licence contact details</a>
             </div>
           </div>
