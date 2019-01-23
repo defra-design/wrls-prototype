@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% set title = "Manage returns" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-ex-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+          Manage returns
+        </h1>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <ul class="grid-container">
+          <!-- <a href="find-return" class="grid-container__link">
+            <li>
+              Find a return
+            </li>
+          </a> -->
+          <a href="add-licence/licence-number" class="grid-container__link">
+            <li>
+              Add more of your licences to the service
+            </li>
+          </a>
+          <a href="add-licence/licence-number" class="grid-container__link">
+            <li>
+              Enter the security codes we sent you to link your licences to your account
+            </li>
+          </a>
+          <a href="access" class="grid-container__link">
+            <li>
+              Give or remove access to your licence information
+            </li>
+          </a>
+          
+        </ul>
+
+      </div>
+    </div>
+
+  </main>
+
+</div>
+{% endblock %}
