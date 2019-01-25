@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload returns data" %}
+{% set title = "Uploaded returns data" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -54,20 +54,330 @@
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
 
-    <div class="govuk-grid-row">
+    <div class="govuk-grid-row space--medium">
       <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-panel govuk-panel--confirmation space--medium">
-          <h1 class="govuk-panel__title">
-             Returns data file uploaded
-          </h1>
-          <div class="govuk-panel__body">
-             You will be able to view it in 30 days.
+        <h1 class="govuk-heading-l">
+          Your returns data
+        </h1>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            The licence holder is responsible for the data you are providing. Once return data is submitted, it may not be changed.
+          </strong>
+        </div>
+
+        <p class="govuk-body-l">
+          Check the data in the uploaded file and confirm that you want to submit it as your returns data.
+        </p>
+
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-m">
+      Ready to submit
+    </h2>
+
+    <p class="govuk-body">
+      The following data matches records and is ready to be submitted for a return.
+    </p>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <!-- table with four columns -->
+        <div class="table space--big">                                                <!-- a table -->
+
+          <div class="table__row--head">                                              <!-- the table head -->
+            <div class="table__cell bold-small column-33">
+              Licence number
+            </div>
+            <div class="table__cell bold-small">
+              Return reference
+            </div>
+            <div class="table__cell bold-small">
+              Total asbtracted volume
+            </div>
+          </div>
+
+          <!-- table row -->
+          <div class="table__row space--medium">
+            <div class="table__cell">
+              <h2 class="screen-reader-only">
+                Row 1
+              </h2>
+              <span class="screen-reader-only">See licence 03/28/60/0031</span>
+              <h3 class="table__context">
+                Licence number
+              </h3>
+              <a href="licence-summary?wid=31" class="table__link">
+                03/28/60/0031
+              </a>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Return reference
+              </h3>
+              <p class="table__row--text">
+                62514320
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Total asbtracted volume
+              </h3>
+              <p class="table__row--text">
+                11,287.04 cubic metres
+              </p>
+            </div>
+          </div>
+
+          <!-- table row -->
+          <div class="table__row space--medium">
+            <div class="table__cell">
+              <h2 class="screen-reader-only">
+                Row 2
+              </h2>
+              <span class="screen-reader-only">See licence 03/28/60/0031</span>
+              <h3 class="table__context">
+                Licence number
+              </h3>
+              <a href="licence-summary?wid=31" class="table__link">
+                03/28/60/0031
+              </a>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Return reference
+              </h3>
+              <p class="table__row--text">
+                62528762
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Total asbtracted volume
+              </h3>
+              <p class="table__row--text">
+                26,176.52 cubic metres
+              </p>
+            </div>
+          </div>
+
+          <!-- table row -->
+          <div class="table__row space--medium">
+            <div class="table__cell">
+              <h2 class="screen-reader-only">
+                Row 3
+              </h2>
+              <span class="screen-reader-only">See licence 03/28/60/0031</span>
+              <h3 class="table__context">
+                Licence number
+              </h3>
+              <a href="licence-summary?wid=31" class="table__link">
+                03/27/19/126
+              </a>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Return reference
+              </h3>
+              <p class="table__row--text">
+                62266950
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Total asbtracted volume
+              </h3>
+              <p class="table__row--text">
+                15,002.27 cubic metres
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <h2 class="govuk-heading-m" id="warning">
+          Problems with data
+        </h2>
+
+        <p class="govuk-body">
+          The following data looks incorrect or does not match our records.
+        </p>
+
+        <!-- problem with data -->
+        <div class="govuk-form-group govuk-form-group--error">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <!-- table with four columns -->
+            <div class="table space--big">                                                <!-- a table -->
+
+              <div class="table__row--head">                                              <!-- the table head -->
+                <div class="table__cell bold-small column-33">
+                  Licence number
+                </div>
+                <div class="table__cell bold-small">
+                  Return reference
+                </div>
+                <div class="table__cell bold-small column-20">
+                  Warning
+                </div>
+              </div>
+
+              <!-- table row -->
+              <div class="table__row space--medium">
+                <div class="table__cell">
+                  <h2 class="screen-reader-only">
+                    Row 1
+                  </h2>
+                  <span class="screen-reader-only">See licence 03/28/60/0031</span>
+                  <h3 class="table__context">
+                    Licence number
+                  </h3>
+                  <a href="licence-summary?wid=31" class="table__link">
+                    03/28/60/0031
+                  </a>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Return reference
+                  </h3>
+                  <p class="table__row--text">
+                    62514320
+                  </p>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Warning
+                  </h3>
+                  <p class="table__row--text">
+                    No access
+                  </p>
+                </div>
+              </div>
+
+              <!-- table row -->
+              <div class="table__row space--medium">
+                <div class="table__cell">
+                  <h2 class="screen-reader-only">
+                    Row 2
+                  </h2>
+                  <span class="screen-reader-only">See licence 03/28/60/0031</span>
+                  <h3 class="table__context">
+                    Licence number
+                  </h3>
+                  <a href="licence-summary?wid=31" class="table__link">
+                    03/28/60/0031
+                  </a>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Return reference
+                  </h3>
+                  <p class="table__row--text">
+                    62528762
+                  </p>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Warning
+                  </h3>
+                  <p class="table__row--text">
+                    Unexpected data
+                  </p>
+                </div>
+              </div>
+
+              <!-- table row -->
+              <div class="table__row space--medium">
+                <div class="table__cell">
+                  <h2 class="screen-reader-only">
+                    Row 3
+                  </h2>
+                  <span class="screen-reader-only">See licence 03/28/60/0031</span>
+                  <h3 class="table__context">
+                    Licence number
+                  </h3>
+                  <a href="licence-summary?wid=31" class="table__link">
+                    03/27/19/126
+                  </a>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Return reference
+                  </h3>
+                  <p class="table__row--text">
+                    62266950
+                  </p>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Warning
+                  </h3>
+                  <p class="table__row--text">
+                    Dates do not match
+                  </p>
+                </div>
+              </div>
+
+              <!-- table row -->
+              <div class="table__row space--medium">
+                <div class="table__cell">
+                  <h2 class="screen-reader-only">
+                    Row 4
+                  </h2>
+                  <span class="screen-reader-only">See licence 03/28/60/0031</span>
+                  <h3 class="table__context">
+                    Licence number
+                  </h3>
+                  <a href="licence-summary?wid=31" class="table__link">
+                    03/27/19/127
+                  </a>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Return reference
+                  </h3>
+                  <p class="table__row--text">
+                    62266923
+                  </p>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Warning
+                  </h3>
+                  <p class="table__row--text">
+                    Already sumitted
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+
+            </div><!-- error block end -->
+
           </div>
         </div>
 
-        <h2 class="govuk-heading-m">What happens next</h2>
-        <p class="govuk-body">We will process your data and use it to complete your returns. You will see this reflected in your returns within 30 days.</p>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row space--medium">
+      <div class="govuk-grid-column-two-thirds">
+
+        <p class="govuk-body-l">
+          If you submit this data the <a href="#warning">4 licences with warnings</a> will not be submitted.
+        </p>
+
+        <a href="returns-data-confirmed" class="govuk-button">
+          Submit returns data
+        </a>
 
       </div>
     </div>
