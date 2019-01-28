@@ -14,20 +14,15 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "companies",
-       text: "Bidbod Foods Ltd.",
-       active: true
-     },
-     {
-       href: "#2",
+       href: "#1",
        text: "Contact information"
      },
      {
-       href: "#3",
+       href: "#2",
        text: "Change password"
      },
      {
-       href: "#4",
+       href: "#3",
        text: "Sign out"
      }
    ]
@@ -37,6 +32,8 @@
 {% block beforeContent %}
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
   <!-- navigation block -->
   <div class="space--medium">
     <!-- navigation block -->
