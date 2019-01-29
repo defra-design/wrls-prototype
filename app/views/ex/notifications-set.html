@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% set title = "Contact preferences set" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "notifications-update",
+       text: "Contact information"
+     },
+     {
+       href: "#2",
+       text: "Change password"
+     },
+     {
+       href: "#3",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="space--small">
+      <!-- navigation block -->
+      {% include "includes/nav/nav-ex-head.html" %}
+  </div>
+
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+          Contact preferences set
+        </h1>
+
+        <p class="govuk-body-l">
+          We will use <span class="govuk-!-font-weight-bold">allthingsbeingeven@gmail.com</span> to contact you about licences, your abstraction and your licence returns.
+        </p>
+
+        <a href="licences" class="govuk-button">
+          Continue to licences
+        </a>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+
+{% endblock %}
