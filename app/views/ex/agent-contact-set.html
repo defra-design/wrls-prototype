@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload returns data" %}
+{% set title = "Contact preferences set" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -28,19 +28,22 @@
 {% block beforeContent %}
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
+
   <!-- company switcher -->
   {% include "includes/company-switcher.html" %}
+
   <!-- navigation block -->
   <div class="space--small">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-ex-returns.html" %}
+      <!-- navigation block -->
+      {% include "includes/nav/nav-ex-head.html" %}
   </div>
-  <!--
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
-    -->
+
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -50,21 +53,27 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-panel govuk-panel--confirmation space--medium">
-          <h1 class="govuk-panel__title">
-             Return submitted
-          </h1>
-          <div class="govuk-panel__body">
-             You will be able to view it in 30 days
-          </div>
-        </div>
+        <h1 class="govuk-heading-l space--medium">
+          Notifications about Bidbod Foods Ltd. licences
+        </h1>
 
-        <a href="upload-returns-data">Upload more returns data</a>
-        <!-- <p class="govuk-body">We will process your data and use it to complete your returns. You will see this reflected in your returns within 30 days.</p> -->
+        <p class="govuk-body-l">
+          We will email <span class="govuk-!-font-weight-bold">chris.fish@leviathan</span> about licences, your abstraction and your licence returns.
+        </p>
+
+        <p class="govuk-body">
+          We still may send you some important information by post, such as any requested security codes or paper forms.
+        </p>
+
+        <a href="licences" class="govuk-button">
+          Continue to licences
+        </a>
 
       </div>
     </div>
 
   </main>
 </div>
+
+
 {% endblock %}

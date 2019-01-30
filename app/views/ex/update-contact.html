@@ -14,16 +14,11 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "notifications-update",
-       active: "true",
-       text: "Contact information"
-     },
-     {
-       href: "#2",
+       href: "#1",
        text: "Change password"
      },
      {
-       href: "#3",
+       href: "#2",
        text: "Sign out"
      }
    ]
@@ -39,13 +34,13 @@
 
   <!-- navigation block -->
   <div class="space--small">
-    {% include "includes/nav/nav-ex-head.html" %}
+    {% include "includes/nav/nav-ex-manage.html" %}
   </div>
 
-  {{ govukBackLink({
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
@@ -59,7 +54,7 @@
 
         <!-- contact options with progressive enhancement -->
         <div class="govuk-form-group">
-          <form action="notifications-set" method="get">
+          <form action="contact-set" method="get">
 
             <fieldset class="govuk-fieldset space--medium" aria-describedby="how-contacted-conditional-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
@@ -84,26 +79,9 @@
                   </label>
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-1">
-                  Department of Computer Science<br>
-                  University of Oxford Wolfson Building<br>
-                  Parks Road<br>
-                  OXFORD OX1<br>
-                  3QD<br>
-                  <br>
-                  <details class="govuk-details">
-                    <summary class="govuk-details__summary">
-                      <span class="govuk-details__summary-text">
-                        Want to change your postal address?
-                      </span>
-                    </summary>
-                    <div class="govuk-details__text nested-summary">
-                      <p>
-                        To change this address, get in touch with us
-                      </p>
-                      <!-- contact details for NCCC -->
-                      {% include "includes/contact-information.html" %}
-                    </div>
-                  </details>
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-1">
+                    Your registered postal address
+                  </label>
                 </div>
 
                 <div class="govuk-radios__item">
