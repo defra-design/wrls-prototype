@@ -61,6 +61,9 @@
               <p class="govuk-body-l">
                 We will use this method to contact you about licences, your abstraction and your licence returns.
               </p>
+              <!-- <p class="govuk-body">
+                We still may send you some important information by post, such as security codes or any paper forms you may have requested.
+              </p> -->
               <span id="how-contacted-conditional-hint" class="govuk-hint">
                 Select one option.
               </span>
@@ -76,7 +79,22 @@
                   University of Oxford Wolfson Building<br>
                   Parks Road<br>
                   OXFORD OX1<br>
-                  3QD
+                  3QD<br>
+                  <br>
+                  <details class="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Want to change your postal address?
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text nested-summary">
+                      <p>
+                        To change this address, get in touch with us
+                      </p>
+                      <!-- contact details for NCCC -->
+                      {% include "includes/contact-information.html" %}
+                    </div>
+                  </details>
                 </div>
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="existing-email" data-aria-controls="conditional-how-contacted-conditional-2">
@@ -86,24 +104,6 @@
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
                   <span class="govuk-!-font-weight-bold">allthingsbeingeven@gmail.com</span>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="how-contacted-conditional-3" name="how-contacted" type="radio" value="text" data-aria-controls="conditional-how-contacted-conditional-3">
-                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-3">
-                    Another email address
-                  </label>
-                </div>
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-3">
-                  <div class="govuk-form-group">
-                    <span id="how-contacted-conditional-hint" class="govuk-hint">
-                      You will need to verify this email address before we use it to contact you
-                    </span>
-                    <label class="govuk-label" for="another-email">
-                      Email address
-                    </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="new-contact-email" name="another-email" type="tel">
-                  </div>
-
                 </div>
               </div>
             </fieldset>
