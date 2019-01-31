@@ -51,20 +51,172 @@
       <div class="govuk-grid-column-two-thirds">
 
         <h1 class="govuk-heading-l">
-          Your data is ready to send
+          There are some problems with your data
         </h1>
+
+        <p class="govuk-body">
+          <a href="send-email">
+            Email me a copy of these problems
+          </a>
+        </p>
 
       </div>
     </div>
 
-    <!-- summary of returns data -->
+    <!-- problem with data -->
+    <div class="govuk-form-group govuk-form-group--error">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <!-- table with four columns -->
+          <div class="table space--big">                                      <!-- a table -->
+
+            <div class="table__row--head">                                    <!-- the table head -->
+              <div class="table__cell bold-small">
+                Warning
+              </div>
+              <div class="table__cell bold-small column-20">
+                Return reference
+              </div>
+              <div class="table__cell bold-small column-20">
+                Licence number
+              </div>
+            </div>
+
+            <!-- table row -->
+            <div class="table__row space--medium">
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 1
+                </h2>
+                <h3 class="table__context">
+                  Warning
+                </h3>
+                <p class="table__row--text">
+                  You do not have permission to submit returns for this licence
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Return reference
+                </h3>
+                <p class="table__row--text">
+                  62514320
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Licence number
+                </h3>
+                03/28/60/0031
+              </div>
+            </div>
+
+            <!-- table row -->
+            <div class="table__row space--medium">
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 2
+                </h2>
+                <h3 class="table__context">
+                  Warning
+                </h3>
+                <p class="table__row--text">
+                  You sent monthly data, we expected daily data
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Return reference
+                </h3>
+                <p class="table__row--text">
+                  62528762
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Licence number
+                </h3>
+                03/28/60/0031
+              </div>
+            </div>
+
+            <!-- table row -->
+            <div class="table__row space--medium">
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 3
+                </h2>
+                <h3 class="table__context">
+                  Warning
+                </h3>
+                <p class="table__row--text">
+                  Dates do not match the return period
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Return reference
+                </h3>
+                <p class="table__row--text">
+                  62266950
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Licence number
+                </h3>
+                03/27/19/126
+              </div>
+            </div>
+
+            <!-- table row -->
+            <div class="table__row space--medium">
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 4
+                </h2>
+                <h3 class="table__context">
+                  Warning
+                </h3>
+                <p class="table__row--text">
+                  Return for this licence and date has already been sent and cannot be changed
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Return reference
+                </h3>
+                <p class="table__row--text">
+                  62266923
+                </p>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  Licence number
+                </h3>
+                03/27/19/127
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- error style -->
+
+    <h2 class="govuk-heading-m">
+      You can send the data that does not have problems
+    </h2>
+
     <details class="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
-          View a summary of your return data
+          3 returns do not have problems and are ready to send
         </span>
       </summary>
-
       <div class="govuk-details__text">
 
         <div class="govuk-grid-row">
@@ -190,13 +342,17 @@
     </details>
 
     <p class="govuk-body">
+      The 4 returns with problems will not be sent.
+    </p>
+
+    <p class="govuk-body">
       You cannot change this data after it has been sent.
     </p>
 
     <div class="govuk-grid-row space--medium">
       <div class="govuk-grid-column-two-thirds">
         <a href="returns-data-confirmed" class="govuk-button">
-          Send returns
+          Send 3 good returns
         </a>
       </div>
     </div>
