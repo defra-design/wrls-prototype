@@ -44,36 +44,32 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-l">
-          Upload XML returns data
-        </h1>
+    <h1 class="govuk-heading-l">
+      Upload XML returns data
+    </h1>
 
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="file-upload-1">
-            Upload a file
-          </label>
-          <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-        </div>
-
-        <p class="govuk-body">
-          The licence holder is responsible for the data you are sending.
-        </p>
-
-        <a href="uploading-returns" type="submit" class="govuk-button">
-          Upload
-        </a>
-
-        <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
-
-      </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="file-upload-1">
+        Upload a file
+      </label>
+      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
     </div>
 
-  </main>
+    <p class="govuk-body">
+      The licence holder is responsible for the data you are sending.
+    </p>
+
+    <a href="uploading-returns" type="submit" class="govuk-button">
+      Upload
+    </a>
+
+    <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
+
+  </div>
 </div>
+
 {% endblock %}

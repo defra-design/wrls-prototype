@@ -38,53 +38,47 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
 
-    <!-- page title -->
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <!-- radio company switcher -->
-        <div class="govuk-form-group">
-          <form action="licences" method="get">
-            <fieldset class="govuk-fieldset space--medium">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">
-                  Choose a licence holder
-                </h1>
-              </legend>
-              <div class="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="company-1" name="company" type="radio" value="big-farm-ltd">
-                  <label class="govuk-label govuk-radios__label" for="company-1">
-                    Big Farm Ltd.
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="company-2" name="company" type="radio" value="bidbod-foods-ltd" checked="checked">
-                  <label class="govuk-label govuk-radios__label" for="company-2">
-                    Bidbod Foods Ltd.
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="company-3" name="company" type="radio" value="spring-onion-co">
-                  <label class="govuk-label govuk-radios__label" for="company-3">
-                    Spring Onion Co.
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-            <button type="submit" class="govuk-button">
-              Continue
-            </button>
-          </form>
-        </div>
-
-      </div>
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- radio company switcher -->
+    <div class="govuk-form-group">
+      <form action="licences" method="get">
+        <fieldset class="govuk-fieldset space--medium">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Choose a licence holder
+            </h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="company-1" name="company" type="radio" value="big-farm-ltd">
+              <label class="govuk-label govuk-radios__label" for="company-1">
+                Big Farm Ltd.
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="company-2" name="company" type="radio" value="bidbod-foods-ltd" checked="checked">
+              <label class="govuk-label govuk-radios__label" for="company-2">
+                Bidbod Foods Ltd.
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="company-3" name="company" type="radio" value="spring-onion-co">
+              <label class="govuk-label govuk-radios__label" for="company-3">
+                Spring Onion Co.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+      </form>
     </div>
 
-  </main>
+  </div>
 </div>
-
 
 {% endblock %}

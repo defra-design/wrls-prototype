@@ -45,50 +45,44 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
 
-    <!-- page title -->
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-        <!-- contact options with progressive enhancement -->
+    <!-- contact options with progressive enhancement -->
+    <div class="govuk-form-group">
+      <form action="agent-contact-set" method="get">
+
         <div class="govuk-form-group">
-          <form action="agent-contact-set" method="get">
-
-            <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-                  <h1 class="govuk-fieldset__heading">
-                    Update your contact preferences for Bidbod Foods Ltd.
-                  </h1>
-                </legend>
-                <p class="govuk-body-l">
-                  If you agree, we will email <span class="govuk-!-font-weight-bold">chris.fish@leviathan</span> about licences and licence returns.
-                </p>
-                <div class="govuk-checkboxes space--medium">
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" checked>
-                    <label class="govuk-label govuk-checkboxes__label" for="contact">
-                      Email notifications
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Update your contact preferences for Bidbod Foods Ltd.
+              </h1>
+            </legend>
+            <p class="govuk-body-l">
+              If you agree, we will email <span class="govuk-!-font-weight-bold">chris.fish@leviathan</span> about licences and licence returns.
+            </p>
+            <div class="govuk-checkboxes space--medium">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" checked>
+                <label class="govuk-label govuk-checkboxes__label" for="contact">
+                  Email notifications
+                </label>
+              </div>
             </div>
-
-            <button type="submit" class="govuk-button">
-              Continue
-            </button>
-
-          </form>
+          </fieldset>
         </div>
 
-      </div>
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+
+      </form>
     </div>
 
-  </main>
+  </div>
 </div>
-
 
 {% endblock %}

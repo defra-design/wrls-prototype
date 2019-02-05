@@ -44,47 +44,43 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
-          <h2 class="govuk-error-summary__title" id="error-summary-title">
-            There is a problem
-          </h2>
-          <div class="govuk-error-summary__body">
-            <ul class="govuk-list govuk-error-summary__list">
-              <li>
-                <a href="#upload-error">There was a problem with the format of your file</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <h1 class="govuk-heading-l">
-          Upload returns data
-        </h1>
-
-        <p class="govuk-body-l">
-           We will use the data to complete your returns.
-        </p>
-
-        <div class="govuk-form-group govuk-form-group--error" id="upload-error">
-          <label class="govuk-label" for="file-upload-1">
-            Upload a file
-          </label>
-          <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-        </div>
-
-        <a href="upload-returns-data-upload" type="submit" class="govuk-button">
-          Upload
-        </a>
-
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#upload-error">There was a problem with the format of your file</a>
+          </li>
+        </ul>
       </div>
     </div>
 
-  </main>
+    <h1 class="govuk-heading-l">
+      Upload returns data
+    </h1>
+
+    <p class="govuk-body-l">
+       We will use the data to complete your returns.
+    </p>
+
+    <div class="govuk-form-group govuk-form-group--error" id="upload-error">
+      <label class="govuk-label" for="file-upload-1">
+        Upload a file
+      </label>
+      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+    </div>
+
+    <a href="upload-returns-data-upload" type="submit" class="govuk-button">
+      Upload
+    </a>
+
+  </div>
 </div>
+
 {% endblock %}
