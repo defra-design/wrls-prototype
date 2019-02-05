@@ -9,7 +9,7 @@
   }
 }
 
-.table__row {
+.table__row, .table__row--selectable {
   display: block;
   // display: flex;
   // larger screens
@@ -43,7 +43,7 @@
 }
 
 .table__row:hover {
-  cursor: none;
+  cursor: cursor;
 }
 
 .table__row:focus {
