@@ -37,9 +37,13 @@
   margin-bottom: 0;
 }
 
-.table__row:hover {
+.table__row--selectable:hover {
   background-color: govuk-colour("grey-4");
   cursor: pointer;
+}
+
+.table__row:hover {
+  cursor: none;
 }
 
 .table__row:focus {
@@ -145,7 +149,7 @@
 // ========== ========== ========== ========== ==========
 
 .table__status {
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.25;
   display: inline-block;
   padding: 4px 8px;
@@ -160,7 +164,8 @@
 }
 
 .table__status--todo {
-  background-color: #f47738;
+  background-color: govuk-colour("bright-red");
+
 }
 
 .table__status--open {
