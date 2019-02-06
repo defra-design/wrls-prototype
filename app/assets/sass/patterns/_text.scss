@@ -1,0 +1,5 @@
+.long-word {
+  // Automatic wrapping for unbreakable text (e.g. URLs)
+  word-break: break-word; // WebKit/Blink only
+  word-break: break-all; // Standards
+}
