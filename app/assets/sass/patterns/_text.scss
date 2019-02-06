@@ -3,3 +3,9 @@
   word-break: break-word; // WebKit/Blink only
   word-break: break-all; // Standards
 }
+
+.cancel-link {
+  padding-left: 1rem;
+  display: inline-block;
+  padding-top: 0.5rem;
+}

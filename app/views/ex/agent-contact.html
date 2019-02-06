@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Notification preferences" %}
+{% set title = "Would you like to get notifications for Bidbod Foods Ltd?" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -51,24 +51,41 @@
           <form action="agent-contact-set" method="get">
 
             <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+
+              <fieldset class="govuk-fieldset space--medium" aria-describedby="waste-hint">
+
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                   <h1 class="govuk-fieldset__heading">
-                    Notifications about Bidbod Foods Ltd. licences
+                    Would you like to get notifications for Bidbod Foods Ltd?
                   </h1>
                 </legend>
+
                 <p class="govuk-body-l">
-                  If you agree, we will email <span class="govuk-!-font-weight-bold">chris.fish@leviathan</span> about licences and licence returns.
+                  We will send notifications when:
                 </p>
-                <div class="govuk-checkboxes space--medium">
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="carcasses">
-                    <label class="govuk-label govuk-checkboxes__label" for="waste-1">
-                      Email notifications
-                    </label>
-                  </div>
+
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>a hands off flow condition is in place</li>
+                  <li>a return is due</li>
+                  <li>(need to add more of these)</li>
+                </ul>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-contacted-2" name="how-contacted" type="radio" value="existing-email" data-aria-controls="conditional-how-contacted-2" checked>
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-2">
+                    Yes, send notifications to chris.fish@leviathan.com
+                  </label>
                 </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-contacted-1" name="how-contacted" type="radio" value="letter" data-aria-controls="conditional-how-contacted-1">
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-1">
+                    Not now
+                  </label>
+                </div>
+
               </fieldset>
+
             </div>
 
             <button type="submit" class="govuk-button">

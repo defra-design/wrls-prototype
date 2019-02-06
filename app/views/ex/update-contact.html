@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Update your contact preferences" %}
+{% set title = "Change how we contact you" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -55,49 +55,49 @@
       <form action="contact-set" method="get">
 
         <fieldset class="govuk-fieldset space--medium" aria-describedby="how-contacted-conditional-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Update your contact preferences
+              Change how we contact you
             </h1>
           </legend>
           <p class="govuk-body-l">
-            We will use this method to contact you about licences, your abstraction and your licence returns.
+            We currently contact you by email at allthingsbeingequal@gmail.com.
           </p>
-          <!-- <p class="govuk-body">
-            We still may send you some important information by post, such as security codes or any paper forms you may have requested.
-          </p> -->
-          <p id="how-contacted-conditional-hint" class="govuk-hint">
-            Select one option.
+          <p class="govuk-body">
+            How would you like us to contact you?
           </p>
+
           <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="how-contacted-conditional-1" name="how-contacted" type="radio" value="letter" data-aria-controls="conditional-how-contacted-conditional-1">
-              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-1">
-                Posted letter
-              </label>
-            </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-1">
-              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-1">
-                Your registered postal address
+              <input class="govuk-radios__input" id="how-contacted-1" name="how-contacted" type="radio" value="existing-email" data-aria-controls="conditional-how-contacted-1" checked>
+              <label class="govuk-label govuk-radios__label" for="how-contacted-1">
+                By email at allthingsbeingequal@gmail.com
               </label>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="existing-email" data-aria-controls="conditional-how-contacted-conditional-2" checked>
-              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
-                The email address I used to sign up
+              <input class="govuk-radios__input" id="how-contacted-2" name="how-contacted" type="radio" value="letter" data-aria-controls="conditional-how-contacted-2">
+              <label class="govuk-label govuk-radios__label" for="how-contacted-2">
+                By post at the address on your licence
               </label>
-            </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
-              <p class="govuk-!-font-weight-bold long-word">allthingsbeingedsjjkajkjksajkjakjkajkjakjakjkajkjakjakjakjkajkjakjven@gmail.com</p>
             </div>
 
           </div>
+
         </fieldset>
 
+        <p class="govuk-body">
+          We will still send important information by post such as security codes or paper forms.
+        </p>
+
         <button type="submit" class="govuk-button">
-          Continue
+          Save and continue
         </button>
+
+        <a href="javascript:history.back()" class="cancel-link">
+          Cancel
+        </a>
 
       </form>
     </div>
