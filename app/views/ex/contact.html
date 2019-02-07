@@ -53,31 +53,32 @@
         <fieldset class="govuk-fieldset space--medium" aria-describedby="how-contacted-conditional-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              How would you prefer to be contacted?
+              How would you like us to contact you?
             </h1>
           </legend>
-          <p class="govuk-body-l">
-            We will use this method to contact you about licences, your abstraction and your licence returns.
-          </p>
 
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="how-contacted-2" name="how-contacted" type="radio" value="existing-email" data-aria-controls="conditional-how-contacted-2" checked>
-            <label class="govuk-label govuk-radios__label" for="how-contacted-2">
-              By email at allthingsbeingequal@gmail.com
+            <input class="govuk-radios__input" id="how-contacted-1" name="how-contacted" type="radio" value="existing-email">
+            <label class="govuk-label govuk-radios__label" for="how-contacted-1">
+              By email at <span class="govuk-!-font-weight-bold">allthingsbeingequal@gmail.com</span>
             </label>
           </div>
 
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="how-contacted-1" name="how-contacted" type="radio" value="letter" data-aria-controls="conditional-how-contacted-1">
-            <label class="govuk-label govuk-radios__label" for="how-contacted-1">
+            <input class="govuk-radios__input" id="how-contacted-2" name="how-contacted" type="radio" value="letter" checked>
+            <label class="govuk-label govuk-radios__label" for="how-contacted-2">
               By post at the address on your licence
             </label>
           </div>
 
         </fieldset>
 
+        <p class="govuk-body-l">
+          We will still send important information such as security codes or paper forms by post.
+        </p>
+
         <button type="submit" class="govuk-button">
-          Continue
+          Save and continue
         </button>
 
       </form>

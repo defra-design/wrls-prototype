@@ -38,11 +38,10 @@
       {% include "includes/nav/nav-ex-head.html" %}
   </div>
 
-
-  {{ govukBackLink({
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
@@ -55,16 +54,16 @@
       Notifications about Bidbod Foods Ltd. licences
     </h1>
 
-    <p class="govuk-body-l">
-      We will send send notifications for Bidbod Foods Ltd to chris.fish@leviathan.com.
+    <p class="govuk-body">
+      We will send send notifications for Bidbod Foods Ltd to <span class="govuk-!-font-weight-bold">chris.fish@leviathan.com</span>.
     </p>
 
     <p class="govuk-body">
-      You can change this at any time via the manage licences tab.
+      You can change this at any time in your licence holder account.
     </p>
 
     <a href="licences" class="govuk-button">
-      Continue to licences
+      Continue
     </a>
 
   </div>
