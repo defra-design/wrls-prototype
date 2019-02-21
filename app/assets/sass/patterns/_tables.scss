@@ -73,6 +73,10 @@
   }
 }
 
+.table__cell p {
+  margin-bottom: 0;
+}
+
 .table__cell--no-wrap {
   white-space: nowrap;
 }
@@ -156,24 +160,34 @@
   padding-bottom: 1px;
   // outline: 2px solid transparent;
   // outline-offset: -2px;
-  color: #ffffff;
-  background-color: #005ea5;
+  // color: #ffffff;
+  // background-color: #005ea5;
+
+  color: #005ea5;
+  border: 1px solid #005ea5;
+  border-radius: 2px;
+
   letter-spacing: 1px;
   text-decoration: none;
   text-transform: uppercase;
 }
 
 .table__status--todo {
-  background-color: govuk-colour("bright-red");
-
+  // background-color: govuk-colour("bright-red");
+  color: govuk-colour("bright-red");
+  border: 1px solid govuk-colour("bright-red");
 }
 
 .table__status--open {
-  background-color:  $govuk-error-colour;
+  // background-color:  $govuk-error-colour;
+  color: govuk-colour("bright-red");
+  border: 1px solid govuk-colour("bright-red");
 }
 
 .table__status--error {
-  background-color: $govuk-error-colour;
+  // background-color: $govuk-error-colour;
+  color: $govuk-error-colour;
+  border: 1px solid $govuk-error-colour;
 }
 
 .text-right {

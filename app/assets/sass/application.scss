@@ -20,6 +20,7 @@ $govuk-global-styles: true;
 @import "patterns/switcher";
 @import "forms";
 @import "patterns/text";
+@import "patterns/expired-licences";
 
 // SMACSS
 @import "layout.scss";

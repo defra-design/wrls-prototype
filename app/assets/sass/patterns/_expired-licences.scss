@@ -1,0 +1,15 @@
+.banner {
+  border: 5px solid #005ea5;
+  padding: 30px 15px 30px;
+
+  & .govuk-warning-text {
+    margin-bottom: 0;
+  }
+}
+
+.strike-through {
+  /* if there is a better way to do this let’s try it */
+  /* i wanted the line to be 4px */
+  /* also, the line is a background line and would be better as a foreground */
+  background: linear-gradient(to top right, #fff calc(50% - 1px), #000, #fff calc(50% + 1px) )
+}
