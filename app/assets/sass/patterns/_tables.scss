@@ -190,6 +190,12 @@
   border: 1px solid $govuk-error-colour;
 }
 
+.table__status--expired {
+  // background-color: $govuk-error-colour;
+  color: $govuk-text-colour;
+  border: 1px solid $govuk-text-colour;
+}
+
 .text-right {
   text-align: right;
 }
