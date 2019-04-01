@@ -1,0 +1,198 @@
+{% extends "layout.html" %}
+
+{% set title = "Expired licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-eo-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1  class="heading-large govuk-heading-l">
+      Expired licences
+    </h1>
+  </div>
+</div>
+
+
+<!-- table with four columns -->
+<div class="table space--big">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small column--25">
+      Licence number
+      <!-- licence name if it exists, otherwise licence number -->
+    </div>
+    <div class="table__cell bold-small">
+      Licence name
+    </div>
+    <div class="table__cell bold-small column--25">
+      Licence holder
+    </div>
+    <div class="table__cell bold-small column--20">
+      End date
+    </div>
+  </div>
+
+  <!-- table row -->
+  <a href="licence-summary-expired?wid=32" class="table__row space--medium">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 1
+      </h2>
+      <span class="screen-reader-only">See Faber Woab licence, 20/12/010/003</span>
+      <h3 class="table__context">
+        Licence number
+      </h3>
+      <span class="table__link">
+        20/12/010/003
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
+        Faber Woab
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+        Chuck Agadossi
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      <strong class="table__status table__status--expired">
+        Expired
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="licence-summary-expired?wid=35" class="table__row space--medium">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 2
+      </h2>
+      <span class="screen-reader-only">See Spanford Copse Hill licence, 24/22/010/0012</span>
+      <h3 class="table__context">
+        Licence number
+      </h3>
+      <span class="table__link">
+        24/22/010/0012
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
+        Spanford Copse
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+        J. W. Murray Ltd.
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      <strong class="table__status table__status--expired">
+        Expired
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="licence-summary?wid=31" class="table__row space--medium">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 3
+      </h2>
+      <span class="screen-reader-only">See licence 23/087/04/020</span>
+      <h3 class="table__context">
+        Licence number
+      </h3>
+      <span class="table__link">
+        23/087/04/020
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
+        Glindenfold Lake
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+        Pickle Shakers Co.
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      <strong class="table__status table__status--expired">
+        Expired
+      </strong>
+    </div>
+  </a>
+
+</div>
+
+{% endblock %}
