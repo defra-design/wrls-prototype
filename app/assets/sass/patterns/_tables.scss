@@ -196,6 +196,11 @@
   border: 1px solid $govuk-text-colour;
 }
 
+.table__status span {
+  font-size: 14px;
+  line-height: 8px;
+}
+
 .text-right {
   text-align: right;
 }
