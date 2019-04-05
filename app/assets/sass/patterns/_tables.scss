@@ -194,11 +194,12 @@
   // background-color: $govuk-error-colour;
   color: $govuk-text-colour;
   border: 1px solid $govuk-text-colour;
+  line-height: 18px;
+  padding-bottom: 4px;
 }
 
 .table__status span {
   font-size: 14px;
-  line-height: 8px;
 }
 
 .text-right {
