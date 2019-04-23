@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload XML returns data" %}
+{% set title = "Return templates" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -35,7 +35,7 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-ex-returns.html" %}
   </div>
-  
+
     {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
@@ -49,25 +49,35 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Upload XML returns data
+      Return templates for 2018 (CSV)
     </h1>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="file-upload-1">
-        Upload a file
-      </label>
-      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+    <div class="space--big">
+
+      <p class="govuk-body">
+        Download and complete each of the below templates.<br>
+        The templates are specific to your account.
+      </p>
+
+      <p class="govuk-body">
+        <a href="">
+          Bidbod-Foods-Ltd-daily-returns.csv
+        </a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="">
+          Bidbod-Foods-Ltd-weekly-returns.csv
+        </a>
+      </p>
+
     </div>
 
     <p class="govuk-body">
-      The licence holder is responsible for the data you are sending.
+      When you have completed the return you can <a href="upload-completed-csv">upload your returns</a>.
     </p>
 
-    <a href="uploading-returns" type="submit" class="govuk-button">
-      Upload
-    </a>
-
-    <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
+    <!-- <a href="someplace" class="govuk-faux-button">Continue</a> -->
 
   </div>
 </div>

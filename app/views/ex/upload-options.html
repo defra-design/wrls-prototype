@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% set title = "Upload options" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-ex-returns.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form data-routing="1">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset space--small" aria-describedby="upload-options">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Upload options
+            </h1>
+          </legend>
+
+          <span id="upload-options" class="govuk-hint">
+            Use a spreadsheet template or upload an XML file.
+          </span>
+
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="upload-option-csv" name="upload-option" type="radio" value="upload-csv" aria-describedby="upload-csv-hint">
+              <label class="govuk-label govuk-radios__label govuk-label--s" for="upload-option-csv">
+                Upload return templates
+              </label>
+              <span id="upload-csv-hint" class="govuk-hint govuk-radios__hint">
+                Download a spreadsheet template to fill in and upload
+              </span>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="upload-option-xml" name="upload-option" type="radio" value="upload-xml" aria-describedby="upload-xml-hint">
+              <label class="govuk-label govuk-radios__label govuk-label--s" for="upload-option-xml">
+                Upload XML
+              </label>
+              <span id="upload-xml-hint" class="govuk-hint govuk-radios__hint">
+                Use this if you are using XML files with returns data in them
+              </span>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+
+{% endblock %}

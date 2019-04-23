@@ -35,7 +35,7 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-ex-returns.html" %}
   </div>
-  
+
     {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
@@ -49,25 +49,16 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Upload XML returns data
+      How to send returns in a CSV file
     </h1>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="file-upload-1">
-        Upload a file
-      </label>
-      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-    </div>
+    <ol class="govuk-list govuk-list--number">
+      <li><a href="return-templates">Download your template CSV files</a></li>
+      <li>Paste your returns data into the file</li>
+      <li>Upload the file</li>
+    </ol>
 
-    <p class="govuk-body">
-      The licence holder is responsible for the data you are sending.
-    </p>
-
-    <a href="uploading-returns" type="submit" class="govuk-button">
-      Upload
-    </a>
-
-    <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
+    <a href="upload-completed-csv" class="govuk-faux-button">Continue</a>
 
   </div>
 </div>
