@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload XML returns data" %}
+{% set title = "Submit bulk returns" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -36,10 +36,10 @@
     {% include "includes/nav/nav-ex-returns.html" %}
   </div>
 
-    {{ govukBackLink({
+    <!-- {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
-    }) }}
+    }) }} -->
 
 {% endblock %}
 
@@ -49,16 +49,17 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      How to send returns in a CSV file
+      Submit bulk returns
     </h1>
 
     <ol class="govuk-list govuk-list--number">
-      <li><a href="return-templates">Download your template CSV files</a></li>
-      <li>Paste your returns data into the file</li>
-      <li>Upload the file</li>
+      <li><a href="return-templates.zip">Download your return templates, 0.88 MB</a></li>
+      <li>Add your returns data to the templates</li>
+      <li>Export your files as CSV files</li>
+      <li>Upload the files</li>
     </ol>
 
-    <a href="upload-completed-csv" class="govuk-faux-button">Continue</a>
+    <a href="upload-bulk-files" class="govuk-faux-button">Continue</a>
 
   </div>
 </div>

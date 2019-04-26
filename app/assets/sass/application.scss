@@ -21,8 +21,9 @@ $govuk-global-styles: true;
 @import "forms";
 @import "patterns/text";
 @import "patterns/expired-licences";
+@import "prototype";
 
-// SMACSS
+// Scalable and Modular Architecture for Cascading Style Sheets
 @import "layout.scss";
 @import "styles.scss";
 @import "typography.scss";
