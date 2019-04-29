@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% set title = "Sign in or create an account" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="space--small">
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- page title -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form data-routing="1">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset space--small" aria-describedby="upload-options">
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Sign in or create an account
+                </h1>
+              </legend>
+
+              <!--
+              <span id="upload-options" class="govuk-hint">
+                Use a spreadsheet template or upload an XML file.
+              </span> -->
+
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="create-account" name="sign-in" type="radio" value="register/create-account-start" aria-describedby="create-account">
+                  <label class="govuk-label govuk-radios__label govuk-label--s" for="create-account">
+                    Create an account
+                  </label> <span id="create-account-hint" class="govuk-hint govuk-radios__hint">
+                    Select if you have not used this service before.
+                  </span>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="sign-in" name="sign-in" type="radio" value="sign-in" aria-describedby="sign-in">
+                  <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in">
+                    Sign in
+                  </label> <span id="sign-in-hint" class="govuk-hint govuk-radios__hint">
+                    Select if you already have an account for this service.
+                  </span>
+                </div>
+              </div>
+
+            </fieldset>
+
+            <button type="submit" class="govuk-button">
+              Continue
+            </button>
+
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+
+
+    <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+    <script>
+      $(function() {
+        $('form[data-routing]').on('submit', function(ev) {
+          // FInd selected radio button
+          const url = $(this).find('input:checked').val();
+          if(url) {
+            ev.preventDefault();
+            window.location.href = url;
+            return false;
+          }
+        });
+      })
+    </script>
+
+{% endblock %}

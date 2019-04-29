@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm your email address" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="space--small">
+  </div>
+
+<!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="heading-large">
+        Confirm your email address
+      </h1>
+
+      <p>
+        We have sent a link to <span class="govuk-!-font-weight-bold">name@example.com</span>
+      </p>
+
+      <p>
+        <a href="#" class="govuk-link">
+          I have not received the email
+        </a>
+      </p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
