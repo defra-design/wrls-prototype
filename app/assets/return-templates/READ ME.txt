@@ -1,7 +1,0 @@
-Make sure you complete and submit each .csv file contained in this zip file
-Open the file in your chosen spreadsheet application
-Paste in full rows of return data [into empty fields?] 
-Export your return as a CSV file
-Log back in at [GOV.UK link to direct page] 
-Follow onscreen instructions to submit your return
-
