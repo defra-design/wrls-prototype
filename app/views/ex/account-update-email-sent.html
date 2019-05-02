@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% set title = "Verify your new email address" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "account-settings",
+       text: "Account settings",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Verify your new email address
+    </h1>
+
+    <p class="govuk-body">
+      We sent a verification code to your new email address, <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
+    </p>
+
+    <p class="govuk-body">
+      Use the code to verify this update.
+    </p>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="email">
+        Verification code
+      </label>
+      <!-- <span id="email-hint" class="govuk-hint">
+        Tell us what email address you want to update your account to use
+      </span> -->
+      <input class="govuk-input govuk-input--width-3" id="email-update-verification-code" name="email-update-verification-code" type="text" maxlength = "4">
+
+    </div>
+
+    <p class="govuk-body">
+      The email should arrive within a few minutes. If you have not received the email check your spam folder.
+    </p>
+
+    <a href="/ex/account-update-email-done" class="govuk-faux-button">
+      Verify new email
+    </a>
+
+    <div class="prototype-link">
+      <a href="/ex/account-update-email-dummy" target="_blank">
+        Switch to email window
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
