@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Upload bulk returns data" %}
+{% set title = "Verification code has expired" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -15,7 +15,8 @@
    navigation: [
      {
        href: "account-settings",
-       text: "Account settings"
+       text: "Account settings",
+       active: true
      },
      {
        href: "#2",
@@ -28,13 +29,6 @@
 {% block beforeContent %}
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
-  <!-- company switcher -->
-  {% include "includes/company-switcher.html" %}
-  <!-- navigation block -->
-  <div class="space--small">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-ex-returns.html" %}
-  </div>
 
     {{ govukBackLink({
       text: "Back",
@@ -45,31 +39,27 @@
 
 {% block content %}
 
+<!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <h1 class="govuk-heading-l">
-      Upload bulk returns data
+      That verification code has expired
     </h1>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="file-upload-1">
-        Upload a file
-      </label>
-      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-    </div>
-
     <p class="govuk-body">
-      The licence holder is responsible for the data you are sending.
+      You can send another verification code to your new email address, <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
     </p>
 
-    <a href="uploading-returns" type="submit" class="govuk-button">
-      Upload
+    <a href="/ex/account-update-email-sent" class="govuk-faux-button">
+      Send another code
     </a>
 
-    <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
+    <div class="prototype-link">
+      <a href="/ex/account-update-email-dummy" target="_blank">
+        Switch to email window
+      </a>
+    </div>
 
   </div>
 </div>
-
 {% endblock %}
