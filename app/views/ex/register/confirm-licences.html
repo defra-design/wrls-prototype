@@ -36,38 +36,36 @@
 {% endblock %}
 
 {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Confirm your licences
+    </h1>
 
-      <h1 class="heading-large">
-        Confirm your licences
-      </h1>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="more-detail">
+        You can add more licences at any time.
+      </label>
 
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="more-detail">
-          You can add more licences at any time.
-        </label>
-
-      <p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>01/0117</li>
-        </ul>
-      </p>
-
-      </div>
-
-      <a href="send-code" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
-        Continue
-      </a>
-
-      <p>
-        <a href="#" class="govuk-link">
-          Some licences are missing or do not belong to me
-        </a>
-      </p>
+    <p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>01/0117</li>
+      </ul>
+    </p>
 
     </div>
-  </div>
 
+    <a href="send-code" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+      Continue
+    </a>
+
+    <p>
+      <a href="#" class="govuk-link">
+        Some licences are missing or do not belong to me
+      </a>
+    </p>
+
+  </div>
+</div>
 {% endblock %}
