@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Verification code has expired" %}
+{% set title = "Too many attempts" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -43,22 +43,20 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      That verification code has expired
+      Try again later
     </h1>
 
     <p class="govuk-body">
-      You can send another verification code to your new email address, <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
+      You have tried to enter a code too many times.
     </p>
 
-    <a href="/ex/account-update-email-sent" class="govuk-faux-button">
-      Send another code
-    </a>
+    <p class="govuk-body">
+      To change your email address please try again in 24 hours.
+    </p>
 
-    <div class="prototype-link">
-      <a href="/ex/account-update-email-dummy" target="_blank">
-        Switch to email window
-      </a>
-    </div>
+    <a href="/ex/licences" class="govuk-faux-button">
+      View licences
+    </a>
 
   </div>
 </div>

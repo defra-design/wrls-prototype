@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Account settings" %}
+{% set title = "The code has expired" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -14,7 +14,7 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "#",
+       href: "account-settings",
        text: "Account settings",
        active: true
      },
@@ -40,20 +40,25 @@
 {% block content %}
 
 <!-- page title -->
-<div class="grid-row">
-  <div class="column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      Account settings
+      The code has expired
     </h1>
 
-    <h2 class="govuk-heading-m">Account email</h2>
-    <p class="govuk-body-l">fozzib@outlook.com<br>
-    <a href="account-update-email" class="govuk-body">Update account email</a></p>
+    <p class="govuk-body">
+      We can send another security code to your new email address, <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
+    </p>
 
-    <h2 class="govuk-heading-m">Change account password</h2>
-    <p class="govuk-body"><a href="#">Update account password</a></p>
+    <a href="/ex/account-update-email-sent" class="govuk-faux-button">
+      Send another code
+    </a>
 
-
+    <div class="prototype-link">
+      <a href="/ex/account-update-email-dummy" target="_blank">
+        Switch to email window
+      </a>
+    </div>
 
   </div>
 </div>

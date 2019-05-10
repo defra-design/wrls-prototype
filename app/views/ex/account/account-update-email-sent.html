@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Verify your new email address" %}
+{% set title = "Verify your email address" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -43,24 +43,20 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      Verify your new email address
+      Verify your email address
     </h1>
 
     <p class="govuk-body">
-      We sent a verification code to your new email address, <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
+      We sent a code to <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
     </p>
 
     <p class="govuk-body">
-      The email should arrive within a few minutes. If you have not received the email check your spam folder.
-    </p>
-
-    <p class="govuk-body">
-      Use the code in the email to verify this update.
+      Enter the code from the email in the box below to complete the update.
     </p>
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="email">
-        Verification code
+        Security code
       </label>
       <!-- <span id="email-hint" class="govuk-hint">
         Tell us what email address you want to update your account to use
@@ -68,9 +64,13 @@
       <input class="govuk-input govuk-input--width-3" id="email-update-verification-code" name="email-update-verification-code" type="text" maxlength = "4">
     </div>
 
-    <a href="/ex/account-update-email-done" class="govuk-faux-button">
+    <a href="account-update-email-done" class="govuk-faux-button">
       Continue
     </a>
+
+    <p class="govuk-body">
+      Check your spam folder if you have not received the email within a few minutes.
+    </p>
 
     <div class="prototype-link">
       <a href="/ex/account-update-email-dummy" target="_blank">

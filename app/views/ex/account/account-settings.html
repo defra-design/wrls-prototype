@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Too many attempts" %}
+{% set title = "Account settings" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -14,7 +14,7 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "account-settings",
+       href: "#",
        text: "Account settings",
        active: true
      },
@@ -40,23 +40,18 @@
 {% block content %}
 
 <!-- page title -->
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+<div class="grid-row">
+  <div class="column-two-thirds">
     <h1 class="govuk-heading-l">
-      Too many attempts
+      Account settings
     </h1>
 
-    <p class="govuk-body">
-      You have tried to enter a verification code too many times today.
-    </p>
+    <h2 class="screen-reader-only">Email address</h2>
+    <p class="govuk-body-l">fozzib@outlook.com<br>
+    <a href="account-update-email" class="govuk-body">Update your email address</a></p>
 
-    <p class="govuk-body">
-      To change your email please try again tomorrow.
-    </p>
-
-    <a href="/ex/licences" class="govuk-faux-button">
-      View licences
-    </a>
+    <h2 class="screen-reader-only">Password</h2>
+    <p class="govuk-body"><a href="#">Update your password</a></p>
 
   </div>
 </div>
