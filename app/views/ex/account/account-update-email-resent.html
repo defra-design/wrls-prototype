@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% set title = "We sent you another code" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "account-settings",
+       text: "Account settings",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+<!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+
+    <a href="account-update-email-sent" class="govuk-faux-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+{% endblock %}
