@@ -30,10 +30,10 @@
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
 
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
 
 {% endblock %}
 
@@ -60,7 +60,7 @@
       <input class="govuk-input govuk-input--width-3" id="email-update-verification-code" name="email-update-verification-code" type="text" maxlength = "4">
     </div>
 
-    <a href="account-update-email-done" class="govuk-faux-button">
+    <a href="account-update-password-check" class="govuk-faux-button">
       Continue
     </a>
 
