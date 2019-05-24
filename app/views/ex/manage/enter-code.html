@@ -14,9 +14,8 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "account-settings",
-       text: "Account settings",
-       active: true
+       href: "/ex/account/account-settings",
+       text: "Account settings"
      },
      {
        href: "#2",
@@ -27,8 +26,17 @@
 {% endblock %}
 
 {% block beforeContent %}
+
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
+
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="space--small">
+    {% include "includes/nav/nav-ex-manage.html" %}
+  </div>
 
   {{ govukBackLink({
     text: "Back",
