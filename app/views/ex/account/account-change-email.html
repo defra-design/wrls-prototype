@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Password check" %}
+{% set title = "Change your email address" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -30,10 +30,10 @@
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
 
-  <!-- {{ govukBackLink({
+  {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }} -->
+  }) }}
 
 {% endblock %}
 
@@ -62,18 +62,22 @@
 
     <div id="new-email-form" class="govuk-form-group">
       <label class="govuk-label" for="email">
-        Your account password
+        Your new email address
       </label>
       <!-- <span id="email-error" class="govuk-error-message">
         <span class="govuk-visually-hidden">Error:</span>Enter an email address in the right format, for example, name@example.com
       </span> -->
       <!-- <span id="email-hint" class="govuk-hint">
-        Tell us what email address you want to update your account to use
+        Tell us what email address you want to change your account to use
       </span> -->
-      <input class="govuk-input govuk-input--width-20" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+      <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
     </div>
 
-    <a href="account-update-email-done" class="govuk-faux-button">
+    <p class="govuk-body">
+      We will send a verification code to this address.
+    </p>
+
+    <a href="account-change-email-sent" class="govuk-faux-button">
       Continue
     </a>
 
