@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Give access to your licences" %}
+{% set title = "Change access to your licences" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -68,30 +68,27 @@
       {{title}}
     </h1>
 
-    <div id="new-email-form" class="govuk-form-group">
-      <label class="govuk-label" for="email">
-        Enter their email address and we will send them an email to create an account.
-      </label>
-      <!-- <span id="email-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span>Enter an email address in the right format, for example, name@example.com
-      </span> -->
-      <!-- <span id="email-hint" class="govuk-hint">
-         We sent this by post to the registered address
-      </span> -->
-      <input class="govuk-input govuk-input--width-20" id="access-email" name="access-email" type="email" aria-describedby="access-email" autocomplete="access-email" spellcheck="false">
-    </div>
+    <p class="govuk-body space--medium">
+      <span class="govuk-!-font-weight-bold">office@peatree.co.uk</span> has access to your licences.
+    </p>
 
     <div class="govuk-checkboxes space--medium">
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns">
+        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns" checked>
         <label class="govuk-label govuk-checkboxes__label" for="returns-agent">
           This person can also submit my returns
         </label>
       </div>
     </div>
 
-    <a href="access-given" class="govuk-faux-button">
-      Give access
+    <p class="govuk-body space--medium">
+      <a href="remove-access">
+        Remove access
+      </a>
+    </p>
+
+    <a href="give-access" class="govuk-faux-button">
+      Update
     </a>
 
   </div>

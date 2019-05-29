@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% set title = "Licence access given" %}
+
+{% block pageTitle %}
+   Send a security code - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/account-settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="space--small">
+    {% include "includes/nav/nav-ex-manage.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <!-- {{title}} -->
+      Access email sent to office@peatree.co.uk
+    </h1>
+
+    <p class="govuk-body">
+      We have sent instructions on how to view your licences
+    </p>
+
+    <p class="govuk-body">
+      <a href="give-access">
+        Return to give access
+      </a>
+    </p>
+
+    <p class="govuk-body">
+      You can remove access to your licences on this page
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
