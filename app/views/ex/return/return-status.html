@@ -58,26 +58,6 @@
     <section class="meta-data__row">
       <div class="meta-data__container">
         <div class="meta-data__label">
-          Return reference
-        </div>
-        <div class="meta-data__value">
-          65432123
-        </div>
-      <div>
-    </section>
-    <!-- <section class="meta-data__row">
-      <div class="meta-data__container">
-        <div class="meta-data__label">
-          Region
-        </div>
-        <div class="meta-data__value">
-          Central West
-        </div>
-      <div>
-    </section> -->
-    <section class="meta-data__row">
-      <div class="meta-data__container">
-        <div class="meta-data__label">
           Site description
         </div>
         <div class="meta-data__value">
@@ -112,6 +92,13 @@
         </div>
         <div class="meta-data__value">
           1 April 2018 to 31 September 2018
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Standard tarrif
         </div>
       <div>
     </section>
@@ -157,19 +144,19 @@
       name: "returnStatus",
       fieldset: {
         legend: {
-          text: "What would you like to do with this return?",
+          text: "Have you abstracted water in this return period?",
           isPageHeading: false,
-          classes: "govuk-fieldset__legend--l"
+          classes: "govuk-fieldset__legend--m"
         }
       },
       items: [
         {
           value: "return-process",
-          text: "Enter and submit it"
+          text: "Yes"
         },
         {
           value: "return-received",
-          text: "Record receipt (and come back to it later)"
+          text: "No"
         }
       ]
     })
