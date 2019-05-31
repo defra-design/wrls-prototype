@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add your licences to the service" %}
+{% set title = "Add a licence" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -51,12 +51,15 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Add licences
+        Add a licence
       </h1>
 
-      <p class="govuk-body-l">
-        You should be the named licence holder to claim licences.
-      </p>
+      {% from "warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "You should be the named licence holder to claim licences.",
+        iconFallbackText: "Warning"
+      }) }}
 
       <!-- <div class="govuk-inset-text">
         You should be the named licence holder to claim licences.
@@ -64,9 +67,10 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="more-detail">
-          You can enter one or many of your licence numbers.
+          Licence number
         </label>
         <span id="more-detail-hint" class="govuk-hint">
+          You can enter one or many of your licence numbers.
           Separate each full licence number with a space or comma or by entering each on a different line.
         </span>
         <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>

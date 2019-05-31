@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Have you abstracted water in this return period? - GOV.UK" %}
+{% set title = "How are you reporting your figures? - GOV.UK" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -46,68 +46,10 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l space--small">
+    <h1 class="govuk-heading-l">
       <span class="govuk-caption-xl">Licence number 01/0117</span>
       Abstraction return
     </h1>
-  </div>
-</div>
-
-<div class="govuk-grid-row space--small">
-  <div class="govuk-grid-column-full">
-    <section class="meta-data__row">
-      <div class="meta-data__container">
-        <div class="meta-data__label">
-          Site description
-        </div>
-        <div class="meta-data__value">
-          Great Ouse at Bedford College (Heat pump - cooling only)
-        </div>
-      <div>
-    </section>
-    <section class="meta-data__row">
-      <div class="meta-data__container">
-        <div class="meta-data__label">
-          Purpose
-        </div>
-        <div class="meta-data__value">
-          Spray irrigation
-        </div>
-      <div>
-    </section>
-    <section class="meta-data__row">
-      <div class="meta-data__container">
-        <div class="meta-data__label">
-          Return period
-        </div>
-        <div class="meta-data__value">
-          1 April 2018 to 31 March 2019
-        </div>
-      <div>
-    </section>
-    <section class="meta-data__row">
-      <div class="meta-data__container">
-        <div class="meta-data__label">
-          Abstraction period
-        </div>
-        <div class="meta-data__value">
-          1 April 2018 to 31 September 2018
-        </div>
-      <div>
-    </section>
-    <section class="meta-data__row">
-      <div class="meta-data__container">
-        <div class="meta-data__label">
-          Standard tarrif
-        </div>
-      <div>
-    </section>
-  </div>
-</div>
-
-<div class="govuk-grid-row space--big">
-  <div class="govuk-grid-column-two-thirds">
-    <a href="../online-licence?wid={{ query.wid }}">View this licence</a>
   </div>
 </div>
 
@@ -137,19 +79,26 @@
       name: "returnStatus",
       fieldset: {
         legend: {
-          text: "Have you abstracted water in this return period?",
+          text: "How are you reporting your figures?",
           isPageHeading: false,
           classes: "govuk-fieldset__legend--m"
         }
       },
+      hint: {
+        text: "If you used more than one meter you must provide volumes."
+      },
       items: [
         {
-          value: "return-type",
-          text: "Yes"
+          value: "return-meter-reset",
+          text: "Readings from a single meter"
         },
         {
-          value: "return-confirmation-nil",
-          text: "No"
+          value: "return-volume-units",
+          text: "Volumes from one or more meters"
+        },
+        {
+          value: "return-estimate-units",
+          text: "Estimates without a meter"
         }
       ]
     })
