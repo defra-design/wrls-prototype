@@ -42,13 +42,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
 
     <!-- page title -->
     <div class="grid-row">
       <div class="column-two-thirds">
-        <h1  class="heading-large govuk-heading-l">
+        <h1  class="heading-large govuk-heading-l space--small">
           Licences
         </h1>
       </div>
@@ -64,9 +62,9 @@
           {% include "includes/search-text.html" %}
 
           <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint" value="Smith">
-          <button type="submit" class="govuk-button inline-button">
+          <a href="results-returns" class="govuk-faux-button govuk-faux-button--inline">
             Search
-          </button>
+          </a>
         </div>
 
       </fieldset>
@@ -411,10 +409,5 @@
           </p>
         </div>
       </a>
-
-    </div>
-
-  </div>
-
 
 {% endblock %}

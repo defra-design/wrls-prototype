@@ -43,12 +43,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
     <!-- page title -->
     <div class="grid-row">
       <div class="column-two-thirds">
-        <h1  class="heading-large govuk-heading-l">
+        <h1  class="heading-large govuk-heading-l space--small">
           Users and licences
         </h1>
       </div>
@@ -64,9 +62,9 @@
           {% include "includes/search-text.html" %}
 
           <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint" value="smith@">
-          <button type="submit" class="govuk-button inline-button">
+          <a href="results-licences" class="govuk-faux-button govuk-faux-button--inline">
             Search
-          </button>
+          </a>
         </div>
 
       </fieldset>
@@ -159,6 +157,4 @@
 
     </div>
 
-  </div>
-</div>
 {% endblock %}

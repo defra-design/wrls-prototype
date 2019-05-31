@@ -43,42 +43,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
-    <!-- page title -->
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <div class="app-content__header">
-          <span class="govuk-caption-xl">
-            Search
-          </span>
-          <h1 class="govuk-heading-l">
-            Licences, returns and users
-          </h1>
-        </div>
-      </div>
-    </div>
-    <!-- search for licences -->
-    <form action="results-licences">
-      <fieldset class="govuk-fieldset">
 
-        <div class="govuk-form-group">
-          {% include "includes/search-text.html" %}
-          <!-- <label class="govuk-label" for="search">
-            Search for a licence, a return or user
-          </label>
-          <span id="search-hint" class="govuk-hint">
-            Search by name, registered email address, return ID or licence number
-          </span> -->
-          <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
-          <button type="submit" class="govuk-button inline-button">
-            Search
-          </button>
-        </div>
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="example">
+        Search for licences, returns or users
+      </label>
+    </h1>
+    <span id="example-hint" class="govuk-hint">
+      Name, email, return reference or licence number
+    </span>
+    <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
+    <a href="results-licences" class="govuk-faux-button govuk-faux-button--inline">
+      Search
+    </a>
+  </div>
 
-      </fieldset>
-    </form>
-
-  </main>
-</div>
 {% endblock %}
