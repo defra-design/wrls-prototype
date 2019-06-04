@@ -43,20 +43,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
-
-    <div class="govuk-grid-row space--medium">
-      <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-l">External</span> <!-- internal / external -->
-        <h1 class="govuk-heading-m space--none">
-          allthingsbeingeven@gmail.com
-        </h1>
-        <div class="heading-small">
-          Last signed in 11 Jan 2019, 14:31
-        </div>
-      </div>
+<div class="govuk-grid-row space--medium">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">External</span> <!-- internal / external -->
+    <h1 class="govuk-heading-m space--none">
+      allthingsbeingeven@gmail.com
+    </h1>
+    <div class="heading-small">
+      Last signed in 11 Jan 2019, 14:31
     </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
     <div class="govuk-warning-text">
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -66,139 +66,167 @@
       </strong>
     </div>
 
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
     <!-- entity block -->
-    <div class="entity">
+    <div class="entity"></div>
+  </div>
+</div>
 
-      <!-- entity header -->
-      <h2 class="govuk-heading-l space--none">
-        Big Farm Ltd.
-      </h2>
-      <p class="govuk-body govuk-!-font-size-24">
-        Primary user
-      </p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <!-- licence codes -->
-      <p class="govuk-body space--none">Security code <span class="govuk-body govuk-!-font-weight-bold">PB6XT</span> sent 11 January 2019</p>
-      <details class="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            6 requested licences
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          <ul class="govuk-list">
-            <li>
-              <a class="govuk-link" href="unregistered-licence-summary">03/30/1142</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="unregistered-licence-summary">03/30/1143</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="unregistered-licence-summary">03/30/1144</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="unregistered-licence-summary">03/30/1145</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="unregistered-licence-summary">03/30/1146</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="unregistered-licence-summary">03/30/1147</a>
-            </li>
-          </ul>
+    <!-- entity header -->
+    <h2 class="govuk-heading-l space--none">
+      Big Farm Ltd.
+    </h2>
+    <p class="govuk-body govuk-!-font-size-24">
+      Primary user
+    </p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- licence codes -->
+    <p class="govuk-body space--none">Security code <span class="govuk-body govuk-!-font-weight-bold">PB6XT</span> sent 11 January 2019</p>
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          6 requested licences
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list">
+          <li>
+            <a class="govuk-link" href="unregistered-licence-summary">03/30/1142</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="unregistered-licence-summary">03/30/1143</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="unregistered-licence-summary">03/30/1144</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="unregistered-licence-summary">03/30/1145</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="unregistered-licence-summary">03/30/1146</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="unregistered-licence-summary">03/30/1147</a>
+          </li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- licences -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h3 class="govuk-heading-m space--none">
+      2 licences
+    </h3>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- table with returns with statuses -->
+    <div class="table">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--25">
+          Licence number
         </div>
-      </details>
+        <div class="table__cell bold-small column--60">
+          Licence holder
+        </div>
+        <div class="table__cell bold-small column--15">
+          <!-- no name here -->
+        </div>
 
-      <!-- licences -->
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
+      </div>
 
-          <h3 class="govuk-heading-m space--none">
-            2 licences
+      <div class="table__row space--medium">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 1
           </h3>
-
-          <!-- table with returns with statuses -->
-          <div class="table">                                                <!-- a table -->
-
-            <div class="table__row--head">                                              <!-- the table head -->
-              <div class="table__cell bold-small column--25">
-                Licence number
-              </div>
-              <div class="table__cell bold-small column--60">
-                Licence holder
-              </div>
-              <div class="table__cell bold-small column--15">
-                <!-- no name here -->
-              </div>
-
-            </div>
-
-            <div class="table__row space--medium">                                      <!-- a data row starts -->
-              <div class="table__cell">
-                <h3 class="screen-reader-only">
-                  Row 1
-                </h3>
-                <h4 class="table__context">
-                  Licence number
-                </h4>
-                <a href="return-status-void">
-                  <span class="screen-reader-only">View licence 03/11/24/01</span>
-                  03/11/24/01
-                </a>
-              </div>
-              <div class="table__cell">
-                <h4 class="table__context">
-                  Licence holder
-                </h4>
-                Big Farm Ltd
-              </div>
-              <div class="table__cell">
-                <a href="manage/unlink-licence">Unlink licence</a>
-              </div>
-            </div>
-
-            <div class="table__row table__row--last space--medium">                                      <!-- a data row starts -->
-              <div class="table__cell">
-                <h3 class="screen-reader-only">
-                  Row 2
-                </h3>
-                <h4 class="table__context">
-                  Licence number
-                </h4>
-                <a href="return-status-void">
-                  <span class="screen-reader-only">View licence 013/65/02/142</span>
-                  013/65/02/142
-                </a>
-              </div>
-              <div class="table__cell">
-                <h4 class="table__context">
-                  Licence holder
-                </h4>
-                Big Farm Ltd
-              </div>
-              <div class="table__cell">
-                <a href="manage/unlink-licence">Unlink licence</a>
-              </div>
-            </div>
-
-
-          </div>
+          <h4 class="table__context">
+            Licence number
+          </h4>
+          <a href="return-status-void">
+            <span class="screen-reader-only">View licence 03/11/24/01</span>
+            03/11/24/01
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Licence holder
+          </h4>
+          Big Farm Ltd
+        </div>
+        <div class="table__cell">
+          <a href="manage/unlink-licence">Unlink licence</a>
         </div>
       </div>
 
+      <div class="table__row table__row--last space--medium">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 2
+          </h3>
+          <h4 class="table__context">
+            Licence number
+          </h4>
+          <a href="return-status-void">
+            <span class="screen-reader-only">View licence 013/65/02/142</span>
+            013/65/02/142
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Licence holder
+          </h4>
+          Big Farm Ltd
+        </div>
+        <div class="table__cell">
+          <a href="manage/unlink-licence">Unlink licence</a>
+        </div>
+      </div>
+
+
     </div>
+  </div>
+</div>
 
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
     <!-- entity block -->
-    <div class="entity space--medium">
+    <div class="entity"></div>
+  </div>
+</div>
 
-      <!-- entity header -->
-      <h2 class="govuk-heading-l space--none">
-        Bidbod Foods Ltd
-      </h2>
-      <p class="govuk-body govuk-!-font-size-24">
-        Returns user
-      </p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- entity header -->
+    <h2 class="govuk-heading-l space--none">
+      Bidbod Foods Ltd
+    </h2>
+    <p class="govuk-body govuk-!-font-size-24">
+      Returns user
+    </p>
 
       <h3 class="govuk-heading-m space--none">
         7 licences
@@ -406,120 +434,134 @@
         </div>
       </details>
 
-    </div>
+  </div>
+</div>
 
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
     <!-- entity block -->
-    <div class="entity space--medium">
+    <div class="entity"></div>
+  </div>
+</div>
 
-      <!-- entity header -->
-      <h2 class="govuk-heading-l space--none">
-        Spring Onion Co.
-      </h2>
-      <p class="govuk-body govuk-!-font-size-24">
-        Agent
-      </p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <h3 class="govuk-heading-m space--none">
-        3 licences
-      </h3>
+    <!-- entity header -->
+    <h2 class="govuk-heading-l space--none">
+      Spring Onion Co.
+    </h2>
+    <p class="govuk-body govuk-!-font-size-24">
+      Agent
+    </p>
 
-      <!-- licences -->
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <!-- table with returns with statuses -->
-          <div class="table">                                                <!-- a table -->
+    <h3 class="govuk-heading-m space--none">
+      3 licences
+    </h3>
 
-            <div class="table__row--head">                                              <!-- the table head -->
-              <div class="table__cell bold-small column--25">
-                Licence number
-              </div>
-              <div class="table__cell bold-small column--60">
-                Licence holder
-              </div>
-              <div class="table__cell bold-small column--15">
-                <!-- no name here -->
-              </div>
+  </div>
+</div>
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- licences -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <!-- table with returns with statuses -->
+        <div class="table">                                                <!-- a table -->
+
+          <div class="table__row--head">                                              <!-- the table head -->
+            <div class="table__cell bold-small column--25">
+              Licence number
             </div>
-
-            <div class="table__row">                                      <!-- a data row starts -->
-              <div class="table__cell">
-                <h3 class="screen-reader-only">
-                  Row 1
-                </h3>
-                <h4 class="table__context">
-                  Licence number
-                </h4>
-                <a href="return-status-void">
-                  <span class="screen-reader-only">View licence 03/21/03/021</span>
-                  03/21/03/021
-                </a>
-              </div>
-              <div class="table__cell">
-                <h4 class="table__context">
-                  Licence holder
-                </h4>
-                Spring Onion Co.
-              </div>
-              <div class="table__cell">
-                <a href="manage/unlink-licence">Unlink licence</a>
-              </div>
+            <div class="table__cell bold-small column--60">
+              Licence holder
             </div>
-
-            <div class="table__row">                                      <!-- a data row starts -->
-              <div class="table__cell">
-                <h3 class="screen-reader-only">
-                  Row 2
-                </h3>
-                <h4 class="table__context">
-                  Licence number
-                </h4>
-                <a href="return-status-void">
-                  <span class="screen-reader-only">View licence 03/21/04/014</span>
-                  03/21/04/014
-                </a>
-              </div>
-              <div class="table__cell">
-                <h4 class="table__context">
-                  Licence holder
-                </h4>
-                Spring Onion Co.
-              </div>
-              <div class="table__cell">
-                <a href="manage/unlink-licence">Unlink licence</a>
-              </div>
-            </div>
-
-            <div class="table__row table__row--last">                                      <!-- a data row starts -->
-              <div class="table__cell">
-                <h3 class="screen-reader-only">
-                  Row 3
-                </h3>
-                <h4 class="table__context">
-                  Licence number
-                </h4>
-                <a href="return-status-void">
-                  <span class="screen-reader-only">View licence 03/21/04/015</span>
-                  03/21/04/015
-                </a>
-              </div>
-              <div class="table__cell">
-                <h4 class="table__context">
-                  Licence holder
-                </h4>
-                Spring Onion Co.
-              </div>
-              <div class="table__cell">
-                <a href="manage/unlink-licence">Unlink licence</a>
-              </div>
+            <div class="table__cell bold-small column--15">
+              <!-- no name here -->
             </div>
 
           </div>
+
+          <div class="table__row">                                      <!-- a data row starts -->
+            <div class="table__cell">
+              <h3 class="screen-reader-only">
+                Row 1
+              </h3>
+              <h4 class="table__context">
+                Licence number
+              </h4>
+              <a href="return-status-void">
+                <span class="screen-reader-only">View licence 03/21/03/021</span>
+                03/21/03/021
+              </a>
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Licence holder
+              </h4>
+              Spring Onion Co.
+            </div>
+            <div class="table__cell">
+              <a href="manage/unlink-licence">Unlink licence</a>
+            </div>
+          </div>
+
+          <div class="table__row">                                      <!-- a data row starts -->
+            <div class="table__cell">
+              <h3 class="screen-reader-only">
+                Row 2
+              </h3>
+              <h4 class="table__context">
+                Licence number
+              </h4>
+              <a href="return-status-void">
+                <span class="screen-reader-only">View licence 03/21/04/014</span>
+                03/21/04/014
+              </a>
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Licence holder
+              </h4>
+              Spring Onion Co.
+            </div>
+            <div class="table__cell">
+              <a href="manage/unlink-licence">Unlink licence</a>
+            </div>
+          </div>
+
+          <div class="table__row table__row--last">                                      <!-- a data row starts -->
+            <div class="table__cell">
+              <h3 class="screen-reader-only">
+                Row 3
+              </h3>
+              <h4 class="table__context">
+                Licence number
+              </h4>
+              <a href="return-status-void">
+                <span class="screen-reader-only">View licence 03/21/04/015</span>
+                03/21/04/015
+              </a>
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Licence holder
+              </h4>
+              Spring Onion Co.
+            </div>
+            <div class="table__cell">
+              <a href="manage/unlink-licence">Unlink licence</a>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
 
   </div>
 </div>
+
 {% endblock %}
