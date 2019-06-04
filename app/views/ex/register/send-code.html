@@ -13,21 +13,27 @@
    serviceUrl: "#",
    containerClasses: "govuk-width-container",
    navigation: [
-  
+     {
+       href: "/ex/account/account-settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
    ]
  }) }}
 {% endblock %}
 
 {% block beforeContent %}
-  <!-- phase banner -->
-  <div class="space--small">
-    {% include "includes/feedback-banner.html" %}
-  </div>
 
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
 
 {% endblock %}
 
@@ -36,19 +42,11 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Send a security code
+      {{title}}
     </h1>
 
     <p class="govuk-body">
-      To keep licence data secure we send a letter with a security code to the licence holder’s address.
-    </p>
-
-    <p class="govuk-body">
-      Sending a letter means that we can make sure only licence holders have access to licences.
-    </p>
-
-    <p class="govuk-body">
-      We will send a security code by post to:
+      To prove that you are the licence holder, we will post a security code to:
     </p>
 
     <div class="govuk-inset-text">
@@ -58,6 +56,10 @@
       Bradlington<br>
       BP22 2PP
     </div>
+
+    <p class="govuk-body">
+      The security code should arrive within 5 days.
+    </p>
 
     <a href="code-sent" class="govuk-faux-button">
       Confirm

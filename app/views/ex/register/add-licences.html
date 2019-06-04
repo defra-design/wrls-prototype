@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add your licences to the service" %}
+{% set title = "Which licences do you want to add?" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -14,19 +14,21 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "account-settings"
+       href: "/ex/account/account-settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
      }
    ]
  }) }}
 {% endblock %}
 
 {% block beforeContent %}
+
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
-
-  <!-- navigation block -->
-  <div class="space--small">
-  </div>
 
   <!-- {{ govukBackLink({
     text: "Back",
@@ -41,20 +43,34 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Add your licences to the service
+        Add or claim a licence
       </h1>
+
+      {% from "warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "You should be the named licence holder to add or claim a licence.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <!-- <div class="govuk-inset-text">
+        You should be the named licence holder to claim licences.
+      </div> -->
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="more-detail">
-          You can enter one or many of your licence numbers
+          Licence number
         </label>
-        <span id="more-detail-hint" class="govuk-hint">
-          Separate the numbers with spaces, commas, or by entering them on different lines.
-        </span>
+        <ul class="govuk-list govuk-list--bullet">
+          <span id="more-detail-hint" class="govuk-hint">
+            <li>you can enter more than one licence number.</li>
+            <li>separate each full licence number with a space, comma or new line.</li>
+          </span>
+        </ul>
         <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
       </div>
 
-      <a href="confirm-licences" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+      <a href="send-code" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
         Continue
       </a>
 

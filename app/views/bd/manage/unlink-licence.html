@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Which licences do you want to add?" %}
+{% set title = "Unlink licence 01/018" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -14,19 +14,24 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "account-settings"
+       href: "/ex/account/account-settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
      }
    ]
  }) }}
 {% endblock %}
 
 {% block beforeContent %}
+
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
 
   <!-- navigation block -->
-  <div class="space--small">
-  </div>
+  {% include "includes/nav/nav-bd-view.html" %}
 
   <!-- {{ govukBackLink({
     text: "Back",
@@ -41,21 +46,18 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        {{title}}
+        Are you sure you want to unlink licence 01/018 from Billingshurst Goods Limited?
       </h1>
 
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="more-detail">
-          You can enter one or many of your licence numbers
-        </label>
-        <span id="more-detail-hint" class="govuk-hint">
-          Separate the numbers with spaces, commas, or by entering them on different lines.
-        </span>
-        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-      </div>
+      {% from "warning-text/macro.njk" import govukWarningText %}
 
-      <a href="confirm-licences" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
-        Continue
+      {{ govukWarningText({
+        text: "Billingshurst Goods will no longer be able to manage this licence.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <a href="licence-unlinked" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+        Unlink this licence
       </a>
 
     </div>
