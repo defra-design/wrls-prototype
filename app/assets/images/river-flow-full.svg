@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024px" height="481px" viewBox="0 0 1024 481" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>river-flow-full</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="river-flow-full">
+            <rect id="base" fill="#FFFFFF" opacity="0.01" x="0" y="0.682499197" width="1024" height="480"></rect>
+            <g id="7-days-flow" transform="translate(0.000000, 11.000000)">
+                <rect id="frame" stroke="#D5D5D5" x="59.5" y="33.1439145" width="719" height="339"></rect>
+                <g id="legend" transform="translate(823.000000, 26.000000)">
+                    <text id="1st-hands-off-level" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="31" y="59.8192675">1st hands off </tspan>
+                        <tspan x="31" y="78.8192675">level</tspan>
+                    </text>
+                    <rect id="orange" fill="#F5752B" x="0" y="54.7868826" width="18" height="4"></rect>
+                    <text id="River-level" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="31" y="13">River level</tspan>
+                    </text>
+                    <rect id="blue" fill="#005EA7" x="0" y="7" width="18" height="4"></rect>
+                </g>
+                <g id="labels">
+                    <rect id="v8" fill="#D8D8D8" x="778" y="33" width="1" height="340"></rect>
+                    <rect id="v7" fill="#D8D8D8" x="682.428571" y="33" width="1" height="340"></rect>
+                    <rect id="v6" fill="#D8D8D8" x="586.857143" y="33" width="1" height="340"></rect>
+                    <rect id="v5" fill="#D8D8D8" x="491.285714" y="33" width="1" height="340"></rect>
+                    <rect id="v4" fill="#D8D8D8" x="395.714286" y="33" width="1" height="340"></rect>
+                    <rect id="v3" fill="#D8D8D8" x="300.142857" y="33" width="1" height="340"></rect>
+                    <rect id="v2" fill="#D8D8D8" x="204.571429" y="33" width="1" height="340"></rect>
+                    <rect id="v1" fill="#D8D8D8" x="109" y="33" width="1" height="340"></rect>
+                    <text id="Friday-13-June" font-family="GDSTransportWebsite-Bold, GDS Transport Website" font-size="14" font-weight="bold" fill="#0B0C0C">
+                        <tspan x="708.214076" y="402">Friday</tspan>
+                        <tspan x="704.854213" y="422">13 June</tspan>
+                    </text>
+                    <text id="Thursday-14-June" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="605.236537" y="402">Thursday</tspan>
+                        <tspan x="610.315639" y="421">14 June</tspan>
+                    </text>
+                    <text id="Wednesday-13-June" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="502.573451" y="402">Wednesday</tspan>
+                        <tspan x="515.551479" y="421">13 June</tspan>
+                    </text>
+                    <text id="Tuesday-12-June" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="417.813686" y="402">Tuesday</tspan>
+                        <tspan x="420.578823" y="421">12 June</tspan>
+                    </text>
+                    <text id="Monday-11-June" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="323.596401" y="402">Monday</tspan>
+                        <tspan x="327.161342" y="421">11 June</tspan>
+                    </text>
+                    <text id="Sunday-10-June" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="230.360073" y="402">Sunday</tspan>
+                        <tspan x="230.349819" y="421">10 June</tspan>
+                    </text>
+                    <text id="Saturday-9-June" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="130.013742" y="402">Saturday</tspan>
+                        <tspan x="137.444406" y="421">9 June</tspan>
+                    </text>
+                    <text id="0m" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="24.2031617" y="376.625822">0m</tspan>
+                    </text>
+                    <text id="0.5m" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="12.2334352" y="288.344572">0.5m</tspan>
+                    </text>
+                    <text id="1.0m" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="15.3369508" y="200.344572">1.0m</tspan>
+                    </text>
+                    <text id="1.5m" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="15.856482" y="112.344572">1.5m</tspan>
+                    </text>
+                    <text id="2.0m" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="12.1719117" y="39">2.0m</tspan>
+                    </text>
+                    <text id="Now" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300" fill="#0B0C0C">
+                        <tspan x="727.916985" y="13">Now</tspan>
+                    </text>
+                </g>
+                <g id="licence-data" transform="translate(59.000000, 252.000000)" fill="#F5752B">
+                    <text id="0.72m" font-family="GDSTransportWebsite, GDS Transport Website" font-size="14" font-weight="300">
+                        <tspan x="734.714286" y="13.348406">0.72m</tspan>
+                    </text>
+                    <rect id="HOF-line" x="0" y="8.78688261" width="720" height="2"></rect>
+                </g>
+                <g id="now" transform="translate(736.000000, 25.000000)" fill="#000000">
+                    <rect x="6.42857143" y="7" width="1" height="340"></rect>
+                    <polygon id="now-pointer" points="0.968111436 0 12.9674354 0 6.96777344 8.91748047"></polygon>
+                </g>
+                <g id="river-data" transform="translate(59.000000, 68.000000)">
+                    <path d="M0.8828125,147.148437 L12.1468172,152.765625 C17.6637113,156.114583 22.6772723,157.789062 27.1875,157.789062 C31.6977277,157.789062 38.2836652,137.28776 46.9453125,96.2851562 L58.0429688,59.5195313 C65.7351648,24.4004044 70.6362065,5.50066484 72.7460938,2.8203125 C74.855981,0.13996016 81.715356,0.13996016 93.3242188,2.8203125 C99.3541922,16.5007276 103.816432,23.9590609 106.710938,25.1953125 C111.052696,27.0496899 116.384417,14.4832838 118.237716,13.4609375 C120.091014,12.4385912 123.601927,2.8203125 127.796875,2.8203125 C131.991823,2.8203125 129.762454,13.3481589 133.542969,25.1953125 C137.323483,37.0424661 135.65702,37.6674728 142.488281,48.859375 C149.319543,60.0512772 160.882812,48.859375 169.96875,70.5703125 C179.054688,92.28125 181.137296,104.566406 181.137296,110.476562 C181.137296,114.416667 186.579124,117.207031 197.462779,118.847656 L223.888087,118.847656 L235.96933,118.847656 L248.328125,110.476562 L257.833423,124.414062 C263.004123,120.669271 267.393564,118.796875 271.001746,118.796875 C276.41402,118.796875 277.984053,124.414062 289.3125,124.414062 C300.640947,124.414062 309.055308,138.096075 318.316193,133.648438 C327.577078,129.2008 328.571217,126.598985 330.529711,125.827474 C331.835374,125.313133 335.578074,124.841996 341.757812,124.414062 C354.061299,133.414062 362.317816,137.914063 366.527362,137.914063 C372.84168,137.914063 387.797847,135.419922 391.466146,133.629557 C395.134445,131.839193 399.488437,127.375 403.688554,124.414062 C407.888672,121.453125 409.050781,123.940496 414.694281,124.414062 C420.337781,124.887629 426.93099,129.189453 440.703776,126.849609 C449.885634,125.289714 455.658811,119.832031 458.023307,110.476562 C461.60065,101.184896 466.681402,101.184896 473.265563,110.476562 C479.849725,119.768229 490.987803,124.414062 506.679798,124.414062 L524.805516,124.414062 L542.57273,137.914063 L564.88872,137.914063 C572.855504,131.285156 579.410111,129.114583 584.552542,131.402344 C592.266188,134.833984 604.401399,128.679687 604.401399,137.914063 C604.401399,147.148437 615.588306,147.148437 615.588306,147.148437 C615.588306,147.148437 628.311054,149.595261 639.130153,157.789062 C649.949252,165.982864 656.261719,170.276367 661.545898,174.165039" id="river-level" stroke="#005EA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <g id="spot" transform="translate(654.545898, 166.665039)">
+                        <circle id="Oval" stroke="#005EA7" fill="#FFFFFF" cx="6.02197266" cy="6.74560547" r="5.82080078"></circle>
+                        <circle id="Oval" fill="#005EA7" cx="6.02197266" cy="6.74560547" r="3.51852742"></circle>
+                    </g>
+                </g>
+            </g>
+            <g id="data-moment" transform="translate(523.531250, 154.203125)">
+                <image id="cursor" x="83.0208956" y="67.296875" width="19.0298856" height="23.6740839" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVAAAAGiCAYAAACxsp7LAAAABGdBTUEAALGOGCHvlwAAFnZJREFUeAHt3U+oFeUbB/DX1F/q1bwp5qJAFy0u4UIXLloZFEGraKXYolrpJjCkbeoi2qWLoLvqz65FaynaVES0CHUXEmaGRhpiaiZR6K8jKHXOHWaO531n5n3nc+HgPfPnmff5PPJlrlP3LLv9z1fwlYXA4cOHw5EjR3q31vfffz+8/PLLvVuXBRFILfBA6guoT4AAgVIFBGipk9UXAQLJBQRocmIXIECgVAEBWupk9UWAQHIBAZqc2AUIEChVQICWOll9ESCQXECAJid2AQIEShUQoKVOVl8ECCQXEKDJiV2AAIFSBQRoqZPVFwECyQUEaHJiFyBAoFQBAVrqZPVFgEByAQGanNgFCBAoVUCAljpZfREgkFxAgCYndgECBEoVEKClTlZfBAgkFxCgyYldgACBUgWW+Y306Ud78ODBcOHChZkvtLCwEEavvn2dOHEi/PTTT1GWNT8/HxYXF6PUUoRAagEBmlr4n/qj0Dt9+vTMVzp06FAYfaxH375GH+fx4YcfRlnW5s2bwy+//BKlliIEUgv4ET61sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECLHa3GCBBILSBAUwurT4BAsQICtNjRaowAgdQCAjS1sPoECBQrIECL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"></image>
+                <path d="M73.3701977,45.5 L88.298906,61.1079627 L58.0629914,45.5 L1,45.5 C0.171572875,45.5 -0.5,44.8284271 -0.5,44 L-0.5,1 C-0.5,0.171572875 0.171572875,-0.5 1,-0.5 L171,-0.5 C171.828427,-0.5 172.5,0.171572875 172.5,1 L172.5,44 C172.5,44.8284271 171.828427,45.5 171,45.5 L73.3701977,45.5 Z" stroke="#D0D0D0" fill="#FFFFFF"></path>
+                <text id="4:45-am,-7-June-Reco" font-family="GDSTransportWebsite-Bold, GDS Transport Website" font-size="13" font-weight="bold" line-spacing="17" fill="#000000">
+                    <tspan x="6" y="18">4:45 am, 7 June</tspan>
+                    <tspan x="6.29199219" y="35" font-family="GDSTransportWebsite, GDS Transport Website" font-weight="300">Recorded level: </tspan>
+                    <tspan x="95.9716797" y="35">0.9 metres</tspan>
+                </text>
+                <circle id="data-spot" fill="#005EA7" cx="89.0380587" cy="62.2529024" r="3.51852742"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
