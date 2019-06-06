@@ -39,7 +39,7 @@
   </div>
 
     {{ govukBackLink({
-      text: "Licence number {{pData.LicenceSerialNo}}",
+      text: "Licence number 03/28/60/0032",
       href: "javascript:history.back()"
     }) }}
 
@@ -51,149 +51,65 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Scrifford Pike conditions</h1>
+      <span class="govuk-caption-l">At National Grid Reference SX 152364</span>
+      <h1 class="govuk-heading-l space--none">Data from Backley Weir</h1>
+      <p class="govuk-body">
+        Source of supply: Inland water lake known as Featherall Lake at SJ3185632865
+      </p>
     </div>
   </div>
 
+  {% from "warning-text/macro.njk" import govukWarningText %}
+
+  {{ govukWarningText({
+    text: "This data is for reference only. You should continue to use your current monitoring methods to make abstraction decisions.",
+    iconFallbackText: "Warning"
+  }) }}
 
   <!-- licence condition title -->
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="heading-large govuk-heading-m licence-condition__header">
-        Eel screening condition
+      <h2 class="heading-large govuk-heading-m licence-condition__header space--none"">
+        Mean daily flow
       </h2>
+      {% from "select/macro.njk" import govukSelect %}
+        {{ govukSelect({
+          id: "mean-daily-flow",
+          name: "sort",
+          items: [
+            {
+              value: "cubic-metres-per-second",
+              text: "Cubic metres per second",
+              selected: true
+            },
+            {
+              value: "cubic-metres-per-day",
+              text: "Cubic metres per day"
+
+            },
+            {
+              value: "megalitres-per-second",
+              text: "Megalitres per day"
+            }
+          ]
+        }) }}
     </div>
   </div>
 
-  <!-- licence condition group -->
-  <div class="space--medium">
-    <!-- licence data -->
-    <div class="data-row">
-      <!-- the data label -->
-      <div class="data-row__param">Screening</div>
-      <div class="data-row__value">
-        The Agency may have regard to its best practice guide, the Eel Menual: Screening at intakes and outfalls: measures to protect eel (or equivalent guidance) in agreeing where, how and what type of eel screen should be installed and together with the results of any monitoring in determining whether the eel screen is properly effective and maintained, and in judging whether it is necessary to require or replacement of the eel screen.
-      </div>
-    </div>
-  </div>
-
-  <!-- licence condition group -->
-  <div class="space--medium">
-    <!-- licence condition title -->
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="heading-large govuk-heading-m licence-condition__header">
-          Hands off flow condition
-        </h2>
-      </div>
-    </div>
-    <!-- licence data -->
-    <div class="data-row">
-      <!-- the data label -->
-      <div class="data-row__param">Purpose</div>
-      <div class="data-row__value">
-        Make-up or top up water
-      </div>
-    </div>
-    <!-- licence data -->
-    <div class="data-row">
-      <!-- the data label -->
-      <div class="data-row__param">Gauging station</div>
-      <div class="data-row__value">
-        At National Grid Reference SX 426725<br>
-        <a href="../gauging-station">View details at Huntsford</a>
-      </div>
-    </div>
-    <!-- licence data -->
-    <div class="data-row">
-      <!-- the data label -->
-      <div class="data-row__param">Threshold level</div>
-      <div class="data-row__value">
-        0.73m ODN
-      </div>
-    </div>
-    <!-- licence data -->
-    <div class="data-row">
-      <!-- the data label -->
-      <div class="data-row__param">Other information</div>
-      <div class="data-row__value">
-        No abstraction shall take place from the Denton New Cut when the water level in the Cut as measured at Little Durnsford (SW 321562) is at or below 0.73m ODN.
-      </div>
-    </div>
-
+  <div class="govuk-form-group" style="width: 900px;">
+    <label class="govuk-label" for="sort">
+      Sort by
+    </label>
+    <select class="govuk-select" id="sort" name="sort">
+      <option value="published">Recently published</option>
+      <option value="updated" selected>Recently updated</option>
+      <option value="views">Most views</option>
+      <option value="comments">Most comments</option>
+    </select>
   </div>
 
 
 
-
-
-
-
-
-
-
-   <div class="medium-space">
-
-     <!-- page title -->
-     <h1 class="heading-large clustered">
-       <span class="heading-secondary">
-         At National Grid Reference {{ pData.GaugingStationGridReference }}
-       </span>
-        Data from {{ pData.GaugingStationName }}
-     </h1>
-
-     <div class="clustered">Source of supply: {{ pData.Source}}</div>
-
-   </div>
-
-   <!-- legal -->
-   <div class="grid-row medium-space">
-     <div class="column-two-thirds">
-       <div class="notice">
-         <i class="icon icon-important">
-           <span class="visually-hidden">Warning</span>
-         </i>
-         <strong class="bold-small">
-           This data is for reference only. You should continue to use your current monitoring methods to make abstraction decisions.
-         </strong>
-       </div>
-     </div>
-   </div>
-
-   {% if pData.GaugingStationData %}
-
-     <!-- section title -->
-     <div class="grid-row">
-       <div class="column-two-thirds">
-         <h2 class="bold-medium clustered">
-           {% if pData.LicenceHasFlow %}
-             Mean daily flow
-           {% else %}
-             Mean daily flow
-           {% endif %}
-         </h2>
-       </div>
-     </div>
-
-     <div class="grid-row medium-space">
-       <div class="column-two-thirds">
-         <!-- <div class="inner-flex"> -->
-           {% if pData.LicenceHasFlow %}
-             <select class="form-control unit-dropper" id="select-box" name="select-box">
-               <option selected>cubic metres per second</option>
-               <option>cubic metres per day</option>
-               <option>megalitres per day</option>
-             </select>
-           {% else %}
-             <select class="form-control unit-dropper" id="select-box" name="select-box">
-               <option selected>metres</option>
-               <option>feet</option>
-             </select>
-           {% endif %}
-         <!-- </div> -->
-       </div>
-     </div>
 
      <div class="grid-row medium-space">
        <!-- data here -->
@@ -237,10 +153,9 @@
      </div>
 
 
-   {% else %}
 
      <!-- NO DATA -->
-     <div class="data">
+     <!-- <div class="data">
        <span class="data-item bold-xxlarge">Sorry, there is no accurate data available</span>
      </div>
 
@@ -250,9 +165,8 @@
            Please contact your <a href="https://www.gov.uk/government/organisations/environment-agency/about/access-and-opening" target="_blank">local Environment Agency office</a> (link opens in a new tab) for the latest information.
          </p>
        </div>
-     </div>
+     </div> -->
 
-   {% endif %}
 
    <div class="grid-row">
 
