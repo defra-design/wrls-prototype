@@ -38,10 +38,10 @@
     {% include "includes/nav/nav-ex-view.html" %}
   </div>
 
-    {{ govukBackLink({
-      text: "Licence number 03/28/60/0032",
-      href: "javascript:history.back()"
-    }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
 
 {% endblock %}
 
@@ -59,12 +59,17 @@
     </div>
   </div>
 
-  {% from "warning-text/macro.njk" import govukWarningText %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% from "warning-text/macro.njk" import govukWarningText %}
 
-  {{ govukWarningText({
-    text: "This data is for reference only. You should continue to use your current monitoring methods to make abstraction decisions.",
-    iconFallbackText: "Warning"
-  }) }}
+      {{ govukWarningText({
+        text: "This data is for reference only. You should continue to use your current monitoring methods to make abstraction decisions.",
+        iconFallbackText: "Warning"
+      }) }}
+    </div>
+  </div>
+
 
   <!-- licence condition title -->
   <div class="govuk-grid-row">
@@ -96,179 +101,110 @@
     </div>
   </div>
 
-  <div class="govuk-form-group" style="width: 900px;">
-    <label class="govuk-label" for="sort">
-      Sort by
-    </label>
-    <select class="govuk-select" id="sort" name="sort">
-      <option value="published">Recently published</option>
-      <option value="updated" selected>Recently updated</option>
-      <option value="views">Most views</option>
-      <option value="comments">Most comments</option>
-    </select>
+
+  <div class="govuk-grid-row medium-space">
+    <!-- data here -->
+    <div class="govuk-grid-column-two-thirds small-space">
+      <span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">
+        0.75m³/s
+      </span>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds small-space">
+      <p class="govuk-body">
+        Daily mean flow recorded at <span class="govuk-body govuk-!-font-weight-bold">7:00am on Friday 4 May 2018</span>
+      </p>
+      {% from "inset-text/macro.njk" import govukInsetText %}
+        {{ govukInsetText({
+          text: "Please convert this reading if your condition is based on a different unit of measurement."
+        })
+      }}
+
+      <p class="govuk-body">
+        <a href="#">
+          See level data at this gauging station
+        </a>
+      </p>
+
+      <h2 class="heading-large govuk-heading-m licence-condition__header space--small"">
+        Recent flow data from this gauging station
+      </h2>
+
+    </div>
   </div>
 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
 
+      <div class="flexy">
+        <a href="gauging-station-graph?wid={{query.wid}}" class="river-flow-graph">
+          <div class="container">
+            <img src="/public/images/river-flow-preview.svg" alt="River flow at the gauging station for the past 7 days" width="100%" />
+          </div>
+        </a>
+      </div>
 
+    </div>
+  </div>
 
-     <div class="grid-row medium-space">
-       <!-- data here -->
-       <div class="column-two-thirds small-space">
-         <!-- <div class="inner-flex flex-static"> -->
-           <span class="bold-xxlarge">
-             {% if pData.LicenceHasFlow %}
-               {{ pData.GaugingStationFlowValue }}
-             {% else %}
-               {{ pData.GaugingStationLevelValue }}
-             {% endif %}
-           </span>
-         <!-- </div> -->
-       </div>
+  <div class="govuk-grid-row space--medium">
+    <!-- data here -->
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">
+        <a href="gauging-station-graph">
+          View data for the past 7 days
+        </a>
+      </p>
+    </div>
+  </div>
 
-       <div class="column-two-thirds">
-         <p>
-         <!-- recorded at -->
-         {% if pData.LicenceHasFlow %}
-           <span class="data-item">Daily mean flow recorded at <span class="bold-small">{{ pData.GaugingStationRecordedTime }} on {{ pData.GaugingStationRecordedDate }}</span></span>
-         {% else %}
-           <span class="data-item">Daily mean level recorded at <span class="bold-small">{{ pData.GaugingStationRecordedTime }} on {{ pData.GaugingStationRecordedDate }}</span></span>
-         {% endif %}
-         </p>
+  <div class="govuk-grid-row space--small">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="heading-large govuk-heading-m licence-condition__header">
+        Details of the hands off flow conditions
+      </h2>
+    </div>
+  </div>
 
-         <div class="column-full">
-           <div class="panel panel-border-wide column-two-thirds">
-             <p>
-               Please convert this reading if your condition is based on a different unit of measurement.
-             </p>
-           </div>
-         </div>
+  <h3 class="govuk-body-l">
+     Cessation condition
+  </h3>
 
-         {% if pData.LicenceHasFlow %}
-           <a href="">See level data at this gauging station</a>
-         {% else %}
-           <a href="">See flow data at this gauging station</a>
-         {% endif %}
-       </div>
+  <div class="govuk-inset-text">
 
-     </div>
+    <div class="data-row">
+      <!-- the data label -->
+      <div class="data-row__param">Purpose</div>
+      <div class="data-row__value">
+        Make-up or top up water
+      </div>
+    </div>
+    <!-- licence data -->
+    <div class="data-row">
+      <!-- the data label -->
+      <div class="data-row__param">Gauging station</div>
+      <div class="data-row__value">
+        At National Grid Reference SX 426725<br>
+        Backley Weir
+      </div>
+    </div>
+    <!-- licence data -->
+    <div class="data-row">
+      <!-- the data label -->
+      <div class="data-row__param">Threshold level</div>
+      <div class="data-row__value">
+        18m3/s
+      </div>
+    </div>
+    <!-- licence data -->
+    <div class="data-row">
+      <!-- the data label -->
+      <div class="data-row__param">Other information</div>
+      <div class="data-row__value">
+        No abstraction shall take place from the Denton New Cut when the water level in the Cut as measured at Backley Weir (SX 426725) is at or below 18m3/s.
+      </div>
+    </div>
 
-
-
-     <!-- NO DATA -->
-     <!-- <div class="data">
-       <span class="data-item bold-xxlarge">Sorry, there is no accurate data available</span>
-     </div>
-
-     <div class="grid-row ">
-       <div class="column-two-thirds">
-         <p>
-           Please contact your <a href="https://www.gov.uk/government/organisations/environment-agency/about/access-and-opening" target="_blank">local Environment Agency office</a> (link opens in a new tab) for the latest information.
-         </p>
-       </div>
-     </div> -->
-
-
-   <div class="grid-row">
-
-     <div class="column-two-thirds">
-       <h2 class="small-space bold-medium">
-         {% if pData.LicenceHasFlow %}
-           Recent flow data from this gauging station
-         {% else %}
-           Recent level data from this gauging station
-         {% endif %}
-
-       </h2>
-     </div>
-
-   </div>
-
-   <div class="grid-row small-space">
-     <div class="column-one-third">
-
-       <div class="flexy">
-         <a href="gauging-station-graph?wid={{query.wid}}" class="river-flow-graph">
-           <div class="container">
-             <img src="../images/river-flow-preview.svg"/>
-           </div>
-         </a>
-       </div>
-
-     </div>
-   </div>
-
-   <div class="grid-row big-space">
-     <div class="column-one-third flexy">
-       <a href="gauging-station-graph?wid={{query.wid}}" class="small-space">
-         {% if pData.LicenceHasFlow %}
-           <caption>View data for the past 7 days</caption>
-         {% else %}
-           <caption>View data for the past 7 days</caption>
-         {% endif %}
-       </a>
-     </div>
-   </div>
-
-   <div class="grid-row">
-     <div class="column-two-thirds small-space">
-       <h2 class="bold-medium">
-         <span class="">Details of the hands off flow conditions</span>
-       </h2>
-     </div>
-   </div>
-
-   <div class="small-space">
-     <h3 class="lede">Cessation condition</h3>
-   </div>
-
-   <div class="panel panel-border-wide">
-     <div class="data-row-group">
-
-       <div class="data-row data-row--section">
-         <div class="data-row__param" id="label-0-1-purpose">
-           Purpose
-         </div>
-         <div class="data-row__value" aria-labelledby="label-0-1-purpose">
-           Make-Up Or Top Up Water
-         </div>
-       </div>
-
-       <div class="data-row">
-         <div class="data-row__param" id="label-0-1-param1">
-           Gauging station
-         </div>
-         <div class="data-row__value" aria-labelledby="label-0-1-param1">
-           At National Grid Reference {{ pData.GaugingStationGridReference}}<br>
-           {{pData.GaugingStationName}}
-         </div>
-       </div>
-
-       <div class="data-row">
-         <div class="data-row__param" id="label-0-1-param2">
-         Threshold level
-         </div>
-         <div class="data-row__value" aria-labelledby="label-0-1-param2">
-          {{ pData.HOFlimit }}
-         </div>
-       </div>
-
-       <div class="data-row">
-         <div class="data-row__param" id="label-0-1-info">
-         Other information
-         </div>
-         <div class="data-row__value" aria-labelledby="label-0-1-info">
-           No abstraction shall take place from the Denton New Cut when the water level in the Cut as measured at {{ pData.GaugingStationName }} ({{ pData.GaugingStationGridReference }}) is at or below {{ pData.HOFlimit }}.
-         </div>
-       </div>
-
-     </div>
-   </div>
-
-   <div class="medium-space">
-     <a href="conditions?wid={{query.wid}}">
-       View all conditions information held for this licence
-     </a>
-   </div>
-
+  </div>
 
 {% endblock %}
