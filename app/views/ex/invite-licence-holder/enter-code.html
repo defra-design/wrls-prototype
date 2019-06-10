@@ -38,10 +38,10 @@
     {% include "includes/nav/nav-ex-manage.html" %}
   </div>
 
-  {{ govukBackLink({
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
@@ -81,23 +81,9 @@
       <input class="govuk-input govuk-input--width-5" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
     </div>
 
-    <a href="/ex/licences-added" class="govuk-faux-button">
+    <a href="found-licences" class="govuk-faux-button">
       Continue
     </a>
-
-    <br>
-
-    <details class="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          Not received your code?
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        <!-- phase banner -->
-        {% include "includes/contact-information.html" %}
-      </div>
-    </details>
 
   </div>
 </div>

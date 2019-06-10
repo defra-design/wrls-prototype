@@ -43,36 +43,25 @@
       <h1 class="govuk-heading-l">Create an account to manage your water abstraction licence online</h1>
 
       <p>
-        You must be either a licence holder, or acting on behalf of a licence holder to create an account. Once registered licence holders can:
+        You must be a licence holder to create an online account.
+        Once registered you will be able to:
       </p>
 
       <ul class="list-bullet">
         <li>view your abstraction licence information</li>
         <li>submit abstraction returns</li>
-        <li>give access to a named contact to submit returns on their behalf</li>
+        <li>give others access to your account and permission to submit returns</li>
       </ul>
 
-      <p>If you are acting on behalf of a licence holder you can:</p>
+      <p>To protect your data we have to post a security code to the registered address of the licence.</p>
 
-      <ul class="list-bullet">
-        <li>invite licence holders to register for the service</li>
-        <li>view licence details</li>
-        <li>submit abstraction returns</li>
-      </ul>
+      <div class="panel panel-border-wide">
+        <p>
+          This can take 2 to 3 working days.
+        </p>
+      </div>
 
-      <p>
-        To protect your data we will post a security code to the named licence holder at their registered address.
-      </p>
-
-      {% from "inset-text/macro.njk" import govukInsetText %}
-
-      {{ govukInsetText({
-      text: "The code should arrive within 2 to 3 working days."
-      }) }}
-
-      <p>
-        Impoundment licences are not yet part of this service.
-      </p>
+      <p>Impoundment licences are not yet part of this service.</p>
 
       <h2 class="heading-medium">Before you start</h2>
 
@@ -80,7 +69,8 @@
 
       <ul class="list list-bullet">
         <li>an email address</li>
-        <li>your licence number</li>
+        <li>your licence numbers</li>
+        <li>the code we emailed you</li>
       </ul>
 
       <!-- <a class="govuk-button govuk-button-start" href="/register" role="button">Create account</a> -->

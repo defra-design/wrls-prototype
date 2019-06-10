@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Create a password" %}
+{% set title = "Create an account" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -28,10 +28,10 @@
   <div class="space--small">
   </div>
 
-  <!-- {{ govukBackLink({
+  {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }} -->
+  }) }}
 
 {% endblock %}
 
@@ -41,39 +41,30 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Create a password
+        Create an account
       </h1>
 
       <p>
-        You will need to use this password each time you sign in to the service.
+        Enter your email address and we will send you a link. Click on the link to finish setting up your account.
       </p>
 
       <p>
-        Your password must have at least:
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>8 characters</li>
-          <li>1 symbol (like ?!£%)</li>
-          <li>1 capital letter</li>
-        </ul>
+        If it is not in your inbox check your spam folder.
       </p>
 
-      <div class="govuk-form-group space--small">
-        <label class="govuk-label" for="width-20">
-          Enter password
-        </label>
-        <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
-      </div>
+      <p>
+        We will only use your email address to send you notifications about your licence or the service.
+      </p>
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="width-20">
-          Confirm password
+          Email address
         </label>
         <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
       </div>
 
-      <a href="account-mode" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
-        Create password
+      <a href="success" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+        Continue
       </a>
 
     </div>
