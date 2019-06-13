@@ -43,10 +43,16 @@
       <h1 class="govuk-heading-l">
         {{title}}
       </h1>
-
+<!--
       <p>
-        You must be either a licence holder to create an account.
-      </p>
+        You must be a licence holder to create an account.
+      </p> -->
+
+      {% from "warning-text/macro.njk" import govukWarningText %}
+      {{ govukWarningText({
+        text: "You must be a licence holder to create an account.",
+        iconFallbackText: "Warning"
+      }) }}
 
       <p>
         At present we do not allow people who are not licence holders to register licences on behalf of others. We are working on making this possible.
