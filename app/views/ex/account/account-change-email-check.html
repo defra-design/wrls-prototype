@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Check your new email address" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/account-settings",
+       text: "Account settings",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+
+    <p class="govuk-body">
+      We will send a code to <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
+    </p>
+
+    <a href="account-change-email-sent" class="govuk-faux-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+{% endblock %}
