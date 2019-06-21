@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
-{% set title = "Send a security code" %}
+{% set title = "Too many attempts" %}
 
 {% block pageTitle %}
-   Send a security code - GOV.UK
+   {{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
@@ -15,7 +15,8 @@
    navigation: [
      {
        href: "/ex/account/settings",
-       text: "Account settings"
+       text: "Account settings",
+       active: true
      },
      {
        href: "#2",
@@ -26,11 +27,8 @@
 {% endblock %}
 
 {% block beforeContent %}
-
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
-
-  <div class="space--small"></div>
 
   {{ govukBackLink({
     text: "Back",
@@ -40,46 +38,26 @@
 {% endblock %}
 
 {% block content %}
+
+<!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <h1 class="govuk-heading-l">
-      {{title}}
+      Try again later
     </h1>
 
     <p class="govuk-body">
-      To keep licence data secure we send a letter with a security code to the licence holder’s address.
+      You have tried to enter a code too many times.
     </p>
 
     <p class="govuk-body">
-      Sending a letter means that we can make sure only licence holders have control of licences.
+      To change your email address please try again in 24 hours.
     </p>
 
-    <p class="govuk-body">
-      We will send a security code by post to:
-    </p>
-
-    <h2 class="govuk-heading-m">
-      Bidbod Foods Ltd
-    </h2>
-
-    <div class="govuk-inset-text">
-      Lake Valley Foods Ltd<br>
-      Pipton Lane<br>
-      Lake Valley North<br>
-      Bradlington<br>
-      BP22 2PP
-    </div>
-
-    <p class="govuk-body">
-      The security code should arrive within 5 days.
-    </p>
-
-    <a href="code-sent" class="govuk-faux-button">
-      Confirm
+    <a href="/ex/licences" class="govuk-faux-button">
+      View licences
     </a>
 
   </div>
 </div>
-
 {% endblock %}

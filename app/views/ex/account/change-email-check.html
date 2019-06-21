@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "The code has expired" %}
+{% set title = "Change your email address" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -14,7 +14,7 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "/ex/account/account-settings",
+       href: "/ex/account/settings",
        text: "Account settings",
        active: true
      },
@@ -43,22 +43,16 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      The code has expired
+      {{title}}
     </h1>
 
     <p class="govuk-body">
-      We can send another security code to your new email address, <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
+      We will send a verification code to <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
     </p>
 
-    <a href="/ex/account-change-email-sent" class="govuk-faux-button">
-      Send another code
+    <a href="change-email-sent" class="govuk-faux-button">
+      Continue
     </a>
-
-    <div class="prototype-link">
-      <a href="/ex/account-change-email-dummy" target="_blank">
-        Switch to email window
-      </a>
-    </div>
 
   </div>
 </div>

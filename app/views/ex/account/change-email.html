@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Mark for attention" %}
+{% set title = "Change your email address" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -15,7 +15,8 @@
    navigation: [
      {
        href: "/ex/account/settings",
-       text: "Account settings"
+       text: "Account settings",
+       active: true
      },
      {
        href: "#2",
@@ -26,17 +27,8 @@
 {% endblock %}
 
 {% block beforeContent %}
-
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
-
-  <!-- company switcher -->
-  {% include "includes/company-switcher.html" %}
-
-  <!-- navigation block -->
-  <div class="space--small">
-    {% include "includes/nav/nav-ex-manage.html" %}
-  </div>
 
   {{ govukBackLink({
     text: "Back",
@@ -65,21 +57,51 @@
     </div> -->
 
     <h1 class="govuk-heading-l">
-      Tell us if you want the security code marked for someone’s attention
+      {{title}}
     </h1>
 
     <div id="new-email-form" class="govuk-form-group">
       <label class="govuk-label" for="email">
-        Enter a name and, or department (optional)
+        Your new email address
       </label>
-      <input class="govuk-input govuk-input--width-30" id="add-fao" name="add-fao" type="add-fao" aria-describedby="add-fao" autocomplete="add-fao" spellcheck="false">
+      <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
     </div>
 
-    <a href="send-code-fao" class="govuk-faux-button">
+    <div id="new-email-form" class="govuk-form-group">
+      <label class="govuk-label" for="email">
+        Confirm your new email address
+      </label>
+      <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+    </div>
+
+    <!-- <p class="govuk-body">
+      We will send a confirmation code to this address.
+    </p> -->
+
+    <a href="change-email-check" class="govuk-faux-button">
       Continue
     </a>
 
+    <!-- <input onclick="$('#incorrectLogin').hide()" type="submit" value="Continue" class="govuk-button button-start" role="button"/> -->
+
   </div>
 </div>
+
+<script>
+  // the following code overrides the default link click behaviour and adds the user id
+  document.getElementById('password_reset_link').onclick=function(e){
+    e.preventDefault();
+    var user_id=document.getElementById('user-id').value
+    window.location='/v12/reset_password/password_reset?user_id='+user_id; //redirect to password reset screen
+  }
+
+  {% if incorrectLogin == "1" %}
+    document.getElementById("email-error").className = "govuk-error-message"
+    document.getElementById("new-email-form").className = "govuk-form-group--error"
+  {% endif %}
+
+</script>
+
+
 
 {% endblock %}

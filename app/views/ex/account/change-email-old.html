@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Too many attempts" %}
+{% set title = "The code has expired" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -14,7 +14,7 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "/ex/account/account-settings",
+       href: "/ex/account/settings",
        text: "Account settings",
        active: true
      },
@@ -43,20 +43,22 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      Try again later
+      The code has expired
     </h1>
 
     <p class="govuk-body">
-      You have tried to enter a code too many times.
+      We can send another security code to your new email address, <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
     </p>
 
-    <p class="govuk-body">
-      To change your email address please try again in 24 hours.
-    </p>
-
-    <a href="/ex/licences" class="govuk-faux-button">
-      View licences
+    <a href="/ex/account-change-email-sent" class="govuk-faux-button">
+      Send another code
     </a>
+
+    <div class="prototype-link">
+      <a href="/ex/account-change-email-dummy" target="_blank">
+        Switch to email window
+      </a>
+    </div>
 
   </div>
 </div>
