@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Your password is changed" %}
+{% set title = "Account permissions are updated" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -54,9 +54,16 @@
       {{title}}
     </h1>
 
-    <a href="/ex/licences" class="govuk-faux-button">
-      View licences
-    </a>
+    <p class="govuk-body">
+      <span class="govuk-!-font-weight-bold">osian.davies@environment-agency.gov.uk</span> now has:
+    </p>
+
+    <p class="govuk-body">
+      Environment Officers Permissions
+      <span class="govuk-hint">
+        Can see licences and send hands-off flow notifications
+      </span>
+    </p>
 
   </div>
 </div>
