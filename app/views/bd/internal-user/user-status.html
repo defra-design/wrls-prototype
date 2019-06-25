@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% set title = "Internal user" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row space--medium">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">Internal</span> <!-- internal / external -->
+    <h1 class="govuk-heading-m space--none">
+      debbie.smith@environment-agency.gov.uk
+    </h1>
+    <div class="heading-small">
+      Last signed in 11 Jan 2019, 14:31
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- entity block -->
+    <div class="entity"></div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- permission options -->
+    {% from "radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        idPrefix: "roles",
+        name: "roles",
+        fieldset: {
+          legend: {
+            text: "Permissions",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "environment-officer",
+            checked: "checked",
+            text: "Environment Officer",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "View licences and Send Hands-off flow notifications."
+            }
+          },
+          {
+            value: "billing-data",
+            text: "Billing and data",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "View licences, manage returns and send return notices."
+            }
+          },
+          {
+            value: "national-permitting-support",
+            text: "National Permitting Support",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "View licences and manage renewals."
+            }
+          },
+          {
+            value: "super-user",
+            text: "Digital team",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Use all features."
+            }
+          }
+        ]
+      }) }}
+
+      <a href="permissions-updated" class="govuk-faux-button">
+        Update
+      </a>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- entity block -->
+    <div class="entity"></div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <a href="delete-account" class="govuk-link">
+      Delete this user account
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}
