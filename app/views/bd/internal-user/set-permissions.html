@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Internal user" %}
+{% set title = "Set permissions" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -34,36 +34,17 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
-  <!--
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
-    -->
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row space--medium">
-  <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-l">Internal</span> <!-- internal / external -->
-    <h1 class="govuk-heading-m space--none">
-      debbie.smith@environment-agency.gov.uk
-    </h1>
-    <div class="heading-small">
-      Account created 27 June 2019, 11:42am
-    </div>
-  </div>
-</div>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <!-- entity block -->
-    <div class="entity"></div>
-  </div>
-</div>
-
-
-<div class="govuk-grid-row space--big">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- permission options -->
@@ -83,7 +64,6 @@
           {
             value: "environment-officer",
             text: "Environment Officer",
-            checked: "checked",
             label: {
               classes: "govuk-label--s"
             },
@@ -194,26 +174,9 @@
       </div>
 
 
-      <a href="permissions-updated" class="govuk-faux-button">
+      <a href="create-account-done" class="govuk-faux-button">
         Continue
       </a>
-
-  </div>
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <!-- entity block -->
-    <div class="entity"></div>
-  </div>
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds space--big">
-
-    <a href="delete-account" class="govuk-link">
-      Delete this user account
-    </a>
 
   </div>
 </div>

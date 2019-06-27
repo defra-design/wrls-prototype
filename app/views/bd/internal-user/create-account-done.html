@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Delete user account" %}
+{% set title = "New account created" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -33,13 +33,13 @@
   <!-- navigation block -->
   <div class="space--small">
     <!-- navigation block -->
-    {% include "includes/nav/nav-bd-manage.html" %}
+    {% include "includes/nav/nav-bd-view.html" %}
   </div>
 
-  {{ govukBackLink({
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
@@ -54,19 +54,13 @@
       {{title}}
     </h1>
 
-    <div class="govuk-checkboxes space--medium">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns">
-        <label class="govuk-label govuk-checkboxes__label" for="returns-agent">
-          Yes I want to delete the account for <span class="govuk-!-font-weight-bold">debbie.smith@environment-agency.gov.uk</span>
-        </label>
-      </div>
-    </div>
+    <p class="govuk-body">
+      We have emailed the new user instructions to complete their account set up.
+    </p>
 
-    <a href="delete-account-done" class="govuk-faux-button">
-      Confirm
-    </a>
-
+    <p class="govuk-body">
+      <a href="user-status">View the user page</a> for <span class="govuk-!-font-weight-bold">debbie.smith@environment-agency.gov.uk</span>.
+    </p>
 
   </div>
 </div>
