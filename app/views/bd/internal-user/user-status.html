@@ -169,9 +169,12 @@
           <div class="govuk-radios govuk-radios--conditional" data-module="radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="how-contacted-conditional-1" name="how-contacted" type="radio" value="email" data-aria-controls="digitise-conditional">
-              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-1">
+              <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold" for="how-contacted-conditional-1">
                 Digitise!
               </label>
+              <span id="event-name-hint" class="govuk-hint space--left__15">
+                View licences, edit licence information.
+              </span>
             </div>
 
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="digitise-conditional">
@@ -180,9 +183,12 @@
                 <div class="govuk-checkboxes">
                   <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="approver" name="approver" type="checkbox" value="approver">
-                    <label class="govuk-label govuk-checkboxes__label" for="approver">
+                    <label class="govuk-label govuk-checkboxes__label govuk-!-font-weight-bold" for="approver">
                       Approver
                     </label>
+                    <span id="event-name-hint" class="govuk-hint space--left__15">
+                      View licences, edit licence information, approve changes.
+                    </span>
                   </div>
                 </div>
 
