@@ -71,29 +71,203 @@
     </form>
 
     <h2 class="govuk-heading-m">
-      Users
+      Internal users
     </h2>
 
-    <ul class="govuk-list space--big">
-      <li>
-        <a class="govuk-link" href="internal-user/user-status">debbie.smith@environment-agency.gov.uk</a>
-      </li>
-      <li>
-        <a class="govuk-link" href="user-status">dave.smith@gmail.com</a>
-      </li>
-      <li>
-        <a class="govuk-link" href="user-status">cecile.smith@gmail.com</a>
-      </li>
-      <li>
-        <a class="govuk-link" href="user-status">d.watersmith@live.com</a>
-      </li>
-      <li>
-        <a class="govuk-link" href="user-status">nigel.wahlberg-smith@gmail.co.uk</a>
-      </li>
-      <li>
-        <a class="govuk-link" href="user-status">felicitysmith@riversmith.org.uk</a>
-      </li>
-    </ul>
+    <!-- table with two columns -->
+    <div class="table space--big">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--60">
+          User email
+          <!-- licence name if it exists, otherwise licence number -->
+        </div>
+        <div class="table__cell bold-small">
+          Role
+        </div>
+      </div>
+
+      <!-- table row -->
+      <a href="internal-user/user-status" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            User email
+          </h3>
+          <span class="table__link">
+            debbie.smith@environment-agency.gov.uk
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Role
+          </h3>
+          <p class="table__row--text">
+            National Permitting Service
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="internal-user/user-status" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <h3 class="table__context">
+            User email
+          </h3>
+          <span class="table__link">
+            debbie.smith1@environment-agency.gov.uk
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Role
+          </h3>
+          <p class="table__row--text">
+            Billing and Data
+          </p>
+        </div>
+      </a>
+
+    </div>
+
+    <h2 class="govuk-heading-m">
+      External users
+    </h2>
+
+    <!-- table with two columns -->
+    <div class="table space--big">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--60">
+          User email
+          <!-- licence name if it exists, otherwise licence number -->
+        </div>
+        <div class="table__cell bold-small">
+          Licences
+        </div>
+      </div>
+
+      <!-- table row -->
+      <a href="user-status" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            User email
+          </h3>
+          <span class="table__link">
+            dave.smith@gmail.com
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licences
+          </h3>
+          <p class="table__row--text">
+            13 licences
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="internal-user/user-status" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <h3 class="table__context">
+            User email
+          </h3>
+          <span class="table__link">
+            cecile.smith@gmail.com
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licences
+          </h3>
+          <p class="table__row--text">
+            3 licences
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="internal-user/user-status" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 3
+          </h2>
+          <h3 class="table__context">
+            User email
+          </h3>
+          <span class="table__link">
+            d.watersmith@live.com
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licences
+          </h3>
+          <p class="table__row--text">
+            1 licence
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="internal-user/user-status" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 4
+          </h2>
+          <h3 class="table__context">
+            User email
+          </h3>
+          <span class="table__link">
+            nigel.wahlberg-smith@gmail.co.uk
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licences
+          </h3>
+          <p class="table__row--text">
+            1 licence
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="internal-user/user-status" class="table__row space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 5
+          </h2>
+          <h3 class="table__context">
+            User email
+          </h3>
+          <span class="table__link">
+            felicitysmith@riversmith.org.uk
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licences
+          </h3>
+          <p class="table__row--text">
+            7 licences
+          </p>
+        </div>
+      </a>
+
+    </div>
 
     <h2 class="govuk-heading-m">
       Licences
