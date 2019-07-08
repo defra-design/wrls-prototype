@@ -67,151 +67,156 @@
   <div class="govuk-grid-column-two-thirds">
 
     <!-- permission options -->
+
     {% from "radios/macro.njk" import govukRadios %}
 
-      {{ govukRadios({
-        idPrefix: "roles",
-        name: "roles",
-        fieldset: {
-          legend: {
-            text: "Set permissions",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
+    {% set digitiseHtml %}
+
+      {% set approverHtml %}
+
+        {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+          {{ govukCheckboxes({
+            idPrefix: "approver",
+            name: "approver-check",
+            items: [
+              {
+                value: "approver",
+                text: "Approver",
+                label: {
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  text: "View licences, edit licence information, approve changes."
+                }
+              }
+            ]
+          }) }}
+
+      {% endset -%}
+
+      {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+      {{ govukCheckboxes({
+        idPrefix: "digitiser",
+        name: "digitiser",
+
         items: [
+
           {
-            value: "environment-officer",
-            text: "Environment Officer",
-            checked: "checked",
+            value: "digitiser",
+            text: "Digitiser",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "View licences, send hands-off flow notifications."
-            }
-          },
-          {
-            value: "billing-data",
-            text: "Integrated Environmental Planning",
-            label: {
-              classes: "govuk-label--s"
+              text: "View licences, edit licence information."
             },
-            hint: {
-              text: "View licences, communicate with customers."
-            }
-          },
-          {
-            value: "permitting-service",
-            text: "National Permitting Service",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "View licences, manage renewals."
-            }
-          },
-          {
-            value: "permitting-support",
-            text: "Permitting and Support Centre",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "View licences, support licence holders."
-            }
-          },
-          {
-            value: "waste-industry",
-            text: "Waste and Industry Regulatory Service",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "View licences, manage returns, support."
-            }
-          },
-          {
-            value: "data-billing",
-            text: "Water Resources Data and Billing",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "View licences, manage returns, send return notices."
-            }
-          },
-          {
-            value: "super-user",
-            text: "Water Resources Digital Delivery team",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Use all features."
+            conditional: {
+              html: approverHtml
             }
           }
         ]
       }) }}
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <!-- entity block -->
-          <div class="entity"></div>
-        </div>
-      </div>
+    {% endset -%}
 
-      <div class="govuk-grid-row space--small">
-        <div class="govuk-grid-column-two-thirds">
+    {{ govukRadios({
+      idPrefix: "permissions",
+      name: "what-permissions",
+      fieldset: {
+        legend: {
+          text: "Set permissions",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "environment-officer",
+          text: "Environment Officer",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences, send hands-off flow notifications."
+          },
+          checked: "checked"
+        },
+        {
+          value: "integrated-environmental-planning",
+          text: "Integrated Environmental Planning",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences, communicate with customers."
+          }
+        },
+        {
+          value: "national-permitting-service",
+          text: "National Permitting Service",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences, manage renewals."
+          },
+          conditional: {
+            html: digitiseHtml
+          }
+        },
+        {
+          value: "permitting-support",
+          text: "Permitting and Support Centre",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences, support licence holders."
+          }
+        },
+        {
+          value: "waste-industry-regulatory-service",
+          text: "Waste and Industry Regulatory Service",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences, manage returns, support."
+          }
+        },
+        {
+          value: "billing-data",
+          text: "Water Resources Billing and Data",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences, manage returns, send return notices."
+          }
+        },
+        {
+          value: "water-resources-digital-delivery-team",
+          text: "Water Resources Digital Delivery Team",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences."
+          }
+        }
+      ]
+    }) }}
 
-          <h2 class="govuk-heading-l space--none">
-            Additional roles
-          </h2>
-        </div>
-      </div>
-
-      <!-- digitise options -->
-
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
-
-          <div class="govuk-radios govuk-radios--conditional" data-module="radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="how-contacted-conditional-1" name="how-contacted" type="radio" value="email" data-aria-controls="digitise-conditional">
-              <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold" for="how-contacted-conditional-1">
-                Digitise!
-              </label>
-              <span id="event-name-hint" class="govuk-hint space--left__15">
-                View licences, edit licence information.
-              </span>
-            </div>
-
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="digitise-conditional">
-              <div class="govuk-form-group">
-
-                <div class="govuk-checkboxes">
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="approver" name="approver" type="checkbox" value="approver">
-                    <label class="govuk-label govuk-checkboxes__label govuk-!-font-weight-bold" for="approver">
-                      Approver
-                    </label>
-                    <span id="event-name-hint" class="govuk-hint space--left__15">
-                      View licences, edit licence information, approve changes.
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </fieldset>
-      </div>
 
 
-      <a href="permissions-updated" class="govuk-faux-button">
-        Continue
-      </a>
+
+
+
+    <a href="permissions-updated" class="govuk-faux-button">
+      Continue
+    </a>
 
   </div>
 </div>
