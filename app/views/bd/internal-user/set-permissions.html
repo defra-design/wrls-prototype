@@ -48,58 +48,8 @@
   <div class="govuk-grid-column-two-thirds">
 
     <!-- permission options -->
+
     {% from "radios/macro.njk" import govukRadios %}
-
-    {% set digitiseHtml %}
-
-      {% set approverHtml %}
-
-        {% from "checkboxes/macro.njk" import govukCheckboxes %}
-
-          {{ govukCheckboxes({
-            idPrefix: "approver",
-            name: "approver-check",
-            items: [
-              {
-                value: "approver",
-                text: "Approver",
-                label: {
-                  classes: "govuk-label--s"
-                },
-                hint: {
-                  text: "View licences, edit licence information, approve changes."
-                }
-              }
-            ]
-          }) }}
-
-      {% endset -%}
-
-      {% from "checkboxes/macro.njk" import govukCheckboxes %}
-
-      {{ govukCheckboxes({
-        idPrefix: "digitiser",
-        name: "digitiser",
-
-        items: [
-
-          {
-            value: "digitiser",
-            text: "Digitiser",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "View licences, edit licence information."
-            },
-            conditional: {
-              html: approverHtml
-            }
-          }
-        ]
-      }) }}
-
-    {% endset -%}
 
     {{ govukRadios({
       idPrefix: "permissions",
@@ -113,36 +63,53 @@
       },
       items: [
         {
+          value: "basic-access",
+          text: "Basic access",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences and returns."
+          }
+        },
+        {
+          value: "billing-data",
+          text: "Billing and Data",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Send returns communications, monitor statistics and edit data."
+          }
+        },
+        {
           value: "environment-officer",
           text: "Environment Officer",
           label: {
             classes: "govuk-label--s"
           },
           hint: {
-            text: "View licences, send hands-off flow notifications."
+            text: "Send hands-off flow notifications."
           }
         },
         {
-          value: "integrated-environmental-planning",
-          text: "Integrated Environmental Planning",
+          value: "national-permitting-service-digitiser",
+          text: "National Permitting Service and Digitise! editor",
           label: {
             classes: "govuk-label--s"
           },
           hint: {
-            text: "View licences, communicate with customers."
+            text: "Send renewals and digitise licence information."
           }
         },
         {
-          value: "national-permitting-service",
-          text: "National Permitting Service",
+          value: "national-permitting-service-approver",
+          text: "National Permitting Service and Digitise! approver",
           label: {
             classes: "govuk-label--s"
           },
           hint: {
-            text: "View licences, manage renewals."
-          },
-          conditional: {
-            html: digitiseHtml
+            text: "Send renewals, digitise licence information and approve changes."
           }
         },
         {
@@ -152,7 +119,7 @@
             classes: "govuk-label--s"
           },
           hint: {
-            text: "View licences, support licence holders."
+            text: "Send renewals."
           }
         },
         {
@@ -162,27 +129,7 @@
             classes: "govuk-label--s"
           },
           hint: {
-            text: "View licences, manage returns, support."
-          }
-        },
-        {
-          value: "billing-data",
-          text: "Water Resources Billing and Data",
-          label: {
-            classes: "govuk-label--s"
-          },
-          hint: {
-            text: "View licences, manage returns, send return notices."
-          }
-        },
-        {
-          value: "water-resources-digital-delivery-team",
-          text: "Water Resources Digital Delivery Team",
-          label: {
-            classes: "govuk-label--s"
-          },
-          hint: {
-            text: "View licences."
+            text: "Process returns."
           }
         }
       ]
