@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% set title = "Water Abstraction Dashboard" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-ex-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Dashboard
+    </h1>
+
+  </div>
+</div>
+
+<hr class="hr--heavy">
+
+<div class="dashboard__wrapper">
+<div class="govuk-grid-row">
+ <div class="dashboard__tile">
+   <div class="dashboard__tile--top">
+     <div class="tile-header">Licences and returns</div>
+     <!-- <div class="tile__context">
+       <div class="tile__detail">
+         Detail<br>
+       </div>
+       &nbsp;
+     </div> -->
+   </div>
+   <div class="dashboard__links">
+     <!-- <a href="#"><span class="govuk-!-font-weight-bold">Bold link</span></a> -->
+     <a href="licences">View my licences</a>
+     <a href="returns-overview">View all returns</a>
+   </div>
+ </div>
+
+ <div class="dashboard__tile">
+   <div class="dashboard__tile--top">
+     <div class="tile-header">Add licences to my account</div>
+     <!-- <div class="tile__context">
+       <div class="tile__detail">
+         No new messages<br>
+       </div>
+       &nbsp;
+     </div> -->
+   </div>
+   <div class="dashboard__links">
+     <a href="manage/add-licences">Add or claim a licence</a>
+     <a href="manage/enter-code">Enter a security code</a>
+   </div>
+ </div>
+
+ <div class="dashboard__tile">
+   <div class="dashboard__tile--top">
+     <div class="tile-header">Access to licences</div>
+     <!-- <div class="tile__context">
+       <div class="tile__detail">Main detail</div>
+       <div>Descriptive text</div>
+     </div> -->
+   </div>
+   <div class="dashboard__links">
+     <a href="manage/give-access">Who has access to my licences?</a>
+     <a href="manage/give-access">Give or remove access to my licences</a>
+   </div>
+ </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <div class="dashboard__tile">
+      <div class="dashboard__tile--top">
+        <div class="tile-header">Account</div>
+        <!-- <div class="tile__context">
+          <div class="tile__detail">
+            No archived items<br>
+          </div>
+          <div>Descriptive text</div>
+        </div> -->
+      </div>
+      <div class="dashboard__links">
+        <a href="account/settings">Account settings</a>
+        <a href="sign-in">Sign out</a>
+        <!-- <a href="#">Link</a>
+        <a href="#">Link</a> -->
+      </div>
+    </div>
+  </div>
+ </div>
+
+{% endblock %}
