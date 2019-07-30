@@ -71,10 +71,22 @@
     display: table-cell;
     min-height: auto;
   }
+
+  color: $govuk-text-colour;
 }
 
 .table__cell p {
   margin-bottom: 0;
+}
+
+.table__cell:visited {
+  // color: $govuk-secondary-text-colour;
+  color: green;
+}
+
+.table__cell:visited p {
+  // color: $govuk-secondary-text-colour;
+  color: green;
 }
 
 .table__cell--no-wrap {
@@ -101,6 +113,7 @@
 }
 
 .table__link {
+  color: $govuk-link-colour;
   text-decoration: underline;
 }
 
