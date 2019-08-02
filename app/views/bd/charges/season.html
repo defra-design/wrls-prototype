@@ -1,0 +1,205 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge season" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <div class="space--small">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-width-container">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <!-- page heading -->
+          <span class="govuk-caption-l">Charge season</span>
+          <h1 class="govuk-heading-l">Licence number 01/0117</h1>
+
+        </div>
+      </div>
+
+      <!-- licence meta data -->
+      <!--
+      <div class="govuk-grid-row space--small">
+        <div class="govuk-grid-column-full">
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Return reference
+              </div>
+              <div class="meta-data__value">
+                65432123
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Region
+              </div>
+              <div class="meta-data__value">
+                Central West
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Site description
+              </div>
+              <div class="meta-data__value">
+                Great Ouse at Bedford College (Heat pump - cooling only)
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Purpose
+              </div>
+              <div class="meta-data__value">
+                Spray irrigation
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Return period
+              </div>
+              <div class="meta-data__value">
+                1 April 2018 to 31 March 2019
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Abstraction period
+              </div>
+              <div class="meta-data__value">
+                1 April 2018 to 31 September 2018
+              </div>
+            <div>
+          </section>
+        </div>
+      </div>
+
+
+      <div class="govuk-grid-row space--big">
+        <div class="govuk-grid-column-two-thirds">
+          <a href="../online-licence?wid={{ query.wid }}">View this licence</a>
+        </div>
+      </div>
+      -->
+
+      <form action="elements#factors" method="post" class="form" id="return-reference-error">
+
+        <!-- simple input field -->
+        <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
+          <label class="govuk-label" for="return-reference">
+            Enter a return reference
+          </label>
+          <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10" id="return-reference" name="returnReference" type="number">
+        </div> -->
+
+        {% from "radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            idPrefix: "charge-season",
+            name: "season",
+            fieldset: {
+              legend: {
+                text: "Change the season",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                value: "spring",
+                text: "Apple"
+              },
+              {
+                checked: "checked",
+                value: "summer",
+                text: "Summer"
+              },
+              {
+                value: "autumn",
+                text: "Autumn"
+              },
+              {
+                value: "winter",
+                text: "Winter"
+              }
+            ]
+          })
+        }}
+
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+    </div>
+
+    <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+    <script>
+      $(function() {
+        $('form[data-routing]').on('submit', function(ev) {
+          // FInd selected radio button
+          const url = $(this).find('input:checked').val();
+
+          if(url) {
+            ev.preventDefault();
+            window.location.href = url;
+            return false;
+          }
+        });
+      })
+    </script>
+
+  </main>
+</div>
+{% endblock %}
