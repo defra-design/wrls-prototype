@@ -43,78 +43,71 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  <main class="govuk-main-wrapper">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-
-        <h1 class="govuk-heading-l">
-          {{ title }}
-        </h1>
-
-      </div>
-    </div>
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-
-        <h2 class="govuk-heading-m">
-          Reports
-        </h2>
-
-        <ul class="govuk-list">
-          <li>
-            <a class="govuk-link" href="returns-overview">
-              Returns overview
-            </a>
-          </li>
-          <li>
-            <a class="govuk-link" href="void-returns">
-              Void returns
-            </a>
-          </li>
-        </ul>
-
-        <h2 class="govuk-heading-m">
-          Notifications
-        </h2>
-
-        <ul class="govuk-list">
-          <li>
-            <a class="govuk-link" href="send-return-reminders">
-              Send return invitations
-            </a>
-          </li>
-          <li>
-            <a class="govuk-link" href="send-return-reminders">
-              Send return reminders
-            </a>
-          </li>
-          <li>
-            <a class="govuk-link" href="send-return-reminders">
-              Send return final reminders
-            </a>
-          </li>
-        </ul>
-
-        <h2 class="govuk-heading-m">
-          Accounts
-        </h2>
-
-        <ul class="govuk-list">
-          <li>
-            <a class="govuk-link" href="internal-user/create-account">
-              Create an internal account
-            </a>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-
-  </main>
-
+  </div>
 </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">
+      View reports
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="returns-overview">
+          Returns cycles
+        </a>
+      </li>
+      <!-- <li>
+        <a class="govuk-link" href="void-returns">
+          Void returns
+        </a>
+      </li> -->
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Send return notices
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="send-return-reminders">
+          Invitations
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="send-return-reminders">
+          Paper forms
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="send-return-reminders">
+          Reminders
+        </a>
+      </li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Manage users
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="internal-user/create-account">
+          Create an internal account
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
 {% endblock %}
