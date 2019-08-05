@@ -31,7 +31,7 @@
   {% include "includes/feedback-banner.html" %}
   <div class="space--small">
     <!-- navigation block -->
-    {% include "includes/nav/nav-bd-manage.html" %}
+    {% include "includes/nav/nav-bd-view.html" %}
   </div>
   <!--
     {{ govukBackLink({
@@ -50,8 +50,8 @@
         <div class="govuk-grid-column-two-thirds">
 
           <!-- page heading -->
-          <span class="govuk-caption-l">Charge category</span>
-          <h1 class="govuk-heading-l">Licence number 01/0117</h1>
+          <span class="govuk-caption-l">Licence number 01/0117</span>
+          <h1 class="govuk-heading-l">Charge category</h1>
 
         </div>
       </div>
@@ -131,7 +131,7 @@
       </div>
       -->
 
-      <form action="elements" method="post" class="form" id="return-reference-error">
+      <form action="elements#category" method="post" class="form" id="return-reference-error">
 
         <!-- simple input field -->
         <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">

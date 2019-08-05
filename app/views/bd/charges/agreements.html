@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge agreements" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--medium">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "elements#agreement"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence number 01/0117</span>
+    <h1 class="govuk-heading-l">Charge agreements</h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-from-desktop">
+
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Canal and rivers trust
+        </dt>
+
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="confirm-remove">
+            Remove<span class="govuk-visually-hidden"> Canal and Rivers Trust agreement</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Other agreement
+        </dt>
+
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="confirm-remove">
+            Remove<span class="govuk-visually-hidden"> Other agreement</span>
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+
+    <div class="govuk-!-margin-bottom-9">
+      <a class="govuk-link" href="add-agreement">
+        Add another agreement
+      </a>
+    </div>
+
+    <a href="../licence-summary#charges" class="govuk-faux-button">
+      Save and close
+    </a>
+
+
+    <!-- <h2 class="govuk-heading-m">Now send your application</h2>
+
+    <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+    <form action="/form-handler" method="post" novalidate>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Accept and send
+      </button>
+
+    </form> -->
+
+  </div>
+</div>
+
+{% endblock %}
