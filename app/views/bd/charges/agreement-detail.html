@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% set title = "Canal and Rivers Trust agreement" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--medium">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "/bd/licence-summary#charges"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agreement period
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1 April 2019 to 31 March 2029
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> agreement period</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agreement signed date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 2019
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> agreement signed date</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agreement document
+          </dt>
+          <dd class="govuk-summary-list__value">
+            worthing-thetford-water-contract.png
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+            Remove agreement document
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agreement document
+          </dt>
+          <dd class="govuk-summary-list__value">
+            (none attached)
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+            Add agreement document
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agreement description
+          </dt>
+          <dd class="govuk-summary-list__value">
+            EA have agreed to limit the billable quantities for the first 18 months, afterwhich we will bill at the full abstraction.
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> agreement description</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agreement text
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> agreement text</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      <a href="agreements" class="govuk-faux-button">
+        Save and close
+      </a>
+
+    </div>
+  </div>
+
+  <a href="confirm-remove">
+    Remove this agreement
+  </a>
+
+
+
+{% endblock %}

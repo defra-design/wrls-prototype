@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
-{% set title = "Remove this agreement" %}
+{% set title = "Agreement added to the charge version" %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+   Send a security code - GOV.UK
 {% endblock %}
 
 {% block header %}
@@ -15,8 +15,7 @@
    navigation: [
      {
        href: "/ex/account/settings",
-       text: "Account settings",
-       active: true
+       text: "Account settings"
      },
      {
        href: "#2",
@@ -27,38 +26,35 @@
 {% endblock %}
 
 {% block beforeContent %}
+
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
 
   <!-- navigation block -->
   <div class="space--small">
-    <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
 
-  {{ govukBackLink({
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
 {% block content %}
-
-<div class="space--small"></div>
-
-<!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
     <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-    <h1 class="govuk-heading-l">Remove the Canal and Rivers Trust agreement</h1>
+    <h1 class="govuk-heading-l">Agreement added</h1>
 
-    <a href="agreements" class="govuk-faux-button">
-      Confirm
-    </a>
+    <p class="govuk-body">
+      Back to <a href="agreements">agreements</a>
+    </p>
 
   </div>
 </div>
+
 {% endblock %}

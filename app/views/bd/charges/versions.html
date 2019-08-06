@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge versions" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="space--medium">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "/bd/licence-summary#charges"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+
+
+
+
+    <!-- table with four columns -->
+    <div class="table space--big">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--25">
+          Version
+          <!-- licence name if it exists, otherwise licence number -->
+        </div>
+        <div class="table__cell bold-small">
+          Last changed
+        </div>
+      </div>
+
+      <!-- table row -->
+      <a href="/bd/licence-summary#charges" class="table__row table__row--selectable space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <span class="screen-reader-only">See current version 1.3</span>
+          <h3 class="table__context">
+            Version
+          </h3>
+          <span class="table__link">
+            Version 1.3
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Last changed
+          </h3>
+          <p class="table__row--text">
+            12 December 2019
+          </p>
+        </div>
+      </a>
+
+      <a href="/bd/licence-summary#charges" class="table__row table__row--selectable space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <span class="screen-reader-only">See current version 1.2</span>
+          <h3 class="table__context">
+            Version
+          </h3>
+          <span class="table__link">
+            Version 1.2
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Last changed
+          </h3>
+          <p class="table__row--text">
+            2 July 2019
+          </p>
+        </div>
+      </a>
+
+      <a href="/bd/licence-summary#charges" class="table__row table__row--selectable space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 3
+          </h2>
+          <span class="screen-reader-only">See current version 1.1</span>
+          <h3 class="table__context">
+            Version
+          </h3>
+          <span class="table__link">
+            Version 1.1
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Last changed
+          </h3>
+          <p class="table__row--text">
+            3 April 2018
+          </p>
+        </div>
+      </a>
+
+      <a href="/bd/licence-summary#charges" class="table__row table__row--selectable space--medium">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 4
+          </h2>
+          <span class="screen-reader-only">See current version 1.0</span>
+          <h3 class="table__context">
+            Version
+          </h3>
+          <span class="table__link">
+            Version 1.0
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Last changed
+          </h3>
+          <p class="table__row--text">
+            31 March 2010
+          </p>
+        </div>
+      </a>
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
