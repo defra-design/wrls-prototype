@@ -25,6 +25,10 @@
   border-top: none;
 }
 
+.data-row--divider {
+  border-bottom: 2px solid #bfc1c3;
+}
+
 /* Sub-list in data-table */
 .data-row__sub-list {
   width: 100%;
@@ -50,9 +54,8 @@
 
 .data-row__param {
   margin: 0;
-  font-size: 19px;
+  font-size: 16px;
   color: $govuk-secondary-text-colour;
-  font-weight: 400;
   @media screen and (min-width: 641px) {
     font-size: 19px;
     color: $govuk-text-colour;
