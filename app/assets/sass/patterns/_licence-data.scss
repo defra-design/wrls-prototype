@@ -15,7 +15,7 @@
 
 .data-row {
   padding-top: 0.5rem;
-  border-top: 1px solid govuk-colour("grey-2");
+  border-bottom: 1px solid govuk-colour("grey-2");
   @media screen and (min-width: 641px) {
     display: flex;
   }
@@ -23,10 +23,6 @@
 
 .data-row--top {
   border-top: none;
-}
-
-.data-row--divider {
-  border-bottom: 2px solid #bfc1c3;
 }
 
 /* Sub-list in data-table */
@@ -66,14 +62,25 @@
 }
 
 .data-row__value {
+  min-height: 25px;
   @media screen and (min-width: 641px) {
     flex: 3;
   }
   padding-bottom: 0.4rem;
 }
 
+.data-row--divider {
+  // border-bottom: 2px solid #bfc1c3; /* old grey */
+  border-bottom: 2px solid #0b0c0c; /* same as input border */
+  padding-bottom: 32px;
+}
+
 .data-row__end {
   border-bottom: 1px solid #bfc1c3;
+}
+
+.data-row__last {
+  border-bottom: none;
 }
 
 .no-top-border {

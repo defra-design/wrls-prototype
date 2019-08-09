@@ -131,7 +131,7 @@
       </div>
       -->
 
-      <form action="elements#category" method="post" class="form" id="return-reference-error">
+      <form action="element-acls#category" method="post" class="form" id="return-reference-error">
 
         <!-- simple input field -->
         <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
@@ -144,14 +144,10 @@
         {% from "radios/macro.njk" import govukRadios %}
 
           {{ govukRadios({
-            idPrefix: "returnStatus",
-            name: "returnStatus",
+            idPrefix: "charge-category",
+            name: "charge-category",
             fieldset: {
-              legend: {
-                text: "Change the charge category",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--m"
-              }
+
             },
             items: [
               {

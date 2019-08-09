@@ -23,6 +23,7 @@ $govuk-global-styles: true;
 @import "patterns/text";
 @import "patterns/expired-licences";
 @import "prototype";
+@import "patterns/summary-list-additions";
 
 // Scalable and Modular Architecture for Cascading Style Sheets
 @import "layout.scss";

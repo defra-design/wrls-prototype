@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge season" %}
+{% set title = "Charge category" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -51,7 +51,7 @@
 
           <!-- page heading -->
           <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-          <h1 class="govuk-heading-l">Charge season</h1>
+          <h1 class="govuk-heading-l">Charge category</h1>
 
         </div>
       </div>
@@ -131,7 +131,7 @@
       </div>
       -->
 
-      <form action="element-acls#factors" method="post" class="form" id="return-reference-error">
+      <form action="element-sroc#category" method="post" class="form" id="return-reference-error">
 
         <!-- simple input field -->
         <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
@@ -144,24 +144,31 @@
         {% from "radios/macro.njk" import govukRadios %}
 
           {{ govukRadios({
-            idPrefix: "charge-season",
-            name: "season",
+            idPrefix: "charge-category",
+            name: "charge-category",
             fieldset: {
 
             },
             items: [
               {
-                value: "spring",
-                text: "Spring"
+                value: "category-1",
+                text: "Apple"
               },
               {
-                checked: "checked",
-                value: "summer",
-                text: "Summer"
+                value: "category-4",
+                text: "Mango"
               },
               {
-                value: "annual",
-                text: "All year"
+                value: "category-2",
+                text: "Orange"
+              },
+              {
+                value: "category-3",
+                text: "Pear"
+              },
+              {
+                value: "category-5",
+                text: "Pitaya"
               }
             ]
           })
