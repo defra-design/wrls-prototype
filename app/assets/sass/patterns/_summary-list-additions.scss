@@ -5,7 +5,22 @@
   font-weight: 400;
 }
 
+.govuk-summary-list__item--last {
+  border: none;
+}
+
+.govuk-summary-list__divider {
+  border-bottom: 2px solid #0b0c0c;
+  padding-bottom: 32px;
+}
+
+.summary__divider {
+  border-bottom: 2px solid #0b0c0c;
+  flex: 1;
+  width: 100%;
+}
 
 .govuk-checkboxes--inline {
   margin-top: 24px;
+  // margin-bottom: 24px;
 }

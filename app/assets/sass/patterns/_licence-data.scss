@@ -64,9 +64,15 @@
 .data-row__value {
   min-height: 25px;
   @media screen and (min-width: 641px) {
-    flex: 3;
+    flex: 2;
   }
   padding-bottom: 0.4rem;
+}
+
+.date-row__action {
+  @media screen and (min-width: 641px) {
+    flex: 0.5;
+  }
 }
 
 .data-row--divider {
