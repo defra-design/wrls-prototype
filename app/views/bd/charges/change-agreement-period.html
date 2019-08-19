@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add agreement description" %}
+{% set title = "Change agreement period" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -47,17 +47,12 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Agreement description</h1>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <form action="add-agreement-text" method="post" class="form" id="return-reference-error">
+      <form action="agreement-detail" method="post" class="form" id="return-reference-error">
 
-        <div class="govuk-form-group">
-          <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-        </div>
-
-        <button type="submit" class="govuk-button">
-          Continue
-        </button>
+        <!-- agreement dates -->
+        {% include "includes/charges/agreement-dates.html" %}
 
       </form>
 

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Remove this agreement" %}
+{% set title = "Delete user account" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -33,7 +33,7 @@
   <!-- navigation block -->
   <div class="space--small">
     <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
+    {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
   {{ govukBackLink({
@@ -50,14 +50,23 @@
 <!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
 
-    <!-- page heading -->
-    <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-    <h1 class="govuk-heading-l">Remove the Canal and Rivers Trust agreement</h1>
+    <div class="govuk-checkboxes space--medium">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns">
+        <label class="govuk-label govuk-checkboxes__label" for="returns-agent">
+          Yes I want to delete the account for <span class="govuk-!-font-weight-bold">debbie.smith@environment-agency.gov.uk</span>
+        </label>
+      </div>
+    </div>
 
-    <a href="element-alcs#agreement" class="govuk-faux-button">
+    <a href="delete-account-done" class="govuk-faux-button">
       Confirm
     </a>
+
 
   </div>
 </div>
