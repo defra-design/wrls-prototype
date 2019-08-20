@@ -52,7 +52,11 @@
 }
 
 .table__row--last .table__cell {
-  border-bottom: none;
+
+  @media (min-width: 768px) {
+    border-bottom: none;
+  }
+
 }
 
 .table__row--total {
@@ -71,7 +75,6 @@
     display: table-cell;
     min-height: auto;
   }
-
   color: $govuk-text-colour;
 }
 
