@@ -27,7 +27,7 @@
 
 {% block beforeContent %}
   <!-- phase banner -->
-  <div class="space--small">
+  <div class="govuk-!-margin-bottom-3">
     {% include "includes/feedback-banner.html" %}
   </div>
 
@@ -47,7 +47,7 @@
 
     <form action="process-return" method="post" class="form" id="return-reference-error">
       <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
-        <label class="govuk-label space--small" for="return-reference">
+        <label class="govuk-label govuk-!-margin-bottom-3" for="return-reference">
           Select the licence holder
         </label>
         <div class="govuk-form-group">

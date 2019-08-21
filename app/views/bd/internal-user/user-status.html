@@ -30,7 +30,7 @@
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
   <!-- navigation block -->
-  <div class="space--small">
+  <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
@@ -43,10 +43,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row space--medium">
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Internal</span> <!-- internal / external -->
-    <h1 class="govuk-heading-m space--none">
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">
       debbie.smith@environment-agency.gov.uk
     </h1>
     <div class="heading-small">
@@ -63,7 +63,7 @@
 </div>
 
 
-<div class="govuk-grid-row space--big">
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-two-thirds">
 
     {% from "radios/macro.njk" import govukRadios %}
@@ -178,7 +178,7 @@
 </div>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds space--big">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
 
     <a href="delete-account" class="govuk-link">
       Delete this user account

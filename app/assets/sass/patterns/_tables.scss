@@ -52,11 +52,14 @@
 }
 
 .table__row--last .table__cell {
-
   @media (min-width: 768px) {
     border-bottom: none;
   }
+}
 
+.govuk-summary-list__row--last dt,
+.govuk-summary-list__row--last dd {
+  border-bottom: none;
 }
 
 .table__row--total {
