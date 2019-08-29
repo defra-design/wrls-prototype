@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 
+<!-- post-relay-button passes data along -->
+{% from "includes/macros/post-relay-button.njk" import postRelayButton, postRelayFields %}
+
 {% set title = "Send a security code" %}
 
 {% block pageTitle %}
@@ -75,9 +78,14 @@
       The security code should arrive  within 2 to 3 days.
     </p>
 
-    <a href="code-sent" class="govuk-faux-button">
-      Confirm
-    </a>
+
+
+    <a class="govuk-button" href="/ex/manage/code-sent">Continue</a>
+    <!-- post-relay debug / show data -->
+    <!-- {{ body.moreDetail }} -->
+
+    <!-- post-relay-button passes data along -->
+    <!-- {{ postRelayButton('/ex/manage/code-sent', body)}} -->
 
   </div>
 </div>

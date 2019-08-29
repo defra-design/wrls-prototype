@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% set title = "Return submitted - GOV.UK" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-dash-returns.html" %}
+  </div>
+
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "panel/macro.njk" import govukPanel %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Return submitted",
+        html: "
+        Licence number <strong>01/0117</strong><br>
+        Site description <strong>Great Ouse at Bedford College (Heat pump - cooling only)</strong><br>
+        Purpose <strong>Spray irrigation</strong><br>"
+      }) }}
+
+      <p class="govuk-body">
+        <a href="/dashboard/returns-overview" class="govuk-link">Submit another return</a>
+      </p>
+    </div>
+  </div>
+
+{% endblock %}

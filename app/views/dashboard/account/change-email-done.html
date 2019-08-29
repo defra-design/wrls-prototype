@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% set title = "Your email address is changed" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+<!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+
+    <!-- <p class="govuk-body-l">
+      Your account email address has been changed to <span class="govuk-!-font-weight-bold">fozzia.bruchan@gmail.com</span>.
+    </p> -->
+
+    <!-- <p class="govuk-body">
+      Next time you sign in you will need use this email address.
+    </p> -->
+
+    <a href="/dashboard/licences" class="govuk-faux-button">
+      View licences
+    </a>
+
+  </div>
+</div>
+{% endblock %}

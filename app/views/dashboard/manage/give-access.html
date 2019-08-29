@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% set title = "Give access to your licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-dash-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+
+    <p class="govuk-body">
+      You can let others view your licence information. You can also allow them to complete your returns on your behalf. You will be able to remove their access at any time.
+    </p>
+
+    {% from "warning-text/macro.njk" import govukWarningText %}
+
+    {{ govukWarningText({
+      text: "Warning You will still be legally responsible for your returns.",
+      iconFallbackText: "Warning"
+    }) }}
+
+
+  </div>
+</div>
+
+<a href="add-access" class="govuk-faux-button">
+  Give access
+</a>
+
+<!-- table with four columns -->
+<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small column--40">
+      Permission to access
+    </div>
+    <div class="table__cell bold-small column--15">
+      Date
+    </div>
+    <div class="table__cell bold-small column--25">
+      Submit returns
+    </div>
+    <div class="table__cell bold-small column-20">
+
+    </div>
+  </div>
+
+  <!-- table row -->
+  <div class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 1
+      </h2>
+      <h3 class="table__context">
+        Permission to access
+      </h3>
+        office@peatree.co.uk
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Date
+      </h3>
+      <p class="table__row--text">
+        29 April 2019
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Submit returns
+      </h3>
+      <p class="table__row--text">
+        Yes
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Action
+      </h3>
+      <p class="table__row--text">
+        <span class="table__link">
+          <a href="change-access">
+            Change
+          </a>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

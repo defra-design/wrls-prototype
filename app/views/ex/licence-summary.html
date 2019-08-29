@@ -84,7 +84,8 @@
             <div class="data-row__param">Licence name</div>
             <!-- licence data -->
             <div class="data-row__value">
-              Scrifford Pike
+              <!-- {{ body.licenceName | default('No name chosen') }} -->
+              {{ data.licenceName | default('No name chosen') }}
               <br><a href="licence-summary-rename">Rename this licence</a>
             </div>
           </div>
@@ -506,6 +507,5 @@
     </section>
 
   </div>
-
 
 {% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set title = "Uploading returns data" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-dash-returns.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Uploading returns data
+    </h1>
+
+    <script language="javascript" type="text/javascript">
+        window.setTimeout('location.replace("uploaded-returns-data-problems")',5000);
+    </script>
+
+    <p class="govuk-body-l">
+      Please wait. This might take up to a minute.
+    </p>
+
+  </div>
+</div>
+
+<div class="spinner"></div>
+
+{% endblock %}

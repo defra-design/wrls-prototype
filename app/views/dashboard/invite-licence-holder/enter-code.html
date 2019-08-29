@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change your email address" %}
+{% set title = "Enter your security code" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -14,9 +14,8 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "/ex/account/settings",
-       text: "Account settings",
-       active: true
+       href: "/dashboard/account/settings",
+       text: "Account settings"
      },
      {
        href: "#2",
@@ -27,13 +26,22 @@
 {% endblock %}
 
 {% block beforeContent %}
+
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
 
-  {{ govukBackLink({
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    {% include "includes/nav/nav-dash-manage.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
@@ -62,27 +70,20 @@
 
     <div id="new-email-form" class="govuk-form-group">
       <label class="govuk-label" for="email">
-        Your new email address
+        Your security code
       </label>
-      <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+      <!-- <span id="email-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>Enter an email address in the right format, for example, name@example.com
+      </span> -->
+      <span id="email-hint" class="govuk-hint">
+         We sent this by post to the registered address
+      </span>
+      <input class="govuk-input govuk-input--width-5" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
     </div>
 
-    <div id="new-email-form" class="govuk-form-group">
-      <label class="govuk-label" for="email">
-        Confirm your new email address
-      </label>
-      <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
-    </div>
-
-    <!-- <p class="govuk-body">
-      We will send a confirmation code to this address.
-    </p> -->
-
-    <a href="change-email-sent" class="govuk-faux-button">
+    <a href="found-licences" class="govuk-faux-button">
       Continue
     </a>
-
-    <!-- <input onclick="$('#incorrectLogin').hide()" type="submit" value="Continue" class="govuk-button button-start" role="button"/> -->
 
   </div>
 </div>

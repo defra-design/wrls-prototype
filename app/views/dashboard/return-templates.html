@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% set title = "Return templates" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-dash-returns.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Return templates for 2018 (CSV)
+    </h1>
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <p class="govuk-body">
+        Download and complete each of the below templates.<br>
+        The templates are specific to your account.
+      </p>
+
+      <p class="govuk-body">
+        <a href="">
+          Bidbod-Foods-Ltd-daily-returns.csv
+        </a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="">
+          Bidbod-Foods-Ltd-weekly-returns.csv
+        </a>
+      </p>
+
+    </div>
+
+    <p class="govuk-body">
+      When you have completed the return you can <a href="upload-completed-csv">upload your returns</a>.
+    </p>
+
+    <!-- <a href="someplace" class="govuk-faux-button">Continue</a> -->
+
+  </div>
+</div>
+
+{% endblock %}

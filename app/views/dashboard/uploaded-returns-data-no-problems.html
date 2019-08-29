@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm your returns data" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-dash-returns.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back(-2)"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Confirm your returns data
+    </h1>
+
+    <!-- <p class="govuk-body">
+      <a href="send-email">
+        Email me a copy of these problems
+      </a>
+    </p> -->
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">
+      Check your returns before sending
+    </h2>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          3 returns are ready to send
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <!-- table with four columns -->
+            <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+              <div class="table__row--head">                                              <!-- the table head -->
+                <div class="table__cell bold-small column--33">
+                  Return reference
+                </div>
+                <div class="table__cell bold-small column--33">
+                  Licence number
+                </div>
+                <div class="table__cell bold-small">
+                  Total abstracted volume
+                </div>
+              </div>
+
+              <!-- table row -->
+              <div class="table__row--selectable govuk-!-margin-bottom-6">
+                <div class="table__cell">
+                  <h2 class="screen-reader-only">
+                    Row 1
+                  </h2>
+                  <h3 class="table__context">
+                    Return reference
+                  </h3>
+                  <a href="confirm-return-details" class="table__link">
+                    <span class="screen-reader-only">See return details for </span>
+                    62514320
+                  </a>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Licence number
+                  </h3>
+                  <p class="table__row--text">
+                    03/28/60/0031
+                  </p>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Total abstracted volume
+                  </h3>
+                  <p class="table__row--text">
+                    11,287.04 cubic metres
+                  </p>
+                </div>
+              </div>
+
+              <!-- table row -->
+              <div class="table__row--selectable govuk-!-margin-bottom-6">
+                <div class="table__cell">
+                  <h2 class="screen-reader-only">
+                    Row 2
+                  </h2>
+                  <h3 class="table__context">
+                    Return reference
+                  </h3>
+                  <a href="confirm-return-details" class="table__link">
+                    <span class="screen-reader-only">See return details for </span>
+                    62528762
+                  </a>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Licence number
+                  </h3>
+                  <p class="table__row--text">
+                    03/28/60/0031
+                  </p>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Total abstracted volume
+                  </h3>
+                  <p class="table__row--text">
+                    26,176.52 cubic metres
+                  </p>
+                </div>
+              </div>
+
+              <!-- table row -->
+              <div class="table__row--selectable govuk-!-margin-bottom-6">
+                <div class="table__cell">
+                  <h2 class="screen-reader-only">
+                    Row 3
+                  </h2>
+                  <h3 class="table__context">
+                    Return reference
+                  </h3>
+                  <a href="confirm-return-details" class="table__link">
+                    <span class="screen-reader-only">See return details for </span>
+                    62266950
+                  </a>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Licence number
+                  </h3>
+                  <p class="table__row--text">
+                    03/27/19/126
+                  </p>
+                </div>
+                <div class="table__cell">
+                  <h3 class="table__context">
+                    Total abstracted volume
+                  </h3>
+                  <p class="table__row--text">
+                    15,002.27 cubic metres
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </details>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      You cannot change this data after it has been sent.
+    </p>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <a href="returns-data-confirmed" class="govuk-button">
+          Send 3 valid returns
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="prototype-link">
+  <a href="uploaded-returns-data-problems">
+    uploaded-returns-data-problems
+  </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% set title = "Create an account to manage your water abstraction licence online" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "account-settings"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Create an account to manage your water abstraction licence online</h1>
+
+      <p>
+        You must be a licence holder to create an account. Once registered licence holders can:
+      </p>
+
+      <ul class="list-bullet">
+        <li>view your abstraction licence information</li>
+        <li>submit abstraction returns</li>
+        <li>give access to a named contact to submit returns on their behalf</li>
+      </ul>
+
+      <p>
+        To protect your data we will post a security code to the licence holder at their registered address.
+      </p>
+
+      {% from "inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+      text: "The code should arrive within 2 to 3 working days."
+      }) }}
+
+      <p>
+        Impoundment licences are not yet part of this service.
+      </p>
+
+      <h2 class="heading-medium">Before you start</h2>
+
+      <p>You will need:</p>
+
+      <ul class="list list-bullet">
+        <li>an email address</li>
+        <li>your licence number</li>
+      </ul>
+
+      <!-- <a class="govuk-button govuk-button-start" href="/register" role="button">Create account</a> -->
+
+      <a href="licence-holders" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+        Create account
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

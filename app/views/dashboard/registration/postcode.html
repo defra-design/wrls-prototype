@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% set title = "Your postcode" %}
+
+{% block pageTitle %}
+   Your postcode - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  <div class="govuk-!-margin-bottom-3">
+    {% include "includes/feedback-banner.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Getting access to your licences
+    </h1>
+
+    <p class="govuk-body">
+      We will need to verify you as the licence holder.
+    </p>
+
+    <form action="process-return" method="post" class="form" id="return-reference-error">
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="return-reference">
+          Enter the postcode where your licences are registered
+        </label>
+        <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10 input-postcode" id="return-reference" name="returnReference" type="string">
+      </div>
+
+      <!-- <button type="submit" class="govuk-button">
+        Continue
+      </button> -->
+
+    </form>
+
+    <a href="licence-holder" class="govuk-faux-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+{% endblock %}

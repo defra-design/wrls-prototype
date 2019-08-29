@@ -80,16 +80,23 @@
 
         <!-- rename licence form -->
         <div class="" id="main-contact">
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="licence-name">
-              Licence name
-            </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="licence-name" name="licence-name" type="text" id="width-20">
-          </div>
 
-          <a class="govuk-button govuk-!-margin-bottom-3" href="licence-summary" role="button">
-            Save
-          </a>
+          <!-- post-relay -->
+          <form method="POST" action="licence-summary">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="licence-name">
+                Licence name
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="licence-name" name="licenceName" type="text" id="width-20">
+            </div>
+
+            <button type="submit" class="govuk-button govuk-!-margin-bottom-3" data-module="govuk-button">
+              Save
+            </button>
+
+          </form>
+
           <p class="form-cancel govuk-!-margin-bottom-3">
             <a href="#" onclick="history.go(-1)">
               Cancel

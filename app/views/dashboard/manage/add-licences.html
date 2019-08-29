@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% set title = "Which licences do you want to add?" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    {% include "includes/nav/nav-dash-manage.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Add or claim a licence
+      </h1>
+
+      {% from "warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "You should be the named licence holder to add or claim a licence.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <!-- <div class="govuk-inset-text">
+        You should be the named licence holder to claim licences.
+      </div> -->
+
+      <!-- post-relay -->
+      <form method="POST" action="/dashboard/manage/send-code">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="more-detail">
+            Licence number
+          </label>
+          <ul class="govuk-list govuk-list--bullet">
+            <span id="more-detail-hint" class="govuk-hint">
+              <li>you can enter more than one licence number.</li>
+              <li>separate each full licence number with a space, comma or new line.</li>
+            </span>
+          </ul>
+          <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+      <!-- <a href="send-code" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+        Continue
+      </a> -->
+
+    </div>
+  </div>
+
+{% endblock %}

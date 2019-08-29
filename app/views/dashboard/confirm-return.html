@@ -1,0 +1,404 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm your return" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-dash-returns.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Abstraction return for <span class="no-wrap">8/37/032/11/42*</span>
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+    <div class="govuk-grid-column-full">
+      <section class="meta-data__row">
+        <div class="meta-data__container">
+          <div class="meta-data__label">
+            Purpose
+          </div>
+          <div class="meta-data__value">
+            Spray irrigation
+          </div>
+        <div>
+      </section>
+      <section class="meta-data__row">
+        <div class="meta-data__container">
+          <div class="meta-data__label">
+            Site description
+          </div>
+          <div class="meta-data__value">
+            Great Ouse at Bedford College (Heat pump - cooling only)
+          </div>
+        <div>
+      </section>
+      <section class="meta-data__row">
+        <div class="meta-data__container">
+          <div class="meta-data__label">
+            Return period
+          </div>
+          <div class="meta-data__value">
+            3 April 2018 to 31 March 2019
+          </div>
+        <div>
+      </section>
+      <section class="meta-data__row">
+        <div class="meta-data__container">
+          <div class="meta-data__label">
+            Abstraction period
+          </div>
+          <div class="meta-data__value">
+            3 April 2018 to 31 September 2018
+          </div>
+        <div>
+      </section>
+    </div>
+  </div>
+
+  <!-- <div class="govuk-!-margin-bottom-3">
+    <dl class="metabox">
+      <dt class="meta--label">
+        Purpose
+      </dt>
+      <dd class="meta--description">
+        Spray irrigation
+      </dd>
+      <dt class="meta--label">
+        Site description
+      </dt>
+      <dd class="meta--description">
+        Great Ouse at Bedford College (Heat pump - cooling only)
+      </dd>
+      <dt class="meta--label">
+        Return period
+      </dt>
+      <dd class="meta--description">
+        3 April 2018 to 31 March 2019
+      </dd>
+      <dt class="meta--label">
+        Abstraction period
+      </dt>
+      <dd class="meta--description">
+        3 April 2018 to 31 September 2018
+      </dd>
+    </dl>
+  </div> -->
+
+  <!-- link to the associated licence -->
+  <div class="govuk-!-margin-bottom-8">
+    <a href="licence-summary">View this licence</a>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2  class="heading-large govuk-heading-m">
+        Check the information before submitting
+      </h2>
+
+      <!-- meter details -->
+      <div class="govuk-inset-text">
+
+        <div class="govuk-!-margin-bottom-3">
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Meter manufacturer
+                </div>
+                <div class="meta-data__value">
+                  Neptune
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Serial number
+                </div>
+                <div class="meta-data__value">
+                  PN001561-2530
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Start reading
+                </div>
+                <div class="meta-data__value">
+                  00020210
+                </div>
+              <div>
+            </section>
+          </div>
+
+          <p><!-- this paragraph is not shown when there is no ×10 display -->
+            This meter has a ×10 display
+          </p>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- table with three columns -->
+  <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+    <div class="table__row--head">                                              <!-- the table head -->
+      <div class="table__cell bold-small column-33">
+        Months
+      </div>
+      <div class="table__cell bold-small column-33 numbers">
+        Litres
+      </div>
+      <div class="table__cell bold-small column-33 numbers">
+        Cubic metres
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 1
+        </h2>
+        <h3 class="table__context">
+          <!-- "Day", "Week", "Month" -->
+          <!-- depending on return requirements -->
+          Month
+        </h3>
+        <!-- day, week, month -->
+        April
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- this plays back whatever was provided -->
+          Litres
+        </h3>
+        2,140,000
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- agency standard measurement -->
+          Cubic metres
+        </h3>
+        2,140
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 2
+        </h2>
+        <h3 class="table__context">
+          <!-- "Day", "Week", "Month" -->
+          <!-- depending on return requirements -->
+          Month
+        </h3>
+        <!-- day, week, month -->
+        May
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- this plays back whatever was provided -->
+          Litres
+        </h3>
+        1,020,500
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- agency standard measurement -->
+          Cubic metres
+        </h3>
+        1,020.5
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 3
+        </h2>
+        <h3 class="table__context">
+          <!-- "Day", "Week", "Month" -->
+          <!-- depending on return requirements -->
+          Month
+        </h3>
+        <!-- day, week, month -->
+        June
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- this plays back whatever was provided -->
+          Litres
+        </h3>
+        928,020
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- agency standard measurement -->
+          Cubic metres
+        </h3>
+        928.02
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 4
+        </h2>
+        <h3 class="table__context">
+          <!-- "Day", "Week", "Month" -->
+          <!-- depending on return requirements -->
+          Month
+        </h3>
+        <!-- day, week, month -->
+        July
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- this plays back whatever was provided -->
+          Litres
+        </h3>
+        2,001,000
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- agency standard measurement -->
+          Cubic metres
+        </h3>
+        2,001
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 5
+        </h2>
+        <h3 class="table__context">
+          <!-- "Day", "Week", "Month" -->
+          <!-- depending on return requirements -->
+          Month
+        </h3>
+        <!-- day, week, month -->
+        August
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- this plays back whatever was provided -->
+          Litres
+        </h3>
+        1,500,000
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- agency standard measurement -->
+          Cubic metres
+        </h3>
+        1,500
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 6
+        </h2>
+        <h3 class="table__context">
+          <!-- "Day", "Week", "Month" -->
+          <!-- depending on return requirements -->
+          Month
+        </h3>
+        <!-- day, week, month -->
+        September
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- this plays back whatever was provided -->
+          Litres
+        </h3>
+        1,240,000
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          <!-- agency standard measurement -->
+          Cubic metres
+        </h3>
+        1,240
+      </div>
+    </div>
+
+    <div class="table__row table__row--total govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Total row
+        </h2>
+        <h3 class="table__context">
+          <!-- only one of these -->
+          Total
+        </h3>
+        Total
+      </div>
+      <div class="table__cell numbers">
+        <h5 class="table__context">
+          Litres
+        </h5>
+        19,119,000
+      </div>
+      <div class="table__cell numbers">
+        <h5 class="table__context">
+          Cubic metres
+        </h5>
+        19,119
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}

@@ -296,11 +296,19 @@ app.get(/\.html?$/i, function (req, res) {
 })
 
 // Auto render any view that exists
+const handler =  function (req, res, next) {
+
+  // Output GET/POST params to view
+  res.locals.body = req.body;
+  res.locals.query = req.query;
+
+  utils.matchRoutes(req, res, next)
+}
 
 // App folder routes get priority
-app.get(/^([^.]+)$/, function (req, res, next) {
-  utils.matchRoutes(req, res, next)
-})
+app.get(/^([^.]+)$/, handler);
+// app.post(/^([^.]+)$/, handler);
+
 
 if (useDocumentation) {
   // Documentation  routes

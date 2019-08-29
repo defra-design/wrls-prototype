@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% set title = "Search for licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- radio company switcher -->
+    <div class="govuk-form-group">
+      <form action="licences" method="get">
+        <fieldset class="govuk-fieldset govuk-!-margin-bottom-6">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Choose a licence holder
+            </h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="company-1" name="company" type="radio" value="big-farm-ltd">
+              <label class="govuk-label govuk-radios__label" for="company-1">
+                Big Farm Ltd.
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="company-2" name="company" type="radio" value="bidbod-foods-ltd" checked="checked">
+              <label class="govuk-label govuk-radios__label" for="company-2">
+                Bidbod Foods Ltd.
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="company-3" name="company" type="radio" value="spring-onion-co">
+              <label class="govuk-label govuk-radios__label" for="company-3">
+                Spring Onion Co.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
