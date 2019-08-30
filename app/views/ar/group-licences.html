@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Download Abstraction Reform report" %}
+{% set title = "Connect licences" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -46,15 +46,41 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Abstraction reform report
+        {{title}}
       </h1>
 
-      <p class="govuk-body">
-        Download the latest Abstraction Reform data as a Comma Separated Values file (CSV).
-      </p>
+      <h2>
+        Add licences to the group
+      </h2>
 
-      <a href="" type="submit" class="govuk-button">
-        Download the CSV file
+      <section class="govuk-!-margin-bottom-9">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="width-20">
+            Licence 1
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="licence-1" name="licence-1" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="width-20">
+            Licence 2
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="licence-2" name="licence-2" type="text">
+        </div>
+
+        <a href="group-licences-added">
+          Add another
+        </a>
+
+        <!-- <button type="" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Add another
+        </button> -->
+
+      </section>
+
+      <a href="grouped-licences" type="submit" class="govuk-button">
+        Connect these licences
       </a>
 
     </div>

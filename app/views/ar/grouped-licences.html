@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Download Abstraction Reform report" %}
+{% set title = "Connect licences" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -42,21 +42,39 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        Abstraction reform report
-      </h1>
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
 
-      <p class="govuk-body">
-        Download the latest Abstraction Reform data as a Comma Separated Values file (CSV).
-      </p>
+    <p class="govuk-body">
+      The following licences are now connected
+    </p>
 
-      <a href="" type="submit" class="govuk-button">
-        Download the CSV file
-      </a>
-
+    <div class="govuk-inset-text">
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link" href="#">01/642/012/*G34</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">01/642/012/*G35</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">01/642/012/*G36</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">01/642/012/*G37</a>
+        </li>
+      </ul>
     </div>
+
+    <a href="group-licences">
+      Connect more licences
+    </a>
+
   </div>
+</div>
+
 {% endblock %}
