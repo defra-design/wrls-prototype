@@ -1,0 +1,487 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge version 1.2" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "/bd/licence-summary#charges"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+  </div>
+</div>
+
+  <div class="govuk-!-margin-bottom-6">
+    <strong class="table__status">
+      Current
+    </strong>
+  </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Last billed
+        </dt>
+        <dd class="govuk-summary-list__value">
+          April 4 2018
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Effective period
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 April 2018 to 31 March 2020
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> date of birth</span>
+          </a>
+        </dd> -->
+      </div>
+
+    </dl>
+
+    <!-- purpose -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">
+          Spray irrigation
+        </h2>
+
+        <h3 class="govuk-heading-m">
+          Elements
+        </h3>
+
+      </div>
+    </div>
+
+    <!-- elements -->
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Billable quantities
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Annual quantities
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Abstraction period
+        </dt>
+        <dd class="govuk-summary-list__value">
+          5 January to 31 March
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <dt class="govuk-summary-list__key">
+          Time limited period
+        </dt>
+        <dd class="govuk-summary-list__value">
+          5 January 2019 to 31 March 2019
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+    </dl>
+
+    <!-- agreements -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m">
+          Agreement
+        </h3>
+      </div>
+    </div>
+
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row ">
+        <dt class="govuk-summary-list__key">
+          Canal and Rivers Trust
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 April 2018 to 31 March 2029
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <dt class="govuk-summary-list__key">
+          Other agreement
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 April 2018 ongoing
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+    </dl>
+
+    <!-- factors -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m">
+          Factors
+        </h3>
+      </div>
+    </div>
+
+    <div class="govuk-!-margin-bottom-3">
+      <strong class="table__status">
+        Overridden
+      </strong>
+    </div>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Loss
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Medium
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Season
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Summer
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Source
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Supported
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <dt class="govuk-summary-list__key">
+          EUIC source
+        </dt>
+        <dd class="govuk-summary-list__value">
+          -
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+
+    </dl>
+
+    <!-- purpose -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">
+          Trickle irrigation
+        </h2>
+
+        <h3 class="govuk-heading-m">
+          Elements
+        </h3>
+
+      </div>
+    </div>
+
+    <!-- elements -->
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Billable quantities
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Annual quantities
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Abstraction period
+        </dt>
+        <dd class="govuk-summary-list__value">
+          5 January to 31 March
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <dt class="govuk-summary-list__key">
+          Time limited period
+        </dt>
+        <dd class="govuk-summary-list__value">
+          5 January 2019 to 31 March 2019
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+    </dl>
+
+    <!-- agreements -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m">
+          Agreement
+        </h3>
+      </div>
+    </div>
+
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row ">
+        <dt class="govuk-summary-list__key">
+          Canal and Rivers Trust
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 April 2018 to 31 March 2029
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <dt class="govuk-summary-list__key">
+          Other agreement
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 April 2018 ongoing
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+    </dl>
+
+    <!-- factors -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m">
+          Factors
+        </h3>
+      </div>
+    </div>
+
+    <div class="govuk-!-margin-bottom-3">
+      <strong class="table__status">
+        Overridden
+      </strong>
+    </div>
+
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Loss
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Medium
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Season
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Summer
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Source
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Supported
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <dt class="govuk-summary-list__key">
+          EUIC source
+        </dt>
+        <dd class="govuk-summary-list__value">
+          -
+        </dd>
+        <!-- <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd> -->
+      </div>
+
+
+    </dl>
+
+  </div>
+</div>
+
+{% endblock %}
