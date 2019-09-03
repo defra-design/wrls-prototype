@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge loss" %}
+{% set title = "Compensation (EIUC source)" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -48,54 +48,19 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Charge loss</h1>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
 
-  <form action="charge-version#factors" method="post" class="form" id="return-reference-error">
+  <form action="javascript:history.back()" method="post" class="form" id="return-reference-error">
 
-    <!-- simple input field -->
-    <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
+    <div class="govuk-form-group">
       <label class="govuk-label" for="return-reference">
-        Enter a return reference
+        What is the compensation factor?
       </label>
-      <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10" id="return-reference" name="returnReference" type="number">
-    </div> -->
-
-    {% from "radios/macro.njk" import govukRadios %}
-
-      {{ govukRadios({
-        idPrefix: "charge-loss",
-        name: "loss",
-        fieldset: {
-          legend: {
-            text: "Change the loss",
-            isPageHeading: false,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
-        items: [
-          {
-            value: "high",
-            text: "High"
-          },
-          {
-            checked: "checked",
-            value: "medium",
-            text: "Medium"
-          },
-          {
-            value: "low",
-            text: "Low"
-          },
-          {
-            value: "none",
-            text: "No loss"
-          }
-        ]
-      })
-    }}
+      <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10" id="EIUC-source" name="EIUC-source" type="text">
+    </div>
 
     <button type="submit" class="govuk-button">
       Continue

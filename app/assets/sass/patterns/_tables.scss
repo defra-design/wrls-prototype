@@ -238,6 +238,11 @@
   font-family: monospace;
 }
 
+.govuk-summary-list__value--none {
+  color: $govuk-secondary-text-colour;
+}
+
+
 // ========== ========== ========== ========== ==========
 // table column widths
 // ========== ========== ========== ========== ==========

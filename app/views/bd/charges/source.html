@@ -42,76 +42,69 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
-    <div class="govuk-width-container">
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-          <!-- page heading -->
-          <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-          <h1 class="govuk-heading-l">{{ title }}</h1>
-
-        </div>
-      </div>
-
-      <form action="element-alcs#factors" method="post" class="form" id="return-reference-error">
-
-        {% from "radios/macro.njk" import govukRadios %}
-
-          {{ govukRadios({
-            idPrefix: "charge-source",
-            name: "source",
-            fieldset: {
-            },
-            items: [
-              {
-                value: "supported",
-                text: "Supported (excluding Kielder)"
-              },
-              {
-                checked: "checked",
-                value: "unsuported",
-                text: "Unsupported"
-              },
-              {
-                value: "tidal",
-                text: "Tidal"
-              },
-              {
-                value: "Kielder",
-                text: "Kielder"
-              }
-            ]
-          })
-        }}
-
-        <button type="submit" class="govuk-button">
-          Continue
-        </button>
-
-      </form>
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
+  </div>
 
-    <script src="/public/javascripts/jquery-1.11.3.js"></script>
+  <form action="charge-version#factors" method="post" class="form" id="return-reference-error">
 
-    <script>
-      $(function() {
-        $('form[data-routing]').on('submit', function(ev) {
-          // FInd selected radio button
-          const url = $(this).find('input:checked').val();
+    {% from "radios/macro.njk" import govukRadios %}
 
-          if(url) {
-            ev.preventDefault();
-            window.location.href = url;
-            return false;
+      {{ govukRadios({
+        idPrefix: "charge-source",
+        name: "source",
+        fieldset: {
+        },
+        items: [
+          {
+            value: "supported",
+            text: "Supported (excluding Kielder)"
+          },
+          {
+            checked: "checked",
+            value: "unsuported",
+            text: "Unsupported"
+          },
+          {
+            value: "tidal",
+            text: "Tidal"
+          },
+          {
+            value: "Kielder",
+            text: "Kielder"
           }
-        });
+        ]
       })
-    </script>
+    }}
 
-  </main>
-</div>
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
 {% endblock %}
