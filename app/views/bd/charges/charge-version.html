@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge version 1.2" %}
+{% set title = "Charge version 3" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -69,30 +69,30 @@
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Last billed
+          Billed up to
         </dt>
         <dd class="govuk-summary-list__value">
-          April 4 2018
+          31 March 2019
         </dd>
-        <!-- <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
+        <dd class="govuk-summary-list__actions">
+          <!-- <a class="govuk-link" href="#">
             Change<span class="govuk-visually-hidden"> name</span>
-          </a>
-        </dd> -->
+          </a> -->
+        </dd>
       </div>
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Effective period
+          Effective from
         </dt>
         <dd class="govuk-summary-list__value">
-          1 April 2018 to 31 March 2020
+          1 April 2018
         </dd>
-        <!-- <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> date of birth</span>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="change-effective-period">
+            Change<span class="govuk-visually-hidden"> effective period</span>
           </a>
-        </dd> -->
+        </dd>
       </div>
 
     </dl>
@@ -103,44 +103,11 @@
         <h2 class="govuk-heading-l">
           Spray irrigation
         </h2>
-
-        <h3 class="govuk-heading-m">
-          Elements
-        </h3>
-
       </div>
     </div>
 
     <!-- elements -->
     <dl class="govuk-summary-list">
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Billable quantities
-        </dt>
-        <dd class="govuk-summary-list__value">
-          1,250,000 cubic metres per year
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="billable-quantity">
-            Change<span class="govuk-visually-hidden"> billable quantities</span>
-          </a>
-        </dd>
-      </div>
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Annual quantities
-        </dt>
-        <dd class="govuk-summary-list__value">
-          1,250,000 cubic metres per year
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <!-- <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> name</span>
-          </a> -->
-        </dd>
-      </div>
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -150,9 +117,37 @@
           5 January to 31 March
         </dd>
         <dd class="govuk-summary-list__actions">
-          <!-- <a class="govuk-link" href="#">
+          <a class="govuk-link" href="change-abstraction-period">
             Change<span class="govuk-visually-hidden"> name</span>
-          </a> -->
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Annual quantity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Billable quantity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="billable-quantity">
+            Change<span class="govuk-visually-hidden"> billable quantity</span>
+          </a>
         </dd>
       </div>
 
@@ -161,13 +156,13 @@
           Time limited period
         </dt>
         <dd class="govuk-summary-list__value">
-          5 January 2019 to 31 March 2019
+          5 January 2019 to 30 April 2019
         </dd>
-        <!-- <dd class="govuk-summary-list__actions">
+        <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> name</span>
+            Change<span class="govuk-visually-hidden"> time limited period</span>
           </a>
-        </dd> -->
+        </dd>
       </div>
 
     </dl>
@@ -181,37 +176,58 @@
       </div>
     </div>
 
-    <dl class="govuk-summary-list">
+    <section class="govuk-!-margin-bottom-9">
 
-      <div class="govuk-summary-list__row ">
-        <dt class="govuk-summary-list__key">
-          Canal and Rivers Trust
-        </dt>
-        <dd class="govuk-summary-list__value">
-          1 April 2018 to 31 March 2029
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="agreement-detail">
-            Edit<span class="govuk-visually-hidden"> agreement</span>
-          </a>
-        </dd>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-3">
+        <!-- two part agreement -->
+        <div class="govuk-summary-list__row ">
+          <dt class="govuk-summary-list__key">
+            Two-part tariff
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Effective from 1 April 2018
+            <br>Signed 11 February 2018
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="confirm-remove">
+              Remove<span class="govuk-visually-hidden"> agreement</span>
+            </a>
+            <br>
+            <a class="govuk-link" href="agreement-detail">
+              Change<span class="govuk-visually-hidden"> signed date</span>
+            </a>
+          </dd>
+        </div>
+
+        <!-- abatement agreement -->
+        <div class="govuk-summary-list__row">
+        <!-- <div class="govuk-summary-list__row govuk-summary-list__row--last"> -->
+          <dt class="govuk-summary-list__key">
+            Abatement (S126)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Effective from 1 April 2018
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="confirm-remove">
+              Remove<span class="govuk-visually-hidden"> agreement</span>
+            </a>
+            <br>
+            <a class="govuk-link" href="agreement-detail">
+              Change<span class="govuk-visually-hidden"> agreement</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <!-- add agreement -->
+      <div class="govuk-summary-list__row govuk-!-margin-bottom-9">
+        <a class="govuk-link" href="agreement-detail">
+          Add agreement
+        </a>
       </div>
 
-      <div class="govuk-summary-list__row govuk-summary-list__row--last">
-        <dt class="govuk-summary-list__key">
-          Other agreement
-        </dt>
-        <dd class="govuk-summary-list__value">
-          1 April 2018 ongoing
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="agreement-detail">
-            Edit<span class="govuk-visually-hidden"> agreement</span>
-          </a>
-        </dd>
-      </div>
-
-    </dl>
+    </section>
 
     <!-- factors -->
     <div class="govuk-grid-row">
@@ -235,7 +251,7 @@
           Loss
         </dt>
         <dd class="govuk-summary-list__value">
-          Medium
+          High
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="loss">
@@ -249,7 +265,7 @@
           Season
         </dt>
         <dd class="govuk-summary-list__value">
-          Summer
+          Winter
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="season">
@@ -263,7 +279,7 @@
           Source
         </dt>
         <dd class="govuk-summary-list__value">
-          Supported
+          Unsupported
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="source">
@@ -276,13 +292,13 @@
         <dt class="govuk-summary-list__key">
           Compensation (EIUC source)
         </dt>
-        <dd class="govuk-summary-list__value govuk-summary-list__value--none">
-          No compensation set
+        <dd class="govuk-summary-list__value no-value">
+          <!-- No compensation set -->
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="eiuc-source">
+          <!-- <a class="govuk-link" href="eiuc-source">
             Change<span class="govuk-visually-hidden"> compensation</span>
-          </a>
+          </a> -->
         </dd>
       </div>
 

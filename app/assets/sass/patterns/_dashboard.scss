@@ -1,7 +1,8 @@
 .hr--heavy {
   display: block;
   border: 0;
-  border-top: 5px solid #005ea5;
+  // border-top: 5px solid #005ea5;
+  border-top: 5px solid $govuk-text-colour;
   margin: 15px 0 30px;
   padding: 0;
 }

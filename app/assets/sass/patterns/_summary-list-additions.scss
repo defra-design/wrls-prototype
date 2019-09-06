@@ -24,3 +24,22 @@
   margin-top: 24px;
   // margin-bottom: 24px;
 }
+
+// makes summary list keys light on desktop to help improve readability
+.govuk-summary-list__key {
+  @include govuk-media-query($from: desktop) {
+    font-weight: 400;
+  }
+}
+
+.govuk-summary-list__row {
+  line-height: 1.8rem;
+}
+
+.govuk-summary-list__row--end dd, .govuk-summary-list__row--end dt {
+  border-bottom: 3px solid $govuk-text-colour;
+}
+
+// .govuk-summary-list__value {
+//   line-height: 2rem;
+// }
