@@ -1371,54 +1371,40 @@
       <div class="table govuk-!-margin-bottom-8">                               <!-- a table -->
 
         <div class="table__row--head">                                          <!-- the table head -->
-          <div class="table__cell bold-small">
-            Version
-          </div>
-          <div class="table__cell bold-small">
+          <div class="table__cell bold-small column--60">
             Effective from
           </div>
-          <div class="table__cell bold-small">
-            Effective to
-          </div>
-          <div class="table__cell bold-small">
-            Status
-          </div>
-          <div class="table__cell bold-small">
+          <div class="table__cell bold-small column--20">
             Billed
+          </div>
+          <div class="table__cell bold-small column--20">
+            Status
           </div>
         </div>
 
         <!-- table row -->
-        <a href="#" class="table__row table__row--selectable govuk-!-margin-bottom-6">
+        <a href="charges/charge-version-draft" class="table__row table__row--selectable govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h2 class="screen-reader-only">
               Row 1
             </h2>
-            <span class="screen-reader-only">See current version 1.3</span>
-            <h3 class="table__context">
-              Version
-            </h3>
-            <span class="table__link">
-              Version 1
-            </span>
-          </div>
-          <div class="table__cell">
             <h3 class="table__context">
               Effective from
             </h3>
-            <p class="table__row--text">
+            <span class="table__link">
               1 November 2019
-            </p>
+            </span>
           </div>
+
           <div class="table__cell">
             <h3 class="table__context">
-              Effective to
+              Billed
             </h3>
             <p class="table__row--text no-value">
-              <!-- 31 March 2020 -->
-              <!-- No end date -->
+              <!-- Not billed -->
             </p>
           </div>
+
           <div class="table__cell">
             <h3 class="table__context">
               Status
@@ -1431,14 +1417,6 @@
                 </strong>
               <!-- </div> -->
             </div>
-          </div>
-          <div class="table__cell">
-            <h3 class="table__context">
-              Billed
-            </h3>
-            <p class="table__row--text no-value">
-              <!-- Not billed -->
-            </p>
           </div>
         </a>
 

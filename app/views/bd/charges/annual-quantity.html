@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Compensation (EIUC source)" %}
+{% set title = "Annual quantity" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -42,7 +42,6 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -53,13 +52,13 @@
     </div>
   </div>
 
-  <form action="javascript:history.back()" method="post" class="form" id="return-reference-error">
+  <form action="javascript:history.back(2)" method="post" class="form" id="return-reference-error">
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="return-reference">
-        What is the compensation factor?
+        What is the annual quantity?
       </label>
-      <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10" id="EIUC-source" name="EIUC-source" type="text">
+      <input value="{{ body.billableQuantity }}" class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number">
     </div>
 
     <button type="submit" class="govuk-button">

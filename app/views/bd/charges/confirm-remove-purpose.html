@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Delete user account" %}
+{% set title = "Remove the Spray irrigation purpose?" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -33,7 +33,7 @@
   <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
-    {% include "includes/nav/nav-bd-manage.html" %}
+    {% include "includes/nav/nav-bd-view.html" %}
   </div>
 
   {{ govukBackLink({
@@ -50,23 +50,14 @@
 <!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">
-      {{title}}
-    </h1>
 
-    <div class="govuk-checkboxes govuk-!-margin-bottom-6">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns">
-        <label class="govuk-label govuk-checkboxes__label" for="returns-agent">
-          Yes I want to delete the account for <span class="govuk-!-font-weight-bold no-break">debbie.smith@environment-agency.gov.uk</span>
-        </label>
-      </div>
-    </div>
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    <a href="delete-account-done" class="govuk-faux-button">
-      Confirm
+    <a href="javascript:history.back(2)" class="govuk-faux-button">
+      Yes, remove this purpose
     </a>
-
 
   </div>
 </div>

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Chargable quantity" %}
+{% set title = "Billable quantity" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -56,7 +56,7 @@
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="return-reference">
-        What is the chargable quantity?
+        What is the billable quantity?
       </label>
       <input value="{{ body.billableQuantity }}" class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number">
     </div>

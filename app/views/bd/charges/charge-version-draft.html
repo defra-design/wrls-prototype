@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge version 3" %}
+{% set title = "From 1 November 2019" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -56,45 +56,37 @@
   </div>
 </div>
 
-  <div class="govuk-!-margin-bottom-6">
-    <strong class="table__status">
-      Current
-    </strong>
-  </div>
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Billed up to
         </dt>
         <dd class="govuk-summary-list__value">
-          31 March 2020
+          <!-- 31 March 2020 -->
+          Not yet billed
         </dd>
         <dd class="govuk-summary-list__actions">
-          <!-- <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> billed up to</span>
-          </a> -->
+
         </dd>
       </div>
-
-      <div class="govuk-summary-list__row">
+      <div class="govuk-summary-list__row govuk-summary-list__row--last">
         <dt class="govuk-summary-list__key">
-          Effective from
+          Status
         </dt>
         <dd class="govuk-summary-list__value">
-          1 April 2018
+          <strong class="table__status table__status--open">
+            Draft
+          </strong>
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="change-effective-period">
-            Change<span class="govuk-visually-hidden"> effective from</span>
+          <a class="govuk-link" href="confirm-make-current">
+            Make current
           </a>
         </dd>
       </div>
-
     </dl>
 
     <!-- purpose -->
@@ -103,8 +95,8 @@
         <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
           Spray irrigation
         </h2>
-        <p class="govuk-body">Standard spray irrigation clauses with an extension to the end of April</p>
-        <a href="remove-purpose">
+        <p class="govuk-body-l">Standard spray irrigation clauses with an extension to the end of April</p>
+        <a href="confirm-remove-purpose">
           Remove Purpose
         </a>
       </div>

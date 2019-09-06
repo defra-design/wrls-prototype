@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <form action="charge-version#factors" method="post" class="form" id="return-reference-error">
+  <form action="javascript:history.back(2)" method="post" class="form" id="return-reference-error">
 
     {% from "radios/macro.njk" import govukRadios %}
 
@@ -69,11 +69,11 @@
             text: "Summer"
           },
           {
-            checked: "checked",
             value: "winter",
             text: "Winter"
           },
           {
+            checked: "checked",
             value: "annual",
             text: "All year"
           }
