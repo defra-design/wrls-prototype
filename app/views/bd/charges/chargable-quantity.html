@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add agreement text" %}
+{% set title = "Chargable quantity" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -33,12 +33,12 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
-
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back()"
-  }) }}
-
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
 {% endblock %}
 
 {% block content %}
@@ -47,37 +47,25 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Agreement text</h1>
-
-      <form action="agreement-added" method="post" class="form" id="return-reference-error">
-
-        {{ govukTextarea({
-          name: "more-detail",
-          id: "more-detail",
-          label: {
-            text: "Agreement text"
-          }
-        }) }}
-
-        <!-- {{ govukTextarea({
-          name: "more-detail",
-          id: "more-detail",
-          label: {
-            text: "Agreement text"
-          },
-          hint: {
-            text: "Do not include personal or financial information, like your National Insurance number or credit card details."
-          }
-        }) }} -->
-
-        <button type="submit" class="govuk-button">
-          Continue
-        </button>
-
-      </form>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
+
+  <form action="javascript:history.back()" method="post" class="form" id="return-reference-error">
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="return-reference">
+        What is the chargable quantity?
+      </label>
+      <input value="{{ body.billableQuantity }}" class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number">
+    </div>
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
 
   <script src="/public/javascripts/jquery-1.11.3.js"></script>
 

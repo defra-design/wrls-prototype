@@ -38,7 +38,7 @@
   {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()",
-    href: "/bd/licence-summary#charges"
+    href: "/bd/licence-summary#charge"
   }) }}
 
 {% endblock %}
@@ -72,11 +72,11 @@
           Billed up to
         </dt>
         <dd class="govuk-summary-list__value">
-          31 March 2019
+          31 March 2020
         </dd>
         <dd class="govuk-summary-list__actions">
           <!-- <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> name</span>
+            Change<span class="govuk-visually-hidden"> billed up to</span>
           </a> -->
         </dd>
       </div>
@@ -90,7 +90,7 @@
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="change-effective-period">
-            Change<span class="govuk-visually-hidden"> effective period</span>
+            Change<span class="govuk-visually-hidden"> effective from</span>
           </a>
         </dd>
       </div>
@@ -98,11 +98,15 @@
     </dl>
 
     <!-- purpose -->
-    <div class="govuk-grid-row">
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
           Spray irrigation
         </h2>
+        <p class="govuk-body">Standard spray irrigation clauses with an extension to the end of April</p>
+        <a href="remove-purpose">
+          Remove Purpose
+        </a>
       </div>
     </div>
 
@@ -114,11 +118,11 @@
           Abstraction period
         </dt>
         <dd class="govuk-summary-list__value">
-          5 January to 31 March
+          1 January to 31 March
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="change-abstraction-period">
-            Change<span class="govuk-visually-hidden"> name</span>
+            Change<span class="govuk-visually-hidden"> abstraction period</span>
           </a>
         </dd>
       </div>
@@ -132,12 +136,12 @@
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> name</span>
+            Change<span class="govuk-visually-hidden"> annual quantity</span>
           </a>
         </dd>
       </div>
 
-      <div class="govuk-summary-list__row">
+      <div class="govuk-summary-list__row govuk-summary-list__row--end">
         <dt class="govuk-summary-list__key">
           Billable quantity
         </dt>
@@ -150,6 +154,50 @@
           </a>
         </dd>
       </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Abstraction period
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 April to 30 April
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="change-abstraction-period">
+            Change<span class="govuk-visually-hidden"> abstraction period</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Annual quantity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> annual quantity</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--end">
+        <dt class="govuk-summary-list__key">
+          Billable quantity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1,250,000 cubic metres per year
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="billable-quantity">
+            Change<span class="govuk-visually-hidden"> billable quantity</span>
+          </a>
+        </dd>
+      </div>
+
+
 
       <div class="govuk-summary-list__row govuk-summary-list__row--last">
         <dt class="govuk-summary-list__key">
@@ -182,19 +230,15 @@
         <!-- two part agreement -->
         <div class="govuk-summary-list__row ">
           <dt class="govuk-summary-list__key">
-            Two-part tariff
+            S127 - Two-part tariff
           </dt>
           <dd class="govuk-summary-list__value">
             Effective from 1 April 2018
             <br>Signed 11 February 2018
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="confirm-remove">
+            <a class="govuk-link" href="remove-agreement-date">
               Remove<span class="govuk-visually-hidden"> agreement</span>
-            </a>
-            <br>
-            <a class="govuk-link" href="agreement-detail">
-              Change<span class="govuk-visually-hidden"> signed date</span>
             </a>
           </dd>
         </div>
@@ -203,18 +247,15 @@
         <div class="govuk-summary-list__row">
         <!-- <div class="govuk-summary-list__row govuk-summary-list__row--last"> -->
           <dt class="govuk-summary-list__key">
-            Abatement (S126)
+            S126 - Abatement
           </dt>
           <dd class="govuk-summary-list__value">
             Effective from 1 April 2018
+            <br>Signed 11 February 2018
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="confirm-remove">
+            <a class="govuk-link" href="remove-agreement-date">
               Remove<span class="govuk-visually-hidden"> agreement</span>
-            </a>
-            <br>
-            <a class="govuk-link" href="agreement-detail">
-              Change<span class="govuk-visually-hidden"> agreement</span>
             </a>
           </dd>
         </div>
@@ -222,7 +263,7 @@
 
       <!-- add agreement -->
       <div class="govuk-summary-list__row govuk-!-margin-bottom-9">
-        <a class="govuk-link" href="agreement-detail">
+        <a class="govuk-link" href="add-agreement">
           Add agreement
         </a>
       </div>
@@ -265,7 +306,7 @@
           Season
         </dt>
         <dd class="govuk-summary-list__value">
-          Winter
+          <strike class="govuk-!-margin-right-1">Winter</strike>All year
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="season">
