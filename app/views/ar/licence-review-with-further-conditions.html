@@ -42,20 +42,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-  <main class="govuk-main-wrapper">
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-
-        <span class="govuk-caption-xl">Review licence data</span>
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-0">02/011/43/64a</h1>
-        <div class="heading-small">
-            Last edited 30 November 2018
-        </div>
+      <span class="govuk-caption-xl">Review licence data</span>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">02/011/43/64a</h1>
+      <div class="heading-small">
+          Last edited 30 November 2018
       </div>
     </div>
+  </div>
 
     <!-- accordion to organise the licence review process -->
     <div class="govuk-accordion" data-module="accordion" id="accordion-default">
@@ -298,7 +294,7 @@
                 Linked to <a href="">240951</a> <!-- this should link to the condtion, in the same view -->
               </div>
               <div class="govuk-!-margin-bottom-3">
-                <a href="licence-review-add-values" class="govuk-!-margin-bottom-6">
+                <a href="licence-review/add-values" class="govuk-!-margin-bottom-6">
                   Change this condition
                 </a>
               </div>
@@ -326,7 +322,7 @@
           <div class="data-row__end govuk-!-margin-bottom-3"></div>
 
           <div class="govuk-!-margin-bottom-8">
-            <a href="licence-review-add-condition" class="govuk-!-margin-bottom-6">Add another condition</a>
+            <a href="further-condition-groups" class="govuk-!-margin-bottom-6">Add another condition</a>
           </div>
 
         </div>
