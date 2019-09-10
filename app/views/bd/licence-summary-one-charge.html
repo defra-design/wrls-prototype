@@ -1367,15 +1367,25 @@
         Charge versions
       </h2>
 
+      <!--suspended flag -->
+      <section class="govuk-!-margin-bottom-6">
+        <div class="govuk-checkboxes__item ">
+          <input class="govuk-checkboxes__input" id="suspended-version" name="suspended-version" type="checkbox" value="included" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="suspended-version">
+            Included in billing run
+          </label>
+        </div>
+      </section>
+
       <!-- table with two columns -->
       <div class="table govuk-!-margin-bottom-8">                               <!-- a table -->
 
         <div class="table__row--head">                                          <!-- the table head -->
           <div class="table__cell bold-small column--60">
-            Effective from
+            Billed up to
           </div>
           <div class="table__cell bold-small column--20">
-            Billed
+            Effective from
           </div>
           <div class="table__cell bold-small column--20">
             Status
@@ -1389,20 +1399,20 @@
               Row 1
             </h2>
             <h3 class="table__context">
-              Effective from
+              Billed
             </h3>
-            <span class="table__link">
-              1 April 2019
-            </span>
+            <p class="table__row--text table__link">
+              Not billed
+            </p>
           </div>
 
           <div class="table__cell">
             <h3 class="table__context">
-              Billed
+              Effective from
             </h3>
-            <p class="table__row--text no-value">
-              <!-- Not billed -->
-            </p>
+            <span>
+              1 April 2019
+            </span>
           </div>
 
           <div class="table__cell">
