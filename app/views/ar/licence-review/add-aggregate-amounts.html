@@ -80,9 +80,8 @@
         <!-- condition text -->
         <div class="data-row__value">
           <div class="data-row__sub-list">
-            <p>
-              The maximum abstraction amount for this licence and any linked licence should not exceed <span class="govuk-body govuk-!-font-weight-bold">[maximum aggregated amount]</span>.
-            </p>
+            <!-- aggregated licence condition text -->
+            {% include "includes/charges/aggregated-licence-condition.html" %}
           </div>
         </div>
       </div>
@@ -103,7 +102,8 @@
         <div class="data-row__value">
           <div class="data-row__sub-list">
             <p>
-              The maximum abstraction amount for this purpose and any linked purposes should not exceed <span class="govuk-body govuk-!-font-weight-bold">[maximum aggregated amount]</span>.
+              <!-- aggregated licence condition text -->
+              {% include "includes/charges/aggregated-licence-condition.html" %}
             </p>
           </div>
         </div>

@@ -288,7 +288,7 @@
             <!-- the data label -->
             <div class="data-row__param govuk-!-margin-bottom-6">
               <div>
-                24.1 Aggregate condition
+                24.1 Aggregate licence condition
               </div>
               <div class="govuk-!-margin-bottom-3">
                 <br>Linked to:  <!-- slight change from what we have now -->
@@ -300,7 +300,7 @@
                   Change this condition
                 </a>
               </div>
-              <a href="confirm-remove-further-condition" class="govuk-!-margin-bottom-6">
+              <a href="confirm-remove-aggregated-licence-condition" class="govuk-!-margin-bottom-6">
                 <span class="screen-reader-only">
                   Remove condition 24.1
                 </span>
@@ -310,12 +310,9 @@
 
 
             <div class="data-row__value">
-              <!-- multiple points of data -->
-              <!-- if there are more than 5, we show the first 5 and change the link text to ‘see all N x’ -->
-              <div class="data-row__sub-list">
-                <div class="govuk-!-margin-bottom-3">
-                  Abstraction of water during the period <span class="govuk-body govuk-!-font-weight-bold">November to March</span> inclusive pursuant to this licence shall be reduced to <span class="govuk-body govuk-!-font-weight-bold">247 cubic metres</span> in any one day upon receipt by the licence holder of a notice in writing from the Authority that the average daily mean level measured by the gauge is less than the prescribed level and abstraction from <span class="govuk-body govuk-!-font-weight-bold">Point A</span> shall not be resumed until receipt by the licence holder of a further notice in writing from the Authority that the average daily mean level measured by the gauge is greater than the prescribed level.
-                </div>
+              <div class="govuk-!-margin-bottom-3">
+                <!-- aggregated licence condition text -->
+                {% include "includes/charges/aggregated-licence-condition.html" %}
               </div>
             </div>
 
