@@ -1,0 +1,187 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge history 03/28/60/0032" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "/bd/licence-summary#charge"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+      Charges
+    </h1>
+  </div>
+</div>
+
+<!-- timeline -->
+<div class="moj-timeline">
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title">
+        Included in billing
+      </h2>
+      <p class="moj-timeline__byline">by Smol Snek</p>
+    </div>
+
+    <p class="moj-timeline__date">
+      <time datetime="2019-11-30T09:59:00.000Z">30 November 2019 at 9:59am</time>
+    </p>
+
+    <!-- <div class="moj-timeline__description">
+      <p>
+        Charge start date 19 June 2019
+        <br>
+      </p>
+      <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a>
+    </div> -->
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title">
+        Suspended from billing
+      </h2>
+      <p class="moj-timeline__byline">by Smol Snek</p>
+    </div>
+
+    <p class="moj-timeline__date">
+      <time datetime="2019-10-31T10:22:00.000Z">22 November 2019 at 10:22 am</time>
+    </p>
+
+    <!-- <div class="moj-timeline__description">
+      <p>
+        Charge start date 19 June 2019
+        <br>
+      </p>
+      <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a>
+    </div> -->
+  </div>
+
+  <div class="moj-timeline__item">
+
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title">Billing contact changed</h2>
+
+      <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
+
+    </div>
+
+    <p class="moj-timeline__date">
+      <time datetime="2019-11-18T00:00:00.000Z">18 November 2019</time>
+    </p>
+
+    <!-- <div class="moj-timeline__description">
+      <a href="#">Billing contact</a>
+    </div> -->
+
+  </div>
+
+  <div class="moj-timeline__item">
+
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title">S127 began</h2>
+
+      <!-- <p class="moj-timeline__byline">by Sam Leggett</p> -->
+
+    </div>
+
+    <p class="moj-timeline__date">
+      <time datetime="2019-04-01T00:00:00.000Z">1 April 2019</time>
+    </p>
+
+    <!-- <div class="moj-timeline__description">
+      S127 start date changed to 17 March 2019
+    </div> -->
+
+  </div>
+
+  <div class="moj-timeline__item">
+
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title">S126 began</h2>
+
+      <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
+
+    </div>
+
+    <p class="moj-timeline__date">
+      <time datetime="2019-03-30T00:00:00.000Z">30 March 2019</time>
+    </p>
+
+    <!-- <div class="moj-timeline__description">
+      S126 began
+    </div> -->
+
+  </div>
+
+  <div class="moj-timeline__item">
+
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title">
+        Charge started
+      </h2>
+      <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
+    </div>
+
+    <p class="moj-timeline__date">
+      <time datetime="2018-10-31T00:00:00.000Z">31 October 2018</time>
+    </p>
+      Two-part tariff
+      <br>No overrides
+      <br>No compensation
+      <br>No additions
+  </div>
+
+
+
+</div>
+
+
+  </div>
+</div>
+
+{% endblock %}

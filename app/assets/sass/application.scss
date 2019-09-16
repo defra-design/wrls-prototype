@@ -76,3 +76,13 @@ $govuk-global-styles: true;
 .govuk-faux-button--inline {
   margin-left: 5px;
 }
+
+.govuk-faux-button--secondary {
+  color: #0b0c0c !important;
+  background-color: #dee0e2;
+  box-shadow: 0 2px 0 #858688;
+}
+
+.govuk-faux-button--secondary:hover {
+  background-color: #c8cacb;
+}
