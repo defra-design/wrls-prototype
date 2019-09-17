@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change agreement signed date" %}
+{% set title = "Remove use" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -49,10 +49,27 @@
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <form action="agreements" method="post" class="form" id="return-reference-error">
+      <form action="javascript:history.back(2)" method="post" class="form" id="return-reference-error">
 
-        <!-- form -->
-        {% include "includes/charges/agreement-signed.html" %}
+        <!-- effective dates -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Are you sure you want to remove this use?
+              </h1>
+            </legend>
+
+            {{ govukInsetText({
+              text: "Aggregated condition, seasonal change."
+            }) }}
+
+          </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button">
+          Remove this use
+        </button>
 
       </form>
 

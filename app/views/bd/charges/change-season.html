@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge season" %}
+{% set title = "Change season factor" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -33,12 +33,12 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
-  <!--
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
-    -->
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -48,12 +48,12 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Charge season</h1>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
 
-  <form action="javascript:history.back(2)" method="post" class="form" id="return-reference-error">
+  <form action="change-season-date" method="post" class="form" id="return-reference-error">
 
     {% from "radios/macro.njk" import govukRadios %}
 
@@ -65,6 +65,7 @@
         },
         items: [
           {
+            checked: "checked",
             value: "summer",
             text: "Summer"
           },
@@ -73,7 +74,6 @@
             text: "Winter"
           },
           {
-            checked: "checked",
             value: "annual",
             text: "All year"
           }

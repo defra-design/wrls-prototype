@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge source" %}
+{% set title = "Change loss factor" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -33,12 +33,12 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
-  <!--
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
-    -->
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -53,32 +53,45 @@
     </div>
   </div>
 
-  <form action="javascript:history.back(2)" method="post" class="form" id="return-reference-error">
+  <form action="change-loss-date" method="post" class="form" id="return-reference-error">
+
+    <!-- simple input field -->
+    <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
+      <label class="govuk-label" for="return-reference">
+        Enter a return reference
+      </label>
+      <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10" id="return-reference" name="returnReference" type="number">
+    </div> -->
 
     {% from "radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
+        idPrefix: "charge-loss",
+        name: "loss",
         fieldset: {
+          legend: {
+            text: "What is the loss factor?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
         },
         items: [
           {
             checked: "checked",
-            value: "unsuported",
-            text: "Unsupported"
+            value: "high",
+            text: "High"
           },
           {
-            value: "supported",
-            text: "Supported (excluding Kielder)"
+            value: "medium",
+            text: "Medium"
           },
           {
-            value: "tidal",
-            text: "Tidal"
+            value: "low",
+            text: "Low"
           },
           {
-            value: "Kielder",
-            text: "Kielder"
+            value: "very-low",
+            text: "Very low"
           }
         ]
       })

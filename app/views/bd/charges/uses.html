@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change agreements" %}
+{% set title = "Charge uses" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -50,14 +50,14 @@
 
     <!-- page heading -->
     <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-    <h1 class="govuk-heading-l">Charge agreements</h1>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
     <!-- table with two columns -->
     <div class="table govuk-!-margin-bottom-8">
 
       <div class="table__row--head">
         <div class="table__cell bold-small column--85">
-          Agreement
+          Uses
         </div>
         <div class="table__cell bold-small column--15">
           <!-- Action -->
@@ -70,15 +70,15 @@
             Row 1
           </h2>
           <h3 class="table__context">
-            Agreement
+            Use
           </h3>
-          S127 (Two-part tariff) - From 1 April 2019
+           Aggregated condition, seasonal change
         </div>
         <div class="table__cell">
-          <a href="remove-agreement-date">
+          <a href="remove-use-date">
             Remove
           </a>
-          <a href="change-agreement-date">
+          <a href="change-use-date">
             Change
           </a>
         </div>
@@ -90,15 +90,15 @@
             Row 2
           </h2>
           <h3 class="table__context">
-            Agreement
+            Use
           </h3>
-          S126 (Abatement) - From 30 March 2019
+          Extra to cover winter increase
         </div>
         <div class="table__cell">
-          <a href="remove-agreement-date">
+          <a href="remove-use-date">
             Remove
           </a>
-          <a href="change-agreement-date">
+          <a href="change-use-date">
             Change
           </a>
         </div>
@@ -108,7 +108,7 @@
 
     <div class="govuk-!-margin-bottom-9">
       <a class="govuk-link" href="add-agreement">
-        Add an agreement
+        Add a use
       </a>
     </div>
 

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge loss" %}
+{% set title = "Change source factor" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -33,12 +33,12 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
-  <!--
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
-    -->
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -48,50 +48,37 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Charge loss</h1>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
 
-  <form action="javascript:history.back(2)" method="post" class="form" id="return-reference-error">
-
-    <!-- simple input field -->
-    <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
-      <label class="govuk-label" for="return-reference">
-        Enter a return reference
-      </label>
-      <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10" id="return-reference" name="returnReference" type="number">
-    </div> -->
+  <form action="change-source-date" method="post" class="form" id="return-reference-error">
 
     {% from "radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        idPrefix: "charge-loss",
-        name: "loss",
+        idPrefix: "charge-source",
+        name: "source",
         fieldset: {
-          legend: {
-            text: "Change the loss",
-            isPageHeading: false,
-            classes: "govuk-fieldset__legend--m"
-          }
         },
         items: [
           {
             checked: "checked",
-            value: "high",
-            text: "High"
+            value: "unsuported",
+            text: "Unsupported"
           },
           {
-            value: "medium",
-            text: "Medium"
+            value: "supported",
+            text: "Supported (excluding Kielder)"
           },
           {
-            value: "low",
-            text: "Low"
+            value: "tidal",
+            text: "Tidal"
           },
           {
-            value: "very-low",
-            text: "Very low"
+            value: "Kielder",
+            text: "Kielder"
           }
         ]
       })
