@@ -134,19 +134,13 @@
         Charges
       </h2>
 
-      <section id="charges">
+      <section>
 
         <!--suspended flag -->
         <a href="licence-summary-suspended#charge" class="govuk-faux-button govuk-faux-button--secondary">Suspend from billing</a>
 
         <!-- charges -->
-        {% include "includes/bd/charges/charge-summary.html" %}
-
-        <section class="govuk-!-margin-bottom-8">
-          <a href="charges/current-charge-element">
-            Charge element details
-          </a>
-        </section>
+        {% include "includes/bd/charges/charge-element.html" %}
 
       </section>
 

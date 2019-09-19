@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Billable quantity" %}
+{% set title = "Chargable quantity" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -33,12 +33,12 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
-  <!--
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
-    -->
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -52,11 +52,11 @@
     </div>
   </div>
 
-  <form action="javascript:history.back()" method="post" class="form" id="return-reference-error">
+  <form action="chargable-quantity-date" method="post" class="form" id="return-reference-error">
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="return-reference">
-        What is the billable quantity?
+        What is the chargable quantity?
       </label>
       <input value="{{ body.billableQuantity }}" class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number">
     </div>

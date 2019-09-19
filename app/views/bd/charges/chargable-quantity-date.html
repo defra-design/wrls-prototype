@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change loss date" %}
+{% set title = "Chargable quantity date" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -49,14 +49,14 @@
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <form action="/bd/charges/current-charge-element" method="post" class="form" id="return-reference-error">
+      <form action="../licence-summary#charge" method="post" class="form" id="return-reference-error">
 
         <!-- effective dates -->
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                What date did the loss change?
+                What date did the chargable quantity change?
               </h1>
             </legend>
 

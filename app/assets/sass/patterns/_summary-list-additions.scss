@@ -14,6 +14,10 @@
   padding-bottom: 32px;
 }
 
+.govuk-summary-list__row--divider > * {
+  border-bottom: 2px solid #0b0c0c;
+}
+
 .summary__divider {
   border-bottom: 2px solid #0b0c0c;
   flex: 1;
@@ -61,54 +65,77 @@
 
 
 .moj-timeline {
-    margin-bottom: 20px;
-    overflow: hidden;
-    position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
 // temporary styles for MOJ timeline
 .moj-timeline::before {
-    background-color: #1d70b8;
-    content: "";
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 10px;
-    width: 5px;
+  background-color: #1d70b8;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 5px;
 }
 
 .moj-timeline__item {
-    padding-bottom: 30px;
-    padding-left: 20px;
-    position: relative;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  position: relative;
 }
 
 .moj-timeline__item::before {
-    background-color: #1d70b8;
-    content: "";
-    height: 5px;
-    left: 0;
-    position: absolute;
-    top: 10px;
-    width: 15px;
+  background-color: #1d70b8;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 15px;
+}
+
+/* future timeline */
+.moj-timeline--future {
+
+}
+
+.moj-timeline--future::before {
+  background-color: #b1b4b6;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 5px;
+}
+
+.moj-timeline__item--future::before {
+  background-color: #b1b4b6;
 }
 
 .moj-timeline__title {
-    font-weight: 700;
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 1.25;
-    display: inline;
+  font-weight: 700;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  display: inline;
+}
+
+.moj-timeline__title--big {
+  font-size: 22px;
 }
 
 .moj-timeline__byline {
-    font-weight: 400;
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 1.25;
-    color: #6f777b;
-    display: inline;
-    margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #6f777b;
+  display: inline;
+  margin: 0;
 }
 
 .moj-timeline__date {
@@ -118,7 +145,8 @@
 }
 
 .divider {
-  width: 100%;
-  border-bottom: solid 2px #b1b4b6;
-  color: #bfc1c3;
+  // width: 100%;
+  // border-bottom: solid 2px #b1b4b6;
+  border-bottom: solid 1px $govuk-text-colour;
+  // color: #bfc1c3;
 }
