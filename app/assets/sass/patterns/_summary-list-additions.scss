@@ -58,11 +58,123 @@
   }
 
 }
-// .govuk-summary-list__value {
-//   line-height: 2rem;
-// }
 
 
+
+
+
+
+// temporary styles for pagination
+
+.page-nav {
+  // margin-top: 30px;
+  border-top: solid 1px $govuk-link-colour;
+}
+
+.page-nav ul {
+  margin-left: -2em;
+}
+
+.page-left, .page-right {
+  font-size: 16px;
+  line-height: 1.25;
+  // font-family: nta,Arial,sans-serif;
+  // font-weight: 400;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.14286;
+  list-style: none;
+  width: 49%;
+  color: $govuk-link-colour;
+}
+
+.page-left {
+  float: left;
+  text-align: left;
+}
+
+.page-right {
+  float: right;
+  text-align: right;
+}
+
+.page-left-control {
+  text-decoration: none;
+  padding: 1.4em 0 .75em 2em;
+}
+
+.page-right-control {
+  text-decoration: none;
+  padding: 1.4em 3em .75em 2em;
+}
+
+.page-left-control,
+.page-right-control {
+  display: block;
+}
+
+
+
+.page-left-control:before,
+.page-right-control:before {
+  display: block;
+  margin-top: -16px;
+
+  width: 30px;
+  height: 50px;
+  content: "";
+}
+
+/* arrow left */
+.page-left-control:before {
+  float: left;
+  background: transparent url(../images/arrow-sprite.png) no-repeat -20px -5px;
+  margin-left: -16px;
+}
+
+/* arrow right */
+.page-right-control:before {
+  clear: both;
+  float: right;
+  display: block;
+  background: transparent url(../images/arrow-sprite.png) no-repeat -102px -5px;
+  margin-right: -32px;
+}
+
+/* hover tint */
+.page-left-control:hover,
+.page-right-control:hover {
+  background-color: #f8f8f8;
+}
+
+.page-left-control:visited,
+.page-right-control:visited  {
+  color: $govuk-link-colour;
+}
+
+.page__title {
+  font-size: 27px;
+  line-height: 1.25;
+  // font-family: nta,Arial,sans-serif;
+  // font-weight: 400;
+  text-transform: none;
+  font-size: 20px;
+  line-height: 1.11111;
+  margin-bottom: .1em;
+  display: block;
+}
+
+.page__number {
+
+}
+
+
+
+
+
+
+
+// temporary styles for MOJ timeline
 
 .moj-timeline {
   margin-bottom: 20px;
@@ -70,7 +182,6 @@
   position: relative;
 }
 
-// temporary styles for MOJ timeline
 .moj-timeline::before {
   background-color: #1d70b8;
   content: "";
@@ -100,6 +211,11 @@
 /* future timeline */
 .moj-timeline--future {
 
+}
+
+.moj-timeline--label {
+  color: $govuk-secondary-text-colour;
+  font-size: 0.9rem;
 }
 
 .moj-timeline--future::before {

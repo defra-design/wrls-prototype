@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "From 20 November 2019" %}
+{% set title = "From 18 November 2019" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -63,17 +63,17 @@
     <nav class="page-nav govuk-!-margin-bottom-9" role="navigation" aria-label="Pagination">
       <ul>
         <li class="page-left">
-          <a class="page-left-control" href="charge-element-2" rel="prev">
+          <a class="page-left-control" href="charge-element-1" rel="prev">
             <span class="page__title">Previous charge</span>
-            <span class="page__number">2 of 3</span>
+            <span class="page__number">1 of 3</span>
           </a>
         </li>
-        <!-- <li class="page-right">
+        <li class="page-right">
           <a class="page-right-control" href="current-charge-element" rel="next">
-            <div class="page__title">Next charge</div>
+            <div class="page__title">Next charge (current)</div>
             <span class="page__number">3 of 3</span>
           </a>
-        </li> -->
+        </li>
       </ul>
     </nav>
   </div>
@@ -81,6 +81,6 @@
 
 
 <!-- charges -->
-{% include "includes/bd/charges/charge-element.html" %}
+{% include "includes/bd/charges/charge-element-2.html" %}
 
 {% endblock %}
