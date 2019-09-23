@@ -76,13 +76,11 @@
 }
 
 .page-left, .page-right {
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 0.73em;
+  line-height: 1.25em;
   // font-family: nta,Arial,sans-serif;
   // font-weight: 400;
   text-transform: none;
-  font-size: 14px;
-  line-height: 1.14286;
   list-style: none;
   width: 49%;
   color: $govuk-link-colour;
@@ -118,7 +116,7 @@
 .page-left-control:before,
 .page-right-control:before {
   display: block;
-  margin-top: -16px;
+  margin-top: -0.84em;
 
   width: 30px;
   height: 50px;
@@ -129,7 +127,7 @@
 .page-left-control:before {
   float: left;
   background: transparent url(../images/arrow-sprite.png) no-repeat -20px -5px;
-  margin-left: -16px;
+  margin-left: -22px;
 }
 
 /* arrow right */
@@ -154,21 +152,22 @@
 
 .page__title {
   font-size: 27px;
-  line-height: 1.25;
+  font-size: 1.4em;
+  line-height: 1.25em;
   // font-family: nta,Arial,sans-serif;
   // font-weight: 400;
   text-transform: none;
-  font-size: 20px;
-  line-height: 1.11111;
   margin-bottom: .1em;
   display: block;
 }
 
-.page__number {
-
+.page-left-control .page__number {
+  margin-left: 0.2em;
 }
 
-
+.page-right-control .page__number {
+  margin-right: 0.2em;
+}
 
 
 
