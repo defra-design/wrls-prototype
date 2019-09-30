@@ -1,0 +1,445 @@
+{% import "includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = "Invoices for Dawidek Jevnic" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- contact summary -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">IAS account 3725712</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <!-- billing contact summary -->
+      <section>
+
+        <p class="govuk-body">
+          Licence holder number <a href="">280154</a>
+        </p>
+
+        <!-- licence contact group -->
+        <div class="govuk-!-margin-bottom-6" id="billing">
+
+          <div class="govuk-inset-text">
+            Finance Department<br>
+            1 Hill House<br>
+            Abingdon-on-Thames<br>
+            Oxfordshire<br>
+            RE1 1TG<br>
+            <br>
+            Telephone 08847546123<br>
+            Email daw.jevnic@irriwet.co.uk
+          </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-!-margin-bottom-9">
+              <a href="update">Update this information</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+    </div>
+  </div>
+
+  <!-- <div class="divider govuk-!-margin-bottom-8"></div> -->
+
+
+  <!-- contact summary -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Invoice history</h2>
+
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-large govuk-heading-m">
+        2019
+      </h3>
+    </div>
+  </div>
+
+  <!-- table of invoices -->
+  <section class="govuk-!-margin-bottom-6">
+
+    <!-- table with four columns -->
+    <div class="table govuk-!-margin-bottom-6">                                   <!-- a table -->
+
+      <!-- table head -->
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small">
+          Invoice number
+        </div>
+        <div class="table__cell bold-small">
+          Bill type
+        </div>
+        <div class="table__cell bold-small numbers">
+          Net amount
+        </div>
+        <div class="table__cell bold-small numbers">
+          Billed amount
+        </div>
+      </div>
+
+      <!-- table row 1 -->
+      <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h4 class="screen-reader-only">
+            Row 1
+          </h4>
+
+          <h5 class="table__context">
+            Invoice number
+          </h5>
+          <span class="table__link">
+            AAI26515
+          </span>
+        </div>
+        <div class="table__cell">
+          <h5 class="table__context">
+            Bill type
+          </h5>
+          <p class="table__row--selectable--text">
+            Supplementary
+          </p>
+        </div>
+        <div class="table__cell">
+          <h5 class="table__context numbers">
+            Net amount
+          </h5>
+          <p class="table__row--selectable--text numbers">
+            £1,064.20
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h5 class="table__context">
+            Billed amount
+          </h5>
+          £1,064.20
+        </div>
+      </a>
+
+      <!-- table row 2 -->
+      <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h4 class="screen-reader-only">
+            Row 2
+          </h4>
+          <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
+          <h5 class="table__context">
+            Invoice number
+          </h5>
+          <span class="table__link">
+            AAI25997
+          </span>
+        </div>
+        <div class="table__cell">
+          <h5 class="table__context">
+            Bill type
+          </h5>
+          <p class="table__row--selectable--text">
+            Two-part tariff
+          </p>
+        </div>
+        <div class="table__cell">
+          <h5 class="table__context">
+            Net amount
+          </h5>
+          <p class="table__row--selectable--text numbers">
+            £2,001.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h5 class="table__context">
+            Billed amount
+          </h5>
+          £2,001.00
+        </div>
+      </a>
+
+      <!-- table row 3 -->
+      <a href="invoice" class="table__row--end table__row--selectable govuk-!-margin-bottom-3">
+        <div class="table__cell">
+          <h4 class="screen-reader-only">
+            Row 3
+          </h4>
+          <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
+          <h5 class="table__context">
+            Invoice number
+          </h5>
+          <span class="table__link">
+            AAI-25001
+          </span>
+        </div>
+        <div class="table__cell">
+          <h5 class="table__context">
+            Bill type
+          </h5>
+          <p class="table__row--selectable--text">
+            Annual
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h5 class="table__context">
+            Net amount
+          </h5>
+          <p class="table__row--selectable--text">
+            £864.21
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h5 class="table__context">
+            Billed amount
+          </h5>
+          £864.21
+        </div>
+      </a>
+
+      <!-- table totals -->
+      <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+        <div class="table__cell">
+          <h4 class="screen-reader-only">
+            Total row
+          </h4>
+          Total
+        </div>
+        <div class="table__cell table__cell--empty numbers">
+          <!-- empty cell -->
+        </div>
+        <div class="table__cell numbers">
+          <h5 class="table__context">
+            Net amount
+          </h5>
+          £3,929.41
+        </div>
+        <div class="table__cell numbers">
+          <h5 class="table__context">
+            Billed amount
+          </h5>
+          £3,929.41
+        </div>
+      </div>
+
+    </section>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h3  class="heading-large govuk-heading-m">
+          2018
+        </h3>
+      </div>
+    </div>
+
+    <!-- table of invoices -->
+    <section class="govuk-!-margin-bottom-6">
+
+      <!-- table with four columns -->
+      <div class="table govuk-!-margin-bottom-8">                               <!-- a table -->
+
+        <!-- table head -->
+        <div class="table__row--head">                                          <!-- the table head -->
+          <div class="table__cell bold-small">
+            Invoice number
+          </div>
+          <div class="table__cell bold-small">
+            Bill type
+          </div>
+          <div class="table__cell bold-small numbers">
+            Net amount
+          </div>
+          <div class="table__cell bold-small numbers">
+            Billed amount
+          </div>
+        </div>
+
+        <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 1
+            </h4>
+
+            <h5 class="table__context">
+              Invoice number
+            </h5>
+            <span class="table__link">
+              AAI24515
+            </span>
+          </div>
+          <div class="table__cell">
+            <h5 class="table__context">
+              Bill type
+            </h5>
+            <p class="table__row--selectable--text">
+              Supplementary
+            </p>
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Net amount
+            </h5>
+            £973.98
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billed amount
+            </h5>
+            £973.98
+          </div>
+        </a>
+
+        <!-- table row -->
+        <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 2
+            </h4>
+            <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
+            <h5 class="table__context">
+              Invoice number
+            </h5>
+            <span class="table__link">
+              AAI25997
+            </span>
+          </div>
+          <div class="table__cell">
+            <h5 class="table__context">
+              Bill type
+            </h5>
+            <p class="table__row--selectable--text">
+              Two-part tariff
+            </p>
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Net amount
+            </h5>
+            <p class="table__row--selectable--text">
+              £1,927.63
+            </p>
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billed amount
+            </h5>
+            £1,927.63
+          </div>
+        </a>
+
+        <!-- table row -->
+        <a href="invoice" class="table__row--end table__row--selectable govuk-!-margin-bottom-2">
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 3
+            </h4>
+            <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
+            <h5 class="table__context">
+              Invoice number
+            </h5>
+            <span class="table__link">
+              AAI-25001
+            </span>
+          </div>
+          <div class="table__cell">
+            <h5 class="table__context">
+              Bill type
+            </h5>
+            <p class="table__row--selectable--text">
+              Annual
+            </p>
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Net amount
+            </h5>
+            <p class="table__row--selectable--text">
+              £864.21
+            </p>
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billed amount
+            </h5>
+            £864.21
+          </div>
+        </a>
+
+        <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Total row
+            </h4>
+            Total
+          </div>
+          <div class="table__cell table__cell--empty numbers">
+            <!-- empty cell -->
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Amount total
+            </h5>
+            £3,765.82
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billed total
+            </h5>
+            £3,765.82
+          </div>
+        </div>
+
+    </section>
+
+  </div>
+
+{% endblock %}

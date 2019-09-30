@@ -1,0 +1,332 @@
+{% import "includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = "Invoice AAI26515" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- contact summary -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-0">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">IAS account 3725712</span>
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+        Total
+      </h2>
+
+    </div>
+  </div>
+
+  <!-- invoice totals -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+    <div class="govuk-grid-column-one-half">
+      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£973.98</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£973.98</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Billed amount</span></h3>
+    </div>
+  </div>
+
+  <div class="divider govuk-!-margin-bottom-7"></div>
+
+  <!-- invoice details -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+        Licence number 03/28/60/0032
+      </h2>
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
+        Spray irrigation, base licence
+      </h3>
+
+      <p class="govuk-body">
+        April to December
+      </p>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-full">
+
+      <!-- table with four columns -->
+      <div class="table govuk-!-margin-bottom-6">                                   <!-- a table -->
+
+        <!-- table head -->
+        <div class="table__row--head">                                              <!-- the table head -->
+          <div class="table__cell bold-small">
+            Transaction type
+          </div>
+          <div class="table__cell bold-small numbers">
+            Billable days
+          </div>
+          <div class="table__cell bold-small numbers">
+            Pro-rata days
+          </div>
+          <div class="table__cell bold-small numbers">
+            Associated charge (credit/debit)
+          </div>
+        </div>
+
+        <!-- row 1 -->
+        <div class="table__row govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+
+          <!-- table row 1 -->
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 1
+            </h4>
+            <h5 class="table__context">
+              Transaction type
+            </h5>
+            Credit
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billable days
+            </h5>
+            300 of 315
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Pro-rata days
+            </h5>
+            0
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Charge
+            </h5>
+            -£1,064.20
+          </div>
+
+        </div>
+
+        <!-- row 2 -->
+        <div class="table__row govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+
+          <!-- table row 1 -->
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 2
+            </h4>
+            <h5 class="table__context">
+              Transaction type
+            </h5>
+            Debit
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billable days
+            </h5>
+            302 of 315
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Pro-rata days
+            </h5>
+            0
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Charge
+            </h5>
+            £1,121.10
+          </div>
+
+        </div>
+
+        <!-- row 3 -->
+        <div class="table__row govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+
+          <!-- table row 1 -->
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 3
+            </h4>
+            <h5 class="table__context">
+              Transaction type
+            </h5>
+            Debit
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billable days
+            </h5>
+            5 of 315
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Pro-rata days
+            </h5>
+            0
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Charge
+            </h5>
+            £197.60
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- invoice details -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
+        Spray irrigation, time limited increase for winter
+      </h3>
+
+      <p class="govuk-body">
+        January to March
+      </p>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <!-- table with four columns -->
+      <div class="table govuk-!-margin-bottom-6">                                   <!-- a table -->
+
+        <!-- table head -->
+        <div class="table__row--head">                                              <!-- the table head -->
+          <div class="table__cell bold-small">
+            Transaction type
+          </div>
+          <div class="table__cell bold-small numbers">
+            Billable days
+          </div>
+          <div class="table__cell bold-small numbers">
+            Pro-rata days
+          </div>
+          <div class="table__cell bold-small numbers">
+            Associated charge (credit/debit)
+          </div>
+        </div>
+
+        <!-- row 1 -->
+        <div class="table__row govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+
+          <!-- table row 1 -->
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 1
+            </h4>
+            <h5 class="table__context">
+              Transaction type
+            </h5>
+            Credit
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billable days
+            </h5>
+            5 of 315
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Pro-rata days
+            </h5>
+            0
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Charge
+            </h5>
+            £-197.60
+          </div>
+
+        </div>
+
+        <!-- row 2 -->
+        <div class="table__row govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+
+          <!-- table row 1 -->
+          <div class="table__cell">
+            <h4 class="screen-reader-only">
+              Row 2
+            </h4>
+            <h5 class="table__context">
+              Transaction type
+            </h5>
+            Debit
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Billable days
+            </h5>
+            300 of 315
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Pro-rata days
+            </h5>
+            0
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              Charge
+            </h5>
+            £1,064.20
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

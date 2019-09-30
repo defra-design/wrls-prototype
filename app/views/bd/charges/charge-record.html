@@ -44,15 +44,19 @@
 
 {% block content %}
 
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
     <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
     <h1 class="govuk-heading-l">
-      Charges
+      Charge record
     </h1>
   </div>
+</div>
+
+<div class="govuk-!-margin-bottom-9">
+  <a href="current-charge-version">Current charge version</a>
 </div>
 
 <!-- timeline -->
@@ -80,34 +84,9 @@
 </div>
 
 
+
 <!-- timeline -->
 <div class="moj-timeline">
-
-  <div class="moj-timeline__item">
-    <div class="moj-timeline__header govuk-!-margin-bottom-5">
-      <h2 class="moj-timeline__title">
-        Current charge
-      </h2>
-      <!-- <p class="moj-timeline__byline">by Jo Smolland</p> -->
-    </div>
-
-    <p class="govuk-!-margin-bottom-2">
-      <span class="moj-timeline--label">
-        Recent changes:
-      </span>
-      <br>
-      S126 / Abatement
-      <br>S127 / Two-part tariff
-    </p>
-
-    <p>
-      <a href="current-charge-element">View this charge</a>
-      <br><a href="">Change</a>
-    </p>
-
-  </div>
-
-
 
   <div class="moj-timeline__item">
     <div class="moj-timeline__header">
@@ -137,7 +116,7 @@
   <div class="moj-timeline__item">
 
     <div class="moj-timeline__header">
-      <h2 class="moj-timeline__title">Agreement added</h2>
+      <h2 class="moj-timeline__title">S127 (Two-part tariff) start</h2>
       <!-- <p class="moj-timeline__byline">by Sam Leggett</p> -->
     </div>
 
@@ -145,17 +124,14 @@
       <time datetime="2019-11-25T00:00:00.000Z">25 November 2019 <a href="#">Change start date</a></time>
     </p>
 
-    <div class="moj-timeline__description">
-      S127 (Two-part tariff) start
-      <br><a href="#" class="govuk-body-s">End agreement</a>
-    </div>
+    <a href="#" class="govuk-body-s">End agreement</a>
 
   </div>
 
   <div class="moj-timeline__item">
 
     <div class="moj-timeline__header">
-      <h2 class="moj-timeline__title">Agreement added</h2>
+      <h2 class="moj-timeline__title">S126 (Abatement) start</h2>
       <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
     </div>
 
@@ -164,8 +140,7 @@
     </p>
 
     <div class="moj-timeline__description">
-      S126 (Abatement) start
-      <br><a href="#" class="govuk-body-s">End agreement</a>
+      <a href="#" class="govuk-body-s">End agreement</a>
     </div>
 
   </div>
@@ -202,29 +177,23 @@
       <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
     </div>
 
-    <p class="moj-timeline__date">
+    <!-- <p class="moj-timeline__date">
       <a href="#">Change start date</a>
-    </p>
+    </p> -->
 
-    <strong class="table__status govuk-!-margin-bottom-3">
+    <!-- <strong class="table__status govuk-!-margin-bottom-3">
       Current
-    </strong>
+    </strong> -->
 
     <!-- <div class="table__status table__status--open">
       Draft
     </div> -->
 
-    <p class="govuk-!-margin-bottom-2">
-      <span class="moj-timeline--label">
-        Recent changes:
-      </span>
-      <br>Use removed
-      <br>Compensation added
-    </p>
-
     <p>
-      <a href="current-charge-element">View this charge</a>
-      <br><a href="">Change</a>
+      <!-- <span class="moj-timeline--label">
+        Recent changes:
+      </span> -->
+      <a href="charge-version-1">2 elements</a>
     </p>
 
   </div>
@@ -232,29 +201,26 @@
   <div class="moj-timeline__item">
 
     <div class="moj-timeline__header">
-      <h2 class="moj-timeline__title moj-timeline__title--big">From 18 November 2019</h2>
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        From 18 November 2019
+      </h2>
+
       <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
     </div>
 
-    <p class="moj-timeline__date">
+    <!-- <p class="moj-timeline__date">
       <a href="#">Change start date</a>
-    </p>
+    </p> -->
 
     <!-- <div class="table__status table__status--open">
       Draft
     </div> -->
 
-    <p class="govuk-!-margin-bottom-2">
-      <span class="moj-timeline--label">
-        Recent changes:
-      </span>
-      <br>Updated billing contact
-      <br>Aggregated condition, seasonal change: <strike class="govuk-!-margin-right-1">Summer</strike>All
-    </p>
-
     <p>
-      <a href="charge-element-2">View this charge</a>
-      <br><a href="#">Change</a>
+      <!-- <span class="moj-timeline--label">
+        Recent changes:
+      </span> -->
+      <a href="charge-version-1">1 element</a>
     </p>
 
   </div>
@@ -262,21 +228,10 @@
   <div class="moj-timeline__item">
 
     <div class="moj-timeline__header">
-      <h2 class="moj-timeline__title">Billing contact changed</h2>
-      <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
+      <h2 class="moj-timeline__title">
+        Billing contact changed to <a href="/bd/licence/contacts#billing">Dawidek Jevnic</a>
+      </h2>
     </div>
-
-    <p class="moj-timeline__date">
-      <time datetime="2019-11-18T00:00:00.000Z">18 November 2019 <a href="#">Change start date</a></time>
-    </p>
-
-    <p>Billing contact changed to
-      <a href="/bd/licence/contacts#billing">Dawidek Jevnic</a>
-    </p>
-
-    <!-- <div class="moj-timeline__description">
-      <a href="#">Billing contact</a>
-    </div> -->
 
   </div>
 
@@ -286,20 +241,13 @@
       <h2 class="moj-timeline__title moj-timeline__title--big">
         From 31 October 2018
       </h2>
-      <!-- <p class="moj-timeline__byline">by Rebecca Vollard</p> -->
     </div>
 
-    <p class="moj-timeline__date">
-      <a href="#">Change start date</a>
-    </p>
-
     <p>
-      <br>Two uses
-      <br>No agreements
-      <br>No overrides
-      <br>No compensation
-      <br><a href="charge-element-1">View this charge</a>
-      <br><a href="#">Change</a>
+      <!-- <span class="moj-timeline--label">
+        Recent changes:
+      </span> -->
+      <a href="charge-version-1">1 element</a>
     </p>
 
   </div>

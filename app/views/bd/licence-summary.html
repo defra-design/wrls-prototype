@@ -143,10 +143,35 @@
         {% include "includes/bd/charges/charge-summary.html" %}
 
         <section class="govuk-!-margin-bottom-8">
-          <a href="charges/current-charge-element">
-            Charge element details
+          <a href="charges/current-charge-version">
+            Charge details
           </a>
         </section>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Charge history
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+
+            <ul class="govuk-list">
+              <li>
+                <a class="govuk-link" href="charges/current-charge-version">From 20 November 2019 - Current</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="charges/charge-version-2">From 18 November 2019</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="charges/charge-version-1">From 31 November 2018</a>
+              </li>
+            </ul>
+
+            <a href="/bd/charges/charge-record">Charge record</a>
+
+          </div>
+        </details>
 
       </section>
 

@@ -81,6 +81,14 @@
   color: $govuk-text-colour;
 }
 
+@media (min-width: 768px) {
+  .table__row--end dt,
+  .table__row--end dd,
+  .table__row--end div {
+    border-bottom: 2px solid $govuk-text-colour;
+  }
+}
+
 .table__cell p {
   margin-bottom: 0;
 }
@@ -97,6 +105,13 @@
 
 .table__cell--no-wrap {
   white-space: nowrap;
+}
+
+.table__cell--empty {
+  display: none;
+  @media (min-width: 768px) {
+    display: table-cell;
+  }
 }
 
 .table__heading {
@@ -233,7 +248,7 @@
 }
 
 .numbers {
-  font-size: 19px;
+  // font-size: 19px;
   // larger screens
   @media (min-width: 768px) {
     text-align: right;
@@ -247,6 +262,12 @@
 .no-value {
   color: $govuk-secondary-text-colour;
 }
+
+
+.highlight {
+  color: govuk-colour("turquoise");
+}
+
 
 
 // ========== ========== ========== ========== ==========
