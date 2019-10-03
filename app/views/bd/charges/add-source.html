@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change source factor" %}
+{% set title = "What is the source?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <form action="change-element-date" method="post" class="form" id="return-reference-error">
+  <form action="add-element-date" method="post" class="form" id="return-reference-error">
 
     {% from "radios/macro.njk" import govukRadios %}
 

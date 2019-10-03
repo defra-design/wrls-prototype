@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change source factor" %}
+{% set title = "What is the season?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -53,32 +53,29 @@
     </div>
   </div>
 
-  <form action="change-element-date" method="post" class="form" id="return-reference-error">
+  <form action="add-source" method="post" class="form" id="season-factor">
 
     {% from "radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
+        idPrefix: "charge-season",
+        name: "season",
         fieldset: {
+
         },
         items: [
           {
             checked: "checked",
-            value: "unsuported",
-            text: "Unsupported"
+            value: "summer",
+            text: "Summer"
           },
           {
-            value: "supported",
-            text: "Supported (excluding Kielder)"
+            value: "winter",
+            text: "Winter"
           },
           {
-            value: "tidal",
-            text: "Tidal"
-          },
-          {
-            value: "Kielder",
-            text: "Kielder"
+            value: "annual",
+            text: "All year"
           }
         ]
       })

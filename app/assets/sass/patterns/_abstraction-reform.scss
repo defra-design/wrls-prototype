@@ -1,19 +1,19 @@
 // flexible tables, present well on mobiles
 // also improved accessibly
 
-.table__cell--highlight {
-  background-color: govuk-colour("light-pink");
-  background-color: $govuk-focus-colour;
-  // background-color:  govuk-colour("grey-4");
-  // border-bottom: 3px solid govuk-colour("blue");
-  border-bottom: 1px solid govuk-colour("white");
-}
+// .table__cell--highlight {
+//   background-color: govuk-colour("light-pink");
+//   background-color: $govuk-focus-colour;
+//   background-color:  govuk-colour("grey-4");
+//   border-bottom: 3px solid govuk-colour("blue");
+//   border-bottom: 1px solid govuk-colour("white");
+// }
 
-.table__cell--highlight h3 {
-  font-weight: 800;
-  // color: govuk-colour("black");
-  color:  $govuk-secondary-text-colour;
-}
+// .table__cell--highlight h3 {
+//   font-weight: 800;
+//   color: govuk-colour("black");
+//   color:  $govuk-secondary-text-colour;
+// }
 
 .govuk-radios--inline {
   padding-bottom: 15px;

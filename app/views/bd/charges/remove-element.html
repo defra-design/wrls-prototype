@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Remove element" %}
+{% set title = "Remove charge element" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -49,7 +49,7 @@
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <form action="javascript:history.back(2)" method="post" class="form" id="return-reference-error">
+      <form action="remove-element-date" method="post" class="form" id="return-reference-error">
 
         <!-- effective dates -->
         <div class="govuk-form-group govuk-!-margin-bottom-9">
@@ -59,7 +59,7 @@
           </h2>
 
           {{ govukInsetText({
-            text: "Aggregated condition, seasonal change"
+            text: "Spray irrigation, time limited increase for winter"
           }) }}
 
         </div>

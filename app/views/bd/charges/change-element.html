@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change source factor" %}
+{% set title = "Changing this charge element" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -42,7 +42,6 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -50,45 +49,21 @@
       <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
+      <p class="govuk-body-l">
+
+      </p>
+
+      {{ govukWarningText({
+        text: "Changing a charge element will incur a new version of charges for this licence.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <a href="change-abstraction-period" class="govuk-faux-button">
+        Continue
+      </a>
+
     </div>
   </div>
-
-  <form action="change-element-date" method="post" class="form" id="return-reference-error">
-
-    {% from "radios/macro.njk" import govukRadios %}
-
-      {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
-        fieldset: {
-        },
-        items: [
-          {
-            checked: "checked",
-            value: "unsuported",
-            text: "Unsupported"
-          },
-          {
-            value: "supported",
-            text: "Supported (excluding Kielder)"
-          },
-          {
-            value: "tidal",
-            text: "Tidal"
-          },
-          {
-            value: "Kielder",
-            text: "Kielder"
-          }
-        ]
-      })
-    }}
-
-    <button type="submit" class="govuk-button">
-      Continue
-    </button>
-
-  </form>
 
   <script src="/public/javascripts/jquery-1.11.3.js"></script>
 

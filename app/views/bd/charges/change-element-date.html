@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Change abstraction period" %}
+{% set title = "What date was this change?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,32 +45,33 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
-
-      <form action="change-chargable-quantity" method="post" class="form" id="return-reference-error">
+      <form action="/bd/charges/current-charge-version" method="post" class="form" id="return-reference-error">
 
         <!-- effective dates -->
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                What are the start and end dates for this abstraction period?
+              <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+              <h1 class="govuk-heading-l">
+                What date was this change?
               </h1>
             </legend>
 
+            <p class="govuk-body">
+              This date will be used as the date of the new charge version
+            </p>
+
             <div class="govuk-!-margin-bottom-6">
-              <p id="dob-hint" class="govuk-hint">
+              <!-- <p id="dob-hint" class="govuk-hint">
                 Start date
-              </p>
+              </p> -->
               <div class="govuk-date-input" id="start-date">
                 <div class="govuk-date-input__item">
                   <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="start-day">
                       Day
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day" type="number" autocomplete="off" pattern="[0-9]*" value="1">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day" type="number" autocomplete="off" pattern="[0-9]*" value="12">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -78,55 +79,26 @@
                     <label class="govuk-label govuk-date-input__label" for="start-month">
                       Month
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month" type="number" autocomplete="off" pattern="[0-9]*" value="4">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month" type="number" autocomplete="off" pattern="[0-9]*" value="11">
                   </div>
                 </div>
-                <!-- <div class="govuk-date-input__item">
+                <div class="govuk-date-input__item">
                   <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="start-year">
                       Year
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year" type="number" autocomplete="off" pattern="[0-9]*" value="2018">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year" type="number" autocomplete="off" pattern="[0-9]*" value="2019">
                   </div>
-                </div> -->
+                </div>
               </div>
 
             </div>
 
-            <p id="dob-hint" class="govuk-hint">
-              End date
-            </p>
-            <div class="govuk-date-input" id="end-date">
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="end-day">
-                    Day
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-day" name="end-day" type="number" autocomplete="off" pattern="[0-9]*" value="31">
-                </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="end-month">
-                    Month
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-month" name="end-month" type="number" autocomplete="off" pattern="[0-9]*" value="3">
-                </div>
-              </div>
-              <!-- <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="end-year">
-                    Year
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="end-year" name="end-year" type="number" autocomplete="off" pattern="[0-9]*" value="2020">
-                </div>
-              </div> -->
-            </div>
           </fieldset>
         </div>
 
         <button type="submit" class="govuk-button">
-          Continue
+          Save this change
         </button>
 
       </form>

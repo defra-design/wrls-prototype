@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Chargable quantity" %}
+{% set title = "Add chargable quantity" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -52,13 +52,13 @@
     </div>
   </div>
 
-  <form action="chargable-quantity-date" method="post" class="form" id="return-reference-error">
+  <form action="add-loss" method="post" class="form" id="return-reference-error">
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="return-reference">
         What is the chargable quantity?
       </label>
-      <input value="{{ body.billableQuantity }}" class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number">
+      <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number"><span class="margin-left__15">cubic metres per year</span>
     </div>
 
     <button type="submit" class="govuk-button">
