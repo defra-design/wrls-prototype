@@ -1,0 +1,519 @@
+{% extends "layout.html" %}
+
+{% set title = "Licence return for  {{ pData.LicenceNumber }}" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-ex-returns.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+      <span class="govuk-caption-xl">Licence number 01/0117</span>
+      Abstraction return
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+  <div class="govuk-grid-column-full">
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Return reference
+        </div>
+        <div class="meta-data__value">
+          65432123
+        </div>
+      <div>
+    </section>
+    <!-- <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Region
+        </div>
+        <div class="meta-data__value">
+          Central West
+        </div>
+      <div>
+    </section> -->
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Site description
+        </div>
+        <div class="meta-data__value">
+          Great Ouse at Bedford College (Heat pump - cooling only)
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Purpose
+        </div>
+        <div class="meta-data__value">
+          Spray irrigation
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Return period
+        </div>
+        <div class="meta-data__value">
+          1 April 2018 to 31 March 2019
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Abstraction period
+        </div>
+        <div class="meta-data__value">
+          1 April 2018 to 31 September 2018
+        </div>
+      <div>
+    </section>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="../online-licence?wid={{ query.wid }}">View this licence</a>
+  </div>
+</div>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h3 class="govuk-heading-l">
+      Abstraction amounts
+    </h3>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="panel panel-border-wide">
+      <p class="govuk-body">
+        To make a change to a submitted return you need to email <a href="mailto:water_abstractiondigital@environment-agency.gov.uk">water_abstractiondigital@environment-agency.gov.uk</a> or call us on +44&nbsp(0)1234&nbsp567&nbsp890</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- return report when meter readings were added in non-standard units -->
+<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small column-33">
+      Month
+    </div>
+    <div class="table__cell bold-small numbers">
+      Litres
+    </div>
+    <div class="table__cell bold-small numbers column-20">
+      Cubic metres
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 1
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        April
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       2,140,000
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      2,140
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 2
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        May
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       982,500
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      982.5
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 3
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        June
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       1,236,200
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      1,236.2
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 4
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        July
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       1,125,000
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      1,125
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 5
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        August
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       2,000,000
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      2,000
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 6
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        September
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       255,000
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      255
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 7
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        October
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       0
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      0
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 8
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        November
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       0
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      0
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 9
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        December
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       0
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      0
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 10
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        January
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       0
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      0
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 11
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        February
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       0
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      0
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 12
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        March
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       0
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      0
+    </div>
+  </div>
+
+  <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+    <div class="table__cell">
+      <h4 class="screen-reader-only">
+        Row 7
+      </h4>
+      <h5 class="table__context">
+        Month
+      </h5>
+        October
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Litres
+      </h5>
+       0
+    </div>
+    <div class="table__cell numbers">
+      <h5 class="table__context">
+        Cubic metres
+      </h5>
+      0
+    </div>
+  </div>
+
+  <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+  <div class="table__cell">
+    <h2 class="screen-reader-only">
+      Total row
+    </h2>
+    <h3 class="table__context">
+      <!-- only one of these -->
+      Total
+    </h3>
+    Total
+  </div>
+  <div class="table__cell numbers">
+    <h5 class="table__context">
+      Litres
+    </h5>
+    7,738,700
+  </div>
+  <div class="table__cell numbers">
+    <h5 class="table__context">
+      Cubic metres
+    </h5>
+    7,738.7
+  </div>
+</div>
+
+
+</div>
+
+
+<!-- reported by -->
+<div class="grid-row">
+  <div class="column-two-thirds versions">
+
+    <h3 class="heading-medium">
+      Submitted by
+    </h3>
+
+    <div class="panel panel-border-wide version this-version">
+      <p class="spaceless selected">
+        <span class="screen-reader-only">This version</span>
+        <span class="">padraig.glindonfell@aquafall.com<br>
+        <a href="returns-report?wid={{ query.wid }}">21 April 2019</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
