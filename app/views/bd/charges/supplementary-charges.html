@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Supplementary charges for Anglian" %}
+{% set title = "Charge batch 003265" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -46,10 +46,11 @@
 <div class="grid-row">
   <div class="column-two-thirds">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+      <span class="govuk-caption-l">Supplementary charges for Anglian</span>
       {{ title }}
     </h1>
     <p class="govuk-body-l">
-      Bill number 003265 / 12 June 2019
+      12 June 2019
     </p>
   </div>
 </div>
@@ -57,17 +58,17 @@
 <!-- invoice totals -->
 <div class="govuk-grid-row govuk-!-margin-bottom-3">
 <div class="govuk-grid-column-one-half">
-  <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">13</span><br>
+  <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">3</span><br>
   <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Transactions</span></h3>
 </div>
   <div class="govuk-grid-column-one-half">
-    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£9,105</span><br>
+    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£5,552.75</span><br>
     <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Region total</span></h3>
   </div>
 
   <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
     <a href="">
-      Download CSV transactions
+      Download CSV transactions (300kB file)
     </a>
   </div>
 </div>
@@ -78,27 +79,30 @@
   Supplemantary transactions
 </h2>
 
-<!-- table with four columns -->
+<!-- invoices table -->
 <div class="table govuk-!-margin-bottom-6">                                                <!-- a table -->
 
   <div class="table__row--head">                                              <!-- the table head -->
     <div class="table__cell bold-small">
+      Invoice
+    </div>
+    <div class="table__cell bold-small">
       Billing contact
     </div>
     <div class="table__cell bold-small">
-      IAS number
+      Change type
     </div>
-    <div class="table__cell bold-small numbers">
-      2019
-    </div>
-    <div class="table__cell bold-small numbers">
-      Total
-    </div>
-    <div class="table__cell bold-small numbers">
+    <div class="table__cell bold-small numbers column--10">
       Actual change
     </div>
-    <div class="table__cell bold-small numbers">
+    <div class="table__cell bold-small numbers column--10">
       Change
+    </div>
+    <div class="table__cell bold-small numbers column--10">
+      2019
+    </div>
+    <div class="table__cell bold-small numbers column--10">
+      Total
     </div>
   </div>
 
@@ -109,34 +113,26 @@
         Row 1
       </h2>
       <h3 class="table__context">
-        Billing contact
+        Invoice
       </h3>
-      <!-- <span class="table__link"> -->
-        Songlass Produce Ltd.
-      <!-- </span> -->
+      <span class="table__link">
+        AAI26515
+      </span>
     </div>
     <div class="table__cell">
       <h3 class="table__context">
-        IAS number
+        Billing contact
       </h3>
       <p class="table__row--text">
-        0026537
+        Company Name Ltd.
       </p>
     </div>
-    <div class="table__cell numbers">
+    <div class="table__cell">
       <h3 class="table__context">
-        2019
+        Change type
       </h3>
       <p class="table__row--text">
-        £300.72
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Total
-      </h3>
-      <p class="table__row--text table__link">
-        £3,002.75
+        Licence update
       </p>
     </div>
     <div class="table__cell numbers">
@@ -152,46 +148,53 @@
         Change
       </h3>
       <p class="table__row--text">
-        101.2%
+        898.5%
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
+        £300.72
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text table__row--bold-text">
+        £3,002.75
       </p>
     </div>
   </a>
 
-  <!-- table row -->
   <a href="transaction" class="table__row--selectable govuk-!-margin-bottom-6">
     <div class="table__cell">
       <h2 class="screen-reader-only">
         Row 2
       </h2>
       <h3 class="table__context">
-        Billing contact
+        Invoice
       </h3>
-      <!-- <span class="table__link"> -->
-        Irriwet
-      <!-- </span> -->
+      <span class="table__link">
+        AAP12542
+      </span>
     </div>
     <div class="table__cell">
       <h3 class="table__context">
-        IAS number
+        Billing contact
       </h3>
       <p class="table__row--text">
-        0017261
+        A. Parson
       </p>
     </div>
-    <div class="table__cell numbers">
+    <div class="table__cell">
       <h3 class="table__context">
-        2019
+        Change type
       </h3>
       <p class="table__row--text">
-        £326.12
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Total
-      </h3>
-      <p class="table__row--text table__link">
-        £32,612.12
+        Variation
       </p>
     </div>
     <div class="table__cell numbers">
@@ -199,7 +202,7 @@
         Actual change
       </h3>
       <p class="table__row--text">
-        £32,286.00
+        £100.00
       </p>
     </div>
     <div class="table__cell numbers">
@@ -207,46 +210,53 @@
         Change
       </h3>
       <p class="table__row--text">
-        100%
+        10%
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
+        £1,000.00
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text table__row--bold-text">
+        £1,100.00
       </p>
     </div>
   </a>
 
-  <!-- table row -->
   <a href="transaction" class="table__row--selectable govuk-!-margin-bottom-6">
     <div class="table__cell">
       <h2 class="screen-reader-only">
         Row 3
       </h2>
       <h3 class="table__context">
-        Billing contact
+        Invoice
       </h3>
-      <!-- <span class="table__link"> -->
-        Easy Glass Co.
-      <!-- </span> -->
+      <span class="table__link">
+        AAI6125290
+      </span>
     </div>
     <div class="table__cell">
       <h3 class="table__context">
-        IAS number
+        Billing contact
       </h3>
       <p class="table__row--text">
-        7671267
+        Bill Brothers Co.
       </p>
     </div>
-    <div class="table__cell numbers">
+    <div class="table__cell">
       <h3 class="table__context">
-        2019
+        Change type
       </h3>
       <p class="table__row--text">
-        £4,012.07
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Total
-      </h3>
-      <p class="table__row--text table__link">
-        £5,616.90
+        New licence
       </p>
     </div>
     <div class="table__cell numbers">
@@ -254,7 +264,7 @@
         Actual change
       </h3>
       <p class="table__row--text">
-        £1,604.83
+        £1,450.00
       </p>
     </div>
     <div class="table__cell numbers">
@@ -262,115 +272,23 @@
         Change
       </h3>
       <p class="table__row--text">
-        40%
+        10%
       </p>
     </div>
-  </a>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
 
-  <a href="transaction" class="table__row--selectable govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 4
-      </h2>
-      <h3 class="table__context">
-        Billing contact
-      </h3>
-      <!-- <span class="table__link"> -->
-        Samuel Goggozzio
-      <!-- </span> -->
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        IAS number
-      </h3>
-      <p class="table__row--text">
-        2767162
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        2019
-      </h3>
-      <p class="table__row--text">
-        £529.62
       </p>
     </div>
     <div class="table__cell numbers">
       <h3 class="table__context">
         Total
       </h3>
-      <p class="table__row--text table__link">
-        £168.10
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Actual change
-      </h3>
-      <p class="table__row--text">
-        £361.52
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Change
-      </h3>
-      <p class="table__row--text">
-        34.4%
-      </p>
-    </div>
-  </a>
-
-  <a href="transaction" class="table__row--selectable govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 5
-      </h2>
-      <h3 class="table__context">
-        Billing contact
-      </h3>
-      <!-- <span class="table__link"> -->
-        Mariella Bidbod
-      <!-- </span> -->
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        IAS number
-      </h3>
-      <p class="table__row--text">
-        7627610
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        2019
-      </h3>
-      <p class="table__row--text">
-        £267.21
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Total
-      </h3>
-      <p class="table__row--text table__link">
-        £213.77
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Actual change
-      </h3>
-      <p class="table__row--text">
-        £53.44
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Change
-      </h3>
-      <p class="table__row--text">
-        -20%
+      <p class="table__row--text table__row--bold-text">
+        £1,450.00
       </p>
     </div>
   </a>

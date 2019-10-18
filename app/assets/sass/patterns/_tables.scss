@@ -62,7 +62,8 @@
   border-bottom: none;
 }
 
-.table__row--total {
+.table__row--total,
+.table__row--bold-text {
   font-weight: 800;
 }
 
@@ -72,7 +73,7 @@
   font-size: inherit;
   border-bottom: 1px solid #bfc1c3;
   min-height: 30px;
-  vertical-align: middle;
+  vertical-align: top;
   // larger screens
   @media (min-width: 768px) {
     display: table-cell;
