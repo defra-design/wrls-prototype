@@ -32,12 +32,12 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-manage.html" %}
   </div>
-  <!--
+
     {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
     }) }}
-    -->
+
 {% endblock %}
 
 {% block content %}
@@ -68,7 +68,7 @@
 
   <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
     <a href="">
-      Download batch (300kB file)
+      Download batch
     </a>
   </div>
 </div>
@@ -93,21 +93,16 @@
       Change type
     </div>
     <div class="table__cell bold-small numbers column--10">
-      Actual change
-    </div>
-    <div class="table__cell bold-small numbers column--10">
-      Change
-    </div>
-    <div class="table__cell bold-small numbers column--10">
-      2019
-    </div>
-    <div class="table__cell bold-small numbers column--10">
       Total
     </div>
+    <div class="table__cell bold-small numbers column--10">
+      Action
+    </div>
+
   </div>
 
   <!-- table row -->
-  <a href="transaction" class="table__row--selectable govuk-!-margin-bottom-6">
+  <div class="table__row--selectable govuk-!-margin-bottom-6">
     <div class="table__cell">
       <h2 class="screen-reader-only">
         Row 1
@@ -116,7 +111,9 @@
         Invoice
       </h3>
       <span class="table__link">
-        AAI26515
+        <a href="transaction">
+          AAI26515
+        </a>
       </span>
     </div>
     <div class="table__cell">
@@ -137,39 +134,25 @@
     </div>
     <div class="table__cell numbers">
       <h3 class="table__context">
-        Actual change
-      </h3>
-      <p class="table__row--text">
-        £2,679.89
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Change
-      </h3>
-      <p class="table__row--text">
-        898.5%
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        2019
-      </h3>
-      <p class="table__row--text">
-        £300.72
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
         Total
       </h3>
       <p class="table__row--text table__row--bold-text">
         £3,002.75
       </p>
     </div>
-  </a>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Action
+      </h3>
+      <p class="table__row--text">
+        <a href="confirm-remove-transaction">
+          Remove
+        </a>
+      </p>
+    </div>
+  </div>
 
-  <a href="transaction" class="table__row--selectable govuk-!-margin-bottom-6">
+  <div class="table__row--selectable govuk-!-margin-bottom-6">
     <div class="table__cell">
       <h2 class="screen-reader-only">
         Row 2
@@ -178,7 +161,9 @@
         Invoice
       </h3>
       <span class="table__link">
-        AAP12542
+        <a href="transaction">
+          AAP12542
+        </a>
       </span>
     </div>
     <div class="table__cell">
@@ -199,39 +184,25 @@
     </div>
     <div class="table__cell numbers">
       <h3 class="table__context">
-        Actual change
-      </h3>
-      <p class="table__row--text">
-        £100.00
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Change
-      </h3>
-      <p class="table__row--text">
-        10%
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        2019
-      </h3>
-      <p class="table__row--text">
-        £1,000.00
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
         Total
       </h3>
       <p class="table__row--text table__row--bold-text">
         £1,100.00
       </p>
     </div>
-  </a>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Action
+      </h3>
+      <p class="table__row--text">
+        <a href="confirm-remove-transaction">
+          Remove
+        </a>
+      </p>
+    </div>
+  </div>
 
-  <a href="transaction" class="table__row--selectable govuk-!-margin-bottom-6">
+  <div class="table__row--selectable govuk-!-margin-bottom-6">
     <div class="table__cell">
       <h2 class="screen-reader-only">
         Row 3
@@ -240,7 +211,9 @@
         Invoice
       </h3>
       <span class="table__link">
-        AAI6125290
+        <a href="transaction">
+          AAI6125290
+        </a>
       </span>
     </div>
     <div class="table__cell">
@@ -261,37 +234,23 @@
     </div>
     <div class="table__cell numbers">
       <h3 class="table__context">
-        Actual change
-      </h3>
-      <p class="table__row--text">
-        £1,450.00
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Change
-      </h3>
-      <p class="table__row--text">
-        10%
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        2019
-      </h3>
-      <p class="table__row--text">
-
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
         Total
       </h3>
       <p class="table__row--text table__row--bold-text">
         £1,450.00
       </p>
     </div>
-  </a>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Action
+      </h3>
+      <p class="table__row--text">
+        <a href="confirm-remove-transaction">
+          Remove
+        </a>
+      </p>
+    </div>
+  </div>
 
 </div>
 

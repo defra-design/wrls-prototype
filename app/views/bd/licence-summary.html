@@ -140,7 +140,82 @@
         <a href="licence-summary-suspended#charge" class="govuk-faux-button govuk-faux-button--secondary">Suspend from billing</a>
 
         <!-- charges -->
-        {% include "includes/bd/charges/charge-summary.html" %}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <strong class="table__status table__status--open">
+                Draft
+              </strong>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="confirm-make-current">
+                Make current
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Next bill due
+            </dt>
+            <dd class="govuk-summary-list__value">
+              30 March 2020
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <!-- no action -->
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Billing contact
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="licence/contacts#billing">
+                Dawidek Jevnic
+              </a>
+              <br>
+              <a href="/bd/charges/ias">
+                IAS view
+              </a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <!-- <a class="govuk-link" href="">
+                Change
+              </a> -->
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-summary-list__key--list">
+              Spray irrigation
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Spray irrigation, base licence
+              <!-- <br>Extra to cover winter increase -->
+            </dd>
+            <dd class="govuk-summary-list__actions table__row--bold-text">
+              £2,587.50
+              <!-- <br>£998.24 -->
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <!-- Spray irrigation -->
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Spray irrigation, time limited increase for winter
+            </dd>
+            <dd class="govuk-summary-list__actions table__row--bold-text">
+              £1,684.05
+            </dd>
+          </div>
+
+        </dl>
 
         <section class="govuk-!-margin-bottom-8">
           <a href="charges/current-charge-version">
