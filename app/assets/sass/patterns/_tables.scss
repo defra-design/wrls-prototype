@@ -82,6 +82,10 @@
   color: $govuk-text-colour;
 }
 
+.table__cell--v-middle {
+  vertical-align: middle;
+}
+
 @media (min-width: 768px) {
   .table__row--end dt,
   .table__row--end dd,
@@ -181,14 +185,6 @@
   text-decoration: none;
 }
 
-// .table__row--selectable .govuk-form-group {
-//   margin-bottom: 0;
-// }
-//
-// .table__row--toggles .table__cell {
-//   vertical-align: middle;
-// }
-
 
 // ========== ========== ========== ========== ==========
 // table statuses
@@ -226,6 +222,11 @@
   // background-color:  $govuk-error-colour;
   color: govuk-colour("bright-red");
   border: 1px solid govuk-colour("bright-red");
+}
+
+.table__status--pending {
+  color: govuk-colour("orange");
+  border: 1px solid govuk-colour("orange");
 }
 
 .table__status--error {

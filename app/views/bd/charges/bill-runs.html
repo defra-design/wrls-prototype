@@ -1,0 +1,268 @@
+{% extends "layout.html" %}
+
+{% set title = "Bill runs" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings",
+       active: true
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <!-- <span class="govuk-caption-l">Batch 003265 / 12 June 2019</span> -->
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    <a href="send-charges" class="govuk-faux-button">
+      Make a new bill run
+    </a>
+
+  </div>
+</div>
+
+<!-- table with four columns -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small">
+          Date
+        </div>
+        <div class="table__cell bold-small">
+          Run type
+        </div>
+        <div class="table__cell bold-small">
+          Region
+        </div>
+        <div class="table__cell numbers bold-small">
+          Items
+        </div>
+        <div class="table__cell numbers bold-small column--20">
+          Value
+        </div>
+        <div class="table__cell numbers bold-small column--10">
+          Status
+        </div>
+      </div>
+
+      <!-- table row -->
+      <a href="supplementary-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell table__cell--v-middle">
+          <h3 class="screen-reader-only">
+            Row 1
+          </h3>
+          <span class="screen-reader-only">See Anglian Supplementary bill run 12 January 2020</span>
+          <h4 class="table__context">
+            Date
+          </h4>
+          <span class="table__link">
+            12 January 2020
+          </span>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Run type
+          </h4>
+          <p class="table__row--selectable--text">
+            Supplementary
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Region
+          </h4>
+          <p class="table__row--selectable--text">
+            Anglian
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Items
+          </h4>
+          <p class="table__row--selectable--text numbers">
+            1
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Value
+          </h4>
+          <p class="table__row--selectable--text numbers">
+            £5,552.75
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle numbers">
+          <h5 class="table__context">
+            Status
+          </h5>
+          <!-- <strong class="table__status table__status--todo"> -->
+          <strong class="table__status table__status--open">
+            Draft
+          </strong>
+        </div>
+      </a>
+
+
+      <!-- table row -->
+      <a href="supplementary-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell table__cell--v-middle">
+          <h3 class="screen-reader-only">
+            Row 2
+          </h3>
+          <span class="screen-reader-only">See Anglian Supplementary bill run 7 January 2020</span>
+          <h4 class="table__context">
+            Date
+          </h4>
+          <span class="table__link">
+            7 January 2020
+          </span>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Run type
+          </h4>
+          <p class="table__row--selectable--text">
+            Supplementary
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Region
+          </h4>
+          <p class="table__row--selectable--text">
+            Anglian
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Items
+          </h4>
+          <p class="table__row--selectable--text numbers">
+            3
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Value
+          </h4>
+          <p class="table__row--selectable--text numbers">
+            £5,552.75
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle numbers">
+          <h5 class="table__context">
+            Status
+          </h5>
+          <!-- <strong class="table__status table__status--todo"> -->
+          <strong class="table__status table__status--pending">
+            Approved
+          </strong>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="supplementary-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell table__cell--v-middle">
+          <h3 class="screen-reader-only">
+            Row 3
+          </h3>
+          <span class="screen-reader-only">See Environment Agency Wales Supplementary bill run 2 January 2020</span>
+          <h4 class="table__context">
+            Date
+          </h4>
+          <span class="table__link">
+            2 January 2020
+          </span>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Run type
+          </h4>
+          <p class="table__row--selectable--text">
+            Supplementary
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Region
+          </h4>
+          <p class="table__row--selectable--text">
+            Environment Agency Wales
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Items
+          </h4>
+          <p class="table__row--selectable--text numbers">
+            7
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle">
+          <h4 class="table__context">
+            Value
+          </h4>
+          <p class="table__row--selectable--text numbers">
+            £5,552.75
+          </p>
+        </div>
+        <div class="table__cell table__cell--v-middle numbers">
+          <h5 class="table__context">
+            Status
+          </h5>
+          <!-- <strong class="table__status table__status--todo"> -->
+          <strong class="table__status">
+            Sent
+          </strong>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
