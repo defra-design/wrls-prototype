@@ -14,9 +14,8 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "#1",
-       text: "Change password",
-       active: true
+       href: "/ex/account/settings",
+       text: "Account settings"
      },
      {
        href: "#2",
@@ -27,8 +26,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <!-- phase banner -->
-  {% include "includes/feedback-banner.html" %}
+  
   <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
@@ -45,7 +43,7 @@
 {% block content %}
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
-    
+
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 

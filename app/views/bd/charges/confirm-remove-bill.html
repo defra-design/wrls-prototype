@@ -27,13 +27,12 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <!-- phase banner -->
-  {% include "includes/feedback-banner.html" %}
 
   <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
+
     <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
+    {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
   {{ govukBackLink({
@@ -44,15 +43,12 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="govuk-!-margin-bottom-3"></div>
-
 <!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <span class="govuk-caption-l">9 January 2020</span>
+    <span class="govuk-caption-l">7 January 2020</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
     <div class="govuk-inset-text">

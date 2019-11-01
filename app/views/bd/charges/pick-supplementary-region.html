@@ -14,9 +14,8 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "#1",
-       text: "Change password",
-       active: true
+       href: "account/settings",
+       text: "Account settings"
      },
      {
        href: "#2",
@@ -27,11 +26,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <!-- phase banner -->
-  {% include "includes/feedback-banner.html" %}
+
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
-    {% include "includes/nav/nav-nps-view.html" %}
+    {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
   {{ govukBackLink({

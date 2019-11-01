@@ -2,8 +2,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "January 2020 bill" %}
-
+{% set title = "AA123561-01" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -30,10 +29,9 @@
 
 {% block beforeContent %}
 
-  <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-6">
+  <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
+    {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
     {{ govukBackLink({
@@ -44,15 +42,15 @@
 {% endblock %}
 
 {% block content %}
-
   <!-- contact summary -->
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-9">
-        <h1 class="govuk-caption-l">Company name Ltd.</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
-        <p class="govuk-body-l">
+        <h1 class="govuk-caption-l">19 November 2019</h1>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
+        <p class="govuk-body">
+          Bidbod Foods Ltd.
           <!-- <a href="ias">
             IAS account 3725712
           </a> -->
@@ -98,12 +96,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-xl">
-        2020
+        2019
       </h2>
 
       <section class="govuk-!-margin-bottom-9">
         <h3 class="govuk-heading-l govuk-!-margin-bottom-0">
-          Licence number 03/28/60/0032
+          Licence number 03/052/001
         </h3>
         <a href="../licence-summary" target="_blank">
           View licence (opens in new tab)

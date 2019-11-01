@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Supplementary bills for Anglian" %}
+{% set title = "Supplementary bills for South East" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -27,16 +27,15 @@
 
 {% block beforeContent %}
 
-  <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
 
 {% endblock %}
 
@@ -45,8 +44,8 @@
 <!-- page title -->
 <div class="grid-row">
   <div class="column-two-thirds">
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
-      <span class="govuk-caption-l">7 January 2020</span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">
+      <span class="govuk-caption-l">19 November 2019</span>
       {{ title }}
     </h1>
     <!-- <p class="govuk-body-l">
@@ -58,11 +57,11 @@
 <!-- invoice totals -->
 <div class="govuk-grid-row govuk-!-margin-bottom-3">
   <div class="govuk-grid-column-one-half">
-    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">3</span><br>
+    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">4</span><br>
     <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Bills</span></h3>
   </div>
   <div class="govuk-grid-column-one-half">
-    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£5,552.75</span><br>
+    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£9,071.53</span><br>
     <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h3>
   </div>
 
@@ -84,6 +83,9 @@
 
   <div class="table__row--head">
     <div class="table__cell bold-small">
+      Invoice
+    </div>
+    <div class="table__cell bold-small">
       Billing contact
     </div>                                              <!-- the table head -->
     <div class="table__cell bold-small">
@@ -95,9 +97,6 @@
     <div class="table__cell bold-small numbers column--10">
       Total
     </div>
-    <div class="table__cell bold-small numbers column--10">
-      Action
-    </div>
 
   </div>
 
@@ -108,21 +107,31 @@
         Row 1
       </h2>
       <h3 class="table__context">
+        Invoice
+      </h3>
+      <p class="table__row--text">
+        <span class="table__link">
+          <a href="bill-sent">
+            AA123561-01
+          </a>
+        </span>
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
         Billing contact
       </h3>
       <p class="table__row--text">
-        A. Parson
+        Bidbod Foods Ltd.
       </p>
     </div>
     <div class="table__cell">
       <h3 class="table__context">
         Licence number
       </h3>
-      <span class="table__link">
-        <a href="bill">
-          03/28/60/0032
-        </a>
-      </span>
+      <p>
+        03/20/11/3
+      </p>
     </div>
     <!-- <div class="table__cell">
       <h3 class="table__context">
@@ -140,16 +149,6 @@
         £3,002.75
       </p>
     </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Action
-      </h3>
-      <p class="table__row--text">
-        <a href="confirm-remove-bill">
-          Remove
-        </a>
-      </p>
-    </div>
   </div>
 
   <div class="table__row--selectable govuk-!-margin-bottom-6">
@@ -158,21 +157,31 @@
         Row 2
       </h2>
       <h3 class="table__context">
+        Invoice
+      </h3>
+      <p class="table__row--text">
+        <span class="table__link">
+          <a href="bill-sent">
+            AA123561-02
+          </a>
+        </span>
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
         Billing contact
       </h3>
       <p class="table__row--text">
-        Bill Brothers Co.
+        Samex Construction Ltd.
       </p>
     </div>
     <div class="table__cell">
       <h3 class="table__context">
         Licence number
       </h3>
-      <span class="table__link">
-        <a href="bill">
-          01/27/62/001
-        </a>
-      </span>
+      <p>
+        03/016/002
+      </p>
     </div>
     <!-- <div class="table__cell">
       <h3 class="table__context">
@@ -187,43 +196,44 @@
         Total
       </h3>
       <p class="table__row--text table__row--bold-text">
-        £1,100.00
-      </p>
-    </div>
-    <div class="table__cell numbers">
-      <h3 class="table__context">
-        Action
-      </h3>
-      <p class="table__row--text">
-        <a href="confirm-remove-bill">
-          Remove
-        </a>
+        £2,732.50
       </p>
     </div>
   </div>
 
-  <div class="table__row--selectable table__row--last govuk-!-margin-bottom-6">
+  <div class="table__row--selectable govuk-!-margin-bottom-6">
     <div class="table__cell">
       <h2 class="screen-reader-only">
         Row 3
       </h2>
       <h3 class="table__context">
+        Invoice
+      </h3>
+      <p class="table__row--text">
+        <span class="table__link">
+          <a href="bill-sent">
+            AA123561-03
+          </a>
+        </span>
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
         Billing contact
       </h3>
       <p class="table__row--text">
-        Company Name Ltd.
+        Singola Foods Company
       </p>
     </div>
     <div class="table__cell">
       <h3 class="table__context">
         Licence number
       </h3>
-      <span class="table__link">
-        <a href="bill">
-          01/22/0020
-          <br>01/22/0021/r001
-        </a>
-      </span>
+      <p>
+        03/255/01
+        <br>03/255/02
+        <br>03/255/03
+      </p>
     </div>
     <!-- <div class="table__cell">
       <h3 class="table__context">
@@ -238,25 +248,61 @@
         Total
       </h3>
       <p class="table__row--text table__row--bold-text">
-        £1,450.00
+        £2,036.22
       </p>
     </div>
-    <div class="table__cell numbers">
+  </div>
+
+  <div class="table__row--selectable table__row--last govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 4
+      </h2>
       <h3 class="table__context">
-        Action
+        Invoice
       </h3>
       <p class="table__row--text">
-        <a href="confirm-remove-bill">
-          Remove
-        </a>
+        <span class="table__link">
+          <a href="bill-sent">
+            AA123561-04
+          </a>
+        </span>
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Billing contact
+      </h3>
+      <p class="table__row--text">
+        Barry Groves Leisure Adventure
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence number
+      </h3>
+      <p>
+        02/004/35/55
+      </p>
+    </div>
+    <!-- <div class="table__cell">
+      <h3 class="table__context">
+        Change type
+      </h3>
+      <p class="table__row--text">
+        Variation
+      </p>
+    </div> -->
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text table__row--bold-text">
+        £1,200.06
       </p>
     </div>
   </div>
 
 </div>
-
-<a href="confirm-approve-bills" class="govuk-faux-button">Confirm bills</a>
-
-
 
 {% endblock %}

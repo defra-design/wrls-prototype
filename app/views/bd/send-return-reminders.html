@@ -14,9 +14,8 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "#1",
-       text: "Change password",
-       active: true
+       href: "/ex/account/settings",
+       text: "Account settings"
      },
      {
        href: "#2",
@@ -27,8 +26,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <!-- phase banner -->
-  {% include "includes/feedback-banner.html" %}
+
   <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
@@ -43,33 +41,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-l">
-          Send return reminders
-        </h1>
+    <h1 class="govuk-heading-l">
+      Send return reminders
+    </h1>
 
-        <p class="govuk-body-l">
-          You are about to send reminder letters to all licence holders in the current return cycle with due returns.
-        </p>
+    <p class="govuk-body-l">
+      You are about to send reminder letters to all licence holders in the current return cycle with due returns.
+    </p>
 
-        <p class="govuk-body govuk-!-margin-bottom-6">
-          <a href="CSV-file-of-licence-holders">Download a list of recipients</a>.
-        </p>
+    <p class="govuk-body govuk-!-margin-bottom-6">
+      <a href="CSV-file-of-licence-holders">Download a list of recipients</a>.
+    </p>
 
-        <a href="return-reminders-sent" type="submit" class="govuk-button">
-          Send reminders
-        </a>
+    <a href="return-reminders-sent" type="submit" class="govuk-button">
+      Send reminders
+    </a>
 
-        <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
+    <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
 
-      </div>
-    </div>
-
-  </main>
+  </div>
 </div>
+
 {% endblock %}
