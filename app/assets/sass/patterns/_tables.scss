@@ -212,6 +212,12 @@
   text-transform: uppercase;
 }
 
+.table__status--l {
+  font-size: 28px;
+  border: 2px solid #005ea5;
+  border-radius: 4px;
+}
+
 .table__status--todo {
   // background-color: govuk-colour("bright-red");
   color: govuk-colour("bright-red");

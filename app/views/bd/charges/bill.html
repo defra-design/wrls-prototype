@@ -1,9 +1,6 @@
-{% import "includes/macros/tables.njk" as table %}
-
 {% extends "layout.html" %}
 
 {% set title = "January 2020 bill" %}
-
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -30,8 +27,7 @@
 
 {% block beforeContent %}
 
-  <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-6">
+  <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
@@ -51,11 +47,11 @@
 
       <section class="govuk-!-margin-bottom-9">
         <h1 class="govuk-caption-l">Company name Ltd.</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
         <p class="govuk-body-l">
-          <!-- <a href="ias">
-            IAS account 3725712
-          </a> -->
+          <a href="ias">
+            Invoice account 021545
+          </a>
         </p>
       </section>
 
