@@ -47,12 +47,7 @@
 
       <section class="govuk-!-margin-bottom-6">
         <h1 class="govuk-caption-l">19 November 2019</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
-        <!-- <p class="govuk-body-l">
-          <a href="ias">
-            Invoice account 021545
-          </a>
-        </p> -->
+        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
 
 
@@ -80,7 +75,7 @@
     </div>
   </details>
 
-  <details class="govuk-details" data-module="govuk-details">
+  <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
         Billing contact address
@@ -94,6 +89,12 @@
       <br>RE1 1TG
     </div>
   </details>
+
+  <p class="govuk-body govuk-!-margin-bottom-9">
+    <a href="ias">
+      Invoice account 021545
+    </a>
+  </p>
 
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
@@ -169,7 +170,7 @@
         <!-- table head -->
         <div class="table__row--head">                                          <!-- the table head -->
           <div class="table__cell bold-small column--30">
-            Debit detail
+            Transaction detail
           </div>
           <div class="table__cell bold-small numbers column--20">
             Billable days
@@ -194,7 +195,7 @@
               Row 1
             </h5>
             <h6 class="table__context">
-              Debit detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               1 April 2020 to 6 June 2020
@@ -245,7 +246,7 @@
               Row 2
             </h5>
             <h6 class="table__context">
-              Debit detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               1 April 2020 to 6 June 2020
@@ -296,7 +297,7 @@
               Row 3
             </h5>
             <h6 class="table__context">
-              Debit detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               7 April 2020 to 31 October 2020
@@ -346,7 +347,7 @@
               Row 4
             </h5>
             <h6 class="table__context">
-              Debit detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               7 April 2020 to 31 October 2020
@@ -391,10 +392,10 @@
         <!-- total row -->
         <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">
           <div class="table__cell">
-            <h4 class="screen-reader-only">
-               total
-            </h4>
-            Total
+            <h5 class="screen-reader-only">
+               Total credits and debits
+            </h5>
+            Total credits and debits
           </div>
           <div class="table__cell table__cell--empty">
 
@@ -443,7 +444,7 @@
         <!-- table head -->
         <div class="table__row--head">                                          <!-- the table head -->
           <div class="table__cell bold-small">
-            Debit detail
+            Transaction detail
           </div>
           <div class="table__cell bold-small numbers">
             Billable days
@@ -466,7 +467,7 @@
               Row 1
             </h5>
             <h6 class="table__context">
-              Debit detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               1 January 2020 to 31 March 2020
@@ -515,7 +516,7 @@
               Row 2
             </h5>
             <h6 class="table__context">
-              Debit detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               1 January 2020 to 31 March 2020
@@ -557,30 +558,54 @@
 
         </div>
 
-        <!-- total row -->
-        <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">
+        <!-- totals -->
+        <div class="table__row table__row--total table__row--end govuk-!-margin-bottom-6">
           <div class="table__cell">
-            <h4 class="screen-reader-only">
-               total
-            </h4>
-            Total
+            <h5 class="screen-reader-only">
+               Total credits and debits
+            </h5>
+            Total credits and debits
           </div>
           <div class="table__cell table__cell--empty">
 
           </div>
           <div class="table__cell numbers">
-            <h5 class="table__context">
+            <!-- <h6 class="table__context">
               Credit total
-            </h5>
-
+            </h6>
+            £851.50 -->
           </div>
           <div class="table__cell numbers">
-            <h5 class="table__context">
+            <h6 class="table__context">
               Debit total
-            </h5>
+            </h6>
             £1,684.05
           </div>
         </div>
+
+        <!-- net total -->
+        <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h5 class="screen-reader-only">
+               Net total
+            </h5>
+            Net total
+          </div>
+          <div class="table__cell table__cell--empty">
+          </div>
+          <div class="table__cell numbers">
+          </div>
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Debit total
+            </h6>
+            £1,684.05
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
       </div>
