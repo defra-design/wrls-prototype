@@ -14,7 +14,7 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "/ex/account/settings",
+       href: "account/settings",
        text: "Account settings"
      },
      {
@@ -25,7 +25,8 @@
  }) }}
 {% endblock %}
 
-  <!-- navigation block -->
+{% block beforeContent %}
+
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-manage.html" %}
@@ -41,16 +42,23 @@
 {% block content %}
 
 <!-- page title -->
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-l">12 June 2019</span>
-      {{ title }}
-    </h1>
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-9">
+      <h1 class="govuk-caption-l">7 January 2020</h1>
+      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
+      <!-- <p class="govuk-body-l">
+        <a href="ias">
+          Invoice account 021545
+        </a>
+      </p> -->
+    </section>
 
     <p class="govuk-body-l">
-      No supplenetary charges
+      No supplemetary charges
     </p>
+
   </div>
 </div>
 
