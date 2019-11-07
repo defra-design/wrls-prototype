@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Supplementary bills for Anglian" %}
+{% set title = "Anglian supplementary bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -43,20 +43,24 @@
 {% block content %}
 
 <!-- page title -->
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
-      <span class="govuk-caption-l">7 January 2020</span>
-      {{ title }}
-    </h1>
-    <!-- <p class="govuk-body-l">
-      12 June 2019
-    </p> -->
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-9">
+      <h1 class="govuk-caption-l">7 January 2020</h1>
+      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
+      <!-- <p class="govuk-body-l">
+        <a href="ias">
+          Invoice account 021545
+        </a>
+      </p> -->
+    </section>
+
   </div>
 </div>
 
 <!-- invoice totals -->
-<div class="govuk-grid-row govuk-!-margin-bottom-3">
+<!-- <div class="govuk-grid-row govuk-!-margin-bottom-3">
   <div class="govuk-grid-column-one-half">
     <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">3</span><br>
     <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Bills</span></h3>
@@ -71,7 +75,7 @@
       Download batch
     </a>
   </div>
-</div>
+</div> -->
 
 <div class="divider govuk-!-margin-bottom-7"></div>
 

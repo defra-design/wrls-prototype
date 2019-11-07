@@ -43,7 +43,7 @@
 }
 
 .dashboard__tile {
-  // width: 33%;
+  max-width: 31%;
   // font-size: 16px;
   flex: 1;
   margin-right: 30px;
@@ -54,13 +54,13 @@
 
 @media (min-width: 768px) {
   .dashboard__tile {
-    // width: 50%;
+    width: 50%;
   }
 }
 
 @media (max-width: 640px) {
   .dashboard__tile {
-    // width: 100%;
+    width: 100%;
     margin-right: 0;
     margin-bottom: 20px;
   }
