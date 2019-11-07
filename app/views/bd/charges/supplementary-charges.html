@@ -45,7 +45,7 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
     <div class="govuk-grid-column-two-thirds">
 
-      <section class="govuk-!-margin-bottom-5">
+      <section class="govuk-!-margin-bottom-9">
         <h1 class="govuk-caption-l">7 January 2020</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
         <!-- <p class="govuk-body-l">
@@ -55,7 +55,9 @@
         </p> -->
       </section>
 
-      <a href="confirm-cancel-bills" class="govuk-faux-button govuk-faux-button--inline govuk-faux-button--secondary govuk-!-margin-bottom-9">Cancel bill run</a>
+      <!-- <section class="govuk-!-margin-bottom-5">
+
+      </section> -->
 
       <!-- invoice totals -->
       <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
@@ -64,7 +66,6 @@
 
     </div>
   </div>
-
 
   <!-- invoice totals -->
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
@@ -80,9 +81,19 @@
     </div>
 
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
-      <a href="">
-        Download this bill run
-      </a>
+
+      <section class="govuk-!-margin-bottom-6">
+        <p class="govuk-body">You can send this bill run on the next page.</p>
+        <a href="confirm-approve-bills" class="govuk-faux-button">Confirm bill run</a>
+        <a href="confirm-cancel-bills" class="govuk-faux-button govuk-faux-button--inline govuk-faux-button--secondary">Cancel bill run</a>
+      </section>
+
+      <p class="govuk-body">
+        <a href="">
+          Download this bill run
+        </a>
+      </p>
+
     </div>
 
   </div>
@@ -346,9 +357,5 @@
     </div>
 
   </div>
-
-  <p class="govuk-body">You can send this bill run on the next page.</p>
-
-  <a href="confirm-approve-bills" class="govuk-faux-button">Confirm bill run</a>
 
 {% endblock %}
