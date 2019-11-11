@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "January 2020 bill" %}
+{% set title = "January 2020 invoice" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -86,7 +86,7 @@
       </p>
 
       <!-- invoice totals -->
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-0 screen-reader-only">
         Total
       </h2>
 
@@ -106,7 +106,7 @@
 
     <div class="govuk-grid-column-one-half">
       <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£1,268.80</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credit note</span></h3>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
     </div>
 
     <div class="govuk-grid-column-one-half">
@@ -136,8 +136,8 @@
         <h3 class="govuk-heading-l govuk-!-margin-bottom-0">
           Licence number 03/28/60/0032
         </h3>
-        <a href="../licence-summary" target="_blank">
-          View licence (opens in new tab)
+        <a href="../licence-summary">
+          View licence
         </a>
       </section>
 
@@ -379,13 +379,13 @@
 
         </div>
 
-        <!-- total row -->
-        <div class="table__row table__row--total table__row--end govuk-!-margin-bottom-6">
+        <!-- total credits -->
+        <div class="table__row table__row--total govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h5 class="screen-reader-only">
-               Total credits and debits
+               Total credits
             </h5>
-            Total credits and debits
+            Credits
           </div>
           <div class="table__cell table__cell--empty">
 
@@ -395,6 +395,31 @@
               Credit total
             </h5>
             £1,268.80
+          </div>
+          <div class="table__cell numbers">
+            <!-- <h5 class="table__context">
+              Debit total
+            </h5>
+            £2,587.50 -->
+          </div>
+        </div>
+
+        <!-- total debits -->
+        <div class="table__row table__row--total table__row--end govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h5 class="screen-reader-only">
+               Total debits
+            </h5>
+            Debits
+          </div>
+          <div class="table__cell table__cell--empty">
+
+          </div>
+          <div class="table__cell numbers">
+            <!-- <h5 class="table__context">
+              Credit total
+            </h5>
+            £1,268.80 -->
           </div>
           <div class="table__cell numbers">
             <h5 class="table__context">
@@ -567,13 +592,13 @@
 
         </div>
 
-        <!-- total row -->
-        <div class="table__row table__row--total table__row--end govuk-!-margin-bottom-6">
+        <!-- total credits -->
+        <div class="table__row table__row--total govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h5 class="screen-reader-only">
-               Total credits and debits
+               Total credits
             </h5>
-            Total credits and debits
+            Credits
           </div>
           <div class="table__cell table__cell--empty">
 
@@ -581,6 +606,31 @@
           <div class="table__cell numbers">
             <h5 class="table__context">
               Credit total
+            </h5>
+
+          </div>
+          <div class="table__cell numbers">
+            <!-- <h5 class="table__context">
+              Debit total
+            </h5>
+            £1,684.05 -->
+          </div>
+        </div>
+
+        <!-- total debits -->
+        <div class="table__row table__row--total table__row--end govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h5 class="screen-reader-only">
+               Total debits
+            </h5>
+            Debits
+          </div>
+          <div class="table__cell table__cell--empty">
+
+          </div>
+          <div class="table__cell numbers">
+            <h5 class="table__context">
+              <!-- Credit total -->
             </h5>
 
           </div>

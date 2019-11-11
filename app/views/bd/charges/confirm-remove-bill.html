@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Remove this  from the bill run?" %}
+{% set title = "Remove this invoice from the bill run?" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -15,8 +15,7 @@
    navigation: [
      {
        href: "/bd/account/change-password-check",
-       text: "Change password",
-       active: true
+       text: "Change password"
      },
      {
        href: "#2",
@@ -52,13 +51,14 @@
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
     <div class="govuk-inset-text">
-      Bill Brothers Co.
-      <br>Licence number 01/27/62/001
+      Account 015456
+      <br>Bill Brothers Co.
+      <br>Licence 01/27/62/001
       <br>£1,100.00
     </div>
 
     <a href="javascript:history.back(2)" class="govuk-faux-button">
-      Yes, remove this
+      Yes, remove this invoice
     </a>
 
   </div>
