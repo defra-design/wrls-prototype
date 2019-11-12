@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% set title = "What type of vehicle do you have?" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="vehicle-features" method="post" class="form">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                {{ title }}
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="vehicle-type-car" name="vehicle-type" type="radio" value="Car">
+                <label class="govuk-label govuk-radios__label" for="vehicle-type-car">
+                  Car
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="vehicle-type-lorry" name="vehicle-type" type="radio" value="Lorry">
+                <label class="govuk-label govuk-radios__label" for="vehicle-type-lorry">
+                  Lorry
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="vehicle-type-motorcycle" name="vehicle-type" type="radio" value="Motorcycle">
+                <label class="govuk-label govuk-radios__label" for="vehicle-type-motorcycle">
+                  Motorcycle
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

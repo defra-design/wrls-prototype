@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% set title = "Which of these applies to your vehicle?" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Check your answers before sending your application
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Vehicle details
+      </h2>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Registration number
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/docs/examples/pass-data/vehicle-registration">
+              Change <span class="govuk-visually-hidden">registration number</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Vehicle type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Motorcycle
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/docs/examples/pass-data/vehicle-type">
+              Change <span class="govuk-visually-hidden">vehicle type</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Vehicle features
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul class="govuk-list govuk-list--bullet">
+              <li>No features selected</li>
+            </ul>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/docs/examples/pass-data/vehicle-features">
+              Change <span class="govuk-visually-hidden">vehicle features</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <p>
+        <a href="/docs/tutorials-and-examples">
+          Other Prototype Kit examples
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+  <script src="/extension-assets/govuk-frontend/govuk/all.js"></script>
+  <script src="/public/javascripts/docs.js"></script>
+  <script src="/public/javascripts/auto-store-data.js"></script>
+
+{% endblock %}

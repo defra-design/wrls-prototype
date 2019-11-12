@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set title = "What is your vehicle registration number?" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="vehicle-type" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="registration-number">
+                {{ title }}
+              </label>
+            </h1>
+            <input class="govuk-input" id="registration-number" name="vehicle-registration" value="" type="text">
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </form>
+
+      </div>
+    </div>
+
+
+{% endblock %}
