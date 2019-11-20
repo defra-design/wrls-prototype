@@ -42,12 +42,16 @@
 }
 
 
-.dashboard__tile {
+.dashboard__tile, .dashboard__tile--empty {
   // font-size: 16px;
   flex: 1;
   margin-right: 30px;
   margin-bottom: 30px;
   border: 1px solid #ccc;
+}
+
+.dashboard__tile--empty {
+  border: none;
 }
 
 @media (max-width: 640px) {
