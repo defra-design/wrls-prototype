@@ -92,6 +92,11 @@
   .table__row--end div {
     border-bottom: 2px solid $govuk-text-colour;
   }
+  .table__row--divider dt,
+  .table__row--divider dd,
+  .table__row--divider div, {
+    border-bottom: 1px solid $govuk-text-colour;
+  }
 }
 
 .table__cell p {

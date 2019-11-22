@@ -1,0 +1,362 @@
+{% extends "layout.html" %}
+
+{% set title = "Anglian two-part tariff bill run issues" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <section>
+        <h1 class="govuk-caption-l">7 January 2020</h1>
+        <span class="govuk-heading-xl">{{ title }}</span>
+      </section>
+
+    </div>
+  </div>
+
+  <h2 class="govuk-heading-l screen-reader-only">
+    Return issues
+  </h2>
+
+  <!-- invoices table -->
+  <div class="table govuk-!-margin-bottom-6">                                                <!-- a table -->
+
+    <div class="table__row--head">
+      <div class="table__cell bold-small">
+        Licence
+      </div>
+      <div class="table__cell bold-small">
+        Charge element
+      </div>
+      <div class="table__cell bold-small">
+        Issue
+      </div>
+      <div class="table__cell bold-small numbers column--10">
+        Action
+      </div>
+
+    </div>
+
+    <!-- table row -->
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 1
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          03/28/60/0032
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Charge element
+        </h3>
+        <p>
+          Base licence
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+          Overabstraction
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="two-part-bill-issue">
+            Resolve
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable table__row--divider govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 2
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          03/28/60/0032
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Charge element
+        </h3>
+        <p>
+          Time limited increase spring
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+          Overabstraction
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="two-part-bill-issue">
+            Resolve
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 3
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          01/27/001/2
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Charge element
+        </h3>
+        <p>
+          Spray for potatoes
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+          Incomplete returns
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="two-part-bill-issue">
+            Resolve
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable table__row--divider govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 4
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          01/27/001/2
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Charge element
+        </h3>
+        <p>
+          Spray for machines
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+          -
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <!-- <a href="two-part-bill-issue">
+            Resolve
+          </a> -->
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 5
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          02/020/34
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Charge element
+        </h3>
+        <p>
+          Base licence
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+          Received but not processed
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="two-part-bill-issue">
+            Resolve
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 6
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          02/020/35
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Charge element
+        </h3>
+        <p>
+          Base licence
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+          -
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <!-- <a href="two-part-bill-issue">
+            Resolve
+          </a> -->
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable table__row--last govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 7
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          02/021/020
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Charge element
+        </h3>
+        <p>
+          Base licence
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+          -
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <!-- <a href="two-part-bill-issue">
+            Resolve
+          </a> -->
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}
