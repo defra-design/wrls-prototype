@@ -244,6 +244,11 @@
   border: 1px solid govuk-colour("orange");
 }
 
+.table__status--ready {
+  color: govuk-colour("green");
+  border: 1px solid govuk-colour("green");
+}
+
 .table__status--error {
   // background-color: $govuk-error-colour;
   color: $govuk-error-colour;
