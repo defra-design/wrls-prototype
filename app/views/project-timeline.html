@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+
+{% set title = "Project history for Water Resources Licensing Service" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-!-margin-bottom-9">
+  <a href="index">
+    Water resource licensing service prototype
+  </a>
+</div>
+
+<!-- timeline -->
+<div class="moj-timeline">
+
+<div class="moj-timeline__item">
+  <div class="moj-timeline__header">
+    <h2 class="moj-timeline__title moj-timeline__title--big">
+      Returns version 3
+    </h2>
+    <p>
+      <span class="govuk-!-font-size-24">31 October 2019</span>
+      <br>Returns improvements
+    </p>
+  </div>
+
+</div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        Returns version 2
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">1 April 2019</span>
+      <br>Returns improvements
+      <br>Bulk uploads
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        Abstraction reform / Digitise!
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">1 December 2018</span>
+      <br>1st version of Digitise! UI
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        Returns launch
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">1 November 2018</span>
+      <br>1st version of returns
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        Check flows and levels
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">July 2018</span>
+      <br>MVP of licence guaging station data
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        Hands-off flows and levels
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">June 2018</span>
+      <br>MVP of generating and issuing hands-off letters
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        BETA public (launch)
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">27 March 2018</span>
+      <br>BETA public (launch) - View my licence
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        LIVE - Private BETA
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">January 2018</span>
+      <br>BETA private - View my licence
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        BETA build
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">August 2017</span>
+      <br> View my licence
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        Alpha
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">January 2017</span>
+      <br>Alpha - how we can meet the needs
+    </p>
+  </div>
+
+  <div class="moj-timeline__item">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        Project start
+      </h2>
+    </div>
+    <p>
+      <span class="govuk-!-font-size-24">June 2016</span>
+      <br>Discovery - looking for needs
+    </p>
+  </div>
+
+</div>
+
+{% endblock %}
