@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% set title = "New billing contact address" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="select-address" method="post" class="form" id="new-contact-postcode">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="return-reference">
+            Enter a UK postcode
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="contact-postcode" name="contact-postcode" type="text">
+        </div>
+
+        <button type="submit" class="govuk-button">
+          Find
+        </button>
+
+      </form>
+
+      <p>
+        <a href="https://www.royalmail.com/find-a-postcode">
+          Find a postcode on Royal Mail’s postcode finder
+        </a>
+      </p>
+
+      <p>
+        <a href="non-uk-address">
+          Use a non-UK address
+        </a>
+      </p>
+
+      <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+      <script>
+        $(function() {
+          $('form[data-routing]').on('submit', function(ev) {
+            // FInd selected radio button
+            const url = $(this).find('input:checked').val();
+
+            if(url) {
+              ev.preventDefault();
+              window.location.href = url;
+              return false;
+            }
+          });
+        })
+      </script>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% set title = "Effective date" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">
+        Check these details are right
+      </h1>
+
+      <h2 class="govuk-heading-m">New billing contact</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Billing contact
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sam Burridge
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="new-billing-contact">
+              Change<span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Pickering House
+            <br>The St
+            <br>West Crudwell
+            <br>Wiltshire
+            <br>SN16 9EW
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="new-contact-postcode">
+              Change<span class="govuk-visually-hidden"> address</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Effective date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            27 January 2020
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="effective-date">
+              Change<span class="govuk-visually-hidden"> effective date</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      <form action="confirm-change" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
