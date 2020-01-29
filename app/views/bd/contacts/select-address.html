@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "New billing contact address" %}
+{% set title = "Select the address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -49,9 +49,9 @@
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <section class="govuk-!-margin-bottom-6">
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Postcode</h2>
-        <p class="govuk-!-bold">
-          <span class="govuk-body govuk-!-font-weight-bold">SN16 9EW</span> <a href="new-contact-postcode" class="margin-left__15">Change</a>
+        <!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Postcode</h2> -->
+        <p>Postcode<br>
+          <span class="govuk-body govuk-!-font-weight-bold">SN16 9EW</span> <a href="new-contact-postcode" class="margin-left__15">Change postcode</a>
         </p>
       </section>
     </div>
@@ -67,12 +67,12 @@
           </h1>
         </legend> -->
         <p>
-          Select an address
+          2 addresses found
         </p>
 
         <div class="govuk-radios">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="select-address" name="select-address" type="radio" value="effective-date">
+            <input class="govuk-radios__input" id="select-address" name="select-address" type="radio" value="existing-contact">
             <label class="govuk-label govuk-radios__label" for="select-address">
               Fiddlington Bridge House
               <br>Doogal Road
@@ -82,14 +82,23 @@
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="select-address-2" name="select-address" type="radio" value="manual-address-street">
+            <input class="govuk-radios__input" id="select-address-2" name="select-address" type="radio" value="existing-contact">
             <label class="govuk-label govuk-radios__label" for="select-address-2">
-              Manually enter address
+              1 Doogal Road
+              <br>West Crudwell
+              <br>Wiltsire
+              <br>SN16 9EW
             </label>
           </div>
         </div>
       </fieldset>
     </div>
+
+    <p class="govuk-!-margin-bottom-6">
+      <a href="manual-address">
+        I cannot find the address in the list
+      </a>
+    </p>
 
     <button type="submit" class="govuk-button">
       Continue

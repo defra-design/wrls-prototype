@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "New billing contact address" %}
+{% set title = "Enter the UK postcode" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -44,7 +44,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="govuk-caption-l">Sam Burridge</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
@@ -56,11 +56,17 @@
       <form action="select-address" method="post" class="form" id="new-contact-postcode">
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="return-reference">
+          <!-- <label class="govuk-label" for="return-reference">
             Enter a UK postcode
-          </label>
+          </label> -->
           <input class="govuk-input govuk-input--width-10" id="contact-postcode" name="contact-postcode" type="text">
         </div>
+
+        <p class="govuk-!-margin-bottom-6">
+          <a href="non-uk-address">
+            This address is outside the UK
+          </a>
+        </p>
 
         <button type="submit" class="govuk-button">
           Find
@@ -68,34 +74,11 @@
 
       </form>
 
-      <p>
+      <!-- <p>
         <a href="https://www.royalmail.com/find-a-postcode">
           Find a postcode on Royal Mail’s postcode finder
         </a>
-      </p>
-
-      <p>
-        <a href="non-uk-address">
-          Use a non-UK address
-        </a>
-      </p>
-
-      <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-      <script>
-        $(function() {
-          $('form[data-routing]').on('submit', function(ev) {
-            // FInd selected radio button
-            const url = $(this).find('input:checked').val();
-
-            if(url) {
-              ev.preventDefault();
-              window.location.href = url;
-              return false;
-            }
-          });
-        })
-      </script>
+      </p> -->
 
     </div>
   </div>
