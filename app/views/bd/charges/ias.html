@@ -2,7 +2,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "Invoices for Dawidek Jevnic" %}
+{% set title = "Dawidek Jevnic" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,31 +48,30 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">Aquafall</span>
+      <span class="govuk-caption-l">Invoice account 3725712</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <!-- Contact summary -->
-      <!-- <section>
-        <div class="govuk-!-margin-bottom-6" id="billing">
-          <div class="govuk-inset-text">
-            Finance Department<br>
-            1 Hill House<br>
-            Abingdon-on-Thames<br>
-            Oxfordshire<br>
-            RE1 1TG<br>
-            <br>
-            Telephone 08847546123<br>
-            Email daw.jevnic@irriwet.co.uk
-          </div>
+      <section>
+
+        <div class="govuk-inset-text govuk-!-margin-bottom-3">
+          Finance Department<br>
+          1 Hill House<br>
+          Abingdon-on-Thames<br>
+          Oxfordshire<br>
+          RE1 1TG
         </div>
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            <div class="govuk-!-margin-bottom-9">
-              <a href="update">Update this information</a>
-            </div>
-          </div>
+
+
+        <div class="govuk-!-margin-bottom-6">
+          <a href="../contacts/new-address-postcode">Change address</a>
         </div>
-      </section> -->
+
+      </section>
+
+      <div class="govuk-!-margin-bottom-9">
+        <a href="update">Address history</a>
+      </div>
 
     </div>
   </div>
@@ -84,7 +83,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Invoice history</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Dawidek Jevnic is the billing contact for these licences</h2>
 
     </div>
   </div>
@@ -97,336 +96,193 @@
     </div>
   </div>
 
-  <!-- table of invoices -->
-  <section class="govuk-!-margin-bottom-6">
+  <!-- table with four columns -->
+  <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
 
-    <!-- table with four columns -->
-    <div class="table govuk-!-margin-bottom-6">                                   <!-- a table -->
-
-      <!-- table head -->
-      <div class="table__row--head">                                              <!-- the table head -->
-        <div class="table__cell bold-small">
-          Invoice
-        </div>
-        <div class="table__cell bold-small">
-          Bill type
-        </div>
-        <div class="table__cell bold-small numbers">
-          Net amount
-        </div>
-        <div class="table__cell bold-small numbers">
-          Billed amount
-        </div>
+    <div class="table__row--head">                                              <!-- the table head -->
+      <div class="table__cell bold-small column--25">
+        Licence
+        <!-- licence name if it exists, otherwise Licence -->
       </div>
-
-      <!-- table row 1 -->
-      <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
-        <div class="table__cell">
-          <h4 class="screen-reader-only">
-            Row 1
-          </h4>
-
-          <h5 class="table__context">
-            Invoice
-          </h5>
-          <span class="table__link">
-            AAI26515
-          </span>
-        </div>
-        <div class="table__cell">
-          <h5 class="table__context">
-            Bill type
-          </h5>
-          <p class="table__row--selectable--text">
-            Supplementary
-          </p>
-        </div>
-        <div class="table__cell">
-          <h5 class="table__context numbers">
-            Net amount
-          </h5>
-          <p class="table__row--selectable--text numbers">
-            £1,064.20
-          </p>
-        </div>
-        <div class="table__cell numbers">
-          <h5 class="table__context">
-            Billed amount
-          </h5>
-          £1,064.20
-        </div>
-      </a>
-
-      <!-- table row 2 -->
-      <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
-        <div class="table__cell">
-          <h4 class="screen-reader-only">
-            Row 2
-          </h4>
-          <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
-          <h5 class="table__context">
-            Invoice
-          </h5>
-          <span class="table__link">
-            AAI25997
-          </span>
-        </div>
-        <div class="table__cell">
-          <h5 class="table__context">
-            Bill type
-          </h5>
-          <p class="table__row--selectable--text">
-            Two-part tariff
-          </p>
-        </div>
-        <div class="table__cell">
-          <h5 class="table__context">
-            Net amount
-          </h5>
-          <p class="table__row--selectable--text numbers">
-            £2,001.00
-          </p>
-        </div>
-        <div class="table__cell numbers">
-          <h5 class="table__context">
-            Billed amount
-          </h5>
-          £2,001.00
-        </div>
-      </a>
-
-      <!-- table row 3 -->
-      <a href="invoice" class="table__row--end table__row--selectable govuk-!-margin-bottom-3">
-        <div class="table__cell">
-          <h4 class="screen-reader-only">
-            Row 3
-          </h4>
-          <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
-          <h5 class="table__context">
-            Invoice
-          </h5>
-          <span class="table__link">
-            AAI-25001
-          </span>
-        </div>
-        <div class="table__cell">
-          <h5 class="table__context">
-            Bill type
-          </h5>
-          <p class="table__row--selectable--text">
-            Annual
-          </p>
-        </div>
-        <div class="table__cell numbers">
-          <h5 class="table__context">
-            Net amount
-          </h5>
-          <p class="table__row--selectable--text">
-            £864.21
-          </p>
-        </div>
-        <div class="table__cell numbers">
-          <h5 class="table__context">
-            Billed amount
-          </h5>
-          £864.21
-        </div>
-      </a>
-
-      <!-- table totals -->
-      <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
-        <div class="table__cell">
-          <h4 class="screen-reader-only">
-            Total row
-          </h4>
-          Total
-        </div>
-        <div class="table__cell table__cell--empty numbers">
-          <!-- empty cell -->
-        </div>
-        <div class="table__cell numbers">
-          <h5 class="table__context">
-            Net amount
-          </h5>
-          £3,929.41
-        </div>
-        <div class="table__cell numbers">
-          <h5 class="table__context">
-            Billed amount
-          </h5>
-          £3,929.41
-        </div>
+      <div class="table__cell bold-small">
+        Licence name
       </div>
-
-    </section>
-
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <h3  class="heading-large govuk-heading-m">
-          2018
-        </h3>
+      <div class="table__cell bold-small column--25">
+        Licence holder
+      </div>
+      <div class="table__cell bold-small column--20">
+        End date
       </div>
     </div>
 
-    <!-- table of invoices -->
-    <section class="govuk-!-margin-bottom-6">
+    <!-- table row -->
+    <a href="licence-summary?wid=31" class="table__row govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 1
+        </h2>
+        <span class="screen-reader-only">See licence 03/28/60/0031</span>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <span class="table__link">
+          03/28/60/0011
+        </span>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <p class="table__row--text">
 
-      <!-- table with four columns -->
-      <div class="table govuk-!-margin-bottom-8">                               <!-- a table -->
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence holder
+        </h3>
+        <p class="table__row--text">
+          Aquafall Ltd.
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        <p class="table__row--text">
+          30 April 2022
+        </p>
+      </div>
+    </a>
 
-        <!-- table head -->
-        <div class="table__row--head">                                          <!-- the table head -->
-          <div class="table__cell bold-small">
-            Invoice
-          </div>
-          <div class="table__cell bold-small">
-            Bill type
-          </div>
-          <div class="table__cell bold-small numbers">
-            Net amount
-          </div>
-          <div class="table__cell bold-small numbers">
-            Billed amount
-          </div>
-        </div>
+    <!-- table row -->
+    <a href="licence-summary?wid=33" class="table__row govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 2
+        </h2>
+        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <span class="table__link">
+          03/28/61/028
+        </span>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <p class="table__row--text">
 
-        <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
-          <div class="table__cell">
-            <h4 class="screen-reader-only">
-              Row 1
-            </h4>
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence holder
+        </h3>
+        <p class="table__row--text">
+          Aquafall Ltd.
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        <p class="table__row--text">
+          15 September 2034
+        </p>
+      </div>
+    </a>
 
-            <h5 class="table__context">
-              Invoice
-            </h5>
-            <span class="table__link">
-              AAI24515
-            </span>
-          </div>
-          <div class="table__cell">
-            <h5 class="table__context">
-              Bill type
-            </h5>
-            <p class="table__row--selectable--text">
-              Supplementary
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Net amount
-            </h5>
-            £973.98
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Billed amount
-            </h5>
-            £973.98
-          </div>
-        </a>
+    <!-- table row -->
+    <a href="licence-summary?wid=31" class="table__row govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 3
+        </h2>
+        <span class="screen-reader-only">See licence 03/28/60/0031</span>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <span class="table__link">
+          03/28/60/0031
+        </span>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <p class="table__row--text">
 
-        <!-- table row -->
-        <a href="invoice" class="table__row--selectable govuk-!-margin-bottom-6">
-          <div class="table__cell">
-            <h4 class="screen-reader-only">
-              Row 2
-            </h4>
-            <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
-            <h5 class="table__context">
-              Invoice
-            </h5>
-            <span class="table__link">
-              AAI25997
-            </span>
-          </div>
-          <div class="table__cell">
-            <h5 class="table__context">
-              Bill type
-            </h5>
-            <p class="table__row--selectable--text">
-              Two-part tariff
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Net amount
-            </h5>
-            <p class="table__row--selectable--text">
-              £1,927.63
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Billed amount
-            </h5>
-            £1,927.63
-          </div>
-        </a>
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence holder
+        </h3>
+        <p class="table__row--text">
+          Aquafall Ltd.
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        <p class="table__row--text">
+          31 March 2027
+        </p>
+      </div>
+    </a>
 
-        <!-- table row -->
-        <a href="invoice" class="table__row--end table__row--selectable govuk-!-margin-bottom-2">
-          <div class="table__cell">
-            <h4 class="screen-reader-only">
-              Row 3
-            </h4>
-            <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
-            <h5 class="table__context">
-              Invoice
-            </h5>
-            <span class="table__link">
-              AAI-25001
-            </span>
-          </div>
-          <div class="table__cell">
-            <h5 class="table__context">
-              Bill type
-            </h5>
-            <p class="table__row--selectable--text">
-              Annual
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Net amount
-            </h5>
-            <p class="table__row--selectable--text">
-              £864.21
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Billed amount
-            </h5>
-            £864.21
-          </div>
-        </a>
+    <!-- table row -->
+    <a href="licence-summary?wid=33" class="table__row govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 4
+        </h2>
+        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <span class="table__link">
+          03/28/61/032
+        </span>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <p class="table__row--text">
 
-        <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
-          <div class="table__cell">
-            <h4 class="screen-reader-only">
-              Total row
-            </h4>
-            Total
-          </div>
-          <div class="table__cell table__cell--empty numbers">
-            <!-- empty cell -->
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Amount total
-            </h5>
-            £3,765.82
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Billed total
-            </h5>
-            £3,765.82
-          </div>
-        </div>
-
-    </section>
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence holder
+        </h3>
+        <p class="table__row--text">
+          Aquafall Ltd.
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        <p class="table__row--text">
+          15 September 2032
+        </p>
+      </div>
+    </a>
 
   </div>
+
+  <!-- <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3  class="heading-large govuk-heading-m">
+        2018
+      </h3>
+    </div>
+  </div> -->
 
 {% endblock %}
