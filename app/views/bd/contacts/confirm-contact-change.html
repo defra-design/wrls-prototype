@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% set title = "You are about to change the billing contact" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "#2",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <h2 class="govuk-heading-m">
+      Sam Burridge
+    </h2>
+
+    <div class="govuk-inset-text">
+      72 Guild Street
+      <br>BATH
+      <br>BA23 6FH
+    </div>
+
+    <a href="/bd/licence-summary-new-contact#charge" class="govuk-faux-button">
+      Confirm
+    </a>
+
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Does this contact have a record already?" %}
+{% set title = "Is the new contact an person or a company?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -62,16 +62,12 @@
         },
         items: [
           {
-            value: "confirm-contact-change",
-            text: "Sam Burridge, 72 Guild street BATH BA23 6FH"
+            value: "new-person-contact",
+            text: "A person"
           },
           {
-            value: "confirm-contact-change",
-            text: "Samantha Burridge, 2 Burlap Grove Slough Berkshire SL1 4AD"
-          },
-          {
-            value: "new-contact-postcode",
-            text: "This is a new contact"
+            value: "new-company-contact",
+            text: "A company"
           }
         ]
       })
