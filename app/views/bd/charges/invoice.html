@@ -52,11 +52,22 @@
       <section class="govuk-!-margin-bottom-9">
         <h1 class="govuk-caption-l">Company name Ltd.</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
-        <p class="govuk-body-l">
+
+        <p class="govuk-body">
+                <strong class="table__status table__status--l">
+                  Sent
+                </strong>
+              </p>
+
+              {{ govukInsetText({
+    html: '<strong>Date created:</strong> 22 April 2019<br><strong>Region:</strong> Anglian<br><strong>Bill run type:</strong> Annual'
+  }) }}
+
+    <!--    <p class="govuk-body-l">
           <a href="ias">
             IAS account 3725712
           </a>
-        </p>
+        </p> -->
       </section>
 
       <!-- invoice totals -->
