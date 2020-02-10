@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Submit your returns using bulk upload" %}
+{% set title = "You submitted 5 returns" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -35,32 +35,40 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-ex-returns.html" %}
   </div>
-
-    <!-- {{ govukBackLink({
+  <!--
+    {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
-    }) }} -->
-
+    }) }}
+    -->
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
 
-    <h1 class="govuk-heading-l">
-      {{ title }}
-    </h1>
+    <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-6">
+      <h1 class="govuk-panel__title">
+         {{ title }}
+      </h1>
+    </div>
 
-    <ol class="govuk-list govuk-list--number">
-      <li><a href="/public/return-templates.zip">Download your bulk upload returns templates and instructions (.CSV, 0.88MB)</a></li>
-      <li>Enter your returns data and save it.</li>
-      <li>Export your returns as CSV files.</li>
-      <li>Return to the bulk upload page, click ‘Choose file’ and select your saved CSV files.</li>
-      <li>Click ‘Upload’.</li>
-    </ol>
+    <p class="govuk-body">
+      We have sent you an email to confirm this.
+    </p>
 
-    <a href="upload-bulk-files" class="govuk-faux-button">Continue</a>
+    <!-- <p class="govuk-body">
+      <a href="upload-bulk-bad-data">
+        Upload more returns
+      </a>
+    </p> -->
+
+    <p class="govuk-body">
+      <a href="returns-overview-3">
+        View returns
+      </a>
+    </p>
 
   </div>
 </div>
