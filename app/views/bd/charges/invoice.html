@@ -54,324 +54,419 @@
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
 
         <p class="govuk-body">
-                <strong class="table__status table__status--l">
-                  Sent
-                </strong>
-              </p>
+          <strong class="table__status table__status--l">
+            Sent
+          </strong>
+        </p>
 
-              {{ govukInsetText({
-    html: '<strong>Date created:</strong> 22 April 2019<br><strong>Region:</strong> Anglian<br><strong>Bill run type:</strong> Annual'
-  }) }}
+        <!-- {{ govukInsetText({
+          html: '<strong>Date created:</strong> 22 April 2019<br><strong>Region:</strong> Anglian<br><strong>Bill run type:</strong> Annual'
+        }) }} -->
 
-    <!--    <p class="govuk-body-l">
-          <a href="ias">
-            IAS account 3725712
-          </a>
-        </p> -->
+        <div class="govuk-grid-row govuk-!-margin-bottom-3">
+          <div class="govuk-grid-column-full">
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Date created
+                </div>
+                <div class="meta-data__value">
+                  12 January 2020
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Region
+                </div>
+                <div class="meta-data__value">
+                  Anglian
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Bill run type
+                </div>
+                <div class="meta-data__value">
+                  Supplementary
+                </div>
+              <div>
+            </section>
+
+          </div>
+        </div>
+
       </section>
 
-      <!-- invoice totals -->
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
-        Total
-      </h2>
+  <!-- invoice totals -->
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+    Total
+  </h2>
 
     </div>
   </div>
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+
     <div class="govuk-grid-column-one-half">
       <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Invoice amount</span></h3>
     </div>
-    <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Billed amount</span></h3>
-    </div>
+
   </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+      <!-- <div class="govuk-grid-column-one-half">
+        <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
+        <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3>
+      </div> -->
+
+      <div class="govuk-grid-column-one-half">
+        <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£1,268.80</span><br>
+        <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
+      </div>
+
+      <div class="govuk-grid-column-one-half">
+        <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£4,271.55</span><br>
+        <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
+      </div>
+    </div>
+
 
   <div class="divider govuk-!-margin-bottom-7"></div>
 
   <!-- invoice details -->
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-xl">
-        2019 charges
-      </h2>
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-xl">
+          2019
+        </h2>
 
-      <h3 class="govuk-heading-l govuk-!-margin-bottom-9">
-        Licence 03/28/60/0032
-      </h3>
+        <section class="govuk-!-margin-bottom-9">
+          <h3 class="govuk-heading-l govuk-!-margin-bottom-0">
+            Licence 03/052/001
+          </h3>
+          <a href="../licence-summary">
+            View licence
+          </a>
+        </section>
 
-      <div class="govuk-inset-text">
-        <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
-          Spray irrigation, base licence
-        </h4>
-        <p class="govuk-body">
-          April to December
-          <br><a href="charge-version-2">
-            Charge version
-            </a>
-        </p>
+        <div class="govuk-inset-text">
+          <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+            Spray irrigation, base licence
+          </h4>
+          <p class="govuk-body">
+            April to December
+          </p>
+        </div>
+
       </div>
-
     </div>
-  </div>
 
   <!-- s table -->
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
-    <div class="govuk-grid-column-full">
+      <div class="govuk-grid-column-full">
 
-      <!-- table with four columns -->
-      <div class="table govuk-!-margin-bottom-6">                               <!-- a table -->
+        <!-- table with four columns -->
+        <div class="table govuk-!-margin-bottom-6">                               <!-- a table -->
 
-        <!-- table head -->
-        <div class="table__row--head">                                          <!-- the table head -->
-          <div class="table__cell bold-small column--30">
-            Charge detail
-          </div>
-          <div class="table__cell bold-small numbers column--20">
-            Billable days
-          </div>
-          <!-- <div class="table__cell bold-small numbers">
-            Pro-rata days
-          </div> -->
-          <div class="table__cell bold-small numbers column--20">
-            Credit
-          </div>
-          <div class="table__cell bold-small numbers column--20">
-            Charge
-          </div>
-        </div>
-
-        <!-- row 1 -->
-        <div class="table__row govuk-!-margin-bottom-6">                        <!-- a data row starts -->
-
-          <!-- table row 1 -->
-          <div class="table__cell">
-            <h5 class="screen-reader-only">
-              Row 1
-            </h5>
-            <h6 class="table__context">
-              Charge detail
-            </h6>
-            <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
-              1 April 2019 to 6 June 2019
-            </h6>
-            <p class="govuk-!-margin-bottom-3">
-              Standard charge
-            </p>
-            <p>
-              High loss
-              <br>Summer
-              <br>Supported source
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
+          <!-- table head -->
+          <div class="table__row--head">                                          <!-- the table head -->
+            <div class="table__cell bold-small column--30">
+              Transaction detail
+            </div>
+            <div class="table__cell bold-small numbers column--20">
               Billable days
-            </h6>
-            61
-          </div>
-          <!-- <div class="table__cell numbers">
-            <h6 class="table__context">
+            </div>
+            <!-- <div class="table__cell bold-small numbers">
               Pro-rata days
-            </h6>
-            0
-          </div> -->
-          <div class="table__cell numbers">
-            <h6 class="table__context">
+            </div> -->
+            <div class="table__cell bold-small numbers column--20">
               Credit
-            </h6>
-            £1,064.20
+            </div>
+            <div class="table__cell bold-small numbers column--20">
+              Debit
+            </div>
           </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Charge
-            </h6>
 
+          <!-- row 1 -->
+          <div class="table__row govuk-!-margin-bottom-6">                        <!-- a data row starts -->
+
+            <!-- table row 1 -->
+            <div class="table__cell">
+              <h5 class="screen-reader-only">
+                Row 1
+              </h5>
+              <h6 class="table__context">
+                Transaction detail
+              </h6>
+              <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
+                1 April 2020 to 6 June 2020
+              </h6>
+              <p class="govuk-!-margin-bottom-3">
+                Standard debit
+              </p>
+              <p>
+                High loss
+                <br>Summer
+                <br>Supported source
+                <br>S126 (Abatement)
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Billable days
+              </h6>
+              61/300
+            </div>
+            <!-- <div class="table__cell numbers">
+              <h6 class="table__context">
+                Pro-rata days
+              </h6>
+              0
+            </div> -->
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Credit
+              </h6>
+              £1,064.20
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Debit
+              </h6>
+
+            </div>
+
+          </div>
+
+          <!-- row 2 -->
+          <div class="table__row">                                                <!-- a data row starts -->
+
+            <!-- table row 1 -->
+            <div class="table__cell">
+              <h5 class="screen-reader-only">
+                Row 2
+              </h5>
+              <h6 class="table__context">
+                Transaction detail
+              </h6>
+              <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
+                1 April 2020 to 6 June 2020
+              </h6>
+              <p class="govuk-!-margin-bottom-3">
+                Compensation debit
+              </p>
+              <p>
+                Compensation (EIUC)
+                <br>High loss
+                <br>Summer
+                <br>Tidal
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Billable days
+              </h6>
+              61/300
+            </div>
+            <!-- <div class="table__cell numbers">
+              <h6 class="table__context">
+                Pro-rata days
+              </h6>
+              0
+            </div> -->
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Credit
+              </h6>
+              £204.60
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Debit
+              </h6>
+              <!-- no Debit -->
+            </div>
+
+          </div>
+
+          <!-- row 3 -->
+          <div class="table__row">                                                <!-- a data row starts -->
+
+
+            <div class="table__cell">
+              <h5 class="screen-reader-only">
+                Row 3
+              </h5>
+              <h6 class="table__context">
+                Transaction detail
+              </h6>
+              <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
+                7 April 2020 to 31 October 2020
+              </h6>
+              <p class="govuk-!-margin-bottom-3">
+                Standard debit
+              </p>
+              <p>
+                High loss
+                <br>Summer
+                <br>Supported source
+                <br>S126 (Abatement)
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Billable days
+              </h6>
+              210/300
+            </div>
+            <!-- <div class="table__cell numbers">
+              <h6 class="table__context">
+                Pro-rata days
+              </h6>
+              0
+            </div> -->
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Credit
+              </h6>
+              <!-- no credit -->
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Debit
+              </h6>
+              £2,389.90
+            </div>
+
+          </div>
+
+          <!-- row 4 -->
+          <div class="table__row">                                                <!-- a data row starts -->
+
+            <div class="table__cell">
+              <h5 class="screen-reader-only">
+                Row 4
+              </h5>
+              <h6 class="table__context">
+                Transaction detail
+              </h6>
+              <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
+                7 April 2020 to 31 October 2020
+              </h6>
+              <p class="govuk-!-margin-bottom-3">
+                Compensation debit
+              </p>
+              <p>
+                Compensation (EIUC)
+                <br>High loss
+                <br>Summer
+                <br>Non-tidal
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Billable days
+              </h6>
+              210/300
+            </div>
+            <!-- <div class="table__cell numbers">
+              <h6 class="table__context">
+                Pro-rata days
+              </h6>
+              0
+            </div> -->
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Credit
+              </h6>
+
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Debit
+              </h6>
+              £197.60
+            </div>
+
+          </div>
+
+          <!-- total row -->
+          <div class="table__row table__row--total govuk-!-margin-bottom-6">
+            <div class="table__cell">
+              <h5 class="screen-reader-only">
+                 Total credits
+              </h5>
+              Credits
+            </div>
+            <div class="table__cell table__cell--empty">
+
+            </div>
+            <div class="table__cell numbers">
+              <h5 class="table__context">
+                Credit total
+              </h5>
+              £1,268.80
+            </div>
+            <div class="table__cell numbers">
+              <!-- <h5 class="table__context">
+                Debit total
+              </h5>
+              £2,587.50 -->
+            </div>
+          </div>
+
+          <div class="table__row table__row--total table__row--end govuk-!-margin-bottom-6">
+            <div class="table__cell">
+              <h5 class="screen-reader-only">
+                 Total debits
+              </h5>
+              Debits
+            </div>
+            <div class="table__cell table__cell--empty">
+
+            </div>
+            <div class="table__cell numbers">
+              <!-- <h5 class="table__context">
+                Credit total
+              </h5>
+              £1,268.80 -->
+            </div>
+            <div class="table__cell numbers">
+              <h5 class="table__context">
+                Debit total
+              </h5>
+              £2,587.50
+            </div>
+          </div>
+
+          <!-- net total -->
+          <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">
+            <div class="table__cell">
+              <h5 class="screen-reader-only">
+                 Net total
+              </h5>
+              Net total
+            </div>
+            <div class="table__cell table__cell--empty">
+            </div>
+            <div class="table__cell numbers">
+            </div>
+            <div class="table__cell numbers">
+              <h6 class="table__context">
+                Debit total
+              </h6>
+              £1,318.07
+            </div>
           </div>
 
         </div>
-
-        <!-- row 2 -->
-        <div class="table__row">                                                <!-- a data row starts -->
-
-          <!-- table row 1 -->
-          <div class="table__cell">
-            <h5 class="screen-reader-only">
-              Row 2
-            </h5>
-            <h6 class="table__context">
-              Charge detail
-            </h6>
-            <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
-              1 April 2019 to 6 June 2019
-            </h6>
-            <p class="govuk-!-margin-bottom-3">
-              Compensation charge
-            </p>
-            <p>
-              Compensation (EIUC)
-              <br>High loss
-              <br>Summer
-              <br>Tidal
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Billable days
-            </h6>
-            61
-          </div>
-          <!-- <div class="table__cell numbers">
-            <h6 class="table__context">
-              Pro-rata days
-            </h6>
-            0
-          </div> -->
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Credit
-            </h6>
-            £204.60
-          </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Charge
-            </h6>
-            <!-- no charge -->
-          </div>
-
-        </div>
-
-        <!-- row 3 -->
-        <div class="table__row">                                                <!-- a data row starts -->
-
-
-          <div class="table__cell">
-            <h5 class="screen-reader-only">
-              Row 3
-            </h5>
-            <h6 class="table__context">
-              Charge detail
-            </h6>
-            <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
-              7 April 2019 to 31 October 2019
-            </h6>
-            <p class="govuk-!-margin-bottom-3">
-              Standard charge
-            </p>
-            <p>
-              High loss
-              <br>Summer
-              <br>Supported source
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Billable days
-            </h6>
-            210
-          </div>
-          <!-- <div class="table__cell numbers">
-            <h6 class="table__context">
-              Pro-rata days
-            </h6>
-            0
-          </div> -->
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Credit
-            </h6>
-            <!-- no credit -->
-          </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Charge
-            </h6>
-            £2,389.90
-          </div>
-
-        </div>
-
-        <!-- row 4 -->
-        <div class="table__row">                                                <!-- a data row starts -->
-
-          <div class="table__cell">
-            <h5 class="screen-reader-only">
-              Row 4
-            </h5>
-            <h6 class="table__context">
-              Charge detail
-            </h6>
-            <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
-              7 April 2019 to 31 October 2019
-            </h6>
-            <p class="govuk-!-margin-bottom-3">
-              Compensation charge
-            </p>
-            <p>
-              Compensation (EIUC)
-              <br>High loss
-              <br>Summer
-              <br>Non-tidal
-            </p>
-          </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Billable days
-            </h6>
-            210
-          </div>
-          <!-- <div class="table__cell numbers">
-            <h6 class="table__context">
-              Pro-rata days
-            </h6>
-            0
-          </div> -->
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Credit
-            </h6>
-
-          </div>
-          <div class="table__cell numbers">
-            <h6 class="table__context">
-              Charge
-            </h6>
-            £197.60
-          </div>
-
-        </div>
-
-        <!-- total row -->
-        <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">
-          <div class="table__cell">
-            <h4 class="screen-reader-only">
-               total
-            </h4>
-            Total
-          </div>
-          <div class="table__cell table__cell--empty">
-
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Credit total
-            </h5>
-            £1,268.80
-          </div>
-          <div class="table__cell numbers">
-            <h5 class="table__context">
-              Charge total
-            </h5>
-            £2,587.50
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
 
   <!-- invoice details -->
   <div class="govuk-grid-row">
@@ -399,7 +494,7 @@
         <!-- table head -->
         <div class="table__row--head">                                          <!-- the table head -->
           <div class="table__cell bold-small">
-            Charge detail
+            Transaction detail
           </div>
           <div class="table__cell bold-small numbers">
             Billable days
@@ -411,7 +506,7 @@
             Credit
           </div>
           <div class="table__cell bold-small numbers">
-            Charge
+            Debit
           </div>
         </div>
 
@@ -422,25 +517,26 @@
               Row 1
             </h5>
             <h6 class="table__context">
-              Charge detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               1 January 2020 to 31 March 2020
             </h6>
             <p class="govuk-!-margin-bottom-3">
-              Standard charge
+              Standard debit
             </p>
             <p>
               High loss
               <br>Summer
               <br>Supported source
+              <br>S126 (Abatement)
             </p>
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Billable days
             </h6>
-            90
+            90/300
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -456,7 +552,7 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Charge
+              Debit
             </h6>
             £1,486.45
           </div>
@@ -470,13 +566,13 @@
               Row 2
             </h5>
             <h6 class="table__context">
-              Charge detail
+              Transaction detail
             </h6>
             <h6 class="govuk-heading-s govuk-!-margin-bottom-0">
               1 January 2020 to 31 March 2020
             </h6>
             <p class="govuk-!-margin-bottom-3">
-              Compensation charge
+              Compensation debit
             </p>
             <p>
               Compensation (EIUC)
@@ -489,7 +585,7 @@
             <h6 class="table__context">
               Billable days
             </h6>
-            90
+            90/300
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -505,38 +601,81 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Charge
+              Debit
             </h6>
             £197.60
           </div>
 
         </div>
 
-        <!-- total row -->
-        <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">
+        <!-- total credits -->
+        <div class="table__row table__row--total govuk-!-margin-bottom-6">
           <div class="table__cell">
-            <h4 class="screen-reader-only">
-               total
-            </h4>
-            Total
+            <h5 class="screen-reader-only">
+               Total credits
+            </h5>
+            Credits
           </div>
           <div class="table__cell table__cell--empty">
 
           </div>
           <div class="table__cell numbers">
-            <h5 class="table__context">
+            <h6 class="table__context">
               Credit total
+            </h6>
+            <!-- £851.50 -->
+          </div>
+          <div class="table__cell numbers">
+            <!-- <h6 class="table__context">
+              Debit total
+            </h6>
+            £1,684.05 -->
+          </div>
+        </div>
+
+        <div class="table__row table__row--total table__row--end govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h5 class="screen-reader-only">
+               Total debits
             </h5>
+            Debits
+          </div>
+          <div class="table__cell table__cell--empty">
 
           </div>
           <div class="table__cell numbers">
-            <h5 class="table__context">
-              Charge total
-            </h5>
+            <!-- <h6 class="table__context">
+              Credit total
+            </h6>
+            £851.50 -->
+          </div>
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Debit total
+            </h6>
             £1,684.05
           </div>
         </div>
 
+        <!-- net total -->
+        <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h5 class="screen-reader-only">
+               Net total
+            </h5>
+            Net total
+          </div>
+          <div class="table__cell table__cell--empty">
+          </div>
+          <div class="table__cell numbers">
+          </div>
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Debit total
+            </h6>
+            £1,684.05
+          </div>
+        </div>
 
       </div>
     </div>
