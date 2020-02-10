@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% set title = "Water Company Plc" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Customer</span>
+      <h1 class="govuk-heading-l">Water Company Plc</h1>
+    </div>
+  </div>
+
+  <div class="govuk-!-margin-bottom-6">
+    <p class="govuk-body">Registered to <a href="user-status" class="no-break">admint@watercompany.com</a></p>
+  </div>
+
+
+  <div class="govuk-tabs" data-module="tabs">
+
+    <h2 class="govuk-tabs__title">
+      Licence views
+    </h2>
+
+    <!-- tab navigation -->
+    <ul class="govuk-tabs__list">
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary">
+          Licences
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab" href="#returns">
+          Addresses
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab" href="#communications">
+          Contacts
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab" href="#charge">
+          Invoice accounts
+        </a>
+      </li>
+    </ul>
+
+    <!-- tab 1 -->
+    <section class="govuk-tabs__panel" id="summary">
+
+      <h2 class="govuk-heading-l">
+        Licences
+      </h2>
+
+      <!-- licences -->
+      {% include "includes/bd/licences.html" %}
+
+    </section>
+
+    <!-- tab 2 -->
+    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
+
+      <h2 class="govuk-heading-l">
+        Addresses
+      </h2>
+
+      <!-- contacts table -->
+      {% include "includes/bd/addresses.html" %}
+
+    </section>
+
+    <!-- tab 3 -->
+    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
+
+      <h2 class="govuk-heading-l">
+        Contacts
+      </h2>
+
+      <!-- contacts table -->
+      {% include "includes/bd/contacts.html" %}
+
+    </section>
+
+    <!-- tab 4 -->
+    <section class="govuk-tabs__panel" id="charge">
+
+      <h2 class="govuk-heading-l">
+        Invoice accounts
+      </h2>
+
+      <!-- invoice accounts table -->
+      {% include "includes/bd/invoice-accounts.html" %}
+
+    </section>
+
+  </div>
+
+{% endblock %}
