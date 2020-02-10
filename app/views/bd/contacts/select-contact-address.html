@@ -45,7 +45,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="govuk-caption-l">Invoice account 3725712</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <section class="govuk-!-margin-bottom-6">
@@ -59,13 +59,39 @@
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
 
+
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
+    {{ govukSelect({
+      id: "address",
+      name: "address",
+      label: {
+        text: "Select and address"
+      },
+      items: [
+        {
+          value: "2 addresses found",
+          text: "2 addresses found",
+          selected: "true"
+        },
+        {
+          value: "address-check",
+          text: "Forbes Lane, West Crudwell, Wiltsire, SN16 9EW"
+        },
+        {
+          value: "address-check",
+          text: "1 Doogal Road, West Crudwell, Wiltsire, SN16 9EW"
+        }
+      ]
+    }) }}
+
+
+
         <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
           <h1 class="govuk-fieldset__heading">
             Where do you live?
           </h1>
-        </legend> -->
+        </legend>
         <p>
           2 addresses found
         </p>
@@ -89,7 +115,8 @@
               <br>SN16 9EW
             </label>
           </div>
-        </div>
+        </div>-->
+
       </fieldset>
     </div>
 
@@ -111,8 +138,8 @@
     $(function() {
       $('form[data-routing]').on('submit', function(ev) {
         // FInd selected radio button
-        const url = $(this).find('input:checked').val();
-
+        const url = $(this).find("option:selected").val();
+        console.log(url);
         if(url) {
           ev.preventDefault();
           window.location.href = url;

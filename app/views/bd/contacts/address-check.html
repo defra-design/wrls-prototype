@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Contact created" %}
+{% set title = "Check the address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -48,23 +48,43 @@
     <span class="govuk-caption-l">Invoice account 3725712</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: 'Forbes Lane
+            <br>West Crudwell
+            <br>Wiltshire
+            <br>SN16 9EW'
+          },
+          actions: {
+            items: [
+              {
+                href: "/bd/contacts/select-contact-address",
+                text: "Change",
+                visuallyHiddenText: "Address"
+              }
+            ]
+        }
+      }
+      ]
+    }) }}
+
+
     <h2 class="govuk-heading-m">
-      Sam Burridge
+      You are about to update the address details for these
+licences:
     </h2>
 
-    <div class="govuk-inset-text">
-      Forbes Lane
-      <br>West Crudwell
-      <br>Wiltshire
-      <br>SN16 9EW
-    </div>
+    {{ govukInsetText({
+  html:  '21/28/001/02<br>03/28/01/0181<br>03/28/01/0182'
+}) }}
 
-    <h2 class="govuk-heading-m">
-      Sam Burridge
-    </h2>
-
-    <a href="/bd/licence-summary-new-contact#charge" class="govuk-faux-button">
-      Continue
+    <a href="/bd/charges/ias-address-updated" class="govuk-faux-button">
+      Confirm
     </a>
 
   </div>
