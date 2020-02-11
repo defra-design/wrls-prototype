@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You submitted 5 returns" %}
+{% set title = "Uploading returns data" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -46,31 +46,23 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
 
-    <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-6">
-      <h1 class="govuk-panel__title">
-         {{ title }}
-      </h1>
-    </div>
+    <h1 class="govuk-heading-l">
+      Uploading returns data
+    </h1>
 
-    <p class="govuk-body">
-      We have sent you an email to confirm this.
-    </p>
+    <script language="javascript" type="text/javascript">
+        window.setTimeout('location.replace("upload-bulk-bad-data")',5000);
+    </script>
 
-    <!-- <p class="govuk-body">
-      <a href="upload-bulk-bad-data">
-        Upload more returns
-      </a>
-    </p> -->
-
-    <p class="govuk-body">
-      <a href="returns-overview-3">
-        View returns
-      </a>
+    <p class="govuk-body-l">
+      Please wait. This might take up to a minute.
     </p>
 
   </div>
 </div>
+
+<div class="spinner"></div>
 
 {% endblock %}

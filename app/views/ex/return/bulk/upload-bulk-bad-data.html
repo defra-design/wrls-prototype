@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Confirm your returns data" %}
+{% set title = "You need to correct some of your returns data" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -36,11 +36,6 @@
     {% include "includes/nav/nav-ex-returns.html" %}
   </div>
 
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back(-2)"
-    }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -49,27 +44,19 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Confirm your returns data
+      {{ title }}
     </h1>
-
-    <!-- <p class="govuk-body">
-      <a href="send-email">
-        Email me a copy of these problems
-      </a>
-    </p> -->
 
   </div>
 </div>
 
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
+  <!-- <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-m">
       There were problems with some of your data
     </h2>
-
-  </div>
+  </div> -->
 
   <div class="govuk-grid-column-full">
     <!-- problem with data -->
@@ -200,7 +187,6 @@
           </div>
         </div>
 
-        <!-- table row -->
         <div class="table__row govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h2 class="screen-reader-only">
@@ -221,7 +207,6 @@
               03/27/19/127
             </p>
           </div>
-
           <div class="table__cell">
             <h3 class="table__context">
               Warning
@@ -232,6 +217,162 @@
           </div>
         </div>
 
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 5
+            </h2>
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              6221920
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              03/24/02/10
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Warning
+            </h3>
+            <p class="table__row--text">
+              Dates do not match the return period
+            </p>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 6
+            </h2>
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546542
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/001
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Warning
+            </h3>
+            <p class="table__row--text">
+              The volumes must be a positive number
+            </p>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 7
+            </h2>
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546543
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/002
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Warning
+            </h3>
+            <p class="table__row--text">
+              You must not change fields marked ‘Do not edit’
+            </p>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 8
+            </h2>
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546544
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/003
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Warning
+            </h3>
+            <p class="table__row--text">
+              You must provide the manufacturer and serial number
+            </p>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 9
+            </h2>
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546545
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/004
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Warning
+            </h3>
+            <p class="table__row--text">
+              The volumes must be a positive number
+            </p>
+          </div>
+        </div>
+
+
+
+
+
+
+
       </div>
 
     </div>
@@ -239,161 +380,22 @@
 
 </div>
 
-<h2 class="govuk-heading-m">
-  You can send the data that does not have problems
-</h2>
-
-<details class="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      3 returns do not have problems and are ready to send
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-
-        <!-- table with four columns -->
-        <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
-
-          <div class="table__row--head">                                              <!-- the table head -->
-            <div class="table__cell bold-small column--33">
-              Return reference
-            </div>
-            <div class="table__cell bold-small column--33">
-              Licence number
-            </div>
-            <div class="table__cell bold-small">
-              Total abstracted volume
-            </div>
-          </div>
-
-          <!-- table row -->
-          <div class="table__row--selectable govuk-!-margin-bottom-6">
-            <div class="table__cell">
-              <h2 class="screen-reader-only">
-                Row 1
-              </h2>
-              <h3 class="table__context">
-                Return reference
-              </h3>
-              <a href="confirm-return-details" class="table__link">
-                <span class="screen-reader-only">See return details for </span>
-                62514320
-              </a>
-            </div>
-            <div class="table__cell">
-              <h3 class="table__context">
-                Licence number
-              </h3>
-              <p class="table__row--text">
-                03/28/60/0031
-              </p>
-            </div>
-            <div class="table__cell">
-              <h3 class="table__context">
-                Total abstracted volume
-              </h3>
-              <p class="table__row--text">
-                11,287.04 cubic metres
-              </p>
-            </div>
-          </div>
-
-          <!-- table row -->
-          <div class="table__row--selectable govuk-!-margin-bottom-6">
-            <div class="table__cell">
-              <h2 class="screen-reader-only">
-                Row 2
-              </h2>
-              <h3 class="table__context">
-                Return reference
-              </h3>
-              <a href="confirm-return-details" class="table__link">
-                <span class="screen-reader-only">See return details for </span>
-                62528762
-              </a>
-            </div>
-            <div class="table__cell">
-              <h3 class="table__context">
-                Licence number
-              </h3>
-              <p class="table__row--text">
-                03/28/60/0031
-              </p>
-            </div>
-            <div class="table__cell">
-              <h3 class="table__context">
-                Total abstracted volume
-              </h3>
-              <p class="table__row--text">
-                26,176.52 cubic metres
-              </p>
-            </div>
-          </div>
-
-          <!-- table row -->
-          <div class="table__row--selectable govuk-!-margin-bottom-6">
-            <div class="table__cell">
-              <h2 class="screen-reader-only">
-                Row 3
-              </h2>
-              <h3 class="table__context">
-                Return reference
-              </h3>
-              <a href="confirm-return-details" class="table__link">
-                <span class="screen-reader-only">See return details for </span>
-                62266950
-              </a>
-            </div>
-            <div class="table__cell">
-              <h3 class="table__context">
-                Licence number
-              </h3>
-              <p class="table__row--text">
-                03/27/19/126
-              </p>
-            </div>
-            <div class="table__cell">
-              <h3 class="table__context">
-                Total abstracted volume
-              </h3>
-              <p class="table__row--text">
-                15,002.27 cubic metres
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</details>
-
 <p class="govuk-body">
-  The 4 returns with problems will not be sent.
-</p>
-
-<p class="govuk-body">
-  You cannot change this data after it has been sent.
+  You need correct all errors to successfully upload a file to submit.
 </p>
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
-    <a href="returns-data-confirmed" class="govuk-button">
-      Send 3 valid returns
+    <a href="upload-bulk-files" class="govuk-button">
+      Return to upload
     </a>
   </div>
 </div>
 
-
-<div class="prototype-link">
+<!-- <div class="prototype-link">
   <a href="uploaded-returns-data-no-problems">
     uploaded-returns-data-no-problems
   </a>
-</div>
+</div> -->
 
 {% endblock %}
