@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Return templates" %}
+{% set title = "You submitted 2 returns" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -35,49 +35,40 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-ex-returns.html" %}
   </div>
-
+  <!--
     {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
     }) }}
-
+    -->
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
 
-    <h1 class="govuk-heading-l">
-      Return templates for 2018 (CSV)
-    </h1>
-
-    <div class="govuk-!-margin-bottom-8">
-
-      <p class="govuk-body">
-        Download and complete each of the below templates.<br>
-        The templates are specific to your account.
-      </p>
-
-      <p class="govuk-body">
-        <a href="">
-          Bidbod-Foods-Ltd-daily-returns.csv
-        </a>
-      </p>
-
-      <p class="govuk-body">
-        <a href="">
-          Bidbod-Foods-Ltd-weekly-returns.csv
-        </a>
-      </p>
-
+    <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-6">
+      <h1 class="govuk-panel__title">
+         {{ title }}
+      </h1>
     </div>
 
     <p class="govuk-body">
-      When you have completed the return you can <a href="upload-completed-csv">upload your returns</a>.
+      We have sent you an email to confirm this.
     </p>
 
-    <!-- <a href="someplace" class="govuk-faux-button">Continue</a> -->
+    <!-- <p class="govuk-body">
+      <a href="upload-bulk-bad-data">
+        Upload more returns
+      </a>
+    </p> -->
+
+    <p class="govuk-body">
+      <a href="../../returns-overview-3">
+        View returns
+      </a>
+    </p>
 
   </div>
 </div>

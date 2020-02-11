@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Return submitted" %}
+{% set title = "Upload bulk returns data" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -35,40 +35,47 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-ex-returns.html" %}
   </div>
-  <!--
+
     {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
     }) }}
-    -->
+
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
 
-    <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-6">
-      <h1 class="govuk-panel__title">
-         3 returns submitted
-      </h1>
+    <h1 class="govuk-heading-l">
+      Upload bulk returns data
+    </h1>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="file-upload-1">
+        Upload a file
+      </label>
+      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
     </div>
 
     <p class="govuk-body">
-      We have sent you an email to confirm this.
+      The licence holder is responsible for the data you are sending.
     </p>
 
-    <p class="govuk-body">
-      <a href="upload-bulk-files">
-        Upload more returns
-      </a>
-    </p>
+    <a href="upload-bulk-uploading" type="submit" class="govuk-button">
+      Upload
+    </a>
 
-    <p class="govuk-body">
-      <a href="returns-overview-2">Returns overview</a>
-    </p>
+    <!-- <a href="return-status?wid=32" class="govuk-faux-button">Continue</a> -->
 
   </div>
+</div>
+
+<div class="prototype-link">
+  <a href="upload-bulk-good-data">
+    when all of the data is good
+  </a>
 </div>
 
 {% endblock %}

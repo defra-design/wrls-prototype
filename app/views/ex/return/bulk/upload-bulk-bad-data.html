@@ -52,13 +52,11 @@
 
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
+  <!-- <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-m">
       There were problems with some of your data
     </h2>
-
-  </div>
+  </div> -->
 
   <div class="govuk-grid-column-full">
     <!-- problem with data -->
@@ -68,14 +66,14 @@
       <div class="table govuk-!-margin-bottom-8">                                      <!-- a table -->
 
         <div class="table__row--head">                                    <!-- the table head -->
+          <div class="table__cell bold-small">
+            Error
+          </div>
           <div class="table__cell bold-small column--20">
             Return reference
           </div>
           <div class="table__cell bold-small column--20">
             Licence number
-          </div>
-          <div class="table__cell bold-small">
-            Warning
           </div>
         </div>
 
@@ -85,17 +83,21 @@
             <h2 class="screen-reader-only">
               Row 1
             </h2>
-
-            <!-- content -->
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              You do not have permission to submit returns for this licence
+            </p>
+          </div>
+          <div class="table__cell">
             <h3 class="table__context">
               Return reference
             </h3>
             <p class="table__row--text">
               62514320
             </p>
-
           </div>
-
           <div class="table__cell">
             <h3 class="table__context">
               Licence number
@@ -103,18 +105,7 @@
             <p class="table__row--text">
               03/28/60/0031
             </p>
-
           </div>
-
-          <div class="table__cell">
-            <h3 class="table__context">
-              Warning
-            </h3>
-            <p class="table__row--text">
-              You do not have permission to submit returns for this licence
-            </p>
-          </div>
-
         </div>
 
         <!-- table row -->
@@ -123,6 +114,15 @@
             <h2 class="screen-reader-only">
               Row 2
             </h2>
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              You sent monthly data, we expected daily data
+            </p>
+          </div>
+
+          <div class="table__cell">
             <h3 class="table__context">
               Return reference
             </h3>
@@ -140,15 +140,6 @@
             </p>
           </div>
 
-          <div class="table__cell">
-            <h3 class="table__context">
-              Warning
-            </h3>
-            <p class="table__row--text">
-              You sent monthly data, we expected daily data
-            </p>
-          </div>
-
         </div>
 
         <!-- table row -->
@@ -158,33 +149,29 @@
             <h2 class="screen-reader-only">
               Row 3
             </h2>
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              Dates do not match the return period
+            </p>
+          </div>
 
+          <div class="table__cell">
             <h3 class="table__context">
               Return reference
             </h3>
             <p class="table__row--text">
               62266950
             </p>
-
           </div>
 
           <div class="table__cell">
-
             <h3 class="table__context">
               Licence number
             </h3>
             <p class="table__row--text">
               03/27/19/126
-            </p>
-
-          </div>
-
-          <div class="table__cell">
-            <h3 class="table__context">
-              Warning
-            </h3>
-            <p class="table__row--text">
-              Dates do not match the return period
             </p>
           </div>
         </div>
@@ -194,6 +181,14 @@
             <h2 class="screen-reader-only">
               Row 4
             </h2>
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              Return for this licence and date has already been sent and cannot be changed
+            </p>
+          </div>
+          <div class="table__cell">
             <h3 class="table__context">
               Return reference
             </h3>
@@ -209,14 +204,6 @@
               03/27/19/127
             </p>
           </div>
-          <div class="table__cell">
-            <h3 class="table__context">
-              Warning
-            </h3>
-            <p class="table__row--text">
-              Return for this licence and date has already been sent and cannot be changed
-            </p>
-          </div>
         </div>
 
         <div class="table__row govuk-!-margin-bottom-6">
@@ -224,6 +211,14 @@
             <h2 class="screen-reader-only">
               Row 5
             </h2>
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              Dates do not match the return period
+            </p>
+          </div>
+          <div class="table__cell">
             <h3 class="table__context">
               Return reference
             </h3>
@@ -239,16 +234,127 @@
               03/24/02/10
             </p>
           </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">
           <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 6
+            </h2>
             <h3 class="table__context">
-              Warning
+              Error
             </h3>
             <p class="table__row--text">
-              Dates do not match the return period
+              The volumes must be a positive number
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546542
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/001
             </p>
           </div>
         </div>
 
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 7
+            </h2>
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              You must not change fields marked ‘Do not edit’
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546543
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/002
+            </p>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 8
+            </h2>
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              You must provide the manufacturer and serial number
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546544
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/003
+            </p>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 9
+            </h2>
+            <h3 class="table__context">
+              Error
+            </h3>
+            <p class="table__row--text">
+              The volumes must be a positive number
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Return reference
+            </h3>
+            <p class="table__row--text">
+              84546545
+            </p>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Licence number
+            </h3>
+            <p class="table__row--text">
+              05/01/224/004
+            </p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -257,17 +363,13 @@
 </div>
 
 <p class="govuk-body">
-  The data that needs correcting has been added to a new template.
-</p>
-
-<p class="govuk-body govuk-!-margin-bottom-6">
-  <a href="/public/return-templates.zip">Download the new CSV template</a>, correct and resubmit the data.
+  You need correct all errors to successfully upload a file to submit.
 </p>
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
     <a href="upload-bulk-files" class="govuk-button">
-      Continue
+      Return to upload
     </a>
   </div>
 </div>
