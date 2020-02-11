@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Confirm the address" %}
+{% set title = "Enter the address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -44,7 +44,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="govuk-caption-l">Invoice account 3725712</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
@@ -53,9 +53,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="contact-created" method="post" class="form" id="manual-address">
+      <form action="address-check" method="post" class="form" id="manual-address">
 
-        <div class="govuk-form-group">
+      <!--  <div class="govuk-form-group">
           <label class="govuk-label" for="fao-field">
             For the attention of (optional)
           </label>
@@ -64,7 +64,7 @@
           </span>
           <input class="govuk-input govuk-!-width-three-quarters" id="fao-field" name="fao-field" type="text">
         </div>
-
+-->
         <div class="govuk-form-group">
           <label class="govuk-label" for="building-name">
             Building name or number
@@ -105,7 +105,7 @@
         </div>
 
         <button type="submit" class="govuk-button">
-          Confirm
+          Continue
         </button>
 
       </form>

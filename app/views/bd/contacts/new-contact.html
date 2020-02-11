@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Enter the UK postcode" %}
+{% set title = "Name of organisation or individual" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -40,6 +40,7 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -50,37 +51,41 @@
     </div>
   </div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <form action="contact-exists" method="post" class="form" id="customer-name">
 
-      <form action="select-company-address" method="post" class="form" id="new-contact-postcode">
 
-        <div class="govuk-form-group">
-          <!-- <label class="govuk-label" for="return-reference">
-            Enter a UK postcode
-          </label> -->
-          <input class="govuk-input govuk-input--width-10" id="contact-postcode" name="contact-postcode" type="text">
-        </div>
+    {{ govukInput({
 
-        <p class="govuk-!-margin-bottom-6">
-          <a href="manual-address-non-uk">
-            This address is outside the UK
-          </a>
-        </p>
+      classes: "govuk-input--width-20",
+      id: "customer-name",
+      name: "customer-name",
+      label: isPageHeading
+    }) }}
 
-        <button type="submit" class="govuk-button">
-          Find address
-        </button>
+<p class="govuk-body">
+<a href="check-invoice-account-exists" class="govuk-link govuk-link--no-visited-state">Make the licence holder the billing contact</a>
+</p>
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
 
-      </form>
+  </form>
 
-      <!-- <p>
-        <a href="https://www.royalmail.com/find-a-postcode">
-          Find a postcode on Royal Mail’s postcode finder
-        </a>
-      </p> -->
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
-    </div>
-  </div>
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
 
 {% endblock %}

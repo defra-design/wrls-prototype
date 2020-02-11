@@ -61,18 +61,43 @@
 
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
+    {{ govukSelect({
+      id: "address",
+      name: "address",
+      label: {
+        text: "Select and address"
+      },
+      items: [
+        {
+          value: "2 addresses found",
+          text: "2 addresses found",
+          selected: "true"
+        },
+        {
+          value: "effective-date",
+          text: "Forbes Lane, West Crudwell, Wiltsire, SN16 9EW"
+        },
+        {
+          value: "effective-date",
+          text: "1 Doogal Road, West Crudwell, Wiltsire, SN16 9EW"
+        }
+      ]
+    }) }}
+
+
+
         <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
           <h1 class="govuk-fieldset__heading">
             Where do you live?
           </h1>
-        </legend> -->
+        </legend>
         <p>
           2 addresses found
         </p>
 
         <div class="govuk-radios">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="select-contact-address" name="select-contact-address" type="radio" value="company-updated">
+            <input class="govuk-radios__input" id="select-contact-address" name="select-contact-address" type="radio" value="contact-updated">
             <label class="govuk-label govuk-radios__label" for="select-contact-address">
               Forbes Lane
               <br>West Crudwell
@@ -81,7 +106,7 @@
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="select-contact-address-2" name="select-contact-address" type="radio" value="company-updated">
+            <input class="govuk-radios__input" id="select-contact-address-2" name="select-contact-address" type="radio" value="contact-updated">
             <label class="govuk-label govuk-radios__label" for="select-contact-address-2">
               1 Doogal Road
               <br>West Crudwell
@@ -89,12 +114,13 @@
               <br>SN16 9EW
             </label>
           </div>
-        </div>
+        </div>-->
+
       </fieldset>
     </div>
 
     <p class="govuk-!-margin-bottom-6">
-      <a href="manual-company-address">
+      <a href="manual-address">
         I cannot find the address in the list
       </a>
     </p>
@@ -111,7 +137,7 @@
     $(function() {
       $('form[data-routing]').on('submit', function(ev) {
         // FInd selected radio button
-        const url = $(this).find('input:checked').val();
+        const url = $(this).find('option:selected').val();
 
         if(url) {
           ev.preventDefault();

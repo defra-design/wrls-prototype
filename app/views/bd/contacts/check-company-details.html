@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if there is already a record for this contact" %}
+{% set title = "Check the registered compaby details are correct" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -51,52 +51,20 @@
     </div>
   </div>
 
-  <form data-routing="1" method="post" class="form" id="contact-change-type">
+  <form data-routing="1" method="post" class="form" id="check-company-details">
 
     {% from "radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         idPrefix: "charge-source",
-        name: "source",
+        name: "contact-type",
         fieldset: {
         },
         items: [
           {
-            value: "select-customer-account-address",
-            text: "Sam Burridge Accountants LLP"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Samantha Burridge"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Farm Enterprise Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Water Co"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burridges Brick Works Ltd"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burrito Palace Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Quarry Ltd"
-          },
-          {
-      divider: "or"
-    },
-    {
-      value: "contact-type",
-      text: "This is a new contact"
-    }
-
+            value: "check-company-billing-address",
+            text: "Sam Burridge Accountants LLP, 2 Gosport Street, Bristol BS23 6FH"
+          }
         ]
       })
     }}
