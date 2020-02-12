@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if there is already a record for this contact" %}
+{% set title = "Select an address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -62,39 +62,23 @@
         },
         items: [
           {
-            value: "select-customer-account-address",
-            text: "Sam Burridge Accountants LLP"
+            value: "check-invoice-account-exists",
+            html: "15 Osborne Road, Bath, BA1 5AH"
           },
           {
-            value: "select-customer-account-address",
-            text: "Samantha Burridge"
+            value: "check-invoice-account-exists",
+            html: "Unit 4, Finkley Crescent, London N5 1FE"
           },
           {
-            value: "select-customer-account-address",
-            text: "Sam's Farm Enterprise Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Water Co"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burridges Brick Works Ltd"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burrito Palace Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Quarry Ltd"
+            value: "check-invoice-account-exists",
+            html: "101 Kempshott Lane, Basingstoke RG22 7AF"
           },
           {
       divider: "or"
     },
     {
-      value: "contact-type",
-      text: "This is a new contact"
+      value: "new-company-postcode",
+      text: "This is a new address"
     }
 
         ]

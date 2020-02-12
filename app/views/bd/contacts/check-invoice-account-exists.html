@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if there is already a record for this contact" %}
+{% set title = "Do you want to add this licence to an existing invoice account?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -53,6 +53,16 @@
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
 
+
+<h2 class="govuk-heading-m">Existing invoice accounts for
+</h2>
+
+<!--<p class="govuk-body">Sam Burridge Accountants LLP<br>135 Ward Road<br>Bath<br>BA1 5AH</p>-->
+
+{{ govukInsetText({
+  html: "Sam Burridge Accountants LLP<br>135 Ward Road<br>Bath<br>BA1 5AH"
+}) }}
+
     {% from "radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
@@ -62,39 +72,23 @@
         },
         items: [
           {
-            value: "select-customer-account-address",
-            text: "Sam Burridge Accountants LLP"
+            value: "effective-date",
+            html: "LA098765<br>Customer name Water Company Plc"
           },
           {
-            value: "select-customer-account-address",
-            text: "Samantha Burridge"
+            value: "effective-date",
+            html: "DF0987654<br>Customer name Tarmac Plc"
           },
           {
-            value: "select-customer-account-address",
-            text: "Sam's Farm Enterprise Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Water Co"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burridges Brick Works Ltd"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burrito Palace Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Quarry Ltd"
+            value: "effective-date",
+            html: "PO098765<br>Customer name Quarry Products LLP"
           },
           {
       divider: "or"
     },
     {
-      value: "contact-type",
-      text: "This is a new contact"
+      value: "effective-date",
+      text: "Setup a new invoice account"
     }
 
         ]

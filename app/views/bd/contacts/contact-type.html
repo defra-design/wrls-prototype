@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Is the new contact a person or a company?" %}
+{% set title = "Select the contact type" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -51,24 +51,44 @@
     </div>
   </div>
 
-  <form data-routing="1" method="post" class="form" id="contact-change-type">
+  <form data-routing="1" method="post" class="form" id="companies-house-number">
 
     {% from "radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         idPrefix: "charge-source",
-        name: "source",
+        name: "contact-type",
         fieldset: {
         },
         items: [
           {
-            value: "new-person-contact",
-            text: "Person"
+            value: "companies-house-number",
+            text: "Limited Company"
           },
           {
-            value: "new-company-contact",
-            text: "Company"
-          }
+            value: "companies-house-number",
+            text: "Partnership"
+          },
+          {
+            value: "companies-house-number",
+            text: "Limited liability partership"
+          },
+          {
+            value: "companies-house-number",
+            text: "Local authoirty or public body"
+          },
+          {
+            value: "companies-house-number",
+            text: "Charitable trust"
+          },
+          {
+      divider: "or"
+    },
+    {
+      value: "select-customer-account-address",
+      text: "Individual"
+    }
+
         ]
       })
     }}

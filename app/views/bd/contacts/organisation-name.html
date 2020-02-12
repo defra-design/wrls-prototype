@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if there is already a record for this contact" %}
+{% set title = "Organisation name" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -9,7 +9,7 @@
 {% block header %}
  {{ govukHeader({
    homepageUrl: "/",
-   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceName: "Organisation name",
    serviceUrl: "#",
    containerClasses: "govuk-width-container",
    navigation: [
@@ -51,55 +51,16 @@
     </div>
   </div>
 
-  <form data-routing="1" method="post" class="form" id="contact-change-type">
+  <form action="check-company-name" method="post" class="form" id="customer-name">
 
-    {% from "radios/macro.njk" import govukRadios %}
 
-      {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
-        fieldset: {
-        },
-        items: [
-          {
-            value: "select-customer-account-address",
-            text: "Sam Burridge Accountants LLP"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Samantha Burridge"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Farm Enterprise Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Water Co"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burridges Brick Works Ltd"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Burrito Palace Plc"
-          },
-          {
-            value: "select-customer-account-address",
-            text: "Sam's Quarry Ltd"
-          },
-          {
-      divider: "or"
-    },
-    {
-      value: "contact-type",
-      text: "This is a new contact"
-    }
+    {{ govukInput({
 
-        ]
-      })
-    }}
+      classes: "govuk-input--width-20",
+      id: "company-number",
+      name: "cumpany number",
+      label: isPageHeading
+    }) }}
 
     <button type="submit" class="govuk-button">
       Continue
