@@ -53,15 +53,11 @@
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
 
+{{data|dump}}
 
-<h2 class="govuk-heading-m">Existing invoice accounts for
+<h2 class="govuk-heading-m">Existing invoice accounts for {{ data['customer-name'] }}
 </h2>
 
-<!--<p class="govuk-body">Sam Burridge Accountants LLP<br>135 Ward Road<br>Bath<br>BA1 5AH</p>-->
-
-{{ govukInsetText({
-  html: "Sam Burridge Accountants LLP<br>135 Ward Road<br>Bath<br>BA1 5AH"
-}) }}
 
     {% from "radios/macro.njk" import govukRadios %}
 
@@ -73,21 +69,21 @@
         items: [
           {
             value: "effective-date",
-            html: "LA098765<br>Customer name Water Company Plc"
+            html: "LA098765<br>15 Osborne Road, Bath, BA1 5AH"
           },
           {
             value: "effective-date",
-            html: "DF0987654<br>Customer name Tarmac Plc"
+            html: "DF0987654<br>Unit 4, Finkley Crescent, London N5 1FE"
           },
           {
             value: "effective-date",
-            html: "PO098765<br>Customer name Quarry Products LLP"
+            html: "PO098765<br>Unit 4, Finkley Crescent, London N5 1FE"
           },
           {
       divider: "or"
     },
     {
-      value: "effective-date",
+      value: "select-customer-account-address",
       text: "Setup a new invoice account"
     }
 

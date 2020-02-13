@@ -161,10 +161,11 @@
             </dt>
             <dd class="govuk-summary-list__value">
               AA126515
-              <br><a href="#">View invoice details</a>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a href="#">View all invoices</a>
+              <a class="govuk-link" href="/bd/customer-summary">
+                    View<span class="govuk-visually-hidden">invoice</span>
+                  </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -179,7 +180,7 @@
             </dd>
           </div>
 
-          <div class="govuk-summary-list__row">
+        <!--  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Contact
             </dt>
@@ -196,27 +197,50 @@
                 Change contact
               </a>
             </dd>
-          </div>
+          </div> -->
 
               <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                      Invoice account
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      3725712<br>
-                      2 Summary House
-                      <br>NG15 2PW
+                      S37235712A<br>
 
-                      <br><a class="govuk-link" href="/bd/charges/ias">
+                      Water Company Plc<br>
+                  <!--    <a class="govuk-link" href="/bd/customer-summary">
+                        View contact details
+                      </a><br> -->
+
+                      2 Summary House<br>
+                      NG15 2PW<br>
+                  <!--    <a class="govuk-link" href="/bd/charges/ias">
                         View invoice account details
-                      </a>
+                      </a><br> -->
                     </dd>
                     <dd class="govuk-summary-list__actions">
-                      <a class="govuk-link" href="/bd/contacts/select-customer-account-address">
-                        Change address
-                      </a>
+
+                          <ul class="govuk-summary-list__actions-list">
+
+                                          <li class="govuk-summary-list__actions-list-item">
+
+                                            <a class="govuk-link" href="/bd/contacts/new-contact">
+                                                Change<span class="govuk-visually-hidden">invoice account</span>
+                                                </a>
+                                          </li>
+
+                                          <li class="govuk-summary-list__actions-list-item">
+                                            <a class="govuk-link" href="/bd/customer-summary">
+                                                  View<span class="govuk-visually-hidden">invoice account</span>
+                                                </a>
+                                          </li>
+
+                                      </ul>
+
                     </dd>
                   </div>
+
+
+
 
           <!-- <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -301,5 +325,8 @@
     </section>
 
   </div>
+
+
+
 
 {% endblock %}

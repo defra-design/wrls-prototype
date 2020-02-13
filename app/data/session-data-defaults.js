@@ -19,6 +19,8 @@ Example usage:
 
 module.exports = {
 
+"customer-name": "Sam Burridge Accountants LLP"
+
   // Insert values here
 
 }
