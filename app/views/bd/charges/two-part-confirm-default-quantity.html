@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
-{% set title = "Is this the billing address?" %}
+{% set title = "Spray top field" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+   {{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
@@ -14,7 +14,7 @@
    containerClasses: "govuk-width-container",
    navigation: [
      {
-       href: "#1",
+       href: "/bd/account/change-password-check",
        text: "Change password"
      },
      {
@@ -27,47 +27,48 @@
 
 {% block beforeContent %}
 
+  <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
+    {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
-  <!-- {{ govukBackLink({
+  {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }} -->
+  }) }}
 
 {% endblock %}
 
 {% block content %}
 
+<div class="govuk-!-margin-bottom-3"></div>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <span class="govuk-caption-l">03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
     <h2 class="govuk-heading-m">
-      Sam Burridge Accountants LLP
+      Are you sure you want to use the default chargeable quantity?
     </h2>
 
-    <div class="govuk-inset-text">
-      2 Gosport Street
-      <br>BRISTOL
-      <br>BS23 6FH
+    <div class="govuk-checkboxes govuk-!-margin-bottom-6">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns">
+        <label class="govuk-label govuk-checkboxes__label" for="returns-agent">
+          Yes, use the default chargeable quantity of 20ML
+        </label>
+      </div>
     </div>
 
-    <p class="govuk-body">
-    <a href="new-company-postcode" class="govuk-link govuk-link--no-visited-state">I want to use a different billing address</a>
-    </p>
-
-    <a href="/bd/contacts/effective-date" class="govuk-faux-button">
-      Continue
+    <a href="two-part-bill-issue" class="govuk-faux-button">
+      Confirm
     </a>
+
 
   </div>
 </div>
-
-
 {% endblock %}
