@@ -43,12 +43,30 @@
 
 {% block content %}
 
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
+
+
+{% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+{% set monthNumber = data['startMonth'] %}
+
+{% set month = monthNames[monthNumber - 1] %}
+
+{% set effectiveDate = data['startDay'] + " " + month +" "+ data['startYear']%}
+
+{% set invoiceAddress %}
+{{ data.invoiceAccount}} <br>
+{{ data.address1}} <br>
+{{ data.city}} <br>
+{{data.postcode}} <br>
+{% endset %}
+
 
     {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -58,7 +76,7 @@
               text: "Name"
             },
             value: {
-              text: "Sam Burridge Accountants LLP"
+              text: [data.customerName]
             },
             actions: {
               items: [
@@ -72,10 +90,10 @@
           },
           {
             key: {
-              text: "Address"
+              text: "Invoice account"
             },
             value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
+              html: invoiceAddress
             },
             actions: {
               items: [
@@ -89,27 +107,10 @@
           },
           {
             key: {
-              text: "Invoice account"
-            },
-            value: {
-              html: '<p class="govuk-body">LA1234567</p>'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "account number"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Effective from"
             },
             value: {
-              html: "22 April 2019"
+              text: [effectiveDate]
             },
             actions: {
               items: [
@@ -124,7 +125,7 @@
         ]
       }) }}
 
-    <a href="/bd/licence-summary-new-contact#charge" class="govuk-faux-button">
+    <a href="/bd/licence-summary#charge" class="govuk-faux-button">
       Confirm
     </a>
 

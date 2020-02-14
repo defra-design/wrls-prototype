@@ -53,9 +53,7 @@
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
 
-{{data|dump}}
-
-<h2 class="govuk-heading-m">Existing invoice accounts for {{ data['customer-name'] }}
+<h2 class="govuk-heading-m">Existing invoice accounts for {{ data['customerName'] }}
 </h2>
 
 
@@ -68,16 +66,16 @@
         },
         items: [
           {
-            value: "effective-date",
-            html: "LA098765<br>15 Osborne Road, Bath, BA1 5AH"
+            value: "effective-date?invoiceAccount=L09823765S&address1=%20%0A15%20Osborne%20Road&city=%0ABath%0A&postcode=BA1%205AH",
+            html: "L09823765S<br>15 Osborne Road, Bath, BA1 5AH"
           },
           {
-            value: "effective-date",
-            html: "DF0987654<br>Unit 4, Finkley Crescent, London N5 1FE"
+            value: "effective-date?invoiceAccount=D098437654%0A&address1=%20%0AUnit%204%0AFinkley%20Crescent%0A&city=London%0A&postcode=N5%201FE",
+            html: "D098437654S<br>Unit 4, Finkley Crescent, London N5 1FE"
           },
           {
-            value: "effective-date",
-            html: "PO098765<br>Unit 4, Finkley Crescent, London N5 1FE"
+            value: "effective-date?invoiceAccount=D098437654%0A&address1=%20%0AUnit%204%0AFinkley%20Crescent%0A&city=London%0A&postcode=N5%201FE",
+            html: "P00987645S<br>Unit 4, Finkley Crescent, London N5 1FE"
           },
           {
       divider: "or"

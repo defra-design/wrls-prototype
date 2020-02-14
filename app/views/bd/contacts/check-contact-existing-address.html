@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check the registered compaby details are correct" %}
+{% set title = "Select an address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,28 +45,42 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="govuk-caption-l">Invoice account {{data['invoiceAccount']}}</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
 
-  <form data-routing="1" method="post" class="form" id="check-company-details">
+  <form data-routing="1" method="post" class="form" id="contact-change-type">
 
     {% from "radios/macro.njk" import govukRadios %}
 
-{% set companyName = [data.customerName] + ", 2 Gosport Street, Bristol BS23 6FH"%}
-
       {{ govukRadios({
         idPrefix: "charge-source",
-        name: "contact-type",
+        name: "source",
         fieldset: {
         },
         items: [
           {
-            value: "check-company-billing-address?address1=2%20Gosport%20Street&city=Bristol&postcode=BS23%206FH",
-            text: [companyName]
-          }
+            value: "address-check?address1=15%20Osborne%20Road&city=Bath&postcode=BA1%205AH",
+            html: "15 Osborne Road, Bath, BA1 5AH"
+          },
+          {
+            value: "address-check?address1=Unit%204%20Finkley%20Cresent&city=London&postcode=N5%201FE",
+            html: "Unit 4, Finkley Crescent, London N5 1FE"
+          },
+          {
+            value: "address-check?address1=101%20Kempshott%20Lane&city=Basingstoke&postcode=RG22%207AF",
+            html: "101 Kempshott Lane, Basingstoke RG22 7AF"
+          },
+          {
+      divider: "or"
+    },
+    {
+      value: "new-address-postcode",
+      text: "This is a new address"
+    }
+
         ]
       })
     }}

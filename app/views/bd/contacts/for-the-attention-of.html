@@ -45,13 +45,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="govuk-caption-l">Invoice account {{ data['invoiceAccount'] }}</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
 
-  <form action="/bd/charges/ias-fao-update" method="post" class="form" id="customer-name">
+  <form action="/bd/charges/ias" method="post" class="form" id="customer-name">
 
 
     {{ govukInput({

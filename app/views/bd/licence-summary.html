@@ -204,15 +204,16 @@
                      Invoice account
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      S37235712A<br>
+                      {{data['invoiceAccount']}}<br>
 
-                      Water Company Plc<br>
+                      {{data['customerName']}}<br>
                   <!--    <a class="govuk-link" href="/bd/customer-summary">
                         View contact details
                       </a><br> -->
 
-                      2 Summary House<br>
-                      NG15 2PW<br>
+{{data['address1']}}<br>
+{{data['postcode']}}
+
                   <!--    <a class="govuk-link" href="/bd/charges/ias">
                         View invoice account details
                       </a><br> -->
@@ -229,7 +230,7 @@
                                           </li>
 
                                           <li class="govuk-summary-list__actions-list-item">
-                                            <a class="govuk-link" href="/bd/customer-summary">
+                                            <a class="govuk-link" href="/bd/charges/ias">
                                                   View<span class="govuk-visually-hidden">invoice account</span>
                                                 </a>
                                           </li>
