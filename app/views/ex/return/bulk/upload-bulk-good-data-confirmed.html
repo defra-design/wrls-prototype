@@ -55,8 +55,13 @@
     </div>
 
     <p class="govuk-body">
-      We have sent you an email to confirm this.
+      We have sent you a confirmation email.
     </p>
+
+    {{ govukPanel({
+      titleText: "Application complete",
+      html: "Your reference number<br><strong>HDJ2123F</strong>"
+    }) }}
 
     <!-- <p class="govuk-body">
       <a href="upload-bulk-bad-data">
