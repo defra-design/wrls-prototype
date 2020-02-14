@@ -51,8 +51,50 @@
     </div>
   </div>
 
-  <form action="contact-exists" method="post" class="form" id="customer-name">
+  <form  method="post" class="form" id="customer" data-routing="1">
 
+    {% set customerName %}
+    {{ govukInput({
+      id: "customer-name",
+      name: "customer-name",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Name of oranisation or individual"
+      }
+    }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      idPrefix: "billing-contact",
+      name: "customer-name",
+      fieldset: {
+        legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "check-invoice-account-exists?customer-name=Water Company Plc",
+          html: "Licence holder<br>Water Company Plc",
+          name:"Water Company Plc"
+        },
+        {
+          value: "check-invoice-account-exists?customer-name=Sam Burridge Accountants LLP",
+          text: "Sam Burridge Accountants LLP",
+          name:"Sam Burridge Accounts LLP"
+        },
+        {
+          value: "contact-exists",
+          text: "Someone else",
+          conditional: {
+            html: customerName
+          }
+        }
+      ]
+    }) }}
+
+<!--
 
     {{ govukInput({
 
@@ -61,7 +103,7 @@
       name: "customer-name",
       label: isPageHeading
     }) }}
-
+-->
 <p class="govuk-body">
 <a href="check-invoice-account-exists" class="govuk-link govuk-link--no-visited-state">Make the licence holder the billing contact</a>
 </p>
@@ -76,7 +118,7 @@
   <script>
     $(function() {
       $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
+        // Find selected radio button
         const url = $(this).find('input:checked').val();
 
         if(url) {
