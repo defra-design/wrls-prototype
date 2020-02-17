@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Use this address as the billing address?" %}
+{% set title = "Registered office address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -66,12 +66,16 @@
 {% endset %} -->
 
   <form data-routing="1" method="post" class="form" id="check-company-details">
-    {% from "radios/macro.njk" import govukRadios %}
+
 
       {{ govukRadios({
         idPrefix: "charge-source",
         name: "source",
         fieldset: {
+          legend: {
+    text: "Use this as the billing address?",
+    classes: "govuk-fieldset__legend--m"
+  }
         },
         items: [
           {
@@ -80,7 +84,7 @@
           },
     {
       value: "new-company-postcode",
-      text: "I want to use a different billing address"
+      text: "No"
     }
 
         ]
