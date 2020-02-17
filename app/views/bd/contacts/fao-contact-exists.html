@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if there is already a record for this contact" %}
+{% set title = "Check if this contact is listed" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -53,7 +53,16 @@
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
 
-    {% from "radios/macro.njk" import govukRadios %}
+    {% set fao %}
+    {{ govukInput({
+      id: "fao",
+      name: "fao",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Contact name"
+      }
+    }) }}
+    {% endset -%}
 
       {{ govukRadios({
         idPrefix: "charge-source",
@@ -77,8 +86,11 @@
       divider: "or"
     },
     {
-      value: "for-the-attention-of",
-      text: "This is a new FAO"
+      value: "/bd/charges/ias?fao=",
+      text: "Not listed",
+      conditional: {
+        html: fao
+      }
     }
 
         ]
@@ -100,6 +112,17 @@
         const url = $(this).find('input:checked').val();
 
         if(url) {
+
+          if( $("#fao").val() ){
+          let  companyName = $("#fao").val();
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl+companyName;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
+          }
+
+
           ev.preventDefault();
           window.location.href = url;
           return false;
