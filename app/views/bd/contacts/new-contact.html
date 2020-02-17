@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Who is the billing contact?" %}
+{% set title = "What is the invoice account name?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -59,7 +59,7 @@
       name: "companyName",
       classes: "govuk-!-width-one-third",
       label: {
-        text: "Name of oranisation or individual"
+        text: "Name of organisation or individual"
       }
     }) }}
     {% endset -%}
@@ -76,7 +76,7 @@
       items: [
         {
           value: "check-invoice-account-exists?customerName=Bottled%20Water%20Plc",
-          html: "Licence holder<br>Bottled Water Plc",
+          html: "Bottled Water Plc",
           name:"Bottled Water Plc"
         },
         {
@@ -85,8 +85,11 @@
           name:"Sam Burridge Accounts LLP"
         },
         {
+      divider: "or"
+    },
+        {
           value: "contact-exists?customerName=",
-          text: "The contact is not listed",
+          text: "Not listed",
           id: "radio",
           conditional: {
             html: customerName
