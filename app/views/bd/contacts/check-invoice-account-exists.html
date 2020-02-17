@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you want to add this licence to an existing invoice account?" %}
+{% set title = "Do you want to use an existing invoice account?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -53,8 +53,8 @@
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
 
-<h2 class="govuk-heading-m">Existing invoice accounts for {{ data['customerName'] }}
-</h2>
+<!--<h2 class="govuk-heading-m">Existing invoice accounts for {{ data['customerName'] }}
+</h2>-->
 
 
     {% from "radios/macro.njk" import govukRadios %}
@@ -82,7 +82,7 @@
     },
     {
       value: "select-customer-account-address",
-      text: "Setup a new invoice account"
+      text: "Set up a new invoice account"
     }
 
         ]
