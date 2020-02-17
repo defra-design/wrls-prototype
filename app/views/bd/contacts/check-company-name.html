@@ -55,8 +55,9 @@
 
     {% from "radios/macro.njk" import govukRadios %}
 
-{% set companyName1 = [data.customerName] + ", 2 Gosport Street, Bristol BS23 6FH"%}
-{% set companyName2 = [data.customerName] + ", 73 Green lane Slough Berkshire SL1 4A"%}
+{% set companyName1 = "Little " + [data.customerName]%}
+{% set companyName2 = [data.customerName] %}
+{% set companyName3 = "Big " + [data.customerName] %}
 
       {{ govukRadios({
         idPrefix: "charge-source",
@@ -71,6 +72,10 @@
           {
             value: "check-company-billing-address?address1=%2073%20Green%20lane%20&city=Slough%20&postcode=SL1%204A",
             text: [companyName2]
+          },
+          {
+            value: "check-company-billing-address?address1=%2073%20Green%20lane%20&city=Slough%20&postcode=SL1%204A",
+            text: [companyName3]
           }
         ]
       })
