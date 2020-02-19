@@ -32,20 +32,26 @@
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
 
-  <!-- {{ govukBackLink({
+   {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }} -->
+  }) }}
 
 {% endblock %}
 
 {% block content %}
 
+{% set invoiceAddress %}
+{{ data.address1}} <br>
+{{ data.city}} <br>
+{{data.postcode}} <br>
+{% endset %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <span class="govuk-caption-l">Invoice account 3725712</span>
+    <span class="govuk-caption-l">Invoice account {{data['invoiceAccount']}}</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
     {{ govukSummaryList({
@@ -55,10 +61,7 @@
             text: "Address"
           },
           value: {
-            html: 'Forbes Lane
-            <br>West Crudwell
-            <br>Wiltshire
-            <br>SN16 9EW'
+            html: invoiceAddress
           },
           actions: {
             items: [
@@ -75,15 +78,15 @@
 
 
     <h2 class="govuk-heading-m">
-      You are about to update the address details for these
-licences:
+      You are about to update the invoice address for these
+licences
     </h2>
 
     {{ govukInsetText({
-  html:  '21/28/001/02<br>03/28/01/0181<br>03/28/01/0182'
+  html:  '03/28/60/0032<br>03/28/01/0181<br>03/28/01/0182'
 }) }}
 
-    <a href="/bd/charges/ias-address-updated" class="govuk-faux-button">
+    <a href="/bd/charges/ias" class="govuk-faux-button">
       Confirm
     </a>
 

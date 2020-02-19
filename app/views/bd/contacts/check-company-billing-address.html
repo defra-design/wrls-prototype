@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Is this the billing address?" %}
+{% set title = "Registered office address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -32,10 +32,10 @@
     {% include "includes/nav/nav-bd-view.html" %}
   </div>
 
-  <!-- {{ govukBackLink({
+   {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }} -->
+  }) }}
 
 {% endblock %}
 
@@ -48,26 +48,85 @@
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    <h2 class="govuk-heading-m">
-      Sam Burridge Accountants LLP
-    </h2>
+
 
     <div class="govuk-inset-text">
-      2 Gosport Street
-      <br>BRISTOL
-      <br>BS23 6FH
+      <strong>{{ data['customerName'] }}</strong><br>
+      {{data['address1']}}<br>
+      {{data['city']}}<br>
+      {{data['postcode']}}
     </div>
 
+<!--
+{% set companyDetails %}
+{{ data['customerName']}},
+{{ data['address1']}},
+{{ data['city']}},
+{{ data['postcode']}}
+{% endset %} -->
+
+  <form data-routing="1" method="post" class="form" id="check-company-details">
+
+
+      {{ govukRadios({
+        idPrefix: "charge-source",
+        name: "source",
+        fieldset: {
+          legend: {
+    text: "Use this as the billing address?",
+    classes: "govuk-fieldset__legend--m"
+  }
+        },
+        items: [
+          {
+            value: "effective-date",
+            html: "Yes"
+          },
+    {
+      value: "new-company-postcode",
+      text: "No"
+    }
+
+        ]
+      })
+    }}
+
+<!--
     <p class="govuk-body">
     <a href="new-company-postcode" class="govuk-link govuk-link--no-visited-state">I want to use a different billing address</a>
     </p>
 
+
+
     <a href="/bd/contacts/effective-date" class="govuk-faux-button">
       Continue
-    </a>
+    </a>  -->
 
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+
+</form>
   </div>
 </div>
 
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
 
 {% endblock %}

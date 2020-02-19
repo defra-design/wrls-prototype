@@ -55,6 +55,8 @@
 
     {% from "radios/macro.njk" import govukRadios %}
 
+{% set companyName = [data.customerName] + ", 2 Gosport Street, Bristol BS23 6FH"%}
+
       {{ govukRadios({
         idPrefix: "charge-source",
         name: "contact-type",
@@ -62,8 +64,8 @@
         },
         items: [
           {
-            value: "check-company-billing-address",
-            text: "Sam Burridge Accountants LLP, 2 Gosport Street, Bristol BS23 6FH"
+            value: "check-company-billing-address?address1=2%20Gosport%20Street&city=Bristol&postcode=BS23%206FH",
+            text: [companyName]
           }
         ]
       })

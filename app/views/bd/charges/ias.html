@@ -2,7 +2,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "Water Company Plc" %}
+{% set title = data['customerName'] %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,7 +48,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">Invoice account 3725712</span>
+      <span class="govuk-caption-l">Invoice account {{data['invoiceAccount']}}</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <!-- Contact summary -->
@@ -59,16 +59,20 @@
 
 
         <div class="govuk-inset-text govuk-!-margin-bottom-3">
-<p><a href="/bd/contacts/for-the-attention-of">Add an FAO</a></p>
-          1 Hill House<br>
-          Abingdon-on-Thames<br>
-          Oxfordshire<br>
-          RE1 1TG
+
+          {% if data['fao'].length %}
+          <p>{{data['fao']}} <a href="/bd/contacts/fao-contact-exists">Change</a> | <a href="ias?fao=">Remove</a></p>
+          {% else %}
+          <p><a href="/bd/contacts/fao-contact-exists">Add an FAO</a></p>
+          {% endif %}
+          {{data['address1']}}<br>
+          {{data['city']}}<br>
+          {{data['postcode']}}
         </div>
 
 
         <div class="govuk-!-margin-bottom-6">
-          <a href="../contacts/new-address-postcode">Change address</a>
+          <a href="../contacts/check-contact-existing-address">Change address</a>
         </div>
 
       </section>
@@ -87,7 +91,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Water Company Plc is the billing contact for these licences</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">{{ title }} is the billing contact for these licences</h2>
 
     </div>
   </div>
@@ -120,17 +124,17 @@
     </div>
 
     <!-- table row -->
-    <a href="/bd/licence-summary?wid=31#charge" class="table__row govuk-!-margin-bottom-6">
+    <a href="/bd/licence-summary" class="table__row govuk-!-margin-bottom-6">
       <div class="table__cell">
         <h2 class="screen-reader-only">
           Row 1
         </h2>
-        <span class="screen-reader-only">See licence 03/28/60/0031</span>
+        <span class="screen-reader-only">See licence 03/28/60/0032</span>
         <h3 class="table__context">
           Licence
         </h3>
         <span class="table__link">
-          03/28/60/0011
+          03/28/60/0032
         </span>
       </div>
       <div class="table__cell">
@@ -146,7 +150,7 @@
           Licence holder
         </h3>
         <p class="table__row--text">
-          Aquafall Ltd.
+          Bottled Water Plc
         </p>
       </div>
       <div class="table__cell">
@@ -160,17 +164,17 @@
     </a>
 
     <!-- table row -->
-    <a href="licence-summary?wid=33" class="table__row govuk-!-margin-bottom-6">
+    <a href="/bd/licence-summary" class="table__row govuk-!-margin-bottom-6">
       <div class="table__cell">
         <h2 class="screen-reader-only">
           Row 2
         </h2>
-        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
+        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/01/0181</span>
         <h3 class="table__context">
           Licence
         </h3>
         <span class="table__link">
-          03/28/61/028
+          03/28/01/0181
         </span>
       </div>
       <div class="table__cell">
@@ -186,7 +190,7 @@
           Licence holder
         </h3>
         <p class="table__row--text">
-          Aquafall Ltd.
+          Bottled Water Plc
         </p>
       </div>
       <div class="table__cell">
@@ -200,7 +204,7 @@
     </a>
 
     <!-- table row -->
-    <a href="licence-summary?wid=31" class="table__row govuk-!-margin-bottom-6">
+    <a href="/bd/licence-summary" class="table__row govuk-!-margin-bottom-6">
       <div class="table__cell">
         <h2 class="screen-reader-only">
           Row 3
@@ -210,7 +214,7 @@
           Licence
         </h3>
         <span class="table__link">
-          03/28/60/0031
+          03/28/01/0182
         </span>
       </div>
       <div class="table__cell">
@@ -226,7 +230,7 @@
           Licence holder
         </h3>
         <p class="table__row--text">
-          Aquafall Ltd.
+          Bottled Water Plc
         </p>
       </div>
       <div class="table__cell">
@@ -235,46 +239,6 @@
         </h3>
         <p class="table__row--text">
           31 March 2027
-        </p>
-      </div>
-    </a>
-
-    <!-- table row -->
-    <a href="licence-summary?wid=33" class="table__row govuk-!-margin-bottom-6">
-      <div class="table__cell">
-        <h2 class="screen-reader-only">
-          Row 4
-        </h2>
-        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
-        <h3 class="table__context">
-          Licence
-        </h3>
-        <span class="table__link">
-          03/28/61/032
-        </span>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence name
-        </h3>
-        <p class="table__row--text">
-
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence holder
-        </h3>
-        <p class="table__row--text">
-          Aquafall Ltd.
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          End date
-        </h3>
-        <p class="table__row--text">
-          15 September 2032
         </p>
       </div>
     </a>

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if there is already a record for this contact" %}
+{% set title = "Check if this contact is listed" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -62,31 +62,31 @@
         },
         items: [
           {
-            value: "check-invoice-account-exists",
+            value: "check-invoice-account-exists?customerName=Sam%20Burridge%20Accountants%20LLP",
             text: "Sam Burridge Accountants LLP"
           },
           {
-            value: "check-invoice-account-exists",
+            value: "check-invoice-account-exists?customerName=Samantha%20Burridge",
             text: "Samantha Burridge"
           },
           {
-            value: "check-invoice-account-exists",
+            value: "check-invoice-account-exists?customerName=Sam%27s%20Farm%20Enterprise%20Plc",
             text: "Sam's Farm Enterprise Plc"
           },
           {
-            value: "check-invoice-account-exists",
+            value: "check-invoice-account-exists?customerName=Sam%27s%20Water%20Co",
             text: "Sam's Water Co"
           },
           {
-            value: "check-invoice-account-exists",
+            value: "check-invoice-account-exists?customerName=Burridges%20Brick%20Works%20Ltd",
             text: "Burridges Brick Works Ltd"
           },
           {
-            value: "check-invoice-account-exists",
+            value: "check-invoice-account-exists?customerName=Burrito%20Palace%20Plc",
             text: "Burrito Palace Plc"
           },
           {
-            value: "check-invoice-account-exists",
+            value: "check-invoice-account-exists?customerName=Sam%27s%20Quarry%20Ltd",
             text: "Sam's Quarry Ltd"
           },
           {
@@ -94,7 +94,7 @@
     },
     {
       value: "contact-type",
-      text: "This is a new contact"
+      text: "Not listed"
     }
 
         ]

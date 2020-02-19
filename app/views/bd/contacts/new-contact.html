@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Who is the billing contact?" %}
+{% set title = "What is the invoice account name?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -55,11 +55,11 @@
 
     {% set customerName %}
     {{ govukInput({
-      id: "customer-name",
-      name: "customer-name",
+      id: "companyName",
+      name: "companyName",
       classes: "govuk-!-width-one-third",
       label: {
-        text: "Name of oranisation or individual"
+        text: "Name of organisation or individual"
       }
     }) }}
     {% endset -%}
@@ -75,18 +75,22 @@
       },
       items: [
         {
-          value: "check-invoice-account-exists?customer-name=Water Company Plc",
-          html: "Licence holder<br>Water Company Plc",
-          name:"Water Company Plc"
+          value: "check-invoice-account-exists?customerName=Bottled%20Water%20Plc",
+          html: "Bottled Water Plc",
+          name:"Bottled Water Plc"
         },
         {
-          value: "check-invoice-account-exists?customer-name=Sam Burridge Accountants LLP",
+          value: "check-invoice-account-exists?customerName=Sam%20Burridge%20Accountants%20LLP",
           text: "Sam Burridge Accountants LLP",
           name:"Sam Burridge Accounts LLP"
         },
         {
-          value: "contact-exists",
-          text: "Someone else",
+      divider: "or"
+    },
+        {
+          value: "contact-exists?customerName=",
+          text: "Not listed",
+          id: "radio",
           conditional: {
             html: customerName
           }
@@ -104,9 +108,9 @@
       label: isPageHeading
     }) }}
 -->
-<p class="govuk-body">
+<!--<p class="govuk-body">
 <a href="check-invoice-account-exists" class="govuk-link govuk-link--no-visited-state">Make the licence holder the billing contact</a>
-</p>
+</p> -->
     <button type="submit" class="govuk-button">
       Continue
     </button>
@@ -119,9 +123,20 @@
     $(function() {
       $('form[data-routing]').on('submit', function(ev) {
         // Find selected radio button
+
         const url = $(this).find('input:checked').val();
 
         if(url) {
+
+          if( $("#companyName").val() ){
+          let  companyName = $("#companyName").val();
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl+companyName;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
+          }
+
           ev.preventDefault();
           window.location.href = url;
           return false;

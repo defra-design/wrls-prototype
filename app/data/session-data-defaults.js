@@ -19,8 +19,14 @@ Example usage:
 
 module.exports = {
 
-"customer-name": "Sam Burridge Accountants LLP"
-
+"customerName": "Bottled Water Plc",
+"address1": "15 Ward Road",
+"city": "Bath",
+"postcode": "BA1 5EH",
+"invoiceAccount": "L12345678S",
+"startDay": "11",
+"startMonth": "April",
+"startYear": "2019"
   // Insert values here
 
 }

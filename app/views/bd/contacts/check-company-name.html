@@ -55,6 +55,10 @@
 
     {% from "radios/macro.njk" import govukRadios %}
 
+{% set companyName1 = "Little " + [data.customerName]%}
+{% set companyName2 = [data.customerName] %}
+{% set companyName3 = "Big " + [data.customerName] %}
+
       {{ govukRadios({
         idPrefix: "charge-source",
         name: "contact-type",
@@ -62,12 +66,16 @@
         },
         items: [
           {
-            value: "check-company-billing-address",
-            text: "Sam Burridge Accountants LLP, 2 Gosport Street, Bristol BS23 6FH"
+            value: "check-company-billing-address?address1=2%20Gosport%20Street&city=Bristol&postcode=BS23%206FH",
+            text: [companyName1]
           },
           {
-            value: "check-company-billing-address",
-            text: "Sam’s advisors Ltd, 73 Green lane Slough Berkshire SL1 4AD - 3456743"
+            value: "check-company-billing-address?address1=%2073%20Green%20lane%20&city=Slough%20&postcode=SL1%204A",
+            text: [companyName2]
+          },
+          {
+            value: "check-company-billing-address?address1=%2073%20Green%20lane%20&city=Slough%20&postcode=SL1%204A",
+            text: [companyName3]
           }
         ]
       })

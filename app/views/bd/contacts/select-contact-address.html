@@ -45,7 +45,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Invoice account 3725712</span>
+      <span class="govuk-caption-l">Invoice account {{data['invoiceAccount']}}</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <section class="govuk-!-margin-bottom-6">
@@ -66,7 +66,7 @@
       id: "address",
       name: "address",
       label: {
-        text: "Select and address"
+        text: "Select an address"
       },
       items: [
         {
@@ -75,12 +75,12 @@
           selected: "true"
         },
         {
-          value: "address-check",
-          text: "Forbes Lane, West Crudwell, Wiltsire, SN16 9EW"
+          value: "address-check?address1=Forbes%20Lane&city=West%20Crudwell&postcode=SN16%209EW",
+          text: "Forbes Lane, West Crudwell, SN16 9EW"
         },
         {
-          value: "address-check",
-          text: "1 Doogal Road, West Crudwell, Wiltsire, SN16 9EW"
+          value: "address-check?address1=1%20Doogal%20Road&city=West%20Crudwell&postcode=SN16%209EW",
+          text: "1 Doogal Road, West Crudwell, SN16 9EW"
         }
       ]
     }) }}
