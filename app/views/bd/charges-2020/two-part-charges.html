@@ -1,0 +1,695 @@
+{% extends "layout.html" %}
+
+{% set title = "Anglian two-part tariff bill run" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-0">
+    <div class="govuk-grid-column-two-thirds">
+
+      <section class="govuk-!-margin-bottom-6">
+        <h1 class="govuk-caption-l">7 January 2020</h1>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
+        <!-- <p class="govuk-body-l">
+          <a href="ias">
+            Invoice account 021545
+          </a>
+        </p> -->
+      </section>
+
+      <!-- <section class="govuk-!-margin-bottom-5">
+
+      </section> -->
+
+      <!-- invoice totals -->
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-0 screen-reader-only">
+        Totals
+      </h2>
+
+    </div>
+  </div>
+
+  <!-- big total and 2 smaller totals -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-column-one-half">
+      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£5,460.00</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">10 invoices</span></h3>
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <section class="govuk-!-margin-bottom-6">
+        <p class="govuk-body">You can send this bill run on the next page.</p>
+        <a href="confirm-approve-bills" class="govuk-faux-button">Confirm bill run</a>
+        <a href="confirm-cancel-bills" class="govuk-faux-button govuk-faux-button--inline govuk-faux-button--secondary">Cancel bill run</a>
+      </section>
+
+      <p class="govuk-body">
+        <a href="">
+          Download this bill run
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="divider govuk-!-margin-bottom-5"></div>
+
+  <h2 class="govuk-heading-l screen-reader-only">
+    Supplementary bills
+  </h2>
+
+  <!-- invoices table -->
+  <div class="table govuk-!-margin-bottom-6">                                                <!-- a table -->
+
+    <div class="table__row--head">
+      <div class="table__cell bold-small">
+        Account
+      </div>
+      <div class="table__cell bold-small">
+        Billing contact
+      </div>                                              <!-- the table head -->
+      <div class="table__cell bold-small">
+        Licence
+      </div>
+      <!-- <div class="table__cell bold-small">
+        Change type
+      </div> -->
+      <div class="table__cell bold-small numbers column--10">
+        Total
+      </div>
+      <div class="table__cell bold-small numbers column--10">
+        Action
+      </div>
+
+    </div>
+
+    <!-- table row -->
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 1
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          021545
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          A. Parson
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          03/28/60/0032
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £2,960.75
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 2
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          015456
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Bill Brothers Co.
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          01/27/62/001
+        </p>
+      </div>
+      <!-- <div class="table__cell">
+        <h3 class="table__context">
+          Change type
+        </h3>
+        <p class="table__row--text">
+          New licence
+        </p>
+      </div> -->
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,100.00
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 3
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          012106
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p class="table__row--text">
+          Company Name Ltd.
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          01/22/0020
+          <br>01/22/0021/r001
+        </p>
+      </div>
+      <!-- <div class="table__cell">
+        <h3 class="table__context">
+          Change type
+        </h3>
+        <p class="table__row--text">
+          Variation
+        </p>
+      </div> -->
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,450.00
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 4
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          016547
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Water Farmers Co.
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          02/2/35/030
+        </p>
+      </div>
+      <!-- <div class="table__cell">
+        <h3 class="table__context">
+          Change type
+        </h3>
+        <p class="table__row--text">
+          New licence
+        </p>
+      </div> -->
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,364.00
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 5
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          018242
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Springtime Foods
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          03/12/0/11
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £923.60
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 6
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          024330
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Sandwich Sandwich
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          03/30/11
+        </p>
+      </div>
+      <!-- <div class="table__cell">
+        <h3 class="table__context">
+          Change type
+        </h3>
+        <p class="table__row--text">
+          New licence
+        </p>
+      </div> -->
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,815.04
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 7
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          035545
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Durvans Produce
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          04/11/011
+        </p>
+      </div>
+      <!-- <div class="table__cell">
+        <h3 class="table__context">
+          Change type
+        </h3>
+        <p class="table__row--text">
+          New licence
+        </p>
+      </div> -->
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,240.00
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 8
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          038001
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Good Nature Goods
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          02/00/0454
+        </p>
+      </div>
+      <!-- <div class="table__cell">
+        <h3 class="table__context">
+          Change type
+        </h3>
+        <p class="table__row--text">
+          New licence
+        </p>
+      </div> -->
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,054.70
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 9
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          044650
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Jambodge Farm
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              6 licences
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            03/60/12
+            <br>03/60/13
+            <br>03/60/14
+            <br>03/60/15
+            <br>03/60/15/r001
+            <br>03/60/16
+          </div>
+        </details>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,100.00
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="table__row--selectable table__row--last govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 10
+        </h2>
+        <h3 class="table__context">
+          Account
+        </h3>
+        <p class="table__row--text">
+          046565
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Aquafall
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p>
+          05/22/134
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Total
+        </h3>
+        <p class="table__row--text table__row--bold-text">
+          <a href="two-part-bill">
+            £1,100.00
+          </a>
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="confirm-remove-bill">
+            Remove
+          </a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

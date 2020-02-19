@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+
+{% set title = "03/28/60/0032" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">7 January 2020</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <section class="govuk-!-margin-bottom-6">
+      <a href="../licence-summary" target="_blank" rel="noopener noreferrer" >
+        View licence (opens in new window)
+      </a>
+      <br>
+      <a href="../returns/return-report" target="_blank" rel="noopener noreferrer">
+        View the return (opens in new window)
+      </a>
+    </section>
+
+    <section class="govuk-!-margin-bottom-6">
+      <a href="#" class="govuk-faux-button govuk-faux-button--secondary govuk-!-margin-right-1">
+        Remove from bill run
+      </a>
+    </section>
+
+    <section class="govuk-!-margin-bottom-9">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+        Note the aggregate condition
+      </h2>
+      <div class="govuk-inset-text">
+        <p class="govuk-body">
+          RELATES TO AGGREGATE QUANTITY WITH AN32/12/102 (REDBOURNE)
+        </p>
+      </div>
+    </section>
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+      Spray irrigation
+    </h2>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="table govuk-!-margin-bottom-9">                                                <!-- a table -->
+
+      <div class="table__row--head">
+        <div class="table__cell bold-small column--30">
+          Description
+        </div>
+        <div class="table__cell bold-small column--40">
+          Charge period
+        </div>
+      </div>
+
+      <!-- table row -->
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            Description
+          </h3>
+          <p class="table__row--text">
+            Spray top field
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Charge period
+          </h3>
+          <p>
+            1 July 2019 to 31 August 2019
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <h3 class="table__context">
+            Description
+          </h3>
+          <p class="table__row--text">
+            Spray end field
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Charge period
+          </h3>
+          <p>
+            1 September 2019 to 30 October 2019
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+      Trickle irrigation
+    </h2>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="table govuk-!-margin-bottom-9">                                                <!-- a table -->
+
+      <div class="table__row--head">
+        <div class="table__cell bold-small column--30">
+          Description
+        </div>
+        <div class="table__cell bold-small column--40">
+          Charge period
+        </div>
+      </div>
+
+      <!-- table row -->
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            Description
+          </h3>
+          <p class="table__row--text">
+            Trickle pots and leeks
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Charge period
+          </h3>
+          <p>
+            1 March 2019 to 31 March 2020
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

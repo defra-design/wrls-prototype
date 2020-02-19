@@ -135,23 +135,23 @@
       <section>
 
         <!--suspended flag -->
-        <!-- <a href="licence-summary-suspended#charge" class="govuk-faux-button govuk-faux-button--secondary">Suspend from billing</a> -->
+        <a href="licence-summary-suspended#charge" class="govuk-faux-button govuk-faux-button--secondary">Suspend from billing</a>
 
         <!-- charges -->
-        <dl class="govuk-summary-list">
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Status
             </dt>
             <dd class="govuk-summary-list__value">
-              <strong class="table__status table__status--expired">
-                Current
+              <strong class="table__status table__status--open">
+                Draft
               </strong>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="confirm-make-current">
-                Suspend
+                Make current
               </a>
             </dd>
           </div>
@@ -164,13 +164,13 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/bd/customer-summary">
-                View<span class="govuk-visually-hidden"> invoice</span>
-              </a>
+                    View<span class="govuk-visually-hidden">invoice</span>
+                  </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Next invoice due
+              Next bill due
             </dt>
             <dd class="govuk-summary-list__value">
               30 March 2020
@@ -180,62 +180,88 @@
             </dd>
           </div>
 
-          <div class="govuk-summary-list__row">
+        <!--  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Invoice account
+              Contact
             </dt>
             <dd class="govuk-summary-list__value">
-              S37235712A<br>
-              Water Company Plc<br>
-              2 Summary House<br>
-              NG15 2PW<br>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <ul class="govuk-summary-list__actions-list">
-                <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link" href="/bd/contacts/new-contact">
-                    Change<span class="govuk-visually-hidden">invoice account</span>
-                  </a>
-                </li>
-                <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link" href="/bd/customer-summary">
-                    View<span class="govuk-visually-hidden">invoice account</span>
-                  </a>
-                </li>
-              </ul>
-            </dd>
-          </div>
+              Water Company Plc
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Agreements
-            </dt>
-            <dd class="govuk-summary-list__value">
-              S127 - Two-part tariff
+              <br><a class="govuk-link" href="/bd/customer-summary">
+                View contact details
+              </a>
+
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="charges-2020/agreements">
-                View<span class="govuk-visually-hidden"> agreements</span>
+              <a class="govuk-link" href="/bd/contacts/new-contact">
+                Change contact
               </a>
             </dd>
-          </div>
+          </div> -->
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Charge version
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Spray irrigation
-              <br>Trickle irrigation
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="charges-2020/current-charge-version">
-                View<span class="govuk-visually-hidden"> charge version</span>
-              </a>
-            </dd>
-          </div>
+              <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                     Invoice account
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      S37235712A<br>
+
+                      Water Company Plc<br>
+                  <!--    <a class="govuk-link" href="/bd/customer-summary">
+                        View contact details
+                      </a><br> -->
+
+                      2 Summary House<br>
+                      NG15 2PW<br>
+                  <!--    <a class="govuk-link" href="/bd/charges/ias">
+                        View invoice account details
+                      </a><br> -->
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+
+                          <ul class="govuk-summary-list__actions-list">
+
+                                          <li class="govuk-summary-list__actions-list-item">
+
+                                            <a class="govuk-link" href="/bd/contacts/new-contact">
+                                                Change<span class="govuk-visually-hidden">invoice account</span>
+                                                </a>
+                                          </li>
+
+                                          <li class="govuk-summary-list__actions-list-item">
+                                            <a class="govuk-link" href="/bd/customer-summary">
+                                                  View<span class="govuk-visually-hidden">invoice account</span>
+                                                </a>
+                                          </li>
+
+                                      </ul>
+
+                    </dd>
+                  </div>
+
+
+
 
           <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Billing address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              2 Summary House,
+              <br>Bipford Lane,
+              <br>Papplewick,
+              <br>Nottingham,
+              <br>Nottinghamshire
+              <br>NG15 2PW
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/bd/contacts/change-type">
+                Change address
+              </a>
+            </dd>
+          </div> -->
+
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-summary-list__key--list">
               Spray irrigation
             </dt>
@@ -244,32 +270,32 @@
               <br>£2,587.50
             </dd>
             <dd class="govuk-summary-list__actions table__row--bold-text">
-
+              <!-- £2,587.50 -->
             </dd>
           </div>
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-
+              <!-- Spray irrigation -->
             </dt>
             <dd class="govuk-summary-list__value">
               Spray irrigation, time limited increase for winter
               <br>£1,684.05
             </dd>
             <dd class="govuk-summary-list__actions table__row--bold-text">
-
+              <!-- £1,684.05 -->
             </dd>
-          </div> -->
+          </div>
 
         </dl>
 
-        <!-- <section class="govuk-!-margin-bottom-8">
+        <section class="govuk-!-margin-bottom-8">
           <a href="charges/current-charge-version">
             Charge details
           </a>
-        </section> -->
+        </section>
 
-        <!-- <details class="govuk-details" data-module="govuk-details">
+        <details class="govuk-details" data-module="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
               Charge history
@@ -288,13 +314,19 @@
                 <a class="govuk-link" href="charges/charge-version-1">From 31 November 2018</a>
               </li>
             </ul>
+
             <a href="/bd/charges/charge-record">Charge record</a>
+
           </div>
-        </details> -->
+        </details>
 
       </section>
+
     </section>
 
   </div>
+
+
+
 
 {% endblock %}

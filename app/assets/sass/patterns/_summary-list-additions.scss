@@ -32,7 +32,7 @@
 // makes summary list keys light on desktop to help improve readability
 .govuk-summary-list__key {
   @include govuk-media-query($from: tablet) {
-    font-weight: 400;
+    // font-weight: 400;
   }
 }
 

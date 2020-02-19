@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% set title = "Remove this invoice from the bill run?" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">7 January 2020</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <div class="govuk-inset-text">
+      Account 015456
+      <br>Bill Brothers Co.
+      <br>Licence 01/27/62/001
+      <br>£1,100.00
+    </div>
+
+    <a href="javascript:history.back(2)" class="govuk-faux-button">
+      Yes, remove this invoice
+    </a>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge version" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "/bd/licence-summary#charge"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+    <!-- <a href="" class="govuk-faux-button govuk-faux-button--secondary">Change start date</a> -->
+  </div>
+</div>
+
+<section class="govuk-!-margin-bottom-2">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h3 class="govuk-heading-m">
+        Spray irrigation, base licence
+      </h3>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+
+        <dl class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Abstraction period
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1 April to 31 January
+          </dd>
+        </dl>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Chargable quantity
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1,250,000 cubic metres per year
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row" id="factors">
+          <dt class="govuk-summary-list__key">
+            Loss
+          </dt>
+          <dd class="govuk-summary-list__value">
+            High
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Season
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <div>All year</div>
+          </dd>
+
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Source
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Unsupported
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Compensation (EIUC)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0
+          </dd>
+        </div>
+
+
+      </dl>
+
+    </div>
+  </div>
+
+</section>
+
+<section class="govuk-!-margin-bottom-2">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h3 class="govuk-heading-m">
+        Trickle irrigation, extra time
+      </h3>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+
+        <dl class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Abstraction period
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1 February to 31 March
+          </dd>
+        </dl>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Chargable quantity
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1,250,000 cubic metres per year
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row" id="factors">
+          <dt class="govuk-summary-list__key">
+            Loss
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Medium
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Season
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <div>Winter</div>
+          </dd>
+
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Source
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Unsupported
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Compensation (EIUC)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0
+          </dd>
+        </div>
+
+
+      </dl>
+
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}
