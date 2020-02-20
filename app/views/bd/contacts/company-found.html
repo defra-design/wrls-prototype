@@ -3,11 +3,11 @@
 {% set title = "Is this your company?" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -41,21 +41,21 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    </div>
   </div>
+</div>
 
-  <form data-routing="1" method="post" class="form" id="contact-change-type">
+<form data-routing="1" method="post" class="form" id="contact-change-type">
 
-    {% from "radios/macro.njk" import govukRadios %}
+  {% from "radios/macro.njk" import govukRadios %}
 
-      {{ govukRadios({
+  {{ govukRadios({
         idPrefix: "charge-source",
         name: "source",
         fieldset: {
@@ -69,29 +69,29 @@
       })
     }}
 
-    <button type="submit" class="govuk-button">
-      Yes, continue
-    </button>
+  <button type="submit" class="govuk-button">
+    Yes, continue
+  </button>
 
 
 
-  </form>
+</form>
 
-  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
 
-  <script>
-    $(function() {
-      $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
-        const url = $(this).find('input:checked').val();
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
 
-        if(url) {
-          ev.preventDefault();
-          window.location.href = url;
-          return false;
-        }
-      });
-    })
-  </script>
+      if (url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
 
 {% endblock %}

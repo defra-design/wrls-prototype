@@ -41,6 +41,9 @@
 {% endblock %}
 
 {% block content %}
+
+{{data|dump}}
+
   <!-- page title -->
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -185,10 +188,10 @@
               Invoice account
             </dt>
             <dd class="govuk-summary-list__value">
-              S37235712A<br>
-              Water Company Plc<br>
-              2 Summary House<br>
-              NG15 2PW<br>
+              {{data['invoiceAccount']}}<br>
+              {{data['customerName']}}<br>
+              {{data['address1']}}<br>
+              {{data['postcode']}}<br>
             </dd>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-summary-list__actions-list">

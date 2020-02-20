@@ -2,7 +2,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "Billing account 3725712" %}
+{% set title = data['invoiceAccount'] %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,7 +48,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">Water Company Co</span>
+      <span class="govuk-caption-l">{{data['customerName']}}</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
@@ -66,10 +66,10 @@
               Bill name
             </dt>
             <dd class="govuk-summary-list__value">
-              Water Company Co
+              {{data['customerName']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/bd/customer-summary">
+              <a class="govuk-link" href="/bd/contacts/fao-contact-exists">
                 Add an FAO
               </a>
             </dd>
@@ -80,15 +80,14 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-              1 Hill House<br>
-              Abingdon-on-Thames<br>
-              Oxfordshire<br>
-              RE1 1TG<br>
+              {{data['address1']}}<br>
+              {{data['city']}}<br>
+              {{data['postcode']}}<br>
             </dd>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-summary-list__actions-list">
                 <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link" href="/bd/contacts/new-contact">
+                  <a class="govuk-link" href="/bd/contacts/check-contact-existing-address">
                     Change<span class="govuk-visually-hidden">invoice account</span>
                   </a>
                 </li>
