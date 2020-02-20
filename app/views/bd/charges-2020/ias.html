@@ -2,14 +2,14 @@
 
 {% extends "layout.html" %}
 
-{% set title = data['invoiceAccount'] %}
+{% set title = data['customerName'] %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -29,13 +29,13 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-6">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-6">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-    {{ govukBackLink({
+{{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
     }) }}
@@ -44,255 +44,295 @@
 
 {% block content %}
 
-  <!-- contact summary -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<!-- contact summary -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{data['customerName']}}</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+    <span class="govuk-caption-l">{{data['invoiceAccount']}}</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+    <section>
+      <dl class="govuk-summary-list">
+       {% if data['customerName'] != data['licenceHolder'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Licence holder
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['licenceHolder']}}
+          </dd>
+
+          <dd class="govuk-summary-list__value">
+          </dd>
+
+        </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Bill name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['customerName']}}
+          </dd>
+          {% if data['fao'].length %}
+          <dd class="govuk-summary-list__value">
+          </dd>
+          {% else %}
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/bd/contacts/fao-contact-exists">
+              Add an FAO
+            </a>
+          </dd>
+          {% endif %}
+        </div>
+
+        {% if data['fao'].length %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            FAO
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['fao']}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <ul class="govuk-summary-list__actions-list">
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="/bd/contacts/fao-contact-exists">
+                  Change
+                </a>
+              </li>
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="/bd/charges-2020/ias?fao=">
+                  Remove
+                </a>
+              </li>
+            </ul>
+          </dd>
+        </div>
+        {% endif %}
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['address1']}}<br>
+            {{data['city']}}<br>
+            {{data['postcode']}}<br>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <ul class="govuk-summary-list__actions-list">
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="/bd/contacts/check-contact-existing-address">
+                  Change<span class="govuk-visually-hidden">invoice account</span>
+                </a>
+              </li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+</div>
+
+<!-- <div class="divider govuk-!-margin-bottom-8"></div> -->
+
+
+<!-- contact summary -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Invoice account for these licences</h2>
+
+  </div>
+</div>
+
+<!-- table with four columns -->
+<div class="table govuk-!-margin-bottom-8">
+  <!-- a table -->
+
+  <div class="table__row--head">
+    <!-- the table head -->
+    <div class="table__cell bold-small column--25">
+      Licence
+      <!-- licence name if it exists, otherwise Licence -->
+    </div>
+    <div class="table__cell bold-small">
+      Licence name
+    </div>
+    <div class="table__cell bold-small column--25">
+      Licence holder
+    </div>
+    <div class="table__cell bold-small column--20">
+      End date
     </div>
   </div>
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-6">
-    <div class="govuk-grid-column-full">
-
-      <section>
-
-        <dl class="govuk-summary-list">
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Bill name
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data['customerName']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/bd/contacts/fao-contact-exists">
-                Add an FAO
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row govuk-summary-list__row--last">
-            <dt class="govuk-summary-list__key">
-              Address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data['address1']}}<br>
-              {{data['city']}}<br>
-              {{data['postcode']}}<br>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <ul class="govuk-summary-list__actions-list">
-                <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link" href="/bd/contacts/check-contact-existing-address">
-                    Change<span class="govuk-visually-hidden">invoice account</span>
-                  </a>
-                </li>
-              </ul>
-            </dd>
-          </div>
-
-        </dl>
-
-      </section>
-
-    </div>
-  </div>
-
-  <!-- <div class="divider govuk-!-margin-bottom-8"></div> -->
-
-
-  <!-- contact summary -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Invoice account for these licences</h2>
-
-    </div>
-  </div>
-
-  <!-- table with four columns -->
-  <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
-
-    <div class="table__row--head">                                              <!-- the table head -->
-      <div class="table__cell bold-small column--25">
+  <!-- table row -->
+  <a href="../licence-summary?wid=31#charge" class="table__row govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 1
+      </h2>
+      <span class="screen-reader-only">See licence 03/28/60/0031</span>
+      <h3 class="table__context">
         Licence
-        <!-- licence name if it exists, otherwise Licence -->
-      </div>
-      <div class="table__cell bold-small">
-        Licence name
-      </div>
-      <div class="table__cell bold-small column--25">
-        Licence holder
-      </div>
-      <div class="table__cell bold-small column--20">
-        End date
-      </div>
+      </h3>
+      <span class="table__link">
+        03/28/60/0011
+      </span>
     </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
 
-    <!-- table row -->
-    <a href="/bd/licence-summary?wid=31#charge" class="table__row govuk-!-margin-bottom-6">
-      <div class="table__cell">
-        <h2 class="screen-reader-only">
-          Row 1
-        </h2>
-        <span class="screen-reader-only">See licence 03/28/60/0031</span>
-        <h3 class="table__context">
-          Licence
-        </h3>
-        <span class="table__link">
-          03/28/60/0011
-        </span>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence name
-        </h3>
-        <p class="table__row--text">
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+        {{data['licenceHolder']}}
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      <p class="table__row--text">
+        30 April 2022
+      </p>
+    </div>
+  </a>
 
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence holder
-        </h3>
-        <p class="table__row--text">
-          Water Company Co
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          End date
-        </h3>
-        <p class="table__row--text">
-          30 April 2022
-        </p>
-      </div>
-    </a>
+  <!-- table row -->
+  <a href="../licence-summary?wid=31#charge" class="table__row govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 2
+      </h2>
+      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
+      <h3 class="table__context">
+        Licence
+      </h3>
+      <span class="table__link">
+        03/28/61/028
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
 
-    <!-- table row -->
-    <a href="licence-summary?wid=33" class="table__row govuk-!-margin-bottom-6">
-      <div class="table__cell">
-        <h2 class="screen-reader-only">
-          Row 2
-        </h2>
-        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
-        <h3 class="table__context">
-          Licence
-        </h3>
-        <span class="table__link">
-          03/28/61/028
-        </span>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence name
-        </h3>
-        <p class="table__row--text">
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+      {{data['licenceHolder']}}
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      <p class="table__row--text">
+        15 September 2034
+      </p>
+    </div>
+  </a>
 
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence holder
-        </h3>
-        <p class="table__row--text">
-          Water Company Co
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          End date
-        </h3>
-        <p class="table__row--text">
-          15 September 2034
-        </p>
-      </div>
-    </a>
+  <!-- table row -->
+  <a href="../licence-summary?wid=31#charge" class="table__row govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 3
+      </h2>
+      <span class="screen-reader-only">See licence 03/28/60/0031</span>
+      <h3 class="table__context">
+        Licence
+      </h3>
+      <span class="table__link">
+        03/28/60/0031
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
 
-    <!-- table row -->
-    <a href="licence-summary?wid=31" class="table__row govuk-!-margin-bottom-6">
-      <div class="table__cell">
-        <h2 class="screen-reader-only">
-          Row 3
-        </h2>
-        <span class="screen-reader-only">See licence 03/28/60/0031</span>
-        <h3 class="table__context">
-          Licence
-        </h3>
-        <span class="table__link">
-          03/28/60/0031
-        </span>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence name
-        </h3>
-        <p class="table__row--text">
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+      {{data['licenceHolder']}}
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      <p class="table__row--text">
+        31 March 2027
+      </p>
+    </div>
+  </a>
 
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence holder
-        </h3>
-        <p class="table__row--text">
-          Water Company Co
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          End date
-        </h3>
-        <p class="table__row--text">
-          31 March 2027
-        </p>
-      </div>
-    </a>
+  <!-- table row -->
+  <a href="../licence-summary?wid=31#charge" class="table__row govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 4
+      </h2>
+      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
+      <h3 class="table__context">
+        Licence
+      </h3>
+      <span class="table__link">
+        03/28/61/032
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
 
-    <!-- table row -->
-    <a href="licence-summary?wid=33" class="table__row govuk-!-margin-bottom-6">
-      <div class="table__cell">
-        <h2 class="screen-reader-only">
-          Row 4
-        </h2>
-        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
-        <h3 class="table__context">
-          Licence
-        </h3>
-        <span class="table__link">
-          03/28/61/032
-        </span>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence name
-        </h3>
-        <p class="table__row--text">
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+        {{data['licenceHolder']}}
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      <p class="table__row--text">
+        15 September 2032
+      </p>
+    </div>
+  </a>
 
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          Licence holder
-        </h3>
-        <p class="table__row--text">
-          Water Company Co
-        </p>
-      </div>
-      <div class="table__cell">
-        <h3 class="table__context">
-          End date
-        </h3>
-        <p class="table__row--text">
-          15 September 2032
-        </p>
-      </div>
-    </a>
-
-  </div>
+</div>
 
 {% endblock %}
