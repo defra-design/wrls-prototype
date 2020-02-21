@@ -52,7 +52,7 @@ $govuk-global-styles: true;
 // }
 
 // make a link look like a gov button
-.govuk-faux-button {
+.wrls-faux-button {
   border: 0;
   padding: 12px;
   min-height: 38px;
@@ -74,16 +74,20 @@ $govuk-global-styles: true;
   color: white !important;
 }
 
-.govuk-faux-button--inline {
+.wrls-faux-button--inline {
   margin-left: 5px;
 }
 
-.govuk-faux-button--secondary {
+.wrls-faux-button--secondary {
   color: #0b0c0c !important;
   background-color: #dee0e2;
   box-shadow: 0 2px 0 #858688;
 }
 
-.govuk-faux-button--secondary:hover {
+.wrls-faux-button--secondary:hover {
   background-color: #c8cacb;
+}
+
+.wrls-date-input__input--link {
+  border: none;
 }

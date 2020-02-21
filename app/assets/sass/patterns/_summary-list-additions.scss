@@ -1,20 +1,7 @@
 // flexible tables, present well on mobiles
 // also improved accessibly
 
-.govuk-summary-list__key--light {
-  font-weight: 400;
-}
-
-.govuk-summary-list__item--last {
-  border: none;
-}
-
-.govuk-summary-list__divider {
-  border-bottom: 2px solid #0b0c0c;
-  padding-bottom: 32px;
-}
-
-.govuk-summary-list__row--divider > * {
+.wrls-summary-list__row--divider > * {
   border-bottom: 2px solid #0b0c0c;
 }
 
@@ -24,43 +11,19 @@
   width: 100%;
 }
 
-.govuk-checkboxes--inline {
-  margin-top: 24px;
-  // margin-bottom: 24px;
-}
-
-// makes summary list keys light on desktop to help improve readability
-.govuk-summary-list__key {
-  @include govuk-media-query($from: tablet) {
-    // font-weight: 400;
-  }
-}
-
-.govuk-summary-list__key--list {
+.wrls-summary-list__key--list {
   border-bottom: none;
 }
 
+// addition to kit functionality
 .govuk-summary-list__row {
   line-height: 1.8rem;
 }
-//
-// .govuk-summary-list__row--end dd, .govuk-summary-list__row--end dt {
-//   @include govuk-media-query($from: tablet) {
-//     border-bottom: 2px solid $govuk-text-colour;
-//   }
-// }
-//
-// .govuk-summary-list__row--end dt:last-child, .govuk-summary-list__row--end dd:last-child {
-//   border-bottom: 2px solid $govuk-text-colour;
-// }
-
 
 @include govuk-media-query($from: tablet) {
-
   .govuk-summary-list__row--end dt, .govuk-summary-list__row--end dd {
     border-bottom: 2px solid $govuk-text-colour;
   }
-
 }
 
 
