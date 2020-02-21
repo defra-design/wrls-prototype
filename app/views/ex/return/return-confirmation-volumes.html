@@ -28,7 +28,8 @@
 {% block beforeContent %}
   <!-- phase banner -->
   {% include "includes/feedback-banner.html" %}
-
+  <!-- company switcher -->
+  {% include "includes/company-switcher.html" %}
   <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
@@ -107,7 +108,7 @@
 
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-two-thirds">
-    <a href="../online-licence?wid={{ query.wid }}">View this licence</a>
+    <a href="../licence-summary?wid={{ query.wid }}">View this licence</a>
   </div>
 </div>
 
@@ -313,7 +314,7 @@
         iconFallbackText: "Warning"
       }) }}
 
-      <a href="return-confirmed" class="govuk-faux-button">
+      <a href="return-confirmed" class="wrls-faux-button">
         Continue
       </a>
 

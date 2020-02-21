@@ -46,20 +46,26 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Invoice account {{data['invoiceAccount']}}</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
-<p class="govuk-body">These addresses are linked to the licence holder</p>
-    </div>
-  </div>
+    <!--  <h1 class="govuk-heading-l">{{ title }}</h1>
+<p class="govuk-body">These addresses are linked to the licence holder</p> -->
+
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
+   {% set hintText = "Existing addresses for " + data['customerName'] %}
 
-    {% from "radios/macro.njk" import govukRadios %}
-
-      {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
-        fieldset: {
-        },
+    {{ govukRadios({
+    idPrefix: "address",
+    name: "address",
+    fieldset: {
+      legend: {
+        html: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+      }
+    },
+    hint: {
+      html: hintText
+    },
         items: [
           {
             value: "address-check?address1=15%20Osborne%20Road&city=Bath&postcode=BA1%205AH",
@@ -78,7 +84,7 @@
     },
     {
       value: "new-address-postcode",
-      text: "Add a new address"
+      text: "Set up a new address"
     }
 
         ]
@@ -90,6 +96,9 @@
     </button>
 
   </form>
+
+</div>
+</div>
 
   <script src="/public/javascripts/jquery-1.11.3.js"></script>
 

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select an address" %}
+{% set title = "Do you want to use an existing address?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -46,20 +46,29 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    </div>
-  </div>
+
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
+<!--<p class="govuk-body">Existing addresses for {{data['customerName']}}</p>-->
 
-    {% from "radios/macro.njk" import govukRadios %}
 
-      {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
-        fieldset: {
-        },
+{% set hintText = "Existing addresses for " + data['customerName'] %}
+
+
+  {{ govukRadios({
+  idPrefix: "address",
+  name: "address",
+  fieldset: {
+    legend: {
+      html: title,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
+  },
+  hint: {
+    html: hintText
+  },
         items: [
           {
             value: "effective-date?address1=15%20Osborne%20Road&city=Bath&postcode=BA1%205AH",
@@ -78,7 +87,7 @@
     },
     {
       value: "new-company-postcode",
-      text: "This is a new address"
+      text: "Set up a new address"
     }
 
         ]
@@ -90,6 +99,9 @@
     </button>
 
   </form>
+
+</div>
+</div>
 
   <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
