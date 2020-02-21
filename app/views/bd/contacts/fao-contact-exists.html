@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if this contact is listed" %}
+{% set title = "Check if the contact you want to use is listed" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -83,7 +83,7 @@
     },
     {
       value: "/bd/charges-2020/ias?fao=",
-      text: "Not listed",
+      text: "Add a new FAO",
       conditional: {
         html: fao
       }
