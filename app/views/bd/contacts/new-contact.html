@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What is the invoice account name?" %}
+{% set title = "Who will own the billing account?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -53,6 +53,8 @@
 
   <form  method="post" class="form" id="customer" data-routing="1">
 
+{% set licenceHolder = data['licenceHolder'] + '<span id="account-number-hint" class="govuk-hint">Licence holder</span>' %}
+
     {% set customerName %}
     {{ govukInput({
       id: "companyName",
@@ -76,20 +78,12 @@
       items: [
         {
           value: "check-invoice-account-exists?customerName=Bottled%20Water%20Plc",
-          html: "Bottled Water Plc",
+          html: licenceHolder,
           name:"Bottled Water Plc"
         },
         {
-          value: "check-invoice-account-exists?customerName=Sam%20Burridge%20Accountants%20LLP",
-          text: "Sam Burridge Accountants LLP",
-          name:"Sam Burridge Accounts LLP"
-        },
-        {
-      divider: "or"
-    },
-        {
           value: "contact-exists?customerName=",
-          text: "Not listed",
+          text: "New billing contact",
           id: "radio",
           conditional: {
             html: customerName

@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
-{% set title = "Companies House number" %}
+{% set title = "Company details" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -41,51 +41,78 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    </div>
   </div>
+</div>
 
-  <form action="check-company-billing-address" method="post" class="form" id="customer-name">
+<form method="post" class="form" id="customer-name" data-routing="1">
 
+{% set companyName = data['customerName']%}
 
-    {{ govukInput({
+  {{ govukInput({
 
-      classes: "govuk-input--width-10",
-      id: "company-number",
-      name: "company-number",
-      label: isPageHeading
+      classes: "govuk-input--width-20",
+      id: "company-name",
+      name: "company-name",
+      value: companyName,
+      label: {
+        text: "Company name"
+      }
     }) }}
 
-<p class="govuk-body">
-<a href="check-company-name" class="govuk-link govuk-link--no-visited-state">I do not know the Companies House number</a>
-</p>
-    <button type="submit" class="govuk-button">
-      Continue
-    </button>
 
-  </form>
 
-  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+  {{ govukInput({
 
-  <script>
-    $(function() {
-      $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
-        const url = $(this).find('input:checked').val();
+      classes: "govuk-input--width-10",
+      id: "companyNumber",
+      name: "companyNumber",
+      label: {
+        text: "Companies House number (optional)"
+      }
+    }) }}
 
-        if(url) {
-          ev.preventDefault();
-          window.location.href = url;
-          return false;
-        }
-      });
-    })
-  </script>
+<!--  <p class="govuk-body">
+    <a href="check-company-name" class="govuk-link govuk-link--no-visited-state">I do not know the Companies House number</a>
+  </p> -->
+  <button type="submit" class="govuk-button">
+    Continue
+  </button>
+
+</form>
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = "check-company-name"
+
+      if (url) {
+
+
+                if( $("#companyNumber").val() ){
+                let  companyNumber = "check-company-billing-address"
+                const newurl = companyNumber;
+                ev.preventDefault();
+                window.location.href = newurl;
+                return false;
+                }
+
+
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
 
 {% endblock %}
