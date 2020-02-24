@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Effective date" %}
+{% set title = "When did the change happen?" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -59,14 +59,12 @@
             </h1>
           </legend>
 
-          <p class="govuk-body">
-            This date can be up to 6 years in the past.
-          </p>
+      
 
           <div class="govuk-!-margin-bottom-6">
-            <!-- <p id="dob-hint" class="govuk-hint">
-                Start date
-              </p> -->
+            <p id="dob-hint" class="govuk-hint">
+                The date can be up to 6 years in the past.
+              </p>
             <div class="govuk-date-input" id="start-date">
               <div class="govuk-date-input__item">
                 <div class="govuk-form-group">

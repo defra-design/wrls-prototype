@@ -58,8 +58,8 @@
   {{ govukInput({
 
       classes: "govuk-input--width-20",
-      id: "company-name",
-      name: "company-name",
+      id: "customerName",
+      name: "customerName",
       value: companyName,
       label: {
         text: "Company name"
@@ -93,7 +93,8 @@
   $(function() {
     $('form[data-routing]').on('submit', function(ev) {
       // FInd selected radio button
-      const url = "check-company-name"
+      const url = "check-company-name?customerName="
+
 
       if (url) {
 
@@ -106,9 +107,10 @@
                 return false;
                 }
 
-
+        const customerName  = $("#customerName").val()
+        const newurl = url + customerName;
         ev.preventDefault();
-        window.location.href = url;
+        window.location.href = newurl;
         return false;
       }
     });

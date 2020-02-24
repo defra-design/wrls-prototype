@@ -70,7 +70,8 @@
 
     {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
-        rows: [
+        rows:
+        [
           {
             key: {
               text: "Name"
@@ -106,6 +107,7 @@
             }
           },
           {
+            classes: 'govuk-summary-list__row--last',
             key: {
               text: "Effective from"
             },

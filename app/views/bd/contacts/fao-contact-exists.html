@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check if the contact you want to use is listed" %}
+{% set title = "Do you want to use an existing FAO?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,13 +45,14 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">{{ data['invoiceAccount'] }}</span>
+      <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
+  {% set hintText = "Existing FAOs for " + data['customerName'] %}
 
     {% set fao %}
     {{ govukInput({
@@ -59,7 +60,7 @@
       name: "fao",
       classes: "govuk-!-width-one-third",
       label: {
-        text: "Contact name"
+        text: "Full name"
       }
     }) }}
     {% endset -%}
@@ -68,6 +69,9 @@
         idPrefix: "charge-source",
         name: "source",
         fieldset: {
+        },
+        hint: {
+          html: hintText
         },
         items: [
           {
@@ -83,7 +87,7 @@
     },
     {
       value: "/bd/charges-2020/ias?fao=",
-      text: "Add a new FAO",
+      text: "Set up a new FAO",
       conditional: {
         html: fao
       }
