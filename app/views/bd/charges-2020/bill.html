@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "January 2020 invoice" %}
+{% set title = "Invoice AAI26515" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,7 +47,52 @@
       <section class="govuk-!-margin-bottom-6">
         <h1 class="govuk-caption-l">Company name Ltd.</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
-      </section>
+
+
+
+
+      <p class="govuk-body">
+        <strong class="table__status table__status--ready table__status--l ">
+          Ready
+        </strong>
+      </p>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-3">
+        <div class="govuk-grid-column-full">
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Date created
+              </div>
+              <div class="meta-data__value">
+                12 January 2020
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Region
+              </div>
+              <div class="meta-data__value">
+                Anglian
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Bill run type
+              </div>
+              <div class="meta-data__value">
+                Supplementary
+              </div>
+            <div>
+          </section>
+
+
+        </div>
+              </div>
 
       <!-- <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
         <summary class="govuk-details__summary">
@@ -86,31 +131,32 @@
       </p> -->
 
       <!-- invoice totals -->
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-0 screen-reader-only">
-        Total
-      </h2>
 
+</section>
     </div>
   </div>
 
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+        Total
+      </h2>
       <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
       <!-- <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3> -->
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Bill amount</span></h3>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Invoice amount</span></h3>
     </div>
 
   </div>
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-half">
       <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£1,268.80</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
     </div>
 
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-half">
       <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£4,271.55</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
     </div>

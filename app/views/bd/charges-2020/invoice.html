@@ -49,7 +49,7 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
     <div class="govuk-grid-column-two-thirds">
 
-      <section class="govuk-!-margin-bottom-9">
+      <section class="govuk-!-margin-bottom-6">
         <h1 class="govuk-caption-l">Company name Ltd.</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
 
@@ -93,14 +93,27 @@
             </section>
 
           </div>
-        </div>
+                </div>
+
+
+        <details class="govuk-details govuk-!-margin-bottom-9" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Billing contact address
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            Finance Department
+            <br>1 Hill House
+            <br>Abingdon-on-Thames
+            <br>Oxfordshire
+            <br>RE1 1TG
+          </div>
+        </details>
+
+
 
       </section>
-
-  <!-- invoice totals -->
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
-    Total
-  </h2>
 
     </div>
   </div>
@@ -108,6 +121,12 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
+
+  <!-- invoice totals -->
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+    Total
+  </h2>
+
       <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Invoice amount</span></h3>
     </div>
