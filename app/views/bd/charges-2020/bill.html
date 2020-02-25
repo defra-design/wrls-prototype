@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Invoice AAI26515" %}
+{% set title = [data.licenceHolder] %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -45,7 +45,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Company name Ltd.</h1>
+        <h1 class="govuk-caption-l">Bill AAI26515</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
 
 
@@ -116,11 +116,13 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-          Finance Department
-          <br>1 Hill House
-          <br>Abingdon-on-Thames
-          <br>Oxfordshire
-          <br>RE1 1TG
+          {{data['customerName']}}<br>
+          {% if data['fao'].length %}
+          {{data['fao']}}<br>
+          {% endif %}
+          {{data['address1']}}<br>
+          {{data['city']}}<br>
+          {{data['postcode']}}<br>
         </div>
       </details>
 

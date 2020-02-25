@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you want to use an existing FAO?" %}
+{% set title = "Do you want to use an existing contact?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -52,7 +52,7 @@
   </div>
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
-  {% set hintText = "Existing FAOs for " + data['customerName'] %}
+  {% set hintText = "Existing contacts for " + data['customerName'] %}
 
     {% set fao %}
     {{ govukInput({
@@ -87,7 +87,7 @@
     },
     {
       value: "/bd/charges-2020/ias?fao=",
-      text: "Set up a new FAO",
+      text: "Set up a new contact",
       conditional: {
         html: fao
       }
