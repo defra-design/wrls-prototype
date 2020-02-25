@@ -3,11 +3,11 @@
 {% set title = "Scrifford Pike Licence summary" %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,13 +27,13 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-6">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-6">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  <!-- {{ govukBackLink({
+<!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }} -->
@@ -42,206 +42,206 @@
 
 {% block content %}
 
-  <!-- page title -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l"> Glindenfold Lake
-          </h1>
-    </div>
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l"> Glindenfold Lake
+    </h1>
   </div>
+</div>
 
-  <div class="govuk-!-margin-bottom-6">
-    <p class="govuk-body">Registered to <a href="user-status" class="no-break">allthingsbeingeven@gmail.com</a></p>
-  </div>
+<div class="govuk-!-margin-bottom-6">
+  <p class="govuk-body">Registered to <a href="user-status" class="no-break">allthingsbeingeven@gmail.com</a></p>
+</div>
 
-  <div class="govuk-tabs" data-module="tabs">
+<div class="govuk-tabs" data-module="tabs">
 
-    <h2 class="govuk-tabs__title">
-      Licence views
+  <h2 class="govuk-tabs__title">
+    Licence views
+  </h2>
+
+  <!-- tab navigation -->
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary">
+        Summary
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#returns">
+        Returns
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#communications">
+        Communications
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#charge">
+        Billing
+      </a>
+    </li>
+  </ul>
+
+  <!-- tab 1 -->
+  <section class="govuk-tabs__panel" id="summary">
+
+    <h2 class="govuk-heading-l">
+      Summary
     </h2>
 
-    <!-- tab navigation -->
-    <ul class="govuk-tabs__list">
-      <li class="govuk-tabs__list-item" tabindex="0">
-        <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary">
-          Summary
-        </a>
-      </li>
-      <li class="govuk-tabs__list-item" tabindex="0">
-        <a class="govuk-tabs__tab" href="#returns">
-          Returns
-        </a>
-      </li>
-      <li class="govuk-tabs__list-item" tabindex="0">
-        <a class="govuk-tabs__tab" href="#communications">
-          Communications
-        </a>
-      </li>
-      <li class="govuk-tabs__list-item" tabindex="0">
-        <a class="govuk-tabs__tab" href="#charge">
-          Billing
-        </a>
-      </li>
-    </ul>
+    <!-- returns with statuses -->
+    {% include "includes/bd/summary.html" %}
 
-    <!-- tab 1 -->
-    <section class="govuk-tabs__panel" id="summary">
+  </section>
 
-      <h2 class="govuk-heading-l">
-        Summary
-      </h2>
+  <!-- tab 2 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
 
-      <!-- returns with statuses -->
-      {% include "includes/bd/summary.html" %}
+    <h2 class="govuk-heading-l">
+      Returns
+    </h2>
+
+    <!-- returns with statuses -->
+    {% include "includes/bd/returns.html" %}
+
+  </section>
+
+  <!-- tab 3 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
+
+    <h2 class="govuk-heading-l">
+      Communications
+    </h2>
+
+    <!-- comms table -->
+    {% include "includes/comms-table.html" %}
+
+    <div class="table govuk-!-margin-bottom-8">
+      <a href="all-messages">
+        View all licence messages
+      </a>
+    </div>
+
+  </section>
+
+  <!-- tab 4 -->
+  <section class="govuk-tabs__panel" id="charge">
+
+    <h2 class="govuk-heading-l">
+      Billing
+    </h2>
+
+    <section>
+
+      <!-- charges -->
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <strong class="table__status table__status--expired">
+              Current
+            </strong>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="confirm-make-current">
+              Suspend
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Latest bill
+          </dt>
+          <dd class="govuk-summary-list__value">
+            AA126515
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/bd/charges-2020/invoice">
+              View<span class="govuk-visually-hidden"> latest bill</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Next bill due
+          </dt>
+          <dd class="govuk-summary-list__value">
+            30 March 2020
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <!-- no action -->
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Billing account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['invoiceAccount']}}<br>
+            {{data['customerName']}}<br>
+            {% if data['fao'].length %}
+            {{data['fao']}}<br>
+            {% endif %}
+            {{data['address1']}}<br>
+            {{data['postcode']}}<br>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <ul class="govuk-summary-list__actions-list">
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="/bd/contacts/new-contact">
+                  Change<span class="govuk-visually-hidden">billing account</span>
+                </a>
+              </li>
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="/bd/charges-2020/ias">
+                  View<span class="govuk-visually-hidden">billing account</span>
+                </a>
+              </li>
+            </ul>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Agreements
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Two-part tariff (S127)
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="charges-2020/agreements">
+              View<span class="govuk-visually-hidden"> agreements</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Charge version
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Spray irrigation
+            <br>Trickle irrigation
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="charges-2020/current-charge-version">
+              View<span class="govuk-visually-hidden"> current charge version</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
 
     </section>
+  </section>
 
-    <!-- tab 2 -->
-    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
-
-      <h2 class="govuk-heading-l">
-        Returns
-      </h2>
-
-      <!-- returns with statuses -->
-      {% include "includes/bd/returns.html" %}
-
-    </section>
-
-    <!-- tab 3 -->
-    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
-
-      <h2 class="govuk-heading-l">
-        Communications
-      </h2>
-
-      <!-- comms table -->
-      {% include "includes/comms-table.html" %}
-
-      <div class="table govuk-!-margin-bottom-8">
-        <a href="all-messages">
-          View all licence messages
-        </a>
-      </div>
-
-    </section>
-
-    <!-- tab 4 -->
-    <section class="govuk-tabs__panel" id="charge">
-
-      <h2 class="govuk-heading-l">
-        Billing
-      </h2>
-
-      <section>
-
-        <!-- charges -->
-        <dl class="govuk-summary-list">
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Status
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <strong class="table__status table__status--expired">
-                Current
-              </strong>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="confirm-make-current">
-                Suspend
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Latest bill
-            </dt>
-            <dd class="govuk-summary-list__value">
-              AA126515
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/bd/charges-2020/invoice">
-                View<span class="govuk-visually-hidden"> latest bill</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Next bill due
-            </dt>
-            <dd class="govuk-summary-list__value">
-              30 March 2020
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <!-- no action -->
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Billing account
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data['invoiceAccount']}}<br>
-              {{data['customerName']}}<br>
-              {% if data['fao'].length %}
-              {{data['fao']}}<br>
-              {% endif %}
-              {{data['address1']}}<br>
-              {{data['postcode']}}<br>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <ul class="govuk-summary-list__actions-list">
-                <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link" href="/bd/contacts/new-contact">
-                    Change<span class="govuk-visually-hidden">billing account</span>
-                  </a>
-                </li>
-                <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link" href="/bd/charges-2020/ias">
-                    View<span class="govuk-visually-hidden">billing account</span>
-                  </a>
-                </li>
-              </ul>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Agreements
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Two-part tariff (S127)
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="charges-2020/agreements">
-                View<span class="govuk-visually-hidden"> agreements</span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row govuk-summary-list__row--last">
-            <dt class="govuk-summary-list__key">
-              Charge version
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Spray irrigation
-              <br>Trickle irrigation
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="charges-2020/current-charge-version">
-                View<span class="govuk-visually-hidden"> current charge version</span>
-              </a>
-            </dd>
-          </div>
-
-        </dl>
-
-      </section>
-    </section>
-
-  </div>
+</div>
 
 {% endblock %}

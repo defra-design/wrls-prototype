@@ -56,20 +56,10 @@
           <section class="meta-data__row">
             <div class="meta-data__container">
               <div class="meta-data__label">
-                Season
+                Abstraction period
               </div>
               <div class="meta-data__value">
-                Summer
-              </div>
-            <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Loss
-              </div>
-              <div class="meta-data__value">
-                High
+                1 July to 30 October
               </div>
             <div>
           </section>
@@ -83,16 +73,29 @@
               </div>
             <div>
           </section>
+
+
           <section class="meta-data__row">
             <div class="meta-data__container">
               <div class="meta-data__label">
-                Abstraction period
+                Season
               </div>
               <div class="meta-data__value">
-                1 July 2019 to 30 October 2019
+                Summer
               </div>
             <div>
           </section>
+
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Loss
+              </div>
+              <div class="meta-data__value">
+                High
+              </div>
+            <div>
+            </section>
           <!-- <section class="meta-data__row">
             <div class="meta-data__container">
               <div class="meta-data__label">
@@ -179,7 +182,6 @@
             Charge period
           </h3>
           <p class="table__row--text">
-            Pro-rata’d<br>
             1 September 2019 to 30 October 2019
           </p>
         </div>
@@ -238,7 +240,10 @@
         id: "custom-quantity",
         name: "custom-quantity",
         type: "number",
-        classes: "govuk-!-width-one-third"
+        classes: "govuk-!-width-one-third",
+        label: {
+          text: "Chargeable quantity"
+        }
       }) }}
       {% endset -%}
 
@@ -251,9 +256,6 @@
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
-        },
-        hint: {
-          text: "Select one option."
         },
         items: [
           {

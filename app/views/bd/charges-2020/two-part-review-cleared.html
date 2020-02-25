@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Anglian two-part tariff bill run for review" %}
+{% set title = "Anglian two-part tariff bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -42,13 +42,58 @@
 {% block content %}
 
   <!-- page title -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-two-thirds ">
 
       <section>
-        <h1 class="govuk-caption-l">7 January 2020</h1>
-        <span class="govuk-heading-xl">{{ title }}</span>
+      <!--    <h1 class="govuk-caption-l">Bill run 684940</h1> -->
+        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-two-thirds">
+
+          <p class="govuk-body">
+            <strong class="table__status table__status--ready table__status--l">
+              Review
+            </strong>
+          </p>
+
+
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Date created
+                </div>
+                <div class="meta-data__value">
+                  7 January 2020
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Region
+                </div>
+                <div class="meta-data__value">
+                  Anglian
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Bill run type
+                </div>
+                <div class="meta-data__value">
+                  Two-part tariff
+                </div>
+              <div>
+            </section>
+
+
+          </div>
+                </div>
 
       <a href="two-part-charges" class="wrls-faux-button govuk-!-margin-bottom-9">
         Continue
