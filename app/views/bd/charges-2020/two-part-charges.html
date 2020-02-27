@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Anglian two-part tariff bill run" %}
+{% set title = "Two-part tariff bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,12 +47,7 @@
 
       <section class="govuk-!-margin-bottom-6">
         <h1 class="govuk-caption-l">Bill run 576849</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
-        <!-- <p class="govuk-body-l">
-          <a href="ias">
-            Invoice account 021545
-          </a>
-        </p> -->
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} two-part tariff bill run</span>
       </section>
 
       <div class="govuk-grid-row govuk-!-margin-bottom-3">
@@ -64,47 +59,39 @@
             </strong>
           </p>
 
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Date created
+              </div>
+              <div class="meta-data__value">
+                7 January 2020
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Region
+              </div>
+              <div class="meta-data__value">
+                {{data['region']}}
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Bill run type
+              </div>
+              <div class="meta-data__value">
+                Two-part
+              </div>
+            <div>
+          </section>
 
-            <section class="meta-data__row">
-              <div class="meta-data__container">
-                <div class="meta-data__label">
-                  Date created
-                </div>
-                <div class="meta-data__value">
-                  7 January 2020
-                </div>
-              <div>
-            </section>
-            <section class="meta-data__row">
-              <div class="meta-data__container">
-                <div class="meta-data__label">
-                  Region
-                </div>
-                <div class="meta-data__value">
-                  Anglian
-                </div>
-              <div>
-            </section>
-            <section class="meta-data__row">
-              <div class="meta-data__container">
-                <div class="meta-data__label">
-                  Bill run type
-                </div>
-                <div class="meta-data__value">
-                  Supplementary
-                </div>
-              <div>
-            </section>
-
-
-          </div>
-                </div>
-
-      <!-- <section class="govuk-!-margin-bottom-5">
-
-      </section> -->
-
-
+        </div>
+      </div>
 
     </div>
   </div>

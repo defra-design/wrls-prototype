@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Anglian supplementary bill run" %}
+{% set title = "Supplementary charges" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,52 +47,50 @@
 
       <section class="govuk-!-margin-bottom-6">
         <h1 class="govuk-caption-l">Bill run 1234567890</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{ title }}</span>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">Supplementary charges for {{data['region']}}</span>
       </section>
 
+      <p class="govuk-body">
+        <strong class="table__status table__status--ready table__status--l ">
+          Ready
+        </strong>
+      </p>
 
-            <p class="govuk-body">
-              <strong class="table__status table__status--ready table__status--l ">
-                Ready
-              </strong>
-            </p>
-
-            <div class="govuk-grid-row govuk-!-margin-bottom-3">
-              <div class="govuk-grid-column-full">
-                <section class="meta-data__row">
-                  <div class="meta-data__container">
-                    <div class="meta-data__label">
-                      Date created
-                    </div>
-                    <div class="meta-data__value">
-                      7 January 2020
-                    </div>
-                  <div>
-                </section>
-                <section class="meta-data__row">
-                  <div class="meta-data__container">
-                    <div class="meta-data__label">
-                      Region
-                    </div>
-                    <div class="meta-data__value">
-                      Anglian
-                    </div>
-                  <div>
-                </section>
-                <section class="meta-data__row">
-                  <div class="meta-data__container">
-                    <div class="meta-data__label">
-                      Bill run type
-                    </div>
-                    <div class="meta-data__value">
-                      Supplementary
-                    </div>
-                  <div>
-                </section>
-
-
-            </div>
+      <div class="govuk-grid-row govuk-!-margin-bottom-3">
+        <div class="govuk-grid-column-full">
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Date created
+              </div>
+              <div class="meta-data__value">
+                7 January 2020
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Region
+              </div>
+              <div class="meta-data__value">
+                {{data['region']}}
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Bill run type
+              </div>
+              <div class="meta-data__value">
+                Supplementary
+              </div>
+            <div>
+          </section>
+          
         </div>
+      </div>
 
     </div>
   </div>

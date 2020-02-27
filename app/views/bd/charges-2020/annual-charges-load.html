@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Annual charges" %}
+{% set title = "2020 Annual charges for Anglian" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -33,23 +33,24 @@
     {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
-  {{ govukBackLink({
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
 {% block content %}
 
   <!-- page title -->
-  <div class="govuk-grid-row govuk-!-margin-bottom-0">
-    <div class="govuk-grid-column-two-thirds">
-
-      <section class="govuk-!-margin-bottom-9">
-        <h1 class="govuk-caption-l">7 January 2020</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">Annual charges for {{data['region']}}</span>
-      </section>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+        {{ title }}
+      </h1>
+      <p class="govuk-body-l">
+        Bill number 003265
+      </p>
     </div>
   </div>
 
@@ -63,7 +64,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <script language="javascript" type="text/javascript">
-          window.setTimeout('location.replace("supplementary-charges")',8000);
+          window.setTimeout('location.replace("annual-charges")',8000);
       </script>
 
       <p class="govuk-body-l">

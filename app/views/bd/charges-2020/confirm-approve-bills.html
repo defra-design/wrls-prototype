@@ -53,8 +53,8 @@
     <h1 class="govuk-heading-xl">{{ title }}</h1>
 
     <section class="govuk-!-margin-bottom-6">
-  <h2 class="govuk-caption-l">Bill run 1234567890</h2> 
-      <span class="govuk-heading-l govuk-!-margin-bottom-0">Anglian supplementary bill run</span>
+  <h2 class="govuk-caption-l">Bill run 1234567890</h2>
+      <span class="govuk-heading-l govuk-!-margin-bottom-0">{{data['region']}} supplementary bill run</span>
       <!-- <p class="govuk-body-l">
         <a href="ias">
           Invoice account 021545
@@ -80,7 +80,7 @@
               Region
             </div>
             <div class="meta-data__value">
-              Anglian
+              {{data['region']}}
             </div>
           <div>
         </section>
