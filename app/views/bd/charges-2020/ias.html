@@ -2,7 +2,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = data['customerName'] %}
+{% set title = "Billing account for " + data['customerName'] %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -48,7 +48,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+    <span class="govuk-caption-l">{{data['invoiceAccount']}}</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
   </div>

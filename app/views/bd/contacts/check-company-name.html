@@ -55,9 +55,9 @@
 
     {% from "radios/macro.njk" import govukRadios %}
 
-{% set companyName1 = "Little " + [data.customerName]%}
-{% set companyName2 = [data.customerName] %}
-{% set companyName3 = "Big " + [data.customerName] %}
+{% set companyName1 = "Little " + [data.customerName] + ",  12 Gosport Street, Bristol BS23 6FH" %}
+{% set companyName2 = [data.customerName] + ", 20 Green lane, Slough SL1 04A" %}
+{% set companyName3 = "Big " + [data.customerName] + ", 87 Red Road, Basingstoke RG22 04A" %}
 
       {{ govukRadios({
         idPrefix: "charge-source",
