@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "January 2020 invoice" %}
+{% set title = "Bill for " + data['customerName'] %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -45,11 +45,53 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Company name Ltd.</h1>
+        <h1 class="govuk-caption-l">AA1234575</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
 
-      <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
+      <p class="govuk-body">
+        <strong class="table__status table__status--l">
+          Sent
+        </strong>
+      </p>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-3">
+        <div class="govuk-grid-column-full">
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Date created
+              </div>
+              <div class="meta-data__value">
+                7 January 2020
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Region
+              </div>
+              <div class="meta-data__value">
+                {{data['region']}}
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Bill run type
+              </div>
+              <div class="meta-data__value">
+                Supplementary
+              </div>
+            <div>
+          </section>
+
+        </div>
+      </div>
+
+    <!--  <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
             Licence holder address
@@ -62,9 +104,9 @@
           <br>Oxfordshire
           <br>RE1 1TG
         </div>
-      </details>
+      </details> -->
 
-      <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
+      <details class="govuk-details govuk-!-margin-bottom-3" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
             Billing contact address
@@ -79,11 +121,11 @@
         </div>
       </details>
 
-      <p class="govuk-body govuk-!-margin-bottom-9">
+<!--      <p class="govuk-body govuk-!-margin-bottom-9">
         <a href="ias">
           Invoice account 021545
         </a>
-      </p>
+      </p> -->
 
     </div>
   </div>

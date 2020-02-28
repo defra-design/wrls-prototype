@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Supplementary charges" %}
+{% set title = data['region'] + " supplementary bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,7 +47,7 @@
 
       <section class="govuk-!-margin-bottom-6">
         <h1 class="govuk-caption-l">Bill run 1234567890</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">Supplementary charges for {{data['region']}}</span>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
       </section>
 
       <p class="govuk-body">
@@ -88,7 +88,7 @@
               </div>
             <div>
           </section>
-          
+
         </div>
       </div>
 
@@ -140,9 +140,9 @@
   </div> -->
 
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
         <a href="confirm-approve-bills" class="wrls-faux-button">Confirm bill run</a>

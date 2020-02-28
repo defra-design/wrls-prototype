@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data.licenceHolder %}
+{% set title = "Bill for " + data.licenceHolder %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -46,7 +46,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Invoice AA126515</h1>
+        <h1 class="govuk-caption-l">AA126515</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
 
@@ -112,7 +112,7 @@
     </div>
   </details> -->
 
-  <details class="govuk-details govuk-!-margin-bottom-9" data-module="govuk-details">
+  <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
         Billing contact address
@@ -136,8 +136,8 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£1,733.95</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Invoice amount</span></h3>
+      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£1,733.95</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
     </div>
 
   </div>
@@ -149,12 +149,12 @@
     </div> -->
 
     <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£1,268.80</span><br>
+      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£1,268.80</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
     </div>
 
     <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
+      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£3,002.75</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
     </div>
   </div>

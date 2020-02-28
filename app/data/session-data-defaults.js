@@ -27,7 +27,8 @@ module.exports = {
 "invoiceAccount": "L12345678S",
 "startDay": "11",
 "startMonth": "April",
-"startYear": "2019"
+"startYear": "2019",
+"region": "Anglian"
   // Insert values here
 
 }
