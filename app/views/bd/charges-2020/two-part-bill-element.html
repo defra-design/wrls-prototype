@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Spray top field" %}
+{% set title = "Over abstraction for spray top field" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -128,7 +128,7 @@
           Authorised
         </div>
         <div class="table__cell bold-small numbers column--20">
-          Chargeable
+          Billable
         </div>
         <div class="table__cell bold-small numbers column--20">
           Reported
@@ -157,7 +157,7 @@
         </div>
         <div class="table__cell numbers">
           <h3 class="table__context">
-            Chargeable
+            Billable
           </h3>
           <p>
             50ML
@@ -195,7 +195,7 @@
         </div>
         <div class="table__cell numbers">
           <h3 class="table__context">
-            Chargeable
+            Billable
           </h3>
           <p>
             20ML
@@ -227,7 +227,7 @@
         name: "chargeable-quantity",
         classes: "govuk-!-width-one-third",
         label: {
-          text: "Chargeable"
+          text: "Billable"
         },
         attributes: {
           spellcheck: "false"
@@ -242,7 +242,7 @@
         type: "number",
         classes: "govuk-!-width-one-third",
         label: {
-          text: "Chargeable quantity"
+          text: "Billable quantity"
         }
       }) }}
       {% endset -%}
@@ -260,7 +260,7 @@
         items: [
           {
             value: "two-part-confirm-default-quantity",
-            text: "Default (20ML)"
+            text: "Authorised (20ML)"
           },
           {
             value: "two-part-confirm-custom-quantity",

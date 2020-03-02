@@ -51,23 +51,53 @@
     <span class="govuk-caption-l">03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    <h2 class="govuk-heading-m">
-      Are you sure you want to override the Pro-rata’d quantity of 20ML?
-    </h2>
+    <p class="govuk-body-l">
+      You are about to use a custom billable quantity
+    </p>
 
-    <div class="govuk-checkboxes govuk-!-margin-bottom-6">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns">
-        <label class="govuk-label govuk-checkboxes__label" for="returns-agent">
-          Yes, use the custom quantity of 15ML
-        </label>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <div class="table govuk-!-margin-bottom-9">                                                <!-- a table -->
+
+          <div class="table__row--head">
+            <div class="table__cell bold-small column--40">
+              Charge period
+            </div>
+            <div class="table__cell bold-small numbers column--20">
+              Custom quantity
+            </div>
+          </div>
+
+          <div class="table__row--selectable govuk-!-margin-bottom-6">
+            <div class="table__cell">
+              <h2 class="screen-reader-only">
+                Row 1
+              </h2>
+              <h3 class="table__context">
+                Charge period
+              </h3>
+              <p class="table__row--text">
+                1 September 2019 to 30 October 2019
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h3 class="table__context">
+                Custom
+              </h3>
+              <p>
+                15ML
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
     <a href="two-part-bill-issue" class="wrls-faux-button">
       Confirm
     </a>
-
 
   </div>
 </div>
