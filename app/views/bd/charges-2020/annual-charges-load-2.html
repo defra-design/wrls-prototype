@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + " annual bill run" %}
+{% set title = "2020 Annual charges for Anglian" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -27,32 +27,38 @@
 
 {% block beforeContent %}
 
+  <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-manage.html" %}
   </div>
 
-  {{ govukBackLink({
+  <!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
 {% block content %}
 
   <!-- page title -->
-  <div class="govuk-grid-row govuk-!-margin-bottom-0">
-    <div class="govuk-grid-column-two-thirds">
-
-      <section class="govuk-!-margin-bottom-9">
-        <h1 class="govuk-caption-l">Bill run 576849</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} annual bill run</span>
-      </section>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+        {{ title }}
+      </h1>
+      <p class="govuk-body-l">
+        Bill number 003265
+      </p>
     </div>
   </div>
 
   <div class="divider govuk-!-margin-bottom-7"></div>
+
+  <h2 class="govuk-heading-l screen-reader-only">
+    Supplementary bills
+  </h2>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

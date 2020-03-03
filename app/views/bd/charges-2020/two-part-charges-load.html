@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + " annual bill run" %}
+{% set title = data['region'] + " two-part tariff bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -27,6 +27,7 @@
 
 {% block beforeContent %}
 
+  <!-- navigation block -->
   <div class="govuk-!-margin-bottom-3">
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-manage.html" %}
@@ -47,18 +48,22 @@
 
       <section class="govuk-!-margin-bottom-9">
         <h1 class="govuk-caption-l">Bill run 576849</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} annual bill run</span>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} two-part tariff bill run</span>
       </section>
     </div>
   </div>
 
   <div class="divider govuk-!-margin-bottom-7"></div>
 
+  <h2 class="govuk-heading-l screen-reader-only">
+    Supplementary bills
+  </h2>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <script language="javascript" type="text/javascript">
-          window.setTimeout('location.replace("annual-charges")',8000);
+          window.setTimeout('location.replace("two-part-charges")',8000);
       </script>
 
       <p class="govuk-body-l">
