@@ -46,7 +46,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">7 January 2020</span>
+      <!-- <span class="govuk-caption-l">5 March 2020</span> -->
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
       <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -57,7 +57,7 @@
                 Date created
               </div>
               <div class="meta-data__value">
-                12 January 2020
+                {{data['dateToday']}}
               </div>
             <div>
           </section>
@@ -90,7 +90,7 @@
         iconFallbackText: "Warning"
       }) }}
 
-      <a href="supplementary-bill-run">
+      <a href="supplementary-bill?dateToday=4 March 2020">
         Go to existing bill run
       </a>
 

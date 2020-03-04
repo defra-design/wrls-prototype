@@ -48,93 +48,66 @@
         <h1 class="govuk-caption-l">AAI26515</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
 
+        <p class="govuk-body">
+          <strong class="table__status table__status--ready table__status--l ">
+            Ready
+          </strong>
+        </p>
 
+        <div class="govuk-grid-row govuk-!-margin-bottom-3">
+          <div class="govuk-grid-column-full">
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Date created
+                </div>
+                <div class="meta-data__value">
+                  {{data['dateToday']}}
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Region
+                </div>
+                <div class="meta-data__value">
+                  {{data['region']}}
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Bill run type
+                </div>
+                <div class="meta-data__value">
+                  Supplementary
+                </div>
+              <div>
+            </section>
 
-
-      <p class="govuk-body">
-        <strong class="table__status table__status--ready table__status--l ">
-          Ready
-        </strong>
-      </p>
-
-      <div class="govuk-grid-row govuk-!-margin-bottom-3">
-        <div class="govuk-grid-column-full">
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Date created
-              </div>
-              <div class="meta-data__value">
-                12 January 2020
-              </div>
-            <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Region
-              </div>
-              <div class="meta-data__value">
-                Anglian
-              </div>
-            <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Bill run type
-              </div>
-              <div class="meta-data__value">
-                Supplementary
-              </div>
-            <div>
-          </section>
-
-
+          </div>
         </div>
-              </div>
 
-      <!-- <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Licence holder address
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          Daniel Caan
-          <br>1 Hill House
-          <br>Abingdon-on-Thames
-          <br>Oxfordshire
-          <br>RE1 1TG
-        </div>
-      </details> -->
+        <details class="govuk-details govuk-!-margin-bottom-9" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Billing contact address
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            {{data['customerName']}}<br>
+            {% if data['fao'].length %}
+            {{data['fao']}}<br>
+            {% endif %}
+            {{data['address1']}}<br>
+            {{data['city']}}<br>
+            {{data['postcode']}}<br>
+          </div>
+        </details>
 
-      <details class="govuk-details govuk-!-margin-bottom-9" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Billing contact address
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          {{data['customerName']}}<br>
-          {% if data['fao'].length %}
-          {{data['fao']}}<br>
-          {% endif %}
-          {{data['address1']}}<br>
-          {{data['city']}}<br>
-          {{data['postcode']}}<br>
-        </div>
-      </details>
-
-      <!-- <p class="govuk-body govuk-!-margin-bottom-9">
-        <a href="ias">
-          Invoice account 021545
-        </a>
-      </p> -->
-
-      <!-- invoice totals -->
-
-</section>
+      </section>
     </div>
   </div>
 

@@ -2,6 +2,9 @@
 
 {% set title = "You are about to send this bill run" %}
 
+{% set type = data['type'].toLowerCase() %}
+
+
 {% block pageTitle %}
    {{title}} - GOV.UK
 {% endblock %}
@@ -54,7 +57,7 @@
 
     <section class="govuk-!-margin-bottom-6">
   <h2 class="govuk-caption-l">Bill run 1234567890</h2>
-      <span class="govuk-heading-l govuk-!-margin-bottom-0">{{data['region']}} supplementary bill run</span>
+      <span class="govuk-heading-l govuk-!-margin-bottom-0">{{data['region']}} {{type}} bill run</span>
       <!-- <p class="govuk-body-l">
         <a href="ias">
           Invoice account 021545
@@ -70,7 +73,7 @@
               Date created
             </div>
             <div class="meta-data__value">
-              12 January 2020
+              5 March 2020
             </div>
           <div>
         </section>
@@ -90,7 +93,7 @@
               Bill run type
             </div>
             <div class="meta-data__value">
-              Supplementary
+              {{data['type']}}
             </div>
           <div>
         </section>
