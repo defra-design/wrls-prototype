@@ -28,7 +28,7 @@ module.exports = {
 "startDay": "11",
 "startMonth": "April",
 "startYear": "2019",
-"region": "Anglian"
+"region": "Anglian",
 "dateToday": "5 March 2020"
   // Insert values here
 
