@@ -18,18 +18,16 @@ Example usage:
 */
 
 module.exports = {
-
-"customerName": "Bottled Water Plc",
-"licenceHolder": "Bottled Water Plc",
-"address1": "15 Ward Road",
-"city": "Bath",
-"postcode": "BA1 5EH",
-"invoiceAccount": "L12345678S",
-"startDay": "11",
-"startMonth": "April",
-"startYear": "2019",
-"region": "Anglian",
-"dateToday": "5 March 2020"
-  // Insert values here
-
+  "customerName": "Bottled Water Plc",
+  "licenceHolder": "Bottled Water Plc",
+  "address1": "15 Ward Road",
+  "city": "Bath",
+  "postcode": "BA1 5EH",
+  "invoiceAccount": "L12345678S",
+  "startDay": "11",
+  "startMonth": "April",
+  "startYear": "2019",
+  "region": "Anglian",
+  "dateToday": "5 March 2020"
+    // Insert values here
 }
