@@ -31,12 +31,12 @@
     <!-- navigation block -->
     {% include "includes/nav/nav-bd-manage.html" %}
   </div>
-  <!--
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
-    -->
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -59,7 +59,7 @@
           {% else %}
 
             <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
-              <span class="govuk-caption-xl">Licence {{ permits[1].LicenceSerialNo }}</span>
+              <span class="govuk-caption-xl">Licence 03/28/60/0032</span>
               Return status
             </h1>
 
@@ -116,7 +116,7 @@
                 Return period
               </div>
               <div class="meta-data__value">
-                1 April 2018 to 31 March 2019
+                1 April 2019 to 31 September 2019
               </div>
             <div>
           </section>
@@ -126,7 +126,7 @@
                 Abstraction period
               </div>
               <div class="meta-data__value">
-                1 April 2018 to 31 September 2018
+                1 April 2019 to 31 September 2019
               </div>
             <div>
           </section>
@@ -135,7 +135,7 @@
 
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-two-thirds">
-          <a href="../online-licence?wid={{ query.wid }}">View this licence</a>
+          <a href="../licence-summary">View this licence</a>
         </div>
       </div>
 
@@ -156,14 +156,7 @@
         </div>
       {% endif %}
 
-      <form action="process-return" method="post" class="form" id="return-reference-error">
-
-        <!-- <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
-          <label class="govuk-label" for="return-reference">
-            Enter a return reference
-          </label>
-          <input value="{{ body.returnReference }}" class="govuk-input govuk-input--width-10" id="return-reference" name="returnReference" type="number">
-        </div> -->
+      <form action="#" method="post" class="form" id="return-reference-error">
 
         {% from "radios/macro.njk" import govukRadios %}
 
