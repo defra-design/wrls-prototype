@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Returns data issues for AN01/68/60/0032" %}
+{% set title = "Returns data issues for AN32/12/102" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -62,7 +62,7 @@
     </section>
 
     <section class="govuk-!-margin-bottom-6">
-      <a href="two-part-review?tptIssue=remove" class="wrls-faux-button wrls-faux-button--secondary govuk-!-margin-right-1">
+      <a href="two-part-review?tptIssueIR=remove" class="wrls-faux-button wrls-faux-button--secondary govuk-!-margin-right-1">
         Remove from bill run
       </a>
     </section>
@@ -73,7 +73,7 @@
       </h2>
       <div class="govuk-inset-text">
         <p class="govuk-body">
-          RELATES TO AGGREGATE QUANTITY WITH AN32/12/102 (REDBOURNE)
+          RELATES TO AGGREGATE QUANTITY WITH AN01/68/60/0032 (GLINDENFOLD LAKE)
         </p>
       </div>
     </section>
@@ -159,7 +159,7 @@
             Description
           </h3>
           <p class="table__row--text">
-            Spray top field
+            Spray end field
           </p>
         </div>
         <div class="table__cell">
@@ -172,12 +172,12 @@
         </div>
         <div class="table__cell">
 
-         {% if [data.tptIssue] == "overAbstraction" %}
+         {% if [data.tptIssueIR] == "incompleteReturns" %}
           <h3 class="table__context">
             Issue
           </h3>
           <p>
-            Over abstraction
+            Incomplete returns
           </p>
           {% endif %}
         </div>
@@ -186,7 +186,7 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="two-part-bill-element">
+            <a href="two-part-bill-element-incomplete-returns">
               Change
             </a>
           </p>

@@ -28,6 +28,9 @@ module.exports = {
   "startMonth": "April",
   "startYear": "2019",
   "region": "Anglian",
-  "dateToday": "5 March 2020"
+  "dateToday": "5 March 2020",
+  "tptIssue": "overAbstraction",
+  "tptIssueIR": "incompleteReturns",
+  "tptIssueNP": "notProcessed"
     // Insert values here
 }

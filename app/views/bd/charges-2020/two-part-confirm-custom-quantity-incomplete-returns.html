@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Set billable quantity for spray top field" %}
+{% set title = "Set billable quantity for spray end field" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,11 +48,11 @@
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <span class="govuk-caption-l">03/28/60/0032</span>
+    <span class="govuk-caption-l">AN32/12/102</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
     <p class="govuk-body-l">
-      You are about to use the authorised billable quantity
+      You are about to use a custom billable quantity
     </p>
 
     <div class="govuk-grid-row">
@@ -65,7 +65,7 @@
               Charge period
             </div>
             <div class="table__cell bold-small numbers column--20">
-              Authorised
+              Custom quantity
             </div>
           </div>
 
@@ -83,10 +83,10 @@
             </div>
             <div class="table__cell numbers">
               <h3 class="table__context">
-                Authorised
+                Custom
               </h3>
               <p>
-                20ML
+                15ML
               </p>
             </div>
           </div>
@@ -95,10 +95,9 @@
       </div>
     </div>
 
-    <a href="two-part-bill-issue?tptIssue=resolved" class="wrls-faux-button">
+    <a href="two-part-bill-issue-incomplete-returns?tptIssueIR=resolved" class="wrls-faux-button">
       Confirm
     </a>
-
 
   </div>
 </div>

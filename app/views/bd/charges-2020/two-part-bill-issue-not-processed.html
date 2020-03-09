@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{% set title = "Returns data issues for AN02/26/001/2" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">{{data['region']}} two-part tariff bill run</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <section class="govuk-!-margin-bottom-6">
+      <a href="../licence-summary" target="_blank" rel="noopener noreferrer" >
+        View licence (opens in new window)
+      </a>
+      <br>
+      <a href="../returns/return-report" target="_blank" rel="noopener noreferrer">
+        View the return (opens in new window)
+      </a>
+    </section>
+
+    <section class="govuk-!-margin-bottom-6">
+      <a href="two-part-review?tptIssueNP=remove" class="wrls-faux-button wrls-faux-button--secondary govuk-!-margin-right-1">
+        Remove from bill run
+      </a>
+    </section>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+      Trickle irrigation
+    </h2>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="table govuk-!-margin-bottom-9">                                                <!-- a table -->
+
+      <div class="table__row--head">
+        <div class="table__cell bold-small column--30">
+          Description
+        </div>
+        <div class="table__cell bold-small column--40">
+          Charge period
+        </div>
+        <div class="table__cell bold-small column--20">
+          Issue
+        </div>
+        <div class="table__cell bold-small numbers column--10">
+          Action
+        </div>
+      </div>
+
+      <!-- table row -->
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            Description
+          </h3>
+          <p class="table__row--text">
+            Trickle carrots
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Charge period
+          </h3>
+          <p>
+            1 March 2019 to 31 March 2020
+          </p>
+        </div>
+        <div class="table__cell">
+          {% if [data.tptIssueNP] == "notProcessed" %}
+          <h3 class="table__context">
+            Issue
+          </h3>
+          <p>
+            Received but not processed
+          </p>
+          {% endif %}
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="two-part-bill-element-not-processed">
+              Change
+            </a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<section class="govuk-!-margin-bottom-9">
+  <a href="two-part-review">
+    Continue two-part tariff bill review
+  </a>
+</section>
+{% endblock %}
