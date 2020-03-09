@@ -99,19 +99,18 @@
 
 <section>
 
-<h2 class="govuk-heading-l">
-  14 licences have returns issues
+<h2 class="govuk-heading-l" id="issuesTitle">
 </h2>
 
       <!-- invoices table -->
-      <div class="table govuk-!-margin-bottom-6">                                                <!-- a table -->
+      <div class="table govuk-!-margin-bottom-6" id="dataIssues">                                                <!-- a table -->
 
         <div class="table__row--head">
           <div class="table__cell bold-small">
             Licence
           </div>
           <div class="table__cell bold-small">
-            Contact
+            Billing contact
           </div>
           <div class="table__cell bold-small">
             Issue
@@ -122,7 +121,9 @@
 
         </div>
 
+        {% if [data.tptIssueIR] == "incompleteReturns" %}
         <!-- table row -->
+
         <div class="table__row--selectable govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h2 class="screen-reader-only">
@@ -132,7 +133,7 @@
               Licence
             </h3>
             <p class="table__row--text">
-              AN01/60/0031
+              AN32/12/102
             </p>
           </div>
           <div class="table__cell">
@@ -140,7 +141,7 @@
               Billing contact
             </h3>
             <p>
-              Unsworth Farm
+              Sam Mendoza
             </p>
           </div>
           <div class="table__cell">
@@ -148,7 +149,7 @@
               Issue
             </h3>
             <p>
-              Over abstraction
+              Incomplete returns
             </p>
           </div>
           <div class="table__cell numbers">
@@ -156,13 +157,15 @@
               Action
             </h3>
             <p class="table__row--text">
-              <a href="two-part-bill-issue">
-                Review <span class="screen-reader-only">the bill for licence AN01/60/0031</span>
+              <a href="two-part-bill-issue-incomplete-returns">
+                Review <span class="screen-reader-only">the bill for licence AN01/60/0032</span>
               </a>
             </p>
           </div>
         </div>
 
+        {% endif %}
+        {% if [data.tptIssue] == "overAbstraction" %}
         <div class="table__row--selectable govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h2 class="screen-reader-only">
@@ -202,7 +205,8 @@
             </p>
           </div>
         </div>
-
+        {% endif %}
+        {% if [data.tptIssueNP] == "notProcessed" %}
         <div class="table__row--selectable govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h2 class="screen-reader-only">
@@ -228,7 +232,7 @@
               Issue
             </h3>
             <p>
-              Incomplete returns
+              Received but not processed
             </p>
           </div>
           <div class="table__cell numbers">
@@ -236,14 +240,15 @@
               Action
             </h3>
             <p class="table__row--text">
-              <a href="two-part-bill-issue">
+              <a href="two-part-bill-issue-not-processed">
                 Review <span class="screen-reader-only">the bill for licence AN02/26/001/2</span>
               </a>
             </p>
           </div>
         </div>
+        {% endif %}
 
-        <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <!--  <div class="table__row--selectable govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h2 class="screen-reader-only">
               Row 4
@@ -682,15 +687,15 @@
             </p>
           </div>
         </div>
-
+-->
       </div>
 
     </section>
 
   <section>
 
-    <h2 class="govuk-heading-l">
-      672 licences ready for billing
+
+    <h2 class="govuk-heading-l" id="readyTitle">
     </h2>
 
     <!--<div class="govuk-form-group">
@@ -709,7 +714,7 @@
 
   </section> -->
 
-  <div class="table govuk-!-margin-bottom-6">                                                <!-- a table -->
+  <div class="table govuk-!-margin-bottom-6" id="readyForBilling">                                                <!-- a table -->
 
     <div class="table__row--head">
       <div class="table__cell bold-small">
@@ -724,6 +729,113 @@
 
     </div>
 
+    {% if [data.tptIssueNP] == "resolved" %}
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 3
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          AN02/26/001/2
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Lord Ashley Crofters
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="two-part-bill-issue-not-processed">
+            Review <span class="screen-reader-only">the bill for licence AN02/26/001/2</span>
+          </a>
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+
+    {% if [data.tptIssueIR] == "resolved" %}
+    <!-- table row -->
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 1
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          AN32/12/102
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Sam Mendoza
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="two-part-bill-issue-incomplete-returns">
+            Review <span class="screen-reader-only">the bill for licence AN01/60/0032</span>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    {% endif %}
+
+    {% if [data.tptIssue] == "resolved" %}
+
+    <div class="table__row--selectable govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 2
+        </h2>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <p class="table__row--text">
+          AN01/68/60/0032
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Billing contact
+        </h3>
+        <p>
+          Sam Mendoza
+        </p>
+      </div>
+      <div class="table__cell numbers">
+        <h3 class="table__context">
+          Action
+        </h3>
+        <p class="table__row--text">
+          <a href="two-part-bill-issue">
+            Review <span class="screen-reader-only">the bill for licence AN01/68/60/0032</span> <span class="screen-reader-only">the bill for licence AN01/60/0032</span>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    {% endif %}
     <!-- table row -->
     <div class="table__row--selectable govuk-!-margin-bottom-6">
       <div class="table__cell">
@@ -756,6 +868,8 @@
         </p>
       </div>
     </div>
+
+
 
     <div class="table__row--selectable govuk-!-margin-bottom-6">
       <div class="table__cell">
@@ -31940,3 +32054,21 @@
 
 
 {% endblock %}
+
+{% block pageScripts %}
+<script>
+  const numberofRows = document.getElementById('dataIssues').children.length - 1;
+  const licenceIssues = document.getElementById("issuesTitle");
+  if (numberofRows === 1) {
+    licenceIssues.innerText = numberofRows + " licence has a data issue"
+  } else if (numberofRows === 0) {
+    licenceIssues.innerHTML = '<a href="two-part-charges" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>';
+    document.getElementById('dataIssues').classList.add("govuk-visually-hidden");
+  } else {
+  licenceIssues.innerText = numberofRows + " licences have data issues" }
+
+  const numberofRowsReady = document.getElementById('readyForBilling').children.length - 1;
+  const licenceReady = document.getElementById("readyTitle");
+  licenceReady.innerText = numberofRowsReady + " licences are ready for billing"
+</script>
+  {% endblock %}
