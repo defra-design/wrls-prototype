@@ -20,6 +20,7 @@ Example usage:
 module.exports = {
   "customerName": "Bottled Water Plc",
   "licenceHolder": "Bottled Water Plc",
+  "licenceNumber": "AN01/68/60/0032",
   "address1": "15 Ward Road",
   "city": "Bath",
   "postcode": "BA1 5EH",
