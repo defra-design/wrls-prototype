@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Remove this agreement" %}
+{% set title = "You are about to remove this agreement" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -50,10 +50,10 @@
 
     <!-- page heading -->
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-    <h1 class="govuk-heading-l">Are you sure you want to remove the Canal and Rivers Trust agreement?</h1>
+    <h1 class="govuk-heading-l">{{title}}</h1>
 
     <a href="charge-version#agreement" class="wrls-faux-button">
-      Yes, remove agreement
+      Remove agreement
     </a>
 
   </div>
