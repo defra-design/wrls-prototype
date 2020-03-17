@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Set billable quantity for trickle carrots" %}
+{% set title = "You are about to set the chargeable quantity to " + data.quantity + "ML"%}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -42,34 +42,32 @@
 
 {% block content %}
 
+
+
 <div class="govuk-!-margin-bottom-3"></div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <span class="govuk-caption-l">AN32/12/102</span>
+    <span class="govuk-caption-l">Licence AN02/26/001/2</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
-
-    <p class="govuk-body-l">
-      You are about to use a custom billable quantity
-    </p>
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 
         <div class="table govuk-!-margin-bottom-9">                                                <!-- a table -->
 
-          <div class="table__row--head">
+          <div class="table__row--head ">
             <div class="table__cell bold-small column--40">
               Charge period
             </div>
             <div class="table__cell bold-small numbers column--20">
-              Custom quantity
+              Chargeable
             </div>
           </div>
 
-          <div class="table__row--selectable govuk-!-margin-bottom-6">
+          <div class="table__row table__row--last govuk-!-margin-bottom-6">
             <div class="table__cell">
               <h2 class="screen-reader-only">
                 Row 1
@@ -78,15 +76,15 @@
                 Charge period
               </h3>
               <p class="table__row--text">
-                1 April 2019 to 31 March 2020
+                1 September 2019 to 31 October 2019
               </p>
             </div>
             <div class="table__cell numbers">
               <h3 class="table__context">
-                Custom
+                Authorised
               </h3>
               <p>
-                15ML
+                {{data.quantity}}ML
               </p>
             </div>
           </div>
@@ -95,9 +93,10 @@
       </div>
     </div>
 
-    <a href="two-part-bill-issue-not-processed?tptIssueNP=resolved" class="wrls-faux-button">
+    <a href="two-part-review?tptIssueNP=resolved" class="wrls-faux-button">
       Confirm
     </a>
+
 
   </div>
 </div>
