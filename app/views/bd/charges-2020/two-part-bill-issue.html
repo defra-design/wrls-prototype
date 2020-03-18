@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Returns data issues for AN01/68/60/0032" %}
+{% set title = "Review returns data issues for AN01/68/60/0032" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -61,25 +61,23 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <div class="govuk-inset-text govuk-!-margin-bottom-0">
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
         Spray irrigation
       </h2>
+      <p class="govuk-body">1 September to 31 October </p>
   </div>
 
 
 <div class="table govuk-!-margin-bottom-9">
   <!-- a table -->
   <div class="table__row--head">
+    <div class="table__cell bold-small column--50">
+      Element description
+    </div>
     <div class="table__cell bold-small column--30">
-      Description
-    </div>
-    <div class="table__cell bold-small column--40">
-      Charge period
-    </div>
-    <div class="table__cell bold-small column--20">
       Issue
     </div>
-    <div class="table__cell bold-small numbers column--10">
+    <div class="table__cell bold-small numbers column--20">
       Action
     </div>
   </div>
@@ -88,21 +86,13 @@
   <div class="table__row--selectable govuk-!-margin-bottom-6">
     <div class="table__cell">
       <h2 class="screen-reader-only">
-        Row 2
+        Row 1
       </h2>
       <h3 class="table__context">
-        Description
+        Element description
       </h3>
       <p class="table__row--text">
         Spray end field
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Charge period
-      </h3>
-      <p>
-        1 September 2019 to 31 October 2019
       </p>
     </div>
     <div class="table__cell">

@@ -111,7 +111,7 @@
               Licence
             </div>
             <div class="table__cell bold-small">
-              Billing contact
+              Licence holder
             </div>
             <div class="table__cell bold-small">
               Issue
@@ -139,7 +139,7 @@
             </div>
             <div class="table__cell">
               <h3 class="table__context">
-                Billing contact
+                Licence holder
               </h3>
               <p>
                 Sam Mendoza
@@ -181,7 +181,7 @@
             </div>
             <div class="table__cell">
               <h3 class="table__context">
-                Billing contact
+                Licence holder
               </h3>
               <p>
                 Sam Mendoza
@@ -222,7 +222,7 @@
             </div>
             <div class="table__cell">
               <h3 class="table__context">
-                Billing contact
+                Licence holder
               </h3>
               <p>
                 Lord Ashley Crofters
@@ -252,7 +252,7 @@
 
       </section>
 
-<section class="govuk-!-margin-bottom-9">
+<section class="govuk-!-margin-bottom-0v">
 
 {% if [data.tptIssueIR] == "resolved" %}
 {% set tptIssueIR = 1 %}
@@ -271,10 +271,22 @@
 {% endif %}
 {% set totalNumberReady = 975 + tptIssue + tptIssueNP + tptIssueIR%}
 
+
 <h2 class="govuk-heading-l" id="readyTitle">
   {{totalNumberReady}} licences are ready for billing
 </h2>
+<p class="govuk-body govuk-!-margin-bottom-9">
 <a href="two-part-view" class="govuk-link">View licences ready for billing</a>
+</p>
+<div id="ready">
+  </div>
+
+<!--
+{{ govukInsetText({
+html: '<p class="govuk-body govuk-!-margin-bottom-0">' + totalNumberReady + ' licences are ready for billing</p> <a href="two-part-view" class="govuk-link">View licences ready for billing</a>'
+}) }}
+
+-->
 </section>
 
 {% endblock %}
@@ -283,10 +295,11 @@
 <script>
   const numberofRows = document.getElementById('dataIssues').children.length - 1;
   const licenceIssues = document.getElementById("issuesTitle");
+  const licenceReady = document.getElementById("ready");
   if (numberofRows === 1) {
     licenceIssues.innerText = numberofRows + " licence has a data issue"
   } else if (numberofRows === 0) {
-    licenceIssues.innerHTML = '<a href="two-part-charges" class="wrls-faux-button govuk-!-margin-bottom-9">Continue to bill run</a>';
+    licenceReady.innerHTML = '<a href="two-part-charges" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>';
     document.getElementById('dataIssues').classList.add("govuk-visually-hidden");
   } else {
   licenceIssues.innerText = numberofRows + " licences have data issues" }
