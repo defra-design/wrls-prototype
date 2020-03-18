@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + " two-part tariff bill run" %}
+{% set title = "Checking returns data for " + data['region'] + " two-part tariff bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,7 +48,7 @@
 
       <section class="govuk-!-margin-bottom-9">
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
-        {{data['region']}} two-part tariff bill run</h1>
+        {{title}}</h1>
       </section>
     </div>
   </div>
@@ -56,7 +56,7 @@
   <div class="divider govuk-!-margin-bottom-7"></div>
 
   <h2 class="govuk-heading-l screen-reader-only">
-    Supplementary bills
+    Two-part tariff bills
   </h2>
 
   <div class="govuk-grid-row">

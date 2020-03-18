@@ -102,10 +102,10 @@
   {% if not ([data.tptIssue] == "overAbstraction") and not
   ([data.tptIssueIR] == "incompleteReturns") and not
   ([data.tptIssueNP] == "notProcessed") %}
-   <a href="two-part-charges" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>
+   <a href="confirm-create-bill-run" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>
   {% else %}
   {{ govukInsetText({
-  html: '<p class="govuk-body govuk-!-margin-bottom-0">Licences have returns data issues that need to be reviewed</p> <a href="two-part-review" class="govuk-link">Review licences</a>'
+  html: '<p class="govuk-body govuk-!-margin-bottom-0">You need to review 3 licences with returns data issues before you can continue</p> <a href="two-part-review" class="govuk-link">Review licences</a>'
 }) }}
 {% endif %}
 

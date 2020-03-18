@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You are about to set the chargeable quantity to " + data.quantity + "ML"%}
+{% set title = "You are about to set the billable quantity to " + data.quantity + "ML"%}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -63,7 +63,7 @@
               Charge period
             </div>
             <div class="table__cell bold-small numbers column--20">
-              Chargeable
+              Billable
             </div>
           </div>
 
@@ -81,7 +81,7 @@
             </div>
             <div class="table__cell numbers">
               <h3 class="table__context">
-                Authorised
+                Billable
               </h3>
               <p>
                 {{data.quantity}}ML

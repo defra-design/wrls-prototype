@@ -299,7 +299,7 @@ html: '<p class="govuk-body govuk-!-margin-bottom-0">' + totalNumberReady + ' li
   if (numberofRows === 1) {
     licenceIssues.innerText = numberofRows + " licence has a data issue"
   } else if (numberofRows === 0) {
-    licenceReady.innerHTML = '<a href="two-part-charges" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>';
+    licenceReady.innerHTML = '<a href="confirm-create-bill-run" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>';
     document.getElementById('dataIssues').classList.add("govuk-visually-hidden");
   } else {
   licenceIssues.innerText = numberofRows + " licences have data issues" }
