@@ -148,7 +148,20 @@
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
     </div>
 
+
+
   </div>
+
+  {% if [data.tptstatus] == "ready" %}
+
+  <!--remove from the bill run button-->
+    <p class="govuk-body govuk-!-margin-bottom-0">
+     <a href="confirm-remove-bill"  class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">
+       Remove from the bill run
+     </a>
+   </p>
+
+   {% endif %}
 
   <!-- <button class="govuk-button govuk-button--warning" data-module="govuk-button">
     Remove from batch
