@@ -96,7 +96,13 @@
     </div>
   </div>
 
-
+  {% if ([data.tptIssue] == "overAbstraction") or
+  ([data.tptIssueIR] == "incompleteReturns") or
+  ([data.tptIssueNP] == "notProcessed") %}
+  <section class="govuk-!-margin-bottom-6">
+    <a href="confirm-cancel-bills?type=Two-part tariff" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+  </section>
+  {% endif %}
 
   <section class="govuk-!-margin-bottom-9">
 
@@ -278,8 +284,17 @@
 <p class="govuk-body govuk-!-margin-bottom-9">
 <a href="two-part-view" class="govuk-link">View licences ready for billing</a>
 </p>
-<div id="ready">
-  </div>
+
+{% if not ([data.tptIssue] == "overAbstraction") and not
+([data.tptIssueIR] == "incompleteReturns") and not
+([data.tptIssueNP] == "notProcessed") %}
+<section class="govuk-!-margin-bottom-6">
+  <p class="govuk-body">You have resolved all returns data issues. Continue to generate bills.</p>
+   <a href="confirm-create-bill-run" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>
+  <a href="confirm-cancel-bills?type=Two-part tariff" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+</section>
+{% endif %}
+
 
 <!--
 {{ govukInsetText({
@@ -299,7 +314,7 @@ html: '<p class="govuk-body govuk-!-margin-bottom-0">' + totalNumberReady + ' li
   if (numberofRows === 1) {
     licenceIssues.innerText = numberofRows + " licence has a data issue"
   } else if (numberofRows === 0) {
-    licenceReady.innerHTML = '<a href="confirm-create-bill-run" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>';
+  //  licenceReady.innerHTML = '<a href="confirm-create-bill-run" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>';
     document.getElementById('dataIssues').classList.add("govuk-visually-hidden");
   } else {
   licenceIssues.innerText = numberofRows + " licences have data issues" }
