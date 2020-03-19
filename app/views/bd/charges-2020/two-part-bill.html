@@ -45,15 +45,23 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">AA1234575</h1>
+        <h1 class="govuk-caption-l">Billing account AA1234575</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
 
+      {% if [data.status] == "ready" %}
+      <p class="govuk-body">
+        <strong class="table__status table__status--ready table__status--l ">
+          Ready
+        </strong>
+      </p>
+      {% else %}
       <p class="govuk-body">
         <strong class="table__status table__status--l">
           Sent
         </strong>
       </p>
+      {% endif %}
 
       <div class="govuk-grid-row govuk-!-margin-bottom-3">
         <div class="govuk-grid-column-full">

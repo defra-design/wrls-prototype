@@ -33,5 +33,6 @@ module.exports = {
   "tptIssue": "overAbstraction",
   "tptIssueIR": "incompleteReturns",
   "tptIssueNP": "notProcessed"
+  "status": "ready"
     // Insert values here
 }
