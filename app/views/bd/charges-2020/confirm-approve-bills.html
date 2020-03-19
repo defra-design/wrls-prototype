@@ -101,9 +101,30 @@
       </div>
     </div>
 
-    <a href="bill-runs?tptstatus=sent&status=sent" class="wrls-faux-button">
+
+    {% if [data.type] == "Annual" %}
+
+    <a href="bill-runs?annualstatus=sent" class="wrls-faux-button">
       Send bill run
     </a>
+
+    {% endif %}
+
+    {% if [data.type] == "Supplementary" %}
+
+    <a href="bill-runs?status=sent" class="wrls-faux-button">
+      Send bill run
+    </a>
+
+    {% endif %}
+
+    {% if [data.type] == "Two-part tariff" %}
+
+    <a href="bill-runs?tptstatus=sent" class="wrls-faux-button">
+      Send bill run
+    </a>
+
+    {% endif %}
 
   </div>
 </div>

@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + " supplementary bill run" %}
+{% set title = "Gathering bills for" +data['region'] + " two-part tariff bill run" %}
+
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,7 +48,8 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-9">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Annual charges for {{data['region']}}</h1>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+        {{title}}</h1>
       </section>
     </div>
   </div>
@@ -55,14 +57,14 @@
   <div class="divider govuk-!-margin-bottom-7"></div>
 
   <h2 class="govuk-heading-l screen-reader-only">
-    Supplementary bills
+    Two-part tariff bills
   </h2>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <script language="javascript" type="text/javascript">
-          window.setTimeout('location.replace("supplementary-charges?status=ready")',8000);
+          window.setTimeout('location.replace("two-part-charges?tptstatus=ready")',8000);
       </script>
 
       <p class="govuk-body-l">

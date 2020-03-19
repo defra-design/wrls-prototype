@@ -49,11 +49,19 @@
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
 
+      {% if [data.annualstatus] == "ready" %}
+      <p class="govuk-body">
+        <strong class="table__status table__status--ready table__status--l ">
+          Ready
+        </strong>
+      </p>
+      {% else %}
       <p class="govuk-body">
         <strong class="table__status table__status--l">
           Sent
         </strong>
       </p>
+      {% endif %}
 
       <div class="govuk-grid-row govuk-!-margin-bottom-3">
         <div class="govuk-grid-column-full">
@@ -127,6 +135,8 @@
         </a>
       </p> -->
 
+
+
     </div>
   </div>
 
@@ -135,10 +145,23 @@
     <div class="govuk-grid-column-one-half">
       <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£2,960.00</span><br>
       <!-- <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h2> -->
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debit</span></h2>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
     </div>
 
+
+
   </div>
+
+  {% if [data.annualstatus] == "ready" %}
+
+  <!--remove from the bill run button-->
+    <p class="govuk-body govuk-!-margin-bottom-0">
+     <a href="confirm-remove-bill"  class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">
+       Remove from the bill run
+     </a>
+   </p>
+
+   {% endif %}
 
   <!-- <button class="govuk-button govuk-button--warning" data-module="govuk-button">
     Remove from batch
@@ -173,7 +196,6 @@
         </h3>
         <p class="govuk-body">
           April to December
-          <br>S127 (Two-part tariff)
         </p>
       </div>
 
@@ -193,10 +215,10 @@
             Transaction detail
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Billable quantity
+            Billable days
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Authorised quantity
+            Quantity
           </div>
           <div class="table__cell bold-small numbers column--20">
             Debit
@@ -227,15 +249,16 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Billable quantity
+              Billable days
             </h6>
-            1,500ML
+            210
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Authorised quantity
+              Quantity
             </h6>
-            2,000ML
+            20ML<br>
+            Edited
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
@@ -299,10 +322,10 @@
             Transaction detail
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Billable quantity
+            Billable days
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Authorised quantity
+            Quantity
           </div>
           <div class="table__cell bold-small numbers column--20">
             Debit
@@ -333,15 +356,15 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Billable quantity
+              Billable days
             </h6>
-            Nil
+            61
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Authorised quantity
+              Quantity
             </h6>
-            500ML
+            20ML
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
@@ -373,28 +396,26 @@
 
 
       </div>
-    </div>
-  </div>
 
-  <!-- invoice details -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-xl">
-        2020
-      </h2>
 
-      <div class="govuk-inset-text">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
-          Machine washing
-        </h3>
-        <p class="govuk-body">
-          April to March
-        </p>
+
+      <!-- invoice details -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-inset-text">
+            <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
+              Machine washing
+            </h3>
+            <p class="govuk-body">
+              January to March
+
+            </p>
+          </div>
+
+        </div>
       </div>
-
-    </div>
-  </div>
 
   <!-- transactions for this element -->
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -409,10 +430,10 @@
             Transaction detail
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Billable quantity
+            Billable days
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Authorised quantity
+            Quantity
           </div>
           <div class="table__cell bold-small numbers column--20">
             Debit
@@ -443,15 +464,15 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Billable quantity
+              Billable days
             </h6>
-            -
+            80
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Authorised quantity
+              Quantity
             </h6>
-            500ML
+            20ML
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
@@ -485,6 +506,5 @@
       </div>
     </div>
   </div>
-
 
 {% endblock %}

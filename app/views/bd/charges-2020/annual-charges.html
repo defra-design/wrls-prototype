@@ -53,11 +53,19 @@
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
       <div class="govuk-grid-column-two-thirds">
 
+        {% if [data.annualstatus] == "ready" %}
         <p class="govuk-body">
           <strong class="table__status table__status--ready table__status--l ">
             Ready
           </strong>
         </p>
+        {% else %}
+        <p class="govuk-body">
+          <strong class="table__status table__status--l">
+            Sent
+          </strong>
+        </p>
+        {% endif %}
 
         <section class="meta-data__row">
           <div class="meta-data__container">
@@ -102,29 +110,35 @@
   <div class="govuk-grid-column-one-half">
     <!-- invoice totals -->
     <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£512,468.00</span><br>
-    <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">874 invoices</span></h3>
+    <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h3>
   </div>
 
 </div>
 
-<div class="govuk-grid-row govuk-!-margin-bottom-3">
+{% if [data.annualstatus] == "ready" %}
 
-  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+  <div class="govuk-grid-column-two-thirds">
 
     <section class="govuk-!-margin-bottom-6">
-      <p class="govuk-body">You can send this bill run on the next page.</p>
       <a href="confirm-approve-bills?type=Annual" class="wrls-faux-button">Confirm bill run</a>
       <a href="confirm-cancel-bills?type=Annual" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
     </section>
 
-    <p class="govuk-body">
-      <a href="/public/Anglian annual bill run 2020-03-05.zip">
-        Download this bill run
-      </a>
-    </p>
-
   </div>
+
 </div>
+
+{% endif %}
+
+<div class="divider govuk-!-margin-bottom-5"></div>
+
+<p class="govuk-body govuk-!-margin-bottom-0">
+  <a href="/public/Anglian annual bill run 2020-03-05.zip"  class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">
+    Download this bill run
+  </a>
+</p>
 
 
 <div class="govuk-tabs" data-module="tabs">
@@ -186,11 +200,9 @@
             Account
           </h3>
           <p class="table__row--text">
-          <span class="table__link">
-            <a href="annual-bill?customerName=A. Parson">
+
               021545
-            </a>
-          </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -230,8 +242,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=River Dale Water">
+              View
             </a>
           </p>
         </div>
@@ -246,11 +258,10 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Bill Brothers Co.">
+
+
                 015456
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -291,8 +302,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Bill Brothers Co.">
+              View
             </a>
           </p>
         </div>
@@ -307,11 +318,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Company Name Ltd.">
+
                 012106
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -351,8 +360,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Company Name Ltd.">
+              View
             </a>
           </p>
         </div>
@@ -367,11 +376,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Water Farmers Co.">
+
                 016547
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -435,8 +442,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+          <a href="annual-bill?customerName=Highlands Water">
+              View
             </a>
           </p>
         </div>
@@ -451,11 +458,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Springtime Foods">
+
                 018242
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -498,8 +503,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Springtime Foods">
+              View
             </a>
           </p>
         </div>
@@ -514,11 +519,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Sandwich Sandwich">
+
                 024330
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -562,8 +565,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Sandwich Sandwich">
+              View
             </a>
           </p>
         </div>
@@ -578,11 +581,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Durvans Produce">
+
                 035545
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -678,8 +679,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Durvans Produce">
+              View
             </a>
           </p>
         </div>
@@ -694,11 +695,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Good Nature Foods">
+
             038001
-            </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -740,8 +739,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Good Nature Foods">
+              View
             </a>
           </p>
         </div>
@@ -756,11 +755,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Jambodge Farm">
+
             044650
-            </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -818,8 +815,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Jambodge Farm">
+              View
             </a>
           </p>
         </div>
@@ -834,11 +831,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Aquafall">
+
                 046565
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -881,8 +876,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+              <a href="annual-bill?customerName=Aquafall">
+              View
             </a>
           </p>
         </div>
@@ -931,11 +926,10 @@
             Account
           </h3>
           <p class="table__row--text">
-          <span class="table__link">
-            <a href="annual-bill?customerName=A. Parson">
+
+
               021545
-            </a>
-          </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -975,8 +969,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=A. Parson">
+              View
             </a>
           </p>
         </div>
@@ -991,11 +985,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Bill Brothers Co.">
+
                 015456
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1036,8 +1028,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Bill Brothers Co.">
+              View
             </a>
           </p>
         </div>
@@ -1052,11 +1044,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Company Name Ltd.">
+
                 012106
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1097,8 +1087,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+          <a href="annual-bill?customerName=Company Name Ltd.">
+              View
             </a>
           </p>
         </div>
@@ -1113,11 +1103,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Water Farmers Co.">
+
                 016547
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1157,8 +1145,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+          <a href="annual-bill?customerName=Water Farmers Co.">
+              View
             </a>
           </p>
         </div>
@@ -1173,11 +1161,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Springtime Foods">
+
                 018242
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1217,8 +1203,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Springtime Foods">
+              View
             </a>
           </p>
         </div>
@@ -1233,11 +1219,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Sandwich Sandwich">
+
                 024330
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1277,8 +1261,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Sandwich Sandwich">
+              View
             </a>
           </p>
         </div>
@@ -1293,11 +1277,8 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Durvans Produce">
                 035545
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1337,8 +1318,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Durvans Produce">
+              View
             </a>
           </p>
         </div>
@@ -1353,11 +1334,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Good Nature Foods">
+
             038001
-            </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1397,8 +1376,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Good Nature Foods">
+              View
             </a>
           </p>
         </div>
@@ -1413,11 +1392,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Jambodge Farm">
+
             044650
-            </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1469,8 +1446,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Jambodge Farm">
+              View
             </a>
           </p>
         </div>
@@ -1485,11 +1462,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Aquafall">
+
                 046565
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1529,8 +1504,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Aquafall">
+              View
             </a>
           </p>
         </div>
@@ -1545,11 +1520,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Company Name Ltd.">
+
                 012106
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1590,8 +1563,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+          <a href="annual-bill?customerName=Company Name Ltd.">
+              View
             </a>
           </p>
         </div>
@@ -1606,11 +1579,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Water Farmers Co.">
+
                 016547
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1650,8 +1621,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+              <a href="annual-bill?customerName=Water Farmers Co.">
+              View
             </a>
           </p>
         </div>
@@ -1666,11 +1637,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Springtime Foods">
+
                 018242
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1710,8 +1679,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Springtime Foods">
+              View
             </a>
           </p>
         </div>
@@ -1726,11 +1695,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Sandwich Sandwich">
+
                 024330
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1770,8 +1737,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Sandwich Sandwich">
+              View
             </a>
           </p>
         </div>
@@ -1786,11 +1753,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Durvans Produce">
+
                 035545
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1830,8 +1795,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Durvans Produce">
+              View
             </a>
           </p>
         </div>
@@ -1846,11 +1811,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Good Nature Foods">
+
             038001
-            </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1890,8 +1853,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Good Nature Foods">
+              View
             </a>
           </p>
         </div>
@@ -1906,11 +1869,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Jambodge Farm">
+
             044650
-            </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -1962,8 +1923,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Jambodge Farm">
+              View
             </a>
           </p>
         </div>
@@ -1978,11 +1939,9 @@
             Account
           </h3>
           <p class="table__row--text">
-            <span class="table__link">
-              <a href="annual-bill?customerName=Aquafall">
+
                 046565
-              </a>
-            </span>
+
           </p>
         </div>
         <div class="table__cell">
@@ -2022,8 +1981,8 @@
             Action
           </h3>
           <p class="table__row--text">
-            <a href="confirm-remove-bill">
-              Remove
+            <a href="annual-bill?customerName=Aquafall">
+              View
             </a>
           </p>
         </div>

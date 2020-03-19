@@ -35,5 +35,6 @@ module.exports = {
   "tptIssueNP": "notProcessed",
   "status": "ready",
   "tptstatus": "review",
+  "annual": "ready"
     // Insert values here
 }
