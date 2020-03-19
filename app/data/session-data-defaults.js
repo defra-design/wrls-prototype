@@ -32,7 +32,8 @@ module.exports = {
   "dateToday": "5 March 2020",
   "tptIssue": "overAbstraction",
   "tptIssueIR": "incompleteReturns",
-  "tptIssueNP": "notProcessed"
-  "status": "ready"
+  "tptIssueNP": "notProcessed",
+  "status": "ready",
+  "tptstatus": "review",
     // Insert values here
 }

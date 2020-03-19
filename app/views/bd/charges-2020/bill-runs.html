@@ -144,7 +144,7 @@
 
 
       <!-- table row -->
-      <a href="supplementary-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+      <a href="supplementary-charges?region=North East&status=ready" class="table__row--selectable govuk-!-margin-bottom-6">
         <div class="table__cell table__cell--v-middle">
           <h3 class="screen-reader-only">
             Row 2
@@ -200,7 +200,11 @@
       </a>
 
       <!-- table row -->
+      {% if [data.tptstatus] == "ready" or [data.tptstatus] == "sent" %}
+      <a href="two-part-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+      {% else %}
       <a href="two-part-review" class="table__row--selectable govuk-!-margin-bottom-6">
+      {% endif %}
         <div class="table__cell table__cell--v-middle">
           <h3 class="screen-reader-only">
             Row 4
@@ -218,7 +222,7 @@
             Region
           </h4>
           <p class="table__row--selectable--text">
-            South East
+            {{data['region']}}
           </p>
         </div>
         <div class="table__cell table__cell--v-middle">
@@ -233,26 +237,49 @@
           <h4 class="table__context">
             Bills
           </h4>
+          {% if [data.tptstatus] == "ready" or [data.tptstatus] == "sent" %}
+          <p class="table__row--selectable--text numbers">
+            977
+          </p>
+          {% else %}
           <p class="table__row--selectable--text numbers">
             -
           </p>
+          {% endif %}
         </div>
         <div class="table__cell table__cell--v-middle">
+
           <h4 class="table__context">
             Value
           </h4>
+          {% if [data.tptstatus] == "ready" or [data.tptstatus] == "sent" %}
+          <p class="table__row--selectable--text numbers">
+            £512,460.00
+          </p>
+          {% else %}
           <p class="table__row--selectable--text numbers">
             -
           </p>
+          {% endif %}
         </div>
         <div class="table__cell table__cell--v-middle numbers">
           <h5 class="table__context">
             Status
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
+          {% if [data.tptstatus] == "review" %}
           <strong class="table__status table__status--ready">
             Review
           </strong>
+          {% elif [data.tptstatus] == "ready" %}
+            <strong class="table__status table__status--ready  ">
+              Ready
+           </strong>
+          {% else %}
+            <strong class="table__status">
+              Sent
+            </strong>
+          {% endif %}
         </div>
       </a>
 

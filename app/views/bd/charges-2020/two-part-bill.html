@@ -49,7 +49,7 @@
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
 
-      {% if [data.status] == "ready" %}
+      {% if [data.tptstatus] == "ready" %}
       <p class="govuk-body">
         <strong class="table__status table__status--ready table__status--l ">
           Ready
@@ -114,18 +114,20 @@
         </div>
       </details> -->
 
-      <details class="govuk-details govuk-!-margin-bottom-3" data-module="govuk-details">
+      <details class="govuk-details govuk-!-margin-bottom-9" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
             Billing contact address
           </span>
         </summary>
         <div class="govuk-details__text">
-          Finance Department
-          <br>1 Hill House
-          <br>Abingdon-on-Thames
-          <br>Oxfordshire
-          <br>RE1 1TG
+          {{data['customerName']}}<br>
+          {% if data['fao'].length %}
+          {{data['fao']}}<br>
+          {% endif %}
+          {{data['address1']}}<br>
+          {{data['city']}}<br>
+          {{data['postcode']}}<br>
         </div>
       </details>
 
@@ -201,10 +203,10 @@
             Transaction detail
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Billable quantity
+            Billable days
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Authorised quantity
+            Quantity
           </div>
           <div class="table__cell bold-small numbers column--20">
             Debit
@@ -235,15 +237,16 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Billable quantity
+              Billable days
             </h6>
-            1,500ML
+            210
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Authorised quantity
+              Quantity
             </h6>
-            2,000ML
+            20ML<br>
+            Edited
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
@@ -307,10 +310,10 @@
             Transaction detail
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Billable quantity
+            Billable days
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Authorised quantity
+            Quantity
           </div>
           <div class="table__cell bold-small numbers column--20">
             Debit
@@ -341,15 +344,15 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Billable quantity
+              Billable days
             </h6>
-            Nil
+            61
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Authorised quantity
+              Quantity
             </h6>
-            500ML
+            20ML
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
@@ -417,10 +420,10 @@
             Transaction detail
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Billable quantity
+            Billable days
           </div>
           <div class="table__cell bold-small numbers column--20">
-            Authorised quantity
+            Quantity
           </div>
           <div class="table__cell bold-small numbers column--20">
             Debit
@@ -451,15 +454,15 @@
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Billable quantity
+              Billable days
             </h6>
-            -
+            80
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
-              Authorised quantity
+              Quantity
             </h6>
-            500ML
+            20ML
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">

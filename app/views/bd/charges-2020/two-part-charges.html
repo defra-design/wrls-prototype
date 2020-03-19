@@ -53,11 +53,19 @@
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
       <div class="govuk-grid-column-two-thirds">
 
+        {% if [data.tptstatus] == "ready" %}
         <p class="govuk-body">
           <strong class="table__status table__status--ready table__status--l ">
             Ready
           </strong>
         </p>
+        {% else %}
+        <p class="govuk-body">
+          <strong class="table__status table__status--l">
+            Sent
+          </strong>
+        </p>
+        {% endif %}
 
         <section class="meta-data__row">
           <div class="meta-data__container">
@@ -107,6 +115,9 @@
 
 </div>
 
+{% if [data.tptstatus] == "ready" %}
+
+
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-two-thirds">
@@ -120,6 +131,8 @@
   </div>
 
 </div>
+
+{% endif %}
 
 <div class="divider govuk-!-margin-bottom-9"></div>
 

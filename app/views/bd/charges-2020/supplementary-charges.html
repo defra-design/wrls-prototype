@@ -50,11 +50,19 @@
         <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
       </section>
 
+      {% if [data.status] == "ready" %}
       <p class="govuk-body">
         <strong class="table__status table__status--ready table__status--l ">
           Ready
         </strong>
       </p>
+      {% else %}
+      <p class="govuk-body">
+        <strong class="table__status table__status--l">
+          Sent
+        </strong>
+      </p>
+      {% endif %}
 
       <div class="govuk-grid-row govuk-!-margin-bottom-3">
         <div class="govuk-grid-column-full">
@@ -119,6 +127,8 @@
 
   </div>
 
+  {% if [data.status] == "ready" %}
+
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
     <div class="govuk-grid-column-two-thirds">
@@ -128,21 +138,24 @@
         <a href="confirm-cancel-bills?type=Supplementary" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
       </section>
 
-      <p class="govuk-body">
-        <a href="/public/Anglian supplementary bill run 2020-03-05.zip">
-          Download this bill run
-        </a>
-      </p>
-
     </div>
 
   </div>
 
+  {% endif %}
+
   <div class="divider govuk-!-margin-bottom-5"></div>
 
-  <h2 class="govuk-heading-l screen-reader-only">
-    Supplementary bills
+  <h2 class="govuk-heading-l">
+    4 supplementary bills
   </h2>
+
+  <p class="govuk-body govuk-!-margin-bottom-0">
+    <a href="/public/Anglian supplementary bill run 2020-03-05.zip"  class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">
+      Download this bill run
+    </a>
+  </p>
+
 
   <!-- invoices table -->
   <div class="table govuk-!-margin-bottom-6">                                                <!-- a table -->
@@ -210,9 +223,6 @@
         <p class="table__row--text">
           <a href="supplementary-bill">
             View <span class="screen-reader-only">bill for billing account 021545</span>
-          </a> |
-          <a href="confirm-remove-bill">
-            Remove <span class="screen-reader-only">bill for billing account 021545</span>
           </a>
         </p>
       </div>
@@ -261,9 +271,6 @@
         <p class="table__row--text">
           <a href="supplementary-bill">
             View <span class="screen-reader-only">bill for billing account 038745</span>
-          </a> |
-          <a href="confirm-remove-bill">
-            Remove <span class="screen-reader-only">bill for billing account 038745</span>
           </a>
         </p>
       </div>
@@ -313,9 +320,6 @@
         <p class="table__row--text">
           <a href="supplementary-bill">
             View <span class="screen-reader-only">bill for billing account 015512</span>
-          </a> |
-          <a href="confirm-remove-bill">
-            Remove <span class="screen-reader-only">bill for billing account 015512</span>
           </a>
         </p>
       </div>
@@ -365,9 +369,6 @@
         <p class="table__row--text">
           <a href="supplementary-bill">
             View <span class="screen-reader-only">bill for billing account 016824</span>
-          </a> |
-          <a href="confirm-remove-bill">
-            Remove <span class="screen-reader-only">bill for billing account 016824</span>
           </a>
         </p>
       </div>

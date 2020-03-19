@@ -41,6 +41,8 @@
 
 {% block content %}
 
+
+
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
     <div class="govuk-grid-column-two-thirds">
 
@@ -48,11 +50,19 @@
         <h1 class="govuk-caption-l">Bill AI26515</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
 
+        {% if [data.status] == "ready" %}
         <p class="govuk-body">
           <strong class="table__status table__status--ready table__status--l ">
             Ready
           </strong>
         </p>
+        {% else %}
+        <p class="govuk-body">
+          <strong class="table__status table__status--l">
+            Sent
+          </strong>
+        </p>
+        {% endif %}
 
         <div class="govuk-grid-row govuk-!-margin-bottom-3">
           <div class="govuk-grid-column-full">
@@ -111,6 +121,8 @@
     </div>
   </div>
 
+
+
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
@@ -144,6 +156,18 @@
   <!-- <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
     Remove from batch
   </button> -->
+
+{% if [data.status] == "ready" %}
+
+<!--remove from the bill run button-->
+  <p class="govuk-body govuk-!-margin-bottom-0">
+   <a href="confirm-remove-bill"  class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">
+     Remove from the bill run
+   </a>
+ </p>
+
+ {% endif %}
+
 
   <div class="divider govuk-!-margin-bottom-7"></div>
 
@@ -188,12 +212,15 @@
           <div class="table__cell bold-small column--30">
             Transaction detail
           </div>
-          <div class="table__cell bold-small numbers column--20">
+          <div class="table__cell bold-small numbers column--15">
             Billable days
           </div>
           <!-- <div class="table__cell bold-small numbers">
             Pro-rata days
           </div> -->
+          <div class="table__cell bold-small numbers column--15">
+            Quantity
+          </div>
           <div class="table__cell bold-small numbers column--20">
             Credit
           </div>
@@ -229,7 +256,13 @@
             <h6 class="table__context">
               Billable days
             </h6>
-            61/300
+            61
+          </div>
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Quantity
+            </h6>
+            20ML
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -279,7 +312,13 @@
             <h6 class="table__context">
               Billable days
             </h6>
-            61/300
+            61
+          </div>
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Quantity
+            </h6>
+            20ML
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -329,7 +368,13 @@
             <h6 class="table__context">
               Billable days
             </h6>
-            210/300
+            210
+          </div>
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Quantity
+            </h6>
+            20ML
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -378,7 +423,7 @@
             <h6 class="table__context">
               Billable days
             </h6>
-            210/300
+            210
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -386,6 +431,12 @@
             </h6>
             0
           </div> -->
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Quantity
+            </h6>
+            20ML
+          </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Credit
@@ -412,6 +463,9 @@
           <div class="table__cell table__cell--empty">
 
           </div>
+          <div class="table__cell table__cell--empty">
+
+          </div>
           <div class="table__cell numbers">
             <h5 class="table__context">
               Credit total
@@ -433,6 +487,9 @@
                Total debits
             </h5>
             Debits
+          </div>
+          <div class="table__cell table__cell--empty">
+
           </div>
           <div class="table__cell table__cell--empty">
 
@@ -500,19 +557,22 @@
 
         <!-- table head -->
         <div class="table__row--head">                                          <!-- the table head -->
-          <div class="table__cell bold-small">
+          <div class="table__cell bold-small column--30">
             Transaction detail
           </div>
-          <div class="table__cell bold-small numbers">
+          <div class="table__cell bold-small numbers column--15">
             Billable days
           </div>
           <!-- <div class="table__cell bold-small numbers">
             Pro-rata days
           </div> -->
-          <div class="table__cell bold-small numbers">
+          <div class="table__cell bold-small numbers column--15">
+            Quantity
+          </div>
+          <div class="table__cell bold-small numbers column--20">
             Credit
           </div>
-          <div class="table__cell bold-small numbers">
+          <div class="table__cell bold-small numbers column--20">
             Debit
           </div>
         </div>
@@ -542,7 +602,7 @@
             <h6 class="table__context">
               Billable days
             </h6>
-            90/300
+            90
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -550,6 +610,12 @@
             </h6>
             0
           </div> -->
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Quantity
+            </h6>
+            20ML
+            </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Credit
@@ -590,7 +656,7 @@
             <h6 class="table__context">
               Billable days
             </h6>
-            90/300
+            90
           </div>
           <!-- <div class="table__cell numbers">
             <h6 class="table__context">
@@ -598,6 +664,12 @@
             </h6>
             0
           </div> -->
+          <div class="table__cell numbers">
+            <h6 class="table__context">
+              Quantity
+            </h6>
+            20ML
+            </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Credit
@@ -624,6 +696,9 @@
           <div class="table__cell table__cell--empty">
 
           </div>
+          <div class="table__cell table__cell--empty">
+
+          </div>
           <div class="table__cell numbers">
             <h5 class="table__context">
               Credit total
@@ -645,6 +720,9 @@
                Total debits
             </h5>
             Debits
+          </div>
+          <div class="table__cell table__cell--empty">
+
           </div>
           <div class="table__cell table__cell--empty">
 
