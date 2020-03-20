@@ -52,15 +52,17 @@
 
       {% if [data.status] == "ready" %}
       <p class="govuk-body">
-        <strong class="table__status table__status--ready table__status--l ">
-          Ready
-        </strong>
+        {{govukTag({
+        text: "Ready",
+        classes: "govuk-tag--green govuk-!-font-size-27"
+      })}}
       </p>
       {% else %}
       <p class="govuk-body">
-        <strong class="table__status table__status--l">
-          Sent
-        </strong>
+        {{govukTag({
+        text: "Sent",
+        classes: "govuk-tag--blue govuk-!-font-size-27"
+      })}}
       </p>
       {% endif %}
 

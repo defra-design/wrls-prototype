@@ -52,9 +52,10 @@
 
 
       <p class="govuk-body">
-        <strong class="table__status table__status--l">
-          Sent
-        </strong>
+        {{govukTag({
+        text: "Sent",
+        classes: "govuk-tag--blue govuk-!-font-size-27"
+      })}}
       </p>
 
     </div>

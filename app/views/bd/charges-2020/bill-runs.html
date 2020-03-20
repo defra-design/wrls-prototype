@@ -136,9 +136,13 @@
           <h5 class="table__context">
             Status
           </h5>
-          <strong class="table__status table__status--pending">
+          {{govukTag({
+          text: "Building",
+          classes: "govuk-tag--orange"
+        })}}
+    <!--      <strong class="table__status table__status--pending">
             Building
-          </strong>
+          </strong> -->
         </div>
       </a>
 
@@ -194,13 +198,15 @@
             Status
           </h5>
           {% if [data.status] == "ready" %}
-            <strong class="table__status table__status--ready  ">
-              Ready
-           </strong>
+          {{govukTag({
+          text: "Ready",
+          classes: "govuk-tag--green"
+        })}}
           {% else %}
-            <strong class="table__status">
-              Sent
-            </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue"
+        })}}
           {% endif %}
         </div>
       </a>
@@ -259,13 +265,15 @@
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
           {% if [data.annualstatus] == "ready" %}
-            <strong class="table__status table__status--ready  ">
-              Ready
-           </strong>
+          {{govukTag({
+          text: "Ready",
+          classes: "govuk-tag--green"
+        })}}
           {% else %}
-            <strong class="table__status">
-              Sent
-            </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue"
+        })}}
           {% endif %}
         </div>
       </a>
@@ -339,17 +347,20 @@
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
           {% if [data.tptstatus] == "review" %}
-          <strong class="table__status table__status--ready">
-            Review
-          </strong>
+          {{govukTag({
+          text: "Review",
+          classes: "govuk-tag--green"
+        })}}
           {% elif [data.tptstatus] == "ready" %}
-            <strong class="table__status table__status--ready  ">
-              Ready
-           </strong>
+          {{govukTag({
+          text: "Ready",
+          classes: "govuk-tag--green"
+        })}}
           {% else %}
-            <strong class="table__status">
-              Sent
-            </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue"
+        })}}
           {% endif %}
         </div>
       </a>
@@ -405,9 +416,10 @@
             Status
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
-          <strong class="table__status table__status--error">
-            Error
-          </strong>
+          {{govukTag({
+          text: "Error",
+          classes: "govuk-tag--red"
+        })}}
         </div>
       </a>
 
@@ -462,9 +474,10 @@
             Status
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
-          <strong class="table__status">
-            Sent
-          </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue"
+        })}}
         </div>
       </a>
 
@@ -519,9 +532,10 @@
             Status
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
-          <strong class="table__status">
-            Sent
-          </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue"
+        })}}
         </div>
       </a>
 
@@ -576,9 +590,10 @@
             Status
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
-          <strong class="table__status">
-            Sent
-          </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue"
+        })}}
         </div>
       </a>
 
@@ -633,9 +648,10 @@
             Status
           </h5>
           <!-- <strong class="table__status table__status--todo"> -->
-          <strong class="table__status">
-            Sent
-          </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue"
+        })}}
         </div>
       </a>
 

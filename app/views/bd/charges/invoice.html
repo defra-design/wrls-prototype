@@ -54,9 +54,10 @@
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
 
         <p class="govuk-body">
-          <strong class="table__status table__status--l">
-            Sent
-          </strong>
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue govuk-!-font-size-27"
+        })}}
         </p>
 
         <div class="govuk-grid-row govuk-!-margin-bottom-3">

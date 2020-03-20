@@ -26,6 +26,7 @@ $govuk-global-styles: true;
 @import "patterns/summary-list-additions";
 @import "patterns/detailed-guidance";
 @import "patterns/alerts";
+@import "tag";
 
 // Scalable and Modular Architecture for Cascading Style Sheets
 @import "layout.scss";
