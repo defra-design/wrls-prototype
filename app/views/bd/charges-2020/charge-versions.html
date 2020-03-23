@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge versions" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "/bd/licence-summary#charge"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{title}}</h1>
+    {{ govukButton({
+      text: "Create new charge",
+      href: "#"
+    }) }}
+
+
+  </div>
+</div>
+
+<section class="govuk-!-margin-bottom-2">
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+          <!-- table with two columns -->
+          <div class="table govuk-!-margin-bottom-8">
+
+            <div class="table__row--head">
+              <div class="table__cell bold-small column--20">
+                Start date
+              </div>
+              <div class="table__cell bold-small column--20">
+                End date
+              </div>
+              <div class="table__cell bold-small column--40">
+                Charge elements
+              </div>
+               <div class="table__cell bold-small column--20">
+               Action
+              </div>
+            </div>
+
+            <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 1
+                </h2>
+                <h3 class="table__context">
+                  Start date
+                </h3>
+                22 April 2019
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  End date
+                </h3>
+
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                Charge elements
+                </h3>
+Spray irrigation, base licence<br>
+Spray irrigation, Time limited increase
+              </div>
+              <div class="table__cell">
+                <a href="current-charge-version">
+                  View
+                </a>
+                <!-- <br>|
+               <a href="change-agreement-date">
+                  Change start date
+                </a> -->
+              </div>
+            </div>
+
+
+
+                  <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+                    <div class="table__cell">
+                      <h2 class="screen-reader-only">
+                        Row 2
+                      </h2>
+                      <h3 class="table__context">
+                        Start date
+                      </h3>
+                      1 April 2017
+                    </div>
+                    <div class="table__cell">
+                      <h3 class="table__context">
+                        End date
+                      </h3>
+                      21 April 2019
+                    </div>
+                    <div class="table__cell">
+                      <h3 class="table__context">
+                      Charge elements
+                      </h3>
+      Spray irrigation, base licence
+                    </div>
+                    <div class="table__cell">
+                      <a href="charge-version-1">
+                        View
+                      </a>
+                      <!-- <br>|
+                     <a href="change-agreement-date">
+                        Change start date
+                      </a> -->
+                    </div>
+                  </div>
+
+                    </div>
+
+                      </div>
+                        </div>
+
+
+</section>
+
+{% endblock %}
