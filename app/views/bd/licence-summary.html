@@ -134,6 +134,8 @@
       Billing
     </h2>
 
+
+
     <section>
 
       <!-- charges -->
@@ -141,10 +143,10 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Latest bill
+            Last billed
           </dt>
           <dd class="govuk-summary-list__value">
-            AA126515
+            March 2020
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/bd/charges-2020/invoice">
@@ -152,7 +154,7 @@
             </a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
+    <!--    <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Next bill due
           </dt>
@@ -160,9 +162,9 @@
             30 March 2020
           </dd>
           <dd class="govuk-summary-list__actions">
-            <!-- no action -->
+
           </dd>
-        </div>
+        </div> -->
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -180,25 +182,26 @@
           <dd class="govuk-summary-list__actions">
             <ul class="govuk-summary-list__actions-list">
               <li class="govuk-summary-list__actions-list-item">
-                <a class="govuk-link" href="/bd/contacts/new-contact">
-                  Change<span class="govuk-visually-hidden"> billing account</span>
-                </a>
-              </li>
-              <li class="govuk-summary-list__actions-list-item">
                 <a class="govuk-link" href="/bd/charges-2020/ias">
                   View<span class="govuk-visually-hidden"> billing account</span>
                 </a>
               </li>
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="/bd/contacts/new-contact">
+                  Change<span class="govuk-visually-hidden"> billing account</span>
+                </a>
+              </li>
+
             </ul>
           </dd>
         </div>
 
-        <div class="govuk-summary-list__row">
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
           <dt class="govuk-summary-list__key">
             Agreements
           </dt>
           <dd class="govuk-summary-list__value">
-            Two-part tariff (S127)
+            {{[data.agreement]}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="charges-2020/agreements">
@@ -207,7 +210,7 @@
           </dd>
         </div>
 
-        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <!--    <div class="govuk-summary-list__row govuk-summary-list__row--last">
           <dt class="govuk-summary-list__key">
             Charge version 22 April 2019
           </dt>
@@ -220,11 +223,18 @@ Spray irrigation, base licence<br>
               View<span class="govuk-visually-hidden"> charge version</span>
             </a>
           </dd>
-        </div>
+        </div> -->
 
       </dl>
 
     </section>
+
+    <section>
+
+      <a href="#" class="govuk-link">Charge versions</a>
+
+    </section>
+
 
   </section>
 

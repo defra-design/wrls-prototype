@@ -35,6 +35,11 @@ module.exports = {
   "tptIssueNP": "notProcessed",
   "status": "ready",
   "tptstatus": "review",
-  "annualstatus": "ready"
+  "annualstatus": "ready",
+  "agreement": "Two-part tariff (S127)",
+  "agreementStart-day": "1",
+  "agreementStart-month": "4",
+  "agreementStart-year": "2020",
+  "agreementEnded": "false"
     // Insert values here
 }

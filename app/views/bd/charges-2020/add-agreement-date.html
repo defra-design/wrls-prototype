@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add agreement date" %}
+{% set title = "Set agreement start date" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -46,85 +46,22 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+  <!--    <h1 class="govuk-heading-l">{{ title }}</h1> -->
 
-    </div>
-  </div>
 
-  <form action="add-agreement-signed" method="post" class="form" id="add-date">
+  <form action="add-agreement-check" method="post" class="form">
 
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-          <h1 class="govuk-fieldset__heading">
-            When did the agreement start?
-          </h1>
-        </legend>
-
-        <div class="govuk-!-margin-bottom-6">
-          <!-- <p id="dob-hint" class="govuk-hint">
-            Start date
-          </p> -->
-          <div class="govuk-date-input" id="start-date">
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="start-day">
-                  Day
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day" type="number" autocomplete="off" pattern="[0-9]*">
-              </div>
-            </div>
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="start-month">
-                  Month
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month" type="number" autocomplete="off" pattern="[0-9]*">
-              </div>
-            </div>
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="start-year">
-                  Year
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year" type="number" autocomplete="off" pattern="[0-9]*">
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- <p id="dob-hint" class="govuk-hint">
-          End date
-        </p>
-        <div class="govuk-date-input" id="end-date">
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="end-day">
-                Day
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-day" name="end-day" type="number" autocomplete="off" pattern="[0-9]*">
-            </div>
-          </div>
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="end-month">
-                Month
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-month" name="end-month" type="number" autocomplete="off" pattern="[0-9]*">
-            </div>
-          </div>
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="end-year">
-                Year
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="end-year" name="end-year" type="number" autocomplete="off" pattern="[0-9]*">
-            </div>
-          </div>
-        </div> -->
-      </fieldset>
-    </div>
+    {{ govukDateInput({
+  id: "agreementStart",
+  namePrefix: "agreementStart",
+  fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
+  }
+}) }}
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">
       Continue
@@ -134,24 +71,7 @@
     </button> -->
 
   </form>
-
+  </div>
 </div>
-
-<script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-<script>
-  $(function() {
-    $('form[data-routing]').on('submit', function(ev) {
-      // FInd selected radio button
-      const url = $(this).find('input:checked').val();
-
-      if(url) {
-        ev.preventDefault();
-        window.location.href = url;
-        return false;
-      }
-    });
-  })
-</script>
 
 {% endblock %}

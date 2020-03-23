@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add charge agreement" %}
+{% set title = "Select agreement type" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,41 +45,41 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Add charge agreement</h1>
+    <!--  <h1 class="govuk-heading-l">{{title}}</h1> -->
 
     </div>
   </div>
 
-  <form action="add-agreement-date" method="post" class="form" id="return-reference-error">
+  <form action="add-agreement-date" method="post" class="form">
 
-    {% from "radios/macro.njk" import govukRadios %}
+
 
       {{ govukRadios({
-        idPrefix: "charge-loss",
-        name: "loss",
+        idPrefix: "agreement",
+        name: "agreement",
         fieldset: {
           legend: {
-            text: "What type of agreement do you want to add?",
-            isPageHeading: false,
-            classes: "govuk-fieldset__legend--m"
+            text: [title],
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
           }
         },
         items: [
           {
-            value: "section-125",
-            text: "S125 - Energy generation"
+            value: "Energy generation (S125)",
+            text: "Energy generation (S125)"
           },
           {
-            value: "section-126",
-            text: "S126 - Abatement"
+            value: "Abatement (S126)",
+            text: "Abatement (S126)"
           },
           {
-            value: "two-part-tariff",
-            text: "S127 - Two-part tariff"
+            value: "Two-part tariff (S127)",
+            text: "Two-part tariff (S127)"
           },
           {
-            value: "section-130",
-            text: "S130 - Canal and Rivers Trust"
+            value: "Canal and Rivers Trust (S130)",
+            text: "Canal and Rivers Trust (S130)"
           }
         ]
       })

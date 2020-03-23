@@ -43,15 +43,35 @@
 
 {% block content %}
 
+{% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+{% set monthNumber = data['agreementStart-month'] %}
+{% set monthNumberEnd = data['agreementEnd-month'] %}
+
+{% set month = monthNames[monthNumber - 1] %}
+{% set monthEnd = monthNames[monthNumberEnd - 1] %}
+
+{% set agreementStart = data['agreementStart-day'] + " " + month +" "+ data['agreementStart-year']%}
+{% set agreementEnd = data['agreementEnd-day'] + " " + monthEnd +" "+ data['agreementEnd-year']%}
+
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{title}}</h1>
+    {{ govukButton({
+      text: "Create agrement",
+      href: "add-agreement"
+    }) }}
+
 
   </div>
 </div>
+
+
 
 
 <div class="govuk-grid-row">
@@ -61,21 +81,103 @@
     <div class="table govuk-!-margin-bottom-8">
 
       <div class="table__row--head">
-        <div class="table__cell bold-small column--50">
+        <div class="table__cell bold-small column--40">
           Agreements
         </div>
-        <div class="table__cell bold-small column--30">
+        <div class="table__cell bold-small column--20">
           Start date
         </div>
-        <!-- <div class="table__cell bold-small column--20">
-
-        </div> -->
+        <div class="table__cell bold-small column--20">
+          End date
+        </div>
+         <div class="table__cell bold-small column--40">
+         Action
+        </div>
       </div>
 
       <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
         <div class="table__cell">
           <h2 class="screen-reader-only">
             Row 1
+          </h2>
+          <h3 class="table__context">
+            Agreements
+          </h3>
+          {{ [data.agreement] }}
+          <!-- <br>
+          <a href="change-agreement-date">
+            Remove agreement
+          </a> -->
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Start date
+          </h3>
+          {{ [agreementStart] }}
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+        {% if [data.agreementEnded] == "true" %}
+        {{ [agreementEnd] }}
+        {% endif %}
+        </div>
+        <div class="table__cell">
+          {% if [data.agreementEnded] == "false" %}
+          <a href="remove-agreement-date">
+            End agreement
+          </a>
+          {% endif %}
+          <!-- <br>|
+         <a href="change-agreement-date">
+            Change start date
+          </a> -->
+        </div>
+      </div>
+
+
+      <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <h3 class="table__context">
+            Agreements
+          </h3>
+          Abatement (S126)
+          <!-- <br>
+          <a href="change-agreement-date">
+            Remove agreement
+          </a> -->
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Start date
+          </h3>
+          1 April 2017
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          31 March2019
+        </div>
+        <div class="table__cell">
+        <!--  <a href="remove-agreement-date">
+            End agreement
+          </a><<br>|
+         <a href="change-agreement-date">
+            Change start date
+          </a> -->
+        </div>
+      </div>
+
+
+      <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 3
           </h2>
           <h3 class="table__context">
             Agreements
@@ -87,25 +189,30 @@
           </a> -->
         </div>
         <div class="table__cell">
-          Started 1 April 2019
+          <h3 class="table__context">
+            Start date
+          </h3>
+          1 April 2014
         </div>
-        <!-- <div class="table__cell">
-          <a href="remove-agreement-date">
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          31 March2017
+        </div>
+        <div class="table__cell">
+        <!--  <a href="remove-agreement-date">
             End agreement
-          </a><br>
-          <a href="change-agreement-date">
+          </a><<br>|
+         <a href="change-agreement-date">
             Change start date
-          </a>
-        </div> -->
+          </a> -->
+        </div>
       </div>
 
-    </div>
 
-    <!-- <div class="govuk-!-margin-bottom-9">
-      <a class="govuk-link" href="add-agreement">
-        Add an agreement
-      </a>
-    </div> -->
+
+    </div>
 
   </div>
 </div>
