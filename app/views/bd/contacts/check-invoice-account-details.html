@@ -127,9 +127,15 @@
         ]
       }) }}
 
+    {% if [data.createNewContact] == "true" %}
+    <a href="/bd/charges-2020/charge-version/charge-data-create" class="wrls-faux-button">
+      Continue
+    </a>
+    {% else %}
     <a href="/bd/licence-summary#charge" class="wrls-faux-button">
       Confirm
     </a>
+    {% endif %}
 
   </div>
 </div>

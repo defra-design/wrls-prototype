@@ -41,6 +41,19 @@ module.exports = {
   "agreementStart-month": "4",
   "agreementStart-year": "2020",
   "agreementEnded": "false",
-  "agreementNew": "false"
+  "agreementNew": "false",
+  "purpose": "Spray irrigation",
+  "abstractionPeriod": "1 April to 31 March",
+  "billableQuantity": "125,000,000 cubic metres",
+  "authorisedQuantity": "150,000,000 cubic metres",
+  "timeLimit": "No",
+  "source": "Tidal",
+  "season": "Summer",
+  "loss": "High",
+  "chargeDescription": "",
+  "chargeStart": "1 April 2020",
+  "elementNew": "false",
+  "createNewContact": "false",
+  "chargeStartSet": "false"
     // Insert values here
 }

@@ -1,0 +1,238 @@
+{% extends "layout.html" %}
+
+{% set title = "Check charge data" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-9">{{title}}</h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  {% if [data.chargeDescription] == "" %}
+  <form action="create-element-description" method="post" class="form" id="return-reference-error">
+  {% else %}
+  <form action="charge-data-create?elementNew=true" method="post" class="form" id="return-reference-error">
+  {% endif %}
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element</h2>
+    {{ govukSummaryList({
+      classes: "govuk-!-margin-bottom-9",
+    rows: [
+      {
+        key: {
+          text: "Purpose"
+        },
+        value: {
+          text: [data.purpose]
+        },
+        actions: {
+          items: [
+            {
+              href: "change-purpose",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+
+      {
+         key: {
+           text: "Description"
+         },
+         value: {
+           text: [data.chargeDescription]
+         },
+         actions: {
+           items: [
+             {
+               href: "change-purpose",
+               text: "Change",
+               visuallyHiddenText: "name"
+             }
+           ]
+         }
+       },
+
+
+      {
+        key: {
+          text: "Abstraction period"
+        },
+        value: {
+          text: [data.abstractionPeriod]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Billable quantity"
+        },
+        value: {
+          text: [data.billableQuantity]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Authorised quantity"
+        },
+        value: {
+          text: [data.authorisedQuantity]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Time limit"
+        },
+        value: {
+          text: [data.timeLimit]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Source"
+        },
+        value: {
+          text: [data.source]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Season"
+        },
+        value: {
+          text: [data.season]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Loss"
+        },
+        value: {
+          text: [data.loss]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }
+
+
+    ]
+  }) }}
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+</div>
+</div>
+
+
+
+{% endblock %}

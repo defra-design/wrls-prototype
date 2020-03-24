@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% set title = "Create charge" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{title}}
+    </h1>
+
+    <ol class="app-task-list">
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">1. </span> Agreements
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <a class="app-task-list__task-name" href="create-agreement" aria-describedby="agreements-completed">
+              Set agreements
+            </a>
+            {% if [data.agreementNew] == "true" %}
+            <strong class="govuk-tag app-task-list__task-completed" id="agreements-completed">Completed</strong>
+            {% endif %}
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">2. </span> Elements
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <a class="app-task-list__task-name" href="create-element" aria-describedby="elements-completed">
+              Create elements
+            </a>
+            {% if [data.elementNew] == "true" %}
+            <strong class="govuk-tag app-task-list__task-completed" id="elements-completed">Completed</strong>
+            {% endif %}
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">3. </span> Billing contact
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <a class="app-task-list__task-name" href="/bd/contacts/new-contact?createNewContact=true" aria-describedby="billing-contact-completed">
+              Set billing contact
+            </a>
+            {% if [data.createNewContact] == "true" %}
+            <strong class="govuk-tag app-task-list__task-completed" id="billing-contact-completed">Completed</strong>
+            {% endif %}
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">4. </span> Set date and confirm
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <a class="app-task-list__task-name" href="set-charge-start-date" aria-describedby="charge-date-completed">
+              Set charge date
+            </a>
+            {% if [data.chargeStartSet] == "true" %}
+            <strong class="govuk-tag app-task-list__task-completed" id="charge-date-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <a class="app-task-list__task-name" href="charge-data-check">
+              Check charge details and confirm
+            </a>
+
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

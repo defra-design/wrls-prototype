@@ -143,14 +143,14 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Last billed
+            Billed up to
           </dt>
           <dd class="govuk-summary-list__value">
-            March 2020
+            31 March 2020
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/bd/charges-2020/invoice">
-              View<span class="govuk-visually-hidden"> latest bill</span>
+              View all bills<span class="govuk-visually-hidden"> latest bill</span>
             </a>
           </dd>
         </div>
@@ -200,9 +200,13 @@
           <dt class="govuk-summary-list__key">
             Agreements
           </dt>
+          {% if [data.agreementNew] == "true" %}
           <dd class="govuk-summary-list__value">
             {{[data.agreement]}}
           </dd>
+          {% else %}
+            No current agreements
+          {% endif %}
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="charges-2020/agreements">
               View<span class="govuk-visually-hidden"> agreements</span>
