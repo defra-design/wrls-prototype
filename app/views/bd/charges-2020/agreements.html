@@ -81,7 +81,7 @@
     <div class="table govuk-!-margin-bottom-8">
 
       <div class="table__row--head">
-        <div class="table__cell bold-small column--40">
+        <div class="table__cell bold-small column--35">
           Agreements
         </div>
         <div class="table__cell bold-small column--20">
@@ -90,11 +90,12 @@
         <div class="table__cell bold-small column--20">
           End date
         </div>
-         <div class="table__cell bold-small column--40">
+         <div class="table__cell bold-small column--25">
          Action
         </div>
       </div>
 
+      {% if [data.agreementNew] == "true" %}
       <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
         <div class="table__cell">
           <h2 class="screen-reader-only">
@@ -127,14 +128,14 @@
           {% if [data.agreementEnded] == "false" %}
           <a href="remove-agreement-date">
             End agreement
+          </a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
+         <a href="remove-agreement">
+            Remove
           </a>
           {% endif %}
-          <!-- <br>|
-         <a href="change-agreement-date">
-            Change start date
-          </a> -->
         </div>
       </div>
+      {% endif %}
 
 
       <div class="table__row table__row--selectable govuk-!-margin-bottom-6">

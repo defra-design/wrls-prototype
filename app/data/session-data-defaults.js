@@ -40,6 +40,7 @@ module.exports = {
   "agreementStart-day": "1",
   "agreementStart-month": "4",
   "agreementStart-year": "2020",
-  "agreementEnded": "false"
+  "agreementEnded": "false",
+  "agreementNew": "false"
     // Insert values here
 }
