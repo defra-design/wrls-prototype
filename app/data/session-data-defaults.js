@@ -42,6 +42,7 @@ module.exports = {
   "agreementStart-year": "2020",
   "agreementEnded": "false",
   "agreementNew": "false",
+  "agreementCount": "1",
   "purpose": "Spray irrigation",
   "abstractionPeriod": "1 April to 31 March",
   "billableQuantity": "125,000,000 cubic metres",
@@ -54,6 +55,8 @@ module.exports = {
   "chargeStart": "1 April 2020",
   "elementNew": "false",
   "createNewContact": "false",
-  "chargeStartSet": "false"
+  "chargeStartSet": "false",
+  "versionRemoved": "false"
+  
     // Insert values here
 }

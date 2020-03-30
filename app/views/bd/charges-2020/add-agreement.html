@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select agreement type" %}
+{% set title = "Select agreement" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -50,6 +50,9 @@
     </div>
   </div>
 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
   <form action="add-agreement-date" method="post" class="form">
 
 
@@ -65,14 +68,7 @@
           }
         },
         items: [
-          {
-            value: "Energy generation (S125)",
-            text: "Energy generation (S125)"
-          },
-          {
-            value: "Abatement (S126)",
-            text: "Abatement (S126)"
-          },
+
           {
             value: "Two-part tariff (S127)",
             text: "Two-part tariff (S127)"
@@ -85,6 +81,8 @@
       })
     }}
 
+
+
     <button type="submit" class="govuk-button">
       Continue
     </button>
@@ -92,6 +90,20 @@
   </form>
 
 </div>
+</div>
+
+<!-- Agreements not yet supported
+
+  {
+     value: "Energy generation (S125)",
+     text: "Energy generation (S125)"
+   },
+   {
+     value: "Abatement (S126)",
+     text: "Abatement (S126)"
+   },
+
+   -->
 
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 

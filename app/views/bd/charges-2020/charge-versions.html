@@ -3,11 +3,11 @@
 {% set title = "Charge versions" %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,13 +27,13 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-6">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-6">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()",
     href: "/bd/licence-summary#charge"
@@ -65,96 +65,124 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-          <!-- table with two columns -->
-          <div class="table govuk-!-margin-bottom-8">
+      <!-- table with two columns -->
+      <div class="table govuk-!-margin-bottom-8">
 
-            <div class="table__row--head">
-              <div class="table__cell bold-small column--25">
-                Start date
-              </div>
-              <div class="table__cell bold-small column--25">
-                End date
-              </div>
-              <div class="table__cell bold-small column--40">
-                Billed up to
-              </div>
-               <div class="table__cell bold-small column--10">
-               Action
-              </div>
-            </div>
+        <div class="table__row--head">
+          <div class="table__cell bold-small column--20">
+            Start date
+          </div>
+          <div class="table__cell bold-small column--20">
+            End date
+          </div>
+          <div class="table__cell bold-small column--20">
+            Status
+          </div>
+          <div class="table__cell bold-small column--25">
+            Billed up to
+          </div>
+          <div class="table__cell bold-small column--15">
+            Action
+          </div>
+        </div>
 
-            <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
-              <div class="table__cell">
-                <h2 class="screen-reader-only">
-                  Row 1
-                </h2>
-                <h3 class="table__context">
-                  Start date
-                </h3>
-                22 April 2019
-              </div>
-              <div class="table__cell">
-                <h3 class="table__context">
-                  End date
-                </h3>
+        {% if [data.versionRemoved] == "false" %}
+        <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 1
+            </h2>
+            <h3 class="table__context">
+              Start date
+            </h3>
+            22 April 2019
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              End date
+            </h3>
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Status
+            </h3>
+            {{govukTag({
+          text: "Current",
+          classes: "govuk-tag--green"
+        })}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Billed up to
+            </h3>
+            
+          </div>
 
-              </div>
-              <div class="table__cell">
-                <h3 class="table__context">
-                Billed up to
-                </h3>
-                31 March 2020
-              </div>
-              <div class="table__cell">
-                <a href="current-charge-version">
-                  View
-                </a>
-                <!-- <br>|
-               <a href="change-agreement-date">
-                  Change start date
-                </a> -->
-              </div>
-            </div>
+          <div class="table__cell">
+            <a href="current-charge-version">
+              View
+            </a>
+            <span class="govuk-!-margin-left-1 govuk-!-margin-right-1"> | </span>
+            <a href="confirm-remove-charge-version">
+              Remove
+            </a>
+          </div>
+        </div>
+        {% endif %}
 
 
 
-                  <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
-                    <div class="table__cell">
-                      <h2 class="screen-reader-only">
-                        Row 2
-                      </h2>
-                      <h3 class="table__context">
-                        Start date
-                      </h3>
-                      1 April 2017
-                    </div>
-                    <div class="table__cell">
-                      <h3 class="table__context">
-                        End date
-                      </h3>
-                      21 April 2019
-                    </div>
-                    <div class="table__cell">
-                      <h3 class="table__context">
-                      Billed up to
-                      </h3>
-                      31 March 2019
-                    </div>
-                    <div class="table__cell">
-                      <a href="charge-version-1">
-                        View
-                      </a>
-                      <!-- <br>|
+        <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              {% if [data.versionRemoved] == "false" %}
+              Row 2
+              {% else %}
+              Row 1
+              {% endif %}
+            </h2>
+            <h3 class="table__context">
+              Start date
+            </h3>
+            1 April 2017
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              End date
+            </h3>
+            21 April 2019
+          </div>
+
+          <div class="table__cell">
+            <h3 class="table__context">
+              Status
+            </h3>
+            {{govukTag({
+                  text: "Superseded",
+                  classes: "govuk-tag--grey"
+                })}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Billed up to
+            </h3>
+            31 March 2019
+          </div>
+          <div class="table__cell">
+            <a href="charge-version-1">
+              View
+            </a>
+            <!-- <br>|
                      <a href="change-agreement-date">
                         Change start date
                       </a> -->
-                    </div>
-                  </div>
+          </div>
+        </div>
 
-                    </div>
+      </div>
 
-                      </div>
-                        </div>
+    </div>
+  </div>
 
 
 </section>
