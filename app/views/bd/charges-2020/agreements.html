@@ -90,9 +90,13 @@
         <div class="table__cell bold-small column--20">
           End date
         </div>
+        {% if [data.agreementNew] == "true" %}
+        {% if [data.agreementEnded] == "false" %}
          <div class="table__cell bold-small column--25">
          Action
         </div>
+        {% endif %}
+        {% endif %}
       </div>
 
       {% if [data.agreementNew] == "true" %}
@@ -124,16 +128,18 @@
         {{ [agreementEnd] }}
         {% endif %}
         </div>
+        {% if [data.agreementEnded] == "false" %}
         <div class="table__cell">
-          {% if [data.agreementEnded] == "false" %}
+
           <a href="remove-agreement-date">
             End agreement
           </a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
          <a href="remove-agreement">
             Remove
           </a>
-          {% endif %}
+
         </div>
+        {% endif %}
       </div>
       {% endif %}
 
@@ -164,6 +170,7 @@
           </h3>
           31 March2019
         </div>
+        {% if [data.agreementEnded] == "false" %}
         <div class="table__cell">
         <!--  <a href="remove-agreement-date">
             End agreement
@@ -172,6 +179,7 @@
             Change start date
           </a> -->
         </div>
+        {% endif %}
       </div>
 
 
@@ -201,6 +209,7 @@
           </h3>
           31 March2017
         </div>
+        {% if [data.agreementEnded] == "false" %}
         <div class="table__cell">
         <!--  <a href="remove-agreement-date">
             End agreement
@@ -209,6 +218,7 @@
             Change start date
           </a> -->
         </div>
+        {% endif %}
       </div>
 
 
