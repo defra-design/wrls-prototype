@@ -65,89 +65,82 @@
         </h2>
         <p class="govuk-body">
 
-        S127 (Two-part tariff)
+        1 April to 31 March
         </p>'
       }) }}
 
+      </div>
+
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+      {{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Abstraction period"
+      },
+      value: {
+        text: "1 April to 31 January"
+      }
+    },
+    {
+      key: {
+        text: "Billable quantity"
+      },
+      value: {
+        text: "1,250,000 cubic metres per year"
+      }
+    },
+    {
+      classes: "table__row--end",
+      key: {
+        text: "Authorised quantity"
+      },
+      value: {
+        text: "1,250,000 cubic metres per year"
+      }
+    },
+    {
+      key: {
+        text: "Source"
+      },
+      value: {
+        text: "Unsupported"
+      }
+    },
+    {
+      key: {
+        text: "Season"
+      },
+      value: {
+        text: "All year"
+      }
+    },
+    {
+      key: {
+        text: "Loss"
+      },
+      value: {
+        text: "High"
+      }
+    },
+    {
+      classes:"govuk-summary-list--no-border",
+      key: {
+        text: "Environmental Improvement Unit Charge"
+      },
+      value: {
+        text: "Other"
+      }
+    }
 
 
-    </div>
-  </div>
+  ]
+}) }}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-2">
-
-        <dl class="govuk-summary-list__row govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Abstraction period
-          </dt>
-          <dd class="govuk-summary-list__value">
-            1 April to 31 January
-          </dd>
-        </dl>
-
-        <div class="govuk-summary-list__row table__row--end">
-          <dt class="govuk-summary-list__key">
-            Chargable quantity
-          </dt>
-          <dd class="govuk-summary-list__value">
-            1,250,000 cubic metres per year
-          </dd>
-        </div>
-
-  <!--      </dl>
-
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-2">
-         Factors
-        </h3>
-        <dl class="govuk-summary-list"> -->
-
-        <div class="govuk-summary-list__row govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Source
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Unsupported
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Season
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <div>All year</div>
-          </dd>
-
-        </div>
-
-        <div class="govuk-summary-list__row govuk-summary-list__row--last" id="factors">
-          <dt class="govuk-summary-list__key">
-            Loss
-          </dt>
-          <dd class="govuk-summary-list__value">
-            High
-          </dd>
-        </div>
-
-
-
-    <!--    <div class="govuk-summary-list__row govuk-summary-list__row--last">
-          <dt class="govuk-summary-list__key">
-            Compensation (Environmental Improvement Unit Charge)
-          </dt>
-          <dd class="govuk-summary-list__value">
-            0
-          </dd>
-        </div> -->
-
-
-      </dl>
-
-    </div>
-  </div>
 
 </section>
 
