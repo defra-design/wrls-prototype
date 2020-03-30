@@ -51,8 +51,8 @@
 {% set month = monthNames[monthNumber - 1] %}
 {% set monthEnd = monthNames[monthNumberEnd - 1] %}
 
-{% set agreementStart = data['agreementStart-day'] + " " + month +" "+ data['agreementStart-year']%}
-{% set agreementEnd = data['agreementEnd-day'] + " " + monthEnd +" "+ data['agreementEnd-year']%}
+{% set agreementStart = data['agreementStart-day'] + " " + month + " "+ data['agreementStart-year']%}
+{% set agreementEnd = data['agreementEnd-day'] + " " + monthEnd + " "+ data['agreementEnd-year']%}
 
 
 
@@ -63,7 +63,7 @@
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{title}}</h1>
     {{ govukButton({
-      text: "Set up agreement",
+      text: "Set up new agreement",
       href: "add-agreement"
     }) }}
 
@@ -168,7 +168,7 @@
           <h3 class="table__context">
             End date
           </h3>
-          31 March2019
+          31 March 2019
         </div>
         {% if [data.agreementEnded] == "false" %}
         <div class="table__cell">
@@ -207,7 +207,7 @@
           <h3 class="table__context">
             End date
           </h3>
-          31 March2017
+          31 March 2017
         </div>
         {% if [data.agreementEnded] == "false" %}
         <div class="table__cell">
