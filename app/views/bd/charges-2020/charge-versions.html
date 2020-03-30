@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge versions" %}
+{% set title = "Charge information" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -50,7 +50,7 @@
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{title}}</h1>
     {{ govukButton({
-      text: "Set up new charge version",
+      text: "Set up new charge",
       href: "charge-data-create"
     }) }}
 
@@ -120,10 +120,10 @@
 
           <div class="table__cell">
             <a href="#">
-              Continue</a>
+              Continue</a> <span class="screen-reader-only">setting up charge information</span>
             <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
             <a href="confirm-remove-charge-version">
-              Remove
+              Remove <span class="screen-reader-only">charge information</span>
             </a>
           </div>
         </div>
@@ -167,7 +167,7 @@
 
           <div class="table__cell">
             <a href="current-charge-version">
-              View
+              View <span class="screen-reader-only">charge information</span>
             </a>
           </div>
         </div>
@@ -212,7 +212,7 @@
           </div>
           <div class="table__cell">
             <a href="charge-version-1">
-              View
+              View <span class="screen-reader-only">charge information</span>
             </a>
             <!-- <br>|
                      <a href="change-agreement-date">
@@ -263,7 +263,7 @@
           </div>
           <div class="table__cell">
             <a href="charge-version-2">
-              View
+              View <span class="screen-reader-only">charge information</span>
             </a>
             <!-- <br>|
                      <a href="change-agreement-date">
