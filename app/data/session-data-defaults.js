@@ -57,6 +57,6 @@ module.exports = {
   "createNewContact": "false",
   "chargeStartSet": "false",
   "versionRemoved": "false"
-  
+
     // Insert values here
 }

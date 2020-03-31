@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge information valid from 22 April 2019" %}
+{% set title = "Charge information valid from" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,7 +48,7 @@
     <!-- page heading -->
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">
-      <span class="screen-reader-only">Current</span> {{ title }}
+      <span class="screen-reader-only">Current</span> {{ title }} <br> 22 April 2019
     </h1>
     <!-- <a href="" class="wrls-faux-button wrls-faux-button--secondary">Change start date</a> -->
     <p class="govuk-body">
@@ -74,192 +74,98 @@
   </div>
 </div>
 
-<section class="govuk-!-margin-bottom-2">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+        {% set elements = [data.elements.element1, data.elements.element2] %}
+              {% for i in elements %}
+              <section class="govuk-!-margin-bottom-2">
 
-      {{ govukInsetText({
-        html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-1">
-          Spray irrigation, base licence
-        </h2>
-        <p class="govuk-body">
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-two-thirds">
 
-        1 April to 31 March
-        </p>'
-      }) }}
+                    {{ govukInsetText({
+                      html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-1">' +
+                      [i.purpose] + ', ' + [i.description] + '
+                      </h2>
+                      <p class="govuk-body">
 
-      </div>
+                      1 April to 31 March
+                      </p>'
+                    }) }}
 
-      </div>
+                    </div>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
+                    </div>
 
-      {{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        text: "Abstraction period"
-      },
-      value: {
-        text: "1 April to 31 January"
-      }
-    },
-    {
-      key: {
-        text: "Billable quantity"
-      },
-      value: {
-        text: "1,250,000 cubic metres per year"
-      }
-    },
-    {
-      classes: "table__row--end",
-      key: {
-        text: "Authorised quantity"
-      },
-      value: {
-        text: "1,250,000 cubic metres per year"
-      }
-    },
-    {
-      key: {
-        text: "Source"
-      },
-      value: {
-        text: "Unsupported"
-      }
-    },
-    {
-      key: {
-        text: "Season"
-      },
-      value: {
-        text: "All year"
-      }
-    },
-    {
-      key: {
-        text: "Loss"
-      },
-      value: {
-        text: "High"
-      }
-    },
-    {
-      classes:"govuk-summary-list--no-border",
-      key: {
-        text: "Environmental Improvement Unit Charge"
-      },
-      value: {
-        text: "Other"
-      }
-    }
+                    <div class="govuk-grid-row">
+                      <div class="govuk-grid-column-full">
 
-
-  ]
-}) }}
-
-
-</section>
-
-<section class="govuk-!-margin-bottom-2">
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      {{ govukInsetText({
-        html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-1">
-          Spray irrigation, time limited increase
-        </h2>
-        <p class="govuk-body">
-          1 April to 31 March
-        </p>'
-      }) }}
-
-    </div>
-  </div>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-      {{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        text: "Abstraction period"
-      },
-      value: {
-        text: "1 April to 31 January"
-      }
-    },
-    {
-      key: {
-        text: "Billable quantity"
-      },
-      value: {
-        text: "1,250,000 cubic metres per year"
-      }
-    },
-    {
-      key: {
-        text: "Authorised quantity"
-      },
-      value: {
-        text: "1,250,000 cubic metres per year"
-      }
-    },
-    {
-      classes: "table__row--end",
-      key: {
-        text: "Time limited"
-      },
-      value: {
-        text: "31 March 2021"
-      }
-    },
-    {
-      key: {
-        text: "Source"
-      },
-      value: {
-        text: "Unsupported"
-      }
-    },
-    {
-      key: {
-        text: "Season"
-      },
-      value: {
-        text: "All year"
-      }
-    },
-    {
-      key: {
-        text: "Loss"
-      },
-      value: {
-        text: "High"
-      }
-    },
-    {
-      classes:"govuk-summary-list--no-border",
-      key: {
-        text: "Environmental Improvement Unit Charge"
-      },
-      value: {
-        text: "Other"
-      }
-    }
+                    {{ govukSummaryList({
+                rows: [
+                  {
+                    key: {
+                      text: "Abstraction period"
+                    },
+                    value: {
+                      text: [i.absPeriod]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Billable quantity"
+                    },
+                    value: {
+                      text: [i.billQuantity] + ' Cubic metres per year'
+                    }
+                  },
+                  {
+                    classes: "table__row--end",
+                    key: {
+                      text: "Authorised quantity"
+                    },
+                    value: {
+                      text: [i.authQuantity] + ' Cubic metres per year'
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Source"
+                    },
+                    value: {
+                      text: [i.source]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Season"
+                    },
+                    value: {
+                      text: [i.season]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Loss"
+                    },
+                    value: {
+                      text: [i.loss]
+                    }
+                  },
+                  {
+                    classes:"govuk-summary-list--no-border",
+                    key: {
+                      text: "Environmental Improvement Unit Charge"
+                    },
+                    value: {
+                      text: "Other"
+                    }
+                  }
+                ]
+              }) }}
 
 
-  ]
-}) }}
+              </section>
+            {% endfor %}
 
-    </div>
-  </div>
 
-</section>
 
 {% endblock %}
