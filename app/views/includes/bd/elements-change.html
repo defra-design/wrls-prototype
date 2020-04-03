@@ -1,0 +1,193 @@
+
+
+{% set elements = [data.elements.element1] %}
+
+      {% for i in elements %}
+
+
+<!--formating for the abstraction period dates-->
+      {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+      {% set monthNumber = [i.abstractionStartMonth] %}
+      {% set monthNumberEnd = [i.abstractionEndMonth] %}
+      {% set month = monthNames[monthNumber - 1] %}
+      {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+      {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
+      {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
+
+
+{% set elementNumber = loop.index %}
+
+
+      <section class="govuk-!-margin-bottom-2">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element</h2>
+                {{ govukSummaryList({
+                  classes: "govuk-!-margin-bottom-9",
+                rows: [
+                  {
+                    key: {
+                      text: "Purpose"
+                    },
+                    value: {
+                      text: [i.purpose]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-element-purpose?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Purpose"
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                     key: {
+                       text: "Description"
+                     },
+                     value: {
+                       text: [i.description]
+                     },
+                     actions: {
+                       items: [
+                         {
+                           href: "/bd/charges-2020/add-element-description?change=true&elementNumber=" + elementNumber,
+                           text: "Change",
+                           visuallyHiddenText: "Description"
+                         }
+                       ]
+                     }
+                   },
+
+
+                  {
+                    key: {
+                      text: "Abstraction period"
+                    },
+                    value: {
+                      text: [abstractionStart] + " to " + [abstractionEnd]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-abstraction-period?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Abstraction period"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Billable quantity"
+                    },
+                    value: {
+                      text: [i.billableQuantity] + " cubic metres per year"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-billable-quantity?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Billable quantity"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Authorised quantity"
+                    },
+                    value: {
+                      text: [i.authorisedQuantity] + " cubic metres per year"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-authorised-quantity?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Authorised quantity"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Time limit"
+                    },
+                    value: {
+                      text: [i.timeLimit]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-time-limit?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Time limit"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Source"
+                    },
+                    value: {
+                      text: [i.source]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-source?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Source"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Season"
+                    },
+                    value: {
+                      text: [i.season]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-season?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Season"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Loss"
+                    },
+                    value: {
+                      text: [i.loss]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-loss?change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Loss"
+                        }
+                      ]
+                    }
+                  }
+
+
+                ]
+              }) }}
+
+
+      </section>
+    {% endfor %}

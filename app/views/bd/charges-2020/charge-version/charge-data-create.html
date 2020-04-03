@@ -47,7 +47,7 @@
     </h1>
 
     <ol class="app-task-list">
-      <li>
+  <!--    <li>
         <h2 class="app-task-list__section">
           <span class="app-task-list__section-number">1. </span> Agreements
         </h2>
@@ -62,29 +62,36 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li> -->
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">2. </span> Elements
+          <span class="app-task-list__section-number">1. </span> Charge information
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
-            <a class="app-task-list__task-name" href="create-element" aria-describedby="elements-completed">
-              Create elements
+            <a class="app-task-list__task-name" href="set-charge-start-date" aria-describedby="charge-date-completed">
+              Set charge start date
+            </a>
+            {% if [data.chargeStartSet] == "true" %}
+            <strong class="govuk-tag app-task-list__task-completed" id="charge-date-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <a class="app-task-list__task-name" href="how-to-create-element" aria-describedby="elements-completed">
+              Set up element
             </a>
             {% if [data.elementNew] == "true" %}
             <strong class="govuk-tag app-task-list__task-completed" id="elements-completed">Completed</strong>
             {% endif %}
           </li>
         </ul>
-      </li>
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">3. </span> Billing contact
+          <span class="app-task-list__section-number">2. </span> Billing contact
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <a class="app-task-list__task-name" href="/bd/contacts/new-contact?createNewContact=true" aria-describedby="billing-contact-completed">
-              Set billing contact
+              Set up billing contact
             </a>
             {% if [data.createNewContact] == "true" %}
             <strong class="govuk-tag app-task-list__task-completed" id="billing-contact-completed">Completed</strong>
@@ -93,26 +100,22 @@
         </ul>
       </li>
       <li>
-        <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">4. </span> Set date and confirm
+        <h2 class="app-task-list__section govuk-!-margin-bottom-0">
+          <span class="app-task-list__section-number ">3. </span> Set date and confirm
         </h2>
-        <ul class="app-task-list__items">
-          <li class="app-task-list__item">
-            <a class="app-task-list__task-name" href="set-charge-start-date" aria-describedby="charge-date-completed">
-              Set charge date
-            </a>
-            {% if [data.chargeStartSet] == "true" %}
-            <strong class="govuk-tag app-task-list__task-completed" id="charge-date-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <a class="app-task-list__task-name" href="charge-data-check">
+        <ul class="app-task-list__items govuk-!-margin-bottom-0"">
+          <li class="app-task-list__item govuk-!-margin-bottom-0" style="border:none;"s>
+            {{ govukButton({
+                text: "Check charge details and confirm",
+                href: "charge-data-check"
+              })
+            }}
+        <!--    <a class="app-task-list__task-name" href="charge-data-check">
               Check charge details and confirm
-            </a>
+            </a> -->
 
           </li>
         </ul>
-      </li>
     </ol>
 
   </div>

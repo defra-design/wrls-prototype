@@ -46,32 +46,41 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+
 
     </div>
   </div>
 
-  <form action="add-element-date" method="post" class="form" id="return-reference-error">
+  {% if [data.change] == "true" %}
+  <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
+  {% else %}
+  <form action="add-season" method="post" class="form" id="return-reference-error">
+  {% endif %}
+
 
     {% from "radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        idPrefix: "charge-source",
+        idPrefix: "source",
         name: "source",
         fieldset: {
+          legend: {
+            text: [title],
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
         },
         items: [
           {
-            checked: "checked",
-            value: "unsuported",
+            value: "Unsuported",
             text: "Unsupported"
           },
           {
-            value: "supported",
+            value: "Supported",
             text: "Supported (excluding Kielder)"
           },
           {
-            value: "tidal",
+            value: "Tidal",
             text: "Tidal"
           },
           {

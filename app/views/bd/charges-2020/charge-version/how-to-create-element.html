@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add element description" %}
+{% set title = "Use licence data to set up the element?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -49,24 +49,28 @@
   <!--    <h1 class="govuk-heading-l">{{ title }}</h1> -->
 
 
-  {% if [data.change] == "true" %}
-  <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
-  {% else %}
-  <form action="add-abstraction-period" method="post" class="form">
-  {% endif %}
+  <form data-routing="1" method="post" class="form">
 
-    {{ govukInput({
-  label: {
-    text: [title],
-    isPageHeading: true,
-    classes: "govuk-label--l govuk-!-margin-bottom-3"
+    {{ govukRadios({
+  idPrefix: "where-do-you-live",
+  name: "where-do-you-live",
+  fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
   },
-  hint: {
-    text: "Describe where the abstraction point is.
-For example, Otterton Borehole 1a"
-  },
-  id: "description",
-  name: "description"
+  items: [
+    {
+      value: "create-element",
+      text: "Yes"
+    },
+    {
+      value: "/bd/charges-2020/add-element-purpose",
+      text: "No"
+    }
+  ]
 }) }}
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">
@@ -79,5 +83,22 @@ For example, Otterton Borehole 1a"
   </form>
   </div>
 </div>
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
 
 {% endblock %}

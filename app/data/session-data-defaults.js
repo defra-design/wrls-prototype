@@ -43,20 +43,55 @@ module.exports = {
   "agreementEnded": "false",
   "agreementNew": "false",
   "agreementCount": "1",
-  "purpose": "Spray irrigation",
-  "abstractionPeriod": "1 April to 31 March",
-  "billableQuantity": "125,000,000 cubic metres",
-  "authorisedQuantity": "150,000,000 cubic metres",
-  "timeLimit": "No",
-  "source": "Tidal",
-  "season": "Summer",
-  "loss": "High",
-  "chargeDescription": "",
   "chargeStart": "1 April 2020",
   "elementNew": "false",
   "createNewContact": "false",
   "chargeStartSet": "false",
-  "versionRemoved": "false"
+  "versionRemoved": "false",
+  "elements":{
+    "element1": {
+        "purpose":"Spray irrigation",
+        "description":"Otterton borehole 1a",
+        "abstractionStartDay": "1",
+        "abstractionStartMonth": "4",
+        "abstractionEndDay": "31",
+        "abstractionEndMonth": "3",
+        "billableQuantity": "125,000,000",
+        "authorisedQuantity": "150,000,000",
+        "timeLimit": "No",
+        "source":"Unsupported",
+        "season":"All year",
+        "loss":"High"
+      },
+      "element2":{
+        "purpose":"Spray irrigation",
+        "description":"Otterton borehole 1a, Time limited increase",
+        "abstractionStartDay": "1",
+        "abstractionStartMonth": "4",
+        "abstractionEndDay": "31",
+        "abstractionEndMonth": "3",
+        "billableQuantity": "250,000",
+        "authorisedQuantity": "250,000",
+        "timeLimit": "Yes",
+        "source":"Unsupported",
+        "season":"All year",
+        "loss":"High"
+      },
+      "element3":{
+        "purpose":"Spray irrigation",
+        "description":"Otterton borehole 1a, Time limited increase",
+        "abstractionStartDay": "1",
+        "abstractionStartMonth": "4",
+        "abstractionEndDay": "31",
+        "abstractionEndMonth": "3",
+        "billableQuantity": "250,000",
+        "authorisedQuantity": "250,000",
+        "timeLimit": "Yes",
+        "source":"Unsupported",
+        "season":"All year",
+        "loss":"High"
+      }
+    }
 
     // Insert values here
 }

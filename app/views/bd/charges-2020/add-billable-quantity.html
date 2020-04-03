@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "What is the season?" %}
+{% set title = "Enter billable quantity" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -40,7 +40,6 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -51,43 +50,42 @@
     </div>
   </div>
 
-
   {% if [data.change] == "true" %}
   <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
   {% else %}
-  <form action="add-loss" method="post" class="form" id="season-factor">
+  <form action="add-authorised-quantity" method="post" class="form" id="return-reference-error">
   {% endif %}
 
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
+        {{title}}
+        </label>
+
+      </h1>
 
 
-    {% from "radios/macro.njk" import govukRadios %}
+      <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false">
+      <span class="margin-left__15">cubic metres per year</span>
+    </div>
+<!--
+    {{ govukInput({
+  label: {
+    text: [title],
+    isPageHeading: true,
+    classes: "govuk-label--l govuk-!-margin-bottom-3"
+  },
+  classes: "govuk-input--width-10",
+  id: "billable-quantity",
+  name: "billable-quantity",
+  inputmode: "number",
+  pattern: "[0-9]*",
+  attributes: {
+    spellcheck: "false"
+  }
+}) }}
 
-      {{ govukRadios({
-        idPrefix: "season",
-        name: "season",
-        fieldset: {
-          legend: {
-            text: [title],
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        items: [
-          {
-            value: "Summer",
-            text: "Summer"
-          },
-          {
-            value: "Winter",
-            text: "Winter"
-          },
-          {
-            value: "All year",
-            text: "All year"
-          }
-        ]
-      })
-    }}
+-->
 
     <button type="submit" class="govuk-button">
       Continue

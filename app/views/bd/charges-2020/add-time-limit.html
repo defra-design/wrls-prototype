@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add chargable quantity" %}
+{% set title = "Set time limit?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -43,27 +43,58 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+      {% if [data.change] == "true" %}
+      <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
+      {% else %}
+      <form action="add-source" method="post" class="form" id="element-date">
+      {% endif %}
+
+
+        {% set timeLimit %}
+        {{ govukDateInput({
+        id: "settimeLimit",
+        namePrefix: "time-limit",
+        fieldset: {
+          legend: {
+            text: "What is the end date?"
+          }
+        }
+      }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "time-limit",
+          name: "timeLimit",
+          fieldset: {
+            legend: {
+              text: [title],
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: timeLimit
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <button type="submit" class="govuk-button">
+          Save this change
+        </button>
+
+      </form>
 
     </div>
   </div>
-
-  <form action="add-loss" method="post" class="form" id="return-reference-error">
-
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="return-reference">
-        What is the chargable quantity?
-      </label>
-      <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number"><span class="margin-left__15">cubic metres per year</span>
-    </div>
-
-    <button type="submit" class="govuk-button">
-      Continue
-    </button>
-
-  </form>
 
   <script src="/public/javascripts/jquery-1.11.3.js"></script>
 

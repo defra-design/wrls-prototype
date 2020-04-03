@@ -40,6 +40,7 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -51,178 +52,13 @@
   </div>
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
-  {% if [data.chargeDescription] == "" %}
-  <form action="create-element-description" method="post" class="form" id="return-reference-error">
-  {% else %}
+
   <form action="charge-data-create?elementNew=true" method="post" class="form" id="return-reference-error">
-  {% endif %}
-
-<h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element</h2>
-    {{ govukSummaryList({
-      classes: "govuk-!-margin-bottom-9",
-    rows: [
-      {
-        key: {
-          text: "Purpose"
-        },
-        value: {
-          text: [data.purpose]
-        },
-        actions: {
-          items: [
-            {
-              href: "change-purpose",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      },
-
-      {
-         key: {
-           text: "Description"
-         },
-         value: {
-           text: [data.chargeDescription]
-         },
-         actions: {
-           items: [
-             {
-               href: "change-purpose",
-               text: "Change",
-               visuallyHiddenText: "name"
-             }
-           ]
-         }
-       },
 
 
-      {
-        key: {
-          text: "Abstraction period"
-        },
-        value: {
-          text: [data.abstractionPeriod]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Billable quantity"
-        },
-        value: {
-          text: [data.billableQuantity]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Authorised quantity"
-        },
-        value: {
-          text: [data.authorisedQuantity]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Time limit"
-        },
-        value: {
-          text: [data.timeLimit]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Source"
-        },
-        value: {
-          text: [data.source]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Season"
-        },
-        value: {
-          text: [data.season]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Loss"
-        },
-        value: {
-          text: [data.loss]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      }
-
-
-    ]
-  }) }}
+{% include "includes/bd/elements-change.html" %}
 
     <button type="submit" class="govuk-button">
       Continue

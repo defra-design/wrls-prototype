@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add abstraction period" %}
+{% set title = "Set abstraction period" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -43,7 +43,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="add-chargable-quantity" method="post" class="form" id="return-reference-error">
+      {% if [data.change] == "true" %}
+      <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
+      {% else %}
+      <form action="add-billable-quantity" method="post" class="form" id="return-reference-error">
+      {% endif %}
 
         <!-- effective dates -->
         <div class="govuk-form-group">
@@ -51,7 +55,7 @@
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <span class="govuk-caption-l">Licence 03/28/60/0032</span>
               <h1 class="govuk-fieldset__heading">
-                What are the start and end dates for this abstraction period?
+                {{title}}
               </h1>
             </legend>
 
@@ -59,21 +63,21 @@
               <p id="dob-hint" class="govuk-hint">
                 Start date
               </p>
-              <div class="govuk-date-input" id="start-date">
+              <div class="govuk-date-input" id="abstraction-start-date">
                 <div class="govuk-date-input__item">
                   <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="start-day">
+                    <label class="govuk-label govuk-date-input__label" for="abstractionStartDay">
                       Day
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day" type="number" autocomplete="off" pattern="[0-9]*">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionStartDay" name="abstractionStartDay" type="number" autocomplete="off" pattern="[0-9]*">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
                   <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="start-month">
+                    <label class="govuk-label govuk-date-input__label" for="abstractionStartMonth">
                       Month
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month" type="number" autocomplete="off" pattern="[0-9]*">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionStartMonth" name="abstractionStartMonth" type="number" autocomplete="off" pattern="[0-9]*">
                   </div>
                 </div>
                 <!-- <div class="govuk-date-input__item">
@@ -91,21 +95,21 @@
             <p id="dob-hint" class="govuk-hint">
               End date
             </p>
-            <div class="govuk-date-input" id="end-date">
+            <div class="govuk-date-input" id="abstractionEndDate">
               <div class="govuk-date-input__item">
                 <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="end-day">
+                  <label class="govuk-label govuk-date-input__label" for="abstractionEndDay">
                     Day
                   </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-day" name="end-day" type="number" autocomplete="off" pattern="[0-9]*">
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionEndDay" name="abstractionEndDay" type="number" autocomplete="off" pattern="[0-9]*">
                 </div>
               </div>
               <div class="govuk-date-input__item">
                 <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="end-month">
+                  <label class="govuk-label govuk-date-input__label" for="abstractionEndMonth">
                     Month
                   </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-month" name="end-month" type="number" autocomplete="off" pattern="[0-9]*">
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionEndMonth" name="abstractionEndMonth" type="number" autocomplete="off" pattern="[0-9]*">
                 </div>
               </div>
               <!-- <div class="govuk-date-input__item">

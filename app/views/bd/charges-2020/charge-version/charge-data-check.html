@@ -56,49 +56,26 @@
   <form action="charge-data-confirmation" method="post" class="form" id="return-reference-error">
 
     <section class="govuk-!-margin-bottom-6">
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Agreements</h2>
+
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
 
     {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
-    {% set monthNumber = data['agreementStart-month'] %}
+    {% set monthNumber = data['chargeStart-month'] %}
 
     {% set month = monthNames[monthNumber - 1] %}
 
-    {% set agreementStart = data['agreementStart-day'] + " " + month +" "+ data['agreementStart-year']%}
+    {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
 
-    {% if [data.agreement] == "No agreements"%}
+
     {{ govukSummaryList({
     rows: [
       {
         key: {
-          text: "Agreement"
+          text: "Start date"
         },
         value: {
-          text: [data.agreement]
-        },
-        actions: {
-          items: [
-            {
-              href: "create-agreement",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      }
-
-
-    ]
-  }) }}
-     {% else %}
-    {{ govukSummaryList({
-    rows: [
-      {
-        key: {
-          text: "Agreement"
-        },
-        value: {
-          text: [data.agreement]
+          text: [chargeStart]
         },
         actions: {
           items: [
@@ -109,202 +86,16 @@
             }
           ]
         }
-      },
-      {
-        key: {
-          text: "Start date"
-        },
-        value: {
-          text: [agreementStart]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
       }
-
-
     ]
   }) }}
 
-  {% endif %}
- </section>
+  </section>
+
+  {% include "includes/bd/elements-change.html" %}
 
 
- <section class="govuk-!-margin-bottom-6">
 
-   <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element</h2>
-       {{ govukSummaryList({
-         classes: "govuk-!-margin-bottom-9",
-       rows: [
-         {
-           key: {
-             text: "Purpose"
-           },
-           value: {
-             text: [data.purpose]
-           },
-           actions: {
-             items: [
-               {
-                 href: "change-purpose",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         },
-
-         {
-            key: {
-              text: "Description"
-            },
-            value: {
-              text: [data.chargeDescription]
-            },
-            actions: {
-              items: [
-                {
-                  href: "change-purpose",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-
-
-         {
-           key: {
-             text: "Abstraction period"
-           },
-           value: {
-             text: [data.abstractionPeriod]
-           },
-           actions: {
-             items: [
-               {
-                 href: "add-agreement-date",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         },
-         {
-           key: {
-             text: "Billable quantity"
-           },
-           value: {
-             text: [data.billableQuantity]
-           },
-           actions: {
-             items: [
-               {
-                 href: "add-agreement-date",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         },
-         {
-           key: {
-             text: "Authorised quantity"
-           },
-           value: {
-             text: [data.authorisedQuantity]
-           },
-           actions: {
-             items: [
-               {
-                 href: "add-agreement-date",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         },
-         {
-           key: {
-             text: "Time limit"
-           },
-           value: {
-             text: [data.timeLimit]
-           },
-           actions: {
-             items: [
-               {
-                 href: "add-agreement-date",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         },
-         {
-           key: {
-             text: "Source"
-           },
-           value: {
-             text: [data.source]
-           },
-           actions: {
-             items: [
-               {
-                 href: "add-agreement-date",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         },
-         {
-           key: {
-             text: "Season"
-           },
-           value: {
-             text: [data.season]
-           },
-           actions: {
-             items: [
-               {
-                 href: "add-agreement-date",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         },
-         {
-           key: {
-             text: "Loss"
-           },
-           value: {
-             text: [data.loss]
-           },
-           actions: {
-             items: [
-               {
-                 href: "add-agreement-date",
-                 text: "Change",
-                 visuallyHiddenText: "name"
-               }
-             ]
-           }
-         }
-
-
-       ]
-     }) }}
-
-
-</section>
  <section class="govuk-!-margin-bottom-6">
 
    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Billing contact</h2>
@@ -386,42 +177,7 @@
 
   </section>
 
-  <section class="govuk-!-margin-bottom-6">
 
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
-
-  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-
-  {% set monthNumber = data['chargeStart-month'] %}
-
-  {% set month = monthNames[monthNumber - 1] %}
-
-  {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
-
-
-  {{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        text: "Start date"
-      },
-      value: {
-        text: [chargeStart]
-      },
-      actions: {
-        items: [
-          {
-            href: "add-agreement",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }
-  ]
-}) }}
-
-</section>
 
 
 {{ govukButton({
