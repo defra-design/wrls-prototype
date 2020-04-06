@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Create charge" %}
+{% set title = "Set up charge information" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -90,9 +90,15 @@
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
+            {% if [data.createNewContact] == "true" %}
+            <a class="app-task-list__task-name" href="/bd/contacts/check-invoice-account-details?startDay=28&startMonth=02&startYear=2020" aria-describedby="billing-contact-completed">
+              Set up billing contact
+              </a>
+            {% else %}
             <a class="app-task-list__task-name" href="/bd/contacts/new-contact?createNewContact=true" aria-describedby="billing-contact-completed">
               Set up billing contact
             </a>
+            {% endif %}
             {% if [data.createNewContact] == "true" %}
             <strong class="govuk-tag app-task-list__task-completed" id="billing-contact-completed">Completed</strong>
             {% endif %}

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check charge version details" %}
+{% set title = "Check charge information" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -55,7 +55,7 @@
 
   <form action="charge-data-confirmation" method="post" class="form" id="return-reference-error">
 
-    <section class="govuk-!-margin-bottom-6">
+    <section class="govuk-!-margin-bottom-9">
 
       <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
 
@@ -71,6 +71,7 @@
     {{ govukSummaryList({
     rows: [
       {
+        classes: 'govuk-summary-list__row--last',
         key: {
           text: "Start date"
         },
@@ -92,8 +93,10 @@
 
   </section>
 
-  {% include "includes/bd/elements-change.html" %}
 
+<section class="govuk-!-margin-bottom-6">
+  {% include "includes/bd/elements-check.html" %}
+  </section>
 
 
  <section class="govuk-!-margin-bottom-6">

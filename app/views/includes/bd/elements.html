@@ -1,6 +1,6 @@
 
 
-{% set elements = [data.elements.element1, data.elements.element2, data.elements.element3] %}
+{% set elements = data[elements]%}
 
               {% for i in elements %}
 
@@ -95,12 +95,21 @@
             }
           },
           {
-            classes:"govuk-summary-list--no-border",
+            classes: 'govuk-summary-list__row--last',
             key: {
-              text: "Environmental Improvement Unit Charge"
+              text: "Environmental Improvement Unit Charge"
             },
             value: {
               text: "Other"
+            },
+            actions: {
+              items: [
+                {
+
+                  text: ""
+
+                }
+              ]
             }
           }
         ]
