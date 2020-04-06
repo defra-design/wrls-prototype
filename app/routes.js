@@ -310,7 +310,7 @@ router.post('/bd/charges-2020/add-loss', function (req, res) {
   res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
 });
 
-
+//Copy element
 router.post('/bd/charges-2020/charge-version/confirm-copy-element', function (req, res) {
 
 
@@ -344,6 +344,22 @@ router.post('/bd/charges-2020/charge-version/confirm-copy-element', function (re
 });
 
 
+//Remove element
+router.post('/bd/charges-2020/charge-version/confirm-remove-element', function (req, res) {
+
+
+  let elementNumber = req.session.data['elementNumber']
+  let elements = req.session.data['elements']
+
+
+    elements.splice(elementNumber, 1);
+req.session.data['elements'] = elements
+
+
+
+
+  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+});
 
 /*
 router.get('/bd/charges-2020/charge-version/create-element', function (req, res) {

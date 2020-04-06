@@ -67,6 +67,7 @@ module.exports = {
       "change": "false",
       "elementCopy": "false",
       "createElement": "false",
+      "removeElement": "false",
     // Insert values here
 }
 
