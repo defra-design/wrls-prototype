@@ -43,19 +43,16 @@
 
 {% block content %}
 
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-  <!--    <h1 class="govuk-heading-l">{{ title }}</h1> -->
+  <!--    <h1 class="govuk-heading-l">{{ title }}</h1>
+-->
 
-  {% if [data.change] == "true" %}
-  <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
-  {% else %}
-  <form action="add-element-description" method="post" class="form">
-  {% endif %}
+
+  <form  method="post" class="form">
 
     {{ govukSelect({
   id: "purpose",

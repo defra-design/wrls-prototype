@@ -44,12 +44,10 @@ module.exports = {
   "agreementNew": "false",
   "agreementCount": "1",
   "chargeStart": "1 April 2020",
-  "elementNew": "false",
   "createNewContact": "false",
   "chargeStartSet": "false",
   "versionRemoved": "false",
-  "elements":{
-    "element1": {
+  "elements":[{
         "purpose":"Spray irrigation",
         "description":"Otterton borehole 1a",
         "abstractionStartDay": "1",
@@ -62,36 +60,45 @@ module.exports = {
         "source":"Unsupported",
         "season":"All year",
         "loss":"High"
-      },
-      "element2":{
-        "purpose":"Spray irrigation",
-        "description":"Otterton borehole 1a, Time limited increase",
-        "abstractionStartDay": "1",
-        "abstractionStartMonth": "4",
-        "abstractionEndDay": "31",
-        "abstractionEndMonth": "3",
-        "billableQuantity": "250,000",
-        "authorisedQuantity": "250,000",
-        "timeLimit": "Yes",
-        "source":"Unsupported",
-        "season":"All year",
-        "loss":"High"
-      },
-      "element3":{
-        "purpose":"Spray irrigation",
-        "description":"Otterton borehole 1a, Time limited increase",
-        "abstractionStartDay": "1",
-        "abstractionStartMonth": "4",
-        "abstractionEndDay": "31",
-        "abstractionEndMonth": "3",
-        "billableQuantity": "250,000",
-        "authorisedQuantity": "250,000",
-        "timeLimit": "Yes",
-        "source":"Unsupported",
-        "season":"All year",
-        "loss":"High"
       }
-    }
-
+    ],
+      "elementNew": "false",
+      "elementNumber": "0",
+      "change": "false",
+      "elementCopy": "false",
     // Insert values here
 }
+
+
+
+//Extra session data if needed
+/*,
+{
+  "purpose":"Spray irrigation",
+  "description":"Otterton borehole 1a, Time limited increase",
+  "abstractionStartDay": "1",
+  "abstractionStartMonth": "4",
+  "abstractionEndDay": "31",
+  "abstractionEndMonth": "3",
+  "billableQuantity": "250,000",
+  "authorisedQuantity": "250,000",
+  "timeLimit": "Yes",
+  "source":"Unsupported",
+  "season":"All year",
+  "loss":"High"
+},
+{
+  "purpose":"Trickle irrigation",
+  "description":"Otterton borehole 2b",
+  "abstractionStartDay": "1",
+  "abstractionStartMonth": "4",
+  "abstractionEndDay": "31",
+  "abstractionEndMonth": "3",
+  "billableQuantity": "750,000",
+  "authorisedQuantity": "750,000",
+  "timeLimit": "No",
+  "source":"Unsupported",
+  "season":"All year",
+  "loss":"High"
+}
+*/

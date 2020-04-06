@@ -41,6 +41,8 @@
 
 {% block content %}
 
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -52,11 +54,9 @@
   </div>
 
 
-  {% if [data.change] == "true" %}
-  <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
-  {% else %}
-  <form action="add-loss" method="post" class="form" id="season-factor">
-  {% endif %}
+
+  <form  method="post" class="form" id="season-factor">
+
 
 
 

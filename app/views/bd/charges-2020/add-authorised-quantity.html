@@ -40,6 +40,8 @@
 {% endblock %}
 
 {% block content %}
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -50,11 +52,9 @@
     </div>
   </div>
 
-  {% if [data.change] == "true" %}
-  <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
-  {% else %}
-  <form action="add-time-limit" method="post" class="form" id="return-reference-error">
-  {% endif %}
+
+  <form method="post" class="form" id="return-reference-error">
+
 
 
 

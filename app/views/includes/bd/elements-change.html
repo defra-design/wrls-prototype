@@ -1,7 +1,19 @@
 
-{% set elements = [data.elements.element1, data.elements.element2, data.elements.element3] %}
+<!--{% set elements = [data.elements.element1, data.elements.element2, data.elements.element3] %}
 
-              {% for i in elements %}
+
+
+{% set elements = [data.elements[0],data.elements[1],data.elements[2]] %} -->
+
+{{data|dump}}
+
+
+{% set elementNumber = "" %}
+
+{% set elements = data['elements'] %}
+
+                {% for i in elements %}
+
 
 
 <!--formating for the abstraction period dates-->
@@ -14,7 +26,7 @@
       {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
 
 
-{% set elementNumber = loop.index %}
+     {% set elementNumber = loop.index0 %}
 
 
       <section class="govuk-!-margin-bottom-2">
@@ -22,7 +34,8 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element</h2>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element
+            <span class="govuk-!-margin-left-6  govuk-body  govuk-!-font-size-19" style="float:right"><a href="confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  class="govuk-link">Copy element</a></span></h2>
                 {{ govukSummaryList({
                   classes: "govuk-!-margin-bottom-9",
                 rows: [
@@ -36,7 +49,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-element-purpose?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-element-purpose?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Purpose"
                         }
@@ -54,7 +67,7 @@
                      actions: {
                        items: [
                          {
-                           href: "/bd/charges-2020/add-element-description?change=true&elementNumber=" + elementNumber,
+                           href: "/bd/charges-2020/add-element-description?elementNew=false&change=true&elementNumber=" + elementNumber,
                            text: "Change",
                            visuallyHiddenText: "Description"
                          }
@@ -73,7 +86,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-abstraction-period?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-abstraction-period?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Abstraction period"
                         }
@@ -90,7 +103,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-billable-quantity?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-billable-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Billable quantity"
                         }
@@ -107,7 +120,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-authorised-quantity?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-authorised-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Authorised quantity"
                         }
@@ -124,7 +137,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-time-limit?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-time-limit?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Time limit"
                         }
@@ -141,7 +154,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-source?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-source?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Source"
                         }
@@ -158,7 +171,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-season?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-season?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Season"
                         }
@@ -175,7 +188,7 @@
                     actions: {
                       items: [
                         {
-                          href: "/bd/charges-2020/add-loss?change=true&elementNumber=" + elementNumber,
+                          href: "/bd/charges-2020/add-loss?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Loss"
                         }
@@ -187,6 +200,18 @@
                 ]
               }) }}
 
-
       </section>
+
     {% endfor %}
+
+
+
+{% set elementNumber = elementNumber + 1 %}
+
+
+    {{ govukButton({
+  text: "Add another element",
+  classes: "govuk-button--secondary",
+  href: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=" + elementNumber
+}) }}
+<br>

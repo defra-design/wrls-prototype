@@ -40,14 +40,15 @@
 {% endblock %}
 
 {% block content %}
+
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if [data.change] == "true" %}
-      <form action="/bd/charges-2020/charge-version/create-element?change=false" method="post" class="form">
-      {% else %}
-      <form action="add-source" method="post" class="form" id="element-date">
-      {% endif %}
+
+      <form  method="post" class="form" id="element-date">
+
 
 
         {% set timeLimit %}
@@ -88,7 +89,7 @@
         }) }}
 
         <button type="submit" class="govuk-button">
-          Save this change
+          Continue
         </button>
 
       </form>
