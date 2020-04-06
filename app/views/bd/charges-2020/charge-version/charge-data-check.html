@@ -53,7 +53,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-  <form action="charge-data-confirmation" method="post" class="form" id="return-reference-error">
+  <form action="charge-data-confirmation?createElement=false" method="post" class="form" id="return-reference-error">
 
     <section class="govuk-!-margin-bottom-9">
 
@@ -97,6 +97,12 @@
 <section class="govuk-!-margin-bottom-6">
   {% include "includes/bd/elements-check.html" %}
   </section>
+
+{% if [data.createElement] == "true"%}
+{{ govukButton({
+text: "Confirm"
+}) }}
+{% else %}
 
 
  <section class="govuk-!-margin-bottom-6">
@@ -187,7 +193,7 @@
 text: "Confirm"
 }) }}
 
-
+{% endif %}
 
   </form>
 

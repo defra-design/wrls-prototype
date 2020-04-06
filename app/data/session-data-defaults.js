@@ -66,6 +66,7 @@ module.exports = {
       "elementNumber": "0",
       "change": "false",
       "elementCopy": "false",
+      "createElement": "false",
     // Insert values here
 }
 
