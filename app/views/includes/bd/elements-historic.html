@@ -1,8 +1,8 @@
 
 
-{% set elements = data[elements]%}
+{% set elements = data['elementsHistoric'] %}
 
-              {% for i in elements %}
+                {% for i in elements %}
 
 <!--formating for the abstraction period dates-->
       {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
@@ -13,13 +13,13 @@
       {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
       {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
 
-      <section class="govuk-!-margin-bottom-2">
+      <section class="govuk-!-margin-bottom-9">
 
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-grid-column-two-full">
 
             {{ govukInsetText({
-              html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-1">' +
+              html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-0">' +
               [i.purpose] + ', ' + [i.description] + '
               </h2>
               <p class="govuk-body">
@@ -33,7 +33,7 @@
             </div>
 
             <div class="govuk-grid-row">
-              <div class="govuk-grid-column-full">
+              <div class="govuk-grid-column-two-full">
 
             {{ govukSummaryList({
         rows: [
@@ -54,7 +54,7 @@
             }
           },
           {
-            classes: "table__row--end",
+
             key: {
               text: "Authorised quantity"
             },
@@ -63,11 +63,21 @@
             }
           },
           {
+            classes: "table__row--end",
             key: {
               text: "Time limit"
             },
             value: {
               text: [i.timeLimit]
+            },
+            actions: {
+              items: [
+                {
+
+                  text: ""
+
+                }
+              ]
             }
           },
           {

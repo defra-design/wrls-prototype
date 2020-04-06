@@ -62,12 +62,41 @@ module.exports = {
         "loss":"High"
       }
     ],
-      "elementNew": "false",
-      "elementNumber": "0",
-      "change": "false",
-      "elementCopy": "false",
-      "createElement": "false",
-      "removeElement": "false",
+  "elementNew": "false",
+  "elementNumber": "0",
+  "change": "false",
+  "elementCopy": "false",
+  "createElement": "false",
+  "removeElement": "false",
+  "elementsHistoric":[{
+            "purpose":"Spray irrigation",
+            "description":"Otterton borehole 1a",
+            "abstractionStartDay": "1",
+            "abstractionStartMonth": "4",
+            "abstractionEndDay": "31",
+            "abstractionEndMonth": "3",
+            "billableQuantity": "125,000,000",
+            "authorisedQuantity": "150,000,000",
+            "timeLimit": "No",
+            "source":"Unsupported",
+            "season":"All year",
+            "loss":"High"
+          },
+          {
+            "purpose":"Spray irrigation",
+            "description":"Otterton borehole 1a, Time limited increase",
+            "abstractionStartDay": "1",
+            "abstractionStartMonth": "4",
+            "abstractionEndDay": "31",
+            "abstractionEndMonth": "3",
+            "billableQuantity": "250,000",
+            "authorisedQuantity": "250,000",
+            "timeLimit": "Yes",
+            "source":"Unsupported",
+            "season":"All year",
+            "loss":"High"
+          }
+        ],
     // Insert values here
 }
 
