@@ -147,7 +147,46 @@ res.render('index');
 */
 
 
+//Charge start date
+//This triggers the creation of a charge version
+router.post('/bd/charges-2020/charge-version/set-charge-start-date', function (req, res) {
+
+  //trigger for new element
+  let chargeNew = req.session.data['createElement']
+
+// date fields
+  let chargeStartDay = req.session.data['chargeStart-day'];
+  let chargeStartMonth = req.session.data['chargeStart-month'];
+  let chargeStartYear = req.session.data['chargeStart-year'];
+
+//change the month into a name
+let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+let monthNumber = chargeStartMonth
+let month = monthNames[monthNumber - 1]
+
+//set the charge start date
+  let chargeStart = chargeStartDay + " " + month + " " + chargeStartYear
+  let chargeEnd = ""
+  let chargeStatus = "DRAFT"
+  let chargeBilledDate = ""
+
+
+//if statement for creating the new chargeversion
+  if (chargeNew == "true"){
+  let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate};
+  let chargeVersions = req.session.data['chargeVersions']
+  chargeVersions.unshift(newCharge);
+  res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
+  }
+  else {
+    res.redirect('set-charge-start-date-check');
+  }
+
+});
+
+
 //Purpose
+//This triggers the creation of a charge element
 router.post('/bd/charges-2020/add-element-purpose', function (req, res) {
 
   let elementNew = req.session.data['elementNew']
@@ -355,6 +394,34 @@ router.post('/bd/charges-2020/charge-version/confirm-remove-element', function (
 
   res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
 });
+
+
+//Create Element
+router.post('/bd/charges-2020/charge-version/create-element', function (req, res) {
+
+  let createElement = req.session.data['createElement']
+
+  if ( createElement == "true"){
+  res.redirect('charge-data-check');
+} else {
+  res.redirect('charge-data-create?elementNew=true');
+}
+
+});
+
+
+//Charge data check
+router.post('/bd/charges-2020/charge-version/charge-data-check', function (req, res) {
+
+
+  req.session.data.chargeVersions[0]['chargeStatus'] = "NOT APPROVED"
+
+  res.redirect('charge-data-confirmation');
+
+});
+
+
+
 
 /*
 router.get('/bd/charges-2020/charge-version/create-element', function (req, res) {

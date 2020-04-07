@@ -47,11 +47,19 @@
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
 
       {{ govukPanel({
-      titleText: "Charge information complete",
-      html: "Initial charge<br><strong>£39,299.90</strong>"
+      titleText: "Charge information complete"
     }) }}
 
-    <a href="/bd/licence-summary#charge" class="govuk-link">View licence summary</a>
+
+<h2 class="govuk-heading-m">What happens next</h2>
+<p class="govuk-body">
+This charge information needs to be approved by the billing and data team.</p><p class="govuk-body"> If any changes are needed, they will contact you within five working days.</p>
+
+   {% if [data.createElement] == "true" %}
+    <a href="/bd/charges-2020/charge-versions#charge?createElement=false" class="govuk-link">View licence summary</a>
+  {% else %}
+    <a href="/bd/licence-summary-no-charge#charge?createElement=false" class="govuk-link">View licence summary</a>
+    {% endif %}
 
 </div>
 </div>

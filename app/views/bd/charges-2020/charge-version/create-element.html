@@ -54,11 +54,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-  {% if [data.createElement] == "true"%}
-  <form action="charge-data-check" method="post" class="form">
-  {% else %}
-  <form action="charge-data-create?elementNew=true" method="post" class="form">
-  {% endif %}
+  <!--    {% if [data.createElement] == "true"%}
+      <form action="charge-data-check" method="post" class="form">
+      {% else %}
+      <form action="charge-data-create?elementNew=true" method="post" class="form">
+      {% endif %}
+      -->
+<form  method="post" class="form">
+
 
 {% include "includes/bd/elements-change.html" %}
 

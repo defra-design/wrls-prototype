@@ -129,6 +129,16 @@
           text: [i.chargeStatus],
           classes: "govuk-tag--red"
         })}}
+        {% elif [i.chargeStatus] == "DRAFT" %}
+        {{govukTag({
+      text: [i.chargeStatus],
+      classes: "govuk-tag--blue"
+      })}}
+      {% elif [i.chargeStatus] == "NOT APPROVED" %}
+      {{govukTag({
+    text: [i.chargeStatus],
+    classes: "govuk-tag--orange"
+    })}}
             {% endif %}
           </div>
           <div class="table__cell">
@@ -146,6 +156,8 @@
             <a href="confirm-remove-charge-version">
               Remove <span class="screen-reader-only">charge information</span>
             </a>
+
+  
 
             {% else %}
             {% set link = 'charge-version-' + loop.index %}
