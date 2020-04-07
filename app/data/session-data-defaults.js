@@ -75,7 +75,7 @@ module.exports = {
             "abstractionStartMonth": "4",
             "abstractionEndDay": "31",
             "abstractionEndMonth": "3",
-            "billableQuantity": "125,000,000",
+            "billableQuantity": "150,000,000",
             "authorisedQuantity": "150,000,000",
             "timeLimit": "No",
             "source":"Unsupported",

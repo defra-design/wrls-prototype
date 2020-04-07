@@ -201,8 +201,9 @@
         Charge elements
       </dt>
       <dd class="govuk-summary-list__value">
-Spray irrigation, base licence<br>
-        Spray irrigation, time limited increase
+        {% for i in data['elements'] %}
+       {{[i.purpose]}}, {{[i.description]}}
+       {% endfor %}
       </dd>
       <dd class="govuk-summary-list__actions">
         <a class="govuk-link" href="charges-2020/charge-versions">

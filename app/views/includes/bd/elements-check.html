@@ -92,27 +92,10 @@
                   },
                   {
                     key: {
-                      text: "Billable quantity"
-                    },
-                    value: {
-                      text: [i.billableQuantity] + " cubic metres per year"
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "/bd/charges-2020/add-billable-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
-                          text: "Change",
-                          visuallyHiddenText: "Billable quantity"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    key: {
                       text: "Authorised quantity"
                     },
                     value: {
-                      text: [i.authorisedQuantity] + " cubic metres per year"
+                      text: [i.authorisedQuantity] + " mega litres per year"
                     },
                     actions: {
                       items: [
@@ -124,6 +107,24 @@
                       ]
                     }
                   },
+                  {
+                    key: {
+                      text: "Billable quantity"
+                    },
+                    value: {
+                      text: [i.billableQuantity] + " mega litres per year"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-billable-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Billable quantity"
+                        }
+                      ]
+                    }
+                  },
+
                   {
                     key: {
                       text: "Time limit"

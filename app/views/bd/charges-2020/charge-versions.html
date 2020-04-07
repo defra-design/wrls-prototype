@@ -79,13 +79,13 @@
           <div class="table__cell bold-small column--20">
             End date
           </div>
-          <div class="table__cell bold-small column--20">
+          <div class="table__cell bold-small column--30">
             Status
           </div>
           <div class="table__cell bold-small column--20">
             Billed up to
           </div>
-          <div class="table__cell bold-small column--20">
+          <div class="table__cell bold-small column--10">
             Action
           </div>
         </div>
@@ -136,7 +136,7 @@
       })}}
       {% elif [i.chargeStatus] == "NOT APPROVED" %}
       {{govukTag({
-    text: [i.chargeStatus],
+    text: "Ready to approve",
     classes: "govuk-tag--orange"
     })}}
             {% endif %}
