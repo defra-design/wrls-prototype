@@ -1,6 +1,7 @@
+
 {% extends "layout.html" %}
 
-{% set title = "Charge information valid from 1 April 2017" %}
+{% set title = "Charge information valid from" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,13 +49,13 @@
     <!-- page heading -->
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">
-      <span class="screen-reader-only">Replaced</span> {{ title }}
+      <span class="screen-reader-only">Current</span> {{ title }} <br> 22 April 2019
     </h1>
     <!-- <a href="" class="wrls-faux-button wrls-faux-button--secondary">Change start date</a> -->
     <p class="govuk-body">
       {{govukTag({
-      text: "Replaced",
-      classes: "govuk-tag--grey govuk-!-font-size-27"
+      text: "Current",
+      classes: "govuk-tag--green govuk-!-font-size-27"
     })}}
     </p>
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
@@ -65,7 +66,7 @@
               Billed up to
             </div>
             <div class="meta-data__value">
-              31 March 2019
+              31 March 2020
             </div>
             <div>
         </section>
@@ -74,11 +75,6 @@
   </div>
 </div>
 
-
 {% include "includes/bd/elements-historic.html" %}
-
-</section>
-
-
 
 {% endblock %}

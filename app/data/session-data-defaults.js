@@ -97,6 +97,26 @@ module.exports = {
             "loss":"High"
           }
         ],
+
+  "chargeVersions":[{
+            "chargeStart": "22 April 2019",
+            "chargeEnd": "",
+            "chargeStatus": "CHARGEABLE",
+            "chargeBilledDate": "31 March 2020"
+            },
+              {
+            "chargeStart": "1 April 2017",
+            "chargeEnd": "21 April 2019",
+            "chargeStatus": "REPLACED",
+            "chargeBilledDate": "31 March 2019"
+            },
+            {
+            "chargeStart": "1 April 2017",
+            "chargeEnd": "21 April 2019",
+            "chargeStatus": "INVALID",
+            "chargeBilledDate": "31 March 2019"
+          }
+          ],
     // Insert values here
 }
 
