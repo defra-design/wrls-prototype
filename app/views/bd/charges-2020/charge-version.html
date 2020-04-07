@@ -2,6 +2,7 @@
 {% extends "layout.html" %}
 
 {% set title = "Charge information valid from" %}
+  {% set chargeInfoNumber = [data.chargeInfoNumber] %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -49,15 +50,37 @@
     <!-- page heading -->
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">
-      <span class="screen-reader-only">Current</span> {{ title }} <br> 22 April 2019
+
+      <span class="screen-reader-only">Current</span> {{ title }} <br> {{[data.chargeVersions[chargeInfoNumber].chargeStart]}}
     </h1>
     <!-- <a href="" class="wrls-faux-button wrls-faux-button--secondary">Change start date</a> -->
+
     <p class="govuk-body">
+      {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHARGEABLE" %}
       {{govukTag({
-      text: "Current",
+      text: "CHARGEABLE",
       classes: "govuk-tag--green govuk-!-font-size-27"
     })}}
+    {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "INVALID" %}
+    {{govukTag({
+    text: "INVALID",
+    classes: "govuk-tag--red govuk-!-font-size-27"
+  })}}
+  {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "REPLACED" %}
+  {{govukTag({
+  text: "Replaced",
+  classes: "govuk-tag--grey govuk-!-font-size-27"
+})}}
+{% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
+{{govukTag({
+text: "Not approved",
+classes: "govuk-tag--orange govuk-!-font-size-27"
+})}}
+{% endif %}
     </p>
+    {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
+
+    {% else %}
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
       <div class="govuk-grid-column-full">
         <section class="meta-data__row">
@@ -66,15 +89,38 @@
               Billed up to
             </div>
             <div class="meta-data__value">
-              31 March 2020
+            {% set chargeInfoNumber = [data.chargeInfoNumber] %}
+              {{data.chargeVersions[chargeInfoNumber].chargeBilledDate}}
             </div>
             <div>
         </section>
         </div>
         </div>
-  </div>
-</div>
+        {% endif %}
+      </div>
+      </div>
 
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+{% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
+{% include "includes/bd/elements-change.html" %}
+{{ govukButton({
+  text: "Approve",
+  classes: "govuk-!-margin-right-1"
+}) }}
+
+{{ govukButton({
+  text: "Request changes",
+  classes: "govuk-button--secondary"
+}) }}
+
+{% else %}
 {% include "includes/bd/elements-historic.html" %}
+{% endif %}
+
+</div>
+</div>
 
 {% endblock %}

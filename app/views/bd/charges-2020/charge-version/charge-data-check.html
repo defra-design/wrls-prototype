@@ -45,7 +45,7 @@
 
       <!-- page heading -->
       <span class="govuk-caption-l ">Licence 03/28/60/0032</span>
-    <h1 class="govuk-heading-l ">{{title}}</h1>
+    <h1 class="govuk-heading-xl ">{{title}}</h1>
 
     </div>
   </div>
@@ -55,7 +55,7 @@
 
   <form  method="post" class="form" id="return-reference-error">
 
-    <section class="govuk-!-margin-bottom-6">
+    <section class="govuk-!-margin-bottom-9">
 
       <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
 
@@ -96,22 +96,40 @@
   </section>
 
 
-<section class="govuk-!-margin-bottom-6">
+
   {% include "includes/bd/elements-check.html" %}
-  </section>
+
 
 {% if [data.createElement] == "true"%}
 
-
+<!--
 {{ govukInsetText({
-  text: "Initial charge £39,995.76"
+  html: '<h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£39,995.76</span><br>
+  <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Initial charge total</span></h2>'
 }) }}
+
+-->
+
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+  <div class="govuk-grid-column-two-thirds">
+<h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£39,995.76</span><br>
+<span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Initial charge total</span></h2>
+
+</div>
+
+</div>
+
 
 {{ govukButton({
 text: "Confirm"
 }) }}
 
 {% else %}
+
+
+
+
+
 
 
  <section class="govuk-!-margin-bottom-6">
@@ -195,14 +213,18 @@ text: "Confirm"
 
   </section>
 
-  {{ govukInsetText({
-    text: "Initial charge £39,995.76"
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+    <div class="govuk-grid-column-two-thirds">
+  <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£39,995.76</span><br>
+  <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Initial charge total</span></h2>
+
+  </div>
+
+  </div>
+
+  {{ govukButton({
+  text: "Confirm"
   }) }}
-
-
-{{ govukButton({
-text: "Confirm"
-}) }}
 
 
 {% endif %}

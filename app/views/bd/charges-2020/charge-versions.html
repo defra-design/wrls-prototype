@@ -157,10 +157,10 @@
               Remove <span class="screen-reader-only">charge information</span>
             </a>
 
-  
+
 
             {% else %}
-            {% set link = 'charge-version-' + loop.index %}
+            {% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
             <a href="{{link}}">
               View <span class="screen-reader-only">charge information</span>
             </a>

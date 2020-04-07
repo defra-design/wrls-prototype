@@ -117,6 +117,8 @@ module.exports = {
             "chargeBilledDate": "31 March 2019"
           }
           ],
+
+          "chargeInfoNumber": "0",
     // Insert values here
 }
 

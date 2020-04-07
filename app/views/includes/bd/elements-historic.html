@@ -13,10 +13,10 @@
       {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
       {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
 
-      <section class="govuk-!-margin-bottom-9">
+      <section>
 
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-full">
+          <div class="govuk-grid-column-full">
 
             {{ govukInsetText({
               html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-0">' +
@@ -33,7 +33,7 @@
             </div>
 
             <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-full">
+              <div class="govuk-grid-column-full">
 
             {{ govukSummaryList({
         rows: [

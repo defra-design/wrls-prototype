@@ -10,9 +10,11 @@
 
 {% set elements = data['elements'] %}
 
-                {% for i in elements %}
+
+{% set numberOfElements = elements.length %}
 
 
+{% for i in elements %}
 
 <!--formating for the abstraction period dates-->
       {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
@@ -34,7 +36,7 @@
 
             <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element
 
-            {% if elementNumber > 0 %}
+            {% if numberOfElements > 1 %}
             <span class="govuk-!-margin-left-6  govuk-body  govuk-!-font-size-19" style="float:right"><a href="confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  class="govuk-link">Copy element</a>
             <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
             <a href="confirm-remove-element?removeElement=true&elementNumber={{elementNumber}}"  class="govuk-link">Remove</a></span>
