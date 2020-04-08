@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Use licence data to set up the element?" %}
+{% set title = "Use abstraction data to set up the element?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -52,6 +52,41 @@
 
   <form data-routing="1" method="post" class="form">
 
+    {% if [data.createElement] == "true" %}
+    {{ govukRadios({
+    idPrefix: "where-do-you-live",
+    name: "where-do-you-live",
+    fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+    },
+    items: [
+    {
+      value: "create-element",
+      text: "Yes"
+    },
+    {
+      value: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=0",
+      text: "No"
+    },
+    {
+        divider: "or"
+      },
+      {
+        value: "create-element",
+        text: "Use current charge information valid from " + data.chargeVersions[1]['chargeStart']
+      }
+    ]
+    }) }}
+
+
+    {% else %}
+
+
+
     {{ govukRadios({
   idPrefix: "where-do-you-live",
   name: "where-do-you-live",
@@ -73,6 +108,8 @@
     }
   ]
 }) }}
+
+{% endif %}
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">
       Continue

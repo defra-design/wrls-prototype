@@ -246,6 +246,23 @@ router.post('/bd/charges-2020/add-abstraction-period', function (req, res) {
   if (change == "true"){
   res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
 } else {
+  res.redirect('add-authorised-quantity');
+}
+
+});
+
+
+//Authorised quantity
+router.post('/bd/charges-2020/add-authorised-quantity', function (req, res) {
+
+  let authorisedQuantity = req.session.data['authorisedQuantity']
+  let elementNumber = req.session.data['elementNumber']
+  req.session.data.elements[elementNumber]['authorisedQuantity'] = authorisedQuantity
+
+  let change = req.session.data['change']
+  if (change == "true"){
+  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+} else {
   res.redirect('add-billable-quantity');
 }
 
@@ -262,26 +279,12 @@ router.post('/bd/charges-2020/add-billable-quantity', function (req, res) {
   if (change == "true"){
   res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
 } else {
-  res.redirect('add-authorised-quantity');
-}
-
-});
-
-//Authorised quantity
-router.post('/bd/charges-2020/add-authorised-quantity', function (req, res) {
-
-  let authorisedQuantity = req.session.data['authorisedQuantity']
-  let elementNumber = req.session.data['elementNumber']
-  req.session.data.elements[elementNumber]['authorisedQuantity'] = authorisedQuantity
-
-  let change = req.session.data['change']
-  if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
-} else {
   res.redirect('add-time-limit');
 }
 
 });
+
+
 
 
 

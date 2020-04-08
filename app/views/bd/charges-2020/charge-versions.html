@@ -76,16 +76,17 @@
           <div class="table__cell bold-small column--20">
             Start date
           </div>
-          <div class="table__cell bold-small column--20">
+          <div class="table__cell bold-small column--15">
             End date
-          </div>
-          <div class="table__cell bold-small column--30">
-            Status
           </div>
           <div class="table__cell bold-small column--20">
             Billed up to
           </div>
-          <div class="table__cell bold-small column--10">
+          <div class="table__cell bold-small column--25">
+            Status
+          </div>
+
+          <div class="table__cell bold-small column--20">
             Action
           </div>
         </div>
@@ -109,6 +110,13 @@
               End date
             </h3>
             {{[i.chargeEnd]}}
+          </div>
+
+          <div class="table__cell">
+            <h3 class="table__context">
+              Billed up to
+            </h3>
+            {{[i.chargeBilledDate]}}
           </div>
           <div class="table__cell">
             <h3 class="table__context">
@@ -140,12 +148,6 @@
     classes: "govuk-tag--orange"
     })}}
             {% endif %}
-          </div>
-          <div class="table__cell">
-            <h3 class="table__context">
-              Billed up to
-            </h3>
-            {{[i.chargeBilledDate]}}
           </div>
           <div class="table__cell">
             {% if [i.chargeStatus] == "DRAFT" %}
