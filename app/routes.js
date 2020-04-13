@@ -179,6 +179,9 @@ let month = monthNames[monthNumber - 1]
   res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
   }
   else {
+    let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate};
+    let chargeVersions = req.session.data['chargeVersions']
+    chargeVersions.unshift(newCharge);
     res.redirect('set-charge-start-date-check');
   }
 
@@ -423,6 +426,35 @@ router.post('/bd/charges-2020/charge-version/charge-data-check', function (req, 
 
 });
 
+
+///////////CHARGE INFORMATION APPROVAL
+router.post('/bd/charges-2020/confirm-approve-charge-information', function (req, res) {
+
+ //update the element statuses
+  req.session.data.chargeVersions[0]['chargeStatus'] = "CHARGEABLE"
+  req.session.data.chargeVersions[1]['chargeStatus'] = "REPLACED"
+
+  // date fields
+    let chargeStartDay = req.session.data['chargeStart-day'] -1;
+    let chargeStartMonth = req.session.data['chargeStart-month'];
+    let chargeStartYear = req.session.data['chargeStart-year'];
+
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  let monthNumber = chargeStartMonth
+  let month = monthNames[monthNumber - 1]
+
+  //set the charge start date
+    let chargeEnd = chargeStartDay + " " + month + " " + chargeStartYear
+
+
+//set the old charge informations end date
+  req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
+
+
+  res.redirect('charge-versions');
+
+});
 
 
 

@@ -1,0 +1,227 @@
+
+<!--{% set elements = [data.elements.element1, data.elements.element2, data.elements.element3] %}
+
+
+
+{% set elements = [data.elements[0],data.elements[1],data.elements[2]] %} -->
+
+
+{% set elementNumber = "" %}
+
+{% set elements = data['elements'] %}
+
+
+{% set numberOfElements = elements.length %}
+
+
+{% for i in elements %}
+
+<!--formating for the abstraction period dates-->
+      {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+      {% set monthNumber = [i.abstractionStartMonth] %}
+      {% set monthNumberEnd = [i.abstractionEndMonth] %}
+      {% set month = monthNames[monthNumber - 1] %}
+      {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+      {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
+      {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
+
+
+     {% set elementNumber = loop.index0 %}
+
+
+      <section class="govuk-!-margin-bottom-0">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element
+          </h2>
+
+                {{ govukSummaryList({
+                  classes: "govuk-!-margin-bottom-9",
+                rows: [
+                  {
+                    key: {
+                      text: "Purpose"
+                    },
+                    value: {
+                      text: [i.purpose]
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                     key: {
+                       text: "Description"
+                     },
+                     value: {
+                       text: [i.description]
+                     },
+                     actions: {
+                       items: [
+                         {
+
+                           text: ""
+
+                         }
+                       ]
+                     }
+                   },
+
+
+                  {
+                    key: {
+                      text: "Abstraction period"
+                    },
+                    value: {
+                      text: [abstractionStart] + " to " + [abstractionEnd]
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Authorised quantity"
+                    },
+                    value: {
+                      text: [i.authorisedQuantity] + " mega litres per year"
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Billable quantity"
+                    },
+                    value: {
+                      text: [i.billableQuantity] + " mega litres per year"
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                    key: {
+                      text: "Time limit"
+                    },
+                    value: {
+                      text: [i.timeLimit]
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Source"
+                    },
+                    value: {
+                      text: [i.source]
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Season"
+                    },
+                    value: {
+                      text: [i.season]
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Loss"
+                    },
+                    value: {
+                      text: [i.loss]
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--last',
+                    key: {
+                      text: "Environmental Improvement Unit Charge"
+                    },
+                    value: {
+                      text: "Other"
+                    },
+                    actions: {
+                      items: [
+                        {
+
+                          text: ""
+
+                        }
+                      ]
+                    }
+                  }
+
+
+                ]
+              }) }}
+
+      </section>
+
+    {% endfor %}
+
+<br>

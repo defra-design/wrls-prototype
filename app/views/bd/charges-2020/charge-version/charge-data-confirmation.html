@@ -3,11 +3,11 @@
 {% set title = "Check charge information details" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -40,28 +40,32 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
 
-      {{ govukPanel({
-      titleText: "Charge information complete"
+    {{ govukPanel({
+      titleText: "Charge information complete",
+      classes: "govuk-!-margin-bottom-6"
     }) }}
 
 
-<h2 class="govuk-heading-m">What happens next</h2>
-<p class="govuk-body">
-This charge information needs to be approved by the billing and data team.</p><p class="govuk-body"> If any changes are needed, they will contact you within five working days.</p>
+    <h2 class="govuk-heading-l">What happens next</h2>
+    <p class="govuk-body">
+      The billing and data team will review the charge information.</p>
+    <p class="govuk-body">If some of the details need checking, the status of the licence will be 'Changes requested'. You can view details of the changes needed in the billing tab.</p>
+    <p class="govuk-body">
+      If the licence is approved for billing, the status will be 'Chargeable'.</p>
 
-   {% if [data.createElement] == "true" %}
+    {% if [data.createElement] == "true" %}
     <a href="/bd/charges-2020/charge-versions#charge?createElement=false" class="govuk-link">View licence summary</a>
-  {% else %}
+    {% else %}
     <a href="/bd/licence-summary-no-charge#charge?createElement=false" class="govuk-link">View licence summary</a>
     {% endif %}
 
-</div>
+  </div>
 </div>
 
 

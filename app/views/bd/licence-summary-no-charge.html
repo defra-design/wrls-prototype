@@ -131,6 +131,9 @@
         Billing
       </h2>
 
+    {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
+    {% include "includes/bd/billing.html" %}
+   {% else %}
       <p class="govuk-body">
         No charge information set up
         </p>
@@ -140,7 +143,7 @@
         Set up new charge
       </a>
 
-
+    {% endif %}
     </section>
 
   </div>

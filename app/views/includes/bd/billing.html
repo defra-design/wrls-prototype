@@ -1,0 +1,97 @@
+<!-- charges -->
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Billed up to
+    </dt>
+    <dd class="govuk-summary-list__value">
+      31 March 2020
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="/bd/charges-2020/invoice">
+        View all bills<span class="govuk-visually-hidden"> latest bill</span>
+      </a>
+    </dd>
+  </div>
+<!--    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Next bill due
+    </dt>
+    <dd class="govuk-summary-list__value">
+      30 March 2020
+    </dd>
+    <dd class="govuk-summary-list__actions">
+
+    </dd>
+  </div> -->
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Billing account
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{data['invoiceAccount']}}<br>
+      {{data['customerName']}}<br>
+      {% if data['fao'].length %}
+      {{data['fao']}}<br>
+      {% endif %}
+      {{data['address1']}}<br>
+      {{data['postcode']}}<br>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <ul class="govuk-summary-list__actions-list">
+        <li class="govuk-summary-list__actions-list-item">
+          <a class="govuk-link" href="/bd/charges-2020/ias">
+            View<span class="govuk-visually-hidden"> billing account</span>
+          </a>
+        </li>
+        <li class="govuk-summary-list__actions-list-item">
+          <a class="govuk-link" href="/bd/contacts/new-contact">
+            Change<span class="govuk-visually-hidden"> billing account</span>
+          </a>
+        </li>
+
+      </ul>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row ">
+<dt class="govuk-summary-list__key">
+  Charge elements
+</dt>
+<dd class="govuk-summary-list__value">
+  {% for i in data['elements'] %}
+ {{[i.purpose]}}, {{[i.description]}}
+ {% endfor %}
+</dd>
+<dd class="govuk-summary-list__actions">
+  <a class="govuk-link" href="charges-2020/charge-versions">
+    View charge information
+  </a>
+</dd>
+</div>
+
+  <div class="govuk-summary-list__row govuk-summary-list__row--last">
+    <dt class="govuk-summary-list__key">
+      Agreements
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {% if [data.agreementNew] == "true" %}
+
+      {{[data.agreement]}}
+
+    {% else %}
+      No current agreements
+    {% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="charges-2020/agreements">
+        View<span class="govuk-visually-hidden"> agreements</span>
+      </a>
+    </dd>
+  </div>
+
+
+
+</dl>
