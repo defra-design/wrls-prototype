@@ -91,8 +91,99 @@
           </div>
         </div>
 
-
+        {% if [data.newLicence] == "false" %}
         {% set chargeVersions = data['chargeVersions'] %}
+        {% for i in chargeVersions %}
+
+        <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 1
+            </h2>
+            <h3 class="table__context">
+              Start date
+            </h3>
+            {{[i.chargeStart]}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              End date
+            </h3>
+            {{[i.chargeEnd]}}
+          </div>
+
+          <div class="table__cell">
+            <h3 class="table__context">
+              Billed up to
+            </h3>
+            {{[i.chargeBilledDate]}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Status
+            </h3>
+            {% if [i.chargeStatus] == "CHARGEABLE" %}
+            {{govukTag({
+                  text: [i.chargeStatus],
+                  classes: "govuk-tag--green"
+                })}}
+            {% elif [i.chargeStatus] == "REPLACED" %}
+            {{govukTag({
+              text: [i.chargeStatus],
+              classes: "govuk-tag--grey"
+            })}}
+            {% elif [i.chargeStatus] == "INVALID" %}
+            {{govukTag({
+          text: [i.chargeStatus],
+          classes: "govuk-tag--red"
+        })}}
+        {% elif [i.chargeStatus] == "DRAFT" %}
+        {{govukTag({
+      text: [i.chargeStatus],
+      classes: "govuk-tag--blue"
+      })}}
+      {% elif [i.chargeStatus] == "NOT APPROVED" %}
+      {{govukTag({
+    text: "Review",
+    classes: "govuk-tag--orange"
+    })}}
+    {% elif [i.chargeStatus] == "CHANGES" %}
+    {{govukTag({
+  text: "Changes",
+  classes: "govuk-tag--blue"
+  })}}
+            {% endif %}
+          </div>
+          <div class="table__cell">
+            {% if [i.chargeStatus] == "DRAFT" %}
+
+            <a href="#">
+              Continue</a> <span class="screen-reader-only">setting up charge information</span>
+            <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
+            <a href="confirm-remove-charge-version">
+              Remove <span class="screen-reader-only">charge information</span>
+            </a>
+{% elif [i.chargeStatus] == "NOT APPROVED" %}
+{% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
+<a href="{{link}}">
+  Review <span class="screen-reader-only">charge information</span>
+</a>
+
+            {% else %}
+            {% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
+            <a href="{{link}}">
+              View <span class="screen-reader-only">charge information</span>
+            </a>
+
+            {% endif %}
+          </div>
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+
+        {% set chargeVersions = [data.chargeVersions[0]] %}
         {% for i in chargeVersions %}
 
         <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
@@ -147,6 +238,11 @@
     text: "Ready to approve",
     classes: "govuk-tag--orange"
     })}}
+    {% elif [i.chargeStatus] == "CHANGES" %}
+    {{govukTag({
+  text: "Changes",
+  classes: "govuk-tag--blue"
+  })}}
             {% endif %}
           </div>
           <div class="table__cell">
@@ -158,7 +254,7 @@
             <a href="confirm-remove-charge-version">
               Remove <span class="screen-reader-only">charge information</span>
             </a>
-{% elif [i.chargeStatus] == "NOT APPROVED" %}
+{% elif [i.chargeStatus] == "NOT APPROVED" or "CHANGES" %}
 {% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
 <a href="{{link}}">
   Review <span class="screen-reader-only">charge information</span>
@@ -175,6 +271,8 @@
         </div>
 
         {% endfor %}
+
+        {% endif %}
 
 
       </div>

@@ -457,6 +457,24 @@ router.post('/bd/charges-2020/confirm-approve-charge-information', function (req
 });
 
 
+///////////CHARGE INFORMATION NOT APPROVED REASON
+router.post('/bd/charges-2020/request-changes', function (req, res) {
+
+  res.redirect('confirm-request-changes');
+
+});
+
+///////////CHARGE INFORMATION NOT APPROVED CONFIRMATION
+router.post('/bd/charges-2020/confirm-request-changes', function (req, res) {
+
+ //update the element status
+  req.session.data.chargeVersions[0]['chargeStatus'] = "CHANGES"
+
+  res.redirect('charge-versions');
+
+});
+
+
 
 /*
 router.get('/bd/charges-2020/charge-version/create-element', function (req, res) {

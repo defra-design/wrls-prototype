@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{% set title = "Licences with new charge information in progress" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-6">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
+
+<!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  <!--  <span class="govuk-caption-l">Licences</span> -->
+    <h1 class="govuk-heading-l"> {{title}}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-tabs" data-module="tabs">
+
+  <h2 class="govuk-tabs__title">
+    Licence views
+  </h2>
+
+  <!-- tab navigation -->
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#new">
+        New
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#draft">
+        Draft
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#review">
+        Review
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#changes">
+        Changes
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#chargeable">
+        Chargeable
+      </a>
+    </li>
+  </ul>
+
+  <!-- tab 1 -->
+  <section class="govuk-tabs__panel" id="new">
+
+    <h2 class="govuk-heading-l">
+      New
+    </h2>
+
+    <!-- new licences -->
+    {% include "includes/bd/licences-new.html" %}
+
+  </section>
+
+  <!-- tab 2 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="draft">
+
+    <h2 class="govuk-heading-l">
+      Draft
+    </h2>
+
+    <!-- draft charge version licences -->
+    {% include "includes/bd/licences-draft.html" %}
+
+  </section>
+
+  <!-- tab 3 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="review">
+
+    <h2 class="govuk-heading-l">
+      Review
+    </h2>
+
+    <!-- comms table -->
+    {% include "includes/bd/licences-review.html" %}
+
+
+
+  </section>
+
+  <!-- tab 4 -->
+  <section class="govuk-tabs__panel" id="changes">
+
+    <h2 class="govuk-heading-l">
+      Changes
+    </h2>
+
+
+{% include "includes/bd/licences-changes.html" %}
+
+
+
+  </section>
+
+
+<!-- tab 5 -->
+<section class="govuk-tabs__panel" id="chargeable">
+
+  <h2 class="govuk-heading-l">
+    Chargeable
+  </h2>
+
+
+{% include "includes/bd/licences-chargeable.html" %}
+
+
+
+</section>
+
+</div>
+
+{% endblock %}

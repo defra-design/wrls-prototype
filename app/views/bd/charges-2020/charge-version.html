@@ -73,12 +73,17 @@
 })}}
 {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
 {{govukTag({
-text: "Ready to approve",
+text: "Review",
 classes: "govuk-tag--orange govuk-!-font-size-27"
+})}}
+{% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
+{{govukTag({
+text: "Changes",
+classes: "govuk-tag--blue govuk-!-font-size-27"
 })}}
 {% endif %}
     </p>
-    {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
+    {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" or "CHANGES" %}
 
     {% else %}
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
@@ -114,7 +119,25 @@ classes: "govuk-tag--orange govuk-!-font-size-27"
 
 {{ govukButton({
   text: "Request changes",
-  classes: "govuk-button--secondary"
+  classes: "govuk-button--secondary",
+  href: "request-changes"
+}) }}
+{% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
+<h2 class="govuk-heading-m">
+  Request reason
+</h2>
+<p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
+{% include "includes/bd/elements-change.html" %}
+{{ govukButton({
+  text: "Confirm changes",
+  classes: "govuk-!-margin-right-1",
+  href: "#"
+}) }}
+
+{{ govukButton({
+  text: "Cancel charge information",
+  classes: "govuk-button--secondary",
+  href: "#"
 }) }}
 
 {% else %}

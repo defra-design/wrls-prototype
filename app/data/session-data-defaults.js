@@ -49,16 +49,16 @@ module.exports = {
   "versionRemoved": "false",
   "elements":[{
         "purpose":"Spray irrigation",
-        "description":"Otterton borehole 1a",
+        "description":"",
         "abstractionStartDay": "1",
-        "abstractionStartMonth": "4",
-        "abstractionEndDay": "31",
-        "abstractionEndMonth": "3",
-        "billableQuantity": "125,000,000",
-        "authorisedQuantity": "150,000,000",
+        "abstractionStartMonth": "3",
+        "abstractionEndDay": "30",
+        "abstractionEndMonth": "9",
+        "billableQuantity": "20",
+        "authorisedQuantity": "20",
         "timeLimit": "No",
-        "source":"Unsupported",
-        "season":"All year",
+        "source":"",
+        "season":"",
         "loss":"High"
       }
     ],
@@ -119,6 +119,7 @@ module.exports = {
           ],
 
           "chargeInfoNumber": "0",
+          "newLicence": "false"
     // Insert values here
 }
 
