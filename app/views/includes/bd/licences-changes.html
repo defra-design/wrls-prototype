@@ -20,6 +20,60 @@
     </div>
   </div>
 
+
+  {% if [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
+  <!-- table row -->
+  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 3
+      </h2>
+      <span class="screen-reader-only">See Glindendfold Lake licence 03/28/60/0031</span>
+      <h3 class="table__context">
+        Licence
+      </h3>
+      <span class="table__link">
+        03/28/60/0031
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
+        Glindenfold Lake
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence holder
+      </h3>
+      <p class="table__row--text">
+        Bottled Water Plc
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Start date
+      </h3>
+      <p class="table__row--text">
+        30 April 2022
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Status
+      </h3>
+
+      {{govukTag({
+                text: "Changes",
+                classes: "govuk-tag--blue"
+              })}}
+
+    </div>
+  </a>
+  {% endif %}
+
   <!-- table row -->
   <a href="licence-summary-expired?wid=32" class="table__row govuk-!-margin-bottom-6">
     <div class="table__cell">

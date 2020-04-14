@@ -169,6 +169,12 @@
   Review <span class="screen-reader-only">charge information</span>
 </a>
 
+{% elif [i.chargeStatus] == "CHANGES" %}
+{% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
+<a href="{{link}}">
+  Review <span class="screen-reader-only">charge information</span>
+</a>
+
             {% else %}
             {% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
             <a href="{{link}}">
@@ -235,7 +241,7 @@
       })}}
       {% elif [i.chargeStatus] == "NOT APPROVED" %}
       {{govukTag({
-    text: "Ready to approve",
+    text: "Review",
     classes: "govuk-tag--orange"
     })}}
     {% elif [i.chargeStatus] == "CHANGES" %}
@@ -254,7 +260,13 @@
             <a href="confirm-remove-charge-version">
               Remove <span class="screen-reader-only">charge information</span>
             </a>
-{% elif [i.chargeStatus] == "NOT APPROVED" or "CHANGES" %}
+{% elif [i.chargeStatus] == "NOT APPROVED" %}
+{% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
+<a href="{{link}}">
+  Review <span class="screen-reader-only">charge information</span>
+</a>
+
+{% elif [i.chargeStatus] == "CHANGES" %}
 {% set link = 'charge-version?chargeInfoNumber=' + loop.index0 %}
 <a href="{{link}}">
   Review <span class="screen-reader-only">charge information</span>

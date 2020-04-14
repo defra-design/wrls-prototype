@@ -133,6 +133,15 @@
 
     {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
     {% include "includes/bd/billing.html" %}
+   {% elif [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
+    {% include "includes/bd/billing.html" %} 
+    {% elif [data.chargeVersions[0].chargeStatus] == "DRAFT" %}
+    <p class="govuk-body">
+      There is draft charge information for this licence</p>
+      <a href="charges-2020/charge-version/charge-data-create?newLicence=true" class="wrls-faux-button">
+        Continue
+      </a>
+
    {% else %}
       <p class="govuk-body">
         No charge information set up

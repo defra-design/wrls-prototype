@@ -83,8 +83,8 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 })}}
 {% endif %}
     </p>
-    {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" or "CHANGES" %}
-
+    {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
+    {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
     {% else %}
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
       <div class="govuk-grid-column-full">
