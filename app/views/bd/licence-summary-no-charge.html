@@ -134,7 +134,10 @@
     {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
     {% include "includes/bd/billing.html" %}
    {% elif [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
-    {% include "includes/bd/billing.html" %} 
+    {% include "includes/bd/billing.html" %}
+
+    {% elif ([data.newLicence] == "true") and ([data.chargeVersions[0].chargeStatus] == "CHARGEABLE") %}
+    {% include "includes/bd/billing.html" %}
     {% elif [data.chargeVersions[0].chargeStatus] == "DRAFT" %}
     <p class="govuk-body">
       There is draft charge information for this licence</p>
