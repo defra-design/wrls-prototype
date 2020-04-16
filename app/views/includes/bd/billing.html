@@ -1,6 +1,12 @@
 <!-- charges -->
 
 
+   {% if [data.createElement] == "true" %}
+    {{ govukInsetText({
+     html: 'There is new charge information being set up for this licence. <br><a class="govuk-link" href="/bd/charges-2020/charge-versions">Check status</a>'
+    }) }}
+  {% endif %}
+
 <dl class="govuk-summary-list">
 
   {% if [data.newLicence] == "false" %}
