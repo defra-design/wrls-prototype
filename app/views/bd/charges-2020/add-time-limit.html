@@ -54,7 +54,7 @@
         {% set timeLimit %}
         {{ govukDateInput({
         id: "settimeLimit",
-        namePrefix: "time-limit",
+        namePrefix: "timeLimit",
         fieldset: {
           legend: {
             text: "Enter end date"
@@ -64,7 +64,7 @@
         {% endset %}
 
         {{ govukRadios({
-          idPrefix: "time-limit",
+          idPrefix: "timeLimit",
           name: "timeLimit",
           fieldset: {
             legend: {
@@ -75,14 +75,14 @@
           },
           items: [
             {
-              value: "Yes",
+              value: "yes",
               text: "Yes",
               conditional: {
                 html: timeLimit
               }
             },
             {
-              value: "No",
+              value: "no",
               text: "No"
             }
           ]

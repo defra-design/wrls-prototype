@@ -187,6 +187,15 @@ let month = monthNames[monthNumber - 1]
 
 });
 
+//Purpose
+//Setting the change element route back
+router.get('/bd/charges-2020/add-element-purpose', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-element-purpose');
+
+});
 
 //Purpose
 //This triggers the creation of a charge element
@@ -206,10 +215,23 @@ router.post('/bd/charges-2020/add-element-purpose', function (req, res) {
 
   if (change == "true"){
     req.session.data.elements[elementNumber]['purpose'] = purpose
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
 } else {
   res.redirect('add-element-description');
 }
+
+});
+
+
+//description
+//Setting the change element route back
+router.get('/bd/charges-2020/add-element-description', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-element-description');
 
 });
 
@@ -222,10 +244,22 @@ router.post('/bd/charges-2020/add-element-description', function (req, res) {
 
   let change = req.session.data['change']
   if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
 } else {
   res.redirect('add-abstraction-period');
 }
+
+});
+
+//Abstraction period
+//Setting the change element route back
+router.get('/bd/charges-2020/add-abstraction-period', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-abstraction-period');
 
 });
 
@@ -247,13 +281,25 @@ router.post('/bd/charges-2020/add-abstraction-period', function (req, res) {
 
   let change = req.session.data['change']
   if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
 } else {
   res.redirect('add-authorised-quantity');
 }
 
 });
 
+
+//Authorised quantity
+//Setting the change element route back
+router.get('/bd/charges-2020/add-authorised-quantity', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-authorised-quantity');
+
+});
 
 //Authorised quantity
 router.post('/bd/charges-2020/add-authorised-quantity', function (req, res) {
@@ -264,10 +310,22 @@ router.post('/bd/charges-2020/add-authorised-quantity', function (req, res) {
 
   let change = req.session.data['change']
   if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
-} else {
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
+  } else {
   res.redirect('add-billable-quantity');
-}
+  }
+
+});
+
+//Billable quantity
+//Setting the change element route back
+router.get('/bd/charges-2020/add-billable-quantity', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-billable-quantity');
 
 });
 
@@ -275,12 +333,16 @@ router.post('/bd/charges-2020/add-authorised-quantity', function (req, res) {
 router.post('/bd/charges-2020/add-billable-quantity', function (req, res) {
 
   let billableQuantity = req.session.data['billableQuantity']
+  let billableQuantityNeeded = req.session.data['billableQuantityNeeded']
   let elementNumber = req.session.data['elementNumber']
   req.session.data.elements[elementNumber]['billableQuantity'] = billableQuantity
+  req.session.data.elements[elementNumber]['billableQuantityNeeded'] = billableQuantityNeeded
 
   let change = req.session.data['change']
   if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
 } else {
   res.redirect('add-time-limit');
 }
@@ -288,22 +350,49 @@ router.post('/bd/charges-2020/add-billable-quantity', function (req, res) {
 });
 
 
+//Time limit
+//Setting the change element route back
+router.get('/bd/charges-2020/add-time-limit', function (req, res) {
 
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-time-limit');
+
+});
 
 
 //Time limit
 router.post('/bd/charges-2020/add-time-limit', function (req, res) {
 
   let timeLimit = req.session.data['timeLimit']
+  let timeLimitDay = req.session.data['timeLimit-day'];
+  let timeLimitMonth = req.session.data['timeLimit-month'];
+  let timeLimitYear = req.session.data['timeLimit-year'];
   let elementNumber = req.session.data['elementNumber']
   req.session.data.elements[elementNumber]['timeLimit'] = timeLimit
+  req.session.data.elements[elementNumber]['timeLimitDay'] = timeLimitDay;
+  req.session.data.elements[elementNumber]['timeLimitMonth'] = timeLimitMonth;
+  req.session.data.elements[elementNumber]['timeLimitYear'] = timeLimitYear;
 
   let change = req.session.data['change']
   if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
-} else {
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
+  } else {
   res.redirect('add-source');
-}
+  }
+
+});
+
+
+//Source
+//Setting the change element route back
+router.get('/bd/charges-2020/add-source', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-source');
 
 });
 
@@ -318,10 +407,22 @@ router.post('/bd/charges-2020/add-source', function (req, res) {
 
   let change = req.session.data['change']
   if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
 } else {
   res.redirect('add-season');
 }
+
+});
+
+//Season
+//Setting the change element route back
+router.get('/bd/charges-2020/add-season', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-season');
 
 });
 
@@ -336,10 +437,23 @@ router.post('/bd/charges-2020/add-season', function (req, res) {
 
   let change = req.session.data['change']
   if (change == "true"){
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
-} else {
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
+  } else {
   res.redirect('add-loss');
-}
+  }
+
+});
+
+
+//Loss
+//Setting the change element route back
+router.get('/bd/charges-2020/add-loss', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-loss');
 
 });
 
@@ -352,7 +466,15 @@ router.post('/bd/charges-2020/add-loss', function (req, res) {
   req.session.data.elements[elementNumber]['loss'] = loss
 
 
+let change = req.session.data['change']
+  if (change == "true"){
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
+  } else {
   res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+  }
+
 });
 
 //Copy element
@@ -371,6 +493,9 @@ router.post('/bd/charges-2020/charge-version/confirm-copy-element', function (re
   let billableQuantity = req.session.data.elements[elementNumber]['billableQuantity']
   let authorisedQuantity =  req.session.data.elements[elementNumber]['authorisedQuantity']
   let timeLimit = req.session.data.elements[elementNumber]['timeLimit']
+  let timeLimitDay = req.session.data['timeLimit-day'];
+  let timeLimitMonth = req.session.data['timeLimit-month'];
+  let timeLimitYear = req.session.data['timeLimit-year'];
   let source = req.session.data.elements[elementNumber]['source']
   let season = req.session.data.elements[elementNumber]['season']
   let loss = req.session.data.elements[elementNumber]['loss']
@@ -379,7 +504,7 @@ router.post('/bd/charges-2020/charge-version/confirm-copy-element', function (re
 
 
   if (elementCopy == "true" && elementNumber > "0"){
-  let newElement = {purpose, description, abstractionStartDay, abstractionStartMonth, abstractionEndDay, abstractionEndMonth, billableQuantity, authorisedQuantity, timeLimit, source, season, loss};
+  let newElement = {purpose, description, abstractionStartDay, abstractionStartMonth, abstractionEndDay, abstractionEndMonth, billableQuantity, authorisedQuantity, timeLimit, timeLimitDay, timeLimitMonth, timeLimitYear, source, season, loss};
   let elements = req.session.data['elements']
   elements.push(newElement);
   }
@@ -474,6 +599,20 @@ router.post('/bd/charges-2020/confirm-request-changes', function (req, res) {
 
 });
 
+
+
+//REMOVE CHARGE VERSION
+router.post('/bd/charges-2020/charge-version/confirm-remove-charge-information', function (req, res) {
+
+
+  let chargeVersions = req.session.data['chargeVersions']
+
+    chargeVersions.splice(0, 1);
+    req.session.data['chargeVersions'] = chargeVersions
+
+
+  res.redirect('/bd/charges-2020/charge-versions');
+});
 
 
 /*

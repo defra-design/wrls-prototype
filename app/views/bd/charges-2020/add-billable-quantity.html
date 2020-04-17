@@ -57,7 +57,7 @@
   <form  method="post" class="form" id="return-reference-error">
 
 
-    <div class="govuk-form-group">
+<!--    <div class="govuk-form-group">
       <h1 class="govuk-label-wrapper">
         <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
         {{title}}
@@ -65,10 +65,55 @@
 
       </h1>
 
-
+      <label class="govuk-label" for="billable-quantity">
+        Billable quantity
+      </label>
       <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false">
       <span class="margin-left__15">megalitres per year</span>
-    </div>
+
+    </div> -->
+
+    {% set billableQuantity %}
+    {{ govukInput({
+      id: "billableQuantity",
+      name: "billableQuantity",
+      classes: "govuk-!-width-one-third govuk-input--width-10",
+      label: {
+        text: "Billable quantity"
+      },
+      attributes: {
+        spellcheck: "false"
+      }
+    }) }}
+    {% endset -%}
+
+
+    {{ govukRadios({
+  idPrefix: "billableQuantityNeeded",
+  name: "billableQuantityNeeded",
+  fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: billableQuantity
+      }
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
 <!--
     {{ govukInput({
   label: {

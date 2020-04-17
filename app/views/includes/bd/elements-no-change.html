@@ -28,6 +28,22 @@
 
      {% set elementNumber = loop.index0 %}
 
+     <!--set billable quanity if needed-->
+     {% if [i.billableQuantityNeeded] == "yes" %}
+     {% set billableQuantity = [i.billableQuantity] + " megalitres per year" %}
+     {% else %}
+     {% set billableQuantity = "Not set" %}
+     {% endif %}
+
+     <!--set time limit if needed-->
+     {% if [i.timeLimit] == "yes" %}
+     {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
+     {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
+     {% set timeLimit = [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear] %}
+     {% else %}
+     {% set timeLimit = "No" %}
+     {% endif %}
+
 
       <section class="govuk-!-margin-bottom-0">
 
@@ -116,7 +132,7 @@
                       text: "Billable quantity"
                     },
                     value: {
-                      text: [i.billableQuantity] + " megalitres per year"
+                      text: [billableQuantity] 
                     },
                     actions: {
                       items: [
@@ -134,7 +150,7 @@
                       text: "Time limit"
                     },
                     value: {
-                      text: [i.timeLimit]
+                      text: [timeLimit]
                     },
                     actions: {
                       items: [

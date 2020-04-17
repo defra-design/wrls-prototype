@@ -43,6 +43,8 @@
 
 {% block content %}
 
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
@@ -124,7 +126,7 @@
             </h3>
             {% if [i.chargeStatus] == "CHARGEABLE" %}
             {{govukTag({
-                  text: [i.chargeStatus],
+                  text: "Approved",
                   classes: "govuk-tag--green"
                 })}}
             {% elif [i.chargeStatus] == "REPLACED" %}
@@ -149,7 +151,7 @@
     })}}
     {% elif [i.chargeStatus] == "CHANGES" %}
     {{govukTag({
-  text: "Changes",
+  text: "Change requested",
   classes: "govuk-tag--blue"
   })}}
             {% endif %}
@@ -221,7 +223,7 @@
             </h3>
             {% if [i.chargeStatus] == "CHARGEABLE" %}
             {{govukTag({
-                  text: [i.chargeStatus],
+                  text: "Approved",
                   classes: "govuk-tag--green"
                 })}}
             {% elif [i.chargeStatus] == "REPLACED" %}
@@ -246,7 +248,7 @@
     })}}
     {% elif [i.chargeStatus] == "CHANGES" %}
     {{govukTag({
-  text: "Changes",
+  text: "Change requested",
   classes: "govuk-tag--blue"
   })}}
             {% endif %}

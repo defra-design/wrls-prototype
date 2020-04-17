@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You are about to approve this charge information" %}
+{% set title = "You are about to approve this licence for billing" %}
 
 
 {% block pageTitle %}
@@ -77,7 +77,9 @@
 
         {% include "includes/bd/elements-no-change.html" %}
 
-
+<p class="govuk-body">
+This licence will be added to the supplementary bill run.
+</p>
 
       <button type="submit" class="govuk-button">
         Approve

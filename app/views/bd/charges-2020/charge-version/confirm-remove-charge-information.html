@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+
+{% set title = "You are about to remove this charge information" %}
+
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+
+
+
+
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
+          {{title}}
+          </label>
+
+        </h1>
+
+</div>
+</div>
+</div>
+
+<section class="govuk-!-margin-bottom-2">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+<form method="post" class="form" id="return-reference-error">
+      <!-- table with two columns -->
+      <div class="table govuk-!-margin-bottom-8">
+
+        <div class="table__row--head">
+          <div class="table__cell bold-small column--20">
+            Start date
+          </div>
+          <div class="table__cell bold-small column--15">
+            End date
+          </div>
+          <div class="table__cell bold-small column--20">
+            Billed up to
+          </div>
+          <div class="table__cell bold-small column--25">
+            Status
+          </div>
+
+        </div>
+
+
+  {% set chargeVersions = [data.chargeVersions[0]] %}
+  {% for i in chargeVersions %}
+
+  <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 1
+      </h2>
+      <h3 class="table__context">
+        Start date
+      </h3>
+      {{[i.chargeStart]}}
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        End date
+      </h3>
+      {{[i.chargeEnd]}}
+    </div>
+
+    <div class="table__cell">
+      <h3 class="table__context">
+        Billed up to
+      </h3>
+      {{[i.chargeBilledDate]}}
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Status
+      </h3>
+      {% if [i.chargeStatus] == "CHARGEABLE" %}
+      {{govukTag({
+            text: [i.chargeStatus],
+            classes: "govuk-tag--green"
+          })}}
+      {% elif [i.chargeStatus] == "REPLACED" %}
+      {{govukTag({
+        text: [i.chargeStatus],
+        classes: "govuk-tag--grey"
+      })}}
+      {% elif [i.chargeStatus] == "INVALID" %}
+      {{govukTag({
+    text: [i.chargeStatus],
+    classes: "govuk-tag--red"
+  })}}
+  {% elif [i.chargeStatus] == "DRAFT" %}
+  {{govukTag({
+text: [i.chargeStatus],
+classes: "govuk-tag--blue"
+})}}
+{% elif [i.chargeStatus] == "NOT APPROVED" %}
+{{govukTag({
+text: "Review",
+classes: "govuk-tag--orange"
+})}}
+{% elif [i.chargeStatus] == "CHANGES" %}
+{{govukTag({
+text: "Changes",
+classes: "govuk-tag--blue"
+})}}
+      {% endif %}
+    </div>
+
+  </div>
+
+  {% endfor %}
+
+<br>
+
+      <button type="submit" class="govuk-button">
+        Remove
+      </button>
+
+    </form>
+
+
+  </div>
+  </div>
+
+
+  </section>
+
+
+
+
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+{% endblock %}
