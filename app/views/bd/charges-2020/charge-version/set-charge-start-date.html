@@ -44,9 +44,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
+      <!-- page heading 
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-  <!--    <h1 class="govuk-heading-l">{{ title }}</h1>
+     <h1 class="govuk-heading-l">{{ title }}</h1>
 
   {% if [data.createElement] == "true"%}
   <form action="how-to-create-element" method="post" class="form">
@@ -57,6 +57,7 @@
 
   <form method="post" class="form">
 
+    {% set chargeDate %}
     {{ govukDateInput({
   id: "chargeStart",
   namePrefix: "chargeStart",
@@ -67,6 +68,39 @@
       classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
     }
   }
+}) }}
+  {% endset -%}
+
+{{ govukRadios({
+  idPrefix: "chargeDateConditional",
+  name: "chargeDateConditional",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "today",
+      html: 'Today<br>20 April 2020'
+    },
+    {
+      value: "licenceStart",
+      html: "Licence start date<br>22 September 2023"
+    },
+    {
+divider: "or"
+},
+    {
+      value: "other",
+      text: "A different date",
+      conditional: {
+        html: chargeDate
+      }
+    }
+  ]
 }) }}
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">

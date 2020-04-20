@@ -8,6 +8,19 @@ const router = express.Router()
 //This triggers the creation of a charge version
 router.post('/bd/charges-2020/charge-version/set-charge-start-date', function (req, res) {
 
+  //setting the date of charge start incorporating the radio buttons
+  let chargeDateConditional = req.session.data['chargeDateConditional'];
+  if (chargeDateConditional != "other"){
+
+  let d = new Date();
+  let m = new Date();
+  let y = new Date();
+  req.session.data['chargeStart-day'] = d.getDate();
+  req.session.data['chargeStart-month'] = m.getMonth()+1;
+  req.session.data['chargeStart-year'] = y.getFullYear();
+  }
+
+
   //trigger for new element
   let chargeNew = req.session.data['createElement']
 
