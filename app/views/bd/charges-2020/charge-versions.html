@@ -53,8 +53,16 @@
     <h1 class="govuk-heading-l">{{title}}</h1>
     {{ govukButton({
       text: "Set up new charge",
-      href: "/bd/charges-2020/charge-version/set-charge-start-date?createElement=true"
+      href: "/bd/charges-2020/charge-version/set-charge-start-date?createElement=true",
+      classes: "govuk-!-margin-right-3"
     }) }}
+
+
+    {{ govukButton({
+  text: "Set licence as free of charge",
+  classes: "govuk-button--secondary",
+  href: "add-reason"
+}) }}
 
 
   </div>

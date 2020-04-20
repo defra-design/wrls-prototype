@@ -102,19 +102,22 @@ module.exports = {
             "chargeStart": "22 April 2019",
             "chargeEnd": "",
             "chargeStatus": "CHARGEABLE",
-            "chargeBilledDate": "31 March 2020"
+            "chargeBilledDate": "31 March 2020",
+            "free": "false"
             },
               {
             "chargeStart": "1 April 2017",
             "chargeEnd": "21 April 2019",
             "chargeStatus": "REPLACED",
-            "chargeBilledDate": "31 March 2019"
+            "chargeBilledDate": "31 March 2019",
+            "free": "false"
             },
             {
             "chargeStart": "1 April 2017",
             "chargeEnd": "21 April 2019",
             "chargeStatus": "INVALID",
-            "chargeBilledDate": "31 March 2019"
+            "chargeBilledDate": "31 March 2019",
+            "free": "false"
           }
           ],
 

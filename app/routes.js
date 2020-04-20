@@ -3,149 +3,6 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-/*
-//  elment details set in route - these have been moved to the default session data
-
-//Element details
-const elements = {
-  element1 : {
-  purpose: 'Spray irrigation',
-  description: 'Base licence',
-  absPeriod: "1 April to 31 March",
-  authQuantity: "1,250,000",
-  billQuantity: "1,250,000",
-  source: "Unsupported",
-  season: "All year",
-  loss: "High"
-
-},
-   element2 : {
-     purpose: 'Spray irrigation',
-     description: 'Time limited increase',
-     absPeriod: "1 April to 31 March",
-     authQuantity: "250,000",
-     billQuantity: "250,000",
-     timeLimited: "31 March 2022",
-     source: "Unsupported",
-     season: "All year",
-     loss: "High"
-},
-};
-
-
-
-// //////////////////////////////
-//INDEX PAGE
-router.get('/', function(req, res) {
-
-  req.session.data['elements'] = elements
-
-    res.render('index');
-});
-
-
-
-router.get('/bd/charges-2020/current-charge-version', function (req, res) {
-
-  req.session.data['elements'] = elements
-
-  res.render('bd/charges-2020/current-charge-version')
-})
-
-
-
-const elements = {
-  "element1": {
-      "purpose":"Spray irrigation",
-      "description":"Otterton borehole 1a",
-      "abstractionStartDay": "1",
-      "abstractionStartMonth": "4",
-      "abstractionEndDay": "31",
-      "abstractionEndMonth": "3",
-      "billableQuantity": "125,000,000",
-      "authorisedQuantity": "150,000,000",
-      "timeLimit": "No",
-      "source":"Unsupported",
-      "season":"All year",
-      "loss":"High"
-    },
-    "element2":{
-      "purpose":"Spray irrigation",
-      "description":"Otterton borehole 1a, Time limited increase",
-      "abstractionStartDay": "1",
-      "abstractionStartMonth": "4",
-      "abstractionEndDay": "31",
-      "abstractionEndMonth": "3",
-      "billableQuantity": "250,000",
-      "authorisedQuantity": "250,000",
-      "timeLimit": "Yes",
-      "source":"Unsupported",
-      "season":"All year",
-      "loss":"High"
-    },
-    "element3":{
-      "purpose":"Spray irrigation",
-      "description":"Otterton borehole 1a, Time limited increase",
-      "abstractionStartDay": "1",
-      "abstractionStartMonth": "4",
-      "abstractionEndDay": "31",
-      "abstractionEndMonth": "3",
-      "billableQuantity": "250,000",
-      "authorisedQuantity": "250,000",
-      "timeLimit": "Yes",
-      "source":"Unsupported",
-      "season":"All year",
-      "loss":"High"
-    }
-  }
-
-
-
-
-
-//add another activity to the activities list
-router.post('/bd/charges-2020/charge-version/create-element', function (req, res) {
-
-  let purpose = req.session.data['purpose']
-  let elementNumber = req.session.data['elementNumber']
-  if (elementNumber === "1") {
-   req.session.data.elements.element1['purpose'] = purpose
-  }
-
-
-  res.redirect('create-element');
-
-});
-
-
-
-// //////////////////////////////
-//INDEX PAGE
-router.get('/', function(req, res) {
-
-
-const elementNumber = req.session.data['elementNumber']
-const change = req.session.data['change']
-
-
-const purpose = req.session.data['purpose']
-const description = req.session.data['description']
-const abstractionStartDay = req.session.data['abstractionStartDay']
-const abstractionStartMonth = req.session.data['abstractionStartMonth']
-const abstractionEndDay = req.session.data['abstractionEndDay']
-const abstractionEndMonth = req.session.data['abstractionEndMonth']
-const billableQuantity = req.session.data['billableQuantity']
-const authorisedQuantity = req.session.data['authorisedQuantity']
-const timeLimit = req.session.data['timeLimit']
-const source = req.session.data['source']
-const season = req.session.data['season']
-const loss = req.session.data['loss']
-
-res.render('index');
-});
-
-*/
-
 
 //Charge start date
 //This triggers the creation of a charge version
@@ -170,18 +27,16 @@ let month = monthNames[monthNumber - 1]
   let chargeStatus = "DRAFT"
   let chargeBilledDate = ""
 
-
-//if statement for creating the new chargeversion
-  if (chargeNew == "true"){
   let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate};
   let chargeVersions = req.session.data['chargeVersions']
   chargeVersions.unshift(newCharge);
+
+
+//if statement for creating the new chargeversion
+  if (chargeNew == "true"){
   res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
   }
   else {
-    let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate};
-    let chargeVersions = req.session.data['chargeVersions']
-    chargeVersions.unshift(newCharge);
     res.redirect('set-charge-start-date-check');
   }
 
@@ -569,7 +424,7 @@ router.post('/bd/charges-2020/confirm-approve-charge-information', function (req
   let monthNumber = chargeStartMonth
   let month = monthNames[monthNumber - 1]
 
-  //set the charge start date
+  //set the charge end date
     let chargeEnd = chargeStartDay + " " + month + " " + chargeStartYear
 
 
@@ -614,6 +469,75 @@ router.post('/bd/charges-2020/charge-version/confirm-remove-charge-information',
   res.redirect('/bd/charges-2020/charge-versions');
 });
 
+
+
+
+
+/////////////NON_CHARGEABLE
+
+//Reason
+router.post('/bd/charges-2020/add-reason', function (req, res) {
+
+
+  res.redirect('/bd/charges-2020/add-nonchargeable-date');
+});
+
+//DATE
+router.post('/bd/charges-2020/add-nonchargeable-date', function (req, res) {
+
+  let nonChargeableDate = req.session.data['nonchargeableDateConditional'];
+  if (nonChargeableDate != "other"){
+
+  let d = new Date();
+  let m = new Date();
+  let y = new Date();
+  req.session.data['chargeStart-day'] = d.getDate();
+  req.session.data['chargeStart-month'] = m.getMonth()+1;
+  req.session.data['chargeStart-year'] = y.getFullYear();
+  }
+
+  res.redirect('/bd/charges-2020/nonchargeable-check');
+});
+
+
+
+//NON-CHARGEABLE-CREATE
+router.post('/bd/charges-2020/nonchargeable-check', function (req, res) {
+
+
+  // date fields
+    let chargeStartDay = req.session.data['chargeStart-day'];
+    let chargeStartMonth = req.session.data['chargeStart-month'];
+    let chargeStartYear = req.session.data['chargeStart-year'];
+
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  let monthNumber = chargeStartMonth
+  let month = monthNames[monthNumber - 1]
+
+  //set the charge start date
+    let chargeStart = chargeStartDay + " " + month + " " + chargeStartYear
+    let chargeEnd = ""
+    let chargeStatus = "CHARGEABLE"
+    let chargeBilledDate = "Free of charge"
+    let free = "true"
+
+    let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate, free};
+    let chargeVersions = req.session.data['chargeVersions']
+    chargeVersions.unshift(newCharge);
+
+
+   //Mark the old charge version as replaced and set the end date
+    req.session.data.chargeVersions[1]['chargeStatus'] = "REPLACED"
+
+    //set the charge end date
+    chargeStartDay -1;
+    chargeEnd = chargeStartDay + " " + month + " " + chargeStartYear
+  //set the old charge informations end date
+    req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
+
+  res.redirect('/bd/charges-2020/charge-versions');
+});
 
 /*
 router.get('/bd/charges-2020/charge-version/create-element', function (req, res) {

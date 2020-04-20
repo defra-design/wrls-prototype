@@ -83,7 +83,9 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 })}}
 {% endif %}
     </p>
-    {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
+
+    {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
+    {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
     {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
     {% else %}
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
@@ -109,7 +111,10 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
-{% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
+{% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
+<p class="govuk-bod govuk-!-margin-top-6">This licence was made free of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
+<p class="govuk-body govuk-!-margin-bottom-9">Reason {{data['reason']}}.</p>
+{% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
 {% include "includes/bd/elements-change.html" %}
 {{ govukButton({
   text: "Approve",

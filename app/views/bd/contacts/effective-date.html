@@ -47,21 +47,73 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="check-invoice-account-details" method="post" class="form" id="element-date">
+    <form action="check-invoice-account-details?startDay=20&startMonth=04&startYear=2020" method="post" class="form" id="element-date">
 
       <!-- effective dates -->
-      <div class="govuk-form-group govuk-!-margin-bottom-0">
-        <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
+      <div class="govuk-form-group govuk-!-margin-bottom-6">
+  <!--       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+       <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-margin-bottom-0">
             <span class="govuk-caption-l">Licence 03/28/60/0032</span>
             <h1 class="govuk-heading-l">
               {{ title }}
             </h1>
-          </legend>
+          </legend> -->
 
 
 
-          <div class="govuk-!-margin-bottom-6">
+          {% set effectiveDate %}
+
+
+          {{ govukDateInput({
+            id: "start-date",
+            namePrefix: "start",
+            fieldset: {
+              legend: {
+                text: "Effective date",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "The date can be up to 6 years in the past."
+            }
+          }) }}
+          {% endset -%}
+
+
+          {{ govukRadios({
+            idPrefix: "effectiveDateConditional",
+            name: "effectiveDate",
+            fieldset: {
+              legend: {
+                html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "today",
+                html: 'Today<br>20 April 2020'
+              },
+              {
+                value: "licenceStart",
+                html: "Licence start date<br>22 September 2023"
+              },
+              {
+      divider: "or"
+    },
+              {
+                value: "other",
+                text: "A different date",
+                conditional: {
+                  html: effectiveDate
+                }
+              }
+            ]
+          }) }}
+
+    <!--      <div class="govuk-!-margin-bottom-6">
             <p id="dob-hint" class="govuk-hint">
                 The date can be up to 6 years in the past.
               </p>
@@ -91,7 +143,7 @@
                 </div>
               </div>
 
-              <!--today's date-->
+              <!--today's date
               <div class="govuk-date-input__item">
                 <div class="govuk-form-group">
                   <a href="check-invoice-account-details?startDay=28&startMonth=02&startYear=2020" class="govuk-link govuk-input govuk-date-input__input wrls-date-input__input--link">Today</a>
@@ -100,7 +152,9 @@
             </div>
           </div>
 
-        </fieldset>
+
+
+        </fieldset> -->
       </div>
 
       <button type="submit" class="govuk-button">
