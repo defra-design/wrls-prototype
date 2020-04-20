@@ -1,7 +1,7 @@
 <!-- charges -->
-
-
-   {% if [data.createElement] == "true" %}
+{% set chargeStatus = [data.chargeVersions[0].chargeStatus]%}
+   {% if chargeStatus == "CHARGEABLE" %}
+   {% else %}
     {{ govukInsetText({
      html: 'There is new charge information being set up for this licence. <br><a class="govuk-link" href="/bd/charges-2020/charge-versions">Check status</a>'
     }) }}
