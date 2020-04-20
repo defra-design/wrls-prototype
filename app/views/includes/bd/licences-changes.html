@@ -1,269 +1,216 @@
-<!-- table with four columns -->
-<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
 
-  <div class="table__row--head">                                              <!-- the table head -->
-    <div class="table__cell bold-small ">
-      Licence
-      <!-- Creator if it exists, otherwise Licence -->
-    </div>
-    <div class="table__cell bold-small">
-      Creator
-    </div>
-    <div class="table__cell bold-small ">
-      Licence holder
-    </div>
-    <div class="table__cell bold-small ">
-      Start date
-    </div>
+  {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
+  {{ govukTable({
+    caption: "Change requested",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Creator",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Licence holder",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+    [
+      {
+        html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+      },
+      {
+        text: "Your name"
+      },
+      {
+        text: "Bottled Water Plc"
+      },
+      {
+        text: "30 April 2022"
+      }
+    ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/12/001/33</a>'
+        },
+        {
+          text: "Michael Babb"
+        },
+        {
+          text: "Sam Bidwell"
+        },
+        {
+          text: "4 October 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">12/28/66/0015</a>'
+        },
+        {
+          text: "Rose Conelly"
+        },
+        {
+          text: "Jacqui Tempson"
+        },
 
-  </div>
+        {
+          text: "30 April 2022"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">44/22/17/349</a>'
+        },
+        {
+          text: "Barry Crampton"
+        },
+        {
+          text: "Osborne Farms Ltd."
+        },
+        {
+          text: "15 July 2023"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">11/34/5555/0048</a>'
+        },
+        {
+          text: "Barry Crampton"
+        },
+        {
+          text: "Little Jones Farms Ltd."
+        },
+        {
+          text: "15 September 2022"
+        }
+      ],
 
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">22/25/55/9800</a>'
+        },
+        {
+          text: "Jo Langton"
+        },
+        {
+          text: "Little Jones Farms Ltd."
+        },
+        {
+          text: "28 January 2024"
+        }
+      ]
 
-  {% if [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
-  <!-- table row -->
-  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 3
-      </h2>
-      <span class="screen-reader-only">See Glindendfold Lake licence 03/28/60/0031</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        03/28/60/0031
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Creator
-      </h3>
-      <p class="table__row--text">
-        Jo Langton
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Bottled Water Plc
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        30 April 2022
-      </p>
-    </div>
+    ]
+  }) }}
 
-  </a>
   {% endif %}
 
-  <!-- table row -->
-  <a href="licence-summary-expired?wid=32" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 1
-      </h2>
-      <span class="screen-reader-only">See Greater Hampton Crescent licence, 01/12/001/33</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        01/12/001/33
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Creator
-      </h3>
-      <p class="table__row--text">
-        Phil Babb
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Sam Bidwell
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
 
+  {{ govukTable({
+    caption: "Change requested",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Creator",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Licence holder",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/12/001/33</a>'
+        },
+        {
+          text: "Michael Babb"
+        },
+        {
+          text: "Sam Bidwell"
+        },
+        {
+          text: "4 October 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">12/28/66/0015</a>'
+        },
+        {
+          text: "Rose Conelly"
+        },
+        {
+          text: "Jacqui Tempson"
+        },
 
-        4 October 2020
+        {
+          text: "30 April 2022"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">44/22/17/349</a>'
+        },
+        {
+          text: "Barry Crampton"
+        },
+        {
+          text: "Osborne Farms Ltd."
+        },
+        {
+          text: "15 July 2023"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">11/34/5555/0048</a>'
+        },
+        {
+          text: "Barry Crampton"
+        },
+        {
+          text: "Little Jones Farms Ltd."
+        },
+        {
+          text: "15 September 2022"
+        }
+      ],
 
-    </div>
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">22/25/55/9800</a>'
+        },
+        {
+          text: "Jo Langton"
+        },
+        {
+          text: "Little Jones Farms Ltd."
+        },
+        {
+          text: "28 January 2024"
+        }
+      ]
 
-  </a>
-
-  <!-- table row -->
-  <a href="licence-summary?wid=31" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 3
-      </h2>
-      <span class="screen-reader-only">See Osprey Road licence 12/28/66/0015</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        12/28/66/0015
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Creator
-      </h3>
-      <p class="table__row--text">
-        Rose Connelly
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Jacqui Tempson
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        30 April 2022
-      </p>
-    </div>
-
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 4
-      </h2>
-      <span class="screen-reader-only">See Osborne Farms licence, 44/22/17/349</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        44/22/17/349
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Creator
-      </h3>
-      <p class="table__row--text">
-        Barry Crampton
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Osborne Farms Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2034
-      </p>
-    </div>
-
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 5
-      </h2>
-      <span class="screen-reader-only">See Gregor mead licence, 11/34/5555/0048</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        11/34/5555/0048
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Creator
-      </h3>
-      <p class="table__row--text">
-        Barry Crampton
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Little Jones Farms Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2022
-      </p>
-    </div>
-
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 6
-      </h2>
-      <span class="screen-reader-only">See Greater dale licence, 22/25/55/9800</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        22/25/55/9800
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Creator
-      </h3>
-      <p class="table__row--text">
-        Jo Langton
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Little Jones Farms Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2022
-      </p>
-    </div>
-
-  </a>
+    ]
+  }) }}

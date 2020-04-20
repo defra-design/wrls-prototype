@@ -1,330 +1,219 @@
-<!-- table with four columns -->
-<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
 
-  <div class="table__row--head">                                              <!-- the table head -->
-    <div class="table__cell bold-small ">
-      Licence
-      <!-- licence name if it exists, otherwise Licence -->
-    </div>
-    <div class="table__cell bold-small">
-      Licence name
-    </div>
-    <div class="table__cell bold-small ">
-      Licence holder
-    </div>
-    <div class="table__cell bold-small ">
-      Start date
-    </div>
-    <div class="table__cell bold-small">
-      Status
-    </div>
-  </div>
+
 
   {% if [data.chargeVersions[0].chargeStatus] == "DRAFT" %}
-  <!-- table row -->
-  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 3
-      </h2>
-      <span class="screen-reader-only">See Glindendfold Lake licence 03/28/60/0031</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        03/28/60/0031
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Glindenfold Lake
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Bottled Water Plc
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        30 April 2022
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Status
-      </h3>
+  {{ govukTable({
+    caption: "Draft",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Creator",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Licence holder",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+    [
+      {
+        html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+      },
+      {
+        text: "Your name"
+      },
+      {
+        text: "Bottled Water Plc"
+      },
+      {
+        text: "30 April 2022"
+      }
+    ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">12/23/43/0044</a>'
+        },
+        {
+          text: "Emma Nevin"
+        },
+        {
+          text: "Irene Smithson"
+        },
+        {
+          text: "31 January 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+        },
+        {
+          text: "Barry Crampton"
+        },
+        {
+          text: "Reg Spreadbury"
+        },
 
-      {{govukTag({
-                text: "Draft",
-                classes: "govuk-tag--blue"
-              })}}
+        {
+          text: "30 April 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/61/029</a>'
+        },
+        {
+          text: "Rose Conelly"
+        },
+        {
+          text: "Folkstone Farms Ltd."
+        },
+        {
+          text: "16 October 2022"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">22/12/65/0055</a>'
+        },
+        {
+          text: "Jo Langton"
+        },
+        {
+          text: "Thomas Featherstone Ltd."
+        },
+        {
+          text: "15 September 2023"
+        }
+      ],
 
-    </div>
-  </a>
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">23/33/76/0044</a>'
+        },
+        {
+          text: "Jo Langton"
+        },
+        {
+          text: "Coastal Water Ltd."
+        },
+        {
+          text: "22 October 2024"
+        }
+      ]
+
+    ]
+  }) }}
+
+
   {% endif %}
 
-  <!-- table row -->
-  <a href="licence-summary-expired?wid=32" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 1
-      </h2>
-      <span class="screen-reader-only">See Friars well licence, 12/12/24/2892</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        12/12/24/2892
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Friars well
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Irene Smithson
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
 
+  {{ govukTable({
+    caption: "Draft",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Creator",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Licence holder",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">12/23/43/0044</a>'
+        },
+        {
+          text: "Emma Nevin"
+        },
+        {
+          text: "Irene Smithson"
+        },
+        {
+          text: "31 January 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+        },
+        {
+          text: "Barry Crampton"
+        },
+        {
+          text: "Reg Spreadbury"
+        },
 
-        31 January 2020
+        {
+          text: "30 April 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/61/029</a>'
+        },
+        {
+          text: "Rose Conelly"
+        },
+        {
+          text: "Folkstone Farms Ltd."
+        },
+        {
+          text: "16 October 2022"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">22/12/65/0055</a>'
+        },
+        {
+          text: "Jo Langton"
+        },
+        {
+          text: "Thomas Featherstone Ltd."
+        },
+        {
+          text: "15 September 2023"
+        }
+      ],
 
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Status
-      </h3>
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">23/33/76/0044</a>'
+        },
+        {
+          text: "Jo Langton"
+        },
+        {
+          text: "Coastal Water Ltd."
+        },
+        {
+          text: "22 October 2024"
+        }
+      ]
 
-      {{govukTag({
-                text: "Draft",
-                classes: "govuk-tag--blue"
-              })}}
-
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="licence-summary?wid=31" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 3
-      </h2>
-      <span class="screen-reader-only">See Loch Goldsmith licence 03/28/60/0031</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        12/23/43/0044
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Loch Goldsmith
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Reg Spreadbury
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        30 April 2022
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Status
-      </h3>
-
-      {{govukTag({
-                text: "Draft",
-                classes: "govuk-tag--blue"
-              })}}
-
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 4
-      </h2>
-      <span class="screen-reader-only">See Tildsbury Reservoir licence, 03/28/61/029</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        03/28/61/029
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Tildsbury Reservoir
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Folkstone Farms Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2024
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Status
-      </h3>
-
-      {{govukTag({
-                text: "Draft",
-                classes: "govuk-tag--blue"
-              })}}
-
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 5
-      </h2>
-      <span class="screen-reader-only">See Featherstone Road licence, 22/12/65/0055</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        22/12/65/0055
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Featherstone Road
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Thomas Featherstone Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2024
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Status
-      </h3>
-
-      {{govukTag({
-                text: "Draft",
-                classes: "govuk-tag--blue"
-              })}}
-
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 6
-      </h2>
-      <span class="screen-reader-only">See Sea Cove licence, 03/28/60/0034</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        23/33/76/0044
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Sea Cove
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Coastal Water Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        22 October 2024
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Status
-      </h3>
-
-      {{govukTag({
-                text: "Draft",
-                classes: "govuk-tag--blue"
-              })}}
-
-    </div>
-  </a>
+    ]
+  }) }}

@@ -79,19 +79,10 @@
         Change requested
       </a>
     </li>
-    <li class="govuk-tabs__list-item" tabindex="0">
-      <a class="govuk-tabs__tab" href="#Approved">
-        Approved
-      </a>
-    </li>
   </ul>
 
   <!-- tab 1 -->
   <section class="govuk-tabs__panel" id="new">
-
-    <h2 class="govuk-heading-l">
-      New licences with no charge information
-    </h2>
 
     <!-- new licences -->
     {% include "includes/bd/licences-new.html" %}
@@ -101,10 +92,6 @@
   <!-- tab 2 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="draft">
 
-    <h2 class="govuk-heading-l">
-      Draft
-    </h2>
-
     <!-- draft charge version licences -->
     {% include "includes/bd/licences-draft.html" %}
 
@@ -112,10 +99,6 @@
 
   <!-- tab 3 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="review">
-
-    <h2 class="govuk-heading-l">
-      Review
-    </h2>
 
     <!-- comms table -->
     {% include "includes/bd/licences-review.html" %}
@@ -127,31 +110,12 @@
   <!-- tab 4 -->
   <section class="govuk-tabs__panel" id="changes">
 
-    <h2 class="govuk-heading-l">
-      Change requested
-    </h2>
-
 
 {% include "includes/bd/licences-changes.html" %}
 
 
 
   </section>
-
-
-<!-- tab 5 -->
-<section class="govuk-tabs__panel" id="Approved">
-
-  <h2 class="govuk-heading-l">
-    Approved
-  </h2>
-
-
-{% include "includes/bd/licences-chargeable.html" %}
-
-
-
-</section>
 
 </div>
 

@@ -1,222 +1,80 @@
-<!-- table with four columns -->
-<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
-
-  <div class="table__row--head">                                              <!-- the table head -->
-    <div class="table__cell bold-small column--25">
-      Licence
-      <!-- licence name if it exists, otherwise Licence -->
-    </div>
-    <div class="table__cell bold-small">
-      Licence name
-    </div>
-    <div class="table__cell bold-small column--25">
-      Licence holder
-    </div>
-    <div class="table__cell bold-small column--20">
-      Start date
-    </div>
-  </div>
 
 
+  {{ govukTable({
+    caption: "New licences with no charge information",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Licence holder",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">00/22/001/02</a>'
+        },
+        {
+          text: "Irene Briton"
+        },
+        {
+          text: "31 January 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+        },
+        {
+          text: "Bottled Water Plc"
+        },
+        {
+          text: "30 April 2020"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/61/029</a>'
+        },
+        {
+          text: "Big Smith Farms Ltd."
+        },
+        {
+          text: "15 September 2021"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0035</a>'
+        },
+        {
+          text: "Big Smith Farms Ltd."
+        },
+        {
+          text: "15 September 2022"
+        }
+      ],
 
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0034</a>'
+        },
+        {
+          text: "Big Smith Farms Ltd."
+        },
+        {
+          text: "15 September 2022"
+        }
+      ]
 
-  <!-- table row -->
-  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 1
-      </h2>
-      <span class="screen-reader-only">See Lower smith Road licence, 00/22/001/02</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        00/22/001/02
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Lower Smith Road
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Irene Briton
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-
-
-        31 January 2020
-
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 3
-      </h2>
-      <span class="screen-reader-only">See Glindendfold Lake licence 03/28/60/0031</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        03/28/60/0031
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Glindenfold Lake
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Bottled Water Plc
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        30 April 2022
-      </p>
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 4
-      </h2>
-      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        03/28/61/029
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Honeydew Crescent
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Big Smith Farms Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2034
-      </p>
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 5
-      </h2>
-      <span class="screen-reader-only">See George Furrow licence, 03/28/60/0035</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        03/28/60/0035
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        George Furrow
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Big Smith Farms Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2022
-      </p>
-    </div>
-  </a>
-
-  <!-- table row -->
-  <a href="../licence-summary-no-charge" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 6
-      </h2>
-      <span class="screen-reader-only">See Dale Barrow licence, 03/28/60/0034</span>
-      <h3 class="table__context">
-        Licence
-      </h3>
-      <span class="table__link">
-        03/28/60/0034
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence name
-      </h3>
-      <p class="table__row--text">
-        Dale Barrow
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licence holder
-      </h3>
-      <p class="table__row--text">
-        Big Smith Farms Ltd.
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Start date
-      </h3>
-      <p class="table__row--text">
-        15 September 2022
-      </p>
-    </div>
-  </a>
+    ]
+  }) }}
