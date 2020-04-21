@@ -54,26 +54,54 @@
 
   <form  method="post" class="form">
 
-    {{ govukSelect({
-  id: "reason",
+
+
+{{ govukRadios({
+  idPrefix: "reason",
   name: "reason",
-  label: {
-    text: [title],
-    isPageHeading: true,
-    classes: "govuk-label--l govuk-!-margin-bottom-6"
+  fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
   },
   items: [
-  {
-    value: "selectReason",
-    text: "Select reason"
-  },
     {
-      value: "Abatement",
-      text: "Abatement"
+      value: "Licence held by Environment Agency",
+      text: "Licence held by Environment Agency"
     },
     {
-      value: "Another reason",
-      text: "Another reason"
+      value: "Licence charged elsewhere as aggregate",
+      text: "Licence charged elsewhere as aggregate"
+    },
+    {
+      value: "Chloride Concentration",
+      text: "Chloride Concentration greater than 8000 miligrams per litre"
+    },
+    {
+      value: "Abatement (S126)",
+      text: "Abatement (S126)"
+    },
+    {
+      value: "Power Generation less than 5 megawatts (S125)",
+      text: "Power Generation less than 5 megawatts (S125)"
+    },
+    {
+      value: "Trade in place temporarily",
+      text: "Trade in place temporarily"
+    },
+    {
+      value: "Temporary (Water Act 2003)",
+      text: "Temporary (Water Act 2003)"
+    },
+    {
+      value: "Transfer (Water Act 2003)",
+      text: "Transfer (Water Act 2003)"
+    },
+    {
+      value: "Temporary extension of expiry date",
+      text: "Temporary extension of expiry date"
     }
   ]
 }) }}

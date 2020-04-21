@@ -84,6 +84,8 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 {% endif %}
     </p>
 
+
+
     {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
     {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
     {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
@@ -93,14 +95,25 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
         <section class="meta-data__row">
           <div class="meta-data__container">
             <div class="meta-data__label">
+              Reason
+            </div>
+            <div class="meta-data__value">
+              {{data.chargeVersions[chargeInfoNumber].reasonNewCharge}}
+            </div>
+            <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
               Billed up to
             </div>
             <div class="meta-data__value">
-            {% set chargeInfoNumber = [data.chargeInfoNumber] %}
+
               {{data.chargeVersions[chargeInfoNumber].chargeBilledDate}}
             </div>
             <div>
         </section>
+
         </div>
         </div>
         {% endif %}
@@ -110,6 +123,45 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
+
+
+          {% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
+          <h2 class="govuk-heading-m">
+            Comments from Billing and Data
+          </h2>
+          <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
+          {% endif %}
+
+          {% if (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED")) or (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES")) %}
+          {% include "includes/bd/reason-new-charge.html" %}
+          <section class="govuk-!-margin-bottom-9">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
+
+          {{ govukSummaryList({
+          rows: [
+            {
+              classes: 'govuk-summary-list__row--last',
+              key: {
+                text: "Start date"
+              },
+              value: {
+                text: [data.chargeVersions[chargeInfoNumber].chargeStart]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "set-charge-start-date",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            }
+          ]
+          }) }}
+
+          </section>
+          {% endif %}
 
 {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
 <p class="govuk-bod govuk-!-margin-top-6">This licence was made free of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
@@ -150,10 +202,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
   href: "request-changes"
 }) }}
 {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
-<h2 class="govuk-heading-m">
-  Comments from Billing and Data
-</h2>
-<p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
+
 
 <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 

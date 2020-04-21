@@ -103,26 +103,30 @@ module.exports = {
             "chargeEnd": "",
             "chargeStatus": "CHARGEABLE",
             "chargeBilledDate": "31 March 2020",
-            "free": "false"
+            "free": "false",
+            "reasonNewCharge": "Formal variation"
             },
               {
             "chargeStart": "1 April 2017",
             "chargeEnd": "21 April 2019",
             "chargeStatus": "REPLACED",
             "chargeBilledDate": "31 March 2019",
-            "free": "false"
+            "free": "false",
+            "reasonNewCharge": "New licence"
             },
             {
             "chargeStart": "1 April 2017",
             "chargeEnd": "21 April 2019",
             "chargeStatus": "INVALID",
             "chargeBilledDate": "31 March 2019",
-            "free": "false"
+            "free": "false",
+            "reasonNewCharge": "New licence"
           }
           ],
 
           "chargeInfoNumber": "0",
-          "newLicence": "false"
+          "newLicence": "false",
+          "reasonNewCharge": "New licence"
     // Insert values here
 }
 

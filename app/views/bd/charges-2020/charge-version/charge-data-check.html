@@ -55,6 +55,11 @@
 
   <form  method="post" class="form" id="return-reference-error">
 
+
+  {% include "includes/bd/reason-new-charge.html" %}
+
+
+
     {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
     {% set monthNumber = data['chargeStart-month'] %}
@@ -78,14 +83,6 @@
     <section class="govuk-!-margin-bottom-9">
 
       <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
-
-
-
-
-
-
-
-
 
     {{ govukSummaryList({
     rows: [

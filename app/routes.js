@@ -3,6 +3,32 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+/////Reason for new charge version
+//Setting the change element route back
+router.get('/bd/charges-2020/add-new-reason', function (req, res) {
+
+     req.session.data.back = req.headers.referer
+
+  res.render('bd/charges-2020/add-new-reason');
+
+});
+
+
+router.post('/bd/charges-2020/add-new-reason', function (req, res) {
+
+  let change = req.session.data['change']
+  //if statement for creating the new chargeversion
+  if (change == "true"){
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
+  }
+  else {
+  res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');
+  }
+});
+
+
 
 //Charge start date
 //This triggers the creation of a charge version
@@ -39,8 +65,9 @@ let month = monthNames[monthNumber - 1]
   let chargeEnd = ""
   let chargeStatus = "DRAFT"
   let chargeBilledDate = ""
+  let reason = req.session.data['reasonNewCharge']
 
-  let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate};
+  let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate, reason};
   let chargeVersions = req.session.data['chargeVersions']
   chargeVersions.unshift(newCharge);
 
@@ -417,6 +444,8 @@ router.post('/bd/charges-2020/charge-version/create-element', function (req, res
 }
 
 });
+
+
 
 
 //Charge data check

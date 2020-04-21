@@ -1,0 +1,31 @@
+
+
+<section class="govuk-!-margin-bottom-9">
+
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-0">New charge reason</h2>
+
+
+{{ govukSummaryList({
+rows: [
+  {
+    classes: 'govuk-summary-list__row--last',
+    key: {
+      text: "Reason"
+    },
+    value: {
+      text: [data.reasonNewCharge]
+    },
+    actions: {
+      items: [
+        {
+          href: "/bd/charges-2020/add-new-reason?change=true",
+          text: "Change",
+          visuallyHiddenText: "name"
+        }
+      ]
+    }
+  }
+]
+}) }}
+
+</section>

@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% set title = "Select a reason for the new charge information" %}
+
+
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+  <form method="post" class="form">
+
+
+
+{{ govukRadios({
+  idPrefix: "reasonNewCharge",
+  name: "reasonNewCharge",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
+  },
+  items: [
+    {
+      value: "Formal variation",
+      text: "Formal variation"
+    },
+    {
+      value: "Minor variation",
+      text: "Minor variation"
+    },
+    {
+      value: "Succession to whole licence or licence transfer",
+      text: "Succession to whole licence or licence transfer"
+    },
+    {
+      value: "Succession to a remainder licence or licence apportionment",
+      text: "Succession to a remainder licence or licence apportionment"
+    },
+    {
+      value: "New special agreement",
+      text: "New special agreement"
+    },
+    {
+      value: "Change to a special agreement",
+      text: "Change to a special agreement"
+    },
+    {
+      value: "New licence in part succession or licence apportionment",
+      text: "New licence in part succession or licence apportionment"
+    },
+    {
+      value: "New licence",
+      text: "New licence"
+    },
+    {
+      value: "Licence holder name or address change",
+      text: "Licence holder name or address change"
+    },
+    {
+      value: "Licence now chargeable – transfer purpose",
+      text: "Licence now chargeable – transfer purpose"
+    },
+    {
+      value: "Change to invoice",
+      text: "Change to invoice"
+    },
+    {
+      value: "Extension of expiry date to allow for overrun of renewal determination",
+      text: "Extension of expiry date to allow for overrun of renewal determination"
+    },
+    {
+      value: "Charge version closed prior to legal ending of licence",
+      text: "Charge version closed prior to legal ending of licence"
+    }
+  ]
+}) }}
+
+    <button type="submit" class="govuk-button govuk-!-margin-right-1">
+      Continue
+    </button>
+
+  </form>
+  </div>
+</div>
+
+{% endblock %}
