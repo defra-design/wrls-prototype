@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check start date" %}
+{% set title = "Check charge start date" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -62,7 +62,13 @@
     {% set month = monthNames[monthNumber - 1] %}
 
     {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
-
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Warning</span>
+        You've entered a date that will give older charge information an 'Invalid' status. 
+      </strong>
+    </div>
 
     {{ govukSummaryList({
     rows: [
