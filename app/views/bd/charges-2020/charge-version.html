@@ -128,6 +128,16 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 }) }}
 {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
 {% include "includes/bd/elements-change.html" %}
+{% set y = data['chargeStart-year'] | int %}
+{% set m = data['chargeStart-month'] | int %}
+{% set d = data['chargeStart-day'] | int %}
+{% set date = y + m + d %}
+{% if date < 2045 %}
+{{ govukWarningText({
+ text: "Approving this charge version will give older charge information an 'Invalid' status.",
+ iconFallbackText: "Warning"
+}) }}
+{% endif%}
 {{ govukButton({
   text: "Approve",
   classes: "govuk-!-margin-right-1",

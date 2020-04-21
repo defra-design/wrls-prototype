@@ -44,7 +44,7 @@ let month = monthNames[monthNumber - 1]
   let chargeVersions = req.session.data['chargeVersions']
   chargeVersions.unshift(newCharge);
 
-
+   let change = req.session.data['change']
 //if statement for creating the new chargeversion
   if (chargeNew == "true"){
   res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
@@ -53,6 +53,15 @@ let month = monthNames[monthNumber - 1]
     res.redirect('set-charge-start-date-check');
   }
 
+
+
+  if (change == "true"){
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+  res.redirect(back);
+  }
+
+
 });
 
 //Purpose
@@ -60,6 +69,7 @@ let month = monthNames[monthNumber - 1]
 router.get('/bd/charges-2020/add-element-purpose', function (req, res) {
 
      req.session.data.back = req.headers.referer
+
 
   res.render('bd/charges-2020/add-element-purpose');
 
@@ -553,7 +563,6 @@ router.post('/bd/charges-2020/nonchargeable-check', function (req, res) {
 
   //Set an agreement for Abatement
   let reason = req.session.data['reason']
-  console.log(reason)
   if ( reason = "Abatement" )
   {
    req.session.data['agreement'] = "Abatement (S126)"

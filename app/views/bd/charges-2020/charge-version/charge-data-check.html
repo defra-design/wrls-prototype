@@ -55,12 +55,6 @@
 
   <form  method="post" class="form" id="return-reference-error">
 
-    <section class="govuk-!-margin-bottom-9">
-
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
-
-
-
     {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
     {% set monthNumber = data['chargeStart-month'] %}
@@ -68,6 +62,29 @@
     {% set month = monthNames[monthNumber - 1] %}
 
     {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+
+
+     {% set y = data['chargeStart-year'] | int %}
+     {% set m = data['chargeStart-month'] | int %}
+     {% set d = data['chargeStart-day'] | int %}
+     {% set date = y + m + d %}
+     {% if date < 2045 %}
+    {{ govukWarningText({
+      text: "You've entered a start date that will give older charge information an 'Invalid' status.",
+      iconFallbackText: "Warning"
+    }) }}
+    {% endif%}
+
+    <section class="govuk-!-margin-bottom-9">
+
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
+
+
+
+
+
+
+
 
 
     {{ govukSummaryList({
