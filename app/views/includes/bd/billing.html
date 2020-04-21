@@ -7,6 +7,14 @@
     }) }}
   {% endif %}
 
+
+  {% set free = [data.chargeVersions[0].free]%}
+     {% if free == "true" %}
+      {{ govukInsetText({
+       html: 'This licence is free of charge. <br><a class="govuk-link" href="/bd/charges-2020/charge-versions">Check status</a>'
+      }) }}
+    {% endif %}
+
 <dl class="govuk-summary-list">
 
   {% if [data.newLicence] == "false" %}
@@ -15,7 +23,7 @@
       Billed up to
     </dt>
     <dd class="govuk-summary-list__value">
-      31 March 2020
+      {{[data.chargeVersions[0].chargeBilledDate]}}
     </dd>
     <dd class="govuk-summary-list__actions">
       <a class="govuk-link" href="/bd/charges-2020/invoice">
