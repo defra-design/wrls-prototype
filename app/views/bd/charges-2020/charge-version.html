@@ -113,7 +113,19 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 
 {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
 <p class="govuk-bod govuk-!-margin-top-6">This licence was made free of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
-<p class="govuk-body govuk-!-margin-bottom-9">Reason {{data['reason']}}.</p>
+{{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Reason"
+      },
+      value: {
+        text: data['reason']
+      }
+    }
+  ]
+}) }}
 {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
 {% include "includes/bd/elements-change.html" %}
 {{ govukButton({

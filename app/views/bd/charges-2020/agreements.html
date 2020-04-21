@@ -43,6 +43,8 @@
 
 {% block content %}
 
+
+
 {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
 {% set monthNumber = data['agreementStart-month'] %}
@@ -124,7 +126,8 @@
           <h3 class="table__context">
             End date
           </h3>
-        {% if [data.agreementEnded] == "true" %}
+        {% if [data.reason] == "Abatement" %}
+        {% elif [data.agreementEnded] == "true" %}
         {{ [agreementEnd] }}
         {% endif %}
         </div>
@@ -152,7 +155,7 @@
           <h3 class="table__context">
             Agreements
           </h3>
-          Abatement (S126)
+          Two-part tariff (S127)
           <!-- <br>
           <a href="change-agreement-date">
             Remove agreement
@@ -162,7 +165,7 @@
           <h3 class="table__context">
             Start date
           </h3>
-          1 April 2017
+          1 April 2018
         </div>
         <div class="table__cell">
           <h3 class="table__context">

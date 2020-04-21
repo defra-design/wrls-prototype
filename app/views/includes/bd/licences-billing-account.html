@@ -1,0 +1,116 @@
+
+
+
+
+  {{ govukTable({
+    caption: "Licences for this billing account",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Billed up to",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Licence holder",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+    [
+      {
+        html: '<a class="govuk-link" href="/bd/licence-summary#charge">03/28/60/0031</a>'
+      },
+      {
+        text: [data.chargeVersions[0].chargeBilledDate]
+      },
+      {
+        text: "Bottled Water Plc"
+      },
+      {
+        text: "30 April 2019"
+      }
+    ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">12/23/43/0044</a>'
+        },
+        {
+          text: "31 March 2020"
+        },
+        {
+          text: "Irene Smithson"
+        },
+        {
+          text: "31 January 2019"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+        },
+        {
+          text: "31 March 2020"
+        },
+        {
+          text: "Reg Spreadbury"
+        },
+
+        {
+          text: "30 January 2019"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/61/029</a>'
+        },
+        {
+          text: "31 March 2020"
+        },
+        {
+          text: "Folkstone Farms Ltd."
+        },
+        {
+          text: "16 October 2018"
+        }
+      ],
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">22/12/65/0055</a>'
+        },
+        {
+          text: "31 March 2020"
+        },
+        {
+          text: "Thomas Featherstone Ltd."
+        },
+        {
+          text: "15 September 2018"
+        }
+      ],
+
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">23/33/76/0044</a>'
+        },
+        {
+          text: "31 March 2020"
+        },
+        {
+          text: "Coastal Water Ltd."
+        },
+        {
+          text: "22 October 2015"
+        }
+      ]
+
+    ]
+  }) }}

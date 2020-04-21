@@ -4,11 +4,11 @@
 
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -28,14 +28,14 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-3">
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
 
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-manage.html" %}
-  </div>
-
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -52,69 +52,71 @@
 
 
 
-     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
 
 
 
 
 
 
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
           {{title}}
-          </label>
+        </label>
 
-        </h1>
+      </h1>
 
-</div>
-</div>
+        <p class="govuk-body">This sets up a new element. You can change the details.</p>
+
+    </div>
+  </div>
 </div>
 
 <form method="post" class="form" id="return-reference-error">
-        {% set elementNumber = [data.elementNumber]%}
-        {% set elements = [data.elements[elementNumber]] %}
+  {% set elementNumber = [data.elementNumber]%}
+  {% set elements = [data.elements[elementNumber]] %}
 
-                        {% for i in elements %}
-
-
-
-        <!--formating for the abstraction period dates-->
-              {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-              {% set monthNumber = [i.abstractionStartMonth] %}
-              {% set monthNumberEnd = [i.abstractionEndMonth] %}
-              {% set month = monthNames[monthNumber - 1] %}
-              {% set monthEnd = monthNames[monthNumberEnd - 1] %}
-              {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
-              {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
+  {% for i in elements %}
 
 
-             {% set elementNumber = loop.index0 %}
+
+  <!--formating for the abstraction period dates-->
+  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+  {% set monthNumber = [i.abstractionStartMonth] %}
+  {% set monthNumberEnd = [i.abstractionEndMonth] %}
+  {% set month = monthNames[monthNumber - 1] %}
+  {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+  {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
+  {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
 
 
-             <!--set billable quanity if needed-->
-             {% if [i.billableQuantityNeeded] == "yes" %}
-             {% set billableQuantity = [i.billableQuantity] + " megalitres per year" %}
-             {% else %}
-             {% set billableQuantity = "Not set" %}
-             {% endif %}
+  {% set elementNumber = loop.index0 %}
 
-             <!--set time limit if needed-->
-             {% if [i.timeLimit] == "yes" %}
-             {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
-             {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
-             {% set timeLimit = [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear] %}
-             {% else %}
-             {% set timeLimit = "No" %}
-             {% endif %}
 
-              <section class="govuk-!-margin-bottom-2">
+  <!--set billable quanity if needed-->
+  {% if [i.billableQuantityNeeded] == "yes" %}
+  {% set billableQuantity = [i.billableQuantity] + " megalitres per year" %}
+  {% else %}
+  {% set billableQuantity = "Not set" %}
+  {% endif %}
 
-                <div class="govuk-grid-row">
-                  <div class="govuk-grid-column-full">
+  <!--set time limit if needed-->
+  {% if [i.timeLimit] == "yes" %}
+  {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
+  {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
+  {% set timeLimit = [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear] %}
+  {% else %}
+  {% set timeLimit = "No" %}
+  {% endif %}
 
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element
-                        {{ govukSummaryList({
+  <section class="govuk-!-margin-bottom-2">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element
+          {{ govukSummaryList({
                           classes: "govuk-!-margin-bottom-9",
                         rows: [
                           {
@@ -206,19 +208,19 @@
 
                         ]
                       }) }}
-</div>
-</div>
-              </section>
+      </div>
+    </div>
+  </section>
 
-            {% endfor %}
+  {% endfor %}
 
 
 
-      <button type="submit" class="govuk-button">
-        Copy
-      </button>
+  <button type="submit" class="govuk-button">
+    Copy
+  </button>
 
-    </form>
+</form>
 
 
 
@@ -235,7 +237,7 @@
       // FInd selected radio button
       const url = $(this).find('input:checked').val();
 
-      if(url) {
+      if (url) {
         ev.preventDefault();
         window.location.href = url;
         return false;

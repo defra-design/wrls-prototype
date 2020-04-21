@@ -544,10 +544,22 @@ router.post('/bd/charges-2020/nonchargeable-check', function (req, res) {
     req.session.data.chargeVersions[1]['chargeStatus'] = "REPLACED"
 
     //set the charge end date
-    chargeStartDay -1;
+    chargeStartDay = chargeStartDay - 1;
     chargeEnd = chargeStartDay + " " + month + " " + chargeStartYear
   //set the old charge informations end date
     req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
+
+
+
+  //Set an agreement for Abatement
+  let reason = req.session.data['reason']
+  console.log(reason)
+  if ( reason = "Abatement" )
+  {
+   req.session.data['agreement'] = "Abatement (S126)"
+   req.session.data['agreementNew'] = "true"
+   req.session.data['agreementEnded'] = "true"
+  }
 
   res.redirect('/bd/charges-2020/charge-versions');
 });
