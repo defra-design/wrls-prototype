@@ -65,9 +65,9 @@ let month = monthNames[monthNumber - 1]
   let chargeEnd = ""
   let chargeStatus = "DRAFT"
   let chargeBilledDate = ""
-  let reason = req.session.data['reasonNewCharge']
+  let reasonNewCharge = req.session.data['reasonNewCharge']
 
-  let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate, reason};
+  let newCharge = {chargeStart, chargeEnd, chargeStatus, chargeBilledDate, reasonNewCharge};
   let chargeVersions = req.session.data['chargeVersions']
   chargeVersions.unshift(newCharge);
 

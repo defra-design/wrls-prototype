@@ -1,15 +1,14 @@
-
 {% extends "layout.html" %}
 
 {% set title = "Charge information valid from" %}
-  {% set chargeInfoNumber = [data.chargeInfoNumber] %}
+{% set chargeInfoNumber = [data.chargeInfoNumber] %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -29,13 +28,13 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-6">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-6">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -61,27 +60,27 @@
       text: "Approved",
       classes: "govuk-tag--green govuk-!-font-size-27"
     })}}
-    {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "INVALID" %}
-    {{govukTag({
+      {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "INVALID" %}
+      {{govukTag({
     text: "INVALID",
     classes: "govuk-tag--red govuk-!-font-size-27"
   })}}
-  {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "REPLACED" %}
-  {{govukTag({
+      {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "REPLACED" %}
+      {{govukTag({
   text: "Replaced",
   classes: "govuk-tag--grey govuk-!-font-size-27"
 })}}
-{% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
-{{govukTag({
+      {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
+      {{govukTag({
 text: "Review",
 classes: "govuk-tag--orange govuk-!-font-size-27"
 })}}
-{% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
-{{govukTag({
+      {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
+      {{govukTag({
 text: "Change requested",
 classes: "govuk-tag--blue govuk-!-font-size-27"
 })}}
-{% endif %}
+      {% endif %}
     </p>
 
 
@@ -98,74 +97,48 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
               Reason
             </div>
             <div class="meta-data__value">
-              {{data.chargeVersions[chargeInfoNumber].reasonNewCharge}}
+              {{[data.chargeVersions[chargeInfoNumber].reasonNewCharge]}}
             </div>
             <div>
         </section>
+        {% if [data.chargeVersions[chargeInfoNumber].chargeBilledDate] == "" %}
+        {% else %}
         <section class="meta-data__row">
           <div class="meta-data__container">
             <div class="meta-data__label">
               Billed up to
             </div>
             <div class="meta-data__value">
-
-              {{data.chargeVersions[chargeInfoNumber].chargeBilledDate}}
+              {{[data.chargeVersions[chargeInfoNumber].chargeBilledDate]}}
             </div>
             <div>
         </section>
-
-        </div>
-        </div>
         {% endif %}
       </div>
-      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
 
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
 
-          {% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
-          <h2 class="govuk-heading-m">
-            Comments from Billing and Data
-          </h2>
-          <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
-          {% endif %}
+    {% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
+    <h2 class="govuk-heading-m">
+      Comments from Billing and Data
+    </h2>
+    <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
+    {% endif %}
 
-          {% if (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED")) or (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES")) %}
-          {% include "includes/bd/reason-new-charge.html" %}
-          <section class="govuk-!-margin-bottom-9">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
+    {% if (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED")) or (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES")) %}
+    {% include "includes/bd/reason-new-charge.html" %}
+    {% endif %}
 
-          {{ govukSummaryList({
-          rows: [
-            {
-              classes: 'govuk-summary-list__row--last',
-              key: {
-                text: "Start date"
-              },
-              value: {
-                text: [data.chargeVersions[chargeInfoNumber].chargeStart]
-              },
-              actions: {
-                items: [
-                  {
-                    href: "set-charge-start-date",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
-            }
-          ]
-          }) }}
-
-          </section>
-          {% endif %}
-
-{% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
-<p class="govuk-bod govuk-!-margin-top-6">This licence was made free of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
-{{ govukSummaryList({
+    {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
+    <p class="govuk-bod govuk-!-margin-top-6">This licence was made free of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
+    {{ govukSummaryList({
   classes: 'govuk-summary-list--no-border',
   rows: [
     {
@@ -178,53 +151,53 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     }
   ]
 }) }}
-{% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
-{% include "includes/bd/elements-change.html" %}
-{% set y = data['chargeStart-year'] | int %}
-{% set m = data['chargeStart-month'] | int %}
-{% set d = data['chargeStart-day'] | int %}
-{% set date = y + m + d %}
-{% if date < 2045 %}
-{{ govukWarningText({
- text: "Approving this charge version will give older charge information an 'Invalid' status.",
+    {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
+    {% include "includes/bd/elements-change.html" %}
+    {% set y = data['chargeStart-year'] | int %}
+    {% set m = data['chargeStart-month'] | int %}
+    {% set d = data['chargeStart-day'] | int %}
+    {% set date = y + m + d %}
+    {% if date < 2045 %}
+    {{ govukWarningText({
+ text: "Approving this charge version will make older charge information invalid.",
  iconFallbackText: "Warning"
 }) }}
-{% endif%}
-{{ govukButton({
+    {% endif%}
+    {{ govukButton({
   text: "Approve",
   classes: "govuk-!-margin-right-1",
   href: "confirm-approve-charge-information"
 }) }}
 
-{{ govukButton({
+    {{ govukButton({
   text: "Request changes",
   classes: "govuk-button--secondary",
   href: "request-changes"
 }) }}
-{% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
+    {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
 
 
-<form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
+    <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
-{% include "includes/bd/elements-change.html" %}
-{{ govukButton({
+      {% include "includes/bd/elements-change.html" %}
+      {{ govukButton({
   text: "Confirm changes",
   classes: "govuk-!-margin-right-1"
 }) }}
 
-{{ govukButton({
+      {{ govukButton({
   text: "Remove charge information",
   classes: "govuk-button--secondary",
   href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 }) }}
 
-</form>
+    </form>
 
-{% else %}
-{% include "includes/bd/elements-historic.html" %}
-{% endif %}
+    {% else %}
+    {% include "includes/bd/elements-historic.html" %}
+    {% endif %}
 
-</div>
+  </div>
 </div>
 
 {% endblock %}

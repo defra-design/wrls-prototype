@@ -2,13 +2,34 @@
 
 <section class="govuk-!-margin-bottom-9">
 
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-0">New charge reason</h2>
+  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+  {% set monthNumber = data['chargeStart-month'] %}
+
+  {% set month = monthNames[monthNumber - 1] %}
+
+  {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+
+
+   {% set y = data['chargeStart-year'] | int %}
+   {% set m = data['chargeStart-month'] | int %}
+   {% set d = data['chargeStart-day'] | int %}
+   {% set date = y + m + d %}
+   {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
+   {% elif date < 2045 %}
+  {{ govukWarningText({
+    text: "You've entered a start date that will make older charge information invalid.",
+    iconFallbackText: "Warning"
+  }) }}
+  {% endif%}
+
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge information</h2>
 
 
 {{ govukSummaryList({
 rows: [
   {
-    classes: 'govuk-summary-list__row--last',
+    classes: 'govuk-summary-list',
     key: {
       text: "Reason"
     },
@@ -20,7 +41,25 @@ rows: [
         {
           href: "/bd/charges-2020/add-new-reason?change=true",
           text: "Change",
-          visuallyHiddenText: "name"
+          visuallyHiddenText: "reason for the new charge"
+        }
+      ]
+    }
+  },
+  {
+    classes: 'govuk-summary-list__row--last',
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: [chargeStart]
+    },
+    actions: {
+      items: [
+        {
+          href: "/bd/charges-2020/charge-version/set-charge-start-date?change=true",
+          text: "Change",
+          visuallyHiddenText: "the start date for the new charge"
         }
       ]
     }

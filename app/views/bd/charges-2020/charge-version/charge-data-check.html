@@ -3,11 +3,11 @@
 {% set title = "Check charge information" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -40,83 +40,30 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l ">Licence 03/28/60/0032</span>
+    <!-- page heading -->
+    <span class="govuk-caption-l ">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-xl ">{{title}}</h1>
 
-    </div>
   </div>
+</div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-  <form  method="post" class="form" id="return-reference-error">
-
-
-  {% include "includes/bd/reason-new-charge.html" %}
+    <form method="post" class="form" id="return-reference-error">
 
 
+      {% include "includes/bd/reason-new-charge.html" %}
 
-    {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-
-    {% set monthNumber = data['chargeStart-month'] %}
-
-    {% set month = monthNames[monthNumber - 1] %}
-
-    {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+      {% include "includes/bd/elements-check.html" %}
 
 
-     {% set y = data['chargeStart-year'] | int %}
-     {% set m = data['chargeStart-month'] | int %}
-     {% set d = data['chargeStart-day'] | int %}
-     {% set date = y + m + d %}
-     {% if date < 2045 %}
-    {{ govukWarningText({
-      text: "You've entered a start date that will give older charge information an 'Invalid' status.",
-      iconFallbackText: "Warning"
-    }) }}
-    {% endif%}
+      {% if [data.createElement] == "true"%}
 
-    <section class="govuk-!-margin-bottom-9">
-
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge start date</h2>
-
-    {{ govukSummaryList({
-    rows: [
-      {
-        classes: 'govuk-summary-list__row--last',
-        key: {
-          text: "Start date"
-        },
-        value: {
-          text: [chargeStart]
-        },
-        actions: {
-          items: [
-            {
-              href: "set-charge-start-date",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      }
-    ]
-  }) }}
-
-  </section>
-
-
-
-  {% include "includes/bd/elements-check.html" %}
-
-
-{% if [data.createElement] == "true"%}
-
-<!--
+      <!--
 {{ govukInsetText({
   html: '<h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£39,995.76</span><br>
   <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Initial charge total</span></h2>'
@@ -124,27 +71,27 @@
 
 -->
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£150,995.76</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£150,995.76</span><br>
+            <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
 
-  </div>
-</div>
+        </div>
+      </div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
-  </div>
-</div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
+            <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
+        </div>
+      </div>
 
 
-{{ govukButton({
+      {{ govukButton({
 text: "Confirm"
 }) }}
 
-{% else %}
+      {% else %}
 
 
 
@@ -152,27 +99,27 @@ text: "Confirm"
 
 
 
- <section class="govuk-!-margin-bottom-6">
+      <section class="govuk-!-margin-bottom-6">
 
-   <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Billing contact</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Billing contact</h2>
 
-   {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
-   {% set monthNumber = data['startMonth'] %}
+        {% set monthNumber = data['startMonth'] %}
 
-   {% set month = monthNames[monthNumber - 1] %}
+        {% set month = monthNames[monthNumber - 1] %}
 
-   {% set effectiveDate = data['startDay'] + " " + month +" "+ data['startYear']%}
+        {% set effectiveDate = data['startDay'] + " " + month +" "+ data['startYear']%}
 
-   {% set invoiceAddress %}
-   {{ data.invoiceAccount}} <br>
-   {{ data.address1}} <br>
-   {{ data.city}} <br>
-   {{data.postcode}} <br>
-   {% endset %}
+        {% set invoiceAddress %}
+        {{ data.invoiceAccount}} <br>
+        {{ data.address1}} <br>
+        {{ data.city}} <br>
+        {{data.postcode}} <br>
+        {% endset %}
 
 
-       {{ govukSummaryList({
+        {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
            rows:
            [
@@ -231,33 +178,33 @@ text: "Confirm"
            ]
          }) }}
 
-  </section>
+      </section>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£150,995.76</span><br>
-        <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£150,995.76</span><br>
+            <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
 
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
-        <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
-    </div>
-  </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
+            <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
+        </div>
+      </div>
 
-  {{ govukButton({
+      {{ govukButton({
   text: "Confirm"
   }) }}
 
 
-{% endif %}
+      {% endif %}
 
-  </form>
+    </form>
 
-</div>
+  </div>
 </div>
 
 
