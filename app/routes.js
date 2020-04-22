@@ -16,6 +16,7 @@ router.get('/bd/charges-2020/add-new-reason', function (req, res) {
 
 router.post('/bd/charges-2020/add-new-reason', function (req, res) {
 
+  let chargeNew = req.session.data['createElement']
   let change = req.session.data['change']
   //if statement for creating the new chargeversion
   if (change == "true"){
@@ -23,9 +24,13 @@ router.post('/bd/charges-2020/add-new-reason', function (req, res) {
     back = req.session.data['back'];
   res.redirect(back);
   }
-  else {
+   else if (chargeNew == "true"){
   res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');
   }
+  else {
+    res.redirect('/bd/charges-2020/charge-version/reason-check');
+  }
+
 });
 
 
@@ -78,14 +83,6 @@ let month = monthNames[monthNumber - 1]
   }
   else {
     res.redirect('set-charge-start-date-check');
-  }
-
-
-
-  if (change == "true"){
-    req.session.data.change = "false"
-    back = req.session.data['back'];
-  res.redirect(back);
   }
 
 

@@ -1,0 +1,100 @@
+
+
+
+
+  {{ govukTable({
+    caption: "Bills",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Date created",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Bill number",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Billing contact",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Billing account",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+    [
+      {
+        text: '5 March 2020'
+      },
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/invoice">AAI26515</a>'
+      },
+      {
+        text: "Bottled Water Plc"
+      },
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/ias">L12345678S</a><br>	15 Ward Road<br> Bath<br> BA1 5EH'
+      }
+    ],
+    [
+      {
+        text: '1 April 2017'
+      },
+      {
+        html: '<a class="govuk-link" href="#">2345432</a>'
+      },
+      {
+        text: "Bigbod Limited"
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a><br>London Road<br> Reading<br> RG21 5GH'
+      }
+    ],
+    [
+      {
+        text: '11 April 2016'
+      },
+      {
+        html: '<a class="govuk-link" href="#">9876431</a>'
+      },
+      {
+        text: "Bigbod Limited"
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a><br>London Road<br> Reading<br> RG21 5GH'
+      }
+    ],
+    [
+      {
+        text: '9 April 2015'
+      },
+      {
+        html: '<a class="govuk-link" href="#">2345432</a>'
+      },
+      {
+        text: "Bigbod Limited"
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a><br>London Road<br> Reading<br> RG21 5GH'
+      }
+    ],
+    [
+      {
+        text: '9 April 2014'
+      },
+      {
+        html: '<a class="govuk-link" href="#">675434</a>'
+      },
+      {
+        text: "Bigbod Limited"
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a><br>London Road<br> Reading<br> RG21 5GH'
+      }
+    ]
+
+    ]
+  }) }}
