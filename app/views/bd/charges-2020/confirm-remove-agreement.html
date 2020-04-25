@@ -42,16 +42,9 @@
 
 {% block content %}
 
-{% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
-{% set monthNumber = data['agreementStart-month'] %}
-{% set monthNumberEnd = data['agreementEnd-month'] %}
 
-{% set month = monthNames[monthNumber - 1] %}
-{% set monthEnd = monthNames[monthNumberEnd - 1] %}
 
-{% set agreementStart = data['agreementStart-day'] + " " + month +" "+ data['agreementStart-year']%}
-{% set agreementEnd = data['agreementEnd-day'] + " " + monthEnd +" "+ data['agreementEnd-year']%}
 
 <div class="govuk-!-margin-bottom-3"></div>
 
@@ -66,70 +59,16 @@
   </div>
 </div>
 
+<form method="post" class="form">
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <form action="agreements?agreementEnded=true" method="post" class="form" id="return-reference-error">
-      <!-- table with two columns -->
-      <div class="table govuk-!-margin-bottom-8">
-
-        <div class="table__row--head">
-          <div class="table__cell bold-small column--40">
-            Agreements
-          </div>
-          <div class="table__cell bold-small column--30">
-            Start date
-          </div>
-          <div class="table__cell bold-small column--30">
-            End date
-          </div>
-          <!--      <div class="table__cell bold-small column--40">
-              Action
-            </div> -->
-        </div>
-
-        <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
-          <div class="table__cell">
-            <h2 class="screen-reader-only">
-              Row 1
-            </h2>
-            <h3 class="table__context">
-              Agreements
-            </h3>
-            {{ [data.agreement] }}
-            <!-- <br>
-              <a href="change-agreement-date">
-                Remove agreement
-              </a> -->
-          </div>
-          <div class="table__cell">
-            <h3 class="table__context">
-              Start date
-            </h3>
-            {{ [agreementStart] }}
-          </div>
-          <div class="table__cell">
-            <h3 class="table__context">
-              End date
-            </h3>
-            {{ [agreementEnd] }}
-          </div>
-          <!--  <div class="table__cell">
-              <a href="remove-agreement-date">
-                End agreement
-              </a>
-              <br>|
-             <a href="change-agreement-date">
-                Change start date
-              </a> -->
-        </div>
-      </div>
-
-      <button type="submit" class="govuk-button">
-        End agreement
-      </button>
-
-    </form>
-  </div>
+<div class="govuk-grid-column-full">
+  {% include "includes/bd/agreement.html" %}
+  <button type="submit" class="govuk-button">
+    End agreement
+  </button>
 </div>
+</div>
+    </form>
+
 
 {% endblock %}

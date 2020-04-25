@@ -1,0 +1,33 @@
+
+{% set agreementNumber =  [data.agreementNumber] %}
+{% set agreement = [data.agreements[agreementNumber]] %}
+
+
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Agreement</th>
+      <th scope="col" class="govuk-table__header">Signed date</th>
+      <th scope="col" class="govuk-table__header">Start date</th>
+      <th scope="col" class="govuk-table__header">End date</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+
+    {% for i in agreement %}
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">{{[i.agreement]}}</td>
+      <td class="govuk-table__cell">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
+      <td class="govuk-table__cell">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
+      <td class="govuk-table__cell">{{[i.agreementEndDay] + " " + [[i.agreementEndMonth] | toMonth] + " " + [i.agreementEndYear]}}</td>
+    </tr>
+
+
+
+    {% endfor %}
+
+  </tbody>
+</table>

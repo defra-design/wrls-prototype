@@ -53,15 +53,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-  <form action="agreements?agreementNew=true&agreementEnded=false" method="post" class="form" id="return-reference-error">
-
-    {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-
-    {% set monthNumber = data['agreementStart-month'] %}
-
-    {% set month = monthNames[monthNumber - 1] %}
-
-    {% set agreementStart = data['agreementStart-day'] + " " + month +" "+ data['agreementStart-year']%}
+  <form  method="post" class="form" >
 
 
     {{ govukSummaryList({
@@ -79,7 +71,25 @@
             {
               href: "add-agreement",
               text: "Change",
-              visuallyHiddenText: "name"
+              visuallyHiddenText: "agreement"
+            }
+          ]
+        }
+      },
+      {
+        classes: "govuk-summary-list__row",
+        key: {
+          text: "Start date"
+        },
+        value: {
+          text: [data.agreementStartDay] + " " + [[data.agreementStartMonth] | toMonth] + " " + [data.agreementStartYear]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "start date"
             }
           ]
         }
@@ -87,17 +97,17 @@
       {
         classes: "govuk-summary-list__row--last",
         key: {
-          text: "Start date"
+          text: "Signed date"
         },
         value: {
-          text: [agreementStart]
+          text: [data.agreementSignedStartDay] + " " + [[data.agreementSignedStartMonth] | toMonth] + " " + [data.agreementSignedStartYear]
         },
         actions: {
           items: [
             {
-              href: "add-agreement-date",
+              href: "add-agreement-signed-date",
               text: "Change",
-              visuallyHiddenText: "name"
+              visuallyHiddenText: "agreement signed date"
             }
           ]
         }

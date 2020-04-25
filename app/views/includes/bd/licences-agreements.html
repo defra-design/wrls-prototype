@@ -1,0 +1,54 @@
+
+
+{% set agreementNumber = "" %}
+
+{% set agreements = data['agreements'] %}
+
+
+{% set numberOfAgreements = agreements.length %}
+
+
+{% for i in agreements %}
+
+  {{ govukTable({
+    caption: "Licences with new agreements",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Licence holder",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Agreement",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Agreement start",
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">00/22/001/02</a>'
+        },
+        {
+          text: "Irene Briton"
+        },
+        {
+          html: [i.agreement]
+        },
+        {
+          html: [i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]
+        }
+      ]
+
+    ]
+  }) }}
+
+  {% endfor %}
