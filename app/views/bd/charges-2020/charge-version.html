@@ -159,7 +159,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     {% set date = y + m + d %}
     {% if date < 2045 %}
     {{ govukWarningText({
- text: "Approving this charge version will make older charge information invalid.",
+ text: "Older charge information will be invalid when you approve these details.",
  iconFallbackText: "Warning"
 }) }}
     {% endif%}
