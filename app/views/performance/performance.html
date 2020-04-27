@@ -27,27 +27,13 @@
  }) }}
 {% endblock %}
 
-{% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
-
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back()"
-  }) }}
-
-{% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   </div>
