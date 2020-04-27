@@ -49,7 +49,7 @@
       <h1 class="govuk-heading-l">{{ title }}</h1> -->
 
 
-  <form action="add-agreement-check?agreementStart-day=23&agreementStart-month=4&agreementStart-year=2020" method="post" class="form">
+  <form method="post" class="form">
 
 
     {% set agreementDate %}
@@ -58,9 +58,9 @@
   namePrefix: "agreementStart",
   fieldset: {
     legend: {
-      text: [title],
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+      text: 'Start date',
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
     }
   }
 }) }}

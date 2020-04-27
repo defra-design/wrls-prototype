@@ -1,8 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Add a charge purpose" %}
-
-
+{% set title = "Is the agreement signed date different to the start date?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -43,71 +41,56 @@
 
 {% block content %}
 
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
+      <!-- page heading
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-  <!--    <h1 class="govuk-heading-l">{{ title }}</h1>
--->
+      <h1 class="govuk-heading-l">{{ title }}</h1> -->
 
 
-  <form  method="post" class="form">
+  <form method="post" class="form">
 
 
-    {{ govukRadios({
-    idPrefix: "purpose",
-    name: "purpose",
-    fieldset: {
-      legend: {
-        text: [title],
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--l "
-      }
-    },
-    items: [
-      {
-        value: "Spray irrigation direct",
-        text: "Spray irrigation direct"
-      },
-      {
-        value: "Spray irrigation definition order",
-        text: "Spray irrigation definition order"
-      },
-      {
-        value: "Spray irrigation storage",
-        text: "Spray irrigation storage"
-      }
-    ]
-  }) }}
+    {% set agreementDate %}
+    {{ govukDateInput({
+  id: "agreementSignedStart",
+  namePrefix: "agreementSignedStart",
+  fieldset: {
+    legend: {
+      text: 'Signed date',
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  }
+}) }}
+{% endset -%}
 
-
-<!--
-    {{ govukSelect({
-  id: "purpose",
-  name: "purpose",
-  label: {
-    text: [title],
-    isPageHeading: true,
-    classes: "govuk-label--l govuk-!-margin-bottom-6"
+{{ govukRadios({
+  idPrefix: "agreementSignedDateConditional",
+  name: "agreementSignedDateConditional",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
   },
   items: [
-  {
-    value: "Select a purpose",
-    text: "Select a purpose"
-  },
     {
-      value: "Spray irrigation",
-      text: "Spray irrigation"
+      value: "yes",
+      text: 'Yes',
+      conditional: {
+        html: agreementDate
+      }
     },
     {
-      value: "Trickle irrigation",
-      text: "Trickle irrigation"
+      value: "no",
+      text: "No"
     }
   ]
 }) }}
--->
-
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">
       Continue

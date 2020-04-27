@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You are about to remove this agreement" %}
+{% set title = "Licences with new agreements" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -28,44 +28,32 @@
 {% block beforeContent %}
 
 <!-- navigation block -->
-<div class="govuk-!-margin-bottom-3">
+<div class="govuk-!-margin-bottom-6">
   <!-- navigation block -->
   {% include "includes/nav/nav-bd-view.html" %}
 </div>
 
-{{ govukBackLink({
+<!-- {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
 {% block content %}
 
 
-<div class="govuk-!-margin-bottom-3"></div>
-
-<!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    <!-- page heading -->
-    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+  <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">{{title}}</h1>
-
   </div>
 </div>
 
-
-<form method="post" class="form">
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      {% include "includes/bd/agreement.html" %}
-      <button type="submit" class="govuk-button">
-        Remove agreement
-      </button>
-    </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "includes/bd/licences-agreements.html" %}
   </div>
-</form>
+</div>
+
 
 {% endblock %}

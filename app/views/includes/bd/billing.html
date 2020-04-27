@@ -94,7 +94,11 @@
       Agreements
     </dt>
     <dd class="govuk-summary-list__value">
-    {% if [data.agreementNew] == "true" %}
+
+      {% set agreements = data['agreements'] %}
+      {% set numberOfAgreements = agreements.length %}
+
+    {% if numberOfAgreements > 1 %}
 
       {{[data.agreement]}}
 
