@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+
+{% set title = "Performance" %}
+
+
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l">Registrations</h2>
+
+<span class="govuk-caption-l">Total year to date</span>
+<h3 class="govuk-heading-l">733</h3>
+
+{{ govukTable({
+  caption: "Registrations by month",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Date"
+    },
+    {
+      text: "Number of registrations",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    },
+    {
+      text: "% change on previous month",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "April 2020"
+      },
+      {
+        text: "203",
+        format: "numeric"
+      },
+      {
+        text: "6.84%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "March 2020"
+      },
+      {
+        text: "190",
+        format: "numeric"
+      },
+      {
+        text: "1.6%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "February 2020"
+      },
+      {
+        text: "187",
+        format: "numeric"
+      },
+      {
+        text: "22.22%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "January 2020"
+      },
+      {
+        text: "153",
+        format: "numeric"
+      },
+      {
+        text: "-",
+        format: "numeric"
+      }
+    ]
+  ]
+}) }}
+
+</div>
+</div>
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l">Access requests granted</h2>
+
+<span class="govuk-caption-l">Total year to date</span>
+<h3 class="govuk-heading-l">523</h3>
+
+{{ govukTable({
+  caption: "Access requests granted by month",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Date"
+    },
+    {
+      text: "Number of access requests granted",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    },
+    {
+      text: "% change on previous month",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "April 2020"
+      },
+      {
+        text: "240",
+        format: "numeric"
+      },
+      {
+        text: "35%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "March 2020"
+      },
+      {
+        text: "156",
+        format: "numeric"
+      },
+      {
+        text: "52%",
+        format: "numeric"
+
+      }
+    ],
+    [
+      {
+        text: "February 2020"
+      },
+      {
+        text: "74",
+        format: "numeric"
+      },
+      {
+        text: "28.37%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "January 2020"
+      },
+      {
+        text: "53",
+        format: "numeric"
+      },
+      {
+        text: "-",
+        format: "numeric"
+      }
+    ]
+  ]
+}) }}
+
+</div>
+</div>
+
+{% endblock %}
