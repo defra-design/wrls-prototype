@@ -52,7 +52,8 @@ module.exports = function (env) {
   }}
 
   //
-  filters.statusReview = function(x) { return x.chargeStatus === "NOT APPROVED";}
+  filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
+
 
 
   return filters

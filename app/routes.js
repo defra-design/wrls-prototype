@@ -26,7 +26,8 @@ router.post('/bd/charges-2020/add-new-reason', function(req, res) {
   } else if (chargeNew == "true") {
     res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');
   } else {
-    res.redirect('/bd/charges-2020/charge-version/reason-check');
+    req.session.data['reasonNewSet']  = "true"
+    res.redirect('/bd/charges-2020/charge-version/charge-data-create');
   }
 
 });
@@ -85,7 +86,8 @@ router.post('/bd/charges-2020/charge-version/set-charge-start-date', function(re
   if (chargeNew == "true") {
     res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
   } else {
-    res.redirect('set-charge-start-date-check');
+    req.session.data['chargeStartSet']  = "true"
+    res.redirect('charge-data-create');
   }
 
 
