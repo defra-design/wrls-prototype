@@ -225,4 +225,45 @@
 </div>
 </div>
 
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l">Returns submitted</h2>
+
+<span class="govuk-caption-l">Total year to date</span>
+<h3 class="govuk-heading-l">657</h3>
+
+{{ govukTable({
+  caption: "Returns submitted",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Number by post",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    },
+    {
+      text: "Number by digital",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "213",
+        format: "numeric"
+      },
+      {
+        text: "444",
+        format: "numeric"
+      }
+    ]
+  ]
+}) }}
+
+</div>
+</div>
+
 {% endblock %}
