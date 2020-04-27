@@ -3,11 +3,11 @@
 {% set title = "Manage reports and notices" %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-manage.html" %}
-  </div>
-  <!--
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
+<!--
     {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
@@ -122,15 +122,33 @@
       </li>
     </ul>
 
+    {% set numberOfChargeVersions = [data.chargeVersions].length + 5 %}
+    {% set numberOfAgreements = [data.agreements].length %}
+
+    {{[data.chargeVersions] | statusReview }}
     <h2 class="govuk-heading-m">
-      Charge information
+      Charge information and agreements
     </h2>
 
     <ul class="govuk-list">
       <li>
         <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#review">
-          Charge information for review
+          Charge information for review <br>
         </a>
+        <span class="govuk-caption-m">{{numberOfChargeVersions}} licences</span>
+      </li>
+      <li>
+      <li>
+        <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#changes">
+          Charge information with change requested <br>
+        </a>
+        <span class="govuk-caption-m">{{numberOfChargeVersions}} licences</span>
+      </li>
+      <li>
+        <a class="govuk-link" href="charges-2020/licences-with-new-agreements">
+          New agreements <br>
+        </a>
+        <span class="govuk-caption-m">{{numberOfAgreements}} licence</span>
       </li>
     </ul>
 

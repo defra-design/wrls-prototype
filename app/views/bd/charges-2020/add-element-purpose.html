@@ -54,6 +54,35 @@
 
   <form  method="post" class="form">
 
+
+    {{ govukRadios({
+    idPrefix: "purpose",
+    name: "purpose",
+    fieldset: {
+      legend: {
+        text: [title],
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l "
+      }
+    },
+    items: [
+      {
+        value: "Spray irrigation direct",
+        text: "Spray irrigation direct"
+      },
+      {
+        value: "Spray irrigation definition order",
+        text: "Spray irrigation definition order"
+      },
+      {
+        value: "Spray irrigation storage",
+        text: "Spray irrigation storage"
+      }
+    ]
+  }) }}
+
+
+<!--
     {{ govukSelect({
   id: "purpose",
   name: "purpose",
@@ -77,7 +106,7 @@
     }
   ]
 }) }}
-
+-->
 
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">

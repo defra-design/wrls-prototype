@@ -1,54 +1,32 @@
-
-
 {% set agreementNumber = "" %}
-
 {% set agreements = data['agreements'] %}
-
-
 {% set numberOfAgreements = agreements.length %}
 
+<table class="govuk-table">
+  <span class="govuk-table__caption govuk-visually-hidden">Licences with new agreements</span>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Licence</th>
+      <th scope="col" class="govuk-table__header">Licence holder</th>
+      <th scope="col" class="govuk-table__header">Agreement</th>
+      <th scope="col" class="govuk-table__header">Agreement signed start</th>
+      <th scope="col" class="govuk-table__header">Agreement start</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
 
-{% for i in agreements %}
+    {% for i in agreements %}
+    {% set agreementNumber = loop.index0 %}
 
-  {{ govukTable({
-    caption: "Licences with new agreements",
-    captionClasses: "govuk-heading-l",
-    firstCellIsHeader: false,
-    head: [
-      {
-        text: "Licence",
-        classes: 'govuk-!-width-one-quarter'
-      },
-      {
-        text: "Licence holder",
-        classes: 'govuk-!-width-one-quarter'
-      },
-      {
-        text: "Agreement",
-        classes: 'govuk-!-width-one-quarter'
-      },
-      {
-        text: "Agreement start",
-        classes: 'govuk-!-width-one-quarter'
-      }
-    ],
-    rows: [
-      [
-        {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">00/22/001/02</a>'
-        },
-        {
-          text: "Irene Briton"
-        },
-        {
-          html: [i.agreement]
-        },
-        {
-          html: [i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]
-        }
-      ]
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"><a class="govuk-link" href="/bd/licence-summary">00/22/001/02</a></td>
+      <td class="govuk-table__cell">{{[data.licenceHolder]}}</td>
+      <td class="govuk-table__cell">{{[i.agreement]}}</td>
+      <td class="govuk-table__cell">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
+      <td class="govuk-table__cell">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
+    </tr>
 
-    ]
-  }) }}
+    {% endfor %}
 
-  {% endfor %}
+  </tbody>
+</table>
