@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Performance" %}
+{% set title = "Manage your water abstraction and impoundment licence " %}
 
 
 
@@ -47,7 +47,7 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="govuk-caption-l">Dashboard</span>
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   </div>
@@ -236,8 +236,11 @@
 
 {{ govukTable({
   caption: "Returns submitted",
-  firstCellIsHeader: false,
+  firstCellIsHeader: true,
   head: [
+    {
+      text: "Returns cycle date"
+    },
     {
       text: "Number by post",
       classes: 'govuk-!-width-one-third',
@@ -252,16 +255,185 @@
   rows: [
     [
       {
-        text: "213",
+        text: "28 April 2020",
         format: "numeric"
       },
       {
-        text: "444",
+        text: "213",
+        format: "numeric"
+      }
+    ]
+  ]
+
+}) }}
+
+</div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l">Change of licence holder name</h2>
+
+<span class="govuk-caption-l">Total year to date</span>
+<h3 class="govuk-heading-l">89</h3>
+
+{{ govukTable({
+  caption: "Renamed licences by month",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Date"
+    },
+    {
+      text: "Number of renamed licences",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    },
+    {
+      text: "% change on previous month",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "April 2020"
+      },
+      {
+        text: "203",
+        format: "numeric"
+      },
+      {
+        text: "6.84%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "March 2020"
+      },
+      {
+        text: "190",
+        format: "numeric"
+      },
+      {
+        text: "1.6%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "February 2020"
+      },
+      {
+        text: "187",
+        format: "numeric"
+      },
+      {
+        text: "22.22%",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "January 2020"
+      },
+      {
+        text: "153",
+        format: "numeric"
+      },
+      {
+        text: "-",
         format: "numeric"
       }
     ]
   ]
 }) }}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l">New licences added</h2>
+
+<span class="govuk-caption-l">Total year to date</span>
+<h3 class="govuk-heading-l">213</h3>
+
+{{ govukTable({
+  caption: "New licences added by region",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Region"
+    },
+    {
+      text: "Number of new licences added",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    },
+    {
+      text: "Licence type",
+      classes: 'govuk-!-width-one-third',
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "North East"
+      },
+      {
+        text: "203",
+        format: "numeric"
+      },
+      {
+        text: "Full abstraction",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "Thames"
+      },
+      {
+        text: "190",
+        format: "numeric"
+      },
+      {
+        text: "Transfer",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "East Anglia"
+      },
+      {
+        text: "187",
+        format: "numeric"
+      },
+      {
+        text: "Temporary",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "South West"
+      },
+      {
+        text: "153",
+        format: "numeric"
+      },
+      {
+        text: "New abstraction licence",
+        format: "numeric"
+      }
+    ]
+  ]
+}) }}
+
 
 </div>
 </div>
