@@ -122,8 +122,37 @@
       </li>
     </ul>
 
-    {% set numberOfChargeVersions = [data.chargeVersions].length + 5 %}
-    {% set numberOfAgreements = [data.agreements].length %}
+
+    <!--number of chargeVersions with Review charge status-->
+    {% set review = 0 %}
+    {% set chargeVersions = data['chargeVersions'] %}
+    {% for i in chargeVersions %}
+    {% if i.chargeStatus == 'NOT APPROVED' %}
+    {% set review = review + 1  %}
+    {% endif %}
+    {% endfor %}
+    {% set numberOfChargeVersionsReview = review + 5 %}
+
+    <!--number of chargeVersions with Change charge status-->
+    {% set change = 0 %}
+    {% set chargeVersions = data['chargeVersions'] %}
+    {% for i in chargeVersions %}
+    {% if i.chargeStatus == 'CHANGES' %}
+    {% set change = change + 1  %}
+    {% endif %}
+    {% endfor %}
+    {% set numberOfChargeVersionsChange = change + 5 %}
+
+    <!--number of agreements -->
+    {% set agreement = 0 %}
+    {% set agreements = data['agreements'] %}
+    {% for i in agreements %}
+    {% if i.agreementEnded == 'false' %}
+    {% set agreement = agreement + 1 %}
+    {% endif %}
+    {% endfor %}
+    {% set newAgreements = agreement %}
+
 
     <h2 class="govuk-heading-m">
       Charge information and agreements
@@ -134,20 +163,20 @@
         <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#review">
           Charge information for review <br>
         </a>
-        <span class="govuk-caption-m">{{numberOfChargeVersions}} licences</span>
+        <span class="govuk-caption-m">{{numberOfChargeVersionsReview}} licences</span>
       </li>
       <li>
       <li>
         <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#changes">
           Charge information with change requested <br>
         </a>
-        <span class="govuk-caption-m">{{numberOfChargeVersions}} licences</span>
+        <span class="govuk-caption-m">{{numberOfChargeVersionsChange}} licences</span>
       </li>
       <li>
         <a class="govuk-link" href="charges-2020/licences-with-new-agreements">
           New agreements <br>
         </a>
-        <span class="govuk-caption-m">{{numberOfAgreements}} licence</span>
+        <span class="govuk-caption-m">{% if newAgreements == '1' %}{{newAgreements}} licence{% else %}{{newAgreements}} licences{% endif %}</span>
       </li>
     </ul>
 

@@ -51,10 +51,10 @@ module.exports = function (env) {
           return x ;
   }}
 
-  //
-  filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 
+    //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 
+  //filters.statusReview = function(arr) { arr.filter(i => i.chargeStatus == 'CHARGEABLE')};
 
   return filters
 }

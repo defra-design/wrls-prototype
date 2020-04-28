@@ -15,16 +15,20 @@
   </thead>
   <tbody class="govuk-table__body">
 
+
     {% for i in agreements %}
+    {% if i.agreementEnded == 'false' %}
     {% set agreementNumber = loop.index0 %}
 
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell"><a class="govuk-link" href="/bd/licence-summary">00/22/001/02</a></td>
+      <td class="govuk-table__cell"><a class="govuk-link" href="/bd/licence-summary">{{[data.licenceNumber]}}</a></td>
       <td class="govuk-table__cell">{{[data.licenceHolder]}}</td>
       <td class="govuk-table__cell">{{[i.agreement]}}</td>
       <td class="govuk-table__cell">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
       <td class="govuk-table__cell">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
     </tr>
+
+    {% endif %}
 
     {% endfor %}
 
