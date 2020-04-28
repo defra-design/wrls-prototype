@@ -30,19 +30,15 @@
 
 
 {% block content %}
-
+<!--Heading-->
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-
-
-      <span class="govuk-caption-l">Dashboard</span>
-
+    <div class="govuk-grid-column-full">
+   <span class="govuk-caption-xl">Dashboard</span>
   <h1 class="govuk-heading-xl">{{ title }}</h1>
-
   </div>
 </div>
 
+<!--Registrations-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
@@ -128,7 +124,7 @@
 </div>
 </div>
 
-
+<!--Access requests granted-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
@@ -216,6 +212,7 @@
 </div>
 
 
+<!--Returns submitted-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
@@ -225,7 +222,7 @@
 <h3 class="govuk-heading-l">657</h3>
 
 {{ govukTable({
-  caption: "Returns submitted",
+  caption: "Returns submitted by cycle date",
   firstCellIsHeader: true,
   head: [
     {
@@ -251,6 +248,10 @@
       {
         text: "213",
         format: "numeric"
+      },
+      {
+        text: "444",
+        format: "numeric"
       }
     ]
   ]
@@ -260,6 +261,7 @@
 </div>
 </div>
 
+<!--Change of licence holder name-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
@@ -342,16 +344,20 @@
   ]
 }) }}
 
+</div>
+</div>
+
+<!--New licences added-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
 <h2 class="govuk-heading-l">New licences added</h2>
 
 <span class="govuk-caption-l">Total per year to date</span>
-<h3 class="govuk-heading-l">213</h3>
+<h3 class="govuk-heading-l">1456</h3>
 
 {{ govukTable({
-  caption: "New licences added by region",
+  caption: "New licences added by region in 2019",
   firstCellIsHeader: true,
   head: [
     {
@@ -374,11 +380,11 @@
         text: "North East"
       },
       {
-        text: "203",
+        html: "203<br>113<br>76<br>12",
         format: "numeric"
       },
       {
-        text: "Full abstraction",
+        html: "New abstraction licence<br>Full abstraction<br>Transfer<br>Temporary",
         format: "numeric"
       }
     ],
@@ -387,11 +393,11 @@
         text: "Thames"
       },
       {
-        text: "190",
+        html: "111<br>65<br>44<br>13",
         format: "numeric"
       },
       {
-        text: "Transfer",
+        html: "New abstraction licence<br>Full abstraction<br>Transfer<br>Temporary",
         format: "numeric"
       }
     ],
@@ -400,11 +406,11 @@
         text: "East Anglia"
       },
       {
-        text: "187",
+        html: "212<br>111<br>45<br>11",
         format: "numeric"
       },
       {
-        text: "Temporary",
+        html: "New abstraction licence<br>Full abstraction<br>Transfer<br>Temporary",
         format: "numeric"
       }
     ],
@@ -413,11 +419,11 @@
         text: "South West"
       },
       {
-        text: "153",
+        html: "212<br>99<br>76<br>12",
         format: "numeric"
       },
       {
-        text: "New abstraction licence",
+        html: "New abstraction licence<br>Full abstraction<br>Transfer<br>Temporary",
         format: "numeric"
       }
     ]
