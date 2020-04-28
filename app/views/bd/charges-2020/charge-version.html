@@ -157,15 +157,17 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     {% set m = data['chargeStart-month'] | int %}
     {% set d = data['chargeStart-day'] | int %}
     {% set date = y + m + d %}
+    <hr class="govuk-section-break govuk-section-break--m">
     {% if date < 2045 %}
     {{ govukWarningText({
  text: "Older charge information will be invalid when you approve these details.",
  iconFallbackText: "Warning"
 }) }}
     {% endif%}
+
     {{ govukButton({
   text: "Approve",
-  classes: "govuk-!-margin-right-1",
+  classes: "govuk-!-margin-right-3",
   href: "confirm-approve-charge-information"
 }) }}
 
@@ -180,9 +182,10 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
       {% include "includes/bd/elements-change.html" %}
+      <hr class="govuk-section-break govuk-section-break--m">
       {{ govukButton({
   text: "Confirm changes",
-  classes: "govuk-!-margin-right-1"
+  classes: "govuk-!-margin-right-3"
 }) }}
 
       {{ govukButton({

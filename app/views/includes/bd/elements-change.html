@@ -47,7 +47,7 @@
      {% set timeLimit = "No" %}
      {% endif %}
 
-      <section class="govuk-!-margin-bottom-2">
+      <section>
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
@@ -224,34 +224,27 @@
                     }
                   },
                   {
-                    classes: 'govuk-summary-list__row--last',
+                    classes: 'govuk-summary-list--no-border',
                     key: {
                       text: "Environmental Improvement Unit Charge"
                     },
                     value: {
                       text: "Other"
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   }
 
 
                 ]
               }) }}
-
+      </div>
+      </div>
       </section>
 
     {% endfor %}
 
 
-
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
 {% set elementNumber = elementNumber + 1 %}
 
 
@@ -260,4 +253,6 @@
   classes: "govuk-button--secondary",
   href: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=" + elementNumber
 }) }}
-<br>
+
+</div>
+</div>

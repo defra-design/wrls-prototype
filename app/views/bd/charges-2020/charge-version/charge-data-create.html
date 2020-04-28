@@ -73,10 +73,10 @@
             <a class="app-task-list__task-name" href="reason-check" aria-describedby="charge-date-completed">
               Select reason for new charge information
             </a>
-            <strong class="govuk-tag app-task-list__task-completed" id="charge-date-completed">Completed</strong>
+            <strong class="govuk-tag govuk-tag--green" id="charge-date-completed">Completed</strong>
             {% else %}
             <a class="app-task-list__task-name" href="../add-new-reason" aria-describedby="charge-date-completed">
-              Select reason for new charge information 
+              Select reason for new charge information
             </a>
             {% endif %}
           </li>
@@ -85,7 +85,7 @@
             <a class="app-task-list__task-name" href="set-charge-start-date-check" aria-describedby="charge-date-completed">
               Set charge start date
             </a>
-            <strong class="govuk-tag app-task-list__task-completed" id="charge-date-completed">Completed</strong>
+            <strong class="govuk-tag govuk-tag--green" id="charge-date-completed">Completed</strong>
             {% else %}
             <a class="app-task-list__task-name" href="set-charge-start-date" aria-describedby="charge-date-completed">
               Set charge start date
@@ -97,7 +97,7 @@
               Set up element
             </a>
             {% if [data.elementNew] == "true" %}
-            <strong class="govuk-tag app-task-list__task-completed" id="elements-completed">Completed</strong>
+            <strong class="govuk-tag govuk-tag--green" id="elements-completed">Completed</strong>
             {% endif %}
           </li>
         </ul>
@@ -117,7 +117,7 @@
             </a>
             {% endif %}
             {% if [data.createNewContact] == "true" %}
-            <strong class="govuk-tag app-task-list__task-completed" id="billing-contact-completed">Completed</strong>
+            <strong class="govuk-tag govuk-tag--green" id="billing-contact-completed">Completed</strong>
             {% endif %}
           </li>
         </ul>
