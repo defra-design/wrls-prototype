@@ -64,12 +64,15 @@
 
 <p class="govuk-body">The status will be ‘Approved’.</p>
 
-<p class="govuk-body">If this licence has an agreement, go to the billing tab and click on ‘Set up new agreement’.</p>
+
 
 
     {% if [data.createElement] == "true" %}
+    <p class="govuk-body">If this licence has an agreement, go to the billing tab and click on ‘Set up new agreement’.</p>
     <a href="/bd/charges-2020/charge-versions#charge?createElement=false" class="govuk-link">View licence summary</a>
+
     {% else %}
+
     <a href="/bd/licence-summary-no-charge#charge?createElement=false" class="govuk-link">View licence summary</a>
     {% endif %}
 
