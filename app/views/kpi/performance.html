@@ -5,11 +5,11 @@
 
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -31,11 +31,11 @@
 
 {% block content %}
 <!--Heading-->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-   <span class="govuk-caption-xl">Dashboard</span>
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
-  <p class="govuk-body">This dashboard shows information about how the Manage your water abstraction and impoundment licence service is currently performing.</p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <span class="govuk-caption-xl">Dashboard</span>
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p class="govuk-body">This dashboard shows information about how the Manage your water abstraction and impoundment licence service is currently performing.</p>
   </div>
 </div>
 
@@ -43,12 +43,23 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-<h2 class="govuk-heading-l">Registrations</h2>
+    <h2 class="govuk-heading-l">Registrations</h2>
 
-<span class="govuk-caption-l">Total per year to date</span>
-<h3 class="govuk-heading-l">733</h3>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-caption-l">Total overall</span>
+        <h3 class="govuk-heading-l">23,076</h3>
+      </div>
 
-{{ govukTable({
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-caption-l">Total year to date</span>
+        <h3 class="govuk-heading-l">733</h3>
+      </div>
+    </div>
+
+
+
+    {{ govukTable({
   caption: "Registrations by month",
   firstCellIsHeader: true,
   head: [
@@ -56,12 +67,12 @@
       text: "Date"
     },
     {
-      text: "Number of registrations",
+      text: "Number of registrations external",
       classes: 'govuk-!-width-one-third',
       format: "numeric"
     },
     {
-      text: "% change on previous month",
+      text: "Number of registrations internal",
       classes: 'govuk-!-width-one-third',
       format: "numeric"
     }
@@ -76,7 +87,7 @@
         format: "numeric"
       },
       {
-        text: "6.84%",
+        text: "6",
         format: "numeric"
       }
     ],
@@ -89,7 +100,7 @@
         format: "numeric"
       },
       {
-        text: "1.6%",
+        text: "1",
         format: "numeric"
       }
     ],
@@ -102,7 +113,7 @@
         format: "numeric"
       },
       {
-        text: "22.22%",
+        text: "6",
         format: "numeric"
       }
     ],
@@ -115,26 +126,36 @@
         format: "numeric"
       },
       {
-        text: "-",
+        text: "5",
         format: "numeric"
       }
     ]
   ]
 }) }}
 
-</div>
+  </div>
 </div>
 
 <!--Access requests granted-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-<h2 class="govuk-heading-l">Access requests granted</h2>
+    <h2 class="govuk-heading-l">Access requests granted</h2>
 
-<span class="govuk-caption-l">Total per year to date</span>
-<h3 class="govuk-heading-l">523</h3>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-caption-l">Total overall</span>
+        <h3 class="govuk-heading-l">15,550</h3>
+      </div>
 
-{{ govukTable({
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-caption-l">Total year to date</span>
+        <h3 class="govuk-heading-l">523</h3>
+      </div>
+    </div>
+
+
+    {{ govukTable({
   caption: "Access requests granted by month",
   firstCellIsHeader: true,
   head: [
@@ -158,11 +179,11 @@
         text: "April 2020"
       },
       {
-        text: "240",
+        text: "203",
         format: "numeric"
       },
       {
-        text: "35%",
+        text: "6",
         format: "numeric"
       }
     ],
@@ -171,13 +192,12 @@
         text: "March 2020"
       },
       {
-        text: "156",
+        text: "190",
         format: "numeric"
       },
       {
-        text: "52%",
+        text: "1",
         format: "numeric"
-
       }
     ],
     [
@@ -185,11 +205,11 @@
         text: "February 2020"
       },
       {
-        text: "74",
+        text: "187",
         format: "numeric"
       },
       {
-        text: "28.37%",
+        text: "6",
         format: "numeric"
       }
     ],
@@ -198,18 +218,18 @@
         text: "January 2020"
       },
       {
-        text: "53",
+        text: "153",
         format: "numeric"
       },
       {
-        text: "-",
+        text: "5",
         format: "numeric"
       }
     ]
   ]
 }) }}
 
-</div>
+  </div>
 </div>
 
 
@@ -217,17 +237,28 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-<h2 class="govuk-heading-l">Returns submitted</h2>
+    <h2 class="govuk-heading-l">Returns</h2>
 
-<span class="govuk-caption-l">Total per year to date</span>
-<h3 class="govuk-heading-l">657</h3>
+    <h3 class="govuk-heading-m">Returns recorded on the service</h3>
 
-{{ govukTable({
-  caption: "Returns submitted by cycle date",
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-caption-l">Total overall</span>
+        <h3 class="govuk-heading-l">46,550</h3>
+      </div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-caption-l">Total year to date</span>
+        <h3 class="govuk-heading-l">2523</h3>
+      </div>
+    </div>
+
+    {{ govukTable({
+  caption: "Returns recorded on the service by month",
   firstCellIsHeader: true,
   head: [
     {
-      text: "Returns cycle date"
+      text: "Date"
     },
     {
       text: "Number by post",
@@ -243,7 +274,112 @@
   rows: [
     [
       {
+        text: "April 2020"
+      },
+      {
+        text: "240",
+        format: "numeric"
+      },
+      {
+        text: "444",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "March 2020"
+      },
+      {
+        text: "132",
+        format: "numeric"
+      },
+      {
+        text: "234",
+        format: "numeric"
+
+      }
+    ],
+    [
+      {
+        text: "February 2020"
+      },
+      {
+        text: "1",
+        format: "numeric"
+      },
+      {
+        text: "7",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "January 2020"
+      },
+      {
+        text: "0",
+        format: "numeric"
+      },
+      {
+        text: "0",
+        format: "numeric"
+      }
+    ]
+  ]
+}) }}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+<h3 class="govuk-heading-m">Returns submitted</h3>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter">
+    <span class="govuk-caption-l">Total overall</span>
+    <h3 class="govuk-heading-l">56,034</h3>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter">
+    <span class="govuk-caption-l">Total year to date</span>
+    <h3 class="govuk-heading-l">3023</h3>
+  </div>
+</div>
+
+    {{ govukTable({
+  caption: "Returns submitted by cycle date",
+  firstCellIsHeader: true,
+  head: [
+
+    {
+      text: "Returns cycle date",
+      classes: 'govuk-!-width-one-quarter'
+    },
+    {
+      html: "Number by post<br>on time",
+      format: "numeric"
+    },
+    {
+      html: "Number by post<br> late",
+      format: "numeric"
+    },
+    {
+      html: "Number by digital<br> on time",
+      format: "numeric"
+    },
+    {
+      html: "Number by digital<br> late",
+      format: "numeric"
+    }
+
+  ],
+  rows: [
+
+    [
+      {
         text: "28 April 2020",
+        format: "numeric"
+      },
+      {
+        text: "213",
         format: "numeric"
       },
       {
@@ -253,25 +389,51 @@
       {
         text: "444",
         format: "numeric"
+      },
+      {
+        text: "213",
+        format: "numeric"
       }
-    ]
+    ],
+  [
+    {
+      text: "13 October 2019",
+      format: "numeric"
+    },
+    {
+      text: "111",
+      format: "numeric"
+    },
+    {
+      text: "123",
+      format: "numeric"
+    },
+    {
+      text: "545",
+      format: "numeric"
+    },
+    {
+      text: "454",
+      format: "numeric"
+    }
   ]
+]
 
 }) }}
 
-</div>
+  </div>
 </div>
 
 <!--Change of licence holder name-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-<h2 class="govuk-heading-l">Change of licence holder name</h2>
+    <h2 class="govuk-heading-l">Change of licence holder name</h2>
 
-<span class="govuk-caption-l">Total per year to date</span>
-<h3 class="govuk-heading-l">89</h3>
+    <span class="govuk-caption-l">Total per year to date</span>
+    <h3 class="govuk-heading-l">89</h3>
 
-{{ govukTable({
+    {{ govukTable({
   caption: "Renamed licences by month",
   firstCellIsHeader: true,
   head: [
@@ -345,19 +507,19 @@
   ]
 }) }}
 
-</div>
+  </div>
 </div>
 
 <!--New licences added-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-<h2 class="govuk-heading-l">New licences added</h2>
+    <h2 class="govuk-heading-l">New licences added</h2>
 
-<span class="govuk-caption-l">Total per year to date</span>
-<h3 class="govuk-heading-l">1456</h3>
+    <span class="govuk-caption-l">Total per year to date</span>
+    <h3 class="govuk-heading-l">1456</h3>
 
-{{ govukTable({
+    {{ govukTable({
   caption: "New licences added by region in 2019",
   firstCellIsHeader: true,
   head: [
@@ -433,7 +595,7 @@
 }) }}
 
 
-</div>
+  </div>
 </div>
 
 {% endblock %}
