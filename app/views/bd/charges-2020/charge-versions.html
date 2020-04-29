@@ -59,7 +59,8 @@
 
     <!-- show button if licence isn't already marked as exempt from charge-->
     {% set free = [data.chargeVersions[0]['free']]%}
-    {% if free == "false"%}
+    {% if free == "true" %}
+    {% else %}
     {{ govukButton({
   text: "Make licence exempt from charges",
   classes: "govuk-button--secondary",
