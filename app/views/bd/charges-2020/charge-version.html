@@ -141,7 +141,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 
     <!--if the charge version is free and the status is chargeable display the set text-->
     {% if ([data.chargeVersions[chargeInfoNumber].free] == "true") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHARGEABLE") %}
-    <p class="govuk-bod govuk-!-margin-top-6">This licence was made exempt of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
+    <p class="govuk-bod govuk-!-margin-top-6">This licence was made exempt from charges on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
     {{ govukSummaryList({
   classes: 'govuk-summary-list--no-border',
   rows: [
@@ -165,7 +165,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 
     {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
 
-    <p class="govuk-body">This licence is set to be exempt from charging</p>
+    <p class="govuk-body">This licence will be exempt from charges</p>
 
     {{ govukSummaryList({
     rows: [
