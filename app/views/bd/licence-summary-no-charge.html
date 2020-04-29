@@ -154,6 +154,12 @@
       <a href="charges-2020/charge-version/charge-data-create?newLicence=true" class="wrls-faux-button">
         Set up new charge
       </a>
+     <br>
+      {{ govukButton({
+    text: "Make licence exempt from charging",
+    classes: "govuk-button--secondary",
+    href: "charges-2020/add-reason?newLicence=true&invoiceAccount=null"
+  }) }}
 
     {% endif %}
     </section>

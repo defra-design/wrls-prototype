@@ -44,6 +44,8 @@
     </dd>
   </div> -->
  {% endif %}
+ {% if data['invoiceAccount'] == "null"%}
+ {% else %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Billing account
@@ -73,15 +75,19 @@
       </ul>
     </dd>
   </div>
-
+ {% endif %}
   <div class="govuk-summary-list__row ">
 <dt class="govuk-summary-list__key">
   Charge elements
 </dt>
 <dd class="govuk-summary-list__value">
+  {% if data['invoiceAccount']== "null" %}
+  No charge elements set up
+  {% else %}
   {% for i in data['elements'] %}
  {{[i.purpose]}}, {{[i.description]}}<br>
  {% endfor %}
+ {% endif %}
 </dd>
 <dd class="govuk-summary-list__actions">
   <a class="govuk-link" href="charges-2020/charge-versions">
