@@ -231,18 +231,18 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
   href: "request-changes"
 }) }}
 
-<!-- if the charge version is free but changes have been requested display the appropriate controls-->
-{% elif ([data.chargeVersions[chargeInfoNumber].free] == "true") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
-{% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+    <!-- if the charge version is free but changes have been requested display the appropriate controls-->
+    {% elif ([data.chargeVersions[chargeInfoNumber].free] == "true") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
+    {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
-{% set monthNumber = data['chargeStart-month'] %}
+    {% set monthNumber = data['chargeStart-month'] %}
 
-{% set month = monthNames[monthNumber - 1] %}
+    {% set month = monthNames[monthNumber - 1] %}
 
-{% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+    {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
 
 
-{{ govukSummaryList({
+    {{ govukSummaryList({
 rows: [
   {
     key: {
@@ -281,34 +281,34 @@ rows: [
 ]
 }) }}
 
-<p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
-{% set y = data['chargeStart-year'] | int %}
-{% set m = data['chargeStart-month'] | int %}
-{% set d = data['chargeStart-day'] | int %}
-{% set date = y + m + d %}
-<hr class="govuk-section-break govuk-section-break--m">
-{% if date < 2045 %}
-{{ govukWarningText({
+    <p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
+    {% set y = data['chargeStart-year'] | int %}
+    {% set m = data['chargeStart-month'] | int %}
+    {% set d = data['chargeStart-day'] | int %}
+    {% set date = y + m + d %}
+    <hr class="govuk-section-break govuk-section-break--m">
+    {% if date < 2045 %}
+    {{ govukWarningText({
 text: "Older charge information will be invalid when you approve these details.",
 iconFallbackText: "Warning"
 }) }}
-{% endif%}
+    {% endif%}
 
-<form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
+    <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
-  <hr class="govuk-section-break govuk-section-break--m">
-  {{ govukButton({
+      <hr class="govuk-section-break govuk-section-break--m">
+      {{ govukButton({
 text: "Confirm changes",
 classes: "govuk-!-margin-right-3"
 }) }}
 
-  {{ govukButton({
+      {{ govukButton({
 text: "Remove charge information",
 classes: "govuk-button--secondary",
 href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 }) }}
 
-</form>
+    </form>
 
     <!-- if the charge version is not free but not approved display the table and the approval routes/changes routes-->
     {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
@@ -358,6 +358,22 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 
     </form>
 
+    {% elif [data.chargeVersions[chargeInfoNumber].free] == "true" %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <p class="govuk-bod govuk-!-margin-top-6">This licence was made exempt from charging on 28 April 2020.</p>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reason
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['reason']}}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
     {% else %}
     {% include "includes/bd/elements-historic.html" %}
     {% endif %}
