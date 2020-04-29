@@ -57,13 +57,16 @@
       classes: "govuk-!-margin-right-3"
     }) }}
 
-<!--
+    <!-- show button if licence isn't already marked as exempt from charge-->
+    {% set free = [data.chargeVersions[0]['free']]%}
+    {% if free == "false"%}
     {{ govukButton({
-  text: "Make licence free of charge",
+  text: "Make licence exempt from charging",
   classes: "govuk-button--secondary",
   href: "add-reason"
 }) }}
--->
+   {% endif %}
+
 
   </div>
 </div>

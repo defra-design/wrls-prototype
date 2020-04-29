@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 
-{% set title = "You're about to make this licence free of charge" %}
+{% set free = [data.chargeVersions[0]['free']]%}
+{% if free == "true"%}
+{% set title = "You're about to make this licence exempt from charging" %}
+{% else %}
+{% set title = "Check charge information" %}
+{% endif %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -106,12 +111,16 @@
     ]
   }) }}
 
+  {% if free == "true"%}
 <p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
+
+{% else %}
+<p class="govuk-body">This information will need to be approved before this licence is made exempt from charge.</p>
+{% endif %}
 
 {{ govukButton({
 text: "Confirm"
 }) }}
-
 
 
   </form>

@@ -85,6 +85,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 
 
 
+
     {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
     {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
     {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
@@ -124,7 +125,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-
+    <!--comments from billing and data-->
     {% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
     <h2 class="govuk-heading-m">
       Comments from Billing and Data
@@ -132,12 +133,15 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
     {% endif %}
 
-    {% if (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED")) or (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES")) %}
+    <!--if charge version is not approved or changes and not free include reason and start date table-->
+    {% if (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") and ([data.chargeVersions[chargeInfoNumber].free] == "false")) or (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") and ([data.chargeVersions[chargeInfoNumber].free] == "false")) %}
     {% include "includes/bd/reason-new-charge.html" %}
     {% endif %}
 
-    {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
-    <p class="govuk-bod govuk-!-margin-top-6">This licence was made free of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
+
+    <!--if the charge version is free and the status is chargeable display the set text-->
+    {% if ([data.chargeVersions[chargeInfoNumber].free] == "true") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHARGEABLE") %}
+    <p class="govuk-bod govuk-!-margin-top-6">This licence was made exempt of charge on {{data.chargeVersions[chargeInfoNumber]['chargeStart']}}.</p>
     {{ govukSummaryList({
   classes: 'govuk-summary-list--no-border',
   rows: [
@@ -151,6 +155,162 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     }
   ]
 }) }}
+    <!-- if the charge version is free but not approved display the table and the approval routes/changes routes-->
+    {% elif ([data.chargeVersions[chargeInfoNumber].free] == "true") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
+    {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+    {% set monthNumber = data['chargeStart-month'] %}
+
+    {% set month = monthNames[monthNumber - 1] %}
+
+    {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+
+    <p class="govuk-body">This licence is set to be exempt from charging</p>
+
+    {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Reason"
+        },
+        value: {
+          text: [data.reason]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+        },
+        {
+          key: {
+            text: "Start date"
+          },
+          value: {
+            text: [chargeStart]
+          },
+          actions: {
+            items: [
+              {
+                href: "add-agreement",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+      }
+    ]
+  }) }}
+
+
+    {% set y = data['chargeStart-year'] | int %}
+    {% set m = data['chargeStart-month'] | int %}
+    {% set d = data['chargeStart-day'] | int %}
+    {% set date = y + m + d %}
+    <hr class="govuk-section-break govuk-section-break--m">
+    {% if date < 2045 %}
+    {{ govukWarningText({
+ text: "Older charge information will be invalid when you approve these details.",
+ iconFallbackText: "Warning"
+}) }}
+    {% endif%}
+
+    {{ govukButton({
+  text: "Approve",
+  classes: "govuk-!-margin-right-3",
+  href: "nonchargeable-check"
+}) }}
+
+    {{ govukButton({
+  text: "Request changes",
+  classes: "govuk-button--secondary",
+  href: "request-changes"
+}) }}
+
+<!-- if the charge version is free but changes have been requested display the appropriate controls-->
+{% elif ([data.chargeVersions[chargeInfoNumber].free] == "true") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
+{% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+{% set monthNumber = data['chargeStart-month'] %}
+
+{% set month = monthNames[monthNumber - 1] %}
+
+{% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+
+
+{{ govukSummaryList({
+rows: [
+  {
+    key: {
+      text: "Reason"
+    },
+    value: {
+      text: [data.reason]
+    },
+    actions: {
+      items: [
+        {
+          href: "add-agreement",
+          text: "Change",
+          visuallyHiddenText: "name"
+        }
+      ]
+    }
+    },
+    {
+      key: {
+        text: "Start date"
+      },
+      value: {
+        text: [chargeStart]
+      },
+      actions: {
+        items: [
+          {
+            href: "add-agreement",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+  }
+]
+}) }}
+
+<p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
+{% set y = data['chargeStart-year'] | int %}
+{% set m = data['chargeStart-month'] | int %}
+{% set d = data['chargeStart-day'] | int %}
+{% set date = y + m + d %}
+<hr class="govuk-section-break govuk-section-break--m">
+{% if date < 2045 %}
+{{ govukWarningText({
+text: "Older charge information will be invalid when you approve these details.",
+iconFallbackText: "Warning"
+}) }}
+{% endif%}
+
+<form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
+
+  <hr class="govuk-section-break govuk-section-break--m">
+  {{ govukButton({
+text: "Confirm changes",
+classes: "govuk-!-margin-right-3"
+}) }}
+
+  {{ govukButton({
+text: "Remove charge information",
+classes: "govuk-button--secondary",
+href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
+}) }}
+
+</form>
+
+    <!-- if the charge version is not free but not approved display the table and the approval routes/changes routes-->
     {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
     {% include "includes/bd/elements-change.html" %}
     {% set y = data['chargeStart-year'] | int %}
@@ -176,6 +336,8 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
   classes: "govuk-button--secondary",
   href: "request-changes"
 }) }}
+
+
     {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
 
 

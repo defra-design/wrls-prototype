@@ -576,6 +576,8 @@ router.post('/bd/charges-2020/add-nonchargeable-date', function(req, res) {
 //NON-CHARGEABLE-CREATE
 router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
 
+  //aproval route check
+  let free = req.session.data.chargeVersions[0]['free'];
 
   // date fields
   let chargeStartDay = req.session.data['chargeStart-day'];
@@ -587,11 +589,14 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   let monthNumber = chargeStartMonth
   let month = monthNames[monthNumber - 1]
 
+  console.log(free);
+  if ( free === "false") {
+
   //set the charge start date
   let chargeStart = chargeStartDay + " " + month + " " + chargeStartYear
   let chargeEnd = ""
-  let chargeStatus = "CHARGEABLE"
-  let chargeBilledDate = "Free of charge"
+  let chargeStatus = "NOT APPROVED"
+  let chargeBilledDate = "Exempt from charge"
   let free = "true"
 
   let newCharge = {
@@ -604,6 +609,12 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   let chargeVersions = req.session.data['chargeVersions']
   chargeVersions.unshift(newCharge);
 
+  res.redirect('/bd/charges-2020/charge-version/charge-data-confirmation');
+
+} else {
+
+  //Mark the approved charge version as chargeable
+  req.session.data.chargeVersions[0]['chargeStatus'] = "CHARGEABLE"
 
   //Mark the old charge version as replaced and set the end date
   req.session.data.chargeVersions[1]['chargeStatus'] = "REPLACED"
@@ -614,17 +625,18 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   //set the old charge informations end date
   req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
 
-
-
+  /*
   //Set an agreement for Abatement
   let reason = req.session.data['reason']
   if (reason = "Abatement") {
     req.session.data['agreement'] = "Abatement (S126)"
     req.session.data['agreementNew'] = "true"
     req.session.data['agreementEnded'] = "true"
-  }
+  }*/
 
   res.redirect('/bd/charges-2020/charge-versions');
+
+  }
 });
 
 
