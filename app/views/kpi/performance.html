@@ -354,19 +354,15 @@
       classes: 'govuk-!-width-one-quarter'
     },
     {
-      html: "Number by post<br>on time",
+      html: "Total due",
       format: "numeric"
     },
     {
-      html: "Number by post<br> late",
+      html: "Number by post",
       format: "numeric"
     },
     {
-      html: "Number by digital<br> on time",
-      format: "numeric"
-    },
-    {
-      html: "Number by digital<br> late",
+      html: "Number by digital",
       format: "numeric"
     }
 
@@ -379,19 +375,15 @@
         format: "numeric"
       },
       {
-        text: "213",
+        html: "3333",
         format: "numeric"
       },
       {
-        text: "213",
+        html: "On time 213<br>Late 540",
         format: "numeric"
       },
       {
-        text: "444",
-        format: "numeric"
-      },
-      {
-        text: "213",
+        html: "On time 444<br>Late 213 ",
         format: "numeric"
       }
     ],
@@ -401,19 +393,15 @@
       format: "numeric"
     },
     {
-      text: "111",
+      html: "10,349",
       format: "numeric"
     },
     {
-      text: "123",
+      html: "On time 111<br>Late 709",
       format: "numeric"
     },
     {
-      text: "545",
-      format: "numeric"
-    },
-    {
-      text: "454",
+      html: "On time 789<br>Late 344",
       format: "numeric"
     }
   ]
@@ -424,30 +412,41 @@
   </div>
 </div>
 
-<!--Change of licence holder name-->
+<!--Name added of changed on a licence-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-    <h2 class="govuk-heading-l">Change of licence holder name</h2>
+    <h2 class="govuk-heading-l">Name added or changed on a licence</h2>
 
     <span class="govuk-caption-l">Total per year to date</span>
     <h3 class="govuk-heading-l">89</h3>
 
     {{ govukTable({
-  caption: "Renamed licences by month",
+  caption: "Licence names added and changed by month",
   firstCellIsHeader: true,
   head: [
     {
-      text: "Date"
+      text: "Date",
+      classes: 'govuk-!-width-one-quarter'
     },
     {
-      text: "Number of renamed licences",
-      classes: 'govuk-!-width-one-third',
+      text: "Number of licences names added",
+
       format: "numeric"
     },
     {
       text: "% change on previous month",
-      classes: 'govuk-!-width-one-third',
+
+      format: "numeric"
+    },
+    {
+      text: "Number of licence names changed",
+
+      format: "numeric"
+    },
+    {
+      text: "% change on previous month",
+
       format: "numeric"
     }
   ],
@@ -455,6 +454,14 @@
     [
       {
         text: "April 2020"
+      },
+      {
+        text: "50",
+        format: "numeric"
+      },
+      {
+        text: "40%",
+        format: "numeric"
       },
       {
         text: "203",
@@ -468,6 +475,14 @@
     [
       {
         text: "March 2020"
+      },
+      {
+        text: "30",
+        format: "numeric"
+      },
+      {
+        text: "-523%",
+        format: "numeric"
       },
       {
         text: "190",
@@ -487,6 +502,14 @@
         format: "numeric"
       },
       {
+        text: "750%",
+        format: "numeric"
+      },
+      {
+        text: "187",
+        format: "numeric"
+      },
+      {
         text: "22.22%",
         format: "numeric"
       }
@@ -494,6 +517,14 @@
     [
       {
         text: "January 2020"
+      },
+      {
+        text: "22",
+        format: "numeric"
+      },
+      {
+        text: "-",
+        format: "numeric"
       },
       {
         text: "153",
@@ -510,7 +541,10 @@
   </div>
 </div>
 
+
+
 <!--New licences added-->
+<!--
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
@@ -597,5 +631,6 @@
 
   </div>
 </div>
+-->
 
 {% endblock %}
