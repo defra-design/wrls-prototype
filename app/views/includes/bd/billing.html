@@ -12,7 +12,7 @@
   {% set status = [data.chargeVersions[0].chargeStatus] %}
      {% if (free == "true") and (status == "CHARGEABLE") %}
       {{ govukInsetText({
-       html: 'This licence is free of charge.  ' + [data.reason] + '.<br><a class="govuk-link" href="/bd/charges-2020/charge-versions">Check status</a>'
+       html: 'This licence is exempt from charges.  ' + [data.reason] + '.'
       }) }}
     {% endif %}
 

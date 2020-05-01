@@ -596,7 +596,7 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   let chargeStart = chargeStartDay + " " + month + " " + chargeStartYear
   let chargeEnd = ""
   let chargeStatus = "NOT APPROVED"
-  let chargeBilledDate = "Exempt from charge"
+  let chargeBilledDate = "Exempt from charges"
   let free = "true"
 
   let newCharge = {
@@ -612,7 +612,7 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   res.redirect('/bd/charges-2020/charge-version/charge-data-confirmation');
 
 } else {
-  
+
   //Mark the approved charge version as chargeable
   req.session.data.chargeVersions[0]['chargeStatus'] = "CHARGEABLE"
 
