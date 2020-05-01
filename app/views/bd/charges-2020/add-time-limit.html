@@ -57,7 +57,9 @@
         namePrefix: "timeLimit",
         fieldset: {
           legend: {
-            text: "Enter end date"
+            text: "Enter end date",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
           }
         }
       }) }}
@@ -68,9 +70,9 @@
           name: "timeLimit",
           fieldset: {
             legend: {
-              text: [title],
+              html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
+              classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
