@@ -69,6 +69,7 @@ router.post('/bd/charges-2020/charge-version/set-charge-start-date', function(re
   let chargeEnd = ""
   let chargeStatus = "DRAFT"
   let chargeBilledDate = ""
+  let free = "false"
   let reasonNewCharge = req.session.data['reasonNewCharge']
 
   let newCharge = {
@@ -76,6 +77,7 @@ router.post('/bd/charges-2020/charge-version/set-charge-start-date', function(re
     chargeEnd,
     chargeStatus,
     chargeBilledDate,
+    free,
     reasonNewCharge
   };
   let chargeVersions = req.session.data['chargeVersions']

@@ -52,7 +52,32 @@
 
   <form data-routing="1" method="post" class="form">
 
-    {% if [data.createElement] == "true" %}
+    {% if [data.newLicence] == "true" %}
+
+    {{ govukRadios({
+  idPrefix: "howCreateElement",
+  name: "howCreateElement",
+  fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "create-element",
+      text: "Yes"
+    },
+    {
+      value: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=0",
+      text: "No"
+    }
+  ]
+  }) }}
+
+    {% else %}
+
     {{ govukRadios({
     idPrefix: "howCreateElement",
     name: "howCreateElement",
@@ -82,32 +107,6 @@
     ]
     }) }}
 
-
-    {% else %}
-
-
-
-    {{ govukRadios({
-  idPrefix: "howCreateElement",
-  name: "howCreateElement",
-  fieldset: {
-    legend: {
-      text: [title],
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "create-element",
-      text: "Yes"
-    },
-    {
-      value: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=0",
-      text: "No"
-    }
-  ]
-}) }}
 
 {% endif %}
 

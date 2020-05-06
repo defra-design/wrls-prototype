@@ -45,7 +45,12 @@
     <h1 class="govuk-heading-xl">
       {{title}}
     </h1>
-
+<!--   {% if data['taskError'] == "true" %}
+    {{ govukWarningText({
+      text: "You need to compelete all other tasks before continuing to check and charge",
+      iconFallbackText: "Warning"
+    }) }}
+    {% endif %} -->
     <ol class="app-task-list">
   <!--    <li>
         <h2 class="app-task-list__section">
@@ -78,6 +83,7 @@
             <a class="app-task-list__task-name" href="../add-new-reason" aria-describedby="charge-date-completed">
               Select reason for new charge information
             </a>
+            <strong class="govuk-tag govuk-tag--grey" id="billing-contact-completed">Not Started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">
@@ -90,6 +96,7 @@
             <a class="app-task-list__task-name" href="set-charge-start-date" aria-describedby="charge-date-completed">
               Set charge start date
             </a>
+            <strong class="govuk-tag govuk-tag--grey" id="billing-contact-completed">Not Started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">
@@ -98,6 +105,8 @@
             </a>
             {% if [data.elementNew] == "true" %}
             <strong class="govuk-tag govuk-tag--green" id="elements-completed">Completed</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey" id="billing-contact-completed">Not Started</strong>
             {% endif %}
           </li>
         </ul>
@@ -118,27 +127,55 @@
             {% endif %}
             {% if [data.createNewContact] == "true" %}
             <strong class="govuk-tag govuk-tag--green" id="billing-contact-completed">Completed</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey" id="billing-contact-completed">Not Started</strong>
             {% endif %}
           </li>
         </ul>
       </li>
-      <li>
-        <h2 class="app-task-list__section govuk-!-margin-bottom-0">
-          <span class="app-task-list__section-number ">3. </span> Check and confirm
-        </h2>
-        <ul class="app-task-list__items govuk-!-margin-bottom-0"">
-          <li class="app-task-list__item govuk-!-margin-bottom-0" style="border:none;"s>
-            {{ govukButton({
-                text: "Check charge information",
-                href: "charge-data-check"
-              })
-            }}
-        <!--    <a class="app-task-list__task-name" href="charge-data-check">
-              Check charge details and confirm
-            </a> -->
 
+  <li>
+
+                  {% if ([data.reasonNewSet] == "true") and ([data.chargeStartSet] == "true") and ([data.elementNew] == "true") and ([data.createNewContact] == "true") and ([data.createNewContact] == "true") %}
+
+                    <h2 class="app-task-list__section">
+                      <span class="app-task-list__section-number ">3. </span> Check and confirm
+                    </h2>
+
+                  <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+               <a class="app-task-list__task-name" href="charge-data-check">
+              Check charge information
+            </a>
+            <strong class="govuk-tag govuk-tag--grey" id="billing-contact-completed">Not Started</strong>
           </li>
         </ul>
+
+          {% else %}
+
+
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number ">3. </span> Check and confirm
+  </h2>
+<!--<ul class="app-task-list__items govuk-!-margin-bottom-0">
+  {{ govukInsetText({
+text: "You need to complete all tasks before continuing to check charge information."
+}) }}
+</ul> -->
+
+<ul class="app-task-list__items">
+    <li class="app-task-list__item">
+
+
+     Check charge information
+
+</li>
+</ul>
+
+
+
+          {% endif %}
+</li>
     </ol>
 
   </div>

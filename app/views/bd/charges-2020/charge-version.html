@@ -117,6 +117,24 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
         {% endif %}
       </div>
     </div>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Billing contact address
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        {{data['customerName']}}<br>
+        {% if data['fao'].length %}
+        {{data['fao']}}<br>
+        {% endif %}
+        {{data['address1']}}<br>
+        {{data['city']}}<br>
+        {{data['postcode']}}<br>
+      </div>
+    </details>
+
     {% endif %}
   </div>
 </div>
@@ -132,6 +150,8 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     </h2>
     <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
     {% endif %}
+
+
 
     <!--if charge version is not approved or changes and not free include reason and start date table-->
     {% if (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") and ([data.chargeVersions[chargeInfoNumber].free] == "false")) or (([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") and ([data.chargeVersions[chargeInfoNumber].free] == "false")) %}
@@ -312,7 +332,12 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 
     <!-- if the charge version is not free but not approved display the table and the approval routes/changes routes-->
     {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") %}
+
+
+<section class="govuk-!-margin-bottom-6">
     {% include "includes/bd/elements-change.html" %}
+    </section>
+    {% include "includes/bd/billing-contact-change.html" %}
     {% set y = data['chargeStart-year'] | int %}
     {% set m = data['chargeStart-month'] | int %}
     {% set d = data['chargeStart-day'] | int %}
@@ -343,7 +368,10 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 
     <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
-      {% include "includes/bd/elements-change.html" %}
+      <section class="govuk-!-margin-bottom-6">
+          {% include "includes/bd/elements-change.html" %}
+          </section>
+          {% include "includes/bd/billing-contact-change.html" %}
       <hr class="govuk-section-break govuk-section-break--m">
       {{ govukButton({
   text: "Confirm changes",

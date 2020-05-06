@@ -1,0 +1,80 @@
+<section class="govuk-!-margin-bottom-6">
+
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Billing contact</h2>
+
+  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+  {% set monthNumber = data['startMonth'] %}
+
+  {% set month = monthNames[monthNumber - 1] %}
+
+  {% set effectiveDate = data['startDay'] + " " + month +" "+ data['startYear']%}
+
+  {% set invoiceAddress %}
+  {{ data.invoiceAccount}} <br>
+  {{ data.address1}} <br>
+  {{ data.city}} <br>
+  {{data.postcode}} <br>
+  {% endset %}
+
+
+  {{ govukSummaryList({
+     classes: 'govuk-!-margin-bottom-9',
+     rows:
+     [
+       {
+         key: {
+           text: "Name"
+         },
+         value: {
+           text: [data.customerName]
+         },
+         actions: {
+           items: [
+             {
+               href: "#",
+               text: "Change",
+               visuallyHiddenText: "name"
+             }
+           ]
+         }
+       },
+       {
+         key: {
+           text: "Billing account"
+         },
+         value: {
+           html: invoiceAddress
+         },
+         actions: {
+           items: [
+             {
+               href: "#",
+               text: "Change",
+               visuallyHiddenText: "address"
+             }
+           ]
+         }
+       },
+       {
+         classes: 'govuk-summary-list__row--last',
+         key: {
+           text: "Effective from"
+         },
+         value: {
+           text: [effectiveDate]
+         },
+         actions: {
+           items: [
+             {
+               href: "#",
+               text: "Change",
+               visuallyHiddenText: "effective date"
+             }
+           ]
+         }
+       }
+     ]
+   }) }}
+
+</section>
