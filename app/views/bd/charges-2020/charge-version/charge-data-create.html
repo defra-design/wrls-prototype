@@ -45,6 +45,10 @@
     <h1 class="govuk-heading-xl">
       {{title}}
     </h1>
+    <!--<p class="govuk-body">You need to complete all tasks before continuing to check charge information.</p>-->
+  <!--  {{ govukInsetText({
+  text: "You need to complete all tasks before continuing to check charge information."
+  }) }} -->
 <!--   {% if data['taskError'] == "true" %}
     {{ govukWarningText({
       text: "You need to compelete all other tasks before continuing to check and charge",
@@ -66,8 +70,8 @@
             {% endif %}
           </li>
         </ul>
-      </li>
-      <li> -->
+      </li>-->
+      <li>
         <h2 class="app-task-list__section">
           <span class="app-task-list__section-number">1. </span> Charge information
         </h2>
@@ -110,6 +114,7 @@
             {% endif %}
           </li>
         </ul>
+      </li>
       <li>
         <h2 class="app-task-list__section">
           <span class="app-task-list__section-number">2. </span> Billing contact
@@ -153,22 +158,24 @@
 
           {% else %}
 
-
+      <!--    {{ govukInsetText({
+          text: "You need to complete all tasks before continuing to check charge information."
+          }) }}-->
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number ">3. </span> Check and confirm
   </h2>
-<!--<ul class="app-task-list__items govuk-!-margin-bottom-0">
+<ul class="app-task-list__items govuk-!-margin-bottom-0">
   {{ govukInsetText({
 text: "You need to complete all tasks before continuing to check charge information."
 }) }}
-</ul> -->
+</ul>
 
 <ul class="app-task-list__items">
-    <li class="app-task-list__item">
-
-
-     Check charge information
-
+  <li class="app-task-list__item">
+<span class="app-task-list__task-name" >
+Check charge information
+</span>
+<!--<strong class="govuk-tag govuk-tag--grey" id="billing-contact-completed">Can't Start</strong>-->
 </li>
 </ul>
 
