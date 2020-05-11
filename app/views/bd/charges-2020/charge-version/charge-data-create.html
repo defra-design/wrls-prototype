@@ -45,7 +45,10 @@
     <h1 class="govuk-heading-xl">
       {{title}}
     </h1>
-    <!--<p class="govuk-body">You need to complete all tasks before continuing to check charge information.</p>-->
+    {% if ([data.reasonNewSet] == "true") and ([data.chargeStartSet] == "true") and ([data.elementNew] == "true") and ([data.createNewContact] == "true") %}
+    {% else %}
+    <p class="govuk-body">You need to fill in sections 1 and 2 before you can check and confirm the charge information in section 3.</p>
+    {% endif %}
   <!--  {{ govukInsetText({
   text: "You need to complete all tasks before continuing to check charge information."
   }) }} -->
@@ -164,11 +167,11 @@
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number ">3. </span> Check and confirm
   </h2>
-<ul class="app-task-list__items govuk-!-margin-bottom-0">
+<!--<ul class="app-task-list__items govuk-!-margin-bottom-0">
   {{ govukInsetText({
 text: "You need to complete all tasks before continuing to check charge information."
 }) }}
-</ul>
+</ul>-->
 
 <ul class="app-task-list__items">
   <li class="app-task-list__item">
