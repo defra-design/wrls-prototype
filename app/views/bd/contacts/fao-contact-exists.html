@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you want to use an existing contact?" %}
+{% set title = "Select an existing FAO for " + data['customerName'] %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,14 +45,17 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+    <!--  <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span> -->
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+        {{ title }}</h1>
 
     </div>
   </div>
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
-  {% set hintText = "Existing contacts for " + data['customerName'] %}
+
 
     {% set fao %}
     {{ govukInput({
@@ -69,9 +72,6 @@
         idPrefix: "charge-source",
         name: "source",
         fieldset: {
-        },
-        hint: {
-          html: hintText
         },
         items: [
           {
