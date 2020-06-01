@@ -1,0 +1,257 @@
+{% extends "layout.html" %}
+
+{% set title = "Check billing account details" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+
+{% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+{% set monthNumber = data['startMonth'] %}
+
+{% set month = monthNames[monthNumber - 1] %}
+
+{% set effectiveDate = data['startDay'] + " " + month +" "+ data['startYear']%}
+
+{% set invoiceAddress %}
+<!--{{ data.invoiceAccount}} <br>
+{{ data.billingContact}}<br> -->
+{{ data.address1}} <br>
+{{ data.city}} <br>
+{{data.postcode}} <br>
+{% endset %}
+
+{% if data['newFAO'] == "Yes" %}
+
+{{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows:
+    [
+    {
+      key: {
+        text: "New billing account"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "/bd/contacts/select-billing-account?billingContact=false",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+      {
+        key: {
+          text: "Billing contact"
+        },
+        value: {
+          text: [data.customerName]
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Address"
+        },
+        value: {
+          html: invoiceAddress
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "address"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "FAO"
+        },
+        value: {
+          html: data['newFAO']
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "address"
+            }
+          ]
+        }
+      },{
+        key: {
+          text: "FAO name"
+        },
+        value: {
+          html: data['fao']
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "address"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  {% else %}
+
+  {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows:
+      [
+      {
+        key: {
+          text: "New billing account"
+        },
+        value: {
+          text: "Yes"
+        },
+        actions: {
+          items: [
+            {
+              href: "/bd/contacts/select-billing-account?billingContact=false",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+        {
+          key: {
+            text: "Billing contact"
+          },
+          value: {
+            text: [data.customerName]
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: invoiceAddress
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "FAO"
+          },
+          value: {
+            html: data['newFAO']
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "address"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+    {% if [data.createNewContact] == "true" %}
+    <a href="/bd/charges-2020/charge-version/charge-data-create?existingContact=false" class="wrls-faux-button">
+      Continue
+    </a>
+    {% else %}
+    <a href="/bd/licence-summary#charge" class="wrls-faux-button">
+      Confirm
+    </a>
+    {% endif %}
+
+  </div>
+</div>
+
+
+{% endblock %}

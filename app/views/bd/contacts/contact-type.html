@@ -53,7 +53,19 @@
 
   <form data-routing="1" method="post" class="form" id="companies-house-number">
 
-    {% from "radios/macro.njk" import govukRadios %}
+    {% set customerName = data['customerName']%}
+
+    {% set customerName %}
+    {{ govukInput({
+      id: "customerName",
+      name: "customerName",
+      classes: "govuk-!-width-one-third",
+      value: customerName,
+      label: {
+        text: "Full name"
+      }
+    }) }}
+    {% endset -%}
 
       {{ govukRadios({
         idPrefix: "charge-source",
@@ -77,8 +89,11 @@
       divider: "or"
     },
     {
-      value: "new-company-postcode",
-      text: "Individual"
+      value: "new-company-postcode?customerName=",
+      text: "Individual",
+      conditional: {
+        html: customerName
+      }
     }
 
         ]
@@ -100,6 +115,16 @@
         const url = $(this).find('input:checked').val();
 
         if(url) {
+
+          if( $("#customerName").val() ){
+          let  companyName = $("#customerName").val();
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl+companyName;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
+          }
+
           ev.preventDefault();
           window.location.href = url;
           return false;

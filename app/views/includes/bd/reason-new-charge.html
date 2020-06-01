@@ -47,7 +47,6 @@ rows: [
     }
   },
   {
-    classes: 'govuk-summary-list__row--last',
     key: {
       text: "Start date"
     },
@@ -63,8 +62,20 @@ rows: [
         }
       ]
     }
+  },
+  {
+    classes: 'govuk-summary-list--no-border',
+    key: {
+      text: "Licene holder"
+    },
+    value: {
+      text: [data.licenceHolder]
+    }
   }
 ]
 }) }}
+
+
+
 
 </section>

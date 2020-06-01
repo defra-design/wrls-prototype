@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you want to use an existing contact?" %}
+{% set title = "Select an existing billing account for " + data['licenceHolder'] %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,52 +45,44 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span>
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
   </div>
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
-  {% set hintText = "Existing contacts for " + data['customerName'] %}
 
-    {% set fao %}
-    {{ govukInput({
-      id: "fao",
-      name: "fao",
-      classes: "govuk-!-width-one-third",
-      label: {
-        text: "Full name"
-      }
-    }) }}
-    {% endset -%}
+<!--<h2 class="govuk-heading-m">Existing invoice accounts for {{ data['customerName'] }}
+</h2>-->
+
+
+
 
       {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
+        idPrefix: "existing-billing-account",
+        name: "existing-billing-account",
         fieldset: {
-        },
-        hint: {
-          html: hintText
         },
         items: [
           {
-            value: "check-billing-account-details-new?fao=Accounts%20department",
-            text: "Accounts department"
+            value: "check-billing-account-details-existing?invoiceAccount=L09823765S&billingContact=" + data['licenceHolder'] + "&address1=%20%0A15%20Osborne%20Road&city=%0ABath%0A&postcode=BA1%205AH",
+            html: "L09823765S - " + data['licenceHolder'] + "<br>15 Osborne Road, Bath, BA1 5AH"
           },
           {
-            value: "check-billing-account-details-new?fao=Sam%20Burridge",
-            text: "Sam Burridge"
+            value: "check-billing-account-details-existing?invoiceAccount=D098437654%0A&billingContact=" + data['licenceHolder'] + "&address1=%20%0AUnit%204%0AFinkley%20Crescent%0A&city=London%0A&postcode=N5%201FE",
+            html: "D098437654S - " + data['licenceHolder'] + "<br>Unit 4, Finkley Crescent, London N5 1FE"
+          },
+          {
+            value: "check-billing-account-details-existing?invoiceAccount=P10987645S%0A&billingContact=" + data['billingContact'] + "&address1=%20%0AUnit%204%0AFinkley%20Crescent%0A&city=London%0A&postcode=N5%201FE",
+            html: "P10987645S - " + data['billingContact'] + "<br>Unit 4, Finkley Crescent, London N5 1FE"
           },
           {
       divider: "or"
     },
     {
-      value: "check-billing-account-details-new?fao=",
-      text: "Set up a new contact",
-      conditional: {
-        html: fao
-      }
+      value: "new-contact?createNewContact=true",
+      text: "Set up a new billing account"
     }
 
         ]
@@ -112,17 +104,6 @@
         const url = $(this).find('input:checked').val();
 
         if(url) {
-
-          if( $("#fao").val() ){
-          let  companyName = $("#fao").val();
-          let radioUrl = $(this).find('input:checked').val();
-          const newurl = radioUrl+companyName;
-          ev.preventDefault();
-          window.location.href = newurl;
-          return false;
-          }
-
-
           ev.preventDefault();
           window.location.href = url;
           return false;

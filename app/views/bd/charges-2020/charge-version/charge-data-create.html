@@ -124,12 +124,16 @@
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
-            {% if [data.createNewContact] == "true" %}
-            <a class="app-task-list__task-name" href="/bd/contacts/check-invoice-account-details?startDay=28&startMonth=02&startYear=2020" aria-describedby="billing-contact-completed">
+            {% if ([data.createNewContact] == "true") and ([data.existingContact] == "true") %}
+            <a class="app-task-list__task-name" href="/bd/contacts/check-billing-account-details-existing" aria-describedby="billing-contact-completed">
               Set up billing contact
               </a>
+              {% elif ([data.createNewContact] == "true") and ([data.existingContact] == "false") %}
+              <a class="app-task-list__task-name" href="/bd/contacts/check-billing-account-details-new" aria-describedby="billing-contact-completed">
+                Set up billing contact
+                </a>
             {% else %}
-            <a class="app-task-list__task-name" href="/bd/contacts/new-contact?createNewContact=true" aria-describedby="billing-contact-completed">
+            <a class="app-task-list__task-name" href="/bd/contacts/select-billing-account?createNewContact=true" aria-describedby="billing-contact-completed">
               Set up billing contact
             </a>
             {% endif %}

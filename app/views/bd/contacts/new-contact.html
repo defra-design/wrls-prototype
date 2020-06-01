@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Who will own the billing account?" %}
+{% set title = "Who should the bills go to?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -83,7 +83,7 @@
         },
         {
           value: "contact-exists?customerName=",
-          text: "New billing contact",
+          text: "Another billing contact",
           id: "radio",
           conditional: {
             html: customerName

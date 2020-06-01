@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you want to use an existing contact?" %}
+{% set title = "Do you want to add an FAO?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,7 +45,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- page heading -->
-      <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span>
+    <!--  <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span>  -->
       <h1 class="govuk-heading-l">{{ title }}</h1>
 
     </div>
@@ -54,45 +54,21 @@
   <form data-routing="1" method="post" class="form" id="contact-change-type">
   {% set hintText = "Existing contacts for " + data['customerName'] %}
 
-    {% set fao %}
-    {{ govukInput({
-      id: "fao",
-      name: "fao",
-      classes: "govuk-!-width-one-third",
-      label: {
-        text: "Full name"
-      }
-    }) }}
-    {% endset -%}
 
       {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
+        idPrefix: "newFAO",
+        name: "newFAO",
         fieldset: {
-        },
-        hint: {
-          html: hintText
         },
         items: [
           {
-            value: "check-billing-account-details-new?fao=Accounts%20department",
-            text: "Accounts department"
+            value: "fao-contact-exists?newFAO=Yes",
+            text: "Yes"
           },
           {
-            value: "check-billing-account-details-new?fao=Sam%20Burridge",
-            text: "Sam Burridge"
-          },
-          {
-      divider: "or"
-    },
-    {
-      value: "check-billing-account-details-new?fao=",
-      text: "Set up a new contact",
-      conditional: {
-        html: fao
-      }
-    }
-
+            value: "check-billing-account-details-new?newFAO=No",
+            text: "No"
+          }
         ]
       })
     }}

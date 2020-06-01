@@ -61,6 +61,34 @@
 
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
+
+    {% if data['createNewContact'] == "true" %}
+
+    {{ govukSelect({
+      id: "address",
+      name: "address",
+      label: {
+        text: "Select and address"
+      },
+      items: [
+        {
+          value: "2 addresses found",
+          text: "2 addresses found",
+          selected: "true"
+        },
+        {
+          value: "add-an-fao?address1=Forbes%20Lane&city=West%20Crudwell&postcode=SN16%209EW",
+          text: "Forbes Lane, West Crudwell, SN16 9EW"
+        },
+        {
+          value: "add-an-fao?address1=1%20Doogal%20Road&city=West%20Crudwell&postcode=SN16%209EW",
+          text: "1 Doogal Road, West Crudwell, SN16 9EW"
+        }
+      ]
+    }) }}
+
+
+   {% else %}
     {{ govukSelect({
       id: "address",
       name: "address",
@@ -83,7 +111,7 @@
         }
       ]
     }) }}
-
+    {% endif %}
 
 
         <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
