@@ -60,7 +60,6 @@
       id: "customerName",
       name: "customerName",
       classes: "govuk-!-width-one-third",
-      value: customerName,
       label: {
         text: "Full name"
       }
@@ -115,6 +114,7 @@
         const url = $(this).find('input:checked').val();
 
         if(url) {
+
 
           if( $("#customerName").val() ){
           let  companyName = $("#customerName").val();
