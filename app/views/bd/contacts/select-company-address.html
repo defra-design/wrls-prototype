@@ -44,9 +44,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <!-- display the correct caption for either billing account change or licence change-->
+      {% if data['ba'] == "true"%}
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+      {{ title }}</h1>
+      {% else %}
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+        {{ title }}</h1>
+      {% endif %}
 
       <section class="govuk-!-margin-bottom-6">
         <!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Postcode</h2> -->

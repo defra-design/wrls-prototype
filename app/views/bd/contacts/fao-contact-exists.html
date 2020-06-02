@@ -44,12 +44,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-    <!--  <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span> -->
+      <!-- display the correct caption for either billing account change or licence change-->
+      {% if data['ba'] == "true"%}
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+      {{ title }}</h1>
+      {% else %}
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-
         {{ title }}</h1>
+      {% endif %}
 
     </div>
   </div>
@@ -68,9 +72,11 @@
     }) }}
     {% endset -%}
 
+    {% if data['createNewContact'] == "true" %}
+
       {{ govukRadios({
-        idPrefix: "charge-source",
-        name: "source",
+        idPrefix: "fao",
+        name: "fao",
         fieldset: {
         },
         items: [
@@ -96,6 +102,40 @@
         ]
       })
     }}
+
+    {% else %}
+
+    {{ govukRadios({
+      idPrefix: "fao",
+      name: "fao",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "check-billing-account-details-change?fao=Accounts%20department",
+          text: "Accounts department"
+        },
+        {
+          value: "check-billing-account-details-change?fao=Sam%20Burridge",
+          text: "Sam Burridge"
+        },
+        {
+    divider: "or"
+    },
+    {
+    value: "check-billing-account-details-change?fao=",
+    text: "Add a new FAO",
+    conditional: {
+      html: fao
+    }
+    }
+
+      ]
+    })
+    }}
+
+
+    {% endif %}
 
     <button type="submit" class="govuk-button">
       Continue

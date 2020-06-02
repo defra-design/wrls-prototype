@@ -475,6 +475,13 @@ router.post('/bd/charges-2020/charge-version/charge-data-check', function(req, r
 
 
   req.session.data.chargeVersions[0]['chargeStatus'] = "NOT APPROVED"
+  //reset all the completed flags for the task list
+  req.session.data['reasonNewSet'] = "false"
+  req.session.data['chargeStartSet'] = "false"
+  req.session.data['elementNew'] = "false"
+  req.session.data['createNewContact'] = "false"
+  req.session.data['existingContact'] = "false"
+
 
   res.redirect('charge-data-confirmation');
 

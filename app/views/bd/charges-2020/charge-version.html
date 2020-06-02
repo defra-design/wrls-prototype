@@ -101,6 +101,16 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
               {{[data.chargeVersions[chargeInfoNumber].reasonNewCharge]}}
             </div>
             <div>
+              </section>
+              <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Licence holder
+                </div>
+                <div class="meta-data__value">
+                  {{[data.licenceHolder]}}
+                </div>
+                <div>
         </section>
         {% if [data.chargeVersions[chargeInfoNumber].chargeBilledDate] == "" %}
         {% else %}

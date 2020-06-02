@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Effective date" %}
+{% set title = "Enter date the change applies from" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -47,18 +47,28 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="check-invoice-account-details?startDay=20&startMonth=04&startYear=2020" method="post" class="form" id="element-date">
+    <!-- display the correct caption for either billing account change or licence change-->
+    {% if data['ba'] == "true"%}
+    <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+    {{ title }}</h1>
+    {% else %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      {{ title }}</h1>
+    {% endif %}
+
+    </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+    <form action="check-billing-account-details-change?startDay=20&startMonth=04&startYear=2020" method="post" class="form" id="element-date">
 
       <!-- effective dates -->
       <div class="govuk-form-group govuk-!-margin-bottom-6">
-  <!--       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-       <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-margin-bottom-0">
-            <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-            <h1 class="govuk-heading-l">
-              {{ title }}
-            </h1>
-          </legend> -->
+
 
 
 
@@ -70,7 +80,7 @@
             namePrefix: "start",
             fieldset: {
               legend: {
-                text: "Effective date",
+                text: "Other date",
                 classes: "govuk-fieldset__legend--s"
               }
             },
@@ -85,11 +95,6 @@
             idPrefix: "effectiveDateConditional",
             name: "effectiveDate",
             fieldset: {
-              legend: {
-                html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-              }
             },
             items: [
               {

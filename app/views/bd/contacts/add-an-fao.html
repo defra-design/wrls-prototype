@@ -44,11 +44,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading -->
-    <!--  <span class="govuk-caption-l">Billing account {{ data['invoiceAccount'] }}</span>  -->
+      <!-- display the correct caption for either billing account change or licence change-->
+      {% if data['ba'] == "true"%}
       <h1 class="govuk-heading-l">
-<span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+      {{ title }}</h1>
+      {% else %}
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence 03/28/60/0032</span>
         {{ title }}</h1>
+      {% endif %}
 
     </div>
   </div>
@@ -56,6 +61,7 @@
   <form data-routing="1" method="post" class="form" id="contact-change-type">
   {% set hintText = "Existing contacts for " + data['customerName'] %}
 
+{% if data['createNewContact'] == "true" %}
 
       {{ govukRadios({
         idPrefix: "newFAO",
@@ -74,6 +80,28 @@
         ]
       })
     }}
+
+    {% else %}
+
+    {{ govukRadios({
+      idPrefix: "newFAO",
+      name: "newFAO",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "fao-contact-exists?newFAO=Yes",
+          text: "Yes"
+        },
+        {
+          value: "effective-date?newFAO=No",
+          text: "No"
+        }
+      ]
+    })
+  }}
+
+  {% endif %}
 
     <button type="submit" class="govuk-button">
       Continue
