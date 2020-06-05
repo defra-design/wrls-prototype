@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You are about to remove this bill from the bill run" %}
+{% set title = "You're about to remove this bill from the bill " + data['runType'] + " run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,7 +47,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <span class="govuk-caption-l">Bill run 576849</span>
+    <span class="govuk-caption-l">Bill AI26515</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -55,10 +55,10 @@
         <section class="meta-data__row">
           <div class="meta-data__container">
             <div class="meta-data__label">
-              Account
+              Billing account
             </div>
             <div class="meta-data__value">
-              015456
+              AI26515
             </div>
           <div>
         </section>
@@ -68,7 +68,7 @@
               Billing contact
             </div>
             <div class="meta-data__value">
-              Bill Brothers Co.
+              Bottled Water Plc
             </div>
           <div>
         </section>
@@ -78,27 +78,45 @@
               Licence
             </div>
             <div class="meta-data__value">
-              01/27/62/001
+              03/28/60/0032
             </div>
           <div>
         </section>
+        <!--Financial year is present on supplementary billing-->
+{% if data['runType'] == "supplementary"%}
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Financial year
+            </div>
+            <div class="meta-data__value">
+              2020
+            </div>
+          <div>
+        </section>
+        {% endif %}
         <section class="meta-data__row">
           <div class="meta-data__container">
             <div class="meta-data__label">
               Total
             </div>
             <div class="meta-data__value">
-              £1,100.00
+              £3,002.75
             </div>
           <div>
         </section>
       </div>
     </div>
 
-    <a href="javascript:history.back(2)" class="wrls-faux-button">
+{% if data['runType'] == "supplementary"%}
+<a href="supplementary-charges?numberBills=4&remove=true#bills" class="wrls-faux-button">
+  Remove bill
+</a>
+{% else %}
+    <a href="javascript:history.back(3)" class="wrls-faux-button">
       Remove bill
     </a>
-
+{% endif %}
   </div>
 </div>
 {% endblock %}

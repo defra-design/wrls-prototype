@@ -1,0 +1,350 @@
+
+
+
+
+
+<table class="govuk-table">
+
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+
+      <th class="govuk-table__header" scope="col">Billing account</th>
+
+      <th class="govuk-table__header" scope="col">Billing contact</th>
+
+      <th class="govuk-table__header" scope="col">Licence</th>
+
+      <th class="govuk-table__header govuk-table__header--numeric" scope="col">Financial Year</th>
+
+      <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total</th>
+
+      <th class="govuk-table__header govuk-table__header--numeric" scope="col">Action</th>
+
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+
+{% if data['remove'] == "false" %}
+    <tr class="govuk-table__row">
+
+
+      <td class="govuk-table__cell">AI26515</td>
+
+
+
+      <td class="govuk-table__cell">Bottled Water Plc</td>
+
+
+
+      <td class="govuk-table__cell">03/28/60/0032</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">2020</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">£3,002.75</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account AN20392</span>
+        </a></td>
+
+
+    </tr>
+    {% endif %}
+
+    <tr class="govuk-table__row">
+
+
+      <td class="govuk-table__cell">AI26515</td>
+
+
+
+      <td class="govuk-table__cell">Bottled Water Plc</td>
+
+
+
+      <td class="govuk-table__cell">03/28/60/0032</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">2019</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">£5,523.50</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account AN20392</span>
+        </a></td>
+
+
+    </tr>
+
+    <tr class="govuk-table__row">
+
+
+      <td class="govuk-table__cell">038745</td>
+
+
+
+      <td class="govuk-table__cell">Bill Brothers Co.</td>
+
+
+
+      <td class="govuk-table__cell">01/27/62/001<br>01/27/62/002</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">2020</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">£1,000.00</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account 038745</span>
+        </a></td>
+
+
+    </tr>
+
+    <tr class="govuk-table__row">
+
+
+      <td class="govuk-table__cell">015512</td>
+
+
+
+      <td class="govuk-table__cell">Bidbod Foods Ltd.</td>
+
+
+
+      <td class="govuk-table__cell">03/02/121</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">2020</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">£92.75<br>Credit note</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account 015512</span>
+        </a></td>
+
+
+    </tr>
+
+    <tr class="govuk-table__row">
+
+
+      <td class="govuk-table__cell">016824</td>
+
+
+
+      <td class="govuk-table__cell">Company Name Limited</td>
+
+
+
+      <td class="govuk-table__cell">03/01/211<br>
+        03/01/212</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">2020</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">£2,104.25</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account 016824</span>
+        </a></td>
+
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<!-- bils table
+  {{ govukTable({
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Billing account"
+    },
+    {
+      text: "Contact"
+    },
+    {
+      text: "Licence"
+    },
+    {
+      text: "Financial Year",
+      format: "numeric"
+    },
+    {
+      text: "Total",
+      format: "numeric"
+    },
+    {
+      text: "Action",
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "AI26515"
+
+      },
+      {
+        text: "Bottled Water Plc"
+      },
+      {
+        text: "03/28/60/0032"
+      },
+      {
+        text: "2020",
+        format: "numeric"
+      },
+      {
+        text: "£3,002.75",
+        format: "numeric"
+      },
+      {
+        html: '<a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account AN20392</span>
+        </a>',
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "AI26515"
+
+      },
+      {
+        text: "Bottled Water Plc"
+      },
+      {
+        text: "03/28/60/0032"
+      },
+      {
+        text: "2019",
+        format: "numeric"
+      },
+      {
+        text: "£5,523.50",
+        format: "numeric"
+      },
+      {
+        html: '<a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account AN20392</span>
+        </a>',
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "038745"
+
+      },
+      {
+        text: "Bill Brothers Co."
+      },
+      {
+        html: "01/27/62/001<br>01/27/62/002"
+      },
+      {
+        text: "2020",
+        format: "numeric"
+      },
+      {
+        text: "£1,000.00",
+        format: "numeric"
+      },
+      {
+        html: '<a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account 038745</span>
+        </a>',
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "015512"
+
+      },
+      {
+        text: "Bidbod Foods Ltd."
+      },
+      {
+        html: "03/02/121"
+      },
+      {
+        text: "2020",
+        format: "numeric"
+      },
+      {
+        html: '£92.75<br>Credit note',
+        format: "numeric"
+      },
+      {
+        html: '<a href="supplementary-bill">
+          View <span class="screen-reader-only">bill for billing account 015512</span>
+        </a>',
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "016824"
+
+      },
+      {
+        text: "Company Name Limited"
+      },
+      {
+        html: "03/01/211<br>
+        03/01/212"
+      },
+      {
+        text: "2020",
+        format: "numeric"
+      },
+      {
+        html: '£2,104.25',
+        format: "numeric"
+      },
+      {
+        html: '<a href="supplementary-bill">
+            View <span class="screen-reader-only">bill for billing account 016824</span>
+          </a>',
+        format: "numeric"
+      }
+    ]
+  ]
+}) }} -->
