@@ -52,7 +52,7 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
-            <h2 class="govuk-heading-m">Element <span class="govuk-visually-hidden"> {{[loop.index]}}</span>
+            <h2 class="govuk-heading-m" id="element{{[loop.index]}}">Element {{[loop.index]}}
 
             {% if numberOfElements > 1 %}
             <span class="govuk-!-margin-left-6  govuk-body  govuk-!-font-size-19 special-float-right"><a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  class="govuk-link">Copy element</a>
@@ -243,7 +243,24 @@
     {% endfor %}
 
 
-    <div class="govuk-grid-row">
+{% if numberOfElements == 0 %}
+<h2 class="govuk-heading-m">Element</h2>
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+{% set elementNumber = elementNumber + 1 %}
+
+
+{{ govukButton({
+text: "Add an element",
+classes: "govuk-button--secondary",
+href: "/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=" + elementNumber
+}) }}
+
+</div>
+</div>
+{% else %}
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-full">
 {% set elementNumber = elementNumber + 1 %}
 
@@ -256,3 +273,4 @@
 
 </div>
 </div>
+{% endif %}

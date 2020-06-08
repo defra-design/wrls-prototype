@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+
+{% set title = "You're about to approve this licence for billing" %}
+
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+
+
+
+
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
+          {{title}}
+          </label>
+
+        </h1>
+
+</div>
+</div>
+</div>
+
+<form method="post" class="form" id="return-reference-error">
+{% set chargeInfoNumber = [data.chargeInfoNumber] %}
+
+<section class="govuk-!-margin-bottom-9">
+
+  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+  {% set monthNumber = data['chargeStart-month'] %}
+
+  {% set month = monthNames[monthNumber - 1] %}
+
+  {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+
+
+   {% set y = data['chargeStart-year'] | int %}
+   {% set m = data['chargeStart-month'] | int %}
+   {% set d = data['chargeStart-day'] | int %}
+   {% set date = y + m + d %}
+   {% if date < 2045 %}
+  {{ govukWarningText({
+    text: "You've entered a start date that will give older charge information an 'Invalid' status.",
+    iconFallbackText: "Warning"
+  }) }}
+  {% endif%}
+
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Charge information</h2>
+
+
+{{ govukSummaryList({
+rows: [
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Reason"
+    },
+    value: {
+      text: [data.reasonNewCharge]
+    },
+    actions: {
+      items: [
+        {
+
+          text: ""
+
+        }
+      ]
+    }
+  },
+  {
+    classes: 'govuk-summary-list__row--last',
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: [chargeStart]
+    },
+    actions: {
+      items: [
+        {
+
+          text: ""
+
+        }
+      ]
+    }
+  }
+]
+}) }}
+
+</section>
+
+
+        {% include "includes/bd/elements-no-change.html" %}
+
+        {% include "includes/bd/billing-contact.html" %}
+
+<p class="govuk-body">
+This licence will be added to the supplementary bill run.
+</p>
+
+      <button type="submit" class="govuk-button">
+        Approve
+      </button>
+
+    </form>
+
+
+
+
+
+
+
+{% endblock %}

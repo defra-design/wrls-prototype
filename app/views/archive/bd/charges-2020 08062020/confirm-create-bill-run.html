@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% set title = "You are about to generate the two-part tariff bills" %}
+
+
+
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    <section class="govuk-!-margin-bottom-6">
+  <h2 class="govuk-heading-l">{{data['region']}} two-part tariff bill run</h2>
+    </section>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-full">
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Date created
+            </div>
+            <div class="meta-data__value">
+              5 March 2020
+            </div>
+          <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Region
+            </div>
+            <div class="meta-data__value">
+              {{data['region']}}
+            </div>
+          <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Bill run type
+            </div>
+            <div class="meta-data__value">
+              Two-part tariff
+            </div>
+          <div>
+        </section>
+
+      </div>
+    </div>
+
+    <a href="two-part-charges-create-load" class="wrls-faux-button">
+      Confirm
+    </a>
+
+  </div>
+</div>
+{% endblock %}

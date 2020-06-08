@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% set title = "Actual quantity" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">7 January 2020</span>
+      <h1 class="govuk-heading-l">Over abstraction for 03/28/60/0032</h1>
+
+      <div class="govuk-inset-text">
+        <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+          Base licence
+        </h4>
+        <p class="govuk-body">
+          April to December
+          <br>S127 (Two-part tariff)
+        </p>
+      </div>
+
+      <form action="two-part-bill-issue" method="post" class="form" id="billable-quantity">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="return-reference">
+            Change the actual quantity?
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billable-quantity" type="number" value="75"><span class="margin-left__15">megalitres</span>
+        </div>
+
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

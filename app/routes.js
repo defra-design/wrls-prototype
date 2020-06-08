@@ -23,11 +23,13 @@ router.post('/bd/charges-2020/add-new-reason', function(req, res) {
     req.session.data.change = "false"
     back = req.session.data['back'];
     res.redirect(back);
-  } else if (chargeNew == "true") {
-    res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');
-  } else {
+  }
+  //else if (chargeNew == "true") {
+  //  res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');
+  // }
+  else {
     req.session.data['reasonNewSet']  = "true"
-    res.redirect('/bd/charges-2020/charge-version/charge-data-create');
+    res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');
   }
 
 });
@@ -85,15 +87,19 @@ router.post('/bd/charges-2020/charge-version/set-charge-start-date', function(re
 
   let change = req.session.data['change']
   //if statement for creating the new chargeversion
-  if (chargeNew == "true") {
-    res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
-  } else {
-    req.session.data['chargeStartSet']  = "true"
-    res.redirect('charge-data-create');
-  }
+//  if (chargeNew == "true") {
+//    res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
+//  } else {
+//    req.session.data['chargeStartSet']  = "true"
+//    res.redirect('charge-data-create');
+//  }
 
+  req.session.data['chargeStartSet']  = "true"
+  res.redirect('/bd/contacts/select-billing-account?existingContact=false');
 
 });
+
+
 
 //Purpose
 //Setting the change element route back
@@ -383,13 +389,13 @@ router.post('/bd/charges-2020/add-loss', function(req, res) {
     back = req.session.data['back'];
     res.redirect(back);
   } else {
-    res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+    res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=false');
   }
 
 });
 
 //Copy element
-router.post('/bd/charges-2020/charge-version/confirm-copy-element', function(req, res) {
+router.get('/bd/charges-2020/charge-version/confirm-copy-element', function(req, res) {
 
 
   let elementCopy = req.session.data['elementCopy']
@@ -436,12 +442,14 @@ router.post('/bd/charges-2020/charge-version/confirm-copy-element', function(req
     elements.push(newElement);
   }
 
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+  let newElementNumber = elementNumber + 1;
+
+  res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=#element' + newElementNumber);
 });
 
 
 //Remove element
-router.post('/bd/charges-2020/charge-version/confirm-remove-element', function(req, res) {
+router.get('/bd/charges-2020/charge-version/confirm-remove-element', function(req, res) {
 
   let elementNumber = req.session.data['elementNumber']
   let elements = req.session.data['elements']
@@ -450,7 +458,8 @@ router.post('/bd/charges-2020/charge-version/confirm-remove-element', function(r
   req.session.data['elements'] = elements
 
 
-  res.redirect('/bd/charges-2020/charge-version/create-element?change=false');
+
+  res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=false#element' + elementNumber);
 });
 
 

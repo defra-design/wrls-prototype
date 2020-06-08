@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = data['region'] + " annual bill run" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-0">
+    <div class="govuk-grid-column-two-thirds">
+
+      <section class="govuk-!-margin-bottom-9">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} annual bill run</h1>
+      </section>
+    </div>
+  </div>
+
+  <div class="divider govuk-!-margin-bottom-7"></div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <script language="javascript" type="text/javascript">
+          window.setTimeout('location.replace("annual-charges?annualstatus=ready")',8000);
+      </script>
+
+      <p class="govuk-body-l">
+        Please wait. This might take up to a minute.
+      </p>
+
+    </div>
+  </div>
+
+  <div class="spinner"></div>
+
+{% endblock %}
