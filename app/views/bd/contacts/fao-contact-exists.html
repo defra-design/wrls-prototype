@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select an existing FAO for " + data['customerName'] %}
+{% set title = "Select an existing contact for " + data['customerName'] %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -93,7 +93,7 @@
     },
     {
       value: "check-billing-account-details-new?fao=",
-      text: "Add a new FAO",
+      text: "Add a new contact",
       conditional: {
         html: fao
       }
@@ -124,7 +124,7 @@
     },
     {
     value: "effective-date?fao=",
-    text: "Add a new FAO",
+    text: "Add a new contact",
     conditional: {
       html: fao
     }
