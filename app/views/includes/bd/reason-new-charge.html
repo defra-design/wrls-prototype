@@ -16,7 +16,7 @@
    {% set d = data['chargeStart-day'] | int %}
    {% set date = y + m + d %}
    {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
-   {% elif date < 2045 %}
+   {% elif date < 2020 %}
   {{ govukWarningText({
     text: "You've entered a start date that will make older charge information invalid.",
     iconFallbackText: "Warning"

@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% set title = "When is the licence non-chargeable from?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+    <!--  <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+   <h1 class="govuk-heading-l">{{ title }}</h1> -->
+
+
+  <form method="post" class="form">
+
+  {% set chargeDate %}
+    {{ govukDateInput({
+  id: "chargeStart",
+  namePrefix: "chargeStart",
+  fieldset: {
+    legend: {
+      text: 'Start date',
+      classes: "govuk-fieldset__legend--s"
+    }
+  }
+}) }}
+{% endset -%}
+
+
+{{ govukRadios({
+  idPrefix: "nonchargeableDateConditional",
+  name: "nonchargeableDateConditional",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "today",
+      html: 'Today<br>20 April 2020'
+    },
+    {
+      value: "licenceStart",
+      html: "Licence start date<br>22 September 2023"
+    },
+    {
+divider: "or"
+},
+    {
+      value: "other",
+      text: "Another date",
+      conditional: {
+        html: chargeDate
+      }
+    }
+  ]
+}) }}
+
+    <button type="submit" class="govuk-button govuk-!-margin-right-1">
+      Continue
+    </button>
+    <!-- <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Skip this for now
+    </button> -->
+
+  </form>
+  </div>
+</div>
+
+{% endblock %}

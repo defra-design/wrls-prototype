@@ -56,7 +56,16 @@
 
 {% set licenceHolder = data['licenceHolder'] + '<span id="account-number-hint" class="govuk-hint">Licence holder</span>' %}
 
-
+{% set customerName %}
+{{ govukInput({
+  id: "companyName",
+  name: "companyName",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Search for organisation or individual"
+  }
+}) }}
+{% endset -%}
 
     {{ govukRadios({
       idPrefix: "billManager",
@@ -73,8 +82,11 @@
           text: "Yes"
         },
         {
-          value: "new-contact",
-          text: "No"
+          value: "contact-exists?customerName=",
+          text: "No",
+          conditional: {
+            html: customerName
+          }
         }
       ]
     }) }}

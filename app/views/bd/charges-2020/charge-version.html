@@ -242,7 +242,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     {% set d = data['chargeStart-day'] | int %}
     {% set date = y + m + d %}
     <hr class="govuk-section-break govuk-section-break--m">
-    {% if date < 2045 %}
+    {% if date < 2020 %}
     {{ govukWarningText({
  text: "Older charge information will be invalid when you approve these details.",
  iconFallbackText: "Warning"
@@ -317,7 +317,7 @@ rows: [
     {% set d = data['chargeStart-day'] | int %}
     {% set date = y + m + d %}
     <hr class="govuk-section-break govuk-section-break--m">
-    {% if date < 2045 %}
+    {% if date < 2020 %}
     {{ govukWarningText({
 text: "Older charge information will be invalid when you approve these details.",
 iconFallbackText: "Warning"
@@ -353,7 +353,7 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
     {% set d = data['chargeStart-day'] | int %}
     {% set date = y + m + d %}
     <hr class="govuk-section-break govuk-section-break--m">
-    {% if date < 2045 %}
+    {% if date < 2020 %}
     {{ govukWarningText({
  text: "Older charge information will be invalid when you approve these details.",
  iconFallbackText: "Warning"

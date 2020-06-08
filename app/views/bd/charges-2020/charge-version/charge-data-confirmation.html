@@ -56,25 +56,28 @@
     <p class="govuk-body">
       The Billing and Data team will review the charge information.</p>
 
-<h3 class="govuk-heading-m">If Billing and Data need you to make changes</h3>
+    <h3 class="govuk-heading-m">If Billing and Data need you to make changes</h3>
 
-<p class="govuk-body">The status will be ‘Changes requested’. You can view details the changes you need to make in the billing tab.</p>
+    <p class="govuk-body">The status will be ‘Changes requested’. You can view details the changes you need to make in the billing tab.</p>
 
-<h3 class="govuk-heading-m">If Billing and Data approve the licence for billing</h3>
+    <h3 class="govuk-heading-m">If Billing and Data approve the licence for billing</h3>
 
-<p class="govuk-body">The status will be ‘Approved’.</p>
+    <p class="govuk-body">The status will be ‘Approved’.</p>
+
+    <p class="govuk-body"> <a href="/bd/charges-2020/charge-versions?createElement=false" class="govuk-link">View charge information</a></p>
 
 
 
+    <h3 class="govuk-heading-m">Licence agreements</h3>
 
-    {% if [data.createElement] == "true" %}
-    <p class="govuk-body">If this licence has an agreement, go to the billing tab and click on ‘Set up new agreement’.</p>
-    <a href="/bd/charges-2020/charge-versions#charge?createElement=false" class="govuk-link">View licence summary</a>
+    <p class="govuk-body">If this licence has an agreement you can set this up now.</p>
+    {{ govukButton({
+  text: "Set up new agreement",
+  href: "/bd/charges-2020/add-agreement?createElement=false",
+  classes: "govuk-button--secondary"
+}) }}
 
-    {% else %}
 
-    <a href="/bd/licence-summary-no-charge#charge?createElement=false" class="govuk-link">View licence summary</a>
-    {% endif %}
 
   </div>
 </div>
