@@ -120,7 +120,7 @@ rows: [
     }
   },
   {
-    classes: 'govuk-summary-list__row--last',
+    classes: 'govuk-summary-list',
     key: {
       text: "Start date"
     },
@@ -135,6 +135,15 @@ rows: [
 
         }
       ]
+    }
+  },
+  {
+    classes: 'govuk-summary-list--no-border',
+    key: {
+      text: "Licence holder"
+    },
+    value: {
+      text: [data.licenceHolder]
     }
   }
 ]

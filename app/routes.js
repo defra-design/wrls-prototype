@@ -444,12 +444,17 @@ router.get('/bd/charges-2020/charge-version/confirm-copy-element', function(req,
 
   let newElementNumber = elementNumber + 1;
 
-  res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=#element' + newElementNumber);
+  req.session.data.back = req.headers.referer
+  back = req.session.data['back'];
+  res.redirect(back + '#element' + elementNumber);
+
+  //res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=#element' + newElementNumber);
 });
 
 
 //Remove element
 router.get('/bd/charges-2020/charge-version/confirm-remove-element', function(req, res) {
+
 
   let elementNumber = req.session.data['elementNumber']
   let elements = req.session.data['elements']
@@ -457,10 +462,16 @@ router.get('/bd/charges-2020/charge-version/confirm-remove-element', function(re
   elements.splice(elementNumber, 1);
   req.session.data['elements'] = elements
 
+  req.session.data.back = req.headers.referer
+  back = req.session.data['back'];
+  res.redirect(back + '#element' + elementNumber);
 
-
-  res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=false#element' + elementNumber);
+  // res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=false#element' + elementNumber);
 });
+
+
+
+
 
 
 //Create Element

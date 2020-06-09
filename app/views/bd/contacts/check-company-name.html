@@ -60,12 +60,11 @@
 
   <form data-routing="1" method="post" class="form" id="check-company-details">
 
-    {% from "radios/macro.njk" import govukRadios %}
-
 {% set companyName1 = "Little " + [data.customerName] + ",  12 Gosport Street, Bristol BS23 6FH" %}
 {% set companyName2 = [data.customerName] + ", 20 Green lane, Slough SL1 04A" %}
 {% set companyName3 = "Big " + [data.customerName] + ", 87 Red Road, Basingstoke RG22 04A" %}
 
+<!--
       {{ govukRadios({
         idPrefix: "charge-source",
         name: "contact-type",
@@ -87,6 +86,37 @@
         ]
       })
     }}
+-->
+
+<p class="govuk-body">Company name<br>
+<span class="govuk-!-font-weight-bold">{{[data.customerName]}}</span> <span class="govuk-!-margin-left-3"><a href="companies-house-number" class="govuk-link">Change company name</a></span></p>
+
+    {{ govukSelect({
+      id: "address",
+      name: "address",
+      label: {
+        text: "Select an address"
+      },
+      items: [
+        {
+          value: "3 companies found",
+          text: "3 companies found",
+          selected: "true"
+        },
+        {
+          value: "check-company-billing-address?address1=2%20Gosport%20Street&city=Bristol&postcode=BS23%206FH",
+          text: [companyName1]
+        },
+        {
+          value: "check-company-billing-address?address1=%2073%20Green%20lane%20&city=Slough%20&postcode=SL1%204A",
+          text: [companyName2]
+        },
+        {
+          value: "check-company-billing-address?address1=%2073%20Green%20lane%20&city=Slough%20&postcode=SL1%204A",
+          text: [companyName3]
+        }
+      ]
+    }) }}
 
     <button type="submit" class="govuk-button">
       Continue
@@ -100,8 +130,8 @@
     $(function() {
       $('form[data-routing]').on('submit', function(ev) {
         // FInd selected radio button
-        const url = $(this).find('input:checked').val();
-
+        const url = $(this).find("option:selected").val();
+        console.log(url);
         if(url) {
           ev.preventDefault();
           window.location.href = url;

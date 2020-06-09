@@ -2,20 +2,6 @@
 
   <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Billing contact</h2>
 
-  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-
-  {% set monthNumber = data['startMonth'] %}
-
-  {% set month = monthNames[monthNumber - 1] %}
-
-  {% set effectiveDate = data['startDay'] + " " + month +" "+ data['startYear']%}
-
-  {% set billingAddress %}
-  {{ data.address1}} <br>
-  {{ data.city}} <br>
-  {{data.postcode}} <br>
-  {% endset %}
-
 
   {% set invoiceAddress %}
  {{ data.invoiceAccount}} <br>
@@ -25,105 +11,7 @@
   {{data.postcode}} <br>
   {% endset %}
 
-  {% if data['existingContact'] == "false" %}
-  {% if data['newFAO'] == "Yes" %}
 
-
-
-
-  {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
-      rows:
-      [
-      {
-        key: {
-          text: "New billing account"
-        },
-        value: {
-          text: "Yes"
-        }
-      },
-        {
-          key: {
-            text: "Billing contact"
-          },
-          value: {
-            text: [data.customerName]
-          }
-        },
-        {
-          key: {
-            text: "Address"
-          },
-          value: {
-            html: billingAddress
-          }
-        },
-        {
-          key: {
-            text: "FAO"
-          },
-          value: {
-            html: data['newFAO']
-          }
-        },{
-          classes: 'govuk-summary-list__row--last',
-          key: {
-            text: "Name of FAO"
-          },
-          value: {
-            html: data['fao']
-          }
-        }
-      ]
-    }) }}
-
-    {% else %}
-
-    {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows:
-        [
-        {
-          key: {
-            text: "New billing account"
-          },
-          value: {
-            text: "Yes"
-          }
-        },
-          {
-            key: {
-              text: "Billing contact"
-            },
-            value: {
-              text: [data.customerName]
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: billingAddress
-            }
-          },
-          {
-            classes: 'govuk-summary-list__row--last',
-            key: {
-              text: "FAO"
-            },
-            value: {
-              html: data['newFAO']
-            }
-          }
-        ]
-      }) }}
-
-    {% endif %}
-
-
-   {% else %}
 
 
 
@@ -143,6 +31,6 @@
          }
        ]
      }) }}
-     {% endif %}
+
 
 </section>

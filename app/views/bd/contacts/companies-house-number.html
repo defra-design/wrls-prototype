@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Company details" %}
+{% set title = "Enter the company details" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -40,11 +40,12 @@
 {% endblock %}
 
 {% block content %}
-
+<!--
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <!-- display the correct caption for either billing account change or licence change-->
+    <!--
     {% if data['ba'] == "true"%}
     <h1 class="govuk-heading-l">
     <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
@@ -57,17 +58,54 @@
 
   </div>
 </div>
-
+-->
 <form method="post" class="form" id="customer-name" data-routing="1">
 
 {% set companyName = data['customerName']%}
 
+{% if data['ba'] == "true"%}
+{{ govukInput({
+  label: {
+    html: '<span class="govuk-caption-l">Billing account ' + data['invoiceAccount'] + '</span>' + title,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter the Companies House number or company name"
+  },
+  classes: "govuk-input--width-20",
+  id: "customerName",
+  name: "customerName"
+}) }}
+{% else %}
+{{ govukInput({
+  label: {
+    html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + title,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter the Companies House number or company name"
+  },
+  classes: "govuk-input--width-20",
+  id: "customerName",
+  name: "customerName"
+}) }}
+  {% endif %}
+
+  <p class="govuk-body">We’ll use this information to search the Companies House register.</p>
+
+<!--
   {{ govukInput({
 
       classes: "govuk-input--width-20",
       id: "customerName",
       name: "customerName",
       value: companyName,
+      isPageHeading: true,
+      hint: {
+    text: "Enter the Companies House number or company name"
+  },
       label: {
         text: "Company name"
       }
@@ -83,13 +121,13 @@
       label: {
         text: "Companies House number (optional)"
       }
-    }) }}
+    }) }}  -->
 
 <!--  <p class="govuk-body">
     <a href="check-company-name" class="govuk-link govuk-link--no-visited-state">I do not know the Companies House number</a>
   </p> -->
   <button type="submit" class="govuk-button">
-    Continue
+    Find company
   </button>
 
 </form>

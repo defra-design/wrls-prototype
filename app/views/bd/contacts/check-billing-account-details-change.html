@@ -101,7 +101,12 @@
           FAO
           </dt>
           <dd class="govuk-summary-list__value">
+            <!--showing FAO name if chosen-->
+            {% if data['newFAO'] == "Yes" %}
+            {{data['fao']}}
+            {% else %}
             {{data['newFAO']}}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions ">
             <a class="govuk-link" href="add-an-fao">
@@ -109,23 +114,6 @@
             </a>
           </dd>
         </div>
-
-        <!--showing FAO line if neeeded-->
-        {% if data['newFAO'] == "Yes" %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-          Name of FAO
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data['fao']}}
-          </dd>
-          <dd class="govuk-summary-list__actions ">
-            <a class="govuk-link" href="fao-contact-exists">
-            Change<span class="govuk-visually-hidden"> name of FAO</span>
-            </a>
-          </dd>
-        </div>
-         {% endif %}
 
          <div class="govuk-summary-list__row govuk-summary-list__row--last">
            <dt class="govuk-summary-list__key">
