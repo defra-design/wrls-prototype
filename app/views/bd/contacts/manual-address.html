@@ -112,6 +112,15 @@
         value: data['contact-postcode']
       }) }}
 
+      {{ govukInput({
+        label: {
+          text: "County"
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "address-county",
+        name: "address-county"
+      }) }}
+
       {{ govukSelect({
 
         id: "address-country",
