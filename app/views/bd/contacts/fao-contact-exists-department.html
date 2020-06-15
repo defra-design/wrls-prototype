@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you need to add a person or department? " %}
+{% set title = "Select an existing department for " + data['customerName'] %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -59,48 +59,46 @@
   </div>
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
-  {% set hintText = "Existing contacts for " + data['customerName'] %}
 
 
-  {% set FAOtype %}
-  {{ govukRadios({
-    idPrefix: "FAOtype",
-    name: "FAOtype",
-    fieldset: {
-    },
-    items: [
-      {
-        value: "?newFAO=Yes",
-        text: "Person"
-      },
-      {
-        value: "-department?newFAO=Yes",
-        text: "Department"
+    {% set fao %}
+    {{ govukInput({
+      id: "fao",
+      name: "fao",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Department name"
       }
-    ]
-  })
-  }}
-{% endset -%}
+    }) }}
+    {% endset -%}
 
-{% if data['createNewContact'] == "true" %}
+    {% if data['createNewContact'] == "true" %}
 
       {{ govukRadios({
-        idPrefix: "newFAO",
-        name: "newFAO",
+        idPrefix: "fao",
+        name: "fao",
         fieldset: {
         },
         items: [
           {
-            value: "fao-contact-exists",
-            text: "Yes",
-            conditional: {
-              html: FAOtype
-            }
+            value: "check-billing-account-details-new?fao=Accounts%20department",
+            text: "Accounts department"
           },
           {
-            value: "check-billing-account-details-new?newFAO=No",
-            text: "No"
-          }
+            value: "check-billing-account-details-new?fao=Sam%20Burridge",
+            text: "Accounts payable"
+          },
+          {
+      divider: "or"
+    },
+    {
+      value: "check-billing-account-details-new?fao=",
+      text: "Add a new department",
+      conditional: {
+        html: fao
+      }
+    }
+
         ]
       })
     }}
@@ -108,27 +106,36 @@
     {% else %}
 
     {{ govukRadios({
-      idPrefix: "newFAO",
-      name: "newFAO",
+      idPrefix: "fao",
+      name: "fao",
       fieldset: {
       },
       items: [
         {
-          value: "fao-contact-exists",
-          text: "Yes",
-          conditional: {
-            html: FAOtype
-          }
+          value: "effective-date?fao=Accounts%20department",
+          text: "Accounts department"
         },
         {
-          value: "effective-date?newFAO=No",
-          text: "No"
-        }
+          value: "effective-date?fao=Sam%20Burridge",
+          text: "Sam Burridge"
+        },
+        {
+    divider: "or"
+    },
+    {
+    value: "effective-date?fao=",
+    text: "Add a new contact",
+    conditional: {
+      html: fao
+    }
+    }
+
       ]
     })
-  }}
+    }}
 
-  {% endif %}
+
+    {% endif %}
 
     <button type="submit" class="govuk-button">
       Continue
@@ -143,24 +150,18 @@
       $('form[data-routing]').on('submit', function(ev) {
         // FInd selected radio button
         const url = $(this).find('input:checked').val();
-        const person = $('#FAOtype-1').val();
-        const department = $('#FAOtype-2').val();
 
         if(url) {
 
-          if ($('#FAOtype-2').is(':checked'))
-          {
-            ev.preventDefault();
-            window.location.href = url + department;
-            return false;
+          if( $("#fao").val() ){
+          let  companyName = $("#fao").val();
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl+companyName;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
           }
 
-          if ($('#FAOtype-1').is(':checked'))
-          {
-            ev.preventDefault();
-            window.location.href = url + person;
-            return false;
-          }
 
           ev.preventDefault();
           window.location.href = url;
