@@ -626,7 +626,7 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   let chargeStart = chargeStartDay + " " + month + " " + chargeStartYear
   let chargeEnd = ""
   let chargeStatus = "NOT APPROVED"
-  let chargeBilledDate = "Exempt from charges"
+  let chargeBilledDate = "non-chargeable"
   let free = "true"
 
   let newCharge = {
