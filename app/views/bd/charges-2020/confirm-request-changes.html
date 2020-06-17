@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You are about to request changes to charge information" %}
+{% set title = "You're about to request changes to charge information" %}
 
 
 {% block pageTitle %}
@@ -75,7 +75,7 @@
 
 
   {{ govukSummaryList({
-    classes: "govuk-!-margin-bottom-9",
+    classes: "govuk-!-margin-bottom-9 govuk-summary-list--no-border",
   rows: [
     {
       key: {
@@ -88,7 +88,8 @@
         items: [
           {
 
-            text: ""
+            text: "Change",
+            href: "#"
 
           }
         ]

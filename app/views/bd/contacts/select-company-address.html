@@ -3,11 +3,11 @@
 {% set title = "Select the address" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -41,36 +41,39 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <!-- display the correct caption for either billing account change or licence change-->
-      {% if data['ba'] == "true"%}
-      <h1 class="govuk-heading-l">
+    <!-- display the correct caption for either billing account change or licence change-->
+    {% if data['ba'] == "true"%}
+    <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
       {{ title }}</h1>
-      {% else %}
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-        {{ title }}</h1>
-      {% endif %}
+    {% else %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      {{ title }}</h1>
+    {% endif %}
 
-      <section class="govuk-!-margin-bottom-6">
-        <!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Postcode</h2> -->
-        <p>Postcode<br>
-          <span class="govuk-body govuk-!-font-weight-bold">SN16 9EW</span> <a href="new-company-postcode" class="margin-left__15">Change<span class="govuk-visually-hidden">postcode</span></a>
-        </p>
-      </section>
-    </div>
+    <section class="govuk-!-margin-bottom-6">
+      <!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Postcode</h2> -->
+      <p>Postcode<br>
+        <span class="govuk-body govuk-!-font-weight-bold">SN16 9EW</span> <a href="new-company-postcode" class="margin-left__15">Change<span class="govuk-visually-hidden">postcode</span></a>
+      </p>
+    </section>
   </div>
+</div>
 
-  <form data-routing="1" method="post" class="form" id="contact-change-type">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
+    <form data-routing="1" method="post" class="form" id="contact-change-type">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
 
 
-    {{ govukSelect({
+          {{ govukSelect({
       id: "address",
       name: "address",
       label: {
@@ -93,70 +96,46 @@
       ]
     }) }}
 
+        </fieldset>
+      </div>
 
+      <p class="govuk-!-margin-bottom-6">
+        <a href="manual-address">
+          I cannot find the address in the list
+        </a>
+      </p>
 
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
 
+    </form>
 
-        <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          <h1 class="govuk-fieldset__heading">
-            Where do you live?
-          </h1>
-        </legend>
-        <p>
-          2 addresses found
-        </p>
+  </div>
+</div>
 
-        <div class="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="select-contact-address" name="select-contact-address" type="radio" value="contact-updated">
-            <label class="govuk-label govuk-radios__label" for="select-contact-address">
-              Forbes Lane
-              <br>West Crudwell
-              <br>Wiltsire
-              <br>SN16 9EW
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="select-contact-address-2" name="select-contact-address" type="radio" value="contact-updated">
-            <label class="govuk-label govuk-radios__label" for="select-contact-address-2">
-              1 Doogal Road
-              <br>West Crudwell
-              <br>Wiltsire
-              <br>SN16 9EW
-            </label>
-          </div>
-        </div>-->
+<div class="govuk-grid-row govuk-!-margin-top-9">
+  <div class="govuk-grid-column-full">
+    <p class="govuk-body">© Crown copyright and database rights 2018 Ordnance Survey 100024198. </p>
+    <p class="govuk-body">Use of this addressing data is subject to the <a rel="noreferrer noopener" target="_blank" class="govuk-link" href="https://wasteexemptions.service.gov.uk/pages/os-terms">address data terms and conditions (opens new tab).</a></p>
+  </div>
+</div>
 
-      </fieldset>
-    </div>
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
 
-    <p class="govuk-!-margin-bottom-6">
-      <a href="manual-address">
-        I cannot find the address in the list
-      </a>
-    </p>
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('option:selected').val();
 
-    <button type="submit" class="govuk-button">
-      Continue
-    </button>
-
-  </form>
-
-  <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-  <script>
-    $(function() {
-      $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
-        const url = $(this).find('option:selected').val();
-
-        if(url) {
-          ev.preventDefault();
-          window.location.href = url;
-          return false;
-        }
-      });
-    })
-  </script>
+      if (url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
 
 {% endblock %}

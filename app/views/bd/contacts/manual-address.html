@@ -104,21 +104,21 @@
 
       {{ govukInput({
         label: {
+          text: "County"
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "address-county",
+        name: "address-county"
+      }) }}
+
+      {{ govukInput({
+        label: {
           text: "Postcode or zip code"
         },
         classes: "govuk-input--width-10",
         id: "address-postcode",
         name: "address-postcode",
         value: data['contact-postcode']
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "County"
-        },
-        classes: "govuk-!-width-two-thirds",
-        id: "address-county",
-        name: "address-county"
       }) }}
 
       {{ govukSelect({

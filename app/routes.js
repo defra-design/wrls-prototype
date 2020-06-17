@@ -18,15 +18,16 @@ router.post('/bd/charges-2020/add-new-reason', function(req, res) {
 
   let chargeNew = req.session.data['createElement']
   let change = req.session.data['change']
+  let noCharge = req.session.data['reasonNewCharge']
   //if statement for creating the new chargeversion
   if (change == "true") {
     req.session.data.change = "false"
     back = req.session.data['back'];
     res.redirect(back);
   }
-  //else if (chargeNew == "true") {
-  //  res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');
-  // }
+  else if (noCharge == "Make this licence non-chargeable") {
+    res.redirect('/bd/charges-2020/add-reason');
+   }
   else {
     req.session.data['reasonNewSet']  = "true"
     res.redirect('/bd/charges-2020/charge-version/set-charge-start-date');

@@ -56,40 +56,59 @@
       <form action="check-billing-account-details-new?fao=Jenny Rosenfield" method="post" class="form" id="contact-fullname">
 
         {{ govukInput({
-  label: {
-    text: "Title (optional)"
-  },
-  classes: "govuk-input--width-5",
-  id: "title",
-  name: "title"
-}) }}
+          label: {
+            text: "Title (optional)"
+          },
+          classes: "govuk-input--width-20",
+          id: "title",
+          name: "title"
+        }) }}
 
-{{ govukInput({
-label: {
-text: "First name"
-},
-classes: "govuk-input--width-20",
-id: "firstName",
-name: "firstName"
-}) }}
+        {{ govukInput({
+          label: {
+            text: "First name"
+          },
+          classes: "govuk-input--width-20",
+          id: "firstName",
+          name: "firstName"
+        }) }}
 
-{{ govukInput({
-label: {
-text: "Last name"
-},
-classes: "govuk-input--width-20",
-id: "lastName",
-name: "lastName"
-}) }}
+        {{ govukInput({
+          label: {
+          text: "Middle initials (optional)"
+          },
+          classes: "govuk-input--width-5",
+          id: "middleInitials",
+          name: "middleInitials"
+        }) }}
 
-{{ govukInput({
-label: {
-text: "Suffix (optional)"
-},
-classes: "govuk-input--width-5",
-id: "suffix",
-name: "suffix"
-}) }}
+
+        {{ govukInput({
+          label: {
+          text: "Last name"
+          },
+          classes: "govuk-input--width-20",
+          id: "lastName",
+          name: "lastName"
+        }) }}
+
+        {{ govukInput({
+          label: {
+          text: "Suffix (optional)"
+          },
+          classes: "govuk-input--width-5",
+          id: "suffix",
+          name: "suffix"
+        }) }}
+
+        {{ govukInput({
+          label: {
+          text: "Department (optional)"
+          },
+          classes: "govuk-input--width-20",
+          id: "department",
+          name: "department"
+        }) }}
 
 
         <button type="submit" class="govuk-button">
