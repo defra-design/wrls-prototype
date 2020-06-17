@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Do you need to add a person or department? " %}
+{% set title = "Do you need to add an FAO?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -61,7 +61,7 @@
   <form data-routing="1" method="post" class="form" id="contact-change-type">
   {% set hintText = "Existing contacts for " + data['customerName'] %}
 
-
+<!--
   {% set FAOtype %}
   {{ govukRadios({
     idPrefix: "FAOtype",
@@ -81,6 +81,7 @@
   })
   }}
 {% endset -%}
+-->
 
 {% if data['createNewContact'] == "true" %}
 
@@ -91,11 +92,8 @@
         },
         items: [
           {
-            value: "fao-contact-exists",
-            text: "Yes",
-            conditional: {
-              html: FAOtype
-            }
+            value: "fao-contact-exists?newFAO=Yes",
+            text: "Yes"
           },
           {
             value: "check-billing-account-details-new?newFAO=No",
@@ -114,11 +112,8 @@
       },
       items: [
         {
-          value: "fao-contact-exists",
-          text: "Yes",
-          conditional: {
-            html: FAOtype
-          }
+          value: "fao-contact-exists?newFAO=Yes",
+          text: "Yes"
         },
         {
           value: "effective-date?newFAO=No",

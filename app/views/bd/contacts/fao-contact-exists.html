@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select an existing person for " + data['customerName'] %}
+{% set title = "Select an existing contact for  " + data['customerName'] %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -70,9 +70,28 @@
         text: "Full name"
       }
     }) }}
-    {% endset -%}
+    {% endset %}
+
+
 
     {% if data['createNewContact'] == "true" %}
+    {% set url = "check-billing-account-details-new" %}
+    {% else %}
+    {% set url = "effective-date" %}
+    {% endif %}
+
+
+    {% set department %}
+    {{ govukInput({
+      id: "department",
+      name: "department",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Department name"
+      }
+    }) }}
+    {% endset %}
+
 
       {{ govukRadios({
         idPrefix: "fao",
@@ -80,12 +99,20 @@
         fieldset: {
         },
         items: [
+        {
+          value: url + "?fao=Accounts%20department",
+          text: "Accounts department"
+        },
+        {
+          value: url + "?fao=Accounts%20payable",
+          text: "Accounts payable"
+        },
           {
-            value: "check-billing-account-details-new?fao=Accounts%20department",
+            value: url + "?fao=Accounts%20department",
             text: "Geoffrey Bude"
           },
           {
-            value: "check-billing-account-details-new?fao=Sam%20Burridge",
+            value: url + "?fao=Sam%20Burridge",
             text: "Sam Burridge"
           },
           {
@@ -94,42 +121,24 @@
     {
       value: "new-person",
       text: "Add a new person"
+    },
+    {
+      value: url,
+      text: "Add a new department",
+      conditional: {
+        html: department
+      }
     }
+
 
         ]
       })
     }}
 
-    {% else %}
-
-    {{ govukRadios({
-      idPrefix: "fao",
-      name: "fao",
-      fieldset: {
-      },
-      items: [
-        {
-          value: "effective-date?fao=Geoffrey%20Bude",
-          text: "Geoffrey Bude"
-        },
-        {
-          value: "effective-date?fao=Sam%20Burridge",
-          text: "Sam Burridge"
-        },
-        {
-    divider: "or"
-    },
-    {
-      value: "new-person",
-      text: "Add a new person"
-    }
-
-      ]
-    })
-    }}
 
 
-    {% endif %}
+
+
 
     <button type="submit" class="govuk-button">
       Continue
@@ -147,10 +156,10 @@
 
         if(url) {
 
-          if( $("#fao").val() ){
-          let  companyName = $("#fao").val();
+          if( $("#department").val() ){
+          let  companyName = $("#department").val();
           let radioUrl = $(this).find('input:checked').val();
-          const newurl = radioUrl+companyName;
+          const newurl = radioUrl + "?fao=" + companyName;
           ev.preventDefault();
           window.location.href = newurl;
           return false;
