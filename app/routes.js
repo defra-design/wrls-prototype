@@ -679,6 +679,30 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
 //Add agreement
 router.post('/bd/charges-2020/add-agreement', function(req, res) {
 
+  res.redirect('add-agreement-signed-date');
+});
+
+
+
+//add agreeement signed date
+router.post('/bd/charges-2020/add-agreement-signed-date', function(req, res) {
+
+  //set the date the different or the same as the start date depending on option chosen
+/*  let agreementSignedDateConditional = req.session.data['agreementSignedDateConditional']
+  if (agreementSignedDateConditional === "yes") {
+    req.session.data['agreementSignedStartDay'] = req.session.data['agreementSignedStart-day'];
+    req.session.data['agreementSignedStartMonth'] = req.session.data['agreementSignedStart-month'];
+    req.session.data['agreementSignedStartYear'] = req.session.data['agreementSignedStart-year'];
+  } else {
+    req.session.data['agreementSignedStartDay'] = req.session.data['agreementStartDay'];
+    req.session.data['agreementSignedStartMonth'] = req.session.data['agreementStartMonth'];
+    req.session.data['agreementSignedStartYear'] = req.session.data['agreementStartYear'];
+  } */
+
+  req.session.data['agreementSignedStartDay'] = req.session.data['agreementSignedStart-day'];
+  req.session.data['agreementSignedStartMonth'] = req.session.data['agreementSignedStart-month'];
+  req.session.data['agreementSignedStartYear'] = req.session.data['agreementSignedStart-year'];
+
   res.redirect('add-agreement-date');
 });
 
@@ -686,7 +710,17 @@ router.post('/bd/charges-2020/add-agreement', function(req, res) {
 router.post('/bd/charges-2020/add-agreement-date', function(req, res) {
 
   let agreementDateConditional = req.session.data['agreementDateConditional'];
-  if (agreementDateConditional === "other") {
+  if (agreementDateConditional === "yes") {
+    req.session.data['agreementStartDay'] = req.session.data['agreementStart-day'];
+    req.session.data['agreementStartMonth'] = req.session.data['agreementStart-month'];
+    req.session.data['agreementStartYear'] = req.session.data['agreementStart-year'];
+  } else {
+    req.session.data['agreementStartDay'] = req.session.data['agreementSignedStartDay'];
+    req.session.data['agreementStartMonth'] = req.session.data['agreementSignedStartMonth'];
+    req.session.data['agreementStartYear'] = req.session.data['agreementSignedStartYear'];
+  }
+
+/*  if (agreementDateConditional === "other") {
     req.session.data['agreementStartDay'] = req.session.data['agreementStart-day'];
     req.session.data['agreementStartMonth'] = req.session.data['agreementStart-month'];
     req.session.data['agreementStartYear'] = req.session.data['agreementStart-year'];
@@ -696,27 +730,9 @@ router.post('/bd/charges-2020/add-agreement-date', function(req, res) {
     req.session.data['agreementStartMonth'] = d.getMonth() + 1;
     req.session.data['agreementStartYear'] = d.getFullYear();
 
-  };
+  };*/
 
-res.redirect('add-agreement-signed-date');
-});
-
-//add agreeement signed date
-router.post('/bd/charges-2020/add-agreement-signed-date', function(req, res) {
-
-  //set the date the different or the same as the start date depending on option chosen
-  let agreementSignedDateConditional = req.session.data['agreementSignedDateConditional']
-  if (agreementSignedDateConditional === "yes") {
-    req.session.data['agreementSignedStartDay'] = req.session.data['agreementSignedStart-day'];
-    req.session.data['agreementSignedStartMonth'] = req.session.data['agreementSignedStart-month'];
-    req.session.data['agreementSignedStartYear'] = req.session.data['agreementSignedStart-year'];
-  } else {
-    req.session.data['agreementSignedStartDay'] = req.session.data['agreementStartDay'];
-    req.session.data['agreementSignedStartMonth'] = req.session.data['agreementStartMonth'];
-    req.session.data['agreementSignedStartYear'] = req.session.data['agreementStartYear'];
-  }
-
-  res.redirect('add-agreement-check');
+res.redirect('add-agreement-check');
 });
 
 

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Set agreement start date" %}
+{% set title = "Set a different agreement start date?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -78,6 +78,32 @@
   },
   items: [
     {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: agreementDate
+      }
+      },
+      {
+        value: "no",
+        html: 'No'
+      }
+  ]
+}) }}
+
+<!--
+{{ govukRadios({
+  idPrefix: "agreementDateConditional",
+  name: "agreementDateConditional",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
       value: "today",
       html: 'Today<br>20 April 2020'
     },
@@ -96,7 +122,7 @@ divider: "or"
       }
     }
   ]
-}) }}
+}) }} -->
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">
       Continue

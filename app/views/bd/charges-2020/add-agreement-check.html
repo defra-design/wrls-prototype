@@ -79,24 +79,6 @@
       {
         classes: "govuk-summary-list__row",
         key: {
-          text: "Start date"
-        },
-        value: {
-          text: [data.agreementStartDay] + " " + [[data.agreementStartMonth] | toMonth] + " " + [data.agreementStartYear]
-        },
-        actions: {
-          items: [
-            {
-              href: "add-agreement-date",
-              text: "Change",
-              visuallyHiddenText: "start date"
-            }
-          ]
-        }
-      },
-      {
-        classes: "govuk-summary-list__row--last",
-        key: {
           text: "Date signed"
         },
         value: {
@@ -111,7 +93,27 @@
             }
           ]
         }
+      },
+      {
+        classes: "govuk-summary-list__row--last",
+
+        key: {
+          text: "Start date"
+        },
+        value: {
+          text: [data.agreementStartDay] + " " + [[data.agreementStartMonth] | toMonth] + " " + [data.agreementStartYear]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement-date",
+              text: "Change",
+              visuallyHiddenText: "start date"
+            }
+          ]
+        }
       }
+
 
 
     ]
