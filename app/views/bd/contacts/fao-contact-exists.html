@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select an existing contact for " + data['customerName'] %}
+{% set title = "Select an existing person for " + data['customerName'] %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -82,7 +82,7 @@
         items: [
           {
             value: "check-billing-account-details-new?fao=Accounts%20department",
-            text: "Accounts department"
+            text: "Geoffrey Bude"
           },
           {
             value: "check-billing-account-details-new?fao=Sam%20Burridge",
@@ -92,11 +92,8 @@
       divider: "or"
     },
     {
-      value: "check-billing-account-details-new?fao=",
-      text: "Add a new contact",
-      conditional: {
-        html: fao
-      }
+      value: "new-person",
+      text: "Add a new person"
     }
 
         ]
