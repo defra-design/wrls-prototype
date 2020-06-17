@@ -53,7 +53,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="check-billing-account-details-new?fao=Jenny Rosenfield" method="post" class="form" id="contact-fullname">
+
+     {% if data['createNewContact'] == "true" %}
+      <form action="check-billing-account-details-new?fao=Jenny%20Rosenfield" method="post" class="form" id="contact-fullname">
+     {% else %}
+     <form action="/bd/contacts/effective-date?fao=Jenny%20Rosenfield" method="post" class="form" id="contact-fullname">
+     {% endif %}
 
         {{ govukInput({
           label: {
