@@ -45,16 +45,16 @@
      {% endif %}
 
 
-      <section class="govuk-!-margin-bottom-0">
+      <section class="govuk-!-margin-bottom-7">
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element
+            <h2 class="govuk-heading-m" id="element{{[loop.index]}}">Element {{[loop.index]}}
           </h2>
 
                 {{ govukSummaryList({
-                  classes: "govuk-!-margin-bottom-9",
+                  classes: "govuk-!-margin-bottom-1",
                 rows: [
                   {
                     key: {
@@ -132,7 +132,7 @@
                       text: "Billable quantity"
                     },
                     value: {
-                      text: [billableQuantity] 
+                      text: [billableQuantity]
                     },
                     actions: {
                       items: [
@@ -236,8 +236,8 @@
                 ]
               }) }}
 
+          </div>
+          </div>
       </section>
 
     {% endfor %}
-
-<br>

@@ -47,24 +47,16 @@
      {% set timeLimit = "No" %}
      {% endif %}
 
-      <section>
+      <section class="govuk-!-margin-bottom-7">
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
             <h2 class="govuk-heading-m" id="element{{[loop.index]}}">Element {{[loop.index]}}
-
-            {% if numberOfElements > 1 %}
-            <span class="govuk-!-margin-left-6  govuk-body  govuk-!-font-size-19 special-float-right"><a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  class="govuk-link">Copy element</a>
-            <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
-            <a href="/bd/charges-2020/charge-version/confirm-remove-element?removeElement=true&elementNumber={{elementNumber}}"  class="govuk-link">Remove <span class="govuk-visually-hidden"> element</span></a></span>
-            {% else %}
-            <span class="govuk-!-margin-left-6  govuk-body  govuk-!-font-size-19 special-float-right" ><a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  class="govuk-link">Copy element</a></span>
-            {% endif %}
           </h2>
 
                 {{ govukSummaryList({
-                  classes: "govuk-!-margin-bottom-9",
+                  classes: "govuk-!-margin-bottom-1",
                 rows: [
                   {
                     key: {
@@ -236,6 +228,16 @@
 
                 ]
               }) }}
+
+              {% if numberOfElements > 1 %}
+              <span class=" govuk-body  govuk-!-font-size-19">
+                <a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}" role="button" draggable="false" class="govuk-button govuk-button--secondary">
+                Copy element</a>
+            <!--  <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span> -->
+              <a href="/bd/charges-2020/charge-version/confirm-remove-element?removeElement=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary govuk-!-margin-left-6">Remove <span class="govuk-visually-hidden"> element</span></a></span>
+              {% else %}
+              <span class="govuk-body  govuk-!-font-size-19" ><a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary">Copy element</a></span>
+              {% endif %}
       </div>
       </div>
       </section>
@@ -259,12 +261,12 @@ href: "/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=" + 
 </div>
 </div>
 {% else %}
-
+<!--
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
-      <div class="govuk-grid-column-full">
+      <div class="govuk-grid-column-full"> -->
 {% set elementNumber = elementNumber + 1 %}
 
-
+<!--
     {{ govukButton({
   text: "Add another element",
   classes: "govuk-button--secondary",
@@ -272,5 +274,5 @@ href: "/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=" + 
 }) }}
 
 </div>
-</div>
+</div> -->
 {% endif %}

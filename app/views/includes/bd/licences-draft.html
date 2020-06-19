@@ -1,7 +1,7 @@
 
 
 
-  {% if [data.chargeVersions[0].chargeStatus] == "DRAFT" %}
+  {% if [data.chargeVersions[0].chargeStatus] == "DRAFT" or [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
   {{ govukTable({
     caption: "Draft",
     captionClasses: "govuk-heading-l",

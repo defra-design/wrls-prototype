@@ -46,12 +46,13 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <!-- page heading -->
-    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-    <h1 class="govuk-heading-l">
+    <!-- page heading changes the title to look like the check charge page if changes requested, in reality this should go to the same page-->
 
+    <h1 class="govuk-heading-l">
+  <span class="govuk-caption-l">Licence 03/28/60/0032</span>
       <span class="screen-reader-only">Current</span> {{ title }} <br> {{[data.chargeVersions[chargeInfoNumber].chargeStart]}}
     </h1>
+
     <!-- <a href="" class="wrls-faux-button wrls-faux-button--secondary">Change start date</a> -->
 
     <p class="govuk-body">
@@ -77,7 +78,7 @@ classes: "govuk-tag--orange govuk-!-font-size-27"
 })}}
       {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
       {{govukTag({
-text: "Change requested",
+text: "Draft",
 classes: "govuk-tag--blue govuk-!-font-size-27"
 })}}
       {% endif %}
@@ -326,7 +327,8 @@ iconFallbackText: "Warning"
 
     <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
-      <hr class="govuk-section-break govuk-section-break--m">
+      <div class="divider govuk-!-margin-bottom-7"></div>
+
       {{ govukButton({
 text: "Confirm changes",
 classes: "govuk-!-margin-right-3"
@@ -347,7 +349,7 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 <section class="govuk-!-margin-bottom-6">
     {% include "includes/bd/elements-change.html" %}
     </section>
-    {% include "includes/bd/billing-contact-change.html" %}
+  <!--  {% include "includes/bd/billing-contact-change.html" %} -->
     {% set y = data['chargeStart-year'] | int %}
     {% set m = data['chargeStart-month'] | int %}
     {% set d = data['chargeStart-day'] | int %}
@@ -378,11 +380,12 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 
     <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
-      <section class="govuk-!-margin-bottom-6">
+
           {% include "includes/bd/elements-change.html" %}
-          </section>
-          {% include "includes/bd/billing-contact-change.html" %}
-      <hr class="govuk-section-break govuk-section-break--m">
+
+      <!--    {% include "includes/bd/billing-contact-change.html" %} -->
+      <div class="divider govuk-!-margin-bottom-7"></div>
+
       {{ govukButton({
   text: "Confirm changes",
   classes: "govuk-!-margin-right-3"
