@@ -715,8 +715,8 @@ router.post('/bd/charges-2020/add-agreement-date', function(req, res) {
     req.session.data['agreementStartMonth'] = req.session.data['agreementStart-month'];
     req.session.data['agreementStartYear'] = req.session.data['agreementStart-year'];
   } else {
-    req.session.data['agreementStartDay'] = req.session.data['agreementSignedStartDay'];
-    req.session.data['agreementStartMonth'] = req.session.data['agreementSignedStartMonth'];
+    req.session.data['agreementStartDay'] = "1";
+    req.session.data['agreementStartMonth'] = "4";
     req.session.data['agreementStartYear'] = req.session.data['agreementSignedStartYear'];
   }
 

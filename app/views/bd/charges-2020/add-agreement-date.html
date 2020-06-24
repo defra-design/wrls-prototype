@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Set a different agreement start date?" %}
+{% set title = "Agreement start date" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -44,9 +44,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- page heading
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">{{ title }}</h1> -->
+
+
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence 03/28/60/0032</span> {{ title }}</h1>
+
+      {{ govukInsetText({
+        html: 'This agreement will be set to start on <span class="govuk-body govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + '</span>'
+      }) }}
+  <p class="govuk-body"></p>
 
 
   <form method="post" class="form">
@@ -71,9 +76,9 @@
   name: "agreementDateConditional",
   fieldset: {
     legend: {
-      html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
+      html: 'Do you want to set a different agreement start date?',
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
     }
   },
   items: [

@@ -72,17 +72,18 @@
         <a href="results-licences" class="wrls-faux-button wrls-faux-button--inline">
           Search
         </a>
+
       </div>
 
     </div>
-
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-0">
   </div>
 </div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <section class= "govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+    <section class= "govuk-!-margin-bottom-9 ">
 
       <h2 class="govuk-heading-l">Bill runs</h2>
       <p class="govuk-body">View all bill runs. Create a new two-part tariff, annual or supplementary bill run. </p>
@@ -108,7 +109,7 @@
     <section class=" govuk-!-margin-bottom-9">
 
       <h2 class="govuk-heading-l">Workflow for charge information</h2>
-      <p class="govuk-body">Set up, review or make changes to licence charge information. View new agreements.</p>
+  <!--  Probably not needed  <p class="govuk-body">Set up, review or make changes to licence charge information. View new agreements.</p> -->
 
       <div class="govuk-tabs" data-module="tabs">
 
@@ -116,21 +117,41 @@
           Licence views
         </h2>
 
+        <!--number of chargeVersions with Review charge status-->
+        {% set review = 0 %}
+        {% set chargeVersions = data['chargeVersions'] %}
+        {% for i in chargeVersions %}
+        {% if i.chargeStatus == 'NOT APPROVED' %}
+        {% set review = review + 1  %}
+        {% endif %}
+        {% endfor %}
+        {% set numberOfChargeVersionsReview = review + 5 %}
+
+        <!--number of chargeVersions with Change charge status-->
+        {% set change = 0 %}
+        {% set chargeVersions = data['chargeVersions'] %}
+        {% for i in chargeVersions %}
+        {% if i.chargeStatus == 'CHANGES' or i.chargeStatus == 'DRAFT'%}
+        {% set change = change + 1  %}
+        {% endif %}
+        {% endfor %}
+        {% set numberOfChargeVersionsChange = change + 5 %}
+
           <!-- tab navigation -->
           <ul class="govuk-tabs__list">
-            <li class="govuk-tabs__list-item" tabindex="0">
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
               <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#new">
-                Licences
+                Licences (5)
               </a>
             </li>
-            <li class="govuk-tabs__list-item" tabindex="0">
+            <li class="govuk-tabs__list-item">
               <a class="govuk-tabs__tab" href="#draft">
-                Draft
+                Draft ({{numberOfChargeVersionsChange}})
               </a>
             </li>
-            <li class="govuk-tabs__list-item" tabindex="0">
+          <li class="govuk-tabs__list-item">
               <a class="govuk-tabs__tab" href="#review">
-                Review
+                Review ({{numberOfChargeVersionsReview}})
               </a>
             </li>
         <!--    <li class="govuk-tabs__list-item" tabindex="0">
