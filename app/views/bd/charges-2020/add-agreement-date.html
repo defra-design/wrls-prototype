@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Agreement start date" %}
+{% set title = "Check agreement start date" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -49,7 +49,7 @@
       <h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence 03/28/60/0032</span> {{ title }}</h1>
 
       {{ govukInsetText({
-        html: 'This agreement will be set to start on <span class="govuk-body govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + '</span>'
+        html: 'This agreement will start on <span class="govuk-body govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + '</span>'
       }) }}
   <p class="govuk-body"></p>
 
