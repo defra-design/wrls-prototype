@@ -27,6 +27,7 @@ $govuk-global-styles: true;
 @import "patterns/detailed-guidance";
 @import "patterns/alerts";
 @import "tag";
+@import "colours";
 
 // Scalable and Modular Architecture for Cascading Style Sheets
 @import "layout.scss";
@@ -40,6 +41,65 @@ $govuk-global-styles: true;
 // ========== ========== ========== ========== ==========
 // hacks
 // ========== ========== ========== ========== ==========
+
+
+.mastheader{
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+  background-color:#f3f2f1;
+//  background-color: $new-govuk-colours("light-grey");
+//  border-top: 1px solid #bfc1c3;
+//border-bottom: 1px solid #bfc1c3;
+}
+
+.mastheader div {
+  padding: 40px 0px;
+  @media (min-width: 768px) {
+  // mega-padding  padding: 210px 0 310px 0;
+  padding: 100px 0 120px 0;
+  }
+}
+
+.nav-container {
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+  background-color:#f3f2f1;
+  border-bottom: 1px solid #bfc1c3;
+  padding: 15px 0px;
+  @media (min-width: 768px) {
+  // mega-padding  padding: 210px 0 310px 0;
+  padding: 0;
+  }
+}
+
+.navbarWhite {
+
+  background-color:#fff;
+
+}
+
+
+.home-no-padding-top {
+  padding-top: 0px;
+}
+
+.hint-dark-grey {
+ //color: $govuk-colour("dark-grey");
+ color: 	#626a6e;
+}
+
+
+//table overflow on small screens fix
+.govuk-table{
+  overflow-x: auto;
+    display: block;
+
+    @media (min-width: 768px) {
+      overflow-x: none;
+        display: table;
+    }
+}
+
 
 // Steve’s 'right-aligned’ version of the service header
 // .govuk-header__link--service-name {
@@ -76,7 +136,12 @@ $govuk-global-styles: true;
 }
 
 .wrls-faux-button--inline {
-  margin-left: 5px;
+  padding: 11px 40px 6px 40px;
+  max-width: 56ex + 3ex;
+  @media (min-width: 768px) {
+    margin-left: 5px;
+    width:auto;
+  }
 }
 
 .wrls-faux-button--secondary {

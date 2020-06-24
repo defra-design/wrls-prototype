@@ -1,0 +1,29 @@
+<!-- navigation pattern -->
+{% if title == "Manage your water abstraction or impoundment licence" %}
+{% set navbarWhite = "navbarWhite" %}
+{% endif %}
+<div class="nav-container {{navbarWhite}}">
+  <nav id="nav" class="navbar govuk-width-container ">
+    <ul class="navbar__list">
+
+      <li class="navbar__item">
+        <a class="navbar__link govuk-link--no-visited-state" href="/bd/charges-2020/bill-runs" id="billRuns">
+          Bill runs
+        </a>
+      </li>
+
+      <li class="navbar__item">
+        <a class="navbar__link govuk-link--no-visited-state" href="/bd/returns-overview" id="returnsCycles">
+          Returns cycles
+        </a>
+      </li>
+
+      <li class="navbar__item">
+        <a class="navbar__link govuk-link--no-visited-state" href="#" id="licenceNotices">
+          Licence notices
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+</div>
