@@ -42,7 +42,7 @@ $govuk-global-styles: true;
 // hacks
 // ========== ========== ========== ========== ==========
 
-
+//header container to exapnd full width
 .mastheader{
   margin-left: calc(50% - 50vw);
   width: 100vw;
@@ -52,6 +52,7 @@ $govuk-global-styles: true;
 //border-bottom: 1px solid #bfc1c3;
 }
 
+//padding for top and bottom of the header container
 .mastheader div {
   padding: 40px 0px;
   @media (min-width: 768px) {
@@ -60,6 +61,7 @@ $govuk-global-styles: true;
   }
 }
 
+//Navbar container full width
 .nav-container {
   margin-left: calc(50% - 50vw);
   width: 100vw;
@@ -72,17 +74,17 @@ $govuk-global-styles: true;
   }
 }
 
+//navbar white on the homepage, its grey elsewhere
 .navbarWhite {
-
   background-color:#fff;
-
 }
 
-
+//removoval of padding at the top of the main element so that the master header sits flush with the navbar
 .home-no-padding-top {
   padding-top: 0px;
 }
 
+//darker hint text on master header to improve contrast
 .hint-dark-grey {
  //color: $govuk-colour("dark-grey");
  color: 	#626a6e;
@@ -98,6 +100,11 @@ $govuk-global-styles: true;
       overflow-x: none;
         display: table;
     }
+}
+
+//removal of the phase banner bottom border
+.govuk-phase-banner {
+  border-bottom: none;
 }
 
 
