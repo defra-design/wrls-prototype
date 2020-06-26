@@ -48,7 +48,7 @@ $govuk-global-styles: true;
   width: 100vw;
  background-color:#f3f2f1;
  // background-color: new-govuk-colours("light-grey");
-//  border-top: 1px solid #bfc1c3;
+  border-top: 1px solid #bfc1c3;
  //border-bottom: 1px solid #bfc1c3;
 }
 
@@ -66,7 +66,7 @@ $govuk-global-styles: true;
   margin-left: calc(50% - 50vw);
   width: 100vw;
   background-color:#f3f2f1;
-  border-bottom: 1px solid #bfc1c3;
+//  border-bottom: 1px solid #bfc1c3;
   padding: 15px 0px;
   @media (min-width: 768px) {
   // mega-padding  padding: 210px 0 310px 0;
