@@ -36,7 +36,7 @@
 
 {{ govukBackLink({
     text: "Back",
-    href: "javascript:history.back()"
+    href: "/bd/charges-2020/charge-versions"
   }) }}
 
 {% endblock %}
@@ -55,12 +55,13 @@
 
     <!-- <a href="" class="wrls-faux-button wrls-faux-button--secondary">Change start date</a> -->
 
-    <p class="govuk-body">
+    <p class="govuk-body govuk-!-margin-bottom-9">
       {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHARGEABLE" %}
       {{govukTag({
       text: "Approved",
       classes: "govuk-tag--green govuk-!-font-size-27"
     })}}
+
       {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "INVALID" %}
       {{govukTag({
     text: "INVALID",
@@ -85,7 +86,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     </p>
 
 
-
+<!--
 
     {% if [data.chargeVersions[chargeInfoNumber].free] == "true" %}
     {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED" %}
@@ -146,7 +147,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
       </div>
     </details>
 
-    {% endif %}
+    {% endif %} -->
   </div>
 </div>
 
@@ -416,7 +417,20 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
       </div>
     </div>
     {% else %}
-    {% include "includes/bd/elements-historic.html" %}
+
+
+  {% include "includes/bd/reason-new-charge-no-change.html" %}
+
+  {% include "includes/bd/elements-no-change.html" %}
+
+{% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHARGEABLE" %}
+{{ govukButton({
+text: "Edit charge information",
+classes: "govuk-button--secondary",
+href: "/bd/charges-2020/charge-version-edit"
+}) }}
+{% endif %}
+
     {% endif %}
 
   </div>

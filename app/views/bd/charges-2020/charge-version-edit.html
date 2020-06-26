@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% set title = "Edit charge information valid from" %}
+{% set chargeInfoNumber = [data.chargeInfoNumber] %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-6">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-view.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- page heading changes the title to look like the check charge page if changes requested, in reality this should go to the same page-->
+
+    <h1 class="govuk-heading-l">
+  <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="screen-reader-only">Current</span> {{ title }} <br> {{[data.chargeVersions[chargeInfoNumber].chargeStart]}}
+    </h1>
+
+    </div>
+    </div>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <form method="post" class="form" id="return-reference-error">
+
+
+          {% include "includes/bd/reason-new-charge.html" %}
+
+          {% include "includes/bd/elements-change.html" %}
+
+          {% include "includes/bd/element-costs.html" %}
+
+    
+
+          {{ govukButton({
+      text: "Save changes",
+      classes: "govuk-!-margin-right-6"
+      }) }}
+
+      {{ govukButton({
+      text: "Cancel",
+      classes: "govuk-button--secondary",
+      href: "/bd/charges-2020/charge-version"
+      }) }}
+
+
+        </form>
+
+      </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Charge information" %}
+{% set title = "Charge information complete history" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -49,15 +49,19 @@
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
+
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
     <h1 class="govuk-heading-l">{{title}}</h1>
-    {{ govukButton({
+<!--    {{ govukButton({
       text: "Set up new charge",
       href: "/bd/charges-2020/add-new-reason",
       classes: "govuk-!-margin-right-3"
     }) }}
+-->
 
     <!-- show button if licence isn't already marked as exempt from charge-->
+
+    <!--
     {% set free = [data.chargeVersions[0]['free']]%}
     {% if free == "true" %}
     {% else %}
@@ -68,7 +72,7 @@
 }) }}
    {% endif %}
 
-
+-->
   </div>
 </div>
 
@@ -109,7 +113,6 @@
         {% set chargeVersions = data['chargeVersions'] %}
         {% for i in chargeVersions %}
 
-        {% if i['chargeStatus'] !== "INVALID" %}
         <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
           <div class="table__cell">
             <h2 class="screen-reader-only">
@@ -199,7 +202,7 @@
             {% endif %}
           </div>
         </div>
-        {% endif %}
+
         {% endfor %}
 
         {% else %}

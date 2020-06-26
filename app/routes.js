@@ -385,12 +385,16 @@ router.post('/bd/charges-2020/add-loss', function(req, res) {
 
 
   let change = req.session.data['change']
+  let chargeStatus = req.session.data.chargeVersions[0]['chargeStatus']
+
   if (change == "true") {
     req.session.data.change = "false"
     back = req.session.data['back'];
     res.redirect(back);
-  } else {
+  } else if (chargeStatus == "DRAFT") {
     res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=false');
+  } else {
+    res.redirect('/bd/charges-2020/charge-version?chargeInfoNumber=0&change=false');
   }
 
 });
@@ -571,6 +575,63 @@ router.post('/bd/charges-2020/charge-version/confirm-remove-charge-information',
   res.redirect('/bd/charges-2020/charge-versions');
 });
 
+
+
+
+/////////CHARGE INFORMATION EDIT
+router.post('/bd/charges-2020/charge-version-edit', function(req, res) {
+
+
+
+
+  //trigger for new element
+  let chargeNew = req.session.data['createElement']
+
+  // date fields
+  let chargeStartDate = req.session.data.chargeVersions[0]['chargeStart'];
+
+
+
+  //set the charge start date
+  let chargeStart = chargeStartDate
+  let chargeEnd = ""
+  let chargeStatus = "DRAFT"
+  let chargeBilledDate = ""
+  let free = "false"
+  let reasonNewCharge = req.session.data['reasonNewCharge']
+
+  let newCharge = {
+    chargeStart,
+    chargeEnd,
+    chargeStatus,
+    chargeBilledDate,
+    free,
+    reasonNewCharge
+  };
+  let chargeVersions = req.session.data['chargeVersions']
+  chargeVersions.unshift(newCharge);
+
+  req.session.data['chargeStartSet']  = "true"
+
+
+  //update the element statuses
+  req.session.data.chargeVersions[0]['chargeStatus'] = "CHARGEABLE"
+  req.session.data.chargeVersions[1]['chargeStatus'] = "INVALID"
+
+
+  //set the charge end date
+  chargeEnd = chargeStartDate
+
+
+  //set the old charge informations end date
+  req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
+
+
+
+
+  res.redirect('/bd/charges-2020/charge-version');
+
+});
 
 
 

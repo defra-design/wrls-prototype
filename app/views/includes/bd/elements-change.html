@@ -231,12 +231,30 @@
 
               {% if numberOfElements > 1 %}
               <span class=" govuk-body  govuk-!-font-size-19">
-                <a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}" role="button" draggable="false" class="govuk-button govuk-button--secondary">
+
+                {% if elementNumber == numberOfElements - 1 %}
+
+                {{ govukButton({
+                text: "Add another element",
+                classes: "govuk-button--secondary govuk-!-margin-right-6",
+                href: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=" + numberOfElements
+                }) }}
+
+                {% endif %}
+            <!--    <a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}" role="button" draggable="false" class="govuk-button govuk-button--secondary">
                 Copy element</a>
-            <!--  <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span> -->
-              <a href="/bd/charges-2020/charge-version/confirm-remove-element?removeElement=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary govuk-!-margin-left-6">Remove <span class="govuk-visually-hidden"> element</span></a></span>
+              <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span> -->
+              <a href="/bd/charges-2020/charge-version/confirm-remove-element?removeElement=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary">Remove element</a></span>
               {% else %}
-              <span class="govuk-body  govuk-!-font-size-19" ><a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary">Copy element</a></span>
+            <!--  <span class="govuk-body  govuk-!-font-size-19" ><a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary">Copy element</a></span> -->
+            {% set elementNumber = elementNumber + 1 %}
+
+
+            {{ govukButton({
+            text: "Add another element",
+            classes: "govuk-button--secondary",
+            href: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=" + elementNumber
+            }) }}
               {% endif %}
       </div>
       </div>

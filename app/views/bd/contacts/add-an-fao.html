@@ -59,36 +59,23 @@
   </div>
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
-  {% set hintText = "Existing contacts for " + data['customerName'] %}
 
-<!--
-  {% set FAOtype %}
-  {{ govukRadios({
-    idPrefix: "FAOtype",
-    name: "FAOtype",
-    fieldset: {
-    },
-    items: [
-      {
-        value: "?newFAO=Yes",
-        text: "Person"
-      },
-      {
-        value: "-department?newFAO=Yes",
-        text: "Department"
-      }
-    ]
-  })
-  }}
-{% endset -%}
--->
+
+<!--setting the route to include the date if the user is changing the address rather than creating a new billing account-->
 
 {% if data['createNewContact'] == "true" %}
+{% set nextPage = "check-billing-account-details-new?newFAO=No" %}
+{% else %}
+{% set nextPage = "effective-date?newFAO=No" %}
+{% endif %}
 
       {{ govukRadios({
         idPrefix: "newFAO",
         name: "newFAO",
         fieldset: {
+        },
+        hint: {
+          text: "For example, FAO Sam Burridge or FAO Accounts department"
         },
         items: [
           {
@@ -96,34 +83,14 @@
             text: "Yes"
           },
           {
-            value: "check-billing-account-details-new?newFAO=No",
+            value: nextPage,
             text: "No"
           }
         ]
       })
     }}
 
-    {% else %}
 
-    {{ govukRadios({
-      idPrefix: "newFAO",
-      name: "newFAO",
-      fieldset: {
-      },
-      items: [
-        {
-          value: "fao-contact-exists?newFAO=Yes",
-          text: "Yes"
-        },
-        {
-          value: "effective-date?newFAO=No",
-          text: "No"
-        }
-      ]
-    })
-  }}
-
-  {% endif %}
 
     <button type="submit" class="govuk-button">
       Continue
