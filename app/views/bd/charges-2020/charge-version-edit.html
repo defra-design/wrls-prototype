@@ -52,7 +52,12 @@
   <span class="govuk-caption-l">Licence 03/28/60/0032</span>
       <span class="screen-reader-only">Current</span> {{ title }} <br> {{[data.chargeVersions[chargeInfoNumber].chargeStart]}}
     </h1>
-
+ <p class="govuk-body govuk-!-margin-bottom-9">
+    {{govukTag({
+text: "Draft",
+classes: "govuk-tag--blue govuk-!-font-size-27"
+})}}
+</p>
     </div>
     </div>
 
@@ -69,7 +74,7 @@
 
           {% include "includes/bd/element-costs.html" %}
 
-    
+
 
           {{ govukButton({
       text: "Save changes",
