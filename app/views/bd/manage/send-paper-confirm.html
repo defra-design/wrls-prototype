@@ -52,11 +52,54 @@
         iconFallbackText: "Warning"
       }) }}
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>01/019</li>
-        <li>01/020</li>
-        <li>01/21</li>
-      </ul>
+      <!--list returns-->
+      {% set returns = data['return'] + "<br>" + data['return-2'] + "<br>" + data['return-3']|default %}
+
+      <!--replace the commas in the address with line breaks-->
+      {% set address = data['address'].replace(r/,/g, "<br>") %}
+
+       <h2 class="govuk-heading-m">Licence {{data['licenceList']}}</h2>
+
+      {{ govukSummaryList({
+  rows: [
+
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: address
+      },
+      actions: {
+        items: [
+          {
+            href: "send-paper-select-address?url=send-paper-confirm",
+            text: "Change",
+            visuallyHiddenText: "Address"
+          }
+        ]
+      }
+    },
+    {
+      classes: 'govuk-summary-list--no-border',
+      key: {
+        text: "Returns"
+      },
+      value: {
+        html: returns
+      },
+      actions: {
+        items: [
+          {
+            href: "send-paper-check",
+            text: "Change",
+            visuallyHiddenText: "returns"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
 
       <a href="send-paper-done" class="wrls-faux-button">
         Send paper forms
@@ -65,21 +108,5 @@
     </div>
   </div>
 
-  <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-  <script>
-    $(function() {
-      $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
-        const url = $(this).find('input:checked').val();
-
-        if(url) {
-          ev.preventDefault();
-          window.location.href = url;
-          return false;
-        }
-      });
-    })
-  </script>
 
 {% endblock %}

@@ -47,26 +47,15 @@
         {{ title }}
       </h1>
 
-      <form action="send-paper-confirm" method="post" class="form" id="return-reference-error">
+      <form action="send-paper-check" method="post" class="form">
 
         {{ govukTextarea({
-          name: "more-detail",
-          id: "more-detail",
+          name: "licenceList",
+          id: "licenceList",
           label: {
             text: "Add Licences that you wish to send paper forms to."
           }
         }) }}
-
-        <!-- {{ govukTextarea({
-          name: "more-detail",
-          id: "more-detail",
-          label: {
-            text: "Agreement text"
-          },
-          hint: {
-            text: "Do not include personal or financial information, like your National Insurance number or credit card details."
-          }
-        }) }} -->
 
         <button type="submit" class="govuk-button">
           Continue
@@ -77,21 +66,5 @@
     </div>
   </div>
 
-  <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-  <script>
-    $(function() {
-      $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
-        const url = $(this).find('input:checked').val();
-
-        if(url) {
-          ev.preventDefault();
-          window.location.href = url;
-          return false;
-        }
-      });
-    })
-  </script>
 
 {% endblock %}

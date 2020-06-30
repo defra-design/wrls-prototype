@@ -1,0 +1,168 @@
+{% extends "layout.html" %}
+
+{% set title = "Check address and select paper forms for licence " + data['licenceList']  %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-ful">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <form action="send-paper-confirm" method="post" class="form">
+
+      <p class="govuk-body govuk-!-margin-bottom-7">
+        <span class="govuk-!-font-weight-bold">Address:</span>
+        <br>
+        {{data['address']}}
+        <br>
+        <a href="send-paper-select-address?url=send-paper-check" class="govuk-link">Change</a>
+      </p>
+
+      {{ govukTable({
+         caption: "Select which returns paper forms to send",
+         captionClasses: "govuk-heading-m",
+         firstCellIsHeader: true,
+         head: [
+         {
+           html: '<span class="govuk-visually-hidden">Checkboxes</span>'
+         },
+           {
+             text: "Return reference"
+           },
+           {
+             text: "Purpose"
+           },
+           {
+             text: "Due"
+           },
+           {
+             text: "Status"
+           }
+         ],
+         rows: [
+           [
+             {
+               html: '
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                          <input class="govuk-checkboxes__input" checked id="return" name="return" type="checkbox" value="21233412">
+                          <label class="govuk-label govuk-checkboxes__label" for="return">
+                            <span class="govuk-visually-hidden">Select 21233412</span>
+                          </label>
+                        </div>
+                      '
+             },
+             {
+               text: "21233412"
+             },
+             {
+               text: "Spray irrigation"
+             },
+             {
+               text: "31 October 2019"
+             },
+             {
+               html:'<strong class="govuk-tag govuk-tag--blue">Due</strong>'
+             }
+           ],
+           [
+             {
+               html: '
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                          <input class="govuk-checkboxes__input" checked id="return-2" name="return-2" type="checkbox" value="2938293">
+                          <label class="govuk-label govuk-checkboxes__label" for="return-2">
+                            <span class="govuk-visually-hidden">Select 2938293</span>
+                          </label>
+                        </div>
+                    '
+             },
+             {
+               text: "2938293"
+             },
+             {
+               text: "Spray irrigation"
+             },
+             {
+               text: "31 March 2019"
+             },
+             {
+               html:'<strong class="govuk-tag govuk-tag--red">Overdue</strong>'
+             }
+           ],
+           [
+             {
+
+               html: '
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                          <input class="govuk-checkboxes__input"  id="return-3" name="return-3" type="checkbox" value="9038473">
+                          <label class="govuk-label govuk-checkboxes__label" for="return-3">
+                            <span class="govuk-visually-hidden">Select 9038473</span>
+                          </label>
+                        </div>
+                      '
+             },
+             {
+               text: "9038473"
+             },
+             {
+               text: "Spray irrigation"
+             },
+             {
+               text: "31 October 2018"
+             },
+             {
+               html:'<strong class="govuk-tag govuk-tag--grey">Void</strong>'
+             }
+           ]
+         ]
+       }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}

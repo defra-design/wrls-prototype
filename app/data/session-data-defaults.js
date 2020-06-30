@@ -26,6 +26,8 @@ module.exports = {
   "address1": "15 Ward Road",
   "city": "Bath",
   "postcode": "BA1 5EH",
+  "address": "15 Ward Road, Bath, BA1 5EH",
+  "url": "",
   "invoiceAccount": "L12345678S",
   "startDay": "11",
   "startMonth": "April",
@@ -160,7 +162,10 @@ module.exports = {
 
           "chargeInfoNumber": "0",
           "newLicence": "false",
-          "reasonNewCharge": "New licence"
+          "reasonNewCharge": "New licence",
+          "return": "",
+          "return-2": "",
+          "return-3": "",
     // Insert values here
 }
 
