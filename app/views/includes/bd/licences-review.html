@@ -1,229 +1,247 @@
+
   {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
   {{ govukTable({
-    caption: "Review",
+    caption: "Change requested",
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
     head: [
       {
-        text: "Licence",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence"
       },
       {
-        text: "Licence holder",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Set up by"
       },
       {
-        text: "Set up by",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence holder"
       },
-
       {
-        text: "Region",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Start date"
+      },
+      {
+        text: "Action"
       }
     ],
     rows: [
     [
       {
-        html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+        text: '03/28/60/0031'
+      },
+      {
+        text: "Your name"
       },
       {
         text: "Bottled Water Plc"
       },
       {
-        text: "Your name"
+        text: "30 April 2022"
       },
-
       {
-        text: "Anglian"
+        html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
       }
     ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">13/33/221/75</a>'
+          text: '01/12/001/33'
         },
         {
-          text: "Reginald Loxton"
+          text: "Michael Babb"
         },
         {
-          text: "Rose Conelly"
+          text: "Sam Bidwell"
         },
-
         {
-          text: "South West"
+          text: "4 October 2020"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/29/66/0031</a>'
-        },
-        {
-          text: "J Samsonite"
+          text: '12/28/66/0015'
         },
         {
           text: "Rose Conelly"
         },
-
+        {
+          text: "Jacqui Tempson"
+        },
 
         {
-          text: "North East"
+          text: "30 April 2022"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">09/23/622/044</a>'
+          text: '44/22/17/349'
         },
         {
-          text: "Jones and Jones LLP"
+          text: "Barry Crampton"
         },
         {
-          text: "Rose Conelly"
+          text: "Osborne Farms Ltd."
         },
-
         {
-          text: "Midlands"
+          text: "15 July 2023"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/28/60/0038</a>'
+          text: '1/34/5555/0048'
         },
         {
-          text: "Lower Road Farm"
+          text: "Barry Crampton"
+        },
+        {
+          text: "Little Jones Farms Ltd."
+        },
+        {
+          text: "15 September 2022"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
+        }
+      ],
+
+      [
+        {
+          text: '22/25/55/9800'
         },
         {
           text: "Jo Langton"
         },
-
         {
-          text: "North East"
-        }
-      ],
-
-      [
-        {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">07/24/63/0035</a>'
+          text: "Little Jones Farms Ltd."
         },
         {
-          text: "Danes Water Supply Plc"
+          text: "28 January 2024"
         },
         {
-          text: "Emma Nevin"
-        },
-
-        {
-          text: "Anglian"
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ]
 
     ]
   }) }}
 
-
   {% else %}
 
 
   {{ govukTable({
-    caption: "Review",
+    caption: "Change requested",
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
     head: [
       {
-        text: "Licence",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence"
       },
       {
-        text: "Licence holder",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Set up by"
       },
       {
-        text: "Set up by",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence holder"
       },
-
       {
-        text: "Region",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Start date"
+      },
+      {
+        text: "Action"
       }
     ],
     rows: [
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">13/33/221/75</a>'
+          text: '01/12/001/33'
         },
         {
-          text: "Reginald Loxton"
+          text: "Michael Babb"
         },
         {
-          text: "Rose Conelly"
+          text: "Sam Bidwell"
         },
-
         {
-          text: "South West"
+          text: "4 October 2020"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/29/66/0031</a>'
-        },
-        {
-          text: "J Samsonite"
+          text: '12/28/66/0015'
         },
         {
           text: "Rose Conelly"
         },
-
+        {
+          text: "Jacqui Tempson"
+        },
 
         {
-          text: "North East"
+          text: "30 April 2022"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">09/23/622/044</a>'
+          text: '44/22/17/349'
         },
         {
-          text: "Jones and Jones LLP"
+          text: "Barry Crampton"
         },
         {
-          text: "Rose Conelly"
+          text: "Osborne Farms Ltd."
         },
-
         {
-          text: "Midlands"
+          text: "15 July 2023"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/28/60/0038</a>'
+          text: '1/34/5555/0048'
         },
         {
-          text: "Lower Road Farm"
+          text: "Barry Crampton"
+        },
+        {
+          text: "Little Jones Farms Ltd."
+        },
+        {
+          text: "15 September 2022"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
+        }
+      ],
+
+      [
+        {
+          text: '22/25/55/9800'
         },
         {
           text: "Jo Langton"
         },
-
         {
-          text: "North East"
-        }
-      ],
-
-      [
-        {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">07/24/63/0035</a>'
+          text: "Little Jones Farms Ltd."
         },
         {
-          text: "Danes Water Supply Plc"
+          text: "28 January 2024"
         },
         {
-          text: "Emma Nevin"
-        },
-
-        {
-          text: "Anglian"
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version">Review<span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ]
 
