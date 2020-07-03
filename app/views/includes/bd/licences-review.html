@@ -1,7 +1,7 @@
 
   {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
   {{ govukTable({
-    caption: "Change requested",
+    caption: "Review",
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
@@ -10,13 +10,14 @@
         text: "Licence"
       },
       {
-        text: "Set up by"
-      },
-      {
         text: "Licence holder"
       },
       {
-        text: "Start date"
+        text: "Set up by"
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-third'
       },
       {
         text: "Action"
@@ -28,10 +29,10 @@
         text: '03/28/60/0031'
       },
       {
-        text: "Your name"
+        text: "Bottled Water Plc"
       },
       {
-        text: "Bottled Water Plc"
+        text: "Your name"
       },
       {
         text: "30 April 2022"
@@ -45,10 +46,10 @@
           text: '01/12/001/33'
         },
         {
-          text: "Michael Babb"
+          text: "Sam Bidwell"
         },
         {
-          text: "Sam Bidwell"
+          text: "Michael Babb"
         },
         {
           text: "4 October 2020"
@@ -62,12 +63,11 @@
           text: '12/28/66/0015'
         },
         {
-          text: "Rose Conelly"
-        },
-        {
           text: "Jacqui Tempson"
         },
-
+        {
+          text: "Rose Conelly"
+        },
         {
           text: "30 April 2022"
         },
@@ -80,10 +80,10 @@
           text: '44/22/17/349'
         },
         {
-          text: "Barry Crampton"
+          text: "Osborne Farms Ltd."
         },
         {
-          text: "Osborne Farms Ltd."
+          text: "Barry Crampton"
         },
         {
           text: "15 July 2023"
@@ -97,10 +97,10 @@
           text: '1/34/5555/0048'
         },
         {
-          text: "Barry Crampton"
+          text: "Little Jones Farms Ltd."
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "Barry Crampton"
         },
         {
           text: "15 September 2022"
@@ -115,10 +115,10 @@
           text: '22/25/55/9800'
         },
         {
-          text: "Jo Langton"
+          text: "Little Jones Farms Ltd."
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "Jo Langton"
         },
         {
           text: "28 January 2024"
@@ -135,7 +135,7 @@
 
 
   {{ govukTable({
-    caption: "Change requested",
+    caption: "Review",
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
@@ -144,13 +144,14 @@
         text: "Licence"
       },
       {
-        text: "Set up by"
-      },
-      {
         text: "Licence holder"
       },
       {
-        text: "Start date"
+        text: "Set up by"
+      },
+      {
+        text: "Start date",
+        classes: 'govuk-!-width-one-third'
       },
       {
         text: "Action"
@@ -162,10 +163,10 @@
           text: '01/12/001/33'
         },
         {
-          text: "Michael Babb"
+          text: "Sam Bidwell"
         },
         {
-          text: "Sam Bidwell"
+          text: "Michael Babb"
         },
         {
           text: "4 October 2020"
@@ -179,12 +180,11 @@
           text: '12/28/66/0015'
         },
         {
-          text: "Rose Conelly"
-        },
-        {
           text: "Jacqui Tempson"
         },
-
+        {
+          text: "Rose Conelly"
+        },
         {
           text: "30 April 2022"
         },
@@ -197,10 +197,10 @@
           text: '44/22/17/349'
         },
         {
-          text: "Barry Crampton"
+          text: "Osborne Farms Ltd."
         },
         {
-          text: "Osborne Farms Ltd."
+          text: "Barry Crampton"
         },
         {
           text: "15 July 2023"
@@ -214,10 +214,10 @@
           text: '1/34/5555/0048'
         },
         {
-          text: "Barry Crampton"
+          text: "Little Jones Farms Ltd."
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "Barry Crampton"
         },
         {
           text: "15 September 2022"
@@ -232,10 +232,10 @@
           text: '22/25/55/9800'
         },
         {
-          text: "Jo Langton"
+          text: "Little Jones Farms Ltd."
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "Jo Langton"
         },
         {
           text: "28 January 2024"
@@ -247,5 +247,4 @@
 
     ]
   }) }}
-
     {% endif %}
