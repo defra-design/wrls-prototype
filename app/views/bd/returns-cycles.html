@@ -1,0 +1,416 @@
+{% extends "layout.html" %}
+
+{% set title = "Returns cycles" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+</div>
+
+
+{% set navbarActiveReturns = "navbar__link--active" %}
+
+
+
+<!-- navigation block -->
+{% include "includes/nav/nav-bd.html" %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "home"
+    }
+  ]
+}) }}
+
+<!--
+ {{ govukBackLink({
+   text: "Back",
+   href: "javascript:history.back()"
+ }) }}
+-->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- contact summary -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<h1 class="govuk-heading-xl"> {{ title }}</h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<p class="govuk-body">Create and send returns communications, such as invites, paper forms and reminders.</p>
+
+
+        {{ govukButton({
+          text: "Create a returns communication",
+          href: "../charges-2020/pick-charge-type"
+        }) }}
+
+
+      </div>
+    </div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-l">
+      View a returns report
+    </h2>
+
+
+    <p class="govuk-body">Select date for return statistics.</p>
+
+    <h2 class="govuk-heading-m">
+      Current cycle
+    </h2>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- table with returns with statuses -->
+    <div class="table govuk-!-margin-bottom-3">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--40">
+          Period
+        </div>
+        <div class="table__cell bold-small column--15">
+          Returns due
+        </div>
+        <div class="table__cell bold-small column--15">
+          Licences
+        </div>
+        <div class="table__cell bold-small column--10">
+          Monthly
+        </div>
+        <div class="table__cell bold-small column--10">
+          Weekly
+        </div>
+        <div class="table__cell bold-small column--10">
+          Daily
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 1
+          </h3>
+          <h4 class="table__context">
+            Period
+          </h4>
+          <a href="returns-statistics">
+            April 2018 to October 2018
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Returns due
+          </h4>
+          427
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Licences
+          </h4>
+          362
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Monthly
+          </h4>
+          304
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Weekly
+          </h4>
+          108
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Daily
+          </h4>
+          15
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p>
+      {{ govukButton({
+  text: "Download CSV file",
+  classes: "govuk-button--secondary"
+}) }}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">
+      Previous cycles
+    </h2>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- table with returns with statuses -->
+    <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--40">
+          Period
+        </div>
+        <div class="table__cell bold-small column--15">
+          Returns due
+        </div>
+        <div class="table__cell bold-small column--15">
+          Licences
+        </div>
+        <div class="table__cell bold-small column--10">
+          Monthly
+        </div>
+        <div class="table__cell bold-small column--10">
+          Weekly
+        </div>
+        <div class="table__cell bold-small column--10">
+          Daily
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 1
+          </h3>
+          <h4 class="table__context">
+            Period
+          </h4>
+          <a href="returns-statistics">
+            April 2017 to March 2018
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Returns due
+          </h4>
+          1,527
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Licences
+          </h4>
+          502
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Monthly
+          </h4>
+          304
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Weekly
+          </h4>
+          108
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Daily
+          </h4>
+          15
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 2
+          </h3>
+          <h4 class="table__context">
+            Period
+          </h4>
+          <a href="returns-statistics">
+            April 2017 to October 2017
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Returns due
+          </h4>
+          378
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Licences
+          </h4>
+          362
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Monthly
+          </h4>
+          271
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Weekly
+          </h4>
+          101
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Daily
+          </h4>
+          6
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 3
+          </h3>
+          <h4 class="table__context">
+            Period
+          </h4>
+          <a href="returns-statistics">
+            April 2016 to March 2017
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Returns due
+          </h4>
+          1,424
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Licences
+          </h4>
+          709
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Monthly
+          </h4>
+          881
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Weekly
+          </h4>
+          402
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Daily
+          </h4>
+          141
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 4
+          </h3>
+          <h4 class="table__context">
+            Period
+          </h4>
+          <a href="returns-statistics">
+            April 2016 to October 2016
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Returns due
+          </h4>
+          364
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Licences
+          </h4>
+          355
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Monthly
+          </h4>
+          302
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Weekly
+          </h4>
+          44
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Daily
+          </h4>
+          18
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

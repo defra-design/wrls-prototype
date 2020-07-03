@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check address and select paper forms for licence " + data['licenceList']  %}
+{% set title = "Select the returns that need a form"  %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -41,124 +41,151 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-ful">
+  <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">
+<form action="send-paper-confirm" method="post" class="form">
+
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
       {{ title }}
     </h1>
+    </legend>
 
-    <form action="send-paper-confirm" method="post" class="form">
 
-      <p class="govuk-body govuk-!-margin-bottom-7">
+
+      <!--      <p class="govuk-body govuk-!-margin-bottom-7">
         <span class="govuk-!-font-weight-bold">Address:</span>
         <br>
         {{data['address']}}
         <br>
         <a href="send-paper-select-address?url=send-paper-check" class="govuk-link">Change</a>
       </p>
+-->
+      <!--create array-->
+      {% set licences = [] %}
+      <!--split the string based on commas or new lines and add it to the array-->
+      {% set licences = data['licenceList'].split(r/,|\n/g) %}
 
-      {{ govukTable({
-         caption: "Select which returns paper forms to send",
-         captionClasses: "govuk-heading-m",
-         firstCellIsHeader: true,
-         head: [
-         {
-           html: '<span class="govuk-visually-hidden">Checkboxes</span>'
-         },
-           {
-             text: "Return reference"
-           },
-           {
-             text: "Purpose"
-           },
-           {
-             text: "Due"
-           },
-           {
-             text: "Status"
-           }
-         ],
-         rows: [
-           [
-             {
-               html: '
-                        <div class="govuk-checkboxes__item govuk-checkboxes--small">
-                          <input class="govuk-checkboxes__input" checked id="return" name="return" type="checkbox" value="21233412">
-                          <label class="govuk-label govuk-checkboxes__label" for="return">
-                            <span class="govuk-visually-hidden">Select 21233412</span>
-                          </label>
-                        </div>
-                      '
-             },
-             {
-               text: "21233412"
-             },
-             {
-               text: "Spray irrigation"
-             },
-             {
-               text: "31 October 2019"
-             },
-             {
-               html:'<strong class="govuk-tag govuk-tag--blue">Due</strong>'
-             }
-           ],
-           [
-             {
-               html: '
-                        <div class="govuk-checkboxes__item govuk-checkboxes--small">
-                          <input class="govuk-checkboxes__input" checked id="return-2" name="return-2" type="checkbox" value="2938293">
-                          <label class="govuk-label govuk-checkboxes__label" for="return-2">
-                            <span class="govuk-visually-hidden">Select 2938293</span>
-                          </label>
-                        </div>
-                    '
-             },
-             {
-               text: "2938293"
-             },
-             {
-               text: "Spray irrigation"
-             },
-             {
-               text: "31 March 2019"
-             },
-             {
-               html:'<strong class="govuk-tag govuk-tag--red">Overdue</strong>'
-             }
-           ],
-           [
-             {
 
-               html: '
-                        <div class="govuk-checkboxes__item govuk-checkboxes--small">
-                          <input class="govuk-checkboxes__input"  id="return-3" name="return-3" type="checkbox" value="9038473">
-                          <label class="govuk-label govuk-checkboxes__label" for="return-3">
-                            <span class="govuk-visually-hidden">Select 9038473</span>
-                          </label>
-                        </div>
-                      '
-             },
-             {
-               text: "9038473"
-             },
-             {
-               text: "Spray irrigation"
-             },
-             {
-               text: "31 October 2018"
-             },
-             {
-               html:'<strong class="govuk-tag govuk-tag--grey">Void</strong>'
-             }
-           ]
-         ]
-       }) }}
+      <table class="govuk-table">
+
+        <caption class="govuk-table__caption govuk-heading-m">Returns</caption>
+
+
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+
+            <th class="govuk-table__header" scope="col"><span class="govuk-visually-hidden">Checkboxes</span></th>
+
+            <th class="govuk-table__header" scope="col">Licence</th>
+
+            <th class="govuk-table__header" scope="col">Return reference</th>
+
+            <th class="govuk-table__header" scope="col">Due</th>
+
+            <th class="govuk-table__header" scope="col">Status</th>
+
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+
+          {% for i in licences %}
+
+          {% set returnRef1 = range(1000000, 9999999) | random  %}
+          {% set returnRef2 = range(1000000, 9999999) | random  %}
+          {% set returnRef3 = range(1000000, 9999999) | random  %}
+
+          <tr class="govuk-table__row">
+
+
+            <th class="govuk-table__header" scope="row">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input class="govuk-checkboxes__input" checked="" id="return-{{ returnRef1 }}" name="return" type="checkbox" value="{{ returnRef1 }}">
+                <label class="govuk-label govuk-checkboxes__label" for="return-{{ returnRef1 }}">
+                  <span class="govuk-visually-hidden">Select return {{ returnRef1 }} for licence {{i}}</span>
+                </label>
+              </div>
+            </th>
+
+
+
+            <td class="govuk-table__cell">{{i}}</td>
+
+            <td class="govuk-table__cell">{{ returnRef1 }}</td>
+
+            <td class="govuk-table__cell">31 October 2019</td>
+
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Due</strong></td>
+
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <th class="govuk-table__header" scope="row">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input class="govuk-checkboxes__input" checked="" id="return-{{ returnRef2}}" name="return" type="checkbox" value="{{ returnRef2 }}">
+                <label class="govuk-label govuk-checkboxes__label" for="return-{{ returnRef2 }}">
+                  <span class="govuk-visually-hidden">Select return {{ returnRef2 }} for licence {{i}}</span>
+                </label>
+              </div>
+            </th>
+
+
+
+            <td class="govuk-table__cell">{{i}}</td>
+
+            <td class="govuk-table__cell">{{ returnRef2 }}</td>
+
+            <td class="govuk-table__cell">31 March 2019</td>
+
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Overdue</strong></td>
+
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <th class="govuk-table__header" scope="row">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input class="govuk-checkboxes__input" id="return-{{ returnRef3 }}" name="return" type="checkbox" value="{{ returnRef3 }}">
+                <label class="govuk-label govuk-checkboxes__label" for="return-{{ returnRef3 }}">
+                  <span class="govuk-visually-hidden">Select return {{ returnRef3 }} for licence {{i}}</span>
+                </label>
+              </div>
+            </th>
+
+
+
+            <td class="govuk-table__cell">{{i}}</td>
+
+            <td class="govuk-table__cell">{{ returnRef3 }}</td>
+
+            <td class="govuk-table__cell">31 October 2018</td>
+
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">Void</strong></td>
+
+
+          </tr>
+
+          {% endfor %}
+
+
+
+        </tbody>
+      </table>
+
+
 
       <button type="submit" class="govuk-button">
         Continue
       </button>
 
+</fieldset>
     </form>
 
   </div>

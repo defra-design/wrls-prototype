@@ -52,13 +52,22 @@
         iconFallbackText: "Warning"
       }) }}
 
-      <!--list returns-->
-      {% set returns = data['return'] + "<br>" + data['return-2'] + "<br>" + data['return-3']|default %}
-
       <!--replace the commas in the address with line breaks-->
       {% set address = data['address'].replace(r/,/g, "<br>") %}
 
-       <h2 class="govuk-heading-m">Licence {{data['licenceList']}}</h2>
+      <!--create licences array-->
+      {% set licences = [] %}
+
+      <!--split the string based on commas or new lines and add it to the array-->
+      {% set licences = data['licenceList'].split(r/,|\n/g) %}
+
+
+
+
+      {% for i in licences %}
+
+
+       <h2 class="govuk-heading-m">Licence {{i}}</h2>
 
       {{ govukSummaryList({
   rows: [
@@ -86,7 +95,7 @@
         text: "Returns"
       },
       value: {
-        html: returns
+        html: data['return'].toString().replace(r/,/g, "<br>")
       },
       actions: {
         items: [
@@ -100,6 +109,8 @@
     }
   ]
 }) }}
+
+{% endfor %}
 
       <a href="send-paper-done" class="wrls-faux-button">
         Send paper forms

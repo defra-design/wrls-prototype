@@ -7,23 +7,39 @@
     <ul class="navbar__list">
 
       <li class="navbar__item">
-        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveBills}}" href="/bd/bill-runs/bill-runs" id="billRuns">
+        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveBills}}" href="/bd/bill-runs" id="billRuns">
           Bill runs
         </a>
       </li>
 
       <li class="navbar__item">
-        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveReturns}}" href="/bd/returns-overview" id="returnsCycles">
+        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveReturns}}" href="/bd/returns-cycles" id="returnsCycles">
           Returns cycles
         </a>
       </li>
 
       <li class="navbar__item">
-        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveNotices}}" href="#" id="licenceNotices">
+        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveNotices}}" href="/bd/licence-notices" id="licenceNotices">
           Licence notices
         </a>
       </li>
 
+      <!--number of chargeVersions with Review charge status-->
+      {% set review = 0 %}
+      {% set chargeVersions = data['chargeVersions'] %}
+      {% for i in chargeVersions %}
+      {% if i.chargeStatus == 'NOT APPROVED' %}
+      {% set review = review + 1  %}
+      {% endif %}
+      {% endfor %}
+
+      {% if review > 0 %}
+      <li class="navbar__item navbar__last">
+        <a class="navbar__link govuk-link--no-visited-state" href="/bd/home#review" id="chargeReview">
+          Charge information for review ({{review}})
+        </a>
+      </li>
+      {% endif %}
     </ul>
   </nav>
 </div>

@@ -47,6 +47,7 @@ $govuk-global-styles: true;
   margin-left: calc(50% - 50vw);
   width: 100vw;
  background-color:#f3f2f1;
+// background-color: #b1b4b6;
  // background-color: new-govuk-colours("light-grey");
   border-top: 1px solid #bfc1c3;
  //border-bottom: 1px solid #bfc1c3;
@@ -79,6 +80,27 @@ $govuk-global-styles: true;
   background-color:#fff;
 }
 
+.navbar__last {
+
+ float:none;
+ @media (min-width: 768px) {
+   float:right;
+ }
+
+}
+
+/*.circle {
+        border-radius: 50%;
+        width: 21px;
+        height: 21px;
+        padding: 5px;
+        background: #005ea5;
+        color: #fff;
+        text-align: center;
+        display:inline-block;
+      }
+*/
+
 //removoval of padding at the top of the main element so that the master header sits flush with the navbar
 .home-no-padding-top {
   padding-top: 0px;
@@ -86,8 +108,11 @@ $govuk-global-styles: true;
 
 //darker hint text on master header to improve contrast
 .hint-dark-grey {
- //color: $govuk-colour("dark-grey");
+ //color: $govuk-colours("dark-grey");
  color: 	#626a6e;
+// color: $govuk-colours("black");
+//color: 	#0b0c0c;
+
 }
 
 
