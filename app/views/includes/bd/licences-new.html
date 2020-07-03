@@ -1,79 +1,98 @@
 
 
   {{ govukTable({
-    caption: "Licences with no charge information",
+    caption: "Licences without charge information",
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
     head: [
       {
         text: "Licence",
-        classes: 'govuk-!-width-one-quarter'
+        classes: 'govuk-!-width-one-third'
       },
       {
         text: "Licence holder",
-        classes: 'govuk-!-width-one-quarter'
+        classes: 'govuk-!-width-one-third'
       },
       {
         text: "Start date",
+        classes: 'govuk-!-width-one-third'
+      },
+      {
+        text: "Action",
         classes: 'govuk-!-width-one-quarter'
       }
     ],
     rows: [
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">00/22/001/02</a>'
+          text: '00/22/001/02'
         },
         {
           text: "Irene Briton"
         },
         {
           text: "31 January 2020"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/add-new-reason">Set up <span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
+          text: '03/28/60/0031'
         },
         {
           text: "Bottled Water Plc"
         },
         {
           text: "30 April 2020"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/add-new-reason">Set up <span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/61/029</a>'
+          text: '03/28/61/029'
         },
         {
           text: "Big Smith Farms Ltd."
         },
         {
           text: "15 September 2021"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/add-new-reason">Set up <span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0035</a>'
+          text: '03/28/60/0035'
         },
         {
           text: "Big Smith Farms Ltd."
         },
         {
           text: "15 September 2022"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/add-new-reason">Set up <span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ],
 
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0034</a>'
+          text: '03/28/60/0034<'
         },
         {
           text: "Big Smith Farms Ltd."
         },
         {
           text: "15 September 2022"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/add-new-reason">Set up <span class="govuk-visually-hidden"> charge information</span></a>'
         }
       ]
 
