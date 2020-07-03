@@ -26,8 +26,8 @@ $govuk-global-styles: true;
 @import "patterns/summary-list-additions";
 @import "patterns/detailed-guidance";
 @import "patterns/alerts";
-@import "tag";
-@import "colours";
+@import "patterns/tag";
+@import "patterns/colours";
 
 // Scalable and Modular Architecture for Cascading Style Sheets
 @import "layout.scss";
@@ -48,7 +48,7 @@ $govuk-global-styles: true;
   width: 100vw;
  background-color:#f3f2f1;
 // background-color: #b1b4b6;
- // background-color: new-govuk-colours("light-grey");
+// background-color: new-govuk-colours("light-grey");
   border-top: 1px solid #bfc1c3;
  //border-bottom: 1px solid #bfc1c3;
 }
@@ -125,6 +125,12 @@ $govuk-global-styles: true;
       overflow-x: none;
         display: table;
     }
+}
+
+.govuk-table__cell--no-border {
+  @media (min-width: 768px) {
+    border-bottom: none !important;
+  }
 }
 
 //removal of the phase banner bottom border

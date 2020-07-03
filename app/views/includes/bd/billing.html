@@ -1,125 +1,407 @@
-<!-- charges -->
-{% set chargeStatus = [data.chargeVersions[0].chargeStatus]%}
-   {% if chargeStatus == "CHARGEABLE" %}
-   {% else %}
-    {{ govukInsetText({
-     html: 'There is new charge information being set up for this licence. <br><a class="govuk-link" href="/bd/charges-2020/charge-versions">Check status</a>'
-    }) }}
+{% if [data.newLicence] == "false" %}
+
+<section class="govuk-!-margin-bottom-4">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+{{ govukTable({
+  caption: "Latest bill",
+  captionClasses: "govuk-heading-m",
+  classes: "govuk-!-margin-bottom-2",
+  head: [
+    {
+      text: "Date created",
+      classes: "govuk-!-width-one-fifth"
+    },
+    {
+      text: "Bill number",
+      classes: "govuk-!-width-one-fifth"
+    },
+    {
+      text: "Bill run type",
+      classes: "govuk-!-width-one-fifth"
+    },
+    {
+      text: "Billing account",
+      classes: "govuk-!-width-one-fifth"
+    },
+    {
+      text: "",
+      classes: "govuk-!-width-one-fifth",
+      format: "numeric"
+    }
+  ],
+  rows:
+  [
+    [
+      {
+        classes: 'govuk-table__cell--no-border',
+        text: "1 November 2019"
+      },
+      {
+        classes: 'govuk-table__cell--no-border',
+        html: '<a href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian" class="govuk-link">OP123344</a>'
+      },
+      {
+        classes: 'govuk-table__cell--no-border',
+        text: "Supplementary"
+      },
+      {
+        classes: 'govuk-table__cell--no-border',
+        html: '<a href="/bd/charges-2020/billing-account" class="govuk-link">L12345678S</a>'
+      }
+    ]
+  ]
+}) }}
+
+<p class="govuk-body"><a href="#" class="govuk-link">View all bills</a></p>
+
+
+</div>
+</div>
+</section>
+
+<!--<hr class="govuk-section-break--l govuk-section-break--visible"> -->
+
+{% endif %}
+
+<!-- Charge version data-->
+
+
+
+<section class="govuk-!-margin-bottom-2">
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">Charge information</h2>
+
+      <!-- table with two columns -->
+      <div class="table govuk-!-margin-bottom-3">
+
+        <div class="table__row--head">
+          <div class="table__cell bold-small column--20">
+            Start date
+          </div>
+          <div class="table__cell bold-small column--20">
+            End date
+          </div>
+          <div class="table__cell bold-small column--20">
+            Reason
+          </div>
+          <div class="table__cell bold-small column--20">
+            Status
+          </div>
+
+          <div class="table__cell bold-small column--20">
+            Action
+          </div>
+        </div>
+
+        {% if [data.newLicence] == "false" %}
+        {% set chargeVersions = data['chargeVersions'] %}
+
+
+        {% set chargeVersionsNumber = "" %}
+        {% set numberOfChargeVersions = chargeVersions.length %}
+        {% for i in chargeVersions %}
+
+{% if loop.index ==  numberOfChargeVersions %}
+        <div class="table__row table__row--selectable table__row--last">
+          {% else %}
+          <div class="table__row table__row--selectable">
+            {% endif %}
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 1
+            </h2>
+            <h3 class="table__context">
+              Start date
+            </h3>
+            {{[i.chargeStart]}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              End date
+            </h3>
+            {{[i.chargeEnd]}}
+          </div>
+
+          <div class="table__cell">
+            <h3 class="table__context">
+              Reason
+            </h3>
+            {{[i.reasonNewCharge]}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Status
+            </h3>
+            {% if [i.chargeStatus] == "CHARGEABLE" %}
+            {{govukTag({
+                  text: "Approved",
+                  classes: "govuk-tag--green"
+                })}}
+            {% elif [i.chargeStatus] == "REPLACED" %}
+            {{govukTag({
+              text: [i.chargeStatus],
+              classes: "govuk-tag--grey"
+            })}}
+            {% elif [i.chargeStatus] == "INVALID" %}
+            {{govukTag({
+          text: [i.chargeStatus],
+          classes: "govuk-tag--red"
+        })}}
+        {% elif [i.chargeStatus] == "DRAFT" %}
+        {{govukTag({
+      text: [i.chargeStatus],
+      classes: "govuk-tag--blue"
+      })}}
+      {% elif [i.chargeStatus] == "NOT APPROVED" %}
+      {{govukTag({
+    text: "Review",
+    classes: "govuk-tag--orange"
+    })}}
+    {% elif [i.chargeStatus] == "CHANGES" %}
+    {{govukTag({
+  text: "Draft",
+  classes: "govuk-tag--blue"
+  })}}
+            {% endif %}
+          </div>
+          <div class="table__cell">
+            {% if [i.chargeStatus] == "DRAFT" %}
+
+            <a href="/bd/charges-2020/charge-version/charge-data-check">
+              Continue</a> <span class="screen-reader-only">setting up charge information</span>
+            <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
+            <a href="/bd/charges-2020/charge-version/confirm-remove-charge-information">
+              Remove <span class="screen-reader-only">charge information</span>
+            </a>
+{% elif [i.chargeStatus] == "NOT APPROVED" %}
+{% set link = 'charges-2020/charge-version?chargeInfoNumber=' + loop.index0 %}
+<a href="{{link}}">
+  Review <span class="screen-reader-only">charge information</span>
+</a>
+
+{% elif [i.chargeStatus] == "CHANGES" %}
+{% set link = 'charges-2020/charge-version?chargeInfoNumber=' + loop.index0 %}
+<a href="{{link}}">
+  Review <span class="screen-reader-only">charge information</span>
+</a>
+
+            {% else %}
+            {% set link = 'charges-2020/charge-version?chargeInfoNumber=' + loop.index0 %}
+            <a href="{{link}}">
+              View <span class="screen-reader-only">charge information</span>
+            </a>
+
+            {% endif %}
+          </div>
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+
+        {% set chargeVersions = [data.chargeVersions[0]] %}
+        {% for i in chargeVersions %}
+
+        <div class="table__row table__row--selectable govuk-!-margin-bottom-6 table__row--last">
+          <div class="table__cell">
+            <h2 class="screen-reader-only">
+              Row 1
+            </h2>
+            <h3 class="table__context">
+              Start date
+            </h3>
+            {{[i.chargeStart]}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              End date
+            </h3>
+            {{[i.chargeEnd]}}
+          </div>
+
+          <div class="table__cell">
+            <h3 class="table__context">
+             Reason
+            </h3>
+            {{[i.reasonNewCharge]}}
+          </div>
+          <div class="table__cell">
+            <h3 class="table__context">
+              Status
+            </h3>
+            {% if [i.chargeStatus] == "CHARGEABLE" %}
+            {{govukTag({
+                  text: "Approved",
+                  classes: "govuk-tag--green"
+                })}}
+            {% elif [i.chargeStatus] == "REPLACED" %}
+            {{govukTag({
+              text: [i.chargeStatus],
+              classes: "govuk-tag--grey"
+            })}}
+            {% elif [i.chargeStatus] == "INVALID" %}
+            {{govukTag({
+          text: [i.chargeStatus],
+          classes: "govuk-tag--red"
+        })}}
+        {% elif [i.chargeStatus] == "DRAFT" %}
+        {{govukTag({
+      text: [i.chargeStatus],
+      classes: "govuk-tag--blue"
+      })}}
+      {% elif [i.chargeStatus] == "NOT APPROVED" %}
+      {{govukTag({
+    text: "Review",
+    classes: "govuk-tag--orange"
+    })}}
+    {% elif [i.chargeStatus] == "CHANGES" %}
+    {{govukTag({
+  text: "Draft",
+  classes: "govuk-tag--blue"
+  })}}
+            {% endif %}
+          </div>
+          <div class="table__cell">
+            {% if [i.chargeStatus] == "DRAFT" %}
+
+            <a href="#">
+              Continue</a> <span class="screen-reader-only">setting up charge information</span>
+            <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
+            <a href="confirm-remove-charge-version">
+              Remove <span class="screen-reader-only">charge information</span>
+            </a>
+{% elif [i.chargeStatus] == "NOT APPROVED" %}
+{% set link = 'charges-2020/charge-version?chargeInfoNumber=' + loop.index0 %}
+<a href="{{link}}">
+  Review <span class="screen-reader-only">charge information</span>
+</a>
+
+{% elif [i.chargeStatus] == "CHANGES" %}
+{% set link = 'charges-2020/charge-version?chargeInfoNumber=' + loop.index0 %}
+<a href="{{link}}">
+  Review <span class="screen-reader-only">charge information</span>
+</a>
+
+            {% else %}
+            {% set link = 'charges-2020/charge-version?chargeInfoNumber=' + loop.index0 %}
+            <a href="{{link}}">
+              View <span class="screen-reader-only">charge information</span>
+            </a>
+
+            {% endif %}
+          </div>
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukButton({
+        text: "Set up new charge",
+        href: "/bd/charges-2020/add-new-reason",
+        classes: "govuk-!-margin-right-3"
+      }) }}
+
+      <!-- show button if licence isn't already marked as exempt from charge-->
+      {% set free = [data.chargeVersions[0]['free']]%}
+      {% if free == "true" %}
+      {% else %}
+      {{ govukButton({
+    text: "Make licence non-chargeable",
+    classes: "govuk-button--secondary govuk-!-margin-right-3",
+    href: "add-reason"
+  }) }}
+
+
+     {% set agreementNumber = "" %}
+     {% set agreements = data['agreements'] %}
+     {% if [data.newLicence] == "false" %}
+     {% set numberOfAgreements = agreements.length %}
+     {% else %}
+     {% set numberOfAgreements = 0 %}
+     {% endif %}
+
+     {% if numberOfAgreements < 1 %}
+     {{ govukButton({
+       text: "Set up new agreement",
+       href: "add-agreement",
+       classes: "govuk-button--secondary"
+     }) }}
+     {% endif %}
+
+     {% endif %}
+
+
+    </div>
+  </div>
+</section>
+
+{% if [data.newLicence] == "false" %}
+
+<!--<hr class="govuk-section-break--l govuk-section-break--visible"> -->
+
+<section>
+
+  <h2 class="govuk-heading-m">Agreements</h2>
+
+
+  <table class="govuk-table govuk-!-margin-bottom-4">
+
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Start date</th>
+        <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">End date</th>
+        <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Agreement</th>
+        <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Date signed</th>
+        <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Action</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+
+
+      {% for i in agreements %}
+      {% set agreementNumber = loop.index0 %}
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
+        <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreementEndDay] + " " + [[i.agreementEndMonth] | toMonth] + " " + [i.agreementEndYear]}}</td>
+        <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreement]}}</td>
+        <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
+
+        {% if [i.agreementEnded] == "true" %}
+        <td class="govuk-table__cell govuk-table__cell--no-border"></td>
+        {% else %}
+        <td class="govuk-table__cell govuk-table__cell--no-border"><a href="charges-2020/remove-agreement-date?agreementNumber={{agreementNumber}}">End</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a href="charges-2020/remove-agreement?agreementNumber={{agreementNumber}}">Remove</a></td>
+        {% endif %}
+      </tr>
+
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+ {% if numberOfAgreements > 0 %}
+  {{ govukButton({
+    text: "Set up new agreement",
+    href: "charges-2020/add-agreement",
+    classes: "govuk-button--secondary"
+  }) }}
   {% endif %}
 
+  </section>
 
-  {% set free = [data.chargeVersions[0].free] %}
-  {% set status = [data.chargeVersions[0].chargeStatus] %}
-     {% if (free == "true") and (status == "CHARGEABLE") %}
-      {{ govukInsetText({
-       html: 'This licence is exempt from charges.  ' + [data.reason] + '.'
-      }) }}
-    {% endif %}
-
-<dl class="govuk-summary-list">
-
-  {% if [data.newLicence] == "false" %}
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Billed up to
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{[data.chargeVersions[0].chargeBilledDate]}}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="/bd/charges-2020/bills">
-        View all bills
-      </a>
-    </dd>
-  </div>
-<!--    <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Next bill due
-    </dt>
-    <dd class="govuk-summary-list__value">
-      30 March 2020
-    </dd>
-    <dd class="govuk-summary-list__actions">
-
-    </dd>
-  </div> -->
- {% endif %}
- {% if data['invoiceAccount'] == "null"%}
- {% else %}
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Billing account
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{data['invoiceAccount']}}<br>
-      {{data['customerName']}}<br>
-      {% if data['newFAO'] == "Yes" %}
-      {{data['fao']}}<br>
-      {% endif %}
-      {{data['address1']}}<br>
-      {{data['postcode']}}<br>
-    </dd>
-    <dd class="govuk-summary-list__actions">
-      <ul class="govuk-summary-list__actions-list">
-        <li class="govuk-summary-list__actions-list-item">
-          <a class="govuk-link" href="/bd/charges-2020/billing-account">
-            View<span class="govuk-visually-hidden"> billing account</span>
-          </a>
-        </li>
-    <!--    <li class="govuk-summary-list__actions-list-item">
-          <a class="govuk-link"   href="/bd/contacts/new-contact"> href="/bd/charges-2020/charge-version/charge-data-create"
-            Change<span class="govuk-visually-hidden"> billing account</span>
-          </a>
-        </li> -->
-
-      </ul>
-    </dd>
-  </div>
- {% endif %}
-  <div class="govuk-summary-list__row ">
-<dt class="govuk-summary-list__key">
-  Charge elements
-</dt>
-<dd class="govuk-summary-list__value">
-  {% if data['invoiceAccount']== "null" %}
-  No charge elements set up
-  {% else %}
-  {% for i in data['elements'] %}
- {{[i.purpose]}}, {{[i.description]}}<br>
- {% endfor %}
- {% endif %}
-</dd>
-<dd class="govuk-summary-list__actions">
-  <a class="govuk-link" href="charges-2020/charge-versions">
-    View charge information
-  </a>
-</dd>
-</div>
-
-  <div class="govuk-summary-list__row govuk-summary-list__row--last">
-    <dt class="govuk-summary-list__key">
-      Agreements
-    </dt>
-    <dd class="govuk-summary-list__value">
-
-      {% set agreements = data['agreements'] %}
-      {% set numberOfAgreements = agreements.length %}
-
-    {% if numberOfAgreements > 1 %}
-
-      {{[data.agreement]}}
-
-    {% else %}
-      No current agreements
-    {% endif %}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="charges-2020/agreements">
-        View<span class="govuk-visually-hidden"> agreements</span>
-      </a>
-    </dd>
-  </div>
-
-
-
-</dl>
+  {% endif %}

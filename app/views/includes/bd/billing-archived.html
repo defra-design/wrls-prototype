@@ -1,0 +1,125 @@
+<!-- charges -->
+{% set chargeStatus = [data.chargeVersions[0].chargeStatus]%}
+   {% if chargeStatus == "CHARGEABLE" %}
+   {% else %}
+    {{ govukInsetText({
+     html: 'There is new charge information being set up for this licence. <br><a class="govuk-link" href="/bd/charges-2020/charge-versions">Check status</a>'
+    }) }}
+  {% endif %}
+
+
+  {% set free = [data.chargeVersions[0].free] %}
+  {% set status = [data.chargeVersions[0].chargeStatus] %}
+     {% if (free == "true") and (status == "CHARGEABLE") %}
+      {{ govukInsetText({
+       html: 'This licence is exempt from charges.  ' + [data.reason] + '.'
+      }) }}
+    {% endif %}
+
+<dl class="govuk-summary-list">
+
+  {% if [data.newLicence] == "false" %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Billed up to
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[data.chargeVersions[0].chargeBilledDate]}}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="/bd/charges-2020/bills">
+        View all bills
+      </a>
+    </dd>
+  </div>
+<!--    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Next bill due
+    </dt>
+    <dd class="govuk-summary-list__value">
+      30 March 2020
+    </dd>
+    <dd class="govuk-summary-list__actions">
+
+    </dd>
+  </div> -->
+ {% endif %}
+ {% if data['invoiceAccount'] == "null"%}
+ {% else %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Billing account
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{data['invoiceAccount']}}<br>
+      {{data['customerName']}}<br>
+      {% if data['newFAO'] == "Yes" %}
+      {{data['fao']}}<br>
+      {% endif %}
+      {{data['address1']}}<br>
+      {{data['postcode']}}<br>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <ul class="govuk-summary-list__actions-list">
+        <li class="govuk-summary-list__actions-list-item">
+          <a class="govuk-link" href="/bd/charges-2020/billing-account">
+            View<span class="govuk-visually-hidden"> billing account</span>
+          </a>
+        </li>
+    <!--    <li class="govuk-summary-list__actions-list-item">
+          <a class="govuk-link"   href="/bd/contacts/new-contact"> href="/bd/charges-2020/charge-version/charge-data-create"
+            Change<span class="govuk-visually-hidden"> billing account</span>
+          </a>
+        </li> -->
+
+      </ul>
+    </dd>
+  </div>
+ {% endif %}
+  <div class="govuk-summary-list__row ">
+<dt class="govuk-summary-list__key">
+  Charge elements
+</dt>
+<dd class="govuk-summary-list__value">
+  {% if data['invoiceAccount']== "null" %}
+  No charge elements set up
+  {% else %}
+  {% for i in data['elements'] %}
+ {{[i.purpose]}}, {{[i.description]}}<br>
+ {% endfor %}
+ {% endif %}
+</dd>
+<dd class="govuk-summary-list__actions">
+  <a class="govuk-link" href="charges-2020/charge-versions">
+    View charge information
+  </a>
+</dd>
+</div>
+
+  <div class="govuk-summary-list__row govuk-summary-list__row--last">
+    <dt class="govuk-summary-list__key">
+      Agreements
+    </dt>
+    <dd class="govuk-summary-list__value">
+
+      {% set agreements = data['agreements'] %}
+      {% set numberOfAgreements = agreements.length %}
+
+    {% if numberOfAgreements > 1 %}
+
+      {{[data.agreement]}}
+
+    {% else %}
+      No current agreements
+    {% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="charges-2020/agreements">
+        View<span class="govuk-visually-hidden"> agreements</span>
+      </a>
+    </dd>
+  </div>
+
+
+
+</dl>
