@@ -42,6 +42,10 @@ $govuk-global-styles: true;
 // hacks
 // ========== ========== ========== ========== ==========
 
+.width-20 {
+width: 20% !important;
+}
+
 //header container to exapnd full width
 .mastheader{
   margin-left: calc(50% - 50vw);
