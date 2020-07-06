@@ -14,9 +14,17 @@
 
   <tbody class="govuk-table__body">
 
+
+    {% if [data.newLicence] == "false" %}
     {% set chargeVersions = data['chargeVersions'] %}
+    {% else %}
+    {% set chargeVersions = [data.chargeVersions[0]] %}
+    {% endif %}
+
     {% set chargeVersionsNumber = "" %}
     {% set numberOfChargeVersions = chargeVersions.length %}
+
+
     {% for i in chargeVersions %}
 
     <!--set last row to remove the bottom border-->
