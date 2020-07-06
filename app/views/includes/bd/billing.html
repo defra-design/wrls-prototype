@@ -8,103 +8,124 @@
     {% endif %}
 
 
-<section >
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-      <h2 class="govuk-heading-m"> Latest bill </h2>
-
-      <dl class="govuk-summary-list">
-
-        {% if [data.newLicence] == "false" %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Date created
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{[data.chargeVersions[0].chargeBilledDate]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/bd/charges-2020/bills">
-              View all bills
-            </a>
-          </dd>
-        </div>
-      <!--    <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Next bill due
-          </dt>
-          <dd class="govuk-summary-list__value">
-            30 March 2020
-          </dd>
-          <dd class="govuk-summary-list__actions">
-
-          </dd>
-        </div> -->
-       {% endif %}
-       {% if data['invoiceAccount'] == "null"%}
-       {% else %}
-        <div class="govuk-summary-list__row govuk-summary-list--no-border">
-          <dt class="govuk-summary-list__key">
-            Billing account
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data['invoiceAccount']}}<br>
-            {{data['customerName']}}<br>
-            {% if data['newFAO'] == "Yes" %}
-            {{data['fao']}}<br>
-            {% endif %}
-            {{data['address1']}}<br>
-            {{data['postcode']}}<br>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <ul class="govuk-summary-list__actions-list">
-              <li class="govuk-summary-list__actions-list-item">
-                <a class="govuk-link" href="/bd/charges-2020/billing-account">
-                  View<span class="govuk-visually-hidden"> billing account</span>
-                </a>
-              </li>
-          <!--    <li class="govuk-summary-list__actions-list-item">
-                <a class="govuk-link"   href="/bd/contacts/new-contact"> href="/bd/charges-2020/charge-version/charge-data-create"
-                  Change<span class="govuk-visually-hidden"> billing account</span>
-                </a>
-              </li> -->
-
-            </ul>
-          </dd>
-        </div>
-       {% endif %}
-
-
-
-      </dl>
-
-    </div>
-  </div>
-</section>
 
 <div class="govuk-accordion govuk-table__cell--no-border" data-module="accordion" id="accordion-default">
+
+  <div class="govuk-accordion__section govuk-accordion__section--expanded">
+    <div class="govuk-accordion__section-header">
+
+
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+          Latest bill
+        </span>
+      </h2>
+
+      <!--  <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
+          Latest bill
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        The last bill for this licence was created on {{[data.chargeVersions[0].chargeBilledDate]}}.
+      </div> -->
+
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+
+
+            <dl class="govuk-summary-list">
+
+              {% if [data.newLicence] == "false" %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Date created
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{[data.chargeVersions[0].chargeBilledDate]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="/bd/charges-2020/bills">
+                    View all bills
+                  </a>
+                </dd>
+              </div>
+            <!--    <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Next bill due
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  30 March 2020
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div> -->
+             {% endif %}
+             {% if data['invoiceAccount'] == "null"%}
+             {% else %}
+              <div class="govuk-summary-list__row govuk-summary-list--no-border">
+                <dt class="govuk-summary-list__key">
+                  Billing account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{data['invoiceAccount']}}<br>
+                  {{data['customerName']}}<br>
+                  {% if data['newFAO'] == "Yes" %}
+                  {{data['fao']}}<br>
+                  {% endif %}
+                  {{data['address1']}}<br>
+                  {{data['postcode']}}<br>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                    <li class="govuk-summary-list__actions-list-item">
+                      <a class="govuk-link" href="/bd/charges-2020/billing-account">
+                        View<span class="govuk-visually-hidden"> billing account</span>
+                      </a>
+                    </li>
+                <!--    <li class="govuk-summary-list__actions-list-item">
+                      <a class="govuk-link"   href="/bd/contacts/new-contact"> href="/bd/charges-2020/charge-version/charge-data-create"
+                        Change<span class="govuk-visually-hidden"> billing account</span>
+                      </a>
+                    </li> -->
+
+                  </ul>
+                </dd>
+              </div>
+             {% endif %}
+
+
+
+            </dl>
+
+
+
+      </div>
+      </div>
+
 
   <div class="govuk-accordion__section ">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
           Charge information
         </span>
       </h2>
     </div>
-    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
 
       <table class="govuk-table">
       <!--  <caption class="govuk-table__caption">Charge information</caption> -->
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Start date</th>
-            <th scope="col" class="govuk-table__header">End date</th>
-            <th scope="col" class="govuk-table__header">Reason</th>
-            <th scope="col" class="govuk-table__header">Status</th>
-            <th scope="col" class="govuk-table__header">Action</th
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Start date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">End date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Reason</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Status</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Action</th
           </tr>
         </thead>
 
@@ -214,12 +235,12 @@
   <div class="govuk-accordion__section ">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
           Agreements
         </span>
       </h2>
     </div>
-    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+    <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
 
       {% set agreements = data['agreements'] %}
       {% set agreementNumber = agreements.length %}
