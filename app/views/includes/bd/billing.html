@@ -354,6 +354,11 @@
 
 <!--<hr class="govuk-section-break--l govuk-section-break--visible"> -->
 
+{% for i in agreements %}
+{% set agreementNumber = loop.index0 %}
+{% endfor %}
+ {% if numberOfAgreements > 0 %}
+
 <section>
 
   <h2 class="govuk-heading-m">Agreements</h2>
@@ -394,7 +399,7 @@
     </tbody>
   </table>
 
- {% if numberOfAgreements > 0 %}
+
   {{ govukButton({
     text: "Set up new agreement",
     href: "charges-2020/add-agreement",
