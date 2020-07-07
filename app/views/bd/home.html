@@ -60,6 +60,10 @@
     <div class="mastheader">
       <div class="govuk-form-group govuk-width-container">
 
+        <!-- search for licences -->
+        <form action="search">
+
+
         <h1 class="govuk-label-wrapper">
           <label class="govuk-label govuk-label--l  " for="search">
             Search for a licence, user, return or account
@@ -69,11 +73,14 @@
           Enter licence number, name, registered email address, return ID or billing account
         </span>
         <input class="govuk-input govuk-!-width-three-quarters govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
-  <a href="results-licences" class="wrls-faux-button wrls-faux-button--inline">
-          Search
-        </a>
 
+        {{ govukButton({
+            text: "Search",
+            classes: "wrls-faux-button--inline"
+          }) }}
 
+      
+        </form>
 
       </div>
 

@@ -337,20 +337,28 @@
         </thead>
         <tbody class="govuk-table__body">
 
+          <!--setting the number of agreements-->
+          {% set numberOfAgreements = "" %}
+          {% set numberOfAgreements = agreements.length %}
 
           {% for i in agreements %}
           {% set agreementNumber = loop.index0 %}
 
+          <!--set last row to remove the bottom border-->
+          {% if loop.index ==  numberOfAgreements %}
+          {% set lastRowAgreements = "govuk-table__cell--no-border" %}
+          {% endif %}
+
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
-            <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreementEndDay] + " " + [[i.agreementEndMonth] | toMonth] + " " + [i.agreementEndYear]}}</td>
-            <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreement]}}</td>
-            <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreementEndDay] + " " + [[i.agreementEndMonth] | toMonth] + " " + [i.agreementEndYear]}}</td>
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreement]}}</td>
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
 
             {% if [i.agreementEnded] == "true" %}
-            <td class="govuk-table__cell govuk-table__cell--no-border"></td>
+            <td class="govuk-table__cell {{lastRowAgreements}}"></td>
             {% else %}
-            <td class="govuk-table__cell govuk-table__cell--no-border"><a href="charges-2020/remove-agreement-date?agreementNumber={{agreementNumber}}">End</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a
+            <td class="govuk-table__cell {{lastRowAgreements}}"><a href="charges-2020/remove-agreement-date?agreementNumber={{agreementNumber}}">End</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a
                 href="charges-2020/remove-agreement?agreementNumber={{agreementNumber}}">Remove</a></td>
             {% endif %}
           </tr>

@@ -33,10 +33,27 @@
       {% endif %}
       {% endfor %}
 
+      <!--number of chargeVersions with Change charge status-->
+      {% set change = 0 %}
+      {% set chargeVersions = data['chargeVersions'] %}
+      {% for i in chargeVersions %}
+      {% if i.chargeStatus == 'CHANGES' or i.chargeStatus == 'DRAFT'%}
+      {% set change = change + 1  %}
+      {% endif %}
+      {% endfor %}
+
       {% if review > 0 %}
       <li class="navbar__item navbar__last">
         <a class="navbar__link govuk-link--no-visited-state" href="/bd/home#review" id="chargeReview">
           Charge information for review ({{review}})
+        </a>
+      </li>
+      {% endif %}
+
+      {% if change > 0 %}
+      <li class="navbar__item navbar__last">
+        <a class="navbar__link govuk-link--no-visited-state" href="/bd/home#draft" id="chargeChange">
+          Charge information change request ({{change}})
         </a>
       </li>
       {% endif %}
