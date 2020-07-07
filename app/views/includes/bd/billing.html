@@ -25,11 +25,11 @@
 
       <h2 class="govuk-accordion__section-heading">
         <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
-          Latest bill
+          Bills
         </span>
       </h2>
       <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
-        View latest bill, billing history and billing account.
+        Latest bill, billing history and billing account.
 
         <!--The last bill for this licence was created on {{[data.chargeVersions[0].chargeBilledDate]}}.-->
       </div>
@@ -40,6 +40,7 @@
 
       {{ govukTable({
           classes: "govuk-!-margin-bottom-2",
+          caption: "Latest bill",
           head: [
           {
             text: "Date created",
@@ -80,13 +81,13 @@
               },
               {
                 classes: 'govuk-table__cell--no-border',
-                html: '<a href="/bd/charges-2020/billing-account" class="govuk-link">L12345678S</a>'
+                html: '<a href="/bd/charges-2020/billing-account" class="govuk-link">L12345678S</a><br>	15 Ward Road<br> Bath<br> BA1 5EH'
               }
             ]
           ]
         }) }}
 
-      <p class="govuk-body govuk-!-margin-bottom-6"><a href="#" class="govuk-link">View all bills</a></p>
+      <p class="govuk-body govuk-!-margin-bottom-6"><a href="/bd/charges-2020/bills" class="govuk-link">View all bills</a></p>
 
       <!--      <dl class="govuk-summary-list">
 
@@ -160,7 +161,7 @@
         </span>
       </h2>
       <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
-        View latest charge information and older versions, set up new charge information
+        Latest charge information and older versions, set up new charge information.
       </div>
 
     </div>
@@ -295,7 +296,7 @@
         </span>
       </h2>
       <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
-        View current and set up a new agreements
+        Current agreements, set up a new agreement.
       </div>
 
     </div>
