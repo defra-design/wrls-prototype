@@ -9,12 +9,14 @@
 
 
 
-<div class="govuk-accordion govuk-table__cell--no-border" data-module="accordion" id="accordion-default">
+<div class="govuk-accordion govuk-table__cell--no-border" data-module="accordion" id="accordion-with-summary-sections">
 
   {% if [data.newLicence] == "false" %}
 
+
   <div class="govuk-accordion__section ">
     <div class="govuk-accordion__section-header">
+
 
 
       <!--  <h2 class="govuk-accordion__section-heading">
@@ -35,7 +37,7 @@
       </div>
 
     </div>
-    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+    <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-1">
 
 
       {{ govukTable({
@@ -44,24 +46,23 @@
           head: [
           {
             text: "Date created",
-            classes: "govuk-!-width-one-fifth"
+            classes: "govuk-!-width-one-fifth width-20"
           },
           {
             text: "Bill number",
-            classes: "govuk-!-width-one-fifth"
+            classes: "govuk-!-width-one-fifth width-20"
           },
           {
             text: "Bill run type",
-            classes: "govuk-!-width-one-fifth"
+            classes: "govuk-!-width-one-fifth width-20"
           },
           {
             text: "Billing account",
-            classes: "govuk-!-width-one-fifth"
+            classes: "govuk-!-width-one-fifth width-20"
           },
           {
-            text: "",
-            classes: "govuk-!-width-one-fifth",
-            format: "numeric"
+            text: "Total",
+            classes: "govuk-!-width-one-fifth width-20"
           }
           ],
           rows:
@@ -82,6 +83,10 @@
               {
                 classes: 'govuk-table__cell--no-border',
                 html: '<a href="/bd/charges-2020/billing-account" class="govuk-link">L12345678S</a><br>	15 Ward Road<br> Bath<br> BA1 5EH'
+              },
+              {
+                classes: 'govuk-table__cell--no-border',
+                text: '£3,002.75'
               }
             ]
           ]
@@ -165,7 +170,8 @@
       </div>
 
     </div>
-    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+
+    <div id="accordion-with-summary-sections-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-2">
 
       <table class="govuk-table">
         <!--  <caption class="govuk-table__caption">Charge information</caption> -->
@@ -291,16 +297,16 @@
       </h2> -->
 
       <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-2">
+        <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3">
           Agreements
         </span>
       </h2>
-      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-3">
         Current agreements, set up a new agreement.
       </div>
 
     </div>
-    <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+    <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-3">
 
       {% set agreements = data['agreements'] %}
 
@@ -333,6 +339,7 @@
 
 
           {% for i in agreements %}
+          {% set agreementNumber = loop.index0 %}
 
           <tr class="govuk-table__row">
             <td class="govuk-table__cell govuk-table__cell--no-border">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>

@@ -514,7 +514,7 @@ router.post('/bd/charges-2020/charge-version/charge-data-check', function(req, r
 
 
 ///////////CHARGE INFORMATION APPROVAL
-router.post('/bd/charges-2020/confirm-approve-charge-information', function(req, res) {
+router.get('/bd/charges-2020/confirm-approve-charge-information', function(req, res) {
 
   //update the element statuses
   req.session.data.chargeVersions[0]['chargeStatus'] = "CHARGEABLE"
@@ -538,7 +538,7 @@ router.post('/bd/charges-2020/confirm-approve-charge-information', function(req,
   req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
 
 
-  res.redirect('charge-versions');
+  res.redirect('/bd/licence-summary#charge');
 
 });
 
@@ -556,7 +556,7 @@ router.post('/bd/charges-2020/confirm-request-changes', function(req, res) {
   //update the element status
   req.session.data.chargeVersions[0]['chargeStatus'] = "CHANGES"
 
-  res.redirect('charge-versions');
+  res.redirect('/bd/licence-summary#charge');
 
 });
 
@@ -572,7 +572,7 @@ router.post('/bd/charges-2020/charge-version/confirm-remove-charge-information',
   req.session.data['chargeVersions'] = chargeVersions
 
 
-  res.redirect('/bd/charges-2020/charge-versions');
+  res.redirect('/bd/licence-summary#charge');
 });
 
 
@@ -629,7 +629,7 @@ router.post('/bd/charges-2020/charge-version-edit', function(req, res) {
 
 
 
-  res.redirect('/bd/charges-2020/charge-version');
+  res.redirect('/bd/licence-summary#charge');
 
 });
 
@@ -680,7 +680,6 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   let monthNumber = chargeStartMonth
   let month = monthNames[monthNumber - 1]
 
-  console.log(free);
   if ( free === "false") {
 
   //set the charge start date
@@ -689,20 +688,37 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
   let chargeStatus = "NOT APPROVED"
   let chargeBilledDate = "non-chargeable"
   let free = "true"
+  let reasonNewCharge = "Non-chargeable - " + req.session.data['reason'];
 
   let newCharge = {
     chargeStart,
     chargeEnd,
     chargeStatus,
     chargeBilledDate,
-    free
+    free,
+    reasonNewCharge
   };
   let chargeVersions = req.session.data['chargeVersions']
   chargeVersions.unshift(newCharge);
 
   res.redirect('/bd/charges-2020/charge-version/charge-data-confirmation');
 
-} else {
+}
+});
+
+
+router.get('/bd/charges-2020/nonchargeable-approve', function(req, res) {
+
+
+  // date fields
+  let chargeStartDay = req.session.data['chargeStart-day'];
+  let chargeStartMonth = req.session.data['chargeStart-month'];
+  let chargeStartYear = req.session.data['chargeStart-year'];
+
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  let monthNumber = chargeStartMonth
+  let month = monthNames[monthNumber - 1]
 
   //Mark the approved charge version as chargeable
   req.session.data.chargeVersions[0]['chargeStatus'] = "CHARGEABLE"
@@ -725,12 +741,9 @@ router.post('/bd/charges-2020/nonchargeable-check', function(req, res) {
     req.session.data['agreementEnded'] = "true"
   }*/
 
-  res.redirect('/bd/charges-2020/charge-versions');
+  res.redirect('/bd/licence-summary#charge');
 
-  }
 });
-
-
 
 
 
@@ -827,11 +840,11 @@ router.post('/bd/charges-2020/add-agreement-check', function(req, res) {
     agreementEndMonth,
     agreementEndYear
   };
-  console.log(newAgreement);
+
   let agreements = req.session.data['agreements']
   agreements.unshift(newAgreement);
 
-  res.redirect('agreements');
+  res.redirect('/bd/licence-summary#charge');
 });
 
 //END AGREEENT
@@ -855,7 +868,7 @@ router.post('/bd/charges-2020/confirm-remove-agreement', function(req, res) {
 
     req.session.data.agreements[agreementNumber]['agreementEnded'] = "true";
 
-    res.redirect('agreements');
+    res.redirect('/bd/licence-summary#charge');
 });
 
 //remove agreement
@@ -868,7 +881,7 @@ router.post('/bd/charges-2020/remove-agreement', function(req, res) {
   agreements.splice(agreementNumber, 1);
   req.session.data['agreements'] = agreements
 
-  res.redirect('/bd/charges-2020/agreements');
+  res.redirect('/bd/licence-summary#charge');
 });
 
 

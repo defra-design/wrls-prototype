@@ -36,7 +36,7 @@
 
 {{ govukBackLink({
     text: "Back",
-    href: "/bd/charges-2020/charge-versions"
+    href: "/bd/licence-summary#charge"
   }) }}
 
 {% endblock %}
@@ -197,7 +197,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 
     {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
 
-    <p class="govuk-body">This licence will be non-chargeable from charges</p>
+    <p class="govuk-body">This licence will be non-chargeable</p>
 
     {{ govukSummaryList({
     rows: [
@@ -261,17 +261,22 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
           </div>
     {% if date < 2020 %}
     {{ govukWarningText({
- text: "Older charge information will be invalid when you approve these details.",
- iconFallbackText: "Warning"
-}) }}
-    {% endif%}
+      text: "Older charge information will be invalid when you approve these details.",
+      iconFallbackText: "Warning"
+    }) }}
+    {% endif %}
 
+    {% set free = [data.chargeVersions[0]['free']] %}
+    {% if (free == "true") and (data['newLicence'] == "true") %}
+    {% elif (free == "true") %}
+    <p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
+    {% endif %}
 
 
     {{ govukButton({
   text: "Approve",
   classes: "govuk-!-margin-right-3",
-  href: "nonchargeable-check"
+  href: "/bd/charges-2020/nonchargeable-approve"
 }) }}
 
     {{ govukButton({
@@ -409,6 +414,8 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
  iconFallbackText: "Warning"
 }) }}
     {% endif%}
+
+    <p class="govuk-body">This licence will be added to the supplementary bill run</p>
 
     {{ govukButton({
   text: "Approve",

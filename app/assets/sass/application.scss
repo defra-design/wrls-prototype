@@ -46,6 +46,20 @@ $govuk-global-styles: true;
 width: 20% !important;
 }
 
+.max-width-20
+{
+  @media (min-width: 768px) {
+  max-width:20% !important;
+  }
+}
+
+
+.width-80 {
+  @media (min-width: 768px) {
+width: 80% !important;
+}
+}
+
 //header container to exapnd full width
 .mastheader{
   margin-left: calc(50% - 50vw);
