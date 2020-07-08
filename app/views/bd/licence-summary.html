@@ -78,9 +78,17 @@
         Communications
       </a>
     </li>
+    <!-- no bills tab for a new licence-->
+    {% if [data.newLicence] == "false" %}
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#bills">
+        Bills
+      </a>
+    </li>
+    {% endif %}
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#charge">
-        Billing
+        Charge information
       </a>
     </li>
   </ul>
@@ -127,12 +135,28 @@
 
   </section>
 
+<!-- no billing tab for a new licence-->
+{% if [data.newLicence] == "false" %}
   <!-- tab 4 -->
-  <section class="govuk-tabs__panel" id="charge">
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="bills">
 
-    <h2 class="govuk-heading-l">
-      Billing
-    </h2>
+    <section>
+
+  {% include "includes/bd/bills.html" %}
+
+    </section>
+
+
+  </section>
+
+{% endif %}
+
+  <!-- tab 5 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="charge">
+
+    <!--<h2 class="govuk-heading-l">
+      Charge information
+    </h2>-->
 
 
 
