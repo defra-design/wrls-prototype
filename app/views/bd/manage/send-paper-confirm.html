@@ -62,17 +62,42 @@
       {% set licences = data['licenceList'].split(r/,|\n/g) %}
 
 
-
-
       {% for i in licences %}
 
+      <!--this is a hacky way of doing this-->
+      <!--match the current licence from the returns string-->
+      {% set regex =  [i] %}
+      {% set currentLicence = data['return'].toString().split(regex) %}
+      <!--match the returns for that licence-->
+      {% set currentReturns = [currentLicence].toString().match(r/,p\d*w/g)  %}
+      <!--remove unwanted parts of the return reference and add line breaks-->
+      {% set returnsUntidy = [currentReturns].toString().replace(r/,|p/g, "") %}
+      {% set returns = [returnsUntidy].toString().replace(r/w/g, "<br>") %}
 
        <h2 class="govuk-heading-m">Licence {{i}}</h2>
 
       {{ govukSummaryList({
   rows: [
-
     {
+
+      key: {
+        text: "Returns"
+      },
+      value: {
+        html: returns
+      },
+      actions: {
+        items: [
+          {
+            href: "send-paper-check",
+            text: "Change",
+            visuallyHiddenText: "returns"
+          }
+        ]
+      }
+    },
+    {
+      classes: 'govuk-summary-list--no-border',
       key: {
         text: "Address"
       },
@@ -88,27 +113,11 @@
           }
         ]
       }
-    },
-    {
-      classes: 'govuk-summary-list--no-border',
-      key: {
-        text: "Returns"
-      },
-      value: {
-        html: data['return'].toString().replace(r/,/g, "<br>")
-      },
-      actions: {
-        items: [
-          {
-            href: "send-paper-check",
-            text: "Change",
-            visuallyHiddenText: "returns"
-          }
-        ]
-      }
     }
   ]
 }) }}
+
+
 
 {% endfor %}
 
