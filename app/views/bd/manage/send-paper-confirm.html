@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Send paper return forms" %}
+{% set title = "Check licence returns details for sending paper forms" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -47,10 +47,6 @@
         {{ title }}
       </h1>
 
-      {{ govukWarningText({
-        text: "You are about to send paper return forms for the following licences.",
-        iconFallbackText: "Warning"
-      }) }}
 
       <!--replace the commas in the address with line breaks-->
       {% set address = data['address'].replace(r/,/g, "<br>") %}
