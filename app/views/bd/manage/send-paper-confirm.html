@@ -61,12 +61,12 @@
       <!--split the string based on commas or new lines and add it to the array-->
       {% set licences = data['licenceList'].split(r/,|\n/g) %}
 
-       
+
 
       {% for i in licences %}
 
       <!--this is a hacky way of doing this-->
-      <!--match the current licence from the returns string-->
+      <!--match the current licence from the returns string, strip out any white space-->
       {% set regex = [i].toString().replace(r/\s/g, "") %}
       {% set currentLicence = data['return'].toString().replace(r/\s/g, "").split(regex) %}
 
@@ -110,7 +110,7 @@
       actions: {
         items: [
           {
-            href: "send-paper-select-address?url=send-paper-confirm",
+            href: "send-paper-select-address?url=send-paper-confirm&licenceNum=" + [i],
             text: "Change",
             visuallyHiddenText: "Address"
           }

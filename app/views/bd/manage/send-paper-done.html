@@ -3,11 +3,11 @@
 {% set title = "Paper return forms sent" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,43 +27,29 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-manage.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
 
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        {{ title }}
-      </h1>
 
-      <a href="../manage" class="wrls-faux-button">
-        Continue
-      </a>
 
-    </div>
+    {{ govukPanel({
+      titleText: [title],
+      html: "They should arrive in the next five days"
+      }) }}
+
+
+    <a href="../manage" class="govuk-link">See report for Notices</a>
+
   </div>
+</div>
 
-  <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-  <script>
-    $(function() {
-      $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
-        const url = $(this).find('input:checked').val();
-
-        if(url) {
-          ev.preventDefault();
-          window.location.href = url;
-          return false;
-        }
-      });
-    })
-  </script>
 
 {% endblock %}
