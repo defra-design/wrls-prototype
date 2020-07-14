@@ -166,6 +166,8 @@ module.exports = {
           "return": "",
           "return-2": "",
           "return-3": "",
+          "licenceList": "AN01/68/60/0032",
+          "return": "-AN01/68/60/0032p1234543w-"
     // Insert values here
 }
 
