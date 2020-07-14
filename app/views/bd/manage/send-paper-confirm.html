@@ -61,15 +61,18 @@
       <!--split the string based on commas or new lines and add it to the array-->
       {% set licences = data['licenceList'].split(r/,|\n/g) %}
 
+       
 
       {% for i in licences %}
 
       <!--this is a hacky way of doing this-->
       <!--match the current licence from the returns string-->
-      {% set regex =  [i] %}
-      {% set currentLicence = data['return'].toString().split(regex) %}
+      {% set regex = [i].toString().replace(r/\s/g, "") %}
+      {% set currentLicence = data['return'].toString().replace(r/\s/g, "").split(regex) %}
+
       <!--match the returns for that licence-->
       {% set currentReturns = [currentLicence].toString().match(r/,p\d*w/g)  %}
+
       <!--remove unwanted parts of the return reference and add line breaks-->
       {% set returnsUntidy = [currentReturns].toString().replace(r/,|p/g, "") %}
       {% set returns = [returnsUntidy].toString().replace(r/w/g, "<br>") %}

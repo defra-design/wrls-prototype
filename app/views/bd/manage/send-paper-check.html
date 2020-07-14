@@ -68,6 +68,7 @@
       {% set licences = data['licenceList'].split(r/,|\n/g) %}
 
 
+
       <table class="govuk-table">
 
         <caption class="govuk-table__caption govuk-heading-m">Returns</caption>
@@ -92,6 +93,8 @@
         <tbody class="govuk-table__body">
 
           {% for i in licences %}
+
+
 
           {% set returnRef1 = range(1000000, 9999999) | random  %}
           {% set returnRef2 = range(1000000, 9999999) | random  %}
