@@ -55,7 +55,7 @@
       {% set licences = [] %}
 
       <!--split the string based on commas or new lines and add it to the array-->
-      {% set licences = data['licenceList'].split(r/,|\n/g) %}
+      {% set licences = data['licenceList'].split(r/,|\n/g) | default ("AN/123/123/1232") %}
 
 
 
