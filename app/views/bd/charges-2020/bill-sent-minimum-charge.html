@@ -41,14 +41,16 @@
 
 {% block content %}
 
+
   <!-- page title -->
-  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+  <div class="govuk-grid-row govuk-!-margin-bottom-0">
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">2 January 2019</h1>
+        <h1 class="govuk-caption-l">Bill AA126515</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
       </section>
+
 
       <p class="govuk-body">
         {{govukTag({
@@ -57,10 +59,47 @@
       })}}
       </p>
 
+      <div class="govuk-grid-row govuk-!-margin-bottom-3">
+        <div class="govuk-grid-column-full">
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Date created
+              </div>
+              <div class="meta-data__value">
+                5 March 2020
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Region
+              </div>
+              <div class="meta-data__value">
+                Anglian
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Bill run type
+              </div>
+              <div class="meta-data__value">
+                Supplementary
+              </div>
+            <div>
+          </section>
+
+
+        </div>
+              </div>
+
     </div>
   </div>
 
-  <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
+  <!-- <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
         Licence holder address
@@ -73,12 +112,12 @@
       <br>Oxfordshire
       <br>RE1 1TG
     </div>
-  </details>
+  </details> -->
 
-  <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
+  <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
-        Contact address
+        Billing contact address
       </span>
     </summary>
     <div class="govuk-details__text">
@@ -90,17 +129,17 @@
     </div>
   </details>
 
-  <p class="govuk-body govuk-!-margin-bottom-9">
+  <!-- <p class="govuk-body govuk-!-margin-bottom-9">
     <a href="ias">
       Invoice account 021545
     </a>
-  </p>
+  </p> -->
 
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
-      <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£25.00</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h2>
+      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£25.00</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
     </div>
 
   </div>
@@ -115,17 +154,20 @@
   </div>
 
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
+    <!-- <div class="govuk-grid-column-one-half">
+      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3>
+    </div> -->
 
-    <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£0.00</span><br>
+  <div class="govuk-grid-column-one-half">
+      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£0</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
     </div>
 
     <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£11.00</span><br>
+      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£11.00</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
     </div>
-
   </div>
 
   <!-- <button class="govuk-button govuk-button--warning" data-module="govuk-button">
@@ -215,7 +257,7 @@
               High loss
               <br>Summer
               <br>Supported source
-              <br>S126 (Abatement)
+            <!--  <br>S126 (Abatement)  -->
             </p>
           </div>
           <div class="table__cell numbers">
