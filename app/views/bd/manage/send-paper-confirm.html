@@ -41,12 +41,14 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
 
+    </div>
+    </div>
 
       <!--replace the commas in the address with line breaks-->
       {% set address = data['address'].replace(r/,/g, "<br>") %}
@@ -55,9 +57,10 @@
       {% set licences = [] %}
 
       <!--split the string based on commas or new lines and add it to the array-->
-      {% set licences = data['licenceList'].split(r/,|\n/g) | default ("AN/123/123/1232") %}
+      {% set licences = data['licenceList'].split(r/,|\n/g) %}
 
-
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
       {% for i in licences %}
 
@@ -80,7 +83,7 @@
     {
 
       key: {
-        text: "Return reference"
+        text: "Returns"
       },
       value: {
         html: returns

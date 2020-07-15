@@ -45,15 +45,18 @@
 
 <form action="send-paper-confirm" method="post" class="form">
 
-  <fieldset class="govuk-fieldset">
+  <fieldset class="govuk-fieldset" aria-describedby="table-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
       {{ title }}
     </h1>
- <span class="govuk-hint">
+    </legend>
+    <p class="govuk-body">
+ <span id="table-hint" class="govuk-hint">
    Select the return reference numbers for each licence you’re sending a paper form out to.
  </span>
-    </legend>
+ </p>
+
 
 
 
@@ -74,7 +77,7 @@
 
       <table class="govuk-table">
 
-        <caption class="govuk-table__caption govuk-heading-m">Returns</caption>
+        <caption class="govuk-table__caption">Returns due by licence</caption> 
 
 
         <thead class="govuk-table__head">
