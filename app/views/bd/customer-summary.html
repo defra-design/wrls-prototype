@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Water Company Plc" %}
+{% set title = data['customerName'] %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -27,16 +27,28 @@
 
 {% block beforeContent %}
 
-  <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-6">
-    <!-- navigation block -->
-    {% include "includes/nav/nav-bd-view.html" %}
-  </div>
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+</div>
 
-  <!-- {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back()"
-  }) }} -->
+<!-- navigation block -->
+{% include "includes/nav/nav-bd.html" %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "home"
+    }
+  ]
+}) }}
 
 {% endblock %}
 
@@ -45,13 +57,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-l">Customer</span>
-      <h1 class="govuk-heading-l">Water Company Plc</h1>
+      <h1 class="govuk-heading-l">{{data['customerName']}}</h1>
     </div>
   </div>
 
-  <div class="govuk-!-margin-bottom-6">
-    <p class="govuk-body">Registered to <a href="user-status" class="no-break">admint@watercompany.com</a></p>
-  </div>
+  <!--<div class="govuk-!-margin-bottom-6">
+    <p class="govuk-body">Registered to <a href="user-status" class="no-break">admin@{{data['customerName'] | lower | replaceWS}}.com</a></p>
+  </div> -->
 
 
   <div class="govuk-tabs" data-module="tabs">
@@ -63,7 +75,7 @@
     <!-- tab navigation -->
     <ul class="govuk-tabs__list">
       <li class="govuk-tabs__list-item" tabindex="0">
-        <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary">
+        <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#licences">
           Licences
         </a>
       </li>
@@ -73,26 +85,22 @@
         </a>
       </li>
       <li class="govuk-tabs__list-item" tabindex="0">
-        <a class="govuk-tabs__tab" href="#communications">
+        <a class="govuk-tabs__tab" href="#contacts">
           Contacts
         </a>
       </li>
       <li class="govuk-tabs__list-item" tabindex="0">
-        <a class="govuk-tabs__tab" href="#charge">
-          Invoice accounts
+        <a class="govuk-tabs__tab" href="#billing-accounts">
+          Billing accounts
         </a>
       </li>
     </ul>
 
     <!-- tab 1 -->
-    <section class="govuk-tabs__panel" id="summary">
-
-      <h2 class="govuk-heading-l">
-        Licences
-      </h2>
+    <section class="govuk-tabs__panel" id="licences">
 
       <!-- licences -->
-      {% include "includes/bd/licences.html" %}
+      {% include "includes/bd/licences-customer.html" %}
 
     </section>
 
@@ -109,11 +117,9 @@
     </section>
 
     <!-- tab 3 -->
-    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
+    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contacts">
 
-      <h2 class="govuk-heading-l">
-        Contacts
-      </h2>
+
 
       <!-- contacts table -->
       {% include "includes/bd/contacts.html" %}
@@ -121,11 +127,7 @@
     </section>
 
     <!-- tab 4 -->
-    <section class="govuk-tabs__panel" id="charge">
-
-      <h2 class="govuk-heading-l">
-        Invoice accounts
-      </h2>
+    <section class="govuk-tabs__panel" id="billing-accounts">
 
       <!-- invoice accounts table -->
       {% include "includes/bd/invoice-accounts.html" %}

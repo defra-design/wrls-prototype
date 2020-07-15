@@ -1,0 +1,47 @@
+{{ govukTable({
+  caption: "Licences",
+  captionClasses: "govuk-heading-l",
+  firstCellIsHeader: false,
+  classes: "govuk-table-fix",
+  head: [
+    {
+      text: "Licence",
+      classes: 'govuk-!-width-one-third'
+    },
+    {
+      text: "Licence name",
+      classes: 'govuk-!-width-one-third'
+    },
+    {
+      text: "End date",
+      classes: 'govuk-!-width-one-third'
+    }
+  ],
+  rows: [
+    [
+      {
+        html: '<a href="licence-summary-new" class="govuk-link">03/28/60/0032</a>'
+      },
+      {
+        text: "Glindenfold Lake"
+      },
+      {
+        text: "	31 December 2025"
+      }
+    ],
+    [
+      {
+        text: '03/28/61/029',
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        text: "Hayles Valley - Bottom site",
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        text: "31 January 2020",
+        classes: 'govuk-table__cell--no-border'
+      }
+    ]
+    ]
+  }) }}

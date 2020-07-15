@@ -52,6 +52,11 @@ module.exports = function (env) {
   }}
 
 
+//filter for removing white space from a variable "| replaceWS"
+filters.replaceWS = function(e){
+      return e.replace(/\s/g,'')
+     }
+
     //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 
   //filters.statusReview = function(arr) { arr.filter(i => i.chargeStatus == 'CHARGEABLE')};

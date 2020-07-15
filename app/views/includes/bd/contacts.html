@@ -1,58 +1,50 @@
-<!-- table with four columns -->
-<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
 
-  <div class="table__row--head">                                              <!-- the table head -->
-    <div class="table__cell bold-small column--25">
-      Contact name
-      <!-- licence name if it exists, otherwise Licence -->
-    </div>
-    <div class="table__cell bold-small">
-      Role
-    </div>
-    <div class="table__cell bold-small column--25">
-      Licences
-    </div>
-    <div class="table__cell bold-small column--20">
-      Created date
-    </div>
-  </div>
 
-  <!-- table row -->
-  <a href="/bd/charges/ias" class="table__row govuk-!-margin-bottom-6">
-    <div class="table__cell">
-      <h2 class="screen-reader-only">
-        Row 1
-      </h2>
-      <span class="screen-reader-only">See Dawidek Jevnic</span>
-      <h3 class="table__context">
-        Contact name
-      </h3>
-      <span class="table__link">
-        Dawidek Jevnic
-      </span>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Role
-      </h3>
-      <p class="table__row--text">
-        Billing contact
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Licences
-      </h3>
-      <p class="table__row--text">
-        29/12345/345/23
-      </p>
-    </div>
-    <div class="table__cell">
-      <h3 class="table__context">
-        Created date
-      </h3>
-        <p>
-        31 January 2019
-        </p>
-    </div>
-  </a>
+
+  {{ govukTable({
+    caption: "Contacts",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    classes: "govuk-table-fix",
+    head: [
+      {
+        text: "Contact name",
+        classes: 'govuk-!-width-one-third'
+      },
+      {
+        text: "Role",
+        classes: 'govuk-!-width-one-third'
+      },
+      {
+        text: "Created date",
+        classes: 'govuk-!-width-one-third'
+      }
+    ],
+    rows: [
+      [
+        {
+          text: 'Dawidek Jevnic'
+        },
+        {
+          text: "Billing contact"
+        },
+        {
+          text: "31 January 2019"
+        }
+      ],
+      [
+        {
+          text: 'Joanna Southall',
+          classes: 'govuk-table__cell--no-border'
+        },
+        {
+          text: "Returns contact",
+          classes: 'govuk-table__cell--no-border'
+        },
+        {
+          text: "5 February 2018",
+          classes: 'govuk-table__cell--no-border'
+        }
+      ]
+      ]
+    }) }}
