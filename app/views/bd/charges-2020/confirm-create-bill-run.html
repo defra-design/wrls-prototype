@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You are about to generate the two-part tariff bills" %}
+{% set title = "You are about to generate the two-part tariff " + data['tptSeason'] + " bills"  %}
 
 
 
@@ -56,7 +56,7 @@
     <h1 class="govuk-heading-xl">{{ title }}</h1>
 
     <section class="govuk-!-margin-bottom-6">
-  <h2 class="govuk-heading-l">{{data['region']}} two-part tariff bill run</h2>
+  <h2 class="govuk-heading-l">{{data['region']}} two-part tariff {{data['tptSeason']}} bill run</h2>
     </section>
 
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -87,7 +87,7 @@
               Bill run type
             </div>
             <div class="meta-data__value">
-              Two-part tariff
+              Two-part tariff {{data['tptSeason']}}
             </div>
           <div>
         </section>

@@ -46,7 +46,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <span class="govuk-caption-l">{{data['region']}} two-part tariff bill run</span>
+        <span class="govuk-caption-l">{{data['region']| firstToUpperCase}} two-part tariff {{data['tptSeason']}} bill run</span>
         <h1 class="govuk-heading-xl">{{ title }}</h1>
       </section>
 
@@ -89,7 +89,7 @@
             Bill run type
           </div>
           <div class="meta-data__value">
-            Two-part tariff
+          Two-part tariff {{data['tptSeason']}} bill run
           </div>
         <div>
       </section>

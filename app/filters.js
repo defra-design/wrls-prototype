@@ -57,6 +57,14 @@ filters.replaceWS = function(e){
       return e.replace(/\s/g,'')
      }
 
+     //capitalise the first character of a string
+
+     filters.firstToUpperCase = function(e) {
+       return e.charAt(0).toUpperCase() + e.slice(1)
+     }
+
+     
+
     //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 
   //filters.statusReview = function(arr) { arr.filter(i => i.chargeStatus == 'CHARGEABLE')};

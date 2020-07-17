@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + " two-part tariff bill run" %}
+{% set title = data['region'] + " two-part tariff " + data['tptSeason'] + " bill run" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -94,7 +94,7 @@
               Bill run type
             </div>
             <div class="meta-data__value">
-              Two-part
+              Two-part tariff {{data['tptSeason']}}
             </div>
             <div>
         </section>

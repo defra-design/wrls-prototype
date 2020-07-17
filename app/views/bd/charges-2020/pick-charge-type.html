@@ -43,7 +43,7 @@
 
   <form data-routing="1" method="post" class="form" id="choose-bill-type">
 
-  
+
 
         {% set tptType %}
         {{ govukRadios({
@@ -52,11 +52,11 @@
   name: "tptSeason",
   items: [
     {
-      value: "pick-two-part-region",
+      value: "summer",
       text: "Summer"
     },
     {
-      value: "pick-two-part-region",
+      value: "winter and all year",
       text: "Winter and All year"
     }
   ]
@@ -84,7 +84,7 @@
               text: "Supplementary"
             },
             {
-              value: "pick-two-part-region",
+              value: "pick-two-part-region?tptSeason=",
               text: "Two-part tariff",
               conditional: {
                 html: tptType
@@ -109,12 +109,33 @@
   <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
   <script>
+
+
+
     $(function() {
       $('form[data-routing]').on('submit', function(ev) {
         // FInd selected radio button
         const url = $(this).find('input:checked').val();
 
         if(url) {
+
+
+          if( $("#tptSeason-1").is(':checked')){
+          let  season = "summer"
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl+season;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
+        } else if ( $("#tptSeason-2").is(':checked')){
+          let  season = "winter and all year"
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl+season;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
+        }
+
           ev.preventDefault();
           window.location.href = url;
           return false;
