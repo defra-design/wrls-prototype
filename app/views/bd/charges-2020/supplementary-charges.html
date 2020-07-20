@@ -109,7 +109,7 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
-      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£5,460.00</span><br>
+      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['credit'] == "true" %}£5,532.25{% else %}£11,537.75{% endif %}</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
     </div>
 
@@ -118,13 +118,13 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
     <div class="govuk-grid-column-one-half">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£92.75</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">1 credit note</span></h2>
+      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['credit'] == "true" %}£3,095.50{% else %}£92.75{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['credit'] == "true" %}2{% else %}1{% endif %} credit note</span></h2>
     </div>
 
     <div class="govuk-grid-column-one-half">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£5,552.75</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">3 invoices</span></h2>
+      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['credit'] == "true" %}£8,627.75{% else %}£11,630.55{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['credit'] == "true" %}3{% else %}4{% endif %} invoices</span></h2>
     </div>
 
   </div>

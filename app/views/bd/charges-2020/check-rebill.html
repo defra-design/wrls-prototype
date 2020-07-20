@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% set title = "You're about to rebill Bottled Water Plc" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><span class="govuk-caption-l">Bill OP123344</span>{{ title }}</h1>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Licences"
+          },
+          value: {
+            html: "03/28/60/0032<br>01/22/63/0044"
+          }
+        },
+        {
+          key: {
+            text: "Bill amount"
+          },
+          value: {
+            text: "£3,015.90"
+          }
+        },
+        {
+          classes: 'govuk-summary-list--no-border',
+          key: {
+            text: "Billing account"
+          },
+          value: {
+            html: "3725712 <br>FAO J Entwhistle<br> 1 Hill House<br>Abingdon-on-Thames<br>Oxfordshire<br>RE1 1TG"
+          }
+        }
+      ]
+    }) }}
+
+
+    {{ govukButton({
+  text: "Confirm",
+  classes: "govuk-!-margin-right-1",
+  href: "confirm-rebill"
+}) }}
+
+{{ govukButton({
+  text: "Cancel",
+  classes: "govuk-button--secondary",
+  href: "javascript:history.back()"
+}) }}
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

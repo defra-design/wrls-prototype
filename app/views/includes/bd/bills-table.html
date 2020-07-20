@@ -46,11 +46,11 @@
 
 
 
-      <td class="govuk-table__cell govuk-table__cell--numeric">£3,002.75</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£3,002.75{% if data['credit'] == "true" %}<br>Credit note{% endif %}</td>
 
 
 
-      <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a {% if data['credit'] == "true" %}href="supplementary-bill-credit"{% else %}href="supplementary-bill"{% endif%}>
           View <span class="screen-reader-only">bill for billing account AN20392</span>
         </a></td>
 

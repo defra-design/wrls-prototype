@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Transactions ready to be rebilled" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l"><span class="govuk-caption-l">Bill OP123344</span>{{ title }}</h1>
+
+    <p class="govuk-body">The next supplementary bill run will include a credit note for the transactions from bill AA283949S.</p>
+    <p class="govuk-body">After the credit note has been sent, the following supplementary bill run will include a new invoice.</p>
+    <p class="govuk-body"><a class="govuk-link" href="/bd/charges-2020/pick-supplementary-region?credit=true">Create supplementary bill run</a></p>
+    <p class="govuk-body">or</p>
+    <p class="govuk-body"><a class="govuk-link" href="bills">Rebill another transaction</a></p>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
