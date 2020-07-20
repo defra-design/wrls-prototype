@@ -51,41 +51,70 @@
     <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
     {{ title }}</h1>
 
+    <!-- Licences linked to this billing account -->
+    {% include "includes/bd/licences-billing-account.html" %}
   </div>
 </div>
 
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
     <section>
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Licence holder
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data['licenceHolder']}}
-          </dd>
-          <dd class="govuk-summary-list__value">
-          </dd>
-        </div>
+      <h2 class="govuk-heading-m">
+      Billing address
+      </h2>
+      <p class="govuk-body">
+      {% set licenceHolder = data['licenceHolder'] %}
+      {% set billingContact = data['customerName'] %}
+
+      {% if data['newFAO'] == "Yes" %}
+      FAO {{data['fao']}}<br>
+      {% endif %}
+
+      {% if licenceHolder == billingContact %}
+      {{data['licenceHolder']}}<br>
+      {% else %}
+      {{data['licenceHolder']}}<br>
+      C/o {{data['customerName']}}<br>
+      {% endif %}
+
+
+      {{data['address1']}}<br>
+      {{data['city']}}<br>
+      {{data['postcode']}}
+      </p>
+
+
+      {{ govukButton({
+  text: "Change address",
+  classes: "govuk-button--secondary",
+  href: "/bd/contacts/bill-manager?ba=true&createNewContact=false"
+}) }}
+
+
+
+  <!--    <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row govuk-summary-list__row--last">
           <dt class="govuk-summary-list__key">
-            Billing contact
+            Billing address
           </dt>
           <dd class="govuk-summary-list__value">
 
             {% set licenceHolder = data['licenceHolder'] %}
             {% set billingContact = data['customerName'] %}
 
-            {% if licenceHolder == billingContact %}
-            {% else %}
-            {{data['customerName']}}<br>
+            {% if data['newFAO'] == "Yes" %}
+            FAO {{data['fao']}}<br>
             {% endif %}
 
-            {% if data['newFAO'] == "Yes" %}
-            {{data['fao']}}<br>
+            {% if licenceHolder == billingContact %}
+            {{data['licenceHolder']}}<br>
+            {% else %}
+            {{data['licenceHolder']}}<br>
+            C/o {{data['customerName']}}<br>
             {% endif %}
+
+
             {{data['address1']}}<br>
             {{data['city']}}<br>
             {{data['postcode']}}<br>
@@ -97,15 +126,23 @@
           </dd>
         </div>
 
-      </dl>
+      </dl> -->
     </section>
   </div>
 </div>
 
-<!-- <div class="divider govuk-!-margin-bottom-8"></div> -->
+<div class="divider govuk-!-margin-bottom-8"></div>
+
+<!--<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">-->
 
 
-<!-- Licences linked to this billing account -->
-{% include "includes/bd/licences-billing-account.html" %}
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+    <section>
+{% include "includes/bd/bills.html" %}
+    </section>
+  </div>
+</div>
 
 {% endblock %}
