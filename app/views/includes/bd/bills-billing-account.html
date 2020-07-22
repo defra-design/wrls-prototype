@@ -1,0 +1,153 @@
+
+
+
+
+  {{ govukTable({
+    caption: "Sent bills",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Date created"
+      },
+      {
+        text: "Bill number"
+      },
+      {
+        text: "Bill run type"
+      },
+      {
+        text: "Total",
+        format: 'numeric'
+      }
+    ],
+    rows: [
+    [
+      {
+        text: '20 April 2020'
+      },
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-rebilled?status=sent&region=Anglian">OP765990</a>'
+      },
+      {
+        text: "Supplementary"
+      },
+      {
+        text: "£3,002.75",
+        format: 'numeric'
+      }
+    ]if ("true" in data.rebill) and ("false" in data.credit),
+
+    [
+    {
+      text: '20 April 2020'
+    },
+    {
+      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-credit?status=sent&region=Anglian&credit=true">OP444333</a>'
+    },
+    {
+      text: "Supplementary"
+    },
+    {
+      html: "£3,002.75<br>Credit",
+      format: 'numeric'
+    }
+    ] if ("true" in data.rebill) and ("false" in data.credit),
+
+    [
+    {
+      text: '20 April 2020'
+    },
+    {
+      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-credit?status=sent&region=Anglian&credit=true">OP444333</a>'
+    },
+    {
+      text: "Supplementary"
+    },
+    {
+      html: "£3,002.75<br>Credit",
+      format: 'numeric'
+    }
+    ]if "true" in data.credit,
+    [
+      {
+        text: '5 March 2020'
+      },
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
+      },
+      {
+        text: "Supplementary"
+      },
+      {
+        text: "£3,002.75",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '1 April 2017'
+      },
+      {
+        html: '<a class="govuk-link" href="#">2345432</a>'
+      },
+      {
+        text: "Annual"
+      },
+      {
+        text: "£5,345.00",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '11 April 2016'
+      },
+      {
+        html: '<a class="govuk-link" href="#">9876431</a>'
+      },
+      {
+        text: "Annual"
+      },
+      {
+        text: "£5,345.00",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '9 April 2015'
+      },
+      {
+        html: '<a class="govuk-link" href="#">2345432</a>'
+      },
+      {
+        text: "Annual"
+      },
+      {
+        text: "£5,345.00",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '9 April 2014',
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        html: '<a class="govuk-link" href="#">675434</a>',
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        text: "Supplementary",
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        text: "£3,200.12",
+        format: 'numeric',
+        classes: 'govuk-table__cell--no-border'
+      }
+    ]
+
+    ]
+  }) }}

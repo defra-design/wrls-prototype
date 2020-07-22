@@ -120,7 +120,7 @@
              Date of change
            </dt>
            <dd class="govuk-summary-list__value">
-             {% set effectiveDate = data['startDay'] + " " + data['startMonth'] | toMonth+" "+ data['startYear']%}
+             {% set effectiveDate = "1" + " " + data['startMonth'] | toMonth+" "+ data['startYear']%}
              {{effectiveDate}}
            </dd>
            <dd class="govuk-summary-list__actions ">
