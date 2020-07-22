@@ -51,6 +51,27 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l"><span class="govuk-caption-l">Bill OP123344</span>{{ title }}</h1>
 
+    <!--Setting the address-->
+    {% if data['licenceHolder'] == data['customerName'] %}
+    {% set address %}
+    {% if data['newFAO'] == "Yes" %}
+    FAO {{data['fao']}}<br>
+    {% endif %}
+     {{data['licenceHolder']}}<br>{{data['address1']}}<br>{{data['city']}}<br>{{data['postcode']}}
+    {% endset %}
+    {% else %}
+    {% set address %}
+    {% if data['newFAO'] == "Yes" %}
+    FAO {{data['fao']}}<br>
+    {% endif %}
+    {{data['licenceHolder']}}<br>C/o {{data['customerName']}}<br>{{data['address1']}}<br>{{data['city']}}<br>{{data['postcode']}}
+    {% endset %}
+    {% endif %}
+
+
+
+
+
     {{ govukSummaryList({
       rows: [
         {
@@ -72,10 +93,11 @@
         {
           classes: 'govuk-summary-list--no-border',
           key: {
-            text: "Billing account"
+            text: "New billing address"
           },
-          value: {
-            html: "3725712 <br>FAO J Entwhistle<br> 1 Hill House<br>Abingdon-on-Thames<br>Oxfordshire<br>RE1 1TG"
+          value:
+          {
+            html: address
           }
         }
       ]
@@ -85,7 +107,7 @@
     {{ govukButton({
   text: "Confirm",
   classes: "govuk-!-margin-right-1",
-  href: "confirm-rebill"
+  href: "confirm-rebill?rebill=true"
 }) }}
 
 {{ govukButton({

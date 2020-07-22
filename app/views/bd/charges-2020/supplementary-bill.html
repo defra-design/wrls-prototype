@@ -74,7 +74,7 @@
                   Date created
                 </div>
                 <div class="meta-data__value">
-                  {{data['dateToday']}}
+                 {{data['dateToday']}}
                 </div>
               <div>
             </section>
@@ -109,13 +109,9 @@
             </span>
           </summary>
           <div class="govuk-details__text">
-            {{data['customerName']}}<br>
-            {% if data['fao'].length %}
-            {{data['fao']}}<br>
-            {% endif %}
-            {{data['address1']}}<br>
-            {{data['city']}}<br>
-            {{data['postcode']}}<br>
+
+            {{data['stableAddress'] | replaceComma | escape | nl2br}}
+            
           </div>
         </details>
 
@@ -170,7 +166,7 @@
 
  {% endif %}
 
- {% if [data.status] == "sent" %}
+ {% if ([data.status] == "sent") and ([data.rebill] == "false") %}
 
   {{ govukButton({
    text: "Rebill",

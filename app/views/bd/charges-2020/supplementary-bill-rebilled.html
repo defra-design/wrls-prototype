@@ -47,7 +47,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Bill 	OP444333</h1>
+        <h1 class="govuk-caption-l">Bill {% if data['rebill'] == "true" %}OP765990 {% else %} OP123344 {% endif %}</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
 
         {% if [data.status] == "ready" %}
@@ -74,7 +74,7 @@
                   Date created
                 </div>
                 <div class="meta-data__value">
-                  {% if data['rebill'] == "true" %} 20 April 2020 {% else %} {{data['dateToday']}} {% endif %}
+                {% if data['rebill'] == "true" %} 20 April 2020 {% else %} {{data['dateToday']}} {% endif %}
                 </div>
               <div>
             </section>
@@ -109,7 +109,7 @@
             </span>
           </summary>
           <div class="govuk-details__text">
-
+            {% if data['rebill'] == "true" %}
             {% set licenceHolder = data['licenceHolder'] %}
             {% set billingContact = data['customerName'] %}
 
@@ -128,6 +128,9 @@
             {{data['address1']}}<br>
             {{data['city']}}<br>
             {{data['postcode']}}
+            {% else %}
+            {{data['stableAddress'] | replaceComma | escape | nl2br}}
+            {% endif %}
           </div>
         </details>
 
@@ -143,7 +146,7 @@
     <!--  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
         Total
       </h2> -->
-      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span>Credit<br>
+      <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£3,002.75</span><br>
       <!-- <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3> -->
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h3>
     </div>
@@ -153,12 +156,12 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£4,271.55</span><br>
+      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£1,268.80</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
     </div>
 
     <div class="govuk-grid-column-one-half">
-      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£1,268.80</span><br>
+      <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£4,271.55</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
     </div>
   </div>
@@ -182,7 +185,7 @@
 
  {% endif %}
 
-<!-- {% if [data.status] == "sent" %}
+ {% if ([data.status] == "sent") and ([data.credit] == "false") %}
 
   {{ govukButton({
    text: "Rebill",
@@ -190,7 +193,7 @@
    href: "check-rebill"
   }) }}
 
- {% endif %} -->
+ {% endif %}
 
 
   <div class="divider govuk-!-margin-bottom-7"></div>
@@ -298,13 +301,13 @@
             <h6 class="table__context">
               Credit
             </h6>
-
+            £1,064.20
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Debit
             </h6>
-              £1,064.20
+
           </div>
 
         </div>
@@ -354,13 +357,12 @@
             <h6 class="table__context">
               Credit
             </h6>
-
+            £204.60
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Debit
             </h6>
-            £204.60
             <!-- no Debit -->
           </div>
 
@@ -411,14 +413,13 @@
             <h6 class="table__context">
               Credit
             </h6>
-            £2,389.90
-
+            <!-- no credit -->
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Debit
             </h6>
-            <!-- no debit -->
+            £2,389.90
           </div>
 
         </div>
@@ -467,13 +468,13 @@
             <h6 class="table__context">
               Credit
             </h6>
-£197.60
+
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Debit
             </h6>
-
+            £197.60
           </div>
 
         </div>
@@ -496,7 +497,7 @@
             <h5 class="table__context">
               Credit total
             </h5>
-            £2,587.50
+            £1,268.80
           </div>
           <div class="table__cell numbers">
             <!-- <h5 class="table__context">
@@ -530,7 +531,7 @@
             <h5 class="table__context">
               Debit total
             </h5>
-            £1,268.80
+            £2,587.50
           </div>
         </div>
 
@@ -646,14 +647,13 @@
             <h6 class="table__context">
               Credit
             </h6>
-
-            £1,486.45
+            <!-- no credit -->
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Debit
             </h6>
-            <!-- no debit -->
+            £1,486.45
           </div>
 
         </div>
@@ -701,13 +701,13 @@
             <h6 class="table__context">
               Credit
             </h6>
-£197.60
+
           </div>
           <div class="table__cell numbers">
             <h6 class="table__context">
               Debit
             </h6>
-
+            £197.60
           </div>
 
         </div>
@@ -730,7 +730,7 @@
             <h5 class="table__context">
               Credit total
             </h5>
-£1,684.05
+
           </div>
           <div class="table__cell numbers">
             <!-- <h5 class="table__context">
@@ -764,7 +764,7 @@
             <h5 class="table__context">
               Debit total
             </h5>
-
+            £1,684.05
           </div>
         </div>
 

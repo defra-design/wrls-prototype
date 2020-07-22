@@ -52,18 +52,23 @@ module.exports = function (env) {
   }}
 
 
-//filter for removing white space from a variable "| replaceWS"
-filters.replaceWS = function(e){
+      //filter for removing white space from a variable "| replaceWS"
+    filters.replaceWS = function(e){
       return e.replace(/\s/g,'')
      }
 
      //capitalise the first character of a string
-
      filters.firstToUpperCase = function(e) {
        return e.charAt(0).toUpperCase() + e.slice(1)
      }
 
-     
+     //filter for replacing commas with line breaks "| replaceComma | striptags(true) | escape | nl2br"
+     //This isn't safe for production
+     filters.replaceComma = function(e){
+           return e.replace(/\,/g,'\n')
+          }
+
+
 
     //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 
