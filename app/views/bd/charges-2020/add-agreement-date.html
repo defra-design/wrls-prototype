@@ -48,10 +48,18 @@
 
       <h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence 03/28/60/0032</span> {{ title }}</h1>
 
+      <!--back date start date to the start of the financial year or the licence start date.-->
+       {% if [data.agreementSignedStartYear] < "2019" %}
+       {{ govukInsetText({
+         html: '<p class="govuk-body">This agreement will start on <span class="govuk-body govuk-!-font-weight-bold">31 July 2018. </span></p><p class="govuk-body">This is the licence start date.</p>'
+       }) }}
+       {% else %}
       {{ govukInsetText({
-        html: 'This agreement will start on <span class="govuk-body govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + ' </span><br>This is the start of the new financial year.'
+        html: '<p class="govuk-body">This agreement will start on <span class="govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + '. </span></p><p class="govuk-body">This is the start of the new financial year.</p>'
       }) }}
-  <p class="govuk-body"></p>
+      {% endif %}
+
+
 
 
   <form method="post" class="form">
