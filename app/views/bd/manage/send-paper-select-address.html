@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
-{% set title = "Select an address for licence " + data['licenceNum']%}
+{% set qtitle = '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + data['licenceNum'] + '</span>Select where to send the form</h1>'%}
+{% set title = 'Select where to send the form' %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -45,27 +46,40 @@
 
 
 
-      <form action="{{data['url']|default}}" method="post" class="form">
+      <form method="post" class="form">
 
         {{ govukRadios({
-        idPrefix: "address",
-        name: "address",
+        idPrefix: "returnsAddress",
+        name: "returnsAddress",
         fieldset: {
           legend: {
-            html: title,
+            html: qtitle,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
           }
         },
             items: [
               {
-                value: "15 Osborne Road, Bath, BA1 5AH",
-                html: '<span class="govuk-!-font-weight-bold">Licence holder</span><br>15 Osborne Road, Bath, BA1 5AH'
+                value: "Bottled Water Plc, 15 Osborne Road, Bath, BA1 5AH",
+                text: 'Bottled Water Plc, 15 Osborne Road, Bath, BA1 5AH',
+                hint: {
+        text: "Licence holder"
+      }
               },
               {
-                value: "Unit 4, Finkley Crescent, London, N5 1FE",
-                html: '<span class="govuk-!-font-weight-bold">Returns contact</span><br>Unit 4, Finkley Crescent, London, N5 1FE'
-              }
+                value: "Geoffrey Billington, Unit 4, Finkley Crescent, London, N5 1FE",
+                html: 'Geoffrey Billington, Unit 4, Finkley Crescent, London, N5 1FE',
+                hint: {
+        text: "Returns contact"
+      }
+              },
+    {
+      divider: "or"
+    },
+    {
+      value: "singleUseAddress",
+      text: "Set up a one time address"
+    }
             ]
           })
         }}

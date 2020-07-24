@@ -40,15 +40,41 @@
 {% endblock %}
 
 {% block content %}
+
+<!-- display the correct caption for either return single use address, billing account change or licence change-->
+{% if data['returnsAddress'] === "singleUseAddress"%}
+{% set label %}
+<h1 class="govuk-heading-l">
+  <span class="govuk-caption-l">Licence {{data['licenceNum']}}</span>
+  {{ title }}</h1>
+  {% endset %}
+{% elseif data['ba'] == "true"%}
+{% set label %}
+<h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+{{ title }}</h1>
+{% endset %}
+{% else %}
+{% set label %}
+<h1 class="govuk-heading-l">
+  <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+  {{ title }}</h1>
+  {% endset %}
+{% endif %}
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    {% if data['returnsAddress'] === "singleUseAddress"%}
     <form action="address-check" method="post" class="form" id="manual-address">
+    {% else %}
+    <form action="address-check?manualAddress=true" method="post" class="form" id="manual-address">
+    {% endif %}
 
       {% call govukFieldset({
       legend: {
-        html: '<span class="govuk-caption-l">Invoice account 3725712</span>
-        <h1 class="govuk-heading-l">' + title + '</h1>',
+        html: label,
         classes: "govuk-fieldset__legend--l",
         isPageHeading: true
       }
@@ -1138,7 +1164,7 @@
 
 
         <button type="submit" class="govuk-button">
-          Confirm
+          Continue
         </button>
 
       </form>

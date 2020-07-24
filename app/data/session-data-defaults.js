@@ -23,11 +23,13 @@ module.exports = {
   "billingContact": "Bottled Water Plc",
   "existingContact": "false",
   "licenceNumber": "AN01/68/60/0032",
+  "licenceNum": "AN01/68/60/0032",
   "address1": "15 Ward Road",
   "city": "Bath",
   "postcode": "BA1 5EH",
   "address": "15 Ward Road, Bath, BA1 5EH",
   "stableAddress": "15 Ward Road, Bath, BA1 5EH",
+  "returnsAddress": "Bottled Water Plc, 15 Ward Road, Bath, BA1 5EH",
   "credit": "false",
   "rebill": "false",
   "url": "",
@@ -163,14 +165,20 @@ module.exports = {
           }
           ],
 
-          "chargeInfoNumber": "0",
-          "newLicence": "false",
-          "reasonNewCharge": "New licence",
-          "return": "",
-          "return-2": "",
-          "return-3": "",
-          "licenceList": "AN01/68/60/0032",
-          "return": "-AN01/68/60/0032p1234543w-"
+  "chargeInfoNumber": "0",
+  "newLicence": "false",
+  "reasonNewCharge": "New licence",
+  "return": "",
+  "return-2": "",
+  "return-3": "",
+  "licenceList": "AN01/68/60/0032",
+  "return": "-AN01/68/60/0032p1234543w-",
+  "returns":[{
+            "licence": "AN01/68/60/0032",
+            "ref": "1234545,3455343,7434343",
+            "address": "Bottled Water Plc, 15 Osborne Road, Bath, BA1 5AH"
+          }
+        ],
     // Insert values here
 }
 

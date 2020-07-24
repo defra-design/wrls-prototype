@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Check licence returns details for sending paper forms" %}
+{% set title = "Check the name and address" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -43,46 +43,32 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">
-        {{ title }}
-      </h1>
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence {{data['licenceNum']| default}} </span>Check the name and address</h1>
 
     </div>
     </div>
 
-
+    <!--replace the commas in the address with line breaks-->
+          {% set address = data['returnsAddress'].replace(r/,/g, "<br>") %}
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-
-    {% set returns = data['returns'] %}
-      {% for i in returns %}
-
-
-      <!--replace the commas in the address with line breaks-->
-            {% set address = data.returns[loop.index0]['address'].replace(r/,/g, "<br>") %}
-
-            <!--replace the commas in the reference with line breaks-->
-                  {% set ref= data.returns[loop.index0]['ref'].replace(r/,/g, "<br>") %}
-
-
-       <h2 class="govuk-heading-m">Licence {{i.licence}} - {{data['licenceHolder']}}</h2>
 
       {{ govukSummaryList({
   rows: [
     {
 
       key: {
-        text: "Returns"
+        text: "Name"
       },
       value: {
-        html: ref
+        html: data['returnName']
       },
       actions: {
         items: [
           {
-            href: "send-paper-which-returns?url=send-paper-confirm&licenceNum=" + [i.licence] + "&returnIndex=" + [loop.index0],
+            href: "send-paper-name",
             text: "Change",
             visuallyHiddenText: "returns"
           }
@@ -100,7 +86,7 @@
       actions: {
         items: [
           {
-            href: "send-paper-select-address?url=send-paper-confirm&licenceNum=" + [i.licence] + "&returnIndex=" + [loop.index0],
+            href: "/bd/contacts/new-company-postocode",
             text: "Change",
             visuallyHiddenText: "Address"
           }
@@ -111,12 +97,25 @@
 }) }}
 
 
+  <form action="/bd/manage/send-paper-select-address" method="post" class="form">
 
-{% endfor %}
+    {{ govukInput({
+      classes: "govuk-visually-hidden",
+   label: {
+     text: "",
+     classes: "govuk-label--l",
+     isPageHeading: false
+   },
+   id: "returnsAddress",
+   name: "returnsAddress",
+   value: data['returnName'] + ", " + data['returnsAddress']
+ }) }}
 
-      <a href="send-paper-done" class="wrls-faux-button">
-        Send paper forms
-      </a>
+    {{ govukButton({
+text: "Confirm"
+}) }}
+
+</form>
 
     </div>
   </div>

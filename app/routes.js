@@ -884,6 +884,93 @@ router.post('/bd/charges-2020/remove-agreement', function(req, res) {
   res.redirect('/bd/licence-summary#charge');
 });
 
+//-----------------
+//////////SEND PAPER FORMS routes
+
+
+//get
+router.get('/bd/manage/send-paper', function(req, res) {
+
+  //Clear the returns array
+  req.session.data['returns'] = []
+
+  res.render('bd/manage/send-paper');
+});
+
+//Post the licence list
+router.post('/bd/manage/send-paper', function(req, res) {
+
+  //split the licenec numbers from the text input
+  let licences = [];
+  licences = req.session.data['licenceList'].replace(/\s/g,'').split(/\,|\n/g)
+
+
+  //Loop through each licence and add the reference numbers
+  licences.forEach(function (licences, index) {
+
+    let licence = licences;
+
+    //Random number of references
+    let refIndex = Math.floor(Math.random() * 2)+2;
+
+    //Random numbers for the references
+    let refNumber = [...Array(refIndex)].map(() => Math.floor(Math.random() * 9999999)+1000000);
+
+    //Convert to a string
+    ref = refNumber.toString();
+
+    let address = req.session.data['returnsAddress']
+
+    //create object and add it to the returns array
+    let newReturn = {
+      licence,
+      ref,
+      address
+    };
+
+    returns = req.session.data['returns']
+    returns.push(newReturn);
+});
+
+
+
+  res.redirect('/bd/manage/send-paper-confirm');
+});
+
+
+
+//Post the licence address change
+router.post('/bd/manage/send-paper-select-address', function(req, res) {
+
+
+  if (req.session.data['returnsAddress'] === "singleUseAddress"){
+
+   res.redirect('/bd/manage/send-paper-name');
+
+  } else {
+
+    let index = req.session.data['returnIndex']
+    req.session.data.returns[index]['address'] = req.session.data['returnsAddress']
+    res.redirect('/bd/manage/send-paper-confirm');
+  }
+
+
+});
+
+
+//post  paper forms returns selection
+router.post('/bd/manage/send-paper-which-returns', function(req, res) {
+
+
+   let index = req.session.data['returnIndex']
+   let returnsRef = req.session.data['returnsRef']
+
+   req.session.data.returns[index]['ref'] = returnsRef.toString()
+
+
+
+  res.redirect('/bd/manage/send-paper-confirm');
+});
 
 
 

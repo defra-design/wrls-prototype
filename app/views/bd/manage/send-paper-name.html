@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
-{% set title = "Add licence numbers" %}
+{% set qtitle = '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + data['licenceNum'] + '</span>Who should receive the  form?</h1>'%}
+{% set title = 'Who should receive the  form?' %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -41,26 +42,31 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
-      <form  method="post" class="form">
 
-        {{ govukTextarea({
-          name: "licenceList",
-          id: "licenceList",
+
+      <form action="/bd/contacts/new-company-postcode" method="post" class="form">
+
+        {{ govukInput({
           label: {
-            html: title,
+            html: qtitle,
             classes: "govuk-label--l",
             isPageHeading: true
           },
+          classes: "govuk-input--width-10",
           hint: {
-            text: "Enter  the licence numbers that need  paper forms."
-          }
+            text: "Enter full name"
+          },
+          id: "returnName",
+          name: "returnName"
         }) }}
 
-        <button type="submit" class="govuk-button">
-          Continue
-        </button>
+
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
 
       </form>
 

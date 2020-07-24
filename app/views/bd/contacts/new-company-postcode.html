@@ -43,8 +43,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- display the correct caption for either billing account change or licence change-->
-      {% if data['ba'] == "true"%}
+      <!-- display the correct caption for either return single use address, billing account change or licence change-->
+      {% if data['returnsAddress'] === "singleUseAddress"%}
+      {% set label %}
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence {{data['licenceNum']}}</span>
+        {{ title }}</h1>
+        {% endset %}
+      {% elseif data['ba'] == "true"%}
       {% set label %}
       <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>

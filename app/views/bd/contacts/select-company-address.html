@@ -44,8 +44,15 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <!-- display the correct caption for either billing account change or licence change-->
-    {% if data['ba'] == "true"%}
+
+
+
+    <!-- display the correct caption for either return single use address, billing account change or licence change-->
+    {% if data['returnsAddress'] === "singleUseAddress"%}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence {{data['licenceNum']}}</span>
+      {{ title }}</h1>
+    {% elseif data['ba'] == "true"%}
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
       {{ title }}</h1>
@@ -54,6 +61,16 @@
       <span class="govuk-caption-l">Licence 03/28/60/0032</span>
       {{ title }}</h1>
     {% endif %}
+
+    <!-- correct route for either return single use address, billing account change or licence change-->
+    {% if data['returnsAddress'] === "singleUseAddress"%}
+    {% set value1 = "/bd/manage/send-paper-address-check?returnsAddress=Forbes Lane, West Crudwell, SN16 9EW" %}
+    {% set value2 = "/bd/manage/send-paper-address-check?returnsAddress=1 Doogal Road, West Crudwell, SN16 9EW" %}
+
+    {% else %}
+    {% set value1 = "add-an-fao?address1=Forbes%20Lane&city=West%20Crudwell&postcode=SN16%209EW" %}
+    {% set value2 = "add-an-fao?address1=1%20Doogal%20Road&city=West%20Crudwell&postcode=SN16%209EW" %}
+     {% endif %}
 
     <section class="govuk-!-margin-bottom-6">
       <!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Postcode</h2> -->
@@ -86,11 +103,11 @@
           selected: "true"
         },
         {
-          value: "add-an-fao?address1=Forbes%20Lane&city=West%20Crudwell&postcode=SN16%209EW",
+          value: value1,
           text: "Forbes Lane, West Crudwell, SN16 9EW"
         },
         {
-          value: "add-an-fao?address1=1%20Doogal%20Road&city=West%20Crudwell&postcode=SN16%209EW",
+          value: value2,
           text: "1 Doogal Road, West Crudwell, SN16 9EW"
         }
       ]

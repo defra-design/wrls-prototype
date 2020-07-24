@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% set title = 'Which returns need a form?' %}
+
+{% set qtitle = '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + data['licenceNum'] + '</span>' + title + '</h1>'%}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form  method="post" class="form">
+
+
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="ref-hint">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+        <h1 class="govuk-fieldset__heading">
+          </h1><h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence AN124/213/21323</span>Which returns need a form?</h1>
+
+
+      </legend>
+
+
+      <span id="ref-hint" class="govuk-hint">
+        Uncheck any returns reference numbers that do not need a form.
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        {% set returnsRefs = data.returns[data['returnIndex']]['ref'].split(r/,/g) %}
+          {% for i in returnsRefs %}
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="ref-{{loop.index1}}" name="returnsRef" type="checkbox" value="{{i}}" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="ref-{{loop.index1}}">
+            {{i}}
+          </label>
+        </div>
+
+      {% endfor %}
+
+
+      </div>
+      </fieldset>
+
+
+    </div>
+
+
+
+
+          <button type="submit" class="govuk-button">
+            Continue
+          </button>
+
+        </form>
+
+
+  </div>
+</div>
+
+
+{% endblock %}
