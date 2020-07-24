@@ -54,6 +54,11 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
+          {{ govukWarningText({
+            text: "This name and address will not be saved.",
+            iconFallbackText: "Warning"
+          }) }}
+
 
       {{ govukSummaryList({
   rows: [
@@ -94,6 +99,14 @@
       }
     }
   ]
+}) }}
+
+{{ govukInsetText({
+  html: '<p class="govuk-body">To change an address on the licence holder’s account:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>email the billing and data team if it’s a correction to an existing address</li>
+  <li>if it’s a new address, send the licence holder an application form to make minor changes (WR2)</li>
+</ul>'
 }) }}
 
 
