@@ -69,15 +69,21 @@
 
       <div class="govuk-checkboxes">
 
-        {% set returnsRefs = data.returns[data['returnIndex']]['ref'].split(r/,/g) %}
+        {% set returnsRefs = data.returns[data['returnIndex']]['ref'].replace(r/ - due October 2019/g, "").split(r/,/g) %}
           {% for i in returnsRefs %}
 
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="ref-{{loop.index1}}" name="returnsRef" type="checkbox" value="{{i}}" checked>
+          <input class="govuk-checkboxes__input" id="ref-{{loop.index1}}" name="returnsRef" type="checkbox" value="{{i}}" aria-describedby="ref-item-hint" checked>
           <label class="govuk-label govuk-checkboxes__label" for="ref-{{loop.index1}}">
             {{i}}
           </label>
+          <span id="ref-item-hint" class="govuk-hint govuk-checkboxes__hint">
+            Due October 2019
+          </span>
         </div>
+
+
+
 
       {% endfor %}
 

@@ -915,6 +915,9 @@ router.post('/bd/manage/send-paper', function(req, res) {
 
     //Random numbers for the references
     let refNumber = [...Array(refIndex)].map(() => Math.floor(Math.random() * 9999999)+1000000);
+    refNumber  = refNumber.map(i =>  i + ' - due October 2019');
+
+
 
     //Convert to a string
     ref = refNumber.toString();
