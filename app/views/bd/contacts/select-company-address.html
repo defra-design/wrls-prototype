@@ -64,8 +64,8 @@
 
     <!-- correct route for either return single use address, billing account change or licence change-->
     {% if data['returnsAddress'] === "singleUseAddress"%}
-    {% set value1 = "/bd/manage/send-paper-address-check?returnsAddress=Forbes Lane, West Crudwell, SN16 9EW" %}
-    {% set value2 = "/bd/manage/send-paper-address-check?returnsAddress=1 Doogal Road, West Crudwell, SN16 9EW" %}
+    {% set value1 = "/bd/manage/send-paper-address-check?address=Forbes Lane, West Crudwell, SN16 9EW" %}
+    {% set value2 = "/bd/manage/send-paper-address-check?address=1 Doogal Road, West Crudwell, SN16 9EW" %}
 
     {% else %}
     {% set value1 = "add-an-fao?address1=Forbes%20Lane&city=West%20Crudwell&postcode=SN16%209EW" %}

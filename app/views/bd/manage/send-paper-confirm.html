@@ -60,13 +60,17 @@
 
     {% set returns = data['returns'] %}
 
-    
+
       {% for i in returns %}
 
-
-      <!--replace the commas in the address with line breaks-->
-            {% set address = data.returns[loop.index0]['address'].replace(r/,/g, "<br>") %}
-
+        <!--check to see if return contact is being used-->
+        {% if data.returns[loop.index0]['returnAddressFlag'] == "true" %}
+              <!--replace the commas in the address with line breaks-->
+            {% set address = data.returns[loop.index0]['returnAddress'].replace(r/,/g, "<br>") %}
+            {% else %}
+        <!--replace the commas in the address with line breaks-->
+            {% set address = data.returns[loop.index0]['licenceHolder'] + "<br>" + data.returns[loop.index0]['address'].replace(r/,/g, "<br>") %}
+         {% endif %}
 
           <!--check to see if the list of returns has been changed-->
            {% if i.change == "true" %}
@@ -78,7 +82,7 @@
             {% endif %}
 
 
-       <h2 class="govuk-heading-m">Licence {{i.licence}} - {{data['licenceHolder']}}</h2>
+       <h2 class="govuk-heading-m">Licence {{i.licence}} - {{i.licenceHolder}}</h2>
 
       {{ govukSummaryList({
   rows: [

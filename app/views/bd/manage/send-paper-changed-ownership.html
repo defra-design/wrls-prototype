@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% set title = 'Which licence holders need a form?' %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukWarningText({
+  text: "One licence has changed ownership",
+  iconFallbackText: "Warning"
+}) }}
+
+    <form  method="post" class="form">
+
+
+        {{ govukCheckboxes({
+          idPrefix: "licenceChangedOwner",
+          name: "licenceChangedOwner",
+          fieldset: {
+            legend: {
+              html: [title],
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+            }
+          },
+          hint: {
+            html: '<h2 class="govuk-heading-m">Licence AN/546/234/234</h2>'
+          },
+          items: [
+            {
+              value: "Mountain Water Plc",
+              text: "Mountain Water Plc",
+              hint: {
+                text: "Current licence holder"
+              }
+            },
+            {
+              value: "Spring Time Water Limited",
+              text: "Spring Time Water Limited"
+            }
+          ]
+        }) }}
+
+
+
+
+          <button type="submit" class="govuk-button">
+            Continue
+          </button>
+
+        </form>
+
+
+  </div>
+</div>
+
+
+{% endblock %}
