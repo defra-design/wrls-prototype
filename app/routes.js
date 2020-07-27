@@ -913,9 +913,11 @@ router.post('/bd/manage/send-paper', function(req, res) {
     //Random number of references
     let refIndex = Math.floor(Math.random() * 2)+2;
 
+    let year = 2019
+
     //Random numbers for the references
     let refNumber = [...Array(refIndex)].map(() => Math.floor(Math.random() * 9999999)+1000000);
-    refNumber  = refNumber.map(i =>  i + ' - due October 2019');
+    refNumber  = refNumber.map(i =>  i + ' - due October ' + year-- );
 
 
 
@@ -924,11 +926,15 @@ router.post('/bd/manage/send-paper', function(req, res) {
 
     let address = req.session.data['returnsAddress']
 
+    //Flag for changes
+    let change = "false"
+
     //create object and add it to the returns array
     let newReturn = {
       licence,
       ref,
-      address
+      address,
+      change
     };
 
     returns = req.session.data['returns']
@@ -966,9 +972,11 @@ router.post('/bd/manage/send-paper-which-returns', function(req, res) {
 
 
    let index = req.session.data['returnIndex']
-   let returnsRef = req.session.data['returnsRef']
+   returnsRef = req.session.data['returnsRef']
 
-   req.session.data.returns[index]['ref'] = returnsRef.toString()
+
+   req.session.data.returns[index]['change'] = "true"
+   req.session.data.returns[index]['refChange'] = returnsRef.toString()
 
 
 

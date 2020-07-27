@@ -56,15 +56,26 @@
         <div class="govuk-grid-column-two-thirds">
 
 
+
+
     {% set returns = data['returns'] %}
+
+    
       {% for i in returns %}
 
 
       <!--replace the commas in the address with line breaks-->
             {% set address = data.returns[loop.index0]['address'].replace(r/,/g, "<br>") %}
 
+
+          <!--check to see if the list of returns has been changed-->
+           {% if i.change == "true" %}
+            <!--replace the commas in the reference with line breaks-->
+            {% set ref= data.returns[loop.index0]['refChange'].replace(r/,/g, "<br>") %}
+            {% else %}
             <!--replace the commas in the reference with line breaks-->
                   {% set ref= data.returns[loop.index0]['ref'].replace(r/,/g, "<br>") %}
+            {% endif %}
 
 
        <h2 class="govuk-heading-m">Licence {{i.licence}} - {{data['licenceHolder']}}</h2>
