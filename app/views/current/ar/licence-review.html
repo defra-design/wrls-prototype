@@ -1,0 +1,414 @@
+{% extends "layout.html" %}
+
+{% set title = "Licence review" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ar-edit.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-xl">Review licence data</span>
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-0">01/642/012/*G34</h1>
+        <div class="heading-small">
+            Last edited 30 November 2018
+        </div>
+      </div>
+    </div>
+
+    <p class="govuk-!-margin-bottom-3">
+      This licence is connected to:
+    </p>
+
+    <div class="govuk-inset-text">
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link" href="#">01/642/012/*G35</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">01/642/012/*G36</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">01/642/012/*G37</a>
+        </li>
+      </ul>
+    </div>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Edit notes
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <p class="govuk-body">
+          I found seven licences covering the full period of this licence, it’s unclear but there were three abstraction points listed on the original licence but I only see two in the latest.
+        </p>
+        <p class="govuk-body">
+          Benjamina Buick, 11 May 2018
+        </p>
+      </div>
+    </details>
+
+    <!-- accordion to organise the licence review process -->
+    <div class="govuk-accordion" data-module="accordion" id="accordion-default">
+
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Licence data
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+          <!-- table with three columns -->
+          <div class="table">                                                   <!-- a table -->
+
+            <div class="table__row--head">                                      <!-- the table head -->
+              <div class="table__cell bold-small column--20">
+                NALD field
+              </div>
+              <div class="table__cell bold-small">
+                NALD data
+              </div>
+              <div class="table__cell bold-small">
+                New value
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 1
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                ID
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  1411
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 2
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                Notes
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  KES Area Ref: 3/0625/SE BOURNE VALLEY FISH FARM
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 3
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                LIC_NO
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  02/113
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 4
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                REV_DATE
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  <!-- no NALD data -->
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 5
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                vml version
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  2
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row--last govuk-!-margin-bottom-6">                        <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 6
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                EXPIRY_DATE
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  2
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+              Purposes
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+          <p class='govuk-body'>Purposes data here</p>
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+              Conditions
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+          <p class='govuk-body'>Licence conditions data here</p>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+              Further conditions
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+
+          <p>
+            No futher conditions.
+            <br><a href="further-condition-groups" class="govuk-!-margin-bottom-6">Add a condition</a>
+            <!-- <br><a href="licence-review/add-hands-off" class="govuk-!-margin-bottom-6">Add a condition</a> -->
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h3 class="govuk-heading-m">
+            Workflow
+          </h3>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="additions-documents-1" name="additions-documents" type="checkbox" value="carcasses">
+                  <label class="govuk-label govuk-checkboxes__label" for="additions-documents-1">
+                    There are additional documents
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="section-57-check" name="section-57-check" type="checkbox" value="carcasses">
+                  <label class="govuk-label govuk-checkboxes__label" for="section-57-check">
+                    Licence affected by Section 57
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="more-detail">
+              Notes about these changes
+            </label>
+            <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"></textarea>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h3 class="govuk-fieldset__heading">
+              Do you approve these edits?
+            </h3>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="edit-approval-1" name="approve-edits" type="radio" value="not-approved">
+              <label class="govuk-label govuk-radios__label" for="edit-approval-1">
+                Not approved
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="edit-approval-2" name="approve-edits" type="radio" value="approved">
+              <label class="govuk-label govuk-radios__label" for="edit-approval-2">
+                Approved
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="edit-approval--3" name="approve-edits" type="radio" value="review">
+              <label class="govuk-label govuk-radios__label" for="edit-approval--3">
+                Licence must be reviewed
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div> -->
+
+      <a href="licences-list" class="govuk-button">
+        Sumbit for approval
+      </a>
+
+  </div>
+
+</div>
+
+{% endblock %}

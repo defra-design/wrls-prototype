@@ -1,0 +1,246 @@
+{% extends "layout.html" %}
+
+{% set title = "You're about to remove this element" %}
+
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+
+
+
+
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
+          {{title}}
+          </label>
+
+        </h1>
+
+</div>
+</div>
+</div>
+
+<form method="post" class="form" id="return-reference-error">
+        {% set elementNumber = [data.elementNumber]%}
+        {% set elements = [data.elements[elementNumber]] %}
+
+                        {% for i in elements %}
+
+
+
+        <!--formating for the abstraction period dates-->
+              {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+              {% set monthNumber = [i.abstractionStartMonth] %}
+              {% set monthNumberEnd = [i.abstractionEndMonth] %}
+              {% set month = monthNames[monthNumber - 1] %}
+              {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+              {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
+              {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
+
+
+             {% set elementNumber = loop.index0 %}
+
+             <!--set billable quanity if needed-->
+             {% if [i.billableQuantityNeeded] == "yes" %}
+             {% set billableQuantity = [i.billableQuantity] + " megalitres per year" %}
+             {% else %}
+             {% set billableQuantity = "Not set" %}
+             {% endif %}
+
+             <!--set time limit if needed-->
+             {% if [i.timeLimit] == "yes" %}
+             {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
+             {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
+             {% set timeLimit = [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear] %}
+             {% else %}
+             {% set timeLimit = "No" %}
+             {% endif %}
+
+
+              <section class="govuk-!-margin-bottom-2">
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-full">
+
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Element
+                        {{ govukSummaryList({
+                          classes: "govuk-!-margin-bottom-9",
+                        rows: [
+                          {
+                            key: {
+                              text: "Purpose"
+                            },
+                            value: {
+                              text: [i.purpose]
+                            }
+                          },
+
+                          {
+                             key: {
+                               text: "Description"
+                             },
+                             value: {
+                               text: [i.description]
+                             }
+                           },
+
+
+                          {
+                            key: {
+                              text: "Abstraction period"
+                            },
+                            value: {
+                              text: [abstractionStart] + " to " + [abstractionEnd]
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Authorised quantity"
+                            },
+                            value: {
+                              text: [i.authorisedQuantity] + " megalitres per year"
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Billable quantity"
+                            },
+                            value: {
+                              text: [billableQuantity]
+                            }
+                          },
+
+                          {
+                            key: {
+                              text: "Time limit"
+                            },
+                            value: {
+                              text: [timeLimit]
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Source"
+                            },
+                            value: {
+                              text: [i.source]
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Season"
+                            },
+                            value: {
+                              text: [i.season]
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Loss"
+                            },
+                            value: {
+                              text: [i.loss]
+                            }
+                          },
+                          {
+                            classes: 'govuk-summary-list__row--last',
+                            key: {
+                              text: "Environmental Improvement Unit Charge"
+                            },
+                            value: {
+                              text: "Other"
+                            }
+                          }
+
+
+                        ]
+                      }) }}
+</div>
+</div>
+              </section>
+
+            {% endfor %}
+
+
+
+      <button type="submit" class="govuk-button">
+        Remove
+      </button>
+
+    </form>
+
+
+
+
+
+
+
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% set title = "Water Abstraction Dashboard" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-dash-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="screen-reader-only govuk-heading-l">
+      Dashboard
+    </h1>
+
+  </div>
+</div>
+
+<!-- <hr class="hr--heavy"> -->
+
+<div class="dashboard__wrapper">
+  <div class="govuk-grid-row">
+
+    <div class="dashboard__tile">
+      <div class="dashboard__tile--top">
+        <div class="tile-header">
+          Licences and returns
+        </div>
+      </div>
+      <div class="dashboard__links">
+        <a href="licences">View my licences</a>
+        <a href="returns-overview">View all returns</a>
+      </div>
+    </div>
+
+    <div class="dashboard__tile">
+      <div class="dashboard__tile--top">
+        <div class="tile-header">
+          Add licences to my account
+        </div>
+      </div>
+      <div class="dashboard__links">
+        <a href="manage/add-licences">Add or claim a licence</a>
+        <a href="manage/enter-code">Enter a security code</a>
+      </div>
+    </div>
+
+    <div class="dashboard__tile">
+      <div class="dashboard__tile--top">
+        <div class="tile-header">
+          Access to licences
+        </div>
+      </div>
+      <div class="dashboard__links">
+        <a href="manage/give-access">Who has access to my licences?</a>
+        <a href="manage/add-access">Give access to my licences</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="dashboard__tile">
+      <div class="dashboard__tile--top">
+        <div class="tile-header">
+          Account
+        </div>
+      </div>
+      <div class="dashboard__links">
+        <a href="account/settings">Account settings</a>
+        <a href="sign-in">Sign out</a>
+      </div>
+    </div>
+
+    <div class="dashboard__tile dashboard__tile--empty">
+
+    </div>
+
+    <div class="dashboard__tile dashboard__tile--empty">
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% set free = [data.chargeVersions[0]['free']]%}
+{% if free == "true"%}
+{% set title = "You're about to make this licence exempt from charges" %}
+{% else %}
+{% set title = "Check charge information" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{title}}</h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  <form  method="post" class="form">
+
+    {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+
+    {% set monthNumber = data['chargeStart-month'] %}
+
+    {% set month = monthNames[monthNumber - 1] %}
+
+    {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+
+
+    {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Reason licence is not chargeable"
+        },
+        value: {
+          text: [data.reason]
+        },
+        actions: {
+          items: [
+            {
+              href: "add-agreement",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+        },
+        {
+          key: {
+            text: "Start date"
+          },
+          value: {
+            text: [chargeStart]
+          },
+          actions: {
+            items: [
+              {
+                href: "add-agreement",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+      }
+    ]
+  }) }}
+
+
+
+  {% if (free == "true") and (data['newLicence'] == "true") %}
+  {% elif (free == "true") %}
+<p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
+
+{% else %}
+<!--<p class="govuk-body">Billing and Data will need to approve this information before the licence is exempt from charges.</p>-->
+{% endif %}
+
+{{ govukButton({
+text: "Confirm"
+}) }}
+
+
+  </form>
+
+</div>
+</div>
+
+
+
+{% endblock %}

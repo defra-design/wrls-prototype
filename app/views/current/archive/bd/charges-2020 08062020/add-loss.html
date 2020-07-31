@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% set title = "Select loss category" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+  </div>
+</div>
+
+
+<form method="post" class="form">
+
+
+
+
+
+          {{ govukRadios({
+          idPrefix: "loss",
+          name: "loss",
+          fieldset: {
+            legend: {
+              text: [title],
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "High",
+              text: "High",
+
+            hint: {
+      text: "This is the default loss category for the purpose chosen"
+    }
+    },
+            {
+              value: "Medium",
+              text: "Medium"
+            },
+            {
+              value: "Low",
+              text: "Low"
+            },
+            {
+              value: "Very-low",
+              text: "Very low"
+            }
+          ]
+        }) }}
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+{% endblock %}

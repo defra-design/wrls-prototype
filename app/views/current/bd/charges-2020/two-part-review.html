@@ -1,0 +1,324 @@
+{% extends "layout.html" %}
+
+{% set title = "Review licences with returns data issues" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-0">
+    <div class="govuk-grid-column-two-thirds">
+
+      <section class="govuk-!-margin-bottom-6">
+        <span class="govuk-caption-l">{{data['region']| firstToUpperCase}} two-part tariff {{data['tptSeason']}} bill run</span>
+        <h1 class="govuk-heading-xl">{{ title }}</h1>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p class="govuk-body">
+        {{govukTag({
+        text: "Review",
+        classes: "govuk-tag--green govuk-!-font-size-27"
+      })}}
+      </p>
+
+      <section class="meta-data__row">
+        <div class="meta-data__container">
+          <div class="meta-data__label">
+            Date created
+          </div>
+          <div class="meta-data__value">
+            {{data['dateToday']}}
+          </div>
+        <div>
+      </section>
+      <section class="meta-data__row">
+        <div class="meta-data__container">
+          <div class="meta-data__label">
+            Region
+          </div>
+          <div class="meta-data__value">
+            {{data['region']}}
+          </div>
+        <div>
+      </section>
+      <section class="meta-data__row">
+        <div class="meta-data__container">
+          <div class="meta-data__label">
+            Bill run type
+          </div>
+          <div class="meta-data__value">
+          Two-part tariff {{data['tptSeason']}} bill run
+          </div>
+        <div>
+      </section>
+
+    </div>
+  </div>
+
+  {% if ([data.tptIssue] == "overAbstraction") or
+  ([data.tptIssueIR] == "incompleteReturns") or
+  ([data.tptIssueNP] == "notProcessed") %}
+  <section class="govuk-!-margin-bottom-6">
+    <a href="confirm-cancel-bills?type=Two-part tariff" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+  </section>
+  {% endif %}
+
+  <section class="govuk-!-margin-bottom-9">
+
+  <h2 class="govuk-heading-l" id="issuesTitle">
+  </h2>
+
+        <!-- invoices table -->
+        <div class="table govuk-!-margin-bottom-6" id="dataIssues">                                                <!-- a table -->
+
+          <div class="table__row--head">
+            <div class="table__cell bold-small">
+              Licence
+            </div>
+            <div class="table__cell bold-small">
+              Licence holder
+            </div>
+            <div class="table__cell bold-small">
+              Issue
+            </div>
+            <div class="table__cell bold-small numbers column--10">
+              Action
+            </div>
+
+          </div>
+
+          {% if [data.tptIssueIR] == "incompleteReturns" %}
+          <!-- table row -->
+
+          <div class="table__row--selectable govuk-!-margin-bottom-6">
+            <div class="table__cell">
+              <h2 class="screen-reader-only">
+                Row 1
+              </h2>
+              <h3 class="table__context">
+                Licence
+              </h3>
+              <p class="table__row--text">
+                AN32/12/102
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Licence holder
+              </h3>
+              <p>
+                Sam Mendoza
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Issue
+              </h3>
+              <p>
+                Incomplete returns
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h3 class="table__context">
+                Action
+              </h3>
+              <p class="table__row--text">
+                <a href="two-part-bill-issue-incomplete-returns">
+                  Review <span class="screen-reader-only">the bill for licence AN01/60/0032</span>
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {% endif %}
+          {% if [data.tptIssue] == "overAbstraction" %}
+          <div class="table__row--selectable govuk-!-margin-bottom-6">
+            <div class="table__cell">
+              <h2 class="screen-reader-only">
+                Row 2
+              </h2>
+              <h3 class="table__context">
+                Licence
+              </h3>
+              <p class="table__row--text">
+                AN01/68/60/0032
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Licence holder
+              </h3>
+              <p>
+                Sam Mendoza
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Issue
+              </h3>
+              <p>
+                Over abstraction
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h3 class="table__context">
+                Action
+              </h3>
+              <p class="table__row--text">
+                <a href="two-part-bill-issue">
+                  Review <span class="screen-reader-only">the bill for licence AN01/68/60/0032</span> <span class="screen-reader-only">the bill for licence AN01/60/0032</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          {% endif %}
+          {% if [data.tptIssueNP] == "notProcessed" %}
+          <div class="table__row--selectable table__row table__row--last govuk-!-margin-bottom-6">
+            <div class="table__cell">
+              <h2 class="screen-reader-only">
+                Row 3
+              </h2>
+              <h3 class="table__context">
+                Licence
+              </h3>
+              <p class="table__row--text">
+                AN02/26/001/2
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Licence holder
+              </h3>
+              <p>
+                Lord Ashley Crofters
+              </p>
+            </div>
+            <div class="table__cell">
+              <h3 class="table__context">
+                Issue
+              </h3>
+              <p>
+                Received but not processed
+              </p>
+            </div>
+            <div class="table__cell numbers">
+              <h3 class="table__context">
+                Action
+              </h3>
+              <p class="table__row--text">
+                <a href="two-part-bill-issue-not-processed">
+                  Review <span class="screen-reader-only">the bill for licence AN02/26/001/2</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+      </section>
+
+<section class="govuk-!-margin-bottom-0v">
+
+{% if [data.tptIssueIR] == "resolved" %}
+{% set tptIssueIR = 1 %}
+{% else %}
+{% set tptIssueIR = 0 %}
+{% endif %}
+{% if [data.tptIssueNP] == "resolved" %}
+{% set tptIssueNP = 1 %}
+{% else %}
+{% set tptIssueNP = 0 %}
+{% endif %}
+{% if [data.tptIssue] == "resolved" %}
+{% set tptIssue = 1 %}
+{% else %}
+{% set tptIssue = 0 %}
+{% endif %}
+{% set totalNumberReady = 975 + tptIssue + tptIssueNP + tptIssueIR%}
+
+
+<h2 class="govuk-heading-l" id="readyTitle">
+  {{totalNumberReady}} licences are ready for billing
+</h2>
+<p class="govuk-body govuk-!-margin-bottom-9">
+<a href="two-part-view" class="govuk-link">View licences ready for billing</a>
+</p>
+
+{% if not ([data.tptIssue] == "overAbstraction") and not
+([data.tptIssueIR] == "incompleteReturns") and not
+([data.tptIssueNP] == "notProcessed") %}
+<section class="govuk-!-margin-bottom-6">
+  <p class="govuk-body">You have resolved all returns data issues. Continue to generate bills.</p>
+   <a href="confirm-create-bill-run" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>
+  <a href="confirm-cancel-bills?type=Two-part tariff" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+</section>
+{% endif %}
+
+
+<!--
+{{ govukInsetText({
+html: '<p class="govuk-body govuk-!-margin-bottom-0">' + totalNumberReady + ' licences are ready for billing</p> <a href="two-part-view" class="govuk-link">View licences ready for billing</a>'
+}) }}
+
+-->
+</section>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  const numberofRows = document.getElementById('dataIssues').children.length - 1;
+  const licenceIssues = document.getElementById("issuesTitle");
+  const licenceReady = document.getElementById("ready");
+  if (numberofRows === 1) {
+    licenceIssues.innerText = numberofRows + " licence has a data issue"
+  } else if (numberofRows === 0) {
+  //  licenceReady.innerHTML = '<a href="confirm-create-bill-run" class="wrls-faux-button govuk-!-margin-bottom-9">Continue</a>';
+    document.getElementById('dataIssues').classList.add("govuk-visually-hidden");
+  } else {
+  licenceIssues.innerText = numberofRows + " licences have data issues" }
+
+</script>
+  {% endblock %}

@@ -1,0 +1,301 @@
+{% extends "layout.html" %}
+
+{% set title = "Spray top field" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <section class="govuk-!-margin-bottom-6">
+      <div class="govuk-grid-row govuk-!-margin-bottom-3">
+        <div class="govuk-grid-column-full">
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Season
+              </div>
+              <div class="meta-data__value">
+                Summer
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Loss
+              </div>
+              <div class="meta-data__value">
+                High
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Source
+              </div>
+              <div class="meta-data__value">
+                Supported
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Abstraction period
+              </div>
+              <div class="meta-data__value">
+                1 July 2019 to 30 October 2019
+              </div>
+            <div>
+          </section>
+          <!-- <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Two-part tariff
+              </div>
+            <div>
+          </section> -->
+        </div>
+      </div>
+    </section>
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+      Quantities
+    </h2>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="table govuk-!-margin-bottom-9">                                                <!-- a table -->
+
+      <div class="table__row--head">
+        <div class="table__cell bold-small column--40">
+          Charge period
+        </div>
+        <div class="table__cell bold-small numbers column--20">
+          Authorised
+        </div>
+        <div class="table__cell bold-small numbers column--20">
+          Chargeable
+        </div>
+        <div class="table__cell bold-small numbers column--20">
+          Reported
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            Charge period
+          </h3>
+          <p class="table__row--text">
+            Annual
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Authorised
+          </h3>
+          <p>
+            100ML
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Chargeable
+          </h3>
+          <p>
+            50ML
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Reported
+          </h3>
+          <p class="table__row--text">
+            Not applicable
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <h3 class="table__context">
+            Charge period
+          </h3>
+          <p class="table__row--text">
+            Pro-rata’d<br>
+            1 September 2019 to 30 October 2019
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Authorised
+          </h3>
+          <p>
+            20ML
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Chargeable
+          </h3>
+          <p>
+            20ML
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Reported
+          </h3>
+          <p class="table__row--text">
+            30ML
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form data-routing="1" method="post" class="form" id="choose-bill-type">
+
+      {% set quantityHtml %}
+      {{ govukInput({
+        id: "chargeable-quantity",
+        name: "chargeable-quantity",
+        classes: "govuk-!-width-one-third",
+        label: {
+          text: "Chargeable"
+        },
+        attributes: {
+          spellcheck: "false"
+        }
+      }) }}
+      {% endset -%}
+
+      {% set customHtml %}
+      {{ govukInput({
+        id: "custom-quantity",
+        name: "custom-quantity",
+        type: "number",
+        classes: "govuk-!-width-one-third"
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "charge-quantity",
+        name: "chargeable-quantity",
+        fieldset: {
+          legend: {
+            text: "Set chargeable quantity",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select one option."
+        },
+        items: [
+          {
+            value: "two-part-confirm-default-quantity",
+            text: "Default (20ML)"
+          },
+          {
+            value: "two-part-confirm-custom-quantity",
+            text: "Custom (ML)",
+            conditional: {
+              html: customHtml
+            }
+          }
+        ]
+      }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+
+{% endblock %}

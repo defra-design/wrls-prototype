@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+
+{% set title = "Manage reports and notices" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+<!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">
+      View reports
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="returns-overview">
+          Returns cycles
+        </a>
+      </li>
+      <!-- <li>
+        <a class="govuk-link" href="void-returns">
+          Void returns
+        </a>
+      </li> -->
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Send return notices
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="send-return-reminders">
+          Invitations
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="manage/send-paper">
+          Paper forms
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="send-return-reminders">
+          Reminders
+        </a>
+      </li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Manage users
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="internal-user/create-account">
+          Create an internal account
+        </a>
+      </li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Billing
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="charges-2020/pick-charge-type">
+          Create a bill run
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="charges-2020/bill-runs">
+          View past and open bill runs
+        </a>
+      </li>
+    </ul>
+
+
+    <!--number of chargeVersions with Review charge status-->
+    {% set review = 0 %}
+    {% set chargeVersions = data['chargeVersions'] %}
+    {% for i in chargeVersions %}
+    {% if i.chargeStatus == 'NOT APPROVED' %}
+    {% set review = review + 1  %}
+    {% endif %}
+    {% endfor %}
+    {% set numberOfChargeVersionsReview = review + 5 %}
+
+    <!--number of chargeVersions with Change charge status-->
+    {% set change = 0 %}
+    {% set chargeVersions = data['chargeVersions'] %}
+    {% for i in chargeVersions %}
+    {% if i.chargeStatus == 'CHANGES' or i.chargeStatus == 'DRAFT'%}
+    {% set change = change + 1  %}
+    {% endif %}
+    {% endfor %}
+    {% set numberOfChargeVersionsChange = change + 5 %}
+
+    <!--number of agreements -->
+    {% set agreement = 0 %}
+    {% set agreements = data['agreements'] %}
+    {% for i in agreements %}
+    {% if i.agreementEnded == 'false' %}
+    {% set agreement = agreement + 1 %}
+    {% endif %}
+    {% endfor %}
+    {% set newAgreements = agreement %}
+
+
+    <h2 class="govuk-heading-m">
+      Charge information and agreements
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#review">
+          Charge information for review <br>
+        </a>
+        <span class="govuk-caption-m">{{numberOfChargeVersionsReview}} licences</span>
+      </li>
+      <li>
+      <li>
+        <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#draft">
+          Charge information in draft <br>
+        </a>
+        <span class="govuk-caption-m">{{numberOfChargeVersionsChange}} licences</span>
+      </li>
+      <li>
+        <a class="govuk-link" href="charges-2020/licences-with-new-agreements">
+          New agreements <br>
+        </a>
+        <span class="govuk-caption-m">{% if newAgreements == '1' %}{{newAgreements}} licence{% else %}{{newAgreements}} licences{% endif %}</span>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}

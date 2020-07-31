@@ -1,0 +1,132 @@
+
+{% extends "layout.html" %}
+
+{% set title = "View billing accounts" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+    <!-- page title -->
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h1  class="heading-large govuk-heading-l govuk-!-margin-bottom-3">
+          Billing accounts
+        </h1>
+      </div>
+    </div>
+
+    <!-- search for licences -->
+    <form action="results-licences">
+      <fieldset class="govuk-fieldset">
+
+        <div class="govuk-form-group">
+
+          <!-- standard search text -->
+          {% include "current/includes/search-text.html" %}
+
+          <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint" value="L12345678S">
+          <a href="results-licences" class="wrls-faux-button wrls-faux-button--inline">
+            Search
+          </a>
+        </div>
+
+      </fieldset>
+    </form>
+
+    <h2 class="govuk-heading-m">
+      Billing accounts
+    </h2>
+
+    <!-- table with returns with statuses -->
+    <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--25">
+          Billing account
+        </div>
+        <div class="table__cell bold-small column--25">
+          Customer Name
+        </div>
+        <div class="table__cell bold-small">
+          Region
+        </div>
+        <div class="table__cell bold-small column--20">
+          Effective date
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 1
+          </h3>
+          <h4 class="table__context">
+            Invoice account
+          </h4>
+          <a href="charges-2020/billing-account">
+            <span class="screen-reader-only">View Invoice account</span>
+            L12345678S
+          </a>
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Customer name
+          </h4>
+          Water Company Plc
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Region
+          </h4>
+          Anglian
+        </div>
+        <div class="table__cell">
+          <h4 class="table__context">
+            Effective date
+          </h4>
+
+            22 April 2019
+
+        </div>
+      </div>
+
+
+
+{% endblock %}

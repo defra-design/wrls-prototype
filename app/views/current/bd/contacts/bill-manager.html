@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+
+{% set title = "Will " + data['licenceHolder'] + " manage the bills?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+      {{ title }}</h1>
+
+    </div>
+  </div>
+
+  <form  method="post" class="form" id="customer" data-routing="1">
+
+{% set licenceHolder = data['licenceHolder'] + '<span id="account-number-hint" class="govuk-hint">Licence holder</span>' %}
+
+{% set customerName %}
+{{ govukInput({
+  id: "companyName",
+  name: "companyName",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Search for organisation or individual"
+  }
+}) }}
+{% endset -%}
+
+    {{ govukRadios({
+      idPrefix: "billManager",
+      name: "billManager",
+      fieldset: {
+        legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "check-invoice-account-exists?customerName=" + data['licenceHolder'],
+          text: "Yes"
+        },
+        {
+          value: "contact-exists?customerName=",
+          text: "No",
+          conditional: {
+            html: customerName
+          }
+        }
+      ]
+    }) }}
+
+<!--
+
+    {{ govukInput({
+
+      classes: "govuk-input--width-20",
+      id: "customer-name",
+      name: "customer-name",
+      label: isPageHeading
+    }) }}
+-->
+<!--<p class="govuk-body">
+<a href="check-invoice-account-exists" class="govuk-link govuk-link--no-visited-state">Make the licence holder the billing contact</a>
+</p> -->
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // Find selected radio button
+
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+
+          if( $("#companyName").val() ){
+          let  companyName = $("#companyName").val();
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl+companyName;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
+          }
+
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+
+{% set title = "Select an existing contact for  " + data['customerName'] %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- display the correct caption for either billing account change or licence change-->
+      {% if data['ba'] == "true"%}
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+      {{ title }}</h1>
+      {% else %}
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+        {{ title }}</h1>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <form data-routing="1" method="post" class="form" id="contact-change-type">
+
+
+    {% set fao %}
+    {{ govukInput({
+      id: "fao",
+      name: "fao",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Full name"
+      }
+    }) }}
+    {% endset %}
+
+
+
+    {% if data['createNewContact'] == "true" %}
+    {% set url = "check-billing-account-details-new" %}
+    {% else %}
+    {% set url = "effective-date" %}
+    {% endif %}
+
+
+    {% set department %}
+    {{ govukInput({
+      id: "department",
+      name: "department",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Department name"
+      }
+    }) }}
+    {% endset %}
+
+
+      {{ govukRadios({
+        idPrefix: "fao",
+        name: "fao",
+        fieldset: {
+        },
+        items: [
+        {
+          value: url + "?fao=Accounts%20department",
+          text: "Accounts department"
+        },
+        {
+          value: url + "?fao=Accounts%20payable",
+          text: "Accounts payable"
+        },
+          {
+            value: url + "?fao=Accounts%20department",
+            text: "Geoffrey Bude"
+          },
+          {
+            value: url + "?fao=Sam%20Burridge",
+            text: "Sam Burridge"
+          },
+          {
+      divider: "or"
+    },
+    {
+      value: "new-person",
+      text: "Add a new person"
+    },
+    {
+      value: url,
+      text: "Add a new department",
+      conditional: {
+        html: department
+      }
+    }
+
+
+        ]
+      })
+    }}
+
+
+
+
+
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+
+          if( $("#department").val() ){
+          let  companyName = $("#department").val();
+          let radioUrl = $(this).find('input:checked').val();
+          const newurl = radioUrl + "?fao=" + companyName;
+          ev.preventDefault();
+          window.location.href = newurl;
+          return false;
+          }
+
+
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

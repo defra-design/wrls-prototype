@@ -1,0 +1,474 @@
+{% extends "layout.html" %}
+
+{% set title = "View licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-nps-view.html" %}
+
+    <!-- {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- page title -->
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h1  class="heading-large govuk-heading-l">
+          Licences without a charge category
+        </h1>
+      </div>
+    </div>
+
+    <!-- table with four columns -->
+    <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--25">
+          Licence number
+          <!-- licence name if it exists, otherwise licence number -->
+        </div>
+        <div class="table__cell bold-small">
+          Licence name
+        </div>
+        <div class="table__cell bold-small column--25">
+          Licence holder
+        </div>
+        <div class="table__cell bold-small column--20">
+          End date
+        </div>
+      </div>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <span class="screen-reader-only">See Peebles licence, 21/28/024/02</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            21/28/024/02
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            <!-- no licence name -->
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Jane Dinkledge
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            12 March 2021
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <span class="screen-reader-only">See Brickleigh Court licence, 03/28/60/0048</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            01/04/12/0048
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            <!-- no licence name -->
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            M Crippleburg
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            30 April 2022
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 3
+          </h2>
+          <span class="screen-reader-only">See licence 03/28/60/0031</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            03/28/60/0031
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            <!-- no licence name -->
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            PTP Washers Co.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            30 April 2022
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 4
+          </h2>
+          <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/61/029</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            03/28/61/029
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            Peebles
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Jan Brippold
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            15 September 2034
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 5
+          </h2>
+          <span class="screen-reader-only">See George Furrow licence, 03/28/60/0035</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            03/28/60/0035
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Mrs P Daggonfurt
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            15 September 2022
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 6
+          </h2>
+          <span class="screen-reader-only">See Dale Barrow licence, 03/28/60/0034</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            03/28/60/0034
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Daniel Crowber
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            15 September 2022
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 7
+          </h2>
+          <span class="screen-reader-only">See River House licence, 03/28/60/0047</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            01/04/12/0047
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Robin Vithlhem-Smith
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            1 March 2023
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 8
+          </h2>
+          <span class="screen-reader-only">See Bridge Farm licence, 11/22/32/02</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            11/22/32/02
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            <!-- Bridge Farm -->
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Canal and Rivers Trust
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            30 September 2025
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 9
+          </h2>
+          <span class="screen-reader-only">See Bridge Farm licence, 11/04/121</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            11/04/121
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            <!-- Bridge Farm -->
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Follyfall Jams Limited
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            30 September 2025
+          </p>
+        </div>
+      </a>
+
+      <!-- table row -->
+      <a href="licence-summary" class="table__row table__row--last govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 10
+          </h2>
+          <span class="screen-reader-only">See Bridge Farm licence, 06/110/02</span>
+          <h3 class="table__context">
+            Licence number
+          </h3>
+          <span class="table__link">
+            06/110/02
+          </span>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence name
+          </h3>
+          <p class="table__row--text">
+            <!-- Bridge Farm -->
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence holder
+          </h3>
+          <p class="table__row--text">
+            Zeb Fruitings
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            End date
+          </h3>
+          <p class="table__row--text">
+            30 September 2025
+          </p>
+        </div>
+      </a>
+
+{% endblock %}

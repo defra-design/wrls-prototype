@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% set title = "Manage your water abstraction or impoundment licence" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+        <form action="search">
+
+
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l  " for="search">
+            Search for a licence, user, return or account
+          </label>
+        </h1>
+        <span id="search-hint" class="govuk-hint hint-dark-grey">
+          Enter licence number, name, registered email address, return ID or billing account
+        </span>
+        <input class="govuk-input govuk-!-width-one-half govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
+
+        {{ govukButton({
+            text: "Search"
+          }) }}
+
+
+        </form>
+
+      </div>
+
+    </div>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-0">
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <section class= "govuk-!-margin-bottom-9 ">
+
+      <h2 class="govuk-heading-l">Bill runs</h2>
+      <p class="govuk-body">View all bill runs. Create a new two-part tariff, annual or supplementary bill run. </p>
+      <p class="govuk-body"><a href="/bd/bill-runs" class="govuk-link">Go to bill runs</a></p>
+
+      <h2 class="govuk-heading-l">Returns cycles</h2>
+      <p class="govuk-body">View returns reports and send returns notices.</p>
+      <p class="govuk-body"><a href="/bd/returns-cycles" class="govuk-link"> Go to returns cycles</a></p>
+
+      <h2 class="govuk-heading-l">Licence notices</h2>
+      <p class="govuk-body">Manage and view licence notices, including renewals, returns and hands-off flows.</p>
+      <p class="govuk-body"><a href="/bd/licence-notices" class="govuk-link"> Go to licence notices</a></p>
+
+    </section>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% set title = "Licence holder" %}
+
+{% block pageTitle %}
+   Licence holder - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/dashboard/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  <div class="govuk-!-margin-bottom-3">
+    {% include "current/includes/feedback-banner.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Who is the licence holder?
+    </h1>
+
+    <form action="process-return" method="post" class="form" id="return-reference-error">
+      <div class="govuk-form-group  {% if error.returnReference_allowOnly %}govuk-form-group--error{% endif %}">
+        <label class="govuk-label govuk-!-margin-bottom-3" for="return-reference">
+          Select the licence holder
+        </label>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="sign-in-1" name="sign-in" type="radio" value="government-gateway" aria-describedby="sign-in-1-item-hint">
+                <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in-1">
+                  Paula Barnes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="sign-in-2" name="sign-in" type="radio" value="govuk-verify" aria-describedby="sign-in-2-item-hint">
+                <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in-2">
+                  Lake Valley Foods Ltd
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- <button type="submit" class="govuk-button">
+        Continue
+      </button> -->
+    </form>
+
+    <a href="send-code" class="wrls-faux-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+{% endblock %}

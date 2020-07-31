@@ -1,0 +1,189 @@
+{% extends "layout.html" %}
+
+{% set title = "Further conditions" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-8">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ar-edit.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Choose a further condition to add
+      </h1>
+    </div>
+  </div>
+
+  <form>
+
+    <!-- conditions divider, where appropriate -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2  class="heading-large govuk-heading-m">
+          Fish and Eel passage
+        </h2>
+      </div>
+    </div>
+
+    <!-- condition options -->
+    <div class="govuk-!-margin-bottom-8">
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-2" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-2">
+                17.2 i
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No <span class="govuk-body govuk-!-font-weight-bold">[power generation / water shall pass through the XXX / abstraction shall take place]</span> until the Licence Holder has been granted approval by the Agency for installation at the <span class="govuk-body govuk-!-font-weight-bold">[weir/mill]</span> of a fish pass <span class="govuk-body govuk-!-font-weight-bold">[and approval for installation of an eel/elver pass].
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-2" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-2">
+                17.2 ii
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              The Licence Holder shall maintain, repair or replace the fish <span class="govuk-body govuk-!-font-weight-bold">[pass]</span> <span class="govuk-body govuk-!-font-weight-bold">[and eel passes]</span> and ensure that <span class="govuk-body govuk-!-font-weight-bold">[it/they]</span> remain free of obstruction in order that <span class="govuk-body govuk-!-font-weight-bold">[it is/they are]</span> effective at all times.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-2" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-2">
+                17.2 iii
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No <span class="govuk-body govuk-!-font-weight-bold">[power generation / water shall pass through the XXX / abstraction shall take place]</span> until the Licence Holder has been granted approval by the Agency for installation at the <span class="govuk-body govuk-!-font-weight-bold">[weir/mill]</span> of a fish pass <span class="govuk-body govuk-!-font-weight-bold">[and approval for installation of an eel/elver pass].
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-2" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-2">
+                17.3
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+               No abstraction for the purpose of <span class="govuk-body govuk-!-font-weight-bold">[purpose]</span> shall take place at National Grid Reference <span class="govuk-body govuk-!-font-weight-bold">[NGR]</span> unless a fish pass is installed and the attraction flow in that fish pass is of no less than <span class="govuk-body govuk-!-font-weight-bold">[fish pass design flow]</span>. This flow shall be known as the fish pass prescribed flow.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="no-condition" name="no-condition" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="no-condition">
+                None
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                This licence has a non-standard condition
+              </label>
+              <!-- <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"></textarea> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="licence-review/add-values" class="govuk-button">
+      Continue
+    </a>
+
+  </form>
+
+{% endblock %}

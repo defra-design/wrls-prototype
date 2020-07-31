@@ -1,215 +1,25 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
 
-// Import GOV.UK Frontend
-@import "node_modules/govuk-frontend/all";
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
 
 // Patterns that aren't in Frontend
-@import "utilities.scss";
-@import "patterns/check-your-answers";
+@import "patterns/step-by-step-header";
+@import "patterns/step-by-step-nav";
+@import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
-@import "patterns/subnav";
-@import "patterns/tables";
-@import "patterns/licence-data";
-@import "patterns/metadata";
-@import "patterns/manage";
-@import "patterns/abstraction-reform";
-@import "patterns/notification-review";
-@import "patterns/pagination";
-@import "patterns/switcher";
-@import "patterns/dashboard";
-@import "forms";
-@import "patterns/text";
-@import "patterns/expired-licences";
-@import "prototype";
-@import "patterns/summary-list-additions";
-@import "patterns/detailed-guidance";
-@import "patterns/alerts";
-@import "patterns/tag";
-@import "patterns/colours";
-
-// Scalable and Modular Architecture for Cascading Style Sheets
-@import "layout.scss";
-@import "styles.scss";
-@import "typography.scss";
 
 // Components that aren't in Frontend
 @import "components/cookie-banner";
 
-
-// ========== ========== ========== ========== ==========
-// hacks
-// ========== ========== ========== ========== ==========
-
-.width-20 {
-width: 20% !important;
-}
-
-.max-width-20
-{
-  @media (min-width: 768px) {
-  max-width:20% !important;
-  }
-}
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 
-.width-80 {
-  @media (min-width: 768px) {
-width: 80% !important;
-}
-}
 
-//header container to exapnd full width
-.mastheader{
-  margin-left: calc(50% - 50vw);
-  width: 100vw;
- background-color:#f3f2f1;
-// background-color: #b1b4b6;
-// background-color: new-govuk-colours("light-grey");
-  border-top: 1px solid #bfc1c3;
- //border-bottom: 1px solid #bfc1c3;
-}
-
-//padding for top and bottom of the header container
-.mastheader div {
-  padding: 40px 0px;
-  @media (min-width: 768px) {
-  // mega-padding  padding: 210px 0 310px 0;
-  padding: 100px 0 120px 0;
-  }
-}
-
-//Navbar container full width
-.nav-container {
-  margin-left: calc(50% - 50vw);
-  width: 100vw;
-  background-color:#f3f2f1;
-//  border-bottom: 1px solid #bfc1c3;
-  padding: 15px 0px;
-  @media (min-width: 768px) {
-  // mega-padding  padding: 210px 0 310px 0;
-  padding: 0;
-  }
-}
-
-//navbar white on the homepage, its grey elsewhere
-.navbarWhite {
-  background-color:#fff;
-}
-
-.navbar__last {
-
- float:none;
- @media (min-width: 768px) {
-   float:right;
- }
-
-}
-
-/*.circle {
-        border-radius: 50%;
-        width: 21px;
-        height: 21px;
-        padding: 5px;
-        background: #005ea5;
-        color: #fff;
-        text-align: center;
-        display:inline-block;
-      }
-*/
-
-//removoval of padding at the top of the main element so that the master header sits flush with the navbar
-.home-no-padding-top {
-  padding-top: 0px;
-}
-
-//darker hint text on master header to improve contrast
-.hint-dark-grey {
- //color: $govuk-colours("dark-grey");
- color: 	#626a6e;
-// color: $govuk-colours("black");
-//color: 	#0b0c0c;
-
-}
-
-
-//table overflow on small screens fix
-.govuk-table{
-    overflow-x: auto;
-    display: block;
-
-    @media (min-width: 768px) {
-      overflow-x: none;
-        display: table;
-    }
-}
-
-.govuk-table__cell--no-border {
-  @media (min-width: 768px) {
-    border-bottom: none !important;
-  }
-}
-
-//removal of the phase banner bottom border
-.govuk-phase-banner {
-  border-bottom: none;
-}
-
-
-// Steve’s 'right-aligned’ version of the service header
-// .govuk-header__link--service-name {
-//   margin-bottom: 5px;
-//   text-align: right;
-//   float: right;
-// }
-//
-// .govuk-header__navigation {
-//   float: right;
-// }
-
-// make a link look like a gov button
-.wrls-faux-button {
-  border: 0;
-  padding: 12px;
-  min-height: 38px;
-  padding-top: 11px;
-  padding-bottom: 6px;
-  width: auto;
-  font-weight: 400;
-  box-sizing: border-box;
-  display: inline-block;
-  margin-bottom: 32px;
-  font-size: 1.1875rem;
-  line-height: 1;
-  box-shadow: 0 2px 0 #003618;
-  text-align: center;
-  vertical-align: top;
-  cursor: pointer;
-  text-decoration: none;
-  background-color: #00823b;
-  color: white !important;
-}
-
-.wrls-faux-button--inline {
-  padding: 11px 40px 6px 40px;
-  max-width: 56ex + 3ex;
-  @media (min-width: 768px) {
-    margin-left: 5px;
-    width:auto;
-  }
-}
-
-.wrls-faux-button--secondary {
-  color: #0b0c0c !important;
-  background-color: #dee0e2;
-  box-shadow: 0 2px 0 #858688;
-}
-
-.wrls-faux-button--secondary:hover {
-  background-color: #c8cacb;
-}
-
-.wrls-date-input__input--link {
-  border: none;
-}
+//old proto custom styles
+@import "archive/previous-proto/sass/application";

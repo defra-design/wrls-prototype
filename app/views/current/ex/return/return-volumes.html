@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+
+{% set title = "Your abstraction volumes - GOV.UK" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ex-returns.html" %}
+  </div>
+
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-xl">Licence number 01/0117</span>
+      Abstraction return
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">
+      Your abstraction volumes
+    </h2>
+
+    <p class="govuk-body">
+      Remember if you have a ×10 meter you need to multiply your volumes.
+    </p>
+
+    <div class="govuk-!-margin-bottom-3">
+      <label class="govuk-label" for="week-ending-10-april">
+        Week ending 10 April
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-10-april" name="week-ending-10-april" type="number" aria-describedby="week-ending-10-april">Cubic metres
+    </div>
+
+    <div class="govuk-!-margin-bottom-3">
+      <label class="govuk-label" for="week-ending-17-april">
+        Week ending 17 April
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-17-april" name="week-ending-17-april" type="number" aria-describedby="week-ending-17-april">Cubic metres
+    </div>
+
+    <div class="govuk-!-margin-bottom-3">
+      <label class="govuk-label" for="week-ending-24-april">
+        Week ending 24 April
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-24-april" name="week-ending-24-april" type="number" aria-describedby="week-ending-24-april">Cubic metres
+    </div>
+
+    <div class="govuk-!-margin-bottom-3">
+      <label class="govuk-label" for="week-ending-1-may">
+        Week ending 1 May
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-1-may" name="week-ending-1-may" type="number" aria-describedby="week-ending-1-may">Cubic metres
+    </div>
+
+    <div class="govuk-!-margin-bottom-3">
+      <label class="govuk-label" for="week-ending-8-may">
+        Week ending 8 May
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-8-may" name="week-ending-8-may" type="number" aria-describedby="week-ending-8-may">Cubic metres
+    </div>
+
+    <div class="govuk-!-margin-bottom-6">
+      <label class="govuk-label" for="week-ending-15-may">
+        Week ending 15 May
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-15-may" name="week-ending-15-may" type="number" aria-describedby="week-ending-15-may">Cubic metres
+    </div>
+
+    <div class="govuk-!-margin-bottom-6">
+    …
+    </div>
+
+    <div class="govuk-!-margin-bottom-3">
+      <label class="govuk-label" for="week-ending-26-march">
+        Week ending 26 March
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-26-march" name="week-ending-26-march" type="number" aria-describedby="week-ending-26-march">Cubic metres
+    </div>
+
+    <div class="govuk-!-margin-bottom-6">
+      <label class="govuk-label" for="week-ending-2-april">
+        Week ending 2 April
+      </label>
+      <input class="govuk-input govuk-input--width-10 volume-input" id="week-ending-2-april" name="week-ending-2-april" type="number" aria-describedby="week-ending-2-april">Cubic metres
+    </div>
+
+    <a href="return-volumes-meter" class="wrls-faux-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+
+{% endblock %}

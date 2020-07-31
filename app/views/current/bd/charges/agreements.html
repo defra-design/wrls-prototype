@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% set title = "Change agreements" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()",
+    href: "../licence-summary#charge"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">Charge agreements</h1>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- table with two columns -->
+    <div class="table govuk-!-margin-bottom-8">
+
+      <div class="table__row--head">
+        <div class="table__cell bold-small column--50">
+          Agreement
+        </div>
+        <div class="table__cell bold-small column--30">
+          Start date
+        </div>
+        <div class="table__cell bold-small column--20">
+          <!-- Action -->
+        </div>
+      </div>
+
+      <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            Agreement
+          </h3>
+          S126 (Abatement)
+          <br>
+          <a href="change-agreement-date">
+            Remove agreement
+          </a>
+        </div>
+        <div class="table__cell">
+          Started 1 April 2019
+        </div>
+        <div class="table__cell">
+          <a href="remove-agreement-date">
+            End agreement
+          </a><br>
+          <a href="change-agreement-date">
+            Change start date
+          </a>
+        </div>
+      </div>
+
+      <div class="table__row table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <h3 class="table__context">
+            Agreement
+          </h3>
+          S127 (Two-part tariff)
+          <br>
+          <a href="change-agreement-date">
+            Remove agreement
+          </a>
+        </div>
+        <div class="table__cell">
+          Started 30 March 2019
+        </div>
+        <div class="table__cell">
+          <a href="remove-agreement-date">
+            End agreement
+          </a><br>
+          <a href="change-agreement-date">
+            Change start date
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="govuk-!-margin-bottom-9">
+      <a class="govuk-link" href="add-agreement">
+        Add an agreement
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

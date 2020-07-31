@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+
+{% set title = "Review returns data issues for AN02/26/001/2" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">{{data['region']}} two-part tariff bill run</span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ title }}</h1>
+    <section class="govuk-!-margin-bottom-6">
+      <a href="confirm-tpt-remove-bill?tptIssueNP=remove&licenceNumber=AN02/26/001/2&customerName=Lord%20Ashley%20Crofters" class="wrls-faux-button wrls-faux-button--secondary govuk-!-margin-right-1">
+        Remove from bill run
+      </a>
+    </section>
+
+  </div>
+</div>
+
+<!--table-->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-inset-text govuk-!-margin-bottom-0">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+        Spray irrigation
+      </h2>
+      <p class="govuk-body">1 September to 31 October </p>
+  </div>
+
+
+<div class="table govuk-!-margin-bottom-9">
+  <!-- a table -->
+  <div class="table__row--head">
+    <div class="table__cell bold-small column--50">
+      Element description
+    </div>
+    <div class="table__cell bold-small column--30">
+      Issue
+    </div>
+    <div class="table__cell bold-small numbers column--20">
+      Action
+    </div>
+  </div>
+
+
+  <div class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 1
+      </h2>
+      <h3 class="table__context">
+        Element description
+      </h3>
+      <p class="table__row--text">
+        Spray end field
+      </p>
+    </div>
+    <div class="table__cell">
+
+
+      <h3 class="table__context">
+        Issue
+      </h3>
+      <p>
+        Recieved but not processed
+      </p>
+
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Action
+      </h3>
+      <p class="table__row--text">
+        <a href="two-part-bill-element-not-processed">
+          Change
+        </a>
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--
+<section class="govuk-!-margin-bottom-9">
+  <a href="two-part-review">
+    Continue two-part tariff bill review
+  </a>
+</section>
+-->
+{% endblock %}

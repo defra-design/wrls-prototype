@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+
+{% set title = "Further conditions" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-8">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ar-edit.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Choose a further condition to add
+      </h1>
+    </div>
+  </div>
+
+  <form>
+
+    <!-- conditions divider, where appropriate -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2  class="heading-large govuk-heading-m">
+          Hands off level conditions
+        </h2>
+      </div>
+    </div>
+
+    <!-- condition options -->
+    <div class="govuk-!-margin-bottom-8">
+
+      <div class="data-row data-row--radio no-top-border">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-1" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-1">
+                2.1
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No abstraction shall take place unless the level of water in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span> and the abstraction shall not cause the level at the said <span class="govuk-body govuk-!-font-weight-bold">[location]</span> to fall below that level.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-2" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-2">
+                2.2
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+               Abstraction shall not exceed <span class="govuk-body govuk-!-font-weight-bold">[maximum rate]</span> when the level in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured at <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="govuk-!-margin-bottom-8">
+      <!-- conditions divider, where appropriate -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2  class="heading-large govuk-heading-m">
+            Hands off flow conditions
+          </h2>
+        </div>
+      </div>
+
+      <!-- conditions subdivider, where appropriate -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h3  class="heading-large govuk-heading-s">
+            Local
+          </h3>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-3" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label " for="condition-3">
+                2.3
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No abstraction shall take place unless the level of water in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span> and the abstraction shall not cause the level at the said <span class="govuk-body govuk-!-font-weight-bold">[location]</span> to fall below that level.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-4" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-4">
+                2.4
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No abstraction shall take place unless the level of water in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span> and the abstraction shall not cause the level at the said <span class="govuk-body govuk-!-font-weight-bold">[location]</span> to fall below that level.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="govuk-!-margin-bottom-8">
+      <!-- conditions subdivider, where appropriate -->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h3  class="heading-large govuk-heading-s">
+            Catchment abstraction management strategy (CAMS)
+          </h3>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-5" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-5">
+                2.5
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No abstraction shall take place unless the level of water in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span> and the abstraction shall not cause the level at the said <span class="govuk-body govuk-!-font-weight-bold">[location]</span> to fall below that level.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-6" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-6">
+                2.6
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No abstraction shall take place unless the level of water in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span> and the abstraction shall not cause the level at the said <span class="govuk-body govuk-!-font-weight-bold">[location]</span> to fall below that level.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-7" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-7">
+                2.7
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No abstraction shall take place unless the level of water in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span> and the abstraction shall not cause the level at the said <span class="govuk-body govuk-!-font-weight-bold">[location]</span> to fall below that level.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-row data-row--radio">
+        <!-- the data label -->
+        <div class="data-row__param">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="condition-8" name="conditions" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="condition-8">
+                2.8
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- condition text -->
+        <div class="data-row__value">
+          <div class="data-row__sub-list">
+            <p>
+              No abstraction shall take place unless the level of water in the <span class="govuk-body govuk-!-font-weight-bold">[water body]</span> as measured <span class="govuk-body govuk-!-font-weight-bold">[location]</span>, <span class="govuk-body govuk-!-font-weight-bold">[marked as reference point on the map]</span> is equal to or greater than <span class="govuk-body govuk-!-font-weight-bold">[threshold]</span> and the abstraction shall not cause the level at the said <span class="govuk-body govuk-!-font-weight-bold">[location]</span> to fall below that level.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="add-values" class="govuk-button">
+      Continue
+    </a>
+
+  </form>
+
+{% endblock %}

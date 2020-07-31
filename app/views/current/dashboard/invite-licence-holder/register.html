@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% set title = "Create an account" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "account-settings"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Create an account
+      </h1>
+
+      <p>
+        Enter your email address and we will send you a link. Click on the link to finish setting up your account.
+      </p>
+
+      <p>
+        If it is not in your inbox check your spam folder.
+      </p>
+
+      <p>
+        We will only use your email address to send you notifications about your licence or the service.
+      </p>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="width-20">
+          Email address
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
+      </div>
+
+      <a href="success" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+        Continue
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

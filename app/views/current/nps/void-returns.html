@@ -1,0 +1,273 @@
+{% extends "layout.html" %}
+
+{% set title = "Void returns" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-nps-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+          Void returns
+        </h1>
+
+        <h2 class="govuk-heading-m">
+          2019
+        </h2>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <!-- table with returns with statuses -->
+        <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+          <div class="table__row--head">                                              <!-- the table head -->
+            <div class="table__cell bold-small column--20">
+              Return reference
+            </div>
+            <div class="table__cell bold-small column--30">
+              Return period
+            </div>
+            <div class="table__cell bold-small column--25">
+              Purpose
+            </div>
+            <div class="table__cell bold-small column--25">
+              Licence
+            </div>
+          </div>
+
+          <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+            <div class="table__cell">
+              <h3 class="screen-reader-only">
+                Row 1
+              </h3>
+              <h4 class="table__context">
+                Return reference
+              </h4>
+              <a href="return-status-void">
+                <span class="screen-reader-only">View return status for return reference</span>
+                01247811
+              </a>
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Return reference
+              </h4>
+              September 2018 to March 2019
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Purpose
+              </h4>
+              Spray irrigation
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Licence
+              </h4>
+              <a href="licence-summary">
+                <span class="screen-reader-only">View licence</span>
+                02/202/10/761
+              </a>
+            </div>
+          </div>
+
+          <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+            <div class="table__cell">
+              <h3 class="screen-reader-only">
+                Row 2
+              </h3>
+              <h4 class="table__context">
+                Return reference
+              </h4>
+              <a href="return-status-void">
+                <span class="screen-reader-only">View return status for return reference</span>
+                130546724
+              </a>
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Return period
+              </h4>
+              April 2018 to March 2019
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Purpose
+              </h4>
+                Public water supply
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Licence
+              </h4>
+              <a href="licence-summary">
+                <span class="screen-reader-only">View licence</span>
+                22/016/310/101
+              </a>
+            </div>
+          </div>
+
+          <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+            <div class="table__cell">
+              <h3 class="screen-reader-only">
+                Row 2
+              </h3>
+              <h4 class="table__context">
+                Return reference
+              </h4>
+              <a href="return-status-void">
+                <span class="screen-reader-only">View return status for return reference</span>
+                13056724
+              </a>
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Return period
+              </h4>
+              April 2018 to March 2019
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Purpose
+              </h4>
+                Irrigation
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Licence
+              </h4>
+              <a href="licence-summary">
+                <span class="screen-reader-only">View licence</span>
+                231/012/211/62
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-m">
+          2018
+        </h2>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <!-- table with returns with statuses -->
+        <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+          <div class="table__row--head">                                              <!-- the table head -->
+            <div class="table__cell bold-small column--20">
+              Return reference
+            </div>
+            <div class="table__cell bold-small column--30">
+              Return period
+            </div>
+            <div class="table__cell bold-small column--25">
+              Purpose
+            </div>
+            <div class="table__cell bold-small column--25">
+              Licence
+            </div>
+          </div>
+
+          <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+            <div class="table__cell">
+              <h3 class="screen-reader-only">
+                Row 1
+              </h3>
+              <h4 class="table__context">
+                Return reference
+              </h4>
+              <a href="return-status-void">
+                <span class="screen-reader-only">View return status for return reference</span>
+                01102826
+              </a>
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Return reference
+              </h4>
+              April 2017 to March 2019
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Purpose
+              </h4>
+              Machine washing
+            </div>
+            <div class="table__cell">
+              <h4 class="table__context">
+                Licence
+              </h4>
+              <a href="licence-summary">
+                <span class="screen-reader-only">View licence</span>
+                01/232/*G/252/r001
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+{% endblock %}

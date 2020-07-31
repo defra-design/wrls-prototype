@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% set title = "Add charge agreement" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">Add charge agreement</h1>
+
+    </div>
+  </div>
+
+  <form action="add-agreement-date" method="post" class="form" id="return-reference-error">
+
+    
+
+      {{ govukRadios({
+        idPrefix: "charge-loss",
+        name: "loss",
+        fieldset: {
+          legend: {
+            text: "What type of agreement do you want to add?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "section-125",
+            text: "S125 - Energy generation"
+          },
+          {
+            value: "section-126",
+            text: "S126 - Abatement"
+          },
+          {
+            value: "two-part-tariff",
+            text: "S127 - Two-part tariff"
+          },
+          {
+            value: "section-130",
+            text: "S130 - Canal and Rivers Trust"
+          }
+        ]
+      })
+    }}
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+</div>
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+
+{% endblock %}
