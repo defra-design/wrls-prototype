@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% set title = "Registered office address" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- display the correct caption for either billing account change or licence change-->
+    {% if data['ba'] == "true"%}
+    <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+    {{ title }}</h1>
+    {% else %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      {{ title }}</h1>
+    {% endif %}
+
+
+
+    <div class="govuk-inset-text">
+      <strong>{{ data['customerName'] }}</strong><br>
+      {{data['address1']}}<br>
+      {{data['city']}}<br>
+      {{data['postcode']}}
+    </div>
+
+<!--
+{% set companyDetails %}
+{{ data['customerName']}},
+{{ data['address1']}},
+{{ data['city']}},
+{{ data['postcode']}}
+{% endset %} -->
+
+  <form data-routing="1" method="post" class="form" id="check-company-details">
+
+
+      {{ govukRadios({
+        idPrefix: "charge-source",
+        name: "source",
+        fieldset: {
+          legend: {
+    text: "Use this as the billing address?",
+    classes: "govuk-fieldset__legend--m"
+  }
+        },
+        items: [
+          {
+            value: "add-an-fao",
+            html: "Yes"
+          },
+    {
+      value: "new-company-postcode",
+      text: "No"
+    }
+
+        ]
+      })
+    }}
+
+<!--
+    <p class="govuk-body">
+    <a href="new-company-postcode" class="govuk-link govuk-link--no-visited-state">I want to use a different billing address</a>
+    </p>
+
+
+
+    <a href="/bd/contacts/effective-date" class="wrls-faux-button">
+      Continue
+    </a>  -->
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+
+</form>
+  </div>
+</div>
+
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+
+{% endblock %}

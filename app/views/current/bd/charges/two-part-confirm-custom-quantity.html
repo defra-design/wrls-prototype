@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% set title = "Spray top field" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <h2 class="govuk-heading-m">
+      Are you sure you want to override the Pro-rata’d quantity of 20ML?
+    </h2>
+
+    <div class="govuk-checkboxes govuk-!-margin-bottom-6">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="returns-agent" name="returns-agent" type="checkbox" value="returns">
+        <label class="govuk-label govuk-checkboxes__label" for="returns-agent">
+          Yes, use the custom quantity of 15ML
+        </label>
+      </div>
+    </div>
+
+    <a href="two-part-bill-issue" class="wrls-faux-button">
+      Confirm
+    </a>
+
+
+  </div>
+</div>
+{% endblock %}

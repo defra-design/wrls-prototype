@@ -1,0 +1,312 @@
+{% extends "layout.html" %}
+
+{% set title = "Confirm your return - GOV.UK" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ex-returns.html" %}
+  </div>
+
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+      <span class="govuk-caption-xl">Licence number 01/0117</span>
+      Abstraction return
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+  <div class="govuk-grid-column-full">
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Site description
+        </div>
+        <div class="meta-data__value">
+          Great Ouse at Bedford College (Heat pump - cooling only)
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Purpose
+        </div>
+        <div class="meta-data__value">
+          Spray irrigation
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Return period
+        </div>
+        <div class="meta-data__value">
+          1 April 2018 to 31 March 2019
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Abstraction period
+        </div>
+        <div class="meta-data__value">
+          1 April 2018 to 31 September 2018
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Standard tarrif
+        </div>
+      <div>
+    </section>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="../licence-summary?wid={{ query.wid }}">View this licence</a>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">
+      Confirm your return
+    </h2>
+
+    <div class="govuk-inset-text">
+      Estimated
+    </div>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- table with four columns -->
+    <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+      <div class="table__row--head">                                              <!-- the table head -->
+        <div class="table__cell bold-small column--80">
+          Month
+        </div>
+        <div class="table__cell bold-small numbers column--20">
+          Cubic metres
+        </div>
+      </div>
+
+      <!-- table row -->
+      <div class="table__row govuk-!-margin-bottom-8">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 1
+          </h2>
+          <h3 class="table__context">
+            Week
+          </h3>
+          Week ending 10 April
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Cubic metres
+          </h3>
+          <p class="table__row--text">
+            20,040
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-8">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 2
+          </h2>
+          <h3 class="table__context">
+            Week
+          </h3>
+          Week ending 17 April
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Cubic metres
+          </h3>
+          <p class="table__row--text">
+            1,200
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-8">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 3
+          </h2>
+          <h3 class="table__context">
+            Week
+          </h3>
+          Week ending 24 April
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Cubic metres
+          </h3>
+          <p class="table__row--text">
+            1,200
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-8">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 4
+          </h2>
+          <h3 class="table__context">
+            Week
+          </h3>
+          Week ending 1 May
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Cubic metres
+          </h3>
+          <p class="table__row--text">
+            0
+          </p>
+        </div>
+      </div>
+
+      <div class="govuk-!-margin-bottom-8">
+      </div>
+
+      <div class="govuk-!-margin-bottom-8">
+      …
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-8">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 51
+          </h2>
+          <h3 class="table__context">
+            Week
+          </h3>
+          Week ending 26 March
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Cubic metres
+          </h3>
+          <p class="table__row--text">
+            0
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row govuk-!-margin-bottom-8">
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Row 52
+          </h2>
+          <h3 class="table__context">
+            Week
+          </h3>
+          Week ending 2 April
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Cubic metres
+          </h3>
+          <p class="table__row--text">
+            0
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row table__row--total table__row--last govuk-!-margin-bottom-6">                                    <!-- a data row starts -->
+        <div class="table__cell">
+          <h2 class="screen-reader-only">
+            Total abstraction
+          </h2>
+          <h3 class="table__context">
+            <!-- only one of these -->
+            Total abstraction
+          </h3>
+          Total abstraction
+        </div>
+        <div class="table__cell numbers">
+          <h5 class="table__context">
+            Cubic metres
+          </h5>
+          22,440<br>
+          Cubic metres
+        </div>
+      </div>
+
+      <div class="govuk-!-margin-bottom-6">
+        <a href="return-estimated-volumes">
+          Edit your volumes
+        </a>
+      </div>
+
+      {% from "warning-text/ govukWarningText %}
+
+      {{ govukWarningText({
+        text: "You confirm that all the details you are providing are correct to the best of your knowledge.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <a href="return-confirmed" class="wrls-faux-button">
+        Continue
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

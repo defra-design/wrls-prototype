@@ -1,0 +1,386 @@
+{% extends "layout.html" %}
+
+{% set title = "2020 Annual charges for Anglian" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+      {{ title }}
+    </h1>
+    <p class="govuk-body-l">
+      Bill number 003265
+    </p>
+  </div>
+</div>
+
+<!-- invoice totals -->
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+<div class="govuk-grid-column-one-half">
+  <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">14,017</span><br>
+  <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">s</span></h3>
+</div>
+  <div class="govuk-grid-column-one-half">
+    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£973,265</span><br>
+    <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Region total</span></h3>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+    <a href="">
+      Download CSV s
+    </a>
+  </div>
+</div>
+
+<div class="divider govuk-!-margin-bottom-7"></div>
+
+<h2 class="govuk-heading-l">
+  For review
+</h2>
+
+<!-- invoices table -->
+<div class="table govuk-!-margin-bottom-6">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small">
+      Contact
+    </div>
+    <!-- <div class="table__cell bold-small">
+      IAS number
+    </div> -->
+    <div class="table__cell bold-small numbers">
+      2019
+    </div>
+    <div class="table__cell bold-small numbers">
+      Total
+    </div>
+    <div class="table__cell bold-small numbers">
+      Actual change
+    </div>
+    <div class="table__cell bold-small numbers">
+      Change
+    </div>
+  </div>
+
+  <!-- table row -->
+  <a href="" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 1
+      </h2>
+      <h3 class="table__context">
+        Contact
+      </h3>
+      <!-- <span class="table__link"> -->
+        Songlass Produce Ltd.
+      <!-- </span> -->
+    </div>
+    <!-- <div class="table__cell">
+      <h3 class="table__context">
+        IAS number
+      </h3>
+      <p class="table__row--text">
+        0026537
+      </p>
+    </div> -->
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
+        £300.72
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text">
+        £3,002.75
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Actual change
+      </h3>
+      <p class="table__row--text">
+        £2,679.89
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Change
+      </h3>
+      <p class="table__row--text">
+        101.2%
+      </p>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 2
+      </h2>
+      <h3 class="table__context">
+        Contact
+      </h3>
+      <!-- <span class="table__link"> -->
+        Irriwet
+      <!-- </span> -->
+    </div>
+    <!-- <div class="table__cell">
+      <h3 class="table__context">
+        IAS number
+      </h3>
+      <p class="table__row--text">
+        0017261
+      </p>
+    </div> -->
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
+        £326.12
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text">
+        £32,612.12
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Actual change
+      </h3>
+      <p class="table__row--text">
+        £32,286.00
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Change
+      </h3>
+      <p class="table__row--text">
+        100%
+      </p>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 3
+      </h2>
+      <h3 class="table__context">
+        Contact
+      </h3>
+      <!-- <span class="table__link"> -->
+        Easy Glass Co.
+      <!-- </span> -->
+    </div>
+    <!-- <div class="table__cell">
+      <h3 class="table__context">
+        IAS number
+      </h3>
+      <p class="table__row--text">
+        7671267
+      </p>
+    </div> -->
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
+        £4,012.07
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text">
+        £5,616.90
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Actual change
+      </h3>
+      <p class="table__row--text">
+        £1,604.83
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Change
+      </h3>
+      <p class="table__row--text">
+        40%
+      </p>
+    </div>
+  </a>
+
+  <a href="" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 4
+      </h2>
+      <h3 class="table__context">
+        Contact
+      </h3>
+      <!-- <span class="table__link"> -->
+        Samuel Goggozzio
+      <!-- </span> -->
+    </div>
+    <!-- <div class="table__cell">
+      <h3 class="table__context">
+        IAS number
+      </h3>
+      <p class="table__row--text">
+        2767162
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
+        £529.62
+      </p>
+    </div> -->
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text">
+        £168.10
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Actual change
+      </h3>
+      <p class="table__row--text">
+        £361.52
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Change
+      </h3>
+      <p class="table__row--text">
+        34.4%
+      </p>
+    </div>
+  </a>
+
+  <a href="" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 5
+      </h2>
+      <h3 class="table__context">
+        Contact
+      </h3>
+      <!-- <span class="table__link"> -->
+        Mariella Bidbod
+      <!-- </span> -->
+    </div>
+    <!-- <div class="table__cell">
+      <h3 class="table__context">
+        IAS number
+      </h3>
+      <p class="table__row--text">
+        7627610
+      </p>
+    </div> -->
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        2019
+      </h3>
+      <p class="table__row--text">
+        £267.21
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Total
+      </h3>
+      <p class="table__row--text">
+        £213.77
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Actual change
+      </h3>
+      <p class="table__row--text">
+        £53.44
+      </p>
+    </div>
+    <div class="table__cell numbers">
+      <h3 class="table__context">
+        Change
+      </h3>
+      <p class="table__row--text">
+        -20%
+      </p>
+    </div>
+  </a>
+
+</div>
+
+<p>
+  <a href="">
+    Show 14,012 more s
+  </a>
+</p>
+
+{% endblock %}

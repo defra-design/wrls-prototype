@@ -1,0 +1,1999 @@
+{% extends "layout.html" %}
+
+{% set title = "Annual bill run" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-6">
+      <h1 class="govuk-caption-l">Bill run 576849</h1>
+      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} annual bill run</span>
+    </section>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-3">
+      <div class="govuk-grid-column-two-thirds">
+
+        {% if [data.annualstatus] == "ready" %}
+        <p class="govuk-body">
+          {{govukTag({
+          text: "Ready",
+          classes: "govuk-tag--green govuk-!-font-size-27"
+        })}}
+        </p>
+        {% else %}
+        <p class="govuk-body">
+          {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--blue govuk-!-font-size-27"
+        })}}
+        </p>
+        {% endif %}
+
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Date created
+            </div>
+            <div class="meta-data__value">
+              5 March 2020
+            </div>
+            <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Region
+            </div>
+            <div class="meta-data__value">
+              {{data['region']}}
+            </div>
+            <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Bill run type
+            </div>
+            <div class="meta-data__value">
+              Annual
+            </div>
+            <div>
+        </section>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- big total and 2 smaller totals -->
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+
+  <div class="govuk-grid-column-one-half">
+    <!-- invoice totals -->
+    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£512,468.00</span><br>
+    <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h3>
+  </div>
+
+</div>
+
+{% if [data.annualstatus] == "ready" %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-6">
+      <a href="confirm-approve-bills?type=Annual" class="wrls-faux-button">Confirm bill run</a>
+      <a href="confirm-cancel-bills?type=Annual" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+    </section>
+
+  </div>
+
+</div>
+
+{% endif %}
+
+<div class="divider govuk-!-margin-bottom-5"></div>
+
+<p class="govuk-body govuk-!-margin-bottom-0">
+  <a href="/public/Anglian annual bill run 2020-03-05.zip"  class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">
+    Download this bill run
+  </a>
+</p>
+
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+
+  <h2 class="govuk-tabs__title">
+    Annual bills
+  </h2>
+
+  <!-- tab navigation -->
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#companies">
+        Water companies
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#others">
+        Other abstractors
+      </a>
+    </li>
+  </ul>
+
+  <!-- tab 1 -->
+  <section class="govuk-tabs__panel" id="companies">
+
+    <h3 class="govuk-heading-l">
+      Water companies
+    </h3>
+
+    <div class="table govuk-!-margin-bottom-6">
+
+      <div class="table__row--head">
+        <div class="table__cell bold-small column--10">
+          Account
+        </div>
+        <div class="table__cell bold-small column--30">
+          Billing contact
+        </div> <!-- the table head -->
+        <div class="table__cell bold-small column--20">
+          Licence
+        </div>
+        <div class="table__cell bold-small numbers column--20">
+          Total
+        </div>
+        <div class="table__cell bold-small numbers column--10">
+          Change
+        </div>
+        <div class="table__cell bold-small numbers column--10">
+          Action
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 1
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+              021545
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            River Dale Water
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            03/01/12/0032
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £82,960.75
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +12.6%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=River Dale Water">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 2
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+
+                015456
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Big Water Co.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            01/22/33/011
+            <br>01/22/33/012
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £111,100.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            -11%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Bill Brothers Co.">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 3
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                012106
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p class="table__row--text">
+            Bottles Ltd.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            01/25/0026
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £91,450.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +9.2%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Company Name Ltd.">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 4
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                016547
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Highlands Water
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                18 licences
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              05/195/019
+              <br>03/108/16
+              <br>05/20/36
+              <br>02/37/18
+              <br>02/88/83
+              <br>02/54/05
+              <br>02/19/22
+              <br>01/98/31
+              <br>01/58/87
+              <br>84/47/06
+              <br>01/03/70
+              <br>82/59/43
+              <br>14/74/61
+              <br>88/06/36
+              <br>17/08/59
+              <br>47/31/56
+              <br>73/08/20
+              <br>66/38/89
+            </div>
+          </details>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £111,364.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +7.9%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+          <a href="annual-bill?customerName=Highlands Water">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 5
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                018242
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Valleys Water
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            02/22/12/11
+            <br>02/22/12/12
+            <br>02/22/12/13
+            <br>02/22/12/14
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £91,223.60
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            -5.6%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Springtime Foods">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 6
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                024330
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Fresh Water Co.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            01/77/30/12
+            <br>01/76/02/76
+            <br>01/73/02/01
+            <br>01/76/03/02
+            <br>01/75/05/18
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £216,815.04
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            -5.2%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Sandwich Sandwich">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 7
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                035545
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Central Water
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                49 licences
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              03/61/13
+              <br>019/17/11
+              <br>016/13/32
+              <br>107/07/47
+              <br>202/28/14
+              <br>55/66/68
+              <br>19/06/26
+              <br>55/14/23
+              <br>96/33/98
+              <br>52/03/35
+              <br>92/35/19
+              <br>43/48/16
+              <br>25/30/66
+              <br>23/37/18
+              <br>39/88/83
+              <br>40/54/05
+              <br>96/19/22
+              <br>97/98/31
+              <br>67/58/87
+              <br>00/47/06
+              <br>01/03/70
+              <br>82/59/43
+              <br>14/74/61
+              <br>88/06/36
+              <br>17/08/59
+              <br>47/31/56
+              <br>73/08/20
+              <br>66/38/89
+              <br>68/91/37
+              <br>24/23/53
+              <br>73/66/04
+              <br>23/61/95
+              <br>45/43/84
+              <br>03/79/85
+              <br>81/83/85
+              <br>29/91/44
+              <br>65/40/37
+              <br>56/88/35
+              <br>79/18/25
+              <br>82/33/76
+              <br>08/73/91
+              <br>24/61/64
+              <br>25/36/60
+              <br>79/00/35
+              <br>56/88/59
+              <br>86/22/05
+              <br>89/09/86
+              <br>53/26/72
+              <br>69/35/33
+            </div>
+          </details>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £192,240.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.3%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Durvans Produce">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 8
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+            038001
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Bottle Pure
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            022/76/02
+            <br>022/75/01
+            <br>022/76/02
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £140,054.70
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.2%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Good Nature Foods">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 9
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+            044650
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Rivers Water Co.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                12 licences
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              03/60/14
+              <br>03/60/13
+              <br>02/25/31
+              <br>11/20/32
+              <br>02/61/13
+              <br>02/61/13
+              <br>49/17/17
+              <br>16/19/33
+              <br>77/07/46
+              <br>48/48/13
+              <br>55/61/66
+              <br>19/01/26
+            </div>
+          </details>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £71,100.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.2%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Jambodge Farm">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable table__row--last govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 10
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                046565
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Aquafall
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            06/12/025/24
+            <br>06/12/025/25
+            <br>06/12/025/33
+            <br>06/12/022/76
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £81,100.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.0%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+              <a href="annual-bill?customerName=Aquafall">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- tab 2 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="others">
+
+    <h3 class="govuk-heading-l">
+      Other abstractors
+    </h3>
+
+    <div class="table govuk-!-margin-bottom-6">
+
+      <div class="table__row--head">
+        <div class="table__cell bold-small column--10">
+          Account
+        </div>
+        <div class="table__cell bold-small column--30">
+          Billing contact
+        </div> <!-- the table head -->
+        <div class="table__cell bold-small column--20">
+          Licence
+        </div>
+        <div class="table__cell bold-small numbers column--20">
+          Total
+        </div>
+        <div class="table__cell bold-small numbers column--10">
+          Change
+        </div>
+        <div class="table__cell bold-small numbers column--10">
+          Action
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 1
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+
+              021545
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            A. Parson
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            03/28/60/0032
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £2,960.75
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +19.6%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=A. Parson">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 2
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                015456
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Bill Brothers Co.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            01/27/62/001
+            <br>01/28/62/004
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,100.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            -14.3%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Bill Brothers Co.">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 3
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                012106
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p class="table__row--text">
+            Big James
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            01/22/0020
+            <br>01/22/0021/r001
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,450.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +13.2%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+          <a href="annual-bill?customerName=Company Name Ltd.">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 4
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                016547
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Water Farmers Co.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            02/2/35/030
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,364.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +11.9%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+          <a href="annual-bill?customerName=Water Farmers Co.">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 5
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                018242
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Springtime Foods
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            03/12/0/11
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £993.60
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            -11.6%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Springtime Foods">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 6
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                024330
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Sandwich Sandwich
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            03/30/11
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,815.04
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +7.7%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Sandwich Sandwich">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 7
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+                035545
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Durvans Produce
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            04/11/011
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,740.22
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            -7.1%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Durvans Produce">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 8
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+            038001
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Good Nature Goods
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            02/00/0454
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,234.70
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +6.9%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Good Nature Foods">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 9
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+            044650
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Jambodge Farm
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                6 licences
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              03/60/12
+              <br>03/60/13
+              <br>03/60/14
+              <br>03/60/15
+              <br>03/60/15/r001
+              <br>03/60/16
+            </div>
+          </details>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,120.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +6.9%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Jambodge Farm">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 10
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                046565
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            J. P. Fallon
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            05/22/132
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,200.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +6.5%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Aquafall">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 3
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                012106
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p class="table__row--text">
+            Big James
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            01/22/0020
+            <br>01/22/0021/r001
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,450.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +6.2%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+          <a href="annual-bill?customerName=Company Name Ltd.">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 4
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                016547
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Water Farmers Co.
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            02/2/35/030
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,364.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.9%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+              <a href="annual-bill?customerName=Water Farmers Co.">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 5
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                018242
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Springtime Foods
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            03/12/0/11
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £993.60
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            -5.6%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Springtime Foods">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 6
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                024330
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Sandwich Sandwich
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            03/30/11
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,815.04
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.4%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Sandwich Sandwich">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 7
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                035545
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Durvans Produce
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            04/11/011
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,740.20
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.4%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Durvans Produce">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 8
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+            038001
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Good Nature Goods
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            02/00/0454
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,234.70
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5.2%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Good Nature Foods">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 9
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+            044650
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            Jambodge Farm
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                6 licences
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              03/60/12
+              <br>03/60/13
+              <br>03/60/14
+              <br>03/60/15
+              <br>03/60/15/r001
+              <br>03/60/16
+            </div>
+          </details>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,120.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Jambodge Farm">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="table__row--selectable table__row--last govuk-!-margin-bottom-6">
+        <div class="table__cell">
+          <h3 class="screen-reader-only">
+            Row 10
+          </h3>
+          <h3 class="table__context">
+            Account
+          </h3>
+          <p class="table__row--text">
+
+                046565
+
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Billing contact
+          </h3>
+          <p>
+            J. P. Fallon
+          </p>
+        </div>
+        <div class="table__cell">
+          <h3 class="table__context">
+            Licence
+          </h3>
+          <p>
+            05/22/132
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Total
+          </h3>
+          <p class="table__row--text">
+            £1,200.00
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Change
+          </h3>
+          <p class="table__row--text">
+            +5%
+          </p>
+        </div>
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Action
+          </h3>
+          <p class="table__row--text">
+            <a href="annual-bill?customerName=Aquafall">
+              View
+            </a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+{% endblock %}

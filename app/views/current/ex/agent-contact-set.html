@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set title = "Notifications about Bidbod Foods Ltd. licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+      <!-- navigation block -->
+      {% include "current/includes/nav/nav-ex-head.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+      Notifications about Bidbod Foods Ltd. licences
+    </h1>
+
+    <p class="govuk-body">
+      We will send send notifications for Bidbod Foods Ltd to <span class="govuk-!-font-weight-bold">chris.fish@leviathan.com</span>.
+    </p>
+
+    <p class="govuk-body">
+      You can change this at any time in your licence holder account.
+    </p>
+
+    <a href="licences" class="govuk-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}

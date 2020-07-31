@@ -1,0 +1,582 @@
+{% extends "layout.html" %}
+
+{% set title = "Scrifford Pike Licence summary" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-wirs-view.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">Scrifford Pike</h1>
+    </div>
+  </div>
+
+
+
+  <div class="govuk-tabs" data-module="govuk-tabs">
+    <h2 class="govuk-tabs__title">
+      Licence views
+    </h2>
+
+    <ul class="govuk-tabs__list">
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary">
+          Summary
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab" href="#returns">
+          Returns
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab" href="#communications">
+          Communications
+        </a>
+      </li>
+    </ul>
+
+    <!-- tab 1 -->
+    <section class="govuk-tabs__panel" id="summary">
+      <h2 class="govuk-heading-m">Summary</h2>
+
+
+        <section class="govuk-!-margin-bottom-8">
+
+          <!-- licence name -->
+          <div class="data-row">
+            <!-- the data label -->
+            <div class="data-row__param">Licence name</div>
+            <!-- licence data -->
+            <div class="data-row__value">
+              Scrifford Pike
+            </div>
+          </div>
+
+          <!-- licence holder -->
+          <div class="data-row">
+            <div class="data-row__param">Licence holder</div>
+            <div class="data-row__value">
+              Daniel Caan
+              <br><a href="licence/contacts">View licence contact details</a>
+            </div>
+          </div>
+
+          <!-- licence start -->
+          <div class="data-row">
+            <div class="data-row__param">Effective from</div>
+            <div class="data-row__value">
+              31 December 1983
+            </div>
+          </div>
+
+          <!-- licence end -->
+          <div class="data-row">
+            <div class="data-row__param">End date</div>
+            <div class="data-row__value">
+              31 December 2025
+            </div>
+          </div>
+
+          <!-- water body / source -->
+          <div class="data-row">
+            <div class="data-row__param">Source of supply</div>
+            <div class="data-row__value">
+              Underground strata comprising of Mercia Mudstone at Anarea, Atown.
+            </div>
+          </div>
+
+          <!-- purpose -->
+          <div class="data-row">
+            <div class="data-row__param">Purpose</div>
+            <div class="data-row__value">
+              Spray irrigation
+            </div>
+          </div>
+
+          <!-- period -->
+          <div class="data-row">
+            <div class="data-row__param">Period of abstraction</div>
+            <div class="data-row__value">
+              March to September
+            </div>
+          </div>
+
+          <!-- points -->
+          <div class="data-row">
+            <div class="data-row__param">Points of abstraction</div>
+            <div class="data-row__value">
+              At National Grid Reference SK 675124
+              <br>At National Grid Reference SK 675343
+              <br><a href="">View details of abstraction points</a>
+            </div>
+          </div>
+
+          <!-- conditions -->
+          <div class="data-row">
+            <div class="data-row__param">Abstraction conditions</div>
+            <div class="data-row__value">
+              Eel screening condition
+              <br>Flow cessation condition
+              <br>Chemical cessation condition
+              <br><a href="">View details of abstraction conditions</a>
+            </div>
+          </div>
+
+          <!-- amounts -->
+          <div class="data-row">
+            <div class="data-row__param">Abstraction amounts</div>
+            <div class="data-row__value">
+              900 cubic metres per hour
+              <br>1,250 cubic metres per day
+              <br>1,250,000 cubic metres per year
+            </div>
+          </div>
+
+        </section>
+
+    </section>
+
+    <!-- tab 2 -->
+    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
+      <h2 class="govuk-heading-m">
+        Returns
+      </h2>
+
+      <!-- table with returns with statuses -->
+      <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+        <div class="table__row--head">                                              <!-- the table head -->
+          <div class="table__cell bold-small column--20">
+            Return reference
+          </div>
+          <div class="table__cell bold-small column--40">
+            Purpose
+          </div>
+          <div class="table__cell bold-small column--25">
+            Due
+          </div>
+          <div class="table__cell bold-small column--15">
+            Status
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 1
+            </h3>
+            <h4 class="table__context">
+              Return reference
+            </h4>
+            <a href="return-status">
+              <span class="screen-reader-only">View return status for return reference</span>
+              21765264
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Due
+            </h4>
+            March 2019
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status table__status--todo">
+              Due
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 2
+            </h3>
+            <h4 class="table__context">
+              Return reference
+            </h4>
+              <a href="return-status-void">
+              <span class="screen-reader-only">View return status for return reference</span>
+              67525612
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Due
+            </h4>
+            March 2019
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status table__status--error">
+              Void
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 3
+            </h3>
+            <h4 class="table__context">
+              Return reference
+            </h4>
+            <a href="returns/return-report">
+              <span class="screen-reader-only">View return status for return reference</span>
+              01726352
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+              Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Due
+            </h4>
+            March 2018
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 4
+            </h3>
+            <h4 class="table__context">
+              Return reference
+            </h4>
+            <a href="returns/return-report">
+              <span class="screen-reader-only">View return status for return reference</span>
+              01725524
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Due
+            </h4>
+            March 2017
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 5
+            </h3>
+            <h4 class="table__context">
+              Return reference
+            </h4>
+            <a href="returns/return-report">
+              <span class="screen-reader-only">View return status for return reference</span>
+              15263645
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Due
+            </h4>
+            March 2016
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 6
+            </h3>
+            <h4 class="table__context">
+              Return reference
+            </h4>
+            <a href="returns/return-report">
+              <span class="screen-reader-only">View return status for return reference</span>
+              83655562
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Due
+            </h4>
+            March 2015
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 7
+            </h3>
+            <h4 class="table__context">
+              Return reference
+            </h4>
+            <a href="returns/return-report">
+              <span class="screen-reader-only">View return status for return reference</span>
+              12635462
+            </a>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Purpose
+            </h4>
+            Spray irrigation
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Due
+            </h4>
+            March 2014
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Status
+            </h4>
+            <strong class="table__status">
+              Complete
+            </strong>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- tab 3 -->
+    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
+      <h2 class="govuk-heading-m">Communications</h2>
+
+      <!-- table with three columns -->
+      <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+        <div class="table__row--head">                                              <!-- the table head -->
+          <div class="table__cell bold-small column--33">
+            Date
+          </div>
+          <div class="table__cell bold-small column--33">
+            Type
+          </div>
+          <div class="table__cell bold-small column--25">
+            Sender
+          </div>
+          <div class="table__cell bold-small column--20">
+            Method
+          </div>
+        </div>
+
+        <a href="notification-review" class="table__row govuk-!-margin-bottom-6">         <!-- a data row starts -->
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 1
+            </h3>
+            <h4 class="table__context">
+              Date
+            </h4>
+            <div class="table__link">
+              12 March 2019
+            </div>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Type
+            </h4>
+            Hands off flow
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Sender
+            </h4>
+            Moira Finkle
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Method
+            </h4>
+            Post
+          </div>
+        </a>
+
+        <a href="notification-review" class="table__row govuk-!-margin-bottom-6">         <!-- a data row starts -->
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 2
+            </h3>
+            <h4 class="table__context">
+              Date
+            </h4>
+            <div class="table__link">
+              6 March 2019
+            </div>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Type
+            </h4>
+            Hands off flow
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Sender
+            </h4>
+            Moira Finkle
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Method
+            </h4>
+            Post
+          </div>
+        </a>
+
+        <a href="notification-review" class="table__row table__row--last govuk-!-margin-bottom-6">         <!-- a data row starts -->
+          <div class="table__cell">
+            <h3 class="screen-reader-only">
+              Row 3
+            </h3>
+            <h4 class="table__context">
+              Date
+            </h4>
+            <div class="table__link">
+              22 November 2019
+            </div>
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Type
+            </h4>
+            Paper return forms
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Sender
+            </h4>
+            Mike Foskitt
+          </div>
+          <div class="table__cell">
+            <h4 class="table__context">
+              Method
+            </h4>
+            Post
+          </div>
+        </a>
+
+      </div>
+
+    </section>
+
+  </div>
+
+{% endblock %}

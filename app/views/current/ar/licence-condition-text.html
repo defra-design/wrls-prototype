@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% set title = "Existing condition text" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-8">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ar-edit.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Condition 85621
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Add the existing condition text
+      </h2>
+
+      <div class="govuk-form-group">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="existing-condition-text">
+          <textarea class="govuk-textarea" id="existing-condition-text" name="existing-condition-text" rows="5" aria-describedby="existing-condition-text"></textarea>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <a href="licence-review" class="govuk-button">
+    Save and continue
+  </a>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% set title = "A bill run already exists" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <!-- <span class="govuk-caption-l">5 March 2020</span> -->
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-full">
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Date created
+              </div>
+              <div class="meta-data__value">
+                3 March 2020
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Region
+              </div>
+              <div class="meta-data__value">
+                Anglian
+              </div>
+            <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Bill run type
+              </div>
+              <div class="meta-data__value">
+                Supplementary
+              </div>
+            <div>
+          </section>
+
+        </div>
+      </div>
+
+      {{ govukWarningText({
+        text: "Before you can create a new bill run you will need to confirm or cancel this bill run",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <a href="supplementary-bill?dateToday=4 March 2020">
+        Go to existing bill run
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

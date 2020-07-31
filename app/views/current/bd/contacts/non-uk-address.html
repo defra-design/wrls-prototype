@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% set title = "Changing billing contact" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <form action="effective-date" method="post" class="form" id="non-uk-address">
+
+        {{ govukTextarea({
+          name: "more-detail",
+          id: "more-detail",
+          rows: "7",
+          label: {
+            text: "Non-UK address up to 6 lines"
+          }
+        }) }}
+
+        <!-- <textarea cols="60" rows="6" charswidth="60" name="text_body"></textarea> -->
+
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

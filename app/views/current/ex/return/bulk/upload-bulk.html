@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set title = "Submit your returns using bulk upload" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ex-returns.html" %}
+  </div>
+
+    <!-- {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <ol class="govuk-list govuk-list--number">
+      <li><a href="/public/return-templates.zip">Download your bulk upload returns templates and instructions (.CSV)</a></li>
+      <li>Enter your returns data and save it.</li>
+      <li>Export your returns as CSV files.</li>
+      <li>Return to the bulk upload page, click ‘Choose file’ and select your saved CSV files.</li>
+      <li>Click ‘Upload’.</li>
+    </ol>
+
+    <a href="upload-bulk-files" class="wrls-faux-button">Continue</a>
+
+  </div>
+</div>
+
+{% endblock %}

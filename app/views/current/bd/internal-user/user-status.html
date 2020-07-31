@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% set title = "Internal user" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">Internal</span> <!-- internal / external -->
+    <h1 class="govuk-heading-m govuk-!-margin-bottom-0">
+      debbie.smith@environment-agency.gov.uk
+    </h1>
+    <div class="heading-small">
+      Account created 27 June 2019, 11:42am
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- entity block -->
+    <div class="entity"></div>
+  </div>
+</div>
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
+
+    
+
+    {{ govukRadios({
+      idPrefix: "permissions",
+      name: "what-permissions",
+      fieldset: {
+        legend: {
+          text: "Set permissions",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "basic-access",
+          text: "Basic access",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "View licences and returns."
+          }
+        },
+        {
+          value: "billing-data",
+          text: "Billing and Data",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Send returns communications, monitor statistics and edit data."
+          }
+        },
+        {
+          value: "environment-officer",
+          text: "Environment Officer",
+          checked: "checked",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Send hands-off flow notifications."
+          }
+        },
+        {
+          value: "national-permitting-service",
+          text: "National Permitting Service",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Send renewals."
+          }
+        },
+        {
+          value: "national-permitting-service-digitiser",
+          text: "National Permitting Service and Digitise! editor",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Send renewals and digitise licence information."
+          }
+        },
+        {
+          value: "national-permitting-service-approver",
+          text: "National Permitting Service and Digitise! approver",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Send renewals, digitise licence information and approve changes."
+          }
+        },
+        {
+          value: "permitting-support",
+          text: "Permitting and Support Centre",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Send renewals."
+          }
+        },
+        {
+          value: "waste-industry-regulatory-service",
+          text: "Waste and Industry Regulatory Service",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Process returns."
+          }
+        }
+      ]
+    }) }}
+
+    <a href="permissions-updated" class="wrls-faux-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- entity block -->
+    <div class="entity"></div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
+
+    <a href="delete-account" class="govuk-link">
+      Delete this user account
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}

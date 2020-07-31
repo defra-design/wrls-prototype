@@ -1,0 +1,1171 @@
+{% extends "layout.html" %}
+
+{% set title = "Your returns" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ex-returns.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1  class="heading-large govuk-heading-l">
+      Returns for Bidbod Foods Ltd.
+    </h1>
+
+    <div class="govuk-!-margin-bottom-8">
+      <a href="upload-bulk">Submit your returns in bulk</a>
+    </div>
+
+    <h2 class="heading-large govuk-heading-m">
+      2018
+    </h2>
+
+  </div>
+</div>
+
+<!-- table with four columns -->
+<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small">
+      Licence
+    </div>
+    <div class="table__cell bold-small">
+      Site description
+    </div>
+    <div class="table__cell bold-small">
+      Purpose
+    </div>
+    <div class="table__cell bold-small">
+      Status
+    </div>
+  </div>
+
+  <!-- table row -->
+  <a href="return/return-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 1
+      </h3>
+      <span class="screen-reader-only">See return for 03/28/60/0031, Spray irrigation</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0031
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Big Pump next to River Johnnas
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/return-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 2
+      </h3>
+      <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0032
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Slow River
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Trickle Irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/return-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 3
+      </h3>
+      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Honeydew Down (top field)
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/return-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 4
+      </h3>
+      <span class="screen-reader-only">See Bridge Farm licence, 03/28/60/0034</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Bridge South
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/return-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 5
+      </h3>
+      <span class="screen-reader-only">See River House licence, 03/28/60/0047</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0047
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Small pump
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/return-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 6
+      </h3>
+      <span class="screen-reader-only">See Brickleigh Court licence, 03/28/60/0048</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0048
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Brickleigh Leigh
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Machine washing
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/return-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 7
+      </h3>
+      <span class="screen-reader-only">See Brickleigh Court licence, 03/28/60/0048</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0242
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Brickleigh Down
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Trickle Irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+</div>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h2  class="heading-large govuk-heading-m">
+      2017
+    </h2>
+  </div>
+</div>
+
+
+<!-- table with four columns -->
+<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small">
+      Licence
+    </div>
+    <div class="table__cell bold-small">
+      Site description
+    </div>
+    <div class="table__cell bold-small">
+      Purpose
+    </div>
+    <div class="table__cell bold-small">
+      Status
+    </div>
+  </div>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 1
+      </h3>
+      <span class="screen-reader-only">See return for 03/28/60/0031, Spray irrigation</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0031
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Big Pump next to River Johnnas
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 2
+      </h3>
+      <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0032
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Slow River
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Trickle Irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 3
+      </h3>
+      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Honeydew Down (top field)
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 4
+      </h3>
+      <span class="screen-reader-only">See Bridge Farm licence, 03/28/60/0034</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Bridge South
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 5
+      </h3>
+      <span class="screen-reader-only">See River House licence, 03/28/60/0047</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0047
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Small pump
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 6
+      </h3>
+      <span class="screen-reader-only">See Brickleigh Court licence, 03/28/60/0048</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0048
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Brickleigh Leigh
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Machine washing
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+</div>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h2  class="heading-large govuk-heading-m">
+      2016
+    </h2>
+  </div>
+</div>
+
+<!-- table with four columns -->
+<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small">
+      Licence
+    </div>
+    <div class="table__cell bold-small">
+      Site description
+    </div>
+    <div class="table__cell bold-small">
+      Purpose
+    </div>
+    <div class="table__cell bold-small">
+      Status
+    </div>
+  </div>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 1
+      </h3>
+      <span class="screen-reader-only">See return for 03/28/60/0031, Spray irrigation</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0031
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Big Pump next to River Johnnas
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 2
+      </h3>
+      <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0032
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Slow River
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Trickle Irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 3
+      </h3>
+      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Honeydew Down (top field)
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 4
+      </h3>
+      <span class="screen-reader-only">See Bridge Farm licence, 03/28/60/0034</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Bridge South
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 5
+      </h3>
+      <span class="screen-reader-only">See River House licence, 03/28/60/0047</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0047
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Small pump
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 6
+      </h3>
+      <span class="screen-reader-only">See Brickleigh Court licence, 03/28/60/0048</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0048
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Brickleigh Leigh
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Machine washing
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+</div>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h2  class="heading-large govuk-heading-m">
+      2015
+    </h2>
+  </div>
+</div>
+
+<!-- table with four columns -->
+<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small">
+      Licence
+    </div>
+    <div class="table__cell bold-small">
+      Site description
+    </div>
+    <div class="table__cell bold-small">
+      Purpose
+    </div>
+    <div class="table__cell bold-small">
+      Status
+    </div>
+  </div>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 1
+      </h3>
+      <span class="screen-reader-only">See return for 03/28/60/0031, Spray irrigation</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0031
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Big Pump next to River Johnnas
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 2
+      </h3>
+      <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0032
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Slow River
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Trickle Irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 3
+      </h3>
+      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Honeydew Down (top field)
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 4
+      </h3>
+      <span class="screen-reader-only">See Bridge Farm licence, 03/28/60/0034</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        03/28/60/0033
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Bridge South
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 5
+      </h3>
+      <span class="screen-reader-only">See River House licence, 03/28/60/0047</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0047
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Small pump
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Spray irrigation
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="return/returns-report" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h3 class="screen-reader-only">
+        Row 6
+      </h3>
+      <span class="screen-reader-only">See Brickleigh Court licence, 03/28/60/0048</span>
+      <h4 class="table__context">
+        Licence
+      </h4>
+      <span class="table__link">
+        01/04/12/0048
+      </span>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Site description
+      </h4>
+      <p class="table__row--selectable--text">
+        Brickleigh Leigh
+      </p>
+    </div>
+    <div class="table__cell">
+      <h4 class="table__context">
+        Purpose
+      </h4>
+      <p class="table__row--selectable--text">
+        Machine washing
+      </p>
+    </div>
+    <div class="table__cell">
+      <h5 class="table__context">
+        Status
+      </h5>
+      <strong class="table__status">
+        Complete
+      </strong>
+    </div>
+  </a>
+
+</div>
+
+{% endblock %}

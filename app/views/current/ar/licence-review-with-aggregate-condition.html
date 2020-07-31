@@ -1,0 +1,334 @@
+{% extends "layout.html" %}
+
+{% set title = "Licence review" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ar-edit.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">Review licence data</span>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">02/011/43/64a</h1>
+      <div class="heading-small">
+          Last edited 30 November 2018
+      </div>
+    </div>
+  </div>
+
+    <!-- accordion to organise the licence review process -->
+    <div class="govuk-accordion" data-module="accordion" id="accordion-default">
+
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Licence data
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+          <!-- table with three columns -->
+          <div class="table">                                                   <!-- a table -->
+
+            <div class="table__row--head">                                      <!-- the table head -->
+              <div class="table__cell bold-small column--20">
+                NALD field
+              </div>
+              <div class="table__cell bold-small">
+                NALD data
+              </div>
+              <div class="table__cell bold-small">
+                New value
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 1
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                ID
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  1411
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 2
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                Notes
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  KES Area Ref: 3/0625/SE BOURNE VALLEY FISH FARM
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 3
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                LIC_NO
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  02/113
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 4
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                REV_DATE
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  <!-- no NALD data -->
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row govuk-!-margin-bottom-6">                              <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 5
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                vml version
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  2
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+            <div class="table__row--last govuk-!-margin-bottom-6">                        <!-- a data row starts -->
+
+              <div class="table__cell">
+                <h2 class="screen-reader-only">
+                  Row 6
+                </h2>
+                <h3 class="table__context">
+                  NALD field
+                </h3>
+                EXPIRY_DATE
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  NALD data
+                </h3>
+                <div class="">
+                  2
+                </div>
+              </div>
+              <div class="table__cell">
+                <h3 class="table__context">
+                  New value
+                </h3>
+                <!-- no value -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+              Some other licence data
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+          <p class='govuk-body'>Another group of licence data here</p>
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+              More licence data
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+          <p class='govuk-body'>Another group of licence data here</p>
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+              Further conditions
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+
+
+
+          <!-- licence data -->
+          <div class="data-row">
+            <!-- the data label -->
+            <div class="data-row__param govuk-!-margin-bottom-6">
+              <div>
+                24.1 Aggregate licence condition
+              </div>
+              <div class="govuk-!-margin-bottom-3">
+                <br>Linked to:  <!-- slight change from what we have now -->
+                <br><a href="licence-review" target="_blank">02/011/43/64b</a>       <!-- this should open licence views in new _blank window -->
+                <br><a href="licence-review" target="_blank">02/011/43/64c/r01</a>
+              </div>
+              <div class="govuk-!-margin-bottom-3">
+                <a href="licence-review/add-aggregate-values" class="govuk-!-margin-bottom-6">
+                  Change this condition
+                </a>
+              </div>
+              <a href="confirm-remove-aggregated-licence-condition" class="govuk-!-margin-bottom-6">
+                <span class="screen-reader-only">
+                  Remove condition 24.1
+                </span>
+                Remove this condition
+              </a>
+            </div>
+
+
+            <div class="data-row__value">
+              <div class="govuk-!-margin-bottom-3">
+                <!-- aggregated licence condition text -->
+                {% include "current/includes/bd/charges/aggregated-licence-condition.html" %}
+              </div>
+            </div>
+
+          </div>
+
+          <div class="data-row__end govuk-!-margin-bottom-3"></div>
+
+          <div class="govuk-!-margin-bottom-8">
+            <a href="further-condition-groups" class="govuk-!-margin-bottom-6">Add another condition</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

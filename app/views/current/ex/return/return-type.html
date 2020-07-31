@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% set title = "How are you reporting your figures? - GOV.UK" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ex-returns.html" %}
+  </div>
+
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-xl">Licence number 01/0117</span>
+      Abstraction return
+    </h1>
+  </div>
+</div>
+
+{% if error %}
+  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="#return-reference-error">
+            Select what you want to do with this return
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endif %}
+
+<form data-routing="1">
+
+  
+
+    {{ govukRadios({
+      idPrefix: "returnStatus",
+      name: "returnStatus",
+      fieldset: {
+        legend: {
+          text: "How are you reporting your figures?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: "If you used more than one meter you must provide volumes."
+      },
+      items: [
+        {
+          value: "return-meter-reset",
+          text: "Readings from a single meter"
+        },
+        {
+          value: "return-volume-units",
+          text: "Volumes from one or more meters"
+        },
+        {
+          value: "return-estimate-units",
+          text: "Estimates without a meter"
+        }
+      ]
+    })
+  }}
+
+  <button type="submit" class="govuk-button">
+    Continue
+  </button>
+
+</form>
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<script>
+  $(function() {
+    $('form[data-routing]').on('submit', function(ev) {
+      // FInd selected radio button
+      const url = $(this).find('input:checked').val();
+
+      if(url) {
+        ev.preventDefault();
+        window.location.href = url;
+        return false;
+      }
+    });
+  })
+</script>
+
+{% endblock %}

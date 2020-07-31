@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% set title = "Enter your security code" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    {% include "current/includes/nav/nav-ex-manage.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#email">Enter an email address in the right format</a>
+          </li>
+        </ul>
+      </div>
+    </div> -->
+
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+
+    <div id="new-email-form" class="govuk-form-group">
+      <label class="govuk-label" for="email">
+        Your security code
+      </label>
+      <!-- <span id="email-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>Enter an email address in the right format, for example, name@example.com
+      </span> -->
+      <span id="email-hint" class="govuk-hint">
+         We sent this by post to the registered address
+      </span>
+      <input class="govuk-input govuk-input--width-5" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+    </div>
+
+    <a href="found-licences" class="wrls-faux-button">
+      Continue
+    </a>
+
+  </div>
+</div>
+
+<script>
+  // the following code overrides the default link click behaviour and adds the user id
+  document.getElementById('password_reset_link').onclick=function(e){
+    e.preventDefault();
+    var user_id=document.getElementById('user-id').value
+    window.location='/v12/reset_password/password_reset?user_id='+user_id; //redirect to password reset screen
+  }
+
+  {% if incorrectLogin == "1" %}
+    document.getElementById("email-error").className = "govuk-error-message"
+    document.getElementById("new-email-form").className = "govuk-form-group--error"
+  {% endif %}
+
+</script>
+
+
+
+{% endblock %}

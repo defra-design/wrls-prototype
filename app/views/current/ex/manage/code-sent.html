@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% set title = "We have sent you a letter" %}
+
+{% block pageTitle %}
+   We have sent you a letter - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    {% include "current/includes/nav/nav-ex-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          Code sent by post for the following licences:
+        </h1>
+        <div class="govuk-panel__body">
+          <!-- post-relay debug / show data -->
+          {{ data.registrationLicenceNumbers }}
+        </div>
+      </div>
+
+      <p class="govuk-body govuk-!-margin-bottom-8">
+        <a href="add-licences">Add or claim another licence</a><br>
+      </p>
+
+      <h3 class="govuk-heading-m">What happens next</h3>
+
+      <p class="govuk-body">Your letter containing a security code and instructions will be sent by 1st Class post.</p>
+
+      <p class="govuk-body">
+        Sign back into the service and use the code to finish claiming or adding your licence.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+    </div>
+  </div>
+
+{% endblock %}

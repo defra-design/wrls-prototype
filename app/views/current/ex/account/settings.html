@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% set title = "Account settings" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#",
+       text: "Account settings",
+       active: true
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Account settings
+    </h1>
+
+    <h2 class="screen-reader-only">Email address</h2>
+    <p class="govuk-body-l">fozzib@outlook.com<br>
+    <a href="change-email-password-check" class="govuk-body">Change your email address</a></p>
+
+    <h2 class="screen-reader-only">Password</h2>
+    <p class="govuk-body"><a href="change-password-password-check">Change your password</a></p>
+
+  </div>
+</div>
+{% endblock %}

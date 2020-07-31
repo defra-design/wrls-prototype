@@ -1,0 +1,34 @@
+{% set serviceName = "Manage your water abstraction or impoundment licence" %}
+
+{% extends "layout.html" %}
+
+<!-- add elements that we want consistently across the service -->
+{% block pageTitle %}{{title | default("Manage your water abstraction or impoundment licence")}}  - GOV.UK{% endblock %}
+
+{% block header %}
+
+{% include "includes/cookie-banner.html" %}
+
+{{ govukHeader({    homepageUrl: "/",    serviceName: serviceName,    serviceUrl: "/",    containerClasses: "govuk-width-container"  }) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({  tag: {    text: "beta"  },  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'}) }}
+
+<a class="govuk-back-link" onclick="history.back();">Back</a>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- start of service specific block -->
+    {% block service %}Text goes here, override this by overriding the block{% endblock %}
+    <!-- end service specific block-->
+  </div>
+</div>
+
+{% endblock %}
