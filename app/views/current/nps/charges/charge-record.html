@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% set title = "Charge record 03/28/60/0032" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-nps-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">
+      Charge record
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-!-margin-bottom-9">
+  <a href="current-charge-version">Current charge version</a>
+</div>
+
+<!-- timeline -->
+<div class="moj-timeline--future">
+
+  <div class="moj-timeline__item moj-timeline__item--future">
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title">
+        Next bill due
+      </h2>
+      <!-- <p class="moj-timeline__byline">by Jo Smolland</p> -->
+    </div>
+    <p class="moj-timeline__date">
+      <time datetime="2019-04-01T00:00:00.000Z">1 April 2020</time>
+    </p>
+
+    <!-- <div class="moj-timeline__description">
+      <p>
+        Charge start date 19 June 2019
+        <br>
+      </p>
+      <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a>
+    </div> -->
+  </div>
+</div>
+
+
+
+<!-- timeline -->
+<div class="moj-timeline">
+
+  <div class="moj-timeline__item">
+
+    <div class="moj-timeline__header">
+      <h2 class="moj-timeline__title moj-timeline__title--big">
+        From 31 October 2018
+      </h2>
+    </div>
+
+    <p>
+      <!-- <span class="moj-timeline--label">
+        Recent changes:
+      </span> -->
+      <a href="charge-version-1">1 element</a>
+    </p>
+
+  </div>
+
+
+
+</div>
+
+
+  </div>
+</div>
+
+{% endblock %}

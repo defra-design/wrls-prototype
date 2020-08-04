@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% set title = "Does this contact already exist?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- display the correct caption for either billing account change or licence change-->
+      {% if data['ba'] == "true"%}
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+      {{ title }}</h1>
+      {% else %}
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+        {{ title }}</h1>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <form data-routing="1" method="post" class="form" id="contact-change-type">
+
+    
+
+      {{ govukRadios({
+        idPrefix: "charge-source",
+        name: "source",
+        fieldset: {
+        },
+        items: [
+          {
+            value: "check-invoice-account-exists?customerName=Sam%20Burridge%20Accountants%20LLP",
+            text: "Sam Burridge Accountants LLP"
+          },
+          {
+            value: "check-invoice-account-exists?customerName=Samantha%20Burridge",
+            text: "Samantha Burridge"
+          },
+          {
+            value: "check-invoice-account-exists?customerName=Sam%27s%20Farm%20Enterprise%20Plc",
+            text: "Sam's Farm Enterprise Plc"
+          },
+          {
+            value: "check-invoice-account-exists?customerName=Sam%27s%20Water%20Co",
+            text: "Sam's Water Co"
+          },
+          {
+            value: "check-invoice-account-exists?customerName=Burridges%20Brick%20Works%20Ltd",
+            text: "Burridges Brick Works Ltd"
+          },
+          {
+            value: "check-invoice-account-exists?customerName=Burbidge%20Farms%20Plc",
+            text: "Burbidge Farms Plc"
+          },
+          {
+            value: "check-invoice-account-exists?customerName=Sam%27s%20Quarry%20Ltd",
+            text: "Sam's Quarry Ltd"
+          },
+          {
+      divider: "or"
+    },
+    {
+      value: "contact-type",
+      text: "Set up a new contact"
+    }
+
+        ]
+      })
+    }}
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

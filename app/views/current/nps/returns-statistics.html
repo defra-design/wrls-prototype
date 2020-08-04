@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% set title = "Return statistics" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-nps-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+          <span class="govuk-caption-xl">Return statistics</span>
+          April 2018 to October 2018
+        </h1>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+        <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">520 of 524</span><br>
+        <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Completed returns</span></h3>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">204</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Monthly</span>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">298</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Weekly</span>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">22</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Daily</span>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">267</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Internal</span>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">257</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">External</span>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">1</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Over abstracted</span>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">2</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Compliance issues</span>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">3</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Void returns</span>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-one-quarter">
+        <span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">355</span><br>
+        <span class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Licences</span>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <a href="">Download CSV file</a>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+{% endblock %}

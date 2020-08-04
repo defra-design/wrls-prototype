@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% set title = "Unlinked licence 01/018" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/account-settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-nps-view.html" %}
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You have unlinked licence 01/0118 from Big Farm Ltd.
+      </h1>
+
+      <p class="govuk-body">
+        <a href="/nps/user-status">View the user page</a>.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

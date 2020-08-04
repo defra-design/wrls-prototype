@@ -175,8 +175,12 @@ module.exports = {
   "return": "-AN01/68/60/0032p1234543w-",
   "returns":[{
             "licence": "AN01/68/60/0032",
-            "ref": "1234545 - due October 2019,3455343 - due October 2019,7434343 - due October 2019",
-            "address": "Bottled Water Plc, 15 Osborne Road, Bath, BA1 5AH"
+            "licenceHolder": "Bottled Water Plc",
+            "ref": "1234545 - due October 2019,3455343 - due October 2018,7434343 - due October 2017",
+            "address": "15 Osborne Road, Bath, BA1 5AH",
+            "change": "false",
+            "returnAddressFlag": "false",
+            "singleUseAddressFlag": "false"
           }
         ],
     // Insert values here

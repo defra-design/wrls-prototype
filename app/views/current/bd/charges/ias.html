@@ -1,0 +1,256 @@
+{% import "current/includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = data['customerName'] %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- contact summary -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Invoice account {{data['invoiceAccount']}}</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <!-- Contact summary -->
+      <section>
+
+
+
+
+
+        <div class="govuk-inset-text govuk-!-margin-bottom-3">
+
+          {% if data['fao'].length %}
+          <p>{{data['fao']}} <a href="/bd/contacts/fao-contact-exists">Change</a> | <a href="ias?fao=">Remove</a></p>
+          {% else %}
+          <p><a href="/bd/contacts/fao-contact-exists">Add an FAO</a></p>
+          {% endif %}
+          {{data['address1']}}<br>
+          {{data['city']}}<br>
+          {{data['postcode']}}
+        </div>
+
+
+        <div class="govuk-!-margin-bottom-6">
+          <a href="../contacts/check-contact-existing-address">Change address</a>
+        </div>
+
+      </section>
+
+      <div class="govuk-!-margin-bottom-9">
+        <a href="address-history">Address history</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div class="divider govuk-!-margin-bottom-8"></div> -->
+
+
+  <!-- contact summary -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">{{ title }} is the billing contact for these licences</h2>
+
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-large govuk-heading-m">
+        2019
+      </h3>
+    </div>
+  </div>
+
+  <!-- table with four columns -->
+  <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+    <div class="table__row--head">                                              <!-- the table head -->
+      <div class="table__cell bold-small column--25">
+        Licence
+        <!-- licence name if it exists, otherwise Licence -->
+      </div>
+      <div class="table__cell bold-small">
+        Licence name
+      </div>
+      <div class="table__cell bold-small column--25">
+        Licence holder
+      </div>
+      <div class="table__cell bold-small column--20">
+        End date
+      </div>
+    </div>
+
+    <!-- table row -->
+    <a href="/bd/licence-summary" class="table__row govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 1
+        </h2>
+        <span class="screen-reader-only">See licence 03/28/60/0032</span>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <span class="table__link">
+          03/28/60/0032
+        </span>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <p class="table__row--text">
+
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence holder
+        </h3>
+        <p class="table__row--text">
+          Bottled Water Plc
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        <p class="table__row--text">
+          30 April 2022
+        </p>
+      </div>
+    </a>
+
+    <!-- table row -->
+    <a href="/bd/licence-summary" class="table__row govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 2
+        </h2>
+        <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/01/0181</span>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <span class="table__link">
+          03/28/01/0181
+        </span>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <p class="table__row--text">
+
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence holder
+        </h3>
+        <p class="table__row--text">
+          Bottled Water Plc
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        <p class="table__row--text">
+          15 September 2034
+        </p>
+      </div>
+    </a>
+
+    <!-- table row -->
+    <a href="/bd/licence-summary" class="table__row govuk-!-margin-bottom-6">
+      <div class="table__cell">
+        <h2 class="screen-reader-only">
+          Row 3
+        </h2>
+        <span class="screen-reader-only">See licence 03/28/60/0031</span>
+        <h3 class="table__context">
+          Licence
+        </h3>
+        <span class="table__link">
+          03/28/01/0182
+        </span>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <p class="table__row--text">
+
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence holder
+        </h3>
+        <p class="table__row--text">
+          Bottled Water Plc
+        </p>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        <p class="table__row--text">
+          31 March 2027
+        </p>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3  class="heading-large govuk-heading-m">
+        2018
+      </h3>
+    </div>
+  </div> -->
+
+{% endblock %}

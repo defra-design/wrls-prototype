@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% set title = "Enter the UK postcode" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Sam Burridge</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="select-contact-address" method="post" class="form" id="new-contact-postcode">
+
+        <div class="govuk-form-group">
+          <!-- <label class="govuk-label" for="return-reference">
+            Enter a UK postcode
+          </label> -->
+          <input class="govuk-input govuk-input--width-10" id="contact-postcode" name="contact-postcode" type="text">
+        </div>
+
+        <p class="govuk-!-margin-bottom-6">
+          <a href="manual-address-non-uk">
+            This address is outside the UK
+          </a>
+        </p>
+
+        <button type="submit" class="govuk-button">
+          Find address
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-top-9">
+    <div class="govuk-grid-column-full">
+      <p class="govuk-body">© Crown copyright and database rights 2018 Ordnance Survey 100024198. </p>
+      <p class="govuk-body">Use of this addressing data is subject to the <a rel="noreferrer noopener" target="_blank" class="govuk-link" href="https://wasteexemptions.service.gov.uk/pages/os-terms">address data terms and conditions (opens new tab).</a></p>
+    </div>
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+
+{% set title = "View returns data for 03/28/60/0032" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">{{data['region']}} two-part tariff bill run</span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ title }}</h1>
+    <section class="govuk-!-margin-bottom-6">
+      <a href="#" class="wrls-faux-button wrls-faux-button--secondary govuk-!-margin-right-1">
+        Remove from bill run
+      </a>
+    </section>
+
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-inset-text govuk-!-margin-bottom-0">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+        Spray irrigation
+      </h2>
+      <p class="govuk-body">
+          September to October
+        </p>
+  </div>
+
+
+<div class="table govuk-!-margin-bottom-9">
+  <!-- a table -->
+  <div class="table__row--head">
+    <div class="table__cell bold-small column--25">
+      Description
+    </div>
+    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
+      Authorised
+    </div>
+    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
+      Billable
+    </div>
+    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
+      Reported
+    </div>
+    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
+      Action
+    </div>
+  </div>
+
+
+  <div class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 2
+      </h2>
+      <h3 class="table__context">
+        Description
+      </h3>
+      <p class="table__row--text">
+        Spray end field
+      </p>
+    </div>
+    <div class="table__cell govuk-table__cell--numeric">
+      <h3 class="table__context">
+        Authorised
+      </h3>
+      <p>
+        20ML
+      </p>
+    </div>
+    <div class="table__cell govuk-table__cell--numeric">
+      <h3 class="table__context">
+        Billable
+      </h3>
+      <p>
+        {{data['quantity']}}ML<br>Edited
+      </p>
+    </div>
+    <div class="table__cell govuk-table__cell--numeric">
+      <h3 class="table__context">
+        Reported
+      </h3>
+      <p>
+        30ML
+      </p>
+    </div>
+    <div class="table__cell govuk-table__cell--numeric">
+      <h3 class="table__context">
+        Action
+      </h3>
+      <p class="table__row--text">
+        <a href="#">
+          Change
+        </a>
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+<!--
+<section class="govuk-!-margin-bottom-9">
+  <a href="two-part-review">
+    Continue two-part tariff bill review
+  </a>
+</section>
+-->
+
+{% endblock %}

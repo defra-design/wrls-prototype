@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% set title = "View licences" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-dash-view.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1 class="govuk-heading-l">
+      View licences
+    </h1>
+  </div>
+</div>
+
+<!-- table with four columns -->
+<div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+  <div class="table__row--head">                                              <!-- the table head -->
+    <div class="table__cell bold-small column--30">
+      Licence number
+    </div>
+    <div class="table__cell bold-small">
+      Licence name
+    </div>
+    <div class="table__cell bold-small column--20">
+      End date
+    </div>
+  </div>
+
+  <!-- table row -->
+  <a href="licence-summary?wid=31" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 1
+      </h2>
+      <span class="screen-reader-only">See licence 03/28/60/0031</span>
+      <h3 class="table__context">
+        Licence serial number
+      </h3>
+      <span class="table__link">
+        01/0117
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
+        <!-- no text -->
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence end date
+      </h3>
+      <p class="table__row--text">
+        30 April 2021
+      </p>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="licence-summary?wid=32" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 2
+      </h2>
+      <span class="screen-reader-only">See Scrifford Pike licence, 03/28/60/0032</span>
+      <h3 class="table__context">
+        Licence serial number
+      </h3>
+      <span class="table__link">
+        01/0118
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
+        <!-- no text -->
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence end date
+      </h3>
+      <p class="table__row--text">
+        30 April 2021
+      </p>
+    </div>
+  </a>
+
+  <!-- table row -->
+  <a href="licence-summary?wid=33" class="table__row--selectable govuk-!-margin-bottom-6">
+    <div class="table__cell">
+      <h2 class="screen-reader-only">
+        Row 3
+      </h2>
+      <span class="screen-reader-only">See Honeydew Crescent licence, 03/28/60/0033</span>
+      <h3 class="table__context">
+        Licence serial number
+      </h3>
+      <span class="table__link">
+        01/0119
+      </span>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence name
+      </h3>
+      <p class="table__row--text">
+        <!-- no text -->
+      </p>
+    </div>
+    <div class="table__cell">
+      <h3 class="table__context">
+        Licence end date
+      </h3>
+      <p class="table__row--text">
+        15 September 2022
+      </p>
+    </div>
+  </a>
+
+</div>
+
+{% endblock %}

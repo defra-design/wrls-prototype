@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% set title = "Do you want to use an existing address?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+
+
+  <form data-routing="1" method="post" class="form" id="contact-change-type">
+<!--<p class="govuk-body">Existing addresses for {{data['customerName']}}</p>-->
+
+
+{% set hintText = "Existing addresses for " + data['customerName'] %}
+
+
+  {{ govukRadios({
+  idPrefix: "address",
+  name: "address",
+  fieldset: {
+    legend: {
+      html: title,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
+  },
+  hint: {
+    html: hintText
+  },
+        items: [
+          {
+            value: "effective-date?address1=15%20Osborne%20Road&city=Bath&postcode=BA1%205AH",
+            html: "15 Osborne Road, Bath, BA1 5AH"
+          },
+          {
+            value: "effective-date?address1=Unit%204%20Finkley%20Cresent&city=London&postcode=N5%201FE",
+            html: "Unit 4, Finkley Crescent, London N5 1FE"
+          },
+          {
+            value: "effective-date?address1=101%20Kempshott%20Lane&city=Basingstoke&postcode=RG22%207AF",
+            html: "101 Kempshott Lane, Basingstoke RG22 7AF"
+          },
+          {
+      divider: "or"
+    },
+    {
+      value: "new-company-postcode",
+      text: "Set up a new address"
+    }
+
+        ]
+      })
+    }}
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+</div>
+</div>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

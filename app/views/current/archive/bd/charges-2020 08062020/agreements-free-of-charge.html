@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% set title = "Agreements" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-6">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-view.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+
+
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">Agreements</h1>
+
+
+
+
+    <!--
+<a href="add-agreement" role="button" draggable="false" class="govuk-button">
+  Set up new agreement
+</a>
+-->
+
+
+
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Agreement</th>
+          <th scope="col" class="govuk-table__header">Date signed</th>
+          <th scope="col" class="govuk-table__header">Start date</th>
+          <th scope="col" class="govuk-table__header">End date</th>
+          <!--    <th scope="col" class="govuk-table__header">Action</th> -->
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Abatement (S126)</td>
+          <td class="govuk-table__cell">28 April 2020</td>
+          <td class="govuk-table__cell">28 April 2020</td>
+          <td class="govuk-table__cell"> </td>
+          <!--  <td class="govuk-table__cell"><a href="remove-agreement-date?agreementNumber=0">End agreement</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a href="remove-agreement?agreementNumber=0">Remove</a></td>-->
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Two-part tariff (S127)</td>
+          <td class="govuk-table__cell">1 October 2020</td>
+          <td class="govuk-table__cell">1 April 2020</td>
+          <td class="govuk-table__cell">5 May 2023</td>
+          <!--<td class="govuk-table__cell"></td> -->
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% set title = "Check agreement start date" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence 03/28/60/0032</span> {{ title }}</h1>
+
+      <!--back date start date to the start of the financial year or the licence start date.-->
+       {% if [data.agreementSignedStartYear] < "2019" %}
+       {{ govukInsetText({
+         html: '<p class="govuk-body">This agreement will start on <span class="govuk-body govuk-!-font-weight-bold">31 July 2018. </span></p><p class="govuk-body">This is the licence start date.</p>'
+       }) }}
+       {% else %}
+      {{ govukInsetText({
+        html: '<p class="govuk-body">This agreement will start on <span class="govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + '. </span></p><p class="govuk-body">This is the start of the new financial year.</p>'
+      }) }}
+      {% endif %}
+
+
+
+
+  <form method="post" class="form">
+
+
+    {% set agreementDate %}
+    {{ govukDateInput({
+  id: "agreementStart",
+  namePrefix: "agreementStart",
+  fieldset: {
+    legend: {
+      text: 'Start date',
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "agreementDateConditional",
+  name: "agreementDateConditional",
+  fieldset: {
+    legend: {
+      html: 'Do you want to set a different agreement start date?',
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: agreementDate
+      }
+      },
+      {
+        value: "no",
+        html: 'No'
+      }
+  ]
+}) }}
+
+<!--
+{{ govukRadios({
+  idPrefix: "agreementDateConditional",
+  name: "agreementDateConditional",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "today",
+      html: 'Today<br>20 April 2020'
+    },
+    {
+      value: "licenceStart",
+      html: "Licence start date<br>22 September 2023"
+    },
+    {
+divider: "or"
+},
+    {
+      value: "other",
+      text: "A different date",
+      conditional: {
+        html: agreementDate
+      }
+    }
+  ]
+}) }} -->
+
+    <button type="submit" class="govuk-button govuk-!-margin-right-1">
+      Continue
+    </button>
+    <!-- <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Skip this for now
+    </button> -->
+
+  </form>
+  </div>
+</div>
+
+{% endblock %}

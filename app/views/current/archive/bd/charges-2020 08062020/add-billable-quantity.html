@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+
+{% set title = "Enter billable quantity" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+
+    </div>
+  </div>
+
+
+  <form  method="post" class="form" id="return-reference-error">
+
+
+<!--    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="billable-quantity">
+        {{title}}
+        </label>
+
+      </h1>
+
+      <label class="govuk-label" for="billable-quantity">
+        Billable quantity
+      </label>
+      <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false">
+      <span class="margin-left__15">megalitres per year</span>
+
+    </div> -->
+
+    {% set billableQuantity %}
+    <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false">
+    <span class="margin-left__15">megalitres per year</span>
+
+    <!--
+    {{ govukInput({
+      id: "billableQuantity",
+      name: "billableQuantity",
+      classes: "govuk-!-width-one-third govuk-input--width-10",
+      label: {
+        text: "Billable quantity"
+      },
+      attributes: {
+        spellcheck: "false"
+      }
+    }) }} -->
+    {% endset -%}
+
+
+    {{ govukRadios({
+  idPrefix: "billableQuantityNeeded",
+  name: "billableQuantityNeeded",
+  fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: billableQuantity
+      }
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+<!--
+    {{ govukInput({
+  label: {
+    text: [title],
+    isPageHeading: true,
+    classes: "govuk-label--l govuk-!-margin-bottom-3"
+  },
+  classes: "govuk-input--width-10",
+  id: "billable-quantity",
+  name: "billable-quantity",
+  inputmode: "number",
+  pattern: "[0-9]*",
+  attributes: {
+    spellcheck: "false"
+  }
+}) }}
+
+-->
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

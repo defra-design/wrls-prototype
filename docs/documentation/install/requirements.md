@@ -14,9 +14,8 @@ GDS staff can install the software themselves with Managed Software Centre (MSC)
 
 You'll need:
 
-* Node.js 8.x.x
+* Node.js 12.x.x
 * Atom (text editor)
-* Command line tools (Mac)
 * Git bash (Windows)
 
 ## Terminal
@@ -48,9 +47,9 @@ command to be typed in to terminal
 Once you’ve typed the command, press enter to send it.
 
 
-## Node.js version 8 LTS
+## Node.js version 12 LTS
 
-The kit is designed to work with Node.js version 8 LTS. The kit works with any 8.x.x version.
+The kit is designed to work with Node.js version 12 LTS. The kit works with any 12.x.x version.
 
 ### Check if you have Node.js
 
@@ -60,22 +59,22 @@ node --version
 ```
 If it says `command not found` or `Error 0x2 starting node.exe --version` you don’t have node and will need to download and install it.
 
-If the version number starts with 8 you have the correct version installed.
+If the version number starts with 12 you have the correct version installed.
 
-If it says another number such as `0.12` or `5.x.x`, you need to download and install version 8.
+If it says another number such as `0.12` or `5.x.x`, you need to download and install version 12.
 
 ### Download and install Node.js
 
 #### Mac / Windows users
 
-Download version 8 from [nodejs.org](https://nodejs.org/en/).
+Download version 12 from [nodejs.org](https://nodejs.org/en/).
 
 Run the installer with all default options.
 
 #### Linux users
 
 Follow the instructions on the [Node.js](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-) site. Make sure you get version 8, not 9.
+) site. Make sure you get version 12.
 
 ### Once Node is installed
 
@@ -86,24 +85,10 @@ To check it is installed correctly you can again run:
 node --version
 ```
 
-If it’s installed correctly it should show a number starting with 8.
+If it’s installed correctly it should show a number starting with 12.
 
 ## Atom (text editor)
 
 You’ll need a text editor to edit and make changes to your prototype. We recommend [Atom](https://atom.io/) - which is free and has lots of useful features.
-
-## Command line tools (mac)
-
-Mac users will need the OSx Command line tools.
-
-In terminal:
-```
-xcode-select --install
-```
-If you already have command line tools, this will display `xcode-select: error: command line tools are already installed, use "Software Update" to install updates`.
-
-![Screenshot of Command line tools popup message](/public/images/docs/installing-mavericks-popup.png)
-
-If you don’t have command line tools, it will open an installer. Follow the instructions to install the command line tools.
 
 <a href="install-the-kit.md" class="button">Next (install the kit)</a>

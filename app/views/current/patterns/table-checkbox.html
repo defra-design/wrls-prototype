@@ -1,0 +1,214 @@
+{% import "current/includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = "Checkbox tables" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Water service patterns",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        Checkbox tables
+      </h1>
+    </div>
+  </div>
+
+  <!-- table with three columns -->
+  <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
+    <div class="table__row--head">                                              <!-- the table head -->
+      <div class="table__cell bold-small column--33">
+        Licence number
+      </div>
+      <div class="table__cell bold-small">
+        Licence name
+      </div>
+      <div class="table__cell bold-small column--20">
+        End date
+      </div>
+      <div class="table__cell bold-small column--20">
+        Contact
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell table__cell--checkbox">
+        <h2 class="screen-reader-only">
+          Row 1
+        </h2>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="checkbox-1" name="checkbox-items" type="checkbox" value="">
+          <label class="govuk-checkboxes__label table__checkbox-label" for="checkbox-1">
+            <h3 class="table__context">
+              Licence serial number
+            </h3>
+            <a href="">
+              018/54/13/04
+            </a>
+          </label>
+        </div>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <!-- nothing if it was not named -->
+        Valley Lake Farm
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        30 April 2021
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Contact
+        </h3>
+        <!-- when was the last contact with the licence holder -->
+        2 weeks ago
+      </div>
+    </div>
+
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell table__cell--checkbox">
+        <h2 class="screen-reader-only">
+          Row 2
+        </h2>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="checkbox-2" name="checkbox-items" type="checkbox" value="">
+          <label class="govuk-checkboxes__label table__checkbox-label" for="checkbox-2">
+            <h3 class="table__context">
+              Licence serial number
+            </h3>
+            <a href="">
+              018/54/004/02
+            </a>
+          </label>
+        </div>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <!-- nothing if it was not named -->
+        Pipplington Bridge
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        30 April 2021
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Contact
+        </h3>
+        <!-- when was the last contact with the licence holder -->
+        2 weeks ago
+      </div>
+    </div>
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell table__cell--checkbox">
+        <h2 class="screen-reader-only">
+          Row 3
+        </h2>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="checkbox-3" name="checkbox-items" type="checkbox" value="">
+          <label class="govuk-checkboxes__label table__checkbox-label" for="checkbox-3">
+            <h3 class="table__context">
+              Licence serial number
+            </h3>
+            <a href="">
+              018/52/13/91
+            </a>
+          </label>
+        </div>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <!-- nothing if it was not named -->
+        Brapford Leigh
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        31 October 2020
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Contact
+        </h3>
+        <!-- when was the last contact with the licence holder -->
+        3 weeks ago
+      </div>
+    </div>
+    <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+      <div class="table__cell table__cell--checkbox">
+        <h2 class="screen-reader-only">
+          Row 4
+        </h2>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="checkbox-4" name="checkbox-items" type="checkbox" value="">
+          <label class="govuk-checkboxes__label table__checkbox-label" for="checkbox-4">
+            <h3 class="table__context">
+              Licence serial number
+            </h3>
+            <a href="">
+              018/54/22/01
+            </a>
+          </label>
+        </div>
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Licence name
+        </h3>
+        <!-- nothing if it was not named -->
+        Whickley Dale
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          End date
+        </h3>
+        10 May 2022
+      </div>
+      <div class="table__cell">
+        <h3 class="table__context">
+          Contact
+        </h3>
+        <!-- when was the last contact with the licence holder -->
+        1 month ago
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

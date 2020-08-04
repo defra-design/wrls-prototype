@@ -1,0 +1,260 @@
+{% extends "layout.html" %}
+
+{% set title = "From 31 October 2019" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password",
+       active: true
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-nps-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence number 03/28/60/0032</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+      {{ title }}
+    </h1>
+    <a href="" class="wrls-faux-button wrls-faux-button--secondary">Change start date</a>
+  </div>
+</div>
+
+<!-- charges -->
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <!-- <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Status
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <strong class="table__status table__status--open">
+        Current
+      </strong>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="confirm-make-current">
+        Make current
+      </a>
+    </dd>
+  </div> -->
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Next bill due
+    </dt>
+    <dd class="govuk-summary-list__value">
+      30 March 2020
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <!-- <a class="govuk-link" href="/nps/charges/charge-record">
+        Charge record
+      </a> -->
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Billing contact
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="/nps/licence/contacts#billing">
+        Constantinos Michaelides
+      </a>
+      <!-- <br>
+      <a href="/nps/charges/billing-account">
+        View invoices
+      </a> -->
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <!-- <a class="govuk-link" href="">
+        Change
+      </a> -->
+    </dd>
+  </div>
+  <!-- <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Agreements
+    </dt>
+    <dd class="govuk-summary-list__value">
+      S127 (Two-part tariff) started 19 November 2019
+      <br>S126 (Abatement) started 19 November 2019
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="/nps/charges/agreements">
+        Change agreements
+      </a>
+    </dd>
+  </div> -->
+
+</dl>
+
+<!-- purpose -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+      Spray irrigation - Direct
+    </h2>
+  </div>
+</div>
+
+<div class="govuk-!-margin-bottom-6">
+  <a href="add-abstraction-period" class="wrls-faux-button wrls-faux-button--secondary">
+    Add an element
+  </a>
+</div>
+
+<!-- use -->
+<section class="govuk-!-margin-bottom-2">
+
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+        Spray irrigation, base licence
+      </h3>
+      <div class="govuk-!-margin-bottom-3">
+        <a class="govuk-link" href="remove-element">
+          Remove this element
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <dl class="govuk-summary-list">
+
+        <dl class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Abstraction period
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1 April to 31 March
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="">
+              Change
+            </a>
+          </dd> -->
+        </dl>
+
+        <div class="govuk-summary-list__row wrls-summary-list__row--divider">
+          <dt class="govuk-summary-list__key">
+            Chargable quantity
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1,250,000 cubic metres per year
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/nps/charges/chargable-quantity">
+              Change
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row" id="factors">
+          <dt class="govuk-summary-list__key">
+            Loss
+          </dt>
+          <dd class="govuk-summary-list__value">
+            High
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/nps/charges/change-loss">
+              Change
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Season
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- <strike class="govuk-!-margin-right-1">Summer</strike>All year -->
+            <div>Summer</div>
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/nps/charges/change-season">
+              Change
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Source
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Unsupported
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/nps/charges/change-source">
+              Change
+            </a>
+          </dd> -->
+        </div>
+
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Compensation (EIUC)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0
+          </dd>
+          <!-- <dd class="govuk-summary-list__actions">
+            no action
+          </dd> -->
+        </div>
+
+      </dl>
+
+    </div>
+  </div>
+
+  <div class="govuk-!-margin-bottom-9">
+    <a href="change-abstraction-period" class="wrls-faux-button wrls-faux-button--secondary">
+      Change element
+    </a>
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% set title = "Manage returns" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/ex/account/settings",
+       text: "Account settings"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- phase banner -->
+  {% include "current/includes/feedback-banner.html" %}
+  <!-- company switcher -->
+  {% include "current/includes/company-switcher.html" %}
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-ex-manage.html" %}
+  </div>
+  <!--
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Manage licences
+    </h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+
+    <h2 class="govuk-heading-m">
+      Add licences
+    </h2>
+
+    <ul class="govuk-list">
+
+      <li>
+        <a class="govuk-link" href="manage/add-licences">
+          <!-- Add another licence -->
+          Add more of your licences
+        </a>
+      </li>
+
+      <li>
+        <a class="govuk-link" href="manage/enter-code">
+          Enter a security code
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <h2 class="govuk-heading-m">
+      Share access to licences
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="manage/give-access">
+          Give or remove access
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="contact-update">
+          Update licence contact preferences
+        </a>
+      </li>
+    </ul>
+
+    <!-- <h2 class="govuk-heading-m">
+      Account
+    </h2>
+
+    <ul class="govuk-list">
+      <!-- <li>
+        <a class="govuk-link" href="account-settings">
+          Update your email address
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="contact-update">
+          Update your contact preferences
+        </a>
+      </li>
+    </ul> -->
+
+  </div>
+</div>
+
+{% endblock %}

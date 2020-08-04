@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% set title = "Why is this licence not chargeable?" %}
+
+
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- page heading -->
+      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+  <!--    <h1 class="govuk-heading-l">{{ title }}</h1>
+-->
+
+
+  <form  method="post" class="form">
+
+
+
+{{ govukRadios({
+  idPrefix: "reason",
+  name: "reason",
+  fieldset: {
+    legend: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
+  },
+  items: [
+    {
+      value: "Held by Environment Agency",
+      text: "Held by Environment Agency"
+    },
+    {
+      value: "Aggregate licence",
+      text: "Aggregate licence"
+    },
+    {
+      value: "Chloride content more than 8000 milligrams per litre",
+      text: "Chloride content more than 8000 milligrams per litre"
+    },
+    {
+      value: "Abatement (S126)",
+      text: "Abatement (S126)"
+    },
+    {
+      value: "Power generation less than 5 megawatts (S125)",
+      text: "Power generation less than 5 megawatts (S125)"
+    },
+    {
+      value: "Temporary trade",
+      text: "Temporary trade"
+    },
+    {
+      value: "Temporary type licence",
+      text: "Temporary type licence"
+    },
+    {
+      value: "Transfer type licence",
+      text: "Transfer type licence"
+    },
+    {
+      value: "Shell licence",
+      text: "Shell licence"
+    }
+  ]
+}) }}
+
+    <button type="submit" class="govuk-button govuk-!-margin-right-1">
+      Continue
+    </button>
+    <!-- <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Skip this for now
+    </button> -->
+
+  </form>
+  </div>
+</div>
+
+{% endblock %}
