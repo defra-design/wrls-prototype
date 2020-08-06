@@ -53,7 +53,7 @@
 
 
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-full">
 
 
 
@@ -73,27 +73,32 @@
          {% endif %}
 
           <!--check to see if the list of returns has been changed-->
-           {% if i.change == "true" %}
+           {%- if i.change == "true" %}
             <!--replace the commas in the reference with line breaks-->
-            {% set ref= data.returns[loop.index0]['refChange'].replace(r/,/g, "<br>") %}
+            {% set ref= data.returns[loop.index0]['ref'].replace(r/,/g, '<br>').replace(r/-/g, ' ') %}
             {% else %}
             <!--replace the commas in the reference with line breaks-->
-                  {% set ref= data.returns[loop.index0]['ref'].replace(r/,/g, "<br>") %}
-            {% endif %}
+                  {% set ref = data.returns[loop.index0]['ref'].replace(r/,/g, '<br>').replace(r/-/g, ' ') %}
+            {% endif -%}
 
 
-       <h2 class="govuk-heading-m">Licence {{i.licence}} - {{i.licenceHolder}}</h2>
+       <h2 class="govuk-heading-m">Licence {{i.licence}}</h2>
 
       {{ govukSummaryList({
   rows: [
     {
-
+      key: {
+        text: "Licence holder"
+      },
+      value: {
+        html: i.licenceHolder
+      }
+    },
+    {
       key: {
         text: "Returns"
       },
-      value: {
-        html: ref
-      },
+      value: {html: ref },
       actions: {
         items: [
           {

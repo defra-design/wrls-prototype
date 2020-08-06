@@ -887,21 +887,23 @@ router.post('/bd/charges-2020/remove-agreement', function(req, res) {
 
 
 //get
-router.get('/current/bd/manage/send-paper', function(req, res) {
+router.get('/bd/manage/send-paper', function(req, res) {
 
   //Clear the returns array
   req.session.data['returns'] = []
 
-  res.render('bd/manage/send-paper');
+  res.render('current/bd/manage/send-paper');
 });
 
 //Post the licence list
 router.post('/bd/manage/send-paper', function(req, res) {
 
+
+
   //split the licenec numbers from the text input
   let licences = [];
   licences = req.session.data['licenceList'].replace(/\s/g, '').split(/\,|\n/g)
-
+  console.log(licences);
 
   //Address data
   let addressList = ["15 Ward Road, Bath, BA1 5EH",
@@ -935,11 +937,10 @@ router.post('/bd/manage/send-paper', function(req, res) {
 
     //Random numbers for the references
     let refNumber = [...Array(refIndex)].map(() => Math.floor(Math.random() * 9999999) + 1000000);
-    refNumber = refNumber.map(i => i + ' - due October ' + year--);
+    refNumber = refNumber.map(i => i + ' - Due October ' + year--);
 
     //Convert to a string
     ref = refNumber.toString();
-
     //choose random address form the list
     let address = addressList[Math.floor(Math.random() * addressList.length)];
 
@@ -1082,7 +1083,7 @@ router.post('/bd/manage/send-paper-select-address', function(req, res) {
 
       //add return address
       req.session.data.returns[index]['returnAddress'] = "Geoffrey Billington, Unit 4, Finkley Crescent, London, N5 1FE"
-    
+
 
     res.redirect('/bd/manage/send-paper-confirm');
 

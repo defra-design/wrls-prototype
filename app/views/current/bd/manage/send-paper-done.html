@@ -42,15 +42,22 @@
 
     {{ govukPanel({
       titleText: [title],
-      html: "They will arrive in the next three to five working days"
+      html: "They will arrive in the next three to five working days",
+      classes:"govuk-!-margin-bottom-9"
       }) }}
 
-      {% if (data.returns[data['returnIndex']]['singleUseAddressFlag'] == "true") %}
-      <p class="govuk-body">Licence AN01/68/60/0032 - Bottled Water Plc</p>
-To change an address on the licence holder’s account:
-<ul>
-  <li>email<a href="mailto:billing@environment-agency.gov.uk"> team if it’s a correction to an existing address</li>
-<li>if it’s a new address, email <a href="mailto:permitting@environment-agency.gov.uk"> and ask them to send the licence holder a form to make minor changes (WR2)</li></ul>      {% endif %}
+
+
+    {% if (data.returns[data['returnIndex']]['singleUseAddressFlag'] == "true") %}
+    <p class="govuk-body">You've set up a one time address for:</p>
+    <p class="govuk-body">Licence {{data.returns[data['returnIndex']]['licence']}} - {{data.returns[data['returnIndex']]['licenceHolder']}}</P>
+    <p class="govuk-body">To change an address on the licence holder’s account:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-8">
+      <li>email the <a href="mailto:billing@environment-agency.gov.uk">Billing and Data team</a> if it’s a correction to an existing address</li>
+      <li>if it’s a new address, email <a href="mailto:permitting@environment-agency.gov.uk">National Permitting Service</a> and ask them to send the licence holder a form to make minor changes (WR2)</li>
+    </ul>
+
+    {% endif %}
     <a href="../manage" class="govuk-link">See report for Notices</a>
 
   </div>
