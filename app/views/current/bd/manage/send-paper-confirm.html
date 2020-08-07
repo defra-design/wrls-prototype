@@ -75,10 +75,10 @@
           <!--check to see if the list of returns has been changed-->
            {%- if i.change == "true" %}
             <!--replace the commas in the reference with line breaks-->
-            {% set ref= data.returns[loop.index0]['ref'].replace(r/,/g, '<br>').replace(r/-/g, ' ') %}
+            {% set ref = data.returns[loop.index0]['refChange'].replace(r/,/g, '</div></div><div class="meta&#45;data__container"><div class="meta&#45;data__label govuk&#45;!&#45;width&#45;one&#45;quarter">').replace(r/-/g, '</div><div class="meta-data__value">') %}
             {% else %}
             <!--replace the commas in the reference with line breaks-->
-                  {% set ref = data.returns[loop.index0]['ref'].replace(r/,/g, '<br>').replace(r/-/g, ' ') %}
+                  {% set ref = data.returns[loop.index0]['ref'].replace(r/,/g, '</div></div><div class="meta&#45;data__container"><div class="meta&#45;data__label govuk&#45;!&#45;width&#45;one&#45;quarter">').replace(r/-/g, '</div><div class="meta-data__value">') %}
             {% endif -%}
 
 
@@ -98,7 +98,9 @@
       key: {
         text: "Returns"
       },
-      value: {html: ref },
+      value: {html: '<div class="meta-data__container">
+                <div class="meta-data__label govuk-!-width-one-quarter">' +
+                  ref + '</div></div>'},
       actions: {
         items: [
           {

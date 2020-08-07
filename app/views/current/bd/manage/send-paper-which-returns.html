@@ -69,20 +69,20 @@
 
       <div class="govuk-checkboxes">
         <!--replace the commas in the reference with line breaks-->
-        {% set returnsRefs = data.returns[data['returnIndex']]['ref'].replace(r/ - due October 201\d/g, "").split(r/,/g) %}
+        {% set returnsRefs = data.returns[data['returnIndex']]['ref'].replace(r/ - Due October 201\d/g, "").split(r/,/g) %}
 
         <!--check if the returns references have already been changed-->
         {% if data.returns[data['returnIndex']]['change'] == "true" %}
          <!--replace the commas in the reference with line breaks-->
-         {% set ref = data.returns[data['returnIndex']]['refChange'].replace(r/ - due October 201\d/g, "").split(r/,/g) %}
+         {% set ref = data.returns[data['returnIndex']]['refChange'].replace(r/ - Due October 201\d/g, "").split(r/,/g) %}
         {% endif %}
 
         {% set year = 2019 %}
           {% for i in returnsRefs %}
 
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="ref-{{loop.index1}}" name="returnsRef" type="checkbox" value="{{i}} - due October {{year - loop.index0}}" aria-describedby="ref-item-hint"
-           
+          <input class="govuk-checkboxes__input" id="ref-{{loop.index1}}" name="returnsRef" type="checkbox" value="{{i}} - Due October {{year - loop.index0}}" aria-describedby="ref-item-hint"
+
             {% if data.returns[data['returnIndex']]['change'] == "true" %}
 
             {% if ref.indexOf(i) !== -1 %}
