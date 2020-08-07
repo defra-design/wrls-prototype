@@ -68,7 +68,7 @@
             items: [
               {
                 value: "licenceAddress",
-                text: data.returns[data['returnIndex']]['licenceHolder'] + ", " + data.returns[data['returnIndex']]['address'],
+                text: data.returns[data['returnIndex']]['licenceHolder'] | default("Bottled Water Plc") + ", " + data.returns[data['returnIndex']]['address'] | default("15 Osborne Road, Bath, BA1 5AH"),
                 checked: licenceChecked,
                 hint: {
         text: "Licence holder"
