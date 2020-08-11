@@ -931,7 +931,10 @@ router.post('/bd/manage/send-paper', function(req, res) {
     let licence = licences;
 
     //Random number of references
-    let refIndex = Math.floor(Math.random() * 2) + 2;
+  //  let refIndex = Math.floor(Math.random() * 2) + 2;
+
+    //fixed number of refs
+    let refIndex = 2;
 
     let year = 2019
 
@@ -941,8 +944,12 @@ router.post('/bd/manage/send-paper', function(req, res) {
 
     //Convert to a string
     ref = refNumber.toString();
+
     //choose random address form the list
-    let address = addressList[Math.floor(Math.random() * addressList.length)];
+  //  let address = addressList[Math.floor(Math.random() * addressList.length)];
+
+  //choose addresses in order
+  let address = addressList[0];
 
     //remove address from the array so that is doesn't get used twice.
     var index = addressList.indexOf(address);
@@ -951,7 +958,10 @@ router.post('/bd/manage/send-paper', function(req, res) {
     }
 
     //choose random licenceholder form the list
-    let licenceHolder = licenceHolderList[Math.floor(Math.random() * licenceHolderList.length)];
+    //let licenceHolder = licenceHolderList[Math.floor(Math.random() * licenceHolderList.length)];
+
+    //choose addresses in order
+    let licenceHolder = licenceHolderList[0];
 
     //remove licenceHolder from the array so that is doesn't get used twice.
     var index = licenceHolderList.indexOf(licenceHolder);
@@ -990,6 +1000,25 @@ router.post('/bd/manage/send-paper', function(req, res) {
 
 });
 
+//get
+router.get('/bd/manage/send-paper', function(req, res) {
+
+  //Clear the selection from the array
+  let returns = req.session.data.returns
+  var index = returns.findIndex(x => x.licenceHolder === "Mountain Water Plc");
+  if (index > -1) {
+    returns.splice(index, 1);
+  }
+
+  let returns1 = req.session.data.returns
+    var index1 = returns1.findIndex(x => x.licenceHolder === "Spring Time Water Limited");
+    if (index1 > -1) {
+      returns1.splice(index1, 1);
+    }
+
+  res.render('current/bd/manage/send-paper-changed-ownership');
+});
+
 
 ////changed ownwership
 router.post('/bd/manage/send-paper-changed-ownership', function(req, res) {
@@ -1001,38 +1030,47 @@ router.post('/bd/manage/send-paper-changed-ownership', function(req, res) {
 
     let licenceChangedOwner = req.session.data['licenceChangedOwner'];
 
+    //Address data
+    let addressList = ["Goodison Rd, Liverpool, L4 4EL",
+      "Anfield Rd, Liverpool, L4 0TH"
+    ];
+
     //Loop through each licence and add the reference numbers
     licenceChangedOwner.forEach(function(licenceChangedOwner, index) {
 
-      //Address data
-      let addressList = ["Goodison Rd, Liverpool, L4 4EL",
-        "Anfield Rd, Liverpool, L4 0TH"
-      ];
+
 
 
 
       let licence = "AN/546/234/234";
 
       //Random number of references
-      let refIndex = Math.floor(Math.random() * 2) + 2;
+    //  let refIndex = Math.floor(Math.random() * 2) + 2;
+
+      //fixed number of refs
+      let refIndex = 3;
 
       let year = 2019
 
       //Random numbers for the references
       let refNumber = [...Array(refIndex)].map(() => Math.floor(Math.random() * 9999999) + 1000000);
-      refNumber = refNumber.map(i => i + ' - due October ' + year--);
+      refNumber = refNumber.map(i => i + ' - Due October ' + year--);
 
       //Convert to a string
       ref = refNumber.toString();
 
       //choose random address form the list
-      let address = addressList[Math.floor(Math.random() * addressList.length)];
+    //  let address = addressList[Math.floor(Math.random() * addressList.length)];
+
+      //choose addresses in order
+      let address = addressList[0];
 
       //remove address from the array so that is doesn't get used twice.
       var index = addressList.indexOf(address);
       if (index > -1) {
         addressList.splice(index, 1);
       }
+
 
       //choose random licenceholder form the list
       let licenceHolder = licenceChangedOwner
