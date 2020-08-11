@@ -918,7 +918,7 @@ router.post('/bd/manage/send-paper', function(req, res) {
   //Licence holder data
   let licenceHolderList = [
     "Bottled Water Plc",
-    "Bigbod Foods Ltd",
+    "Bidbod Foods Ltd",
     "Janine Trader",
     "Daphney Coleman",
     "Peter Frost",
