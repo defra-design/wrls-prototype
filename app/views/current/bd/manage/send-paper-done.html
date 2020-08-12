@@ -51,10 +51,10 @@
     {% if (data.returns[data['returnIndex']]['singleUseAddressFlag'] == "true") %}
     <p class="govuk-body">You've set up a one time address for:</p>
         <p class="govuk-body">Licence {{data.returns[data['returnIndex']]['licence'] | default("AN01/68/60/0032") }} - <span class="govuk-visually-hidden"> Licence holder</span> {{data.returns[data['returnIndex']]['licenceHolder'] | default("Bottled Water Plc")}}</P>
-    <p class="govuk-body">To change an address on the licence holder’s account:</p>
+    <p class="govuk-body">To update an address on the licence holder’s account:</p>
     <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-8">
-      <li>email the <a href="mailto:watrestecchecnald@environment-agency.gov.uk">Billing and Data team</a> if it’s a correction to an existing address</li>
-      <li>if it’s a new address, email <a href="mailto:PSC-WaterResources@environment-agency.gov.uk">Permitting and Support Centre water resources team</a> and ask them to send the licence holder a form to make minor changes (WR2)</li>
+      <li>email the <a href="mailto:watrestecchecnald@environment-agency.gov.uk">Billing and Data team</a>if it’s a change of returns contact or a change to the current returns contact</li>
+      <li>email <a href="mailto:PSC-WaterResources@environment-agency.gov.uk">Permitting and Support Centre team</a>if it’s a correction or change to the licence holder’s address and ask them to send a form to make minor changes (WR2)</li>
     </ul>
 
     {% endif %}
