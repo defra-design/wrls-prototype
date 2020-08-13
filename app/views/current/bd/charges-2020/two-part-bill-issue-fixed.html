@@ -72,19 +72,20 @@
 <div class="table govuk-!-margin-bottom-9">
   <!-- a table -->
   <div class="table__row--head">
-    <div class="table__cell bold-small column--25">
+    <div class="table__cell bold-small column--30">
       Description
     </div>
-    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
-      Authorised
+    <div class="table__cell bold-small column--20 govuk-table__header--numeric">
+      Element quantities
     </div>
-    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
-      Billable
-    </div>
-    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
+
+    <div class="table__cell bold-small column--20 govuk-table__header--numeric">
       Reported
     </div>
-    <div class="table__cell bold-small column--15 govuk-table__header--numeric">
+    <div class="table__cell bold-small column--20 govuk-table__header--numeric">
+      Billable
+    </div>
+    <div class="table__cell bold-small column--10 govuk-table__header--numeric">
       Action
     </div>
   </div>
@@ -102,28 +103,30 @@
         Spray end field
       </p>
     </div>
-    <div class="table__cell govuk-table__cell--numeric">
-      <h3 class="table__context">
-        Authorised
+    <div class="table__cell ">
+      <h3 class="table__context govuk-table__header--numeric">
+        Element quantities
       </h3>
       <p>
-        20ML
+        20ML authorised
       </p>
     </div>
-    <div class="table__cell govuk-table__cell--numeric">
-      <h3 class="table__context">
-        Billable
-      </h3>
-      <p>
-        {{data['quantity']}}ML<br>Edited
-      </p>
-    </div>
+
     <div class="table__cell govuk-table__cell--numeric">
       <h3 class="table__context">
         Reported
       </h3>
       <p>
         30ML
+      </p>
+    </div>
+
+    <div class="table__cell govuk-table__cell--numeric">
+      <h3 class="table__context">
+        Billable
+      </h3>
+      <p>
+        {{data['quantity']}}ML<br>Edited
       </p>
     </div>
     <div class="table__cell govuk-table__cell--numeric">

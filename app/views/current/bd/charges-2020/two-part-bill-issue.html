@@ -68,19 +68,28 @@
   </div>
 
 
-<div class="table govuk-!-margin-bottom-9">
-  <!-- a table -->
-  <div class="table__row--head">
-    <div class="table__cell bold-small column--50">
-      Element description
+  <div class="table govuk-!-margin-bottom-9">
+    <!-- a table -->
+    <div class="table__row--head">
+      <div class="table__cell bold-small ">
+        Element description
+      </div>
+      <div class="table__cell bold-small  ">
+        Element quantities
+      </div>
+      <div class="table__cell bold-small numbers ">
+        Reported
+      </div>
+      <div class="table__cell bold-small numbers ">
+        Billable return
+      </div>
+      <div class="table__cell bold-small ">
+        Issue
+      </div>
+      <div class="table__cell bold-small numbers ">
+        Action
+      </div>
     </div>
-    <div class="table__cell bold-small column--30">
-      Issue
-    </div>
-    <div class="table__cell bold-small numbers column--20">
-      Action
-    </div>
-  </div>
 
 
   <div class="table__row--selectable govuk-!-margin-bottom-6">
@@ -93,6 +102,35 @@
       </h3>
       <p class="table__row--text">
         Spray end field
+      </p>
+    </div>
+    <div class="table__cell ">
+
+      <h3 class="table__context">
+       Element quantities
+      </h3>
+      <p>
+        20ML authorised
+      </p>
+    </div>
+    <div class="table__cell numbers">
+
+      <h3 class="table__context">
+        Reported
+      </h3>
+      <p>
+
+      </p>
+    </div>
+    <div class="table__cell numbers">
+
+      <h3 class="table__context">
+        Billable return
+      </h3>
+      <p>
+        {% if data['quantity'].length %}
+        {{data['quantity']}}ML
+        {% endif %}
       </p>
     </div>
     <div class="table__cell">

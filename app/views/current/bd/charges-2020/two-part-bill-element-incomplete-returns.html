@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Review incomplete returns for spray end field" %}
+{% set title = "Review billable quantity for spray end field" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -70,7 +70,7 @@
                             </div>
             </section>
 
-            <section class="meta-data__row govuk-!-margin-bottom-3">
+        <!--    <section class="meta-data__row govuk-!-margin-bottom-3">
               <div class="meta-data__container">
                 <div class="meta-data__label">
                 Abstraction amounts
@@ -82,7 +82,7 @@
 20,000 cubic metres per year<br>
               </div>
                             </div>
-            </section>
+            </section> -->
 
 
             <section class="meta-data__row ">
@@ -158,15 +158,19 @@
         <div class="table__cell bold-small column--40">
           Charge period
         </div>
-        <div class="table__cell bold-small numbers column--20">
-          Authorised
+        <div class="table__cell bold-small numbers column--15">
+          Element
         </div>
-        <div class="table__cell bold-small numbers column--20">
-          Billable return
-        </div>
-        <div class="table__cell bold-small numbers column--20">
+        <div class="table__cell bold-small numbers column--15">
           Reported
         </div>
+        <div class="table__cell bold-small numbers column--15">
+          Billable return
+        </div>
+        <div class="table__cell bold-small column--15">
+          Issue
+        </div>
+
       </div>
 
       <div class="table__row--selectable govuk-!-margin-bottom-6">
@@ -189,14 +193,7 @@
             20ML
           </p>
         </div>
-        <div class="table__cell numbers">
-          <h3 class="table__context">
-            Billable
-          </h3>
-          <p>
-            15ML
-          </p>
-        </div>
+
         <div class="table__cell numbers">
           <h3 class="table__context">
             Reported
@@ -205,6 +202,27 @@
 
           </p>
         </div>
+
+        <div class="table__cell numbers">
+          <h3 class="table__context">
+            Billable
+          </h3>
+          <p>
+            {% if data['quantity'].length %}
+            {{data['quantity']}}ML
+            {% endif %}
+          </p>
+        </div>
+
+
+      <div class="table__cell ">
+        <h3 class="table__context">
+          Issue
+        </h3>
+        <p>
+         Incomplete returns
+        </p>
+      </div>
       </div>
 
     </div>
