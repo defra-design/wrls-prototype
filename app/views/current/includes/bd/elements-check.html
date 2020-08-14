@@ -39,7 +39,7 @@
      {% if [i.timeLimit] == "yes" %}
      {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
      {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
-     {% set timeLimit = [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear] %}
+     {% set timeLimit = [i.timeLimitStartDay] + " " + [i.timeLimitStartDay] | toMonth + " " + [i.timeLimitStartYear] + " to " + [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear]%}
      {% else %}
      {% set timeLimit = "No" %}
      {% endif %}
