@@ -53,6 +53,17 @@
 
         {% set timeLimit %}
         {{ govukDateInput({
+        id: "settimeLimitStart",
+        namePrefix: "timeLimitStart",
+        fieldset: {
+          legend: {
+            text: "Enter start date",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        }
+      }) }}
+        {{ govukDateInput({
         id: "settimeLimit",
         namePrefix: "timeLimit",
         fieldset: {

@@ -281,11 +281,20 @@ router.get('/current/bd/charges-2020/add-time-limit', function(req, res) {
 router.post('/bd/charges-2020/add-time-limit', function(req, res) {
 
   let timeLimit = req.session.data['timeLimit']
+
+  let timeLimitStartDay = req.session.data['timeLimitStart-day'];
+  let timeLimitStartMonth = req.session.data['timeLimitStart-month'];
+  let timeLimitStartYear = req.session.data['timeLimitStart-year'];
+
   let timeLimitDay = req.session.data['timeLimit-day'];
   let timeLimitMonth = req.session.data['timeLimit-month'];
   let timeLimitYear = req.session.data['timeLimit-year'];
+
   let elementNumber = req.session.data['elementNumber']
   req.session.data.elements[elementNumber]['timeLimit'] = timeLimit
+  req.session.data.elements[elementNumber]['timeLimitStartDay'] = timeLimitStartDay;
+  req.session.data.elements[elementNumber]['timeLimitStartMonth'] = timeLimitStartMonth;
+  req.session.data.elements[elementNumber]['timeLimitStartYear'] = timeLimitStartYear;
   req.session.data.elements[elementNumber]['timeLimitDay'] = timeLimitDay;
   req.session.data.elements[elementNumber]['timeLimitMonth'] = timeLimitMonth;
   req.session.data.elements[elementNumber]['timeLimitYear'] = timeLimitYear;
@@ -413,6 +422,9 @@ router.get('/current/bd/charges-2020/charge-version/confirm-copy-element', funct
   let billableQuantity = req.session.data.elements[elementNumber]['billableQuantity']
   let authorisedQuantity = req.session.data.elements[elementNumber]['authorisedQuantity']
   let timeLimit = req.session.data.elements[elementNumber]['timeLimit']
+  let timeLimitStartDay = req.session.data['timeLimitStart-day'];
+  let timeLimitStartMonth = req.session.data['timeLimitStart-month'];
+  let timeLimitStartYear = req.session.data['timeLimitStart-year'];
   let timeLimitDay = req.session.data['timeLimit-day'];
   let timeLimitMonth = req.session.data['timeLimit-month'];
   let timeLimitYear = req.session.data['timeLimit-year'];
@@ -434,6 +446,9 @@ router.get('/current/bd/charges-2020/charge-version/confirm-copy-element', funct
       billableQuantity,
       authorisedQuantity,
       timeLimit,
+      timeLimitStartDay,
+      timeLimitStartMonth,
+      timeLimitStartYear,
       timeLimitDay,
       timeLimitMonth,
       timeLimitYear,
