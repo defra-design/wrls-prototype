@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Review billable quantity for spray end field" %}
+{% set title = "Review quantity to bill for spray end field" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -159,13 +159,13 @@
           Charge period
         </div>
         <div class="table__cell bold-small numbers column--15">
-          Element
+          Element quantity
         </div>
         <div class="table__cell bold-small numbers column--15">
-          Reported
+          Reported quantity
         </div>
         <div class="table__cell bold-small numbers column--15">
-          Billable return
+          Billable quantity
         </div>
         <div class="table__cell bold-small column--15">
           Issue
@@ -242,7 +242,7 @@
         type: "number",
         classes: "govuk-!-width-one-third",
         label: {
-          text: "Billable return quantity"
+          text: "Billable quantity"
         }
       }) }}
       {% endset -%}
@@ -252,7 +252,7 @@
         name: "chargeable-quantity",
         fieldset: {
           legend: {
-            text: "Set the billable return quantity for this bill run",
+            text: "Set the billable quantity for this bill run",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
