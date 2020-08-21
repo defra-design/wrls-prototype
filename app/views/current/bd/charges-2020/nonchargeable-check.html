@@ -2,7 +2,7 @@
 
 {% set free = [data.chargeVersions[0]['free']]%}
 {% if free == "true"%}
-{% set title = "You're about to make this licence exempt from charges" %}
+{% set title = "You're about to make this licence non-chargeable" %}
 {% else %}
 {% set title = "Check charge information" %}
 {% endif %}
@@ -115,7 +115,7 @@
 
   {% if (free == "true") and (data['newLicence'] == "true") %}
   {% elif (free == "true") %}
-<p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
+<p class="govuk-body">This licence will be added to the supplementary bill run.</p>
 
 {% else %}
 <!--<p class="govuk-body">Billing and Data will need to approve this information before the licence is exempt from charges.</p>-->
