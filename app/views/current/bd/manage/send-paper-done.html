@@ -49,11 +49,9 @@
 
 
     {% if (data.returns[data['returnIndex']]['singleUseAddressFlag'] == "true") %}
-    <p class="govuk-body">You've set up a one time address for:</p>
+    <p class="govuk-body">You used a one time address for:</p>
         <p class="govuk-body">Licence {{data.returns[data['returnIndex']]['licence'] | default("AN01/68/60/0032") }} - <span class="govuk-visually-hidden"> Licence holder</span> {{data.returns[data['returnIndex']]['licenceHolder'] | default("Bottled Water Plc")}}</P>
-    <p class="govuk-body">To update an address on the licence holder’s account:</p>
-    <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-8">
-      <li>email the <a href="mailto:watrestecchecnald@environment-agency.gov.uk?subject=Address change request for ((Licence)), ((Region))&body=Dear Billing and Data team,%0d%0a%0d%0
+    <p class="govuk-body">Email the <a href="mailto:watrestecchecnald@environment-agency.gov.uk?subject=Address change request for ((Licence)), ((Region))&body=Dear Billing and Data team,%0d%0a%0d%0
 
 You need to update the returns contact address on NALD for ((Licence)).%0d%0a%0d%0
 
@@ -71,9 +69,9 @@ If you have a question about this request, email WIRS.%0d%0a%0d%0
 
 With thanks,%0d%0a%0d%0
 
-Environment Agency Water Resources Licensing Service">Billing and Data team</a> if it’s a change of returns contact or a change to the current returns contact</li>
-      <li>email the <a href="mailto:PSC-WaterResources@environment-agency.gov.uk?subject=This is the subject text&body=Here is the body text">Permitting and Support Centre team</a> if it’s a correction or change to the licence holder’s address and ask them to send a form to make minor changes (WR2)</li>
-    </ul>
+Environment Agency Water Resources Licensing Service">Billing and Data team</a> to update the returns contact.</p>
+        <p class="govuk-body">Email the <a href="mailto:PSC-WaterResources@environment-agency.gov.uk?subject=This is the subject text&body=Here is the body text">Permitting and Support Centre team</a> to update the licence holder’s address.</p>>
+
 
     {% endif %}
     <a href="../manage" class="govuk-link govuk-link--no-visited-state">Return to Manage</a>
