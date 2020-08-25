@@ -51,7 +51,7 @@
 
     {% if (data.returns[data['returnIndex']]['singleUseAddressFlag'] == "true") %}
     <!--replace the commas in the address with line breaks-->
-    {% set address = data.returns[data['returnIndex']]['returnAddress'].replace(r/,/g, "%0d%0a") %}
+    {% set address = data.returns[data['returnIndex']]['returnAddress']| default("Jimmy Greaves,Forbes Lane,Swindon,SW12 6EJ") %}
     <p class="govuk-body">You used a one time address for:</p>
         <p class="govuk-body">Licence {{data.returns[data['returnIndex']]['licence'] | default("AN01/68/60/0032") }} - <span class="govuk-visually-hidden"> Licence holder</span> {{data.returns[data['returnIndex']]['licenceHolder'] | default("Bottled Water Plc")}}</P>
     <p class="govuk-body">Email the <a href="mailto:watrestecchecnald@environment-agency.gov.uk?subject=Address change request for {{data.returns[data['returnIndex']]['licence'] | default('AN01/68/60/0032') }}, Anglian&body=Dear Billing and Data team,%0d%0a%0d%0a
@@ -59,7 +59,7 @@
 You need to update the returns contact address on NALD for {{data.returns[data['returnIndex']]['licence'] | default('AN01/68/60/0032') }}.%0d%0a%0d%0a
 
 Name and Address:%0d%0a
-{{address}}%0d%0a%0d%0a
+{{address.replace(r/,/g,'%0d%0a')}}%0d%0a%0d%0a
 
 We’ve sent a paper returns form to this contact.%0d%0a%0d%0a
 
