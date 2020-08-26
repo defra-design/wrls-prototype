@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select an existing contact for  " + data['customerName'] %}
+{% set title = "Set up a contact for  " + data['customerName'] %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -46,17 +46,14 @@
 
       <!-- display the correct caption for either billing account change or licence change-->
       {% if data['ba'] == "true"%}
-      <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
-      {{ title }}</h1>
+      {% set qLabel = '<span class="govuk-caption-l">Billing account {{data["invoiceAccount"]}}</span>' +
+      [ title ] %}
       {% else %}
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-        {{ title }}</h1>
+      {% set qLabel = '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' +
+        [title] %}
       {% endif %}
 
-    </div>
-  </div>
+
 
   <form data-routing="1" method="post" class="form" id="contact-change-type">
 
@@ -97,7 +94,15 @@
         idPrefix: "fao",
         name: "fao",
         fieldset: {
+          legend: {
+      html: qLabel,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
         },
+        hint: {
+    text: "Existing contacts"
+  },
         items: [
         {
           value: url + "?fao=Accounts%20department",
@@ -145,6 +150,9 @@
     </button>
 
   </form>
+
+</div>
+</div>
 
   <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
