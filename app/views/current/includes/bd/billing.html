@@ -49,13 +49,13 @@
             <td class="govuk-table__cell {{lastRow}}">
               {% if [i.chargeStatus] == "CHARGEABLE" %}
               {{govukTag({
-                      text: "Approved",
+                      text: "ACTIVE",
                       classes: "govuk-tag--green"
                     })}}
               {% elif [i.chargeStatus] == "REPLACED" %}
               {{govukTag({
-                      text: [i.chargeStatus],
-                      classes: "govuk-tag--grey"
+                      text: "ACTIVE",
+                      classes: "govuk-tag--green"
                     })}}
               {% elif [i.chargeStatus] == "INVALID" %}
               {{govukTag({
