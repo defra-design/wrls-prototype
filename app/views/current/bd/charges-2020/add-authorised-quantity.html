@@ -41,6 +41,9 @@
 
 {% block content %}
 
+
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
@@ -58,7 +61,8 @@
         <label class="govuk-label" for="authorised-quantity">Authorised</label>
         <input class="govuk-input govuk-input--width-10" id="authorised-quantity" name="authorisedQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
         {% if data['change'] == "true" %}
-        value = {{data['authorisedQuantity']}}
+        {% set elementNumber = data['elementNumber'] %}
+        value = {{[data.elements[elementNumber].authorisedQuantity]}}
         {% endif %}
         >
         <span class="margin-left__15">megalitres per year</span>
@@ -68,7 +72,8 @@
         <label class="govuk-label" for="billable-quantity">Billable (optional)</label>
         <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
         {% if data['change'] == "true" %}
-        value = {{data['billableQuantity']}}
+        {% set elementNumber = data['elementNumber'] %}
+        value = {{[data.elements[elementNumber].billableQuantity]}}
         {% endif %}
         >
         <span class="margin-left__15">megalitres per year</span>
