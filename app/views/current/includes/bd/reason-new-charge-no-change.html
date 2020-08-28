@@ -4,11 +4,11 @@
 
   {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
-  {% set monthNumber = data['chargeStart-month'] %}
+  {% set monthNumber = data['chargeStart-month'] | default("1") %}
 
   {% set month = monthNames[monthNumber - 1] %}
 
-  {% set chargeStart = data['chargeStart-day'] + " " + month +" "+ data['chargeStart-year']%}
+  {% set chargeStart = data['chargeStart-day'] | default("1") + " " + month +" "+ data['chargeStart-year'] | default("2020")%}
 
 
   {% set invoiceAddress %}
