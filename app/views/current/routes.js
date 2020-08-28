@@ -224,17 +224,27 @@ router.post('/bd/charges-2020/add-authorised-quantity', function(req, res) {
   let elementNumber = req.session.data['elementNumber']
   req.session.data.elements[elementNumber]['authorisedQuantity'] = authorisedQuantity
 
+  let billableQuantity = req.session.data['billableQuantity']
+  req.session.data.elements[elementNumber]['billableQuantity'] = billableQuantity
+
+  if (billableQuantity > "0" ) {
+  req.session.data.elements[elementNumber]['billableQuantityNeeded'] = "yes"
+  } else {
+  req.session.data.elements[elementNumber]['billableQuantityNeeded'] = "no"
+  }
+
   let change = req.session.data['change']
   if (change == "true") {
     req.session.data.change = "false"
     back = req.session.data['back'];
     res.redirect(back);
   } else {
-    res.redirect('add-billable-quantity');
+    res.redirect('add-time-limit');
   }
 
 });
 
+/* THIS PAGE ISN'T USED ANYMORE - incorporated in to the authorised page above
 //Billable quantity
 //Setting the change element route back
 router.get('/current/bd/charges-2020/add-billable-quantity', function(req, res) {
@@ -264,7 +274,7 @@ router.post('/bd/charges-2020/add-billable-quantity', function(req, res) {
   }
 
 });
-
+*/
 
 //Time limit
 //Setting the change element route back

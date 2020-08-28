@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
-{% set title = "Enter authorised quantity" %}
+{% set title = "Add licence quantities" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "current/includes/nav/nav-bd-view.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-view.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -41,75 +41,45 @@
 
 {% block content %}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <form method="post" class="form">
 
-      <!-- page heading -->
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      {% call govukFieldset({
+          legend: {
+            html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="authorised-quantity">Authorised</label>
+        <input class="govuk-input govuk-input--width-10" id="authorised-quantity" name="authorisedQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
+        {% if data['change'] == "true" %}
+        value = {{data['authorisedQuantity']}}
+        {% endif %}
+        >
+        <span class="margin-left__15">megalitres per year</span>
+      </div>
 
-    </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="billable-quantity">Billable (optional)</label>
+        <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
+        {% if data['change'] == "true" %}
+        value = {{data['billableQuantity']}}
+        {% endif %}
+        >
+        <span class="margin-left__15">megalitres per year</span>
+      </div>
+
+      {% endcall %}
+
+      <button type="submit" class="govuk-button">Continue</button>
+
+    </form>
   </div>
-
-
-  <form method="post" class="form" id="return-reference-error">
-
-
-
-
-    <div class="govuk-form-group">
-      <h1 class="govuk-label-wrapper">
-        <label class="govuk-label govuk-label--l govuk-!-margin-bottom-6" for="authorised-quantity">
-        {{title}}
-        </label>
-
-      </h1>
-
-
-      <input class="govuk-input govuk-input--width-10" id="authorised-quantity" name="authorisedQuantity" type="text" pattern="[0-9]*" spellcheck="false">
-      <span class="margin-left__15">megalitres per year</span>
-    </div>
-<!--
-    {{ govukInput({
-  label: {
-    text: [title],
-    isPageHeading: true,
-    classes: "govuk-label--l govuk-!-margin-bottom-3"
-  },
-  classes: "govuk-input--width-10",
-  id: "billable-quantity",
-  name: "billable-quantity",
-  inputmode: "number",
-  pattern: "[0-9]*",
-  attributes: {
-    spellcheck: "false"
-  }
-}) }}
-
--->
-
-    <button type="submit" class="govuk-button">
-      Continue
-    </button>
-
-  </form>
-
-  <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-  <script>
-    $(function() {
-      $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
-        const url = $(this).find('input:checked').val();
-
-        if(url) {
-          ev.preventDefault();
-          window.location.href = url;
-          return false;
-        }
-      });
-    })
-  </script>
+</div>
 
 {% endblock %}
