@@ -2,13 +2,13 @@
 
 <section class="govuk-!-margin-bottom-7">
 
-  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+    {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
 
-  {% set monthNumber = data['chargeStart-month'] | default("1") %}
+    {% set monthNumber = data['chargeStart-month'] | default("4") %}
 
-  {% set month = monthNames[monthNumber - 1] %}
+    {% set month = monthNames[monthNumber - 1] %}
 
-  {% set chargeStart = data['chargeStart-day'] | default("1") + " " + month +" "+ data['chargeStart-year'] | default("2020")%}
+    {% set chargeStart = data['chargeStart-day'] | default("22") + " " + month +" "+ data['chargeStart-year'] | default("2019")%}
 
 
   {% set invoiceAddress %}

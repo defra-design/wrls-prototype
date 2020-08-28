@@ -494,9 +494,9 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
 
 {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHARGEABLE" %}
 {{ govukButton({
-text: "Edit charge information",
+text: "Make a correction",
 classes: "govuk-button--secondary",
-href: "/bd/charges-2020/charge-version-edit"
+href: "/bd/charges-2020/charge-version-correct?elementNew=true"
 }) }}
 {% endif %}
 

@@ -51,10 +51,6 @@ router.post('/bd/charges-2020/charge-version/set-charge-start-date', function(re
     req.session.data['chargeStart-year'] = y.getFullYear();
   }
 
-
-  //trigger for new element
-  let chargeNew = req.session.data['createElement']
-
   // date fields
   let chargeStartDay = req.session.data['chargeStart-day'];
   let chargeStartMonth = req.session.data['chargeStart-month'];
@@ -67,34 +63,58 @@ router.post('/bd/charges-2020/charge-version/set-charge-start-date', function(re
 
   //set the charge start date
   let chargeStart = chargeStartDay + " " + month + " " + chargeStartYear
-  let chargeEnd = ""
-  let chargeStatus = "DRAFT"
-  let chargeBilledDate = ""
-  let free = "false"
-  let reasonNewCharge = req.session.data['reasonNewCharge']
-
-  let newCharge = {
-    chargeStart,
-    chargeEnd,
-    chargeStatus,
-    chargeBilledDate,
-    free,
-    reasonNewCharge
-  };
-  let chargeVersions = req.session.data['chargeVersions']
-  chargeVersions.unshift(newCharge);
 
   let change = req.session.data['change']
-  //if statement for creating the new chargeversion
-  //  if (chargeNew == "true") {
-  //    res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
-  //  } else {
-  //    req.session.data['chargeStartSet']  = "true"
-  //    res.redirect('charge-data-create');
-  //  }
 
-  req.session.data['chargeStartSet'] = "true"
-  res.redirect('/bd/contacts/select-billing-account?existingContact=false');
+  if (change == "true") {
+
+    req.session.data.chargeVersions[0]['chargeStart'] = chargeStart
+
+    req.session.data['chargeStartSet'] = "true"
+    req.session.data.change = "false"
+    back = req.session.data['back'];
+    res.redirect(back);
+
+
+  } else {
+
+
+
+    //trigger for new element
+    let chargeNew = req.session.data['createElement']
+
+
+    let chargeEnd = ""
+    let chargeStatus = "DRAFT"
+    let chargeBilledDate = ""
+    let free = "false"
+    let reasonNewCharge = req.session.data['reasonNewCharge']
+
+    let newCharge = {
+      chargeStart,
+      chargeEnd,
+      chargeStatus,
+      chargeBilledDate,
+      free,
+      reasonNewCharge
+    };
+    let chargeVersions = req.session.data['chargeVersions']
+    chargeVersions.unshift(newCharge);
+
+
+    //if statement for creating the new chargeversion
+    //  if (chargeNew == "true") {
+    //    res.redirect('/bd/charges-2020/charge-version/how-to-create-element');
+    //  } else {
+    //    req.session.data['chargeStartSet']  = "true"
+    //    res.redirect('charge-data-create');
+    //  }
+
+    req.session.data['chargeStartSet'] = "true"
+    res.redirect('/bd/contacts/select-billing-account?existingContact=false');
+  }
+
+
 
 });
 
@@ -601,11 +621,15 @@ router.post('/bd/charges-2020/charge-version/confirm-remove-charge-information',
 
 
 
+
+
 /////////CHARGE INFORMATION EDIT
-router.post('/bd/charges-2020/charge-version-edit', function(req, res) {
 
+router.get('/bd/charges-2020/charge-version-correct', function(req, res) {
 
+  let elementNew = req.session.data['elementNew']
 
+  if (elementNew == "true"){
 
   //trigger for new element
   let chargeNew = req.session.data['createElement']
@@ -635,11 +659,68 @@ router.post('/bd/charges-2020/charge-version-edit', function(req, res) {
   chargeVersions.unshift(newCharge);
 
   req.session.data['chargeStartSet'] = "true"
+  req.session.data['elementNew'] = "false"
+
+}
+
+res.redirect('/current/bd/charges-2020/charge-version-edit');
+});
+
+//REMOVE CHARGE VERSION
+router.get('/bd/charges-2020/charge-version/cancel-corrections', function(req, res) {
+
+
+  let chargeVersions = req.session.data['chargeVersions']
+
+  chargeVersions.splice(0, 1);
+  req.session.data['chargeVersions'] = chargeVersions
+
+
+  res.redirect('/bd/licence-summary#charge');
+});
+
+router.post('/bd/charges-2020/charge-version-edit', function(req, res) {
+
+
+/*
+
+  //trigger for new element
+  let chargeNew = req.session.data['createElement']
+
+  // date fields
+  let chargeStartDate = req.session.data.chargeVersions[0]['chargeStart'];
+
+
+
+  //set the charge start date
+  let chargeStart = chargeStartDate
+  let chargeEnd = ""
+  let chargeStatus = "DRAFT"
+  let chargeBilledDate = ""
+  let free = "false"
+  let reasonNewCharge = req.session.data['reasonNewCharge']
+
+  let newCharge = {
+    chargeStart,
+    chargeEnd,
+    chargeStatus,
+    chargeBilledDate,
+    free,
+    reasonNewCharge
+  };
+  let chargeVersions = req.session.data['chargeVersions']
+  chargeVersions.unshift(newCharge);
+
+*/
+
+// date fields
+let chargeStartDate = req.session.data.chargeVersions[0]['chargeStart'];
+
+  req.session.data['chargeStartSet'] = "true"
 
 
   //update the element statuses
   req.session.data.chargeVersions[0]['chargeStatus'] = "CHARGEABLE"
-  req.session.data.chargeVersions[1]['chargeStatus'] = "INVALID"
 
 
   //set the charge end date
@@ -648,6 +729,22 @@ router.post('/bd/charges-2020/charge-version-edit', function(req, res) {
 
   //set the old charge informations end date
   req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
+
+  //comparing start date and end date to determine if it is invalid or replaced
+  let cvStart = new Date(req.session.data.chargeVersions[1]['chargeStart']);
+  let cvEnd = new Date(req.session.data.chargeVersions[1]['chargeEnd']);
+
+  console.log(cvStart)
+  console.log(cvEnd)
+
+  if ( cvStart.getTime() > cvEnd.getTime() ){
+  req.session.data.chargeVersions[1]['chargeStatus'] = "INVALID"
+} else {
+  req.session.data.chargeVersions[1]['chargeStatus'] = "REPLACED"
+}
+
+
+
 
 
 

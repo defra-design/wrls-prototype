@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Edit charge information valid from" %}
+{% set title = "Make a correction to charge information" %}
 {% set chargeInfoNumber = [data.chargeInfoNumber] %}
 
 {% block pageTitle %}
@@ -50,7 +50,7 @@
 
     <h1 class="govuk-heading-l">
   <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <span class="screen-reader-only">Current</span> {{ title }} <br> {{[data.chargeVersions[chargeInfoNumber].chargeStart]}}
+      {{ title }}
     </h1>
  <p class="govuk-body govuk-!-margin-bottom-9">
     {{govukTag({
@@ -74,17 +74,17 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
 
           {% include "current/includes/bd/element-costs.html" %}
 
-
+      <p class="gov-uk">This licence will be added to the supplementary bill run and have new charge information when you confirm changes.</p>
 
           {{ govukButton({
-      text: "Save changes",
+      text: "Confirm changes",
       classes: "govuk-!-margin-right-6"
       }) }}
 
       {{ govukButton({
       text: "Cancel",
       classes: "govuk-button--secondary",
-      href: "/bd/charges-2020/charge-version"
+      href: "/bd/charges-2020/charge-version/cancel-corrections"
       }) }}
 
 
