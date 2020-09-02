@@ -48,10 +48,19 @@
 
     <!-- page heading changes the title to look like the check charge page if changes requested, in reality this should go to the same page-->
 
-    <h1 class="govuk-heading-l">
-  <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <span class="screen-reader-only">Current</span> {{ title }} <br> {{[data.chargeVersions[chargeInfoNumber].chargeStart]}}
+
+  {% if [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
+  <h1 class="govuk-heading-xl">
+<span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    Check charge information
     </h1>
+  {% else %}
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence 03/28/60/0032</span>
+      <span class="screen-reader-only">Current</span> {{ title }} <br> {{[data.chargeVersions[chargeInfoNumber].chargeStart]}}
+      </h1>
+      {% endif %}
+
 
     <!-- <a href="" class="wrls-faux-button wrls-faux-button--secondary">Change start date</a> -->
 
@@ -78,10 +87,10 @@ text: "Review",
 classes: "govuk-tag--orange govuk-!-font-size-27"
 })}}
       {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
-      {{govukTag({
+    <!--  {{govukTag({
 text: "Draft",
 classes: "govuk-tag--blue govuk-!-font-size-27"
-})}}
+})}} -->
       {% endif %}
     </p>
 
@@ -251,14 +260,14 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
                 <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
 
             </div>
-          </div>  -->
+          </div>
 
           <div class="govuk-grid-row govuk-!-margin-bottom-2">
             <div class="govuk-grid-column-two-thirds">
               <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
                 <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
             </div>
-          </div>
+          </div> -->
     {% if date < 2020 %}
     {{ govukWarningText({
       text: "Older charge information will be invalid when you approve these details.",
@@ -350,33 +359,35 @@ iconFallbackText: "Warning"
 
     <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
-      <div class="divider govuk-!-margin-bottom-4"></div>
+     <div class="divider govuk-!-margin-bottom-4"></div>
 
-        <!--    <div class="govuk-grid-row">
+  <!--      <div class="govuk-grid-row">
               <div class="govuk-grid-column-two-thirds">
                 <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£150,995.76</span><br>
                   <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
 
               </div>
-            </div>  -->
+            </div>
 
             <div class="govuk-grid-row govuk-!-margin-bottom-2">
               <div class="govuk-grid-column-two-thirds">
                 <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
                   <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
               </div>
-            </div>
+            </div> -->
 
-      {{ govukButton({
-text: "Confirm changes",
-classes: "govuk-!-margin-right-3"
-}) }}
+            {{ govukButton({
+        text: "Confirm",
+        classes: "govuk-!-margin-right-6"
+        }) }}
 
-      {{ govukButton({
-text: "Remove charge information",
-classes: "govuk-button--secondary",
-href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
-}) }}
+        {{ govukButton({
+        text: "Cancel charge information",
+        classes: "govuk-button--secondary",
+        href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
+        }) }}
+
+
 
     </form>
 
@@ -456,16 +467,17 @@ href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
               </div>
             </div>
 
-      {{ govukButton({
-  text: "Confirm changes",
-  classes: "govuk-!-margin-right-3"
-}) }}
+            {{ govukButton({
+        text: "Confirm",
+        classes: "govuk-!-margin-right-6"
+        }) }}
 
-      {{ govukButton({
-  text: "Remove charge information",
-  classes: "govuk-button--secondary",
-  href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
-}) }}
+        {{ govukButton({
+        text: "Cancel charge information",
+        classes: "govuk-button--secondary",
+        href: "/bd/charges-2020/charge-version/confirm-remove-charge-information"
+        }) }}
+
 
     </form>
 
