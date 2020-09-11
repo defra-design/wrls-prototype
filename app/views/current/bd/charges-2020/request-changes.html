@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Request changes" %}
+{% set title = "Which parts of the charge information are incorrect?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -65,7 +65,7 @@ action="/bd/charges-2020/charge-version/create-element?change=false"
     classes: "govuk-label--l govuk-!-margin-bottom-3"
   },
   hint: {
-    text: "Add details of what needs to change. This will help the person who set up the charge information to correct it."
+    text: "Describe what needs to change. This will help the person who set up the charge information to correct it."
   },
   id: "requestChanges",
   name: "requestChanges"
