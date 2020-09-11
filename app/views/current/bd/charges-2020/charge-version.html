@@ -87,10 +87,10 @@ text: "Review",
 classes: "govuk-tag--orange govuk-!-font-size-27"
 })}}
       {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
-    <!--  {{govukTag({
+      {{govukTag({
 text: "Draft",
 classes: "govuk-tag--blue govuk-!-font-size-27"
-})}} -->
+})}}
       {% endif %}
     </p>
 
@@ -169,7 +169,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     <h2 class="govuk-heading-m">
       Comments from Billing and Data
     </h2>
-    <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges']}}</p>
+    <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges'] | default("Please change the purpose to Spray")}}</p>
     {% endif %}
 
 
