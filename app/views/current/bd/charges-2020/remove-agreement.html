@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You're about to remove this agreement" %}
+{% set title = "You're about to delete this agreement" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -60,9 +60,16 @@
 <form method="post" class="form">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {% include "current/includes/bd/agreement.html" %}
+
+      {{ govukWarningText({
+        text: "You’re about to delete this agreement, which will remove it from the licence history.",
+        iconFallbackText: "Warning"
+      }) }}
+   {% include "current/includes/bd/agreement.html" %}
+
+     <p class="govuk-text">When you delete this agreement, charges will be recalculated to give the new cost. <br> The licence will be added to the supplementary bill run. </p>
       <button type="submit" class="govuk-button">
-        Remove agreement
+        Delete agreement
       </button>
     </div>
   </div>
