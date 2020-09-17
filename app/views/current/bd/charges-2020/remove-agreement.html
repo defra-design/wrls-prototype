@@ -62,13 +62,12 @@
     <div class="govuk-grid-column-full">
 
       {{ govukWarningText({
-        text: "When you delete this agreement, it will be removed from the licence history.",
+        text: "When you delete this agreement, the licence will be added to the supplementary bill run. A new charge will be calculated for the time the agreement was in place.",
         iconFallbackText: "Warning"
       }) }}
    {% include "current/includes/bd/agreement.html" %}
 
-     <p class="govuk-text">When you delete this agreement, charges will be recalculated to give the new cost. <br> The licence will be added to the supplementary bill run. </p>
-      <button type="submit" class="govuk-button">
+           <button type="submit" class="govuk-button">
         Delete agreement
       </button>
     </div>
