@@ -167,7 +167,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     <!--comments from billing and data-->
     {% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
     <h2 class="govuk-heading-m">
-      Comments from Billing and Data
+      Change requested
     </h2>
     <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges'] | default("Please change the purpose to Spray")}}</p>
     {% endif %}
