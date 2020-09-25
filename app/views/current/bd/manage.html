@@ -133,6 +133,9 @@
     {% endfor %}
     {% set numberOfChargeVersionsReview = review + 5 %}
 
+    <!--not set charge status-->
+    {% set numberOfChargeVersionsnNotSet = 5 %}
+
     <!--number of chargeVersions with Change charge status-->
     {% set change = 0 %}
     {% set chargeVersions = data['chargeVersions'] %}
@@ -155,29 +158,37 @@
 
 
     <h2 class="govuk-heading-m">
-      Charge information and agreements
+      Charge information workflow
     </h2>
 
     <ul class="govuk-list">
+
       <li>
-        <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#review">
-          Charge information for review <br>
+        <a class="govuk-link" href="charges-2020/licences-with-new-charge-information">
+          Not set up<br>
         </a>
-        <span class="govuk-caption-m">{{numberOfChargeVersionsReview}} licences</span>
+        <span class="govuk-caption-m">{{numberOfChargeVersionsnNotSet}} licences</span>
       </li>
       <li>
-      <li>
         <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#draft">
-          Charge information in draft <br>
+          Draft <br>
         </a>
         <span class="govuk-caption-m">{{numberOfChargeVersionsChange}} licences</span>
       </li>
       <li>
+        <a class="govuk-link" href="charges-2020/licences-with-new-charge-information#review">
+          Review <br>
+        </a>
+        <span class="govuk-caption-m">{{numberOfChargeVersionsReview}} licences</span>
+      </li>
+
+
+    <!--Not being used anymore--> <!--  <li>
         <a class="govuk-link" href="charges-2020/licences-with-new-agreements">
           New agreements <br>
         </a>
         <span class="govuk-caption-m">{% if newAgreements == '1' %}{{newAgreements}} licence{% else %}{{newAgreements}} licences{% endif %}</span>
-      </li>
+      </li>  -->
     </ul>
 
   </div>
