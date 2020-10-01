@@ -1,220 +1,257 @@
 
+{% set tableCaption = 'Changes <br><span class="govuk-caption-l">4 licences</span>' %}
+
   {% if [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
   {{ govukTable({
-    caption: "Change requested",
+    caption: tableCaption | safe,
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
     head: [
       {
-        text: "Licence",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence"
       },
       {
-        text: "Set up by",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence holder"
+
       },
       {
-        text: "Licence holder",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Set up by"
+
       },
       {
-        text: "Start date",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Changes requested"
+      },
+      {
+        text: "Action"
       }
     ],
     rows: [
     [
       {
-        html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">03/28/60/0031</a>'
-      },
-      {
-        text: "Your name"
+        text: '03/28/60/0031'
       },
       {
         text: "Bottled Water Plc"
       },
       {
-        text: "30 April 2022"
+        text: "your.name@madeup.com"
+      },
+
+      {
+        text: data['requestChanges']
+      },
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span></a>'
       }
     ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/12/001/33</a>'
+          text: '12/23/43/0044'
         },
         {
-          text: "Michael Babb"
+          text: "Irene Smithson"
         },
         {
-          text: "Sam Bidwell"
-        },
-        {
-          text: "4 October 2020"
-        }
-      ],
-      [
-        {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">12/28/66/0015</a>'
-        },
-        {
-          text: "Rose Conelly"
-        },
-        {
-          text: "Jacqui Tempson"
+          text: "emma.nevin@madeup.com"
         },
 
         {
-          text: "30 April 2022"
+          text: ""
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">44/22/17/349</a>'
+          text: '03/28/60/0031'
         },
         {
-          text: "Barry Crampton"
+          text: "Reg Spreadbury"
         },
         {
-          text: "Osborne Farms Ltd."
+          text: "barry.crampton@madeup.com"
         },
         {
-          text: "15 July 2023"
+          text: "Please change the purpose to Spray"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0&chargeVersions[0][chargeStatus]=CHANGES&chargeVersions[0][chargeStart]=22%20April%202019&chargeVersions[0][reasonNewCharge]=New%20Licence&chargeVersions[0][free]=false&requestChanges=Please%20change%20the%20purpose%20to%20Spray">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">11/34/5555/0048</a>'
+          text: '03/28/61/029'
         },
         {
-          text: "Barry Crampton"
+          text: "Folkstone Farms Ltd."
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "rose.conelly@madeup.com"
+        },
+
+        {
+          text: "Please created a second time limited element"
         },
         {
-          text: "15 September 2022"
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0&chargeVersions[0][chargeStatus]=CHANGES&chargeVersions[0][chargeStart]=22%20April%202019&chargeVersions[0][reasonNewCharge]=New%20Licence&chargeVersions[0][free]=false&requestChanges=Please%20created%20a%20second%20time%20limited%20element">View<span class="govuk-visually-hidden"> draft charge information</span>'
+        }
+      ],
+      [
+        {
+          text: '22/12/65/0055'
+        },
+        {
+          text: "Thomas Featherstone Ltd."
+        },
+        {
+          text: "jo.langton@madeup.com"
+        },
+
+        {
+          text: ""
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
 
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">22/25/55/9800</a>'
+          text: '23/33/76/0044',
+          classes: 'govuk-table__cell--no-border'
         },
         {
-          text: "Jo Langton"
+          text: "Coastal Water Ltd.",
+          classes: 'govuk-table__cell--no-border'
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "jo.langton@madeup.com",
+          classes: 'govuk-table__cell--no-border'
+        },
+
+        {
+          text: "",
+          classes: 'govuk-table__cell--no-border'
         },
         {
-          text: "28 January 2024"
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>',
+          classes: 'govuk-table__cell--no-border'
         }
       ]
 
     ]
   }) }}
+
 
   {% else %}
 
 
   {{ govukTable({
-    caption: "Change requested",
+    caption: tableCaption | safe,
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
     head: [
       {
-        text: "Licence",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence"
       },
       {
-        text: "Set up by",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Licence holder"
+
       },
       {
-        text: "Licence holder",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Set up by"
+
       },
       {
-        text: "Start date",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Changes requested"
+      },
+      {
+        text: "Action"
       }
     ],
     rows: [
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">01/12/001/33</a>'
+          text: '12/23/43/0044'
         },
         {
-          text: "Michael Babb"
+          text: "Irene Smithson"
         },
         {
-          text: "Sam Bidwell"
-        },
-        {
-          text: "4 October 2020"
-        }
-      ],
-      [
-        {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">12/28/66/0015</a>'
-        },
-        {
-          text: "Rose Conelly"
-        },
-        {
-          text: "Jacqui Tempson"
+          text: "emma.nevin@madeup.com"
         },
 
         {
-          text: "30 April 2022"
+          text: "Please change the abstraction start month to April"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">44/22/17/349</a>'
+          text: '03/28/60/0031'
         },
         {
-          text: "Barry Crampton"
+          text: "Reg Spreadbury"
         },
         {
-          text: "Osborne Farms Ltd."
+          text: "barry.crampton@madeup.com"
         },
         {
-          text: "15 July 2023"
+          text: "Please change the purpose to Spray"
+        },
+        {
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0&chargeVersions[0][chargeStatus]=CHANGES&chargeVersions[0][chargeStart]=22%20April%202019&chargeVersions[0][reasonNewCharge]=New%20Licence&chargeVersions[0][free]=false&requestChanges=Please%20change%20the%20purpose%20to%20Spray">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">11/34/5555/0048</a>'
+          text: '03/28/61/029'
         },
         {
-          text: "Barry Crampton"
+          text: "Folkstone Farms Ltd."
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "rose.conelly@madeup.com"
+        },
+
+        {
+          text: "Please created a second time limited element"
         },
         {
-          text: "15 September 2022"
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0&chargeVersions[0][chargeStatus]=CHANGES&chargeVersions[0][chargeStart]=22%20April%202019&chargeVersions[0][reasonNewCharge]=New%20Licence&chargeVersions[0][free]=false&requestChanges=Please%20created%20a%20second%20time%20limited%20element">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
 
       [
         {
-          html: '<a class="govuk-link" href="/bd/licence-summary-no-charge">22/25/55/9800</a>'
+          text: '23/33/76/0044',
+          classes: 'govuk-table__cell--no-border'
         },
         {
-          text: "Jo Langton"
+          text: "Coastal Water Ltd.",
+          classes: 'govuk-table__cell--no-border'
         },
         {
-          text: "Little Jones Farms Ltd."
+          text: "jo.langton@madeup.com",
+          classes: 'govuk-table__cell--no-border'
+        },
+
+        {
+          text: "There is a purpose missing from the licence",
+          classes: 'govuk-table__cell--no-border'
         },
         {
-          text: "28 January 2024"
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>',
+          classes: 'govuk-table__cell--no-border'
         }
       ]
 
     ]
   }) }}
 
-    {% endif %}
+  {% endif %}

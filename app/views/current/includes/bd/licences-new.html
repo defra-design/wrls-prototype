@@ -1,7 +1,7 @@
-
+{% set tableCaption = 'To set up <br><span class="govuk-caption-l">5 licences</span>' %}
 
   {{ govukTable({
-    caption: "Not set up",
+    caption: tableCaption | safe,
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",

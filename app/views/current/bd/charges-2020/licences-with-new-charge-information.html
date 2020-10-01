@@ -61,17 +61,18 @@
   <ul class="govuk-tabs__list">
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#new">
-        Not set up
+        To set up (5<span class="govuk-visually-hidden">licences</span>)
       </a>
     </li>
-    <li class="govuk-tabs__list-item" tabindex="0">
-      <a class="govuk-tabs__tab" href="#draft">
-        Draft
-      </a>
-    </li>
+
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#review">
-        Review
+        Review (5<span class="govuk-visually-hidden">licences</span>)
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#changes">
+        Changes requested (4<span class="govuk-visually-hidden">licences</span>)
       </a>
     </li>
 <!--    <li class="govuk-tabs__list-item" tabindex="0">
@@ -89,13 +90,13 @@
 
   </section>
 
-  <!-- tab 2 -->
+  <!-- tab 2 --> <!--
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="draft">
 
-    <!-- draft charge version licences -->
+    <!-- draft charge version licences --> <!--
     {% include "current/includes/bd/licences-draft.html" %}
 
-  </section>
+  </section> -->
 
   <!-- tab 3 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="review">
@@ -107,13 +108,13 @@
 
   </section>
 
- <!-- tab 4 --> <!--
+ <!-- tab 4 -->
   <section class="govuk-tabs__panel" id="changes">
 
 
 {% include "current/includes/bd/licences-changes.html" %}
 
-</section> -->
+</section>
 
 </div>
 

@@ -586,6 +586,20 @@ router.get('/bd/charges-2020/confirm-approve-charge-information', function(req, 
 });
 
 
+///chargeVersions - approve or request changes
+router.post('/bd/charges-2020/charge-version', function(req, res) {
+
+  const approve = req.session.data['approve-charge-information']
+
+  if (approve === 'approve') {
+    res.redirect('confirm-approve-charge-information')
+  } else {
+    res.redirect('confirm-request-changes')
+  }
+
+});
+
+
 ///////////CHARGE INFORMATION NOT APPROVED REASON
 router.post('/bd/charges-2020/request-changes', function(req, res) {
 

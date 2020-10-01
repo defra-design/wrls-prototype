@@ -1,7 +1,8 @@
+{% set tableCaption = 'Review <br><span class="govuk-caption-l">5 licences</span>' %}
 
   {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
   {{ govukTable({
-    caption: "Review",
+    caption: tableCaption | safe,
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",
@@ -139,7 +140,7 @@
 
 
   {{ govukTable({
-    caption: "Review",
+    caption: tableCaption | safe,
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     classes: "govuk-table-fix",

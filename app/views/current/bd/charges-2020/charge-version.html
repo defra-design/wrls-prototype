@@ -88,7 +88,7 @@ classes: "govuk-tag--orange govuk-!-font-size-27"
 })}}
       {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
       {{govukTag({
-text: "Draft",
+text: "Changes requested",
 classes: "govuk-tag--blue govuk-!-font-size-27"
 })}}
       {% endif %}
@@ -252,7 +252,82 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
     {% set m = data['chargeStart-month'] | int %}
     {% set d = data['chargeStart-day'] | int %}
     {% set date = y + m + d %}
-    <div class="divider govuk-!-margin-bottom-4"></div>
+  <!--  <div class="divider govuk-!-margin-bottom-4"></div> -->
+
+    <form method="post" class="form">
+
+
+      {% set requestChanges %}
+      <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+      {{ govukTextarea({
+    label: {
+      text: "Which parts of the charge information are incorrect?",
+      isPageHeading: false,
+      classes: "govuk-label--m govuk-!-margin-bottom-3"
+    },
+    hint: {
+      text: "Describe what needs to change. This will help the person who set up the charge information to correct it."
+    },
+    id: "requestChanges",
+    name: "requestChanges"
+    }) }}
+    </div>
+    </div>
+      {% endset -%}
+
+
+      {% set approve %}
+      {% set free = [data.chargeVersions[0]['free']] %}
+      {% if (free == "true") and (data['newLicence'] == "true") %}
+      {% elif (free == "true") %}
+      <p class="govuk-body"><br>This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.<br><br></p>
+      {% endif %}
+
+      {% if date < 2020 %}
+      {{ govukWarningText({
+   text: "Older charge information will be invalid when you approve these details.",
+   iconFallbackText: "Warning"
+  }) }}
+      {% endif%}
+      {% endset -%}
+
+
+      {{ govukRadios({
+  idPrefix: "approve",
+  name: "approve-charge-information",
+  fieldset: {
+    legend: {
+      text: "Do you want to approve this charge information?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "approve",
+      text: "Yes, approve",
+      conditional: {
+        html: approve
+      }
+    },
+    {
+      value: "requestChanges",
+      text: "No, request a change",
+      conditional: {
+        html: requestChanges
+      }
+    }
+  ]
+}) }}
+
+
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Confirm
+      </button>
+
+    </form>
 
       <!--    <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
@@ -268,7 +343,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
                 <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
             </div>
           </div> -->
-    {% if date < 2020 %}
+  <!--  {% if date < 2020 %}
     {{ govukWarningText({
       text: "Older charge information will be invalid when you approve these details.",
       iconFallbackText: "Warning"
@@ -292,7 +367,7 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
   text: "Request changes",
   classes: "govuk-button--secondary",
   href: "request-changes"
-}) }}
+}) }} -->
 
     <!-- if the charge version is free but changes have been requested display the appropriate controls-->
     {% elif ([data.chargeVersions[chargeInfoNumber].free] == "true") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
@@ -344,7 +419,7 @@ rows: [
 ]
 }) }}
 
-    <p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p>
+  <!--  <p class="govuk-body">This licence will be added to the supplementary bill run and billed up to {{[chargeStart]}}.</p> -->
     {% set y = data['chargeStart-year'] | int %}
     {% set m = data['chargeStart-month'] | int %}
     {% set d = data['chargeStart-day'] | int %}
@@ -359,9 +434,9 @@ iconFallbackText: "Warning"
 
     <form action="/bd/charges-2020/charge-version/charge-data-check" method="post" class="form">
 
-     <div class="divider govuk-!-margin-bottom-4"></div>
+  <!--   <div class="divider govuk-!-margin-bottom-4"></div>
 
-  <!--      <div class="govuk-grid-row">
+        <div class="govuk-grid-row">
               <div class="govuk-grid-column-two-thirds">
                 <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£150,995.76</span><br>
                   <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
@@ -411,22 +486,92 @@ iconFallbackText: "Warning"
                 <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
 
             </div>
-          </div>  -->
+          </div>
 
           <div class="govuk-grid-row govuk-!-margin-bottom-2">
             <div class="govuk-grid-column-two-thirds">
               <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
                 <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
             </div>
-          </div>
-    {% if date < 2020 %}
-    {{ govukWarningText({
- text: "Older charge information will be invalid when you approve these details.",
- iconFallbackText: "Warning"
-}) }}
-    {% endif%}
+          </div> -->
 
-    <p class="govuk-body">This licence will be added to the supplementary bill run</p>
+
+
+
+    <form method="post" class="form">
+
+
+      {% set requestChanges %}
+      <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+      {{ govukTextarea({
+    label: {
+      text: "Which parts of the charge information are incorrect?",
+      isPageHeading: false,
+      classes: "govuk-label--m govuk-!-margin-bottom-3"
+    },
+    hint: {
+      text: "Describe what needs to change. This will help the person who set up the charge information to correct it."
+    },
+    id: "requestChanges",
+    name: "requestChanges"
+    }) }}
+    </div>
+    </div>
+      {% endset -%}
+
+
+      {% set approve %}
+ <p class="govuk-body"><br>This licence will be added to the supplementary bill run<br><br></p>
+      {% if date < 2020 %}
+      {{ govukWarningText({
+   text: "Older charge information will be invalid when you approve these details.",
+   iconFallbackText: "Warning"
+  }) }}
+      {% endif%}
+      {% endset -%}
+
+
+      {{ govukRadios({
+  idPrefix: "approve",
+  name: "approve-charge-information",
+  fieldset: {
+    legend: {
+      text: "Do you want to approve this charge information?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "approve",
+      text: "Yes, approve",
+      conditional: {
+        html: approve
+      }
+    },
+    {
+      value: "requestChanges",
+      text: "No, request a change",
+      conditional: {
+        html: requestChanges
+      }
+    }
+  ]
+}) }}
+
+
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Confirm
+      </button>
+
+    </form>
+
+
+
+
+  <!--  <p class="govuk-body">This licence will be added to the supplementary bill run</p>
 
     {{ govukButton({
   text: "Approve",
@@ -438,7 +583,7 @@ iconFallbackText: "Warning"
   text: "Request changes",
   classes: "govuk-button--secondary",
   href: "request-changes"
-}) }}
+}) }} -->
 
 
     {% elif ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
@@ -458,13 +603,13 @@ iconFallbackText: "Warning"
                   <span class="govuk-body govuk-!-font-weight-bold">Example annual charge total</span></h2>
 
               </div>
-            </div>  -->
+            </div>
 
             <div class="govuk-grid-row govuk-!-margin-bottom-2">
               <div class="govuk-grid-column-two-thirds">
                 <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£39,995.76</span><br>
                   <span class="govuk-body govuk-!-font-weight-bold govuk-body">Pro rata supplementary charge total</span></h2>
-              </div>
+              </div> -->
             </div>
 
             {{ govukButton({
