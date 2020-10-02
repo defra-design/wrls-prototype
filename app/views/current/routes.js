@@ -555,6 +555,23 @@ router.post('/bd/charges-2020/charge-version/charge-data-check', function(req, r
 
 });
 
+//Charge data changes made
+router.post('/bd/charges-2020/changes-made', function(req, res) {
+
+
+  req.session.data.chargeVersions[0]['chargeStatus'] = "NOT APPROVED"
+  //reset all the completed flags for the task list
+  req.session.data['reasonNewSet'] = "false"
+  req.session.data['chargeStartSet'] = "false"
+  req.session.data['elementNew'] = "false"
+  req.session.data['createNewContact'] = "false"
+  req.session.data['existingContact'] = "false"
+
+
+  res.redirect('charge-version/charge-data-confirmation');
+
+});
+
 
 ///////////CHARGE INFORMATION APPROVAL
 router.get('/bd/charges-2020/confirm-approve-charge-information', function(req, res) {
@@ -587,7 +604,7 @@ router.get('/bd/charges-2020/confirm-approve-charge-information', function(req, 
 
 
 ///chargeVersions - approve or request changes
-router.post('/bd/charges-2020/charge-version', function(req, res) {
+router.post('/bd/charges-2020/approve', function(req, res) {
 
   const approve = req.session.data['approve-charge-information']
 

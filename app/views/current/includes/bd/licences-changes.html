@@ -1,5 +1,5 @@
 
-{% set tableCaption = 'Changes <br><span class="govuk-caption-l">4 licences</span>' %}
+{% set tableCaption = 'Changes requested<br><span class="govuk-caption-l">4 licences</span>' %}
 
   {% if [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
   {{ govukTable({
@@ -42,7 +42,7 @@
         text: data['requestChanges']
       },
       {
-        html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span></a>'
+        html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0">View<span class="govuk-visually-hidden"> draft charge information</span></a>'
       }
     ],
       [
@@ -57,10 +57,10 @@
         },
 
         {
-          text: ""
+          text: "Please change the abstraction start month to April"
         },
         {
-          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>'
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0&chargeVersions[0][chargeStatus]=CHANGES&chargeVersions[0][chargeStart]=22%20April%202019&chargeVersions[0][reasonNewCharge]=New%20Licence&chargeVersions[0][free]=false&requestChanges=Please%20change%20the%20start%20month%20to%20April">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
       [
@@ -98,24 +98,6 @@
           html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0&chargeVersions[0][chargeStatus]=CHANGES&chargeVersions[0][chargeStart]=22%20April%202019&chargeVersions[0][reasonNewCharge]=New%20Licence&chargeVersions[0][free]=false&requestChanges=Please%20created%20a%20second%20time%20limited%20element">View<span class="govuk-visually-hidden"> draft charge information</span>'
         }
       ],
-      [
-        {
-          text: '22/12/65/0055'
-        },
-        {
-          text: "Thomas Featherstone Ltd."
-        },
-        {
-          text: "jo.langton@madeup.com"
-        },
-
-        {
-          text: ""
-        },
-        {
-          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>'
-        }
-      ],
 
       [
         {
@@ -132,18 +114,17 @@
         },
 
         {
-          text: "",
+          text: "There is a purpose missing from the licence",
           classes: 'govuk-table__cell--no-border'
         },
         {
-          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version/charge-data-check">View<span class="govuk-visually-hidden"> draft charge information</span>',
+          html: '<a class="govuk-link" href="/bd/charges-2020/charge-version?chargeInfoNumber=0&chargeVersions[0][chargeStatus]=CHANGES&chargeVersions[0][chargeStart]=22%20April%202019&chargeVersions[0][reasonNewCharge]=New%20Licence&chargeVersions[0][free]=false&requestChanges=There%20is%20a%20purpose%20missing%20from%20the%20licence">View<span class="govuk-visually-hidden"> draft charge information</span>',
           classes: 'govuk-table__cell--no-border'
         }
       ]
 
     ]
   }) }}
-
 
   {% else %}
 
