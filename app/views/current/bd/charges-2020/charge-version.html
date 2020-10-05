@@ -88,7 +88,7 @@ classes: "govuk-tag--orange govuk-!-font-size-27"
 })}}
       {% elif [data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES" %}
       {{govukTag({
-text: "Changes requested",
+text: "Change request",
 classes: "govuk-tag--blue govuk-!-font-size-27"
 })}}
       {% endif %}
@@ -165,9 +165,10 @@ classes: "govuk-tag--blue govuk-!-font-size-27"
   <div class="govuk-grid-column-full">
 
     <!--comments from billing and data-->
-    {% if ([data.chargeInfoNumber] == "0") and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") %}
+
+    {% if ([data.chargeInfoNumber] == "0") and ([data.requestChanges].length) and ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "CHANGES") or ([data.chargeVersions[chargeInfoNumber].chargeStatus] == "NOT APPROVED") and ([data.changesMade] == "true") %}
     <h2 class="govuk-heading-m">
-      Change requested
+      Change request
     </h2>
     <p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges'] | default("Please change the purpose to Spray")}}</p>
     {% endif %}

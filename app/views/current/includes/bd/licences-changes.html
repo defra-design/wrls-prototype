@@ -1,5 +1,5 @@
 
-{% set tableCaption = 'Changes requested<br><span class="govuk-caption-l">4 licences</span>' %}
+{% set tableCaption = 'Change request<br><span class="govuk-caption-l">4 licences</span>' %}
 
   {% if [data.chargeVersions[0].chargeStatus] == "CHANGES" %}
   {{ govukTable({
@@ -20,7 +20,7 @@
 
       },
       {
-        text: "Changes requested"
+        text: "Change request"
       },
       {
         text: "Action"

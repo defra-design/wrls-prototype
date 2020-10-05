@@ -566,6 +566,7 @@ router.post('/bd/charges-2020/changes-made', function(req, res) {
   req.session.data['elementNew'] = "false"
   req.session.data['createNewContact'] = "false"
   req.session.data['existingContact'] = "false"
+  req.session.data['changesMade'] = "true"
 
 
   res.redirect('charge-version/charge-data-confirmation');
@@ -609,6 +610,7 @@ router.post('/bd/charges-2020/approve', function(req, res) {
   const approve = req.session.data['approve-charge-information']
 
   if (approve === 'approve') {
+    req.session.data['changesMade'] = "false"
     res.redirect('confirm-approve-charge-information')
   } else {
     res.redirect('confirm-request-changes')
