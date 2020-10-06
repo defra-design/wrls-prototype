@@ -62,15 +62,6 @@
                     },
                     value: {
                       text: [i.purpose]
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   },
 
@@ -80,15 +71,6 @@
                      },
                      value: {
                        text: [i.description]
-                     },
-                     actions: {
-                       items: [
-                         {
-
-                           text: ""
-
-                         }
-                       ]
                      }
                    },
 
@@ -99,15 +81,6 @@
                     },
                     value: {
                       text: [abstractionStart] + " to " + [abstractionEnd]
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   },
                   {
@@ -116,15 +89,6 @@
                     },
                     value: {
                       text: [i.authorisedQuantity] + " megalitres per year"
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   },
                   {
@@ -133,17 +97,8 @@
                     },
                     value: {
                       text: [billableQuantity]
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
-                  },
+                  } if "Not set" not in billableQuantity,
 
                   {
                     key: {
@@ -151,32 +106,14 @@
                     },
                     value: {
                       text: [timeLimit]
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
-                  },
+                  } if "No" not in timeLimit,
                   {
                     key: {
                       text: "Source"
                     },
                     value: {
                       text: [i.source]
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   },
                   {
@@ -185,15 +122,6 @@
                     },
                     value: {
                       text: [i.season]
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   },
                   {
@@ -202,15 +130,6 @@
                     },
                     value: {
                       text: [i.loss]
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   },
                   {
@@ -220,15 +139,6 @@
                     },
                     value: {
                       text: "Other"
-                    },
-                    actions: {
-                      items: [
-                        {
-
-                          text: ""
-
-                        }
-                      ]
                     }
                   }
 
