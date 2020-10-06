@@ -11,14 +11,19 @@
     {% set chargeStart = data['chargeStart-day'] | default("22") + " " + month +" "+ data['chargeStart-year'] | default("2019")%}
 
 
-  {% set invoiceAddress %}
- {{ data.invoiceAccount}} <br>
- {{data.customerName}}<br>
-  {{ data.address1}} <br>
-  {{ data.city}} <br>
-  {{data.postcode}} <br>
-  {% endset %}
+    {% set invoiceAddress %}
+   {% if [data.chargeVersions[0].chargeStatus] == "CHARGEABLE" %}
+   <a href="/bd/charges-2020/billing-account" class="govuk-link">{{ data.invoiceAccount}}</a>
+   {% else %}
+   {{ data.invoiceAccount}} <br>
+   {{data.customerName}}<br>
+    {{ data.address1}} <br>
+    {{ data.city}} <br>
+    {{data.postcode}} <br>
+    {% endif %}
+    {% endset %}
 
+{{data.chargeVersions[0].chargeStatus}}
 
 
    {% set y = data['chargeStart-year'] | int %}

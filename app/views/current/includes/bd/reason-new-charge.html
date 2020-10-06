@@ -12,11 +12,15 @@
 
 
   {% set invoiceAddress %}
+ {% if [data.chargeVersions[0].chargeStatus] == "CHAREGEABLE" %}
+ {{ data.invoiceAccount}} <br>
+ {% else %}
  {{ data.invoiceAccount}} <br>
  {{data.customerName}}<br>
   {{ data.address1}} <br>
   {{ data.city}} <br>
   {{data.postcode}} <br>
+  {% endif %}
   {% endset %}
 
 
