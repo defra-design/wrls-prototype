@@ -69,19 +69,22 @@
 
       <div class="govuk-checkboxes">
         <!--replace the commas in the reference with line breaks-->
-        {% set returnsRefs = data.returns[data['returnIndex']]['ref'].replace(r/ - Due October 201\d/g, "").split(r/,/g) %}
+        {% set returnsRefs = data.returns[data['returnIndex']]['ref'].replace(r/ - Due 28 October 201\d/g, "").split(r/,/g) %}
 
         <!--check if the returns references have already been changed-->
         {% if data.returns[data['returnIndex']]['change'] == "true" %}
          <!--replace the commas in the reference with line breaks-->
-         {% set ref = data.returns[data['returnIndex']]['refChange'].replace(r/ - Due October 201\d/g, "").split(r/,/g) %}
+         {% set ref = data.returns[data['returnIndex']]['refChange'].replace(r/ - Due 28 October 201\d/g, "").split(r/,/g) %}
         {% endif %}
+
+        <!-- set the site description -->
+        {% set siteDescription = "Great Ouse at Bedford College" %}
 
         {% set year = 2019 %}
           {% for i in returnsRefs %}
 
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="ref-{{loop.index1}}" name="returnsRef" type="checkbox" value="{{i}} - Due October {{year - loop.index0}}" aria-describedby="ref-item-hint"
+          <input class="govuk-checkboxes__input" id="ref-{{loop.index1}}" name="returnsRef" type="checkbox" value="{{i}} - Due 28 October {{year - loop.index0}}" aria-describedby="ref-item-hint"
 
             {% if data.returns[data['returnIndex']]['change'] == "true" %}
 
@@ -91,19 +94,24 @@
           {% else %}checked
           {% endif %}>
           <label class="govuk-label govuk-checkboxes__label" for="ref-{{loop.index1}}">
-            {{i}}
+            {{i}} - {{siteDescription}}
           </label>
           <span id="ref-item-hint" class="govuk-hint govuk-checkboxes__hint">
-            Due October {{year - loop.index0}}
+            Due 28 October {{year - loop.index0}}
           </span>
         </div>
 
-
-
-
-
       {% endfor %}
 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="ref-4" name="returnsRef" type="checkbox" value="4576343 - Received 15 April 2016" aria-describedby="ref-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="ref-4">
+          4576343 - {{siteDescription}}
+        </label>
+        <span id="ref-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          Received 15 April 2016
+        </span>
+      </div>
 
       </div>
       </fieldset>

@@ -1095,7 +1095,7 @@ router.post('/bd/manage/send-paper', function(req, res) {
 
     //Random numbers for the references
     let refNumber = [...Array(refIndex)].map(() => Math.floor(Math.random() * 9999999) + 1000000);
-    refNumber = refNumber.map(i => i + ' - Due October ' + year--);
+    refNumber = refNumber.map(i => i + ' - Due 28 October ' + year--);
 
     //Convert to a string
     ref = refNumber.toString();
@@ -1115,7 +1115,7 @@ router.post('/bd/manage/send-paper', function(req, res) {
     //choose random licenceholder form the list
     //let licenceHolder = licenceHolderList[Math.floor(Math.random() * licenceHolderList.length)];
 
-    //choose addresses in order
+    //choose licenceHolder in order
     let licenceHolder = licenceHolderList[0];
 
     //remove licenceHolder from the array so that is doesn't get used twice.
@@ -1209,7 +1209,7 @@ router.post('/bd/manage/send-paper-changed-ownership', function(req, res) {
 
       //Random numbers for the references
       let refNumber = [...Array(refIndex)].map(() => Math.floor(Math.random() * 9999999) + 1000000);
-      refNumber = refNumber.map(i => i + ' - Due October ' + year--);
+      refNumber = refNumber.map(i => i + ' - Due 28 October ' + year--);
 
       //Convert to a string
       ref = refNumber.toString();
