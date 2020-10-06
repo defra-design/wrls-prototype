@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Enter date agreement was signed (optional)" %}
+{% set title = "Do you know the date the agreement was signed?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -52,7 +52,7 @@
 
   <form method="post" class="form">
 
-
+<!--
     {{ govukDateInput({
   id: "agreementSignedStart",
   namePrefix: "agreementSignedStart",
@@ -64,8 +64,8 @@
     }
   }
   }) }}
+-->
 
-<!--
     {% set agreementDate %}
     {{ govukDateInput({
   id: "agreementSignedStart",
@@ -103,7 +103,7 @@
       text: "No"
     }
   ]
-}) }} -->
+}) }}
 
     <button type="submit" class="govuk-button govuk-!-margin-right-1">
       Continue

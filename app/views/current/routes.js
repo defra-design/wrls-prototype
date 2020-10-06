@@ -926,9 +926,16 @@ router.post('/bd/charges-2020/add-agreement-signed-date', function(req, res) {
       req.session.data['agreementSignedStartYear'] = req.session.data['agreementStartYear'];
     } */
 
+    let agreementDateConditional = req.session.data['agreementSignedDateConditional'];
+    if (agreementDateConditional === "no") {
+    req.session.data['agreementSignedStartDay'] = "Not known"
+    req.session.data['agreementSignedStartMonth'] = ""
+    req.session.data['agreementSignedStartYear'] = ""
+  } else {
   req.session.data['agreementSignedStartDay'] = req.session.data['agreementSignedStart-day'];
   req.session.data['agreementSignedStartMonth'] = req.session.data['agreementSignedStart-month'];
   req.session.data['agreementSignedStartYear'] = req.session.data['agreementSignedStart-year'];
+}
 
   res.redirect('add-agreement-date');
 });
