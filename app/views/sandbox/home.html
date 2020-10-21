@@ -6,42 +6,96 @@
 {{title}} - GOV.UK
 {% endblock %}
 
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "someone@somewhere.gov.uk"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% set mainClasses = "home-no-padding-top" %}
+
+{% block beforeContent %}
+
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+</div>
+
+<!-- navigation block -->
+{% include "current/includes/nav/nav-bd.html" %}
+
+<!--
+ {{ govukBackLink({
+   text: "Back",
+   href: "javascript:history.back()"
+ }) }}
+-->
+
+{% endblock %}
+
 {% block content %}
 
+<!--saerch-->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+
+    <div class="mastheader">
+      <div class="govuk-form-group govuk-width-container">
 
 
         <form action="search">
 
 
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--l  " for="search">
-            Search for a licence, user, return or account
-          </label>
-        </h1>
-        <span id="search-hint" class="govuk-hint hint-dark-grey">
-          Enter licence number, name, registered email address, return ID or billing account
-        </span>
-        <input class="govuk-input govuk-!-width-one-half govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l  " for="search">
+              Search for a licence, user, return or account
+            </label>
+          </h1>
+          <span id="search-hint" class="govuk-hint hint-dark-grey">
+            Enter licence number, name, registered email address, return ID or billing account
+          </span>
+          <input class="govuk-input govuk-!-width-two-thirds govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
 
-        {{ govukButton({
-            text: "Search"
+          {{ govukButton({
+            text: "Search",
+            classes: "wrls-faux-button--inline"
           }) }}
 
 
         </form>
 
       </div>
-
     </div>
-    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-0">
 
+  </div>
 
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-0">
+
+<!--cards-->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <section class= "govuk-!-margin-bottom-9 ">
+    <section class="govuk-!-margin-bottom-9 ">
 
       <h2 class="govuk-heading-l">Bill runs</h2>
       <p class="govuk-body">View all bill runs. Create a new two-part tariff, annual or supplementary bill run. </p>
@@ -61,6 +115,82 @@
   </div>
 </div>
 
+
+<!--charge information workflow-->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-7">Charge information workflow</h2>
+
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+
+      <!-- tab navigation -->
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item" tabindex="0">
+          <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#new">
+            To set up (5<span class="govuk-visually-hidden">licences</span>)
+          </a>
+        </li>
+
+        <li class="govuk-tabs__list-item" tabindex="0">
+          <a class="govuk-tabs__tab" href="#review">
+            Review (5<span class="govuk-visually-hidden">licences</span>)
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item" tabindex="0">
+          <a class="govuk-tabs__tab" href="#changes">
+            Change request (4<span class="govuk-visually-hidden">licences</span>)
+          </a>
+        </li>
+        <!--    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#changes">
+        Change requested
+      </a>
+    </li> -->
+      </ul>
+
+      <!-- tab 1 -->
+      <section class="govuk-tabs__panel" id="new">
+
+        <!-- new licences -->
+        {% include "current/includes/bd/licences-new.html" %}
+
+      </section>
+
+      <!-- tab 2 -->
+      <!--
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="draft">
+
+    <!-- draft charge version licences -->
+      <!--
+    {% include "current/includes/bd/licences-draft.html" %}
+
+  </section> -->
+
+      <!-- tab 3 -->
+      <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="review">
+
+        <!-- comms table -->
+        {% include "current/includes/bd/licences-review.html" %}
+
+
+
+      </section>
+
+      <!-- tab 4 -->
+      <section class="govuk-tabs__panel" id="changes">
+
+
+        {% include "current/includes/bd/licences-changes.html" %}
+
+      </section>
+
+    </div>
+
+  </div>
+</div>
 
 
 {% endblock %}

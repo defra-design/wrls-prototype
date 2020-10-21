@@ -77,6 +77,7 @@ width: 80% !important;
   @media (min-width: 768px) {
   // mega-padding  padding: 210px 0 310px 0;
   padding: 100px 0 120px 0;
+  margin-bottom: 0;
   }
 }
 
@@ -152,9 +153,9 @@ width: 80% !important;
 }
 
 //removal of the phase banner bottom border
-.govuk-phase-banner {
+/*.govuk-phase-banner {
   border-bottom: none;
-}
+}*/
 
 
 // Steve’s 'right-aligned’ version of the service header
