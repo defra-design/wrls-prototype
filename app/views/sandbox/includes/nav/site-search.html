@@ -1,0 +1,36 @@
+<div class="app-site-search" data-module="app-search" data-search-index="/search-index-ba133e98a4bcec6e9c728af78190a83e.json">
+  <label class="govuk-visually-hidden" for="app-site-search__input">Search for a licence</label>
+  <a class="app-site-search__link govuk-link" href="/sitemap">Sitemap</a>
+  <div class="app-site-search__wrapper">
+    <div style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
+      <div id="app-site-search__input__status--A" role="status" aria-atomic="true" aria-live="polite"></div>
+      <div id="app-site-search__input__status--B" role="status" aria-atomic="true" aria-live="polite"></div>
+    </div><input aria-expanded="false" aria-owns="app-site-search__input__listbox" aria-autocomplete="both" aria-describedby="app-site-search__input__assistiveHint" autocomplete="off" class="app-site-search__input app-site-search__input--default"
+      id="app-site-search__input" name="search" placeholder="Search for a licence" type="text" role="combobox">
+    <ul class="app-site-search__menu app-site-search__menu--overlay app-site-search__menu--hidden" id="app-site-search__input__listbox" role="listbox"></ul><span id="app-site-search__input__assistiveHint" style="display: none;">When autocomplete
+      results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>
+  </div>
+</div>
+
+
+<!--script to to trigger the search results page on pressing enter on the navbar search The actual JS can be found in the design system github
+govuk-design-system/src/javascripts/components/search.js
+-->
+<script>
+// Get the input field
+var input = document.getElementById("app-site-search__input");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+
+    var inputVal = document.getElementById("app-site-search__input").value
+    // Send them to the results page
+    window.location = "/current/bd/results-licences?search=" + inputVal;
+}
+});
+
+</script>

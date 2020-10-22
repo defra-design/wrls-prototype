@@ -1,0 +1,75 @@
+<!--charge information workflow-->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-7">Charge information workflow</h2>
+
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+
+      <!-- tab navigation -->
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item" tabindex="0">
+          <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#new">
+            To set up (5<span class="govuk-visually-hidden">licences</span>)
+          </a>
+        </li>
+
+        <li class="govuk-tabs__list-item" tabindex="0">
+          <a class="govuk-tabs__tab" href="#review">
+            Review (5<span class="govuk-visually-hidden">licences</span>)
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item" tabindex="0">
+          <a class="govuk-tabs__tab" href="#changes">
+            Change request (4<span class="govuk-visually-hidden">licences</span>)
+          </a>
+        </li>
+        <!--    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#changes">
+        Change requested
+      </a>
+    </li> -->
+      </ul>
+
+      <!-- tab 1 -->
+      <section class="govuk-tabs__panel" id="new">
+
+        <!-- new licences -->
+        {% include "current/includes/bd/licences-new.html" %}
+
+      </section>
+
+      <!-- tab 2 -->
+      <!--
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="draft">
+
+    <!-- draft charge version licences -->
+      <!--
+    {% include "current/includes/bd/licences-draft.html" %}
+
+  </section> -->
+
+      <!-- tab 3 -->
+      <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="review">
+
+        <!-- comms table -->
+        {% include "current/includes/bd/licences-review.html" %}
+
+
+
+      </section>
+
+      <!-- tab 4 -->
+      <section class="govuk-tabs__panel" id="changes">
+
+
+        {% include "current/includes/bd/licences-changes.html" %}
+
+      </section>
+
+    </div>
+
+  </div>
+</div>

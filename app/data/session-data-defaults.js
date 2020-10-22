@@ -183,6 +183,11 @@ module.exports = {
             "singleUseAddressFlag": "false"
           }
         ],
+
+      "search": "00/22/001/02",
+      "reports": "true",
+      "billRuns": "true",
+      "notices": "true",
     // Insert values here
 }
 

@@ -1,5 +1,10 @@
-{% extends "layout.html" %}
 
+{% extends "layouts/_BASE.html" %}
+
+<!--home page style class-->
+{% set mainClasses = "home-no-padding-top" %}
+
+<!--set title-->
 {% set title = "Manage your water abstraction or impoundment licence" %}
 
 {% block pageTitle %}
@@ -7,54 +12,18 @@
 {% endblock %}
 
 {% block header %}
-{{ govukHeader({
-   homepageUrl: "/",
-   serviceName: "Manage your water abstraction or impoundment licence",
-   serviceUrl: "#",
-   containerClasses: "govuk-width-container",
-   navigation: [
-     {
-       href: "/bd/account/change-password-check",
-       text: "someone@somewhere.gov.uk"
-     },
-     {
-       href: "/",
-       text: "Sign out"
-     }
-   ]
- }) }}
-{% endblock %}
 
-{% set mainClasses = "home-no-padding-top" %}
-
-{% block beforeContent %}
-
-<div class="govuk-phase-banner">
-  <p class="govuk-phase-banner__content">
-    <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
-        beta
-      </strong>
-      <span class="govuk-phase-banner__text">
-        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
-      </span>
-    </p>
-</div>
-
-<!-- navigation block -->
-{% include "current/includes/nav/nav-bd.html" %}
-
-<!--
- {{ govukBackLink({
-   text: "Back",
-   href: "javascript:history.back()"
- }) }}
--->
+<!--header without searchbar-->
+{% include "sandbox/includes/nav/header.html" %}
 
 {% endblock %}
 
-{% block content %}
+{% block breadcrumbs %}
+{% endblock %}
 
-<!--saerch-->
+
+{% block service %}
+<!--search-->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
@@ -101,13 +70,13 @@
       <p class="govuk-body">View all bill runs. Create a new two-part tariff, annual or supplementary bill run. </p>
       <p class="govuk-body"><a href="/bd/bill-runs" class="govuk-link">Go to bill runs</a></p>
 
-      <h2 class="govuk-heading-l">Returns cycles</h2>
-      <p class="govuk-body">View returns reports and send returns notices.</p>
-      <p class="govuk-body"><a href="/bd/returns-cycles" class="govuk-link"> Go to returns cycles</a></p>
-
       <h2 class="govuk-heading-l">Licence notices</h2>
       <p class="govuk-body">Manage and view licence notices, including renewals, returns and hands-off flows.</p>
       <p class="govuk-body"><a href="/bd/licence-notices" class="govuk-link"> Go to licence notices</a></p>
+
+      <h2 class="govuk-heading-l">Reports</h2>
+      <p class="govuk-body">View and run reports on return cycles, licences and transactions.</p>
+      <p class="govuk-body"><a href="/bd/returns-cycles" class="govuk-link"> Go to reports</a></p>
 
     </section>
 
@@ -117,80 +86,7 @@
 
 
 <!--charge information workflow-->
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-
-<h2 class="govuk-heading-l govuk-!-margin-bottom-7">Charge information workflow</h2>
-
-
-    <div class="govuk-tabs" data-module="govuk-tabs">
-
-      <!-- tab navigation -->
-      <ul class="govuk-tabs__list">
-        <li class="govuk-tabs__list-item" tabindex="0">
-          <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#new">
-            To set up (5<span class="govuk-visually-hidden">licences</span>)
-          </a>
-        </li>
-
-        <li class="govuk-tabs__list-item" tabindex="0">
-          <a class="govuk-tabs__tab" href="#review">
-            Review (5<span class="govuk-visually-hidden">licences</span>)
-          </a>
-        </li>
-        <li class="govuk-tabs__list-item" tabindex="0">
-          <a class="govuk-tabs__tab" href="#changes">
-            Change request (4<span class="govuk-visually-hidden">licences</span>)
-          </a>
-        </li>
-        <!--    <li class="govuk-tabs__list-item" tabindex="0">
-      <a class="govuk-tabs__tab" href="#changes">
-        Change requested
-      </a>
-    </li> -->
-      </ul>
-
-      <!-- tab 1 -->
-      <section class="govuk-tabs__panel" id="new">
-
-        <!-- new licences -->
-        {% include "current/includes/bd/licences-new.html" %}
-
-      </section>
-
-      <!-- tab 2 -->
-      <!--
-  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="draft">
-
-    <!-- draft charge version licences -->
-      <!--
-    {% include "current/includes/bd/licences-draft.html" %}
-
-  </section> -->
-
-      <!-- tab 3 -->
-      <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="review">
-
-        <!-- comms table -->
-        {% include "current/includes/bd/licences-review.html" %}
-
-
-
-      </section>
-
-      <!-- tab 4 -->
-      <section class="govuk-tabs__panel" id="changes">
-
-
-        {% include "current/includes/bd/licences-changes.html" %}
-
-      </section>
-
-    </div>
-
-  </div>
-</div>
+{% include "sandbox/includes/charge-info-workflow.html" %}
 
 
 {% endblock %}

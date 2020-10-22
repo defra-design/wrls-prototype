@@ -2,7 +2,9 @@
 //$govuk-global-styles: true;
 
 // Import GOV.UK Frontend
-//@import "node_modules/govuk-frontend/all";
+//@import "node_modules/govuk-frontend/govuk/all";
+
+
 
 // Patterns that aren't in Frontend
 @import "utilities.scss";
@@ -28,6 +30,7 @@
 @import "patterns/alerts";
 @import "patterns/tag";
 @import "patterns/colours";
+@import "patterns/site-search";
 
 // Scalable and Modular Architecture for Cascading Style Sheets
 @import "layout.scss";
