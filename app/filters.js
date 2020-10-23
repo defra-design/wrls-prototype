@@ -69,6 +69,20 @@ module.exports = function (env) {
           }
 
 
+          //set colours for status "| statusColour"
+          filters.statusColour = function(e) {
+            if (e === "building") {
+              return "govuk-tag--orange"
+            } else if (e === "error") {
+              return "govuk-tag--red"
+            } else if (e === "sent") {
+              return "govuk-tag--blue"
+            } else {
+              return "govuk-tag--green"
+            }
+          }
+
+        
 
     //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 

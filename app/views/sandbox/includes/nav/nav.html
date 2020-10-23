@@ -8,7 +8,7 @@
   <nav id="nav" class="navbar govuk-width-container ">
     <ul class="navbar__list">
       <!--bill runs permission-->
-     {%  if data['billRuns'] == "true" %}
+     {%  if data['billing'] == "true" %}
       <li class="navbar__item">
         <a class="navbar__link govuk-link--no-visited-state {{navbarActiveBillRuns}}" href="bill-runs" id="billRuns">
           Bill runs

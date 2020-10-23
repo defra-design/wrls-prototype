@@ -3,11 +3,19 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-router.get('current/add-new-reason', function(req, res) {
+router.get('/search', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('add-new-reason');
+  //get the search term
+
+  let term = req.session.data['search']
+
+  if (term == "test") {
+    console.log('test success');
+  }
+
+  res.render('sandbox/search');
 
 });
 

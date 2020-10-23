@@ -1,0 +1,56 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the bill runs data-->
+{% set licences = data['licences'] %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption">Licences</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Licence</th>
+      <th scope="col" class="govuk-table__header">Licence Name</th>
+      <th scope="col" class="govuk-table__header">Licence holder</th>
+      <th scope="col" class="govuk-table__header">End date</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!--starting to loop through the bill runs data -->
+    {% for i in licences %}
+
+    <!--setting the loop number -->
+    {% set loopNumber = loop.index0 %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+
+       <!--set the link to go to a specific licence-->
+       {% if loopNumber == 0 %}
+        <a href="licence-summary-expired" class="govuk-link">
+       {% elseif loopNumber == 1 %}
+        <a href="licence-summary" class="govuk-link">
+       {% elseif loopNumber == 2 %}
+      <a href="licence-summary-no-charge" class="govuk-link">
+        {% else %}
+        <a href="licence-summary" class="govuk-link">
+          {% endif %}
+
+        {{[i.number]}}</a></td>
+      <td class="govuk-table__cell">{{[i.name]}}</td>
+      <td class="govuk-table__cell">{{[i.holder]}}</td>
+      <td class="govuk-table__cell">
+        {% if [i.expired] == "true" %}
+        <strong class="table__status table__status--expired">
+          <span>Expired</span><br>
+          31 January 2020
+        </strong>
+        {% else %}
+        {{[i.endDate]}}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>

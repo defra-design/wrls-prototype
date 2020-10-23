@@ -46,7 +46,7 @@
 
           {{ govukButton({
             text: "Search",
-            classes: "wrls-faux-button--inline"
+            classes: "govuk-!-display-inline-block govuk-!-padding-right-6 govuk-!-padding-left-6"
           }) }}
 
 
@@ -68,15 +68,15 @@
 
       <h2 class="govuk-heading-l">Bill runs</h2>
       <p class="govuk-body">View all bill runs. Create a new two-part tariff, annual or supplementary bill run. </p>
-      <p class="govuk-body"><a href="/bd/bill-runs" class="govuk-link">Go to bill runs</a></p>
+      <p class="govuk-body"><a href="bill-runs" class="govuk-link">Go to bill runs</a></p>
 
       <h2 class="govuk-heading-l">Licence notices</h2>
       <p class="govuk-body">Manage and view licence notices, including renewals, returns and hands-off flows.</p>
-      <p class="govuk-body"><a href="/bd/licence-notices" class="govuk-link"> Go to licence notices</a></p>
+      <p class="govuk-body"><a href="licence-notices" class="govuk-link"> Go to licence notices</a></p>
 
       <h2 class="govuk-heading-l">Reports</h2>
       <p class="govuk-body">View and run reports on return cycles, licences and transactions.</p>
-      <p class="govuk-body"><a href="/bd/returns-cycles" class="govuk-link"> Go to reports</a></p>
+      <p class="govuk-body"><a href="reports" class="govuk-link"> Go to reports</a></p>
 
     </section>
 
@@ -86,7 +86,7 @@
 
 
 <!--charge information workflow-->
-{% include "sandbox/includes/charge-info-workflow.html" %}
+{% include "sandbox/includes/billing/charge-info-workflow.html" %}
 
 
 {% endblock %}

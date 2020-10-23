@@ -186,8 +186,137 @@ module.exports = {
 
       "search": "00/22/001/02",
       "reports": "true",
-      "billRuns": "true",
+      "billing": "true",
       "notices": "true",
+
+      //bill runs
+      "billRuns":[{
+                "date": "12 January 2020",
+                "region": "Southern",
+                "runType": "Supplementary",
+                "bills": "-",
+                "value": "-",
+                "status": "building"
+              },
+              {
+                "date": "7 January 2020",
+                "region": "Anglian",
+                "runType": "Supplementary",
+                "bills": "5",
+                "value": "£5,460.00",
+                "status": "ready"
+              },
+              {
+                "date": "19 November 2019",
+                "region": "Anglian",
+                "runType": "Annual",
+                "bills": "874",
+                "value": "£512,468.00",
+                "status": "ready"
+              },
+              {
+                "date": "19 November 2019",
+                "region": "Anglian",
+                "runType": "Two-part tariff",
+                "bills": "-",
+                "value": "-",
+                "status": "review"
+              },
+              {
+                "date": "2 January 2019",
+                "region": "Southern",
+                "runType": "Two-part tariff",
+                "bills": "-",
+                "value": "-",
+                "status": "error"
+              },
+              {
+                "date": "7 December 2019",
+                "region": "Midlands",
+                "runType": "Supplementary",
+                "bills": "5",
+                "value": "£4,927.10",
+                "status": "sent"
+              },
+              {
+                "date": "1 November 2019",
+                "region": "South West",
+                "runType": "Supplementary",
+                "bills": "3",
+                "value": "£3,887.04",
+                "status": "sent"
+              },
+              {
+                "date": "2 October 2019",
+                "region": "South West",
+                "runType": "Supplementary",
+                "bills": "9",
+                "value": "£11,602.22",
+                "status": "sent"
+              },
+              {
+                "date": "30 September 2019",
+                "region": "South West",
+                "runType": "Supplementary",
+                "bills": "6",
+                "value": "£1,824.04",
+                "status": "sent"
+              }
+            ],
+
+
+     //licence
+     "licences":[{
+               "number": "00/22/001/02",
+               "name": "Lower Smith Road",
+               "holder": "Irene Briton",
+               "endDate": "31 January 2020",
+               "expired": "true",
+             },
+             {
+               "number": "03/28/60/0032",
+               "name": "Glindenfold Lake",
+               "holder": "Bottled Water Plc",
+               "endDate": "30 April 2022",
+               "expired": "false",
+              },
+              {
+                "number": "03/28/61/029",
+                "name": "Honeydew Crescent",
+                "holder": "Big Smith Farms Ltd",
+                "endDate": "15 September 2034",
+                "expired": "false",
+               },
+               {
+                 "number": "03/28/60/0035",
+                 "name": "George Furrow",
+                 "holder": "Big Smith Farms Ltd",
+                 "endDate": "15 September 2022",
+                 "expired": "false",
+                },
+                {
+                  "number": "03/28/60/0035",
+                  "name": "Dale Barrow",
+                  "holder": "Big Smith Farms Ltd",
+                  "endDate": "15 September 2022",
+                  "expired": "false",
+                 },
+                 {
+                   "number": "03/28/60/0035",
+                   "name": "River House",
+                   "holder": "Robin Vithlhem-Smith",
+                   "endDate": "1 March 2023",
+                   "expired": "false",
+                 },
+                 {
+                   "number": "11/22/32/02",
+                   "name": "",
+                   "holder": "D.B. Beecham-Smith",
+                   "endDate": "30 September 2025",
+                   "expired": "false",
+                 }
+           ],
+
     // Insert values here
 }
 
