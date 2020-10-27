@@ -48,9 +48,39 @@
 
 
 
+    <h2 class="govuk-heading-m">You may need to update some licence addresses</h2>
+    <p class="govuk-body">
+      If you used a one time address for any licences the details will not be saved to the licence holder's account. </p>
+    <p class="govuk-body">
+      To change these details on the licence holder’s account:</p>
 
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+  <li>
+    email the <a href="mailto:watrestecchecnald@environment-agency.gov.uk?subject=Address change request&body=Dear Billing and Data team,%0d%0a%0d%0a
+
+    You need to update the returns contact address on NALD for [insert licence number here].%0d%0a%0d%0a
+
+    Name and Address:%0d%0a
+    [insert address data here]%0d%0a%0d%0a
+
+    We’ve sent a paper returns form to this contact.%0d%0a%0d%0a
+
+    If you have a question about this request, email WIRS.%0d%0a%0d%0a
+
+    With thanks,%0d%0a%0d%0a
+
+    Environment Agency Water Resources Licensing Service">Billing and Data team</a> to update the returns contact.</p>
+    </li><li>email the <a href="mailto:PSC-WaterResources@environment-agency.gov.uk?subject=Licence holder address update">Permitting and Support Centre team</a> to update the licence holder’s address.</li></ul>
+
+    <a href="../manage" class="govuk-link govuk-link--no-visited-state">Return to Manage</a>
+
+
+
+    <!--this content was replaced-->
+    <!--
     {% if (data.returns[data['returnIndex']]['singleUseAddressFlag'] == "true") %}
     <!--replace the commas in the address with line breaks-->
+    <!--
     {% set address = data.returns[data['returnIndex']]['returnAddress']| default("Jimmy Greaves,Forbes Lane,Swindon,SW12 6EJ") %}
     <p class="govuk-body">You used a one time address for:</p>
         <p class="govuk-body">Licence {{data.returns[data['returnIndex']]['licence'] | default("AN01/68/60/0032") }} - <span class="govuk-visually-hidden"> Licence holder</span> {{data.returns[data['returnIndex']]['licenceHolder'] | default("Bottled Water Plc")}}</P>
@@ -76,6 +106,6 @@ Environment Agency Water Resources Licensing Service">Billing and Data team</a> 
 
   </div>
 </div>
+-->
 
-
-{% endblock %}
+    {% endblock %}
