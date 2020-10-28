@@ -1,0 +1,120 @@
+{{ govukTable({
+caption: "Notices",
+firstCellIsHeader: false,
+head: [
+ {
+   text: "Date"
+ },
+ {
+   text: "Notification"
+ },
+ {
+   text: "Sent by"
+ },
+ {
+   text: "Recipients",
+   format: "numeric"
+ },
+ {
+   text: "Problems",
+   format: "numeric"
+ }
+],
+rows: [
+ [
+   {
+     text: "15 May 2020"
+   },
+   {
+     text: "Returns: invitaion"
+   },
+   {
+     text: "joe.smith@madeup.com"
+   },
+   {
+     text: "6894",
+     format: "numeric"
+   },
+   {
+     text: "1",
+     format: "numeric"
+   }
+ ],
+ [
+   {
+     text: "1 May 2019"
+   },
+   {
+     text: "Returns: reminder"
+   },
+   {
+     text: "joe.smith@madeup.com"
+   },
+   {
+     text: "3890",
+     format: "numeric"
+   },
+   {
+     text: "",
+     format: "numeric"
+   }
+ ],
+ [
+   {
+     text: "1 May 2019"
+   },
+   {
+     text: "Returns: invitaion"
+   },
+   {
+     text: "joe.smith@madeup.com"
+   },
+   {
+     text: "5789",
+     format: "numeric"
+   },
+   {
+     text: "1",
+     format: "numeric"
+   }
+ ],
+ [
+   {
+     text: "1 April 2019"
+   },
+   {
+     text: "Expiring licence(s): invitation to renew"
+   },
+   {
+     text: "joe.smith@madeup.com"
+   },
+   {
+     text: "707",
+     format: "numeric"
+   },
+   {
+     text: "2",
+     format: "numeric"
+   }
+ ],
+ [
+   {
+     text: "7 March 2019"
+   },
+   {
+     text: "Hands of flow: resume abstraction"
+   },
+   {
+     text: "joe.smith@madeup.com"
+   },
+   {
+     text: "53",
+     format: "numeric"
+   },
+   {
+     text: "3",
+     format: "numeric"
+   }
+ ]
+]
+}) }}

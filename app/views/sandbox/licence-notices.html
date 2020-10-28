@@ -1,0 +1,64 @@
+{% extends "layouts/_BASE.html" %}
+
+<!--set title-->
+{% set title = "Licence notices" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+{% set navbarActiveNotices = "navbar__link--active" %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-xl"> {{ title }}</h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <p class="govuk-body">Create and send licence renewal notices.</p>
+
+
+    {{ govukButton({
+          text: "Create renewal notices",
+          href: "#ß"
+        }) }}
+
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
+
+    <h2 class="govuk-heading-l">
+      Notices overview
+    </h2>
+
+
+    <p classs="govuk-body">View all notices that have been sent from the service.</p>
+
+    <!-- Notices table -->
+    {% include "sandbox/includes/notices-table.html" %}
+
+  </div>
+</div>
+
+
+
+{% endblock %}
