@@ -1,0 +1,48 @@
+{% import "current/includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = "Access list" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Water service patterns",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container"
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1  class="heading-large govuk-heading-l">
+        System message
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-inset-text" id="alert">
+      Something has happened and you need to do something.
+    </div>
+  </div>
+  </div>
+
+{% endblock %}
