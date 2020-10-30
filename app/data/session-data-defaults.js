@@ -270,50 +270,114 @@ module.exports = {
                "number": "00/22/001/02",
                "name": "Lower Smith Road",
                "holder": "Irene Briton",
+               "startDate": "1 June 1985",
                "endDate": "31 January 2020",
                "expired": "true",
+
+               "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+               "purpose":["Spray irrigation"],
+               "absPeriod": "March to September",
+
+               "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
+               "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+               "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
              },
              {
                "number": "03/28/60/0032",
                "name": "Glindenfold Lake",
                "holder": "Bottled Water Plc",
+               "startDate": "1 June 1985",
                "endDate": "30 April 2022",
                "expired": "false",
+
+               "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+               "purpose":["Spray irrigation"],
+               "absPeriod": "March to September",
+
+               "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
+               "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+               "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
               },
               {
                 "number": "03/28/61/029",
                 "name": "Honeydew Crescent",
                 "holder": "Big Smith Farms Ltd",
+                "startDate": "1 June 1985",
                 "endDate": "15 September 2034",
                 "expired": "false",
+
+                "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                "purpose":["Spray irrigation"],
+                "absPeriod": "March to September",
+
+                "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
+                "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
                },
                {
                  "number": "03/28/60/0035",
                  "name": "George Furrow",
                  "holder": "Big Smith Farms Ltd",
+                 "startDate": "1 June 1985",
                  "endDate": "15 September 2022",
                  "expired": "false",
+
+                 "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                 "purpose":["Spray irrigation"],
+                 "absPeriod": "March to September",
+
+                 "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
+                 "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                 "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
                 },
                 {
                   "number": "03/28/60/0035",
                   "name": "Dale Barrow",
                   "holder": "Big Smith Farms Ltd",
+                  "startDate": "1 June 1985",
                   "endDate": "15 September 2022",
                   "expired": "false",
+
+                  "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                  "purpose":["Spray irrigation"],
+                  "absPeriod": "March to September",
+
+                  "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
+                  "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                  "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
                  },
                  {
                    "number": "03/28/60/0035",
                    "name": "River House",
                    "holder": "Robin Vithlhem-Smith",
+                   "startDate": "1 June 1985",
                    "endDate": "1 March 2023",
                    "expired": "false",
+
+                   "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                   "purpose":["Spray irrigation"],
+                   "absPeriod": "March to September",
+
+                   "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
+                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                   "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
                  },
                  {
                    "number": "11/22/32/02",
                    "name": "",
                    "holder": "D.B. Beecham-Smith",
+                   "startDate": "1 June 1985",
                    "endDate": "30 September 2025",
                    "expired": "false",
+
+                   "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                   "purpose":["Spray irrigation"],
+                   "absPeriod": "March to September",
+
+                   "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
+                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                   "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
                  }
            ],
 
