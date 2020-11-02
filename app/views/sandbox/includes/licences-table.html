@@ -25,15 +25,7 @@
       <td class="govuk-table__cell">
 
        <!--set the link to go to a specific licence-->
-       {% if loopNumber == 0 %}
-        <a href="licence-summary-expired" class="govuk-link">
-       {% elseif loopNumber == 1 %}
-        <a href="licence-summary" class="govuk-link">
-       {% elseif loopNumber == 2 %}
-      <a href="licence-summary-no-charge" class="govuk-link">
-        {% else %}
-        <a href="licence-summary" class="govuk-link">
-          {% endif %}
+        <a href="licence?ID={{[loopNumber]}}" class="govuk-link">
 
         {{[i.number]}}</a></td>
       <td class="govuk-table__cell">{{[i.name]}}</td>

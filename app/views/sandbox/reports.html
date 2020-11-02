@@ -1,0 +1,61 @@
+{% extends "layouts/_BASE.html" %}
+
+<!--set title-->
+{% set title = "Reports" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+{% set navbarActiveReports = "navbar__link--active" %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl"> {{ title }}</h1>
+
+  </div>
+</div>
+
+
+
+
+    <h2 class="govuk-heading-l">Create a custom report</h2>
+    <p class="govuk-body"><a href="#">Reporting tool</a><br>Use the reporting tool to create a report on licence billing details.</p>
+
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-l">View a report</h2>
+    <p class="govuk-body"><a href="#">Returns cycles</a><br>View details of the latest returns cycle and past cycles.</p>
+    <p class="govuk-body"><a href="#">Charge information workflow</a><br>View licences that need charge information to be set up, are in review, or have a change request.</p>
+    <p class="govuk-body"><a href="#">Service usage dashboard</a><br>View usage metrics and reports showing how the service is being used.</p>
+
+
+    <!--Data for service wide forecasting reports, these will be only visible to users with a certain permission-->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-9">
+
+    <h2 class="govuk-heading-l">Create a charge forecast report</h2>
+    <p class="govuk-body">Download charge data in a .csv file to create a forecast report.</p>
+
+    {{ govukButton({
+      text: "Download data"
+    }) }}
+
+  </div>
+</div>
+
+
+
+{% endblock %}

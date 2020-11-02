@@ -68,6 +68,12 @@ module.exports = function (env) {
            return e.replace(/\,/g,'\n')
           }
 
+          //filter for replacing tildes with line breaks "| replaceTilde | striptags(true) | escape | nl2br"
+          //This isn't safe for production
+          filters.replaceTilde = function(e){
+                return e.replace(/\~/g,'\n')
+               }
+
 
           //set colours for status "| statusColour"
           filters.statusColour = function(e) {
@@ -82,7 +88,7 @@ module.exports = function (env) {
             }
           }
 
-        
+
 
     //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 

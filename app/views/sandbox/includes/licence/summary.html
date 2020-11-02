@@ -1,0 +1,110 @@
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Licence name
+    </dt>
+    <dd class="govuk-summary-list__value">
+
+      {{[data.licences[data.ID].name]}}
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Licence holder
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[data.licences[data.ID].holder]}}
+      <br><a href="licence/contacts">View contact details</a>
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Effective from
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[data.licences[data.ID].startDate]}}
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      End date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[data.licences[data.ID].endDate]}}
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Source of supply
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[data.licences[data.ID].source]}}
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Purpose
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Spray irrigation
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Period of abstraction
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[data.licences[data.ID].absPeriod]}}
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Points of abstraction
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% for i in data.licences[data.ID]['absPoints'] %}
+      {{i}}<br>
+      {% endfor %}
+      <a href="licence/points">View details of abstraction points</a>
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Abstraction conditions
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% for i in data.licences[data.ID]['absConditions'] %}
+      {{i}}<br>
+      {% endfor %}<a href="licence/conditions">View details of abstraction conditions</a>
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row govuk-summary-list__row--last">
+    <dt class="govuk-summary-list__key">
+      Abstraction amounts
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{data.licences[data.ID]['absQuantities'] | replaceTilde | striptags(true) | escape | nl2br}}
+    </dd>
+
+  </div>
+
+</dl>
