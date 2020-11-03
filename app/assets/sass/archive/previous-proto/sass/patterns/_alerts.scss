@@ -3,7 +3,23 @@
   background-color: #d2e2f1;
 }
 
+#alert * {
+  font-weight:700;
+}
+
+#alert a {
+  color: #144e81;
+}
+
 #system-error {
   border-left: 10px solid #942514;
   background-color: #f6d7d2;
+}
+
+#system-error * {
+  font-weight:700;
+}
+
+#system-error a {
+  color: #942514;
 }

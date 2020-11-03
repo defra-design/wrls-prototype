@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -15,384 +15,399 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-6">
-    <!-- hacky hack -->
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <!-- hacky hack -->
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Water resource licensing service prototype
+      <span class="govuk-caption-xl">{{releaseVersion}}</span>
+    </h1>{{releaseVersion | log }}
+    <p>
+      This is a new version of the prototype and contains a limited set of views.
+    </p>
+
+    <p class="govuk-!-margin-bottom-8">
+      <a href="project-timeline">
+        See a timeline of the project
+      </a>
+      <br><a href="https://water-resource-licensing.herokuapp.com/">
+        See the previous prototype views here.
+      </a>
+    </p>
+
   </div>
+</div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        Water resource licensing service prototype
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This is a new version of the prototype and contains a limited set of views.
-      </p>
+<div class="govuk-grid-row">
 
-      <p class="govuk-!-margin-bottom-8">
-        <a href="project-timeline">
-          See a timeline of the project
-        </a>
-        <br><a href="https://water-resource-licensing.herokuapp.com/">
-          See the previous prototype views here.
-        </a>
-      </p>
+  <div class="govuk-grid-column-two-thirds">
 
-    </div>
-  </div>
 
-  <div class="govuk-grid-row">
+    <div class="govuk-!-margin-bottom-8">
 
-    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">
+        Recent changes
+      </h2>
 
+      <h3 class="govuk-heading-s">
+        Bill run transaction errors
+      </h3>
+      <ul class="govuk-list govuk-list--bullet">
 
-      <div class="govuk-!-margin-bottom-8">
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/charges-2020/supplementary-charges-transaction-errors?region=Anglian#">Transaction errrors bill summary</a></li>
+          <li><a href="/bd/charges-2020/supplementary-bill-transaction-errors#transactions-error">Transaction errors bill page</a></li>
+        </section>
 
-        <h2 class="govuk-heading-m">
-          Recent changes
-        </h2>
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          Returns paper forms requests for multiple billing cycles
-        </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        Returns paper forms requests for multiple billing cycles
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/manage/send-paper">Returns paper forms requests</a></li>
-            <li><a href="/bd/manage/send-paper-changed-ownership">A licence has had a change of ownership</a></li>
-            <li><a href="/bd/manage/send-paper-confirm">Send paper fomrs check your answers</a></li>
-            <li><a href="/bd/manage/send-paper-which-returns?url=send-paper-confirm&licenceNum=AN/546/234/234&returnIndex=0">Select the returns forms</a></li>
-            <li><a href="/bd/manage/send-paper-select-address?url=send-paper-confirm&licenceNum=AN/546/234/234&returnIndex=0">Select the address</a></li>
-            <li><a href="/bd/manage/send-paper-select-address?url=send-paper-confirm&licenceNum=AN/546/234/234&returnIndex=0&returns[0][singleUseAddressFlag]=true&returns[0][returnAddress]=Jimmy%20Greaves,%20Forbes%20Lane,%20West%20Crudwell,%20SN16%209EW">Select the address - one time address has been set up</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/manage/send-paper">Returns paper forms requests</a></li>
+          <li><a href="/bd/manage/send-paper-changed-ownership">A licence has had a change of ownership</a></li>
+          <li><a href="/bd/manage/send-paper-confirm">Send paper fomrs check your answers</a></li>
+          <li><a href="/bd/manage/send-paper-which-returns?url=send-paper-confirm&licenceNum=AN/546/234/234&returnIndex=0">Select the returns forms</a></li>
+          <li><a href="/bd/manage/send-paper-select-address?url=send-paper-confirm&licenceNum=AN/546/234/234&returnIndex=0">Select the address</a></li>
+          <li><a
+              href="/bd/manage/send-paper-select-address?url=send-paper-confirm&licenceNum=AN/546/234/234&returnIndex=0&returns[0][singleUseAddressFlag]=true&returns[0][returnAddress]=Jimmy%20Greaves,%20Forbes%20Lane,%20West%20Crudwell,%20SN16%209EW">Select
+              the address - one time address has been set up</a></li>
+        </section>
 
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          Min charge and de minimus rule
-        </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        Min charge and de minimus rule
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/charges-2020/bill-sent-de-minimus">De minimus bill</a></li>
-            <li><a href="/bd/charges-2020/bill-sent-minimum-charge">Minimum charge</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/charges-2020/bill-sent-de-minimus">De minimus bill</a></li>
+          <li><a href="/bd/charges-2020/bill-sent-minimum-charge">Minimum charge</a></li>
+        </section>
 
-        <h3 class="govuk-heading-s">
-          KPIs
-        </h3>
+      </ul>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        KPIs
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/kpi/performance">Performance</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/kpi/performance">Performance</a></li>
+        </section>
 
-        <h3 class="govuk-heading-s">
-          Licence charge information approval
-        </h3>
+      </ul>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        Licence charge information approval
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/charges-2020/licences-with-new-charge-information#new">New licences</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/charges-2020/licences-with-new-charge-information#new">New licences</a></li>
+        </section>
 
-        <h3 class="govuk-heading-s">
-          Charge information
-        </h3>
+      </ul>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        Charge information
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/charges-2020/add-new-reason">New charge information for an existing licence</a></li>
-            <li><a href="/bd/charges-2020/add-reason">Make licence non-chargeable for an existing licence</a></li>
-            <li><a href="/bd/charges-2020/add-new-reason?newLicence=true">New charge information for a new licence</a></li>
-            <li><a href="/bd/charges-2020/add-reason?newLicence=true&invoiceAccount=null">Make licence non-chargeable for a new licence</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/charges-2020/add-new-reason">New charge information for an existing licence</a></li>
+          <li><a href="/bd/charges-2020/add-reason">Make licence non-chargeable for an existing licence</a></li>
+          <li><a href="/bd/charges-2020/add-new-reason?newLicence=true">New charge information for a new licence</a></li>
+          <li><a href="/bd/charges-2020/add-reason?newLicence=true&invoiceAccount=null">Make licence non-chargeable for a new licence</a></li>
+        </section>
 
-        <h3 class="govuk-heading-s">
-          Bill run error pages
-        </h3>
+      </ul>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        Bill run error pages
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/charges-2020/two-part-charges-error-no-bills">No bills</a></li>
-            <li><a href="/bd/charges-2020/two-part-charges-error">Creating</a></li>
-            <li><a href="/bd/charges-2020/two-part-charges-error-sending">Sending</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/charges-2020/two-part-charges-error-no-bills">No bills</a></li>
+          <li><a href="/bd/charges-2020/two-part-charges-error">Creating</a></li>
+          <li><a href="/bd/charges-2020/two-part-charges-error-sending">Sending</a></li>
+        </section>
 
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          Bulk returns
-        </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        Bulk returns
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/ex/returns-overview">Returns overview</a></li>
-            <li><a href="/ex/return/bulk/upload-bulk">Submit your returns using bulk upload (instructions)</a></li>
-            <li><a href="/ex/return/bulk/upload-bulk-files">Upload bulk returns data</a></li>
-            <li><a href="/ex/return/bulk/upload-bulk-uploading">Uploading returns data</a></li>
-            <li><a href="/ex/return/bulk/upload-bulk-bad-data">You need to correct some of your returns data</a></li>
-            <li><a href="/ex/return/bulk/upload-bulk-good-data">Check and submit your returns</a></li>
-            <li><a href="/ex/return/bulk/upload-bulk-good-data-confirmed">You submitted 2 returns</a></li>
-            <li><a href="/ex/returns-overview-3">Returns overview (returns complete)</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/ex/returns-overview">Returns overview</a></li>
+          <li><a href="/ex/return/bulk/upload-bulk">Submit your returns using bulk upload (instructions)</a></li>
+          <li><a href="/ex/return/bulk/upload-bulk-files">Upload bulk returns data</a></li>
+          <li><a href="/ex/return/bulk/upload-bulk-uploading">Uploading returns data</a></li>
+          <li><a href="/ex/return/bulk/upload-bulk-bad-data">You need to correct some of your returns data</a></li>
+          <li><a href="/ex/return/bulk/upload-bulk-good-data">Check and submit your returns</a></li>
+          <li><a href="/ex/return/bulk/upload-bulk-good-data-confirmed">You submitted 2 returns</a></li>
+          <li><a href="/ex/returns-overview-3">Returns overview (returns complete)</a></li>
+        </section>
 
+      </ul>
 
 
-        <h3 class="govuk-heading-s">
-          Alternative bill run meta data
-        </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <h3 class="govuk-heading-s">
+        Alternative bill run meta data
+      </h3>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/charges-2020/invoice">Invoice meta data</a></li>
-            <li><a href="/bd/charges-2020/invoice-alt1">Invoice meta data - alternative 1</a></li>
-            <li><a href="/bd/charges-2020/invoice-alt2">Invoice meta data - alternative 2</a></li>
-          </section>
+      <ul class="govuk-list govuk-list--bullet">
 
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/charges-2020/invoice">Invoice meta data</a></li>
+          <li><a href="/bd/charges-2020/invoice-alt1">Invoice meta data - alternative 1</a></li>
+          <li><a href="/bd/charges-2020/invoice-alt2">Invoice meta data - alternative 2</a></li>
+        </section>
 
-        <h3 class="govuk-heading-s">
-          Change billing contact (choose your path)
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
+      </ul>
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
-            <li><a href="/bd/contacts/new-contact">Change billing contact</a></li>
-          </section>
+      <h3 class="govuk-heading-s">
+        Change billing contact (choose your path)
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
+          <li><a href="/bd/contacts/new-contact">Change billing contact</a></li>
+        </section>
 
-        </ul>
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          Change to existing billing contact
-        </h3>
+      <h3 class="govuk-heading-s">
+        Change to existing billing contact
+      </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
+      <ul class="govuk-list govuk-list--bullet">
 
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
-            <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
-            <li><a href="/bd/contacts/new-person-contact">Billing contact name</a></li>
-            <li><a href="/bd/contacts/contact-exists">Does this contact already have a record already?</a></li>
-            <li><a href="/bd/contacts/confirm-contact-change">You are about to change the billing contact *</a></li>
-            <li><a href="/bd/licence-summary-new-contact#charge">New contact on licence billing tab</a></li>
-          </section>
-
-        </ul>
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
+          <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
+          <li><a href="/bd/contacts/new-person-contact">Billing contact name</a></li>
+          <li><a href="/bd/contacts/contact-exists">Does this contact already have a record already?</a></li>
+          <li><a href="/bd/contacts/confirm-contact-change">You are about to change the billing contact *</a></li>
+          <li><a href="/bd/licence-summary-new-contact#charge">New contact on licence billing tab</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Change to a new billing contact
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
 
-        <h3 class="govuk-heading-s">
-          Change to a new billing contact
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
-            <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
-            <li><a href="/bd/contacts/new-person-contact">Billing contact name</a></li>
-            <li><a href="/bd/contacts/contact-exists">Does this contact already have a record already?</a></li>
-            <li><a href="/bd/contacts/new-contact-postcode">Enter the UK postcode</a></li>
-            <li><a href="/bd/contacts/select-contact-address">Select the address</a></li>
-            <li><a href="/bd/contacts/contact-updated">Contact updated *</a></li>
-            <li><a href="/bd/licence-summary-new-contact#charge">New contact on licence billing tab</a></li>
-          </section>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Change to new company billing contact, Companies House address
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
-            <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
-            <li><a href="/bd/contacts/new-company-contact">Find your company</a></li>
-            <li><a href="/bd/contacts/company-found">Is this your company?</a></li>
-            <li><a href="/bd/contacts/confirm-company-change">Use this billing address?</a></li>
-            <li><a href="/bd/licence-summary-new-company#charge">Billing contact updated</a></li>
-          </section>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Change to new company billing contact, new address
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
-            <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
-            <li><a href="/bd/contacts/new-company-contact">Find your company</a></li>
-            <li><a href="/bd/contacts/company-found">Is this your company?</a></li>
-            <li><a href="/bd/contacts/confirm-company-change">Use this billing address?</a></li>
-            <li><a href="/bd/contacts/new-company-postcode">Enter the UK postcode</a></li>
-            <li><a href="/bd/contacts/select-company-address">Select the address</a></li>
-            <li><a href="/bd/contacts/company-updated">Address added</a></li>
-            <li><a href="/bd/licence-summary-new-company#charge">Billing contact updated</a></li>
-          </section>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Change to new company billing contact, manual address with fao
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
-            <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
-            <li><a href="/bd/contacts/new-company-contact">Find your company</a></li>
-            <li><a href="/bd/contacts/company-found">Is this your company?</a></li>
-            <li><a href="/bd/contacts/confirm-company-change">Use this billing address?</a></li>
-            <li><a href="/bd/contacts/new-company-postcode">Enter the UK postcode</a></li>
-            <li><a href="/bd/contacts/select-company-address">Select the address</a></li>
-            <li><a href="/bd/contacts/manual-company-address">Select the address</a></li>
-            <li><a href="/bd/contacts/company-updated-fao">Address added</a></li>
-            <li><a href="/bd/licence-summary-new-company-fao#charge">Billing contact updated</a></li>
-          </section>
-
-        </ul>
-
-
-        <h3 class="govuk-heading-s">
-          Two-part tariff bills
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/manage">Manage view (link)</a></li>
-            <li><a href="/bd/charges-2020/pick-charge-type">Pick charge type</a></li>
-            <li><a href="/bd/charges-2020/two-part-review">Two-part tariff review with matching issues</a></li>
-            <li><a href="/bd/charges-2020/two-part-bill-issue">A licence with issues</a></li>
-            <li><a href="/bd/charges-2020/two-part-bill-element">A two-part tariff charge element</a></li>
-            <li><a href="/bd/charges-2020/two-part-confirm-custom-quantity">Confirm a custom quantity</a></li>
-            <li><a href="/bd/charges-2020/two-part-review-cleared">Two-part tariff review is complete</a></li>
-            <li><a href="/bd/charges-2020/two-part-charges">Unsent Two-part bill run</a></li>
-            <li><a href="/bd/charges-2020/two-part-bill">A two-part bill</a></li>
-            <li><a href="/bd/charges-2020/two-part-charges">Sent Two-part bill run</a></li>
-          </section>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Bill runs / unsent and sent bills
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/manage">Manage view (link)</a></li>
-            <li><a href="/bd/charges-2020/bill-runs">Bill runs view</a></li>
-            <li><a href="/bd/charges-2020/supplementary-charges">Supplementary charges unsent</a></li>
-            <li><a href="/bd/charges-2020/bill">Unsent bill</a></li>
-            <li><a href="/bd/charges-2020/supplementary-charges-sent">Supplementary charges sent</a></li>
-            <li><a href="/bd/charges-2020/bill-sent">Sent bill</a></li>
-            <li><a href="/bd/charges-2020/bill-sent-minimum-charge">Bill with minimum charge applied</a></li>
-            <li><a href="/bd/charges-2020/bill-sent-new-licence-minimum">Bill with 'New licence' minimum charge applied</a></li>
-          </section>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Create a supplementary bill run
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/manage">Manage view (link)</a></li>
-            <li><a href="/bd/charges-2020/pick-charge-type">Select charge type</a></li>
-            <li><a href="/bd/charges-2020/pick-supplementary-region">Select region</a></li>
-            <li><a href="/bd/charges-2020/supplementary-charges-load">If there is a wait for the data</a></li>
-            <li><a href="/bd/charges-2020/supplementary-charges">Supplementary bill (batch)</a></li>
-            <li><a href="/bd/charges-2020/supplementary-charges-none">No supplementary charges</a></li>
-            <li><a href="/bd/charges-2020/bill-run-exists">Bill run already exists</a></li>
-            <li><a href="/bd/charges-2020/bill">An invoice</a></li>
-            <li><a href="/bd/charges-2020/bill-credit">A credit note</a></li>
-          </section>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Prepare charge data
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary-no-charge#charge">No charge version</a></li>
-          </section>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Charging (Abstraction Licensing Charging Scheme)
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-
-          <section class="govuk-!-margin-bottom-6">
-            <li><a href="/bd/licence-summary-no-charge#charge">No charge version</a></li>
-          </section>
-
-          <li><a href="/bd/licence-summary#charge">Charge summary</a></li>
-          <li><a href="/bd/licence-summary-suspended#charge">Suspended charges</a></li>
-          <li><a href="/bd/charges-2020/current-charge-version">Charge version / charge element details</a></li>
-          <li><a href="/bd/charges-2020/charge-record">Charge record</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Digitise! connect licences
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ar/licence-review">Licence review</a></li>
-          <li><a href="/ar/further-condition-groups">Choosing a condition group</a></li>
-          <li><a href="/ar/licence-review/add-aggregate-amounts">Aggregate condition options</a></li>
-          <li><a href="/ar/licence-review/add-aggregate-values">Adding aggregate condition data</a></li>
-          <li><a href="/ar/licence-review-with-aggregate-condition">Licence with aggregate condition</a></li>
-          <li><a href="/ar/confirm-remove-aggregated-licence-condition">Confirm remove the condition</a></li>
-
-        </ul>
-
-        <h3 class="govuk-heading-s">
-          Dashboard concept
-        </h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/dashboard/detailed-guidance">Detailed guidance</a></li>
-          <li><a href="/dashboard/start-option">Start options</a></li>
-          <li><a href="/dashboard/dashboard">Dashboard landing view</a></li>
-        </ul>
-
-        <!-- <h3 class="govuk-heading-s">
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
+          <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
+          <li><a href="/bd/contacts/new-person-contact">Billing contact name</a></li>
+          <li><a href="/bd/contacts/contact-exists">Does this contact already have a record already?</a></li>
+          <li><a href="/bd/contacts/new-contact-postcode">Enter the UK postcode</a></li>
+          <li><a href="/bd/contacts/select-contact-address">Select the address</a></li>
+          <li><a href="/bd/contacts/contact-updated">Contact updated *</a></li>
+          <li><a href="/bd/licence-summary-new-contact#charge">New contact on licence billing tab</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Change to new company billing contact, Companies House address
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
+          <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
+          <li><a href="/bd/contacts/new-company-contact">Find your company</a></li>
+          <li><a href="/bd/contacts/company-found">Is this your company?</a></li>
+          <li><a href="/bd/contacts/confirm-company-change">Use this billing address?</a></li>
+          <li><a href="/bd/licence-summary-new-company#charge">Billing contact updated</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Change to new company billing contact, new address
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
+          <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
+          <li><a href="/bd/contacts/new-company-contact">Find your company</a></li>
+          <li><a href="/bd/contacts/company-found">Is this your company?</a></li>
+          <li><a href="/bd/contacts/confirm-company-change">Use this billing address?</a></li>
+          <li><a href="/bd/contacts/new-company-postcode">Enter the UK postcode</a></li>
+          <li><a href="/bd/contacts/select-company-address">Select the address</a></li>
+          <li><a href="/bd/contacts/company-updated">Address added</a></li>
+          <li><a href="/bd/licence-summary-new-company#charge">Billing contact updated</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Change to new company billing contact, manual address with fao
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary#charge">Licence charges</a></li>
+          <li><a href="/bd/contacts/contact-type">Change billing contact</a></li>
+          <li><a href="/bd/contacts/new-company-contact">Find your company</a></li>
+          <li><a href="/bd/contacts/company-found">Is this your company?</a></li>
+          <li><a href="/bd/contacts/confirm-company-change">Use this billing address?</a></li>
+          <li><a href="/bd/contacts/new-company-postcode">Enter the UK postcode</a></li>
+          <li><a href="/bd/contacts/select-company-address">Select the address</a></li>
+          <li><a href="/bd/contacts/manual-company-address">Select the address</a></li>
+          <li><a href="/bd/contacts/company-updated-fao">Address added</a></li>
+          <li><a href="/bd/licence-summary-new-company-fao#charge">Billing contact updated</a></li>
+        </section>
+
+      </ul>
+
+
+      <h3 class="govuk-heading-s">
+        Two-part tariff bills
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/manage">Manage view (link)</a></li>
+          <li><a href="/bd/charges-2020/pick-charge-type">Pick charge type</a></li>
+          <li><a href="/bd/charges-2020/two-part-review">Two-part tariff review with matching issues</a></li>
+          <li><a href="/bd/charges-2020/two-part-bill-issue">A licence with issues</a></li>
+          <li><a href="/bd/charges-2020/two-part-bill-element">A two-part tariff charge element</a></li>
+          <li><a href="/bd/charges-2020/two-part-confirm-custom-quantity">Confirm a custom quantity</a></li>
+          <li><a href="/bd/charges-2020/two-part-review-cleared">Two-part tariff review is complete</a></li>
+          <li><a href="/bd/charges-2020/two-part-charges">Unsent Two-part bill run</a></li>
+          <li><a href="/bd/charges-2020/two-part-bill">A two-part bill</a></li>
+          <li><a href="/bd/charges-2020/two-part-charges">Sent Two-part bill run</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Bill runs / unsent and sent bills
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/manage">Manage view (link)</a></li>
+          <li><a href="/bd/charges-2020/bill-runs">Bill runs view</a></li>
+          <li><a href="/bd/charges-2020/supplementary-charges">Supplementary charges unsent</a></li>
+          <li><a href="/bd/charges-2020/bill">Unsent bill</a></li>
+          <li><a href="/bd/charges-2020/supplementary-charges-sent">Supplementary charges sent</a></li>
+          <li><a href="/bd/charges-2020/bill-sent">Sent bill</a></li>
+          <li><a href="/bd/charges-2020/bill-sent-minimum-charge">Bill with minimum charge applied</a></li>
+          <li><a href="/bd/charges-2020/bill-sent-new-licence-minimum">Bill with 'New licence' minimum charge applied</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Create a supplementary bill run
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/manage">Manage view (link)</a></li>
+          <li><a href="/bd/charges-2020/pick-charge-type">Select charge type</a></li>
+          <li><a href="/bd/charges-2020/pick-supplementary-region">Select region</a></li>
+          <li><a href="/bd/charges-2020/supplementary-charges-load">If there is a wait for the data</a></li>
+          <li><a href="/bd/charges-2020/supplementary-charges">Supplementary bill (batch)</a></li>
+          <li><a href="/bd/charges-2020/supplementary-charges-none">No supplementary charges</a></li>
+          <li><a href="/bd/charges-2020/bill-run-exists">Bill run already exists</a></li>
+          <li><a href="/bd/charges-2020/bill">An invoice</a></li>
+          <li><a href="/bd/charges-2020/bill-credit">A credit note</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Prepare charge data
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary-no-charge#charge">No charge version</a></li>
+        </section>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Charging (Abstraction Licensing Charging Scheme)
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <section class="govuk-!-margin-bottom-6">
+          <li><a href="/bd/licence-summary-no-charge#charge">No charge version</a></li>
+        </section>
+
+        <li><a href="/bd/licence-summary#charge">Charge summary</a></li>
+        <li><a href="/bd/licence-summary-suspended#charge">Suspended charges</a></li>
+        <li><a href="/bd/charges-2020/current-charge-version">Charge version / charge element details</a></li>
+        <li><a href="/bd/charges-2020/charge-record">Charge record</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Digitise! connect licences
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ar/licence-review">Licence review</a></li>
+        <li><a href="/ar/further-condition-groups">Choosing a condition group</a></li>
+        <li><a href="/ar/licence-review/add-aggregate-amounts">Aggregate condition options</a></li>
+        <li><a href="/ar/licence-review/add-aggregate-values">Adding aggregate condition data</a></li>
+        <li><a href="/ar/licence-review-with-aggregate-condition">Licence with aggregate condition</a></li>
+        <li><a href="/ar/confirm-remove-aggregated-licence-condition">Confirm remove the condition</a></li>
+
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Dashboard concept
+      </h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/dashboard/detailed-guidance">Detailed guidance</a></li>
+        <li><a href="/dashboard/start-option">Start options</a></li>
+        <li><a href="/dashboard/dashboard">Dashboard landing view</a></li>
+      </ul>
+
+      <!-- <h3 class="govuk-heading-s">
           New charging (SROC)
         </h3>
 
@@ -402,7 +417,7 @@
         </ul> -->
 
 
-        <!-- <h3 class="govuk-heading-s">
+      <!-- <h3 class="govuk-heading-s">
           ACLS charging
         </h3>
 
@@ -412,299 +427,299 @@
           <li><a href="/bd/charges-2020/category">Update charge category</a></li>
         </ul> -->
 
-        <h3 class="govuk-heading-s">
-          Manage internal user accounts
-        </h3>
+      <h3 class="govuk-heading-s">
+        Manage internal user accounts
+      </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/bd/manage">Create account from manage view</a></li>
-          <li><a href="/bd/internal-user/user-status">Internal user page with permissions</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/bd/manage">Create account from manage view</a></li>
+        <li><a href="/bd/internal-user/user-status">Internal user page with permissions</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          Agents can not regiser
-        </h3>
+      <h3 class="govuk-heading-s">
+        Agents can not regiser
+      </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/start-option">Start options</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/start-option">Start options</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          Agent registration, licence holder invite
-        </h3>
+      <h3 class="govuk-heading-s">
+        Agent registration, licence holder invite
+      </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/register/account-mode">Account type</a></li>
-          <li><a href="/ex/invite-licence-holder/create-account-start">Invite to licence holder</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/register/account-mode">Account type</a></li>
+        <li><a href="/ex/invite-licence-holder/create-account-start">Invite to licence holder</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          External returns
-        </h3>
+      <h3 class="govuk-heading-s">
+        External returns
+      </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/returns-overview">External returns overview</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/returns-overview">External returns overview</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">
-          Claim licences
-        </h3>
+      <h3 class="govuk-heading-s">
+        Claim licences
+      </h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/licences">Signed in landing view</a></li>
-          <li><a href="/ex/manage">Manage view</a></li>
-          <li><a href="/ex/manage/add-licences">Claim licences / add licences?</a></li>
-          <li><a href="/ex/manage/send-code">Sending a code to the licence holder’s address</a></li>
-          <li><a href="/ex/manage/code-sent">Code sent</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/licences">Signed in landing view</a></li>
+        <li><a href="/ex/manage">Manage view</a></li>
+        <li><a href="/ex/manage/add-licences">Claim licences / add licences?</a></li>
+        <li><a href="/ex/manage/send-code">Sending a code to the licence holder’s address</a></li>
+        <li><a href="/ex/manage/code-sent">Code sent</a></li>
+      </ul>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/manage">Manage view</a></li>
-          <li><a href="/ex/manage/enter-code">Entering a security code</a></li>
-          <li><a href="/ex/licences-added">Licences have been added</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/manage">Manage view</a></li>
+        <li><a href="/ex/manage/enter-code">Entering a security code</a></li>
+        <li><a href="/ex/licences-added">Licences have been added</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">Change my email (happy path)</h3>
+      <h3 class="govuk-heading-s">Change my email (happy path)</h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/sign-in">Sign in</a></li>
-          <li><a href="/ex/licences">Signed in landing view</a></li>
-          <li><a href="/ex/account/settings">Account settings</a></li>
-          <li><a href="/ex/account/change-email-check">Account password</a></li>
-          <li><a href="/ex/account/change-email">Change account email address</a></li>
-          <li><a href="/ex/account/change-email-sent">Verify new email</a></li>
-          <li><a href="/ex/account/change-email-done">Email changed</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/sign-in">Sign in</a></li>
+        <li><a href="/ex/licences">Signed in landing view</a></li>
+        <li><a href="/ex/account/settings">Account settings</a></li>
+        <li><a href="/ex/account/change-email-check">Account password</a></li>
+        <li><a href="/ex/account/change-email">Change account email address</a></li>
+        <li><a href="/ex/account/change-email-sent">Verify new email</a></li>
+        <li><a href="/ex/account/change-email-done">Email changed</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">Registration (as it is in LIVE)</h3>
+      <h3 class="govuk-heading-s">Registration (as it is in LIVE)</h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="https://www.gov.uk/guidance/manage-your-water-abstraction-or-impoundment-licences-online">GOV UK service launch page - LIVE</a></li>
-          <li><a href="/ex/start-option">Start options</a></li>
-          <li><a href="/ex/register/create-account-start">Create an account start</a></li>
-          <li><a href="/ex/register/register">Register with an email address</a></li>
-          <li><a href="/ex/register/success">Email sent</a></li>
-          <li><a href="/ex/register/create-password">Create a password</a></li>
-          <li><a href="/ex/register/add-licences">Add licences</a></li>
-          <li><a href="/ex/register/confirm-licences">Confirm your licences</a></li>
-          <li><a href="/ex/register/send-code">Send security code</a></li>
-          <li><a href="/ex/register/code-sent">Code sent</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="https://www.gov.uk/guidance/manage-your-water-abstraction-or-impoundment-licences-online">GOV UK service launch page - LIVE</a></li>
+        <li><a href="/ex/start-option">Start options</a></li>
+        <li><a href="/ex/register/create-account-start">Create an account start</a></li>
+        <li><a href="/ex/register/register">Register with an email address</a></li>
+        <li><a href="/ex/register/success">Email sent</a></li>
+        <li><a href="/ex/register/create-password">Create a password</a></li>
+        <li><a href="/ex/register/add-licences">Add licences</a></li>
+        <li><a href="/ex/register/confirm-licences">Confirm your licences</a></li>
+        <li><a href="/ex/register/send-code">Send security code</a></li>
+        <li><a href="/ex/register/code-sent">Code sent</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">Sign in</h3>
+      <h3 class="govuk-heading-s">Sign in</h3>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/start-option">Start options</a></li>
-          <li><a href="/ex/sign-in">Sign in</a></li>
-          <li><a href="/ex/licences">Signed in landing view</a></li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/start-option">Start options</a></li>
+        <li><a href="/ex/sign-in">Sign in</a></li>
+        <li><a href="/ex/licences">Signed in landing view</a></li>
+      </ul>
 
-        <h3 class="govuk-heading-s">Upload CSV</h3>
+      <h3 class="govuk-heading-s">Upload CSV</h3>
 
-        <div class="govuk-!-margin-bottom-3">
-          <a href="https://eaflood.atlassian.net/browse/WATER-2078">Jira story 2078</a><br>
-          <a href="https://eaflood.atlassian.net/browse/WATER-2083">Jira task 2083</a><br>
-        </div>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/returns-overview">External return overview with bulk upload link</a></li>
-          <li><a href="/ex/upload-bulk">Instructions on the process of sending bulk returns</a></li>
-          <li><a href="/ex/upload-bulk-files">Select a file to upload</a></li>
-          <li><a href="/ex/uploading-returns">Upload process view</a></li>
-          <li><a href="/ex/uploaded-returns-data-problems">Confirm your data (problems in data)</a></li>
-          <li><a href="/ex/uploaded-returns-data-no-problems">Confirm your data (no problems with data)</a></li>
-          <li><a href="/ex/returns-data-confirmed">Submission confirmed</a></li>
-          <li><a href="/ex/returns-overview-2">Some completed returns</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Digitise! update</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ar/licence-review-add-sub-condition">Adding subconditions</a></li>
-          <li><a href="/ar/licence-review-list">"Park a case" - Pending status</a></li>
-          <li><a href="/ar/licence-review">Tidy review screen</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Expired licence</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/bd/results-licences">Expired licence in a list</a></li>
-          <li><a href="/bd/results-returns">Expired licence in return results</a></li>
-          <li><a href="/bd/licence-summary-expired">Expired licence summary</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Primary user contact preferences</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/contact">Set contact preferences</a></li>
-          <li><a href="/ex/contact-set">Contact preferences set</a></li>
-          <li><a href="/ex/contact-update">Update contact preferences</a></li>
-          <li><a href="/ex/licences">Licences</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Agent with no other licences</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/agent-contact">Set contact preferences</a></li>
-          <li><a href="/ex/agent-contact-set">Contact preferences set</a></li>
-          <li><a href="/ex/agent-contact-update">Update contact preferences</a></li>
-          <li><a href="/ex/licences">Licences</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Company switcher</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/licences">Licences</a></li>
-          <li><a href="/ex/companies">Company switcher</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">External returns data upload (XML)</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/returns-overview">Returns view</a></li>
-          <li><a href="/ex/upload-returns-data">Upload data / XML view</a></li>
-          <li><a href="/ex/upload-returns-data-error">Wrong file format uploaded</a></li>
-          <li><a href="/ex/uploaded-returns-data">Check your returns data</a></li>
-          <li><a href="/ex/uploaded-returns-data-problems">Problems with the return data</a></li>
-          <li><a href="/ex/confirm-return-details">Check your returns data details</a></li>
-          <li><a href="/ex/returns-data-confirmed">Confirmation screen for submitted returns data</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Registration support</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/user-status">External user status</a></li>
-          <li><a href="/ex/user-status-empty">External user status with no licences requested</a></li>
-          <li><a href="/bd/user-internal-status-empty">Internal user status (Billing & Data)</a></li>
-          <li><a href="/bd/unregistered-licence-summary">Unregistered licence</a></li>
-          <li><a href="/bd/licence-summary">Registered licence</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Search by name, number or email</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/bd/search-archive">Internal search</a></li>
-          <li><a href="/bd/no-search-results">No results</a></li>
-          <li><a href="/bd/results-licences">Name or phrase results</a></li>
-          <li><a href="/bd/results-returns">Return reference results</a></li>
-          <li><a href="/bd/results-users">Email address results</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Send final return reminder letters</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/bd/manage">See a link to send return reminders</a></li>
-          <li><a href="/bd/send-return-reminders">Sending the return reminders (link to licence holders CSV)</a></li>
-          <li><a href="/bd/return-reminders-sent">Confirmation of reminders sent</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Billing & Data (Billing & returns)</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/bd/search-archive">Licence search</a></li>
-          <li><a href="/bd/manage">Manage view</a></li>
-          <li><a href="/bd/find-return">Find a return</a></li>
-          <li><a href="/bd/returns-overview">Returns overview</a></li>
-          <li><a href="/bd/returns-statistics">Return statistics (current/recent cycle)</a></li>
-          <li><a href="/bd/void-returns">See void returns</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Void returns</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/bd/licence-summary?wid=31#returns">Licence returns showing a void return (internal only)</a></li>
-          <li><a href="/bd/void-returns">List of void returns</a></li>
-          <li><a href="/bd/return-status-void">Void return status</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Environment officers</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="eo/licence-search">Search for licences</a></li>
-          <li><a href="eo/licences-list">Licence results</a></li>
-          <li><a href="eo/licence-summary">Licence summary</a></li>
-          <li><a href="eo/licence-summary#communications">Licence communications summary</a></li>
-          <li><a href="eo/notification-review">Notification review</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Abstraction reform</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="ar/licence-review-list">Abstraction reform review list (inbox)</a></li>
-          <li><a href="ar/licence-review">Abstraction reform licence review</a></li>
-          <li><a href="ar/further-condition-groups">Select the conditions group</a></li>
-          <li><a href="/ar/licence-review-add-condition">Add a further condition</a></li>
-          <li><a href="/ar/licence-review-add-values">Link data to the condition</a></li>
-          <li><a href="/ar/licence-review-with-further-conditions#wr22">Licence review with further conditions</a></li>
-          <li><a href="/ar/licence-review-change-values">Change further conditions</a></li>
-          <li><a href="/ar/confirm-remove-further-condition">Confirm removal of further condition</a></li>
-        </ul>
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ar/manage">Abstraction reform manage view</a></li>
-          <li><a href="/ar/ar-report">Download abstraction reform Comma Separated Values</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">External user</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/guidance">Guidance page</a></li>
-          <li><a href="/ex/licences">Licence list</a></li>
-          <li><a href="/ex/confirm-return">Inset meter details</a></li>
-        </ul>
-
-        <h4 class="govuk-heading-s">Licenceless registration</h4>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/registration/postcode">Access to licences & returns (sign up)</a></li>
-          <li><a href="/ex/registration/licence-holder">Licence holder</a></li>
-          <li><a href="/ex/registration/send-code">Send a code</a></li>
-          <li><a href="/ex/registration/code-sent">Letter sent</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-s">Waste and Industry Regulatory Services</h3>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/wirs/returns/find-return">Find a return</a></li>
-        </ul>
+      <div class="govuk-!-margin-bottom-3">
+        <a href="https://eaflood.atlassian.net/browse/WATER-2078">Jira story 2078</a><br>
+        <a href="https://eaflood.atlassian.net/browse/WATER-2083">Jira task 2083</a><br>
       </div>
 
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/returns-overview">External return overview with bulk upload link</a></li>
+        <li><a href="/ex/upload-bulk">Instructions on the process of sending bulk returns</a></li>
+        <li><a href="/ex/upload-bulk-files">Select a file to upload</a></li>
+        <li><a href="/ex/uploading-returns">Upload process view</a></li>
+        <li><a href="/ex/uploaded-returns-data-problems">Confirm your data (problems in data)</a></li>
+        <li><a href="/ex/uploaded-returns-data-no-problems">Confirm your data (no problems with data)</a></li>
+        <li><a href="/ex/returns-data-confirmed">Submission confirmed</a></li>
+        <li><a href="/ex/returns-overview-2">Some completed returns</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Digitise! update</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ar/licence-review-add-sub-condition">Adding subconditions</a></li>
+        <li><a href="/ar/licence-review-list">"Park a case" - Pending status</a></li>
+        <li><a href="/ar/licence-review">Tidy review screen</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Expired licence</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/bd/results-licences">Expired licence in a list</a></li>
+        <li><a href="/bd/results-returns">Expired licence in return results</a></li>
+        <li><a href="/bd/licence-summary-expired">Expired licence summary</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Primary user contact preferences</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/contact">Set contact preferences</a></li>
+        <li><a href="/ex/contact-set">Contact preferences set</a></li>
+        <li><a href="/ex/contact-update">Update contact preferences</a></li>
+        <li><a href="/ex/licences">Licences</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Agent with no other licences</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/agent-contact">Set contact preferences</a></li>
+        <li><a href="/ex/agent-contact-set">Contact preferences set</a></li>
+        <li><a href="/ex/agent-contact-update">Update contact preferences</a></li>
+        <li><a href="/ex/licences">Licences</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Company switcher</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/licences">Licences</a></li>
+        <li><a href="/ex/companies">Company switcher</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">External returns data upload (XML)</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/returns-overview">Returns view</a></li>
+        <li><a href="/ex/upload-returns-data">Upload data / XML view</a></li>
+        <li><a href="/ex/upload-returns-data-error">Wrong file format uploaded</a></li>
+        <li><a href="/ex/uploaded-returns-data">Check your returns data</a></li>
+        <li><a href="/ex/uploaded-returns-data-problems">Problems with the return data</a></li>
+        <li><a href="/ex/confirm-return-details">Check your returns data details</a></li>
+        <li><a href="/ex/returns-data-confirmed">Confirmation screen for submitted returns data</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Registration support</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/user-status">External user status</a></li>
+        <li><a href="/ex/user-status-empty">External user status with no licences requested</a></li>
+        <li><a href="/bd/user-internal-status-empty">Internal user status (Billing & Data)</a></li>
+        <li><a href="/bd/unregistered-licence-summary">Unregistered licence</a></li>
+        <li><a href="/bd/licence-summary">Registered licence</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Search by name, number or email</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/bd/search-archive">Internal search</a></li>
+        <li><a href="/bd/no-search-results">No results</a></li>
+        <li><a href="/bd/results-licences">Name or phrase results</a></li>
+        <li><a href="/bd/results-returns">Return reference results</a></li>
+        <li><a href="/bd/results-users">Email address results</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Send final return reminder letters</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/bd/manage">See a link to send return reminders</a></li>
+        <li><a href="/bd/send-return-reminders">Sending the return reminders (link to licence holders CSV)</a></li>
+        <li><a href="/bd/return-reminders-sent">Confirmation of reminders sent</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Billing & Data (Billing & returns)</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/bd/search-archive">Licence search</a></li>
+        <li><a href="/bd/manage">Manage view</a></li>
+        <li><a href="/bd/find-return">Find a return</a></li>
+        <li><a href="/bd/returns-overview">Returns overview</a></li>
+        <li><a href="/bd/returns-statistics">Return statistics (current/recent cycle)</a></li>
+        <li><a href="/bd/void-returns">See void returns</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Void returns</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/bd/licence-summary?wid=31#returns">Licence returns showing a void return (internal only)</a></li>
+        <li><a href="/bd/void-returns">List of void returns</a></li>
+        <li><a href="/bd/return-status-void">Void return status</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Environment officers</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="eo/licence-search">Search for licences</a></li>
+        <li><a href="eo/licences-list">Licence results</a></li>
+        <li><a href="eo/licence-summary">Licence summary</a></li>
+        <li><a href="eo/licence-summary#communications">Licence communications summary</a></li>
+        <li><a href="eo/notification-review">Notification review</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Abstraction reform</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="ar/licence-review-list">Abstraction reform review list (inbox)</a></li>
+        <li><a href="ar/licence-review">Abstraction reform licence review</a></li>
+        <li><a href="ar/further-condition-groups">Select the conditions group</a></li>
+        <li><a href="/ar/licence-review-add-condition">Add a further condition</a></li>
+        <li><a href="/ar/licence-review-add-values">Link data to the condition</a></li>
+        <li><a href="/ar/licence-review-with-further-conditions#wr22">Licence review with further conditions</a></li>
+        <li><a href="/ar/licence-review-change-values">Change further conditions</a></li>
+        <li><a href="/ar/confirm-remove-further-condition">Confirm removal of further condition</a></li>
+      </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ar/manage">Abstraction reform manage view</a></li>
+        <li><a href="/ar/ar-report">Download abstraction reform Comma Separated Values</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">External user</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/guidance">Guidance page</a></li>
+        <li><a href="/ex/licences">Licence list</a></li>
+        <li><a href="/ex/confirm-return">Inset meter details</a></li>
+      </ul>
+
+      <h4 class="govuk-heading-s">Licenceless registration</h4>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/registration/postcode">Access to licences & returns (sign up)</a></li>
+        <li><a href="/ex/registration/licence-holder">Licence holder</a></li>
+        <li><a href="/ex/registration/send-code">Send a code</a></li>
+        <li><a href="/ex/registration/code-sent">Letter sent</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Waste and Industry Regulatory Services</h3>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/wirs/returns/find-return">Find a return</a></li>
+      </ul>
     </div>
 
-    <div class="govuk-grid-column-one-third float-right">
+  </div>
 
-      <div class="govuk-!-margin-bottom-8">
-        <h2 class="govuk-heading-m">Start points</h2>
+  <div class="govuk-grid-column-one-third float-right">
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/ex/licences">External</a></li>
-          <li><a href="/bd/search-archive">Billing and Data</a></li>
-          <li><a href="/ar/licence-review-list">Abstraction reform editor</a></li>
-          <li><a href="/ar/licence-review">Abstraction reform approver</a></li>
-          <li><a href="/wirs/search">Waste and Industry Regulatory Services</a></li>
-          <li><a href="/eo/licence-search">Environment Officer</a></li>
-        </ul>
-      </div>
+    <div class="govuk-!-margin-bottom-8">
+      <h2 class="govuk-heading-m">Start points</h2>
 
-      <div class="govuk-!-margin-bottom-8">
-        <h2 class="govuk-heading-m">Patterns</h2>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/patterns/licence-search">Licence search</a></li>
-          <li><a href="/patterns/licence-data">Licence data</a></li>
-          <li><a href="/patterns/licence-condition">Licence condition</a></li>
-          <li><a href="/patterns/table-checkbox">Checkbox tables</a></li>
-          <li><a href="/patterns/table-three-columns">Table with three columns</a></li>
-          <li><a href="/patterns/returns-list">Returns list</a></li>
-          <li><a href="/patterns/licence-returns">Licence returns</a></li>
-          <li><a href="/patterns/access-list">Access list</a></li>
-          <li><a href="/patterns/return-data">Return data</a></li>
-          <li><a href="/patterns/meta-data">Meta data</a></li>
-          <li><a href="/patterns/alert">System messages, errors and alerts</a></li>
-        </ul>
-      </div>
-
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/ex/licences">External</a></li>
+        <li><a href="/bd/search-archive">Billing and Data</a></li>
+        <li><a href="/ar/licence-review-list">Abstraction reform editor</a></li>
+        <li><a href="/ar/licence-review">Abstraction reform approver</a></li>
+        <li><a href="/wirs/search">Waste and Industry Regulatory Services</a></li>
+        <li><a href="/eo/licence-search">Environment Officer</a></li>
+      </ul>
     </div>
 
-  </div><!-- row -->
+    <div class="govuk-!-margin-bottom-8">
+      <h2 class="govuk-heading-m">Patterns</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/patterns/licence-search">Licence search</a></li>
+        <li><a href="/patterns/licence-data">Licence data</a></li>
+        <li><a href="/patterns/licence-condition">Licence condition</a></li>
+        <li><a href="/patterns/table-checkbox">Checkbox tables</a></li>
+        <li><a href="/patterns/table-three-columns">Table with three columns</a></li>
+        <li><a href="/patterns/returns-list">Returns list</a></li>
+        <li><a href="/patterns/licence-returns">Licence returns</a></li>
+        <li><a href="/patterns/access-list">Access list</a></li>
+        <li><a href="/patterns/return-data">Return data</a></li>
+        <li><a href="/patterns/meta-data">Meta data</a></li>
+        <li><a href="/patterns/alert">System messages, errors and alerts</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</div><!-- row -->
 
 {% endblock %}
