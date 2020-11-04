@@ -51,8 +51,8 @@
     <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
     {{ title }}</h1>
 
-    <!-- Licences linked to this billing account -->
-    {% include "current/includes/bd/licences-billing-account.html" %}
+    <!-- Licences linked to this billing account  include "current/includes/bd/licences-billing-account.html"-->
+
   </div>
 </div>
 
@@ -91,6 +91,9 @@
   href: "/bd/contacts/bill-manager?ba=true&createNewContact=false"
 }) }}
 
+</section>
+</div>
+</div>
 
 
   <!--    <dl class="govuk-summary-list">
@@ -126,14 +129,12 @@
           </dd>
         </div>
 
-      </dl> -->
-    </section>
-  </div>
-</div>
+      </dl>
+
 
 <div class="divider govuk-!-margin-bottom-8"></div>
 
-<!--<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">-->
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -144,5 +145,5 @@
     </section>
   </div>
 </div>
-
+-->
 {% endblock %}
