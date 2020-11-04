@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 
-{% set title = "A bill run already exists" %}
-
 {% block pageTitle %}
-  {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +25,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "current/includes/nav/nav-bd-manage.html" %}
-  </div>
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -41,60 +39,91 @@
 
 {% block content %}
 
-  <!-- page title -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<!-- page title -->
 
-      <!-- page heading -->
-      <!-- <span class="govuk-caption-l">5 March 2020</span> -->
-      <h1 class="govuk-heading-l">{{ title }}</h1>
 
-      <div class="govuk-grid-row govuk-!-margin-bottom-6">
-        <div class="govuk-grid-column-full">
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Date created
-              </div>
-              <div class="meta-data__value">
-                3 March 2020
-              </div>
-            <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Region
-              </div>
-              <div class="meta-data__value">
-                Anglian
-              </div>
-            <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Bill run type
-              </div>
-              <div class="meta-data__value">
-                Supplementary
-              </div>
-            <div>
-          </section>
+    <!--different warnings and titles displayed depending on whether the existing bill run has been sent or not-->
+    {% if data['live'] == "true" %}
 
-        </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <!-- page heading -->
+        <!-- <span class="govuk-caption-l">5 March 2020</span> -->
+        <h1 class="govuk-heading-l">There is already a bill run of this type in progress</h1>
+
       </div>
 
-      {{ govukWarningText({
-        text: "Before you can create a new bill run you will need to confirm or cancel this bill run",
+      <div class="govuk-grid-column-full">
+
+    {{ govukWarningText({
+        text: "You need to confirm or cancel this bill run before you can create a new one.",
         iconFallbackText: "Warning"
       }) }}
 
-      <a href="supplementary-bill?dateToday=4 March 2020">
-        Go to existing bill run
-      </a>
+    {% else %}
 
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <!-- page heading -->
+        <!-- <span class="govuk-caption-l">5 March 2020</span> -->
+        <h1 class="govuk-heading-l">This bill run type has already  been processed for 2020</h1>
+
+      </div>
+
+      <div class="govuk-grid-column-full">
+
+    {{ govukWarningText({
+        text: "You can only have one of this bill run type for a region in a financial year",
+        iconFallbackText: "Warning"
+      }) }}
+
+    {% endif %}
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-full">
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Date created
+            </div>
+            <div class="meta-data__value">
+              3 March 2020
+            </div>
+            <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Region
+            </div>
+            <div class="meta-data__value">
+              Anglian
+            </div>
+            <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Bill run type
+            </div>
+            <div class="meta-data__value">
+              Supplementary
+            </div>
+            <div>
+        </section>
+
+      </div>
     </div>
+
+
+
+    <a href="supplementary-bill?dateToday=4 March 2020">
+      Go to this bill run
+    </a>
+
   </div>
+</div>
 
 {% endblock %}
