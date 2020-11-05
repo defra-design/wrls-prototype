@@ -43,7 +43,8 @@
     <p class="govuk-body"><a href="#">Service usage dashboard</a><br>View usage metrics and reports showing how the service is being used.</p>
 
 
-    <!--Data for service wide forecasting reports, these will be only visible to users with a certain permission-->
+    <!--Data for service wide forecasting reports, these will be only visible to super users-->
+    {% if data['userType'] == "su" %}
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-9">
 
     <h2 class="govuk-heading-l">Create a charge forecast report</h2>
@@ -52,6 +53,7 @@
     {{ govukButton({
       text: "Download data"
     }) }}
+    {% endif %}
 
   </div>
 </div>

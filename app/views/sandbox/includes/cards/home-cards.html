@@ -1,0 +1,39 @@
+<!--cards-->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <!-- bill runs are only for billing and data or super users -->
+     {% if data['userType'] == "bd" or data['userType'] == "su" %}
+      <h2 class="govuk-heading-l">Bill runs</h2>
+      <p class="govuk-body">
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>Create a new two-part tariff, annual or supplementary bill run</li>
+          <li>View past bill runs</li>
+        </ul>
+      </p>
+      <p class="govuk-body"><a href="bill-runs" class="govuk-link">Go to bill runs</a></p>
+     {% endif %}
+      <h2 class="govuk-heading-l">Licence notices</h2>
+      <p class="govuk-body">
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>Send notices for renewals, returns and water abstraction alerts</li>
+          <li>View sent licence notices</li>
+        </ul>
+      </p>
+      <p class="govuk-body"><a href="licence-notices" class="govuk-link"> Go to licence notices</a></p>
+
+      <h2 class="govuk-heading-l">Reports</h2>
+      <p class="govuk-body">
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>Run reports for returns cycles, licences or billing transactions.</li>
+          <li>View reports for returns cycles, licences or billing transactions</li>
+        </ul>
+      </p>
+      <p class="govuk-body"><a href="reports" class="govuk-link"> Go to reports</a></p>
+
+  
+
+
+  </div>
+</div>

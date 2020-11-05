@@ -18,6 +18,7 @@ Example usage:
 */
 
 module.exports = {
+  "userType": "su",
   "customerName": "Bottled Water Plc",
   "licenceHolder": "Bottled Water Plc",
   "billingContact": "Bottled Water Plc",

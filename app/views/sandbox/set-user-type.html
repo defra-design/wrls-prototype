@@ -1,0 +1,72 @@
+{% extends "layouts/_BASE.html" %}
+
+
+
+<!--set title-->
+{% set title = "Set the user type" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+
+<!--header without searchbar-->
+{% include "sandbox/includes/nav/header.html" %}
+
+{% endblock %}
+
+{% block beforeContent %}
+<!-- phase banner -->
+{% include "sandbox/includes/nav/phase-banner.html" %}
+{% block breadcrumbs %}
+{% endblock %}
+{% endblock %}
+
+{% block service %}
+
+<!--search-->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form  method="post" novalidate>
+
+    {{ govukRadios({
+      idPrefix: "userType",
+      name: "userType",
+      fieldset: {
+        legend: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "su",
+          text: "Super user",
+          checked: checked("userType", "su")
+        },
+        {
+          value: "bd",
+          text: "Billing and Data",
+          checked: checked("userType", "bd")
+        },
+        {
+          value: "nps",
+          text: "National permitting service",
+          checked: checked("userType", "nps")
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+  </div>
+</div>
+
+
+{% endblock %}

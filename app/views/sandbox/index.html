@@ -7,10 +7,15 @@ GOV.UK Prototype Kit
 {% block content %}
 
 <div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl">
+    Sandbox
+  </h1>
+  </div>
+</div>
+  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      Sandbox
-    </h1>
+
 
 
     <h1 class="govuk-heading-l">
@@ -23,6 +28,29 @@ GOV.UK Prototype Kit
     </ul>
 
   </div>
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l">
+      User type
+    </h1>
+    <p class="govuk-body govuk-!-font-weight-bold">
+
+      {% if data['userType'] == "bd" %}
+      Billing and Data
+      {% elseif data['userType'] == "nps" %}
+      National permitting service
+      {% else %}
+      Super user
+      {% endif %}
+
+    </p>
+    <ul class="govuk-list">
+      <li>
+        <p class="govuk-body"><a class="govuk-link" href="set-user-type">Change the user type</a></p>
+      </li>
+    </ul>
+    </div>
+
 </div>
 
 {% endblock %}

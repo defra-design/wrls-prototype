@@ -7,6 +7,8 @@
 <div class="nav-container {{navbarWhite}}">
   <nav id="nav" class="navbar govuk-width-container ">
     <ul class="navbar__list">
+      <!-- bill runs are only for billing and data or super users -->
+       {% if data['userType'] == "bd" or data['userType'] == "su" %}
       <!--bill runs permission-->
      {%  if data['billing'] == "true" %}
       <li class="navbar__item">
@@ -14,6 +16,7 @@
           Bill runs
         </a>
       </li>
+     {% endif %}
      {% endif %}
 
 

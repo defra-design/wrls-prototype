@@ -11,18 +11,14 @@ router.get('/search', function(req, res) {
 
   let term = req.session.data['search']
 
-  if (term == "test") {
-    console.log('test success');
-  }
-
   res.render('sandbox/search');
 
 });
 
 
-router.post('/add-new-reason', function(req, res) {
+router.post('/set-user-type', function(req, res) {
 
-  let chargeNew = req.session.data['createElement']
+  /*let chargeNew = req.session.data['createElement']
   let change = req.session.data['change']
   let noCharge = req.session.data['reasonNewCharge']
   //if statement for creating the new chargeversion
@@ -36,8 +32,10 @@ router.post('/add-new-reason', function(req, res) {
    }
   else {
     req.session.data['reasonNewSet']  = "true"
-    res.redirect('set-charge-start-date');
-  }
+
+  }*/
+
+res.redirect('/sandbox/');
 
 });
 
