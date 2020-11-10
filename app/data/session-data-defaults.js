@@ -382,6 +382,18 @@ module.exports = {
                  }
            ],
 
+
+           //billng accounts
+           "billingAccounts":[{
+              "number": "BA1234443S",
+              "customer": "Bottled Water Plc",
+              "billingContact": "Sam Burridge Accountants LLP",
+              "address1": "15 Ward Street",
+              "city": "Bath",
+              "postcode": "BA1 5EH",
+           }
+         ],
+
     // Insert values here
 }
 

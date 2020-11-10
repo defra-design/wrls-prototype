@@ -1,0 +1,37 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the bill runs data-->
+{% set BA = data['billingAccounts'] %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption">Billing accounts</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Account number</th>
+      <th scope="col" class="govuk-table__header">Customer name</th>
+      <th scope="col" class="govuk-table__header">Billing contact</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!--starting to loop through the bill runs data -->
+    {% for i in BA %}
+
+    <!--setting the loop number -->
+    {% set loopNumber = loop.index0 %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+
+       <!--set the link to go to a specific licence-->
+        <a href="billing-account?ID={{[loopNumber]}}" class="govuk-link">
+
+        {{[i.number]}}</a></td>
+      <td class="govuk-table__cell">{{[i.customer]}}</td>
+      <td class="govuk-table__cell">{{[i.billingContact]}}</td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>

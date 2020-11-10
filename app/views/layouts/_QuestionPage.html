@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block header %}
+
+<!--header with searchbar-->
+{% include "sandbox/includes/nav/header.html" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+
+<!-- phase banner -->
+{% include "sandbox/includes/nav/phase-banner.html" %}
+
+{% block breadcrumbs %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+{% endblock %}
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- start of service specific block -->
+    {% block service %}Text goes here, override this by overriding the block{% endblock %}
+    <!-- end service specific block-->
+
+
+{% endblock %}

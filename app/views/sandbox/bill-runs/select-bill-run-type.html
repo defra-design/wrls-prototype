@@ -1,0 +1,85 @@
+{% extends "layouts/_QuestionPage.html" %}
+
+<!--set title-->
+{% set title = "Select bill run type" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% set navbarActiveBillRuns = "navbar__link--active" %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+
+    <form action="../bill-runs" method="post" novalidate>
+
+
+
+      {% set tptType %}
+      {{ govukRadios({
+classes: "govuk-radios",
+idPrefix: "tptSeason",
+name: "tptSeason",
+items: [
+  {
+    value: "summer",
+    text: "Summer"
+  },
+  {
+    value: "winter and all year",
+    text: "Winter and All year"
+  }
+]
+}) }}
+      {% endset -%}
+
+
+      {{ govukRadios({
+        idPrefix: "charge-type",
+        name: "charge-type",
+        fieldset: {
+          legend: {
+            text: [title],
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "pick-annual-region",
+            text: "Annual"
+          },
+          {
+            value: "pick-supplementary-region?credit=false",
+            text: "Supplementary"
+          },
+          {
+            value: "pick-two-part-region?tptSeason=",
+            text: "Two-part tariff",
+            conditional: {
+              html: tptType
+            }
+          }
+        ]
+      }) }}
+
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

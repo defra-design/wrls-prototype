@@ -1,0 +1,42 @@
+{% extends "layouts/_BASE.html" %}
+
+<!--set title-->
+{% set title = "Billing account for " + [data.billingAccounts[data.ID].customer]  %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+    {{ title }}</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+    <section>
+
+      <!-- billing account address -->
+      {% include "sandbox/includes/billing-account/ba-address.html" %}
+
+      {{ govukButton({
+  text: "Change address",
+  classes: "govuk-button--secondary",
+  href: "/bd/contacts/bill-manager?ba=true&createNewContact=false"
+}) }}
+
+</section>
+</div>
+</div>
+
+
+{% endblock %}

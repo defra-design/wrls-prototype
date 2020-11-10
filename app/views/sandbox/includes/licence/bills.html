@@ -1,0 +1,130 @@
+
+
+
+
+  {{ govukTable({
+    caption: "Bills",
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Date created",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Bill number",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Bill run type",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Billing account",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Total",
+        format: 'numeric',
+        classes: 'govuk-!-width-one-fifth'
+      }
+    ],
+    rows: [
+    [
+      {
+        text: '5 March 2020'
+      },
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
+      },
+      {
+        text: "Supplementary"
+      },
+      {
+        html: '<a class="govuk-link" href="billing-account">L12345678S</a>'
+      },
+      {
+        text: "£3,002.75",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '1 April 2017'
+      },
+      {
+        html: '<a class="govuk-link" href="#">2345432</a>'
+      },
+      {
+        text: "Annual"
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>'
+      },
+      {
+        text: "£5,345.00",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '11 April 2016'
+      },
+      {
+        html: '<a class="govuk-link" href="#">9876431</a>'
+      },
+      {
+        text: "Annual"
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>'
+      },
+      {
+        text: "£5,345.00",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '9 April 2015'
+      },
+      {
+        html: '<a class="govuk-link" href="#">2345432</a>'
+      },
+      {
+        text: "Annual"
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>'
+      },
+      {
+        text: "£5,345.00",
+        format: 'numeric'
+      }
+    ],
+    [
+      {
+        text: '9 April 2014',
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        html: '<a class="govuk-link" href="#">675434</a>',
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        text: "Supplementary",
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>',
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        text: "£3,200.12",
+        format: 'numeric',
+        classes: 'govuk-table__cell--no-border'
+      }
+    ]
+
+    ]
+  }) }}

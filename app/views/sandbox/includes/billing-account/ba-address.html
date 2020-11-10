@@ -1,0 +1,35 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the bill runs data-->
+{% set BA = data['billingAccounts'] %}
+
+
+
+<h2 class="govuk-heading-m">
+Billing address
+</h2>
+<p class="govuk-body">
+{% set licenceHolder = [data.billingAccounts[data.ID].customer] %}
+{% set billingContact = [data.billingAccounts[data.ID].billingContact] %}
+
+{% if data['newFAO'] == "Yes" %}
+FAO {{data['fao']}}<br>
+{% endif %}
+
+{% if licenceHolder == billingContact %}
+{{[data.billingAccounts[data.ID].customer]}}<br>
+{% else %}
+{{licenceHolder}}<br>
+C/o {{billingContact}}<br>
+{% endif %}
+
+
+{{[data.billingAccounts[data.ID].address1]}}<br>
+{{[data.billingAccounts[data.ID].city]}}<br>
+{{[data.billingAccounts[data.ID].postcode]}}
+</p>
+
+
+  </tbody>
+</table>

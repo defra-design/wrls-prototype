@@ -15,8 +15,9 @@
 <!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
-    <h1 class="govuk-heading-l"> {{[data.licences[data.ID].name]}}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+      {{[data.licences[data.ID].name]}}
     </h1>
   </div>
 </div>
@@ -121,7 +122,7 @@
 
     <section>
 
-      {% include "current/includes/bd/bills.html" %}
+      {% include "sandbox/includes/licence/bills.html" %}
 
     </section>
 

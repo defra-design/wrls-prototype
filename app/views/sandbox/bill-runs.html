@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
 
 
-<h1 class="govuk-heading-xl"> {{ title }}</h1>
+    <h1 class="govuk-heading-xl"> {{ title }}</h1>
 
   </div>
 </div>
@@ -28,30 +28,32 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-<p class="govuk-body">Create a supplementary, annual or two-part tariff bill run.</p>
+    <p class="govuk-body">Create a supplementary, annual or two-part tariff bill run.</p>
 
 
-        {{ govukButton({
+    {{ govukButton({
           text: "Create a bill run",
-          href: "../bd/charges-2020/pick-charge-type"
+          href: "bill-runs/select-bill-run-type"
         }) }}
 
 
-      </div>
-    </div>
+  </div>
+</div>
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
 
-    <!-- table with four columns -->
-    <div class="govuk-grid-row govuk-!-margin-bottom-9">
-      <div class="govuk-grid-column-full">
+<!-- table with four columns -->
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-full">
 
-        <h2 class="govuk-heading-l"> View a bill run</h2>
+    <h2 class="govuk-heading-l"> View a bill run</h2>
 
-        <p class="govuk-body">Select date to see the details of a bill run.</p>
+    <p class="govuk-body">Select date to see the details of a bill run.</p>
 
-        <!-- bill runs table -->
-        {% include "sandbox/includes/billing/bill-runs-table.html" %}
+    <!-- bill runs table -->
+    {% include "sandbox/includes/billing/bill-runs-table.html" %}
 
+  </div>
+</div>
 
 {% endblock %}
