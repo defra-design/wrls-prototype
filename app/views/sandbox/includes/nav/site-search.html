@@ -1,4 +1,8 @@
+
+
 <div class="app-site-search" data-module="app-search" data-search-index="/search-index-ba133e98a4bcec6e9c728af78190a83e.json">
+  <!-- search  -->
+  <form action="search" method="post" novalidate>
   <label class="govuk-visually-hidden" for="app-site-search__input">Search for a licence</label>
   <a class="app-site-search__link govuk-link" href="/sitemap">Sitemap</a>
   <div class="app-site-search__wrapper">
@@ -10,12 +14,14 @@
     <ul class="app-site-search__menu app-site-search__menu--overlay app-site-search__menu--hidden" id="app-site-search__input__listbox" role="listbox"></ul><span id="app-site-search__input__assistiveHint" style="display: none;">When autocomplete
       results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>
   </div>
+  </form>
 </div>
+
 
 
 <!--script to to trigger the search results page on pressing enter on the navbar search The actual JS can be found in the design system github
 govuk-design-system/src/javascripts/components/search.js
--->
+
 <script>
 // Get the input field
 var input = document.getElementById("app-site-search__input");
@@ -34,3 +40,4 @@ input.addEventListener("keyup", function(event) {
 });
 
 </script>
+-->

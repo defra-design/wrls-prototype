@@ -3,15 +3,32 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+
+
+////SEARCH RESULTS
 router.get('/search', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  //get the search term
-
-  let term = req.session.data['search']
-
   res.render('sandbox/search');
+
+});
+
+router.post('/search', function(req, res) {
+
+//get the search term
+let term = req.session.data['search']
+
+
+//Check to see if the results should be a billing account or a licence based on the search term entered
+//In the proto all billing accounts begin with BA
+if ( term.startsWith("BA") ){
+  req.session.data.resultsTable = 'BA'
+} else {
+  req.session.data.resultsTable = 'Licences'
+}
+
+res.redirect('search');
 
 });
 
