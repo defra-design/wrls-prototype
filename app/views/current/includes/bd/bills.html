@@ -8,25 +8,26 @@
     firstCellIsHeader: false,
     head: [
       {
-        text: "Date created",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Date created"
       },
       {
-        text: "Bill number",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Bill number"
+      },
+
+      {
+        text: "Billing account"
       },
       {
-        text: "Bill run type",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Bill run type"
       },
       {
-        text: "Billing account",
-        classes: 'govuk-!-width-one-quarter'
+        text: "Finacial year",
+        format: 'numeric'
       },
       {
         text: "Total",
-        format: 'numeric',
-        classes: 'govuk-!-width-one-fifth'
+        format: 'numeric'
+
       }
     ],
     rows: [
@@ -37,11 +38,16 @@
       {
         html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
       },
+
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/billing-account">L12345678S</a>'
+      },
       {
         text: "Supplementary"
       },
       {
-        html: '<a class="govuk-link" href="/bd/charges-2020/billing-account">L12345678S</a>'
+        text: "2019",
+        format: 'numeric'
       },
       {
         text: "£3,002.75",
@@ -55,11 +61,16 @@
       {
         html: '<a class="govuk-link" href="#">2345432</a>'
       },
+
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>'
+      },
       {
         text: "Annual"
       },
       {
-        html: '<a class="govuk-link" href="#">349203 56</a>'
+        text: "2018",
+        format: 'numeric'
       },
       {
         text: "£5,345.00",
@@ -73,11 +84,16 @@
       {
         html: '<a class="govuk-link" href="#">9876431</a>'
       },
+
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>'
+      },
       {
         text: "Annual"
       },
       {
-        html: '<a class="govuk-link" href="#">349203 56</a>'
+        text: "2017",
+        format: 'numeric'
       },
       {
         text: "£5,345.00",
@@ -91,11 +107,16 @@
       {
         html: '<a class="govuk-link" href="#">2345432</a>'
       },
+
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>'
+      },
       {
         text: "Annual"
       },
       {
-        html: '<a class="govuk-link" href="#">349203 56</a>'
+        text: "2016",
+        format: 'numeric'
       },
       {
         text: "£5,345.00",
@@ -111,12 +132,18 @@
         html: '<a class="govuk-link" href="#">675434</a>',
         classes: 'govuk-table__cell--no-border'
       },
+
+      {
+        html: '<a class="govuk-link" href="#">349203 56</a>',
+        classes: 'govuk-table__cell--no-border'
+      },
       {
         text: "Supplementary",
         classes: 'govuk-table__cell--no-border'
       },
       {
-        html: '<a class="govuk-link" href="#">349203 56</a>',
+        text: "2015",
+        format: 'numeric',
         classes: 'govuk-table__cell--no-border'
       },
       {
