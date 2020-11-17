@@ -1,0 +1,59 @@
+
+<!--getting the licence data-->
+{% set licences = data['licences'] %}
+
+<!--set number of licences to 0-->
+{% set numberOfLicences = 0 %}
+
+{% for i in licences %}
+{% set chargeVersions = data.licences[loop.index0]['chargeInformation'] %}
+{% if not chargeVersions.length  %}
+<!--check to see if there isn't any charge information set up and therefore a new licence-->
+{% set numberOfLicences = numberOfLicences + 1 %}
+{% endif %}
+{% endfor %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-heading-l">To set up <br><span class="govuk-caption-l">{{numberOfLicences}} licence</span></caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Licence</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Licence holder</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Licence start date</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Action</th>
+    </tr>
+  </thead>
+
+
+  <tbody class="govuk-table__body">
+    <!--set number of licences to 0-->
+    {% set numberOfLicences = 0 %}
+      {% for i in licences %}
+      {% set chargeVersions = data.licences[loop.index0]['chargeInformation'] %}
+      {% if not chargeVersions.length  %}
+      <!--check to see if there isn't any charge information set up and therefore a new licence-->
+      {% set numberOfLicences = numberOfLicences + 1 %}
+    <tr class="govuk-table__row " >
+      <td class="govuk-table__cell govuk-table__cell--no-border">{{i.number}}  </td>
+      <td class="govuk-table__cell govuk-table__cell--no-border">{{i.holder}}</td>
+      <td class="govuk-table__cell govuk-table__cell--no-border">{{i.startDate}}</td>
+      <td class="govuk-table__cell govuk-table__cell--no-border"><a class="govuk-link"  href="licence/set-up-new-charge-information/reason-for-new-charge?ID={{loop.index0}}">Create<span class="govuk-visually-hidden"> charge information</span></a></td>
+    </tr>
+
+
+    {% endif %}
+
+
+
+    {% endfor %}
+
+
+
+  </tbody>
+</table>
+
+
+
+<!--
+          -->

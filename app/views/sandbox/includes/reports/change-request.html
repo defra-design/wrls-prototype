@@ -1,0 +1,63 @@
+
+<!--getting the licence data-->
+{% set licences = data['licences'] %}
+
+<!--set number of licences to 0-->
+{% set numberOfLicences = 0 %}
+
+{% for i in licences %}
+{% set chargeVersions = data.licences[loop.index0].chargeInformation[0]['chargeStatus'] %}
+{% if chargeVersions == "CHANGES"  %}
+<!--check to see if there isn't any charge information set up and therefore a new licence-->
+{% set numberOfLicences = numberOfLicences + 1 %}
+{% endif %}
+{% endfor %}
+
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-heading-l">Change request<br><span class="govuk-caption-l">{{numberOfLicences}} licence</span></caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Licence</th>
+      <th scope="col" class="govuk-table__header">Licence holder</th>
+      <th scope="col" class="govuk-table__header">Set up by</th>
+      <th scope="col" class="govuk-table__header">Change request</th>
+      <th scope="col" class="govuk-table__header">Action</th>
+    </tr>
+  </thead>
+
+
+  <tbody class="govuk-table__body">
+    <!--set number of licences to 0-->
+    {% set numberOfLicences = 0 %}
+      {% for i in licences %}
+      {% set chargeVersions = data.licences[loop.index0].chargeInformation[0]['chargeStatus'] %}
+
+
+      {% if chargeVersions == "CHANGES"  %}
+      <!--check to see if there isn't any charge information set up and therefore a new licence-->
+      {% set numberOfLicences = numberOfLicences + 1 %}
+    <tr class="govuk-table__row " >
+      <td class="govuk-table__cell govuk-table__cell--no-border">{{i.number}}  </td>
+      <td class="govuk-table__cell govuk-table__cell--no-border">{{i.holder}}</td>
+      <td class="govuk-table__cell govuk-table__cell--no-border">{{i.chargeInformation[0]['setUpBy']}}</td>
+      <td class="govuk-table__cell govuk-table__cell--no-border">{{i.chargeInformation[0]['changeRequest']}}</td>
+      <td class="govuk-table__cell govuk-table__cell--no-border"><a class="govuk-link"  href="licence/charge-information?ID={{loop.index0}}">View<span class="govuk-visually-hidden"> charge information</span></a></td>
+    </tr>
+
+    {% endif %}
+
+
+
+    {% endfor %}
+
+
+
+  </tbody>
+</table>
+
+
+
+<!--
+          -->

@@ -1,0 +1,108 @@
+{% extends "layouts/_QuestionPage.html" %}
+
+<!--set title-->
+{% set title = "Select reason for new charge information" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% set navbarActiveBillRuns = "navbar__link--active" %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<form method="post" class="form">
+
+
+
+{{ govukRadios({
+idPrefix: "reasonNewCharge",
+name: "reasonNewCharge",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+items: [
+{
+  value: "Billing contact change",
+  text: "Billing contact change"
+},
+{
+  value: "Charge information closed down before licence end date",
+  text: "Charge information closed down before licence end date"
+},
+{
+  value: "Change to a special agreement",
+  text: "Change to a special agreement"
+},
+
+{
+  value: "Licence holder name or address change",
+  text: "Licence holder name or address change"
+},
+{
+  value: "Licence transferred and now chargeable",
+  text: "Licence transferred and now chargeable"
+},
+{
+  value: "Limited extension of licence validity (LEV)",
+  text: "Limited extension of licence validity (LEV)"
+},
+{
+  value: "Major change",
+  text: "Major change"
+},
+  {
+    value: "Minor change",
+    text: "Minor change"
+  },
+  {
+    value: "New licence in part succession or licence apportionment",
+    text: "New licence in part succession or licence apportionment"
+  },
+  {
+    value: "New licence",
+    text: "New licence"
+  },
+  {
+    value: "New special agreement",
+    text: "New special agreement"
+  },
+  {
+    value: "Succession or transfer of licence",
+    text: "Succession or transfer of licence"
+  },
+  {
+    value: "Succession to a remainder licence or licence apportionment",
+    text: "Succession to a remainder licence or licence apportionment"
+  },
+  {
+    divider: "or"
+  },
+  {
+    value: "Make this licence non-chargeable",
+    text: "Make this licence non-chargeable"
+  }
+]
+}) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

@@ -6,7 +6,10 @@
       }) }}
 {% endif %}
 
-
+{% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+<!--check to see if there is any charge information set up-->
+{% if chargeVersions.length  %}
+<!--if so display the table-->
 
       <table class="govuk-table">
          <caption class="govuk-table__caption govuk-heading-l">Charge information</caption>
@@ -22,12 +25,9 @@
 
         <tbody class="govuk-table__body">
 
-          <!--check to see if this is a new licence-->
-          {% if [data.newLicence] == "false" %}
-          {% set chargeVersions = data['chargeVersions'] %}
-          {% else %}
-          {% set chargeVersions = [data.chargeVersions[0]] %}
-          {% endif %}
+
+
+
 
           <!--setting the charge version numbers for the individual urls-->
           {% set chargeVersionsNumber = "" %}
@@ -102,6 +102,17 @@
         </tbody>
       </table>
 
+      {% else %}
+      <!--if not display the message-->
+
+      <h2 class="govuk-heading-l">Charge information</h2>
+
+      <p class="govuk-body">
+              No charge information set up
+              </p>
+
+      {% endif %}
+
 
       {{ govukButton({
         text: "Set up new charge information",
@@ -119,6 +130,11 @@
         href: "/bd/charges-2020/add-reason"
       }) }}
       {% endif %}
+
+      {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+      <!--check to see if there is any charge information set up-->
+      {% if chargeVersions.length  %}
+      <!--if so display the table-->
 
 
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -198,3 +214,5 @@
           href: "charges-2020/add-agreement",
           classes: "govuk-button--secondary"
         }) }}
+
+          {% endif %}

@@ -12,7 +12,7 @@
       <!--bill runs permission-->
      {%  if data['billing'] == "true" %}
       <li class="navbar__item">
-        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveBillRuns}}" href="bill-runs" id="billRuns">
+        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveBillRuns}}" href="/sandbox/bill-runs" id="billRuns">
           Bill runs
         </a>
       </li>
@@ -23,7 +23,7 @@
     <!--notices permssion-->
       {%  if data['notices'] == "true" %}
       <li class="navbar__item">
-        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveNotices}}" href="licence-notices" id="licenceNotices">
+        <a class="navbar__link govuk-link--no-visited-state {{navbarActiveNotices}}" href="/sandbox/licence-notices" id="licenceNotices">
           Licence notices
         </a>
       </li>
@@ -32,7 +32,7 @@
       <!--reports permissions-->
       {%  if data['reports'] == "true" %}
        <li class="navbar__item">
-         <a class="navbar__link govuk-link--no-visited-state {{navbarActiveReports}}" href="reports" id="reports">
+         <a class="navbar__link govuk-link--no-visited-state {{navbarActiveReports}}" href="/sandbox/reports" id="reports">
            Reports
          </a>
        </li>

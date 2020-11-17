@@ -23,9 +23,9 @@ let term = req.session.data['search']
 //Check to see if the results should be a billing account or a licence based on the search term entered
 //In the proto all billing accounts begin with BA
 if ( term.startsWith("BA") ){
-  req.session.data.resultsTable = 'BA'
+  req.session.data.resultsTable = "sandbox/includes/billing-accounts-table.html"
 } else {
-  req.session.data.resultsTable = 'Licences'
+  req.session.data.resultsTable = "sandbox/includes/licences-table.html"
 }
 
 res.redirect('search');

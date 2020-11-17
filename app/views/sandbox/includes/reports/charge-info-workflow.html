@@ -12,18 +12,50 @@
       <ul class="govuk-tabs__list">
         <li class="govuk-tabs__list-item" tabindex="0">
           <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#new">
-            To set up (5<span class="govuk-visually-hidden">licences</span>)
+            <!--getting the licence data-->
+            {% set licences = data['licences'] %}
+
+            <!--set number of licences to 0-->
+            {% set numberOfLicences = 0 %}
+
+            {% for i in licences %}
+            {% set chargeVersions = data.licences[loop.index0]['chargeInformation'] %}
+            {% if not chargeVersions.length  %}
+            <!--check to see if there isn't any charge information set up and therefore a new licence-->
+            {% set numberOfLicences = numberOfLicences + 1 %}
+            {% endif %}
+            {% endfor %}
+            To set up ({{numberOfLicences}}<span class="govuk-visually-hidden">licences</span>)
           </a>
         </li>
 
         <li class="govuk-tabs__list-item" tabindex="0">
           <a class="govuk-tabs__tab" href="#review">
-            Review (5<span class="govuk-visually-hidden">licences</span>)
+            <!--set number of licences to 0-->
+            {% set numberOfLicences = 0 %}
+            {% for i in licences %}
+            {% set chargeVersions = data.licences[loop.index0].chargeInformation[0]['chargeStatus'] %}
+            {% if chargeVersions == "NOT APPROVED"  %}
+            <!--check to see if there isn't any charge information set up and therefore a new licence-->
+            {% set numberOfLicences = numberOfLicences + 1 %}
+            {% endif %}
+            {% endfor %}
+            Review ({{numberOfLicences}}<span class="govuk-visually-hidden">licences</span>)
           </a>
         </li>
         <li class="govuk-tabs__list-item" tabindex="0">
           <a class="govuk-tabs__tab" href="#changes">
-            Change request (4<span class="govuk-visually-hidden">licences</span>)
+            <!--set number of licences to 0-->
+            {% set numberOfLicences = 0 %}
+            {% for i in licences %}
+            {% set chargeVersions = data.licences[loop.index0].chargeInformation[0]['chargeStatus'] %}
+            {% if chargeVersions == "CHANGES"  %}
+            <!--check to see if there isn't any charge information set up and therefore a new licence-->
+            {% set numberOfLicences = numberOfLicences + 1 %}
+            {% endif %}
+            {% endfor %}
+
+            Change request ({{numberOfLicences}}<span class="govuk-visually-hidden">licences</span>)
           </a>
         </li>
         <!--    <li class="govuk-tabs__list-item" tabindex="0">
@@ -37,7 +69,7 @@
       <section class="govuk-tabs__panel" id="new">
 
         <!-- new licences -->
-        {% include "current/includes/bd/licences-new.html" %}
+        {% include "sandbox/includes/reports/to-set-up.html" %}
 
       </section>
 
@@ -54,8 +86,8 @@
       <!-- tab 3 -->
       <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="review">
 
-        <!-- comms table -->
-        {% include "current/includes/bd/licences-review.html" %}
+        <!-- new licences -->
+        {% include "sandbox/includes/reports/review.html" %}
 
 
 
@@ -65,7 +97,7 @@
       <section class="govuk-tabs__panel" id="changes">
 
 
-        {% include "current/includes/bd/licences-changes.html" %}
+        {% include "sandbox/includes/reports/change-request.html" %}
 
       </section>
 

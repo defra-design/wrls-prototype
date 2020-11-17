@@ -58,8 +58,10 @@
         Communications
       </a>
     </li>
-    <!-- no bills tab for a new licence-->
-    {% if [data.newLicence] == "false" %}
+    {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+    <!--check to see if there is any charge information set up-->
+    {% if chargeVersions.length  %}
+    <!--if so display the table-->
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#bills">
         Bills
@@ -91,10 +93,13 @@
     <h2 class="govuk-heading-l">
       Returns
     </h2>
-
+    {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+    <!--check to see if there is any charge information set up-->
+    {% if chargeVersions.length  %}
+    <!--if so display the table-->
     <!-- returns with statuses -->
     {% include "current/includes/bd/returns.html" %}
-
+{% endif %}
   </section>
 
   <!-- tab 3 -->
@@ -104,6 +109,10 @@
       Communications
     </h2>
 
+    {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+    <!--check to see if there is any charge information set up-->
+    {% if chargeVersions.length  %}
+    <!--if so display the table-->
     <!-- comms table -->
     {% include "current/includes/comms-table.html" %}
 
@@ -112,11 +121,13 @@
         View all licence messages
       </a>
     </div>
-
+     {% endif %}
   </section>
 
-  <!-- no billing tab for a new licence-->
-  {% if [data.newLicence] == "false" %}
+  {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+  <!--check to see if there is any charge information set up-->
+  {% if chargeVersions.length  %}
+  <!--if so display the table-->
   <!-- tab 4 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="bills">
 

@@ -267,7 +267,9 @@ module.exports = {
 
 
      //licence
-     "licences":[{
+     "licences":[
+            //licence 1
+            {
                "number": "00/22/001/02",
                "name": "Lower Smith Road",
                "holder": "Irene Briton",
@@ -283,7 +285,37 @@ module.exports = {
                "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
                "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
+               "chargeInformation":[{
+                         "chargeStart": "22 April 2019",
+                         "chargeEnd": "31 January 2020",
+                         "chargeStatus": "CHARGEABLE",
+                         "chargeBilledDate": "31 March 2020",
+                         "free": "false",
+                         "reasonNewCharge": "Formal variation",
+                         "setUpBy": "michael.babb@madeup.com"
+                         },
+                           {
+                         "chargeStart": "1 April 2017",
+                         "chargeEnd": "21 April 2019",
+                         "chargeStatus": "REPLACED",
+                         "chargeBilledDate": "31 March 2019",
+                         "free": "false",
+                         "reasonNewCharge": "New licence",
+                         "setUpBy": "michael.babb@madeup.com"
+                         },
+                         {
+                         "chargeStart": "1 April 2017",
+                         "chargeEnd": "21 April 2019",
+                         "chargeStatus": "INVALID",
+                         "chargeBilledDate": "31 March 2019",
+                         "free": "false",
+                         "reasonNewCharge": "New licence",
+                         "setUpBy": "michael.babb@madeup.com"
+                       }
+                       ],
+
              },
+             //licence 2
              {
                "number": "03/28/60/0032",
                "name": "Glindenfold Lake",
@@ -299,7 +331,30 @@ module.exports = {
                "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
                "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
                "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+               "chargeInformation":[{
+                         "chargeStart": "22 April 2021",
+                         "chargeEnd": "",
+                         "chargeStatus": "NOT APPROVED",
+                         "chargeBilledDate": "31 March 2020",
+                         "free": "false",
+                         "reasonNewCharge": "Formal variation",
+                         "setUpBy": "rose.conelly@madeup.com"
+
+                         },
+                           {
+                         "chargeStart": "1 April 2017",
+                         "chargeEnd": "21 April 2019",
+                         "chargeStatus": "REPLACED",
+                         "chargeBilledDate": "31 March 2019",
+                         "free": "false",
+                         "reasonNewCharge": "New licence",
+                         "setUpBy": "rose.conelly@madeup.com"
+                         }
+                       ],
+
               },
+              //licence 3
               {
                 "number": "03/28/61/029",
                 "name": "Honeydew Crescent",
@@ -315,7 +370,13 @@ module.exports = {
                 "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
                 "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
                 "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+                "chargeInformation":[
+                          //newLicence
+                        ],
+
                },
+               //licence 4
                {
                  "number": "03/28/60/0035",
                  "name": "George Furrow",
@@ -331,12 +392,34 @@ module.exports = {
                  "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
                  "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
                  "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+                 "chargeInformation":[{
+                           "chargeStart": "22 April 2019",
+                           "chargeEnd": "",
+                           "chargeStatus": "CHARGEABLE",
+                           "chargeBilledDate": "31 March 2020",
+                           "free": "false",
+                           "reasonNewCharge": "Formal variation",
+                           "setUpBy": "barry.crampton@madeup.com"
+                           },
+                             {
+                           "chargeStart": "1 June 1985",
+                           "chargeEnd": "21 April 2019",
+                           "chargeStatus": "REPLACED",
+                           "chargeBilledDate": "31 March 2019",
+                           "free": "false",
+                           "reasonNewCharge": "New licence",
+                           "setUpBy": "barry.crampton@madeup.com"
+                           }
+                         ],
+
                 },
+                //licence 5
                 {
-                  "number": "03/28/60/0035",
+                  "number": "03/28/60/0033",
                   "name": "Dale Barrow",
                   "holder": "Big Smith Farms Ltd",
-                  "startDate": "1 June 1985",
+                  "startDate": "1 September 1990",
                   "endDate": "15 September 2022",
                   "expired": "false",
 
@@ -347,12 +430,35 @@ module.exports = {
                   "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
                   "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+                  "chargeInformation":[{
+                            "chargeStart": "22 April 2019",
+                            "chargeEnd": "",
+                            "chargeStatus": "CHANGES",
+                            "chargeBilledDate": "31 March 2020",
+                            "free": "false",
+                            "reasonNewCharge": "Formal variation",
+                            "setUpBy": "barry.crampton@madeup.com",
+                            "changeRequest": "Please change the abstraction start month to April"
+                            },
+                              {
+                            "chargeStart": "1 September 1990",
+                            "chargeEnd": "21 April 2019",
+                            "chargeStatus": "REPLACED",
+                            "chargeBilledDate": "31 March 2019",
+                            "free": "false",
+                            "reasonNewCharge": "New licence",
+                            "setUpBy": "barry.crampton@madeup.com"
+                            }
+                          ],
+
                  },
+                 //licence 6
                  {
-                   "number": "03/28/60/0035",
+                   "number": "03/28/60/0726",
                    "name": "River House",
                    "holder": "Robin Vithlhem-Smith",
-                   "startDate": "1 June 1985",
+                   "startDate": "1 April 2015",
                    "endDate": "1 March 2023",
                    "expired": "false",
 
@@ -363,12 +469,34 @@ module.exports = {
                    "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
                    "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
                    "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+                   "chargeInformation":[{
+                             "chargeStart": "22 April 2016",
+                             "chargeEnd": "",
+                             "chargeStatus": "CHARGEABLE",
+                             "chargeBilledDate": "31 March 2020",
+                             "free": "false",
+                             "reasonNewCharge": "Formal variation",
+                             "setUpBy": "	jo.langton@madeup.com"
+                             },
+                               {
+                             "chargeStart": "1 April 2015",
+                             "chargeEnd": "21 April 2019",
+                             "chargeStatus": "REPLACED",
+                             "chargeBilledDate": "31 March 2019",
+                             "free": "false",
+                             "reasonNewCharge": "New licence",
+                             "setUpBy": "	jo.langton@madeup.com"
+                             }
+                           ],
+
                  },
+                 //licence 7
                  {
                    "number": "11/22/32/02",
                    "name": "",
                    "holder": "D.B. Beecham-Smith",
-                   "startDate": "1 June 1985",
+                   "startDate": "1 October 2016",
                    "endDate": "30 September 2025",
                    "expired": "false",
 
@@ -379,6 +507,54 @@ module.exports = {
                    "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
                    "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
                    "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+                   "chargeInformation":[{
+                             "chargeStart": "22 April 2019",
+                             "chargeEnd": "",
+                             "chargeStatus": "CHARGEABLE",
+                             "chargeBilledDate": "31 March 2020",
+                             "free": "false",
+                             "reasonNewCharge": "Formal variation",
+                             "setUpBy": "	jo.langton@madeup.com"
+                             },
+                               {
+                             "chargeStart": "1 April 2017",
+                             "chargeEnd": "21 April 2019",
+                             "chargeStatus": "REPLACED",
+                             "chargeBilledDate": "31 March 2019",
+                             "free": "false",
+                             "reasonNewCharge": "Formal variation",
+                             "setUpBy": "	jo.langton@madeup.com"
+                             },
+                             {
+                             "chargeStart": "1 April 2017",
+                             "chargeEnd": "21 April 2019",
+                             "chargeStatus": "INVALID",
+                             "chargeBilledDate": "31 March 2019",
+                             "free": "false",
+                             "reasonNewCharge": "Formal variation",
+                             "setUpBy": "	jo.langton@madeup.com"
+                           },
+                               {
+                             "chargeStart": "1 October 2016",
+                             "chargeEnd": "31 March 2019",
+                             "chargeStatus": "REPLACED",
+                             "chargeBilledDate": "31 March 2019",
+                             "free": "false",
+                             "reasonNewCharge": "New licence",
+                             "setUpBy": "	jo.langton@madeup.com"
+                             },
+                             {
+                             "chargeStart": "1 October 2016",
+                             "chargeEnd": "31 March 2019",
+                             "chargeStatus": "INVALID",
+                             "chargeBilledDate": "31 March 2019",
+                             "free": "false",
+                             "reasonNewCharge": "New licence",
+                             "setUpBy": "	jo.langton@madeup.com"
+                           }
+                           ],
+
                  }
            ],
 

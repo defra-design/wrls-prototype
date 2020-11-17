@@ -49,11 +49,8 @@
   <div class="govuk-grid-column-full">
 
     <!-- results table -->
-    {% if data['resultsTable'] == "BA" %}
-    {% include "sandbox/includes/billing-accounts-table.html" %}
-    {% else %}
-    {% include "sandbox/includes/licences-table.html" %}
-    {% endif %}
+    {% include data['resultsTable'] %}
+
 
   </div>
 </div>
