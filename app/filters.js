@@ -89,6 +89,36 @@ module.exports = function (env) {
           }
 
 
+          //set text for status "| chargeStatusText"
+          filters.chargeStatusText = function(e) {
+            if (e == "CHANGES") {
+              return "CHANGE REQUEST"
+            } else if (e == "INVALID") {
+              return "INVALID"
+            } else if (e == "NOT APPROVED") {
+              return "REVIEW"
+            } else {
+              return "ACTIVE"
+            }
+          }
+
+          //set colours for status "| chargeStatusColour"
+          filters.chargeStatusColour = function(e) {
+            if (e == "NOT APPROVED") {
+              return "govuk-tag--orange"
+            } else if (e == "INVALID") {
+              return "govuk-tag--red"
+            } else if (e == "CHANGES") {
+              return "govuk-tag--blue"
+            } else {
+              return "govuk-tag--green"
+            }
+          }
+
+
+
+
+
 
     //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 

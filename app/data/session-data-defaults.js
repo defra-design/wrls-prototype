@@ -477,7 +477,8 @@ module.exports = {
                              "chargeBilledDate": "31 March 2020",
                              "free": "false",
                              "reasonNewCharge": "Formal variation",
-                             "setUpBy": "	jo.langton@madeup.com"
+                             "setUpBy": "	jo.langton@madeup.com",
+                             "changeRequest": ""
                              },
                                {
                              "chargeStart": "1 April 2015",
