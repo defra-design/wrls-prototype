@@ -289,7 +289,7 @@ module.exports = {
                          "chargeStart": "22 April 2019",
                          "chargeEnd": "31 January 2020",
                          "chargeStatus": "CHARGEABLE",
-                         "chargeBilledDate": "31 March 2020",
+                         "chargeBilledDate": "31 March 2021",
                          "free": "false",
                          "reasonNewCharge": "Formal variation",
                          "setUpBy": "michael.babb@madeup.com"
@@ -298,7 +298,7 @@ module.exports = {
                          "chargeStart": "1 April 2017",
                          "chargeEnd": "21 April 2019",
                          "chargeStatus": "REPLACED",
-                         "chargeBilledDate": "31 March 2019",
+                         "chargeBilledDate": "31 March 2020",
                          "free": "false",
                          "reasonNewCharge": "New licence",
                          "setUpBy": "michael.babb@madeup.com"
@@ -307,7 +307,7 @@ module.exports = {
                          "chargeStart": "1 April 2017",
                          "chargeEnd": "21 April 2019",
                          "chargeStatus": "INVALID",
-                         "chargeBilledDate": "31 March 2019",
+                         "chargeBilledDate": "31 March 2020",
                          "free": "false",
                          "reasonNewCharge": "New licence",
                          "setUpBy": "michael.babb@madeup.com"
@@ -336,7 +336,7 @@ module.exports = {
                          "chargeStart": "22 April 2021",
                          "chargeEnd": "",
                          "chargeStatus": "NOT APPROVED",
-                         "chargeBilledDate": "31 March 2020",
+                         "chargeBilledDate": "31 March 2022",
                          "free": "false",
                          "reasonNewCharge": "Formal variation",
                          "setUpBy": "rose.conelly@madeup.com"
@@ -344,9 +344,9 @@ module.exports = {
                          },
                            {
                          "chargeStart": "1 April 2017",
-                         "chargeEnd": "21 April 2019",
+                         "chargeEnd": "21 April 2021",
                          "chargeStatus": "REPLACED",
-                         "chargeBilledDate": "31 March 2019",
+                         "chargeBilledDate": "31 March 2022",
                          "free": "false",
                          "reasonNewCharge": "New licence",
                          "setUpBy": "rose.conelly@madeup.com"
@@ -397,7 +397,7 @@ module.exports = {
                            "chargeStart": "22 April 2019",
                            "chargeEnd": "",
                            "chargeStatus": "CHARGEABLE",
-                           "chargeBilledDate": "31 March 2020",
+                           "chargeBilledDate": "31 March 2021",
                            "free": "false",
                            "reasonNewCharge": "Formal variation",
                            "setUpBy": "barry.crampton@madeup.com"
@@ -406,7 +406,7 @@ module.exports = {
                            "chargeStart": "1 June 1985",
                            "chargeEnd": "21 April 2019",
                            "chargeStatus": "REPLACED",
-                           "chargeBilledDate": "31 March 2019",
+                           "chargeBilledDate": "31 March 2020",
                            "free": "false",
                            "reasonNewCharge": "New licence",
                            "setUpBy": "barry.crampton@madeup.com"
@@ -435,7 +435,7 @@ module.exports = {
                             "chargeStart": "22 April 2019",
                             "chargeEnd": "",
                             "chargeStatus": "CHANGES",
-                            "chargeBilledDate": "31 March 2020",
+                            "chargeBilledDate": "31 March 2021",
                             "free": "false",
                             "reasonNewCharge": "Formal variation",
                             "setUpBy": "barry.crampton@madeup.com",
@@ -445,7 +445,7 @@ module.exports = {
                             "chargeStart": "1 September 1990",
                             "chargeEnd": "21 April 2019",
                             "chargeStatus": "REPLACED",
-                            "chargeBilledDate": "31 March 2019",
+                            "chargeBilledDate": "31 March 2020",
                             "free": "false",
                             "reasonNewCharge": "New licence",
                             "setUpBy": "barry.crampton@madeup.com"
@@ -474,17 +474,16 @@ module.exports = {
                              "chargeStart": "22 April 2016",
                              "chargeEnd": "",
                              "chargeStatus": "CHARGEABLE",
-                             "chargeBilledDate": "31 March 2020",
+                             "chargeBilledDate": "31 March 2021",
                              "free": "false",
                              "reasonNewCharge": "Formal variation",
                              "setUpBy": "	jo.langton@madeup.com",
-                             "changeRequest": ""
                              },
                                {
                              "chargeStart": "1 April 2015",
                              "chargeEnd": "21 April 2019",
                              "chargeStatus": "REPLACED",
-                             "chargeBilledDate": "31 March 2019",
+                             "chargeBilledDate": "31 March 2020",
                              "free": "false",
                              "reasonNewCharge": "New licence",
                              "setUpBy": "	jo.langton@madeup.com"
@@ -513,7 +512,7 @@ module.exports = {
                              "chargeStart": "22 April 2019",
                              "chargeEnd": "",
                              "chargeStatus": "CHARGEABLE",
-                             "chargeBilledDate": "31 March 2020",
+                             "chargeBilledDate": "31 March 2021",
                              "free": "false",
                              "reasonNewCharge": "Formal variation",
                              "setUpBy": "	jo.langton@madeup.com"
@@ -522,7 +521,7 @@ module.exports = {
                              "chargeStart": "1 April 2017",
                              "chargeEnd": "21 April 2019",
                              "chargeStatus": "REPLACED",
-                             "chargeBilledDate": "31 March 2019",
+                             "chargeBilledDate": "31 March 2020",
                              "free": "false",
                              "reasonNewCharge": "Formal variation",
                              "setUpBy": "	jo.langton@madeup.com"
@@ -531,7 +530,7 @@ module.exports = {
                              "chargeStart": "1 April 2017",
                              "chargeEnd": "21 April 2019",
                              "chargeStatus": "INVALID",
-                             "chargeBilledDate": "31 March 2019",
+                             "chargeBilledDate": "31 March 2020",
                              "free": "false",
                              "reasonNewCharge": "Formal variation",
                              "setUpBy": "	jo.langton@madeup.com"
