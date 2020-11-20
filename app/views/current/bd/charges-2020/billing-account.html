@@ -67,17 +67,15 @@
       {% set licenceHolder = data['licenceHolder'] %}
       {% set billingContact = data['customerName'] %}
 
-      {% if data['newFAO'] == "Yes" %}
-      FAO {{data['fao']}}<br>
-      {% endif %}
 
       {% if licenceHolder == billingContact %}
       {{data['licenceHolder']}}<br>
       {% else %}
-      {{data['licenceHolder']}}<br>
-      C/o {{data['customerName']}}<br>
+     {{data['customerName']}}<br>
       {% endif %}
-
+      {% if data['newFAO'] == "Yes" %}
+      FAO {{data['fao']}}<br>
+      {% endif %}
 
       {{data['address1']}}<br>
       {{data['city']}}<br>

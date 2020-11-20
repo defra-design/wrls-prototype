@@ -66,7 +66,7 @@
 {% if data['createNewContact'] == "true" %}
 {% set nextPage = "check-billing-account-details-new?newFAO=No" %}
 {% else %}
-{% set nextPage = "effective-date?newFAO=No" %}
+{% set nextPage = "check-billing-account-details-change?newFAO=No" %}
 {% endif %}
 
       {{ govukRadios({

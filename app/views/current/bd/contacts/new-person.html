@@ -57,7 +57,7 @@
      {% if data['createNewContact'] == "true" %}
       <form action="check-billing-account-details-new?fao=Jenny%20Rosenfield" method="post" class="form" id="contact-fullname">
      {% else %}
-     <form action="/bd/contacts/effective-date?fao=Jenny%20Rosenfield" method="post" class="form" id="contact-fullname">
+     <form action="check-billing-account-details-change?fao=Jenny%20Rosenfield" method="post" class="form" id="contact-fullname">
      {% endif %}
 
         {{ govukInput({

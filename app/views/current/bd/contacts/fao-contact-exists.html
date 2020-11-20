@@ -46,7 +46,7 @@
 
       <!-- display the correct caption for either billing account change or licence change-->
       {% if data['ba'] == "true"%}
-      {% set qLabel = '<span class="govuk-caption-l">Billing account {{data["invoiceAccount"]}}</span>' +
+      {% set qLabel = '<span class="govuk-caption-l">Billing account ' + data["invoiceAccount"] + '</span>' +
       [ title ] %}
       {% else %}
       {% set qLabel = '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' +
@@ -74,7 +74,7 @@
     {% if data['createNewContact'] == "true" %}
     {% set url = "check-billing-account-details-new" %}
     {% else %}
-    {% set url = "effective-date" %}
+    {% set url = "check-billing-account-details-change" %}
     {% endif %}
 
 
