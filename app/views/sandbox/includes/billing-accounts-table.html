@@ -4,6 +4,15 @@
 <!--getting the bill runs data-->
 {% set BA = data['billingAccounts'] %}
 
+<!--check the billing accounts data for an exact match-->
+{% set match = "false" %}
+{% for i in  BA %}
+{% if i.number == data['search'] %}
+{% set loopNumber = loop.index0 %}
+{% set match = "true" %}
+{% endif %}
+{% endfor %}
+
 
 <table class="govuk-table">
   <caption class="govuk-table__caption">Billing accounts</caption>
@@ -15,6 +24,23 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
+
+    <!--show the match or loop through all the answers-->
+      {% if match == "true" %}
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+
+         <!--set the link to go to a specific licence-->
+          <a href="billing-account?ID={{[loopNumber]}}" class="govuk-link">
+
+          {{[data.billingAccounts[loopNumber].number]}}</a></td>
+        <td class="govuk-table__cell">{{[data.billingAccounts[loopNumber].customer]}}</td>
+        <td class="govuk-table__cell">{{[data.billingAccounts[loopNumber].billingContact]}}</td>
+      </tr>
+
+      {% else %}
+
     <!--starting to loop through the bill runs data -->
     {% for i in BA %}
 
@@ -31,6 +57,8 @@
       <td class="govuk-table__cell">{{[i.billingContact]}}</td>
     </tr>
     {% endfor %}
+
+    {% endif %}
 
 
   </tbody>

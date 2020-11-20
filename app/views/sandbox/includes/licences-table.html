@@ -1,6 +1,15 @@
 <!--setting the loop number to 0-->
 {% set loopNumber = "" %}
 
+<!--check the licence data for an exact match-->
+{% set match = "false" %}
+{% for i in licences %}
+{% if i.number == data['search'] %}
+{% set loopNumber = loop.index0 %}
+{% set match = "true" %}
+{% endif %}
+{% endfor %}
+
 <!--getting the licence data-->
 {% set licences = data['licences'] %}
 
@@ -17,8 +26,37 @@
   </thead>
   <tbody class="govuk-table__body">
     <!--starting to loop through the bill runs data -->
-    {% for i in licences %}
 
+
+
+
+
+
+<!--show the match or loop through all the answers-->
+  {% if match == "true" %}
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+
+     <!--set the link to go to a specific licence-->
+      <a href="licence?ID={{[loopNumber]}}" class="govuk-link">
+
+      {{[data.licences[loopNumber].number]}}</a></td>
+    <td class="govuk-table__cell">{{[data.licences[loopNumber].name]}}</td>
+    <td class="govuk-table__cell">{{[data.licences[loopNumber].holder]}}</td>
+    <td class="govuk-table__cell">
+      {% if [data.licences[loopNumber].expired] == "true" %}
+      <strong class="table__status table__status--expired">
+        <span>Expired</span><br>
+        31 January 2020
+      </strong>
+      {% else %}
+      {{[data.licences[loopNumber].endDate]}}
+      {% endif %}
+    </td>
+  </tr>
+
+  {% else %}
+   {% for i in licences %}
     <!--setting the loop number -->
     {% set loopNumber = loop.index0 %}
     <tr class="govuk-table__row">
@@ -42,6 +80,8 @@
       </td>
     </tr>
     {% endfor %}
+  {% endif %}
+
 
 
   </tbody>
