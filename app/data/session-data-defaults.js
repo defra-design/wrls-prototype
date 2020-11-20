@@ -558,11 +558,21 @@ module.exports = {
                  }
            ],
 
+          //Billinga account ID
+          "BAID": "",
 
            //billng accounts
            "billingAccounts":[{
               "number": "BA1234443S",
               "customer": "Bottled Water Plc",
+              "billingContact": "Sam Burridge Accountants LLP",
+              "address1": "15 Ward Street",
+              "city": "Bath",
+              "postcode": "BA1 5EH",
+           },
+           {
+              "number": "BA4444436C",
+              "customer": "Big Smith Farms Ltd",
               "billingContact": "Sam Burridge Accountants LLP",
               "address1": "15 Ward Street",
               "city": "Bath",
