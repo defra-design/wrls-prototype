@@ -6,7 +6,7 @@
 
 <!--check the billing accounts data for an exact match-->
 {% set match = "false" %}
-{% for i in  BA %}
+{% for i in BA %}
 {% if i.number == data['search'] %}
 {% set loopNumber = loop.index0 %}
 {% set match = "true" %}

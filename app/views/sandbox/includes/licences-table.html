@@ -1,6 +1,9 @@
 <!--setting the loop number to 0-->
 {% set loopNumber = "" %}
 
+<!--getting the licence data-->
+{% set licences = data['licences'] %}
+
 <!--check the licence data for an exact match-->
 {% set match = "false" %}
 {% for i in licences %}
@@ -9,9 +12,6 @@
 {% set match = "true" %}
 {% endif %}
 {% endfor %}
-
-<!--getting the licence data-->
-{% set licences = data['licences'] %}
 
 
 <table class="govuk-table">
@@ -26,8 +26,6 @@
   </thead>
   <tbody class="govuk-table__body">
     <!--starting to loop through the bill runs data -->
-
-
 
 
 
