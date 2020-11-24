@@ -1,13 +1,8 @@
 {% extends "layouts/_BASE.html" %}
 
+
 <!--lookup the Billing account ID and set the ID based on the index of the billing account-->
-{% set BAID = "" %}
-{% set billingAccounts = data['billingAccounts']%}
-{% for i in billingAccounts %}
-{% if i.number == data.BAnumber %}
-{% set BAID = loop.index0 %}
-{% endif %}
-{% endfor %}
+{% set BAID = data['BAID'] %}
 
 
 <!--set title-->
@@ -31,6 +26,8 @@
     {{ title }}</h1>
   </div>
 </div>
+
+
 
 
 
