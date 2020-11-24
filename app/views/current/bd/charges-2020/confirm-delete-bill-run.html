@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% set title = "You're about to delete this bill run" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-6">
+      <h1 class="govuk-caption-l">Bill run 576849
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span></h1>
+    </section>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    {{ govukWarningText({
+    text: "This bill run will be deleted immediately. You cannot undo this action",
+    iconFallbackText: "Warning"
+  }) }}
+
+
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Date created
+        </div>
+        <div class="meta-data__value">
+          {{data['dateToday']}}
+        </div>
+        <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Region
+        </div>
+        <div class="meta-data__value">
+          {{data['region']}}
+        </div>
+        <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Bill run type
+        </div>
+        <div class="meta-data__value">
+          Two-part tariff {{data['tptSeason']}}
+        </div>
+        <div>
+    </section>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukButton({
+      text: "Delete",
+      classes: "govuk-button--warning",
+      href: "bill-runs-no-error"
+    }) }}
+
+
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

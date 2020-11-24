@@ -42,10 +42,10 @@
 {% block content %}
 
 {{ govukErrorSummary({
-  titleText: "There is a problem with this bill run",
+  titleText: "There was a problem generating this bill run",
   errorList: [
     {
-      text: "Try again later or call 0800 014 8255"
+      text: "Sorry, there has been a system error.  Please call the IT Service Desk on 0800 014 8255 and give them the error code 10."
     }
   ]
 }) }}
@@ -55,11 +55,14 @@
   <div class="govuk-grid-column-two-thirds">
 
     <section class="govuk-!-margin-bottom-6">
-      <h1 class="govuk-caption-l">Bill run 576849</h1>
-      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} two-part tariff bill run</span>
+      <h1 class="govuk-caption-l">Bill run 576849
+      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} two-part tariff bill run</span></h1>
     </section>
 
-    <div class="govuk-grid-row govuk-!-margin-bottom-9">
+  </div>
+</div>
+
+    <div class="govuk-grid-row  govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-two-thirds">
 
         <p class="govuk-body">
@@ -99,14 +102,19 @@
             <div>
         </section>
 
-      </div>
-    </div>
-
-    <a href="bill-runs" class="govuk-link">Return to bill runs</a>
-
   </div>
 </div>
 
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
 
+{{ govukButton({
+  text: "Delete bill run",
+  classes: "govuk-button--secondary",
+  href: "confirm-delete-bill-run"
+}) }}
+
+</div>
+</div>
 
 {% endblock %}
