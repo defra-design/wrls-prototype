@@ -66,9 +66,10 @@
       <div class="govuk-grid-column-two-thirds">
 
         <p class="govuk-body">
-          <strong class="table__status table__status--error table__status--l ">
-          Error
-          </strong>
+          {{govukTag({
+        text: "INVALID",
+        classes: "govuk-tag--red govuk-!-font-size-27"
+      })}}
         </p>
 
         <section class="meta-data__row">
