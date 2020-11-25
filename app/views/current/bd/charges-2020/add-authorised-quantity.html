@@ -57,9 +57,13 @@
           }
         }) %}
 
+        <div id="customQuantity-hint" class="govuk-hint">
+    Enter a number with no more than 6 decimal places. For example, 20.123456
+  </div>
+
       <div class="govuk-form-group">
         <label class="govuk-label" for="authorised-quantity">Authorised</label>
-        <input class="govuk-input govuk-input--width-10" id="authorised-quantity" name="authorisedQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
+        <input class="govuk-input govuk-input--width-10" id="authorised-quantity" aria-describedby="customQuantity-hint" name="authorisedQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
         {% if data['change'] == "true" %}
         {% set elementNumber = data['elementNumber'] %}
         value = {{[data.elements[elementNumber].authorisedQuantity]}}
@@ -70,7 +74,7 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="billable-quantity">Billable (optional)</label>
-        <input class="govuk-input govuk-input--width-10" id="billable-quantity" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
+        <input class="govuk-input govuk-input--width-10" id="billable-quantity"  aria-describedby="customQuantity-hint" name="billableQuantity" type="text" pattern="[0-9]*" spellcheck="false" inputmode="numeric"
         {% if data['change'] == "true" %}
         {% set elementNumber = data['elementNumber'] %}
         value = {{[data.elements[elementNumber].billableQuantity]}}
