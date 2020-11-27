@@ -25,8 +25,8 @@
     {% set loopNumber = loop.index0 %}
     <tr class="govuk-table__row">
       <td class="govuk-table__cell"><a href="#" class="govuk-link">{{[i.date]}}</a></td>
-      <td class="govuk-table__cell">{{[i.region]}}</td>
-      <td class="govuk-table__cell">{{[i.runType]}}</td>
+      <td class="govuk-table__cell">{{[i.region | capitalize]}}</td>
+      <td class="govuk-table__cell">{{[i.runType | capitalize]}}</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">{{[i.bills]}}</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">{{[i.value]}}</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">

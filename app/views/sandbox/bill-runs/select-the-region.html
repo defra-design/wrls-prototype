@@ -1,7 +1,7 @@
 {% extends "layouts/_QuestionPage.html" %}
 
 <!--set title-->
-{% set title = "Select bill run type" %}
+{% set title = "Select the region" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -24,28 +24,9 @@
 
 
 
-      {% set tptType %}
       {{ govukRadios({
-classes: "govuk-radios",
-idPrefix: "tptSeason",
-name: "tptSeason",
-items: [
-  {
-    value: "summer",
-    text: "Summer"
-  },
-  {
-    value: "winter and all year",
-    text: "Winter and All year"
-  }
-]
-}) }}
-      {% endset -%}
-
-
-      {{ govukRadios({
-        idPrefix: "billRunType",
-        name: "billRunType",
+        idPrefix: "region",
+        name: "region",
         fieldset: {
           legend: {
             text: [title],
@@ -55,19 +36,36 @@ items: [
         },
         items: [
           {
-            value: "annual",
-            text: "Annual"
+            value: "anglian",
+            text: "Anglian"
           },
           {
-            value: "supplementary",
-            text: "Supplementary"
+            value: "northWest",
+            text: "North West"
           },
           {
-            value: "two-part tariff",
-            text: "Two-part tariff",
-            conditional: {
-              html: tptType
-            }
+            value: "northEast",
+            text: "North East"
+          },
+          {
+            value: "midlands",
+            text: "Midlands"
+          },
+          {
+            value: "southWest",
+            text: "South West"
+          },
+          {
+            value: "southern",
+            text: "Southern"
+          },
+          {
+            value: "thames",
+            text: "Thames"
+          },
+          {
+            value: "wales",
+            text: "Wales"
           }
         ]
       }) }}

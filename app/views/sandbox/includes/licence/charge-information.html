@@ -50,7 +50,7 @@
 
               {% set status = [i.chargeStatus] %}
               {{govukTag({
-              text: status | chargeStatusText,
+              text: status | chargeStatusText | safe,
               classes: status | chargeStatusColour
             })}}
             </td>

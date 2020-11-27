@@ -3,7 +3,12 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+////SET USER TYPE
+router.post('/set-user-type', function(req, res) {
 
+res.redirect('/sandbox/');
+
+});
 
 ////SEARCH RESULTS
 router.get('/search', function(req, res) {
@@ -33,27 +38,90 @@ res.redirect('search');
 });
 
 
-router.post('/set-user-type', function(req, res) {
+//----------------------------------------------------------------
 
-  /*let chargeNew = req.session.data['createElement']
-  let change = req.session.data['change']
-  let noCharge = req.session.data['reasonNewCharge']
-  //if statement for creating the new chargeversion
-  if (change == "true") {
-    req.session.data.change = "false"
-    back = req.session.data['back'];
-    res.redirect(back);
-  }
-  else if (noCharge == "Make this licence non-chargeable") {
-    res.redirect('/archive/previous-proto/views/bd/charges-2020/add-reason');
-   }
-  else {
-    req.session.data['reasonNewSet']  = "true"
+///CREATE BILL RUN
 
-  }*/
 
-res.redirect('/sandbox/');
+/// Bill run type
+router.get('/bill-runs/select-bill-run-type', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render('sandbox/bill-runs/select-bill-run-type');
 
 });
+
+router.post('/bill-runs/select-bill-run-type', function(req, res) {
+
+res.redirect('select-the-region');
+
+});
+
+
+//Region
+router.get('/bill-runs/select-the-region', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render('sandbox/bill-runs/select-the-region');
+
+});
+
+router.post('/bill-runs/select-the-region', function(req, res) {
+
+
+      //Date
+      let today = new Date();
+      let dd = today.getDate();
+
+      let mm = today.getMonth();
+      let months = ["January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December "];
+      const yyyy = today.getFullYear();
+      if(dd<10)
+      {
+    dd=`0${dd}`;
+      }
+
+        if(mm<10)
+        {
+          mm=`0${mm}`;
+          }
+          let  monthName =  months[mm];
+        today = `${dd} ${monthName} ${yyyy}`;
+
+        //TPT tptSeason
+
+        let billRunType = req.session.data['billRunType']
+
+       if(req.session.data['billRunType'] === "two-part tariff"){
+         let billRunType = req.session.data['billRunType'] + req.session.data['tptSeason']
+       }
+
+
+      //add new bill run to the list
+      let date = today
+      let region = req.session.data['region']
+      let runType = billRunType
+      let bills = "5"
+      let value = "£7,460.00"
+      let status = "ready"
+
+      let newBillRun= {
+        date,
+        region,
+        runType,
+        bills,
+        value,
+        status
+      };
+
+      let billRuns= req.session.data['billRuns']
+      billRuns.unshift(newBillRun);
+
+res.redirect('../bill-runs');
+
+});
+
 
 module.exports = router
