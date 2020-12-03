@@ -64,9 +64,11 @@
   <div class="govuk-grid-column-full">
 
   {% include "sandbox/includes/licence/charge-information/details.html" %}
-
+  {% if status =="CHANGES" %}
+  {% include "current/includes/bd/elements-change.html" %}
+  {% else %}
   {% include "current/includes/bd/elements-no-change.html" %}
-
+  {% endif %}
   </div>
 </div>
 

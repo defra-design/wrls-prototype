@@ -11,7 +11,7 @@ res.redirect('/sandbox/');
 });
 
 ////SEARCH RESULTS
-router.get('/search', function(req, res) {
+router.get('sandbox/search', function(req, res) {
 
   req.session.data.back = req.headers.referer
 

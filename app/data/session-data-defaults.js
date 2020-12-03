@@ -425,7 +425,7 @@ module.exports = {
 
                   "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
                   "purpose":["Spray irrigation"],
-                  "absPeriod": "March to September",
+                  "absPeriod": "April to September",
 
                   "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
