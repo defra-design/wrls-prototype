@@ -115,25 +115,10 @@
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-      {% set agreements = data['agreements'] %}
-
-      <!--checking to see if this is a new licence-->
-      {% if [data.newLicence] == "false" %}
-      {% set agreementNumber = agreements.length %}
-      {% else %}
-      {% set agreementNumber = 0 %}
-      {% endif %}
+      {% set agreements = data.licences[data.ID]['agreements'] %}
 
       <!--displaying text if there are no agreements or the table if there are agreements in place-->
-      {% if agreementNumber == 0 %}
-      <h2 class="govuk-heading-l">
-
-          Agreements
-
-      </h2>
-      <p class="govuk-body"> There are no agreements set up for this licence</p>
-
-      {% else %}
+      {% if agreements.length %}
 
       <table class="govuk-table govuk-!-margin-bottom-4">
        <caption class="govuk-table__caption govuk-heading-l">Agreements</caption>
@@ -179,6 +164,15 @@
 
         </tbody>
       </table>
+
+
+      {% else %}
+      <h2 class="govuk-heading-l">
+
+          Agreements
+
+      </h2>
+      <p class="govuk-body"> There are no agreements set up for this licence</p>
 
 
       {% endif %}

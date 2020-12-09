@@ -314,6 +314,21 @@ module.exports = {
                        }
                        ],
 
+                "agreements":[{
+                        "agreement": "Two-part tariff (S127)",
+                         "agreementStartDay": "1",
+                         "agreementStartMonth": "4",
+                         "agreementStartYear": "2020",
+                         "agreementSignedStartDay": "1",
+                         "agreementSignedStartMonth": "10",
+                         "agreementSignedStartYear": "2020",
+                         "agreementEnded": "true",
+                         "agreementEndDay": "5",
+                         "agreementEndMonth": "5",
+                         "agreementEndYear": "2023",
+                         }
+                       ],
+
              },
              //licence 2
              {
@@ -353,6 +368,21 @@ module.exports = {
                          }
                        ],
 
+                "agreements":[{
+                         "agreement": "Two-part tariff (S127)",
+                         "agreementStartDay": "1",
+                         "agreementStartMonth": "4",
+                         "agreementStartYear": "2020",
+                         "agreementSignedStartDay": "1",
+                         "agreementSignedStartMonth": "10",
+                         "agreementSignedStartYear": "2020",
+                         "agreementEnded": "true",
+                         "agreementEndDay": "5",
+                         "agreementEndMonth": "5",
+                         "agreementEndYear": "2023",
+                         }
+                       ],
+
               },
               //licence 3
               {
@@ -374,6 +404,10 @@ module.exports = {
                 "chargeInformation":[
                           //newLicence
                         ],
+
+                "agreements":[
+                                //newLicence
+                      ],
 
                },
                //licence 4
@@ -413,6 +447,10 @@ module.exports = {
                            }
                          ],
 
+                    "agreements":[
+                              //No agreements
+                                ],
+
                 },
                 //licence 5
                 {
@@ -449,6 +487,21 @@ module.exports = {
                             "free": "false",
                             "reasonNewCharge": "New licence",
                             "setUpBy": "barry.crampton@madeup.com"
+                            }
+                          ],
+
+                  "agreements":[{
+                            "agreement": "Two-part tariff (S127)",
+                            "agreementStartDay": "1",
+                            "agreementStartMonth": "4",
+                            "agreementStartYear": "2020",
+                            "agreementSignedStartDay": "1",
+                            "agreementSignedStartMonth": "10",
+                            "agreementSignedStartYear": "2020",
+                            "agreementEnded": "true",
+                            "agreementEndDay": "5",
+                            "agreementEndMonth": "5",
+                            "agreementEndYear": "2023",
                             }
                           ],
 
@@ -490,6 +543,20 @@ module.exports = {
                              }
                            ],
 
+                     "agreements":[{
+                            "agreement": "Two-part tariff (S127)",
+                            "agreementStartDay": "1",
+                            "agreementStartMonth": "4",
+                            "agreementStartYear": "2020",
+                            "agreementSignedStartDay": "1",
+                            "agreementSignedStartMonth": "10",
+                            "agreementSignedStartYear": "2020",
+                            "agreementEnded": "true",
+                            "agreementEndDay": "5",
+                            "agreementEndMonth": "5",
+                            "agreementEndYear": "2023",
+                            }
+                          ],
                  },
                  //licence 7
                  {
@@ -553,7 +620,22 @@ module.exports = {
                              "reasonNewCharge": "New licence",
                              "setUpBy": "	jo.langton@madeup.com"
                            }
-                           ],
+                          ],
+
+                    "agreements":[{
+                             "agreement": "Two-part tariff (S127)",
+                             "agreementStartDay": "1",
+                             "agreementStartMonth": "4",
+                             "agreementStartYear": "2020",
+                             "agreementSignedStartDay": "1",
+                             "agreementSignedStartMonth": "10",
+                             "agreementSignedStartYear": "2020",
+                             "agreementEnded": "true",
+                             "agreementEndDay": "5",
+                             "agreementEndMonth": "5",
+                             "agreementEndYear": "2023",
+                             }
+                            ],
 
                  }
            ],
