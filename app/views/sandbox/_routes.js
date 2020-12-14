@@ -29,6 +29,8 @@ let term = req.session.data['search']
 //In the proto all billing accounts begin with BA
 if ( term.startsWith("BA") ){
   req.session.data.resultsTable = "sandbox/includes/billing-accounts-table.html"
+} else if ( term.includes("@") ) {
+  req.session.data.resultsTable = "sandbox/includes/users-table.html"
 } else {
   req.session.data.resultsTable = "sandbox/includes/licences-table.html"
 }
@@ -36,6 +38,8 @@ if ( term.startsWith("BA") ){
 res.redirect('search');
 
 });
+
+
 
 
 //----------------------------------------------------------------

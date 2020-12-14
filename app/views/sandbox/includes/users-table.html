@@ -1,0 +1,59 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set users = data['users'] %}
+
+<!--check the licence data for an exact match-->
+{% set match = "false" %}
+{% for i in users %}
+{% if i.email == data['search'] %}
+{% set loopNumber = loop.index0 %}
+{% set match = "true" %}
+{% endif %}
+{% endfor %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption">Users</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Email</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!--starting to loop through the bill runs data -->
+
+
+
+
+<!--show the match or loop through all the answers-->
+  {% if match == "true" %}
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+
+     <!--set the link to go to a specific licence-->
+      <a href="user?ID={{[loopNumber]}}" class="govuk-link">
+
+      {{[data.users[loopNumber].email]}}</a></td>
+  </tr>
+
+  {% else %}
+   {% for i in users %}
+    <!--setting the loop number -->
+    {% set loopNumber = loop.index0 %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+
+       <!--set the link to go to a specific licence-->
+        <a href="user?ID={{[loopNumber]}}" class="govuk-link">
+
+        {{[i.email]}}</a></td>
+    </tr>
+    {% endfor %}
+  {% endif %}
+
+
+
+  </tbody>
+</table>

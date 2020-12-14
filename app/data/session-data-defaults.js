@@ -662,6 +662,16 @@ module.exports = {
            }
          ],
 
+         //Users
+         "userID": "",
+
+          //billng accounts
+          "users":[{
+             "email": "gbillington@bwplc.co.uk",
+             "licences": "03/28/60/0032",
+          }
+        ],
+
 
     // Insert values here
 }
