@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% set title = "Download a charging forecast report" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h2 class="govuk-heading-l">
+      Active charge information for billed licences
+    </h2>
+
+    <p class="govuk-body">Active charge information for licences that have been billed in the current financial year.
+    </p>
+
+    {{ govukButton({
+   html: 'Download <span class="govuk-visually-hidden">Active charge information for billed licences</span> report',
+   classes: "govuk-button--secondary"
+ }) }}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">
+      Active charge information for unbilled licences
+    </h2>
+
+    <p class="govuk-body">Active charge information for licences that have not been billed in the current financial year.
+    </p>
+
+    {{ govukButton({
+html: 'Download <span class="govuk-visually-hidden">Active charge information for unbilled licences</span> report',
+classes: "govuk-button--secondary"
+}) }}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-l">
+      Charge information for revoked licences not yet credited
+    </h2>
+
+    <p class="govuk-body">Charge information for licences revoked after annual billing, but not yet credited back in the current financial year,
+    </p>
+
+    {{ govukButton({
+html: 'Download <span class="govuk-visually-hidden">Charge information for revoked licences not yet credited </span> report',
+classes: "govuk-button--secondary"
+}) }}
+
+  </div>
+</div>
+
+{% endblock %}
