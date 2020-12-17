@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 
+
+
+{% if [data.tptstatus] == "ready" %}
 {% set title = "Bill for " + data['customerName'] %}
+{% else %}
+{% set title = "Bill " + data['bill'] | default("5424234") + " <br> for " + data['customerName'] %}
+{% endif %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -45,22 +51,22 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Bill OP123344</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
+        <h1 class="govuk-caption-l">Billing account OP123344</h1>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title | safe}}</span>
 
 
       {% if [data.tptstatus] == "ready" %}
       <p class="govuk-body">
         {{govukTag({
         text: "Ready",
-        classes: "govuk-tag--green govuk-!-font-size-27"
+        classes: "govuk-tag--blue govuk-!-font-size-27"
       })}}
       </p>
       {% else %}
       <p class="govuk-body">
         {{govukTag({
         text: "Sent",
-        classes: "govuk-tag--blue govuk-!-font-size-27"
+        classes: "govuk-tag--green govuk-!-font-size-27"
       })}}
       </p>
       {% endif %}

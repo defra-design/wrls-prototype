@@ -54,14 +54,14 @@
       <p class="govuk-body">
         {{govukTag({
         text: "Ready",
-        classes: "govuk-tag--green govuk-!-font-size-27"
+        classes: "govuk-tag--blue govuk-!-font-size-27"
       })}}
       </p>
       {% else %}
       <p class="govuk-body">
         {{govukTag({
         text: "Sent",
-        classes: "govuk-tag--blue govuk-!-font-size-27"
+        classes: "govuk-tag--green govuk-!-font-size-27"
       })}}
       </p>
       {% endif %}
@@ -77,7 +77,7 @@
                 {% if data['rebill'] == "true" %}
                 20 April 2020
                 {% else %}
-                5 March 2020 
+                5 March 2020
                 {% endif %}
               </div>
             <div>

@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 
+{% if [data.status] == "ready" %}
 {% set title = "Bill for " + [data.licenceHolder] %}
+{% else %}
+{% set title = "Bill " + data['bill'] | default("5424234") + " <br> for " + [data.licenceHolder] %}
+{% endif %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -48,27 +52,27 @@
 
       <section class="govuk-!-margin-bottom-6">
         <h1 class="govuk-caption-l">Billing account L12345678S</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</span>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title | safe }}</span>
 
         {% if [data.status] == "ready" %}
         <p class="govuk-body">
           {{govukTag({
           text: "Ready",
-          classes: "govuk-tag--green govuk-!-font-size-27"
+          classes: "govuk-tag--blue govuk-!-font-size-27"
         })}}
         </p>
         {% else %}
         <p class="govuk-body">
           {{govukTag({
           text: "Sent",
-          classes: "govuk-tag--blue govuk-!-font-size-27"
+          classes: "govuk-tag--green govuk-!-font-size-27"
         })}}
         </p>
         {% endif %}
 
         <div class="govuk-grid-row govuk-!-margin-bottom-3">
           <div class="govuk-grid-column-full">
-            <section class="meta-data__row">
+            <!-- <section class="meta-data__row">
               <div class="meta-data__container">
                 <div class="meta-data__label">
                   Bill number
@@ -77,7 +81,7 @@
                   OP123344
                 </div>
               <div>
-            </section>
+            </section> -->
             <section class="meta-data__row">
               <div class="meta-data__container">
                 <div class="meta-data__label">
