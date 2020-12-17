@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + ' ' + data['type'] + ' bill run' %}
+{% set title = data['region'] + ' ' + data['type'] | lower  + ' bill run' %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
