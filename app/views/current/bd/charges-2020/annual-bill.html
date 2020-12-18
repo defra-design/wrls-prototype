@@ -49,8 +49,10 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Billing account AA1234575</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title | safe}}</span>
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-l">Billing account L12345678S</span>
+          {{ title | safe }}
+        </h1>
       </section>
 
       {% if [data.annualstatus] == "ready" %}
