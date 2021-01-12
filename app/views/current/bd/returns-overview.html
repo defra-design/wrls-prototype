@@ -3,11 +3,11 @@
 {% set title = "Returns overview" %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,335 +27,249 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "current/includes/nav/nav-bd-manage.html" %}
-  </div>
-  <!--
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
     {{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
     }) }}
-    -->
+    
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        Returns overview
-      </h1>
+    <h1 class="govuk-heading-l">
+      Returns overview
+    </h1>
 
-      <h2 class="govuk-heading-m">
-        Current cycle
-      </h2>
-
-    </div>
   </div>
+</div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <!-- table with returns with statuses -->
-      <div class="table govuk-!-margin-bottom-3">                                                <!-- a table -->
 
-        <div class="table__row--head">                                              <!-- the table head -->
-          <div class="table__cell bold-small column--40">
-            Period
-          </div>
-          <div class="table__cell bold-small column--15">
-            Returns due
-          </div>
-          <div class="table__cell bold-small column--15">
-            Licences
-          </div>
-          <div class="table__cell bold-small column--10">
-            Monthly
-          </div>
-          <div class="table__cell bold-small column--10">
-            Weekly
-          </div>
-          <div class="table__cell bold-small column--10">
-            Daily
-          </div>
-        </div>
 
-        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-          <div class="table__cell">
-            <h3 class="screen-reader-only">
-              Row 1
-            </h3>
-            <h4 class="table__context">
-              Period
-            </h4>
-            <a href="returns-statistics">
-              April 2018 to October 2018
-            </a>
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Returns due
-            </h4>
-            427
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Licences
-            </h4>
-            362
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Monthly
-            </h4>
-            304
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Weekly
-            </h4>
-            108
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Daily
-            </h4>
-            15
-          </div>
-        </div>
 
-      </div>
-    </div>
+    {{ govukTable({
+        caption: "Current cycle",
+        captionClasses: "govuk-!-font-size-24",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Period",
+            classes: "govuk-!-width-one-quarter"
+          },
+          {
+            text: "Returns due",
+            format: "numeric"
+          },
+          {
+            text: "Licences",
+            format: "numeric"
+          },
+          {
+            text: "Monthly",
+            format: "numeric"
+          },
+          {
+            text: "Weekly",
+            format: "numeric"
+          },
+          {
+            text: "Daily",
+            format: "numeric"
+          },
+          {
+            text: "Actions"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "1 April 2019 to 31 March 2020",
+              classes: "govuk-!-width-one-quarter"
+            },
+            {
+              text: "427",
+              format: "numeric"
+            },
+            {
+              text: "362",
+              format: "numeric"
+            },
+            {
+              text: "304",
+              format: "numeric"
+            },
+            {
+              text: "108",
+              format: "numeric"
+            },
+            {
+              text: "15",
+              format: "numeric"
+            },
+            {
+              html: '<a class="govuk-link" href="returns-overview-report-download?returnsCycle=1%20April%202019%20to%2031%20March%202020">
+                Download report<span class="govuk-visually-hidden"> for 1 April 2019 to 31 March 2020</span>
+              </a>'
+            }
+          ]
+        ]
+      }) }}
+
   </div>
+</div>
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-6">
-    <div class="govuk-grid-column-two-thirds">
 
-      <p>
-        <a href="" class="wrls-faux-button">
-          Download CSV file
-        </a>
-      </p>
 
-    </div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    {{ govukTable({
+        caption: "Previous cycles",
+        captionClasses: "govuk-!-font-size-24",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Period",
+            classes: "govuk-!-width-one-quarter"
+          },
+          {
+            text: "Returns due",
+            format: "numeric"
+          },
+          {
+            text: "Licences",
+            format: "numeric"
+          },
+          {
+            text: "Monthly",
+            format: "numeric"
+          },
+          {
+            text: "Weekly",
+            format: "numeric"
+          },
+          {
+            text: "Daily",
+            format: "numeric"
+          },
+          {
+            text: "Actions"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "1 November 2018 to 31 October 2019",
+              classes: "govuk-!-width-one-quarter"
+            },
+            {
+              text: "5463",
+              format: "numeric"
+            },
+            {
+              text: "5037",
+              format: "numeric"
+            },
+            {
+              text: "4945",
+              format: "numeric"
+            },
+            {
+              text: "510",
+              format: "numeric"
+            },
+            {
+              text: "56",
+              format: "numeric"
+            },
+            {
+              html: '<a class="govuk-link" href="returns-overview-report-download?returnsCycle=1%20November%202018%20to%2031%20October%202019">
+                Download report<span class="govuk-visually-hidden"> for 1 November 2018 to 31 October 2019</span>
+              </a>'
+            }
+          ],
+          [
+            {
+              text: "1 April 2018 to 31 March 2019",
+              classes: "govuk-!-width-one-quarter"
+            },
+            {
+              text: "3288",
+              format: "numeric"
+            },
+            {
+              text: "8475",
+              format: "numeric"
+            },
+            {
+              text: "6166",
+              format: "numeric"
+            },
+            {
+              text: "2203",
+              format: "numeric"
+            },
+            {
+              text: "28",
+              format: "numeric"
+            },
+            {
+              html: '<a class="govuk-link" href="returns-overview-report-download?returnsCycle=1%20April%202018%20to%2031%20March%202019">
+                Download report<span class="govuk-visually-hidden"> for 1 April 2018 to 31 March 2019</span>
+              </a>'
+            }
+          ],
+          [
+            {
+              text: "1 November 2017 to 31 October 2018",
+              classes: "govuk-!-width-one-quarter"
+            },
+            {
+              text: "1870",
+              format: "numeric"
+            },
+            {
+              text: "5444",
+              format: "numeric"
+            },
+            {
+              text: "5339",
+              format: "numeric"
+            },
+            {
+              text: "566",
+              format: "numeric"
+            },
+            {
+              text: "57",
+              format: "numeric"
+            },
+            {
+              html: '<a class="govuk-link" href="returns-overview-report-download?returnsCycle=1%20November%202017%20to%2031%20October%202018">
+                Download report<span class="govuk-visually-hidden"> for 1 November 2017 to 31 October 2018</span>
+              </a>'
+            }
+          ]
+        ]
+      }) }}
+
+
   </div>
+</div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h2 class="govuk-heading-m">
-        Previous cycles
-      </h2>
-
-    </div>
-  </div>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <!-- table with returns with statuses -->
-      <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
-        <div class="table__row--head">                                              <!-- the table head -->
-          <div class="table__cell bold-small column--40">
-            Period
-          </div>
-          <div class="table__cell bold-small column--15">
-            Returns due
-          </div>
-          <div class="table__cell bold-small column--15">
-            Licences
-          </div>
-          <div class="table__cell bold-small column--10">
-            Monthly
-          </div>
-          <div class="table__cell bold-small column--10">
-            Weekly
-          </div>
-          <div class="table__cell bold-small column--10">
-            Daily
-          </div>
-        </div>
-
-        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
-          <div class="table__cell">
-            <h3 class="screen-reader-only">
-              Row 1
-            </h3>
-            <h4 class="table__context">
-              Period
-            </h4>
-            <a href="returns-statistics">
-              April 2017 to March 2018
-            </a>
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Returns due
-            </h4>
-            1,527
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Licences
-            </h4>
-            502
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Monthly
-            </h4>
-            304
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Weekly
-            </h4>
-            108
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Daily
-            </h4>
-            15
-          </div>
-        </div>
-
-        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
-          <div class="table__cell">
-            <h3 class="screen-reader-only">
-              Row 2
-            </h3>
-            <h4 class="table__context">
-              Period
-            </h4>
-            <a href="returns-statistics">
-              April 2017 to October 2017
-            </a>
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Returns due
-            </h4>
-            378
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Licences
-            </h4>
-            362
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Monthly
-            </h4>
-            271
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Weekly
-            </h4>
-            101
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Daily
-            </h4>
-            6
-          </div>
-        </div>
-
-        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
-          <div class="table__cell">
-            <h3 class="screen-reader-only">
-              Row 3
-            </h3>
-            <h4 class="table__context">
-              Period
-            </h4>
-            <a href="returns-statistics">
-              April 2016 to March 2017
-            </a>
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Returns due
-            </h4>
-            1,424
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Licences
-            </h4>
-            709
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Monthly
-            </h4>
-            881
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Weekly
-            </h4>
-            402
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Daily
-            </h4>
-            141
-          </div>
-        </div>
-
-        <div class="table__row govuk-!-margin-bottom-6">                                      <!-- a data row starts -->
-          <div class="table__cell">
-            <h3 class="screen-reader-only">
-              Row 4
-            </h3>
-            <h4 class="table__context">
-              Period
-            </h4>
-            <a href="returns-statistics">
-              April 2016 to October 2016
-            </a>
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Returns due
-            </h4>
-            364
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Licences
-            </h4>
-            355
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Monthly
-            </h4>
-            302
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Weekly
-            </h4>
-            44
-          </div>
-          <div class="table__cell">
-            <h4 class="table__context">
-              Daily
-            </h4>
-            18
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
 
 {% endblock %}
