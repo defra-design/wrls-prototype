@@ -414,7 +414,7 @@ module.exports = {
                {
                  "number": "03/28/60/0035",
                  "name": "George Furrow",
-                 "holder": "Big Smith Farms Ltd",
+                 "holder": "Bottled Water Plc",
                  "startDate": "1 June 1985",
                  "endDate": "15 September 2022",
                  "expired": "false",
@@ -456,7 +456,7 @@ module.exports = {
                 {
                   "number": "03/28/60/0033",
                   "name": "Dale Barrow",
-                  "holder": "Big Smith Farms Ltd",
+                  "holder": "Bottled Water Plc",
                   "startDate": "1 September 1990",
                   "endDate": "15 September 2022",
                   "expired": "false",
@@ -641,36 +641,161 @@ module.exports = {
            ],
 
           //Billinga account ID
-          "BAID": "",
+          "BAID": "0",
 
            //billng accounts
            "billingAccounts":[{
               "number": "BA1234443S",
               "customer": "Bottled Water Plc",
-              "billingContact": "Sam Burridge Accountants LLP",
-              "address1": "15 Ward Street",
-              "city": "Bath",
-              "postcode": "BA1 5EH",
+              "billingContact": "",
            },
            {
               "number": "BA4444436C",
-              "customer": "Big Smith Farms Ltd",
-              "billingContact": "Sam Burridge Accountants LLP",
-              "address1": "15 Ward Street",
-              "city": "Bath",
-              "postcode": "BA1 5EH",
-           }
+              "customer": "Robin Vithlhem-Smith",
+              "billingContact": "",
+           },
+           {
+              "number": "BA333339A",
+              "customer": "Irene Briton",
+              "billingContact": "",
+           },
+           {
+              "number": "BA839340P",
+              "customer": "D.B. Beecham-Smith",
+              "billingContact": "",
+           },
          ],
 
          //Users
-         "userID": "",
+         "userID": "0",
 
-          //billng accounts
+          //Users
           "users":[{
              "email": "gbillington@bwplc.co.uk",
              "licences": "03/28/60/0032",
           }
         ],
+
+        //Customer/Company
+        "customerID": "0",
+
+         //Customer/Company
+         "customers":[{
+            "name": "Bottled Water Plc",
+         },
+          {
+            "name": "Big Smith Farms Ltd",
+          },
+           {
+             "name": "Irene Briton",
+           },
+            {
+              "name": "Robin Vithlhem-Smith",
+            },
+             {
+               "name": "D.B. Beecham-Smith",
+             }
+       ],
+
+
+       //contacts
+       "contactID": "0",
+
+       "contacts": [{
+         "name": "Jim Smith",
+         "email": "not set",
+         "role": "Licence holder",
+         "customer": "Big Smith Farms Ltd",
+       },
+       {
+         "name": "Joanna Southall",
+         "email": "not set",
+         "role": "Returns",
+         "customer": "Big Smith Farms Ltd",
+       },
+       {
+         "name": "Geoffrey Billington",
+         "email": "not set",
+         "role": "Returns",
+         "customer": "Bottled Water Plc",
+       },
+       {
+         "name": "Head office",
+         "email": "admin@bwplc.co.uk",
+         "role": "Licence holder",
+         "customer": "Bottled Water Plc",
+       },
+       {
+         "name": "Irene Briton",
+         "email": "Not set",
+         "role": "Licence holder,Billing,Returns",
+         "customer": "Irene Briton",
+       },
+       {
+         "name": "Robin Vithlhem-Smith",
+         "email": "Not set",
+         "role": "Licence holder,Billing,Returns",
+         "customer": "Robin Vithlhem-Smith",
+       },
+       {
+         "name": "D.B. Beecham-Smith",
+         "email": "Not set",
+         "role": "Licence holder,Billing,Returns",
+         "customer": "D.B. Beecham-Smith",
+       }
+     ],
+
+       //addresses
+       "addressID": "0",
+
+       "addresses": [{
+         "address1": "15 Ward Street",
+         "city": "Bath",
+         "postcode": "BA1 5EH",
+         "role": "Licence holder,Returns",
+         "customer": "Bottled Water Plc",
+       },
+       {
+         "address1": "67 Gainsborough",
+         "city": "Poole",
+         "postcode": "BH33 1QE",
+         "role": "Billing",
+         "customer": "Bottled Water Plc",
+       },
+       {
+         "address1": "17 Hampshire way",
+         "city": "Portsmouth",
+         "postcode": "PO1 5YP",
+         "role": "Licence holder,Returns",
+         "customer": "Big Smith Farms Ltd",
+       },
+       {
+         "address1": "1134 New road",
+         "city": "Liverpool",
+         "postcode": "L17 6RB",
+         "role": "Licence holder,Billing,Returns",
+         "customer": "Irene Briton",
+       },
+       {
+         "address1": "73 Old road",
+         "city": "London",
+         "postcode": "E16 8VB",
+         "role": "Licence holder,Billing,Returns",
+         "customer": "Robin Vithlhem-Smith",
+       },
+       {
+         "address1": "500 Long street",
+         "city": "Derby",
+         "postcode": "D1 2RR",
+         "role": "Licence holder,Billing,Returns",
+         "customer": "D.B. Beecham-Smith",
+       }
+
+
+
+
+
+     ],
 
 
     // Insert values here

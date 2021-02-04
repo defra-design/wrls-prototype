@@ -11,21 +11,36 @@ Billing address
 {% set licenceHolder = [data.billingAccounts[BAID].customer] %}
 {% set billingContact = [data.billingAccounts[BAID].billingContact] %}
 
-{% if data['newFAO'] == "Yes" %}
-FAO {{data['fao']}}<br>
+
+
+<!--getting the address data-->
+{% set addresses = data['addresses'] %}
+{% for i in addresses %}
+<!--set the index of the address-->
+{% set loopNumber = loop.index0 %}
+
+<!--split the address role from comma separted string into an array and check for the billing role-->
+{% set roleArr = i.role.split(",") %}
+{% for i in roleArr %}
+{% if i === "Billing" %}
+
+<!--If the billing role is against the address split the customer name comma separated string into an array-->
+{% set array = addresses[loopNumber].customer.split(",") %}
+{% for i in array %}
+<!--Checking the customer name matches the address-->
+{% if i == data.customers[data.customerID]['name']  %}
+
+{{[data.addresses[loopNumber].address1]}}<br>
+{{[data.addresses[loopNumber].city]}}<br>
+{{[data.addresses[loopNumber].postcode]}}
+
 {% endif %}
-
-{% if licenceHolder == billingContact %}
-{{[data.billingAccounts[BAID].customer]}}<br>
-{% else %}
-{{licenceHolder}}<br>
-C/o {{billingContact}}<br>
+{% endfor %}
 {% endif %}
+{% endfor %}
+{% endfor %}
 
 
-{{[data.billingAccounts[BAID].address1]}}<br>
-{{[data.billingAccounts[BAID].city]}}<br>
-{{[data.billingAccounts[BAID].postcode]}}
 </p>
 
 

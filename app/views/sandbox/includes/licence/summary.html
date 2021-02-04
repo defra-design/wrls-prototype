@@ -17,7 +17,17 @@
     </dt>
     <dd class="govuk-summary-list__value">
       {{[data.licences[data.ID].holder]}}
-      <br><a href="licence/contacts">View contact details</a>
+      <br><a class="govuk-link" href="licence/contacts">View contact details</a>
+
+     <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
+     {% set loopNumber = "" %}
+     {% for i in data['customers'] %}
+     {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
+     {% set loopNumber = loop.index0 %}
+     {% endif %}
+     {% endfor %}
+
+      <br><a class="govuk-link" href="customer?customerID={{loopNumber}}">View customer details</a>
     </dd>
 
   </div>

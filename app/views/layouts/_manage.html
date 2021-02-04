@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block header %}
+
+<!--header-->
+{% include "current/includes/head.html" %}
+
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+
+<!-- phase banner -->
+{% include "sandbox/includes/nav/phase-banner.html" %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  {% include "sandbox/includes/nav/manage/nav-manage.html" %}
+</div>
+
+
+{% block breadcrumbs %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- start of service specific block -->
+    {% block service %}Text goes here, override this by overriding the block{% endblock %}
+    <!-- end service specific block-->
+
+
+{% endblock %}

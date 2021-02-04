@@ -1,0 +1,97 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = [data.customers[data.customerID]['name']] + " customer summary" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Customer</span>
+      {{data.customers[data.customerID]['name']}}
+    </h1>
+  </div>
+</div>
+
+
+<!--<div class="govuk-!-margin-bottom-6">
+  <p class="govuk-body">Registered to <a href="user-status" class="no-break">admin@{{data['customerName'] | lower | replaceWS}}.com</a></p>
+</div> -->
+
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+
+  <h2 class="govuk-tabs__title">
+    Licence views
+  </h2>
+
+  <!-- tab navigation -->
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#licences">
+        Licences
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#billing-accounts">
+        Billing accounts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#contacts">
+        Contacts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab" href="#returns">
+        Addresses
+      </a>
+    </li>
+  </ul>
+
+  <!-- tab 1 -->
+  <section class="govuk-tabs__panel" id="licences">
+
+
+
+    <!-- licences -->
+    {% include "sandbox/includes/customer/licences-table.html" %}
+
+
+  </section>
+
+  <!-- tab 2 -->
+  <section class="govuk-tabs__panel" id="billing-accounts">
+
+    <!-- billing accounts table -->
+    {% include "sandbox/includes/customer/billing-accounts-table.html" %}
+
+  </section>
+
+  <!-- tab 3 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contacts">
+
+    <!-- contacts table -->
+    {% include "sandbox/includes/customer/contacts-table.html" %}
+
+  </section>
+
+  <!-- tab 4 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
+
+    <!-- contacts table -->
+    {% include "sandbox/includes/customer/addresses-table.html" %}
+
+  </section>
+
+</div>
+{% endblock %}

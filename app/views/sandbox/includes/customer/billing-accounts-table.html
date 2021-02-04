@@ -1,0 +1,63 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-heading-l">Billing accounts</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Account number</th>
+      <th scope="col" class="govuk-table__header">Address</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+    {% set BA = data['billingAccounts'] %}
+
+    <!--check the billing accounts data for an exact match on the customer name-->
+    {% for i in BA %}
+    {% if i.customer == data.customers[data.customerID]['name'] %}
+    {% set loopNumber = loop.index0 %}
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+
+         <!--set the link to go to a specific licence-->
+          <a href="billing-account?BAID={{[loopNumber]}}" class="govuk-link">
+
+          {{[data.billingAccounts[loopNumber].number]}}</a></td>
+
+          <!--getting the address data-->
+          {% set addresses = data['addresses'] %}
+          {% for i in addresses %}
+          <!--set the index of the address-->
+          {% set loopNumber = loop.index0 %}
+
+          <!--split the address role from comma separted string into an array and check for the billing role-->
+          {% set roleArr = i.role.split(",") %}
+          {% for i in roleArr %}
+          {% if i === "Billing" %}
+
+          <!--If the billing role is against the address split the customer name comma separated string into an array-->
+          {% set array = addresses[loopNumber].customer.split(",") %}
+          {% for i in array %}
+          <!--Checking the customer name matches the address-->
+          {% if i == data.customers[data.customerID]['name']  %}
+
+        <td class="govuk-table__cell">{{[data.addresses[loopNumber].address1]}}<br>{{[data.addresses[loopNumber].city]}}<br>{{[data.addresses[loopNumber].postcode]}}</td>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+      </tr>
+
+          {% endif %}
+    {% endfor %}
+
+
+
+
+  </tbody>
+</table>

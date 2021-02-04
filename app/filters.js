@@ -116,7 +116,11 @@ module.exports = function (env) {
           }
 
 
-
+          //show only results for a certain customer "| customer"
+          filters.customer = function(e) {
+  if (e == "Bottled Water Plc")
+    $(this).hide();
+          }
 
 
 
