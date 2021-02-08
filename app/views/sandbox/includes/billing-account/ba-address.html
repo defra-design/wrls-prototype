@@ -4,9 +4,7 @@
 <!--getting the bill runs data-->
 {% set BA = data['billingAccounts'] %}
 
-<h2 class="govuk-heading-m">
-Billing address
-</h2>
+
 <p class="govuk-body">
 {% set licenceHolder = [data.billingAccounts[BAID].customer] %}
 {% set billingContact = [data.billingAccounts[BAID].billingContact] %}
@@ -27,8 +25,9 @@ Billing address
 <!--If the billing role is against the address split the customer name comma separated string into an array-->
 {% set array = addresses[loopNumber].customer.split(",") %}
 {% for i in array %}
+
 <!--Checking the customer name matches the address-->
-{% if i == data.customers[data.customerID]['name']  %}
+{% if i == data.licences[data.ID]['holder']  %}
 
 {{[data.addresses[loopNumber].address1]}}<br>
 {{[data.addresses[loopNumber].city]}}<br>

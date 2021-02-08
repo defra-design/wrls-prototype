@@ -1,0 +1,147 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Contact details" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }}
+      </h1>
+
+      </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m">Customer</h2>
+
+      <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
+      {% set loopNumber = "" %}
+      {% for i in data['customers'] %}
+      {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
+      {% set loopNumber = loop.index0 %}
+      {% endif %}
+      {% endfor %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: [data.licences[data.ID].holder]
+            },
+            actions: {
+              items: [
+                {
+                  href: "../customer?customerID=" + loopNumber,
+                  text: "View",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      </div></div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+      <h2 class="govuk-heading-m">Addresses</h2>
+
+
+      <dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Licence holder
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <!--getting the address data-->
+      {% set addresses = data['addresses'] %}
+      {% for i in addresses %}
+      <!--set the index of the address-->
+      {% set loopNumber = loop.index0 %}
+
+      <!--split the address role from comma separted string into an array and check for the billing role-->
+      {% set roleArr = i.role.split(",") %}
+      {% for i in roleArr %}
+      {% if i === "Licence holder" %}
+
+      <!--If the billing role is against the address split the customer name comma separated string into an array-->
+      {% set array = addresses[loopNumber].customer.split(",") %}
+      {% for i in array %}
+
+      <!--Checking the customer name matches the address-->
+      {% if i == data.licences[data.ID]['holder']  %}
+
+      <!--display the address-->
+      {{[data.addresses[loopNumber].address1]}}<br>
+      {{[data.addresses[loopNumber].city]}}<br>
+      {{[data.addresses[loopNumber].postcode]}}
+
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </dd>
+
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Billing
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {% include "sandbox/includes/billing-account/ba-address.html" %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+
+      {% set BA = data['billingAccounts'] %}
+
+      <!--check the billing accounts data for an exact match on the customer name-->
+      {% for i in BA %}
+      {% if i.customer == data.licences[data.ID]['holder']  %}
+      {% set loopNumber = loop.index0 %}
+
+     <a class="govuk-link" href="/sandbox/billing-account?BAID={{loop.index0}}">
+       Change<span class="govuk-visually-hidden"> date of birth</span>
+     </a>
+
+     {% endif %}
+     {% endfor %}
+    </dd>
+  </div>
+
+</dl>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

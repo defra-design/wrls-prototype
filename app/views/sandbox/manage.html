@@ -1,0 +1,78 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Manage reports and notices" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+
+<!--header without searchbar-->
+{% include "sandbox/includes/nav/header.html" %}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">
+      View reports
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="#">
+          Notices
+        </a>
+      </li>
+      <!-- <li>
+        <a class="govuk-link" href="expired-licences">
+          Expired licences
+        </a>
+      </li> -->
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Send flow notices
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="#">
+          Restriction
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#">
+          Hands-off flow
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#">
+          Resume
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+
+</main>
+
+</div>
+{% endblock %}
