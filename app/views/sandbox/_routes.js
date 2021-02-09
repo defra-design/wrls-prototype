@@ -62,33 +62,37 @@ router.post('/customer/add/what-contact-details-do-you-want-to-add', function(re
   req.session.data.emailDetails = "Not set"
   }
 
-res.redirect('use-this-email-address-for-water-abstraction-alerts');
+res.redirect('is-this-the-contact-for-water-abstraction-alerts');
 
 });
 
 
 ///Do they want water abstraction alerts
-router.get('sandbox/customer/add/use-this-email-address-for-water-abstraction-alerts', function(req, res) {
+router.get('sandbox/customer/add/is-this-the-contact-for-water-abstraction-alerts', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('sandbox/customer/add/what-contact-details-do-you-want-to-add');
+  res.render('sandbox/customer/add/is-this-the-contact-for-water-abstraction-alerts');
 
 });
 
-router.post('/customer/add/use-this-email-address-for-water-abstraction-alerts', function(req, res) {
+router.post('/customer/add/is-this-the-contact-for-water-abstraction-alerts', function(req, res) {
 
  //if they've said yes to water abstraction alerts add the role
  if (req.session.data['WAA'] === "yes") {
      req.session.data.WAA = "Water Abstraction Alerts"
- } else {
+ }
+
+ else {
      req.session.data.WAA = ""
  }
 
  //if they haven't added a name leave the flow other wise search for the name to see if it matches a contact
 if (req.session.data['name-details'].length){
   res.redirect('does-this-contact-already-exist');
-} else {
+}
+
+else {
 
   let contacts = req.session.data['contacts']
   req.session.data.contactID = contacts.length
