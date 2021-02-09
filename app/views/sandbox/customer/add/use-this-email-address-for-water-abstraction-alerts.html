@@ -3,7 +3,7 @@
 <!--set page title-->
 {% set title = [data.customers[data.customerID]['name']] + " - Use this email address for water abstraction alerts?" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Use this email address for water abstraction alerts?" %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Is this the contact for water abstraction alerts?" %}
 
 
 
@@ -40,7 +40,7 @@
         text: "Email address"
       },
       hint: {
-        text: "You need to add an email address for them to receive a water abstraction alert"
+        text: "You must add an email address for this contact to get water abstraction alerts"
       }
       }) }}
       {% endset -%}
