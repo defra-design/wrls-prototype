@@ -1,0 +1,83 @@
+<!--setting the loop number to 0-->
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-heading-l">Contact details for each licence number you entered</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Licence</th>
+      <th scope="col" class="govuk-table__header">Licence holder</th>
+      <th scope="col" class="govuk-table__header">Address</th>
+      <th scope="col" class="govuk-table__header">Email address</th>
+      <th scope="col" class="govuk-table__header">Action</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+<!--getting the licence data-->
+{% set licences = data['licences'] %}
+{% for i in licences %}
+
+{% set licencList = [] %}
+{% set licenceList = data['licenceList'].split(',') %}
+
+
+{% if i.number in licenceList %}
+{% set loopNumber = loop.index0 %}
+
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+
+      {{[data.licences[loopNumber].number]}}</td>
+    <td class="govuk-table__cell">{{[data.licences[loopNumber].holder]}}</td>
+
+
+
+    {% set addresses = data['addresses'] %}
+    {% for i in addresses %}
+    {% if i.customer == [data.licences[loopNumber].holder] %}
+
+    <!--split the address role from comma separted string into an array and check for the billing role-->
+    {% set roleArr = i.role.split(",") %}
+    {% for i in roleArr %}
+    {% if i === "Licence holder" %}
+
+    {% set loopNumber = loop.index0 %}
+
+
+        <td class="govuk-table__cell">{{[data.addresses[loopNumber].address1]}}<br>{{[data.addresses[loopNumber].city]}}<br>{{[data.addresses[loopNumber].postcode]}}</td>
+
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% endfor %}
+
+     <td class="govuk-table__cell">
+      <!--getting the contacts data-->
+      {% set contacts = data['contacts'] %}
+      {% for i in contacts %}
+      <!--Splitting the customer data in the contact in to an array-->
+      {% if i.customer == [data.licences[loopNumber].holder] %}
+      {% if i.email == "Not set" %}
+      {% else %}
+      {% set loopNumber = loop.index0 %}
+
+      {{[data.contacts[loopNumber].email]}}<br>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      </td>
+
+      <td class="govuk-table__cell">
+        Remove
+        </td>
+
+  </tr>
+
+  {% endif %}
+  {% endfor %}
+
+
+
+  </tbody>
+</table>

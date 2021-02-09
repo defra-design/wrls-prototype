@@ -26,7 +26,7 @@
 {% if [data.licences[data.ID].expired] == "true" %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
-    {% include "sandbox/includes/licence/expired-banner.html" %}
+    {% include "sandbox/_includes/licence/expired-banner.html" %}
   </div>
 </div>
 {% endif %}
@@ -83,7 +83,7 @@
     </h2>
 
     <!--Licence summary -->
-    {% include "sandbox/includes/licence/summary.html" %}
+    {% include "sandbox/_includes/licence/summary.html" %}
 
   </section>
 
@@ -133,7 +133,7 @@
 
     <section>
 
-      {% include "sandbox/includes/licence/bills.html" %}
+      {% include "sandbox/_includes/licence/bills.html" %}
 
     </section>
 
@@ -148,7 +148,7 @@
 
     <section>
 
-      {% include "sandbox/includes/licence/charge-information.html" %}
+      {% include "sandbox/_includes/licence/charge-information.html" %}
 
     </section>
 

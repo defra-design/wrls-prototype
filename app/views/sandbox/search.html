@@ -10,7 +10,7 @@
 {% block header %}
 
 <!--header without searchbar-->
-{% include "sandbox/includes/nav/header.html" %}
+{% include "sandbox/_includes/nav/header.html" %}
 
 {% endblock %}
 
@@ -49,7 +49,7 @@
   <div class="govuk-grid-column-full">
 
     <!-- results table -->
-    {% include data['resultsTable'] | default("sandbox/includes/licences-table.html") %}
+    {% include data['resultsTable'] | default("sandbox/_includes/licences-table.html") %}
 
 
   </div>
