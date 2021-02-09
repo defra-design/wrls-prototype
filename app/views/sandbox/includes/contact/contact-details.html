@@ -1,0 +1,25 @@
+
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Name",
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        text: [data.contacts[data.contactID].name]
+      }
+    },
+    {
+      classes: 'govuk-summary-list--no-border',
+      key: {
+        text: "Email"
+      },
+      value: {
+        text: [data.contacts[data.contactID].email],
+        classes: 'govuk-!-width-one-third'
+      }
+    }
+  ]
+}) }}

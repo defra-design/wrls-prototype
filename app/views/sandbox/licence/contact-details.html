@@ -11,8 +11,8 @@
 {% block service %}
 
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
 
 
   <h1 class="govuk-heading-l">
@@ -23,10 +23,10 @@
       </div>
       </div>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-row govuk-!-margin-bottom-9">
+        <div class="govuk-grid-column-full">
 
-      <h2 class="govuk-heading-m">Customer</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Customer</h2>
 
       <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
       {% set loopNumber = "" %}
@@ -39,6 +39,7 @@
       {{ govukSummaryList({
         rows: [
           {
+            
             key: {
               text: "Name"
             },
@@ -59,11 +60,11 @@
       }) }}
 
       </div></div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-row ">
+        <div class="govuk-grid-column-full">
 
 
-      <h2 class="govuk-heading-m">Addresses</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Addresses</h2>
 
 
       <dl class="govuk-summary-list">
@@ -106,7 +107,7 @@
     </dd>
   </div>
 
-  <div class="govuk-summary-list__row">
+  <div class="govuk-summary-list__row govuk-summary-list--no-border">
     <dt class="govuk-summary-list__key">
       Billing
     </dt>

@@ -1,0 +1,90 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Use this email address for water abstraction alerts?" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Use this email address for water abstraction alerts?" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+
+
+      {% if data['emailDetails'] === "Not set" %}
+
+
+
+      {% set emailHtml %}
+      {{ govukInput({
+      id: "emailDetails",
+      name: "emailDetails",
+      type: "email",
+      spellcheck: false,
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Email address"
+      },
+      hint: {
+        text: "You need to add an email address for them to receive a water abstraction alert"
+      }
+      }) }}
+      {% endset -%}
+
+      {% endif %}
+
+
+      {{ govukRadios({
+  idPrefix: "WAA",
+  name: "WAA",
+  fieldset: {
+    legend: {
+      text: [qTitle]|safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: emailHtml
+      }
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

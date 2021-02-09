@@ -80,8 +80,17 @@
   <!-- tab 3 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contacts">
 
+
+
     <!-- contacts table -->
     {% include "sandbox/includes/customer/contacts-table.html" %}
+
+    <!--add a contact-->
+    {{ govukButton({
+    text: "Add a contact",
+    href: "customer/add/what-contact-details-do-you-want-to-add"
+    }) }}
+
 
   </section>
 

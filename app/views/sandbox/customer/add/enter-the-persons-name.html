@@ -1,0 +1,107 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Enter any extra details for the persons name" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter any extra details for the persons name" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+   <!--split the name details string into an array-->
+   {% set name = [] %}
+   {% set name = data['name-details'].split(" ") %}
+
+      {% call govukFieldset({
+  legend: {
+    text: [qTitle] |safe,
+    classes: "govuk-fieldset__legend--l",
+    isPageHeading: true
+  }
+}) %}
+
+      {{ govukInput({
+        label: {
+          text: "Title (optional)"
+        },
+        classes: "govuk-input--width-20",
+        id: "title",
+        name: "title"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "First name"
+        },
+        classes: "govuk-input--width-20",
+        id: "firstName",
+        name: "firstName",
+        value: name[0]
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Middle initials (optional)"
+        },
+        classes: "govuk-input--width-5",
+        id: "middleInitials",
+        name: "middleInitials"
+      }) }}
+
+
+      {{ govukInput({
+        label: {
+        text: "Last name"
+        },
+        classes: "govuk-input--width-20",
+        id: "lastName",
+        name: "lastName",
+        value: name[1]
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Suffix (optional)"
+        },
+        classes: "govuk-input--width-5",
+        id: "suffix",
+        name: "suffix"
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Department (optional)"
+        },
+        classes: "govuk-input--width-20",
+        id: "department",
+        name: "department"
+      }) }}
+
+{% endcall %}
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

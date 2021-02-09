@@ -703,13 +703,13 @@ module.exports = {
 
        "contacts": [{
          "name": "Jim Smith",
-         "email": "not set",
-         "role": "Licence holder",
+         "email": "Not set",
+         "role": "Licence holder,Water abstraction alerts",
          "customer": "Big Smith Farms Ltd",
        },
        {
          "name": "Joanna Southall",
-         "email": "not set",
+         "email": "Not set",
          "role": "Returns",
          "customer": "Big Smith Farms Ltd",
        },
@@ -722,25 +722,25 @@ module.exports = {
        {
          "name": "Head office",
          "email": "admin@bwplc.co.uk",
-         "role": "Licence holder,Billing",
+         "role": "Licence holder,Billing,Water abstraction alerts",
          "customer": "Bottled Water Plc",
        },
        {
          "name": "Irene Briton",
          "email": "Not set",
-         "role": "Licence holder,Billing,Returns",
+         "role": "Licence holder,Billing,Returns,Water abstraction alerts",
          "customer": "Irene Briton",
        },
        {
          "name": "Robin Vithlhem-Smith",
          "email": "Not set",
-         "role": "Licence holder,Billing,Returns",
+         "role": "Licence holder,Billing,Returns,Water abstraction alerts",
          "customer": "Robin Vithlhem-Smith",
        },
        {
          "name": "D.B. Beecham-Smith",
          "email": "Not set",
-         "role": "Licence holder,Billing,Returns",
+         "role": "Licence holder,Billing,Returns,Water abstraction alerts",
          "customer": "D.B. Beecham-Smith",
        }
      ],

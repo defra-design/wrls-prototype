@@ -1,0 +1,28 @@
+
+
+{{ govukTable({
+  caption: "Contact for",
+  captionClasses: "govuk-heading-m",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Customer",
+      classes: 'govuk-!-width-one-third'
+    },
+    {
+      text: "Role"
+    }
+  ],
+  rows: [
+    [
+      {
+        html:  "<a class='govuk-link' href='customer#contacts' >" + [data.contacts[data.contactID].customer] + "</a>",
+        classes: 'govuk-!-width-one-third govuk-table__cell--no-border'
+      },
+      {
+        text: data.contacts[data.contactID]['role'] | replaceComma | striptags(true) | escape | nl2br,
+        classes: 'govuk-table__cell--no-border'
+      }
+    ]
+  ]
+}) }}

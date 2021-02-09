@@ -1,0 +1,81 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title =  "Set up a contact for " + [data.customers[data.customerID]['name']] %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Set up a contact for " + [data.customers[data.customerID]['name']] %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+
+
+      {% set departmentHtml %}
+      {{ govukInput({
+      id: "department-details",
+      name: "department-details",
+      type: "text",
+      spellcheck: false,
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Department name"
+      }
+      }) }}
+      {% endset -%}
+
+
+      {{ govukRadios({
+  idPrefix: "person-or-department",
+  name: "person-or-department",
+  fieldset: {
+    legend: {
+      text: [qTitle]|safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+
+  items: [
+    {
+      value: "person",
+      text: "Add a new person"
+    },
+    {
+      value: "department",
+      text: "Add a new department",
+      conditional: {
+        html: departmentHtml
+      }
+    }
+  ]
+}) }}
+
+
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

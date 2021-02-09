@@ -11,6 +11,7 @@
       <th scope="col" class="govuk-table__header">Name</th>
       <th scope="col" class="govuk-table__header">Email</th>
       <th scope="col" class="govuk-table__header">Role</th>
+      <th scope="col" class="govuk-table__header">Action</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -27,14 +28,13 @@
 
 
   <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-
-     <!--set the link to go to a specific licence-->
-      <a href="licence?ID={{[loopNumber]}}" class="govuk-link">
-
-      {{[data.contacts[loopNumber].name]}}</a></td>
+    <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
-    <td class="govuk-table__cell">{{[data.contacts[loopNumber].role]}}</td>
+    <td class="govuk-table__cell">{{data.contacts[loopNumber]['role'] | replaceComma | striptags(true) | escape | nl2br}}</td>
+    <td class="govuk-table__cell">
+      <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View</a>
+    </td>
+
   <!--  <td class="govuk-table__cell">
       {% if [data.licences[loopNumber].expired] == "true" %}
       <strong class="table__status table__status--expired">

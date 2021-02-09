@@ -1,0 +1,58 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = [data.contacts[data.contactID]['name']] + " customer summary" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "customer#contacts"
+}) }}
+
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Contact</span>
+      <!-- show the contact name, if there isn't one then show the email address instead -->
+      {% if data.contacts[data.contactID]['name'] == "Not set" %}
+      {{[data.contacts[data.contactID]['email']]}}
+      {% else %}
+      {{[data.contacts[data.contactID]['name']]}}
+      {% endif %}
+    </h1>
+
+</div>
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-m">Contact details</h2>
+
+{% include "sandbox/includes/contact/contact-details.html" %}
+
+</div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+{% include "sandbox/includes/contact/contact-for.html" %}
+
+</div>
+</div>
+
+{% endblock %}
