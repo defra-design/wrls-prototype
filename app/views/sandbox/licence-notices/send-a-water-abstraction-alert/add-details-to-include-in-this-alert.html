@@ -1,0 +1,82 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Water abstraction alert - " + [data.waaType] + " - Add details to include in this alert" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Add details to include in this alert" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+    <form  method="post" novalidate>
+
+      {% call govukFieldset({
+        legend: {
+          text: [qTitle] | safe,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ govukInput({
+        label: {
+        text: "Watercourse"
+              },
+        classes: "govuk-input--width-20",
+        id: "watercourse",
+        name: "watercourse"
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Gauging station"
+              },
+        classes: "govuk-input--width-20",
+        id: "gaugingStation",
+        name: "gaugingStation"
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Hands-off flow threshold (megalitres per day)"
+              },
+        classes: "govuk-input--width-20",
+        id: "flowThreshold",
+        name: "flowThreshold"
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Contact email address"
+              },
+        classes: "govuk-input--width-20",
+        id: "contactEmail",
+        name: "contactEmail"
+      }) }}
+
+      {% endcall %}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

@@ -20,11 +20,13 @@
   <div class="govuk-grid-column-full">
 
 
+    <h1 class="govuk-heading-l">
+      {{qTitle|safe}}
+    </h1>
 
+    <form method="post" novalidate>
 
-    <form  method="post" novalidate>
-
-            {% include "sandbox/_includes/notices/hof-group-details-table.html" %}
+      {% include "sandbox/_includes/notices/hof-group-details-table.html" %}
 
       <button type="submit" class="govuk-button">
         Continue
@@ -32,7 +34,8 @@
 
     </form>
 
+  </div>
+</div>
 
 
-
-    {% endblock %}
+{% endblock %}

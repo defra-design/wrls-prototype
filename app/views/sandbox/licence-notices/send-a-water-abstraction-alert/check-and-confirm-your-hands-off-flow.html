@@ -1,0 +1,47 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Water abstraction alert - " + [data.waaType] + " - Check and confirm your hands-off flow"%}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Check and confirm your hands-off flow: " %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<h1 class="govuk-heading-l">
+
+  {% if data['waaType'] == "Warning" %}
+  {{qTitle|safe}} {{data['waaType']}}
+  {% else %}
+  {{qTitle|safe}} {{data['waaType']}} abstraction
+  {% endif %}
+</h1>
+
+    <form  method="post" novalidate>
+
+      <div class="notification govuk-!-margin-bottom-6" style="background-color:#f3f2f1;"" >
+        <div class="govuk-grid-row govuk-!-padding-6">
+          <div class="govuk-grid-column-full">
+
+          Text for the letter
+          
+          </div>
+          </div>
+        </div>
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

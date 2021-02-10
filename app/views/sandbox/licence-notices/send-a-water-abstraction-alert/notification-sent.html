@@ -1,0 +1,43 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Water abstraction alert - " + [data.waaType] + " - Notification sent"%}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Notification sent" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+<!--no back button-->
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+<!-- count of licences in the list -->
+{% set index = "" %}
+{% set licenceList = data['licenceList'].split(',') %}
+{% for i in licenceList %}
+{% set index = loop.length %}
+{% endfor %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            {{ govukPanel({
+      titleText: "Notification sent ",
+      html: "You sent this notification to<br><strong>" + index + " recipients </strong>"
+    }) }}
+
+          </div>
+          </div>
+
+
+
+
+
+
+
+    {% endblock %}

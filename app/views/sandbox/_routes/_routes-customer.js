@@ -46,7 +46,7 @@ router.post('/add/is-this-the-contact-for-water-abstraction-alerts', function(re
 
  //if they've said yes to water abstraction alerts add the role
  if (req.session.data['WAA'] === "yes") {
-     req.session.data.WAA = "Water Abstraction Alerts"
+     req.session.data.WAA = "Water abstraction alerts"
  }
 
  else {

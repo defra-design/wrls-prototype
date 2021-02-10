@@ -39,7 +39,7 @@
       {{ govukSummaryList({
         rows: [
           {
-            
+
             key: {
               text: "Name"
             },
@@ -79,12 +79,12 @@
       <!--set the index of the address-->
       {% set loopNumber = loop.index0 %}
 
-      <!--split the address role from comma separted string into an array and check for the billing role-->
+      <!--split the address role from comma separted string into an array and check for the licence holder role-->
       {% set roleArr = i.role.split(",") %}
       {% for i in roleArr %}
       {% if i === "Licence holder" %}
 
-      <!--If the billing role is against the address split the customer name comma separated string into an array-->
+      <!--If the licence holder role is against the address split the customer name comma separated string into an array-->
       {% set array = addresses[loopNumber].customer.split(",") %}
       {% for i in array %}
 

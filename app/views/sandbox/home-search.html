@@ -1,0 +1,56 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = 'Search for licences, returns, billing accounts or users'%}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+
+<!--header without searchbar-->
+{% include "sandbox/_includes/nav/header.html" %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-0"> {{ title }}</h1>
+
+
+    <!-- search for licences -->
+    <form action="search" method="post" novalidate>
+
+      <label class="govuk-label  " for="search">
+        Enter licence number, name, registered email address, return ID or billing account
+      </label>
+
+      <input class="govuk-input govuk-!-width-two-thirds govuk-!-display-inline-block" id="search" name="search" type="text"  value="{{data['search']}}">
+      {{ govukButton({
+        text: "Search",
+        classes: "govuk-!-display-inline-block govuk-!-padding-right-6 govuk-!-padding-left-6"
+      }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
