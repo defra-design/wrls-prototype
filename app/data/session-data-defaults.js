@@ -791,12 +791,15 @@ module.exports = {
          "customer": "D.B. Beecham-Smith",
        }
 
-
-
-
-
      ],
-
+     //WAA
+     "waaType":"Warning",
+     "recipients": 3,
+     "watercourse": "Hull",
+     "gaugingStation": "Helmspholme",
+     "flowThreshold": "45.5",
+     "contactEmail": "something@somewhere.co.uk",
+     "licenceList": "03/28/60/0032,03/28/61/029,03/28/60/0726",
 
     // Insert values here
 }

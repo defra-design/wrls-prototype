@@ -14,8 +14,9 @@
 <!--content block-->
 {% block service %}
 
-<h1 class="govuk-heading-l">
 
+
+<h1 class="govuk-heading-l">
   {% if data['waaType'] == "Warning" %}
   {{qTitle|safe}} {{data['waaType']}}
   {% else %}
@@ -25,12 +26,33 @@
 
     <form  method="post" novalidate>
 
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <!-- count of licences in the list -->
+          {% set index = "" %}
+          {% set licenceList = data['licenceList'].split(',') %}
+          {% for i in licenceList %}
+          {% set index = loop.length %}
+          {% endfor %}
+
+            <p class="govuk-body">You are about to send this notification to <span class="govuk-!-font-weight-bold">{% include "sandbox/_includes/notices/recipients.html" %}recipients</span> regarding <span class="govuk-!-font-weight-bold">{{index}} licences.</span></p>
+          </div>
+          </div>
+
+
       <div class="notification govuk-!-margin-bottom-6" style="background-color:#f3f2f1;"" >
         <div class="govuk-grid-row govuk-!-padding-6">
           <div class="govuk-grid-column-full">
 
-          Text for the letter
-          
+          <!-- display the text relevant to the WAA type-->
+          {% if data['waaType'] == "Warning" %}
+          {% include "sandbox/_includes/notices/warning-text.html" %}
+          {% elseif data['waaType'] == "Reduce or Stop" %}
+          {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+          {% else %}
+          {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+          {% endif %}
           </div>
           </div>
         </div>

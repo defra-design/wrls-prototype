@@ -1,0 +1,41 @@
+<p class="govuk-body">Water Resources Act 1991</p>
+
+<h2 class="govuk-heading-l">You can now abstract water to the licensed amount</h2>
+
+<p class="govuk-body">Dear licence holder,</p>
+
+<p class="govuk-body">The flow at {{data['gaugingStation']}} gauging station is now above your licence’s hands-off flow threshold.</p>
+
+<p class="govuk-body">You can now take water to the amount stated in your licence if other conditions allow this.</p>
+
+<h2 class="govuk-heading-l">What happens next</h2>
+
+<p class="govuk-body">We'll email you if the flow changes and we need to apply the restriction again. You must meet the conditions of your licence.</p>
+
+<h3 class="govuk-heading-m">Your hands-off flow licence condition</h3>
+
+<ul class="govuk-list">
+ <li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'].split(',') %} {{licenceList[0]}}</li>
+  <li><span class="govuk-!-font-weight-bold">Watercourse:</span> {{data['watercourse']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Gauging station:</span> {{data['gaugingStation']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Hands off flow threshold:</span> {{data['flowThreshold']}} megalitres per day</li>
+</ul>
+
+<h2 class="govuk-heading-l">Help with your hands-off flow condition</h2>
+
+<p class="govuk-body">If you're not sure how the hands-off flow condition affects the amount of water you can take, email <a class="govuk-link govuk-link--no-visited-state" href="mailto:{{data['contactEmail']}}">{{data['contactEmail']}}</a></p>
+
+<h3 class="govuk-heading-m">Check your licence details online</h3>
+
+<p class="govuk-body">If you have an account, you can check your licence details online: <br><a class="govuk-link govuk-link--no-visited-state" href="https://manage-water-abstraction-impoundment-licence.service.gov.uk/signin" >https://manage-water-abstraction-impoundment-licence.service.gov.uk/signin</a></p>
+
+<p class="govuk-body">Yours sincerely,</p>
+
+<p class="govuk-body">Environment Agency Water Resources Licensing Service</p>
+
+<p class="govuk-body">If you’re unsure an email is from the Environment Agency:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>do not reply to it or click any links</li>
+  <li>forward it to enquiries@environment-agency.gov.uk</li>
+</ul>

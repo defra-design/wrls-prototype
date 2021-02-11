@@ -1,0 +1,54 @@
+<p class="govuk-body">Water Resources Act 1991</p>
+
+<h2 class="govuk-heading-l">You may need to reduce or stop water abstraction soon</h2>
+
+<p class="govuk-body">Dear licence holder,</p>
+
+<p class="govuk-body">The flow at {{data['gaugingStation']}} gauging station is close to your licence’s hands-off flow threshold.</p>
+
+<p class="govuk-body">You can continue to take water. But check your licence so you're ready to make a change if we ask you to.</p>
+
+<p class="govuk-body">Your licence will tell you if you need to:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>reduce the amount of water that you abstract</li>
+  <li>stop abstracting water</li>
+  <li>or take another specific action</li>
+</ul>
+
+<h2 class="govuk-heading-l">Why we’ve sent this alert</h2>
+
+<p class="govuk-body">Your licence has a hands-off flow condition. This limits the amount of water you can take when it is in place. You must meet the conditions of your licence.</p>
+
+<h3 class="govuk-heading-m">Your hands-off flow licence condition</h3>
+
+<ul class="govuk-list">
+ <li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'].split(',') %} {{licenceList[0]}}</li>
+  <li><span class="govuk-!-font-weight-bold">Watercourse:</span> {{data['watercourse']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Gauging station:</span> {{data['gaugingStation']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Hands off flow threshold:</span> {{data['flowThreshold']}} megalitres per day</li>
+</ul>
+
+<h2 class="govuk-heading-l">What happens next</h2>
+
+<p class="govuk-body">We'll email you again if you need to reduce or stop the amount of water that you take.</p>
+
+<p class="govuk-body"> If you do not hear from us, you can continue to take water to the licensed amount.</p>
+
+<h2 class="govuk-heading-l">Help with your hands-off flow condition</h2>
+
+<p class="govuk-body">If you're not sure how the hands-off flow condition affects the amount of water you can take, email <a class="govuk-link govuk-link--no-visited-state" href="mailto:{{data['contactEmail']}}">{{data['contactEmail']}}</a></p>
+
+<h3 class="govuk-heading-m">Check your licence details online</h3>
+
+<p class="govuk-body">If you have an account, you can check your licence details online: <br><a class="govuk-link govuk-link--no-visited-state" href="https://manage-water-abstraction-impoundment-licence.service.gov.uk/signin" >https://manage-water-abstraction-impoundment-licence.service.gov.uk/signin</a></p>
+
+<p class="govuk-body">Yours sincerely,</p>
+
+<p class="govuk-body">Environment Agency Water Resources Licensing Service</p>
+
+<p class="govuk-body">If you’re unsure an email is from the Environment Agency:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>do not reply to it or click any links</li>
+  <li>forward it to enquiries@environment-agency.gov.uk</li>
+</ul>
