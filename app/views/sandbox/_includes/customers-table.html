@@ -1,0 +1,77 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set customers = data['customers'] %}
+
+<!--check the licence data for an exact match-->
+{% set match = "false" %}
+{% for i in customers %}
+{% if i.name | lower == data['search'] |lower %}
+{% set loopNumber = loop.index0 %}
+{% set match = "true" %}
+{% endif %}
+{% endfor %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption">Customers</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Name</th>
+      <th scope="col" class="govuk-table__header  ">Number of licences</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!--starting to loop through the bill runs data -->
+
+
+
+
+<!--show the match or loop through all the answers-->
+  {% if match == "true" %}
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+
+     <!--set the link to go to a specific licence-->
+      <a href="customer?customerID={{[loopNumber]}}" class="govuk-link govuk-link--no-visited-state">
+
+      {{[data.customers[loopNumber].name]}}</a></td>
+      {% set numberOfLicences = 0 %}
+      {% set licences = data['licences'] %}
+      {% for i in licences %}
+      {% if i.holder== [data.customers[loopNumber].name] %}
+      {% set numberOfLicences = numberOfLicences + 1 %}
+      {% endif %}
+      {% endfor %}
+    <td class="govuk-table__cell">{{numberOfLicences}}</td>
+  </tr>
+
+  {% else %}
+   {% for i in customers %}
+    <!--setting the loop number -->
+    {% set loopNumber = loop.index0 %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell ">
+
+       <!--set the link to go to a specific licence-->
+        <a href="customer?customerID={{[loopNumber]}}" class="govuk-link">
+
+        {{[i.name]}}</a></td>
+      {% set numberOfLicences = 0 %}
+      {% set licences = data['licences'] %}
+      {% for i in licences %}
+      {% if i.holder == [data.customers[loopNumber].name] %}
+      {% set numberOfLicences = numberOfLicences + 1 %}
+      {% endif %}
+      {% endfor %}
+
+      <td class="govuk-table__cell ">{{numberOfLicences}}</td>
+    </tr>
+    {% endfor %}
+  {% endif %}
+
+
+
+  </tbody>
+</table>

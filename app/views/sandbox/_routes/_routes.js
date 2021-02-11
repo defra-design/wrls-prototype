@@ -31,8 +31,10 @@ if ( term.startsWith("BA") ){
   req.session.data.resultsTable = "sandbox/_includes/billing-accounts-table.html"
 } else if ( term.includes("@") ) {
   req.session.data.resultsTable = "sandbox/_includes/users-table.html"
-} else {
+} else if ( term.includes("/") ) {
   req.session.data.resultsTable = "sandbox/_includes/licences-table.html"
+} else {
+  req.session.data.resultsTable = "sandbox/_includes/customers-table.html"
 }
 
 res.redirect('search');
