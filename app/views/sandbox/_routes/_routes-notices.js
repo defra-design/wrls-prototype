@@ -16,7 +16,7 @@ router.get('/send-a-water-abstraction-alert/enter-licence-numbers', function(req
 
 router.post('/send-a-water-abstraction-alert/enter-licence-numbers', function(req, res) {
 
-  let licenceList = req.session.data['licenceList'].replace(/\r\n|\n|\r/gm, ',');
+  let licenceList = req.session.data['licenceList'].trim().replace(/\r\n|\n|\r|\s/gm, ',');
   console.log(licenceList)
   req.session.data.licenceList = licenceList
 
