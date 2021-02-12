@@ -1,8 +1,15 @@
 <!--setting the loop number to 0-->
+<!-- count of licences in the list -->
+{% set index = "" %}
+{% set licenceList = data['licenceList'].split(',') %}
+{% for i in licenceList %}
+{% set index = loop.length %}
+{% endfor %}
+
 
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption ">Licence contact details</caption>
+  <caption class="govuk-table__caption ">There are {% include "sandbox/_includes/notices/recipients.html" %}recipients for {{index}} licences</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Licence</th>
@@ -123,7 +130,7 @@
 </td>
 
 
-    <td class="govuk-table__cell">remove</td>
+    <td class="govuk-table__cell"><a class=govuk"link" href="#">Remove</a></td>
 
 
 

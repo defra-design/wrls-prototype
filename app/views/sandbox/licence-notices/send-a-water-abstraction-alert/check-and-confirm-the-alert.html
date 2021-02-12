@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Water abstraction alert - " + [data.waaType] + " - Check and confirm your hands-off flow"%}
+{% set title = "Water abstraction alert - " + [data.waaType] + " - Check and confirm the alert"%}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Check and confirm the alert: " %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Check and confirm the alert " %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -18,9 +18,9 @@
 
 <h1 class="govuk-heading-l">
   {% if data['waaType'] == "Warning" %}
-  {{qTitle|safe}} {{data['waaType']}}
+  {{qTitle|safe}}
   {% else %}
-  {{qTitle|safe}} {{data['waaType']}} abstraction
+  {{qTitle|safe}}
   {% endif %}
 </h1>
 

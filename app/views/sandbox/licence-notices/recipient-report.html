@@ -1,0 +1,41 @@
+{% extends "layouts/_manage.html" %}
+
+<!--get the notification type-->
+{% set index = data['notificationIndex'] %}
+
+
+<!--set page title-->
+{% set title = data.notifications[index]['notification'] %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <span class='govuk-caption-l'>Notification report</span>
+      {{ title }}
+    </h1>
+
+
+
+    {% include "sandbox/_includes/notices/recipient-table.html" %}
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

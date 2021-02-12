@@ -801,6 +801,25 @@ module.exports = {
      "contactEmail": "something@somewhere.co.uk",
      "licenceList": "03/28/60/0032,03/28/61/029,03/28/60/0726",
 
+
+
+     //Notification report
+    "notifications": [{
+          "date": "22 December 2020",
+          "notification": "Paper returns",
+          "sentBy": "tim.teace@defra.gov.uk",
+          "numberOfrecipients": "1",
+          "recipients": [{
+            "licenceNumber": "03/28/69/0034",
+            "sentTo": "Anglian Water Services Ltd,FAO D Harker Water Resources,Lancaster House,Lancaster Way,Huntingdon,CAMBRIDGESHIRE,PE29 6XQ",
+            "method": "Letter",
+            "status": "Sent",
+          }],
+          "problems": "",
+        }
+    ],
+
+
     // Insert values here
 }
 
