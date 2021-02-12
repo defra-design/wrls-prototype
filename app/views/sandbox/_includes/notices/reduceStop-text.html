@@ -2,7 +2,7 @@
 
 <h2 class="govuk-heading-l">You must reduce or stop water abstraction now</h2>
 
-<p class="govuk-body">Dear licence holder,</p>
+<p class="govuk-body">Dear licence contact,</p>
 
 <p class="govuk-body">The flow at {{data['gaugingStation']}} gauging station is at your licence’s hands-off flow threshold.</p>
 
@@ -18,9 +18,9 @@
 
 <ul class="govuk-list">
  <li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'].split(',') %} {{licenceList[0]}}</li>
-  <li><span class="govuk-!-font-weight-bold">Watercourse:</span> {{data['watercourse']}}</li>
-  <li><span class="govuk-!-font-weight-bold">Gauging station:</span> {{data['gaugingStation']}}</li>
-  <li><span class="govuk-!-font-weight-bold">Hands off flow threshold:</span> {{data['flowThreshold']}} megalitres per day</li>
+  <li><span class="govuk-!-font-weight-bold">Name of watercourse:</span> {{data['watercourse']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Gauging station name:</span> {{data['gaugingStation']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Hands-off flow threshold:</span> {{data['flowThreshold']}} megalitres per day</li>
 </ul>
 
 <h2 class="govuk-heading-l">What happens next</h2>
