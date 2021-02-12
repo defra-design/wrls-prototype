@@ -3,7 +3,7 @@
 <!--set page title-->
 {% set title = "Water abstraction alert - " + [data.waaType] + " - Check and confirm your hands-off flow"%}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Check and confirm your hands-off flow: " %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Check and confirm the alert: " %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -48,7 +48,7 @@
           <!-- display the text relevant to the WAA type-->
           {% if data['waaType'] == "Warning" %}
           {% include "sandbox/_includes/notices/warning-text.html" %}
-          {% elseif data['waaType'] == "Reduce or Stop" %}
+          {% elseif data['waaType'] == "Reduce or stop" %}
           {% include "sandbox/_includes/notices/reduceStop-text.html" %}
           {% else %}
           {% include "sandbox/_includes/notices/reduceStop-text.html" %}
