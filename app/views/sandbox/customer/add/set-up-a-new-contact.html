@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title =  "Set up a contact for " + [data.customers[data.customerID]['name']] %}
+{% set title =  "What type of contact is " + [data['name-details']] + "?" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Set up a contact for " + [data.customers[data.customerID]['name']] %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> What type of contact is " + [data['name-details']] + "?" %}
 
 
 
@@ -34,7 +34,8 @@
       classes: "govuk-input--width-20",
       label: {
         text: "Department name"
-      }
+      },
+      value: data['name-details']
       }) }}
       {% endset -%}
 
@@ -53,11 +54,11 @@
   items: [
     {
       value: "person",
-      text: "Add a new person"
+      text: "A new person"
     },
     {
       value: "department",
-      text: "Add a new department",
+      text: "A new department",
       conditional: {
         html: departmentHtml
       }

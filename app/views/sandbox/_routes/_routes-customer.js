@@ -28,21 +28,21 @@ router.post('/add/what-contact-details-do-you-want-to-add', function(req, res) {
   req.session.data.emailDetails = "Not set"
   }
 
-res.redirect('is-this-the-contact-for-water-abstraction-alerts');
+res.redirect('is-this-a-contact-for-water-abstraction-alerts');
 
 });
 
 
 ///Do they want water abstraction alerts
-router.get('sandbox/customer/add/is-this-the-contact-for-water-abstraction-alerts', function(req, res) {
+router.get('sandbox/customer/add/is-this-a-contact-for-water-abstraction-alerts', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('sandbox/customer/add/is-this-the-contact-for-water-abstraction-alerts');
+  res.render('sandbox/customer/add/is-this-a-contact-for-water-abstraction-alerts');
 
 });
 
-router.post('/add/is-this-the-contact-for-water-abstraction-alerts', function(req, res) {
+router.post('/add/is-this-a-contact-for-water-abstraction-alerts', function(req, res) {
 
  //if they've said yes to water abstraction alerts add the role
  if (req.session.data['WAA'] === "yes") {
@@ -77,7 +77,7 @@ else {
 
     contacts.push(newContact);
 
-    res.redirect('../../contact?contactID=' + req.session.data.contactID);
+    res.redirect('../../customer#contacts');
 }
 
 
@@ -143,7 +143,7 @@ if (personOrDepartment === "department") {
 
   contacts.push(newContact);
 
-  res.redirect('../../contact?contactID=' + req.session.data.contactID);
+  res.redirect('../../customer#contacts');
 
   }
 
@@ -207,7 +207,7 @@ router.post('/add/enter-the-persons-name', function(req, res) {
 
     req.session.data.back = "customer#contacts"
 
-    res.redirect('../../contact?contactID=' + req.session.data.contactID);
+    res.redirect('../../customer#contacts');
 
 
 

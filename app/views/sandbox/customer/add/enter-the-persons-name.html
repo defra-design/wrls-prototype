@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = [data.customers[data.customerID]['name']] + " - Enter any extra details for the persons name" %}
+{% set title = [data.customers[data.customerID]['name']] + " - Enter any extra details for " + [data['name-details']] %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter any extra details for the persons name" %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter any extra details for " + [data['name-details']] %}
 
 
 

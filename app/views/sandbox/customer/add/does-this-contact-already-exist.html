@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = [data.customers[data.customerID]['name']] + " - Does " + data['name-details']  + " already exist?" %}
+{% set title = [data.customers[data.customerID]['name']] + " - Check if " + data['name-details']  + " is an existing contact" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Does " + [data['name-details']]   + " already exist?" %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Check if " + [data['name-details']]   + " is an existing contact" %}
 
 
 
