@@ -162,12 +162,11 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
               } else {
 
-                //split the contacts role from comma separted string into an array and check for the water abstraction alerts role
+                //check if the contact has a role of licence holder, this is so the licenec holder is posted a copy as well as emailed if they have an email address
                 let contactRole = contact.role
-
                   if (contactRole.includes("Licence holder") ) {
 
-                // find the address for the licence
+                // if so find the address for the licence
                 for ( [addressIndex, address] of addresses.entries()) {
                  if (licenceHolder == address.customer) {
 
@@ -176,7 +175,7 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
                    for (var addressRole of addressRoles) {
 
                      if (addressRole === "Licence holder") {
-                       //If the water abstraction alert role is against the contact split the customer name comma separated string into an array-->
+
 
 
                 //set a variable for the address
@@ -225,10 +224,9 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
   }
 
-console.log(recipients)
 
 
-  //add the department to the contact list
+  //add details for the notification
   let date = today
   let notification = req.session.data['waaType'] + " - Water abstraction alert"
   let sentBy = "youremailaddress@defra.gov.uk"

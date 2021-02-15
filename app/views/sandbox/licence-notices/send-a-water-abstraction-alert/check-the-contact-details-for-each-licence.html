@@ -28,7 +28,7 @@
       {% include "sandbox/_includes/notices/recipients.html" %}
       {% endset %}
 
-    <form method="post" action="add-details-to-include-in-this-alert?recipients={{recipients | striptags(true) | escape}}" novalidate>
+    <form method="post" action="check-the-contact-details-for-each-licence?recipients={{recipients | striptags(true) | escape}}" novalidate>
 
       {% include "sandbox/_includes/notices/hof-group-details-table.html" %}
 
