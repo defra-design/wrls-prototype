@@ -24,7 +24,11 @@
       {{qTitle|safe}}
     </h1>
 
-    <form method="post" novalidate>
+    {% set recipients %}
+      {% include "sandbox/_includes/notices/recipients.html" %}
+      {% endset %}
+
+    <form method="post" action="add-details-to-include-in-this-alert?recipients={{recipients | striptags(true) | escape}}" novalidate>
 
       {% include "sandbox/_includes/notices/hof-group-details-table.html" %}
 
@@ -32,7 +36,7 @@
         Continue
       </button>
 
-      
+
 
     </form>
 

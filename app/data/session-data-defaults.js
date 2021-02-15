@@ -812,8 +812,8 @@ module.exports = {
           "recipients": [{
             "licenceNumber": "03/28/69/0034",
             "sentTo": "Anglian Water Services Ltd,FAO D Harker Water Resources,Lancaster House,Lancaster Way,Huntingdon,CAMBRIDGESHIRE,PE29 6XQ",
-            "method": "Letter",
-            "status": "Sent",
+            "method": "letter",
+            "status": "sent",
           }],
           "problems": "",
         }
