@@ -329,6 +329,39 @@ module.exports = {
                          }
                        ],
 
+                       "communications":[{
+                             "type": "Resume - Water abstraction alert",
+                             "sent": "5 June 2020",
+                             "sender": "tim.teace@defra.gov.uk",
+                             "method": "letter",
+                             "watercourse": "Hull",
+                             "gaugingStation": "Helmspholme",
+                             "flowThreshold": "45.5",
+                             "contactEmail": "something1@somewhere.co.uk",
+                       },
+                       {
+                             "type": "Reduce or stop - Water abstraction alert",
+                             "sent": "17 April 2020",
+                             "sender": "tim.teace@defra.gov.uk",
+                             "method": "letter",
+                             "watercourse": "Hull",
+                             "gaugingStation": "Helmspholme",
+                             "flowThreshold": "45.5",
+                             "contactEmail": "something@somewhere.co.uk",
+                       },
+                       {
+                             "type": "Warning - Water abstraction alert",
+                             "sent": "30 March 2020",
+                             "sender": "tim.teace@defra.gov.uk",
+                             "method": "letter",
+                             "watercourse": "Hull",
+                             "gaugingStation": "Helmspholme",
+                             "flowThreshold": "45.5",
+                             "contactEmail": "something@somewhere.co.uk",
+                       },
+
+                     ],
+
              },
              //licence 2
              {
@@ -383,6 +416,39 @@ module.exports = {
                          }
                        ],
 
+                       "communications":[{
+                             "type": "Resume - Water abstraction alert",
+                             "sent": "5 June 2020",
+                             "sender": "tim.teace@defra.gov.uk",
+                             "method": "letter",
+                             "watercourse": "Hull",
+                             "gaugingStation": "Helmspholme",
+                             "flowThreshold": "45.5",
+                             "contactEmail": "something@somewhere.co.uk",
+                       },
+                       {
+                             "type": "Reduce or stop - Water abstraction alert",
+                             "sent": "17 April 2020",
+                             "sender": "tim.teace@defra.gov.uk",
+                             "method": "letter",
+                             "watercourse": "Hull",
+                             "gaugingStation": "Helmspholme",
+                             "flowThreshold": "45.5",
+                             "contactEmail": "something2@somewhere.co.uk",
+                       },
+                       {
+                             "type": "Warning - Water abstraction alert",
+                             "sent": "30 March 2020",
+                             "sender": "tim.teace@defra.gov.uk",
+                             "method": "letter",
+                             "watercourse": "Hull",
+                             "gaugingStation": "Helmspholme",
+                             "flowThreshold": "45.5",
+                             "contactEmail": "something@somewhere.co.uk",
+                       },
+
+                     ],
+
               },
               //licence 3
               {
@@ -408,6 +474,10 @@ module.exports = {
                 "agreements":[
                                 //newLicence
                       ],
+
+                      "communications":[
+                         //newLicence
+                    ],
 
                },
                //licence 4
@@ -450,6 +520,39 @@ module.exports = {
                     "agreements":[
                               //No agreements
                                 ],
+
+                                "communications":[{
+                                      "type": "Resume - Water abstraction alert",
+                                      "sent": "5 June 2020",
+                                      "sender": "tim.teace@defra.gov.uk",
+                                      "method": "letter",
+                                      "watercourse": "Hull",
+                                      "gaugingStation": "Helmspholme",
+                                      "flowThreshold": "45.5",
+                                      "contactEmail": "something@somewhere.co.uk",
+                                },
+                                {
+                                      "type": "Reduce or stop - Water abstraction alert",
+                                      "sent": "17 April 2020",
+                                      "sender": "tim.teace@defra.gov.uk",
+                                      "method": "letter",
+                                      "watercourse": "Hull",
+                                      "gaugingStation": "Helmspholme",
+                                      "flowThreshold": "45.5",
+                                      "contactEmail": "something@somewhere.co.uk",
+                                },
+                                {
+                                      "type": "Warning - Water abstraction alert",
+                                      "sent": "30 March 2020",
+                                      "sender": "tim.teace@defra.gov.uk",
+                                      "method": "letter",
+                                      "watercourse": "Hull",
+                                      "gaugingStation": "Helmspholme",
+                                      "flowThreshold": "45.5",
+                                      "contactEmail": "something@somewhere.co.uk",
+                                },
+
+                              ],
 
                 },
                 //licence 5
@@ -505,6 +608,39 @@ module.exports = {
                             }
                           ],
 
+                          "communications":[{
+                                "type": "Resume - Water abstraction alert",
+                                "sent": "5 June 2020",
+                                "sender": "tim.teace@defra.gov.uk",
+                                "method": "letter",
+                                "watercourse": "Hull",
+                                "gaugingStation": "Helmspholme",
+                                "flowThreshold": "45.5",
+                                "contactEmail": "something@somewhere.co.uk",
+                          },
+                          {
+                                "type": "Reduce or stop - Water abstraction alert",
+                                "sent": "17 April 2020",
+                                "sender": "tim.teace@defra.gov.uk",
+                                "method": "letter",
+                                "watercourse": "Hull",
+                                "gaugingStation": "Helmspholme",
+                                "flowThreshold": "45.5",
+                                "contactEmail": "something@somewhere.co.uk",
+                          },
+                          {
+                                "type": "Warning - Water abstraction alert",
+                                "sent": "30 March 2020",
+                                "sender": "tim.teace@defra.gov.uk",
+                                "method": "letter",
+                                "watercourse": "Hull",
+                                "gaugingStation": "Helmspholme",
+                                "flowThreshold": "45.5",
+                                "contactEmail": "something@somewhere.co.uk",
+                          },
+
+                        ],
+
                  },
                  //licence 6
                  {
@@ -557,6 +693,39 @@ module.exports = {
                             "agreementEndYear": "2023",
                             }
                           ],
+
+                          "communications":[{
+                                "type": "Resume - Water abstraction alert",
+                                "sent": "5 June 2020",
+                                "sender": "tim.teace@defra.gov.uk",
+                                "method": "letter",
+                                "watercourse": "Hull",
+                                "gaugingStation": "Helmspholme",
+                                "flowThreshold": "45.5",
+                                "contactEmail": "something@somewhere.co.uk",
+                          },
+                          {
+                                "type": "Reduce or stop - Water abstraction alert",
+                                "sent": "17 April 2020",
+                                "sender": "tim.teace@defra.gov.uk",
+                                "method": "letter",
+                                "watercourse": "Hull",
+                                "gaugingStation": "Helmspholme",
+                                "flowThreshold": "45.5",
+                                "contactEmail": "something@somewhere.co.uk",
+                          },
+                          {
+                                "type": "Warning - Water abstraction alert",
+                                "sent": "30 March 2020",
+                                "sender": "tim.teace@defra.gov.uk",
+                                "method": "letter",
+                                "watercourse": "Hull",
+                                "gaugingStation": "Helmspholme",
+                                "flowThreshold": "45.5",
+                                "contactEmail": "something@somewhere.co.uk",
+                          },
+
+                        ],
                  },
                  //licence 7
                  {
@@ -636,6 +805,39 @@ module.exports = {
                              "agreementEndYear": "2023",
                              }
                             ],
+
+                            "communications":[{
+                                  "type": "Resume - Water abstraction alert",
+                                  "sent": "5 June 2020",
+                                  "sender": "tim.teace@defra.gov.uk",
+                                  "method": "letter",
+                                  "watercourse": "Hull",
+                                  "gaugingStation": "Helmspholme",
+                                  "flowThreshold": "45.5",
+                                  "contactEmail": "something@somewhere.co.uk",
+                            },
+                            {
+                                  "type": "Reduce or stop - Water abstraction alert",
+                                  "sent": "17 April 2020",
+                                  "sender": "tim.teace@defra.gov.uk",
+                                  "method": "letter",
+                                  "watercourse": "Hull",
+                                  "gaugingStation": "Helmspholme",
+                                  "flowThreshold": "45.5",
+                                  "contactEmail": "something@somewhere.co.uk",
+                            },
+                            {
+                                  "type": "Warning - Water abstraction alert",
+                                  "sent": "30 March 2020",
+                                  "sender": "tim.teace@defra.gov.uk",
+                                  "method": "letter",
+                                  "watercourse": "Hull",
+                                  "gaugingStation": "Helmspholme",
+                                  "flowThreshold": "45.5",
+                                  "contactEmail": "something@somewhere.co.uk",
+                            },
+
+                          ],
 
                  }
            ],

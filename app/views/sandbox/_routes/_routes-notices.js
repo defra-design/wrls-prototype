@@ -87,6 +87,8 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
   let addresses = req.session.data['addresses']
   // declare recipients
   let recipients = [];
+  //declare Communications
+  let communications = [];
 
   //loop through the licences in the alert and add the recipient details to and object.
   licenceList = req.session.data['licenceList'].split(',')
@@ -99,6 +101,16 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
   let sentTo = ""
   let status = "sent"
 
+
+  //add details for the notification
+  let type = req.session.data['waaType'] + " - Water abstraction alert"
+  let sent = today
+  let sender = "youremailaddress@defra.gov.uk"
+  let watercourse = req.session.data['watercourse']
+  let gaugingStation = req.session.data['gaugingStation']
+  let flowThreshold = req.session.data['flowThreshold']
+  let contactEmail = req.session.data['contactEmail']
+
   for ( licenceNumber of licenceList) {
 
     for ( var [licenceIndex, licence] of licences.entries()) {
@@ -108,6 +120,8 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
     //set a variable for the licenceHolder-
      licenceHolder = licences[licenceIndex].holder
+     //Add the communication details to the licence
+     communications = licences[licenceIndex]['communications']
 
    }
   }
@@ -155,6 +169,21 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
                   };
 
                   recipients.push(newRecipient);
+
+
+                  let newCommunication = {
+                    type,
+                    sent,
+                    sender,
+                    method,
+                    watercourse,
+                    gaugingStation,
+                    flowThreshold,
+                    contactEmail
+                  };
+
+                  communications.unshift(newCommunication);
+
                }
               }
 
@@ -194,6 +223,22 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
                   };
 
                   recipients.push(newRecipient);
+
+
+
+
+                  let newCommunication = {
+                    type,
+                    sent,
+                    sender,
+                    method,
+                    watercourse,
+                    gaugingStation,
+                    flowThreshold,
+                    contactEmail
+                  };
+
+                  communications.unshift(newCommunication);
                }
               }
             }
@@ -210,6 +255,21 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
                 };
 
                 recipients.push(newRecipient);
+
+
+
+                let newCommunication = {
+                  type,
+                  sent,
+                  sender,
+                  method,
+                  watercourse,
+                  gaugingStation,
+                  flowThreshold,
+                  contactEmail
+                };
+
+                communications.unshift(newCommunication);
 
               }
 
@@ -244,6 +304,17 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
   };
 
   notifications.push(newNotification);
+
+
+
+//add the communication details to the licences
+
+  for ( licenceNumber of licenceList) {
+
+
+  }
+
+
 
   res.redirect('alert-sent');
 

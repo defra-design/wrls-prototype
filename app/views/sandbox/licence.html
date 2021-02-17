@@ -105,23 +105,10 @@
   <!-- tab 3 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
 
-    <h2 class="govuk-heading-l">
-      Communications
-    </h2>
 
-    {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
-    <!--check to see if there is any charge information set up-->
-    {% if chargeVersions.length  %}
-    <!--if so display the table-->
-    <!-- comms table -->
-    {% include "current/includes/comms-table.html" %}
+    {% include "sandbox/_includes/licence/communications-table.html" %}
 
-    <div class="table govuk-!-margin-bottom-8">
-      <a href="all-messages">
-        View all licence messages
-      </a>
-    </div>
-     {% endif %}
+
   </section>
 
   {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}

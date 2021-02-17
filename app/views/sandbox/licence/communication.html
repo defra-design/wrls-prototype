@@ -1,0 +1,85 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = data.licences[data.ID].communications[data.communicationID]['type'] %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+      {{ title }}
+    </h1>
+
+
+
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-9">
+      <div class="govuk-grid-column-full">
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Sent
+            </div>
+            <div class="meta-data__value">
+              {{data.licences[data.ID].communications[data.communicationID]['sent']}}
+            </div>
+            <div>
+            </div>
+          </div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Sender
+            </div>
+            <div class="meta-data__value">
+              {{data.licences[data.ID].communications[data.communicationID]['sender']}}
+            </div>
+            <div>
+            </div>
+          </div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Method
+            </div>
+            <div class="meta-data__value">
+              {{data.licences[data.ID].communications[data.communicationID]['method']|capitalize}}
+            </div>
+            <div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notification govuk-!-margin-bottom-6" style="background-color:#f3f2f1;"" >
+  <div class=" govuk-grid-row govuk-!-padding-6">
+  <div class="govuk-grid-column-full">
+    <!-- display the text relevant to the WAA type-->
+    {% if data['waaType'] == "Warning" %}
+    {% include "sandbox/_includes/notices/warning-text.html" %}
+    {% elseif data['waaType'] == "Reduce or stop" %}
+    {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+    {% else %}
+    {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+    {% endif %}
+
+  </div>
+</div>
+</div>
+
+{% endblock %}
