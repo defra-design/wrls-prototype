@@ -1,8 +1,12 @@
-{% set tableCaption = 'To set up <br><span class="govuk-caption-l">5 licences</span>' %}
-
 {% set classes = data['classes'] %}
 
+{% if classes.length %}
+{% set licenceCount = "4" %}
+{% else %}
+{% set licenceCount = "5" %}
+{% endif %}
 
+{% set tableCaption = 'To set up <br><span class="govuk-caption-l">' + licenceCount + ' licences</span>' %}
 
 
   {{ govukTable({
