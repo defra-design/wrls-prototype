@@ -1326,7 +1326,18 @@ router.post('/bd/manage/send-paper-which-returns', function(req, res) {
   res.redirect('/bd/manage/send-paper-confirm');
 });
 
+//Remove element from charge info workflow:
 
+
+const url = require('url');
+
+router.get('/bd/charges-2020/licences-with-new-charge-information', function(req, res) {
+
+  req.session.data.classes = ""
+
+  res.render('current/bd/charges-2020/licences-with-new-charge-information');
+
+});
 
 /*
 router.get('/current/bd/charges-2020/charge-version/create-element', function (req, res) {
