@@ -18,7 +18,7 @@ router.post('/send-a-water-abstraction-alert/enter-licence-numbers', function(re
 
   let licenceList = req.session.data['licenceList'].trim().replace(/\r\n|\n|\r|\s|\r\s|\,\s/gm, ',');
   licenceList.toString()
-  console.log(licenceList)
+
   req.session.data.licenceList = licenceList
 
 
@@ -340,6 +340,40 @@ router.get('/send-a-water-abstraction-alert/alert-sent', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'alert-sent');
 });
+
+
+
+///Remove licence from licenceList
+router.get('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'remove-from-the-alert-send-list');
+});
+
+router.post('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', function(req, res) {
+
+   let licenceList = req.session.data['licenceList'].split(',')
+
+   let licenceListNumber = req.session.data['licenceListNumber']
+
+    let index = licenceList.indexOf(licenceListNumber);
+if (index > -1) {
+  licenceList.splice(index, 1);
+}
+console.log(licenceList)
+req.session.data.licenceList = licenceList.toString()
+
+
+req.session.data.recipients = 0
+
+if (licenceList.length) {
+  res.redirect('check-the-contact-details-for-each-licence');
+} else {
+  res.redirect('enter-licence-numbers');
+}
+
+
+});
+
 
 
 module.exports = router

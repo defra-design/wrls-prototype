@@ -22,7 +22,7 @@
   <tbody class="govuk-table__body">
 
 
-
+{% set licenceListAddress = "" %}
 
     <!--split the licences entered in to the flow into an array-->
     {% set licenceList = data['licenceList'].split(',') %}
@@ -34,6 +34,8 @@
 <!--loop through the licence numbers entered by the user-->
 {% for i in licenceList %}
 <tr class="govuk-table__row">
+{% set licnenceListIndex = loop.index0 %}
+
 
 <!--set the individual licence number to licence-->
 {% set licence = i %}
@@ -83,9 +85,13 @@
 
 <!--display the address-->
 <td class="govuk-table__cell">
+  {% set licenceListAddress %}
 {{[data.addresses[addressIndex].address1]}}<br>
 {{[data.addresses[addressIndex].city]}}<br>
 {{[data.addresses[addressIndex].postcode]}}
+{% endset %}
+
+{{licenceListAddress|safe}}
 </td>
 
 {% endif %}
@@ -130,7 +136,7 @@
 </td>
 
 
-    <td class="govuk-table__cell"><a class=govuk"link" href="#">Remove</a></td>
+    <td class="govuk-table__cell"><a class="govuk-link" href="remove-from-the-alert-send-list?licenceListIndex={{licnenceListIndex}}&licenceListNumber={{data.licences[loopNumber].number}}&LicenceListHolder={{data.licences[loopNumber].holder}}">Remove</a></td>
 
 
 

@@ -1,0 +1,148 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "You're about to remove this licence from the alert send list"%}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">
+  {{title}}
+</h1>
+
+
+
+    <form  method="post" novalidate>
+
+
+            <table class="govuk-table">
+              <caption class="govuk-table__caption ">{{ govukInsetText({
+                text: "If you remove this licence, the contact will not get a water abstraction alert. The licence will not be removed from the hands-off flow group."
+              }) }}</caption>
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Licence</th>
+                  <th scope="col" class="govuk-table__header">Licence holder</th>
+                  <th scope="col" class="govuk-table__header">Address</th>
+                  <th scope="col" class="govuk-table__header">Email address</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+
+
+                <tr class="govuk-table__row">
+
+                  <!--if matched return the licence number and licence holder name-->
+                  <td class="govuk-table__cell">{{[data.licenceListNumber]}}</td>
+
+
+                  <td class="govuk-table__cell">{{[data.LicenceListHolder]}}</td>
+
+
+
+                  <!--getting the address data-->
+                  {% set addresses = data['addresses'] %}
+
+                  <!--loop through the addresses-->
+                  {% for address in addresses %}
+
+                  <!--set the index of the address-->
+                  {% set addressIndex = loop.index0 %}
+
+                  <!--split the address role from comma separted string into an array and check for the licence holder role-->
+                  {% set roleArr = address.role.split(",") %}
+                  {% for i in roleArr %}
+                  {% if i === "Licence holder" %}
+
+                  <!--If the licence holder role is against the address split the customer name comma separated string into an array-->
+                  {% set array = addresses[addressIndex].customer.split(",") %}
+                  {% for i in array %}
+
+                  <!--Checking the customer name matches the address-->
+                  {% if i == [data.LicenceListHolder]  %}
+
+                  <!--display the address-->
+                  <td class="govuk-table__cell">
+                    {% set licenceListAddress %}
+                  {{[data.addresses[addressIndex].address1]}}<br>
+                  {{[data.addresses[addressIndex].city]}}<br>
+                  {{[data.addresses[addressIndex].postcode]}}
+                  {% endset %}
+
+                  {{licenceListAddress|safe}}
+                  </td>
+
+                  {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                  {% endfor %}
+                  {% endfor %}
+
+
+
+
+                  <td class="govuk-table__cell">
+                  <!--add in contact email details-->
+
+                  <!--getting the contact data-->
+                  {% set contacts = data['contacts'] %}
+
+                  <!--loop through the contacts-->
+                  {% for contact in contacts %}
+
+                  <!--set the index of the contact-->
+                  {% set contactIndex = loop.index0 %}
+
+                  <!--split the contacts role from comma separted string into an array and check for the water abstraction alerts role-->
+                  {% set roleArr = contact.role.split(",") %}
+                  {% for i in roleArr %}
+                  {% if i === "Water abstraction alerts" %}
+
+                  <!--If the water abstraction alert role is against the contact split the customer name comma separated string into an array-->
+                  {% set array = contacts[contactIndex].customer.split(",") %}
+                  {% for i in array %}
+
+                  <!--Checking the customer name matches the contact-->
+                  {% if i == [data.LicenceListHolder]  %}
+
+
+                  {% if contacts[contactIndex].email == "Not set" %}
+                  {% else %}
+                      {{[data.contacts[contactIndex].email]}}
+
+                  {% endif %}
+                      {% endif %}
+                      {% endfor %}
+                      {% endif %}
+                      {% endfor %}
+                      {% endfor %}
+                  </td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+      <button type="submit" class="govuk-button">
+        Confirm and remove
+      </button>
+
+    </form>
+
+</div>
+</div>
+
+
+    {% endblock %}
