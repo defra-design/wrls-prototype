@@ -42,7 +42,7 @@ res.redirect('search');
 });
 
 //----------------------------------------------------------------
-
+////NOTICES ROUTES
 //SEND A WATER ABSTRACTION ALERT
 router.use('/licence-notices', require('./_routes-notices'));
 
@@ -50,9 +50,15 @@ router.use('/licence-notices', require('./_routes-notices'));
 
 //----------------------------------------------------------------
 
-///ADD A Contact
-
+////CUSTOMER ROUTES
+//ADD A CONTACT FOR A CUSTOMER
 router.use('/customer', require('./_routes-customer'));
+
+//----------------------------------------------------------------
+////CONTACT ROUTES
+//REMOVE CUSTOMER FROM A CONTACT
+
+router.use('/contact', require('./_routes-contact'));
 
 
 

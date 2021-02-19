@@ -77,7 +77,7 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
   today = `${dd} ${mm} ${yyyy}`;
 
-    //getting the notification
+  //getting the notification
   let notifications = req.session.data['notifications']
   //getting the contact data
   let contacts = req.session.data['contacts']
@@ -111,20 +111,20 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
   let flowThreshold = req.session.data['flowThreshold']
   let contactEmail = req.session.data['contactEmail']
 
-  for ( licenceNumber of licenceList) {
+  for (licenceNumber of licenceList) {
 
-    for ( var [licenceIndex, licence] of licences.entries()) {
-    //match the licence number entered against the licence number in the list
+    for (var [licenceIndex, licence] of licences.entries()) {
+      //match the licence number entered against the licence number in the list
 
-     if (licenceNumber == licence.number) {
+      if (licenceNumber == licence.number) {
 
-    //set a variable for the licenceHolder-
-     licenceHolder = licences[licenceIndex].holder
-     //Add the communication details to the licence
-     communications = licences[licenceIndex]['communications']
+        //set a variable for the licenceHolder-
+        licenceHolder = licences[licenceIndex].holder
+        //Add the communication details to the licence
+        communications = licences[licenceIndex]['communications']
 
-   }
-  }
+      }
+    }
 
 
 
@@ -151,41 +151,41 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
                 let method = "letter"
 
                 // find the address for the licence
-                for ( [addressIndex, address] of addresses.entries()) {
-                 if (licenceHolder == address.customer) {
+                for ([addressIndex, address] of addresses.entries()) {
+                  if (licenceHolder == address.customer) {
 
-                //set a variable for the address
-                 address = licenceHolder +  ", "  + addresses[addressIndex].address1 +  ", "  + addresses[addressIndex].city +  ", "  + addresses[addressIndex].postcode
-
-
-                 let sentTo = address
+                    //set a variable for the address
+                    address = licenceHolder + ", " + addresses[addressIndex].address1 + ", " + addresses[addressIndex].city + ", " + addresses[addressIndex].postcode
 
 
-                  let newRecipient = {
-                    licenceNumber,
-                    sentTo,
-                    method,
-                    status
-                  };
-
-                  recipients.push(newRecipient);
+                    let sentTo = address
 
 
-                  let newCommunication = {
-                    type,
-                    sent,
-                    sender,
-                    method,
-                    watercourse,
-                    gaugingStation,
-                    flowThreshold,
-                    contactEmail
-                  };
+                    let newRecipient = {
+                      licenceNumber,
+                      sentTo,
+                      method,
+                      status
+                    };
 
-                  communications.unshift(newCommunication);
+                    recipients.push(newRecipient);
 
-               }
-              }
+
+                    let newCommunication = {
+                      type,
+                      sent,
+                      sender,
+                      method,
+                      watercourse,
+                      gaugingStation,
+                      flowThreshold,
+                      contactEmail
+                    };
+
+                    communications.unshift(newCommunication);
+
+                  }
+                }
 
 
 
@@ -194,56 +194,56 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
                 //check if the contact has a role of licence holder, this is so the licenec holder is posted a copy as well as emailed if they have an email address
                 let contactRole = contact.role
-                  if (contactRole.includes("Licence holder") ) {
+                if (contactRole.includes("Licence holder")) {
 
-                // if so find the address for the licence
-                for ( [addressIndex, address] of addresses.entries()) {
-                 if (licenceHolder == address.customer) {
+                  // if so find the address for the licence
+                  for ([addressIndex, address] of addresses.entries()) {
+                    if (licenceHolder == address.customer) {
 
-                   //split the contacts role from comma separted string into an array and check for the water abstraction alerts role
-                   let addressRoles = addresses[addressIndex].role.split(",")
-                   for (var addressRole of addressRoles) {
+                      //split the contacts role from comma separted string into an array and check for the water abstraction alerts role
+                      let addressRoles = addresses[addressIndex].role.split(",")
+                      for (var addressRole of addressRoles) {
 
-                     if (addressRole === "Licence holder") {
-
-
-
-                //set a variable for the address
-                 address = licenceHolder +  ", "  + addresses[addressIndex].address1 +  ", "  + addresses[addressIndex].city +  ", "  + addresses[addressIndex].postcode
-
-
-                 let sentTo = address
-                 let method = "letter"
-
-                  let newRecipient = {
-                    licenceNumber,
-                    sentTo,
-                    method,
-                    status
-                  };
-
-                  recipients.push(newRecipient);
+                        if (addressRole === "Licence holder") {
 
 
 
+                          //set a variable for the address
+                          address = licenceHolder + ", " + addresses[addressIndex].address1 + ", " + addresses[addressIndex].city + ", " + addresses[addressIndex].postcode
 
-                  let newCommunication = {
-                    type,
-                    sent,
-                    sender,
-                    method,
-                    watercourse,
-                    gaugingStation,
-                    flowThreshold,
-                    contactEmail
-                  };
 
-                  communications.unshift(newCommunication);
-               }
-              }
-            }
-          }
-        }
+                          let sentTo = address
+                          let method = "letter"
+
+                          let newRecipient = {
+                            licenceNumber,
+                            sentTo,
+                            method,
+                            status
+                          };
+
+                          recipients.push(newRecipient);
+
+
+
+
+                          let newCommunication = {
+                            type,
+                            sent,
+                            sender,
+                            method,
+                            watercourse,
+                            gaugingStation,
+                            flowThreshold,
+                            contactEmail
+                          };
+
+                          communications.unshift(newCommunication);
+                        }
+                      }
+                    }
+                  }
+                }
                 let method = "email"
                 let sentTo = contacts[contactIndex].email
 
@@ -307,9 +307,9 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
 
 
-//add the communication details to the licences
+  //add the communication details to the licences
 
-  for ( licenceNumber of licenceList) {
+  for (licenceNumber of licenceList) {
 
 
   }
@@ -351,25 +351,25 @@ router.get('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', fu
 
 router.post('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', function(req, res) {
 
-   let licenceList = req.session.data['licenceList'].split(',')
+  let licenceList = req.session.data['licenceList'].split(',')
 
-   let licenceListNumber = req.session.data['licenceListNumber']
+  let licenceListNumber = req.session.data['licenceListNumber']
 
-    let index = licenceList.indexOf(licenceListNumber);
-if (index > -1) {
-  licenceList.splice(index, 1);
-}
-console.log(licenceList)
-req.session.data.licenceList = licenceList.toString()
+  let index = licenceList.indexOf(licenceListNumber);
+  if (index > -1) {
+    licenceList.splice(index, 1);
+  }
+  console.log(licenceList)
+  req.session.data.licenceList = licenceList.toString()
 
 
-req.session.data.recipients = 0
+  req.session.data.recipients = 0
 
-if (licenceList.length) {
-  res.redirect('check-the-contact-details-for-each-licence');
-} else {
-  res.redirect('enter-licence-numbers');
-}
+  if (licenceList.length) {
+    res.redirect('check-the-contact-details-for-each-licence');
+  } else {
+    res.redirect('enter-licence-numbers');
+  }
 
 
 });

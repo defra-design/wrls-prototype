@@ -1,0 +1,71 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "You're about to remove " + [data.contacts[data.contactID].customer] %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">
+  {{title}}
+</h1>
+
+
+
+    <form  method="post" novalidate>
+
+     {% set caption %}
+     {{ govukInsetText({
+       text: "If you remove this customer, the contact will no longer get any correpsondence for this customer"
+     }) }}
+     {% endset %}
+
+      {{ govukTable({
+        caption: [caption] | safe,
+        captionClasses: "govuk-heading-m",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Customer",
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            text: "Role"
+          }
+        ],
+        rows: [
+          [
+            {
+              html:  [data.contacts[data.contactID].customer],
+              classes: 'govuk-!-width-one-third govuk-table__cell--no-border'
+            },
+            {
+              text: data.contacts[data.contactID]['role'] | replaceComma | striptags(true) | escape | nl2br ,
+              classes: 'govuk-table__cell--no-border'
+            }
+          ]
+        ]
+      }) }}
+
+
+      <button type="submit" class="govuk-button">
+        Confirm and remove
+      </button>
+
+    </form>
+
+</div>
+</div>
+
+
+    {% endblock %}

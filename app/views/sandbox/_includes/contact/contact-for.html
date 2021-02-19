@@ -1,4 +1,11 @@
 
+{% set contactID = data['contactID']%}
+{% set customers = data.contacts[contactID].customer%}
+
+
+
+{% if customers.length %}
+
 
 {{ govukTable({
   caption: "Contact for",
@@ -11,6 +18,10 @@
     },
     {
       text: "Role"
+    },
+    {
+      text: "Action",
+      format: "numeric"
     }
   ],
   rows: [
@@ -22,7 +33,21 @@
       {
         text: data.contacts[data.contactID]['role'] | replaceComma | striptags(true) | escape | nl2br ,
         classes: 'govuk-table__cell--no-border'
+      },
+      {
+        html: '<a href="contact/remove-customer" class="govuk-link">Remove<span class="govuk-visually-hidden">customer</span></a>',
+        classes: 'govuk-table__cell--no-border',
+        format: "numeric"
       }
     ]
   ]
 }) }}
+
+{% else %}
+
+<h2 class="govuk-heading">Contact for</h2>
+<p class="govuk-body">This contact isn't associated with any customers</p>
+
+
+
+{% endif %}
