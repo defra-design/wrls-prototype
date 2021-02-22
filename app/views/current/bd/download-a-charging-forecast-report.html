@@ -53,13 +53,14 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
+    <p class="govuk-body">Data generated at 09:00 on 12 March 2021
+    </p>
 
     <h2 class="govuk-heading-l">
-      Billed licences
+      Billed active licences
     </h2>
 
-    <p class="govuk-body">Active charge information for licences that have been billed in the current financial year.
+    <p class="govuk-body">Active charge information for live licences that have been billed in the current financial year.
     </p>
 
     {{ govukButton({
@@ -73,10 +74,10 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l">
-      Unbilled licences
+      Unbilled active licences
     </h2>
 
-    <p class="govuk-body">Active charge information for licences that have not been billed in the current financial year.
+    <p class="govuk-body">Active charge information for live licences that have not been billed in the current financial year.
     </p>
 
     {{ govukButton({
@@ -91,14 +92,14 @@ classes: "govuk-button--secondary"
   <div class="govuk-grid-column-two-thirds">
 
     <h2 class="govuk-heading-l">
-      Revoked licences not yet credited
+      Inactive licences not yet credited
     </h2>
 
-    <p class="govuk-body">Charge information for licences revoked after annual billing, but not yet credited back in the current financial year.
+    <p class="govuk-body">Charge information for licences revoked, lapsed or expired after annual billing, but not yet credited back in the current financial year.
     </p>
 
     {{ govukButton({
-html: 'Download <span class="govuk-visually-hidden">Charge information for revoked licences not yet credited </span> report',
+html: 'Download <span class="govuk-visually-hidden">Charge information for revoked, lapsed or expired licences not yet credited </span> report',
 classes: "govuk-button--secondary"
 }) }}
 
