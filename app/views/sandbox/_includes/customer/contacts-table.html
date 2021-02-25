@@ -16,21 +16,31 @@
   </thead>
   <tbody class="govuk-table__body">
 
+    <!--set the customer page we are on-->
+    {% set customer = data.customers[data.customerID].name %}
+
 <!--getting the contacts data-->
 {% set contacts = data['contacts'] %}
-{% for i in contacts %}
-<!--Splitting the customer data in the contact in to an array-->
-{% set array = i.customer.split(",") %}
+
+<!--loop through each contact-->
+{% for contact in contacts %}
+<!--set the contact ID -->
 {% set loopNumber = loop.index0 %}
-<!--Loop through the array and check for name match-->
-{% for i in array %}
-{% if i == data.customers[data.customerID]['name'] %}
+<!--get the customers for each contact-->
+{% set contactCustomers = data.contacts[loopNumber]['customers'] %}
+<!--loop through each customers contacts-->
+{% for contactCustomer in contactCustomers %}
+<!--if the customer name for the contact matches the customer page we are on set the customer index number-->
+{% if customer == contactCustomer['customer'] %}
+
+{% set index = loop.index0 %}
+
 
 
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
-    <td class="govuk-table__cell">{{data.contacts[loopNumber]['role'] | replaceComma | striptags(true) | escape | nl2br}}</td>
+    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
     <td class="govuk-table__cell">
       <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View</a>
     </td>
@@ -46,9 +56,10 @@
       {% endif %}
     </td> -->
   </tr>
-{% endif %}
-{% endfor %}
+  {% endif %}
   {% endfor %}
+  {% endfor %}
+
 
 
 

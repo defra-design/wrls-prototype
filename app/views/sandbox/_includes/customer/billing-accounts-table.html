@@ -18,7 +18,7 @@
     {% for i in BA %}
     {% if i.customer == data.customers[data.customerID]['name'] %}
     {% set loopNumber = loop.index0 %}
-
+    {% set customerName = i.customer %}
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
 
@@ -29,24 +29,18 @@
 
           <!--getting the address data-->
           {% set addresses = data['addresses'] %}
+          <!-- loop through all the addresses -->
           {% for i in addresses %}
           <!--set the index of the address-->
           {% set loopNumber = loop.index0 %}
 
-          <!--split the address role from comma separted string into an array and check for the billing role-->
-          {% set roleArr = i.role.split(",") %}
-          {% for i in roleArr %}
-          {% if i === "Billing" %}
+          <!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+          {% set addressCustomers = i.customers %}
+          {% for i in addressCustomers %}
+          {% if "Billing" in i.role and customerName == i.customer %}
 
-          <!--If the billing role is against the address split the customer name comma separated string into an array-->
-          {% set array = addresses[loopNumber].customer.split(",") %}
-          {% for i in array %}
-          <!--Checking the customer name matches the address-->
-          {% if i == data.customers[data.customerID]['name']  %}
 
         <td class="govuk-table__cell">{{[data.addresses[loopNumber].address1]}}<br>{{[data.addresses[loopNumber].city]}}<br>{{[data.addresses[loopNumber].postcode]}}</td>
-        {% endif %}
-        {% endfor %}
         {% endif %}
         {% endfor %}
         {% endfor %}

@@ -65,14 +65,22 @@ else {
 
     let name = "Not set"
     let email = req.session.data['emailDetails']
+
     let role = req.session.data['WAA']
     let customer = req.session.data.customers[req.session.data.customerID]['name']
+
+    let type = "person"
+
+    let customers = [{
+      role,
+      customer
+    }]
 
     let newContact = {
       name,
       email,
-      role,
-      customer,
+      type,
+      customers
     };
 
     contacts.push(newContact);
@@ -133,12 +141,16 @@ if (personOrDepartment === "department") {
   let customer = req.session.data.customers[req.session.data.customerID]['name']
   let type = req.session.data['person-or-department']
 
+  let customers = [{
+    role,
+    customer
+  }]
+
   let newContact = {
     name,
     email,
-    role,
-    customer,
     type,
+    customers
   };
 
   contacts.push(newContact);
@@ -195,12 +207,16 @@ router.post('/add/enter-any-extra-details', function(req, res) {
     let customer = req.session.data.customers[req.session.data.customerID]['name']
     let type = req.session.data['person-or-department']
 
+    let customers = [{
+      role,
+      customer
+    }]
+
     let newContact = {
       name,
       email,
-      role,
-      customer,
       type,
+      customers
     };
 
     contacts.push(newContact);

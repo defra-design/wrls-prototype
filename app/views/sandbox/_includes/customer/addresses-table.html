@@ -19,8 +19,11 @@
 <!--getting the address data-->
 {% set addresses = data['addresses'] %}
 {% for i in addresses %}
-{% if i.customer == data.customers[data.customerID]['name'] %}
 {% set loopNumber = loop.index0 %}
+{% set addressCustomers = i['customers'] %}
+{% for i in addressCustomers %}
+{% if i.customer == data.customers[data.customerID]['name'] %}
+
 
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{[data.addresses[loopNumber].address1]}}</td>
@@ -40,6 +43,7 @@
 
   {% endif %}
   {% endfor %}
+    {% endfor %}
 
 
 

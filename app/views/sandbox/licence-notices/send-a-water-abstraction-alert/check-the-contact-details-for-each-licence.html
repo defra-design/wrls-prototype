@@ -24,9 +24,16 @@
       {{qTitle|safe}}
     </h1>
 
-    {% set recipients %}
-      {% include "sandbox/_includes/notices/recipients.html" %}
-      {% endset %}
+
+
+
+      {% set recipientsEmail %}
+        {% include "sandbox/_includes/notices/recipientsEmail.html" %}
+        {% endset %}
+
+        {% set recipientsLetter %}
+          {% include "sandbox/_includes/notices/recipientsLetter.html" %}
+          {% endset %}
 
     <form method="post" action="check-the-contact-details-for-each-licence?recipients={{recipients | striptags(true) | escape}}" novalidate>
 

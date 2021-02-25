@@ -57,7 +57,8 @@ router.use('/customer', require('./_routes-customer'));
 //----------------------------------------------------------------
 ////CONTACT ROUTES
 //REMOVE CUSTOMER FROM A CONTACT
-
+//CHANGE NAME
+//CHANGE EMAIL ADDRESS
 router.use('/contact', require('./_routes-contact'));
 
 

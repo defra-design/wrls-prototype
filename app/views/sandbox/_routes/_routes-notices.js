@@ -23,6 +23,8 @@ router.post('/send-a-water-abstraction-alert/enter-licence-numbers', function(re
 
 
   req.session.data.recipients = 0
+  req.session.data.recipientsLetter = 0
+  req.session.data.recipientsEmail = 0
 
   res.redirect('check-the-contact-details-for-each-licence');
 });
@@ -133,26 +135,24 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
     //loop through the contacts and set the contact index to the loop index
     for (var [contactIndex, contact] of contacts.entries()) {
 
-      //split the contacts role from comma separted string into an array and check for the water abstraction alerts role
-      let roleArr = contact.role.split(",")
-      for (var role of roleArr) {
+      let contactCustomers = contact.customers
 
-        if (role === "Water abstraction alerts") {
-          //If the water abstraction alert role is against the contact split the customer name comma separated string into an array-->
+      for (contactCustomer of contactCustomers) {
 
-          let array = contacts[contactIndex].customer.split(",")
+        if (licenceHolder == contactCustomer.customer && contactCustomer.role.includes("Water abstraction alerts")) {
 
-          for (var customer of array) {
-
-            //Checking the customer name matches the address
-            if (customer == licenceHolder) {
 
               if (contacts[contactIndex].email == "Not set") {
                 let method = "letter"
 
                 // find the address for the licence
                 for ([addressIndex, address] of addresses.entries()) {
-                  if (licenceHolder == address.customer) {
+
+                  let addressCustomers = address.customers
+
+                  for (addressCustomer of addressCustomers) {
+
+                  if (licenceHolder == addressCustomer.customer && addressCustomer.role.includes("Licence holder")) {
 
                     //set a variable for the address
                     address = licenceHolder + ", " + addresses[addressIndex].address1 + ", " + addresses[addressIndex].city + ", " + addresses[addressIndex].postcode
@@ -186,6 +186,7 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
                   }
                 }
+              }
 
 
 
@@ -193,18 +194,17 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
               } else {
 
                 //check if the contact has a role of licence holder, this is so the licenec holder is posted a copy as well as emailed if they have an email address
-                let contactRole = contact.role
+                let contactRole = contactCustomer.role
                 if (contactRole.includes("Licence holder")) {
 
-                  // if so find the address for the licence
+                  // find the address for the licence
                   for ([addressIndex, address] of addresses.entries()) {
-                    if (licenceHolder == address.customer) {
 
-                      //split the contacts role from comma separted string into an array and check for the water abstraction alerts role
-                      let addressRoles = addresses[addressIndex].role.split(",")
-                      for (var addressRole of addressRoles) {
+                    let addressCustomers = address.customers
 
-                        if (addressRole === "Licence holder") {
+                    for (addressCustomer of addressCustomers) {
+
+                    if (licenceHolder == addressCustomer.customer && addressCustomer.role.includes("Licence holder")) {
 
 
 
@@ -239,7 +239,6 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
                           };
 
                           communications.unshift(newCommunication);
-                        }
                       }
                     }
                   }
@@ -276,8 +275,6 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
 
 
-            }
-          }
         }
       }
     }
@@ -291,7 +288,8 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
   let date = today
   let notification = req.session.data['waaType'] + " - Water abstraction alert"
   let sentBy = "youremailaddress@defra.gov.uk"
-  let numberOfrecipients = req.session.data['recipients']
+  let numberOfrecipients = recipients.length
+  console.log(numberOfrecipients)
   let problems = ""
 
   let newNotification = {
@@ -303,7 +301,7 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
     problems
   };
 
-  notifications.push(newNotification);
+  notifications.unshift(newNotification);
 
 
 
@@ -359,7 +357,7 @@ router.post('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', f
   if (index > -1) {
     licenceList.splice(index, 1);
   }
-  console.log(licenceList)
+
   req.session.data.licenceList = licenceList.toString()
 
 

@@ -1,10 +1,50 @@
 
 {% set contactID = data['contactID']%}
-{% set customers = data.contacts[contactID].customer%}
+{% set customers = data.contacts[contactID].customers%}
 
 
+<!--set customer for the row variable-->
+{% set customer = [] %}
+<!--set index for the customer ID in the variable-->
+{% set index = "" %}
+<!-- set customer index to get the ID of the matched customer-->
+{% set customerIndex = "" %}
+<!--get the contacts customer data-->
+{% set selectData = data.contacts[data.contactID].customers %}
+<!--get all of the customers-->
+{% set customers = data['customers'] %}
 
-{% if customers.length %}
+<!--loop through the contacts customers-->
+{% for item in selectData %}
+<!--set the customer name for the contacts customers-->
+{% set selectedCustomer = selectData[loop.index0]['customer'] %}
+<!--loop through each of the customers on the database-->
+{% for customer in customers %}
+<!--set the index for each customer to be used as the ID-->
+{% set customerIndex = loop.index0 %}
+<!--if the customer names for the contact match a customer in the database set the index number for the customer-->
+{% if selectedCustomer == customer.name %}
+{% set index = customerIndex %}
+{% endif %}
+{% endfor %}
+
+<!--set the array for the rows including the customer index number in the links to return to the customer and remove the customer-->
+{% set customer = customer | push([{
+  html: "<a class='govuk-link' href='customer?customerID=" + index + "#contacts'' >" + item.customer + "</a>" ,
+    classes: 'govuk-!-width-one-third'
+  },{
+      text: item.role | replaceComma | striptags(true) | escape | nl2br,
+      classes: 'govuk-!-width-one-third'
+    },{
+        html: "<a href='contact/remove-customer?customerID=" + loop.index0 + "' class='govuk-link'>Remove<span class='govuk-visually-hidden'>customer</span></a>",
+        classes: 'govuk-!-width-one-third',
+        format: "numeric"
+      }])  %}
+{% endfor %}
+
+
+<!-- if there are some customers show the table -->
+{% if selectData.length %}
 
 
 {{ govukTable({
@@ -17,37 +57,20 @@
       classes: 'govuk-!-width-one-third'
     },
     {
-      text: "Role"
+      text: "Role",
+      classes: 'govuk-!-width-one-third'
     },
     {
       text: "Action",
+      classes: 'govuk-!-width-one-third',
       format: "numeric"
     }
   ],
-  rows: [
-    [
-      {
-        html:  "<a class='govuk-link' href='customer#contacts' >" + [data.contacts[data.contactID].customer] + "</a>",
-        classes: 'govuk-!-width-one-third govuk-table__cell--no-border'
-      },
-      {
-        text: data.contacts[data.contactID]['role'] | replaceComma | striptags(true) | escape | nl2br ,
-        classes: 'govuk-table__cell--no-border'
-      },
-      {
-        html: '<a href="contact/remove-customer" class="govuk-link">Remove<span class="govuk-visually-hidden">customer</span></a>',
-        classes: 'govuk-table__cell--no-border',
-        format: "numeric"
-      }
-    ]
-  ]
+  rows: customer
 }) }}
 
 {% else %}
-
+<!--show some other text-->
 <h2 class="govuk-heading">Contact for</h2>
 <p class="govuk-body">This contact isn't associated with any customers</p>
-
-
-
 {% endif %}

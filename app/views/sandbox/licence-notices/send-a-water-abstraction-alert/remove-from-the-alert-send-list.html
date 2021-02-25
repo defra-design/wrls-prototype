@@ -50,26 +50,18 @@
 
 
 
-                  <!--getting the address data-->
+                  <!--add in address details-->
+
                   {% set addresses = data['addresses'] %}
-
-                  <!--loop through the addresses-->
-                  {% for address in addresses %}
-
+                  {% for i in addresses %}
                   <!--set the index of the address-->
                   {% set addressIndex = loop.index0 %}
 
-                  <!--split the address role from comma separted string into an array and check for the licence holder role-->
-                  {% set roleArr = address.role.split(",") %}
-                  {% for i in roleArr %}
-                  {% if i === "Licence holder" %}
+                  <!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+                  {% set addressCustomers = i.customers %}
+                  {% for i in addressCustomers %}
+                  {% if "Licence holder" in i.role and data.LicenceListHolder == i.customer %}
 
-                  <!--If the licence holder role is against the address split the customer name comma separated string into an array-->
-                  {% set array = addresses[addressIndex].customer.split(",") %}
-                  {% for i in array %}
-
-                  <!--Checking the customer name matches the address-->
-                  {% if i == [data.LicenceListHolder]  %}
 
                   <!--display the address-->
                   <td class="govuk-table__cell">
@@ -84,8 +76,6 @@
 
                   {% endif %}
                   {% endfor %}
-                  {% endif %}
-                  {% endfor %}
                   {% endfor %}
 
 
@@ -96,33 +86,23 @@
 
                   <!--getting the contact data-->
                   {% set contacts = data['contacts'] %}
-
                   <!--loop through the contacts-->
                   {% for contact in contacts %}
-
                   <!--set the index of the contact-->
                   {% set contactIndex = loop.index0 %}
 
-                  <!--split the contacts role from comma separted string into an array and check for the water abstraction alerts role-->
-                  {% set roleArr = contact.role.split(",") %}
-                  {% for i in roleArr %}
-                  {% if i === "Water abstraction alerts" %}
+                  <!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+                  {% set contactCustomers = contact.customers %}
 
-                  <!--If the water abstraction alert role is against the contact split the customer name comma separated string into an array-->
-                  {% set array = contacts[contactIndex].customer.split(",") %}
-                  {% for i in array %}
 
-                  <!--Checking the customer name matches the contact-->
-                  {% if i == [data.LicenceListHolder]  %}
-
+                  {% for i in contactCustomers %}
+                  {% if "Water abstraction alerts" in i.role and data.LicenceListHolder == i.customer %}
 
                   {% if contacts[contactIndex].email == "Not set" %}
                   {% else %}
-                      {{[data.contacts[contactIndex].email]}}
+                      {{[data.contacts[contactIndex].email]}}<br>
 
                   {% endif %}
-                      {% endif %}
-                      {% endfor %}
                       {% endif %}
                       {% endfor %}
                       {% endfor %}

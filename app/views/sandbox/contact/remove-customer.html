@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "You're about to remove " + [data.contacts[data.contactID].customer] %}
+{% set title = "You're about to remove " + [data.contacts[data.contactID].customers[data.customerID]['customer']] %}
 
 
 {% block pageTitle %}
@@ -46,11 +46,11 @@
         rows: [
           [
             {
-              html:  [data.contacts[data.contactID].customer],
+              html:  [data.contacts[data.contactID].customers[data.customerID]['customer']],
               classes: 'govuk-!-width-one-third govuk-table__cell--no-border'
             },
             {
-              text: data.contacts[data.contactID]['role'] | replaceComma | striptags(true) | escape | nl2br ,
+              html: [data.contacts[data.contactID].customers[data.customerID]['role'] | replaceComma | striptags(true) | escape | nl2br  ],
               classes: 'govuk-table__cell--no-border'
             }
           ]

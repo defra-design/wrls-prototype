@@ -1,0 +1,65 @@
+{% extends "layouts/_manage.html" %}
+
+<!--Set the email address unless it is not set then leave it blank-->
+{% if [data.contacts[data.contactID].email] == "Not set" %}
+{% set email = "" %}
+<!--set page title-->
+{% set title = "Set email address" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + " </span> Set email address"%}
+{% else %}
+{% set email = [data.contacts[data.contactID].email] %}
+<!--set page title-->
+{% set title = "Change email address" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + " </span> Change email address"%}
+{% endif %}
+
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+
+
+   {{ govukInput({
+   id: "emailDetails",
+   name: "emailDetails",
+   type: "email",
+   value: [email],
+   spellcheck: false,
+   classes: "govuk-input--width-20",
+   label: {
+     text: qTitle|safe,
+     classes: "govuk-label--l",
+ isPageHeading: true
+   }
+   }) }}
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

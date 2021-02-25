@@ -1,8 +1,8 @@
 <!-- count the number of recipients for the alert-->
 
 {% set recipients  = data['recipients'] %}
-{% set recipientsLetter  = data['recipientsLetter'] %}
-{% set recipientsEmail  = data['recipientsEmail'] %}
+{% set recipientsLetter  = 0 %}
+{% set recipientsEmail  = 0 %}
 
 <!--split the licences entered in to the flow into an array-->
 {% set licenceList = data['licenceList'].split(',') %}
@@ -76,4 +76,4 @@
 {% endfor %}
 {% endfor %}
 
-{{recipients}}
+{{recipientsEmail}}

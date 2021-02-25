@@ -1,0 +1,48 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Change the department name" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + " </span> Change the department name" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+      {{ govukInput({
+      id: "department-details",
+      name: "department-details",
+      type: "text",
+      spellcheck: false,
+      classes: "govuk-input--width-20",
+      label: {
+        text: qTitle |safe ,
+        classes: "govuk-label--l",
+    isPageHeading: true
+      },
+      value: data['name-details']
+      }) }}
+
+      {{ govukButton({
+  text: "Confirm"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

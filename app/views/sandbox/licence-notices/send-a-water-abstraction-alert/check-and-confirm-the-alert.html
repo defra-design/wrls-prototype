@@ -15,6 +15,7 @@
 {% block service %}
 
 
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 <h1 class="govuk-heading-l">
@@ -23,7 +24,7 @@
 
     <form  method="post" novalidate>
 
-  
+
 
           <!-- count of licences in the list -->
           {% set index = "" %}
@@ -32,7 +33,7 @@
           {% set index = loop.length %}
           {% endfor %}
 
-            <p class="govuk-body">You are about to send this notification to <span class="govuk-!-font-weight-bold">{% include "sandbox/_includes/notices/recipients.html" %}recipients</span> regarding <span class="govuk-!-font-weight-bold">{{index}} licences.</span></p>
+            <p class="govuk-body">This is a preview of the message your recipients will get.</p>
           </div>
           </div>
 
