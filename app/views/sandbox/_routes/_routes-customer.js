@@ -53,14 +53,38 @@ router.post('/add/is-this-a-contact-for-water-abstraction-alerts', function(req,
      req.session.data.WAA = ""
  }
 
+//get contacts array
+let contacts = req.session.data['contacts']
+let match = ""
+
  //if they haven't added a name leave the flow other wise search for the name to see if it matches a contact
 if (req.session.data['name-details'].length){
-  res.redirect('check-if-they-are-an-existing-contact');
+
+  //loop through contacts checking for a name matches
+  //split the last name from name-details
+  let lastName = []
+  lastName = req.session.data['name-details'].split(" ")
+  for (contact of contacts) {
+  if (contact.name.endsWith(lastName[1]) ) {
+  //set a var with the lastname to filter the list of existing contacts
+  req.session.data.contactLastName = lastName[1]
+  match = "true"
+   }
+  }
+
+//if the name has a match then check if they are an existing contact
+if (match == "true") {
+res.redirect('check-if-they-are-an-existing-contact');
+} else {
+  //if no matches jump to what type of contact
+   res.redirect('what-type-of-contact');
+   }
+
 }
 
+  //else add a new contact with the email address
 else {
 
-  let contacts = req.session.data['contacts']
   req.session.data.contactID = contacts.length
 
     let name = "Not set"

@@ -20,8 +20,6 @@
 
     <form method="post" novalidate>
 
-
-
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -35,15 +33,19 @@
            {% for i in data['contacts']%}
            {% set loopNumber = loop.index0 %}
 
+           {% set lastName = i.name.split(" ") %}
           <!--Don't show contacts without a name set-->
-           {% if i.name == "Not set" %}
-           {% else %}
+           {% if lastName[1] == data['contactLastName'] %}
 
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="contact-exist-{{[loopNumber]}}" name="contact-exist" type="radio" value="{{[loopNumber]}}">
               <label class="govuk-label govuk-radios__label" for="contact-exist-{{[loopNumber]}}">
                 {{i.name}}
               </label>
+              <div id="contact-exist-{{[loopNumber]}}-item-hint" class="govuk-hint govuk-radios__hint">
+          {% if i.email.length %} {% if i.email == "Not set" %}{% else %} {{i.email}}<br> {% endif %}{% endif %}
+          {{data.contacts[loopNumber].customers[0]['customer']}}
+        </div>
             </div>
 
             {% endif %}
