@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = [data.customers[data.customerID]['name']] + " - Enter any extra details for " + [data['name-details']] %}
+{% set title = [data.customers[data.customerID]['name']] + " - Add more details to " + [data['fullName']] + "'s name" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter any extra details for " + [data['name-details']] %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Add more details to " + [data['fullName']] + "'s name" %}
 
 
 
@@ -22,9 +22,7 @@
 
     <form method="post" novalidate>
 
-   <!--split the name details string into an array-->
-   {% set name = [] %}
-   {% set name = data['name-details'].split(" ") %}
+
 
       {% call govukFieldset({
   legend: {
@@ -45,32 +43,11 @@
 
       {{ govukInput({
         label: {
-          text: "First name"
-        },
-        classes: "govuk-input--width-20",
-        id: "firstName",
-        name: "firstName",
-        value: name[0]
-      }) }}
-
-      {{ govukInput({
-        label: {
         text: "Middle initials (optional)"
         },
         classes: "govuk-input--width-5",
         id: "middleInitials",
         name: "middleInitials"
-      }) }}
-
-
-      {{ govukInput({
-        label: {
-        text: "Last name"
-        },
-        classes: "govuk-input--width-20",
-        id: "lastName",
-        name: "lastName",
-        value: name[1]
       }) }}
 
       {{ govukInput({
@@ -88,7 +65,8 @@
         },
         classes: "govuk-input--width-20",
         id: "department",
-        name: "department"
+        name: "department",
+        value: data['department-name']
       }) }}
 
 {% endcall %}

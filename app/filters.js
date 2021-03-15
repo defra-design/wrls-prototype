@@ -70,6 +70,22 @@ module.exports = function(env) {
     return e.replace(/\,/g, '\n')
   }
 
+  //filter for replacing commas with line breaks "| stripSqBrackets "
+  //This isn't safe for production
+  filters.stripSqBrackets = function(e) {
+    return e.replace(/\[|\]/g, "")
+  }
+
+
+  //filter for replacing commas with line breaks "| stripQuotes "
+  //This isn't safe for production
+  filters.stripQuotes = function(e) {
+    return e.replace(/\"/g, "")
+  }
+
+  //Array to string on new lines | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+
+
   //filter for replacing tildes with line breaks "| replaceTilde | striptags(true) | escape | nl2br"
   //This isn't safe for production
   filters.replaceTilde = function(e) {

@@ -139,10 +139,10 @@ router.post('/send-a-water-abstraction-alert/check-and-confirm-the-alert', funct
 
       for (contactCustomer of contactCustomers) {
 
-        if (licenceHolder == contactCustomer.customer && contactCustomer.role.includes("Water abstraction alerts")) {
+        if (licenceHolder == contactCustomer.customer && contactCustomer.notices.includes("Water abstraction alerts")) {
 
 
-              if (contacts[contactIndex].email == "Not set") {
+              if (contacts[contactIndex].email == "") {
                 let method = "letter"
 
                 // find the address for the licence

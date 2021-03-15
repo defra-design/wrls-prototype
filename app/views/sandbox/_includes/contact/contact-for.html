@@ -36,6 +36,9 @@
       text: item.role | replaceComma | striptags(true) | escape | nl2br,
       classes: 'govuk-!-width-one-third'
     },{
+        text: item.notices | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br,
+        classes: 'govuk-!-width-one-third'
+      },{
         html: "<a href='contact/remove-customer?customerID=" + loop.index0 + "' class='govuk-link'>Remove<span class='govuk-visually-hidden'>customer</span></a>",
         classes: 'govuk-!-width-one-third',
         format: "numeric"
@@ -58,6 +61,9 @@
     },
     {
       text: "Role",
+      classes: 'govuk-!-width-one-third'
+    },{
+      text: "Notices",
       classes: 'govuk-!-width-one-third'
     },
     {

@@ -12,186 +12,63 @@ const router = express.Router()
 
 
 //Contact details
-router.get('sandbox/customer/add/what-contact-details-do-you-want-to-add', function(req, res) {
+router.get('sandbox/customer/add/which-contact-details-do-you-want-to-add', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('sandbox/customer/add/what-contact-details-do-you-want-to-add');
+  res.render('sandbox/customer/add/which-contact-details-do-you-want-to-add');
 
 });
 
+router.post('/add/which-contact-details-do-you-want-to-add', function(req, res) {
 
-router.post('/add/what-contact-details-do-you-want-to-add', function(req, res) {
-
-  //if email address is blank change it Not set
+  /*if email address is blank change it to Not set
   if (req.session.data['emailDetails'] === "") {
   req.session.data.emailDetails = "Not set"
-  }
+} */
 
-res.redirect('is-this-a-contact-for-water-abstraction-alerts');
+
+  //if name is added format it for use later on
+  if (req.session.data['contact-details'].includes("name")) {
+
+  let firstName = req.session.data['first-name']
+    let lastName = req.session.data['last-name']
+  req.session.data.fullName = firstName + " " + lastName
+  //if only a department name was added then go ot check your answers
+  if ( firstName = req.session.data['fullName'] === " " ) {
+    req.session.data.fullName = req.session.data['department-name']
+    res.redirect('check-your-answers');
+  } else {res.redirect('do-you-need-to-add-more-name-details'); }
+
+} else {res.redirect('select-any-email-notices');}
+
+
 
 });
 
 
-///Do they want water abstraction alerts
-router.get('sandbox/customer/add/is-this-a-contact-for-water-abstraction-alerts', function(req, res) {
+//If name added ask about extra name details
+router.get('sandbox/customer/add/do-you-need-to-add-more-name-details', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('sandbox/customer/add/is-this-a-contact-for-water-abstraction-alerts');
-
-});
-
-router.post('/add/is-this-a-contact-for-water-abstraction-alerts', function(req, res) {
-
- //if they've said yes to water abstraction alerts add the role
- if (req.session.data['WAA'] === "yes") {
-     req.session.data.WAA = "Water abstraction alerts"
- }
-
- else {
-     req.session.data.WAA = ""
- }
-
-//get contacts array
-let contacts = req.session.data['contacts']
-let match = ""
-
- //if they haven't added a name leave the flow other wise search for the name to see if it matches a contact
-if (req.session.data['name-details'].length){
-
-  //loop through contacts checking for a name matches
-  //split the last name from name-details
-  let lastName = []
-  lastName = req.session.data['name-details'].split(" ")
-  for (contact of contacts) {
-  if (contact.name.endsWith(lastName[1]) ) {
-  //set a var with the lastname to filter the list of existing contacts
-  req.session.data.contactLastName = lastName[1]
-  match = "true"
-   }
-  }
-
-//if the name has a match then check if they are an existing contact
-if (match == "true") {
-res.redirect('check-if-they-are-an-existing-contact');
-} else {
-  //if no matches jump to what type of contact
-   res.redirect('what-type-of-contact');
-   }
-
-}
-
-  //else add a new contact with the email address
-else {
-
-  req.session.data.contactID = contacts.length
-
-    let name = "Not set"
-    let email = req.session.data['emailDetails']
-
-    let role = req.session.data['WAA']
-    let customer = req.session.data.customers[req.session.data.customerID]['name']
-
-    let type = "person"
-
-    let customers = [{
-      role,
-      customer
-    }]
-
-    let newContact = {
-      name,
-      email,
-      type,
-      customers
-    };
-
-    contacts.push(newContact);
-
-    res.redirect('../../customer#contacts');
-}
-
-
+  res.render('sandbox/customer/add/do-you-need-to-add-more-name-details');
 
 });
 
 
-///Does this contact exist
-router.get('sandbox/customer/add/check-if-they-are-an-existing-contact', function(req, res) {
+router.post('/add/do-you-need-to-add-more-name-details', function(req, res) {
 
-  req.session.data.back = req.headers.referer
-
-  res.render('sandbox/customer/add/check-if-they-are-an-existing-contact');
-
-});
-
-router.post('/add/check-if-they-are-an-existing-contact', function(req, res) {
-
-  // if they select an existing contact leave the flow and go to the existing contact
-  if (req.session.data['contact-exist'] === "new-contact") {
-    res.redirect('what-type-of-contact');
-  } else {
-    res.redirect('../../contact?contactID=' + req.session.data['contact-exist']);
-  }
-
-
+//if adding extra details send to extra details, else if there is an email added send to notices, else send to check your answers
+if (req.session.data['extraNameDetails'] === "yes"){
+res.redirect('enter-any-extra-details');}
+else if (req.session.data['emailDetails'] != "") {
+res.redirect('select-any-email-notices');}
+else { res.redirect('check-your-answers')}
 
 });
 
-
-///Is the contact a person or department?
-router.get('sandbox/customer/add/what-type-of-contact', function(req, res) {
-
-  req.session.data.back = req.headers.referer
-
-  res.render('sandbox/customer/add/what-type-of-contact');
-
-});
-
-router.post('/add/what-type-of-contact', function(req, res) {
-
-let personOrDepartment = req.session.data['person-or-department']
-
-let contacts = req.session.data['contacts']
-req.session.data.contactID = contacts.length
-
-if (personOrDepartment === "department") {
-
-  //add the department to the contact list
-  let name = req.session.data['name-details']
-  let email = req.session.data['emailDetails']
-  let role = req.session.data['WAA']
-  let customer = req.session.data.customers[req.session.data.customerID]['name']
-  let type = req.session.data['person-or-department']
-
-  let customers = [{
-    role,
-    customer
-  }]
-
-  let newContact = {
-    name,
-    email,
-    type,
-    customers
-  };
-
-  contacts.push(newContact);
-
-  res.redirect('../../customer#contacts');
-
-  }
-
-else {
-
-  res.redirect('enter-any-extra-details');
-
-  }
-
-});
-
-///Does this contact exist
+///Extra name details
 router.get('sandbox/customer/add/enter-any-extra-details', function(req, res) {
 
   req.session.data.back = req.headers.referer
@@ -203,9 +80,9 @@ router.get('sandbox/customer/add/enter-any-extra-details', function(req, res) {
 router.post('/add/enter-any-extra-details', function(req, res) {
 
   let title = req.session.data['title']
-  let firstName = req.session.data['firstName']
+  let firstName = req.session.data['first-name']
   let middleInitials = req.session.data['middleInitials']
-  let lastName = req.session.data['lastName']
+  let lastName = req.session.data['last-name']
   let suffix = req.session.data['suffix']
   let department = req.session.data['department']
 
@@ -213,8 +90,46 @@ router.post('/add/enter-any-extra-details', function(req, res) {
   let rawName = title + "," + firstName + "," + middleInitials + "," + lastName + "," + suffix
   let name = rawName.replace(/[, ]+/g, " ").trim()
   if (department.length) {
-    name = name + " (" + department + ")"
-  }
+    req.session.data.fullName = name + " (" + department + ")"
+  } else {req.session.data.fullName = name}
+
+  if (req.session.data['contact-details'].includes("email")) {
+  res.redirect('select-any-email-notices');}
+  else { res.redirect('check-your-answers')}
+
+
+});
+
+
+//Select notices
+router.get('sandbox/customer/add/select-any-email-notices', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render('sandbox/customer/add/select-any-email-notices');
+
+});
+
+
+router.post('/add/select-any-email-notices', function(req, res) {
+
+
+res.redirect('check-your-answers');
+
+});
+
+
+//Check your answers
+router.get('sandbox/customer/add/check-your-answers', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render('sandbox/customer/add/check-your-answers');
+
+});
+
+
+router.post('/add/check-your-answers', function(req, res) {
 
 
 
@@ -225,21 +140,39 @@ router.post('/add/enter-any-extra-details', function(req, res) {
 
 
     //add the department to the contact list
-
+    let name = req.session.data['fullName']
+    let title = req.session.data['title']
+    let firstName = req.session.data['first-name']
+    let middleInitials = req.session.data['middleInitials']
+    let lastName = req.session.data['last-name']
+    let suffix = req.session.data['suffix']
+    let department = req.session.data['department']
     let email = req.session.data['emailDetails']
-    let role = req.session.data['WAA']
+    let role = "Contact"
+    let notices = req.session.data['notices']
+    if (notices === "true" ) { notices = "" }
     let customer = req.session.data.customers[req.session.data.customerID]['name']
-    let type = req.session.data['person-or-department']
+    let phone = req.session.data['phoneDetails']
 
     let customers = [{
       role,
+      notices,
       customer
+    }]
+    let nameDetails = [{
+      title,
+      firstName,
+      middleInitials,
+      lastName,
+      suffix,
+      department,
     }]
 
     let newContact = {
       name,
+      nameDetails,
       email,
-      type,
+      phone,
       customers
     };
 
@@ -247,12 +180,10 @@ router.post('/add/enter-any-extra-details', function(req, res) {
 
     req.session.data.back = "customer#contacts"
 
-    res.redirect('../../customer#contacts');
 
-
+res.redirect('../../customer#contacts');
 
 });
-
 
 
 

@@ -1,9 +1,22 @@
 
 <!--set the action text to be set if there isn't an email address already there-->
-{% if [data.contacts[data.contactID].email] == "Not set" %}
+{% if [data.contacts[data.contactID].email] == "" %}
 {% set action = "Set" %}
 {% else %}
 {% set action = "Change" %}
+{% endif %}
+
+{% if [data.contacts[data.contactID].phone] == "" %}
+{% set phoneAction = "Set" %}
+{% else %}
+{% set phoneAction = "Change" %}
+{% endif %}
+
+
+{% if [data.contacts[data.contactID].name] == "" %}
+{% set nameAction = "Set" %}
+{% else %}
+{% set nameAction = "Change" %}
 {% endif %}
 
 {{ govukSummaryList({
@@ -20,14 +33,14 @@
         items: [
           {
             href: "contact/change-name",
-            text: "Change",
+            text: nameAction,
             visuallyHiddenText: "name"
           }
         ]
       }
     },
     {
-      classes: 'govuk-summary-list--no-border',
+
       key: {
         text: "Email address"
       },
@@ -41,6 +54,23 @@
             href: "contact/change-email-address",
             text: action,
             visuallyHiddenText: "email address"
+          }
+        ]
+      }
+    },
+    { classes: 'govuk-summary-list--no-border',
+      key: {
+        text: "Phone number"
+      },
+      value: {
+        text: [data.contacts[data.contactID].phone]
+      },
+      actions: {
+        items: [
+          {
+            href: "which-contact-details-do-you-want-to-add",
+            text: phoneAction,
+            visuallyHiddenText: "phone number"
           }
         ]
       }

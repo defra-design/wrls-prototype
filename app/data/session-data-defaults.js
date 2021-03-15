@@ -905,7 +905,7 @@ module.exports = {
 
        "contacts": [{
          "name": "Jim Smith",
-         "email": "Not set",
+         "email": "",
          "type": "person",
          "title": "",
          "firstName":"Jim",
@@ -914,13 +914,14 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Licence holder,Water abstraction alerts",
+           "role": "Licence holder",
+           "notices": ["Water abstraction alerts"],
            "customer": "Big Smith Farms Ltd",
        }],
        },
        {
          "name": "Joanna Southall",
-         "email": "Not set",
+         "email": "",
          "type": "person",
          "title": "",
          "firstName":"Joanna",
@@ -929,7 +930,8 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Returns",
+           "role": "Contact",
+           "notices": ["Returns"],
            "customer": "Big Smith Farms Ltd",
        }],
        },
@@ -944,14 +946,15 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Water abstraction alerts",
+           "role": "Contact",
+           "notices": ["Water abstraction alerts"],
            "customer": "Big Smith Farms Ltd",
        }],
        },
        {
          "name": "Geoffrey Billington",
-         "email": "Not set",
-         "type": "person",
+         "email": "",
+         "phone": "+4477382932933",
          "title": "",
          "firstName":"Geoffrey",
          "middleInitials": "",
@@ -959,7 +962,8 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Returns",
+           "role": "Contact",
+           "notices": ["Returns"],
            "customer": "Bottled Water Plc",
        }],
        },
@@ -969,13 +973,14 @@ module.exports = {
          "type": "department",
          "department": "Head office",
          "customers": [{
-           "role": "Licence holder,Billing,Water abstraction alerts",
+           "role": "Licence holder,Billing contact",
+           "notices": ["Renewals", "Water abstraction alerts"],
            "customer": "Bottled Water Plc",
        }],
        },
        {
          "name": "Irene Briton",
-         "email": "Not set",
+         "email": "",
          "type": "person",
          "title": "",
          "firstName":"Irene",
@@ -984,13 +989,14 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Licence holder,Billing,Returns,Water abstraction alerts",
+           "role": "Licence holder,Billing contact",
+           "notices": ["Renewals", "Returns", "Water abstraction alerts"],
            "customer": "Irene Briton",
        }],
        },
        {
          "name": "Robin Vithlhem-Smith",
-         "email": "Not set",
+         "email": "",
          "type": "person",
          "title": "",
          "firstName":"Robin",
@@ -999,13 +1005,14 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Licence holder,Billing,Water abstraction alerts",
+           "role": "Licence holder,Billing contact",
+           "notices": ["Renewals", "Water abstraction alerts"],
            "customer": "Robin Vithlhem-Smith",
        }],
        },
        {
          "name": "Fiona Thomas",
-         "email": "Not set",
+         "email": "",
          "type": "person",
          "title": "",
          "firstName":"Fiona",
@@ -1014,13 +1021,14 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Returns",
+           "role": "Contact",
+           "notices": ["Returns"],
            "customer": "Robin Vithlhem-Smith",
        }],
        },
        {
          "name": "D.B. Beecham-Smith",
-         "email": "Not set",
+         "email": "",
          "type": "person",
          "title": "",
          "firstName":"D.B.",
@@ -1029,7 +1037,8 @@ module.exports = {
          "suffix": "",
          "department": "",
          "customers": [{
-           "role": "Licence holder,Billing,Returns,Water abstraction alerts",
+           "role": "Licence holder,Billing contact",
+           "notices": ["Renewals", "Returns", "Water abstraction alerts"],
            "customer": "D.B. Beecham-Smith",
        }],
        }

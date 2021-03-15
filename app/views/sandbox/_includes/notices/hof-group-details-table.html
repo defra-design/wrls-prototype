@@ -113,9 +113,9 @@
 
 
 {% for i in contactCustomers %}
-{% if "Water abstraction alerts" in i.role and licenceHolder == i.customer %}
+{% if "Water abstraction alerts" in i.notices and licenceHolder == i.customer %}
 
-{% if contacts[contactIndex].email == "Not set" %}
+{% if contacts[contactIndex].email == "" %}
 {% else %}
     {{[data.contacts[contactIndex].email]}}<br>
 

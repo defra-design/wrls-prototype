@@ -27,12 +27,13 @@
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">Contact</span>
       <!-- show the contact name, if there isn't one then show the email address instead -->
-      {% if data.contacts[data.contactID]['name'] == "Not set" %}
-      {{[data.contacts[data.contactID]['email']]}}
-      {% else %}
+      {% if data.contacts[data.contactID]['name'].length %}
       {{[data.contacts[data.contactID]['name']]}}
+      {% else %}
+      {{[data.contacts[data.contactID]['email']]}}
       {% endif %}
     </h1>
+
 
 </div>
 </div>
