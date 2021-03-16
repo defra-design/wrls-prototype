@@ -70,6 +70,7 @@ module.exports = function(env) {
     return e.replace(/\,/g, '\n')
   }
 
+
   //filter for replacing commas with line breaks "| stripSqBrackets "
   //This isn't safe for production
   filters.stripSqBrackets = function(e) {

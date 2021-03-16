@@ -33,10 +33,10 @@
   html: "<a class='govuk-link' href='customer?customerID=" + index + "#contacts'' >" + item.customer + "</a>" ,
     classes: 'govuk-!-width-one-third'
   },{
-      text: item.role | replaceComma | striptags(true) | escape | nl2br,
+      text: item.role | replaceComma | striptags(true) | escape | nl2br  ,
       classes: 'govuk-!-width-one-third'
     },{
-        text: item.notices | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br,
+        text: item.notices  | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br,
         classes: 'govuk-!-width-one-third'
       },{
         html: "<a href='contact/remove-customer?customerID=" + loop.index0 + "' class='govuk-link'>Remove<span class='govuk-visually-hidden'>customer</span></a>",

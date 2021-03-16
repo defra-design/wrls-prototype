@@ -915,7 +915,7 @@ module.exports = {
          "department": "",
          "customers": [{
            "role": "Licence holder",
-           "notices": ["Water abstraction alerts"],
+           "notices": ["Water abstraction alerts", "Returns", "Renewals"],
            "customer": "Big Smith Farms Ltd",
        }],
        },
@@ -974,7 +974,7 @@ module.exports = {
          "department": "Head office",
          "customers": [{
            "role": "Licence holder,Billing contact",
-           "notices": ["Renewals", "Water abstraction alerts"],
+           "notices": ["Water abstraction alerts", "Returns", "Renewals"],
            "customer": "Bottled Water Plc",
        }],
        },
@@ -1006,7 +1006,7 @@ module.exports = {
          "department": "",
          "customers": [{
            "role": "Licence holder,Billing contact",
-           "notices": ["Renewals", "Water abstraction alerts"],
+           "notices": ["Water abstraction alerts", "Returns", "Renewals"],
            "customer": "Robin Vithlhem-Smith",
        }],
        },

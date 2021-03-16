@@ -42,10 +42,17 @@
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
     <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
-    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}</td>
+    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br  }}</td>
     <td class="govuk-table__cell">
-      <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View</a>
+      <ul class="govuk-summary-list__actions-list">
+                        <li class="govuk-summary-list__actions-list-item">
+      <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View<span class="govuk-visually-hidden"> contact information</span></a></li><li class="govuk-summary-list__actions-list-item">
+      <a href="customer/manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contacts notices</span></a>
+    </li>
+
+</ul>
     </td>
+
 
   <!--  <td class="govuk-table__cell">
       {% if [data.licences[loopNumber].expired] == "true" %}
