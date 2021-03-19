@@ -70,39 +70,32 @@
 
 
 
-
-
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "Bills"
-          },
-          value: {
-            text: "OP123344"
-          },
-          actions: {
-        items: [
-          {
-            href: "select-bills",
-            text: "Change",
-            visuallyHiddenText: "selected bills"
-          }
-        ]
-}
-        },
-        {
-          classes: 'govuk-summary-list--no-border',
-          key: {
-            html: 'Billing address <p class="govuk-body">Last updated: 22 April 2019</p>'
-          },
-          value:
-          {
-            html: address
-          }
-        }
-      ]
-    }) }}
+    <dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Bills
+    </dt>
+    <dd class="govuk-summary-list__value">
+      OP123344
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="select-bills">
+        Change<span class="govuk-visually-hidden"> selected bills</span>
+      </a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Billing address
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{address |safe }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <p class="govuk-body">Last updated: 22 April 2019</p>
+    </dd>
+  </div>
+</dl>
 
 
     {{ govukButton({
