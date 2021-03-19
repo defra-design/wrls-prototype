@@ -113,7 +113,7 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
-      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['credit'] == "true" %}£5,532.25{% elseif data['rebill'] == "true" %}£4,107.75{% else %}£11,537.75{% endif %}</span><br>
+      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£1,105.00{% else %}£11,537.75{% endif %}</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
     </div>
 
@@ -122,13 +122,13 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
     <div class="govuk-grid-column-one-half">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['credit'] == "true" %}£3,095.50{% elseif data['rebill'] == "true" %}£0.00{% else %}£92.75{% endif %}</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['credit'] == "true" %}2{% elseif data['rebill'] == "true" %}0{% else %}1{% endif %} credit note</span></h2>
+      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£3,002.75{% else %}£92.75{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}1{% else %}1{% endif %} credit note</span></h2>
     </div>
 
     <div class="govuk-grid-column-one-half">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['credit'] == "true" %}£8,627.75{% elseif data['rebill'] == "true" %}£4,107.75{% else %}£11,630.55{% endif %}</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['credit'] == "true" %}3{% elseif data['rebill'] == "true" %}2{% else %}4{% endif %} invoices</span></h2>
+      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£4,107.75{% else %}£11,630.55{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}2{% else %}4{% endif %} invoices</span></h2>
     </div>
 
   </div>
@@ -153,7 +153,11 @@
   <div class="divider govuk-!-margin-bottom-5"></div>
 
 <h2 class="govuk-heading-l" id="bills">
+    {% if (data['rebill'] == "true") %}
+     3 supplementary bills
+     {% else %}
     {{data['numberBills']}} supplementary bills
+    {% endif %}
   </h2>
 
   <p class="govuk-body govuk-!-margin-bottom-0">
@@ -162,7 +166,7 @@
     </a>
   </p>
 
-{% if (data['rebill'] == "true") and (data['credit'] == "false") %}
+{% if (data['rebill'] == "true") %}
 {% include "current/includes/bd/bills-table-rebill.html" %}
 {% else %}
 {% include "current/includes/bd/bills-table.html" %}

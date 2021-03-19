@@ -7,14 +7,21 @@
     captionClasses: "govuk-heading-l",
     firstCellIsHeader: false,
     head: [
+    {
+      text: "Bill number"
+    },
       {
         text: "Date created"
       },
       {
-        text: "Bill number"
+        text: "Licences"
       },
       {
         text: "Bill run type"
+      },
+      {
+        text: "Financial year",
+        format: 'numeric'
       },
       {
         text: "Total",
@@ -23,61 +30,67 @@
     ],
     rows: [
     [
+    {
+      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-rebilled?status=sent&region=Anglian">OP765990</a>'
+    },
       {
         text: '20 April 2020'
       },
       {
-        html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-rebilled?status=sent&region=Anglian">OP765990</a>'
+        text: '03/28/60/0032'
       },
       {
         text: "Supplementary"
       },
       {
+        text: "2020",
+        format: 'numeric'
+      },
+      {
         text: "£3,002.75",
         format: 'numeric'
       }
-    ]if ("true" in data.rebill) and ("false" in data.credit),
+    ]if ("true" in data.rebill) and ("sent" in data.status),
 
     [
+    {
+      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-credit?status=sent&region=Anglian&credit=true">OP444333</a>'
+    },
     {
       text: '20 April 2020'
     },
     {
-      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-credit?status=sent&region=Anglian&credit=true">OP444333</a>'
+      text: '03/28/60/0032'
     },
     {
       text: "Supplementary"
     },
     {
+      text: "2020",
+      format: 'numeric'
+    },
+    {
       html: "£3,002.75<br>Credit",
       format: 'numeric'
     }
-    ] if ("true" in data.rebill) and ("false" in data.credit),
+    ] if ("true" in data.rebill) and ("sent" in data.status),
 
     [
     {
-      text: '20 April 2020'
+      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
     },
-    {
-      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill-credit?status=sent&region=Anglian&credit=true">OP444333</a>'
-    },
-    {
-      text: "Supplementary"
-    },
-    {
-      html: "£3,002.75<br>Credit",
-      format: 'numeric'
-    }
-    ]if "true" in data.credit,
-    [
       {
         text: '5 March 2020'
       },
       {
-        html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
+        text: '03/28/60/0032'
       },
       {
         text: "Supplementary"
+      },
+      {
+        text: "2020",
+        format: 'numeric'
       },
       {
         text: "£3,002.75",
@@ -85,14 +98,22 @@
       }
     ],
     [
+    {
+      html: '<a class="govuk-link" href="#">2345432</a>'
+    },
       {
-        text: '1 April 2017'
+        text: '1 April 2019'
       },
       {
-        html: '<a class="govuk-link" href="#">2345432</a>'
+        text: '03/28/60/0032'
       },
+
       {
         text: "Annual"
+      },
+      {
+        text: "2020",
+        format: 'numeric'
       },
       {
         text: "£5,345.00",
@@ -100,14 +121,22 @@
       }
     ],
     [
+    {
+      html: '<a class="govuk-link" href="#">9876431</a>'
+    },
       {
-        text: '11 April 2016'
+        text: '11 April 2018'
       },
       {
-        html: '<a class="govuk-link" href="#">9876431</a>'
+        text: '03/28/60/0032'
       },
+
       {
         text: "Annual"
+      },
+      {
+        text: "2019",
+        format: 'numeric'
       },
       {
         text: "£5,345.00",
@@ -115,14 +144,22 @@
       }
     ],
     [
+    {
+      html: '<a class="govuk-link" href="#">2345432</a>'
+    },
       {
-        text: '9 April 2015'
+        text: '9 April 2017'
       },
       {
-        html: '<a class="govuk-link" href="#">2345432</a>'
+        text: '03/28/60/0032'
       },
+
       {
         text: "Annual"
+      },
+      {
+        text: "2018",
+        format: 'numeric'
       },
       {
         text: "£5,345.00",
@@ -130,16 +167,26 @@
       }
     ],
     [
+    {
+      html: '<a class="govuk-link" href="#">675434</a>',
+      classes: 'govuk-table__cell--no-border'
+    },
       {
-        text: '9 April 2014',
+        text: '9 April 2016',
         classes: 'govuk-table__cell--no-border'
       },
       {
-        html: '<a class="govuk-link" href="#">675434</a>',
+        text: '03/28/60/0032',
         classes: 'govuk-table__cell--no-border'
       },
+
       {
         text: "Supplementary",
+        classes: 'govuk-table__cell--no-border'
+      },
+      {
+        text: "2018",
+        format: 'numeric',
         classes: 'govuk-table__cell--no-border'
       },
       {

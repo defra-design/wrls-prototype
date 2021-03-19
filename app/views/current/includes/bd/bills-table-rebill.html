@@ -29,8 +29,16 @@
 {% if data['remove'] == "false" %}
     <tr class="govuk-table__row">
 
+      {% if [data.status] == "sent" %}
+      <td class="govuk-table__cell">
+      <a href="supplementary-bill-rebilled?bill=OP765990">
+        <span class="screen-reader-only">bill</span> OP765990
+        </a>
+        </td>
+      {% endif %}
 
-      <td class="govuk-table__cell">AI26515</td>
+
+      <td class="govuk-table__cell">L12345678S</td>
 
 
 
@@ -46,13 +54,52 @@
 
 
 
-      <td class="govuk-table__cell govuk-table__cell--numeric">£3,002.75{% if data['credit'] == "true" %}<br>Credit note{% endif %}</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£3,002.75</td>
 
 
-
-      <td class="govuk-table__cell govuk-table__cell--numeric"><a {% if data['credit'] == "true" %}href="supplementary-bill-credit"{% else %}href="supplementary-bill-rebilled"{% endif%}>
-          View <span class="screen-reader-only">bill for billing account AN20392</span>
+      {% if [data.status] == "sent" %}
+      {% else%}
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill-rebilled">
+          View <span class="screen-reader-only">bill for billing account L12345678S</span>
         </a></td>
+        {% endif %}
+
+
+    </tr>
+    <tr class="govuk-table__row">
+      {% if [data.status] == "sent" %}
+      <td class="govuk-table__cell">
+      <a href="supplementary-bill-credit?bill=OP765990">
+        <span class="screen-reader-only">bill</span> OP444333
+        </a>
+        </td>
+      {% endif %}
+
+
+      <td class="govuk-table__cell">L12345678S</td>
+
+
+
+      <td class="govuk-table__cell">Bottled Water Plc</td>
+
+
+
+      <td class="govuk-table__cell">03/28/60/0032</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">2020</td>
+
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric">£3,002.75<br>Credit note </td>
+
+
+{% if [data.status] == "sent" %}
+{% else%}
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a  href="supplementary-bill-credit">
+          View <span class="screen-reader-only">bill for billing account L12345678S</span>
+        </a></td>{% endif %}
 
 
     </tr>
@@ -62,6 +109,13 @@
 
     <tr class="govuk-table__row">
 
+      {% if [data.status] == "sent" %}
+      <td class="govuk-table__cell">
+      <a href="supplementary-bill?bill=OP237489">
+        <span class="screen-reader-only">bill</span> OP237489
+        </a>
+        </td>
+      {% endif %}
 
       <td class="govuk-table__cell">B016824</td>
 
@@ -82,12 +136,13 @@
 
       <td class="govuk-table__cell govuk-table__cell--numeric">£1,105.00</td>
 
-
+      {% if [data.status] == "sent" %}
+      {% else%}
 
       <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
           View <span class="screen-reader-only">bill for billing account 016824</span>
         </a></td>
-
+{% endif %}
 
     </tr>
 

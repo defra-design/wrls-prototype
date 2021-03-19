@@ -46,6 +46,7 @@ module.exports = {
   "tptIssue": "overAbstraction",
   "tptIssueIR": "incompleteReturns",
   "tptIssueNP": "notProcessed",
+  "billRun": "",
   "status": "ready",
   "tptstatus": "review",
   "annualstatus": "ready",

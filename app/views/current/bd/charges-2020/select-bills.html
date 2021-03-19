@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
-{% set title = "The bill you’ve marked for  reissue is ready for the bill run" %}
-
+{% set title = "Select the bills you need to reissue" %}
+{% set qTitle = '<span class="govuk-caption-l">Billing account ' + data['invoiceAccount'] + '</span>' + title %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -50,20 +50,54 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l"><span class="govuk-caption-l">Bill OP123344</span>{{ title }}</h1>
 
-    <p class="govuk-body">The next supplementary bill run you create will include a credit note and invoice for bill:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>OP123344</li>
-      </ul>
 
-      {{ govukButton({
-    text: "Create bill run",
-    href: "http://localhost:3000/current/bd/charges-2020/pick-supplementary-region"
-  }) }}
 
-    <p class="govuk-body">or</p>
-    <p class="govuk-body"><a class="govuk-link" href="billing-account?status=building">Return to billing account</a></p>
+
+    {{ govukCheckboxes({
+  idPrefix: "selectedBills",
+  name: "selectedBills",
+  fieldset: {
+    legend: {
+      text: qTitle |safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "OP123344",
+      text: "OP123344"
+    },
+    {
+      value: "OP123344",
+      text: "2345432"
+    },
+    {
+      value: "OP123344",
+      text: "9876431"
+    },
+    {
+      value: "OP123344",
+      text: "2345432"
+    },
+    {
+      value: "OP123344",
+      text: "675434"
+    }
+  ]
+}) }}
+
+
+    {{ govukButton({
+  text: "Confirm",
+  classes: "govuk-!-margin-right-1",
+  href: "check-rebill"
+}) }}
+
 
   </div>
 </div>

@@ -41,7 +41,14 @@
 
 {% block content %}
 
+{% if data['rebill'] == "true" %}
 
+{{ govukWarningText({
+  text: "This bill is a reissue of OP123344",
+  iconFallbackText: "Warning"
+}) }}
+
+{% endif %}
 
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
     <div class="govuk-grid-column-two-thirds">
