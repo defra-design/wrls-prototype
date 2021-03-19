@@ -1,7 +1,14 @@
 {% extends "layouts/_manage.html" %}
 
+<!-- show the contact name, if there isn't one then show the email address instead -->
+{% if data.contacts[data.contactID]['name'].length %}
+{% set titleName = [data.contacts[data.contactID]['name']] %}
+{% else %}
+{% set titleName = [data.contacts[data.contactID]['email']] %}
+{% endif %}
 <!--set page title-->
-{% set title = "Manage " + data.contacts[data.contactID]['name'] %}
+{% set title = "Manage " + titleName %}
+
 
 
 
