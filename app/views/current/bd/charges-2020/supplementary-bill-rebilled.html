@@ -150,9 +150,9 @@
 
         {% if ("true" in data.rebill) and ("sent" in data.billRun ) %}
 
-       <div class="govuk-inset-text">
+<div class="govuk-inset-text">
 
-       <h2 class="govuk-heading-m">This bill is linked to a reissue</h2>
+  <h2 class="govuk-heading-m">This bill is linked to a reissue</h2>
 
         <div class="govuk-grid-row govuk-!-margin-bottom-3">
           <div class="govuk-grid-column-full">
@@ -166,7 +166,18 @@
                 </div>
               <div>
             </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Reissued bill
+                </div>
+                <div class="meta-data__value">
 
+                    <span class="screen-reader-only">bill</span> This bill
+                  
+                </div>
+              <div>
+            </section>
             <section class="meta-data__row">
               <div class="meta-data__container">
                 <div class="meta-data__label">
@@ -194,8 +205,8 @@
 
           </div>
         </div>
-       </div>
-       {% endif %}
+</div>
+{% endif %}
 
       </section>
     </div>
