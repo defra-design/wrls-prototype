@@ -1,5 +1,9 @@
 
-
+{% if (("true" in data.rebill) and ("building" in data.status)) or (("true" in data.rebill) and ("ready" in data.status)) %}
+{% set rebillMark = "<br> Marked for reissue" %}
+{% else %}
+{% set rebillMark = "" %}
+{% endif %}
 
 
   {{ govukTable({
@@ -77,7 +81,7 @@
 
     [
     {
-      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
+      html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>' + rebillMark
     },
       {
         text: '5 March 2020'

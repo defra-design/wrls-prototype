@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You’re about to cancel the reissue of this bill" %}
+{% set title = "You’re about to cancel the reissue of OP123344" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,25 +47,68 @@
 
 <!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <!-- page heading -->
     <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-    {{ govukSummaryList({
-      rows: [
+    <p class="govuk-body" >This will delete the linked credit note and invoice from the bill run. </p>
+
+    {{ govukTable({
+      caption: "Bill for reissue",
+      captionClasses: "govuk-heading-m",
+      firstCellIsHeader: false,
+      head: [
+      {
+        text: "Bill number"
+      },
         {
-          key: {
-            text: "Bill number"
-          },
-          value: {
-            text: "OP123344"
-          }
+          text: "Date created"
+        },
+        {
+          text: "Licences"
+        },
+        {
+          text: "Bill run type"
+        },
+        {
+          text: "Financial year",
+          format: 'numeric'
+        },
+        {
+          text: "Total",
+          format: 'numeric'
         }
-          ]
+      ],
+      rows: [
+
+      [
+      {
+        html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
+      },
+        {
+          text: '5 March 2020'
+        },
+        {
+          text: '03/28/60/0032'
+        },
+        {
+          text: "Supplementary"
+        },
+        {
+          text: "2020",
+          format: 'numeric'
+        },
+        {
+          text: "£3,002.75",
+          format: 'numeric'
+        }
+      ]
+
+      ]
     }) }}
 
-    <a href="billing-account?rebill=false&status=ready" class="wrls-faux-button">
+    <a href="supplementary-charges-load?rebill=false&status=ready" class="wrls-faux-button">
       Cancel reissue
     </a>
 

@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 {% if [data.status] == "ready" %}
-{% set title = "Bill for " + [data.licenceHolder] %}
+{% set title = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account L12345678S</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
 {% else %}
-{% set title = "Bill " + data['bill'] | default("OP123344") + " for " + [data.licenceHolder] %}
+{% set title = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' + data['bill'] | default("OP123344") + '</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
 {% endif %}
 
 {% block pageTitle %}
@@ -49,68 +49,15 @@
 
 {% if ("true" in data.rebill) and ("false" in data.billRun ) %}
 {{ govukWarningText({
-  text: "This bill will be reissued in the next supplementary bill run",
+  text: "This bill is marked for reissue",
   iconFallbackText: "Warning"
 }) }}
 
 {% elseif ("true" in data.rebill) and ("created" in data.billRun ) %}
 
 {{ govukWarningText({
-  text: "A supplementary bill run has been created to reissue this bill",
+  text: "This bill is marked for reissue",
   iconFallbackText: "Warning"
-}) }}
-
-<p class="govuk-body"><a class="govuk-link" href="supplementary-charges?status=ready">Go to bill run</a></p>
-
-
-{% elseif ("true" in data.rebill) and ("sent" in data.billRun ) %}
-
-{{ govukWarningText({
-  text: "This bill has been reissued",
-  iconFallbackText: "Warning"
-}) }}
-
-{{ govukDetails({
-  summaryText: "Details of linked bills",
-  html: '<div class="govuk-grid-row govuk-!-margin-bottom-3">
-    <div class="govuk-grid-column-full">
-      <section class="meta-data__row">
-        <div class="meta-data__container">
-          <div class="meta-data__label">
-            Date created
-          </div>
-          <div class="meta-data__value">
-            20 April 2020
-          </div>
-        <div>
-      </section>
-      <section class="meta-data__row">
-        <div class="meta-data__container">
-          <div class="meta-data__label">
-            Reissued bill
-          </div>
-          <div class="meta-data__value">
-            <a href="supplementary-bill-rebilled?bill=OP765990">
-              <span class="screen-reader-only">bill</span> OP765990
-              </a>
-          </div>
-        <div>
-      </section>
-      <section class="meta-data__row">
-        <div class="meta-data__container">
-          <div class="meta-data__label">
-            Reversed bill
-          </div>
-          <div class="meta-data__value">
-            <a href="supplementary-bill-credit?bill=OP765990">
-              <span class="screen-reader-only">bill</span> OP444333
-              </a>
-          </div>
-        <div>
-      </section>
-
-    </div>
-  </div>'
 }) }}
 
 {% endif %}
@@ -119,11 +66,8 @@
     <div class="govuk-grid-column-full">
 
       <section class="govuk-!-margin-bottom-6">
-
-        <h1 class="govuk-heading-xl">
-          <span class="govuk-caption-l">Billing account L12345678S</span>
+        <!-- billing title-->
           {{ title | safe }}
-        </h1>
 
         {% if [data.status] == "ready" %}
         <p class="govuk-body">
@@ -200,6 +144,56 @@
 
           </div>
         </details>
+
+
+        {% if ("true" in data.rebill) and ("sent" in data.billRun ) %}
+
+<div class="govuk-inset-text">
+
+  <h2 class="govuk-heading-m">This bill is linked to a reissue</h2>
+
+        <div class="govuk-grid-row govuk-!-margin-bottom-3">
+          <div class="govuk-grid-column-full">
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Date created
+                </div>
+                <div class="meta-data__value">
+                  20 April 2020
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Reissued bill
+                </div>
+                <div class="meta-data__value">
+                  <a href="supplementary-bill-rebilled?bill=OP765990">
+                    <span class="screen-reader-only">bill</span> OP765990
+                    </a>
+                </div>
+              <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Reversed bill
+                </div>
+                <div class="meta-data__value">
+                  <a href="supplementary-bill-credit?bill=OP765990">
+                    <span class="screen-reader-only">bill</span> OP444333
+                    </a>
+                </div>
+              <div>
+            </section>
+
+          </div>
+        </div>
+</div>
+{% endif %}
+
 
       </section>
     </div>
