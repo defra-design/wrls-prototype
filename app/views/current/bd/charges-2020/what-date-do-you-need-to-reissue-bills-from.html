@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select the bills you need to reissue" %}
+{% set title = "What date do you need to reissue a billd from?" %}
 {% set qTitle = '<span class="govuk-caption-l">Billing account ' + data['invoiceAccount'] + '</span>' + title %}
 
 {% block pageTitle %}
@@ -52,29 +52,22 @@
 
 
 
+    {{ govukDateInput({
+      id: "rebilldedDate",
+      namePrefix: "rebilldedDate",
+      fieldset: {
+        legend: {
+          text:  qTitle |safe,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "For example, 12 11 2007"
+      }
+    }) }}
 
 
-    {{ govukCheckboxes({
-  idPrefix: "selectedBills",
-  name: "selectedBills",
-  fieldset: {
-    legend: {
-      text: qTitle |safe,
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  hint: {
-    text: "Bills created on or after 15 May 2020"
-  },
-  items: [
-    {
-      value: "OP123344",
-      checked: true,
-      text: "OP123344"
-    }
-  ]
-}) }}
 
 
     {{ govukButton({
