@@ -6,6 +6,8 @@
 {% block pageTitle %}
 {{title}} - GOV.UK
 {% endblock %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
 
 {% block header %}
 {{ govukHeader({
@@ -62,9 +64,13 @@
           classes: "govuk-fieldset__legend--l"
         }
       },
+
       hint: {
         text: "For example, 12 11 2007"
       }
+    }) }}
+    {{ govukInsetText({
+      text: "We'll gather all the bills created in the service on or after this date. This will not include zero value and de minimus bills."
     }) }}
 
 
