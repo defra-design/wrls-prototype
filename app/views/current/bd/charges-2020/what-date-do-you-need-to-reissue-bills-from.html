@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 
+{% set InsetText %}
+<div class="govuk-inset-text govuk-!-margin-bottom-2">
+  We'll gather all the bills created in the service on or after this date. This will not include zero value and de minimus bills.
+</div>
+{% endset %}
+
 {% set title = "What date do you need to reissue a bill from?" %}
-{% set qTitle = '<span class="govuk-caption-l">Billing account ' + data['invoiceAccount'] + '</span>' + title %}
+{% set qTitle = '<span class="govuk-caption-l">Billing account ' + data['invoiceAccount'] + '</span>' + title + InsetText|safe %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -63,15 +69,9 @@
           isPageHeading: true,
           classes: "govuk-fieldset__legend--l"
         }
-      },
-
-      hint: {
-        text: "For example, 12 11 2007"
       }
     }) }}
-    {{ govukInsetText({
-      text: "We'll gather all the bills created in the service on or after this date. This will not include zero value and de minimus bills."
-    }) }}
+
 
 
 
