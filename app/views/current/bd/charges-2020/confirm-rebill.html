@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "The bill you’ve marked for  reissue is ready for the bill run" %}
+{% set title = "You've marked 1 bill for reissue" %}
 
 
 {% block pageTitle %}
@@ -35,33 +35,40 @@
   {% include "current/includes/nav/nav-bd-manage.html" %}
 </div>
 
-{{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back()"
-  }) }}
-
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-!-margin-bottom-3"></div>
 
+<!--Previous page title -- The bill you’ve marked for  reissue is ready for the bill run-->
+
 <!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full govuk-!-margin-bottom-6"">
 
-    <h1 class="govuk-heading-l"><span class="govuk-caption-l">Bill OP123344</span>{{ title }}</h1>
+  <!--  <h1 class="govuk-heading-l"><span class="govuk-caption-l">Billing account  {{data['invoiceAccount']}}</span>{{ title }}</h1> -->
 
-    <p class="govuk-body">The next supplementary bill run you create will include a credit note and invoice for bill:</p>
-    <ul class="govuk-list govuk-list--bullet">
+    {{ govukPanel({
+  titleText:  title,
+  html: 'The next supplementary bill run you create will include a credit note and invoice for this bill'
+}) }}
+
+</div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <p class="govuk-body">Bill marked for reissue:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
       <li>OP123344</li>
       </ul>
 
       {{ govukButton({
-    text: "Create bill run",
-    href: "http://localhost:3000/current/bd/charges-2020/pick-supplementary-region"
+    text: "Create a supplementary bill run",
+    href: "pick-supplementary-region"
   }) }}
-
+<!--<p class="govuk-body"><a class="govuk-link" href="pick-supplementary-region">Create a supplementary bill run</a></p>-->
     <p class="govuk-body">or</p>
     <p class="govuk-body"><a class="govuk-link" href="billing-account?status=building">Return to billing account</a></p>
 

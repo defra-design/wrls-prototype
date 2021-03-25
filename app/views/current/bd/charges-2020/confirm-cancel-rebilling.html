@@ -52,8 +52,12 @@
     <!-- page heading -->
     <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-    <p class="govuk-body" >This will delete the linked credit note and invoice from the bill run. The bill will no longer be marked for reissue. </p>
+    {{ govukInsetText({
+  text: "This will delete the linked credit note and invoice from the bill run. The bill will no longer be marked for reissue."
+}) }}
 
+  <!--  <p class="govuk-body" >This will delete the linked credit note and invoice from the bill run. The bill will no longer be marked for reissue. </p>
+-->
     {{ govukTable({
       caption: "Bill for reissue",
       captionClasses: "govuk-heading-m",
