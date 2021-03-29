@@ -44,7 +44,7 @@
 {% if (("true" in data.rebill) and ("building" in data.status)) or (("true" in data.rebill) and ("ready" in data.status)) %}
 
 {{ govukWarningText({
-  text: "This bill is linked to the reissue of OP123344",
+  text: "This bill is linked to the reissue of bill OP123344",
   iconFallbackText: "Warning"
 }) }}
 
