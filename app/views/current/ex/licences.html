@@ -25,6 +25,35 @@
  }) }}
 {% endblock %}
 
+{% block bodyStart %}
+{% if data['cookies'] == "hide" %}
+{% else %}
+<form method="POST" >
+{{ govukCookieBanner({
+  ariaLabel: "Cookies on " + serviceName,
+  messages: [
+    {
+      headingText: "Cookies on " + serviceName,
+      text: "We use some essential cookies to make this service work.",
+      actions: [
+        {
+          text: "View cookies",
+          href: "cookies"
+        },
+        {
+          text: "Hide this message",
+          type: "submit",
+          value: "hide",
+          name: "cookies"
+        }
+      ]
+    }
+  ]
+}) }}
+</form>
+{% endif %}
+{% endblock %}
+
 {% block beforeContent %}
   <!-- phase banner -->
   {% include "current/includes/feedback-banner.html" %}
