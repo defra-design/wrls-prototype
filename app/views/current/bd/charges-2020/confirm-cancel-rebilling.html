@@ -58,59 +58,63 @@
 
   <!--  <p class="govuk-body" >This will delete the linked credit note and invoice from the bill run. The bill will no longer be marked for reissue. </p>
 -->
-    {{ govukTable({
-      caption: "Bill for reissue",
-      captionClasses: "govuk-heading-m",
-      firstCellIsHeader: false,
-      head: [
-      {
-        text: "Bill number"
-      },
-        {
-          text: "Date created"
-        },
-        {
-          text: "Licences"
-        },
-        {
-          text: "Bill run type"
-        },
-        {
-          text: "Financial year",
-          format: 'numeric'
-        },
-        {
-          text: "Total",
-          format: 'numeric'
-        }
-      ],
-      rows: [
-
-      [
-      {
-        html: '<a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian">OP123344</a>'
-      },
-        {
-          text: '5 March 2020'
-        },
-        {
-          text: '03/28/60/0032'
-        },
-        {
-          text: "Supplementary"
-        },
-        {
-          text: "2020",
-          format: 'numeric'
-        },
-        {
-          text: "£3,002.75",
-          format: 'numeric'
-        }
-      ]
-
-      ]
-    }) }}
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Billing account
+        </div>
+        <div class="meta-data__value">
+          L12345678S
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Billing contact
+        </div>
+        <div class="meta-data__value">
+          Bottled Water Plc
+        </div>
+      <div>
+    </section>
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Licence
+        </div>
+        <div class="meta-data__value">
+          03/28/60/0032
+        </div>
+      <div>
+    </section>
+    <!--Financial year is present on supplementary billing-->
+{% if data['runType'] == "supplementary"%}
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Financial year
+        </div>
+        <div class="meta-data__value">
+          2020
+        </div>
+      <div>
+    </section>
+    {% endif %}
+    <section class="meta-data__row">
+      <div class="meta-data__container">
+        <div class="meta-data__label">
+          Total
+        </div>
+        <div class="meta-data__value">
+          £3,002.75
+        </div>
+      <div>
+    </section>
+  </div>
+</div>
 
     <a href="supplementary-charges-load?rebill=false&status=ready" class="wrls-faux-button">
       Cancel reissue

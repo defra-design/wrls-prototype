@@ -41,20 +41,7 @@
 
 {% block content %}
 
-{% if (("true" in data.rebill) and ("building" in data.status)) or (("true" in data.rebill) and ("ready" in data.status)) %}
 
-{{ govukWarningText({
-  text: "This bill is linked to the reissue of OP123344",
-  iconFallbackText: "Warning"
-}) }}
-
-{{ govukButton({
-  text: "Cancel this reissue",
-  classes: "govuk-button--secondary",
-  href: "confirm-cancel-rebilling"
-}) }}
-
-{% endif %}
 
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
     <div class="govuk-grid-column-two-thirds">
@@ -237,6 +224,21 @@
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
     </div>
   </div>
+
+  {% if (("true" in data.rebill) and ("building" in data.status)) or (("true" in data.rebill) and ("ready" in data.status)) %}
+
+  {{ govukWarningText({
+    text: "This bill is linked to the reissue of OP123344",
+    iconFallbackText: "Warning"
+  }) }}
+
+  {{ govukButton({
+    text: "Cancel this reissue",
+    classes: "govuk-button--secondary",
+    href: "confirm-cancel-rebilling"
+  }) }}
+
+  {% endif %}
 
   <!-- <button class="govuk-button govuk-button--warning" data-module="govuk-button">
     Remove from batch
