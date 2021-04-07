@@ -1,0 +1,95 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Enter the hands off flow or level threshold" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form  method="post" novalidate>
+
+      {% call govukFieldset({
+        legend: {
+          text: [title] | safe,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ govukInput({
+        label: {
+          text: "Threshold"
+        },
+        id: "thresholdValue",
+        name: "thresholdValue",
+        classes: "govuk-input--width-10"
+      }) }}
+
+      {{ govukSelect({
+  id: "thresholdUnits",
+  name: "thresholdUnits",
+  label: {
+    text: "Units of measurement"
+  },
+  items: [
+  {
+          value: "null",
+          text: "Select an option",
+          selected: true
+  },
+    {
+      value: "cubicMetresPerSecond",
+      text: "m<sup>3</sup>/s" |safe
+    },
+    {
+      value: "cubicMetresPerDay",
+      text: "m<sup>3</sup>/d" |safe
+    },
+    {
+      value: "litrespersecond",
+      text: "l/s"
+    },
+    {
+      value: "metresAboveOrdinanceDatum",
+      text: "mAOD"
+    },
+    {
+      value: "metresAboveStationDatum",
+      text: "mASD"
+    },
+    {
+      value: "metres",
+      text: "m"
+    },
+    {
+      value: "megaLitresPerDay",
+      text: "ML/d"
+    }
+  ]
+}) }}
+
+      {% endcall %}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

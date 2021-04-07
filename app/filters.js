@@ -134,6 +134,25 @@ module.exports = function(env) {
     }
   }
 
+  //set units "| units"
+  filters.units = function(e) {
+    if (e == "cubicMetresPerSecond") {
+      return "m<sup>3</sup>/d"
+    } else if (e == "cubicMetresPerDay") {
+      return "m<sup>3</sup>/d"
+    } else if (e == "litrespersecond") {
+      return "l/s"
+    } else if (e == "metresAboveOrdinanceDatum") {
+      return "mAOD"
+    } else if (e == "metresAboveStationDatum") {
+      return "mASD"
+    } else if (e == "metres") {
+      return "m"
+    } else {
+      return "ML/d"
+    }
+  }
+
 
 
   //show only results for a certain customer "| customer"

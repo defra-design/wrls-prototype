@@ -1,0 +1,100 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Check your answers" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+    <form  method="post" novalidate>
+
+      {{ govukSummaryList({
+rows: [
+{
+key: {
+  text: "Threshold"
+},
+value: {
+  html: data['thresholdValue'] + data['thresholdUnits'] | units | safe
+},
+actions: {
+  items: [
+    {
+      href: "enter-the-hands-off-flow-or-level-threshold",
+      text: "Change",
+      visuallyHiddenText: "tag threshold"
+    }
+  ]
+}
+},
+{
+key: {
+  text: "Type"
+},
+value: {
+  text: data['reduce-or-stop'] | capitalize
+},
+actions: {
+  items: [
+    {
+      href: "reduce-or-stop",
+      text: "Change",
+      visuallyHiddenText: "tag type"
+    }
+  ]
+}
+},
+{
+key: {
+  text: "Licences"
+},
+value: {
+  html: data['licenceList'] | replaceComma | striptags(true) | escape | nl2br
+},
+actions: {
+  items: [
+    {
+      href: "enter-licence-numbers",
+      text: "Change",
+      visuallyHiddenText: "licence numbers"
+    }
+  ]
+}
+}
+]
+}) }}
+
+      <button type="submit" class="govuk-button">
+        Confirm
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

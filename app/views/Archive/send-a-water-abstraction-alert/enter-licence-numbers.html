@@ -1,0 +1,49 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Water abstraction alert - " + [data.waaType] + " - Enter the licence numbers that need this alert" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Enter the licence numbers that need this alert" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+
+    <form  method="post" novalidate>
+
+            {{ govukTextarea({
+              name: "licenceList",
+              id: "licenceList",
+              label: {
+                html: qTitle,
+                classes: "govuk-label--l",
+                isPageHeading: true
+              },
+              hint: {
+                text: "You can enter more than one licence. You can separate licence numbers using spaces, commas, or by entering them on different lines. "
+              }
+            }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

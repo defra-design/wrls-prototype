@@ -1,0 +1,80 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set tags = data.stations[data.stationID]['tags'] %}
+{% if tags.length %}
+<table class="govuk-table">
+  <caption class="govuk-table__caption">Licences with conditions for this gauging station</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Licence number</th>
+      <th scope="col" class="govuk-table__header">Condition type</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__header--numeric">Hands-off level threshold (mAOD)</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__header--numeric">Hands-off flow threshold (ML/d)</th>
+
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric govuk-!-width-one-quarter">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!--starting to loop through the bill runs data -->
+
+
+
+   {% for i in tags %}
+    <!--setting the loop number -->
+    {% set loopNumber = loop.index0 %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+
+        <!--set the link to go to a specific licence-->
+        {% for licence in data['licences']%}
+        {% if licence.number == i.licenceNumber %}
+         <a href="licence?ID={{loop.index0}}" class="govuk-link">
+           {% endif %}
+           {% endfor %}
+         {{i.licenceNumber}}</a></td>
+          <td class="govuk-table__cell">{{i.conditionType |capitalize}}</td>
+         {% if i.notificationType == "flow" %}
+         <td class="govuk-table__cell govuk-table__header--numeric"></td>
+         <td class="govuk-table__cell govuk-table__header--numeric">{{i.thresholdValue}}</td>
+         {% else %}
+         <td class="govuk-table__cell govuk-table__header--numeric">{{i.thresholdValue}}</td>
+         <td class="govuk-table__cell govuk-table__header--numeric"></td>
+         {% endif %}
+
+         <td class="govuk-table__cell govuk-table__header--numeric">{{govukTag({
+          text: [i.status],
+          classes: "govuk-tag--green"
+        })}}</td>
+    </tr>
+    {% endfor %}
+
+
+
+  </tbody>
+</table>
+
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Create water abstraction alert"
+  }) }}
+
+  {{ govukButton({
+    text: "Add licences",
+    href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+{% else %}
+<p class="govuk-body">No licences have conditions for this gauging station</p>
+
+{{ govukButton({
+  text: "Add licences",
+  href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
+  classes: "govuk-button--secondary"
+}) }}
+
+{% endif %}

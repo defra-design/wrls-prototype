@@ -1,0 +1,48 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+<!--custom back-->
+{{ govukBackLink({
+  text: "Back",
+  href: "search?serachTerm="
+}) }}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{% if data.stations[data.stationID].gridReference.length %}Grid reference {{[data.stations[data.stationID].gridReference]}}{% else %}Station reference {{[data.stations[data.stationID].stationReference]}}{% endif %}</span>
+      {{title}}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+<!--Licence summary -->
+{% include "sandbox/_includes/stations/tag-table.html" %}
+
+
+
+</div>
+</div>
+
+
+{% endblock %}

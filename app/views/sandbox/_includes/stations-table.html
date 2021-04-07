@@ -1,0 +1,65 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set stations = data['stations'] %}
+
+
+<!--check the licence data for an exact match-->
+{% set match = "false" %}
+{% for i in stations %}
+{% if i.label == data['search'] %}
+{% set loopNumber = loop.index0 %}
+{% set match = "true" %}
+{% endif %}
+{% endfor %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption">Stations</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">River name</th>
+      <th scope="col" class="govuk-table__header">Catchment name</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!--starting to loop through the bill runs data -->
+
+
+
+
+<!--show the match or loop through all the answers-->
+  {% if match == "true" %}
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+
+     <!--set the link to go to a specific licence-->
+      <a href="station?stationID={{[loopNumber]}}" class="govuk-link">
+      {{[data.stations[loopNumber].label]}}</a></td>
+      <td class="govuk-table__cell">{{[data.stations[loopNumber].riverName]}}</td>
+<td class="govuk-table__cell">{{[data.stations[loopNumber].catchmentName]}}</td>
+
+  </tr>
+
+  {% else %}
+   {% for i in stations %}
+    <!--setting the loop number -->
+    {% set loopNumber = loop.index0 %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+
+        <!--set the link to go to a specific licence-->
+         <a href="station?stationID={{[loopNumber]}}" class="govuk-link">
+         {{[data.stations[loopNumber].label]}}</a></td>
+         <td class="govuk-table__cell">{{[data.stations[loopNumber].riverName]}}</td>
+         <td class="govuk-table__cell">{{[data.stations[loopNumber].catchmentName]}}</td>
+    </tr>
+    {% endfor %}
+  {% endif %}
+
+
+
+  </tbody>
+</table>

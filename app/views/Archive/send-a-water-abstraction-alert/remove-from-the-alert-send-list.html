@@ -1,0 +1,128 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "You're about to remove this licence from the alert send list"%}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">
+  {{title}}
+</h1>
+
+
+
+    <form  method="post" novalidate>
+
+
+            <table class="govuk-table">
+              <caption class="govuk-table__caption ">{{ govukInsetText({
+                text: "If you remove this licence, the contact will not get a water abstraction alert."
+              }) }}</caption>
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Licence</th>
+                  <th scope="col" class="govuk-table__header">Licence holder</th>
+                  <th scope="col" class="govuk-table__header">Address</th>
+                  <th scope="col" class="govuk-table__header">Email address</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+
+
+                <tr class="govuk-table__row">
+
+                  <!--if matched return the licence number and licence holder name-->
+                  <td class="govuk-table__cell">{{[data.licenceListNumber]}}</td>
+
+
+                  <td class="govuk-table__cell">{{[data.LicenceListHolder]}}</td>
+
+
+
+                  <!--add in address details-->
+
+                  {% set addresses = data['addresses'] %}
+                  {% for i in addresses %}
+                  <!--set the index of the address-->
+                  {% set addressIndex = loop.index0 %}
+
+                  <!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+                  {% set addressCustomers = i.customers %}
+                  {% for i in addressCustomers %}
+                  {% if "Licence holder" in i.role and data.LicenceListHolder == i.customer %}
+
+
+                  <!--display the address-->
+                  <td class="govuk-table__cell">
+                    {% set licenceListAddress %}
+                  {{[data.addresses[addressIndex].address1]}}<br>
+                  {{[data.addresses[addressIndex].city]}}<br>
+                  {{[data.addresses[addressIndex].postcode]}}
+                  {% endset %}
+
+                  {{licenceListAddress|safe}}
+                  </td>
+
+                  {% endif %}
+                  {% endfor %}
+                  {% endfor %}
+
+
+
+
+                  <td class="govuk-table__cell">
+                  <!--add in contact email details-->
+
+                  <!--getting the contact data-->
+                  {% set contacts = data['contacts'] %}
+                  <!--loop through the contacts-->
+                  {% for contact in contacts %}
+                  <!--set the index of the contact-->
+                  {% set contactIndex = loop.index0 %}
+
+                  <!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+                  {% set contactCustomers = contact.customers %}
+
+
+                  {% for i in contactCustomers %}
+                  {% if "Water abstraction alerts" in i.role and data.LicenceListHolder == i.customer %}
+
+                  {% if contacts[contactIndex].email == "Not set" %}
+                  {% else %}
+                      {{[data.contacts[contactIndex].email]}}<br>
+
+                  {% endif %}
+                      {% endif %}
+                      {% endfor %}
+                      {% endfor %}
+                  </td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+      <button type="submit" class="govuk-button">
+        Confirm and remove
+      </button>
+
+    </form>
+
+</div>
+</div>
+
+
+    {% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Water abstraction alert - " + [data.waaType] + " - Alert sent"%}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Alert sent" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+<!--no back button-->
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukPanel({
+      titleText: "Alert sent ",
+      html: 'You sent a ' + data.waaType |lower + ' alert to<br><strong>' + data['notifications'][0]['numberOfrecipients'] + ' recipients </strong>'
+    }) }}
+
+    <p class="govuk-body">
+      Go to Notices to:
+      <ul class="govuk-list govuk-list--bullet">
+        <li>View a report of licences that have been sent an alert.</li>
+        <li>Check the alert status of a licence</li>
+        </ul>
+      <a class="govuk-link" href="../notification-report">
+        Notices
+      </a>
+    </p>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

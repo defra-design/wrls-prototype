@@ -1,0 +1,66 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Water abstraction alert - " + [data.waaType] + " - Check and confirm the alert"%}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Check and confirm the alert " %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+<h1 class="govuk-heading-l">
+  {{qTitle|safe}}
+</h1>
+
+
+
+
+          <!-- count of licences in the list -->
+          {% set index = "" %}
+          {% set licenceList = data['licenceList'].split(',') %}
+          {% for i in licenceList %}
+          {% set index = loop.length %}
+          {% endfor %}
+
+            <p class="govuk-body">This is a preview of the message your recipients will get.</p>
+          </div>
+          </div>
+
+          <form  method="post" novalidate >
+
+      <div class="notification govuk-!-margin-bottom-6" style="background-color:#f3f2f1;" >
+        <div class="govuk-grid-row govuk-!-padding-6">
+          <div class="govuk-grid-column-full">
+
+          <!-- display the text relevant to the WAA type-->
+          {% if data['waaType'] == "Warning" %}
+          {% include "sandbox/_includes/notices/warning-text.html" %}
+          {% elseif data['waaType'] == "Reduce or stop" %}
+          {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+          {% else %}
+          {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+          {% endif %}
+          </div>
+          </div>
+        </div>
+
+      <button type="submit" class="govuk-button">
+        Send alert
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

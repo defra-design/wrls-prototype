@@ -1,6 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
+//Request module for the station data
+const request = require('request');
+
+
+
+
 // Add your routes here - above the module.exports line
 
 ////SET USER TYPE
@@ -33,8 +39,10 @@ if ( term.startsWith("BA") ){
   req.session.data.resultsTable = "sandbox/_includes/users-table.html"
 } else if ( term.includes("/") ) {
   req.session.data.resultsTable = "sandbox/_includes/licences-table.html"
-} else {
+} else if ( term.includes("*") ) {
   req.session.data.resultsTable = "sandbox/_includes/customers-table.html"
+} else {
+  req.session.data.resultsTable = "sandbox/_includes/stations-table.html"
 }
 
 res.redirect('search');
