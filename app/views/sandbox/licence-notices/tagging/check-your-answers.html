@@ -27,8 +27,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-
-
+{% set licenceList = data['licenceList'].split(',') %}
+{% set conditions = "" %}
+{% for i in licenceList %}
+{% set conditionID = range(000000, 999999) | random %}
+{% set conditions = conditions + "Flow cessation condition, ID" + conditionID + "<br>" %}
+{% endfor %}
 
     <form  method="post" novalidate>
 
@@ -81,6 +85,23 @@ actions: {
       href: "enter-licence-numbers",
       text: "Change",
       visuallyHiddenText: "licence numbers"
+    }
+  ]
+}
+},
+{
+key: {
+  text: "Linked conditions"
+},
+value: {
+  html: conditions
+},
+actions: {
+  items: [
+    {
+      href: "link-conditions",
+      text: "Change",
+      visuallyHiddenText: "linked conditions"
     }
   ]
 }

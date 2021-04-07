@@ -283,7 +283,7 @@ module.exports = {
                "absPeriod": "March to September",
 
                "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
-               "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+               "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
                "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
                "chargeInformation":[{
@@ -378,7 +378,7 @@ module.exports = {
                "absPeriod": "March to September",
 
                "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
-               "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+               "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
                "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
                "chargeInformation":[{
@@ -465,7 +465,7 @@ module.exports = {
                 "absPeriod": "March to September",
 
                 "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
-                "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
                 "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
                 "chargeInformation":[
@@ -495,7 +495,7 @@ module.exports = {
                  "absPeriod": "March to September",
 
                  "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
-                 "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                 "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
                  "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
                  "chargeInformation":[{
@@ -570,7 +570,7 @@ module.exports = {
                   "absPeriod": "April to September",
 
                   "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
-                  "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                  "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
                   "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
                   "chargeInformation":[{
@@ -657,7 +657,7 @@ module.exports = {
                    "absPeriod": "March to September",
 
                    "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
-                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
                    "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
                    "chargeInformation":[{
@@ -742,7 +742,7 @@ module.exports = {
                    "absPeriod": "March to September",
 
                    "absPoints":["At National Grid Reference SK 675124","At National Grid Reference SK 675343"],
-                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands of flow condition"],
+                   "absConditions":["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
                    "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
                    "chargeInformation":[{
@@ -1170,6 +1170,7 @@ module.exports = {
         thresholdValue: "175",
         thresholdUnits: "megaLitresPerDay",
         conditionType: "stop",
+        linkedCondtion: "Flow cessation condition, ID598962",
         notificationType: "flow",
         status: "no restricitons"
       },
@@ -1178,6 +1179,7 @@ module.exports = {
         thresholdValue: "175",
         thresholdUnits: "megaLitresPerDay",
         notificationType: "flow",
+        linkedCondtion: "Flow cessation condition, ID598962",
         conditionType: "stop",
         status: "no restricitons"
       }

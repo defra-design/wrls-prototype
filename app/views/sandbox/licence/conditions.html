@@ -51,6 +51,7 @@
           {% set thresholdUnits = station.tags[tagNumber]['thresholdUnits'] %}
           {% set conditionType = station.tags[tagNumber]['conditionType'] %}
           {% set notificationType = station.tags[tagNumber]['notificationType'] %}
+          {% set linkedCondition = station.tags[tagNumber]['linkedCondtion'] %}
 
           <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-full">
@@ -92,6 +93,15 @@
                  },
                  value: {
                   html: conditionType | capitalize
+                 }
+               }
+               ,
+               {
+                 key: {
+                   text: "Linked condition"
+                 },
+                 value: {
+                  html: linkedCondition
                  }
                }
              ]

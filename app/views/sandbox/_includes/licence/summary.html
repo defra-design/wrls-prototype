@@ -102,7 +102,7 @@
     <dd class="govuk-summary-list__value">
       {% for i in data.licences[data.ID]['absConditions'] %}
       {{i}}<br>
-      {% endfor %}<a href="licence/conditions">View details of abstraction conditions</a>
+      {% endfor %}<a href="licence/conditions?ID={{data.ID}}">View details of abstraction conditions</a>
     </dd>
 
   </div>

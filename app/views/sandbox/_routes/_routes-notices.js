@@ -418,8 +418,40 @@ router.post('/tagging/enter-licence-numbers', function(req, res) {
 
   req.session.data.licenceList = licenceList
 
+   res.redirect('link-conditions');
+});
+
+
+//Link NALD Conditions
+router.get('/tagging/link-conditions', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'tagging/link-conditions');
+});
+
+router.post('/tagging/link-conditions', function(req, res) {
+
+req.session.data.conditions = req.session.data.conditions0
+
+let linkedconditions = "req.session.data.conditions0"
+console.log(linkedconditions);
+linkedconditions = linkedconditions.slice(0, -1) + '1';
+console.log(linkedconditions);
+
+req.session.data.conditions = linkedconditions
+console.log(req.session.data.conditions);
+
+
+/*Need to do a for while loop here but not got around to it.
+let linkedconditions = req.session.data.conditions1
+while (linkedconditions.length) {
+  req.session.data.conditions = req.session.data.conditions + "," + linkedconditions
+  linkedcondtions = linkedconditions + 1;
+} */
+
+
    res.redirect('check-your-answers');
 });
+
 
 ///check your answers
 router.get('/tagging/check-your-answers', function(req, res) {
@@ -448,7 +480,7 @@ for ([licenceIndex, licence] of licenceList.entries()) {
   let thresholdValue = req.session.data['thresholdValue']
   let thresholdUnits = req.session.data['thresholdUnits']
   let conditionType = req.session.data['reduce-or-stop']
-
+  let linkedCondtion = req.session.data['conditions0']
   let notificationType = req.session.data['notificationType']
   let status = "no restrictions"
 
@@ -456,6 +488,7 @@ for ([licenceIndex, licence] of licenceList.entries()) {
     licenceNumber,
     thresholdValue,
     thresholdUnits,
+    linkedCondtion,
     conditionType,
     notificationType,
     status
