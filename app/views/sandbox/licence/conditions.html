@@ -43,15 +43,19 @@
           {% set tagNumber = loop.index0 %}
           {% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
 
+
           <!--check for licence number matches-->
           {% if tagLicenceNumber == data.licences[data.ID].number %}
 
-          <!--if matched get tag details-->
-          {% set thresholdValue = station.tags[tagNumber]['thresholdValue'] %}
-          {% set thresholdUnits = station.tags[tagNumber]['thresholdUnits'] %}
-          {% set conditionType = station.tags[tagNumber]['conditionType'] %}
-          {% set notificationType = station.tags[tagNumber]['notificationType'] %}
-          {% set linkedCondition = station.tags[tagNumber]['linkedCondtion'] %}
+
+          <!--if matched get tag details loop through the tags for that licence-->
+          {% set tagValues = station.tags[tagNumber]['tagValues'] %}
+          {% for i in tagValues %}
+          {% set thresholdValue = i.thresholdValue %}
+          {% set thresholdUnits = i.thresholdUnits' %}
+          {% set conditionType = i.conditionType %}
+          {% set notificationType = i.notificationType %}
+          {% set linkedCondition = i.linkedCondtion %}
 
           <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-full">
@@ -109,6 +113,7 @@
 
          </div>
          </div>
+          {% endfor %}
           {% endif %}
           {% endfor %}
           {% endfor %}

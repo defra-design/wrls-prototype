@@ -1167,21 +1167,29 @@ module.exports = {
     wiskiID: '1029TH',
     tags: [{
         licenceNumber: "03/28/60/0032",
-        thresholdValue: "175",
+        status: "no restricitons",
+        tagValues: [{ thresholdValue: "175",
         thresholdUnits: "megaLitresPerDay",
-        conditionType: "stop",
-        linkedCondtion: "Flow cessation condition, ID598962",
+        conditionType: "reduce",
+        linkedCondtion: "Flow cessation condition, ID758342",
         notificationType: "flow",
-        status: "no restricitons"
+      },
+      { thresholdValue: "160",
+      thresholdUnits: "megaLitresPerDay",
+      conditionType: "stop",
+      linkedCondtion: "Flow cessation condition, ID758342",
+      notificationType: "flow",
+    }],
       },
       {
         licenceNumber: "03/28/60/0726",
-        thresholdValue: "175",
+        status: "no restricitons",
+        tagValues: [{ thresholdValue: "175",
         thresholdUnits: "megaLitresPerDay",
         notificationType: "flow",
         linkedCondtion: "Flow cessation condition, ID598962",
-        conditionType: "stop",
-        status: "no restricitons"
+        conditionType: "reduce", }],
+
       }
     ]
   },

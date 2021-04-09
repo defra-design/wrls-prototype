@@ -474,8 +474,6 @@ for ([licenceIndex, licence] of licenceList.entries()) {
   //add details for the tag
 
 
-
-
   let licenceNumber = licenceList[licenceIndex]
   let thresholdValue = req.session.data['thresholdValue']
   let thresholdUnits = req.session.data['thresholdUnits']
@@ -483,18 +481,41 @@ for ([licenceIndex, licence] of licenceList.entries()) {
   let linkedCondtion = req.session.data['conditions0']
   let notificationType = req.session.data['notificationType']
   let status = "no restrictions"
+  var match = "false"
+//loop through tags and check for existing licence,if found add the tag to that licence's values rather than creating a new entry, use match to switch between the two
+  for ([tagIndex, tag] of tags.entries()) {
+    if (licence === tag.licenceNumber) {
+
+   let newTag = {
+        thresholdValue,
+        thresholdUnits,
+        linkedCondtion,
+        conditionType,
+        notificationType
+      };
+      tag.tagValues.push(newTag);
+       match = "true"
+    }
+  }
+
+  if (match === "false") {
+  let tagValues = [{
+  thresholdValue,
+  thresholdUnits,
+  linkedCondtion,
+  conditionType,
+  notificationType }]
 
   let newTag = {
     licenceNumber,
-    thresholdValue,
-    thresholdUnits,
-    linkedCondtion,
-    conditionType,
-    notificationType,
-    status
+    status,
+    tagValues
   };
 
   tags.unshift(newTag);
+  match = "false"
+}
+
 }
 
    res.redirect('licence-tagged');
