@@ -25,18 +25,18 @@
 
 
           <!--set station ID to blank-->
-          {% set stationNumber = "" %}
+          {% set stationID = "" %}
           <!--loop through stations-->
           {% set stations = data['stations'] %}
           {% for station in stations %}
 
           <!--set station number and name-->
-          {% set stationNumber = loop.index0 %}
+          {% set stationID = loop.index0 %}
           {% set stationName = station.label %}
           {% set catchmentName = station.catchmentName %}
 
           <!--loop through the station tags-->
-          {% set tags = data.stations[stationNumber]['tags'] %}
+          {% set tags = data.stations[stationID]['tags'] %}
           {% for tag in tags %}
 
           <!--set tag number-->
@@ -51,6 +51,7 @@
           <!--if matched get tag details loop through the tags for that licence-->
           {% set tagValues = station.tags[tagNumber]['tagValues'] %}
           {% for i in tagValues %}
+          {% set tagValueNumber = loop.index0 %}
           {% set thresholdValue = i.thresholdValue %}
           {% set thresholdUnits = i.thresholdUnits' %}
           {% set conditionType = i.conditionType %}
@@ -63,6 +64,7 @@
               <h2 class="heading-large govuk-heading-m licence-condition__header">
                 Hands off {{notificationType}} threshold
               </h2>
+
 
            {{ govukSummaryList({
              rows: [
@@ -79,7 +81,7 @@
                  text: "Station"
                },
                value: {
-                html: '<a href="../station?stationID=' + stationNumber + '" class="govuk-link">' +
+                html: '<a href="../station?stationID=' + stationID + '" class="govuk-link">' +
                 stationName + '</a>'
                }
              },
@@ -110,9 +112,16 @@
                }
              ]
            }) }}
+           {{ govukButton({
+           text: "Remove tag",
+           classes: "govuk-button--secondary",
+           href:"../licence-notices/tagging/remove-tag?ID=" + data['ID'] + "&tagNumber=" + tagNumber + "&tagValueNumber=" + tagValueNumber + "&stationID=" + stationID
+           }) }}
+         </div>
+         </div>
 
-         </div>
-         </div>
+
+
           {% endfor %}
           {% endif %}
           {% endfor %}

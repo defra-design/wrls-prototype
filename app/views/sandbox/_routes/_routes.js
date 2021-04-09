@@ -52,6 +52,8 @@ res.redirect('search');
 //----------------------------------------------------------------
 ////NOTICES ROUTES
 //SEND A WATER ABSTRACTION ALERT
+//TAG A LICENCE
+//REMOVE A TAG
 router.use('/licence-notices', require('./_routes-notices'));
 
 

@@ -528,4 +528,49 @@ router.get('/tagging/licence-tagged', function(req, res) {
   res.render(folder + 'tagging/licence-tagged');
 });
 
+
+///////////////////////////////////////////////////////////////////////////////
+//REMOVE A TAG
+
+router.get('/tagging/remove-tag', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'tagging/remove-tag');
+});
+
+router.post('/tagging/remove-tag', function(req, res) {
+
+  let licenceID = req.session.data['ID']
+  let stationID = req.session.data['stationID']
+  let tagNumber = req.session.data['tagNumber']
+  let tagValueNumber = req.session.data['tagValueNumber']
+
+
+
+  let tagValues = req.session.data.stations[stationID].tags[tagNumber].tagValues
+
+  let index = tagValueNumber;
+  if (index > -1) {
+    tagValues.splice(index, 1);
+  }
+
+
+  if (tagValues.length == 0){
+    let tags = req.session.data.stations[stationID].tags
+    let index = tagNumber;
+    if (index > -1) {
+      tags.splice(index, 1);
+    }
+  }
+
+
+
+  res.redirect('/sandbox/licence/conditions?ID='+ licenceID);
+
+
+
+});
+
+
+
+
 module.exports = router
