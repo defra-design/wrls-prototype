@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = 'Search for licences, customers, billing accounts or users'%}
+{% set title = 'Search for licence information'%}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -32,7 +32,7 @@
     <form action="search" method="post" novalidate>
 
       <label class="govuk-label  " for="search">
-        Enter licence number, customer name, registered email address, or billing account
+        Enter a licence number, customer name, returns ID, registered email address or monitoring station
       </label>
 
       <input class="govuk-input govuk-!-width-two-thirds govuk-!-display-inline-block" id="search" name="search" type="text"  value="{{data['search']}}">
