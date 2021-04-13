@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Water abstraction alert - " + [data.waaType] + " - Check and confirm the alert"%}
+{% set title = Check and confirm the alert"%}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.waaType] + "</span> Check and confirm the alert " %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Check and confirm the alert " %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK

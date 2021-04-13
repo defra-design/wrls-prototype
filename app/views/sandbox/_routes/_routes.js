@@ -17,11 +17,46 @@ res.redirect('/sandbox/');
 });
 
 ////SEARCH RESULTS
-router.get('sandbox/search', function(req, res) {
+router.get('/search', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
+
+  //get the search term
+  let term = req.session.data['search']
+
+
+
+  function search(callback) {
+  //Check to see if the results should be a billing account or a licence based on the search term entered
+  //In the proto all billing accounts begin with BA
+
+  if ( term.startsWith("BA") ){
+    req.session.data.resultsTable = "sandbox/_includes/billing-accounts-table.html"
+  } else if ( term.includes("@") ) {
+    req.session.data.resultsTable = "sandbox/_includes/users-table.html"
+  } else if ( term.includes("/") ) {
+    req.session.data.resultsTable = "sandbox/_includes/licences-table.html"
+  } else if ( term.includes("*") ) {
+    req.session.data.resultsTable = "sandbox/_includes/customers-table.html"
+  } else {
+    req.session.data.resultsTable = "sandbox/_includes/stations-table.html"
+    console.log("1")
+  };
+
+
+   callback();
+
+  };
+
+  function render(){
+    console.log("2")
   res.render('sandbox/search');
+};
+
+  search(render);
+
+
 
 });
 

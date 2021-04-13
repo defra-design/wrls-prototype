@@ -18,6 +18,7 @@ Example usage:
 */
 
 module.exports = {
+    "resultsTable": "sandbox/_includes/stations-table.html",
     "userType": "su",
     "customerName": "Bottled Water Plc",
     "licenceHolder": "Bottled Water Plc",
@@ -1123,7 +1124,8 @@ module.exports = {
       "problems": "",
     }],
 
-
+    "allFlowThresholdsMegaLitresPerDay": [175,160,155],
+    "allLevelThresholdsMetresAboveOrdinanceDatum": [2.123],
     "waterAbstractionAlert": [],
 
   //Station data
