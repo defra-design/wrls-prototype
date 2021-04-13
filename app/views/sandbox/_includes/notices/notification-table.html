@@ -22,7 +22,7 @@
    {% for i in notifications %}
    <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{i.date}}</td>
-    <td class="govuk-table__cell"><a href="/sandbox/licence-notices/recipient-report?notificationIndex={{loop.index0}}" class="govuk-link">{{i.notification}}</a></td>
+    <td class="govuk-table__cell"><a href="/sandbox/licence-notices/recipient-report?notificationIndex={{loop.index0}}" class="govuk-link">{{i.notification |capitalize}}</a></td>
     <td class="govuk-table__cell">{{i.sentBy}}</td>
     <td class="govuk-table__cell govuk-table__cell--numeric">{{i.numberOfrecipients}}</td>
     <td class="govuk-table__cell govuk-table__cell--numeric">{{i.problems}}</td>

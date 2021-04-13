@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = data['waaType'] + " message preview" %}
+{% set title = data['waaType'] |capitalize + " message preview" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> " + data['waaType'] + " message preview"  %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> " + data['waaType'] |capitalize + " message preview"  %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -43,14 +43,14 @@
           <div class="govuk-grid-column-full">
 
           <!-- display the text relevant to the WAA type-->
-          {% if data['waaType'] == "Warning" %}
+          {% if data['waaType'] == "warning" %}
           {% include "sandbox/_includes/notices/warning-text.html" %}
-          {% elseif data['waaType'] == "Reduce" %}
+          {% elseif data['waaType'] == "reduce" %}
           {% include "sandbox/_includes/notices/reduce-text.html" %}
-          {% elseif data['waaType'] == "Stop" %}
+          {% elseif data['waaType'] == "stop" %}
           {% include "sandbox/_includes/notices/stop-text.html" %}
           {% else %}
-          {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+          {% include "sandbox/_includes/notices/resume-text.html" %}
           {% endif %}
           </div>
           </div>
