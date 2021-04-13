@@ -5,7 +5,7 @@
 
 
 <!--set page title-->
-{% set title = data.notifications[index]['notification'] %}
+{% set title = data.notifications[index]['notification'] |capitalize %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
