@@ -5,13 +5,13 @@
 {% set tags = data.stations[data.stationID]['tags'] %}
 {% if tags.length %}
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Licences with conditions for this monitoring station</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Licences with conditions linked to this monitoring station</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Licence number</th>
+      <th scope="col" class="govuk-table__header">Licence</th>
   <!--<th scope="col" class="govuk-table__header ">Condition type</th>-->
-  <th scope="col" colspan="3" class="govuk-table__header ">Hands-off flow <br>threshold and type</th>
-      <th scope="col" colspan="3" class="govuk-table__header ">Hands-off level <br>threshold and type</th>
+  <th scope="col" colspan="3" class="govuk-table__header ">Hands-off flow restriction<br>type and threshold </th>
+      <th scope="col" colspan="3" class="govuk-table__header ">Hands-off level restriction<br>type and threshold</th>
 
 
       <th scope="col" class="govuk-table__header  govuk-table__header--numeric govuk-!-width-one-quarter">Status</th>
@@ -120,7 +120,7 @@
   }) }}
 
   {{ govukButton({
-    text: "Add licences",
+    text: "Add licences by threshold",
     href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
     classes: "govuk-button--secondary"
   }) }}
