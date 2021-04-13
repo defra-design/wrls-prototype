@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = Check and confirm the alert"%}
+{% set title = data['waaType'] + " message preview" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Check and confirm the alert " %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> " + data['waaType'] + " message preview"  %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -32,7 +32,7 @@
           {% set index = loop.length %}
           {% endfor %}
 
-            <p class="govuk-body">This is a preview of the message your recipients will get.</p>
+            <p class="govuk-body">This is a preview of the message {{data.LicenceListHolder}} will get.</p>
           </div>
           </div>
 

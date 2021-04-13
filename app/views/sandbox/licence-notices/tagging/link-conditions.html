@@ -2,9 +2,7 @@
 
 <!--set page title-->
 {% set title = "Select the full condition for each licence" %}},
-hint: {
-    text: "This is the licence condition recorded in NALD and stated on the licence."
-  },
+
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -47,6 +45,9 @@ hint: {
       classes: "govuk-fieldset__legend--m"
     }
   },
+  hint: {
+      text: "This is the licence condition recorded in NALD and stated on the licence."
+    },
   items: [
     {
       value: "Flow cessation condition, ID" + conditionID,
@@ -59,8 +60,8 @@ hint: {
       divider: "or"
     },
     {
-      value: "The condition is not listed for this licence",
-      text: "The condition is not listed for this licence"
+      value: "The condition is not listed for licence " + i,
+      text: "The condition is not listed for licence " + i
     }
   ]
 }) }}
