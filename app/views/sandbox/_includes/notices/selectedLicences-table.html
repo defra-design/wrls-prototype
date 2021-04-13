@@ -1,0 +1,147 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set selectedLicences = data['selectedLicences'] %}
+{% set tags = data['waterAbstractionAlert'] %}
+
+
+
+{% if tags.length %}
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Licences with conditions for this gauging station</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Licence number</th>
+
+      <!--check for flow data-->
+      {% set flow = "false" %}
+      {% for tag in tags %}
+      {% set tagValues = tag['tagValues'] %}
+        {% for item in tagValues %}
+        {% if item.notificationType == "flow" %}
+      {% set flow = "true" %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+      {% if flow == "true" %}
+      <th scope="col" colspan="3" class="govuk-table__header ">Hands-off flow <br>threshold and type</th>
+      {% endif %}
+
+      <!--check for level data-->
+      {% set level = "false" %}
+      {% for tag in tags %}
+      {% set tagValues = tag['tagValues'] %}
+        {% for item in tagValues %}
+        {% if item.notificationType == "level" %}
+      {% set level = "true" %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+      {% if level == "true" %}
+      <th scope="col" colspan="3" class="govuk-table__header ">Hands-off level <br>threshold and type</th>
+      {% endif %}
+
+      <th scope="col" class="govuk-table__header  govuk-table__header--numeric govuk-!-width-one-quarter">Status</th>
+
+      <th scope="col" class="govuk-table__header  govuk-table__header--numeric ">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <!--starting to loop through the bill runs data -->
+
+    {% for i in tags %}
+    <!--setting the loop number -->
+    {% set loopNumber = loop.index0 %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+          {{i.licenceNumber}}</td>
+
+
+          <!--get the tags for that individual licences-->
+          {% set licenceTags = i['tagValues'] %}
+
+
+          {% if flow == "true" %}
+
+      <td class="govuk-table__cell govuk-!-padding-right-0">
+        <!--loop through conditions for that licence-->
+        {% for tag in licenceTags %}
+        {% if tag.notificationType == "flow" %}
+        {{tag.conditionType |capitalize}}<br>
+        {% endif %}
+        {% endfor %}</td>
+
+      <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-padding-right-1">
+        <!--loop through the tag values and if they are a flow value add them to this cell-->
+        {% for tag in licenceTags %}
+
+        {% if tag.notificationType == "flow" %}
+        {{tag.thresholdValue}}<br>
+        {% endif %}
+        {% endfor %}
+      </td>
+      <td class="govuk-table__cell ">
+        <!--loop through the tag values and if they are a flow value add them to this cell-->
+        {% for tag in licenceTags %}
+
+        {% if tag.notificationType == "flow" %}
+        {{tag.thresholdUnits | units |safe}}<br>
+        {% endif %}
+        {% endfor %}
+      </td>
+
+      {% endif %}
+
+
+      {% if level == "true" %}
+
+      <td class="govuk-table__cell govuk-!-padding-right-0">
+        <!--loop through conditions for that licence-->
+        {% for tag in licenceTags %}
+        {% if tag.notificationType == "level" %}
+        {{tag.conditionType |capitalize}}<br>
+        {% endif %}
+        {% endfor %}</td>
+
+
+      <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-padding-right-1">
+        <!--loop through the tag values and if they are a level value add them to this cell-->
+        {% for tag in licenceTags %}
+        {% if tag.notificationType == "level" %}
+        {{tag.thresholdValue}}<br>
+        {% endif %}
+        {% endfor %}
+      </td>
+
+      <td class="govuk-table__cell ">
+        <!--loop through the tag values and if they are a flow value add them to this cell-->
+        {% for tag in licenceTags %}
+
+        {% if tag.notificationType == "level" %}
+        {{tag.thresholdUnits | units |safe}}<br>
+        {% endif %}
+        {% endfor %}
+      </td>
+
+     {% endif %}
+
+
+
+      <td class="govuk-table__cell govuk-table__header--numeric">{{govukTag({
+          text: [i.status],
+          classes: "govuk-tag--green"
+        })}}</td>
+
+        <td class="govuk-table__cell govuk-table__header--numeric">
+        <a class="govuk-link" href="remove-from-the-alert-send-list?listIndex={{loop.index0}}">Remove</a></td>
+    </tr>
+    {% endfor %}
+
+
+
+  </tbody>
+</table>
+
+
+{% endif %}

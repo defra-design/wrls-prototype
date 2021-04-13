@@ -17,7 +17,7 @@
 <h3 class="govuk-heading-m">Your hands-off flow licence condition</h3>
 
 <ul class="govuk-list">
- <li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'].split(',') %} {{licenceList[0]}}</li>
+ <li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'] %} {{licenceList[0]}}</li>
   <li><span class="govuk-!-font-weight-bold">Name of watercourse:</span> {{data['watercourse']}}</li>
   <li><span class="govuk-!-font-weight-bold">Gauging station name:</span> {{data['gaugingStation']}}</li>
   <li><span class="govuk-!-font-weight-bold">Hands-off flow threshold:</span> {{data['flowThreshold']}} megalitres per day</li>

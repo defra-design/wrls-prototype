@@ -1,7 +1,7 @@
 <!--setting the loop number to 0-->
 <!-- count of licences in the list -->
 {% set index = "" %}
-{% set licenceList = data['licenceList'] %}
+{% set licenceList = data['licenceList'].split(',') %}
 {% for i in licenceList %}
 {% set index = loop.length %}
 {% endfor %}
@@ -13,13 +13,17 @@
 <table class="govuk-table">
   <caption class="govuk-table__caption "><p class="govuk-body govuk-!-font-weight-bold">You're sending this alert for {{index}} licences.</p>
     <p class="govuk-body"> The alert will be sent by:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>post to {{recipientsLetter|safe}} recipients</li>
+    <li>email to {{recipientsEmail|safe}} recipients</li>
+</ul>
   </caption>
   <thead class="govuk-table__head">
-
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Send to</th>
-      <th scope="col" class="govuk-table__header">Licence Number</th>
-      <th scope="col" class="govuk-table__header">Method</th>
+      <th scope="col" class="govuk-table__header">Licence</th>
+      <th scope="col" class="govuk-table__header">Licence holder</th>
+      <th scope="col" class="govuk-table__header">Address</th>
+      <th scope="col" class="govuk-table__header">Email address</th>
       <th scope="col" class="govuk-table__header">Action</th>
     </tr>
   </thead>
@@ -28,6 +32,8 @@
 
 {% set licenceListAddress = "" %}
 
+    <!--split the licences entered in to the flow into an array-->
+    {% set licenceList = data['licenceList'].split(',') %}
 
 
 <!--set a global variable for the licence holder-->
@@ -35,7 +41,7 @@
 
 <!--loop through the licence numbers entered by the user-->
 {% for i in licenceList %}
-
+<tr class="govuk-table__row">
 {% set licnenceListIndex = loop.index0 %}
 
 
@@ -55,50 +61,12 @@
 <!--match the licence number entered against the licence number in the list-->
 {% if i.number == licence  %}
 
-<!--declare method var-->
-{% set method = "" %}
-
+    <!--if matched return the licence number and licence holder name-->
+    <td class="govuk-table__cell">{{[data.licences[loopNumber].number]}}</td>
+    <td class="govuk-table__cell">{{[data.licences[loopNumber].holder]}}</td>
 
 <!--set a variable for the licenceHolder-->
 {% set licenceHolder = [data.licences[loopNumber].holder] %}
-
-
-
-
-
-
-<!--getting the contact data-->
-{% set contacts = data['contacts'] %}
-
-<!--loop through the contacts-->
-{% for contact in contacts %}
-
-
-
-<!--set the index of the contact-->
-{% set contactIndex = loop.index0 %}
-
-<!--for each of the adresses check to see if the address has the correct customer and the billing role-->
-{% set contactCustomers = contact.customers %}
-
-
-
-{% for i in contactCustomers %}
-
-
-
-
-{% if "Water abstraction alerts" in i.notices and licenceHolder == i.customer %}
-
-
-
-
-{% if contacts[contactIndex].email == "" %}
-
-<tr class="govuk-table__row">
-<td class="govuk-table__cell">
-
-<!--add in contact email details-->
 
 <!--add in address details-->
 
@@ -114,9 +82,7 @@
 
 
 <!--display the address-->
-
-  <!--if matched return the licence number and licence holder name-->
-{{[data.licences[loopNumber].holder]}}<br>
+<td class="govuk-table__cell">
   {% set licenceListAddress %}
 {{[data.addresses[addressIndex].address1]}}<br>
 {{[data.addresses[addressIndex].city]}}<br>
@@ -124,54 +90,51 @@
 {% endset %}
 
 {{licenceListAddress|safe}}
-
-{% set method = "Post" %}
-
 </td>
-
-<td class="govuk-table__cell">{{[data.licences[loopNumber].number]}}</td>
-
-<td class="govuk-table__cell">{{method}}</td>
-
-<td class="govuk-table__cell"><a class="govuk-link" href="preview?licenceListIndex={{licnenceListIndex}}&licenceListNumber={{data.licences[loopNumber].number}}&LicenceListHolder={{data.licences[loopNumber].holder}}">Preview</a></td>
-</tr>
 
 {% endif %}
 {% endfor %}
 {% endfor %}
 
-
-
-{% else %}
-
-<tr class="govuk-table__row">
 <td class="govuk-table__cell">
+<!--add in contact email details-->
 
-    {{[data.contacts[contactIndex].email]}}
 
-{% set method = "Email" %}
 
-</td>
+<!--getting the contact data-->
+{% set contacts = data['contacts'] %}
+<!--loop through the contacts-->
+{% for contact in contacts %}
+<!--set the index of the contact-->
+{% set contactIndex = loop.index0 %}
 
-<td class="govuk-table__cell">{{[data.licences[loopNumber].number]}}</td>
+<!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+{% set contactCustomers = contact.customers %}
 
-<td class="govuk-table__cell">{{method}}</td>
 
-<td class="govuk-table__cell"><a class="govuk-link" href="preview?licenceListIndex={{licnenceListIndex}}&licenceListNumber={{data.licences[loopNumber].number}}&LicenceListHolder={{data.licences[loopNumber].holder}}">Preview</a></td>
-</tr>
+{% for i in contactCustomers %}
+{% if "Water abstraction alerts" in i.notices and licenceHolder == i.customer %}
+
+{% if contacts[contactIndex].email == "" %}
+{% else %}
+    {{[data.contacts[contactIndex].email]}}<br>
 
 {% endif %}
     {% endif %}
     {% endfor %}
+    {% endfor %}
+
+</td>
+
+
+    <td class="govuk-table__cell"><a class="govuk-link" href="remove-from-the-alert-send-list?licenceListIndex={{licnenceListIndex}}&licenceListNumber={{data.licences[loopNumber].number}}&LicenceListHolder={{data.licences[loopNumber].holder}}">Remove</a></td>
 
 
 
-
-{% endfor %}
 {% endif %}
 {% endfor %}
 
-
+</tr>
 {% endfor %}
 
 

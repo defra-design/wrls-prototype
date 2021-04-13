@@ -1,19 +1,14 @@
 <p class="govuk-body">Water Resources Act 1991</p>
 
-<h2 class="govuk-heading-l">You may need to reduce or stop water abstraction soon</h2>
+<h2 class="govuk-heading-l">You must reduce or stop water abstraction now</h2>
 
-<p class="govuk-body">Dear licence holder,</p>
+<p class="govuk-body">Dear licence contact,</p>
 
-<p class="govuk-body">The flow at {{data['gaugingStation']}} gauging station is close to your licence’s hands-off flow threshold.</p>
+<p class="govuk-body">The flow at {{data['gaugingStation']}} gauging station is at your licence’s hands-off flow threshold.</p>
 
-<p class="govuk-body">You can continue to take water. But check your licence so you're ready to make a change if we ask you to.</p>
+<p class="govuk-body">You must reduce or stop water abstraction now, or take the specific action given in your licence.</p>
 
-<p class="govuk-body">Your licence will tell you if you need to:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>reduce the amount of water that you abstract</li>
-  <li>stop abstracting water</li>
-  <li>or take another specific action</li>
-</ul>
+<p class="govuk-body">Check your licence for details of your hands-off flow condition.</p>
 
 <h2 class="govuk-heading-l">Why we’ve sent this alert</h2>
 
@@ -23,16 +18,16 @@
 
 <ul class="govuk-list">
  <li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'] %} {{licenceList[0]}}</li>
-  <li><span class="govuk-!-font-weight-bold">Watercourse:</span> {{data['watercourse']}}</li>
-  <li><span class="govuk-!-font-weight-bold">Gauging station:</span> {{data['gaugingStation']}}</li>
-  <li><span class="govuk-!-font-weight-bold">Hands off flow threshold:</span> {{data['flowThreshold']}} megalitres per day</li>
+  <li><span class="govuk-!-font-weight-bold">Name of watercourse:</span> {{data['watercourse']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Gauging station name:</span> {{data['gaugingStation']}}</li>
+  <li><span class="govuk-!-font-weight-bold">Hands-off flow threshold:</span> {{data['flowThreshold']}} megalitres per day</li>
 </ul>
 
 <h2 class="govuk-heading-l">What happens next</h2>
 
-<p class="govuk-body">We'll email you again if you need to reduce or stop the amount of water that you take.</p>
+<p class="govuk-body">We’ll email you when the flow is above your licence's hands-off flow threshold.</p>
 
-<p class="govuk-body"> If you do not hear from us, you can continue to take water to the licensed amount.</p>
+<p class="govuk-body">You can then take water to the licensed amount.</p>
 
 <h2 class="govuk-heading-l">Help with your hands-off flow condition</h2>
 

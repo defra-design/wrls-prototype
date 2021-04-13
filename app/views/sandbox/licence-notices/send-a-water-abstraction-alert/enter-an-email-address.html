@@ -1,0 +1,51 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Enter an email address to include in the alert" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Enter an email address to include  in the alert" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+    <form method="post" novalidate>
+
+      {{ govukInput({
+  label: {
+    text: qTitle | safe,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "This is usually your area’s team inbox email address"
+  },
+  classes: "govuk-!-width-one-third",
+  id: "contactEmail",
+  name: "contactEmail"
+}) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

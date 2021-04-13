@@ -30,7 +30,7 @@ router.post('/search', function(req, res) {
 //get the search term
 let term = req.session.data['search']
 
-
+search = (function() {
 //Check to see if the results should be a billing account or a licence based on the search term entered
 //In the proto all billing accounts begin with BA
 if ( term.startsWith("BA") ){
@@ -46,6 +46,10 @@ if ( term.startsWith("BA") ){
 }
 
 res.redirect('search');
+
+});
+
+search()
 
 });
 

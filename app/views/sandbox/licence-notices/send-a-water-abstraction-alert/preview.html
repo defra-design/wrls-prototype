@@ -27,7 +27,7 @@
 
           <!-- count of licences in the list -->
           {% set index = "" %}
-          {% set licenceList = data['licenceList'].split(',') %}
+          {% set licenceList = data['licenceList'] %}
           {% for i in licenceList %}
           {% set index = loop.length %}
           {% endfor %}
@@ -45,8 +45,10 @@
           <!-- display the text relevant to the WAA type-->
           {% if data['waaType'] == "Warning" %}
           {% include "sandbox/_includes/notices/warning-text.html" %}
-          {% elseif data['waaType'] == "Reduce or stop" %}
-          {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+          {% elseif data['waaType'] == "Reduce" %}
+          {% include "sandbox/_includes/notices/reduce-text.html" %}
+          {% elseif data['waaType'] == "Stop" %}
+          {% include "sandbox/_includes/notices/stop-text.html" %}
           {% else %}
           {% include "sandbox/_includes/notices/reduceStop-text.html" %}
           {% endif %}
@@ -54,9 +56,7 @@
           </div>
         </div>
 
-      <button type="submit" class="govuk-button">
-        Send alert
-      </button>
+    <a href="javascript:history.back()" class="govuk-link">back to mailing list</a>
 
     </form>
 

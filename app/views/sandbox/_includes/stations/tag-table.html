@@ -5,7 +5,7 @@
 {% set tags = data.stations[data.stationID]['tags'] %}
 {% if tags.length %}
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Licences with conditions for this gauging station</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Licences with conditions for this monitoring station</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Licence number</th>
@@ -38,7 +38,7 @@
          <!--get the tags for that individual licences-->
         {% set licenceTags = i['tagValues'] %}
 
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell govuk-!-padding-right-0">
           <!--loop through conditions for that licence-->
           {% for tag in licenceTags %}
           {% if tag.notificationType == "flow" %}
@@ -46,7 +46,7 @@
          {% endif %}
          {% endfor %}</td>
 
-<td class="govuk-table__cell govuk-table__cell--numeric">
+<td class="govuk-table__cell govuk-table__cell--numeric govuk-!-padding-right-1">
         <!--loop through the tag values and if they are a flow value add them to this cell-->
          {% for tag in licenceTags %}
 
@@ -67,7 +67,7 @@
 
 
 
-         <td class="govuk-table__cell ">
+         <td class="govuk-table__cell govuk-!-padding-right-0">
            <!--loop through conditions for that licence-->
            {% for tag in licenceTags %}
            {% if tag.notificationType == "level" %}
@@ -76,7 +76,7 @@
           {% endfor %}</td>
 
 
-         <td class="govuk-table__cell govuk-table__cell--numeric">
+         <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-padding-right-1">
            <!--loop through the tag values and if they are a level value add them to this cell-->
                   {% for tag in licenceTags %}
                  {% if tag.notificationType == "level" %}
@@ -115,7 +115,8 @@
 
 <div class="govuk-button-group">
   {{ govukButton({
-    text: "Create water abstraction alert"
+    text: "Create water abstraction alert",
+    href: "licence-notices/send-a-water-abstraction-alert/select-the-type-of-alert?stationID=" + [data.stationID]
   }) }}
 
   {{ govukButton({
