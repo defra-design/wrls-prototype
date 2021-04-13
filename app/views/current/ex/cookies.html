@@ -177,22 +177,22 @@ We use cookies to make this site work and collect information about how you use 
        </thead>
        <tbody>
          <tr>
-           <th class="govuk-table__header" scope="row">_ga</th>
+           <td class="govuk-table__cell">_ga</td>
            <td class="govuk-table__cell">Used to identify unique users and inform referring sites, visitor and session counts.</td>
            <td class="govuk-table__cell">2 years</td>
          </tr>
          <tr>
-           <th class="govuk-table__header" scope="row">_gid</th>
+           <td class="govuk-table__cell">_gid</td>
            <td class="govuk-table__cell">Used to identify unique users and inform referring sites, visitor and session counts.</td>
            <td class="govuk-table__cell">24 hours</td>
          </tr>
          <tr>
-           <th class="govuk-table__header" scope="row">_gat</th>
+           <td class="govuk-table__cell">_gat</td>
            <td class="govuk-table__cell">Used to protect the server and ensure accurate statistics are tracked for the service.</td>
            <td class="govuk-table__cell">1 minute</td>
          </tr>
          <tr>
-           <th class="govuk-table__header" scope="row">_gat_govuk_shared</th>
+           <td class="govuk-table__cell">_gat_govuk_shared</td>
            <td class="govuk-table__cell">Used to protect the Google Analytics server by limiting the number of requests being made.</td>
            <td class="govuk-table__cell">1 minute</td>
          </tr>
@@ -200,14 +200,13 @@ We use cookies to make this site work and collect information about how you use 
    </table>
    <div class="govuk-grid-row">
      <div class="govuk-grid-column-two-thirds">
-       <h2 class="govuk-heading-m">Change your cookie settings
+       <h2 class="govuk-heading-l">Change your cookie settings
    </h2>
-   {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
 
 {{ govukRadios({
-  classes: "govuk-radios--small",
-  idPrefix: "changed-name",
-  name: "changed-name",
+  idPrefix: "analyticsCookies",
+  name: "analyticsCookies",
   fieldset: {
     legend: {
       text: "Do you want to accept analytics cookies?",
@@ -225,6 +224,10 @@ We use cookies to make this site work and collect information about how you use 
       text: "No"
     }
   ]
+}) }}
+
+{{ govukButton({
+  text: "Save cookie settings"
 }) }}
 
  </div>
