@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Enter the hands-off flow or level threshold" %}
+{% set title = "Enter the hands-off flow or level threshold to group licences by" %}
 
 
 {% block pageTitle %}
@@ -42,13 +42,17 @@
   id: "thresholdUnits",
   name: "thresholdUnits",
   label: {
-    text: "Measurement unit"
+    text: "Unit of measurement"
   },
   items: [
   {
           value: "null",
           text: "Select an option",
           selected: true
+  },
+  {
+    value: "megaLitresPerDay",
+    text: "ML/d"
   },
     {
       value: "cubicMetresPerSecond",
@@ -73,10 +77,6 @@
     {
       value: "metres",
       text: "m"
-    },
-    {
-      value: "megaLitresPerDay",
-      text: "ML/d"
     }
   ]
 }) }}
