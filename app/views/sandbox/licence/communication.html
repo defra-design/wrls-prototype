@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title = data.licences[data.ID].communications[data.communicationID]['type'] %}
+{% set title = data.licences[data.ID].communications[data.communicationID]['type'] |capitalize %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -70,12 +70,14 @@
   <div class=" govuk-grid-row govuk-!-padding-6">
   <div class="govuk-grid-column-full">
     <!-- display the text relevant to the WAA type-->
-    {% if data['waaType'] == "Warning" %}
+    {% if data.licences[data.ID].communications[data.communicationID]['type'].includes("warning") %}
     {% include "sandbox/_includes/notices/warning-text.html" %}
-    {% elseif data['waaType'] == "Reduce or stop" %}
-    {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+    {% elseif data.licences[data.ID].communications[data.communicationID]['type'].includes("reduce") %}
+    {% include "sandbox/_includes/notices/reduce-text.html" %}
+    {% elseif data.licences[data.ID].communications[data.communicationID]['type'].includes("stop") %}
+    {% include "sandbox/_includes/notices/stop-text.html" %}
     {% else %}
-    {% include "sandbox/_includes/notices/reduceStop-text.html" %}
+    {% include "sandbox/_includes/notices/resume-text.html" %}
     {% endif %}
 
   </div>

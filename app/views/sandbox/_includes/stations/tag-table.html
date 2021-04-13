@@ -101,8 +101,8 @@
 
 
          <td class="govuk-table__cell govuk-table__header--numeric">{{govukTag({
-          text: [i.status],
-          classes: "govuk-tag--green"
+          text: [i.status] | tagStatusText,
+          classes: [i.status] | tagStatusColour
         })}}</td>
     </tr>
     {% endfor %}

@@ -34,6 +34,12 @@
 {% set conditions = conditions + "Flow cessation condition, ID" + conditionID + "<br>" %}
 {% endfor %}
 
+<!--if reduce include the amount to reduce to -->
+{% set conditionType = data['reduce-or-stop'] %}
+{% if conditionType == "reduce" %}
+{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['thresholdUnits'] |units |safe %}
+{% endif %}
+
     <form  method="post" novalidate>
 
       {{ govukSummaryList({
@@ -60,7 +66,7 @@ key: {
   text: "Type"
 },
 value: {
-  text: data['reduce-or-stop'] | capitalize
+  text: conditionType | capitalize | safe
 },
 actions: {
   items: [

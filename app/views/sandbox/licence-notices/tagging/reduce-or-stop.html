@@ -21,6 +21,21 @@
 
     <form  method="post" novalidate>
 
+      {% set reductionAmountHtml %}
+{{ govukInput({
+  id: "reductionAmount",
+  name: "reductionAmount",
+  spellcheck: false,
+  suffix: {
+text: data['thresholdUnits'] |units |safe
+},
+  classes: "govuk-input--width-5",
+  label: {
+    text: "Reduction amount"
+  }
+}) }}
+{% endset -%}
+
       {{ govukRadios({
   idPrefix: "reduce-or-stop",
   name: "reduce-or-stop",
@@ -34,7 +49,11 @@
   items: [
     {
       value: "reduce",
-      text: "Reduce"
+      text: "Reduce",
+
+      conditional: {
+        html: reductionAmountHtml
+      }
     },
     {
       value: "stop",

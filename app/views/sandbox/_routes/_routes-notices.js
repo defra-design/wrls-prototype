@@ -128,7 +128,7 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
 
    console.log(selectedThresholds)
    //filter licences based on the selected thresholds
-   var selectedLicences = []
+   var selectedLicences = req.session.data['selectedLicences']
    for (item of selectedThresholds)
    {
    let op = tags.filter(val => {
@@ -273,11 +273,24 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
         //Add the communication details to the licence
         communications = licences[licenceIndex]['communications']
 
-        //update the status of the water abstraction alerts
-        let stations = req.session.data['stations']
-        let stationID = req.session.data['stationID']
-        console.log(stationID);
 
+      }
+    }
+
+
+
+    let selectedLicences = req.session.data['selectedLicences']
+    for (selectedLicence of selectedLicences){
+      //update the status of the water abstraction alerts
+      let stations = req.session.data['stations']
+      let stationID = req.session.data['stationID']
+
+      let tags = req.session.data.stations[stationID]['tags']
+
+      for (var [tagIndex, tag] of tags.entries()) {
+        if (selectedLicence == tag.licenceNumber) {
+          tag.status = req.session.data['waaType']
+        }
       }
     }
 
@@ -466,6 +479,8 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
   }
 
 
+  //clear selected licences
+  req.session.data.selectedLicences = []
 
   res.redirect('alert-sent');
 
@@ -628,8 +643,10 @@ for ([licenceIndex, licence] of licenceList.entries()) {
   let thresholdValue = req.session.data['thresholdValue']
   let thresholdUnits = req.session.data['thresholdUnits']
   let conditionType = req.session.data['reduce-or-stop']
+  let reductionAmount = req.session.data['reductionAmount']
   let linkedCondtion = req.session.data['conditions0']
   let notificationType = req.session.data['notificationType']
+
   let status = "no restrictions"
   var match = "false"
 //loop through tags and check for existing licence,if found add the tag to that licence's values rather than creating a new entry, use match to switch between the two
@@ -641,6 +658,7 @@ for ([licenceIndex, licence] of licenceList.entries()) {
         thresholdUnits,
         linkedCondtion,
         conditionType,
+        reductionAmount,
         notificationType
       };
       tag.tagValues.push(newTag);
@@ -654,6 +672,7 @@ for ([licenceIndex, licence] of licenceList.entries()) {
   thresholdUnits,
   linkedCondtion,
   conditionType,
+  reductionAmount,
   notificationType }]
 
   let newTag = {

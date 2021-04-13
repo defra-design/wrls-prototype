@@ -7,7 +7,7 @@
 <!--check the licence data for an exact match-->
 {% set match = "false" %}
 {% for i in licences %}
-{% if i.number == data['search'] %}
+{% if i.number == data['search'].trim() %}
 {% set loopNumber = loop.index0 %}
 {% set match = "true" %}
 {% endif %}

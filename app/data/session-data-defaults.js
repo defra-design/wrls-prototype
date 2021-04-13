@@ -328,7 +328,7 @@ module.exports = {
         }],
 
         "communications": [{
-            "type": "Resume - Water abstraction alert",
+            "type": "resume - Water abstraction alert",
             "sent": "5 June 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -338,7 +338,7 @@ module.exports = {
             "contactEmail": "something1@somewhere.co.uk",
           },
           {
-            "type": "Reduce or stop - Water abstraction alert",
+            "type": "stop - Water abstraction alert",
             "sent": "17 April 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -348,7 +348,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Warning - Water abstraction alert",
+            "type": "warning - Water abstraction alert",
             "sent": "30 March 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -414,7 +414,7 @@ module.exports = {
         }],
 
         "communications": [{
-            "type": "Resume - Water abstraction alert",
+            "type": "resume - Water abstraction alert",
             "sent": "5 June 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -424,7 +424,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Reduce or stop - Water abstraction alert",
+            "type": "stop - Water abstraction alert",
             "sent": "17 April 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -434,7 +434,7 @@ module.exports = {
             "contactEmail": "something2@somewhere.co.uk",
           },
           {
-            "type": "Warning - Water abstraction alert",
+            "type": "warning - Water abstraction alert",
             "sent": "30 March 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -519,7 +519,7 @@ module.exports = {
         ],
 
         "communications": [{
-            "type": "Resume - Water abstraction alert",
+            "type": "resume - Water abstraction alert",
             "sent": "5 June 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -529,7 +529,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Reduce or stop - Water abstraction alert",
+            "type": "stop - Water abstraction alert",
             "sent": "17 April 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -539,7 +539,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Warning - Water abstraction alert",
+            "type": "warning - Water abstraction alert",
             "sent": "30 March 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -605,7 +605,7 @@ module.exports = {
         }],
 
         "communications": [{
-            "type": "Resume - Water abstraction alert",
+            "type": "resume - Water abstraction alert",
             "sent": "5 June 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -615,7 +615,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Reduce or stop - Water abstraction alert",
+            "type": "stop - Water abstraction alert",
             "sent": "17 April 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -625,7 +625,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Warning - Water abstraction alert",
+            "type": "warning - Water abstraction alert",
             "sent": "30 March 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -690,7 +690,7 @@ module.exports = {
         }],
 
         "communications": [{
-            "type": "Resume - Water abstraction alert",
+            "type": "resume - Water abstraction alert",
             "sent": "5 June 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -700,7 +700,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Reduce or stop - Water abstraction alert",
+            "type": "stop - Water abstraction alert",
             "sent": "17 April 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -710,7 +710,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Warning - Water abstraction alert",
+            "type": "warning - Water abstraction alert",
             "sent": "30 March 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -801,7 +801,7 @@ module.exports = {
         }],
 
         "communications": [{
-            "type": "Resume - Water abstraction alert",
+            "type": "resume - Water abstraction alert",
             "sent": "5 June 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -811,7 +811,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Reduce or stop - Water abstraction alert",
+            "type": "stop - Water abstraction alert",
             "sent": "17 April 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -821,7 +821,7 @@ module.exports = {
             "contactEmail": "something@somewhere.co.uk",
           },
           {
-            "type": "Warning - Water abstraction alert",
+            "type": "warning - Water abstraction alert",
             "sent": "30 March 2020",
             "sender": "tim.teace@defra.gov.uk",
             "method": "letter",
@@ -1127,6 +1127,7 @@ module.exports = {
     "allFlowThresholdsMegaLitresPerDay": [175,160,155],
     "allLevelThresholdsMetresAboveOrdinanceDatum": [2.123],
     "waterAbstractionAlert": [],
+    "selectedLicences": [],
 
   //Station data
 
@@ -1160,6 +1161,7 @@ module.exports = {
               thresholdValue: "175",
               thresholdUnits: "megaLitresPerDay",
               conditionType: "reduce",
+              reductionAmount: "100",
               linkedCondtion: "Flow cessation condition, ID758342",
               notificationType: "flow",
             },
@@ -1167,6 +1169,7 @@ module.exports = {
               thresholdValue: "160",
               thresholdUnits: "megaLitresPerDay",
               conditionType: "stop",
+              reductionAmount: "",
               linkedCondtion: "Flow cessation condition, ID758342",
               notificationType: "flow",
             }
@@ -1181,6 +1184,7 @@ module.exports = {
             notificationType: "flow",
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "reduce",
+            reductionAmount: "100",
           }],
 
         },
@@ -1193,6 +1197,7 @@ module.exports = {
             notificationType: "level",
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "stop",
+            reductionAmount: "",
           }],
         },
         {
@@ -1204,6 +1209,7 @@ module.exports = {
             notificationType: "flow",
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "stop",
+            reductionAmount: "",
           }],
         },
         {
@@ -1215,6 +1221,7 @@ module.exports = {
             notificationType: "flow",
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "stop",
+            reductionAmount: "",
           }],
         },
       ]

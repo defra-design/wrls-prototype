@@ -134,10 +134,36 @@ module.exports = function(env) {
     }
   }
 
+  //set text for status "| tagStatusText"
+  filters.tagStatusText = function(e) {
+    if (e == "warning") {
+      return "warning"
+    } else if (e == "reduce") {
+      return "reduce"
+    } else if (e == "stop") {
+      return "stop"
+    } else {
+      return "No restrictions"
+    }
+  }
+
+  //set colours for status "| tagStatusColour"
+  filters.tagStatusColour = function(e) {
+    if (e == "warning") {
+      return "govuk-tag--yellow"
+    } else if (e == "reduce") {
+      return "govuk-tag--orange"
+    } else if (e == "stop") {
+      return "govuk-tag--red"
+    } else {
+      return "govuk-tag--green"
+    }
+  }
+
   //set units "| units"
   filters.units = function(e) {
     if (e == "cubicMetresPerSecond") {
-      return "m<sup>3</sup>/d"
+      return "m<sup>3</sup>/s"
     } else if (e == "cubicMetresPerDay") {
       return "m<sup>3</sup>/d"
     } else if (e == "litrespersecond") {
