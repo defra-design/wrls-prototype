@@ -115,22 +115,22 @@
 
 <div class="govuk-button-group">
   {{ govukButton({
-    text: "Create water abstraction alert",
+    text: "Create a water abstraction alert",
     href: "licence-notices/send-a-water-abstraction-alert/select-the-type-of-alert?stationID=" + [data.stationID]
   }) }}
 
   {{ govukButton({
-    text: "Add licences by threshold",
+    text: "Tag and add licences by threshold",
     href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
     classes: "govuk-button--secondary"
   }) }}
 </div>
 
 {% else %}
-<p class="govuk-body">No licences have conditions for this gauging station</p>
+<p class="govuk-body">There are no licences tagged with restrictions for this monitoring station</p>
 
 {{ govukButton({
-  text: "Add licences",
+  text: "Tag and add licences by threshold",
   href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
   classes: "govuk-button--secondary"
 }) }}
