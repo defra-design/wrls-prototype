@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "You're about to remove licence " + data.waterAbstractionAlert[data.listIndex].licenceNumber + " from the alert send list"%}
+{% set title = "You're about to remove licence " + data.waterAbstractionAlert[data.listIndex].licenceNumber + " from the send list"%}
 
 
 {% block pageTitle %}
@@ -31,12 +31,12 @@
 
 
                   {{ govukInsetText({
-                          text: "If you remove this licence, the contact will not get a water abstraction alert."
+                          text: "We will not send a water abstraction alert for this licence."
                         }) }}
 
                   <form method="post" novalidate>
 
-    
+
 
                     <button type="submit" class="govuk-button">
                       Remove
