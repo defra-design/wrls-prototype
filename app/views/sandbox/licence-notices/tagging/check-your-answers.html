@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Check condition details" %}
+{% set title = "Check the restriction details" %}
 
 
 {% block pageTitle %}
@@ -80,7 +80,7 @@ actions: {
 },
 {
 key: {
-  text: "Licences"
+  text: "Licence number"
 },
 value: {
   html: data['licenceList'] | replaceComma | striptags(true) | escape | nl2br
@@ -97,7 +97,7 @@ actions: {
 },
 {
 key: {
-  text: "NALD conditions"
+  text: "Licence condition"
 },
 value: {
   html: conditions
