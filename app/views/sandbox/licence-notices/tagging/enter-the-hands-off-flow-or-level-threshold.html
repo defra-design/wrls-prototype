@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Enter the hands-off flow or level threshold to group licences by" %}
+{% set title = "What is the licence hands-off flow or level threshold?" %}
 
 
 {% block pageTitle %}
@@ -28,7 +28,10 @@
           isPageHeading: true
         }
       }) %}
-
+      hint: {
+        text: "This threshold can apply to more than one licence."
+      }
+      
       {{ govukInput({
         label: {
           text: "Threshold"
