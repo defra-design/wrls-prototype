@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Licences tagged" %}
+{% set title = "Licences added to Cotswolds at Bourton Dickler" %}
 
 
 {% block pageTitle %}
@@ -31,7 +31,7 @@
 
     {{ govukPanel({
       titleText: title,
-      html: "You added condition details to<br><strong>" + number  +" licences</strong>"
+      html: "You tagged <br><strong>" + number  +" licences</strong> with restriction details for this station"
     }) }}
 
    <p class="govuk-body"><a class="govuk-link" href="../../station?stationID={{data['stationID']}}">Return to monitoring station</a></p>
