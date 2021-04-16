@@ -1132,6 +1132,7 @@ module.exports = {
   //Station data
 
   "stationID": "0",
+  "stationReading": "180",
 
   "stations": [{
       '@id': 'http://environment.data.gov.uk/flood-monitoring/id/stations/1029TH',
