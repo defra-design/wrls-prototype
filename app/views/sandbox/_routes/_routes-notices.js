@@ -18,7 +18,7 @@ router.get('/send-a-water-abstraction-alert/select-the-type-of-alert', function(
 router.post('/send-a-water-abstraction-alert/select-the-type-of-alert', function(req, res) {
 
   //wrapped in a function so the code executes before the page loads
-    selectThreshold = (function () {
+  selectThreshold = (function() {
 
     req.session.data.back = req.headers.referer
     req.session.data.waterAbstractionAlert = []
@@ -34,10 +34,10 @@ router.post('/send-a-water-abstraction-alert/select-the-type-of-alert', function
       //get tagValues
       let tagValues = tag['tagValues']
       for (tagValue of tagValues) {
-     //get thresholds
-        if (tagValue.thresholdUnits === "megaLitresPerDay" ){
+        //get thresholds
+        if (tagValue.thresholdUnits === "megaLitresPerDay") {
           flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
-        } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum" ) {
+        } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum") {
           levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
         }
       }
@@ -47,113 +47,119 @@ router.post('/send-a-water-abstraction-alert/select-the-type-of-alert', function
     req.session.data.allFlowThresholdsMegaLitresPerDay = [...new Set(flowThresholdsMegaLitresPerDay)];
     req.session.data.allLevelThresholdsMetresAboveOrdinanceDatum = [...new Set(levelThresholdsMetresAboveOrdinanceDatum)];
 
-  res.redirect('select-the-thresholds-for-the-alert');
+    res.redirect('select-the-thresholds-for-the-alert');
 
   });
 
   //call the function
   selectThreshold();
 
-  });
+});
 
 
 
 
 ////Select the thresholds to send an alert to
-router.get( '/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert', function(req, res) {
+router.get('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert', function(req, res) {
 
-//wrapped in a function so the code executes before the page loads
-  selectThreshold = (function () {
+  //clear selected licences
+  req.session.data.selectedLicences = []
 
-  req.session.data.back = req.headers.referer
-  req.session.data.waterAbstractionAlert = []
+  //wrapped in a function so the code executes before the page loads
+  selectThreshold = (function() {
 
-  var flowThresholdsMegaLitresPerDay = []
-  var levelThresholdsMetresAboveOrdinanceDatum = []
-  //get tags
-  let stationID = req.session.data['stationID']
+    req.session.data.back = req.headers.referer
+    req.session.data.waterAbstractionAlert = []
 
-  let tags = req.session.data.stations[stationID]['tags']
+    var flowThresholdsMegaLitresPerDay = []
+    var levelThresholdsMetresAboveOrdinanceDatum = []
+    //get tags
+    let stationID = req.session.data['stationID']
 
-  for (tag of tags) {
-    //get tagValues
-    let tagValues = tag['tagValues']
-    for (tagValue of tagValues) {
-   //get thresholds
-      if (tagValue.thresholdUnits === "megaLitresPerDay" ){
-        flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
-      } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum" ) {
-        levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
+    let tags = req.session.data.stations[stationID]['tags']
+
+    for (tag of tags) {
+      //get tagValues
+      let tagValues = tag['tagValues']
+      for (tagValue of tagValues) {
+        //get thresholds
+        if (tagValue.thresholdUnits === "megaLitresPerDay") {
+          flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
+        } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum") {
+          levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
+        }
       }
     }
-  }
 
-  //remove duplicates
-  req.session.data.allFlowThresholdsMegaLitresPerDay = [...new Set(flowThresholdsMegaLitresPerDay)];
-  req.session.data.allLevelThresholdsMetresAboveOrdinanceDatum = [...new Set(levelThresholdsMetresAboveOrdinanceDatum)];
+    //remove duplicates
+    req.session.data.allFlowThresholdsMegaLitresPerDay = [...new Set(flowThresholdsMegaLitresPerDay)];
+    req.session.data.allLevelThresholdsMetresAboveOrdinanceDatum = [...new Set(levelThresholdsMetresAboveOrdinanceDatum)];
 
-res.render(folder + 'send-a-water-abstraction-alert/select-the-thresholds-for-the-alert');
+    res.render(folder + 'send-a-water-abstraction-alert/select-the-thresholds-for-the-alert');
 
-});
+  });
 
-//call the function
-selectThreshold();
+  //call the function
+  selectThreshold();
 
 });
 
 
 router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert', function(req, res) {
 
-   //push selected thresholds into an array
-   var selectedThresholds = []
+  //push selected thresholds into an array
+  var selectedThresholds = []
 
-   let flowThresholds = req.session.data['flowThresholdsMegaLitresPerDay']
-   if (flowThresholds !== null){
-     selectedThresholds.push.apply(selectedThresholds, flowThresholds);
-   }
+  let flowThresholds = req.session.data['flowThresholdsMegaLitresPerDay']
+  if (flowThresholds !== null) {
+    selectedThresholds.push.apply(selectedThresholds, flowThresholds);
+  }
 
-   let levelThresholds = req.session.data['levelThresholdsMetresAboveOrdinanceDatum']
-   if (levelThresholds !== null){
-     selectedThresholds.push.apply(selectedThresholds, levelThresholds)
-   }
-
-
-   //get tags
-   let stationID = req.session.data['stationID']
-   let tags = req.session.data.stations[stationID]['tags']
-
-   //get waterAbstractionAlert
-   let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
+  let levelThresholds = req.session.data['levelThresholdsMetresAboveOrdinanceDatum']
+  if (levelThresholds !== null) {
+    selectedThresholds.push.apply(selectedThresholds, levelThresholds)
+  }
 
 
-   console.log(selectedThresholds)
-   //filter licences based on the selected thresholds
-   var selectedLicences = req.session.data['selectedLicences']
-   for (item of selectedThresholds)
-   {
-   let op = tags.filter(val => {
-   let tagValues = val.tagValues.some(({thresholdValue}) => thresholdValue.includes(item))
-   return tagValues
+  //get tags
+  let stationID = req.session.data['stationID']
+  let tags = req.session.data.stations[stationID]['tags']
 
-   })
-    let licence = op.map(({licenceNumber})=> licenceNumber)
+  //get waterAbstractionAlert
+  let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
+
+
+  console.log(selectedThresholds)
+  //filter licences based on the selected thresholds
+  var selectedLicences = req.session.data['selectedLicences']
+  for (item of selectedThresholds) {
+    let op = tags.filter(val => {
+      let tagValues = val.tagValues.some(({
+        thresholdValue
+      }) => thresholdValue.includes(item))
+      return tagValues
+
+    })
+    let licence = op.map(({
+      licenceNumber
+    }) => licenceNumber)
     selectedLicences.push.apply(selectedLicences, licence);
-     //console.log('filtered values -->\n',op)
+    //console.log('filtered values -->\n',op)
 
-     //push them into a notification
-     waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
+    //push them into a notification
+    waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
 
-    }
+  }
 
 
-      req.session.data.waterAbstractionAlert = [...new Set(waterAbstractionAlert)];
+  req.session.data.waterAbstractionAlert = [...new Set(waterAbstractionAlert)];
 
-/*     waterAbstractionAlert = Array.from(new Set(notifications.map(a => a.licenceNumber)))
- .map(licenceNumber => {
-   return notifications.find(a => a.licenceNumber === licenceNumber)
- }) */
+  /*     waterAbstractionAlert = Array.from(new Set(notifications.map(a => a.licenceNumber)))
+   .map(licenceNumber => {
+     return notifications.find(a => a.licenceNumber === licenceNumber)
+   }) */
 
-    console.log(waterAbstractionAlert)
+  console.log(waterAbstractionAlert)
 
   res.redirect('check-the-licences-for-the-selected-thresholds');
 });
@@ -192,8 +198,8 @@ router.post('/send-a-water-abstraction-alert/enter-an-email-address', function(r
 
   //  licenceList.toString()
 
-    console.log("licenceList:" + licenceList)
-   req.session.data.licenceList = licenceList
+  console.log("licenceList:" + licenceList)
+  req.session.data.licenceList = licenceList
 
   res.redirect('check-the-mailing-list');
 });
@@ -280,7 +286,7 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
 
 
     let selectedLicences = req.session.data['selectedLicences']
-    for (selectedLicence of selectedLicences){
+    for (selectedLicence of selectedLicences) {
       //update the status of the water abstraction alerts
       let stations = req.session.data['stations']
       let stationID = req.session.data['stationID']
@@ -308,24 +314,78 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
         if (licenceHolder == contactCustomer.customer && contactCustomer.notices.includes("Water abstraction alerts")) {
 
 
-              if (contacts[contactIndex].email == "") {
-                let method = "letter"
+          if (contacts[contactIndex].email == "") {
+            let method = "letter"
 
-                // find the address for the licence
-                for ([addressIndex, address] of addresses.entries()) {
+            // find the address for the licence
+            for ([addressIndex, address] of addresses.entries()) {
 
-                  let addressCustomers = address.customers
+              let addressCustomers = address.customers
 
-                  for (addressCustomer of addressCustomers) {
+              for (addressCustomer of addressCustomers) {
+
+                if (licenceHolder == addressCustomer.customer && addressCustomer.role.includes("Licence holder")) {
+
+                  //set a variable for the address
+                  address = licenceHolder + ", " + addresses[addressIndex].address1 + ", " + addresses[addressIndex].city + ", " + addresses[addressIndex].postcode
+
+
+                  let sentTo = address
+
+
+                  let newRecipient = {
+                    licenceNumber,
+                    sentTo,
+                    method,
+                    status
+                  };
+
+                  recipients.push(newRecipient);
+
+
+                  let newCommunication = {
+                    type,
+                    sent,
+                    sender,
+                    method,
+                    watercourse,
+                    gaugingStation,
+                    flowThreshold,
+                    contactEmail
+                  };
+
+                  communications.unshift(newCommunication);
+
+                }
+              }
+            }
+
+
+
+
+          } else {
+
+            //check if the contact has a role of licence holder, this is so the licenec holder is posted a copy as well as emailed if they have an email address
+            let contactRole = contactCustomer.role
+            if (contactRole.includes("Licence holder")) {
+
+              // find the address for the licence
+              for ([addressIndex, address] of addresses.entries()) {
+
+                let addressCustomers = address.customers
+
+                for (addressCustomer of addressCustomers) {
 
                   if (licenceHolder == addressCustomer.customer && addressCustomer.role.includes("Licence holder")) {
+
+
 
                     //set a variable for the address
                     address = licenceHolder + ", " + addresses[addressIndex].address1 + ", " + addresses[addressIndex].city + ", " + addresses[addressIndex].postcode
 
 
                     let sentTo = address
-
+                    let method = "letter"
 
                     let newRecipient = {
                       licenceNumber,
@@ -335,6 +395,8 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
                     };
 
                     recipients.push(newRecipient);
+
+
 
 
                     let newCommunication = {
@@ -349,94 +411,38 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
                     };
 
                     communications.unshift(newCommunication);
-
                   }
                 }
               }
+            }
+            let method = "email"
+            let sentTo = contacts[contactIndex].email
+
+            let newRecipient = {
+              licenceNumber,
+              sentTo,
+              method,
+              status
+            };
+
+            recipients.push(newRecipient);
 
 
 
+            let newCommunication = {
+              type,
+              sent,
+              sender,
+              method,
+              watercourse,
+              gaugingStation,
+              flowThreshold,
+              contactEmail
+            };
 
-              } else {
+            communications.unshift(newCommunication);
 
-                //check if the contact has a role of licence holder, this is so the licenec holder is posted a copy as well as emailed if they have an email address
-                let contactRole = contactCustomer.role
-                if (contactRole.includes("Licence holder")) {
-
-                  // find the address for the licence
-                  for ([addressIndex, address] of addresses.entries()) {
-
-                    let addressCustomers = address.customers
-
-                    for (addressCustomer of addressCustomers) {
-
-                    if (licenceHolder == addressCustomer.customer && addressCustomer.role.includes("Licence holder")) {
-
-
-
-                          //set a variable for the address
-                          address = licenceHolder + ", " + addresses[addressIndex].address1 + ", " + addresses[addressIndex].city + ", " + addresses[addressIndex].postcode
-
-
-                          let sentTo = address
-                          let method = "letter"
-
-                          let newRecipient = {
-                            licenceNumber,
-                            sentTo,
-                            method,
-                            status
-                          };
-
-                          recipients.push(newRecipient);
-
-
-
-
-                          let newCommunication = {
-                            type,
-                            sent,
-                            sender,
-                            method,
-                            watercourse,
-                            gaugingStation,
-                            flowThreshold,
-                            contactEmail
-                          };
-
-                          communications.unshift(newCommunication);
-                      }
-                    }
-                  }
-                }
-                let method = "email"
-                let sentTo = contacts[contactIndex].email
-
-                let newRecipient = {
-                  licenceNumber,
-                  sentTo,
-                  method,
-                  status
-                };
-
-                recipients.push(newRecipient);
-
-
-
-                let newCommunication = {
-                  type,
-                  sent,
-                  sender,
-                  method,
-                  watercourse,
-                  gaugingStation,
-                  flowThreshold,
-                  contactEmail
-                };
-
-                communications.unshift(newCommunication);
-
-              }
+          }
 
 
 
@@ -520,7 +526,7 @@ router.post('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', f
   let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
   let listIndex = req.session.data['listIndex']
 
-  if (listIndex  > -1) {
+  if (listIndex > -1) {
     waterAbstractionAlert.splice(listIndex, 1);
   }
 
@@ -528,7 +534,7 @@ router.post('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', f
   if (waterAbstractionAlert.length) {
     res.redirect('check-the-licences-for-the-selected-thresholds');
   } else {
-    res.redirect( 'select-the-thresholds-for-the-alert');
+    res.redirect('select-the-thresholds-for-the-alert');
   }
 
 
@@ -549,13 +555,14 @@ router.get('/tagging/enter-the-hands-off-flow-or-level-threshold', function(req,
 
 router.post('/tagging/enter-the-hands-off-flow-or-level-threshold', function(req, res) {
 
-  if (req.session.data['thresholdUnits'].includes("metres")){
+  if (req.session.data['thresholdUnits'].includes("metres")) {
     req.session.data.notificationType = "level"
   } else {
-  req.session.data.notificationType = "flow" }
- console.log(req.session.data['notificationType'])
+    req.session.data.notificationType = "flow"
+  }
+  console.log(req.session.data['notificationType'])
 
-   res.redirect('reduce-or-stop');
+  res.redirect('reduce-or-stop');
 });
 
 
@@ -567,7 +574,7 @@ router.get('/tagging/reduce-or-stop', function(req, res) {
 });
 
 router.post('/tagging/reduce-or-stop', function(req, res) {
-   res.redirect('enter-licence-numbers');
+  res.redirect('enter-licence-numbers');
 });
 
 ///enter licence numbers
@@ -583,7 +590,7 @@ router.post('/tagging/enter-licence-numbers', function(req, res) {
 
   req.session.data.licenceList = licenceList
 
-   res.redirect('link-conditions');
+  res.redirect('link-conditions');
 });
 
 
@@ -595,26 +602,26 @@ router.get('/tagging/link-conditions', function(req, res) {
 
 router.post('/tagging/link-conditions', function(req, res) {
 
-req.session.data.conditions = req.session.data.conditions0
+  req.session.data.conditions = req.session.data.conditions0
 
-let linkedconditions = "req.session.data.conditions0"
-console.log(linkedconditions);
-linkedconditions = linkedconditions.slice(0, -1) + '1';
-console.log(linkedconditions);
+  let linkedconditions = "req.session.data.conditions0"
+  console.log(linkedconditions);
+  linkedconditions = linkedconditions.slice(0, -1) + '1';
+  console.log(linkedconditions);
 
-req.session.data.conditions = linkedconditions
-console.log(req.session.data.conditions);
-
-
-/*Need to do a for while loop here but not got around to it.
-let linkedconditions = req.session.data.conditions1
-while (linkedconditions.length) {
-  req.session.data.conditions = req.session.data.conditions + "," + linkedconditions
-  linkedcondtions = linkedconditions + 1;
-} */
+  req.session.data.conditions = linkedconditions
+  console.log(req.session.data.conditions);
 
 
-   res.redirect('check-your-answers');
+  /*Need to do a for while loop here but not got around to it.
+  let linkedconditions = req.session.data.conditions1
+  while (linkedconditions.length) {
+    req.session.data.conditions = req.session.data.conditions + "," + linkedconditions
+    linkedcondtions = linkedconditions + 1;
+  } */
+
+
+  res.redirect('check-your-answers');
 });
 
 
@@ -626,68 +633,69 @@ router.get('/tagging/check-your-answers', function(req, res) {
 
 router.post('/tagging/check-your-answers', function(req, res) {
 
-   //get the station details
-   let stationID = req.session.data['stationID']
+  //get the station details
+  let stationID = req.session.data['stationID']
   let tags = req.session.data.stations[stationID]['tags']
 
 
-   //for each licence
+  //for each licence
   let licenceList = req.session.data['licenceList'].split(',')
 
 
-for ([licenceIndex, licence] of licenceList.entries()) {
-  //add details for the tag
+  for ([licenceIndex, licence] of licenceList.entries()) {
+    //add details for the tag
 
 
-  let licenceNumber = licenceList[licenceIndex]
-  let thresholdValue = req.session.data['thresholdValue']
-  let thresholdUnits = req.session.data['thresholdUnits']
-  let conditionType = req.session.data['reduce-or-stop']
-  let reductionAmount = req.session.data['reductionAmount']
-  let linkedCondtion = req.session.data['conditions0']
-  let notificationType = req.session.data['notificationType']
+    let licenceNumber = licenceList[licenceIndex]
+    let thresholdValue = req.session.data['thresholdValue']
+    let thresholdUnits = req.session.data['thresholdUnits']
+    let conditionType = req.session.data['reduce-or-stop']
+    let reductionAmount = req.session.data['reductionAmount']
+    let linkedCondtion = req.session.data['conditions0']
+    let notificationType = req.session.data['notificationType']
 
-  let status = "no restrictions"
-  var match = "false"
-//loop through tags and check for existing licence,if found add the tag to that licence's values rather than creating a new entry, use match to switch between the two
-  for ([tagIndex, tag] of tags.entries()) {
-    if (licence === tag.licenceNumber) {
+    let status = "no restrictions"
+    var match = "false"
+    //loop through tags and check for existing licence,if found add the tag to that licence's values rather than creating a new entry, use match to switch between the two
+    for ([tagIndex, tag] of tags.entries()) {
+      if (licence === tag.licenceNumber) {
 
-   let newTag = {
+        let newTag = {
+          thresholdValue,
+          thresholdUnits,
+          linkedCondtion,
+          conditionType,
+          reductionAmount,
+          notificationType
+        };
+        tag.tagValues.push(newTag);
+        match = "true"
+      }
+    }
+
+    if (match === "false") {
+      let tagValues = [{
         thresholdValue,
         thresholdUnits,
         linkedCondtion,
         conditionType,
         reductionAmount,
         notificationType
+      }]
+
+      let newTag = {
+        licenceNumber,
+        status,
+        tagValues
       };
-      tag.tagValues.push(newTag);
-       match = "true"
+
+      tags.unshift(newTag);
+      match = "false"
     }
+
   }
 
-  if (match === "false") {
-  let tagValues = [{
-  thresholdValue,
-  thresholdUnits,
-  linkedCondtion,
-  conditionType,
-  reductionAmount,
-  notificationType }]
-
-  let newTag = {
-    licenceNumber,
-    status,
-    tagValues
-  };
-
-  tags.unshift(newTag);
-  match = "false"
-}
-
-}
-
-   res.redirect('licence-tagged');
+  res.redirect('licence-tagged');
 });
 
 
@@ -723,7 +731,7 @@ router.post('/tagging/remove-tag', function(req, res) {
   }
 
 
-  if (tagValues.length == 0){
+  if (tagValues.length == 0) {
     let tags = req.session.data.stations[stationID].tags
     let index = tagNumber;
     if (index > -1) {
@@ -733,7 +741,7 @@ router.post('/tagging/remove-tag', function(req, res) {
 
 
 
-  res.redirect('/sandbox/licence/conditions?ID='+ licenceID);
+  res.redirect('/sandbox/licence/conditions?ID=' + licenceID);
 
 
 
