@@ -41,7 +41,6 @@ router.get('/search', function(req, res) {
     req.session.data.resultsTable = "sandbox/_includes/customers-table.html"
   } else {
     req.session.data.resultsTable = "sandbox/_includes/stations-table.html"
-    console.log("1")
   };
 
 
@@ -50,7 +49,6 @@ router.get('/search', function(req, res) {
   };
 
   function render(){
-    console.log("2")
   res.render('sandbox/search');
 };
 

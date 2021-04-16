@@ -1097,7 +1097,7 @@ module.exports = {
 
     ],
     //WAA
-    "waaType": "Warning",
+    "waaType": "warning",
     "recipients": 4,
     "recipientsLetter": 3,
     "recipientsEmail": 1,

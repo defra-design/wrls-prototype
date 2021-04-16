@@ -36,6 +36,9 @@
    <!--flow thresholds with mega litres per day-->
    {% set flowThresholdsMegaLitresPerDay = data['allFlowThresholdsMegaLitresPerDay']%}
 
+    <!--check for some ML/d thresholds-->
+     {% if flowThresholdsMegaLitresPerDay.length %}
+
    {% set selectItems = [] %}
 
    {% for i in flowThresholdsMegaLitresPerDay %}
@@ -59,9 +62,14 @@
     items: selectItems
   }) }}
 
+  {% endif %}
+
 
   <!--level thresholds with metre above ordinance datum-->
   {% set levelThresholdsMetresAboveOrdinanceDatum = data['allLevelThresholdsMetresAboveOrdinanceDatum']%}
+
+  <!--check for some mAOD thresholds--> 
+  {% if levelThresholdsMetresAboveOrdinanceDatum.length %}
 
   {% set selectItems = [] %}
 
@@ -85,6 +93,8 @@
 
    items: selectItems
   }) }}
+
+  {% endif %}
 
       <button type="submit" class="govuk-button">
         Continue

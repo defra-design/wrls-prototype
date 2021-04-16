@@ -17,11 +17,18 @@ router.get('/send-a-water-abstraction-alert/select-the-type-of-alert', function(
 
 router.post('/send-a-water-abstraction-alert/select-the-type-of-alert', function(req, res) {
 
+  //clear selected licences
+  req.session.data.selectedLicences = []
+
+  //clear water abstraction alert
+  req.session.data.waterAbstractionAlert = []
+
+  var waaType = req.session.data['waaType']
+
+
   //wrapped in a function so the code executes before the page loads
   selectThreshold = (function() {
 
-    req.session.data.back = req.headers.referer
-    req.session.data.waterAbstractionAlert = []
 
     var flowThresholdsMegaLitresPerDay = []
     var levelThresholdsMetresAboveOrdinanceDatum = []
@@ -34,11 +41,29 @@ router.post('/send-a-water-abstraction-alert/select-the-type-of-alert', function
       //get tagValues
       let tagValues = tag['tagValues']
       for (tagValue of tagValues) {
-        //get thresholds
-        if (tagValue.thresholdUnits === "megaLitresPerDay") {
-          flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
-        } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum") {
-          levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
+
+        if (waaType === "reduce") {
+          //get thresholds for warning or resume
+          if (tagValue.thresholdUnits === "megaLitresPerDay" && tagValue.conditionType === "reduce") {
+            flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
+          } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum" && tagValue.conditionType === "reduce") {
+            levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
+          }
+        } else if (waaType === "stop") {
+          //get thresholds for warning or resume
+          if (tagValue.thresholdUnits === "megaLitresPerDay" && tagValue.conditionType === "stop") {
+            flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
+          } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum" && tagValue.conditionType === "stop") {
+            levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
+          }
+        }
+        else {
+          //get thresholds for warning or resume
+          if (tagValue.thresholdUnits === "megaLitresPerDay") {
+            flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
+          } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum") {
+            levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
+          }
         }
       }
     }
@@ -61,46 +86,17 @@ router.post('/send-a-water-abstraction-alert/select-the-type-of-alert', function
 
 ////Select the thresholds to send an alert to
 router.get('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert', function(req, res) {
+  req.session.data.back = req.headers.referer
 
   //clear selected licences
   req.session.data.selectedLicences = []
 
-  //wrapped in a function so the code executes before the page loads
-  selectThreshold = (function() {
+  //clear water abstraction alert
+  req.session.data.waterAbstractionAlert = []
 
-    req.session.data.back = req.headers.referer
-    req.session.data.waterAbstractionAlert = []
 
-    var flowThresholdsMegaLitresPerDay = []
-    var levelThresholdsMetresAboveOrdinanceDatum = []
-    //get tags
-    let stationID = req.session.data['stationID']
 
-    let tags = req.session.data.stations[stationID]['tags']
-
-    for (tag of tags) {
-      //get tagValues
-      let tagValues = tag['tagValues']
-      for (tagValue of tagValues) {
-        //get thresholds
-        if (tagValue.thresholdUnits === "megaLitresPerDay") {
-          flowThresholdsMegaLitresPerDay.push(tagValue.thresholdValue)
-        } else if (tagValue.thresholdUnits === "metresAboveOrdinanceDatum") {
-          levelThresholdsMetresAboveOrdinanceDatum.push(tagValue.thresholdValue)
-        }
-      }
-    }
-
-    //remove duplicates
-    req.session.data.allFlowThresholdsMegaLitresPerDay = [...new Set(flowThresholdsMegaLitresPerDay)];
-    req.session.data.allLevelThresholdsMetresAboveOrdinanceDatum = [...new Set(levelThresholdsMetresAboveOrdinanceDatum)];
-
-    res.render(folder + 'send-a-water-abstraction-alert/select-the-thresholds-for-the-alert');
-
-  });
-
-  //call the function
-  selectThreshold();
+  res.render(folder + 'send-a-water-abstraction-alert/select-the-thresholds-for-the-alert');
 
 });
 
