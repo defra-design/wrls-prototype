@@ -521,9 +521,11 @@ router.post('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', f
 
   let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
   let listIndex = req.session.data['listIndex']
+  let selectedLicences = req.session.data['selectedLicences']
 
   if (listIndex > -1) {
     waterAbstractionAlert.splice(listIndex, 1);
+    selectedLicences.splice(listIndex, 1);
   }
 
 
