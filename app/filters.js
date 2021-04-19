@@ -143,7 +143,7 @@ module.exports = function(env) {
     } else if (e == "stop") {
       return "stop"
     } else {
-      return "No restrictions"
+      return "No&nbsp;restrictions"
     }
   }
 

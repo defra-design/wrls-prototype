@@ -8,11 +8,38 @@
   <caption class="govuk-table__caption govuk-table__caption--m">Licences with conditions linked to this monitoring station</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Licence</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Licence</th>
   <!--<th scope="col" class="govuk-table__header ">Condition type</th>-->
-  <th scope="col" colspan="3" class="govuk-table__header ">Hands-off flow restriction<br>type and threshold </th>
-      <th scope="col" colspan="3" class="govuk-table__header ">Hands-off level restriction<br>type and threshold</th>
+  <!--check for flow data-->
+  {% set flow = "false" %}
+  {% for tag in tags %}
+  {% set tagValues = tag['tagValues'] %}
+    {% for item in tagValues %}
+    {% if item.notificationType == "flow" %}
+  {% set flow = "true" %}
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
 
+
+
+  {% if flow == "true" %}
+  <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-third">Hands-off flow restriction<br>type and threshold </th>
+  {% endif %}
+
+  <!--check for level data-->
+  {% set level = "false" %}
+  {% for tag in tags %}
+  {% set tagValues = tag['tagValues'] %}
+    {% for item in tagValues %}
+    {% if item.notificationType == "level" %}
+  {% set level = "true" %}
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+  {% if level == "true" %}
+      <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-third ">Hands-off level restriction<br>type and threshold</th>
+  {% endif %}
 
       <th scope="col" class="govuk-table__header  govuk-table__header--numeric govuk-!-width-one-quarter">Status</th>
     </tr>
@@ -35,8 +62,12 @@
          {{i.licenceNumber}}</a></td>
 
 
+
          <!--get the tags for that individual licences-->
         {% set licenceTags = i['tagValues'] %}
+
+        <!--Flow thresholds-->
+        {% if flow == "true" %}
 
         <td class="govuk-table__cell govuk-!-padding-right-0">
           <!--loop through conditions for that licence-->
@@ -65,8 +96,11 @@
   {% endfor %}
    </td>
 
+   {% endif %}
 
 
+    <!--Level thresholds-->
+    {% if level == "true" %}
          <td class="govuk-table__cell govuk-!-padding-right-0">
            <!--loop through conditions for that licence-->
            {% for tag in licenceTags %}
@@ -95,13 +129,13 @@
                     {% endfor %}
                      </td>
 
-
+          {% endif %}
 
 
 
 
          <td class="govuk-table__cell govuk-table__header--numeric">{{govukTag({
-          text: [i.status] | tagStatusText,
+          text: [i.status] | tagStatusText |safe ,
           classes: [i.status] | tagStatusColour
         })}}</td>
     </tr>

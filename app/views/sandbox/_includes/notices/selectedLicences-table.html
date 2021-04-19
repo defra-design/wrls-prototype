@@ -129,7 +129,7 @@
 
 
       <td class="govuk-table__cell govuk-table__header--numeric">{{govukTag({
-        text: [i.status] | tagStatusText,
+        text: [i.status] | tagStatusText |safe,
         classes: [i.status] | tagStatusColour
         })}}</td>
 

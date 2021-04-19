@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Licences added to Cotswolds at Bourton Dickler" %}
+{% set title = "Licences added to " + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] %}
 
 
 {% block pageTitle %}
@@ -28,10 +28,15 @@
    {% for i in licenceList %}
    {% set number = number + 1 %}
    {% endfor %}
+   {% if number == 1 %}
+   {% set plural = "licence" %}
+   {% else %}
+   {% set plural = "licences" %}
+   {% endif %}
 
     {{ govukPanel({
       titleText: title,
-      html: "You tagged <br><strong>" + number  +" licences</strong> with restriction details for this station"
+      html: "You tagged <br><strong>" + number  + " " + plural + " </strong> with restriction details for this station"
     }) }}
 
    <p class="govuk-body"><a class="govuk-link" href="../../station?stationID={{data['stationID']}}">Return to monitoring station</a></p>
