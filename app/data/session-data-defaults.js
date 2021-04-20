@@ -42,6 +42,7 @@ module.exports = {
     "runType": "supplementary",
     "numberBills": "5",
     "remove": "false",
+    "removeLicence": "false",
     "region": "Anglian",
     "dateToday": "5 March 2020",
     "tptIssue": "overAbstraction",

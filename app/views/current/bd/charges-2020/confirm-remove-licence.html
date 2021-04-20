@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You're about to remove this bill from the " + data['runType'] + " bill run" %}
+{% set title = "You’re about to remove this licence  from the " + data['runType'] + " bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -47,10 +47,10 @@
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <span class="govuk-caption-l">Bill OP123344</span>
+    <span class="govuk-caption-l">Bill run 1234567890</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    <p class="govuk-body">The bill will go into the next supplementary bill run.</p>
+    <p class="govuk-body">The licence will go into the next supplementary bill run.</p>
 
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-full">
@@ -110,15 +110,14 @@
       </div>
     </div>
 
-{% if data['runType'] == "supplementary"%}
-<a href="supplementary-charges?numberBills=4&remove=true#bills" class="wrls-faux-button">
-  Remove this bill
-</a>
-{% else %}
-    <a href="javascript:history.back(3)" class="wrls-faux-button">
-      Remove this bill
-    </a>
-{% endif %}
+
+
+    {{ govukButton({
+      text: "Remove this licence",
+      href: "supplementary-bill-2-licences?removeLicence=true"
+    }) }}
+
+
   </div>
 </div>
 {% endblock %}
