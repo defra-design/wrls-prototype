@@ -8,7 +8,7 @@
 <!--check the licence data for an exact match-->
 {% set match = "false" %}
 {% for i in stations %}
-{% if i.label == data['search'] %}
+{% if i.label | lower == data['search'] | lower %}
 {% set loopNumber = loop.index0 %}
 {% set match = "true" %}
 {% endif %}

@@ -5,7 +5,7 @@
 {% set tags = data.stations[data.stationID]['tags'] %}
 {% if tags.length %}
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Licences with conditions linked to this monitoring station</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Licences linked to this monitoring station</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Licence</th>
@@ -24,7 +24,7 @@
 
 
   {% if flow == "true" %}
-  <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-third">Hands-off flow restriction<br>type and threshold </th>
+  <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-third">Flow restriction<br>type and threshold </th>
   {% endif %}
 
   <!--check for level data-->
@@ -38,7 +38,7 @@
   {% endfor %}
   {% endfor %}
   {% if level == "true" %}
-      <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-third ">Hands-off level restriction<br>type and threshold</th>
+      <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-third ">Level restriction<br>type and threshold</th>
   {% endif %}
 
       <th scope="col" class="govuk-table__header  govuk-table__header--numeric govuk-!-width-one-quarter">Status</th>

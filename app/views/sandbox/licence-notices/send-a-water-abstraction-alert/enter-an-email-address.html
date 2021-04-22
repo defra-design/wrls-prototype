@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Enter an email address to include  in the alert" %}
+{% set title = "Enter an email address to include  in the alerts" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Enter an email address to include  in the alert" %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Enter an email address to include  in the alerts" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -36,6 +36,8 @@
   id: "contactEmail",
   name: "contactEmail"
 }) }}
+
+
 
       <button type="submit" class="govuk-button">
         Continue

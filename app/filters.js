@@ -175,7 +175,7 @@ module.exports = function(env) {
     } else if (e == "metres") {
       return "m"
     } else {
-      return "ML/d"
+      return "Ml/d"
     }
   }
 
