@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Does the licence holder need to reduce or stop at this threshold? " %}
+{% set title = "Does the licence holder need to stop or reduce at this threshold? " %}
 
 
 {% block pageTitle %}
@@ -21,21 +21,85 @@
 
     <form  method="post" novalidate>
 
+      <!--reduce conditional reveal-->
       {% set reductionAmountHtml %}
-{{ govukInput({
+      {{ govukInput({
   id: "reductionAmount",
   name: "reductionAmount",
   spellcheck: false,
-  suffix: {
-text: data['thresholdUnits'] |units |safe
-},
-  classes: "govuk-input--width-5",
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
   label: {
     text: "Reduce to"
   }
 }) }}
-{% endset -%}
 
+
+      {{ govukSelect({
+id: "reductionAmountUnits",
+name: "reductionAmountUnits",
+label: {
+text: "Unit of measurement"
+},
+items: [
+{
+value: "null",
+text: "Select an option",
+selected: true
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/d"
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/h"
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/s" |safe
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/h" |safe
+},
+{
+value: "cubicMetresPerDay",
+text: "m<sup>3</sup>/d" |safe
+},
+{
+value: "litrespersecond",
+text: "l/s"
+}
+]
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "maxVolumeLimit",
+  name: "maxVolumeLimit",
+  fieldset: {
+    legend: {
+      text: "Does the licence holder need to stop abstraction when they reach a certain amount?"
+    }
+  },
+  hint: {
+    text: "For example, you must not exceed 4000Ml in total from the start of your abstraction period."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+      {% endset -%}
+
+<!--reduce radio-->
       {{ govukRadios({
   idPrefix: "reduce-or-stop",
   name: "reduce-or-stop",
@@ -47,6 +111,10 @@ text: data['thresholdUnits'] |units |safe
     }
   },
   items: [
+  {
+    value: "stop",
+    text: "Stop"
+  },
     {
       value: "reduce",
       text: "Reduce",
@@ -54,10 +122,6 @@ text: data['thresholdUnits'] |units |safe
       conditional: {
         html: reductionAmountHtml
       }
-    },
-    {
-      value: "stop",
-      text: "Stop"
     }
   ]
 }) }}

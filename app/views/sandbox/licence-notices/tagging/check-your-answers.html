@@ -36,8 +36,13 @@
 
 <!--if reduce include the amount to reduce to -->
 {% set conditionType = data['reduce-or-stop'] %}
+{% set maxVolume = data['maxVolumeLimit'] %}
 {% if conditionType == "reduce" %}
-{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['thresholdUnits'] |units |safe %}
+{% if maxVolume == "yes" %}
+{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['reductionAmountUnits'] |units |safe + " with a maximum volume limit"%}
+{% else %}
+{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['reductionAmountUnits'] |units |safe %}
+{% endif %}
 {% endif %}
 
     <form  method="post" novalidate>

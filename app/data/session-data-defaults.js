@@ -1164,6 +1164,8 @@ module.exports = {
               thresholdUnits: "megaLitresPerDay",
               conditionType: "reduce",
               reductionAmount: "100",
+              reductionAmountUnits: "m3/s",
+              maxVolumeLimit: "no",
               linkedCondtion: "Flow cessation condition, ID758342",
               notificationType: "flow",
             },
@@ -1172,6 +1174,8 @@ module.exports = {
               thresholdUnits: "megaLitresPerDay",
               conditionType: "stop",
               reductionAmount: "",
+              reductionAmountUnits: "",
+              maxVolumeLimit: "",
               linkedCondtion: "Flow cessation condition, ID758342",
               notificationType: "flow",
             }
@@ -1187,6 +1191,8 @@ module.exports = {
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "reduce",
             reductionAmount: "100",
+            reductionAmountUnits: "m3/s",
+            maxVolumeLimit: "yes"
           }],
 
         },
@@ -1200,6 +1206,8 @@ module.exports = {
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "stop",
             reductionAmount: "",
+            reductionAmountUnits: "",
+            maxVolumeLimit: ""
           }],
         },
         {
@@ -1212,6 +1220,8 @@ module.exports = {
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "stop",
             reductionAmount: "",
+            reductionAmountUnits: "",
+            maxVolumeLimit: ""
           }],
         },
         {
@@ -1224,6 +1234,8 @@ module.exports = {
             linkedCondtion: "Flow cessation condition, ID598962",
             conditionType: "stop",
             reductionAmount: "",
+            reductionAmountUnits: "",
+            maxVolumeLimit: ""
           }],
         },
       ]

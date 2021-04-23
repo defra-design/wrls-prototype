@@ -649,6 +649,8 @@ router.post('/tagging/check-your-answers', function(req, res) {
     let thresholdUnits = req.session.data['thresholdUnits']
     let conditionType = req.session.data['reduce-or-stop']
     let reductionAmount = req.session.data['reductionAmount']
+    let reductionAmountUnits = req.session.data['reductionAmountUnits']
+    let maxVolumeLimit = req.session.data['maxVolumeLimit']
     let linkedCondtion = req.session.data['conditions0']
     let notificationType = req.session.data['notificationType']
 
@@ -664,6 +666,8 @@ router.post('/tagging/check-your-answers', function(req, res) {
           linkedCondtion,
           conditionType,
           reductionAmount,
+          reductionAmountUnits,
+          maxVolumeLimit,
           notificationType
         };
         tag.tagValues.push(newTag);
@@ -678,6 +682,8 @@ router.post('/tagging/check-your-answers', function(req, res) {
         linkedCondtion,
         conditionType,
         reductionAmount,
+        reductionAmountUnits,
+        maxVolumeLimit,
         notificationType
       }]
 

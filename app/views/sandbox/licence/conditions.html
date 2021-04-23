@@ -54,8 +54,19 @@
           {% set tagValueNumber = loop.index0 %}
           {% set thresholdValue = i.thresholdValue %}
           {% set thresholdUnits = i.thresholdUnits' %}
-          {% set conditionType = i.conditionType %}
+
           {% set notificationType = i.notificationType %}
+          {% set conditionType = i.conditionType %}
+          {% set reductionAmount = i.reductionAmount %}
+          {% set reductionAmountUnits = i.reductionAmountUnits %}
+          {% set maxVolume = i.maxVolumeLimit %}
+          {% if conditionType == "reduce" %}
+          {% if maxVolume == "yes" %}
+          {% set conditionType = conditionType + " to " + reductionAmount + reductionAmountUnits |units |safe + " with a maximum volume limit"%}
+          {% else %}
+          {% set conditionType = conditionType + " to " + reductionAmount + reductionAmountUnits |units |safe %}
+          {% endif %}
+          {% endif %}
           {% set linkedCondition = i.linkedCondtion %}
 
           <div class="govuk-grid-row govuk-!-margin-bottom-9">
