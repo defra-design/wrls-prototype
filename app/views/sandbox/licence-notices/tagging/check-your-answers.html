@@ -31,7 +31,7 @@
 {% set conditions = "" %}
 {% for i in licenceList %}
 {% set conditionID = range(000000, 999999) | random %}
-{% set conditions = conditions + "Flow cessation condition, ID" + conditionID + "<br>" %}
+{% set conditions = conditions + "Flow cessation condition 1 for " + i + "<br>" %}
 {% endfor %}
 
 <!--if reduce include the amount to reduce to -->

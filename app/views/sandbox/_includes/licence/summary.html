@@ -97,6 +97,54 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
+      Monitoring station
+    </dt>
+    <dd class="govuk-summary-list__value">
+
+      <!--set station ID to blank-->
+      {% set stationID = "" %}
+      {% set stationMatch = "false" %}
+      <!--loop through stations-->
+      {% set stations = data['stations'] %}
+      {% for station in stations %}
+
+      <!--set station number and name-->
+      {% set stationID = loop.index0 %}
+      {% set stationName = station.label %}
+      {% set catchmentName = station.catchmentName %}
+
+      <!--loop through the station tags-->
+      {% set tags = data.stations[stationID]['tags'] %}
+      {% for tag in tags %}
+
+      <!--set tag number-->
+      {% set tagNumber = loop.index0 %}
+      {% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
+
+
+      <!--check for licence number matches-->
+      {% if tagLicenceNumber == data.licences[data.ID].number %}
+
+
+      <a href="station?stationID={{stationID}}" class="govuk-link">
+      {{stationName}}</a>
+
+      {% set stationMatch = "true" %}
+
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+
+      {% if stationMatch == "false" %}
+      <p class="govuk-body">Station not linked<br>
+      <a href="search?search=Monitoring%20stations" class="govuk-link">Link monitoring station</a></p>
+      {% endif %}
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
       Abstraction conditions
     </dt>
     <dd class="govuk-summary-list__value">
