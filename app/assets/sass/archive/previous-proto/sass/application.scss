@@ -159,6 +159,12 @@ width: 80% !important;
   }
 }
 
+.govuk-table__cell--thick-border {
+  @media (min-width: 768px) {
+    border-bottom: solid 2px #0b0c0c !important;
+  }
+}
+
 //removal of the phase banner bottom border
 /*.govuk-phase-banner {
   border-bottom: none;

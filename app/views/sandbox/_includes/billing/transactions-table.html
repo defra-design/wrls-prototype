@@ -1,0 +1,164 @@
+
+{% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+    Spray irrigation, base licence
+  </h4>
+  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+      Charge element details
+      </span>
+    </summary>
+    <div class="govuk-details__text ">
+      <div class="govuk-grid-row ">
+        <div class="govuk-grid-column-full">
+          <!-- <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Bill number
+                </div>
+                <div class="meta-data__value">
+                  OP123344
+                </div>
+              <div>
+            </section> -->
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Abstraction period
+              </div>
+              <div class="meta-data__value">
+              1 April to 31 March
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Source
+              </div>
+              <div class="meta-data__value">
+                Unsupported
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Season
+              </div>
+              <div class="meta-data__value">
+                All year
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Loss
+              </div>
+              <div class="meta-data__value">
+                Medium
+              </div>
+              <div>
+          </section>
+
+
+        </div>
+      </div>
+
+    </div>
+  </details>' %}
+
+
+{{ govukTable({
+  caption: caption |safe,
+  captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Transaction detail"
+    },
+    {
+      text: "Charge period"
+    },
+    {
+      text: "Billable days",
+      format: "numeric"
+    },
+    {
+      text: "Quantity",
+      format: "numeric"
+    },
+    {
+      text: "Credit",
+      format: "numeric"
+    },
+    {
+      text: "Debit",
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Compensation charge"
+      },
+      {
+        text: "1 April 2019 to 31 March 2020"
+      },
+      {
+        text: "365/365",
+        format: "numeric"
+      },
+      {
+        text: "3000Ml",
+        format: "numeric"
+      },
+      {
+        text: "£200.56",
+        format: "numeric"
+      },
+      {
+        text: "£1400.00",
+        format: "numeric"
+      }
+    ],
+    [
+      {
+        text: "Credits total",
+        colspan: "4"
+      },
+      {
+        text: "£200.56",
+        format: "numeric"
+      },
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Debits total",
+        classes: "govuk-table__cell--thick-border",
+        colspan: "5"
+      },
+      {
+        text: "£1400.00",
+        format: "numeric",
+        classes: "govuk-table__cell--thick-border"
+      }
+    ],
+    [
+      {
+        text: "Total",
+        classes: "govuk-table__cell--no-border ",
+        colspan: "5"
+      },
+      {
+        text: "£1199.44",
+        format: "numeric",
+        classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
+      }
+    ]
+  ]
+}) }}
