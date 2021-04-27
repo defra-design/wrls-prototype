@@ -12,12 +12,15 @@
 .meta-data__label {
   width: 100%;
   order:1;
+margin-bottom: 0px;
+line-height: 25px;
   // color: $govuk-secondary-text-colour;
 }
 
 .meta-data__value {
   order:2;
   margin-bottom: 10px;
+  line-height: 25px;
 }
 
 @media screen and (min-width:600px) {
@@ -31,10 +34,17 @@
 /* 2 columns */
 @media screen and (min-width:600px) {
   .meta-data__label {
-    width: 200px;
+    width: 20% !important;
+    padding:0px !important;
+    font-weight: 400;
+
+
   }
   .meta-data__value {
     flex: 1;
+    width: 80% !important;
     margin-bottom: 0;
+    padding:0px !important;
+
   }
 }

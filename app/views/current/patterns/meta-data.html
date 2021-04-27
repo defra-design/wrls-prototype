@@ -75,31 +75,40 @@
 
 
 
-  <dl class="govuk-summary-list govuk-summary-list--no-border">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Date created
-    </dt>
-    <dd class="govuk-summary-list__value">
-      12 January 2020
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Region
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Anglian
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Bill run type
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Supplementary
-    </dd>
-  </div>
-  </dl>
+  {{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Date created",
+        classes: "meta-data__label"
+      },
+      value: {
+        text: "12 January 2020",
+        classes: "meta-data__value"
+      }
+    },
+    {
+      key: {
+        text: "Region",
+        classes: "meta-data__label"
+      },
+      value: {
+        text: "Anglian",
+        classes: "meta-data__value"
+      }
+    },
+    {
+      key: {
+        text: "Bill run type",
+        classes: "meta-data__label"
+      },
+      value: {
+        text: "Supplementary",
+        classes: "meta-data__value"
+      }
+    }
+  ]
+}) }}
 
 {% endblock %}
