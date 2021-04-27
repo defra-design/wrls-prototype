@@ -588,10 +588,10 @@ router.post('/tagging/enter-licence-numbers', function(req, res) {
 
   req.session.data.licenceList = licenceList
 
-  res.redirect('link-conditions');
+  res.redirect('check-your-answers');
 });
 
-
+//NO LONGER LINKING NALD CONDITIONS - THREE HATS WED 28th APR
 //Link NALD Conditions
 router.get('/tagging/link-conditions', function(req, res) {
   req.session.data.back = req.headers.referer

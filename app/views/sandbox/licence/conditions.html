@@ -62,12 +62,12 @@
           {% set maxVolume = i.maxVolumeLimit %}
           {% if conditionType == "reduce" %}
           {% if maxVolume == "yes" %}
-          {% set conditionType = conditionType + " to " + reductionAmount + reductionAmountUnits |units |safe + " with a maximum volume limit"%}
+          {% set conditionType = conditionType + " with a maximum volume limit"%}
           {% else %}
-          {% set conditionType = conditionType + " to " + reductionAmount + reductionAmountUnits |units |safe %}
+          {% set conditionType = conditionType  %}
           {% endif %}
           {% endif %}
-          {% set linkedCondition = i.linkedCondtion %}
+        <!--No longer linking NALD conditions  {% set linkedCondition = i.linkedCondtion %} -->
 
           <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-full">
@@ -110,15 +110,6 @@
                  },
                  value: {
                   html: conditionType | capitalize
-                 }
-               }
-               ,
-               {
-                 key: {
-                   text: "Linked condition"
-                 },
-                 value: {
-                  html: linkedCondition
                  }
                }
              ]

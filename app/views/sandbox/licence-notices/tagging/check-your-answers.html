@@ -26,22 +26,23 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-
+<!--no longer linking NALD data
 {% set licenceList = data['licenceList'].split(',') %}
 {% set conditions = "" %}
 {% for i in licenceList %}
 {% set conditionID = range(000000, 999999) | random %}
-{% set conditions = conditions + "Flow cessation condition 1 for " + i + "<br>" %}
+ {% set conditions = conditions + "Flow cessation condition 1 for " + i + "<br>" %}
 {% endfor %}
+-->
 
 <!--if reduce include the amount to reduce to -->
 {% set conditionType = data['reduce-or-stop'] %}
 {% set maxVolume = data['maxVolumeLimit'] %}
 {% if conditionType == "reduce" %}
 {% if maxVolume == "yes" %}
-{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['reductionAmountUnits'] |units |safe + " with a maximum volume limit"%}
+{% set conditionType = conditionType + " with a maximum volume limit"%}
 {% else %}
-{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['reductionAmountUnits'] |units |safe %}
+{% set conditionType = conditionType %}
 {% endif %}
 {% endif %}
 
@@ -96,23 +97,6 @@ actions: {
       href: "enter-licence-numbers",
       text: "Change",
       visuallyHiddenText: "licence numbers"
-    }
-  ]
-}
-},
-{
-key: {
-  text: "Licence condition"
-},
-value: {
-  html: conditions
-},
-actions: {
-  items: [
-    {
-      href: "link-conditions",
-      text: "Change",
-      visuallyHiddenText: "linked conditions"
     }
   ]
 }
