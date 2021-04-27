@@ -91,19 +91,60 @@ GOV.UK Prototype Kit
         Remove a licence from a bill
       </h3>
       <ul class="govuk-list govuk-list--bullet">
-        <li>  <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-2-licences?removeLicence=false">Bill before licence removed</a></li>
-        <li>  <a class="govuk-link" href="/bd/charges-2020/confirm-remove-licence">Remove licence confirmation page</a></li>
-        <li>  <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-2-licences?removeLicence=true">Bill after licence removed</a></li>
-        </ul>
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-2-licences?removeLicence=false">Bill before licence removed</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/confirm-remove-licence">Remove licence confirmation page</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-2-licences?removeLicence=true">Bill after licence removed</a></li>
+      </ul>
 
 
       <h3 class="govuk-heading-s">
         Cookies
       </h3>
       <ul class="govuk-list govuk-list--bullet">
-        <li>  <a class="govuk-link" href="/ex/licences">Cookies banner</a></li>
-        <li>  <a class="govuk-link" href="/ex/cookies">Cookies page</a></li>
-        </ul>
+        <li> <a class="govuk-link" href="/ex/licences">Cookies banner</a></li>
+        <li> <a class="govuk-link" href="/ex/cookies">Cookies page</a></li>
+      </ul>
+
+
+      <h3 class="govuk-heading-s">
+        Rebilling
+      </h3>
+
+      <h4 class="govuk-heading-s">Feature - mark bills for reissue</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/charges-2020/what-date-do-you-need-to-reissue-bills-from">What date do you need to reissue bills from?</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/select-bills">Select bills for reissue</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/check-rebill">Check bills marked for reissue </a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/confirm-rebill?rebill=true&billRun=false">Confirmation of bills marked for reissue</a></li>
+      </ul>
+      <h4 class="govuk-heading-s">Feature - cancel reissue</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/charges-2020/confirm-cancel-rebilling">Cancel reissue </a></li>
+      </ul>
+      <h4 class="govuk-heading-s">Billing account states</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/charges-2020/billing-account?rebill=false">No bills marked for reissue</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/billing-account?rebill=true&status=building">Bills marked for reissue, bill run not created</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/billing-account?billRun=created&status=ready&rebill=true">Bill run created (Same as above)</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/billing-account?billRun=created&status=sent&rebill=true">Bill run sent</a></li>
+      </ul>
+      <h4 class="govuk-heading-s"> Original bill states</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian&billrun=false&rebill=false">Not marked for reissue </a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian&billRun=false&rebill=true">Bill marked for reissue - bill run not created </a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian&billRun=created&rebill=true"> Bill marked for reissue - bill run created (same as above)</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill?status=sent&region=Anglian&billRun=sent&rebill=true"> Bill reissued - bill run sent</a></li>
+      </ul>
+      <h4 class="govuk-heading-s"> Reversed bill states</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-credit?bill=OP444333&rebill=true&billRun=ready&status=ready">Reversed bill -ready</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-credit?bill=OP444333&rebill=true&billRun=rsent&status=sent">Reversed bill - sent</a></li>
+      </ul>
+      <h4 class="govuk-heading-s">The reissue bill states</h4>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-rebilled?bill=OP765990&rebill=true&billRun=ready&status=ready">Reissue bill -ready</a></li>
+        <li> <a class="govuk-link" href="/bd/charges-2020/supplementary-bill-rebilled?bill=OP765990&rebill=true&billRun=rsent&status=sent">Reissue bill - sent</a></li>
+      </ul>
 
       <h3 class="govuk-heading-s">
         Bill run updates
