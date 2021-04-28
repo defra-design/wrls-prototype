@@ -39,9 +39,9 @@
 {% set maxVolume = data['maxVolumeLimit'] %}
 {% if conditionType == "reduce" %}
 {% if maxVolume == "yes" %}
-{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['reductionAmountUnits'] |units |safe + " with a maximum volume limit"%}
+{% set conditionType = conditionType + " with a maximum volume limit"%}
 {% else %}
-{% set conditionType = conditionType + " to " + data['reductionAmount'] + data['reductionAmountUnits'] |units |safe %}
+{% set conditionType = conditionType %}
 {% endif %}
 {% endif %}
 
