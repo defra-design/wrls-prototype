@@ -279,7 +279,7 @@ module.exports = {
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
-        "absPeriod": "March to September",
+        "absPeriod": "1 April to 31 October",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
@@ -373,7 +373,7 @@ module.exports = {
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
-        "absPeriod": "March to September",
+        "absPeriod": "1 April to 31 October",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
@@ -459,7 +459,7 @@ module.exports = {
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
-        "absPeriod": "March to September",
+        "absPeriod": "1 April to 31 March",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
@@ -489,7 +489,7 @@ module.exports = {
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
-        "absPeriod": "March to September",
+        "absPeriod": "1 April to 31 October",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
@@ -564,7 +564,7 @@ module.exports = {
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
-        "absPeriod": "April to September",
+        "absPeriod": "1 November to 31 March",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
@@ -650,7 +650,7 @@ module.exports = {
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
-        "absPeriod": "March to September",
+        "absPeriod": "1 April to 31 October",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
@@ -734,7 +734,7 @@ module.exports = {
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
-        "absPeriod": "March to September",
+        "absPeriod": "1 November to 31 March",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
