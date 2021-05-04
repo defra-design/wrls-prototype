@@ -31,13 +31,8 @@
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
 
-        <!--set the link to go to a specific licence-->
-        {% for licence in data['licences']%}
-        {% if licence.number == i.licenceNumber %}
-         <a href="licence?ID={{loop.index0}}" class="govuk-link">
-           {% endif %}
-           {% endfor %}
-         {{i.licenceNumber}}</a></td>
+
+         {{i.licenceNumber}}</td>
 
          <td class="govuk-table__cell">{% for licence in data['licences']%}
            {% if licence.number == i.licenceNumber %}
