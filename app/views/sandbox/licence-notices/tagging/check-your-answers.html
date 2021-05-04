@@ -27,12 +27,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-{% set licenceList = data['licenceList'].split(',') %}
-{% set conditions = "" %}
-{% for i in licenceList %}
-{% set conditionID = range(000000, 999999) | random %}
-{% set conditions = conditions + "Flow cessation condition 1 for " + i + "<br>" %}
-{% endfor %}
 
 <!--if reduce include the amount to reduce to -->
 {% set conditionType = data['reduce-or-stop'] %}
@@ -105,7 +99,7 @@ key: {
   text: "Licence condition"
 },
 value: {
-  html: conditions
+  html: data['conditions'] | replaceComma | striptags(true) | escape | nl2br
 },
 actions: {
   items: [

@@ -600,24 +600,16 @@ router.get('/tagging/link-conditions', function(req, res) {
 
 router.post('/tagging/link-conditions', function(req, res) {
 
-  req.session.data.conditions = req.session.data.conditions0
-
-  let linkedconditions = "req.session.data.conditions0"
-  console.log(linkedconditions);
-  linkedconditions = linkedconditions.slice(0, -1) + '1';
-  console.log(linkedconditions);
-
-  req.session.data.conditions = linkedconditions
-  console.log(req.session.data.conditions);
-
-
-  /*Need to do a for while loop here but not got around to it.
-  let linkedconditions = req.session.data.conditions1
-  while (linkedconditions.length) {
-    req.session.data.conditions = req.session.data.conditions + "," + linkedconditions
-    linkedcondtions = linkedconditions + 1;
-  } */
-
+  // get the name of the radio by looping through the licence list and adding the index number of the end
+  var linkedConditions = []
+  let licenceList = req.session.data['licenceList'].split(',');
+  console.log(licenceList)
+  for ([licenceIndex, licence] of licenceList.entries()) {
+    let condition = "conditions" + licenceIndex
+    linkedConditions.push(req.session.data[condition])
+  };
+ //stringify the array and add it back in to the session data
+ req.session.data.conditions = linkedConditions.toString()
 
   res.redirect('check-your-answers');
 });
@@ -651,9 +643,12 @@ router.post('/tagging/check-your-answers', function(req, res) {
     let reductionAmount = req.session.data['reductionAmount']
     let reductionAmountUnits = req.session.data['reductionAmountUnits']
     let maxVolumeLimit = req.session.data['maxVolumeLimit']
-    let linkedCondtion = req.session.data['conditions0']
-    let notificationType = req.session.data['notificationType']
 
+    //get the licence index of the condition in the array
+    let conditions = req.session.data['conditions'].split(',')
+    let linkedCondtion = conditions[licenceIndex]
+
+    let notificationType = req.session.data['notificationType']
     let status = "no restrictions"
     var match = "false"
     //loop through tags and check for existing licence,if found add the tag to that licence's values rather than creating a new entry, use match to switch between the two
