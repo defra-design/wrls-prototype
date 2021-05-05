@@ -4,7 +4,7 @@
 {% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account BA1234443S</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
 {% set title = 'Bill for ' + [data.licenceHolder]%}
 {% else %}
-{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' + data['bill'] | default("OP123344") + '</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' + data['bill'] | default("OP656544") + '</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
 {% set title = 'Bill ' + data['bill'] | default("OP123344") + 'Bill for ' + [data.licenceHolder]%}
 {% endif %}
 
@@ -68,7 +68,7 @@
               classes: "meta-data__label"
             },
             value: {
-              text: "12 September 2020",
+              text: "12 April 2020",
               classes: "meta-data__value"
             }
           },
@@ -88,7 +88,7 @@
               classes: "meta-data__label"
             },
             value: {
-              text: "Supplementary",
+              text: "Two-part tariff - Summer",
               classes: "meta-data__value"
             }
           },
@@ -200,24 +200,11 @@
     <!--  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
         Total
       </h2> -->
-    <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£1,924.94</span><br>
+    <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£700.50</span><br>
       <!-- <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3> -->
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
   </div>
 
-</div>
-
-<div class="govuk-grid-row govuk-!-margin-bottom-3">
-
-  <div class="govuk-grid-column-one-half">
-    <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£200.56</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
-  </div>
-
-  <div class="govuk-grid-column-one-half">
-    <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£2,125.50</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
-  </div>
 </div>
 
 <!-- <button class="govuk-button govuk-button--warning" data-module="govuk-button">
@@ -291,7 +278,7 @@ href: "confirm-remove-bill?runType=supplementary"
 
 
       <!--navigation cards -->
-      {% include "sandbox/_includes/billing/transactions-table-supplementary.html" %}
+      {% include "sandbox/_includes/billing/transactions-table-tpt.html" %}
 
   </div>
   </div>

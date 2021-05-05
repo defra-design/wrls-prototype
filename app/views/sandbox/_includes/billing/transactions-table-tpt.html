@@ -49,7 +49,7 @@
                 Loss
               </div>
               <div class="meta-data__value">
-                Medium
+                High
               </div>
               <div>
           </section>
@@ -68,10 +68,8 @@
   firstCellIsHeader: true,
   head: [
     {
-      text: "Transaction detail"
-    },
-    {
-      text: "Charge period"
+      text: "Transaction detail",
+      classes: 'govuk-!-width-one-half'
     },
     {
       text: "Billable days",
@@ -82,72 +80,37 @@
       format: "numeric"
     },
     {
-      text: "Credit",
-      format: "numeric"
-    },
-    {
       text: "Debit",
       format: "numeric"
     }
   ],
   rows: [
-    [
-      {
-        text: "Compensation charge"
-      },
-      {
-        text: "1 April 2019 to 31 March 2020"
-      },
-      {
-        text: "365/365",
-        format: "numeric"
-      },
-      {
-        text: "3,000Ml",
-        format: "numeric"
-      },
-      {
-        text: "£200.56",
-        format: "numeric"
-      },
-      {
-        text: "£1,400.00",
-        format: "numeric"
-      }
-    ],
-    [
-      {
-        text: "Credits total",
-        colspan: "4"
-      },
-      {
-        text: "£200.56",
-        format: "numeric"
-      },
-      {
-        text: ""
-      }
-    ],
-    [
-      {
-        text: "Debits total",
-        classes: "govuk-table__cell--thick-border",
-        colspan: "5"
-      },
-      {
-        text: "£1,400.00",
-        format: "numeric",
-        classes: "govuk-table__cell--thick-border"
-      }
-    ],
+  [
+    {
+      html: 'Second Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body">Charge period 1 April 2019 to 30 September 2020
+      <br>Agreement Two-part tariff (S127)</p>'
+    },
+    {
+      text: "182/182",
+      format: "numeric"
+    },
+    {
+      text: "439.98Ml",
+      format: "numeric"
+    },
+    {
+      text: "£700.50",
+      format: "numeric"
+    }
+  ],
     [
       {
         text: "Total",
         classes: "govuk-table__cell--no-border ",
-        colspan: "5"
+        colspan: "3"
       },
       {
-        text: "£1,199.44",
+        text: "£700.50",
         format: "numeric",
         classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
       }

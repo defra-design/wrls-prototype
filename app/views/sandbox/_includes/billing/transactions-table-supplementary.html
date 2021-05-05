@@ -1,0 +1,359 @@
+
+{% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+    Spray irrigation, base licence
+  </h4>
+  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+      Charge element details
+      </span>
+    </summary>
+    <div class="govuk-details__text ">
+      <div class="govuk-grid-row ">
+        <div class="govuk-grid-column-full">
+
+        <!-- this needs converting to nunjucks-->
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Abstraction period
+              </div>
+              <div class="meta-data__value">
+              1 April to 31 March
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Source
+              </div>
+              <div class="meta-data__value">
+                Unsupported
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Season
+              </div>
+              <div class="meta-data__value">
+                All year
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Loss
+              </div>
+              <div class="meta-data__value">
+                High
+              </div>
+              <div>
+          </section>
+
+
+        </div>
+      </div>
+
+    </div>
+  </details>' %}
+
+
+{{ govukTable({
+  caption: caption |safe,
+  captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Transaction detail",
+      classes: 'govuk-!-width-one-half'
+    },
+    {
+      text: "Billable days",
+      format: "numeric"
+    },
+    {
+      text: "Quantity",
+      format: "numeric"
+    },
+    {
+      text: "Credit",
+      format: "numeric"
+    },
+    {
+      text: "Debit",
+      format: "numeric"
+    }
+  ],
+  rows: [
+  [
+    {
+      html: 'First Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020
+      <br>Agreement Two-part tariff (S127)</p>'
+    },
+    {
+      text: "365/365",
+      format: "numeric"
+    },
+    {
+      text: "3,000Ml",
+      format: "numeric"
+    },
+    {
+      text: "",
+      format: "numeric"
+    },
+    {
+      text: "£700.50",
+      format: "numeric"
+    }
+  ],
+  [
+    {
+      html: 'Compensation charge<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020</p>'
+    },
+    {
+      text: "365/365",
+      format: "numeric"
+    },
+    {
+      text: "3,000Ml",
+      format: "numeric"
+    },
+    {
+      text: "£200.56",
+      format: "numeric"
+    },
+    {
+      text: "",
+      format: "numeric"
+    }
+  ],
+  [
+    {
+      html: 'Compensation charge<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020</p>'
+    },
+    {
+      text: "365/365",
+      format: "numeric"
+    },
+    {
+      text: "3,000Ml",
+      format: "numeric"
+    },
+    {
+      text: "",
+      format: "numeric"
+    },
+    {
+        text: "£1,400.00",
+      format: "numeric"
+    }
+  ],
+    [
+      {
+        text: "Credits total",
+        colspan: "3"
+      },
+      {
+        text: "£200.56",
+        format: "numeric"
+      },
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Debits total",
+        classes: "govuk-table__cell--thick-border",
+        colspan: "4"
+      },
+      {
+        text: "£2,100.50",
+        format: "numeric",
+        classes: "govuk-table__cell--thick-border"
+      }
+    ],
+    [
+      {
+        text: "Total",
+        classes: "govuk-table__cell--no-border ",
+        colspan: "4"
+      },
+      {
+        text: "£1,899.94",
+        format: "numeric",
+        classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
+      }
+    ]
+  ]
+}) }}
+
+
+
+
+
+{% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+    Trickle irrigation, time limited increase
+  </h4>
+  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+      Charge element details
+      </span>
+    </summary>
+    <div class="govuk-details__text ">
+      <div class="govuk-grid-row ">
+        <div class="govuk-grid-column-full">
+
+        <!-- this needs converting to nunjucks-->
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Abstraction period
+              </div>
+              <div class="meta-data__value">
+              1 April to 31 October
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Source
+              </div>
+              <div class="meta-data__value">
+                Unsupported
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Season
+              </div>
+              <div class="meta-data__value">
+                Summer
+              </div>
+              <div>
+          </section>
+          <section class="meta-data__row">
+            <div class="meta-data__container">
+              <div class="meta-data__label">
+                Loss
+              </div>
+              <div class="meta-data__value">
+                Low
+              </div>
+              <div>
+          </section>
+
+
+        </div>
+      </div>
+
+    </div>
+  </details>' %}
+
+
+{{ govukTable({
+  caption: caption |safe,
+  captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Transaction detail",
+      classes: 'govuk-!-width-one-half'
+    },
+    {
+      text: "Billable days",
+      format: "numeric"
+    },
+    {
+      text: "Quantity",
+      format: "numeric"
+    },
+    {
+      text: "Credit",
+      format: "numeric"
+    },
+    {
+      text: "Debit",
+      format: "numeric"
+    }
+  ],
+  rows: [
+  [
+    {
+      html: 'Trickle Irrigation - Direct Charge FRENCHAY - time limited increase<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020'
+    },
+    {
+      text: "213/213",
+      format: "numeric"
+    },
+    {
+      text: "100Ml",
+      format: "numeric"
+    },
+    {
+      text: "",
+      format: "numeric"
+    },
+    {
+      text: "£17.55",
+      format: "numeric"
+    }
+  ],
+  [
+    {
+      html: 'Minimum charge',
+      colspan: "4"
+    },
+    {
+      text: "£7.45",
+      format: "numeric"
+    }
+  ],
+    [
+      {
+        text: "Credits total",
+        colspan: "3"
+      },
+      {
+        text: "",
+        format: "numeric"
+      },
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Debits total",
+        classes: "govuk-table__cell--thick-border",
+        colspan: "4"
+      },
+      {
+        text: "£25.00",
+        format: "numeric",
+        classes: "govuk-table__cell--thick-border"
+      }
+    ],
+    [
+      {
+        text: "Total",
+        classes: "govuk-table__cell--no-border ",
+        colspan: "4"
+      },
+      {
+        text: "£25.00",
+        format: "numeric",
+        classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
+      }
+    ]
+  ]
+}) }}
