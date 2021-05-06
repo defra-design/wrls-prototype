@@ -1,3 +1,5 @@
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
+  <div class="govuk-grid-column-full ">
 
 {% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
     Spray irrigation, base licence
@@ -69,25 +71,28 @@
   head: [
     {
       text: "Transaction detail",
-      classes: 'govuk-!-width-one-half'
+      classes: 'column--40'
     },
     {
       text: "Billable days",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--20'
     },
     {
       text: "Quantity",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--20'
     },
     {
       text: "Debit",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--20'
     }
   ],
   rows: [
   [
     {
-      html: 'Second Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body">Charge period 1 April 2019 to 30 September 2020
+      html: 'Second Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body-s">Charge period 1 April 2019 to 30 September 2020
       <br>Agreement Two-part tariff (S127)</p>'
     },
     {
@@ -117,3 +122,6 @@
     ]
   ]
 }) }}
+
+</div>
+</div>

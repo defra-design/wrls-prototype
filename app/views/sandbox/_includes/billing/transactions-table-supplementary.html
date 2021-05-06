@@ -1,5 +1,7 @@
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
+  <div class="govuk-grid-column-full ">
 
-{% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+    {% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
     Spray irrigation, base licence
   </h4>
   <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
@@ -62,37 +64,40 @@
   </details>' %}
 
 
-{{ govukTable({
+    {{ govukTable({
   caption: caption |safe,
   captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
   firstCellIsHeader: true,
   head: [
     {
       text: "Transaction detail",
-      classes: 'govuk-!-width-one-half'
+      classes: 'column--40'
     },
     {
       text: "Billable days",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     },
     {
       text: "Quantity",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     },
     {
       text: "Credit",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     },
     {
       text: "Debit",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     }
   ],
   rows: [
   [
     {
-      html: 'First Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020
-      <br>Agreement Two-part tariff (S127)</p>'
+      html: 'First Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020<br>Agreement Two-part tariff (S127)</p>'
     },
     {
       text: "365/365",
@@ -112,9 +117,9 @@
     }
   ],
   [
-    {
-      html: 'Compensation charge<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020</p>'
-    },
+  {
+      html: 'Compensation charge<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020</p>'
+  },
     {
       text: "365/365",
       format: "numeric"
@@ -133,24 +138,29 @@
     }
   ],
   [
-    {
-      html: 'Compensation charge<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020</p>'
-    },
+  {
+    html: 'Compensation charge<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020</p>',
+    classes: "govuk-table__cell--thick-border"
+  },
     {
       text: "365/365",
-      format: "numeric"
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
     },
     {
       text: "3,000Ml",
-      format: "numeric"
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
     },
     {
       text: "",
-      format: "numeric"
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
     },
     {
         text: "£1,400.00",
-      format: "numeric"
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
     }
   ],
     [
@@ -194,10 +204,12 @@
 }) }}
 
 
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full govuk-!-margin-bottom-7">
 
-
-
-{% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+    {% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
     Trickle irrigation, time limited increase
   </h4>
   <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
@@ -260,36 +272,40 @@
   </details>' %}
 
 
-{{ govukTable({
+    {{ govukTable({
   caption: caption |safe,
   captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
   firstCellIsHeader: true,
   head: [
     {
       text: "Transaction detail",
-      classes: 'govuk-!-width-one-half'
+      classes: 'column--40'
     },
     {
       text: "Billable days",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     },
     {
       text: "Quantity",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     },
     {
       text: "Credit",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     },
     {
       text: "Debit",
-      format: "numeric"
+      format: "numeric",
+      classes: 'column--15'
     }
   ],
   rows: [
   [
     {
-      html: 'Trickle Irrigation - Direct Charge FRENCHAY - time limited increase<p class="govuk-body">Charge period 1 April 2019 to 31 March 2020'
+      html: 'Trickle Irrigation - Direct Charge FRENCHAY - time limited increase<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020<p>'
     },
     {
       text: "213/213",
@@ -310,12 +326,14 @@
   ],
   [
     {
-      html: 'Minimum charge',
-      colspan: "4"
+      html: 'Minimum charge<br><br>',
+      colspan: "4",
+      classes: "govuk-table__cell--thick-border"
     },
     {
       text: "£7.45",
-      format: "numeric"
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
     }
   ],
     [
@@ -357,3 +375,6 @@
     ]
   ]
 }) }}
+
+  </div>
+</div>
