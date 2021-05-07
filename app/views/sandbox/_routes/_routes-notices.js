@@ -603,10 +603,33 @@ router.post('/tagging/link-conditions', function(req, res) {
   // get the name of the radio by looping through the licence list and adding the index number of the end
   var linkedConditions = []
   let licenceList = req.session.data['licenceList'].split(',');
-  console.log(licenceList)
+  var regex = new RegExp('^The');
+
   for ([licenceIndex, licence] of licenceList.entries()) {
     let condition = "conditions" + licenceIndex
+
+    if (regex.test(req.session.data[condition])) {
+
+      //get the dates
+      let abstractionStartDay = "abstractionStartDay" + licenceIndex
+      let abstractionStartMonthNumber = "abstractionStartMonth" + licenceIndex
+      let abstractionEndDay = "abstractionEndDay" + licenceIndex
+      let abstractionEndMonthNumber = "abstractionEndMonth" + licenceIndex
+
+      //change the month into a name
+      let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      let abstractionStartMonth = monthNames[req.session.data[abstractionStartMonthNumber] - 1]
+      let abstractionEndMonth = monthNames[req.session.data[abstractionEndMonthNumber] - 1]
+
+      //set abstraction period
+      let abstractionPeriod = req.session.data[abstractionStartDay]+ " " + abstractionStartMonth + " to " + req.session.data[abstractionEndDay] + " " + abstractionEndMonth
+
+      req.session.data.abstactionPeriod = abstractionPeriod
+      condition = "Condition not listed for " + licence + "<br> Abstaction period set from " + abstractionPeriod
+      linkedConditions.push(condition)
+    } else {
     linkedConditions.push(req.session.data[condition])
+    }
   };
  //stringify the array and add it back in to the session data
  req.session.data.conditions = linkedConditions.toString()
