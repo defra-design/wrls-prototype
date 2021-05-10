@@ -10,7 +10,6 @@
 {% set billingContact = [data.billingAccounts[BAID].billingContact] %}
 
 
-
 <!--getting the address data-->
 {% set addresses = data['addresses'] %}
 {% for i in addresses %}
@@ -23,7 +22,7 @@
 
 {% for i in addressCustomers %}
 
-{% if "Billing" in i.role and data.licences[data.ID].holder == i.customer %}
+{% if "Billing" in i.role and licenceHolder == i.customer %}
 
 
 {{[data.addresses[loopNumber].address1]}}<br>
