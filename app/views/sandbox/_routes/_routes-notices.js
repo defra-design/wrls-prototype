@@ -572,16 +572,16 @@ router.get('/tagging/reduce-or-stop', function(req, res) {
 });
 
 router.post('/tagging/reduce-or-stop', function(req, res) {
-  res.redirect('enter-licence-numbers');
+  res.redirect('enter-licence-number');
 });
 
 ///enter licence numbers
-router.get('/tagging/enter-licence-numbers', function(req, res) {
+router.get('/tagging/enter-licence-number', function(req, res) {
   req.session.data.back = req.headers.referer
-  res.render(folder + 'tagging/enter-licence-numbers');
+  res.render(folder + 'tagging/enter-licence-number');
 });
 
-router.post('/tagging/enter-licence-numbers', function(req, res) {
+router.post('/tagging/enter-licence-number', function(req, res) {
 
   let licenceList = req.session.data['licenceList'].trim().replace(/\r\n|\n|\r|\s|\r\s|\,\s/gm, ',');
   licenceList.toString()
@@ -625,7 +625,7 @@ router.post('/tagging/link-conditions', function(req, res) {
       let abstractionPeriod = req.session.data[abstractionStartDay]+ " " + abstractionStartMonth + " to " + req.session.data[abstractionEndDay] + " " + abstractionEndMonth
 
       req.session.data.abstactionPeriod = abstractionPeriod
-      condition = "Condition not listed for " + licence + "<br> Abstaction period set from " + abstractionPeriod
+      condition = "Condition not listed. <br> Abstaction period set from " + abstractionPeriod
       linkedConditions.push(condition)
     } else {
     linkedConditions.push(req.session.data[condition])

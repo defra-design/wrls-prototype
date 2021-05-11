@@ -99,7 +99,7 @@ key: {
   text: "Licence condition"
 },
 value: {
-  html: data['conditions'] | replaceComma | striptags(true) | escape | nl2br
+  html: data['conditions'] | replaceComma | safe
 },
 actions: {
   items: [
