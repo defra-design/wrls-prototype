@@ -22,7 +22,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-   <!--count the number of licences-->
+   <!--count the number of licences
    {% set number = 0 %}
    {% set licenceList = data['licenceList'].split(',') %}
    {% for i in licenceList %}
@@ -37,6 +37,11 @@
     {{ govukPanel({
       titleText: title,
       html: "You tagged <br><strong>" + number  + " " + plural + " </strong> with restriction details for this station"
+    }) }} -->
+
+    {{ govukPanel({
+      titleText: title,
+      html: "You tagged <br><strong>" + data['licenceList']  + " </strong> with restriction details for this station"
     }) }}
 
    <p class="govuk-body"><a class="govuk-link" href="../../station?stationID={{data['stationID']}}">Return to monitoring station</a></p>
