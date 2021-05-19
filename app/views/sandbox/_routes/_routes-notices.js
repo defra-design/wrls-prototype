@@ -3,6 +3,30 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+
+//get today's date
+let date = new Date();
+let dd = date.getDate();
+let mm = date.getMonth() + 1;
+
+const yyyy = date.getFullYear();
+if (dd < 10) {
+  dd = `0${dd}`;
+}
+if (mm < 10) {
+  mm = `0${mm}`;
+}
+
+//change the month into a name
+let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+mm = monthNames[mm - 1]
+
+const today = `${dd} ${mm} ${yyyy}`;
+
+
+
+
+
 //Send a water abstraction alert
 const folder = "sandbox/licence-notices/"
 
@@ -210,24 +234,7 @@ router.get('/send-a-water-abstraction-alert/check-the-mailing-list', function(re
 router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(req, res) {
 
 
-  //get today's date
-  let today = new Date();
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1;
 
-  const yyyy = today.getFullYear();
-  if (dd < 10) {
-    dd = `0${dd}`;
-  }
-  if (mm < 10) {
-    mm = `0${mm}`;
-  }
-
-  //change the month into a name
-  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  mm = monthNames[mm - 1]
-
-  today = `${dd} ${mm} ${yyyy}`;
 
   //getting the notification
   let notifications = req.session.data['notifications']
@@ -610,33 +617,59 @@ router.post('/tagging/link-conditions', function(req, res) {
 
     if (regex.test(req.session.data[condition])) {
 
-      //get the dates
-      let abstractionStartDay = "abstractionStartDay" + licenceIndex
-      let abstractionStartMonthNumber = "abstractionStartMonth" + licenceIndex
-      let abstractionEndDay = "abstractionEndDay" + licenceIndex
-      let abstractionEndMonthNumber = "abstractionEndMonth" + licenceIndex
 
-      //change the month into a name
-      let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-      let abstractionStartMonth = monthNames[req.session.data[abstractionStartMonthNumber] - 1]
-      let abstractionEndMonth = monthNames[req.session.data[abstractionEndMonthNumber] - 1]
-
-      //set abstraction period
-      let abstractionPeriod = req.session.data[abstractionStartDay]+ " " + abstractionStartMonth + " to " + req.session.data[abstractionEndDay] + " " + abstractionEndMonth
-
-      req.session.data.abstactionPeriod = abstractionPeriod
-      condition = "Condition not listed. <br> Abstaction period set from " + abstractionPeriod
+      condition = "The condition not listed for this licence"
       linkedConditions.push(condition)
+      req.session.data.conditions = linkedConditions.toString()
+      res.redirect('enter-an-abstraction-period');
     } else {
     linkedConditions.push(req.session.data[condition])
+    //stringify the array and add it back in to the session data
+    req.session.data.conditions = linkedConditions.toString()
+
+    licencesData = req.session.data['licences']
+
+    for  (licenceData of licencesData) {
+      if (licenceData.number == licence){
+      req.session.data.abstractionPeriod = licenceData.absPeriod
+       }
+    }
+
+
+
+
+     res.redirect('check-your-answers');
     }
   };
- //stringify the array and add it back in to the session data
- req.session.data.conditions = linkedConditions.toString()
 
-  res.redirect('check-your-answers');
 });
 
+///Enter an abstraction period - only shows if the NALD condition wasn't there
+router.get('/tagging/enter-an-abstraction-period', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'tagging/enter-an-abstraction-period');
+});
+
+router.post('/tagging/enter-an-abstraction-period', function(req, res) {
+
+  //get the dates
+  let abstractionStartDay = "abstractionStartDay"
+  let abstractionStartMonthNumber = "abstractionStartMonth"
+  let abstractionEndDay = "abstractionEndDay"
+  let abstractionEndMonthNumber = "abstractionEndMonth"
+
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  let abstractionStartMonth = monthNames[req.session.data[abstractionStartMonthNumber] - 1]
+  let abstractionEndMonth = monthNames[req.session.data[abstractionEndMonthNumber] - 1]
+
+  //set abstraction period
+  let abstractionPeriod = req.session.data[abstractionStartDay]+ " " + abstractionStartMonth + " to " + req.session.data[abstractionEndDay] + " " + abstractionEndMonth
+
+  req.session.data.abstractionPeriod = abstractionPeriod
+  console.log(req.session.data.abstractionPeriod)
+  res.redirect('check-your-answers');
+});
 
 ///check your answers
 router.get('/tagging/check-your-answers', function(req, res) {
@@ -663,6 +696,7 @@ router.post('/tagging/check-your-answers', function(req, res) {
     let thresholdValue = req.session.data['thresholdValue']
     let thresholdUnits = req.session.data['thresholdUnits']
     let conditionType = req.session.data['reduce-or-stop']
+    let abstractionPeriod = req.session.data['abstractionPeriod']
     let reductionAmount = req.session.data['reductionAmount']
     let reductionAmountUnits = req.session.data['reductionAmountUnits']
     let maxVolumeLimit = req.session.data['maxVolumeLimit']
@@ -683,6 +717,7 @@ router.post('/tagging/check-your-answers', function(req, res) {
           thresholdUnits,
           linkedCondtion,
           conditionType,
+          abstractionPeriod,
           reductionAmount,
           reductionAmountUnits,
           maxVolumeLimit,
@@ -698,6 +733,7 @@ router.post('/tagging/check-your-answers', function(req, res) {
         thresholdValue,
         thresholdUnits,
         linkedCondtion,
+        abstractionPeriod,
         conditionType,
         reductionAmount,
         reductionAmountUnits,
@@ -769,7 +805,53 @@ router.post('/tagging/remove-tag', function(req, res) {
 
 });
 
+///////////////////////////////////////////////////////////////////////////////
+//REMOVE ALL TAGS FOR A LICENCE
+router.get('/tagging/which-licence-do-you-want-to-remove-tags-for', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'tagging/which-licence-do-you-want-to-remove-tags-for');
+});
 
 
+router.post('/tagging/which-licence-do-you-want-to-remove-tags-for', function(req, res) {
+
+res.redirect('you-are-about-to-remove-tags');
+});
+
+router.get('/tagging/you-are-about-to-remove-tags', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'tagging/you-are-about-to-remove-tags');
+});
+
+
+router.post('/tagging/you-are-about-to-remove-tags', function(req, res) {
+
+  let licence = req.session.data['selectedLicence']
+  let stationID = req.session.data['stationID']
+  let tagNumber = ""
+
+    let tags = req.session.data.stations[stationID].tags
+
+    console.log("something")
+
+    for ([tagIndex, tag] of tags.entries()){
+
+      if (licence == tag.licenceNumber) {
+      tagNumber = tagIndex
+
+    }
+  }
+
+    let index = tagNumber;
+    if (index > -1) {
+      tags.splice(index, 1);
+    }
+
+
+  res.redirect('/sandbox/station?stationID=' + stationID);
+
+
+
+});
 
 module.exports = router

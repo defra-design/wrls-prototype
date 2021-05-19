@@ -61,7 +61,10 @@
         <h2 class="heading-large govuk-heading-m licence-condition__header">
           Hands off {{notificationType}} threshold
         </h2>
-
+        {{ govukWarningText({
+      text: "You will not be able to send a water abstraction alert for the licence at this restriction type and threshold.",
+      iconFallbackText: "Warning"
+    }) }}
 
      {{ govukSummaryList({
        rows: [

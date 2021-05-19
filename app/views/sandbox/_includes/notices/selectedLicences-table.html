@@ -17,7 +17,7 @@
 
   <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-quarter">Flow and level restriction<br>type and threshold </th>
 
-      <th scope="col" class="govuk-table__header  govuk-table__header--numeric ">Status</th>
+        <th scope="col" colspan="2" class="govuk-table__header ">Last type of alert  <br>sent and date issued</th>
 
       <th scope="col" class="govuk-table__header  govuk-table__header--numeric ">Action</th>
     </tr>
@@ -34,15 +34,14 @@
 
          {{i.licenceNumber}}</td>
 
-         <td class="govuk-table__cell">{% for licence in data['licences']%}
-           {% if licence.number == i.licenceNumber %}
-           {{licence.absPeriod}}
-           {% endif %}
-           {% endfor %}</td>
-
          <!--get the tags for that individual licences-->
         {% set licenceTags = i['tagValues'] %}
 
+
+        <td class="govuk-table__cell ">
+
+              {{licenceTags[0].abstractionPeriod}}<br>
+               </td>
 
 
         <td class="govuk-table__cell govuk-!-padding-right-0">
@@ -64,10 +63,21 @@
   {% endfor %}
    </td>
 
-         <td class="govuk-table__cell govuk-table__header--numeric">{{govukTag({
-          text: [i.status] | tagStatusText |safe ,
-          classes: [i.status] | tagStatusColour
-        })}}</td>
+   {% for licence in data['licences']%}
+   {% if licence.number == i.licenceNumber %}
+   {% if data.licences[loop.index0]['communications'].length %}
+   {% set communications = data.licences[loop.index0]['communications'] %}
+   <td class="govuk-table__cell ">{{communications[0].type.split(" ")[0] | capitalize}}</td>
+
+<td class="govuk-table__cell">  {{communications[0].sent}}</td>
+   {% else %}
+   {% set communications = "" %}
+   <td class="govuk-table__cell"> </td>
+   <td class="govuk-table__cell"> </td>
+   {% endif %}
+
+   {% endif %}
+   {% endfor %}
 
         <td class="govuk-table__cell govuk-table__header--numeric">
         <a class="govuk-link" href="remove-from-the-alert-send-list?listIndex={{loop.index0}}">Remove</a></td>

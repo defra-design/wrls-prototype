@@ -110,7 +110,23 @@ actions: {
     }
   ]
 }
+},{
+key: {
+  text: "Abstraction period"
+},
+value: {
+  html: data['abstractionPeriod']
+},
+actions: {
+  items: [
+    {
+      href: "enter-an-abstraction-period",
+      text: "Change",
+      visuallyHiddenText: "abstraction period"
+    }
+  ]
 }
+} if "listed" in data['conditions']
 ]
 }) }}
 

@@ -1106,7 +1106,7 @@ module.exports = {
     "gaugingStation": "Helmspholme",
     "flowThreshold": "45.5",
     "contactEmail": "something@somewhere.co.uk",
-    "licenceList": "03/28/60/0032,03/28/61/029,03/28/60/0726",
+    "licenceList": "03/28/60/0032",
 
 
 
@@ -1167,6 +1167,7 @@ module.exports = {
               reductionAmountUnits: "m3/s",
               maxVolumeLimit: "no",
               linkedCondtion: "Flow cessation condition, ID758342",
+              abstractionPeriod: "1 April to 31 October",
               notificationType: "flow",
             },
             {
@@ -1177,6 +1178,7 @@ module.exports = {
               reductionAmountUnits: "",
               maxVolumeLimit: "",
               linkedCondtion: "Flow cessation condition, ID758342",
+              abstractionPeriod: "1 April to 31 October",
               notificationType: "flow",
             }
           ],
@@ -1189,6 +1191,7 @@ module.exports = {
             thresholdUnits: "megaLitresPerDay",
             notificationType: "flow",
             linkedCondtion: "Flow cessation condition, ID598962",
+            abstractionPeriod: "1 April to 31 October",
             conditionType: "reduce",
             reductionAmount: "100",
             reductionAmountUnits: "m3/s",
@@ -1204,6 +1207,7 @@ module.exports = {
             thresholdUnits: "metresAboveOrdinanceDatum",
             notificationType: "level",
             linkedCondtion: "Flow cessation condition, ID598962",
+            abstractionPeriod: "1 November to 31 March",
             conditionType: "stop",
             reductionAmount: "",
             reductionAmountUnits: "",
@@ -1218,6 +1222,7 @@ module.exports = {
             thresholdUnits: "megaLitresPerDay",
             notificationType: "flow",
             linkedCondtion: "Flow cessation condition, ID598962",
+            abstractionPeriod: "1 April to 31 October",
             conditionType: "stop",
             reductionAmount: "",
             reductionAmountUnits: "",
@@ -1232,6 +1237,7 @@ module.exports = {
             thresholdUnits: "megaLitresPerDay",
             notificationType: "flow",
             linkedCondtion: "Flow cessation condition, ID598962",
+            abstractionPeriod: "1 April to 31 October",
             conditionType: "stop",
             reductionAmount: "",
             reductionAmountUnits: "",

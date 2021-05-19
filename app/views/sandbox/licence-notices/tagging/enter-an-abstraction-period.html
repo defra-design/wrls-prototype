@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Select the full condition for each licence" %}},
+{% set title = "Select the full condition for this licence" %}},
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -20,29 +20,9 @@
 
     <form  method="post" novalidate>
 
-      <!-- page title -->
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h1 class="govuk-heading-l">
-            {{title}}
-          </h1>
-        </div>
-      </div>
-
-
-        <p class="govuk-body">This is the licence condition recorded in NALD and stated on the licence.</p>
-
-
-
-
-
-
 
 {% set licenceList = data['licenceList'].split(',') %}
 
-{% for i in licenceList %}
-
-{% set absPeriodHtml %}
 
 <!-- effective dates -->
 <div class="govuk-form-group">
@@ -103,50 +83,6 @@
   </fieldset>
 </div>
 
-{% endset -%}
-
-
- {% set conditionID = range(000000, 999999) | random %}
-
-      {{ govukRadios({
-  idPrefix: "condtions" + loop.index0,
-  name: "conditions" + loop.index0,
-  fieldset: {
-    legend: {
-      text: "Licence number " + i,
-      isPageHeading: false,
-      classes: "govuk-fieldset__legend--m"
-    }
-  },
-  items: [
-    {
-      value: "Flow cessation condition 1 for " + i,
-      text: "Flow cessation condition 1",
-      hint: {
-        text: "No abstraction shall take place unless the flow of water in the River Dikler as measured by the Agency at Station reference 1029TH (Bourton Dickler Gauging Station) is equal to or greater than 180ML/d, and the abstraction shall not cause the flow at the said reference point to fall below that rate."
-      }
-    },
-    {
-      value: "Flow cessation condition 2 for " + i,
-      text: "Flow cessation condition 2",
-      hint: {
-        text: "No abstraction shall take place when the flow in the River Dikler as gauged at Bourton Dickler at Station reference 1029TH is equal to or less than 5.68 cubic metres per second as may be notified by the Agency. The Agency's said gauging of the flow shall be conclusive."
-      }
-    },
-  {
-      divider: "or"
-    },
-    {
-      value: "The condition is not listed for licence " + i,
-      text: "The condition is not listed for licence " + i,
-      conditional: {
-        html: absPeriodHtml
-      }
-    }
-  ]
-}) }}
-
-{% endfor %}
 
       <button type="submit" class="govuk-button">
         Continue

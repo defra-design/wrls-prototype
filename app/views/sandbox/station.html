@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] %}
+{% set title = [data.stations[data.stationID].riverName] + " at " + [data.stations[data.stationID].label] %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -24,12 +24,90 @@
 <!-- page title -->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{% if data.stations[data.stationID].gridReference.length %}Grid reference {{[data.stations[data.stationID].gridReference]}}{% else %}Station reference {{[data.stations[data.stationID].stationReference]}}{% endif %}</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
+      <span class="govuk-caption-l">{{[data.stations[data.stationID].catchmentName]}}</span>
       {{title}}
     </h1>
+
+    {% set metaData %}
+    {{ govukSummaryList({
+    classes: 'govuk-summary-list--no-border',
+    rows: [
+      {
+        key: {
+          text: "Grid reference",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: [data.stations[data.stationID].gridReference],
+          classes: "meta-data__value"
+        }
+      } if data.stations[data.stationID].gridReference,
+      {
+        key: {
+          text: "Easting",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: [data.stations[data.stationID].easting],
+          classes: "meta-data__value"
+        }
+      } if data.stations[data.stationID].easting,
+      {
+        key: {
+          text: "Northing",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: [data.stations[data.stationID].northing],
+          classes: "meta-data__value"
+        }
+      } if data.stations[data.stationID].northing,
+      {
+        key: {
+          text: "WISKI ID",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: [data.stations[data.stationID].wiskiID],
+          classes: "meta-data__value"
+        }
+      } if data.stations[data.stationID].wiskiID,
+      {
+        key: {
+          text: "Station reference",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: [data.stations[data.stationID].stationReference],
+          classes: "meta-data__value"
+        }
+      } if data.stations[data.stationID].stationReference
+    ]
+    }) }}
+
+    {% endset %}
+
+    {{ govukDetails({
+  summaryText: "Station details",
+  html: metaData
+}) }}
+
+
   </div>
 </div>
+
+{% set tags = data.stations[data.stationID]['tags'] %}
+{% if tags.length %}
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+    {{ govukButton({
+  text: "Create a water abstraction alert",
+  href: "licence-notices/send-a-water-abstraction-alert/select-the-type-of-alert?stationID=" + [data.stationID]
+}) }}
+  </div>
+</div>
+{% endif %}
 
 <!--
 <div class="govuk-grid-row govuk-!-margin-bottom-9">
@@ -49,12 +127,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-<!--Licence summary -->
-{% include "sandbox/_includes/stations/tag-table.html" %}
+    <!--Licence summary -->
+    {% include "sandbox/_includes/stations/tag-table.html" %}
 
 
 
 
 
 
-{% endblock %}
+    {% endblock %}

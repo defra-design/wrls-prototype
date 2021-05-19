@@ -43,6 +43,10 @@ module.exports = function(env) {
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+
+
+
+
   //filter for month implment on the page by using "| toMonth"
   filters.toMonth = function(x) {
     months = ["January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December "];
@@ -176,6 +180,25 @@ module.exports = function(env) {
       return "m"
     } else {
       return "Ml/d"
+    }
+  }
+
+  //set unitsWords "| unitsWords"
+  filters.unitsWords = function(e) {
+    if (e == "cubicMetresPerSecond") {
+      return "metres cubed per second"
+    } else if (e == "cubicMetresPerDay") {
+      return "metres cubed per day"
+    } else if (e == "litrespersecond") {
+      return "litres per second"
+    } else if (e == "metresAboveOrdinanceDatum") {
+      return "metres above ordinance datum"
+    } else if (e == "metresAboveStationDatum") {
+      return "metres above station datum"
+    } else if (e == "metres") {
+      return "metres"
+    } else {
+      return "mega litres per day"
     }
   }
 

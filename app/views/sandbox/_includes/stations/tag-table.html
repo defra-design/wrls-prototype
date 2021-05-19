@@ -11,9 +11,9 @@
       <th scope="col" class="govuk-table__header ">Licence</th>
       <th scope="col" class="govuk-table__header ">Abstraction period</th>
 
-  <th scope="col" colspan="3" class="govuk-table__header govuk-!-width-one-quarter">Flow and level restriction<br>type and threshold </th>
+  <th scope="col" colspan="3" class="govuk-table__header ">Flow and level restriction<br> type and threshold </th>
 
-      <th scope="col" class="govuk-table__header  govuk-table__header--numeric ">Status</th>
+      <th scope="col" colspan="2" class="govuk-table__header ">Last type of alert  <br>sent and date issued</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -33,40 +33,60 @@
            {% endfor %}
          {{i.licenceNumber}}</a></td>
 
-         <td class="govuk-table__cell">{% for licence in data['licences']%}
-           {% if licence.number == i.licenceNumber %}
-           {{licence.absPeriod}}
-           {% endif %}
-           {% endfor %}</td>
+
 
          <!--get the tags for that individual licences-->
         {% set licenceTags = i['tagValues'] %}
 
+    <!--   <td class="govuk-table__cell">{% for licence in data['licences']%}
+          {% if licence.number == i.licenceNumber %}
+          {{licence.absPeriod}}
+          {% endif %}
+          {% endfor %}</td>  -->
 
+     <td class="govuk-table__cell ">
 
-        <td class="govuk-table__cell govuk-!-padding-right-0">
+           {{licenceTags[0].abstractionPeriod}}<br>
+            </td>
+
+        <td class="govuk-table__cell ">
           <!--loop through conditions for that licence-->
           {% for tag in licenceTags %}
          {{tag.conditionType |capitalize}}<br>
          {% endfor %}</td>
 
-<td class="govuk-table__cell govuk-table__cell--numeric govuk-!-padding-right-0">
+<td class="govuk-table__cell govuk-table__cell--numeric">
         <!--loop through the tag values and if they are a flow value add them to this cell-->
          {% for tag in licenceTags %}
         {{tag.thresholdValue}}<br>
         {% endfor %}
          </td>
-<td class="govuk-table__cell govuk-table__cell--numeric">
+<td class="govuk-table__cell ">
   <!--loop through the tag values and if they are a flow value add them to this cell-->
    {% for tag in licenceTags %}
   {{tag.thresholdUnits | units |safe}}<br>
   {% endfor %}
    </td>
 
-         <td class="govuk-table__cell govuk-table__header--numeric">{{govukTag({
-          text: [i.status] | tagStatusText |safe ,
-          classes: [i.status] | tagStatusColour
-        })}}</td>
+
+
+           {% for licence in data['licences']%}
+           {% if licence.number == i.licenceNumber %}
+           {% if data.licences[loop.index0]['communications'].length %}
+           {% set communications = data.licences[loop.index0]['communications'] %}
+           <td class="govuk-table__cell ">{{communications[0].type.split(" ")[0] | capitalize}}</td>
+
+       <td class="govuk-table__cell">  {{communications[0].sent}}</td>
+           {% else %}
+           {% set communications = "" %}
+           <td class="govuk-table__cell"> </td>
+           <td class="govuk-table__cell"> </td>
+           {% endif %}
+
+           {% endif %}
+           {% endfor %}
+
+
     </tr>
     {% endfor %}
 
@@ -77,14 +97,17 @@
 
 
 <div class="govuk-button-group">
+
+
   {{ govukButton({
-    text: "Create a water abstraction alert",
-    href: "licence-notices/send-a-water-abstraction-alert/select-the-type-of-alert?stationID=" + [data.stationID]
+    text: "Tag a licence",
+    href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
+    classes: "govuk-button--secondary"
   }) }}
 
   {{ govukButton({
-    text: "Tag and add a licence",
-    href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
+    text: "Remove a tag",
+    href: "licence-notices/tagging/which-licence-do-you-want-to-remove-tags-for?stationID=" + [data.stationID],
     classes: "govuk-button--secondary"
   }) }}
 </div>
@@ -93,7 +116,7 @@
 <p class="govuk-body">There are no licences tagged with restrictions for this monitoring station</p>
 
 {{ govukButton({
-  text: "Tag and add a licence",
+  text: "Tag a licence",
   href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
   classes: "govuk-button--secondary"
 }) }}
