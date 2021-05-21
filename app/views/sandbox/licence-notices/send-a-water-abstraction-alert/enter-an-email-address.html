@@ -23,11 +23,12 @@
 
     <form method="post" novalidate>
 
+   {% set emailHTML %}
       {{ govukInput({
   label: {
-    text: qTitle | safe,
-    classes: "govuk-label--l",
-    isPageHeading: true
+    text: "Email address",
+    classes: "govuk-label--s",
+    isPageHeading: false
   },
   hint: {
     text: "This is usually your area’s team email address"
@@ -36,6 +37,38 @@
   id: "contactEmail",
   name: "contactEmail"
 }) }}
+
+{% endset %}
+
+      {{ govukRadios({
+idPrefix: "email",
+name: "email",
+fieldset: {
+legend: {
+  text: [qTitle]|safe,
+  isPageHeading: true,
+  classes: "govuk-fieldset__legend--l"
+}
+},
+items: [
+{
+  value: "youremailaddress@defra.gov.uk",
+  text: "youremailaddress@defra.gov.uk"
+},
+{
+      divider: "or"
+    },
+{
+  value: "anotherEmailAddress",
+  text: "Use another email address",
+  conditional: {
+        html: emailHTML
+      }
+}
+]
+}) }}
+
+
 
 
 
