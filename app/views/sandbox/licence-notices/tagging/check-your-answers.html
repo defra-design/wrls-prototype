@@ -101,7 +101,7 @@ key: {
   text: "Licence condition"
 },
 value: {
-  html: data['conditions'] | default("The%20condition%20is%20not%20listed%20for%20this%20licence")  | replaceComma | safe  | default("The%20condition%20is%20not%20listed%20for%20this%20licence")
+  html: data['conditions'] | replaceComma | safe 
 },
 actions: {
   items: [
