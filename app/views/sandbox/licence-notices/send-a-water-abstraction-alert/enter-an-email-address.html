@@ -3,7 +3,7 @@
 <!--set page title-->
 {% set title = "Select an email address to include  in the alerts" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Enter an email address to include  in the alerts" %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span>" + title %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
