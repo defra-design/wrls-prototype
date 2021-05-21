@@ -31,8 +31,8 @@
 
 
 <!--if reduce include the amount to reduce to -->
-{% set conditionType = data['reduce-or-stop'] %}
-{% set maxVolume = data['maxVolumeLimit'] %}
+{% set conditionType = data['reduce-or-stop'] | default("stop") %}
+{% set maxVolume = data['maxVolumeLimit'] | default("no")%}
 {% if conditionType == "reduce" %}
 {% if maxVolume == "yes" %}
 {% set conditionType = conditionType + " with a maximum volume limit"%}
@@ -50,7 +50,7 @@ key: {
   text: "Threshold"
 },
 value: {
-  html: data['thresholdValue'] + data['thresholdUnits'] | units | safe
+  html: data['thresholdValue'] | default("180") + data['thresholdUnits'] | default("megaLitresPerDay") | units | safe
 },
 actions: {
   items: [
@@ -84,7 +84,7 @@ key: {
   text: "Licence number"
 },
 value: {
-  html: data['licenceList'] | replaceComma | striptags(true) | escape | nl2br
+  html: data['licenceList']  | replaceComma | striptags(true) | escape | nl2br | default("03/28/61/029")
 },
 actions: {
   items: [
@@ -101,7 +101,7 @@ key: {
   text: "Licence condition"
 },
 value: {
-  html: data['conditions'] | replaceComma | safe
+  html: data['conditions'] | default("The%20condition%20is%20not%20listed%20for%20this%20licence")  | replaceComma | safe  | default("The%20condition%20is%20not%20listed%20for%20this%20licence")
 },
 actions: {
   items: [
@@ -117,7 +117,7 @@ key: {
   text: "Abstraction period"
 },
 value: {
-  html: data['abstractionPeriod']
+  html: data['abstractionPeriod']  | default("1 April to 31 March")
 },
 actions: {
   items: [

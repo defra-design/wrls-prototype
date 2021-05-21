@@ -618,7 +618,7 @@ router.post('/tagging/link-conditions', function(req, res) {
     if (regex.test(req.session.data[condition])) {
 
 
-      condition = "The condition not listed for this licence"
+      condition = "The condition is not listed for this licence"
       linkedConditions.push(condition)
       req.session.data.conditions = linkedConditions.toString()
       res.redirect('enter-an-abstraction-period');
