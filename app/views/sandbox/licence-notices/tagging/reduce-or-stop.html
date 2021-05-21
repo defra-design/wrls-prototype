@@ -3,6 +3,7 @@
 <!--set page title-->
 {% set title = "Does the licence holder need to stop or reduce at this threshold? " %}
 
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -133,7 +134,7 @@ text: "l/s"
   name: "reduce-or-stop",
   fieldset: {
     legend: {
-      text: title,
+      text: qTitle|safe,
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }

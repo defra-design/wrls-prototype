@@ -1,7 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
+{% set licenceList = data['licenceList'].split(',') %}
 <!--set page title-->
-{% set title = "Select the full condition for this licence" %}},
+{% set title = "Select the full condition for licence " + licenceList %},
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -11,7 +13,6 @@
 
 <!--content block-->
 {% block service %}
-
 
 
 <div class="govuk-grid-row">
@@ -28,8 +29,10 @@
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset"  role="group">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l ">
+
       <h1 class="govuk-fieldset__heading">
-    Enter an abstraction period for this licence
+
+   {{qTitle|safe}}
     </h1>
     </legend>
 

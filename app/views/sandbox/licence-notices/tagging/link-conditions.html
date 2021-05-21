@@ -1,7 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
+{% set licenceList = data['licenceList'].split(',') %}
 <!--set page title-->
-{% set title = "Select the full condition for this licence" %}},
+{% set title = "Select the full condition for licence " + licenceList %}},
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -21,7 +23,7 @@
     <form  method="post" novalidate>
 
 
-{% set licenceList = data['licenceList'].split(',') %}
+
 
 {% for i in licenceList %}
 
@@ -33,7 +35,7 @@
   name: "conditions" + loop.index0,
   fieldset: {
     legend: {
-      text: title,
+      text: qTitle|safe,
       isPageHeading: false,
       classes: "govuk-fieldset__legend--l"
     }
