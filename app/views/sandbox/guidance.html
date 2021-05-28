@@ -1,0 +1,318 @@
+
+
+{% extends "layout.html" %}
+
+
+<link rel="stylesheet" href="https://www.gov.uk/assets/government-frontend/application-5ad21173921a3ef751201f18f47ebb60840ed9090ffc2abe07b855578e9ff9da.css">
+
+
+
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+
+
+
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+items: [
+  {
+    text: "Home",
+    href: "#"
+  },
+  {
+    text: "Environmental management",
+    href: "#"
+  }
+]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="gem-c-title govuk-!-margin-top-8 govuk-!-margin-bottom-8">
+    <span class="govuk-caption-xl gem-c-title__context">
+      Guidance
+    </span>
+  <h1 class="gem-c-title__text govuk-heading-l">
+    Manage your water abstraction or impoundment licence online
+  </h1>
+</div>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+  <p class="gem-c-lead-paragraph">Use this service to view and share your licence information and to submit abstraction returns.</p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="metadata-logo-wrapper">
+    <div class="govuk-grid-column-two-thirds metadata-column">
+      <div class="gem-c-metadata" data-module="gem-toggle">
+  <dl data-module="gem-track-click">
+      <dt class="gem-c-metadata__term">From:</dt>
+      <dd class="gem-c-metadata__definition">
+          <a class="govuk-link" href="/government/organisations/environment-agency">Environment Agency</a>
+
+      </dd>
+      <dt class="gem-c-metadata__term">Published:</dt>
+      <dd class="gem-c-metadata__definition">27 March 2018</dd>
+      <dt class="gem-c-metadata__term">Last updated:</dt>
+      <dd class="gem-c-metadata__definition">
+        1 November 2018,
+          <a href="#history" class="gem-c-metadata__definition-link" data-track-category="content-history" data-track-action="see-all-updates-link-clicked" data-track-label="history">
+            see all updates
+          </a>
+      </dd>
+  </dl>
+</div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <div class="app-c-important-metadata app-c-important-metadata--bottom-margin">
+    <dl data-module="gem-track-click">
+      <dt class="app-c-important-metadata__term">Applies to: </dt>
+      <dd class="app-c-important-metadata__definition">England</dd>
+    </dl>
+  </div>
+
+
+      <div id="contents" class="app-c-contents-list-with-body" data-module="sticky-element-container">
+      <div class="responsive-bottom-margin">
+          <nav class="gem-c-contents-list  gem-c-contents-list--no-underline " aria-label="Contents" role="navigation" data-module="gem-track-click">
+    <h2 class="gem-c-contents-list__title">
+      Contents
+</h2>
+    <ol class="gem-c-contents-list__list">
+        <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+          <a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 1" data-track-label="#submit-abstraction-returns" data-track-options="{&quot;dimension29&quot;:&quot;Submit abstraction returns&quot;}" href="#submit-abstraction-returns">Submit abstraction returns</a>
+
+        </li>
+        <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+          <a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 2" data-track-label="#deadlines-for-returns" data-track-options="{&quot;dimension29&quot;:&quot;Deadlines for returns&quot;}" href="#deadlines-for-returns">Deadlines for returns</a>
+
+        </li>
+        <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+          <a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 3" data-track-label="#your-paper-licence" data-track-options="{&quot;dimension29&quot;:&quot;Your paper licence&quot;}" href="#your-paper-licence">Your paper licence</a>
+
+        </li>
+        <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+          <a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 4" data-track-label="#improving-the-service" data-track-options="{&quot;dimension29&quot;:&quot;Improving the service&quot;}" href="#improving-the-service">Improving the service</a>
+
+        </li>
+    </ol>
+</nav>
+      </div>
+
+
+<div class="gem-c-print-link govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+    <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="print-link">Print this page</button>
+</div>
+
+
+<div class="gem-c-govspeak govuk-govspeak " data-module="govspeak">
+
+        <div class="govspeak">
+<p>You can manage your licence by creating an online account. Once you have an account you will be able to:</p>
+
+<ul>
+  <li>submit returns</li>
+  <li>view your licence information</li>
+  <li>give other people access to manage your licence and returns</li>
+</ul>
+
+<h2 id="submit-abstraction-returns">Submit abstraction returns</h2>
+
+<p>Most abstraction licences will ask you to submit a record of your abstraction (a return) to the Environment Agency. Even if you have not taken any water, you must submit a nil return if your licence states that you must report your water use.</p>
+
+<p>You can now do this online.</p>
+
+<div class="call-to-action">
+<p><a rel="external" href="https://manage-water-abstraction-impoundment-licence.service.gov.uk" class="govuk-link">Manage your licence and submit returns</a>.</p>
+</div>
+
+<h2 id="deadlines-for-returns">Deadlines for returns</h2>
+
+<p>Returns are due on 28 April and 28 November, depending on the terms of your licence.</p>
+
+<h2 id="your-paper-licence">Your paper licence</h2>
+
+<p>The information included in this service does not replace or affect the legal (paper) copy of the licence issued to you. The information must be used for reference only. You must refer to and comply with the licence issued to you as a paper copy when you make decisions about abstracting or impounding water.</p>
+
+<h2 id="improving-the-service">Improving the service</h2>
+
+<p>Find out how we are modernising the Water resources licensing service in the <a href="https://www.gov.uk/government/publications/water-abstraction-plan-2017/water-abstraction-plan-abstraction-licensing-service" class="govuk-link">Water abstraction plan: Abstraction licensing service</a>.</p>
+</div>
+
+</div>
+
+      <div class="responsive-bottom-margin">
+        <div class="app-c-published-dates app-c-published-dates--history" id="history" data-module="gem-toggle" lang="en">
+    Published 27 March 2018
+    <br>Last updated 1 November 2018
+      <a href="#full-history" class="app-c-published-dates__toggle govuk-link" data-controls="full-history" data-expanded="false" data-toggled-text="-&nbsp;hide all updates" role="button" aria-controls="full-history" aria-expanded="false">+&nbsp;show all updates</a>
+      <div class="app-c-published-dates__change-history js-hidden" id="full-history" aria-live="polite" role="region">
+        <ol>
+            <li class="app-c-published-dates__change-item">
+              <time class="app-c-published-dates__change-date timestamp" datetime="2018-11-01T11:27:22.000+00:00">1 November 2018</time>
+              <p class="app-c-published-dates__change-note">You can now submit abstraction returns online. If you usually submit returns via the Generic Operator Returns (GOR) online service, sign up to this new service.</p>
+            </li>
+            <li class="app-c-published-dates__change-item">
+              <time class="app-c-published-dates__change-date timestamp" datetime="2018-05-14T11:14:58.000+01:00">14 May 2018</time>
+              <p class="app-c-published-dates__change-note">Added section 'About this digital service'.</p>
+            </li>
+            <li class="app-c-published-dates__change-item">
+              <time class="app-c-published-dates__change-date timestamp" datetime="2018-03-27T09:30:00.000+01:00">27 March 2018</time>
+              <p class="app-c-published-dates__change-note">First published.</p>
+            </li>
+        </ol>
+      </div>
+</div>
+
+      </div>
+
+      <div data-sticky-element="" class="app-c-contents-list-with-body__link-wrapper sticky-element--enabled sticky-element--stuck-to-window sticky-element--hidden">
+        <div class="app-c-contents-list-with-body__link-container">
+          <a class="govuk-link app-c-back-to-top dont-print" href="#contents">
+    <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+    </svg>
+    Contents
+</a>
+
+        </div>
+      </div>
+  </div>
+
+<div class="gem-c-print-link govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+    <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="print-link">Print this page</button>
+</div>
+  </div>
+
+<div class="govuk-grid-column-one-third">
+
+<div class="gem-c-contextual-sidebar">
+
+
+  <div class="gem-c-related-navigation">
+
+      <h2 id="related-nav-related_items-f124848c" class="gem-c-related-navigation__main-heading" data-track-count="sidebarRelatedItemSection">
+        Related content
+      </h2>
+
+
+
+
+      <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-related_items-f124848c" data-module="gem-toggle">
+
+
+  <ul class="gem-c-related-navigation__link-list" data-module="gem-track-click">
+
+
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar  govuk-link gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.1 Related content" data-track-label="/guidance/change-a-water-abstraction-or-impoundment-licence" data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Change a water abstraction or impoundment licence&quot;}" href="/guidance/change-a-water-abstraction-or-impoundment-licence">Change a water abstraction or impoundment licence</a></li>
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar  govuk-link gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.2 Related content" data-track-label="/government/publications/scheme-of-abstraction-charges-2020-to-2021" data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Scheme of abstraction charges 2020 to 2021&quot;}" href="/government/publications/scheme-of-abstraction-charges-2020-to-2021">Scheme of abstraction charges 2020 to 2021</a></li>
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar  govuk-link gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.3 Related content" data-track-label="/guidance/measure-record-and-report-your-water-abstraction" data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Measure, record and report your water abstraction&quot;}" href="/guidance/measure-record-and-report-your-water-abstraction">Measure, record and report your water abstraction</a></li>
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar  govuk-link gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.4 Related content" data-track-label="/government/publications/wr2-application-to-make-minor-changes-to-a-water-abstraction-licence" data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Water abstraction: application to make minor changes to your licence&quot;}" href="/government/publications/wr2-application-to-make-minor-changes-to-a-water-abstraction-licence">Water abstraction: application to make minor changes to your licence</a></li>
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar govuk-link gem-c-related-navigation__section-link--inline  govuk-link gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.5 Related content" data-track-label="/government/publications/water-abstraction-application-for-a-water-resources-licence" data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Water abstraction: application for a water resources licence&quot;}" href="/government/publications/water-abstraction-application-for-a-water-resources-licence">Water abstraction: application for a water resources licence</a></li>
+
+  </ul>
+</nav>
+
+
+
+      <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-related_guides-f124848c" data-module="gem-toggle">
+
+    <h3 id="related-nav-related_guides-f124848c" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--sidebar" data-track-count="sidebarRelatedItemSection">Detailed guidance</h3>
+
+  <ul class="gem-c-related-navigation__link-list" data-module="gem-track-click">
+
+
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar" data-track-category="relatedLinkClicked" data-track-action="2.1 Detailed guidance" data-track-label="/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" data-track-options="{&quot;dimension28&quot;:&quot;4&quot;,&quot;dimension29&quot;:&quot;Apply for a water abstraction or impoundment licence&quot;}" href="/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence">Apply for a water abstraction or impoundment licence</a></li>
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar" data-track-category="relatedLinkClicked" data-track-action="2.2 Detailed guidance" data-track-label="/guidance/change-a-water-abstraction-or-impoundment-licence" data-track-options="{&quot;dimension28&quot;:&quot;4&quot;,&quot;dimension29&quot;:&quot;Change a water abstraction or impoundment licence&quot;}" href="/guidance/change-a-water-abstraction-or-impoundment-licence">Change a water abstraction or impoundment licence</a></li>
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar" data-track-category="relatedLinkClicked" data-track-action="2.3 Detailed guidance" data-track-label="/guidance/measure-record-and-report-your-water-abstraction" data-track-options="{&quot;dimension28&quot;:&quot;4&quot;,&quot;dimension29&quot;:&quot;Measure, record and report your water abstraction&quot;}" href="/guidance/measure-record-and-report-your-water-abstraction">Measure, record and report your water abstraction</a></li>
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--sidebar" data-track-category="relatedLinkClicked" data-track-action="2.4 Detailed guidance" data-track-label="/guidance/water-management-abstract-or-impound-water" data-track-options="{&quot;dimension28&quot;:&quot;4&quot;,&quot;dimension29&quot;:&quot;Water management: abstract or impound water&quot;}" href="/guidance/water-management-abstract-or-impound-water">Water management: abstract or impound water</a></li>
+
+  </ul>
+</nav>
+
+  </div>
+
+
+
+
+
+<div class="gem-c-contextual-sidebar__brexit-cta">
+  <h2 class="gem-c-contextual-sidebar__brexit-heading govuk-heading-s">Brexit</h2>
+  <p class="gem-c-contextual-sidebar__brexit-text govuk-body">
+    <a class="govuk-link" data-module="gem-track-click" data-track-category="relatedLinkClicked" data-track-action="1.0 Transition" data-track-label="/transition" data-track-dimension="Check what you need to do" data-track-dimension-index="29" lang="en" href="/transition">Check what you need to do</a>
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  <div class="gem-c-contextual-footer">
+
+  <div class="gem-c-related-navigation">
+
+
+
+
+
+      <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-topics-c8a1c4d2" data-module="gem-toggle">
+
+    <h2 id="related-nav-topics-c8a1c4d2" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--footer" data-track-count="footerRelatedItemSection">Explore the topic</h2>
+
+  <ul class="gem-c-related-navigation__link-list" data-module="gem-track-click">
+
+
+        <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link gem-c-related-navigation__section-link govuk-link gem-c-related-navigation__section-link--footer" data-track-category="relatedLinkClicked" data-track-action="1.1 Explore the topic" data-track-label="/topic/environmental-management/environmental-permits" data-track-options="{&quot;dimension28&quot;:&quot;1&quot;,&quot;dimension29&quot;:&quot;Environmental permits&quot;}" href="/topic/environmental-management/environmental-permits">Environmental permits</a></li>
+
+  </ul>
+</nav>
+
+  </div>
+
+  </div>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
