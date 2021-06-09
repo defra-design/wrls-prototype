@@ -2,66 +2,7 @@
   <div class="govuk-grid-column-full ">
 
     {% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
-    <span class="govuk-visually-hidden">Transactions for</span> Spray irrigation, base licence
-  </h4>
-  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
-    <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-      Charge element details
-      </span>
-    </summary>
-    <div class="govuk-details__text ">
-      <div class="govuk-grid-row ">
-        <div class="govuk-grid-column-full">
-
-        <!-- this needs converting to nunjucks-->
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Abstraction period
-              </div>
-              <div class="meta-data__value">
-              1 April to 31 March
-              </div>
-              <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Source
-              </div>
-              <div class="meta-data__value">
-                Unsupported
-              </div>
-              <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Season
-              </div>
-              <div class="meta-data__value">
-                All year
-              </div>
-              <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Loss
-              </div>
-              <div class="meta-data__value">
-                High
-              </div>
-              <div>
-          </section>
-
-
-        </div>
-      </div>
-
-    </div>
-  </details>' %}
+Transactions</h4>' %}
 
 
     {{ govukTable({
@@ -97,7 +38,83 @@
   rows: [
   [
     {
-      html: 'First Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020<br>Agreement Two-part tariff (S127)</p>'
+      html: 'First Part Spray Irrigation - Direct Charge FRENCHAY - Base licence<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020<br>Agreement Two-part tariff (S127)</p>
+      <details class="govuk-details govuk-!-margin-bottom-0 govuk-!-font-size-16" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+          Charge element details
+          </span>
+        </summary>
+        <div class="govuk-details__text ">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full meta-data_extra-width" >
+
+            <!-- this needs converting to nunjucks-->
+            <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-font-size-16 govuk-!-margin-bottom-0">
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key meta-data__label">
+                  Purpose
+                </dt>
+                <dd class="govuk-summary-list__value meta-data__value">
+                  Spray irrigation - direct
+                </dd>
+
+              </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label" >
+          Abstraction period
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          1 April to 31 March
+        </dd>
+
+      </div>
+
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Source
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          Tidal
+        </dd>
+
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Source
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          All year
+        </dd>
+
+      </div>
+
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Loss
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          High
+        </dd>
+
+      </div>
+
+
+</dl>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </details>'
     },
     {
       text: "365/365",
@@ -139,173 +156,104 @@
   ],
   [
   {
-    html: 'Compensation charge<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020</p>',
-    classes: "govuk-table__cell--thick-border"
+    html: 'Compensation charge<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020</p>'
   },
     {
       text: "365/365",
-      format: "numeric",
-      classes: "govuk-table__cell--thick-border"
+      format: "numeric"
     },
     {
       text: "3,000Ml",
-      format: "numeric",
-      classes: "govuk-table__cell--thick-border"
+      format: "numeric"
     },
     {
       text: "",
-      format: "numeric",
-      classes: "govuk-table__cell--thick-border"
+      format: "numeric"
     },
     {
         text: "£1,400.00",
-      format: "numeric",
-      classes: "govuk-table__cell--thick-border"
+      format: "numeric"
     }
   ],
-    [
-      {
-        text: "Credits total",
-        colspan: "3"
-      },
-      {
-        text: "£200.56",
-        format: "numeric"
-      },
-      {
-        text: ""
-      }
-    ],
-    [
-      {
-        text: "Debits total",
-        classes: "govuk-table__cell--thick-border",
-        colspan: "4"
-      },
-      {
-        text: "£2,100.50",
-        format: "numeric",
-        classes: "govuk-table__cell--thick-border"
-      }
-    ],
-    [
-      {
-        text: "Total",
-        classes: "govuk-table__cell--no-border ",
-        colspan: "4"
-      },
-      {
-        text: "£1,899.94",
-        format: "numeric",
-        classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
-      }
-    ]
-  ]
-}) }}
-
-
-  </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full govuk-!-margin-bottom-7">
-
-    {% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
-    <span class="govuk-visually-hidden">Transactions for</span> Trickle irrigation, time limited increase
-  </h4>
-  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
-    <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-      Charge element details
-      </span>
-    </summary>
-    <div class="govuk-details__text ">
-      <div class="govuk-grid-row ">
-        <div class="govuk-grid-column-full">
-
-        <!-- this needs converting to nunjucks-->
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Abstraction period
-              </div>
-              <div class="meta-data__value">
-              1 April to 31 October
-              </div>
-              <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Source
-              </div>
-              <div class="meta-data__value">
-                Unsupported
-              </div>
-              <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Season
-              </div>
-              <div class="meta-data__value">
-                Summer
-              </div>
-              <div>
-          </section>
-          <section class="meta-data__row">
-            <div class="meta-data__container">
-              <div class="meta-data__label">
-                Loss
-              </div>
-              <div class="meta-data__value">
-                Low
-              </div>
-              <div>
-          </section>
-
-
-        </div>
-      </div>
-
-    </div>
-  </details>' %}
-
-
-    {{ govukTable({
-  caption: caption |safe,
-  captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
-  firstCellIsHeader: true,
-  head: [
-    {
-      text: "Transaction detail",
-      classes: 'column--40'
-    },
-    {
-      text: "Billable days",
-      format: "numeric",
-      classes: 'column--15'
-    },
-    {
-      text: "Quantity",
-      format: "numeric",
-      classes: 'column--15'
-    },
-    {
-      text: "Credit",
-      format: "numeric",
-      classes: 'column--15'
-    },
-    {
-      text: "Debit",
-      format: "numeric",
-      classes: 'column--15'
-    }
-  ],
-  rows: [
   [
     {
-      html: 'Trickle Irrigation - Direct Charge FRENCHAY - time limited increase<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020<p>'
+      html: 'Trickle Irrigation - Direct Charge FRENCHAY - time limited increase<p class="govuk-body-s">Charge period 1 April 2019 to 31 March 2020<p>
+        <details class="govuk-details govuk-!-margin-bottom-0 govuk-!-font-size-16" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Charge element details
+            </span>
+          </summary>
+          <div class="govuk-details__text ">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full meta-data_extra-width" >
+
+              <!-- this needs converting to nunjucks-->
+              <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-font-size-16 govuk-!-margin-bottom-0">
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key meta-data__label">
+                    Purpose
+                  </dt>
+                  <dd class="govuk-summary-list__value meta-data__value">
+                    Tickle irrigation - direct
+                  </dd>
+
+                </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key meta-data__label" >
+            Abstraction period
+          </dt>
+          <dd class="govuk-summary-list__value meta-data__value">
+            1 April to 31 March
+          </dd>
+
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key meta-data__label">
+            Source
+          </dt>
+          <dd class="govuk-summary-list__value meta-data__value">
+            Unsupported
+          </dd>
+
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key meta-data__label">
+            Source
+          </dt>
+          <dd class="govuk-summary-list__value meta-data__value">
+            All year
+          </dd>
+
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key meta-data__label">
+            Loss
+          </dt>
+          <dd class="govuk-summary-list__value meta-data__value">
+            High
+          </dd>
+
+        </div>
+
+
+  </dl>
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </details>'
     },
     {
       text: "213/213",
@@ -342,7 +290,7 @@
         colspan: "3"
       },
       {
-        text: "",
+        text: "£200.56",
         format: "numeric"
       },
       {
@@ -356,7 +304,7 @@
         colspan: "4"
       },
       {
-        text: "£25.00",
+        text: "£2125.50",
         format: "numeric",
         classes: "govuk-table__cell--thick-border"
       }
@@ -368,13 +316,10 @@
         colspan: "4"
       },
       {
-        text: "£25.00",
+        text: "£1924.94",
         format: "numeric",
         classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
       }
     ]
   ]
 }) }}
-
-  </div>
-</div>
