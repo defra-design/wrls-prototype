@@ -51,6 +51,8 @@ module.exports = {
     "billRun": "",
     "status": "ready",
     "tptstatus": "review",
+    "tptSeason": "summer",
+    "numberofIssues": "3",
     "annualstatus": "ready",
     "agreement": "Two-part tariff (S127)",
     "agreementStart-day": "1",
@@ -1129,6 +1131,60 @@ module.exports = {
     "allLevelThresholdsMetresAboveOrdinanceDatum": [2.123],
     "waterAbstractionAlert": [],
     "selectedLicences": [],
+
+
+  //TPT Bill run
+
+   "issues":[{
+    "licence": "00/22/001/02",
+    "billingContact": "Irene Briton",
+    "elements": [{
+          "issue": "Incomplete returns",
+          "billableReturns": "100Ml",
+          "reportedReturns": "0Ml",
+        }],
+      },
+      {
+    "licence": "03/28/60/0032",
+    "billingContact": "Bottled Water Plc",
+    "elements": [{
+      "issue": "Over abstraction",
+      "billableReturns": "100Ml",
+      "reportedReturns": "0Ml",
+    }],
+      },{
+    "licence": "03/28/60/0035",
+    "billingContact": "Bottled Water Plc",
+    "elements": [{
+      "issue": "Received but not processed",
+      "billableReturns": "100Ml",
+      "reportedReturns": "0Ml",
+    }],
+      },
+    ],
+
+    "ready" :[
+     {
+       "licence": "11/22/32/02",
+       "billingContact": "D.B. Beecham-Smith",
+       "elements": [{
+         "issue": "Incomplete returns",
+         "billableReturns": "100Ml",
+         "reportedReturns": "0Ml",
+       }],
+     },
+       {
+         "licence": "03/28/60/0726",
+         "billingContact": "Robin Vithlhem-Smith",
+         "elements": [{
+           "issue": "Incomplete returns",
+           "billableReturns": "100Ml",
+           "reportedReturns": "0Ml",
+         }],
+       }],
+
+
+
 
   //Station data
 
