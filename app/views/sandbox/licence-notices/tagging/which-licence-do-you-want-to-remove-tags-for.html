@@ -22,18 +22,28 @@
 
     <form method="post" novalidate>
 
+
+
       {% set licences = []%}
+      {% set tagNumber = []%}
       {% set tags = data.stations[data.stationID]['tags'] %}
        {% for i in tags %}
        {% set licences = licences | push(i.licenceNumber) %}
+       {% if i.tagValues.length > 1 %}
+       {% set tagNumber = tagNumber | push("Multiple tags") %}
+       {% else %}
+       {% set tagNumber = tagNumber | push(i.tagValues[0].conditionType|capitalize + ' at ' + i.tagValues[0].thresholdValue + ' ' + i.tagValues[0].thresholdUnits|unitsWords) %}
+       {% endif %}
        {% endfor %}
-
 
 {% set selectItems = [] %}
       {% for item in licences %}
         {% set selectItems = selectItems | push({
           value: item,
-          text: item
+          text: item,
+          hint: {
+        text: tagNumber[loop.index0]
+      }
         }) %}
       {% endfor %}
 

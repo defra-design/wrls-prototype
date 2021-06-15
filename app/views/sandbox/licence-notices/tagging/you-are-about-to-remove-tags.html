@@ -13,8 +13,10 @@
 <!--content block-->
 {% block service %}
 
+{#
 {% set loopIndex = "" %}
 {% set tag = [] %}
+{% set tagNumber = data.selectedTags %}
  {% set tags = data.stations[data.stationID]['tags'] %}
  {% for i in tags %}
    {% if data['selectedLicence'] == i.licenceNumber %}
@@ -26,6 +28,25 @@
   {% endif %}
   {% endfor %}
 
+
+      {% endif %}
+#}
+
+{% set licences = []%}
+{% set tagNumber = data.selectedTags %}
+{% set tags = data.stations[data.stationID]['tags'] %}
+{% set tag = [] %}
+
+ {% for i in tags %}
+ {% if data['selectedLicence'] == i.licenceNumber %}
+
+{% for number in tagNumber %}
+ {% set tagValues = i.tagValues %}
+  {% set tag = tag + tagValues[number].conditionType |capitalize + " at " + tagValues[number].thresholdValue + " " + tagValues[number].thresholdUnits | unitsWords |safe + "<br>" %}
+{% endfor %}
+
+  {% endif %}
+  {% endfor %}
 
 
 <!-- page title -->

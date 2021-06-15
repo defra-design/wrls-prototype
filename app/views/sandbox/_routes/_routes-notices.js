@@ -815,6 +815,30 @@ router.get('/tagging/which-licence-do-you-want-to-remove-tags-for', function(req
 
 router.post('/tagging/which-licence-do-you-want-to-remove-tags-for', function(req, res) {
 
+ //get the selected licence
+ let selectedLicence = req.session.data['selectedLicence']
+ //get the station details
+ let stationID = req.session.data['stationID']
+ let tags = req.session.data.stations[stationID]['tags']
+ //find out if the licence has multiple tags or not, if it does have multiple tags redirect to the tag selection page.
+ for ([tagIndex, tag] of tags.entries()) {
+   if (selectedLicence === tag.licenceNumber) {
+   if (tag.tagValues.length > 1) {
+     res.redirect('select-the-tags-you-want-to-remove');
+   } else {
+     res.redirect('you-are-about-to-remove-tags');
+   }
+  }
+ };
+
+});
+
+router.get('/tagging/select-the-tags-you-want-to-remove', function(req, res) {
+req.session.data.back = req.headers.referer
+  res.render(folder + 'tagging/select-the-tags-you-want-to-remove');
+});
+
+router.post('/tagging/select-the-tags-you-want-to-remove', function(req, res) {
 res.redirect('you-are-about-to-remove-tags');
 });
 
@@ -832,20 +856,70 @@ router.post('/tagging/you-are-about-to-remove-tags', function(req, res) {
 
     let tags = req.session.data.stations[stationID].tags
 
-    console.log("something")
+
+
+
+
 
     for ([tagIndex, tag] of tags.entries()){
+
+
+
+
+      if( licence == tag.licenceNumber) {
+
+      //if the licence has multiple tags
+      if (tag.tagValues.length > 1) {
+
+
+
+        let tagValues = tag.tagValues
+
+
+        //get the selected tags
+        let selectedTags = req.session.data['selectedTags']
+
+        //for each selected tag
+        for ([selectedTagIndex, selectedTag] of selectedTags.entries()){
+
+        //set the tag value that you want to delete to the value of the selectedTag
+         let tagValueNumber = selectedTag - selectedTagIndex
+
+        
+
+        //remove that tag
+        let index = tagValueNumber;
+        if (index > -1) {
+          tagValues.splice(index, 1);
+        }
+
+        //if it is the last tag, remove all tags
+        if (tagValues.length == 0) {
+          let tags = req.session.data.stations[stationID].tags
+          let index = tagNumber;
+          if (index > -1) {
+            tags.splice(index, 1);
+          }
+        }
+      }
+        //just remove all tags
+    } else {
+
 
       if (licence == tag.licenceNumber) {
       tagNumber = tagIndex
 
+      console.log(tagNumber)
+
     }
-  }
 
     let index = tagNumber;
     if (index > -1) {
       tags.splice(index, 1);
     }
+ }
+ }
+}
 
 
   res.redirect('/sandbox/station?stationID=' + stationID);

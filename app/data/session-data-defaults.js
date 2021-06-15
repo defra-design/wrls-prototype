@@ -1107,7 +1107,7 @@ module.exports = {
     "flowThreshold": "45.5",
     "contactEmail": "something@somewhere.co.uk",
     "licenceList": "03/28/60/0032",
-
+    "selectedTags": [0],
 
 
     //Notification report
