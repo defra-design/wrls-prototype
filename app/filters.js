@@ -192,13 +192,13 @@ module.exports = function(env) {
     } else if (e == "litrespersecond") {
       return "litres per second"
     } else if (e == "metresAboveOrdinanceDatum") {
-      return "metres above ordinance datum"
+      return "metres above ordnance datum"
     } else if (e == "metresAboveStationDatum") {
       return "metres above station datum"
     } else if (e == "metres") {
       return "metres"
     } else {
-      return "mega litres per day"
+      return "megalitres per day"
     }
   }
 
