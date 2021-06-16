@@ -138,7 +138,7 @@
           classes: "govuk-table__cell--no-border"},
           {text: item.elements[0].issue|safe,
           classes: "govuk-table__cell--no-border"},
-          {html: '<a href="reviewLicence?' + item.elements[0].issue +'">
+          {html: '<a href="reviewLicence?licence=' + item.licence +'">
             Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
           </a>',
           classes: "govuk-table__cell--no-border"}
@@ -148,7 +148,7 @@
             {text: item.licence},
             {text: item.billingContact},
             {text: item.elements[0].issue|safe},
-            {html: '<a href="reviewLicence?' + item.elements[0].issue +'">
+            {html: '<a href="reviewLicence?licence=' + item.licence +'">
               Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
             </a>'}
             ]) %}
@@ -197,7 +197,7 @@
           classes: "govuk-table__cell--no-border"},
           {text: item.elements[0].issue|safe,
           classes: "govuk-table__cell--no-border"},
-          {html: '<a href="reviewLicence?' + item.elements[0].issue +'">
+          {html: '<a href="reviewLicence?licence=' + item.licence +'">
             Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
           </a>',
         classes: "govuk-table__cell--no-border"}
@@ -207,7 +207,7 @@
             {text: item.licence},
             {text: item.billingContact},
             {text: item.elements[0].issue|safe},
-            {html: '<a href="reviewLicence?' + item.elements[0].issue +'">
+            {html: '<a href="reviewLicence?licence=' + item.licence +'">
               Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
             </a>'}
             ]) %}

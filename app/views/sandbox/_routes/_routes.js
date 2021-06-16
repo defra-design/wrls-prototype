@@ -79,91 +79,14 @@ router.use('/customer', require('./_routes-customer'));
 router.use('/contact', require('./_routes-contact'));
 
 
-
 //----------------------------------------------------------------
+////BILL RUN ROUTES
+//CREATE BILL RUN
 
-///CREATE BILL RUN
-
-
-/// Bill run type
-router.get('/bill-runs/select-bill-run-type', function(req, res) {
-
-  req.session.data.back = req.headers.referer
-
-  res.render('sandbox/bill-runs/select-bill-run-type');
-
-});
-
-router.post('/bill-runs/select-bill-run-type', function(req, res) {
-
-res.redirect('select-the-region');
-
-});
+router.use('/bill-runs', require('./_routes-bill-runs'));
 
 
-//Region
-router.get('/bill-runs/select-the-region', function(req, res) {
 
-  req.session.data.back = req.headers.referer
-
-  res.render('sandbox/bill-runs/select-the-region');
-
-});
-
-router.post('/bill-runs/select-the-region', function(req, res) {
-
-
-      //Date
-      let today = new Date();
-      let dd = today.getDate();
-
-      let mm = today.getMonth();
-      let months = ["January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December "];
-      const yyyy = today.getFullYear();
-      if(dd<10)
-      {
-    dd=`0${dd}`;
-      }
-
-        if(mm<10)
-        {
-          mm=`0${mm}`;
-          }
-          let  monthName =  months[mm];
-        today = `${dd} ${monthName} ${yyyy}`;
-
-        //TPT tptSeason
-
-        let billRunType = req.session.data['billRunType']
-
-       if(req.session.data['billRunType'] === "two-part tariff"){
-         let billRunType = req.session.data['billRunType'] + req.session.data['tptSeason']
-       }
-
-
-      //add new bill run to the list
-      let date = today
-      let region = req.session.data['region']
-      let runType = billRunType
-      let bills = "5"
-      let value = "£7,460.00"
-      let status = "ready"
-
-      let newBillRun= {
-        date,
-        region,
-        runType,
-        bills,
-        value,
-        status
-      };
-
-      let billRuns= req.session.data['billRuns']
-      billRuns.unshift(newBillRun);
-
-res.redirect('../bill-runs');
-
-});
 
 
 module.exports = router
