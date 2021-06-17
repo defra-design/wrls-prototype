@@ -113,7 +113,26 @@
   </div>
 </div>
 
+<!--create the issues list, loop through the TpT bill run data and push those with issues to resolve in to a list-->
 
+{% set issuesList = [] %}
+{% set tptBillRun = data['tptBillRun'] %}
+
+    {% for item in tptBillRun %}
+    {% if item.ready == "no" %}
+        {% set issuesList = issuesList | push([
+          {text: item.licence},
+          {text: item.billingContact},
+          {text: item.elements[0].issue|safe},
+          {text: item.edited|safe|capitalize},
+          {html: '<a href="reviewLicence?licence=' + item.licence +'">
+            Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
+          </a>'}
+          ]) %}
+        {% endif %}
+    {% endfor %}
+
+{% if issuesList.length %}
 <section class="govuk-!-margin-bottom-9">
   {{ govukButton({
     text: "Cancel bill run",
@@ -125,41 +144,29 @@
 }) }}
 
 </section>
+{% else %}
+<section class="govuk-!-margin-bottom-9">
+  <p class="govuk-body ">You have resolved all returns data issues. Continue to generate bills.</p>
+  <div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    classes: "govuk-button--primary"
+  }) }}
+  {{ govukButton({
+    text: "Cancel bill run",
+    classes: "govuk-button--secondary"
+  }) }}
+  </div>
+</section>
+{% endif %}
 
-  {% set issuesList = [] %}
-  {% set issues = data['issues'] %}
 
-      {% for item in issues %}
-      {% if loop.last %}
-        {% set issuesList = issuesList | push([
-          {text: item.licence,
-          classes: "govuk-table__cell--no-border"},
-          {text: item.billingContact,
-          classes: "govuk-table__cell--no-border"},
-          {text: item.elements[0].issue|safe,
-          classes: "govuk-table__cell--no-border"},
-          {html: '<a href="reviewLicence?licence=' + item.licence +'">
-            Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
-          </a>',
-          classes: "govuk-table__cell--no-border"}
-          ]) %}
-          {% else %}
-          {% set issuesList = issuesList | push([
-            {text: item.licence},
-            {text: item.billingContact},
-            {text: item.elements[0].issue|safe},
-            {html: '<a href="reviewLicence?licence=' + item.licence +'">
-              Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
-            </a>'}
-            ]) %}
-          {% endif %}
-      {% endfor %}
 
 
   {% set issuesHtml %}
 
   {{ govukTable({
-    caption: data.issues.length|default ("3") + " licences have data issues",
+    caption: issuesList.length|default ("3") + " licences have data issues",
     captionClasses: "govuk-table__caption--l",
     firstCellIsHeader: false,
     head: [
@@ -171,6 +178,9 @@
       },
       {
         text: "Issue"
+      },
+      {
+        html: "Billable returns<br> edited"
       },
       {
         text: "Action"
@@ -183,30 +193,18 @@
 
   {% endset %}
 
+<!--create the ready list, loop through the bill run data and push those ready in to a list-->
 
   {% set readyList = [] %}
-  {% set ready = data['ready'] %}
 
-      {% for item in ready %}
 
-        {% if loop.last %}
-        {% set readyList = readyList | push([
-          {text: item.licence,
-          classes: "govuk-table__cell--no-border"},
-          {text: item.billingContact,
-          classes: "govuk-table__cell--no-border"},
-          {text: item.elements[0].issue|safe,
-          classes: "govuk-table__cell--no-border"},
-          {html: '<a href="reviewLicence?licence=' + item.licence +'">
-            Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
-          </a>',
-        classes: "govuk-table__cell--no-border"}
-          ]) %}
-          {% else %}
+  {% for item in tptBillRun %}
+  {% if item.ready == "yes" %}
           {% set readyList = readyList | push([
             {text: item.licence},
             {text: item.billingContact},
             {text: item.elements[0].issue|safe},
+            {text: item.edited|safe|capitalize},
             {html: '<a href="reviewLicence?licence=' + item.licence +'">
               Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
             </a>'}
@@ -218,7 +216,7 @@
   {% set readyHtml %}
 
   {{ govukTable({
-    caption: data.ready.length|default ("3") + " licences are ready for billing",
+    caption: readyList.length|default ("3") + " licences are ready for billing",
     captionClasses: "govuk-table__caption--l",
     firstCellIsHeader: false,
     head: [
@@ -230,6 +228,9 @@
       },
       {
         text: "Issue"
+      },
+      {
+        html: "Billable returns<br> edited"
       },
       {
         text: "Action"
@@ -245,14 +246,14 @@
     {{ govukTabs({
       items: [
         {
-          label: "Issues " + "("+ data.issues.length |default ("3") + ")",
+          label: "Issues " + "("+ issuesList.length |default ("3") + ")",
           id: "issues",
           panel: {
             html: issuesHtml
           }
-        },
+        } if issuesList.length,
         {
-          label: "Ready " + "("+  data.ready.length |default ("4") + ")",
+          label: "Ready " + "("+  readyList.length |default ("4") + ")",
           id: "ready",
           panel: {
             html: readyHtml

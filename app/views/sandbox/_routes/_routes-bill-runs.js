@@ -143,6 +143,39 @@ router.get('/two-part-tariff/set-the-returns-quantity', function(req, res) {
 
 router.post('/two-part-tariff/set-the-returns-quantity', function(req, res) {
 
+   //get the licence number of the issue that is being edited
+   let licenceNumber = req.session.data['licence']
+
+   //get the index of the element that is being edited (at time of writing this will always be 0)
+   let elementNumber  = req.session.data['element']
+
+   //get the new value for the returns billable quantity
+   let billableReturns = req.session.data['billable-returns-quantity']
+   if (billableReturns === "custom" ){
+      billableReturns = req.session.data['customQuantity']
+   }
+
+   //get the list of licences in the tptBillRun
+   let tptBillRun = req.session.data['tptBillRun']
+
+   //loop through the items in the tptBillRun
+   for (var [itemIndex, item] of tptBillRun.entries()) {
+   //find the matching licence
+   if (item.licence === licenceNumber){
+      //set the billable returns
+      item.elements[elementNumber].billableReturns = billableReturns
+      //set the edited flag for the element
+      item.elements[elementNumber].edited = "edited"
+      //set the element to ready
+      item.elements[elementNumber].ready= "yes"
+      //set the licence edited flag
+      item.edited = "yes"
+      //set the element to ready
+      item.ready= "yes"
+    }
+   }
+
+
     res.redirect('reviewLicence');
   });
 

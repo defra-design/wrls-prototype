@@ -34,7 +34,7 @@
 
 {{ govukBackLink({
       text: "Back",
-      href: "javascript:history.back()"
+      href: "review"
     }) }}
 
 {% endblock %}
@@ -103,8 +103,11 @@
     {% set billableReturns = "" %}
     {% set reportedReturns = "" %}
     {% set billingContact = "" %}
-    {% set issues = data['issues']%}
-    {% for i in issues %}
+    {% set edited = "" %}
+    {% set ready = "" %}
+    {% set elementNumber = "" %}
+    {% set tptBillRun = data['tptBillRun']%}
+    {% for i in tptBillRun %}
     {% if i.licence == data['licence'] %}
     {% set billingContact = i.billingContact %}
     {% set elements = i.elements %}
@@ -112,6 +115,9 @@
     {% set issue = element.issue %}
     {% set billableReturns = element.billableReturns %}
     {% set reportedReturns = element.reportedReturns %}
+    {% set edited = element.edited %}
+    {% set ready = element.ready %}
+    {% set elementNumber = loop.index0 %}
     {% endfor%}
     {% endif %}
     {% endfor %}
@@ -125,8 +131,9 @@
     {% endif %}
     {% endfor %}
 
-    {% for i in issues %}
+    {% for i in  tptBillRun %}
     {% if i.licence == data['licence'] %}
+    {% if ready == "no" %}
 
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-full ">
@@ -158,12 +165,12 @@
         text: "Billable returns"
       },
       value: {
-       html: billableReturns
+       html: billableReturns + 'Ml <div class="govuk-!-font-size-16">' + edited|capitalize + '</div>'
       },
       actions: {
         items: [
           {
-            href: "set-the-returns-quantity?purpose=" + data.elements[0]['purpose'] + "&description=" + data.elements[0]['description'] ,
+            href: "set-the-returns-quantity?purpose=" + data.elements[0]['purpose']  + "&description=" + data.elements[0]['description'] + "&element=" + elementNumber  + "&licence=" + data.licence,
             text: "Change",
             visuallyHiddenText: "billable returns"
           }
@@ -217,7 +224,7 @@
         text: "Charge period"
       },
       value: {
-        text: "1 Mach 2021 to 30 September 2021"
+        text: "1 March 2021 to 30 September 2021"
       }
     },
     {
@@ -267,40 +274,14 @@
 </div>
 
 {% endif %}
-{% endfor %}
-
-
-
-<!--get the elements that are ready for this licence-->
-{% set elements = [] %}
-{% set issue = "" %}
-{% set billableReturns = "" %}
-{% set reportedReturns = "" %}
-{% set billingContact = "" %}
-{% set ready = data['ready']%}
-{% for i in ready %}
-{% if i.licence == data['licence'] %}
-{% set billingContact = i.billingContact %}
-{% set elements = i.elements %}
-{% for element in elements %}
-{% set issue = element.issue %}
-{% set billableReturns = element.billableReturns %}
-{% set reportedReturns = element.reportedReturns %}
-{% endfor%}
 {% endif %}
 {% endfor %}
 
-<!-- get the billing account for this licence-->
-{% set billingAccountNumber = "" %}
-{% set billingAccounts = data['billingAccounts'] %}
-{% for i in billingAccounts %}
-{% if i.customer == billingContact %}
-{% set billingAccountNumber = i.number %}
-{% endif %}
-{% endfor %}
 
-{% for i in ready %}
+
+{% for i in  tptBillRun %}
 {% if i.licence == data['licence'] %}
+{% if ready == "yes" %}
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full ">
@@ -332,12 +313,12 @@ rows: [
     text: "Billable returns"
   },
   value: {
-   html: billableReturns
+   html: billableReturns + 'Ml <div class="govuk-!-font-size-16">' + edited|capitalize + '</div>'
   },
   actions: {
     items: [
       {
-        href: "#",
+        href: "set-the-returns-quantity?purpose=" + data.elements[0]['purpose']  + "&description=" + data.elements[0]['description'] + "&element=" + elementNumber  + "&licence=" + data.licence,
         text: "Change",
         visuallyHiddenText: "billable returns"
       }
@@ -391,7 +372,7 @@ rows: [
     text: "Charge period"
   },
   value: {
-    text: "1 Mach 2021 to 30 September 2021"
+    text: "1 March 2021 to 30 September 2021"
   }
 },
 {
@@ -439,7 +420,7 @@ rows: [
 
 </div>
 </div>
-
+{% endif %}
 {% endif %}
 {% endfor %}
 

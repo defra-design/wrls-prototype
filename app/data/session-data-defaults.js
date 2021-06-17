@@ -1135,51 +1135,69 @@ module.exports = {
 
   //TPT Bill run
 
-   "issues":[{
+   "tptBillRun":[{
     "licence": "00/22/001/02",
     "billingContact": "Irene Briton",
+    "ready": "no",
+    "edited": "",
     "elements": [{
           "issue": "Incomplete returns",
-          "billableReturns": "0Ml",
+          "billableReturns": "0",
           "reportedReturns": "0Ml",
+          "edited": "",
+          "ready": "no",
         }],
       },
       {
     "licence": "03/28/60/0032",
     "billingContact": "Bottled Water Plc",
+    "ready": "no",
+    "edited": "",
     "elements": [{
       "issue": "Over abstraction",
-      "billableReturns": "100Ml",
+      "billableReturns": "100",
       "reportedReturns": "0Ml",
-    }],
-      },{
+      "edited": "",
+      "ready": "no",
+          }],
+      },
+      {
     "licence": "03/28/60/0035",
     "billingContact": "Bottled Water Plc",
+    "ready": "no",
+    "edited": "",
     "elements": [{
       "issue": "Received but not processed",
-      "billableReturns": "100Ml",
+      "billableReturns": "100",
       "reportedReturns": "0Ml",
-    }],
+      "edited": "",
+      "ready": "no",
+        }],
       },
-    ],
-
-    "ready" :[
      {
        "licence": "11/22/32/02",
        "billingContact": "D.B. Beecham-Smith",
+       "ready": "yes",
+       "edited": "",
        "elements": [{
          "issue": "Incomplete returns",
-         "billableReturns": "100Ml",
+         "billableReturns": "100",
          "reportedReturns": "0Ml",
+         "edited": "",
+         "ready": "yes",
        }],
      },
        {
          "licence": "03/28/60/0726",
          "billingContact": "Robin Vithlhem-Smith",
+         "ready": "yes",
+         "edited": "",
          "elements": [{
            "issue": "Incomplete returns",
-           "billableReturns": "100Ml",
+           "billableReturns": "100",
            "reportedReturns": "0Ml",
+           "edited": "",
+           "ready": "yes",
          }],
        }],
 

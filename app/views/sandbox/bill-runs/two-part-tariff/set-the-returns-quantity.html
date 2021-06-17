@@ -61,19 +61,22 @@
           suffix: {
             text: "Ml"
           },
-          spellcheck: false
+          spellcheck: false,
+          hint: {
+            text: "Enter a number with no more than 6 decimal places. For example, 20.123456"
+          }
         }) }}
       {% endset -%}
 
       {% set insetText %}
       {{ govukInsetText({
-  text: "Charge period: 1 March 2019 to 31 August 2019"
+  text: "Charge period: 1 March 2021 to 30 September 2021"
 }) }}
       {% endset -%}
 
    {{ govukRadios({
      idPrefix: "billable-returns-quantity",
-     name: "contact",
+     name: "billable-returns-quantity",
      fieldset: {
        legend: {
          html: qtitle|safe + insetText,
@@ -83,7 +86,7 @@
      },
      items: [
        {
-         value: "100Ml",
+         value: "100",
          text: "Authorised 100Ml"
        },
        {
