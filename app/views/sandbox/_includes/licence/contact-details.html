@@ -72,7 +72,7 @@
 {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
 {% set loopNumber = loop.index0 %}
 
-{% set caption = 'Contact details<p class="govuk-body"><a class="govuk-link" href="customer?customerID=' + loop.index0 + '#contacts">View customer contact details</a></p>' %}
+{% set caption = 'Contact details<p class="govuk-body"><a class="govuk-link" href="customer?customerID=' + loop.index0 + '#contacts">Go to customer contacts</a></p>' %}
 {% endif %}
 {% endfor %}
 
@@ -91,7 +91,7 @@
       text: "Communication type"
     },
     {
-      text: "Contact details"
+      text: "Send to"
     }
   ],
   rows: contactList
