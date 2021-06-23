@@ -1,0 +1,98 @@
+{% set contacts = data['contacts']%}
+{% set addresses = data['addresses']%}
+
+{#
+{{[data.licences[data.ID].holder]}}
+
+{{contacts[0].customers[0].customer}}
+
+
+{{contacts[0]|dump}}
+#}
+
+
+
+
+{% set contactList = [] %}
+
+
+
+{% for i in contacts %}
+{% set contactCustomers = i['customers'] %}
+{% for contactCustomer in contactCustomers %}
+{% if [data.licences[data.ID].holder] == contactCustomer.customer %}
+
+
+{% set customerAddress = [] %}
+<!--getting the address data-->
+{% set addresses = data['addresses'] %}
+{% for i in addresses %}
+{% set loopNumber = loop.index0 %}
+{% set addressCustomers = i['customers'] %}
+{% for i in addressCustomers %}
+{% if i.customer == data.customers[data.customerID]['name'] %}
+
+{% set customerAddress %}
+{{[data.addresses[loopNumber].address1]}}
+{{[data.addresses[loopNumber].city]}}
+{{[data.addresses[loopNumber].postcode]}}
+{% endset %}
+
+{% endif %}
+{% endfor %}
+  {% endfor %}
+
+{% if i.email.length %}
+
+{% set contactList = contactList | push([
+  {text: i.name},
+  {text: contactCustomer.notices| dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+  {text: i.email}
+]) %}
+
+{% else %}
+
+{% set contactList = contactList | push([
+  {text: i.name},
+  {text: contactCustomer.notices| dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+  {text: customerAddress | striptags(true)| nl2br |safe }
+]) %}
+
+
+{% endif %}
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+<!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
+{% set loopNumber = "" %}
+{% set caption = "" %}
+{% for i in data['customers'] %}
+{% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
+{% set loopNumber = loop.index0 %}
+
+{% set caption = 'Contact details<p class="govuk-body"><a class="govuk-link" href="customer?customerID=' + loop.index0 + '#contacts">View customer contact details</a></p>' %}
+{% endif %}
+{% endfor %}
+
+
+
+
+{{ govukTable({
+  caption: caption|safe,
+  captionClasses: "govuk-table__caption--l",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Name"
+    },
+    {
+      text: "Communication type"
+    },
+    {
+      text: "Contact details"
+    }
+  ],
+  rows: contactList
+}) }}

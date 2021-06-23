@@ -17,7 +17,6 @@
     </dt>
     <dd class="govuk-summary-list__value">
       {{[data.licences[data.ID].holder]}}
-      <br><a class="govuk-link" href="licence/contact-details">View licence contact details</a>
 
      <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
      {% set loopNumber = "" %}
@@ -27,7 +26,7 @@
      {% endif %}
      {% endfor %}
 
-      <br><a class="govuk-link" href="customer?customerID={{loopNumber}}">View customer contact details</a>
+      <br><a class="govuk-link" href="customer?customerID={{loopNumber}}">View customer</a>
     </dd>
 
   </div>

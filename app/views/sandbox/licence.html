@@ -49,6 +49,11 @@
       </a>
     </li>
     <li class="govuk-tabs__list-item" tabindex="0">
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#contact-details">
+        Contact details
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#returns">
         Returns
       </a>
@@ -87,7 +92,16 @@
 
   </section>
 
+
   <!-- tab 2 -->
+  <section class="govuk-tabs__panel" id="contact-details">
+
+    <!--Licence summary -->
+    {% include "sandbox/_includes/licence/contact-details.html" %}
+
+  </section>
+
+  <!-- tab 3 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
 
     <h2 class="govuk-heading-l">
@@ -102,7 +116,7 @@
 {% endif %}
   </section>
 
-  <!-- tab 3 -->
+  <!-- tab 4 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
 
 
@@ -115,7 +129,7 @@
   <!--check to see if there is any charge information set up-->
   {% if chargeVersions.length  %}
   <!--if so display the table-->
-  <!-- tab 4 -->
+  <!-- tab 5 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="bills">
 
     <section>
@@ -129,7 +143,7 @@
 
   {% endif %}
 
-  <!-- tab 5 -->
+  <!-- tab 6 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="charge">
 
 

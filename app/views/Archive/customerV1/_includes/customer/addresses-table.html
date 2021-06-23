@@ -1,0 +1,51 @@
+
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-heading-l">Addresses</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Building and street</th>
+      <th scope="col" class="govuk-table__header">Town or city</th>
+      <th scope="col" class="govuk-table__header">Postcode</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+<!--getting the address data-->
+{% set addresses = data['addresses'] %}
+{% for i in addresses %}
+{% set loopNumber = loop.index0 %}
+{% set addressCustomers = i['customers'] %}
+{% for i in addressCustomers %}
+{% if i.customer == data.customers[data.customerID]['name'] %}
+
+
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">{{[data.addresses[loopNumber].address1]}}</td>
+    <td class="govuk-table__cell">{{[data.addresses[loopNumber].city]}}</td>
+    <td class="govuk-table__cell">{{[data.addresses[loopNumber].postcode]}}</td>
+  <!--  <td class="govuk-table__cell">
+      {% if [data.licences[loopNumber].expired] == "true" %}
+      <strong class="table__status table__status--expired">
+        <span>Expired</span><br>
+        31 January 2020
+      </strong>
+      {% else %}
+      {{[data.licences[loopNumber].endDate]}}
+      {% endif %}
+    </td> -->
+  </tr>
+
+  {% endif %}
+  {% endfor %}
+    {% endfor %}
+
+
+
+  </tbody>
+</table>

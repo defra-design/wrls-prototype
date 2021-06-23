@@ -1,0 +1,76 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-heading-l">Contacts</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Email address</th>
+      <th scope="col" class="govuk-table__header">Role</th>
+      <th scope="col" class="govuk-table__header">Notices</th>
+      <th scope="col" class="govuk-table__header">Action</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+    <!--set the customer page we are on-->
+    {% set customer = data.customers[data.customerID].name %}
+
+<!--getting the contacts data-->
+{% set contacts = data['contacts'] %}
+
+<!--loop through each contact-->
+{% for contact in contacts %}
+<!--set the contact ID -->
+{% set loopNumber = loop.index0 %}
+<!--get the customers for each contact-->
+{% set contactCustomers = data.contacts[loopNumber]['customers'] %}
+<!--loop through each customers contacts-->
+{% for contactCustomer in contactCustomers %}
+<!--if the customer name for the contact matches the customer page we are on set the customer index number-->
+{% if customer == contactCustomer['customer'] %}
+
+{% set index = loop.index0 %}
+
+
+
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
+    <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
+    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
+    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br  }}</td>
+    <td class="govuk-table__cell">
+      <ul class="govuk-summary-list__actions-list">
+                        <li class="govuk-summary-list__actions-list-item">
+      <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View<span class="govuk-visually-hidden"> contact information</span></a></li><li class="govuk-summary-list__actions-list-item">
+      <a href="customer/manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contacts notices</span></a>
+    </li>
+
+</ul>
+    </td>
+
+
+  <!--  <td class="govuk-table__cell">
+      {% if [data.licences[loopNumber].expired] == "true" %}
+      <strong class="table__status table__status--expired">
+        <span>Expired</span><br>
+        31 January 2020
+      </strong>
+      {% else %}
+      {{[data.licences[loopNumber].endDate]}}
+      {% endif %}
+    </td> -->
+  </tr>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+
+
+
+
+  </tbody>
+</table>
