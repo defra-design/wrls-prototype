@@ -2,7 +2,7 @@
 
 {% set licenceList = data['licenceList'].split(',') %}
 <!--set page title-->
-{% set title = "Enter an abstraction period for licence  " + licenceList %},
+{% set title = "Enter the abstraction period for licence  " + licenceList %},
 {% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
 
 {% block pageTitle %}
