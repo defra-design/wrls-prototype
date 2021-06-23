@@ -1,0 +1,48 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Contact set up" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Contact set up" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+<!--no back button-->
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukPanel({
+      titleText: "Contact set up",
+      html: 'You set up ' + data['fullName'] + ' as a contact for ' + [data.customers[data.customerID]['name']]
+    }) }}
+
+    <p class="govuk-body">
+      <a class="govuk-link" href="../../customer#contacts">
+        Return to contacts
+      </a>
+    </p>
+
+    <p class="govuk-body">or</p>
+
+    <p class="govuk-body"> <a class="govuk-link" href="../../customer/manage-contact?contactID={{data['contactID']}}&customerID=0">Set up this contact to get water abstraction alerts</a></p>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

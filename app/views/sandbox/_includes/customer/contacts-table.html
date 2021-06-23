@@ -10,8 +10,9 @@
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Name</th>
       <th scope="col" class="govuk-table__header">Email address</th>
-      <th scope="col" class="govuk-table__header">Role</th>
-      <th scope="col" class="govuk-table__header">Notices</th>
+  <!--    <th scope="col" class="govuk-table__header">Role</th>
+      <th scope="col" class="govuk-table__header">Notices</th> -->
+      <th scope="col" class="govuk-table__header">Water abstraction alerts</th>
       <th scope="col" class="govuk-table__header">Action</th>
     </tr>
   </thead>
@@ -41,12 +42,16 @@
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
-    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
-    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br  }}</td>
+
+  <!--  <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
+    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br  }}</td>-->
+    <td class="govuk-table__cell">{% if "Water abstraction alerts" in data.contacts[loopNumber].customers[index]['notices'] %}
+    Yes
+    {% endif %}</td>
     <td class="govuk-table__cell">
       <ul class="govuk-summary-list__actions-list">
-                        <li class="govuk-summary-list__actions-list-item">
-      <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View<span class="govuk-visually-hidden"> contact information</span></a></li><li class="govuk-summary-list__actions-list-item">
+                      <!--    <li class="govuk-summary-list__actions-list-item">
+    <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View<span class="govuk-visually-hidden"> contact information</span></a></li>--><li class="govuk-summary-list__actions-list-item">
       <a href="customer/manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contacts notices</span></a>
     </li>
 

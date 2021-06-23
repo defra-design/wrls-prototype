@@ -41,21 +41,21 @@
         Licences
       </a>
     </li>
-    <li class="govuk-tabs__list-item" tabindex="0">
+  <!--  <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#billing-accounts">
         Billing accounts
       </a>
-    </li>
+    </li>-->
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#contacts">
         Contacts
       </a>
     </li>
-    <li class="govuk-tabs__list-item" tabindex="0">
+  <!--  <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#returns">
         Addresses
       </a>
-    </li>
+    </li> -->
   </ul>
 
   <!-- tab 1 -->
@@ -67,15 +67,15 @@
     {% include "sandbox/_includes/customer/licences-table.html" %}
 
 
-  </section>
+ </section>
 
-  <!-- tab 2 -->
+<!--    tab 2
   <section class="govuk-tabs__panel" id="billing-accounts">
 
-    <!-- billing accounts table -->
-    {% include "sandbox/_includes/customer/billing-accounts-table.html" %}
+   billing accounts table
+  {#  {% include "sandbox/_includes/customer/billing-accounts-table.html" %} #}
 
-  </section>
+  </section> -->
 
   <!-- tab 3 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contacts">
@@ -87,20 +87,20 @@
 
     <!--add a contact-->
     {{ govukButton({
-    text: "Add a contact",
-    href: "customer/add/which-contact-details-do-you-want-to-add?contactID="
+    text: "Set up a new contact",
+    href: "customer/add/select-a-contact-type?contactID="
     }) }}
 
 
-  </section>
+   </section>
 
-  <!-- tab 4 -->
+<!--  tab 4
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
 
-    <!-- contacts table -->
-    {% include "sandbox/_includes/customer/addresses-table.html" %}
+    contacts table
+  {#  {% include "sandbox/_includes/customer/addresses-table.html" %} #}
 
-  </section>
+  </section>-->
 
 </div>
 

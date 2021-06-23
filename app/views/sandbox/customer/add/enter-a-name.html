@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = [data.customers[data.customerID]['name']] + " - Add more details to " + [data['fullName']] + "'s name" %}
+{% set title = [data.customers[data.customerID]['name']] + " - Enter a name" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Add more details to " + [data['fullName']] + "'s name" %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter a name" %}
 
 
 
@@ -36,9 +36,18 @@
         label: {
           text: "Title (optional)"
         },
-        classes: "govuk-input--width-20",
+        classes: "govuk-input--width-5",
         id: "title",
         name: "title"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "First name"
+        },
+        classes: "govuk-input--width-20",
+        id: "first-name",
+        name: "first-name"
       }) }}
 
       {{ govukInput({
@@ -48,6 +57,15 @@
         classes: "govuk-input--width-5",
         id: "middleInitials",
         name: "middleInitials"
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Last name"
+        },
+        classes: "govuk-input--width-20",
+        id: "last-name",
+        name: "last-name"
       }) }}
 
       {{ govukInput({

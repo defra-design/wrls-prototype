@@ -71,12 +71,13 @@ router.use('/licence-notices', require('./_routes-notices'));
 //ADD A CONTACT FOR A CUSTOMER
 router.use('/customer', require('./_routes-customer'));
 
-//----------------------------------------------------------------
+
+//---------------------ARCHIVED-------------------------------------------
 ////CONTACT ROUTES
 //REMOVE CUSTOMER FROM A CONTACT
 //CHANGE NAME
 //CHANGE EMAIL ADDRESS
-router.use('/contact', require('./_routes-contact'));
+//router.use('/contact', require('./_routes-contact'));
 
 
 //----------------------------------------------------------------

@@ -1,0 +1,51 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Enter an email address for " + [data['fullName']] %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter an email address for " + [data['fullName']] %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+      {{ govukInput({
+      id: "emailDetails",
+      name: "emailDetails",
+      type: "email",
+      value: [data.contacts[data.contactID].email],
+      spellcheck: false,
+      classes: "govuk-input--width-20",
+      label: {
+        text: qTitle|safe,
+        isPageHeading: true,
+        classes: "govuk-label--l"
+      }
+      }) }}
+
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

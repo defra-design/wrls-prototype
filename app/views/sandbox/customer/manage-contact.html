@@ -7,7 +7,7 @@
 {% set titleName = [data.contacts[data.contactID]['email']] %}
 {% endif %}
 <!--set page title-->
-{% set title = "Manage " + titleName %}
+{% set title = "Manage contact settings for " + titleName %}
 
 
 
@@ -20,146 +20,96 @@
 {% block service %}
 
 <!-- page title -->
-<!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">{{data.customers[data.customerID]['name']}}</span>
       {{title | safe}}
     </h1>
-  </div>
+</div>
 </div>
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
-    <h2 class="govuk-heading-m">Current role</h2>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <!--set notices vars global scope-->
-      {% set renewals = false %}
-      {% set returns = false %}
-      {% set waa = false %}
-      {% set LH = false %}
-
-      <!--array of contacts customers-->
-      {% set contactCustomers = data['contacts'][data.contactID].customers %}
-      <!-- selected customer-->
-      {% set selectedCustomer = data.customers[data.customerID].name %}
-      <!--loop through customers for contact and match the selected customer name-->
-      {% for customer in contactCustomers %}
-      {% if customer.customer == selectedCustomer %}
-
-      <!--split roles for this customer in to a bullet list-->
-      {% set role = [customer['role']].toString().split(',')  %}
-
-      {% for i in role %}
-      <li>{{i}}</li>
-      {% if i == "Licence holder" %}
-      {% set LH = true %}
-      {% endif %}
-      {% endfor %}
-
-      <!-- check for notices -->
-      <!-- set var to true if alert is there-->
-      {% if customer.notices.includes("Renewals") %}
-      {% set renewals = true %}
-      {% endif %}
-      {% if customer.notices.includes("Returns") %}
-      {% set returns = true %}
-      {% endif %}
-      {% if customer.notices.includes("Water abstraction alerts") %}
-      {% set waa = true %}
-      {% endif %}
-
-      {% endif %}
-      {% endfor %}
-    </ul>
-
-  </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    {% if LH == true %}
-
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Notices</h2>
-    <p class="govuk-body">Licence holders will always receive all notices</p>
-    <ul class="govuk-list govuk-list--bullet">
-      {% if renewals == true %}
-      <li>Renewals</li>
-      {% endif %}
-      {% if returns == true %}
-      <li>Returns</li>
-      {% endif %}
-      {% if waa == true %}
-      <li>Water abstraction alerts</li>
-      {% endif %}
-      </ul>
-
-      <p class="govuk-body"><a href="../customer?customerID={{data.customerID}}#contacts" class="govuk-link">Return to customer</a></p>
-
+    <!--set the action text to be set if there isn't an email address already there-->
+    {% if [data.contacts[data.contactID].email] == "" %}
+    {% set action = "Set" %}
     {% else %}
+    {% set action = "Change" %}
+    {% endif %}
+
+
+      {{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Something"
+      },
+      value: {
+        text: "Site contact"
+      }
+    },
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text: [data.contacts[data.contactID]['email']]
+      },
+      actions: {
+        items: [
+          {
+            href: "change-email-address",
+            text: action,
+            visuallyHiddenText: "email address"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<p class="govuk-body"><a href="../customer?customerID={{data.customerID}}#contacts" class="govuk-link">Return to customer</a></p>
+
+</div>
+</div>
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
 
     <form method="post" novalidate>
 
-      {% set emailHtml %}
 
-      {{ govukInput({
-       id: "emailDetails",
-       name: "emailDetails",
-       type: "email",
-       value: [data.contacts[data.contactID].email],
-       spellcheck: false,
-       classes: "govuk-input--width-20",
-       label: {
-         text: "Email address"
-       }
+     {{ govukRadios({
+       idPrefix: "notices",
+       name: "notices",
+       fieldset: {
+         legend: {
+           text: "Will " + [data.contacts[data.contactID]['name']] + " get water abstraction alerts?",
+           isPageHeading: false,
+           classes: "govuk-fieldset__legend--m"
+         }
+       },
+       items: [
+         {
+           value: "Water abstraction alerts",
+           text: "Yes",
+           checked: checked("notices", "Water abstraction alerts")
+         },
+         {
+           value: "",
+           text: "No",
+           checked: checked("notices", "")
+         }
+       ]
      }) }}
-      {% endset -%}
-
-
-      {{ govukCheckboxes({
-   idPrefix: "notices",
-   name: "notices",
-   fieldset: {
-     legend: {
-       text: "Set which notices they recieve",
-       isPageHeading: true,
-       classes: "govuk-fieldset__legend--l"
-     }
-   },
-   hint: {
-     text: "Select all that apply."
-   },
-   items: [
-     {
-       value: "Renewals",
-       text: "Renewals",
-       checked: renewals,
-       conditional: {
-         html: emailHtml
-       } if data.contacts[data.contactID]['email'] == ""
-     },
-     {
-       value: "Returns",
-       text: "Returns",
-       checked: returns,
-       conditional: {
-         html: emailHtml
-       } if data.contacts[data.contactID]['email'] == ""
-     },
-     {
-       value: "Water abstraction alerts",
-       text: "Water abstraction alerts",
-       checked: waa,
-       conditional: {
-         html: emailHtml
-       } if data.contacts[data.contactID]['email'] == ""
-     }
-   ]
- }) }}
-
 
 
       {{ govukButton({
@@ -168,7 +118,6 @@
 
     </form>
 
-    {% endif %}
 
   </div>
 </div>

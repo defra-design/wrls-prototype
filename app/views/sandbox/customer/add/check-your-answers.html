@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = [data.customers[data.customerID]['name']] + " - Check your answers" %}
+{% set title = [data.customers[data.customerID]['name']] + " - Check contact details" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Check your answers" %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Check contact details" %}
 
 
 
@@ -16,7 +16,7 @@
 
 <!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <form method="post" novalidate>
 
@@ -24,8 +24,31 @@
 
      <h2 class="govuk-heading-m">Contact details</h2>
 
+    {% if data['contactType'] == "person" %}
+    {% set nameLink = "enter-a-name"%}
+    {% else %}
+    {% set  nameLink = "select-a-contact-type"%}
+    {% endif %}
+
       {{ govukSummaryList({
     rows: [
+    {
+      key: {
+        text: "Type"
+      },
+      value: {
+        text: data['contactType']|capitalize
+      },
+      actions: {
+        items: [
+          {
+            href: "select-a-contact-type",
+            text: "Change",
+            visuallyHiddenText: "contact type"
+          }
+        ]
+      }
+    },
       {
         key: {
           text: "Name"
@@ -36,13 +59,13 @@
         actions: {
           items: [
             {
-              href: "which-contact-details-do-you-want-to-add",
+              href: nameLink,
               text: "Change",
               visuallyHiddenText: "name"
             }
           ]
         }
-      } if data['contact-details'].includes("name"),
+      },
       {
         key: {
           text: "Email address"
@@ -53,47 +76,13 @@
         actions: {
           items: [
             {
-              href: "which-contact-details-do-you-want-to-add",
+              href: "enter-an-email-address",
               text: "Change",
               visuallyHiddenText: "email address"
             }
           ]
         }
-      } if data['contact-details'].includes("email"),
-      {
-        key: {
-          text: "Phone number"
-        },
-        value: {
-          text: data['phoneDetails']
-        },
-        actions: {
-          items: [
-            {
-              href: "which-contact-details-do-you-want-to-add",
-              text: "Change",
-              visuallyHiddenText: "phone number"
-            }
-          ]
-        }
-      } if data['contact-details'].includes("phone"),
-      {
-        key: {
-          text: "Notices"
-        },
-        value: {
-          text: data['notices' ] | dump | stripSqBrackets | stripQuotes | replaceComma | striptags(true) | escape | nl2br
-        },
-        actions: {
-          items: [
-            {
-              href: "select-any-email-notices",
-              text: "Change",
-              visuallyHiddenText: "notices"
-            }
-          ]
-        }
-      } if data['notices'].includes("Renewals") or data['notices'].includes("Returns") or data['notices'].includes("Water abstraction alerts")
+      }
     ]
   }) }}
 

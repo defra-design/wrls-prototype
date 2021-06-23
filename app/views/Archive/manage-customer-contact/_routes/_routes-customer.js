@@ -188,10 +188,18 @@ router.post('/manage-contact', function(req, res) {
   //selected customer to manage
   let selectedCustomer = req.session.data.customers[req.session.data.customerID]['name']
 
+  //add email address
+  let email = req.session.data['emailDetails']
+  for (i of email){
+  let reg = new RegExp("@");
+    if (reg.test(i)) {
+      req.session.data.contacts[req.session.data.contactID].email = i
+    }
+  }
 
-  console.log(req.session.data.contacts[req.session.data.contactID]['email'])
 
 
+  console.log(req.session.data.customers[req.session.data.customerID].email)
   //loop through customers for contact and match the selected customer name if it matches update the notices
   for (var [customerIndex, contactCustomer] of contactCustomers.entries()) {
 
@@ -209,11 +217,7 @@ router.post('/manage-contact', function(req, res) {
     }
   }
 
-  if (req.session.data.contacts[req.session.data.contactID]['email'].length) {
   res.redirect('../customer#contacts');
-  } else {
-    res.redirect('change-email-address'); 
-  }
 
 });
 
