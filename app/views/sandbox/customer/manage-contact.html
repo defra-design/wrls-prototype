@@ -32,9 +32,9 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-    <!--set the action text to be set if there isn't an email address already there-->
+    <!--set the action text to be add if there isn't an email address already there-->
     {% if [data.contacts[data.contactID].email] == "" %}
-    {% set action = "Set" %}
+    {% set action = "Add" %}
     {% else %}
     {% set action = "Change" %}
     {% endif %}
