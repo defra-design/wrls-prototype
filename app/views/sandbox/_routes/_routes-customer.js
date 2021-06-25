@@ -119,10 +119,7 @@ router.post('/add/check-your-answers', function(req, res) {
   let department = req.session.data['department']
   let email = req.session.data['emailDetails']
   let role = "Contact"
-  let notices = req.session.data['notices']
-  if (notices === "true") {
-    notices = ""
-  }
+  let notices = [{}]
   let customer = req.session.data.customers[req.session.data.customerID]['name']
   let phone = req.session.data['phoneDetails']
 
@@ -181,7 +178,15 @@ router.get('/manage-contact', function(req, res) {
 });
 
 
-router.post('/manage-contact', function(req, res) {
+router.get('/notices', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + 'notices');
+
+});
+
+router.post('/notices', function(req, res) {
 
   //contact customers
   let contactCustomers = req.session.data.contacts[req.session.data.contactID]['customers']
@@ -197,12 +202,49 @@ router.post('/manage-contact', function(req, res) {
 
     if (contactCustomer.customer == selectedCustomer) {
 
-      //if notices is blank empty the array
+      /*if notices is blank empty the array
       if (req.session.data['notices'] == undefined) {
         req.session.data.contacts[req.session.data.contactID].customers[customerIndex].notices = ""
       } else {
         req.session.data.contacts[req.session.data.contactID].customers[customerIndex].notices = req.session.data['notices']
+      }*/
+
+    //check whether the contact is already receiving WAA by post, if so update to receive them by email
+    let existingNotices = []
+     let contactNotices = req.session.data.contacts[req.session.data.contactID].customers[customerIndex]['notices']
+  for (var [existingNoticeIndex, existingNotice] of contactNotices.entries()) {
+     existingNotices.push(existingNotice.type)
+  }
+
+
+     console.log(existingNotices)
+     if (existingNotices.includes('Water abstraction alerts')) {
+     for (var [contactNoticeIndex, contactNotice] of contactNotices.entries()) {
+       if (contactNotice.type == "Water abstraction alerts"){
+      contactNotice.sendBy = "email"
       }
+    }
+    }
+
+    else
+    {
+     //if they aren't receiving them by post, add the alert type to their notice list
+
+     let type = "Water abstraction alerts"
+     let sendBy = "email"
+     let addressID = ""
+
+     let newNotice = {
+       type,
+       sendBy,
+       addressID
+     };
+
+     contactNotices.push(newNotice);
+
+    }
+
+
 
 
 
@@ -210,9 +252,9 @@ router.post('/manage-contact', function(req, res) {
   }
 
   if (req.session.data.contacts[req.session.data.contactID]['email'].length) {
-  res.redirect('../customer#contacts');
+  res.redirect('manage-contact');
   } else {
-    res.redirect('change-email-address'); 
+    res.redirect('change-email-address');
   }
 
 });

@@ -11,8 +11,8 @@
       <th scope="col" class="govuk-table__header">Name</th>
       <th scope="col" class="govuk-table__header">Email address</th>
   <!--    <th scope="col" class="govuk-table__header">Role</th>
-      <th scope="col" class="govuk-table__header">Notices</th> -->
-      <th scope="col" class="govuk-table__header">Water abstraction alerts</th>
+      <th scope="col" class="govuk-table__header">Notices</th> 
+  <th scope="col" class="govuk-table__header">Water abstraction alerts</th> -->
       <th scope="col" class="govuk-table__header">Action</th>
     </tr>
   </thead>
@@ -45,9 +45,6 @@
 
   <!--  <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
     <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br  }}</td>-->
-    <td class="govuk-table__cell">{% if "Water abstraction alerts" in data.contacts[loopNumber].customers[index]['notices'] %}
-    Yes
-    {% endif %}</td>
     <td class="govuk-table__cell">
       <ul class="govuk-summary-list__actions-list">
                       <!--    <li class="govuk-summary-list__actions-list-item">

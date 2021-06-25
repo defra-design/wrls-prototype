@@ -911,7 +911,11 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Licence holder",
-          "notices": ["Water abstraction alerts", "Returns", "Renewals"],
+          "notices": [{
+                        "type":"Renewals",
+                        "sendBy": "post",
+                        "addressID": "2",
+                      }],
           "customer": "Big Smith Farms Ltd",
         }],
       },
@@ -927,7 +931,11 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Contact",
-          "notices": ["Returns"],
+          "notices": [{
+                        "type": "Returns",
+                        "sendBy": "post",
+                        "addressID": "2",
+                      }],
           "customer": "Big Smith Farms Ltd",
         }],
       },
@@ -943,7 +951,11 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Contact",
-          "notices": ["Water abstraction alerts"],
+          "notices": [{
+                        "type": "Water abstraction alerts",
+                        "sendBy": "email",
+                        "addressID": "2",
+                      }],
           "customer": "Big Smith Farms Ltd",
         }],
       },
@@ -959,7 +971,11 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Contact",
-          "notices": ["Returns"],
+          "notices": [{
+                        "type": "Returns",
+                        "sendBy": "post",
+                        "addressID": "1",
+                      }],
           "customer": "Bottled Water Plc",
         }],
       },
@@ -970,7 +986,21 @@ module.exports = {
         "department": "Head office",
         "customers": [{
           "role": "Licence holder,Billing contact",
-          "notices": ["Water abstraction alerts", "Returns", "Renewals"],
+          "notices": [{
+                        "type": "Renewals",
+                        "sendBy": "post",
+                        "addressID": "0",
+                      },
+                      {
+                        "type": "Water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "0",
+                      },
+                      {
+                        "type": "Bills",
+                        "sendBy": "post",
+                        "addressID": "1",
+                      }],
           "customer": "Bottled Water Plc",
         }],
       },
@@ -986,7 +1016,26 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Licence holder,Billing contact",
-          "notices": ["Renewals", "Returns", "Water abstraction alerts"],
+          "notices": [{
+                        "type": "Renewals",
+                        "sendBy": "post",
+                        "addressID": "3",
+                      },
+                      {
+                        "type": "Returns",
+                        "sendBy": "post",
+                        "addressID": "3",
+                      },
+                      {
+                        "type": "Water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "3",
+                      },
+                      {
+                        "type": "Bills",
+                        "sendBy": "post",
+                        "addressID": "3",
+                      }],
           "customer": "Irene Briton",
         }],
       },
@@ -1002,7 +1051,21 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Licence holder,Billing contact",
-          "notices": ["Water abstraction alerts", "Returns", "Renewals"],
+          "notices": [{
+                        "type": "Renewals",
+                        "sendBy": "post",
+                        "addressID": "4",
+                      },
+                      {
+                        "type": "Water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "4",
+                      },
+                      {
+                        "type": "Bills",
+                        "sendBy": "post",
+                        "addressID": "4",
+                      }],
           "customer": "Robin Vithlhem-Smith",
         }],
       },
@@ -1018,7 +1081,11 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Contact",
-          "notices": ["Returns"],
+          "notices": [{
+                        "type": "Returns",
+                        "sendBy": "post",
+                        "addressID": "4",
+                      }],
           "customer": "Robin Vithlhem-Smith",
         }],
       },
@@ -1034,7 +1101,26 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Licence holder,Billing contact",
-          "notices": ["Renewals", "Returns", "Water abstraction alerts"],
+          "notices": [{
+                        "type": "Renewals",
+                        "sendBy": "post",
+                        "addressID": "5",
+                      },
+                      {
+                        "type": "Returns",
+                        "sendBy": "post",
+                        "addressID": "5",
+                      },
+                      {
+                        "type": "Water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "5",
+                      },
+                      {
+                        "type": "Bills",
+                        "sendBy": "post",
+                        "addressID": "5",
+                      }],
           "customer": "D.B. Beecham-Smith",
         }],
       }
@@ -1048,7 +1134,7 @@ module.exports = {
         "city": "Bath",
         "postcode": "BA1 5EH",
         "customers": [{
-          "role": "Licence holder,Returns",
+          "role": "Licence holder",
           "customer": "Bottled Water Plc",
         }],
       },

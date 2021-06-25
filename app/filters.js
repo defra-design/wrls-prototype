@@ -45,7 +45,11 @@ module.exports = function(env) {
   ------------------------------------------------------------------ */
 
 
-
+//filter to remove duplicates from an array " | unique"
+ filters.unique = function(x) {
+   //return x.filter((value, index) => x.indexOf(value) === index );
+   return [...new Set(x)]
+ }
 
   //filter for month implment on the page by using "| toMonth"
   filters.toMonth = function(x) {
@@ -75,14 +79,14 @@ module.exports = function(env) {
   }
 
 
-  //filter for replacing commas with line breaks "| stripSqBrackets "
+  //filter for replacing brackets with line breaks "| stripSqBrackets "
   //This isn't safe for production
   filters.stripSqBrackets = function(e) {
     return e.replace(/\[|\]/g, "")
   }
 
 
-  //filter for replacing commas with line breaks "| stripQuotes "
+  //filter for replacing quotes with line breaks "| stripQuotes "
   //This isn't safe for production
   filters.stripQuotes = function(e) {
     return e.replace(/\"/g, "")
@@ -95,6 +99,12 @@ module.exports = function(env) {
   //This isn't safe for production
   filters.replaceTilde = function(e) {
     return e.replace(/\~/g, '\n')
+  }
+
+  //filter for removing nulls "|removeNull"
+  //This isn't safe for production
+  filters.removeNull = function(e) {
+    return e.replace(/null/g, '')
   }
 
 

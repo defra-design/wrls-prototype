@@ -1,0 +1,74 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title =  [data.contacts[data.contactID]['name']] + 'Will ' + [data.contacts[data.contactID]['name']] + ' get water abstraction alerts?' %}
+
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+{% set warning %}
+   {{ govukWarningText({
+     text: "Gina Bude will get water abstraction alerts for all licences linked to Bottled Water Plc. The licence holder will not get the alerts by post.",
+     iconFallbackText: "Warning",
+     classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-1"
+   }) }}
+{% endset %}
+
+{% set qTitle = '<span class="govuk-caption-l">' + [data.contacts[data.contactID]['name']] + '</span> Will ' + [data.contacts[data.contactID]['name']] + ' get water abstraction alerts?' + warning %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+
+    <form method="post" novalidate>
+
+
+
+
+     {{ govukRadios({
+       idPrefix: "notices",
+       name: "notices",
+       fieldset: {
+         legend: {
+           text: qTitle|safe,
+           isPageHeading: true,
+           classes: "govuk-fieldset__legend--l"
+         }
+       },
+       items: [
+         {
+           value: "yes",
+           text: "Yes",
+           checked: checked("notices", "Water abstraction alerts")
+         },
+         {
+           value: "no",
+           text: "No",
+           checked: checked("notices", "")
+         }
+       ]
+     }) }}
+
+
+      {{ govukButton({
+  text: "Confirm"
+}) }}
+
+    </form>
+
+
+  </div>
+</div>
+
+
+{% endblock %}

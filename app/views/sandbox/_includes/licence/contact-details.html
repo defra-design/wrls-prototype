@@ -11,59 +11,63 @@
 #}
 
 
-
-
-{% set contactList = [] %}
-
-
-
-{% for i in contacts %}
-{% set contactCustomers = i['customers'] %}
-{% for contactCustomer in contactCustomers %}
-{% if [data.licences[data.ID].holder] == contactCustomer.customer %}
-
-
+{#
 {% set customerAddress = [] %}
 <!--getting the address data-->
-{% set addresses = data['addresses'] %}
 {% for i in addresses %}
 {% set loopNumber = loop.index0 %}
 {% set addressCustomers = i['customers'] %}
 {% for i in addressCustomers %}
 {% if i.customer == data.customers[data.customerID]['name'] %}
 
-{% set customerAddress %}
-{{[data.addresses[loopNumber].address1]}}
-{{[data.addresses[loopNumber].city]}}
-{{[data.addresses[loopNumber].postcode]}}
-{% endset %}
+#}
 
-{% endif %}
-{% endfor %}
-  {% endfor %}
+{% set contactList = [] %}
 
-{% if i.email.length %}
+<!--get the contacts for the licence-->
+{% for i in contacts %}
+{% set contactCustomers = i['customers'] %}
+{% for contactCustomer in contactCustomers %}
+{% if [data.licences[data.ID].holder] == contactCustomer.customer %}
 
-{% set contactList = contactList | push([
-  {text: i.name},
-  {text: contactCustomer.notices| dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
-  {text: i.email}
-]) %}
+{% set contactName = i.name %}
+
+{% set notices = [] %}
+{% set sendTo = [] %}
+
+<!--get the notices for the customer contact and push them into a new array-->
+{% for notice in contactCustomer.notices %}
+
+
+
+{% set notices = notices | push([ notice.type ]) %}
+
+<!--get the asscociated address or email-->
+{% if notice.sendBy == "post" %}
+
+{% set sendTo = sendTo | push( addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ) %}
+
 
 {% else %}
+{% set sendTo = sendTo | push(  i.email + "<br>") %}
+
+{% endif %}
+
+{% endfor %}
+
 
 {% set contactList = contactList | push([
-  {text: i.name},
-  {text: contactCustomer.notices| dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
-  {text: customerAddress | striptags(true)| nl2br |safe }
+  {text: contactName},
+  {text: notices |dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+  {text: sendTo |unique |dump | stripQuotes | stripSqBrackets | replaceComma  |safe }
 ]) %}
 
 
-{% endif %}
 
 {% endif %}
 {% endfor %}
 {% endfor %}
+
 
 <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
 {% set loopNumber = "" %}

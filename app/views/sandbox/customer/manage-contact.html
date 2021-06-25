@@ -39,17 +39,10 @@
     {% set action = "Change" %}
     {% endif %}
 
+<h2 class="govuk-heading-m govuk-!-margin-bottom-0">Contact details</h2>
 
       {{ govukSummaryList({
   rows: [
-    {
-      key: {
-        text: "Role"
-      },
-      value: {
-        text: "Site contact"
-      }
-    },
     {
       key: {
         text: "Email address"
@@ -70,58 +63,55 @@
   ]
 }) }}
 
-<p class="govuk-body"><a href="../customer?customerID={{data.customerID}}#contacts" class="govuk-link">Back to customer</a></p>
+</div></div>
 
-</div>
-</div>
-
-
-
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
+<h2 class="govuk-heading-m govuk-!-margin-bottom-0">Email alerts</h2>
+
+{% set emailAlerts = "No" %}
+{% for item in data.contacts[data.contactID].customers %}
+{% if item.customer == data.customers[data.customerID].name %}
+{% for i in item.notices %}
+{% if i.type == "Water abstraction alerts" %}
+{% if i.sendBy == "email" %}
+{% set emailAlerts = "Yes" %}
+{% endif %}
+{% endif %}
+{% endfor%}
+{% endif %}
+{% endfor%}
 
 
 
-
-    <form method="post" novalidate>
-
-
-     {{ govukRadios({
-       idPrefix: "notices",
-       name: "notices",
-       fieldset: {
-         legend: {
-           text: "Will " + [data.contacts[data.contactID]['name']] + " get water abstraction alerts?",
-           isPageHeading: false,
-           classes: "govuk-fieldset__legend--m"
-         }
-       },
-       items: [
-         {
-           value: "Water abstraction alerts",
-           text: "Yes",
-           checked: checked("notices", "Water abstraction alerts")
-         },
-         {
-           value: "",
-           text: "No",
-           checked: checked("notices", "")
-         }
-       ]
-     }) }}
-
-
-      {{ govukButton({
-  text: "Confirm"
+      {{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Water abstraction alerts"
+      },
+      value: {
+        text: emailAlerts
+      },
+      actions: {
+        items: [
+          {
+            href: "notices",
+            text: "Change",
+            visuallyHiddenText: "water abstraction alerts"
+          }
+        ]
+      }
+    }
+  ]
 }) }}
 
-    </form>
-
-
-  </div>
+</div>
 </div>
 
+
+<p class="govuk-body"><a href="../customer?customerID={{data.customerID}}#contacts" class="govuk-link">Back to customer</a></p>
 
 
 {% endblock %}
