@@ -880,18 +880,23 @@ module.exports = {
     //Customer/Company
     "customers": [{
         "name": "Bottled Water Plc",
+        "WAA": "post",
       },
       {
         "name": "Big Smith Farms Ltd",
+        "WAA": "email",
       },
       {
         "name": "Irene Briton",
+        "WAA": "post",
       },
       {
         "name": "Robin Vithlhem-Smith",
+        "WAA": "post",
       },
       {
         "name": "D.B. Beecham-Smith",
+        "WAA": "post",
       }
     ],
 

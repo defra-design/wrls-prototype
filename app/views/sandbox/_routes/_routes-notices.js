@@ -149,11 +149,11 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
   let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
 
 
-  console.log(selectedThresholds)
+  let op = ""
   //filter licences based on the selected thresholds
   var selectedLicences = req.session.data['selectedLicences']
   for (item of selectedThresholds) {
-    let op = tags.filter(val => {
+     op = tags.filter(val => {
       let tagValues = val.tagValues.some(({
         thresholdValue
       }) => thresholdValue.includes(item))
@@ -166,10 +166,10 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
     selectedLicences.push.apply(selectedLicences, licence);
     //console.log('filtered values -->\n',op)
 
-    //push them into a notification
-    waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
-
   }
+
+  //push them into a notification
+  waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
 
 
   req.session.data.waterAbstractionAlert = [...new Set(waterAbstractionAlert)];
@@ -314,7 +314,11 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
 
       for (contactCustomer of contactCustomers) {
 
-        if (licenceHolder == contactCustomer.customer && contactCustomer.notices.includes("Water abstraction alerts")) {
+        if (licenceHolder == contactCustomer.customer) {
+
+           for (notice of contactCustomer.notices) {
+             if (notice.type == "Water abstraction alerts") {
+
 
 
           if (contacts[contactIndex].email == "") {
@@ -368,7 +372,7 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
 
           } else {
 
-            //check if the contact has a role of licence holder, this is so the licenec holder is posted a copy as well as emailed if they have an email address
+    /*      //check if the contact has a role of licence holder, this is so the licenec holder is posted a copy as well as emailed if they have an email address
             let contactRole = contactCustomer.role
             if (contactRole.includes("Licence holder")) {
 
@@ -417,7 +421,7 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
                   }
                 }
               }
-            }
+            }  */
             let method = "email"
             let sentTo = contacts[contactIndex].email
 
@@ -453,7 +457,8 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
         }
       }
     }
-
+  }
+ }
 
   }
 
@@ -885,7 +890,7 @@ router.post('/tagging/you-are-about-to-remove-tags', function(req, res) {
         //set the tag value that you want to delete to the value of the selectedTag
          let tagValueNumber = selectedTag - selectedTagIndex
 
-        
+
 
         //remove that tag
         let index = tagValueNumber;

@@ -78,17 +78,14 @@
 <!--set the index of the contact-->
 {% set contactIndex = loop.index0 %}
 
-<!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+<!--for each of the adresses check to see if the address has the correct customer and the water abstraction alert role-->
 {% set contactCustomers = contact.customers %}
-
-
-
 {% for i in contactCustomers %}
+{% if licenceHolder == i.customer %}
+{% for notice in i.notices %}
+{% if "Water abstraction alerts" in notice.type %}
 
 
-
-
-{% if "Water abstraction alerts" in i.notices and licenceHolder == i.customer %}
 
 
 
@@ -107,7 +104,7 @@
 <!--set the index of the address-->
 {% set addressIndex = loop.index0 %}
 
-<!--for each of the adresses check to see if the address has the correct customer and the billing role-->
+<!--for each of the adresses check to see if the address has the correct customer and the licence holder role-->
 {% set addressCustomers = i.customers %}
 {% for i in addressCustomers %}
 {% if "Licence holder" in i.role and licenceHolder == i.customer %}
@@ -161,6 +158,10 @@
 </tr>
 
 {% endif %}
+
+{% endif %}
+{% endfor %}
+
     {% endif %}
     {% endfor %}
 

@@ -65,7 +65,7 @@ router.post('/add/enter-a-name', function(req, res) {
   }
 
 
-    res.redirect('enter-an-email-address')
+  res.redirect('enter-an-email-address')
 
 
 });
@@ -149,8 +149,8 @@ router.post('/add/check-your-answers', function(req, res) {
 
   req.session.data.back = "customer#contacts"
 
-res.redirect('contact-set-up');
-//  res.redirect('../../customer#contacts');
+  res.redirect('contact-set-up');
+  //  res.redirect('../../customer#contacts');
 
 });
 
@@ -193,68 +193,235 @@ router.post('/notices', function(req, res) {
   //selected customer to manage
   let selectedCustomer = req.session.data.customers[req.session.data.customerID]['name']
 
+  let allContacts = req.session.data['contacts']
 
-  console.log(req.session.data.contacts[req.session.data.contactID]['email'])
+  if (req.session.data['notices'] === "yes") {
 
+    //loop through all contacts and check if the customer is matched
+    for (var [contactIndex, contact] of allContacts.entries()) {
 
-  //loop through customers for contact and match the selected customer name if it matches update the notices
-  for (var [customerIndex, contactCustomer] of contactCustomers.entries()) {
+      //get all the customers for that contact
+      let allcustomerContacts = contact.customers
 
-    if (contactCustomer.customer == selectedCustomer) {
+      // loop through the contacts customers
+      for (var [customerIndex, customerContact] of allcustomerContacts.entries()) {
 
-      /*if notices is blank empty the array
-      if (req.session.data['notices'] == undefined) {
-        req.session.data.contacts[req.session.data.contactID].customers[customerIndex].notices = ""
-      } else {
-        req.session.data.contacts[req.session.data.contactID].customers[customerIndex].notices = req.session.data['notices']
-      }*/
+        //if the customer matches the selected customer
+        if (customerContact.customer == selectedCustomer) {
 
-    //check whether the contact is already receiving WAA by post, if so update to receive them by email
-    let existingNotices = []
-     let contactNotices = req.session.data.contacts[req.session.data.contactID].customers[customerIndex]['notices']
-  for (var [existingNoticeIndex, existingNotice] of contactNotices.entries()) {
-     existingNotices.push(existingNotice.type)
-  }
+          //if the contact has a role of licence hodler for this customer
+          if (customerContact.role.match(/Licence/g)) {
+            //remove the notice from the licence holder if they have a postal alert
 
 
-     console.log(existingNotices)
-     if (existingNotices.includes('Water abstraction alerts')) {
-     for (var [contactNoticeIndex, contactNotice] of contactNotices.entries()) {
-       if (contactNotice.type == "Water abstraction alerts"){
-      contactNotice.sendBy = "email"
+            //find the Water abstraction notice in the customer contacts notices and delete it
+            let holderNotices = customerContact['notices']
+
+
+
+            for (var [holderNoticeIndex, holderNotice] of holderNotices.entries()) {
+
+              if (holderNotice.type === 'Water abstraction alerts' && holderNotice.sendBy === 'post') {
+
+                let index = holderNoticeIndex;
+                if (index > -1) {
+                  holderNotices.splice(index, 1);
+                }
+
+              };
+
+            }
+          }
+        }
       }
     }
+
+    //loop through customers for contact and match the selected customer name if it matches update the notices
+    for (var [customerIndex, contactCustomer] of contactCustomers.entries()) {
+
+      if (contactCustomer.customer == selectedCustomer) {
+
+        //set the customer to receive WAA by post
+        req.session.data.customers[req.session.data.customerID].WAA = "email"
+
+        /*if notices is blank empty the array
+        if (req.session.data['notices'] == undefined) {
+          req.session.data.contacts[req.session.data.contactID].customers[customerIndex].notices = ""
+        } else {
+          req.session.data.contacts[req.session.data.contactID].customers[customerIndex].notices = req.session.data['notices']
+        }*/
+
+
+
+
+        //check whether the contact is already receiving WAA by post, if so update to receive them by email
+        let existingNotices = []
+        let contactNotices = req.session.data.contacts[req.session.data.contactID].customers[customerIndex]['notices']
+        for (var [existingNoticeIndex, existingNotice] of contactNotices.entries()) {
+
+
+          existingNotices.push(existingNotice.type)
+        }
+
+        if (existingNotices.includes('Water abstraction alerts')) {
+          for (var [contactNoticeIndex, contactNotice] of contactNotices.entries()) {
+            if (contactNotice.type == "Water abstraction alerts") {
+              contactNotice.sendBy = "email"
+            }
+          }
+        } else {
+          //if they aren't receiving them by post, add the alert type to their notice list
+
+          let type = "Water abstraction alerts"
+          let sendBy = "email"
+          let addressID = ""
+
+          let newNotice = {
+            type,
+            sendBy,
+            addressID
+          };
+
+          contactNotices.push(newNotice);
+
+        }
+
+
+
+
+
+      }
     }
 
-    else
-    {
-     //if they aren't receiving them by post, add the alert type to their notice list
-
-     let type = "Water abstraction alerts"
-     let sendBy = "email"
-     let addressID = ""
-
-     let newNotice = {
-       type,
-       sendBy,
-       addressID
-     };
-
-     contactNotices.push(newNotice);
-
+    if (req.session.data.contacts[req.session.data.contactID]['email'].length) {
+      res.redirect('manage-contact');
+    } else {
+      res.redirect('change-email-address');
     }
 
-
-
-
-
-    }
   }
+  //if the answer was no to receiving WAA by email
+  else {
 
-  if (req.session.data.contacts[req.session.data.contactID]['email'].length) {
-  res.redirect('manage-contact');
-  } else {
-    res.redirect('change-email-address');
+    //loop through customers for contact and match the selected customer name if it matches update the notices
+    for (var [customerIndex, contactCustomer] of contactCustomers.entries()) {
+
+      if (contactCustomer.customer == selectedCustomer) {
+
+
+        //find the Water abstraction notice in the customer contacts notices and delete it
+        let contactNotices = req.session.data.contacts[req.session.data.contactID].customers[customerIndex]['notices']
+
+
+        for (var [existingNoticeIndex, existingNotice] of contactNotices.entries()) {
+
+          if (existingNotice.type === 'Water abstraction alerts') {
+
+
+
+            let index = existingNoticeIndex;
+            if (index > -1) {
+              contactNotices.splice(index, 1);
+            }
+
+          };
+
+        }
+      }
+    }
+    //loop through the customer contacts again and check if anyone is receiving WAA by email,
+    let emailContact = "false"
+
+
+    //loop through all contacts and check if the customer is matched
+    for (var [contactIndex, contact] of allContacts.entries()) {
+
+      //get all the customers for that contact
+      let allcustomerContacts = contact.customers
+
+      // loop through the contacts customers
+      for (var [customerIndex, customerContact] of allcustomerContacts.entries()) {
+
+        //if the customer matches the selected customer
+        if (customerContact.customer == selectedCustomer) {
+
+          //find the Water abstraction notice in the customer contacts notices and delete it
+          let existingNotices = customerContact['notices']
+
+
+
+          for (var [existingNoticeIndex, existingNotice] of existingNotices.entries()) {
+
+            //   for (var [customerIndex, contactCustomer] of contactCustomers.entries()) {
+            //   let contactNotices = req.session.data.contacts[req.session.data.contactID].customers[customerIndex]['notices']
+            //  for (var [existingNoticeIndex, existingNotice] of contactNotices.entries()) {
+
+            if (existingNotice.type === 'Water abstraction alerts') {
+
+              if (existingNotice.sendBy === 'email') {
+
+                emailContact = "true"
+
+
+              }
+
+            }
+          }
+        }
+      }
+    }
+
+    //if not then change the customer back to post and add the postal notice to the licence holder
+
+
+    if (emailContact === "false") {
+      //loop through customers for contact and match the selected customer name if it matches update the notices
+      //loop through all contacts and check if the customer is matched
+      for (var [contactIndex, contact] of allContacts.entries()) {
+
+        //get all the customers for that contact
+        let allcustomerContacts = contact.customers
+
+        // loop through the contacts customers
+        for (var [customerIndex, customerContact] of allcustomerContacts.entries()) {
+
+
+
+          //if the customer matches the selected customer
+          if (customerContact.customer == selectedCustomer) {
+
+
+
+            //set the customer to receive WAA by post
+            req.session.data.customers[req.session.data.customerID].WAA  = "post"
+
+            //if the contact has a role of licence hodler for this customer
+            if (customerContact.role.match(/Licence/g)) {
+
+
+              //Add the water abstraction alert post notice for the licence holder
+              let customerLicenceHolderNotices = customerContact['notices']
+
+
+                let type = "Water abstraction alerts"
+                let sendBy = "post"
+                let addressID = "0"
+
+                let newNotice = {
+                  type,
+                  sendBy,
+                  addressID
+                };
+
+                customerLicenceHolderNotices.push(newNotice);
+
+            }
+          }
+        }
+      }
+    }
+
+    res.redirect('manage-contact');
   }
 
 });
@@ -278,7 +445,7 @@ router.post('/change-email-address', function(req, res) {
   req.session.data.contacts[contactID].email = req.session.data.emailDetails
 
 
-res.redirect('manage-contact');
+  res.redirect('manage-contact');
 
 });
 
