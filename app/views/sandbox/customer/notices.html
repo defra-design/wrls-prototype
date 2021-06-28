@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title =  [data.contacts[data.contactID]['name']] + 'Will ' + [data.contacts[data.contactID]['name']] + ' get water abstraction alerts?' %}
+{% set title =  [data.contacts[data.contactID]['name']] + 'Should ' + [data.contacts[data.contactID]['name']] + ' be a water abstraction alerts for?' %}
 
 
 
@@ -21,7 +21,7 @@
    }) }}
 {% endset %}
 
-{% set qTitle = '<span class="govuk-caption-l">' + [data.contacts[data.contactID]['name']] + '</span> Will ' + [data.contacts[data.contactID]['name']] + ' get water abstraction alerts?' + warning %}
+{% set qTitle = '<span class="govuk-caption-l">' + [data.contacts[data.contactID]['name']] + '</span> Should ' + [data.contacts[data.contactID]['name']] + ' be a water abstraction alerts contact for ' + [data.customers[data.customerID]['name']] +?' + warning %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
