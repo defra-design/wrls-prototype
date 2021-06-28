@@ -4,15 +4,15 @@
 {% if [data.contacts[data.contactID].email] == "Not set" %}
 {% set email = "" %}
 <!--set page title-->
-{% set title = "Set email address" %}
+{% set title = "Enter an email address" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + " </span> Set email address"%}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + " </span> Enter an email address"%}
 {% else %}
 {% set email = [data.contacts[data.contactID].email] %}
 <!--set page title-->
-{% set title = "Change email address" %}
+{% set title = "Enter an email address" %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + " </span> Change email address"%}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + "</span> Enter an email address for " + [data['fullName']] %}
 {% endif %}
 
 
