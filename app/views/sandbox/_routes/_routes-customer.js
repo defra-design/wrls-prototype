@@ -119,7 +119,7 @@ router.post('/add/check-your-answers', function(req, res) {
   let department = req.session.data['department']
   let email = req.session.data['emailDetails']
   let role = "Contact"
-  let notices = [{}]
+  let notices = []
   let customer = req.session.data.customers[req.session.data.customerID]['name']
   let phone = req.session.data['phoneDetails']
 

@@ -4,15 +4,15 @@
 {% if [data.contacts[data.contactID].email] == "Not set" %}
 {% set email = "" %}
 <!--set page title-->
-{% set title = "Enter an email address" %}
+{% set title = "Enter an email address for " + [data['fullName']] %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + " </span> Enter an email address"%}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter an email address for " + [data.contacts[data.contactID]['name']] %}
 {% else %}
 {% set email = [data.contacts[data.contactID].email] %}
 <!--set page title-->
-{% set title = "Enter an email address" %}
+{% set title = "Enter an email address for " + [data['fullName']] %}
 <!--set question title-->
-{% set qTitle = "<span class='govuk-caption-l'>" + [data.contacts[data.contactID].name] + "</span> Enter an email address for " + [data['fullName']] %}
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter an email address for " + [data.contacts[data.contactID]['name']] %}
 {% endif %}
 
 
@@ -30,7 +30,7 @@
 
 <!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <form method="post" novalidate>
 

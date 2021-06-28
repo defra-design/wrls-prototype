@@ -30,7 +30,10 @@
 {% for contactCustomer in contactCustomers %}
 {% if [data.licences[data.ID].holder] == contactCustomer.customer %}
 
+
 {% set contactName = i.name %}
+
+
 
 {% set notices = [] %}
 {% set sendTo = [] %}
@@ -41,16 +44,19 @@
 
 
  {#  for keeping everying thing in the same row use arrays  {% set notices = notices | push([ notice.type ]) %} #}
+ {# {% if loop.index0 > 0 %}#}
+  <!--for keeping everying thing in the same row-->
 
- {% set notices =  notice.type %}
+ {% set notices =  [notice.type] %}
 
 <!--get the asscociated address or email-->
 {% if notice.sendBy == "post" %}
 
-{% set sendTo = addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>"  %}
 
- {#  for keeping everying thing in the same row  {% set sendTo = sendTo | push( addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ) %} #}
+ <!--for keeping everying thing in the same row-->
+ {# {% set sendTo = sendTo | push( addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ) %} #}
 
+{% set sendTo = [addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ] %}
 
 {% else %}
 
@@ -60,9 +66,11 @@
 
 {% endif %}
 
+
+
 {% set contactList = contactList | push([
   {text: contactName},
-  {text: notices |dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+  {text: notices  },
   {text: sendTo|safe }
 ]) %}
 
