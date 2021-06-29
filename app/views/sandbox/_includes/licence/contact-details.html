@@ -47,7 +47,47 @@
  {# {% if loop.index0 > 0 %}#}
   <!--for keeping everying thing in the same row-->
 
- {% set notices =  [notice.type] %}
+
+
+{% set licenceTagged = "false"%}
+<!--check if the licence is tagged-->
+{% if [notice.type] == "Water abstraction alerts"%}
+
+<!--loop through stations-->
+{% set stations = data['stations'] %}
+{% for station in stations %}
+
+<!--set station number and name-->
+{% set stationID = loop.index0 %}
+{% set stationName = station.label %}
+
+<!--loop through the station tags-->
+{% set tags = data.stations[stationID]['tags'] %}
+
+{% for tag in tags %}
+
+
+<!--set tag number-->
+{% set tagNumber = loop.index0 %}
+{% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
+
+
+<!--check for licence number matches-->
+{% if tagLicenceNumber == data.licences[data.ID].number %}
+
+{% set licenceTagged = "true"%}
+{% set notices =  [notice.type] %}
+
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% else %}
+{% set notices =  [notice.type] %}
+{% endif %}
+
+
+
 
 <!--get the asscociated address or email-->
 {% if notice.sendBy == "post" %}
@@ -66,13 +106,24 @@
 
 {% endif %}
 
+<!--check if the licence is tagged-->
+{% if [notice.type] == "Water abstraction alerts" %}
 
-
+{% if licenceTagged == "true" %}
 {% set contactList = contactList | push([
   {text: contactName},
   {text: notices  },
   {text: sendTo|safe }
 ]) %}
+
+{% endif %}
+{% else %}
+{% set contactList = contactList | push([
+  {text: contactName},
+  {text: notices  },
+  {text: sendTo|safe }
+]) %}
+{% endif %}
 
 {% endfor %}
 
