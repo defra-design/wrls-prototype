@@ -51,6 +51,11 @@ module.exports = function(env) {
    return [...new Set(x)]
  }
 
+ //filter remove the first item in an array " |shift"
+ filters.shift = function(x) {
+   return x.shift()
+ }
+
   //filter for month implment on the page by using "| toMonth"
   filters.toMonth = function(x) {
     months = ["January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December "];

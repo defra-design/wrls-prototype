@@ -1032,12 +1032,12 @@ module.exports = {
                         "addressID": "3",
                       },
                       {
-                        "type": "Water abstraction alerts",
+                        "type": "Bills",
                         "sendBy": "post",
                         "addressID": "3",
                       },
                       {
-                        "type": "Bills",
+                        "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "3",
                       }],
@@ -1117,12 +1117,12 @@ module.exports = {
                         "addressID": "5",
                       },
                       {
-                        "type": "Water abstraction alerts",
+                        "type": "Bills",
                         "sendBy": "post",
                         "addressID": "5",
                       },
                       {
-                        "type": "Bills",
+                        "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "5",
                       }],

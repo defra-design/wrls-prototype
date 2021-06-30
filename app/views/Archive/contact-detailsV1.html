@@ -1,0 +1,176 @@
+{% set contacts = data['contacts']%}
+{% set addresses = data['addresses']%}
+
+{#
+{{[data.licences[data.ID].holder]}}
+
+{{contacts[0].customers[0].customer}}
+
+
+{{contacts[0]|dump}}
+#}
+
+
+{#
+{% set customerAddress = [] %}
+<!--getting the address data-->
+{% for i in addresses %}
+{% set loopNumber = loop.index0 %}
+{% set addressCustomers = i['customers'] %}
+{% for i in addressCustomers %}
+{% if i.customer == data.customers[data.customerID]['name'] %}
+
+#}
+
+{% set contactList = [] %}
+
+<!--get the contacts for the licence-->
+{% for i in contacts %}
+{% set contactCustomers = i['customers'] %}
+{% for contactCustomer in contactCustomers %}
+{% if [data.licences[data.ID].holder] == contactCustomer.customer %}
+
+
+{% set contactName = i.name %}
+
+
+
+{% set notices = [] %}
+{% set sendTo = [] %}
+
+<!--get the notices for the customer contact and push them into a new array-->
+{% for notice in contactCustomer.notices %}
+
+
+
+ {#  for keeping everying thing in the same row use arrays  {% set notices = notices | push([ notice.type ]) %} #}
+ {# {% if loop.index0 > 0 %}#}
+  <!--for keeping everying thing in the same row-->
+
+
+
+{% set licenceTagged = "false"%}
+<!--check if the licence is tagged-->
+{% if [notice.type] == "Water abstraction alerts"%}
+
+<!--loop through stations-->
+{% set stations = data['stations'] %}
+{% for station in stations %}
+
+<!--set station number and name-->
+{% set stationID = loop.index0 %}
+{% set stationName = station.label %}
+
+<!--loop through the station tags-->
+{% set tags = data.stations[stationID]['tags'] %}
+
+{% for tag in tags %}
+
+
+<!--set tag number-->
+{% set tagNumber = loop.index0 %}
+{% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
+
+
+<!--check for licence number matches-->
+{% if tagLicenceNumber == data.licences[data.ID].number %}
+
+{% set licenceTagged = "true"%}
+{% set notices =  [notice.type] %}
+
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% else %}
+{% set notices =  [notice.type] %}
+{% endif %}
+
+
+
+
+<!--get the asscociated address or email-->
+{% if notice.sendBy == "post" %}
+
+
+ <!--for keeping everying thing in the same row-->
+ {# {% set sendTo = sendTo | push( addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ) %} #}
+
+{% set sendTo = [addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ] %}
+
+{% else %}
+
+ {#  for keeping everying thing in the same row {% set sendTo = sendTo | push(  i.email + "<br>") %} #}
+
+ {% set sendTo = i.email + "<br>" %}
+
+{% endif %}
+
+<!--check if the licence is tagged-->
+{% if [notice.type] == "Water abstraction alerts" %}
+
+{% if licenceTagged == "true" %}
+{% set contactList = contactList | push([
+  {text: contactName},
+  {text: notices  },
+  {text: sendTo|safe }
+]) %}
+
+{% endif %}
+{% else %}
+{% set contactList = contactList | push([
+  {text: contactName},
+  {text: notices  },
+  {text: sendTo|safe }
+]) %}
+{% endif %}
+
+{% endfor %}
+
+
+{# for keeping everying thing in the same row
+{% set contactList = contactList | push([
+  {text: contactName},
+  {text: notices |dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+  {text: sendTo |unique |dump | stripQuotes | stripSqBrackets | replaceComma  |safe }
+]) %}
+#}
+
+
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+<!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
+{% set loopNumber = "" %}
+{% set caption = "" %}
+{% for i in data['customers'] %}
+{% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
+{% set loopNumber = loop.index0 %}
+
+{% set caption = 'Contact details<p class="govuk-body"><a class="govuk-link" href="customer?customerID=' + loop.index0 + '#contacts">Go to customer contacts</a></p>' %}
+{% endif %}
+{% endfor %}
+
+
+
+
+{{ govukTable({
+  caption: caption|safe,
+  captionClasses: "govuk-table__caption--l",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Name"
+    },
+    {
+      text: "Communication type"
+    },
+    {
+      text: "Send to"
+    }
+  ],
+  rows: contactList
+}) }}

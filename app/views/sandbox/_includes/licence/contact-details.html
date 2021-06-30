@@ -1,26 +1,7 @@
 {% set contacts = data['contacts']%}
 {% set addresses = data['addresses']%}
 
-{#
-{{[data.licences[data.ID].holder]}}
 
-{{contacts[0].customers[0].customer}}
-
-
-{{contacts[0]|dump}}
-#}
-
-
-{#
-{% set customerAddress = [] %}
-<!--getting the address data-->
-{% for i in addresses %}
-{% set loopNumber = loop.index0 %}
-{% set addressCustomers = i['customers'] %}
-{% for i in addressCustomers %}
-{% if i.customer == data.customers[data.customerID]['name'] %}
-
-#}
 
 {% set contactList = [] %}
 
@@ -31,116 +12,149 @@
 {% if [data.licences[data.ID].holder] == contactCustomer.customer %}
 
 
+<!--check if the licence is tagged-->
+{% set licenceTagged = "false"%}
+<!--loop through stations-->
+{% set stations = data['stations'] %}
+  {% for station in stations %}
+  <!--set station number and name-->
+  {% set stationID = loop.index0 %}
+  {% set stationName = station.label %}
+  <!--loop through the station tags-->
+  {% set tags = data.stations[stationID]['tags'] %}
+    {% for tag in tags %}
+    <!--set tag number-->
+    {% set tagNumber = loop.index0 %}
+    {% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
+    <!--check for licence number matches-->
+      {% if tagLicenceNumber == data.licences[data.ID].number %}
+      {% set licenceTagged = "true"%}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+<!--if the contact only has a water abstraction alerts notice-->
+{% if contactCustomer.notices.length == 1 and contactCustomer.notices[0].type == "Water abstraction alerts" %}
+    <!--check to see if the licence has been tagged-->
+    {% if licenceTagged == "true" %}
+    <!--set the contact name-->
+    {% set contactName = i.name %}
+    {% endif %}
+{% else %}
+<!--If they have more than WAA set the contact name-->
 {% set contactName = i.name %}
+{% endif %}
 
-
-
+<!--create blank arrays for the notices and the addresses-->
 {% set notices = [] %}
 {% set sendTo = [] %}
 
-<!--get the notices for the customer contact and push them into a new array-->
-{% for notice in contactCustomer.notices %}
+
+  <!--loop through the customer notices-->
+  {% for notice in contactCustomer.notices %}
+    <!--check to see if the notice is WAA and that the licence is tagged-->
+    {% if [notice.type] == "Water abstraction alerts"  %}
+     {% if licenceTagged == "true" %}
+      <!--push the list of notices into the array-->
+      {% set notices = notices | push([ notice.type ]) %}
+        <!--if the notice is sent by post-->
+        {% if contactCustomer.notices[loop.index0].sendBy == "post" %}
+        <!--push the post address-->
+        {% set sendTo = sendTo | push( addresses[contactCustomer.notices[loop.index0].addressID].address1 + "<br>" + addresses[contactCustomer.notices[loop.index0].addressID].city  + "<br>" + addresses[contactCustomer.notices[loop.index0].addressID].postcode + "<br>" ) %}
+        {% else %}
+        <!--push the email address-->
+        {% set sendTo = sendTo | push(  i.email + "<br>") %}
+        {% endif %}
+      {% endif %}
+    <!--if the notice isn't WAA-->
+    {% else %}
+    <!--push the list of notices into the array-->
+    {% set notices = notices | push([ notice.type ]) %}
+      <!--if the notice is sent by post-->
+      {% if contactCustomer.notices[loop.index0].sendBy == "post" %}
+      <!--push the post address-->
+      {% set sendTo = sendTo | push( addresses[contactCustomer.notices[loop.index0].addressID].address1 + "<br>" + addresses[contactCustomer.notices[loop.index0].addressID].city  + "<br>" + addresses[contactCustomer.notices[loop.index0].addressID].postcode + "<br>" ) %}
+      {% else %}
+      <!--push the email address-->
+      {% set sendTo = sendTo | push(  i.email + "<br>") %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
 
 
 
- {#  for keeping everying thing in the same row use arrays  {% set notices = notices | push([ notice.type ]) %} #}
- {# {% if loop.index0 > 0 %}#}
-  <!--for keeping everying thing in the same row-->
+<!--check to see if the contact has more  than one notice-->
+{% if notices.length > 1 %}
+
+  <!--set the addresses to be unique-->
+  {% set sendToUnique = sendTo|unique %}
+  <!--if there is only one unique address-->
+  {% if sendToUnique.length == 1 %}
+  {% set contactList = contactList | push([
+    {text: contactName},
+    {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+    {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
+  ]) %}
+  {% else %}
+    <!--loop through the different addresses-->
+    {% for i in sendToUnique %}
+      <!--for the first item-->
+      {% if loop.index0 == 0 %}
+      <!--set the contact name rowspan to the be the number of notices for the customer, remove the first item from the notices array (shift)-->
+      {% set contactList = contactList | push([
+        {text: contactName, rowspan: notices.length},
+        {text: notices|shift , classes: "govuk-table__cell--no-border"},
+        {text: sendToUnique[loop.index0] |dump | stripQuotes | stripSqBrackets | replaceComma  |safe, classes: "govuk-table__cell--no-border" }
+      ]) %}
+
+      {% elseif loop.last %}
+      <!--for the last item, dump everything out-->
+      {% set contactList = contactList | push([
+        {text: notices |dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+        {text: sendToUnique[loop.index0] |dump | stripQuotes | stripSqBrackets | replaceComma  |safe }
+      ]) %}
+
+      {% else %}
+      <!--for any items in the middle, remove them from the notices array after displaying them-->
+      {% set contactList = contactList | push([
+        {text: notices|shift, classes: "govuk-table__cell--no-border" },
+        {text: sendToUnique[loop.index0] |dump | stripQuotes | stripSqBrackets | replaceComma  |safe, classes: "govuk-table__cell--no-border"  }
+      ]) %}
+      {% endif %}
 
 
+    {% endfor %}
+   {% endif %}
 
-{% set licenceTagged = "false"%}
-<!--check if the licence is tagged-->
-{% if [notice.type] == "Water abstraction alerts"%}
-
-<!--loop through stations-->
-{% set stations = data['stations'] %}
-{% for station in stations %}
-
-<!--set station number and name-->
-{% set stationID = loop.index0 %}
-{% set stationName = station.label %}
-
-<!--loop through the station tags-->
-{% set tags = data.stations[stationID]['tags'] %}
-
-{% for tag in tags %}
-
-
-<!--set tag number-->
-{% set tagNumber = loop.index0 %}
-{% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
-
-
-<!--check for licence number matches-->
-{% if tagLicenceNumber == data.licences[data.ID].number %}
-
-{% set licenceTagged = "true"%}
-{% set notices =  [notice.type] %}
-
-
-{% endif %}
-{% endfor %}
-{% endfor %}
 {% else %}
-{% set notices =  [notice.type] %}
-{% endif %}
+    <!-- if just the one contact -->
 
-
-
-
-<!--get the asscociated address or email-->
-{% if notice.sendBy == "post" %}
-
-
- <!--for keeping everying thing in the same row-->
- {# {% set sendTo = sendTo | push( addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ) %} #}
-
-{% set sendTo = [addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode + "<br>" ] %}
-
-{% else %}
-
- {#  for keeping everying thing in the same row {% set sendTo = sendTo | push(  i.email + "<br>") %} #}
-
- {% set sendTo = i.email + "<br>" %}
-
-{% endif %}
-
-<!--check if the licence is tagged-->
-{% if [notice.type] == "Water abstraction alerts" %}
-
-{% if licenceTagged == "true" %}
-{% set contactList = contactList | push([
-  {text: contactName},
-  {text: notices  },
-  {text: sendTo|safe }
-]) %}
+      <!--if the contact only has a water abstraction alerts notice-->
+      {% if contactCustomer.notices.length == 1 and contactCustomer.notices[0].type == "Water abstraction alerts" %}
+          <!--check to see if the licence has been tagged-->
+          {% if licenceTagged == "true" %}
+          {% set contactList = contactList | push([
+            {text: contactName},
+            {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+            {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
+          ]) %}
+          {% endif %}
+      {% else %}
+      <!--if they have one notice that isn't WAA-->
+      {% set contactList = contactList | push([
+        {text: contactName},
+        {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+        {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
+      ]) %}
+      {% endif %}
 
 {% endif %}
-{% else %}
-{% set contactList = contactList | push([
-  {text: contactName},
-  {text: notices  },
-  {text: sendTo|safe }
-]) %}
-{% endif %}
-
-{% endfor %}
-
-
-{# for keeping everying thing in the same row
-{% set contactList = contactList | push([
-  {text: contactName},
-  {text: notices |dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
-  {text: sendTo |unique |dump | stripQuotes | stripSqBrackets | replaceComma  |safe }
-]) %}
-#}
-
-
 
 {% endif %}
 {% endfor %}
 {% endfor %}
+
+
 
 
 <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
@@ -155,7 +169,13 @@
 {% endfor %}
 
 
-
+{# {{contactList[0][0].text}}
+{% for rows in contactList %}
+{{loop.index0}}<br>
+{% for text in rows %}
+{{text.text}} {{loop.index0}} <br>
+{% endfor %}
+{% endfor %} #}
 
 {{ govukTable({
   caption: caption|safe,
