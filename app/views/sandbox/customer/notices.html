@@ -15,7 +15,7 @@
 
 {% set warning %}
    {{ govukWarningText({
-     text:  "This contact will get water abstraction alerts for all licences linked to " + [data.customers[data.customerID]['name']] +". The licence holder will not get the alerts by post.",
+     text:  "This contact will get water abstraction alerts by email for all licences linked to " + [data.customers[data.customerID]['name']] +". The licence holder will not get the alerts by post.",
      iconFallbackText: "Warning",
      classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-1"
    }) }}
