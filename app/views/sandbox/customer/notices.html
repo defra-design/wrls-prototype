@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title =  'Should ' + [data.contacts[data.contactID]['name']] + ' get water abstraction email alerts?' %}
+{% set title =  'Set' + [data.contacts[data.contactID]['name']] + 'to get water abstraction alerts by email?' %}
 
 
 
@@ -15,7 +15,7 @@
 
 {% set warning %}
    {{ govukWarningText({
-     text:  "This contact will get water abstraction alerts by email for all licences linked to " + [data.customers[data.customerID]['name']] +". The licence holder will not get the alerts by post.",
+     text:  "The licence holder will not get alerts by post if you set a contact to get email alerts.",
      iconFallbackText: "Warning",
      classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-1"
    }) }}
