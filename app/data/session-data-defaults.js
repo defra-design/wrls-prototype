@@ -985,9 +985,9 @@ module.exports = {
         }],
       },
       {
-        "name": "Bottled Water Plc (Head office)",
+        "name": "Bottled Water Plc",
         "email": "",
-        "type": "department",
+        "type": "company",
         "department": "Head office",
         "customers": [{
           "role": "Licence holder,Billing contact",
@@ -1022,6 +1022,11 @@ module.exports = {
         "customers": [{
           "role": "Licence holder,Billing contact",
           "notices": [{
+                        "type": "Water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "3",
+                      },
+                      {
                         "type": "Renewals",
                         "sendBy": "post",
                         "addressID": "3",
@@ -1033,11 +1038,6 @@ module.exports = {
                       },
                       {
                         "type": "Bills",
-                        "sendBy": "post",
-                        "addressID": "3",
-                      },
-                      {
-                        "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "3",
                       }],
@@ -1056,16 +1056,18 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Licence holder,Billing contact",
-          "notices": [{
-                        "type": "Renewals",
-                        "sendBy": "post",
-                        "addressID": "4",
-                      },
+          "notices": [
                       {
                         "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "4",
                       },
+                      {
+                        "type": "Renewals",
+                        "sendBy": "post",
+                        "addressID": "4",
+                      },
+
                       {
                         "type": "Bills",
                         "sendBy": "post",
@@ -1106,7 +1108,13 @@ module.exports = {
         "department": "",
         "customers": [{
           "role": "Licence holder,Billing contact",
-          "notices": [{
+          "notices": [
+                      {
+                        "type": "Water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "5",
+                      },
+                      {
                         "type": "Renewals",
                         "sendBy": "post",
                         "addressID": "5",
@@ -1118,11 +1126,6 @@ module.exports = {
                       },
                       {
                         "type": "Bills",
-                        "sendBy": "post",
-                        "addressID": "5",
-                      },
-                      {
-                        "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "5",
                       }],

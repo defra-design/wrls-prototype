@@ -13,7 +13,7 @@
       <th scope="col" class="govuk-table__header">Email address</th>
   <!--    <th scope="col" class="govuk-table__header">Role</th>
       <th scope="col" class="govuk-table__header">Notices</th>-->
- <!-- if the customer is receiving email WAA show this column --> {% if data.customers[data.customerID].WAA == "email" %}  <th scope="col" class="govuk-table__header">Water abstraction alerts</th> {% endif %}
+ <!-- if the customer is receiving email WAA show this column -->{# {% if data.customers[data.customerID].WAA == "email" %}  <th scope="col" class="govuk-table__header">Water abstraction alerts</th> {% endif %} #}
       <th scope="col" class="govuk-table__header">Action</th>
     </tr>
   </thead>
@@ -27,6 +27,9 @@
 
 <!--loop through each contact-->
 {% for contact in contacts %}
+
+{% if contact.type == "company" %}
+{% else %}
 <!--set the contact ID -->
 {% set loopNumber = loop.index0 %}
 <!--get the customers for each contact-->
@@ -43,7 +46,7 @@
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
-  {% if data.customers[data.customerID].WAA == "email" %}
+{# {% if data.customers[data.customerID].WAA == "email" %}
   <td class="govuk-table__cell">
   {% for notice in data.contacts[loopNumber].customers[index]['notices'] %}
   {% if notice.type == "Water abstraction alerts" %}
@@ -53,7 +56,7 @@
    {% endif %}
    {% endfor %}
     </td>
-   {% endif %}
+   {% endif %}#} 
   <!--  <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
     <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br  }}</td>-->
     <td class="govuk-table__cell">
@@ -80,6 +83,7 @@
   </tr>
   {% endif %}
   {% endfor %}
+    {% endif %}
   {% endfor %}
 
 
