@@ -18,6 +18,36 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.contents-list__title {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0;
+    color: #0b0c0c;
+}
+.contents-list__list {
+    font-size: 16px;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+.contents-list__list li {
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 7.5px;
+    margin-bottom: 0px !important;
+  }
+
+.contents-list__list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    overflow: hidden;
+  }
 
 
 

@@ -1,0 +1,78 @@
+{% extends "layouts/_BASE.html" %}
+
+<!--set title-->
+{% set title = [data.licences[data.ID].name] + " Licence summary" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% set navbarActiveSearch = "navbar__link--active" %}
+
+{% block header %}
+
+<!--header without searchbar-->
+{% include "sandbox/_includes/nav/header.html" %}
+
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+      {{[data.licences[data.ID].name]}}
+    </h1>
+  </div>
+</div>
+
+
+<nav aria-label="Licence views" role="navigation" >
+    <h2 class="contents-list__title">
+      Licence views
+</h2>
+    <ol class="contents-list__list">
+        <li >
+          <a class="govuk-link govuk-link--no-visited-state"  href="licence-experimental-summary">Summary</a>
+
+        </li>
+        <li >
+          <a class="govuk-link govuk-link--no-visited-state"  href="licence-experimental-contact-details">Contact details</a>
+
+        </li>
+        <li >
+          <a class="govuk-link govuk-link--no-visited-state" href="licence-experimental-returns">Returns</a>
+
+        </li>
+        <li  >
+          <a class="govuk-link govuk-link--no-visited-state" href="licence-experimental-messages">Messages</a>
+
+        </li>
+        <li >
+          <a class="govuk-link govuk-link--no-visited-state"  href="licence-experimental-bills">Bills</a>
+
+        </li>
+        <li  aria-current="true">
+          Charge information and agreements
+
+        </li>
+    </ol>
+</nav>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+<section>
+      {% include "sandbox/_includes/licence/charge-information.html" %}
+</section>
+
+
+{% endblock %}
