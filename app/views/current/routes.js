@@ -3,6 +3,17 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+//----------------------------------------------------------------
+////BILL RUN ROUTES
+//CREATE BILL RUN
+
+router.use('/bd/iterations/bill-runs', require('./bd/iterations/_routes/_routes-bill-runs'));
+
+
+
+
+
+
 /////Reason for new charge version
 //Setting the change element route back
 router.get('/current/bd/charges-2020/add-new-reason', function(req, res) {
@@ -12,6 +23,8 @@ router.get('/current/bd/charges-2020/add-new-reason', function(req, res) {
   res.render('bd/charges-2020/add-new-reason');
 
 });
+
+
 
 
 router.post('/bd/charges-2020/add-new-reason', function(req, res) {

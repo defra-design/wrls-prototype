@@ -1,0 +1,83 @@
+{% extends "layouts/_QuestionPage.html" %}
+
+<!--set title-->
+{% set title = "Select the region" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+
+    <form  method="post" novalidate>
+
+
+
+      {{ govukRadios({
+        idPrefix: "region",
+        name: "region",
+        fieldset: {
+          legend: {
+            text: [title],
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "anglian",
+            text: "Anglian"
+          },
+          {
+            value: "northWest",
+            text: "North West"
+          },
+          {
+            value: "northEast",
+            text: "North East"
+          },
+          {
+            value: "midlands",
+            text: "Midlands"
+          },
+          {
+            value: "southWest",
+            text: "South West"
+          },
+          {
+            value: "southern",
+            text: "Southern"
+          },
+          {
+            value: "thames",
+            text: "Thames"
+          },
+          {
+            value: "wales",
+            text: "Wales"
+          }
+        ]
+      }) }}
+
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

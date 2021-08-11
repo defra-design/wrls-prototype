@@ -18,6 +18,9 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+
+//Contents list styles
 .contents-list__title {
     font-size: 16px;
     line-height: 1.5;
@@ -48,7 +51,7 @@ $govuk-assets-path: '/govuk/assets/';
     width: 20px;
     overflow: hidden;
   }
-
+//End of contents list styles
 
 
 //old proto custom styles

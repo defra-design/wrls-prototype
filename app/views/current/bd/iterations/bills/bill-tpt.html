@@ -1,0 +1,286 @@
+{% extends "layouts/_manage.html" %}
+
+{% if [data.status] == "ready" %}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account BA1234443S</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
+{% set title = 'Bill for ' + [data.licenceHolder]%}
+{% else %}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' + data['bill'] | default("OP656544") + '</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
+{% set title = 'Bill ' + data['bill'] | default("OP123344") + 'Bill for ' + [data.licenceHolder]%}
+{% endif %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+
+{% if ("true" in data.rebill) and ("false" in data.billRun ) %}
+{{ govukWarningText({
+  text: "This bill is marked for reissue",
+  iconFallbackText: "Warning"
+}) }}
+
+{% elseif ("true" in data.rebill) and ("created" in data.billRun ) %}
+
+{{ govukWarningText({
+  text: "This bill is marked for reissue",
+  iconFallbackText: "Warning"
+}) }}
+
+{% endif %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-full">
+
+    <section class="govuk-!-margin-bottom-6">
+      <!-- billing title-->
+      {{ pTitle | safe }}
+
+      {% if [data.status] == "ready" %}
+      <p class="govuk-body">
+        {{govukTag({
+          text: "Ready",
+          classes: "govuk-tag--blue govuk-!-font-size-27"
+        })}}
+      </p>
+      {% else %}
+      <p class="govuk-body">
+        {{govukTag({
+          text: "Sent",
+          classes: "govuk-tag--green govuk-!-font-size-27"
+        })}}
+      </p>
+      {% endif %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+        {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-3',
+        rows: [
+          {
+            key: {
+              text: "Date created",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: "12 April 2020",
+              classes: "meta-data__value"
+            }
+          },
+          {
+            key: {
+              text: "Region",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: "Anglian",
+              classes: "meta-data__value"
+            }
+          },
+          {
+            key: {
+              text: "Bill run type",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: "Two-part tariff - Summer",
+              classes: "meta-data__value"
+            }
+          },
+          {
+            key: {
+              text: "Financial year",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: "2020 to 2021",
+              classes: "meta-data__value"
+            }
+          }
+        ]
+      }) }}
+
+
+
+        </div>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Billing account details
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body "><span class="govuk-!-font-weight-bold">Billing account <a class="govuk-link" href="../billing-account?BAID=0"> BA1234443S</a></span><br>
+            Bottled Water Plc<br>
+            <!-- billing account address -->
+            67 Gainsborough<br>Poole<br>BH33 1QE</p>
+
+        </div>
+      </details>
+
+
+<!--
+      {% if ("true" in data.rebill) and ("sent" in data.billRun ) %}
+
+      <div class="govuk-inset-text">
+
+        <h2 class="govuk-heading-m">This bill is linked to a reissue</h2>
+
+        <div class="govuk-grid-row govuk-!-margin-bottom-3">
+          <div class="govuk-grid-column-full">
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Date created
+                </div>
+                <div class="meta-data__value">
+                  20 April 2020
+                </div>
+                <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Reissued bill
+                </div>
+                <div class="meta-data__value">
+                  <a href="supplementary-bill-rebilled?bill=OP765990">
+                    <span class="screen-reader-only">bill</span> OP765990
+                  </a>
+                </div>
+                <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Reversed bill
+                </div>
+                <div class="meta-data__value">
+                  <a href="supplementary-bill-credit?bill=OP765990">
+                    <span class="screen-reader-only">bill</span> OP444333
+                  </a>
+                </div>
+                <div>
+            </section>
+            <section class="meta-data__row">
+              <div class="meta-data__container">
+                <div class="meta-data__label">
+                  Original bill
+                </div>
+                <div class="meta-data__value">
+
+                  <span class="screen-reader-only">bill</span> OP123344, this bill
+
+                </div>
+                <div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+      {% endif %}
+-->
+
+    </section>
+  </div>
+</div>
+
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+
+  <div class="govuk-grid-column-one-half">
+    <!--  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+        Total
+      </h2> -->
+    <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£700.50</span><br>
+      <!-- <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3> -->
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
+  </div>
+
+</div>
+
+<!-- <button class="govuk-button govuk-button--warning" data-module="govuk-button">
+    Remove from batch
+  </button> -->
+
+<!-- <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Remove from batch
+  </button> -->
+
+{% if [data.status] == "ready" %}
+
+<!--remove from the bill run button-->
+<p class="govuk-body govuk-!-margin-bottom-0">
+
+  {{ govukButton({
+classes: "govuk-button--secondary",
+text: "Remove bill",
+href: "confirm-remove-bill?runType=supplementary"
+}) }}
+</p>
+
+{% endif %}
+
+<!-- No longer in use, route is through the billing account
+{% if ([data.status] == "sent") and ([data.rebill] == "false") %}
+
+{{ govukButton({
+   text: "Rebill",
+   classes: "govuk-button--secondary",
+   href: "check-rebill"
+  }) }}
+
+{% endif %}
+-->
+
+<div class="divider govuk-!-margin-bottom-7"></div>
+
+<!-- invoice details -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-xl ">
+      Transactions for 1 licence
+    </h2>
+  </div>
+</div>
+
+
+
+<!-- s table -->
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-full">
+<section>
+    <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
+      Licence 03/28/60/0032
+    </h3>
+    <div class="govuk-button-group">
+
+
+
+
+<a class="govuk-link" href="../licence-summary">
+  View licence
+</a>
+
+
+    </div>
+</section>
+
+
+
+
+      <!--navigation cards -->
+      {% include "sandbox/_includes/billing/transactions-table-tpt.html" %}
+
+  </div>
+  </div>
+
+{% endblock %}
