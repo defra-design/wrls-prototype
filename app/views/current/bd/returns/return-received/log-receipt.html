@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% set title = "When was the return received? - GOV.UK" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-width-container">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <!-- page heading -->
+          {% if permits[1].LicenceName %}
+
+            <h1 class="govuk-heading-l">
+              <span class="screen-reader-only">Return status</span>
+              <span class="govuk-caption-xl">Licence {{ permits[1].LicenceSerialNo }}</span>
+              {{ permits[1].LicenceName }}
+            </h1>
+
+          {% else %}
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+              <span class="govuk-caption-xl">Licence 03/28/60/0032</span>
+              Return status
+            </h1>
+
+          {% endif %}
+
+      <form action="../return-received" id="return-process" data-routing="1" method="post" class="form">
+
+
+
+        {% call govukFieldset({
+legend: {
+  text: "When was the return received?",
+  classes: "govuk-fieldset__legend--m",
+  isPageHeading: true
+}
+}) %}
+
+{{ govukDateInput({
+  id: "returnReceivedDate",
+  namePrefix: "returnReceivedDate"
+}) }}
+
+{{ govukCheckboxes({
+idPrefix: "underQuery",
+name: "underQuery",
+items: [
+{
+value: "underQuery",
+text: "Mark as under query"
+}
+]
+}) }}
+
+{% endcall %}
+
+        <button type="submit" class="govuk-button">
+          Submit
+        </button>
+
+      </form>
+
+    </div>
+
+    <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+    <script>
+      $(function() {
+        $('form[data-routing]').on('submit', function(ev) {
+          // FInd selected radio button
+          const url = $(this).find('input:checked').val();
+
+          if(url) {
+            ev.preventDefault();
+            window.location.href = url;
+            return false;
+          }
+        });
+      })
+    </script>
+
+  </main>
+</div>
+{% endblock %}

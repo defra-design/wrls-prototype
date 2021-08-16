@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Return status - GOV.UK" %}
+{% set title = "Confirm this return - GOV.UK" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -156,57 +156,85 @@
         </div>
       {% endif %}
 
-      <form action="#" id="return-status"   data-routing="1" method="post" class="form">
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+        <div class="govuk-grid-column-two-thirds">
+
+      <form action="../return-submitted" id="return-status"   data-routing="1" method="post" class="form">
+
+<h2 class="govuk-heading-l ">
+Confirm this return
+<h2>
+
+  <h3 class="govuk-heading-s">
+  Meter details
+  <h3>
+
+
+    {{ govukInsetText({
+      html: "Estimated volumes"
+    }) }}
 
 
 
-          {{ govukRadios({
-            idPrefix: "returnStatus",
-            name: "returnStatus",
-            fieldset: {
-              legend: {
-                text: "What would you like to do with this return?",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--l"
-              }
-            },
-            items: [
-              {
-                value: "return-process/when-was-this-return-received",
-                text: "Enter and submit it"
-              },
-              {
-                value: "return-received/log-receipt",
-                text: "Record receipt (and come back to it later)"
-              }
-            ]
-          })
-        }}
+
+
+{# set a blank array for the contact List #}
+{% set tableRows = [] %}
+
+<!--April-->
+
+{% set tableRows = tableRows | push([
+{text: "April"},
+{text: "20", format: "numeric"}
+]) %}
+
+
+
+{% set tableRows = tableRows | push([
+{html: "<span class='govuk-!-font-weight-bold'>Total volume of water abstracted</span>"},
+{html: "<span class='govuk-!-font-weight-bold'>20</span>", format: "numeric"}
+]) %}
+
+{{ govukTable({
+firstCellIsHeader: false,
+head: [
+{
+  text: "Month",
+  classes: "govuk-!-width-one-half"
+},
+{
+  text: "Cubic metres",
+  format: "numeric"
+}
+],
+rows: tableRows
+}) }}
+
+<p class="govuk-body">
+<a href="#" class="govuk-link">Edit these volumes</a>
+</p>
+
+{{ govukCheckboxes({
+idPrefix: "underQuery",
+name: "underQuery",
+items: [
+{
+value: "underQuery",
+text: "Mark as under query"
+}
+]
+}) }}
 
         <button type="submit" class="govuk-button">
-          Continue
+          Submit
         </button>
 
       </form>
 
     </div>
 
-    <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-    <script>
-      $(function() {
-        $('form[data-routing]').on('submit', function(ev) {
-          // FInd selected radio button
-          const url = $(this).find('input:checked').val();
-          console.log(url);
-          if(url) {
-            ev.preventDefault();
-            window.location.href = url;
-            return false;
-          }
-        });
-      })
-    </script>
+    </div>
+    </div>
 
   </main>
 </div>

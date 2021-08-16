@@ -27,6 +27,9 @@
 
 {% block beforeContent %}
 
+<!-- phase banner -->
+{% include "sandbox/_includes/nav/phase-banner.html" %}
+
   <!-- navigation block -->
   {% include "current/includes/nav/nav-bd-view.html" %}
 
@@ -41,6 +44,9 @@
 
 {% block content %}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+
   <div class="govuk-form-group">
     <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="example">
         Search
@@ -49,10 +55,14 @@
     <span id="example-hint" class="govuk-hint">
       Enter a licence number, customer name, returns ID, registered email address or monitoring station
     </span>
-    <input class="govuk-input govuk-input--width-20 govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
+    <input class="govuk-input govuk-!-width-two-thirds govuk-!-display-inline-block" id="search" name="search" type="text" aria-describedby="search-hint">
     <a href="results-licences" class="wrls-faux-button wrls-faux-button--inline">
       Search
     </a>
   </div>
+
+    </div>
+
+      </div>
 
 {% endblock %}

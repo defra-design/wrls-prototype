@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Return status - GOV.UK" %}
+{% set title = "Return status - Nill return - GOV.UK" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -156,57 +156,35 @@
         </div>
       {% endif %}
 
-      <form action="#" id="return-status"   data-routing="1" method="post" class="form">
+      <form action="return-submitted" id="return-status-nill-return"   data-routing="1" method="post" class="form">
 
 
 
-          {{ govukRadios({
-            idPrefix: "returnStatus",
-            name: "returnStatus",
-            fieldset: {
-              legend: {
-                text: "What would you like to do with this return?",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--l"
-              }
-            },
-            items: [
-              {
-                value: "return-process/when-was-this-return-received",
-                text: "Enter and submit it"
-              },
-              {
-                value: "return-received/log-receipt",
-                text: "Record receipt (and come back to it later)"
-              }
-            ]
-          })
-        }}
+        {{ govukCheckboxes({
+idPrefix: "nillReturn",
+name: "nillReturn",
+fieldset: {
+  legend: {
+    text: "Nil return",
+    isPageHeading: false,
+    classes: "govuk-fieldset__legend--l"
+  }
+},
+items: [
+  {
+    value: "underQuery",
+    text: "Mark as under query"
+  }
+]
+}) }}
 
         <button type="submit" class="govuk-button">
-          Continue
+          Submit
         </button>
 
       </form>
 
     </div>
-
-    <script src="/public/javascripts/jquery-1.11.3.js"></script>
-
-    <script>
-      $(function() {
-        $('form[data-routing]').on('submit', function(ev) {
-          // FInd selected radio button
-          const url = $(this).find('input:checked').val();
-          console.log(url);
-          if(url) {
-            ev.preventDefault();
-            window.location.href = url;
-            return false;
-          }
-        });
-      })
-    </script>
 
   </main>
 </div>
