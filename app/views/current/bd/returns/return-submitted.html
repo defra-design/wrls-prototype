@@ -50,8 +50,13 @@
   Purpose <strong>Spray irrigation</strong></div>"
   }) }}
 
+  {% if data.returnStatus == "submitted" %}
+  <p class="govuk-body"><a href="return-status-submitted" class="govuk-link">View this return</a></p>
+  {% elseif data.returnStatus == "estimated" %}
+  <p class="govuk-body"><a href="return-status-estimated-submitted" class="govuk-link">View this return</a></p>
+  {% elseif data.returnStatus == "nill" %}
   <p class="govuk-body"><a href="return-status-nill-return-submitted" class="govuk-link">View this return</a></p>
-
+  {% endif %}
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Return status - Nill return - GOV.UK" %}
+{% set title = "Return status - Submitted - GOV.UK" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -156,31 +156,195 @@
         </div>
       {% endif %}
 
-      <form action="return-submitted?returnStatus=nill" id="return-status-nill-return"   data-routing="1" method="post" class="form">
+      <form action="return-status" id="return-status-submitted"   data-routing="1" method="post" class="form">
+
+
+        <h3 class="govuk-heading-s">
+        Meter details
+        <h3>
+
+
+          {{ govukInsetText({
+            html: "1234553<br>12534233<br>Has a x10 Display<br>Start reading 20<br>End reading 300"
+          }) }}
 
 
 
-        {{ govukCheckboxes({
-idPrefix: "nillReturn",
-name: "nillReturn",
-fieldset: {
-  legend: {
-    text: "Nil return",
-    isPageHeading: false,
-    classes: "govuk-fieldset__legend--l"
-  }
-},
-items: [
-  {
-    value: "underQuery",
-    text: "Mark as under query"
-  }
-]
+
+
+      {# set a blank array for the contact List #}
+      {% set tableRows = [] %}
+
+      <!--April-->
+      {% set loop = 31 %}
+      {% for i in range(1, loop) -%}
+      {% set tableRows = tableRows | push([
+      {text: i + " April"},
+      {text: "20", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+      <!--May-->
+      {% set loop = 32 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " May"},
+      {text: "40", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+      <!--June-->
+      {% set loop = 31 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " June"},
+      {text: "60", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      <!--July-->
+      {% set loop = 32 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " July"},
+      {text: "80", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      <!--August-->
+      {% set loop = 32 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " August"},
+      {text: "100", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+      <!--September-->
+      {% set loop = 31 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " September"},
+      {text: "120", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      <!--Ocotber-->
+      {% set loop = 32 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " October"},
+      {text: "140", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      <!--November-->
+      {% set loop = 31 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " November"},
+      {text: "160", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      <!--December-->
+      {% set loop = 32 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " December"},
+      {text: "180", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      <!--January-->
+      {% set loop = 32 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " January"},
+      {text: "250", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+      <!--February-->
+      {% set loop = 29 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " February"},
+      {text: "280", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      <!--March-->
+      {% set loop = 32 %}
+      {% for i in range(1, loop) -%}
+
+      {% set tableRows = tableRows | push([
+      {text: i + " March"},
+      {text: "300", format: "numeric"},
+      {text: "10", format: "numeric"}
+      ]) %}
+      {%- endfor %}
+
+
+      {{ govukTable({
+      firstCellIsHeader: false,
+      head: [
+      {
+        text: "Day",
+        classes: "govuk-!-width-one-half"
+      },
+      {
+        text: "Reading",
+        format: "numeric"
+      },
+      {
+        text: "Cubic metres",
+        format: "numeric"
+      }
+      ],
+      rows: tableRows
+      }) }}
+
+
+{{ govukButton({
+text: "Edit return"
 }) }}
 
-        <button type="submit" class="govuk-button">
-          Submit
-        </button>
+<h3 class="govuk-heading-m">
+  Submitted by
+</h3>
+
+{{ govukInsetText({
+  html: "yourself@you.co.uk<br>13 August 2021"
+}) }}
 
       </form>
 

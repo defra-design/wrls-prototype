@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Return status - Nill return - GOV.UK" %}
+{% set title = "Return status - Estimated - GOV.UK" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -156,31 +156,67 @@
         </div>
       {% endif %}
 
-      <form action="return-submitted?returnStatus=nill" id="return-status-nill-return"   data-routing="1" method="post" class="form">
+      <form action="return-status" id="return-status-estimated"   data-routing="1" method="post" class="form">
+
+
+          <h3 class="govuk-heading-s">
+          Meter details
+          <h3>
+
+
+            {{ govukInsetText({
+              html: "Estimated volumes"
+            }) }}
 
 
 
-        {{ govukCheckboxes({
-idPrefix: "nillReturn",
-name: "nillReturn",
-fieldset: {
-  legend: {
-    text: "Nil return",
-    isPageHeading: false,
-    classes: "govuk-fieldset__legend--l"
-  }
-},
-items: [
-  {
-    value: "underQuery",
-    text: "Mark as under query"
-  }
-]
+
+
+        {# set a blank array for the contact List #}
+        {% set tableRows = [] %}
+
+        <!--April-->
+
+        {% set tableRows = tableRows | push([
+        {text: "April"},
+        {text: "20", format: "numeric"}
+        ]) %}
+
+
+
+        {% set tableRows = tableRows | push([
+        {html: "<span class='govuk-!-font-weight-bold'>Total volume of water abstracted</span>"},
+        {html: "<span class='govuk-!-font-weight-bold'>20</span>", format: "numeric"}
+        ]) %}
+
+        {{ govukTable({
+        firstCellIsHeader: false,
+        head: [
+        {
+          text: "Month",
+          classes: "govuk-!-width-one-half"
+        },
+        {
+          text: "Cubic metres",
+          format: "numeric"
+        }
+        ],
+        rows: tableRows
+        }) }}
+
+
+
+{{ govukButton({
+text: "Edit return"
 }) }}
 
-        <button type="submit" class="govuk-button">
-          Submit
-        </button>
+<h3 class="govuk-heading-m">
+  Submitted by
+</h3>
+
+{{ govukInsetText({
+  html: "yourself@you.co.uk<br>13 August 2021"
+}) }}
 
       </form>
 
