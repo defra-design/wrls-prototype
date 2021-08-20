@@ -1,0 +1,191 @@
+{% import "current/includes/macros/tables.njk" as table %}
+
+{% extends "layout.html" %}
+
+{% set title = "Billing account for " + data['licenceHolder'] %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-view.html" %}
+
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- contact summary -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Billing account {{data['invoiceAccount']}}</span>
+    {{ title }}</h1>
+
+    <!-- Licences linked to this billing account  include "current/includes/bd/licences-billing-account.html"-->
+
+  </div>
+</div>
+
+<!--
+{% if ("true" in data.rebill) and ("building" in data.status) %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+{{ govukWarningText({
+  text: "Some bills will be reissued in the next supplementary bill run",
+  iconFallbackText: "Warning"
+}) }}
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>OP123344</li>
+  </ul>
+
+  <p class="govuk-body"><a class="govuk-link" href="confirm-cancel-rebilling" >Cancel the reissue</a></p>
+</div>
+</div>
+{% elseif ("true" in data.rebill) and ("ready" in data.status) %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+{{ govukWarningText({
+  text: "This bill will be reissued and sent in a supplementary bill run",
+  iconFallbackText: "Warning"
+}) }}
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>OP123344</li>
+  </ul>
+
+  <p class="govuk-body"><a class="govuk-link" href="supplementary-charges">Go to bill run</a></p>
+</div>
+</div>
+{% endif %}
+-->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+    <section>
+      <h2 class="govuk-heading-m">
+      Billing address
+      </h2>
+      <p class="govuk-body">
+      {% set licenceHolder = data['licenceHolder'] %}
+      {% set billingContact = data['customerName'] %}
+
+
+      {% if licenceHolder == billingContact %}
+      {{data['licenceHolder']}}<br>
+      {% else %}
+     {{data['customerName']}}<br>
+      {% endif %}
+      {% if data['newFAO'] == "Yes" %}
+      FAO {{data['fao']}}<br>
+      {% endif %}
+
+      {{data['address1']}}<br>
+      {{data['city']}}<br>
+      {{data['postcode']}}
+      </p>
+
+
+      {{ govukButton({
+  text: "Change address",
+  classes: "govuk-button--secondary",
+  href: "/bd/contacts/bill-manager?ba=true&createNewContact=false"
+}) }}
+
+</section>
+</div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">
+    Sent bills
+    </h2>
+<p class="govuk-body">
+No bills have been sent for this licence
+  </p>
+</div>
+</div>
+
+  <!--    <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Billing address
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {% set licenceHolder = data['licenceHolder'] %}
+            {% set billingContact = data['customerName'] %}
+
+            {% if data['newFAO'] == "Yes" %}
+            FAO {{data['fao']}}<br>
+            {% endif %}
+
+            {% if licenceHolder == billingContact %}
+            {{data['licenceHolder']}}<br>
+            {% else %}
+            {{data['licenceHolder']}}<br>
+            C/o {{data['customerName']}}<br>
+            {% endif %}
+
+
+            {{data['address1']}}<br>
+            {{data['city']}}<br>
+            {{data['postcode']}}<br>
+          </dd>
+          <dd class="govuk-summary-list__actions ">
+            <a class="govuk-link" href="/bd/contacts/bill-manager?ba=true&createNewContact=false">
+            Change<span class="govuk-visually-hidden"> address</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+
+<div class="divider govuk-!-margin-bottom-8"></div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+    <section>
+{% include "current/includes/bd/bills-billing-account.html" %}
+    </section>
+  </div>
+</div>
+-->
+{% endblock %}
