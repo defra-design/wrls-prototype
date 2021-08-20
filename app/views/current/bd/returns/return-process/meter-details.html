@@ -66,7 +66,13 @@
 
           {% endif %}
 
-      <form action="meter-readings" id="return-process" data-routing="1" method="post" class="form">
+          {% if data.reportedBy == "volume" %}
+          {% set redirect = "single-volume" %}
+          {% else %}
+          {% set redirect = "meter-readings" %}
+          {% endif %}
+
+      <form action="{{redirect}}" id="return-process" data-routing="1" method="post" class="form">
 
 
 
@@ -120,22 +126,7 @@ hint: {
 
     </div>
 
-    <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
-    <script>
-      $(function() {
-        $('form[data-routing]').on('submit', function(ev) {
-          // FInd selected radio button
-          const url = $(this).find('input:checked').val();
-
-          if(url) {
-            ev.preventDefault();
-            window.location.href = url;
-            return false;
-          }
-        });
-      })
-    </script>
 
   </main>
 </div>
