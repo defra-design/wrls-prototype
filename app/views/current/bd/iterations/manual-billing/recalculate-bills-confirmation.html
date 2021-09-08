@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set title = "You’ve marked  this licence for the next supplementary bill run" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-view.html" %}
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukPanel({
+    titleText: title,
+    html: "Licence number<br><strong>03/28/60/0032</strong>"
+  }) }}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukButton({
+      text: "Create a bill run",
+      href: "../../charges-2020/pick-supplementary-region?credit=false"
+    }) }}
+
+    <p class="govuk-body">or</p>
+
+    <p class="govuk-body"><a class="govuk-link" href="../../licence-summary">Return to the licence</p>
+  </div>
+</div>
+
+
+{% endblock %}

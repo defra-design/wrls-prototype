@@ -180,7 +180,8 @@
                 href="charges-2020/remove-agreement?agreementNumber={{agreementNumber}}">Delete</a></td>
             {% else %}
             <td class="govuk-table__cell {{lastRowAgreements}}"><a href="charges-2020/remove-agreement-date?agreementNumber={{agreementNumber}}">End</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a
-                href="charges-2020/remove-agreement?agreementNumber={{agreementNumber}}">Delete</a></td>
+                href="charges-2020/remove-agreement?agreementNumber={{agreementNumber}}">Delete</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">{% if not data.suppBilling.length %}|</span><a
+                    href="iterations/manual-billing/recalculate-bills">Recalculate&nbsp;bills</a></td>{% endif %}
             {% endif %}
           </tr>
 

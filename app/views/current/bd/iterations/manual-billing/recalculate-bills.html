@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% set title = "You’re about to recalculate the two-part tariff bills for this licence" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-view.html" %}
+</div>
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+    <h1 class="govuk-heading-l">{{title}}</h1>
+
+  </div>
+</div>
+
+
+<form action="recalculate-bills-confirmation?suppBilling=true" method="post" class="form">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <p class="govuk-body">This licence will go into the next supplementary bill run.</p>
+
+      {{ govukWarningText({
+        text: "You cannot undo this action",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <button type="submit" class="govuk-button">
+        Confirm
+      </button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

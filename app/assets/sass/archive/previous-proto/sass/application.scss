@@ -60,6 +60,12 @@ width: 20% !important;
   }
 }
 
+.max-width-inherit
+{
+  @media (min-width: 768px) {
+  max-width:inherit !important;
+  }
+}
 
 .width-80 {
   @media (min-width: 768px) {
