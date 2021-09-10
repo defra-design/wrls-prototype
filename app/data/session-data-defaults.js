@@ -1295,6 +1295,62 @@ module.exports = {
          }],
        }],
 
+//suplementary manual bill run review data
+
+"suppManBillRun":[{
+ "licence": "03/28/60/0032",
+ "billingContact": "Bottled Water Plc",
+ "ready": "yes",
+ "edited": "",
+ "fys":[{
+ "elements": [{
+   "issue": "No returns",
+   "billableReturns": "100",
+   "reportedReturns": "0Ml",
+   "edited": "",
+   "ready": "yes",
+   "fy": 2021,
+ }],
+},{
+ "elements": [{
+   "issue": "No returns",
+   "billableReturns": "100",
+   "reportedReturns": "0Ml",
+   "edited": "",
+   "ready": "yes",
+   "fy": 2020,
+ }],
+},{
+ "elements": [{
+   "issue": "No returns",
+   "billableReturns": "100",
+   "reportedReturns": "0Ml",
+   "edited": "",
+   "ready": "yes",
+   "fy": 2019,
+ }],
+},
+{
+ "elements": [{
+   "issue": "No returns",
+   "billableReturns": "100",
+   "reportedReturns": "0Ml",
+   "edited": "",
+   "ready": "yes",
+   "fy": 2018,
+ }],
+},{
+ "elements": [{
+   "issue": "No returns",
+   "billableReturns": "100",
+   "reportedReturns": "0Ml",
+   "edited": "",
+   "ready": "yes",
+   "fy": 2017,
+ }],
+}
+],
+    }],
 
 
 

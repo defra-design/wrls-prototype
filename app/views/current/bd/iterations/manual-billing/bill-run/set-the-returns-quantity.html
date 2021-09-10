@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% set title = "Set the billable returns quantity for this bill run" %}
+{% set qtitle = '<span class="govuk-caption-l">' + [data['purpose'] |default ("Spray direct")| firstToUpperCase]  + ', ' + [data['description']] + '</span>' + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-full ">
+
+
+      <form  method="post" novalidate>
+
+
+        {% set customHtml %}
+        {{ govukInput({
+          label: {
+            text: "Billable returns quantity, in megalitres"
+          },
+          classes: "govuk-input--width-10",
+          id: "customQuantity",
+          name: "customQuantity",
+          suffix: {
+            text: "Ml"
+          },
+          spellcheck: false,
+          hint: {
+            text: "Enter a number with no more than 6 decimal places. For example, 20.123456"
+          }
+        }) }}
+      {% endset -%}
+
+      {% set insetText %}
+      {{ govukInsetText({
+  html: "Charge period: 1 March " + data.fy + " to 30 September " + data.fy
+}) }}
+      {% endset -%}
+
+   {{ govukRadios({
+     idPrefix: "billable-returns-quantity",
+     name: "billable-returns-quantity",
+     fieldset: {
+       legend: {
+         html: qtitle|safe + insetText,
+         isPageHeading: true,
+         classes: "govuk-fieldset__legend--xl"
+       }
+     },
+     items: [
+       {
+         value: "100",
+         text: "Authorised 100Ml"
+       },
+       {
+         value: "custom",
+         text: "Custom quantity",
+         conditional: {
+           html: customHtml
+         }
+       }
+     ]
+   }) }}
+
+   {{ govukButton({
+  text: "Confirm",
+  type: "submit"
+}) }}
+
+    </form>
+
+</div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

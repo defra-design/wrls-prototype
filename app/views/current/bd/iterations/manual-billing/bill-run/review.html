@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+
+{% set title = "Review data issues" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- phase banner -->
+{% include "sandbox/_includes/nav/phase-banner.html" %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} supplementary bill run</span>{{ title }}</h1>
+
+
+
+    <p class="govuk-body">
+      {{govukTag({
+        text: "Review",
+        classes: "govuk-tag--blue govuk-!-font-size-27"
+      })}}
+    </p>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-3">
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Date created
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          12 April 2020
+        </dd>
+
+      </div>
+
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Region
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          Anglian
+        </dd>
+
+      </div>
+
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Bill run type
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          Supplementary
+        </dd>
+
+      </div>
+
+
+
+    <!--  <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Financial year
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          2020 to 2021
+        </dd>
+
+      </div>
+ -->
+
+</dl>
+
+  </div>
+</div>
+
+<!--create the issues list, loop through the TpT bill run data and push those with issues to resolve in to a list-->
+
+{% set issuesList = [] %}
+{% set suppManBillRun = data['suppManBillRun'] %}
+
+    {% for item in suppManBillRun %}
+    {% if item.ready == "no" %}
+        {% set issuesList = issuesList | push([
+          {text: item.licence},
+          {text: item.billingContact},
+          {text: item.elements[0].issue|safe},
+          {text: item.edited|safe|capitalize},
+          {html: '<a href="reviewLicence?licence=' + item.licence +'">
+            Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
+          </a>'}
+          ]) %}
+        {% endif %}
+    {% endfor %}
+
+{% if issuesList.length %}
+<section class="govuk-!-margin-bottom-9">
+  {{ govukButton({
+    text: "Cancel bill run",
+    classes: "govuk-button--secondary govuk-!-margin-bottom-0"
+  }) }}
+
+  {{ govukInsetText({
+  text: "You need to review " + data['issues'].length + " licences with returns data issues. You can then continue and send the bill run."
+}) }}
+
+</section>
+{% else %}
+<section class="govuk-!-margin-bottom-9">
+  <p class="govuk-body ">You have resolved all returns data issues. Continue to generate bills.</p>
+  <div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    classes: "govuk-button--primary",
+    href: "../../../charges-2020/supplementary-charges-load?suppBilling="
+  }) }}
+  {{ govukButton({
+    text: "Cancel bill run",
+    classes: "govuk-button--secondary"
+  }) }}
+  </div>
+</section>
+{% endif %}
+
+
+
+
+  {% set issuesHtml %}
+
+  {{ govukTable({
+    caption: issuesList.length|default ("3") + " licences have data issues",
+    captionClasses: "govuk-table__caption--l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence"
+      },
+      {
+        text: "Billing contact"
+      },
+      {
+        text: "Issue"
+      },
+      {
+        html: "Billable returns<br> edited"
+      },
+      {
+        text: "Action"
+      }
+    ],
+    rows:
+      issuesList
+
+  }) }}
+
+  {% endset %}
+
+<!--create the ready list, loop through the bill run data and push those ready in to a list-->
+
+  {% set readyList = [] %}
+
+
+  {% for item in suppManBillRun %}
+  {% if item.ready == "yes" %}
+          {% set readyList = readyList | push([
+            {text: item.licence},
+            {text: item.billingContact},
+            {text: item.elements[0].issue|safe},
+            {text: item.edited|safe|capitalize},
+            {html: '<a href="reviewLicence?licence=' + item.licence +'">
+              Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
+            </a>'}
+            ]) %}
+          {% endif %}
+      {% endfor %}
+
+
+  {% set readyHtml %}
+
+  {{ govukTable({
+    caption: readyList.length|default ("3") + " licences are ready for billing",
+    captionClasses: "govuk-table__caption--l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Licence"
+      },
+      {
+        text: "Billing contact"
+      },
+      {
+        text: "Issue"
+      },
+      {
+        html: "Billable returns<br> edited"
+      },
+      {
+        text: "Action"
+      }
+    ],
+    rows:
+      readyList
+
+  }) }}
+
+  {% endset %}
+
+    {{ govukTabs({
+      items: [
+        {
+          label: "Issues " + "("+ issuesList.length |default ("3") + ")",
+          id: "issues",
+          panel: {
+            html: issuesHtml
+          }
+        } if issuesList.length,
+        {
+          label: "Ready " + "("+  readyList.length |default ("4") + ")",
+          id: "ready",
+          panel: {
+            html: readyHtml
+          }
+        }
+      ]
+    }) }}
+
+
+{% endblock %}

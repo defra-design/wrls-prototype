@@ -9,8 +9,8 @@ const router = express.Router()
 
 router.use('/bd/iterations/bill-runs', require('./bd/iterations/_routes/_routes-bill-runs'));
 
-
-
+///MANUALL BILLING ROUTE
+router.use('/bd/iterations/manual-billing', require('./bd/iterations/_routes/_routes-manual-billing'));
 
 
 
@@ -1386,5 +1386,26 @@ router.('', function (req, res) {
 });*/
 
 
+
+////////////////////////////////////////////////////
+//////REMOVE A FINANCIAL YEAR FROM THE REVIEW///////
+////////////////////////////////////////////////////
+
+
+//post  paper forms returns selection
+router.post('/bd/iterations/manual-billing/bill-run/remove-financial-year', function(req, res) {
+
+  //choose addresses in order
+
+  let fys = req.session.data['suppManBillRun'][0].fys;
+  let fyIndex = req.session.data['fyIndex']
+  console.log(fyIndex)
+
+  if (fyIndex > -1) {
+    fys.splice(fyIndex, 1);
+  }
+
+res.render('current/bd/iterations/manual-billing/bill-run/reviewLicence');
+});
 
 module.exports = router

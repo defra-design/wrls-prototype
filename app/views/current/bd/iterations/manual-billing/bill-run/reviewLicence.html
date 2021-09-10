@@ -1,0 +1,462 @@
+{% extends "layout.html" %}
+
+{% set title = "Review data issues for " + data['licence'] %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "review"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-full ">
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} supplementary bill run</span>{{ title }}</h1>
+      {{ govukButton({
+        text: "Remove licence",
+        classes: "govuk-button--secondary "
+      }) }}
+      {{ govukDetails({
+  summaryText: "Licence details",
+  html:  '
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full" >
+  <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-0">
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Aggregate condition
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          RELATES TO AGGREGATE QUANTITY WITH 01/22/63/0044 (GLINDENFOLD LAKE)<br><br>
+        </dd>
+
+      </div>
+
+
+      <div class="govuk-summary-list__row govuk-!-margin-bottom-3">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Abstraction amounts
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          90 cubic metres per hour<br>
+250 cubic metres per day<br>
+20,000 cubic metres per year
+        </dd>
+
+      </div>
+</dl></div</div>
+
+<a class="govuk-link" href="#">View returns summary</a>
+'
+}) }}
+
+
+
+  </div>
+</div>
+
+
+
+
+
+    <!--get the issues for this licence-->
+        {% set fy = "" %}
+    {% set elements = [] %}
+    {% set issue = "" %}
+    {% set billableReturns = "" %}
+    {% set reportedReturns = "" %}
+    {% set billingContact = "" %}
+    {% set edited = "" %}
+    {% set ready = "" %}
+    {% set fyIndex = "" %}
+    {% set elementNumber = "" %}
+    {% set suppManBillRun = data['suppManBillRun']%}
+    {% for i in suppManBillRun %}
+    {% if i.licence == data['licence'] %}
+    {% set billingContact = i.billingContact %}
+
+    {% set fys = i['fys']%}
+
+    {% for i in fys %}
+
+    {% set elements = i.elements %}
+    {% for element in elements %}
+    {% set fy = element.fy %}
+    {% set issue = element.issue %}
+    {% set billableReturns = element.billableReturns %}
+    {% set reportedReturns = element.reportedReturns %}
+    {% set edited = element.edited %}
+    {% set ready = element.ready %}
+    {% set elementNumber = loop.index0 %}
+    {% endfor%}
+
+
+    <!-- get the billing account for this licence-->
+    {% set billingAccountNumber = "" %}
+    {% set billingAccounts = data['billingAccounts'] %}
+    {% for i in billingAccounts %}
+    {% if i.customer == billingContact %}
+    {% set billingAccountNumber = i.number %}
+    {% endif %}
+    {% endfor %}
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-3">Financial year {{fy}} to {{fy+1}}</h2>
+
+{% set fyIndex = loop.index0 %}
+
+{% if fys.length > 1 %}
+{{ govukButton({
+  text: "Remove financial year",
+  classes: "govuk-button--secondary ",
+  href:"remove-financial-year?fy=" + fy + "&fyIndex=" + fyIndex + "&licenceNumber=" + data['licence'] + "&ba=" + billingAccountNumber
+}) }}
+{% endif %}
+
+    {% for i in  suppManBillRun %}
+    {% if i.licence == data['licence'] %}
+    {% if ready == "no" %}
+
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-full ">
+
+    <h3 class="govuk-heading-l">{{elements.length}} issue to review</h3>
+
+    {% for i in elements %}
+
+    {{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Issue",
+        classes: "govuk-table__cell--thick-border"
+      },
+      value: {
+        html: issue,
+        classes: "govuk-table__cell--thick-border"
+      },
+      actions: {
+        classes: "govuk-table__cell--thick-border",
+        items: [
+          {
+            visuallyHiddenText: "issue"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Billable returns"
+      },
+      value: {
+       html: billableReturns + 'Ml <div class="govuk-!-font-size-16">' + edited|capitalize + '</div>'
+      },
+      actions: {
+        items: [
+          {
+            href: "set-the-returns-quantity?purpose=" + data.elements[0]['purpose']  + "&description=" + data.elements[0]['description'] + "&element=" + elementNumber  + "&licence=" + data.licence + "&fy=" + fy + "&fyIndex=" + fyIndex,
+            text: "Change",
+            visuallyHiddenText: "billable returns"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Reported returns",
+        classes: "govuk-table__cell--thick-border"
+      },
+      value: {
+        html: reportedReturns,
+        classes: "govuk-table__cell--thick-border"
+      },
+      actions: {
+        classes: "govuk-table__cell--thick-border",
+        items: [
+          {
+            visuallyHiddenText: "Reported returns"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Billing account"
+      },
+      value: {
+        html: billingAccountNumber
+      }
+    },
+    {
+      key: {
+        text: "Purpose"
+      },
+      value: {
+        html: data.elements[0]['purpose']
+      }
+    },
+    {
+      key: {
+        text: "Description"
+      },
+      value: {
+        html: data.elements[0]['description']
+      }
+    },
+    {
+      key: {
+        text: "Charge period"
+      },
+      value: {
+        text: "1 March 2021 to 30 September 2021"
+      }
+    },
+    {
+      key: {
+        text: "Abstraction period"
+      },
+      value: {
+        html: data.elements[0]['abstractionStartDay'] + " " + data.elements[0]['abstractionStartMonth']|toMonth + " to " + data.elements[0]['abstractionEndDay'] + " " + data.elements[0]['abstractionEndMonth']|toMonth
+      }
+    },
+    {
+      key: {
+        text: "Annual quantities"
+      },
+      value: {
+        html: data.elements[0]['authorisedQuantity']+ 'Ml Authorised<br>' + data.elements[0]['billableQuantity'] + 'Ml Billable'
+      }
+    },
+    {
+      key: {
+        text: "Source"
+      },
+      value: {
+        html: data.elements[0]['source']
+      }
+    },
+    {
+      key: {
+        text: "Season"
+      },
+      value: {
+        html: data.elements[0]['season']
+      }
+    },
+    {
+      key: {
+        text: "Loss"
+      },
+      value: {
+        html: data.elements[0]['loss']
+      }
+    }
+  ]
+}) }}
+
+{% endfor %}
+
+</div>
+</div>
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+
+
+{% for i in  suppManBillRun %}
+{% if i.licence == data['licence'] %}
+{% if ready == "yes" %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full ">
+
+<h3 class="govuk-heading-l">{{elements.length}} ready for billing</h3>
+
+{% for i in elements %}
+
+{{ govukSummaryList({
+rows: [
+{
+  key: {
+    text: "Issue",
+    classes: "govuk-table__cell--thick-border"
+  },
+  value: {
+    html: issue,
+    classes: "govuk-table__cell--thick-border"
+  },
+  actions: {
+    classes: "govuk-table__cell--thick-border",
+    items: [
+      {
+        visuallyHiddenText: "issue"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Billable returns"
+  },
+  value: {
+   html: billableReturns + 'Ml <div class="govuk-!-font-size-16">' + edited|capitalize + '</div>'
+  },
+  actions: {
+    items: [
+      {
+        href: "set-the-returns-quantity?purpose=" + data.elements[0]['purpose']  + "&description=" + data.elements[0]['description'] + "&element=" + elementNumber  + "&licence=" + data.licence + "&fy=" + fy + "&fyIndex=" + fyIndex,
+        text: "Change",
+        visuallyHiddenText: "billable returns"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Reported returns",
+    classes: "govuk-table__cell--thick-border"
+  },
+  value: {
+    html: reportedReturns,
+    classes: "govuk-table__cell--thick-border"
+  },
+  actions: {
+    classes: "govuk-table__cell--thick-border",
+    items: [
+      {
+        visuallyHiddenText: "Reported returns"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Billing account"
+  },
+  value: {
+    html: billingAccountNumber
+  }
+},
+{
+  key: {
+    text: "Purpose"
+  },
+  value: {
+    html: data.elements[0]['purpose']
+  }
+},
+{
+  key: {
+    text: "Description"
+  },
+  value: {
+    html: data.elements[0]['description']
+  }
+},
+{
+  key: {
+    text: "Charge period"
+  },
+  value: {
+    text: "1 March " + fy + " to 30 September " + fy
+  }
+},
+{
+  key: {
+    text: "Abstraction period"
+  },
+  value: {
+    html: data.elements[0]['abstractionStartDay'] + " " + data.elements[0]['abstractionStartMonth']|toMonth + " to " + data.elements[0]['abstractionEndDay'] + " " + data.elements[0]['abstractionEndMonth']|toMonth
+  }
+},
+{
+  key: {
+    text: "Annual quantities"
+  },
+  value: {
+    html: data.elements[0]['authorisedQuantity']+ 'Ml Authorised<br>' + data.elements[0]['billableQuantity'] + 'Ml Billable'
+  }
+},
+{
+  key: {
+    text: "Source"
+  },
+  value: {
+    html: data.elements[0]['source']
+  }
+},
+{
+  key: {
+    text: "Season"
+  },
+  value: {
+    html: data.elements[0]['season']
+  }
+},
+{
+  key: {
+    text: "Loss"
+  },
+  value: {
+    html: data.elements[0]['loss']
+  }
+}
+]
+}) }}
+
+{% endfor %}
+
+</div>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+
+{% endfor%}
+{% endif %}
+{% endfor %}
+
+
+
+{% endblock %}

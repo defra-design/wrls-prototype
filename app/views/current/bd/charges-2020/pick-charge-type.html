@@ -116,6 +116,7 @@
       $('form[data-routing]').on('submit', function(ev) {
         // FInd selected radio button
         const url = $(this).find('input:checked').val();
+        console.log(url);
 
         if(url) {
 
@@ -135,6 +136,7 @@
           window.location.href = newurl;
           return false;
         }
+
 
           ev.preventDefault();
           window.location.href = url;
