@@ -51,7 +51,7 @@ GOV.UK Prototype Kit
         See a timeline of the project
       </a>
       <br><a href="https://water-resource-licensing.herokuapp.com/">
-        See the previous prototype views here.
+        See the previous prototype views here
       </a>
     </p>
 
@@ -75,10 +75,10 @@ GOV.UK Prototype Kit
       <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
 
 
-          <li><a href="sandbox/">
-              Sand box
-            </a></li>
-      
+        <li><a href="sandbox/">
+            Sand box
+          </a></li>
+
 
       </ul>
 
@@ -87,11 +87,35 @@ GOV.UK Prototype Kit
       </h2>
 
       <h3 class="govuk-heading-s">
+        Manually adding a licence to a supplementary bill run - 13 September 2021
+      </h3>
+      <p class="govuk-body">When a licence has a TPT agreement, B&D may need to specify that it needs to be supplementary billed. This is so they can
+        re-calculate the amount of water that is used in the second part charge on a TpT.</p>
+      <p class="govuk-body"> The scenario can occur if someone submitted returns late and
+        there was a legitimate reason for rebilling them. This process has three parts, marking the licence for supplementary billing, reviewing the changes to the billable volumes and sending the revised bills. The sending part of the process in the prototype is the same
+        as supplementary billing. B&D will need to mark up the downloaded bill run with specific actions for SSCL.
+      </p>
+      <p class="govuk-body">The user can mark the licence for the supplementary bill by following the flow form the "recalculate bills" action on the TpT agreement.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/licence-summary?wid=31#charge">TpT agreement with "recalculate bills" action</a></li>
+        <li> <a class="govuk-link" href="/bd/iterations/manual-billing/recalculate-bills">You're about to recalculate bills</a></li>
+        <li> <a class="govuk-link" href="/bd/iterations/manual-billing/recalculate-bills-confirmation">You've marked this licence for the next supplementary bill run</a></li>
+        <li> <a class="govuk-link" href="/bd/licence-summary?suppBilling=true">Licence marked for supplementary billing</a></li>
+      </ul>
+      <p class="govuk-body">The user can then review the changes for the licences billable returns as part of the supplementary bill run</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/iterations/manual-billing/bill-run/review">Review bill run overview screen</a></li>
+        <li> <a class="govuk-link" href="/bd/iterations/manual-billing/bill-run/reviewLicence?licence=03/28/60/0032">Review licence</a></li>
+        <li> <a class="govuk-link" href="/bd/iterations/manual-billing/bill-run/remove-financial-year?fy=2017&fyIndex=4&licenceNumber=03/28/60/0032&ba=BA1234443S">Remove financial year</a></li>
+      </ul>
+
+
+      <h3 class="govuk-heading-s">
         Billing account - scenario specific change - 20th August 2021
       </h3>
       <p class="govuk-body">The version of the billing account page when no bills have been sent from the account. You don't see any information on the table or the reissue a bill button.</p>
-       <ul class="govuk-list govuk-list--bullet">
-           <li> <a class="govuk-link" href="/bd/charges-2020/billing-account-no-bills">Billing account no bills</a></li>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/charges-2020/billing-account-no-bills">Billing account no bills</a></li>
 
       </ul>
 
@@ -99,9 +123,9 @@ GOV.UK Prototype Kit
         Navigation update - 9th August 2021
       </h3>
       <p class="govuk-body">The first iteration on the navigation bar, to split out Bill runs from the manage page and add it to the navigation bar. To add search to the nav bar replacing licences</p>
-       <ul class="govuk-list govuk-list--bullet">
-           <li> <a class="govuk-link" href="/bd/iterations/navigation/bill-runs-V2">Bill runs - version 2</a></li>
-           <li> <a class="govuk-link" href="/bd/iterations/navigation/search-V2">Search - version 2</a></li>
+      <ul class="govuk-list govuk-list--bullet">
+        <li> <a class="govuk-link" href="/bd/iterations/navigation/bill-runs-V2">Bill runs - version 2</a></li>
+        <li> <a class="govuk-link" href="/bd/iterations/navigation/search-V2">Search - version 2</a></li>
       </ul>
 
       <h3 class="govuk-heading-s">
@@ -112,7 +136,7 @@ GOV.UK Prototype Kit
         <li>
           <a class="govuk-link" href="/bd/iterations/bill-runs/two-part-tariff/review">Two part tarriff review</a>
         </li>
-  </ul>
+      </ul>
 
       <h3 class="govuk-heading-s">
         Bill page iterations - 16 June 2021
@@ -126,7 +150,7 @@ GOV.UK Prototype Kit
           <a class="govuk-link" href="/bd/iterations/bills/bill?status=sent">Supplementary bill - sent</a>
         </li>
         <li>
-        <a class="govuk-link" href="/bd/iterations/bills/bill-tpt?status=sent">Two-part tariff bill - sent</a>
+          <a class="govuk-link" href="/bd/iterations/bills/bill-tpt?status=sent">Two-part tariff bill - sent</a>
         </li>
       </ul>
 
