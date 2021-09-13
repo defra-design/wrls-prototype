@@ -38,11 +38,12 @@
   </div>
 
   <!-- card experiment-->
-  <div class="govuk-grid-row">
+  <div class="govuk-grid-row govuk-!-margin-bottom-9">
     <div class="govuk-grid-column-two-thirds">
 
 
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Contact</span>Faye Thomas</h1>
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Contact</span>Faye Thomas</h2>
+      <p class="govuk-body-s"><a class="govuk-link" href="#">Manage contact</a><span class="govuk-!-margin-left-3 govuk-!-margin-right-3">|</span><a class="govuk-link" href="#">Add to a another licence</a> </p>
 <hr class="govuk-section-break govuk-section-break--visible">
     {{ govukSummaryList({
   classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-0',
@@ -50,7 +51,7 @@
     {
       key: {
         text: "Licence",
-        classes: "govuk-!-padding-bottom-1 "
+        classes: "govuk-!-padding-bottom-1 govuk-!-margin-top-3 govuk-!-margin-bottom-0"
       },
       value: {
         text: "AN/123/123/23",
@@ -60,7 +61,7 @@
     {
       key: {
         text: "Commuication type",
-        classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0"
+        classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
       },
       value: {
         text: "Water abstraction alerts",
@@ -70,17 +71,17 @@
     {
       key: {
         text: "Send to",
-        classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0"
+        classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
       },
       value: {
-        html: "33 Falcon close, Basingtoke, RG22 5PP",
+        html: "33 Falcon close, Basingstoke, RG22 5PP",
         classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0"
       }
     },
     {
       key: {
         text: "Email address",
-        classes: " govuk-!-padding-top-0"
+        classes: " govuk-!-padding-top-0 govuk-!-margin-bottom-0"
       },
       value: {
         text: 'fthomas.bwplc.co.uk',
@@ -91,9 +92,71 @@
 }) }}
 <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1">
 
-<p class="govuk-body"><a class="govuk-link" href="#">Manage contact</a><span class="govuk-!-margin-left-3 govuk-!-margin-right-3">|</span><a class="govuk-link" href="#">Add to a another licence</a> </p>
-
   </div>
     </div>
+
+
+
+    <!-- card experiment full-->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Contact</span>Faye Thomas</h2>
+        <p class="govuk-body-s"><a class="govuk-link" href="#">Manage contact</a><span class="govuk-!-margin-left-3 govuk-!-margin-right-3">|</span><a class="govuk-link" href="#">Add to a another licence</a> </p>
+  <hr class="govuk-section-break govuk-section-break--visible">
+      {{ govukSummaryList({
+    classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-0',
+    rows: [
+      {
+        key: {
+          text: "Licence",
+          classes: "govuk-!-padding-bottom-1 govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+        },
+        value: {
+          text: "AN/123/123/23",
+          classes: "govuk-!-padding-bottom-1"
+        }
+      },
+      {
+        key: {
+          text: "Commuication type",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+        },
+        value: {
+          text: "Water abstraction alerts",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 "
+        }
+      },
+      {
+        key: {
+          text: "Send to",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+        },
+        value: {
+          html: "33 Falcon close, Basingstoke, RG22 5PP",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0"
+        }
+      },
+      {
+        key: {
+          text: "Email address",
+          classes: " govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+        },
+        value: {
+          text: 'fthomas.bwplc.co.uk',
+          classes: " govuk-!-padding-top-0"
+        }
+      }
+    ]
+  }) }}
+  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1">
+
+    </div>
+      </div>
+
+
+
+
 
 {% endblock %}
