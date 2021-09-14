@@ -37,6 +37,12 @@
     </div>
   </div>
 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  <h2  class="heading-large govuk-heading-m">Single card style two thirds</h2>
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+</div>
+</div>
   <!-- card experiment-->
   <div class="govuk-grid-row govuk-!-margin-bottom-9">
     <div class="govuk-grid-column-two-thirds">
@@ -97,10 +103,21 @@
 
 
 
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+    <h2  class="heading-large govuk-heading-m">Card list full width</h2>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    </div>
+    </div>
+
+
     <!-- card experiment full-->
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 
+        <ul class="govuk-list">
+          <li class="govuk-!-margin-bottom-9">
 
         <h2 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Contact</span>Faye Thomas</h2>
         <p class="govuk-body-s"><a class="govuk-link" href="#">Manage contact</a><span class="govuk-!-margin-left-3 govuk-!-margin-right-3">|</span><a class="govuk-link" href="#">Add to a another licence</a> </p>
@@ -152,11 +169,164 @@
   }) }}
   <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1">
 
-    </div>
+</li>
+<li class="govuk-!-margin-bottom-9">
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Contact</span>James Bobbins</h2>
+  <p class="govuk-body-s"><a class="govuk-link" href="#">Manage contact</a><span class="govuk-!-margin-left-3 govuk-!-margin-right-3">|</span><a class="govuk-link" href="#">Add to a another licence</a> </p>
+<hr class="govuk-section-break govuk-section-break--visible">
+{{ govukSummaryList({
+classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-0',
+rows: [
+{
+  key: {
+    text: "Licence",
+    classes: "govuk-!-padding-bottom-1 govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+  },
+  value: {
+    text: "AN/332/33/232/3",
+    classes: "govuk-!-padding-bottom-1"
+  }
+},
+{
+  key: {
+    text: "Commuication type",
+    classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+  },
+  value: {
+    text: "Water abstraction alerts",
+    classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 "
+  }
+},
+{
+  key: {
+    text: "Send to",
+    classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+  },
+  value: {
+    html: "15 Audbrey Road, Bristol, BS7 7AB",
+    classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0"
+  }
+},
+{
+  key: {
+    text: "Email address",
+    classes: " govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+  },
+  value: {
+    text: 'jbobbins.bwplc.co.uk',
+    classes: " govuk-!-padding-top-0"
+  }
+}
+]
+}) }}
+<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1">
+</li>
+  <li class="govuk-!-margin-bottom-9">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Contact</span>Ben Wagner</h2>
+    <p class="govuk-body-s"><a class="govuk-link" href="#">Manage contact</a><span class="govuk-!-margin-left-3 govuk-!-margin-right-3">|</span><a class="govuk-link" href="#">Add to a another licence</a> </p>
+  <hr class="govuk-section-break govuk-section-break--visible">
+  {{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-0',
+  rows: [
+  {
+    key: {
+      text: "Licence",
+      classes: "govuk-!-padding-bottom-1 govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+    },
+    value: {
+      text: "AN/151/14/232/23",
+      classes: "govuk-!-padding-bottom-1"
+    }
+  },
+  {
+    key: {
+      text: "Commuication type",
+      classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+    },
+    value: {
+      text: "Water abstraction alerts",
+      classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 "
+    }
+  },
+  {
+    key: {
+      text: "Send to",
+      classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+    },
+    value: {
+      html: "56 Abbey Road, Birmingham, B3 2XQ",
+      classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0"
+    }
+  },
+  {
+    key: {
+      text: "Email address",
+      classes: " govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+    },
+    value: {
+      text: 'bwagner.bwplc.co.uk',
+      classes: " govuk-!-padding-top-0"
+    }
+  }
+  ]
+  }) }}
+  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1">
+</li>
+    <li class="govuk-!-margin-bottom-9">
+      <li class="govuk-!-margin-bottom-9">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Contact</span>Aimee Waldron</h2>
+        <p class="govuk-body-s"><a class="govuk-link" href="#">Manage contact</a><span class="govuk-!-margin-left-3 govuk-!-margin-right-3">|</span><a class="govuk-link" href="#">Add to a another licence</a> </p>
+      <hr class="govuk-section-break govuk-section-break--visible">
+      {{ govukSummaryList({
+      classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-0',
+      rows: [
+      {
+        key: {
+          text: "Licence",
+          classes: "govuk-!-padding-bottom-1 govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+        },
+        value: {
+          text: "AN/153/44/34/47",
+          classes: "govuk-!-padding-bottom-1"
+        }
+      },
+      {
+        key: {
+          text: "Commuication type",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+        },
+        value: {
+          text: "Water abstraction alerts",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 "
+        }
+      },
+      {
+        key: {
+          text: "Send to",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+        },
+        value: {
+          html: "100 Smithson Road, Leeds, YO23 8BB",
+          classes: "govuk-!-padding-bottom-1 govuk-!-padding-top-0"
+        }
+      },
+      {
+        key: {
+          text: "Email address",
+          classes: " govuk-!-padding-top-0 govuk-!-margin-bottom-0"
+        },
+        value: {
+          text: 'awaldron.bwplc.co.uk',
+          classes: " govuk-!-padding-top-0"
+        }
+      }
+      ]
+      }) }}
+      <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1">
+      </li>
+</ul>
+  </div>
       </div>
-
-
-
 
 
 {% endblock %}
