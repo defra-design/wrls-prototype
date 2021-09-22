@@ -1,0 +1,721 @@
+{% extends "layout.html" %}
+
+{% set title = "Bill runs" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+</div>
+
+
+{% set navbarActiveBills = "navbar__link--active" %}
+
+
+
+<!-- navigation block -->
+{% include "current/includes/nav/nav-bd.html" %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "home"
+    }
+  ]
+}) }}
+
+<!--
+ {{ govukBackLink({
+   text: "Back",
+   href: "javascript:history.back()"
+ }) }}
+-->
+
+{% endblock %}
+
+{% block content %}
+
+<!-- contact summary -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl"> {{ title }}</h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<p class="govuk-body">Create a supplementary, annual or two-part tariff bill run.</p>
+
+
+        {{ govukButton({
+          text: "Create a bill run",
+          href: "../bd/charges-2020/pick-charge-type"
+        }) }}
+
+
+      </div>
+    </div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
+
+    <!-- table with four columns -->
+    <div class="govuk-grid-row govuk-!-margin-bottom-9">
+      <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-heading-l"> View a bill run</h2>
+
+        <p class="govuk-body">Select date for bill run information.</p>
+
+        <div class="table">                                                <!-- a table -->
+
+          <div class="table__row--head">                                              <!-- the table head -->
+            <div class="table__cell bold-small">
+              Date
+            </div>
+            <div class="table__cell bold-small">
+              Region
+            </div>
+            <div class="table__cell bold-small">
+              Run type
+            </div>
+            <div class="table__cell numbers bold-small">
+              Bills
+            </div>
+            <div class="table__cell numbers bold-small column--20">
+              Value
+            </div>
+            <div class="table__cell numbers bold-small column--10">
+              Status
+            </div>
+          </div>
+
+          <!-- table row -->
+          <a href="supplementary-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 1
+              </h3>
+              <span class="screen-reader-only">See Anglian Supplementary bill run 12 January 2020</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                12 January 2020
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                Southern
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Supplementary
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                -
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                -
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              {{govukTag({
+              text: "Building",
+              classes: "govuk-tag--orange"
+            })}}
+        <!--      <strong class="table__status table__status--pending">
+                Building
+              </strong> -->
+            </div>
+          </a>
+
+
+          <!-- table row -->
+          <a href="supplementary-charges?region=North East" class="table__row--selectable govuk-!-margin-bottom-6">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 2
+              </h3>
+              <span class="screen-reader-only">See Anglian Supplementary bill run 7 January 2020</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                7 January 2020
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                {{data['region']}}
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Supplementary
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                5
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                £5,460.00
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              {% if [data.status] == "ready" %}
+              {{govukTag({
+              text: "Ready",
+              classes: "govuk-tag--green"
+            })}}
+              {% else %}
+              {{govukTag({
+              text: "Sent",
+              classes: "govuk-tag--blue"
+            })}}
+              {% endif %}
+            </div>
+          </a>
+
+          <!-- table row -->
+          <a href="annual-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 4
+              </h3>
+              <span class="screen-reader-only">See South East Supplementary bill run 19 November 2019</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                19 November 2019
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                {{data['region']}}
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Annual
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                874
+              </p>
+
+            </div>
+            <div class="table__cell table__cell--v-middle">
+
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                512,468.00
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              <!-- <strong class="table__status table__status--todo"> -->
+              {% if [data.annualstatus] == "ready" %}
+              {{govukTag({
+              text: "Ready",
+              classes: "govuk-tag--green"
+            })}}
+              {% else %}
+              {{govukTag({
+              text: "Sent",
+              classes: "govuk-tag--blue"
+            })}}
+              {% endif %}
+            </div>
+          </a>
+
+          <!-- table row -->
+          {% if [data.tptstatus] == "ready" or [data.tptstatus] == "sent" %}
+          <a href="two-part-charges" class="table__row--selectable govuk-!-margin-bottom-6">
+          {% else %}
+          <a href="two-part-review" class="table__row--selectable govuk-!-margin-bottom-6">
+          {% endif %}
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 5
+              </h3>
+              <span class="screen-reader-only">See South East Supplementary bill run 19 November 2019</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                19 November 2019
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                {{data['region']}}
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Two-part tariff
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              {% if [data.tptstatus] == "ready" or [data.tptstatus] == "sent" %}
+              <p class="table__row--selectable--text numbers">
+                977
+              </p>
+              {% else %}
+              <p class="table__row--selectable--text numbers">
+                -
+              </p>
+              {% endif %}
+            </div>
+            <div class="table__cell table__cell--v-middle">
+
+              <h4 class="table__context">
+                Value
+              </h4>
+              {% if [data.tptstatus] == "ready" or [data.tptstatus] == "sent" %}
+              <p class="table__row--selectable--text numbers">
+                £512,460.00
+              </p>
+              {% else %}
+              <p class="table__row--selectable--text numbers">
+                -
+              </p>
+              {% endif %}
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              <!-- <strong class="table__status table__status--todo"> -->
+              {% if [data.tptstatus] == "review" %}
+              {{govukTag({
+              text: "Review",
+              classes: "govuk-tag--green"
+            })}}
+              {% elif [data.tptstatus] == "ready" %}
+              {{govukTag({
+              text: "Ready",
+              classes: "govuk-tag--green"
+            })}}
+              {% else %}
+              {{govukTag({
+              text: "Sent",
+              classes: "govuk-tag--blue"
+            })}}
+              {% endif %}
+            </div>
+          </a>
+
+          <!-- table row -->
+          <a href="two-part-charges-error" class="table__row--selectable govuk-!-margin-bottom-6">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 6
+              </h3>
+              <span class="screen-reader-only">See Midlands two-part tariff bill run 2 January 2020</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                2 January 2020
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                Southern
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Two-part tariff
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                -
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                -
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              <!-- <strong class="table__status table__status--todo"> -->
+              {{govukTag({
+              text: "Error",
+              classes: "govuk-tag--red"
+            })}}
+            </div>
+          </a>
+
+          <!-- table row -->
+          <a href="supplementary-charges?status=sent&region=Midlands" class="table__row--selectable">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 7
+              </h3>
+              <span class="screen-reader-only">See Midlands Supplementary bill run 7 December 2019</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                7 December 2019
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                Midlands
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Supplementary
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                5
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                £4,927.10
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              <!-- <strong class="table__status table__status--todo"> -->
+              {{govukTag({
+              text: "Sent",
+              classes: "govuk-tag--blue"
+            })}}
+            </div>
+          </a>
+
+          <!-- table row -->
+          <a href="supplementary-charges?status=sent&region=South West" class="table__row--selectable">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 8
+              </h3>
+              <span class="screen-reader-only">See South West Supplementary bill run 1 November 2019</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                1 November 2019
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                South West
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Supplementary
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                3
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                £3,887.04
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              <!-- <strong class="table__status table__status--todo"> -->
+              {{govukTag({
+              text: "Sent",
+              classes: "govuk-tag--blue"
+            })}}
+            </div>
+          </a>
+
+          <!-- table row -->
+          <a href="supplementary-charges?status=sent&region=South West" class="table__row--selectable">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 9
+              </h3>
+              <span class="screen-reader-only">See South West Supplementary bill run 2 October 2019</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                2 October 2019
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                South West
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Supplementary
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                9
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                £11,602.22
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              <!-- <strong class="table__status table__status--todo"> -->
+              {{govukTag({
+              text: "Sent",
+              classes: "govuk-tag--blue"
+            })}}
+            </div>
+          </a>
+
+          <!-- table row -->
+          <a href="supplementary-charges?status=sent&region=South West" class="table__row--selectable table__row--last govuk-!-margin-bottom-6">
+            <div class="table__cell table__cell--v-middle">
+              <h3 class="screen-reader-only">
+                Row 10
+              </h3>
+              <span class="screen-reader-only">See South West Supplementary bill run 30 September 2019</span>
+              <h4 class="table__context">
+                Date
+              </h4>
+              <span class="table__link">
+                30 September 2019
+              </span>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Region
+              </h4>
+              <p class="table__row--selectable--text">
+                South West
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Run type
+              </h4>
+              <p class="table__row--selectable--text">
+                Supplementary
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Bills
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                6
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle">
+              <h4 class="table__context">
+                Value
+              </h4>
+              <p class="table__row--selectable--text numbers">
+                £1,824.04
+              </p>
+            </div>
+            <div class="table__cell table__cell--v-middle numbers">
+              <h5 class="table__context">
+                Status
+              </h5>
+              <!-- <strong class="table__status table__status--todo"> -->
+              {{govukTag({
+              text: "Sent",
+              classes: "govuk-tag--blue"
+            })}}
+            </div>
+          </a>
+
+        </div>
+
+        <nav class="page-nav govuk-!-margin-bottom-9" role="navigation" aria-label="Pagination">
+          <ul>
+            <!-- <li class="page-left">
+              <a class="page-left-control" href="#" rel="prev">
+                <div class="page__title">November 2019</div>
+                <span class="page__number">1 of 3</span> Intentionally not showing this meta data on pages here
+              </a>
+            </li> -->
+            <li class="page-right">
+              <a class="page-right-control" href="#" rel="next">
+                <div class="page__title">Next</div>
+                <!-- <div class="page__title">51 to 100</div> -->
+                <!-- <span class="page__number">2 of 3</span>  Intentionally not showing this meta data on pages here -->
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+    </div>
+
+
+{% endblock %}
