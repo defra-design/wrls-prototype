@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Bill runs" %}
+{% set title = "Privacy notice" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -38,29 +38,10 @@
     </p>
 </div>
 
-
-{% set navbarActiveBills = "navbar__link--active" %}
-
-
-
-<!-- navigation block -->
-{% include "current/includes/nav/nav-bd.html" %}
-
-{{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home",
-      href: "home"
-    }
-  ]
-}) }}
-
-<!--
  {{ govukBackLink({
    text: "Back",
    href: "javascript:history.back()"
  }) }}
--->
 
 {% endblock %}
 
