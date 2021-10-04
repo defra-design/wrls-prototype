@@ -118,7 +118,11 @@ router.get('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert'
   //clear water abstraction alert
   req.session.data.waterAbstractionAlert = []
 
+ //clear water abstraction alert
+  req.session.data.flowThresholdsMegaLitresPerDay = []
 
+ //clear water abstraction alert
+  req.session.data.levelThresholdsMetresAboveOrdinanceDatum = []
 
   res.render(folder + 'send-a-water-abstraction-alert/select-the-thresholds-for-the-alert');
 
@@ -148,10 +152,12 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
   //get waterAbstractionAlert
   let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
 
-
+  console.log(selectedThresholds)
   let op = ""
   //filter licences based on the selected thresholds
   var selectedLicences = req.session.data['selectedLicences']
+
+
   for (item of selectedThresholds) {
      op = tags.filter(val => {
       let tagValues = val.tagValues.some(({
@@ -163,11 +169,16 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
     let licence = op.map(({
       licenceNumber
     }) => licenceNumber)
+
+    //push them into a notification
+    waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
+
     selectedLicences.push.apply(selectedLicences, licence);
     //console.log('filtered values -->\n',op)
 
   }
 
+//console.log(selectedLicences)
   //push them into a notification
   waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
 
