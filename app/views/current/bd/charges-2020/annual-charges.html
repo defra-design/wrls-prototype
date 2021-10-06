@@ -51,7 +51,7 @@
     </section>
 
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-full">
 
         {% if [data.annualstatus] == "ready" %}
         <p class="govuk-body">
@@ -136,11 +136,47 @@
 
 <div class="divider govuk-!-margin-bottom-5"></div>
 
-<p class="govuk-body govuk-!-margin-bottom-0">
-  <a href="/public/Anglian annual bill run 2020-03-05.zip"  class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">
-    Download this bill run
-  </a>
-</p>
+{{ govukButton({
+  text: "Download this bill run",
+  classes: "govuk-button--secondary govuk-!-margin-bottom-3"
+}) }}
+
+{% if [data.status] == "sent" %}
+<!--The content for the details panel-->
+{% set customerFileDetails %}
+      {{ govukSummaryList({
+      classes: 'govuk-summary-list--no-border',
+      rows: [
+        {
+          key: {
+            text: "Reference",
+            classes: "meta-data__label"
+          },
+          value: {
+            text: "ABC12394309GH",
+            classes: "meta-data__value"
+          }
+        },
+        {
+          key: {
+            text: "Created",
+            classes: "meta-data__label"
+          },
+          value: {
+            text: "12 January 2020",
+            classes: "meta-data__value"
+          }
+        }
+      ]
+      }) }}
+{% endset %}
+
+      {{ govukDetails({
+  summaryText: "Transaction file details",
+  text: customerFileDetails |safe
+}) }}
+
+{% endif %}
 
 
 <div class="govuk-tabs" data-module="govuk-tabs">
@@ -185,7 +221,7 @@
         <div class="table__cell bold-small numbers column--20">
           Total
         </div>
-        <div class="table__cell bold-small numbers column--10">
+   <div class="table__cell bold-small numbers column--10">
           Change
         </div>
         <div class="table__cell bold-small numbers column--10">

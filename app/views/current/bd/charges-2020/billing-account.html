@@ -116,12 +116,48 @@
       {{data['postcode']}}
       </p>
 
-
       {{ govukButton({
   text: "Change address",
-  classes: "govuk-button--secondary",
+  classes: "govuk-button--secondary  govuk-!-margin-bottom-5",
   href: "/bd/contacts/bill-manager?ba=true&createNewContact=false"
 }) }}
+
+<!--The content for the details panel-->
+{% set customerFileDetails %}
+      {{ govukSummaryList({
+      classes: 'govuk-summary-list--no-border',
+      rows: [
+        {
+          key: {
+            text: "Reference",
+            classes: "meta-data__label"
+          },
+          value: {
+            text: "ABC12394309GH",
+            classes: "meta-data__value"
+          }
+        },
+        {
+          key: {
+            text: "Created",
+            classes: "meta-data__label"
+          },
+          value: {
+            text: "12 January 2020",
+            classes: "meta-data__value"
+          }
+        }
+      ]
+      }) }}
+{% endset %}
+
+      {{ govukDetails({
+  summaryText: "Customer file details",
+  text: customerFileDetails |safe
+}) }}
+
+
+
 
 </section>
 </div>
