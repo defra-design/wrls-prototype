@@ -143,6 +143,11 @@
 
 {% if [data.annualstatus] == "sent" %}
 <!--The content for the details panel-->
+<p class="govuk-body-s govuk-!-margin-bottom-9">Transaction file ABC132456BH</p>
+
+{# The details panel design was replaced by the simpler paragraph
+
+
 {% set customerFileDetails %}
       {{ govukSummaryList({
       classes: 'govuk-summary-list--no-border',
@@ -174,7 +179,9 @@
       {{ govukDetails({
   summaryText: "Transaction file details",
   text: customerFileDetails |safe
-}) }}
+}) }} #}
+
+
 
 {% endif %}
 
