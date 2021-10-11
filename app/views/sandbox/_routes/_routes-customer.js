@@ -110,6 +110,8 @@ router.post('/add/check-your-answers', function(req, res) {
 
 
   //add the department to the contact list
+  let wrls = "true"
+  let type = req.session.data['contactType']
   let name = req.session.data['fullName']
   let title = req.session.data['title']
   let firstName = req.session.data['first-name']
@@ -139,6 +141,8 @@ router.post('/add/check-your-answers', function(req, res) {
 
   let newContact = {
     name,
+    wrls,
+    type,
     nameDetails,
     email,
     phone,
@@ -161,6 +165,18 @@ router.post('/add/check-your-answers', function(req, res) {
 router.get('/add/contact-set-up', function(req, res) {
 
   req.session.data.back = req.headers.referer
+
+  //clear form data
+  req.session.data.contactType = ""
+  req.session.data.fullName = ""
+  req.session.data.title = ""
+  req.session.data['first-name'] = ""
+  req.session.data.middleInitials =""
+  req.session.data['last-name'] = ""
+  req.session.data.suffix = ""
+  req.session.data.department = ""
+  req.session.data.emailDetails = ""
+  req.session.data.phoneDetails = ""
 
   res.render(folder + 'add/contact-set-up');
 
@@ -444,6 +460,69 @@ router.post('/change-email-address', function(req, res) {
 
   req.session.data.contacts[contactID].email = req.session.data.emailDetails
 
+
+  res.redirect('manage-contact');
+
+});
+
+
+///CHANGE NAME
+router.get('/change-name', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  //get the contact ID
+  let contactID = req.session.data.contactID
+
+  //get contact contact
+  let contactType = req.session.data.contacts[contactID].type
+
+  console.log(contactType)
+
+  if (contactType === "person") {
+  res.render(folder + 'change-name');
+} else {
+  res.redirect('change-department-name');
+}
+
+});
+
+router.post('/change-name', function(req, res) {
+
+  //get the contact ID
+  let contactID = req.session.data.contactID
+
+  //update the contacts name details
+  req.session.data.contacts[contactID].nameDetails[0].title = req.session.data['title']
+  req.session.data.contacts[contactID].nameDetails[0].firstName = req.session.data['first-name']
+  req.session.data.contacts[contactID].nameDetails[0].middleInitials = req.session.data['middleInitials']
+  req.session.data.contacts[contactID].nameDetails[0].lastName = req.session.data['last-name']
+  req.session.data.contacts[contactID].nameDetails[0].suffix = req.session.data['suffix']
+  req.session.data.contacts[contactID].nameDetails[0].department = req.session.data['department']
+
+  //join each part of the name together
+  let rawName = req.session.data['title'] + "," + req.session.data['first-name'] + "," + req.session.data['middleInitials'] + "," + req.session.data['last-name'] + "," + req.session.data['suffix']
+  let name = rawName.replace(/[, ]+/g, " ").trim()
+  if (req.session.data['department'].length) {
+    req.session.data.contacts[contactID].name = name + " (" + req.session.data['department'] + ")"
+  } else {
+    req.session.data.contacts[contactID].name = name
+  }
+
+
+  res.redirect('manage-contact');
+
+});
+
+
+router.post('/change-department-name', function(req, res) {
+
+  //get the contact ID
+  let contactID = req.session.data.contactID
+
+  //update the department name
+  req.session.data.contacts[contactID].nameDetails[0].department = req.session.data['department']
+  req.session.data.contacts[contactID].name = req.session.data['department']
 
   res.redirect('manage-contact');
 

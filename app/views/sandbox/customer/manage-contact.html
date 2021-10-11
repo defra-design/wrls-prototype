@@ -39,10 +39,38 @@
     {% set action = "Change" %}
     {% endif %}
 
+    <!--set the action text to be created in NALD if the contact wasn't created in WRLS-->
+    {% set nameItem = [] %}
+    {% if [data.contacts[data.contactID].wrls] == "true" %}
+    {% set nameItem = nameItem | push (
+    { href: "change-name?contactID=" + data.contactID,
+      text: "Change",
+     visuallyHiddenText: "name"}
+    ) %}
+    {% else %}
+    {% set nameItem = nameItem | push (
+    {
+      html: '<span class="govuk-body">Created in NALD</span>',
+      classes: "govuk-link--no-underline"
+    }
+    ) %}
+    {% endif %}
+
 <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Contact details</h2>
 
       {{ govukSummaryList({
   rows: [
+  {
+    key: {
+      text: "Name"
+    },
+    value: {
+      text: [data.contacts[data.contactID]['name']]
+    },
+    actions: {
+      items: nameItem
+    }
+  },
     {
       key: {
         text: "Email address"

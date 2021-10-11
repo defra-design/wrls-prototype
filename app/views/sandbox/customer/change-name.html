@@ -1,0 +1,108 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Enter a name" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter a name" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+
+      {% call govukFieldset({
+  legend: {
+    text: [qTitle] |safe,
+    classes: "govuk-fieldset__legend--l",
+    isPageHeading: true
+  }
+}) %}
+
+      {{ govukInput({
+        label: {
+          text: "Title (optional)"
+        },
+        classes: "govuk-input--width-5",
+        id: "title",
+        name: "title",
+        value: data.contacts[data.contactID].nameDetails[0].title
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "First name"
+        },
+        classes: "govuk-input--width-20",
+        id: "first-name",
+        name: "first-name",
+        value: data.contacts[data.contactID].nameDetails[0].firstName
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Middle initials (optional)"
+        },
+        classes: "govuk-input--width-5",
+        id: "middleInitials",
+        name: "middleInitials",
+        value: data.contacts[data.contactID].nameDetails[0].middleInitials
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Last name"
+        },
+        classes: "govuk-input--width-20",
+        id: "last-name",
+        name: "last-name",
+        value: data.contacts[data.contactID].nameDetails[0].lastName
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Suffix (optional)"
+        },
+        classes: "govuk-input--width-5",
+        id: "suffix",
+        name: "suffix",
+        value: data.contacts[data.contactID].nameDetails[0].suffix
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Department (optional)"
+        },
+        classes: "govuk-input--width-20",
+        id: "department",
+        name: "department",
+        value: data.contacts[data.contactID].nameDetails[0].department
+      }) }}
+
+{% endcall %}
+
+      {{ govukButton({
+  text: "Confirm"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
