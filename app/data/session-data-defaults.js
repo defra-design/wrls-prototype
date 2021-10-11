@@ -965,6 +965,39 @@ module.exports = {
         }],
       },
       {
+        "wrls": "true",
+        "name": "Janice Betrand",
+        "email": "jbetrand@bsfarms.co.uk",
+        "type": "person",
+        "nameDetails": [{
+        "title": "",
+        "firstName": "Janice",
+        "middleInitials": "",
+        "lastName": "Betrand",
+        "suffix": "",
+        "department": "",
+      }],
+        "customers": [{
+          "role": "Contact",
+          "notices": [],
+          "customer": "Big Smith Farms Ltd",
+        }],
+      },
+      {
+        "wrls": "true",
+        "name": "Accounts",
+        "email": "accounts@bsfarms.co.uk",
+        "type": "department",
+        "nameDetails": [{
+        "department": "Accounts",
+      }],
+        "customers": [{
+          "role": "Contact",
+          "notices": [],
+          "customer": "Big Smith Farms Ltd",
+        }],
+      },
+      {
         "name": "Geoffrey Billington",
         "email": "",
         "phone": "+4477382932933",
