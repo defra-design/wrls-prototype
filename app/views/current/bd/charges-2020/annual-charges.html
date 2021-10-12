@@ -43,7 +43,7 @@
 
 <!-- page title -->
 <div class="govuk-grid-row govuk-!-margin-bottom-0">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <section class="govuk-!-margin-bottom-6">
       <h1 class="govuk-caption-l">Bill run 576849</h1>
@@ -69,36 +69,51 @@
         </p>
         {% endif %}
 
-        <section class="meta-data__row">
-          <div class="meta-data__container">
-            <div class="meta-data__label">
-              Date created
-            </div>
-            <div class="meta-data__value">
-              5 March 2020
-            </div>
-            <div>
-        </section>
-        <section class="meta-data__row">
-          <div class="meta-data__container">
-            <div class="meta-data__label">
-              Region
-            </div>
-            <div class="meta-data__value">
-              {{data['region']}}
-            </div>
-            <div>
-        </section>
-        <section class="meta-data__row">
-          <div class="meta-data__container">
-            <div class="meta-data__label">
-              Bill run type
-            </div>
-            <div class="meta-data__value">
-              Annual
-            </div>
-            <div>
-        </section>
+        {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Date created",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: data['dateToday'],
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Region",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: data['region'],
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Bill run type",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: "Annual",
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Transaction file",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: "ABC132456BH",
+              classes: "meta-data__value "
+            }
+          } if data.annualstatus === 'sent'
+        ]
+      }) }}
 
       </div>
     </div>
@@ -138,52 +153,8 @@
 
 {{ govukButton({
   text: "Download this bill run",
-  classes: "govuk-button--secondary govuk-!-margin-bottom-3"
+  classes: "govuk-button--secondary govuk-!-margin-bottom-6"
 }) }}
-
-{% if [data.annualstatus] == "sent" %}
-<!--The content for the details panel-->
-<p class="govuk-body-s govuk-!-margin-bottom-9">Transaction file ABC132456BH</p>
-
-{# The details panel design was replaced by the simpler paragraph
-
-
-{% set customerFileDetails %}
-      {{ govukSummaryList({
-      classes: 'govuk-summary-list--no-border',
-      rows: [
-        {
-          key: {
-            text: "Reference",
-            classes: "meta-data__label"
-          },
-          value: {
-            text: "ABC12394309GH",
-            classes: "meta-data__value"
-          }
-        },
-        {
-          key: {
-            text: "Created",
-            classes: "meta-data__label"
-          },
-          value: {
-            text: "12 January 2020",
-            classes: "meta-data__value"
-          }
-        }
-      ]
-      }) }}
-{% endset %}
-
-      {{ govukDetails({
-  summaryText: "Transaction file details",
-  text: customerFileDetails |safe
-}) }} #}
-
-
-
-{% endif %}
 
 
 <div class="govuk-tabs" data-module="govuk-tabs">

@@ -43,7 +43,28 @@ module.exports = function(env) {
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+  //get today's date change any string in to today's date {{ "foo" | today }}
+  filters.today = function(x) {
+    let date = new Date();
+    let dd = date.getDate();
+    let mm = date.getMonth() + 1;
 
+    const yyyy = date.getFullYear();
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+
+    //change the month into a name
+    let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    mm = monthNames[mm - 1]
+
+    const today = `${dd} ${mm} ${yyyy}`;
+
+    return x.replace(/\w+/g, today)
+  }
 
 //filter to remove duplicates from an array " | unique"
  filters.unique = function(x) {
