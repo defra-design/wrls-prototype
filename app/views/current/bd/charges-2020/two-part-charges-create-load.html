@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 
-{% set title = "Gathering bills for " + data['region'] + " two-part tariff " + data['tptSeason'] + " bill run" %}
+{% set title = data['region'] + " two-part tariff " + data['tptSeason'] + " bill run" %}
 
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -28,13 +28,13 @@
 
 {% block beforeContent %}
 
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
-    {% include "current/includes/nav/nav-bd-manage.html" %}
-  </div>
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "javascript:history.back()"
   }) }}
@@ -43,37 +43,40 @@
 
 {% block content %}
 
-  <!-- page title -->
-  <div class="govuk-grid-row govuk-!-margin-bottom-0">
-    <div class="govuk-grid-column-two-thirds">
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-      <section class="govuk-!-margin-bottom-9">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
-        {{title}}</h1>
-      </section>
-    </div>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">{{title}}</h1>
+
+
+    <section class="govuk-!-margin-bottom-3">
+      {{govukTag({
+      text: "Building",
+      classes: "govuk-tag--orange govuk-!-font-size-27"
+    })}}
+    </section>
+
+    <p class="govuk-body">
+      Please wait. This might take up to a minute.
+    </p>
+
+    {{ govukButton({
+  text: "Cancel bill run",
+  classes: "govuk-button--secondary",
+  href: "confirm-cancel-bills?type=Two-part tariff"
+}) }}
+
+    <div class="divider"></div>
+
+    <div class="spinner"></div>
+
   </div>
+</div>
 
-  <div class="divider govuk-!-margin-bottom-7"></div>
-
-  <h2 class="govuk-heading-l screen-reader-only">
-    Two-part tariff bills
-  </h2>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <script language="javascript" type="text/javascript">
-          window.setTimeout('location.replace("two-part-charges?tptstatus=ready")',8000);
-      </script>
-
-      <p class="govuk-body-l">
-        Please wait. This might take up to a minute.
-      </p>
-
-    </div>
-  </div>
-
-  <div class="spinner"></div>
+<script language="javascript" type="text/javascript">
+  window.setTimeout('location.replace("two-part-charges?tptstatus=ready")', 200000);
+</script>
 
 {% endblock %}
