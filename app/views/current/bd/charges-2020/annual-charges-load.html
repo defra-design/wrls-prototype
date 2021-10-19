@@ -43,30 +43,40 @@
 
   <!-- page title -->
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{data['region']}} annual bill run</h1>
 
-      <section class="govuk-!-margin-bottom-9">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">{{data['region']}} annual bill run</h1>
-      </section>
-    </div>
-  </div>
+      <section class="govuk-!-margin-bottom-8">
 
-  <div class="divider govuk-!-margin-bottom-7"></div>
+      
+      {{govukTag({
+        text: "Building",
+        classes: "govuk-tag--orange govuk-!-font-size-27"
+      })}}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    </section>
 
-      <script language="javascript" type="text/javascript">
-          window.setTimeout('location.replace("annual-charges?annualstatus=ready")',8000);
-      </script>
+      
 
-      <p class="govuk-body-l">
+      <p class="govuk-body-l govuk-!-margin-bottom-6">
         Please wait. This might take up to a minute.
       </p>
-
+      {{ govukButton({
+        text: "Cancel bill run",
+        classes: "govuk-button--secondary", 
+        href: "confirm-cancel-bills?type=Annual"
+      }) }}
+      <div class="divider"></div>
+      <div class="spinner"></div>
     </div>
+    
+
+
   </div>
 
-  <div class="spinner"></div>
+
+  <script language="javascript" type="text/javascript">
+    window.setTimeout('location.replace("annual-charges?annualstatus=ready")',8000);
+</script>
 
 {% endblock %}

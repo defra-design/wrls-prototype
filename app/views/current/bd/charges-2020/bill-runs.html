@@ -212,6 +212,9 @@
       </a>
 
       <!-- table row -->
+      {% if [data.annualstatus] == "error" %}
+
+      {% else %}
       <a href="annual-charges" class="table__row--selectable govuk-!-margin-bottom-6">
         <div class="table__cell table__cell--v-middle">
           <h3 class="screen-reader-only">
@@ -277,6 +280,8 @@
           {% endif %}
         </div>
       </a>
+
+      {% endif %}
 
       <!-- table row -->
       {% if [data.tptstatus] == "error" %}
