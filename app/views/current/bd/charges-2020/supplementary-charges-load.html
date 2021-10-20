@@ -44,40 +44,42 @@
 
   <!-- page title -->
   <div class="govuk-grid-row govuk-!-margin-bottom-0">
-    <div class="govuk-grid-column-two-thirds">
-
-      <section class="govuk-!-margin-bottom-9">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Supplementary charges for {{data['region']}}</h1>
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Supplementary charges for {{data['region']}}</h1>
+      <section class="govuk-!-margin-bottom-8">
+        
+        {{govukTag({
+          text: "Building",
+          classes: "govuk-tag--orange govuk-body govuk-!-font-size-27"
+        })}}
       </section>
-    </div>
-  </div>
+  
+   
 
-  <div class="divider govuk-!-margin-bottom-7"></div>
-
-  <h2 class="govuk-heading-l screen-reader-only">
-    Supplementary bills
-  </h2>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-     {% if data.suppBilling == "true" %}
-     <script language="javascript" type="text/javascript">
-         window.setTimeout('location.replace("../iterations/manual-billing/bill-run/review")',4000);
-     </script>
-     {% else %}
-      <script language="javascript" type="text/javascript">
-          window.setTimeout('location.replace("supplementary-charges?status=ready&billRun=created")',4000);
-      </script>
-      {% endif %}
-
-      <p class="govuk-body-l">
-        Please wait. This might take up to a minute.
+  <p class="govuk-body-l govuk-!-margin-bottom-6">
+    The bill run is being created. This can take up to a minute.
       </p>
 
-    </div>
-  </div>
+      {{ govukButton({
+        text: "Cancel bill run",
+        classes: "govuk-button--secondary",
+        href: "confirm-cancel-bills?type=Supplementary"
+      }) }}
 
+  <div class="divider"></div>
   <div class="spinner"></div>
+
+  </div>
+</div>
+
+{% if data.suppBilling == "true" %}
+  <script language="javascript" type="text/javascript">
+      window.setTimeout('location.replace("../iterations/manual-billing/bill-run/review")',4000);
+  </script>
+  {% else %}
+   <script language="javascript" type="text/javascript">
+       window.setTimeout('location.replace("supplementary-charges?status=ready&billRun=created")',4000);
+   </script>
+   {% endif %}
 
 {% endblock %}

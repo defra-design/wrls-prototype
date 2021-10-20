@@ -87,6 +87,7 @@
       </div>
 
       <!-- table row -->
+     
       <a href="supplementary-charges" class="table__row--selectable govuk-!-margin-bottom-6">
         <div class="table__cell table__cell--v-middle">
           <h3 class="screen-reader-only">
@@ -146,8 +147,13 @@
         </div>
       </a>
 
+      
+
 
       <!-- table row -->
+      {% if [data.supplementarystatus] == "error" %}
+
+      {% else %}
       <a href="supplementary-charges?region={{data['region']}}" class="table__row--selectable govuk-!-margin-bottom-6">
         <div class="table__cell table__cell--v-middle">
           <h3 class="screen-reader-only">
@@ -210,6 +216,8 @@
           {% endif %}
         </div>
       </a>
+      {% endif %}
+      
 
       <!-- table row -->
       {% if [data.annualstatus] == "error" %}
