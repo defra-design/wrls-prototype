@@ -1,0 +1,44 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Contact removed" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Contact set up" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+<!--no back button-->
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukPanel({
+      titleText: "Contact removed",
+      html: data['removedName'] + ' is no longer a contact for ' + [data.customers[data.customerID]['name']]
+    }) }}
+
+    <p class="govuk-body">
+      <a class="govuk-link" href="../../customer#contacts">
+        Go to contacts
+      </a>
+    </p>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

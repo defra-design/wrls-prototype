@@ -1,0 +1,129 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Select which contact you would like to remove" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Select which contact you would like to remove" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+      {# Get the list of contacts for this customer#}
+      {# set the customer page we are on#}
+      {% set customer = data.customers[data.customerID].name %}
+
+  {# getting the contacts data #}
+  {% set contacts = data['contacts'] %}
+
+  {# set global scope #}
+  {% set index = "" %}
+  {% set selectItems = [] %}
+
+  {# loop through each contact #}
+  {% for contact in contacts %}
+
+  {# set the index of the contact #}
+  {% set index = loop.index0 %}
+
+  {% if contact.type == "company" %}
+  {% else %}
+  {# set the contact ID #}
+  {% set loopNumber = loop.index0 %}
+
+  {# get the customers for each contact #}
+  {% set contactCustomers = data.contacts[loopNumber]['customers'] %}
+
+  {# loop through each customers contacts #}
+  {% for contactCustomer in contactCustomers %}
+
+  {# if the customer name for the contact matches the customer page we are on set the customer index number #}
+  {% if customer == contactCustomer['customer'] %}
+
+  {# set the index ID of the contact #}
+
+
+
+  {# only show contacts set up on WRLS #}
+  {% if data.contacts[loopNumber].wrls == "true" %}
+
+
+  {% set selectItems = selectItems | push({
+    value: index,
+    text: data.contacts[loopNumber].name
+  }) %}
+
+
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+    {% endfor %}
+
+ {% if selectItems.length %}
+
+{% set hint %}
+{{ govukWarningText({
+ text: "Contacts not showing in this list are created in NALD, you will need to remove them in NALD.",
+ iconFallbackText: "Warning"
+}) }}
+{% endset %}
+
+
+    {{ govukRadios({
+  idPrefix: "contactID",
+  name: "contactID",
+  fieldset: {
+  legend: {
+    text: [qTitle]|safe,
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l"
+  }
+  },
+  hint: {
+    text: hint |safe
+  },
+
+  items: selectItems
+  }) }}
+
+  {{ govukButton({
+  text: "Continue"
+  }) }}
+
+{% else %}
+
+
+
+ {{ govukWarningText({
+  text: "All contacts for this customer are created in NALD, you will need to remove them in NALD.",
+  iconFallbackText: "Warning"
+}) }}
+
+
+
+{% endif %}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

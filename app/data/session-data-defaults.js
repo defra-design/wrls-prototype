@@ -979,7 +979,11 @@ module.exports = {
       }],
         "customers": [{
           "role": "Contact",
-          "notices": [],
+          "notices": [{
+                        "type": "Water abstraction alerts",
+                        "sendBy": "email",
+                        "addressID": "2",
+                      }],
           "customer": "Big Smith Farms Ltd",
         }],
       },

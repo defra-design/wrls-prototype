@@ -88,9 +88,17 @@
     <!--add a contact-->
     {{ govukButton({
     text: "Set up a new contact",
-    href: "customer/add/select-a-contact-type?contactID="
+    href: "customer/add/select-a-contact-type?contactID=",
+    classes: "govuk-!-margin-right-3"
     }) }}
 
+
+    <!--remove a contact-->
+    {{ govukButton({
+    text: "Remove a contact",
+    href: "customer/remove/select-which-contact-to-remove",
+    classes: "govuk-button--secondary"
+    }) }}
 
    </section>
 

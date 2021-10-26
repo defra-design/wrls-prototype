@@ -529,6 +529,71 @@ router.post('/change-department-name', function(req, res) {
 });
 
 
+/////////////////////////////REMOVE A CONTACT/////
+//////
+
+//Select the contact
+router.get('/remove/select-which-contact-to-remove', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + 'remove/select-which-contact-to-remove');
+
+});
+
+
+router.post('/remove/select-which-contact-to-remove', function(req, res) {
+
+
+    res.redirect('check-your-answers');
+
+});
+
+//Are you sure/check your answers
+router.get('/remove/check-your-answers', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + 'remove/check-your-answers');
+
+});
+
+
+router.post('/remove/check-your-answers', function(req, res) {
+
+   //Remove the contact
+   //get the ID of the contact that you want to remove
+     let contactID = req.session.data['contactID']
+
+     //get the contacts List
+     let contacts = req.session.data['contacts']
+
+     //set the removed contacts name to so we can use it in the success banner after it has been removed
+     req.session.data.removedName = req.session.data.contacts[contactID]['name']
+
+     //remove the object that is in the position set by the contact ID
+     if (contactID > -1) {
+       contacts.splice(contactID, 1);
+     }
+
+    res.redirect('contact-removed');
+
+});
+
+
+//confirmation
+router.get('/remove/contact-removed', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  //blank out the variable after use
+  req.session.data.removedContact = ""
+
+  res.render(folder + 'remove/contact-removed');
+
+});
+
+
 
 
 module.exports = router

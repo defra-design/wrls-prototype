@@ -69,6 +69,7 @@ router.use('/licence-notices', require('./_routes-notices'));
 
 ////CUSTOMER ROUTES
 //ADD A CONTACT FOR A CUSTOMER
+//REMOVE A CONTACT FOR A CUSTOMER
 router.use('/customer', require('./_routes-customer'));
 
 
