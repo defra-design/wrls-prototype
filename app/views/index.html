@@ -87,9 +87,42 @@ GOV.UK Prototype Kit
       </h2>
 
       <h3 class="govuk-heading-s">
+        SRoC charge information - 2 Nov 2021
+      </h3>
+      <p class="govuk-body">First pass of building SRoC charge information and assigning charge categories/references to charge elements</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="govuk-link" href="/bd/iterations/sroc/create-charge-information/charge-data-check">SRoC charge information set up</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Remove a customer contact - 26 October 2021
+      </h3>
+      <p class="govuk-body">Added a route for removing a customer contact, this could be if someone set one up in error or if the contact has left the company</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="govuk-link" href="/sandbox/customer?customerID=1#contacts">Remove a customer contact</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Cancelling a building bill run - 18 October 2021
+      </h3>
+      <p class="govuk-body">B&D will be able to cancel bill runs that are building</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="govuk-link" href="/bd/charges-2020/annual-charges-load?region=Anglian&annualstatus=building">Cancel a building bill run</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Editing a name for a customer contact - 11 October 2021
+      </h3>
+      <p class="govuk-body">If the contact was created in WRLS users will now be able to edit their name</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="govuk-link" href="/sandbox/customer?customerID=1#contacts">Remove a customer contact</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
         Customer and trasaction file - 8 October 2021
       </h3>
-      <p class="govuk-body">When a billing account is updated a customer reference file is generated and sent to SSCL, sometimes the change of address won't be actioned by SSCL. When this happens B&D need to find which customer file the change was sent to SSCL in. By displaying the file reference and the date is was created we're making this task easier for B&D. The same thing applies to the transaction file once a bill run has been sent.</p>
+      <p class="govuk-body">When a billing account is updated a customer reference file is generated and sent to SSCL, sometimes the change of address won't be actioned by SSCL. When this happens B&D need to find which customer file the change was
+        sent to SSCL in. By displaying the file reference and the date is was created we're making this task easier for B&D. The same thing applies to the transaction file once a bill run has been sent.</p>
       <ul class="govuk-list govuk-list--bullet">
         <li> <a class="govuk-link" href="/bd/charges-2020/billing-account">Customer file on a billing account</a></li>
         <li> <a class="govuk-link" href="/bd/charges-2020/annual-charges?annualstatus=sent">Transaction file on a annual bill run</a></li>
@@ -103,7 +136,8 @@ GOV.UK Prototype Kit
       <p class="govuk-body">When a licence has a TPT agreement, B&D may need to specify that it needs to be supplementary billed. This is so they can
         re-calculate the amount of water that is used in the second part charge on a TpT.</p>
       <p class="govuk-body"> The scenario can occur if someone submitted returns late and
-        there was a legitimate reason for rebilling them. This process has three parts, marking the licence for supplementary billing, reviewing the changes to the billable volumes and sending the revised bills. The sending part of the process in the prototype is the same
+        there was a legitimate reason for rebilling them. This process has three parts, marking the licence for supplementary billing, reviewing the changes to the billable volumes and sending the revised bills. The sending part of the process in the
+        prototype is the same
         as supplementary billing. B&D will need to mark up the downloaded bill run with specific actions for SSCL.
       </p>
       <p class="govuk-body">The user can mark the licence for the supplementary bill by following the flow form the "recalculate bills" action on the TpT agreement.</p>

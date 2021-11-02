@@ -187,6 +187,23 @@ module.exports = {
       "singleUseAddressFlag": "false"
     }],
 
+    //SRoC elements
+    "srocElements": [{
+      "purpose": "Spray irrigation",
+      "description": "Otterton borehole 1a",
+      "abstractionStartDay": "1",
+      "abstractionStartMonth": "3",
+      "abstractionEndDay": "30",
+      "abstractionEndMonth": "9",
+      "billableQuantity": "100",
+      "authorisedQuantity": "100",
+      "timeLimit": "No",
+      "source": "Unsupported",
+      "season": "Summer",
+      "loss": "High",
+      "chargeReference":[],
+    }],
+
     "search": "",
     "reports": "true",
     "billing": "true",

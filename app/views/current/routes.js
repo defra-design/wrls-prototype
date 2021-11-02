@@ -14,6 +14,11 @@ router.use('/bd/iterations/manual-billing', require('./bd/iterations/_routes/_ro
 
 
 
+///SROC ROUTE
+router.use('/bd/iterations/sroc', require('./bd/iterations/_routes/_routes-sroc'));
+
+
+
 /////Reason for new charge version
 //Setting the change element route back
 router.get('/current/bd/charges-2020/add-new-reason', function(req, res) {
