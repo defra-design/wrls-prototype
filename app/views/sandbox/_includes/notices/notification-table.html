@@ -1,10 +1,191 @@
 
 
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption ">Sent notifications</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
+<div class="govuk-grid-row">
+
+
+
+
+<div class="{{data['table'] | default ('govuk-grid-column-full')}}" style="{{data['overFlow']}}" >
+
+
+
+<table class="govuk-table" style="{{data['fixTableWidth']}}">
+  <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-0"><div class="govuk-!-margin-bottom-3"> View sent notices </div><p class=govuk-body>Select notice type for more details.</p>
+
+  <!--  {# {% if data['showFilters'].length %}  #}
+
+    <form  method="post" novalidate action="notification-report?showFilters=">
+       {{ govukButton({
+        text: "Hide filters",
+        classes: "govuk-button--secondary govuk-!-margin-bottom-1"
+      }) }}
+     </form>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+
+    <div class="govuk-grid-row">
+
+    <div class="{{data['filters'] | default ('hide') }}">
+
+      <!--Not sure this is necessary yet
+        <div class="govuk-!-padding-3 govuk-!-margin-bottom-3" style="background-color: #f3f2f1">
+         <p class="govuk-body govuk-!-font-weight-bold">Selected filters</p>
+        </div>
+
+        {#
+            {{ govukDateInput({
+          id: "dateFrom",
+          namePrefix: "dateFrom",
+          fieldset: {
+            legend: {
+              text: "Date from",
+              classes: 'govuk-fieldset__legend--s'
+            }
+          }
+        }) }}
+
+
+        {{ govukDateInput({
+        id: "dateTo",
+        namePrefix: "dateTo",
+        fieldset: {
+        legend: {
+          text: "Date to",
+          classes: 'govuk-fieldset__legend--s'
+        }
+        }
+        }) }}
+
+        #}
+
+    </div>
+    </div>
+-->
+
+     {% set filtersForm %}
+
+
+
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Filter by</h2>
+
+     <form  method="post" novalidate action="notification-report/apply-filters">
+
+
+
+
+
+
+
+       {{ govukCheckboxes({
+         idPrefix: 'type',
+         name: 'type',
+         fieldset: {
+           legend: {
+             text: 'Notification type',
+             classes: 'govuk-fieldset__legend--s'
+           }
+         },
+         items: [
+           {
+             value: 'Returns: send paper forms',
+             text: 'Returns: send paper forms',
+             checked:  checked("type", "Returns: send paper forms")
+           },
+           {
+             value: 'Returns: invitation',
+             text: 'Returns: invitation',
+             checked:  checked("type", "Returns: invitation")
+           },
+           {
+             value: 'Returns: reminder',
+             text: 'Returns: reminder',
+             checked:  checked("type", "Returns: reminder")
+           },
+           {
+             value: 'Expiring licence(s): invitation to renew',
+             text: 'Expiring licence(s): invitation to renew',
+             checked:  checked("type", "Expiring licence(s): invitation to renew")
+           },
+           {
+             value: 'Hands off flow: levels warning',
+             text: 'Hands off flow: levels warning',
+             checked:  checked("type", "Hands off flow: levels warning")
+           },
+           {
+             value: 'Hands off flow: stop or reduce abstraction',
+             text: 'Hands off flow: stop or reduce abstraction',
+             checked:  checked("type", "Hands off flow: stop or reduce abstraction")
+           },
+           {
+             value: 'Hands off flow: resume abstraction',
+             text: 'Hands off flow: resume abstraction',
+             checked:  checked("type", "Hands off flow: resume abstraction")
+           }
+         ]
+       }) }}
+
+
+       {{ govukInput({
+         id: 'sentBy',
+         name: 'sentBy',
+         value: data['sentBy'],
+         classes: "govuk-input--width-10",
+         label: {
+           text: 'Sent by',
+           classes: 'govuk-label--s'
+         }
+       }) }}
+
+       <div class="govuk-button-group">
+           {{ govukButton({
+         text: "Apply filters"
+       }) }}
+
+
+       {{ govukButton({
+           text: "Clear filters",
+           classes: "govuk-button--secondary",
+           name: "clearFilters",
+           value: "true"
+         }) }}
+
+         </div>
+
+
+
+     </form>
+
+
+     {% endset %}
+
+
+
+     {{ govukDetails({
+       summaryText: "Filters",
+       html: filtersForm | safe,
+       classes: "govuk-!-margin-bottom-1",
+       open: data['openDetails']
+     }) }}
+<!--
+{#    {% else %}
+
+    <form  method="post" novalidate action="notification-report?showFilters=true">
+
+   {{ govukButton({
+    text: "Show filters",
+    classes: "govuk-button--secondary govuk-!-margin-bottom-1"
+   }) }}
+
+   </form>
+    {% endif %} #}
+-->
+
+  </caption>
+  <thead class="govuk-table__head" >
+    <tr class="govuk-table__row" id="focus">
       <th scope="col" class="govuk-table__header">Date</th>
       <th scope="col" class="govuk-table__header">Notification</th>
       <th scope="col" class="govuk-table__header">Sent by</th>
@@ -16,9 +197,13 @@
 
 
 
-
-   <!--get and loop through the notifications table-->
+   <!--get and loop through the notifications table, check if results are filtered or not-->
+   {% if data['filteredResults'].length %}
+   {% set notifications = data['filteredResults'] %}
+   {% else %}
    {% set notifications = data['notifications'] %}
+   {% endif %}
+
    {% for i in notifications %}
    <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{i.date}}</td>
@@ -33,6 +218,10 @@
 
   </tbody>
 </table>
+
+</div>
+</div>
+
 
 <!-- Notifictions table for ref
 

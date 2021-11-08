@@ -17,6 +17,9 @@ $govuk-assets-path: '/govuk/assets/';
 // Components that aren't in Frontend
 @import "components/cookie-banner";
 
+// MOJ front end
+@import "node_modules/@ministryofjustice/frontend/moj/all";
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 

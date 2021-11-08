@@ -944,4 +944,108 @@ router.post('/tagging/you-are-about-to-remove-tags', function(req, res) {
 
 });
 
+
+
+///////Show and hide table filters
+router.get('/notification-report', function(req, res) {
+  req.session.data.openDetails = ""
+req.session.data.back = req.headers.referer
+  res.render(folder + 'notification-report');
+});
+
+
+router.post('/notification-report', function(req, res) {
+
+  let showFilters = req.session.data.showFilters
+
+if (showFilters == "true" ) {
+
+   req.session.data.filters = "govuk-grid-column-two-thirds"
+  // req.session.data.table = "govuk-grid-column-two-thirds"
+  // req.session.data.fixTableWidth = "width:960px"
+  // req.session.data.overFlow = "overflow-x: auto"
+
+ } else {
+
+   req.session.data.filters = "hide"
+   req.session.data.table = "govuk-grid-column-full"
+   req.session.data.fixTableWidth = ""
+   req.session.data.overFlow = ""
+
+ }
+
+  res.redirect('notification-report#focus');
+});
+
+
+///Apply  filters
+
+router.post('/notification-report/apply-filters', function(req, res) {
+
+  //check to see if the user is clearing filters
+  if (req.session.data.clearFilters == "true") {
+
+    req.session.data.type = ""
+    req.session.data.sentBy = ""
+    req.session.data.filteredResults = ""
+    req.session.data.openDetails = true
+//    req.session.data.focus="alert"
+
+  } else {
+
+
+  //get the list of notifications
+  let notifications = req.session.data.notifications
+
+
+//set global scope of filteredResults
+let filteredResults = ""
+
+//set the type filter
+let typeFilters = ""
+ typeFilters = req.session.data.type
+ if (typeof typeFilters === 'undefined') {
+   typeFilters= ""
+ }
+
+ if (typeof typeFilters.length) {
+   filteredResults = notifications.filter(el => ( typeFilters.indexOf(el.notification) >= 0 ))
+ }
+
+
+ //set the sent by filter
+  let sentByFilter = ""
+   sentByFilter = req.session.data.sentBy
+  if (sentByFilter === 'undefined') {
+     sentByFilter = ""
+   }
+
+  if ((sentByFilter.length) && (filteredResults.length)) {
+    filteredResults = filteredResults.filter(el => (sentByFilter.indexOf(el.sentBy) >=0 ) );
+  } else if (sentByFilter.length) {
+    filteredResults = notifications.filter(el => (sentByFilter.indexOf(el.sentBy) >=0 ) );
+  }
+
+req.session.data.openDetails = true
+//req.session.data.focus="alert"
+req.session.data.filteredResults = filteredResults
+
+}
+
+  req.session.data.clearFilters = ""
+  res.redirect('../notification-report#focus');
+
+});
+
+
+///clear filters
+
+router.post('/notification-report/clear-filters', function(req, res) {
+
+
+
+
+  res.redirect('../notification-report#focus');
+});
+
 module.exports = router
