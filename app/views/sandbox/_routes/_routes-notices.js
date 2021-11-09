@@ -1026,6 +1026,14 @@ let typeFilters = ""
     filteredResults = notifications.filter(el => (sentByFilter.indexOf(el.sentBy) >=0 ) );
   }
 
+
+  //set filtered results to empty if filters don't return anything
+    if (!filteredResults.length){
+      filteredResults = "empty"
+      console.log(filteredResults + "null")
+    }
+console.log(filteredResults)
+
 req.session.data.openDetails = true
 //req.session.data.focus="alert"
 req.session.data.filteredResults = filteredResults

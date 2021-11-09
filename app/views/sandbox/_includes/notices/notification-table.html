@@ -196,7 +196,6 @@
   <tbody class="govuk-table__body">
 
 
-
    <!--get and loop through the notifications table, check if results are filtered or not-->
    {% if data['filteredResults'].length %}
    {% set notifications = data['filteredResults'] %}
@@ -204,6 +203,17 @@
    {% set notifications = data['notifications'] %}
    {% endif %}
 
+
+   {% if notifications == "empty" %}
+   <tr class="govuk-table__row">
+     <td class="govuk-table__cell">No results</td>
+     <td class="govuk-table__cell"></td>
+     <td class="govuk-table__cell"></td>
+     <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+     <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+     </tr>
+
+   {% else %}
    {% for i in notifications %}
    <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{i.date}}</td>
@@ -213,8 +223,7 @@
     <td class="govuk-table__cell govuk-table__cell--numeric">{{i.problems}}</td>
     </tr>
    {% endfor %}
-
-
+     {% endif %}
 
   </tbody>
 </table>
