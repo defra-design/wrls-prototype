@@ -1024,6 +1024,8 @@ let typeFilters = ""
     filteredResults = filteredResults.filter(el => (sentByFilter.indexOf(el.sentBy) >=0 ) );
   } else if (sentByFilter.length) {
     filteredResults = notifications.filter(el => (sentByFilter.indexOf(el.sentBy) >=0 ) );
+  } else if ((!sentByFilter.length) && (!filteredResults.length)) {
+    filteredResults = notifications
   }
 
 
