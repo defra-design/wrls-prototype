@@ -1,0 +1,108 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Which thresholds do you need to send an alert for?" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Which thresholds do you need to send an alert for?" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <!-- page title -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">
+        {{qTitle | safe}}
+        </h1>
+      </div>
+    </div>
+
+    <form  method="post" novalidate>
+
+
+
+   <!--flow thresholds with mega litres per day-->
+   {% set flowThresholdsMegaLitresPerDay = data['allFlowThresholdsMegaLitresPerDay']%}
+
+    <!--check for some ML/d thresholds-->
+     {% if flowThresholdsMegaLitresPerDay.length %}
+
+   {% set selectItems = [] %}
+
+   {% for i in flowThresholdsMegaLitresPerDay %}
+     {% set selectItems = selectItems | push({
+       value: i,
+       text: i
+     }) %}
+   {% endfor %}
+
+      {{ govukCheckboxes({
+    idPrefix: "flowThresholdsMegaLitresPerDay",
+    name: "flowThresholdsMegaLitresPerDay",
+    fieldset: {
+      legend: {
+        text: "Flow thresholds for this station (ML/d)",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--m govuk-heading-m"
+      }
+    },
+
+    items: selectItems
+  }) }}
+
+  {% endif %}
+
+
+  <!--level thresholds with metre above ordinance datum-->
+  {% set levelThresholdsMetresAboveOrdinanceDatum = data['allLevelThresholdsMetresAboveOrdinanceDatum']%}
+
+  <!--check for some mAOD thresholds--> 
+  {% if levelThresholdsMetresAboveOrdinanceDatum.length %}
+
+  {% set selectItems = [] %}
+
+  {% for i in levelThresholdsMetresAboveOrdinanceDatum %}
+    {% set selectItems = selectItems | push({
+      value: i,
+      text: i
+    }) %}
+  {% endfor %}
+
+     {{ govukCheckboxes({
+   idPrefix: "levelThresholdsMetresAboveOrdinanceDatum",
+   name: "levelThresholdsMetresAboveOrdinanceDatum",
+   fieldset: {
+     legend: {
+       text: "Level thresholds for this station (mAOD)",
+       isPageHeading: false,
+       classes: "govuk-fieldset__legend--m govuk-heading-m"
+     }
+   },
+
+   items: selectItems
+  }) }}
+
+  {% endif %}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

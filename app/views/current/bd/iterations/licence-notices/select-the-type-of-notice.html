@@ -1,0 +1,70 @@
+{% extends "layouts/_QuestionPage.html" %}
+
+<!--set title-->
+{% set title = "Select the type of notice" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+
+    <form action="../licence-notices" method="post" novalidate>
+
+
+      {{ govukRadios({
+        idPrefix: "notice-type",
+        name: "notice-type",
+        fieldset: {
+          legend: {
+            text: [title],
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "returnsInvitations",
+            text: "Returns invitations"
+
+          } if data.userType == "bd" or data.userType == "su",
+          {
+            value: "returnsPaperForms",
+            text: "Returns paper forms"
+
+          } if data.userType == "bd" or data.userType == "su",
+          {
+            value: "returnsReminders",
+            text: "Returns reminders"
+
+          } if data.userType == "bd" or data.userType == "su",
+          {
+            value: "licenceRenewals",
+            text: "Licence renewals"
+
+          } if data.userType == "nps" or data.userType == "su"
+        ]
+      }) }}
+
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

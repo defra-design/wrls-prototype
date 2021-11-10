@@ -1,0 +1,78 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Select the type of alert you need to send" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Select the type of alert you need to send" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+
+    <form  method="post" novalidate>
+
+      {{ govukRadios({
+idPrefix: "waaType",
+name: "waaType",
+fieldset: {
+legend: {
+  text: [qTitle]|safe,
+  isPageHeading: true,
+  classes: "govuk-fieldset__legend--l"
+}
+},
+items: [
+{
+  value: "warning",
+  text: "Warning",
+  hint: {
+    text: "Tell licence holders they may need to reduce or stop water abstraction soon."
+  }
+},
+{
+  value: "reduce",
+  text: "Reduce",
+  hint: {
+    text: "Tell licence holders they can take water at a reduced amount."
+  }
+},
+{
+  value: "stop",
+  text: "Stop",
+  hint: {
+    text: "Tell licence holders they must stop taking water."
+  }
+},
+{
+  value: "resume",
+  text: "Resume",
+  hint: {
+    text: "Tell licence holders they can take water at the normal amount."
+  }
+}
+]
+}) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

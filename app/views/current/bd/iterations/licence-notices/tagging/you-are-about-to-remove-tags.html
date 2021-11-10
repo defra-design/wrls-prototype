@@ -1,0 +1,130 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "You’re about to remove a tag from this licence" %}
+{% set pluralTitle = "You're about to remove tags from this licence" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+{#
+{% set loopIndex = "" %}
+{% set tag = [] %}
+{% set tagNumber = data.selectedTags %}
+ {% set tags = data.stations[data.stationID]['tags'] %}
+ {% for i in tags %}
+   {% if data['selectedLicence'] == i.licenceNumber %}
+ {% set licenceTags = i['tagValues'] %}
+ {% for tagValue in licenceTags %}
+ {% set loopIndex = loop.index0 %}
+{% set tag = tag + tagValue.conditionType |capitalize + " at " + tagValue.thresholdValue + " " + tagValue.thresholdUnits | unitsWords |safe + "<br>" %}
+{% endfor %}
+  {% endif %}
+  {% endfor %}
+
+
+      {% endif %}
+#}
+
+{% set licences = []%}
+{% set tagNumber = data.selectedTags %}
+{% set tags = data.stations[data.stationID]['tags'] %}
+{% set tag = [] %}
+
+ {% for i in tags %}
+ {% if data['selectedLicence'] == i.licenceNumber %}
+
+{% for number in tagNumber %}
+ {% set tagValues = i.tagValues %}
+  {% set tag = tag + tagValues[number].conditionType |capitalize + " at " + tagValues[number].thresholdValue + " " + tagValues[number].thresholdUnits | unitsWords |safe + "<br>" %}
+{% endfor %}
+
+  {% endif %}
+  {% endfor %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{{ [data.stations[data.stationID].riverName]}} at {{[data.stations[data.stationID].label] }}</span>
+
+      {% if loopIndex == 0 %}
+        {{title}}
+      {% else %}
+    {{pluralTitle}}
+      {% endif %}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <form  method="post" novalidate>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+    <!-- licence condition title -->
+
+
+        {{ govukWarningText({
+        text: "You will not be able to send a water abstraction alert for the licence at this restriction type and threshold.",
+        iconFallbackText: "Warning"
+        }) }}
+
+
+
+
+     {{ govukSummaryList({
+       rows: [
+       {
+         key: {
+           text: "Licence"
+         },
+         value: {
+          text: data['selectedLicence']
+         }
+       },
+       {
+         key: {
+           text: "Tag"
+         },
+         value: {
+          html:
+          tag
+         }
+       }
+       ]
+     }) }}
+
+     {% if loopIndex == 0 %}
+     {{ govukButton({
+        text: "Remove tag",
+        type: "submit"
+      }) }}
+     {% else %}
+     {{ govukButton({
+        text: "Remove tags",
+        type: "submit"
+      }) }}
+     {% endif %}
+
+
+
+   </div>
+   </div>
+
+
+    </form>
+
+
+
+
+    {% endblock %}

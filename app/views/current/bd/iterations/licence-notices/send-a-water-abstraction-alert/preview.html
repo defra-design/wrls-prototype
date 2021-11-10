@@ -1,0 +1,66 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = data['waaType'] |capitalize + " message preview" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> " + data['waaType'] |capitalize + " message preview"  %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+<h1 class="govuk-heading-l">
+  {{qTitle|safe}}
+</h1>
+
+
+
+
+          <!-- count of licences in the list -->
+          {% set index = "" %}
+          {% set licenceList = data['licenceList'] %}
+          {% for i in licenceList %}
+          {% set index = loop.length %}
+          {% endfor %}
+
+            <p class="govuk-body">This is a preview of the message {{data.LicenceListHolder}} will get.</p>
+          </div>
+          </div>
+
+          <form  method="post" novalidate >
+
+      <div class="notification govuk-!-margin-bottom-6" style="background-color:#f3f2f1;" >
+        <div class="govuk-grid-row govuk-!-padding-6">
+          <div class="govuk-grid-column-full">
+
+          <!-- display the text relevant to the WAA type-->
+          {% if data['waaType'] == "warning" %}
+          {% include "sandbox/_includes/notices/warning-text.html" %}
+          {% elseif data['waaType'] == "reduce" %}
+          {% include "sandbox/_includes/notices/reduce-text.html" %}
+          {% elseif data['waaType'] == "stop" %}
+          {% include "sandbox/_includes/notices/stop-text.html" %}
+          {% else %}
+          {% include "sandbox/_includes/notices/resume-text.html" %}
+          {% endif %}
+          </div>
+          </div>
+        </div>
+
+    <a href="javascript:history.back()" class="govuk-link">back to mailing list</a>
+
+    </form>
+
+
+
+
+    {% endblock %}

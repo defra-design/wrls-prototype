@@ -1,0 +1,82 @@
+{% extends "layouts/_manage.html" %}
+
+{% set licenceList = data['licenceList'].split(',') %}
+<!--set page title-->
+{% set title = "Select the full condition for licence " + licenceList %},
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form  method="post" novalidate>
+
+
+
+
+{% for i in licenceList %}
+
+
+ {% set conditionID = range(000000, 999999) | random %}
+
+      {{ govukRadios({
+  idPrefix: "condtions" + loop.index0,
+  name: "conditions" + loop.index0,
+  fieldset: {
+    legend: {
+      text: qTitle|safe,
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "This is the licence condition recorded in NALD and stated on the licence."
+  },
+  items: [
+    {
+      value: "Flow cessation condition 1 for " + i,
+      text: "Flow cessation condition 1",
+      hint: {
+        text: "No abstraction shall take place unless the flow of water in the River Dikler as measured by the Agency at Station reference 1029TH (Bourton Dickler Gauging Station) is equal to or greater than 180ML/d, and the abstraction shall not cause the flow at the said reference point to fall below that rate."
+      }
+    },
+    {
+      value: "Flow cessation condition 2 for " + i,
+      text: "Flow cessation condition 2",
+      hint: {
+        text: "No abstraction shall take place when the flow in the River Dikler as gauged at Bourton Dickler at Station reference 1029TH is equal to or less than 5.68 cubic metres per second as may be notified by the Agency. The Agency's said gauging of the flow shall be conclusive."
+      }
+    },
+  {
+      divider: "or"
+    },
+    {
+      value: "The condition is not listed for licence " + i,
+      text: "The condition is not listed for this licence"
+    }
+  ]
+}) }}
+
+{% endfor %}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

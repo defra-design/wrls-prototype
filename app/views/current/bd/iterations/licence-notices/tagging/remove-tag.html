@@ -1,0 +1,130 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "You’re about to remove the tag for this licence" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+      {{title}}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <form  method="post" novalidate>
+
+    <!--get station data-->
+    {% set stations = data['stations'] %}
+    <!--get station name-->
+    {% set stationName = stations[data.stationID].label %}
+   <!--get catchmentName-->
+    {% set catchmentName = stations[data.stationID].catchmentName %}
+
+   <!--get tags for that station-->
+    {% set tags = data.stations[data.stationID]['tags'] %}
+
+   <!--get the licence number for those tags-->
+    {% set tagLicenceNumber = tags[data.tagNumber]['licenceNumber'] %}
+
+
+    <!--get tag Values-->
+    {% set tagValues = tags[data.tagNumber]['tagValues'] %}
+
+
+    <!--set the values for the tag-->
+    {% set thresholdValue = tagValues[data.tagValueNumber].thresholdValue %}
+    {% set thresholdUnits = tagValues[data.tagValueNumber].thresholdUnits %}
+    {% set conditionType = tagValues[data.tagValueNumber].conditionType %}
+    {% set notificationType = tagValues[data.tagValueNumber].notificationType %}
+    {% set linkedCondition = tagValues[data.tagValueNumber].linkedCondtion %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+    <!-- licence condition title -->
+        <h2 class="heading-large govuk-heading-m licence-condition__header">
+          Hands off {{notificationType}} threshold
+        </h2>
+        {{ govukWarningText({
+      text: "You will not be able to send a water abstraction alert for the licence at this restriction type and threshold.",
+      iconFallbackText: "Warning"
+    }) }}
+
+     {{ govukSummaryList({
+       rows: [
+       {
+         key: {
+           text: "Watercourse"
+         },
+         value: {
+          text: [catchmentName]
+         }
+       },
+       {
+         key: {
+           text: "Station"
+         },
+         value: {
+          html:
+          stationName
+         }
+       },
+         {
+           key: {
+             text: "Threshold"
+           },
+           value: {
+            html: thresholdValue + thresholdUnits | units | safe
+           }
+         },
+         {
+           key: {
+             text: "Type"
+           },
+           value: {
+            html: conditionType | capitalize
+           }
+         }
+         ,
+         {
+           key: {
+             text: "Linked condition"
+           },
+           value: {
+            html: linkedCondition
+           }
+         }
+       ]
+     }) }}
+
+     {{ govukButton({
+        text: "Remove tag",
+        type: "submit"
+      }) }}
+
+   </div>
+   </div>
+
+
+    </form>
+
+
+
+
+    {% endblock %}

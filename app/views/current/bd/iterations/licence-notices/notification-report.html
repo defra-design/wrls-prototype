@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+<!--set page title-->
+{% set title = "Notification report"%}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "../../manage"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% include "current/bd/iterations/_includes/notices/notification-table.html" %}
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

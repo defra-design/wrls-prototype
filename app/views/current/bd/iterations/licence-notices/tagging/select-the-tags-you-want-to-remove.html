@@ -1,0 +1,82 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "This licence has more than one tag, select the ones you need to remove" %}
+
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form method="post" novalidate>
+
+
+
+      {% set tagNumber = []%}
+      {% set tagWords = [] %}
+      {% set tags = data.stations[data.stationID]['tags'] %}
+       {% for i in tags %}
+       {% if data.selectedLicence == i.licenceNumber %}
+       {% set tagNumber = i.tagValues.length %}
+       {% set tagValues = i.tagValues %}
+       {% for i in tagValues %}
+       {% set loopIndex = loop.index0 %}
+        {% set tagWords = tagWords | push(
+          {value: loopIndex,
+           text: i.conditionType|capitalize + ' at ' + i.thresholdValue + ' ' + i.thresholdUnits|unitsWords
+          }) %}
+
+
+        {% endfor %}
+       {% endif %}
+       {% endfor %}
+
+<!--add a multi select, not yet developed
+    {#  {% set tagWords = tagWords | push(
+         {
+           divider: "or"
+         }) %}
+{% set tagWords = tagWords | push(
+         {
+           value: "none",
+           text: "Remove all tags",
+           behaviour: "exclusive"
+         }) %} #} -->
+
+
+
+{{ govukCheckboxes({
+  idPrefix: "selectedTags",
+  name: "selectedTags",
+  fieldset: {
+    legend: {
+      text: qTitle | safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: tagWords
+}) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

@@ -1,0 +1,167 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Does the licence holder need to stop or reduce at this threshold? " %}
+
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form  method="post" novalidate>
+
+      <!--  OLD reduce conditional reveal, we no longer ask for the threshold amount
+      {% set reductionAmountHtml %}
+      {{ govukInput({
+  id: "reductionAmount",
+  name: "reductionAmount",
+  spellcheck: false,
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  label: {
+    text: "Reduce to"
+  }
+}) }}
+
+
+      {{ govukSelect({
+id: "reductionAmountUnits",
+name: "reductionAmountUnits",
+label: {
+text: "Unit of measurement"
+},
+items: [
+{
+value: "null",
+text: "Select an option",
+selected: true
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/d"
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/h"
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/s" |safe
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/h" |safe
+},
+{
+value: "cubicMetresPerDay",
+text: "m<sup>3</sup>/d" |safe
+},
+{
+value: "litrespersecond",
+text: "l/s"
+}
+]
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "maxVolumeLimit",
+  name: "maxVolumeLimit",
+  fieldset: {
+    legend: {
+      text: "Does the licence holder need to stop abstraction when they reach a certain amount?"
+    }
+  },
+  hint: {
+    text: "For example, you must not exceed 4000Ml in total from the start of your abstraction period."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+      {% endset -%}  -->
+
+      {% set reductionAmountHtml %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "maxVolumeLimit",
+  name: "maxVolumeLimit",
+  fieldset: {
+    legend: {
+      text: "Does the licence holder need to stop abstraction when they reach a certain amount?"
+    }
+  },
+  hint: {
+    text: "For example, you must not exceed 4000Ml in total from the start of your abstraction period."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+      {% endset -%}
+
+<!--reduce radio-->
+      {{ govukRadios({
+  idPrefix: "reduce-or-stop",
+  name: "reduce-or-stop",
+  fieldset: {
+    legend: {
+      text: qTitle|safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+  {
+    value: "stop",
+    text: "Stop"
+  },
+    {
+      value: "reduce",
+      text: "Reduce",
+
+      conditional: {
+        html: reductionAmountHtml
+      }
+    }
+  ]
+}) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

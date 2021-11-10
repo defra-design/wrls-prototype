@@ -1,0 +1,101 @@
+{% extends "layouts/_manage.html" %}
+
+{% set licenceList = data['licenceList'].split(',') %}
+<!--set page title-->
+{% set title = "Enter the abstraction period for licence  " + licenceList %},
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form  method="post" novalidate>
+
+
+{% set licenceList = data['licenceList'].split(',') %}
+
+
+<!-- effective dates -->
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset"  role="group">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l ">
+
+      <h1 class="govuk-fieldset__heading">
+
+   {{qTitle|safe}}
+    </h1>
+    </legend>
+
+    <div class="govuk-!-margin-bottom-6 ">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3 ">
+        Start date
+      </h2>
+      <div class="govuk-date-input" id="abstraction-start-date">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="abstractionStartDay">
+              <span class="govuk-visually-hidden">Start date</span>Day
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionStartDay" name="abstractionStartDay{{loop.index0}}"  type="number" autocomplete="off" pattern="[0-9]*">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="abstractionStartMonth">
+              <span class="govuk-visually-hidden">Start date</span>Month
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionStartMonth" name="abstractionStartMonth{{loop.index0}}" type="number" autocomplete="off" pattern="[0-9]*">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-!-margin-bottom-2 ">
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3">
+      End date
+    </h2>
+    <div class="govuk-date-input" id="abstractionEndDate">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="abstractionEndDay">
+            <span class="govuk-visually-hidden">End date</span>Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionEndDay" name="abstractionEndDay{{loop.index0}}" type="number" autocomplete="off" pattern="[0-9]*">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="abstractionEndMonth">
+            <span class="govuk-visually-hidden">End date</span>Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionEndMonth" name="abstractionEndMonth{{loop.index0}}" type="number" autocomplete="off" pattern="[0-9]*">
+        </div>
+      </div>
+    </div>
+    </div>
+  </fieldset>
+</div>
+
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

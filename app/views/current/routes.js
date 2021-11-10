@@ -18,6 +18,9 @@ router.use('/bd/iterations/manual-billing', require('./bd/iterations/_routes/_ro
 router.use('/bd/iterations/sroc', require('./bd/iterations/_routes/_routes-sroc'));
 
 
+///NOTICES ROUTE
+router.use('/bd/iterations/licence-notices', require('./bd/iterations/_routes/_routes-notices'));
+
 
 /////Reason for new charge version
 //Setting the change element route back

@@ -1,0 +1,98 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "What is the licence hands-off flow or level threshold?" %}
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form  method="post" novalidate>
+
+      {% call govukFieldset({
+        legend: {
+          text: [qTitle] | safe,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+
+      {{ govukInput({
+        label: {
+          text: "Threshold"
+        },
+        id: "thresholdValue",
+        name: "thresholdValue",
+        classes: "govuk-input--width-10"
+      }) }}
+
+
+
+      {{ govukSelect({
+  id: "thresholdUnits",
+  name: "thresholdUnits",
+  label: {
+    text: "Unit of measurement"
+  },
+  items: [
+  {
+          value: "null",
+          text: "Select an option",
+          selected: true
+  },
+  {
+    value: "megaLitresPerDay",
+    text: "Ml/d"
+  },
+    {
+      value: "cubicMetresPerSecond",
+      text: "m<sup>3</sup>/s" |safe
+    },
+    {
+      value: "cubicMetresPerDay",
+      text: "m<sup>3</sup>/d" |safe
+    },
+    {
+      value: "litrespersecond",
+      text: "l/s"
+    },
+    {
+      value: "metresAboveOrdinanceDatum",
+      text: "mAOD"
+    },
+    {
+      value: "metresAboveStationDatum",
+      text: "mASD"
+    },
+    {
+      value: "metres",
+      text: "m"
+    }
+  ]
+}) }}
+
+      {% endcall %}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

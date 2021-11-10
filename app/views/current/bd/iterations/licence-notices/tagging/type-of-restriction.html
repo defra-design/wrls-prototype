@@ -1,0 +1,307 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "What does the licence holder need to do at this threshold?" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form method="post" novalidate>
+
+      <!--reduce conditional reveal-->
+      {% set reductionAmountHtml %}
+      {{ govukInput({
+  id: "reductionAmount",
+  name: "reductionAmount",
+  spellcheck: false,
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  label: {
+    text: "Reduce to"
+  }
+}) }}
+
+      {{ govukSelect({
+id: "reductionAmountUnits",
+name: "reductionAmountUnits",
+label: {
+text: "Unit of measurement"
+},
+items: [
+{
+    value: "null",
+    text: "Select an option",
+    selected: true
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/d"
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/h"
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/s" |safe
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/h" |safe
+},
+{
+value: "cubicMetresPerDay",
+text: "m<sup>3</sup>/d" |safe
+},
+{
+value: "litrespersecond",
+text: "l/s"
+}
+]
+}) }}
+
+      {% endset -%}
+
+      <!--reduction exception conditional reveal-->
+      {% set reductionExceptionHtml %}
+      {{ govukInput({
+  id: "reductionAmount",
+  name: "reductionAmount",
+  spellcheck: false,
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  label: {
+    text: "Reduce to"
+  }
+}) }}
+
+      {{ govukSelect({
+id: "reductionAmountUnits",
+name: "reductionAmountUnits",
+label: {
+text: "Unit of measurement"
+},
+items: [
+{
+    value: "null",
+    text: "Select an option",
+    selected: true
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/d"
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/h"
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/s" |safe
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/h" |safe
+},
+{
+value: "cubicMetresPerDay",
+text: "m<sup>3</sup>/d" |safe
+},
+{
+value: "litrespersecond",
+text: "l/s"
+}
+]
+}) }}
+
+      {{ govukInput({
+  id: "maxVolume",
+  name: "maxVolume",
+  spellcheck: false,
+  classes: "govuk-input--width-10",
+  label: {
+    text: "Maximum volume"
+  }
+}) }}
+
+      {{ govukSelect({
+id: "reductionAmountUnits",
+name: "reductionAmountUnits",
+label: {
+text: "Unit of measurement"
+},
+items: [
+{
+    value: "null",
+    text: "Select an option",
+    selected: true
+},
+{
+value: "megaLitres",
+text: "Ml"
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/s" |safe
+},
+{
+value: "cubicMetresPerAnnum",
+text: "m<sup>3</sup>/a" |safe
+}
+]
+}) }}
+      {% endset -%}
+
+
+      {% set notificationType = data['notificationType'] %}
+
+      <!--Stepped reduction-->
+      {% set steppedReduction %}
+      {{ govukInput({
+id: "stopThreshold",
+name: "stopThreshold",
+spellcheck: false,
+classes: "govuk-input--width-10",
+label: {
+text: "Stop threshold"
+}
+}) }}
+
+      {% if notificationType == "flow" %}
+      {{ govukSelect({
+id: "reductionAmountUnits",
+name: "reductionAmountUnits",
+label: {
+text: "Unit of measurement"
+},
+items: [
+{
+value: "null",
+text: "Select an option",
+selected: true
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/d"
+},
+{
+value: "megaLitresPerDay",
+text: "Ml/h"
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/s" |safe
+},
+{
+value: "cubicMetresPerSecond",
+text: "m<sup>3</sup>/h" |safe
+},
+{
+value: "cubicMetresPerDay",
+text: "m<sup>3</sup>/d" |safe
+},
+{
+value: "litrespersecond",
+text: "l/s"
+}
+]
+}) }}
+      {% else %}
+      {{ govukSelect({
+id: "reductionAmountUnits",
+name: "reductionAmountUnits",
+label: {
+text: "Unit of measurement"
+},
+items: [
+{
+value: "null",
+text: "Select an option",
+selected: true
+},
+{
+  value: "metresAboveOrdinanceDatum",
+  text: "mAOD"
+},
+{
+  value: "metresAboveStationDatum",
+  text: "mASD"
+},
+{
+  value: "metres",
+  text: "m"
+}
+]
+}) }}
+      {% endif %}
+
+
+
+
+      {% endset -%}
+
+
+
+      {{ govukRadios({
+  idPrefix: "restriction-type",
+  name: "restriction-type",
+  fieldset: {
+    legend: {
+      text: title,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "reduce",
+      text: "Reduce abstraction",
+
+      conditional: {
+        html: reductionAmountHtml
+      }
+    },
+    {
+      value: "reduceStopException",
+      text: "Reduce and stop abstraction if they exceed a certain volume",
+
+      conditional: {
+        html: reductionExceptionHtml
+      }
+    },
+    {
+      value: "reduceStepped",
+      text: "Reduce and stop abstraction if the " + notificationType + " decreases further (Stepped reduction)",
+
+      conditional: {
+        html: steppedReduction
+      }
+    },
+    {
+      value: "stop",
+      text: "Stop"
+    }
+  ]
+}) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

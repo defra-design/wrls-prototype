@@ -1,0 +1,53 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "You're about to remove licence " + data.waterAbstractionAlert[data.listIndex].licenceNumber + " from the send list"%}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+
+                  <!-- page title -->
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                      <h1 class="govuk-heading-l">
+                        {{title | safe}}
+                      </h1>
+                    </div>
+                  </div>
+
+
+
+                  {{ govukInsetText({
+                          text: "We will not send a water abstraction alert for this licence."
+                        }) }}
+
+                  <form method="post" novalidate>
+
+
+
+                    <button type="submit" class="govuk-button">
+                      Remove licence
+                    </button>
+
+                  </form>
+
+                </div>
+              </div>
+
+
+
+
+    {% endblock %}

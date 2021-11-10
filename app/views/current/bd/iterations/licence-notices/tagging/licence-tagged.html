@@ -1,0 +1,57 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Licence added to " + [data.stations[data.stationID].riverName] + " at " + [data.stations[data.stationID].label] %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+<!--no back button-->
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+   <!--count the number of licences
+   {% set number = 0 %}
+   {% set licenceList = data['licenceList'].split(',') %}
+   {% for i in licenceList %}
+   {% set number = number + 1 %}
+   {% endfor %}
+   {% if number == 1 %}
+   {% set plural = "licence" %}
+   {% else %}
+   {% set plural = "licences" %}
+   {% endif %}
+
+    {{ govukPanel({
+      titleText: title,
+      html: "You tagged <br><strong>" + number  + " " + plural + " </strong> with restriction details for this station"
+    }) }} -->
+
+    {{ govukPanel({
+      titleText: title,
+      html: "You tagged <br><strong>" + data['licenceList']  + " </strong> with restriction details for this station"
+    }) }}
+
+   <p class="govuk-body"><a class="govuk-link" href="../../station?stationID={{data['stationID']}}">Return to monitoring station</a></p>
+
+   <p>or</p>
+
+    <p class="govuk-body"><a class="govuk-link" href="enter-the-hands-off-flow-or-level-threshold?stationID={{data['stationID']}}">Create another tag</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Check the restriction details" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+  <span class="govuk-caption-l">River Dikler at Bourton Dickler</span>
+      {{title}}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<!--if reduce include the amount to reduce to -->
+{% set conditionType = data['reduce-or-stop'] | default("stop") %}
+{% set maxVolume = data['maxVolumeLimit'] | default("no")%}
+{% if conditionType == "reduce" %}
+{% if maxVolume == "yes" %}
+{% set conditionType = conditionType + " with a maximum volume limit"%}
+{% else %}
+{% set conditionType = conditionType %}
+{% endif %}
+{% endif %}
+
+    <form  method="post" novalidate>
+
+      {{ govukSummaryList({
+rows: [
+{
+key: {
+  text: "Threshold"
+},
+value: {
+  html: data['thresholdValue'] | default("180") + data['thresholdUnits'] | default("megaLitresPerDay") | units | safe
+},
+actions: {
+  items: [
+    {
+      href: "enter-the-hands-off-flow-or-level-threshold",
+      text: "Change",
+      visuallyHiddenText: "tag threshold"
+    }
+  ]
+}
+},
+{
+key: {
+  text: "Type"
+},
+value: {
+  text: conditionType | capitalize | safe
+},
+actions: {
+  items: [
+    {
+      href: "reduce-or-stop",
+      text: "Change",
+      visuallyHiddenText: "tag type"
+    }
+  ]
+}
+},
+{
+key: {
+  text: "Licence number"
+},
+value: {
+  html: data['licenceList']  | replaceComma | striptags(true) | escape | nl2br | default("03/28/61/029")
+},
+actions: {
+  items: [
+    {
+      href: "enter-licence-numbers",
+      text: "Change",
+      visuallyHiddenText: "licence numbers"
+    }
+  ]
+}
+},
+{
+key: {
+  text: "Licence condition"
+},
+value: {
+  html: data['conditions']
+},
+actions: {
+  items: [
+    {
+      href: "link-conditions",
+      text: "Change",
+      visuallyHiddenText: "linked conditions"
+    }
+  ]
+}
+},{
+key: {
+  text: "Abstraction period"
+},
+value: {
+  html: data['abstractionPeriod']  | default("1 April to 31 March")
+},
+actions: {
+  items: [
+    {
+      href: "enter-an-abstraction-period",
+      text: "Change",
+      visuallyHiddenText: "abstraction period"
+    }
+  ]
+}
+} if "listed" in data['conditions']
+]
+}) }}
+
+      <button type="submit" class="govuk-button">
+        Confirm
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

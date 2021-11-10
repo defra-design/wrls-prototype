@@ -1,0 +1,49 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Enter the licence number this threshold applies to" %}
+{% set qTitle = '<span class="govuk-caption-l">' + [data.stations[data.stationID].riverName] + ' at ' + [data.stations[data.stationID].label] + '</span>' + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+
+    <form  method="post" novalidate>
+
+            {{ govukInput({
+              name: "licenceList",
+              id: "licenceList",
+              classes: "govuk-input--width-20",
+              label: {
+                html: qTitle|safe,
+                classes: "govuk-label--l",
+                isPageHeading: true
+              },
+              hint: {
+                text: "You need to tag and add other licences with this threshold individually"
+              }
+            }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+
+
+    {% endblock %}

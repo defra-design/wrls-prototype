@@ -1,0 +1,61 @@
+
+{% set notificationIndex = data['notificationIndex'] %}
+{% set notifications = data['notifications'][notificationIndex] %}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m ">Recipients</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Sent to</th>
+      <th scope="col" class="govuk-table__header">Licence Number</th>
+      <th scope="col" class="govuk-table__header">Method</th>
+      <th scope="col" class="govuk-table__header">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+
+
+
+   <!--get and loop through the notifications table-->
+   {% set recipients = data.notifications[notificationIndex]['recipients'] %}
+   {% for i in recipients %}
+   <tr class="govuk-table__row">
+    <td class="govuk-table__cell">{{i.sentTo}}</td>
+    <td class="govuk-table__cell">
+      {% for licence in data['licences']%}
+      {% if licence.number == i.licenceNumber %}
+       <a href="../licence?ID={{loop.index0}}" class="govuk-link">
+         {% endif %}
+         {% endfor %}
+      {{i.licenceNumber}}</a></td>
+    <td class="govuk-table__cell">{{i.method | capitalize}}</td>
+    <td class="govuk-table__cell">{{i.status | capitalize}}</td>
+    </tr>
+   {% endfor %}
+
+
+
+  </tbody>
+</table>
+
+<!-- Notifictions table for ref
+
+     //Notification report
+    "notifications": [{
+          "date": "22 December 2020",
+          "notification": "Paper returns",
+          "sentBy": "tim.teace@defra.gov.uk",
+          "NnmberOfrecipients": "1",
+          "recipients": {
+            "licenceNumber": "03/28/69/0034",
+            "sentTo": "Anglian Water Services Ltd,FAO D Harker Water Resources,Lancaster House,Lancaster Way,Huntingdon,CAMBRIDGESHIRE,PE29 6XQ",
+            "method": "Letter",
+            "status": "Sent",
+          },
+          "problems": "",
+        }
+    ],
+
+    -->

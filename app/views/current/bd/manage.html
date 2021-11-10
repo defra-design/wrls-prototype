@@ -25,7 +25,21 @@
  }) }}
 {% endblock %}
 
+{% block beforeContent %}
 
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-6">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {#  {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+    #}
+
+{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -54,6 +68,11 @@
       <li>
         <a class="govuk-link" href="returns/returns-overview">
           Returns cycles
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="iterations/licence-notices/notification-report">
+          Notices
         </a>
       </li>
       <!-- <li>

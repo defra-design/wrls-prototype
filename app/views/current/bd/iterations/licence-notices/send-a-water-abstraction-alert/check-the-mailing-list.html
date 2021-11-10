@@ -1,0 +1,49 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Check the alert for each licence and send" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span> Check the alert for each licence and send" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <!-- page title -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">
+          {{qTitle | safe}}
+        </h1>
+      </div>
+    </div>
+
+
+    <form method="post" novalidate>
+
+
+  {% include "sandbox/_includes/notices/hof-group-details-table.html" %}
+
+      <button type="submit" class="govuk-button">
+        Confirm and send
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

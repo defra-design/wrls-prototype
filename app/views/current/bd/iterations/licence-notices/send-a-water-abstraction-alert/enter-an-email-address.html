@@ -1,0 +1,86 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Select an email address to include  in the alerts" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.stations[data.stationID].catchmentName] + " at " + [data.stations[data.stationID].label] + "</span>" + title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+    <form method="post" novalidate>
+
+   {% set emailHTML %}
+      {{ govukInput({
+  label: {
+    text: "Email address",
+    classes: "govuk-label--s",
+    isPageHeading: false
+  },
+  hint: {
+    text: "This is usually your area’s team email address"
+  },
+  classes: "govuk-!-width-one-third",
+  id: "contactEmail",
+  name: "contactEmail"
+}) }}
+
+{% endset %}
+
+      {{ govukRadios({
+idPrefix: "email",
+name: "email",
+fieldset: {
+legend: {
+  text: [qTitle]|safe,
+  isPageHeading: true,
+  classes: "govuk-fieldset__legend--l"
+}
+},
+items: [
+{
+  value: "youremailaddress@defra.gov.uk",
+  text: "youremailaddress@defra.gov.uk"
+},
+{
+      divider: "or"
+    },
+{
+  value: "anotherEmailAddress",
+  text: "Use another email address",
+  conditional: {
+        html: emailHTML
+      }
+}
+]
+}) }}
+
+
+
+
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
