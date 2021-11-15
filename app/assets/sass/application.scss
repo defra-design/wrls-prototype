@@ -1,5 +1,6 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
+$govuk-new-link-styles: true;
 
 // We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
 $govuk-assets-path: '/govuk/assets/';
@@ -14,13 +15,16 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 @import "patterns/related-items";
 
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+
+
 // Components that aren't in Frontend
 @import "components/cookie-banner";
 
 // MOJ front end
-@import "node_modules/@ministryofjustice/frontend/moj/all";
+//@import "node_modules/@ministryofjustice/frontend/moj/all";
 
-// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 
 //Contents list styles

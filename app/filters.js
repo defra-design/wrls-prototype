@@ -66,6 +66,17 @@ module.exports = function(env) {
     return x.replace(/\w+/g, today)
   }
 
+
+
+  //Sort and Object | sortThis   (Experimental)
+  filters.sortThis = function(x) {
+    return x.sort((a, b) => a.sentBy > b.sentBy && 1 || -1)
+  }
+
+
+
+
+
 //filter to remove duplicates from an array " | unique"
  filters.unique = function(x) {
    //return x.filter((value, index) => x.indexOf(value) === index );
