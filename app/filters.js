@@ -67,11 +67,28 @@ module.exports = function(env) {
   }
 
 
+//filter to change a number string in to the govuk date format. "yyyymmdd" | numberToGovukDate
+filters.numberToGovukDate = function(x) {
+  let dd = x.slice(-2);
+  dd = parseInt(dd, 10);
+  let mm = x.slice(-4, -2)
+  mm = parseInt(mm, 10);
+  let yyyy = x.slice(0, 4);
 
-  //Sort and Object | sortThis   (Experimental)
-  filters.sortThis = function(x) {
-    return x.sort((a, b) => a.sentBy > b.sentBy && 1 || -1)
-  }
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  mm = monthNames[mm - 1]
+
+  const today = `${dd} ${mm} ${yyyy}`;
+
+  return x.replace(/\w+/g, today)
+}
+
+
+  //Sort an Object | sort(arr, reverse, caseSens, attr))
+  // e.g. notifications | sort(false, false, 'sentBy')
+  // sort the array of objects notifications, in asc order not case sensitive by sentBy
+
 
 
 

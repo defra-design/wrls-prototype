@@ -1,6 +1,5 @@
 
 
-
 <div class="govuk-grid-row">
 
 
@@ -69,7 +68,7 @@
 
 
 
-       <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Filter by</h2>
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Filter and sort by</h2>
 
      <form  method="post" novalidate action="notification-report/apply-filters">
 
@@ -77,6 +76,43 @@
 
 
 
+
+{#
+       {{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    text: "Sort by",
+     classes: 'govuk-label--s'
+  },
+  items: [
+    {
+      value: "dateAsscending",
+      text: "Date asscending"
+    },
+    {
+      value: "dateDescending",
+      text: "Date descending"
+    },
+    {
+      value: "notificationAsscending",
+      text: "Notification type asscending"
+    },
+    {
+      value: "notificationDescending",
+      text: "Notification type descending"
+    },
+    {
+      value: "sentByAsscending",
+      text: "Sent by asscending"
+    },
+    {
+      value: "sentByDescending",
+      text: "Sent by descending"
+    }
+  ]
+}) }}
+#}
 
 
        {{ govukCheckboxes({
@@ -128,6 +164,8 @@
        }) }}
 
 
+
+
        {{ govukInput({
          id: 'sentBy',
          name: 'sentBy',
@@ -139,14 +177,38 @@
          }
        }) }}
 
+
+              {{ govukRadios({
+                idPrefix: "sort",
+                name: "sort",
+                fieldset: {
+                  legend: {
+                    text: "Sort by date",
+                    classes: "govuk-fieldset__legend--s"
+                  }
+                },
+                items: [
+                  {
+                    value: "dateDescending",
+                    text: "Newest to oldest",
+                    checked:  checked("sort", "dateDescending")
+                  },
+                  {
+                    value: "dateAsscending",
+                    text: "Oldest to newest",
+                    checked:  checked("sort", "dateAsscending")
+                  }
+                ]
+              }) }}
+
        <div class="govuk-button-group">
            {{ govukButton({
-         text: "Apply filters"
+         text: "Apply"
        }) }}
 
 
        {{ govukButton({
-           text: "Clear filters",
+           text: "Clear",
            classes: "govuk-button--secondary",
            name: "clearFilters",
            value: "true"
@@ -164,7 +226,7 @@
 
 
      {{ govukDetails({
-       summaryText: "Filters",
+       summaryText: "Filter and sort",
        html: filtersForm | safe,
        classes: "govuk-!-margin-bottom-1",
        open: data['openDetails']
@@ -198,9 +260,9 @@
 
    <!--get and loop through the notifications table, check if results are filtered or not-->
    {% if data['filteredResults'].length %}
-   {% set notifications = data['filteredResults'] | sortThis %}
+   {% set notifications = data['filteredResults']  %}
    {% else %}
-   {% set notifications = data['notifications'] | sortThis %}
+   {% set notifications = data['notifications'] %}
    {% endif %}
 
 
@@ -214,9 +276,32 @@
      </tr>
 
    {% else %}
-   {% for i in notifications | sortThis %}
+
+
+  {# sort by if statement this should be moved to the backend #}
+  {% if data['sort'] == "dateAsscending" %}
+  {% set sortBy = "date" %}
+  {% set reverseOrder = false %}
+  {% elif data['sort'] == "dateDescending" %}
+  {% set sortBy = "date" %}
+  {% set reverseOrder = true %}
+  {% elif data['sort'] == "notificationAsscending" %}
+  {% set sortBy = "notification" %}
+  {% set reverseOrder = false %}
+  {% elif data['sort'] == "notificationDescending" %}
+  {% set sortBy = "notification" %}
+  {% set reverseOrder = true %}
+  {% elif data['sort'] == "sentByAsscending" %}
+  {% set sortBy = "sentBy" %}
+  {% set reverseOrder = false %}
+  {% elif data['sort'] == "sentByDescending" %}
+  {% set sortBy = "sentBy" %}
+  {% set reverseOrder = true %}
+  {% endif %}
+
+   {% for i in notifications | sort(reverseOrder, false, sortBy) %}
    <tr class="govuk-table__row">
-    <td class="govuk-table__cell">{{i.date}}</td>
+    <td class="govuk-table__cell">{{i.date | numberToGovukDate}}</td>
     <td class="govuk-table__cell"><a href="/sandbox/licence-notices/recipient-report?notificationIndex={{loop.index0}}" class="govuk-link">{{i.notification |capitalize}}</a></td>
     <td class="govuk-table__cell">{{i.sentBy}}</td>
     <td class="govuk-table__cell govuk-table__cell--numeric">{{i.numberOfrecipients}}</td>
@@ -230,6 +315,7 @@
 
 </div>
 </div>
+
 
 
 <!-- Notifictions table for ref
