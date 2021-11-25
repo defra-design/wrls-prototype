@@ -18,6 +18,8 @@ Example usage:
 */
 
 module.exports = {
+
+    "number" : 10000000000.68,
     "resultsTable": "sandbox/_includes/stations-table.html",
     "userType": "su",
     "customerName": "Bottled Water Plc",
@@ -195,7 +197,7 @@ module.exports = {
       "abstractionStartMonth": "3",
       "abstractionEndDay": "30",
       "abstractionEndMonth": "9",
-      "billableQuantity": "100",
+      "billableQuantity": "",
       "authorisedQuantity": "100",
       "timeLimit": "No",
       "source": "Unsupported",

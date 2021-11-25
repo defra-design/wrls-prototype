@@ -296,6 +296,17 @@ filters.numberToGovukDate = function(x) {
   }
 
 
+  //currency filter | toGBP
+  filters.toGBP = input => {
+   function numberWithCommas(x) {
+     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+   }
+   if (input) return `£${numberWithCommas(input)}`
+   else return ''
+ }
+
+
+
 
   //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 

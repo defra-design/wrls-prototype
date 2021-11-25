@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select the water availability" %}
+{% set title = "Enter a description for the charge reference" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -55,30 +55,20 @@
 <form method="post" class="form">
 
 
-
-
-
-          {{ govukRadios({
-          idPrefix: "chargeWaterAvailability",
-          name: "chargeWaterAvailability",
-          fieldset: {
-            legend: {
-              text: [title],
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-            {
-              value: "available",
-              text: "Available"
+  {{ govukInput({
+    label: {
+      text: [title],
+      isPageHeading: true,
+      classes: "govuk-label--l"
     },
-            {
-              value: "restricted availability or no availability",
-              text: "Restricted availablity or no availability"
-            }
-          ]
-        }) }}
+    classes: "govuk-input--width-20",
+    id: "lineDescription",
+    name: "lineDescription",
+    spellcheck: false,
+    value: data['srocElements'][0].description
+  }) }}
+
+
 
     <button type="submit" class="govuk-button">
       Continue

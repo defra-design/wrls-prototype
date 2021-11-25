@@ -45,12 +45,14 @@
 
     <!-- page heading -->
 
-    <h1 class="govuk-heading-xl "><span class="govuk-caption-l ">Licence 03/28/60/0032</span> {{title}}</h1>
-<!--<p class="govuk-body govuk-!-margin-bottom-9">
+    {{ data['number'] | toGBP}}
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence 03/28/60/0032</span> {{title}}</h1>
+<p class="govuk-body ">
     {{govukTag({
-text: "Draft",
-classes: "govuk-tag--blue govuk-!-font-size-27"
-})}} </p>-->
+text: "Review",
+classes: "govuk-tag--orange govuk-!-font-size-27"
+})}} </p>
 
   </div>
 </div>

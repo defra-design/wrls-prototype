@@ -52,71 +52,275 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
-            <h2 class="govuk-heading-xl govuk-!-margin-bottom-5" id="element{{[loop.index]}}"><span class="govuk-caption-xl">Charge element {{[loop.index]}}</span> {{[i.description]}}
-          </h2>
 
-          {% if i.chargeReference[0].chargeLoss.length %}
+          {% if data['chargeAssigned'].length %}
 
-           <h3 class="govuk-heading-m govuk-!-margin-bottom-4" >{{i.chargeReference[0].chargeDescription | capitalize }} ({{i.chargeReference[0].chargeRefNumber}})</h3>
+           <h3 class="govuk-heading-l govuk-!-margin-bottom-4" ><span class="govuk-caption-l">Charge reference {{i.chargeReference[0].chargeRefNumber}}</span>{{i.chargeReference[0].chargeDescription | capitalize }} </h3>
 
-           <p class="govuk-body"><a class="govuk-link govuk-!-margin-right-3" href="#">Add an aggregate factor</a> <span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a supported source charge</a><span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a public water supply charge</a></p>
+        <!--Action links not needed   <p class="govuk-body"><a class="govuk-link govuk-!-margin-right-3" href="#">Add an aggregate factor</a> <span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a supported source charge</a><span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a public water supply charge</a></p>-->
+
+           <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+
+
+
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-3" >Charge details</h3>
+           {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-2',
+         rows: [
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Applies to"
+           },
+           value: {
+             text: i.chargeReference[0].appliesTo |capitalize
+           },
+           actions: {
+             items: [
+               {
+                 href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 text: "Change",
+                 visuallyHiddenText: "Source"
+               }
+             ]
+           }
+         },
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Description"
+           },
+           value: {
+             text: i.chargeReference[0].lineDescription |capitalize
+           },
+           actions: {
+             items: [
+               {
+                 href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 text: "Change",
+                 visuallyHiddenText: "Source"
+               }
+             ]
+           }
+         },
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Source"
+           },
+           value: {
+             text: i.chargeReference[0].chargeSource |capitalize
+           },
+           actions: {
+             items: [
+               {
+                 href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 text: "Change",
+                 visuallyHiddenText: "Source"
+               }
+             ]
+           }
+         },
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Loss"
+           },
+           value: {
+             text: i.chargeReference[0].chargeLoss |capitalize
+           },
+           actions: {
+             items: [
+               {
+                 href: "charge-reference/select-loss?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 text: "Change",
+                 visuallyHiddenText: "Loss"
+               }
+             ]
+           }
+         },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Quantity"
+             },
+             value: {
+               text: i.chargeReference[0].chargeQuantity + "Ml"
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/enter-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "Quantity"
+                 }
+               ]
+             }
+           },
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+              key: {
+                text: "Water availability"
+              },
+              value: {
+                text: i.chargeReference[0].chargeWaterAvailability |capitalize
+              },
+              actions: {
+                items: [
+                  {
+                    href: "charge-reference/water-availability?elementNew=false&change=true&elementNumber=" + elementNumber,
+                    text: "Change",
+                    visuallyHiddenText: "Water availability"
+                  }
+                ]
+              }
+            },
+
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Water restrictions"
+             },
+             value: {
+               text: i.chargeReference[0].chargeWaterRestrictions |capitalize
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/water-availability?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "Water restrictions"
+                 }
+               ]
+             }
+           },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Additional charges apply"
+             },
+             value: {
+               text: i.chargeReference[0].addCharges |capitalize
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "Source"
+                 }
+               ]
+             }
+           },
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Supported source"
+             },
+             value: {
+               text: i.chargeReference[0].supSourceCharge |capitalize
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "Source"
+                 }
+               ]
+             }
+           } if i.chargeReference[0].supSourceCharge == "yes",
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Supported source name"
+             },
+             value: {
+               text: i.chargeReference[0].supSourceName |capitalize
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "Source"
+                 }
+               ]
+             }
+           } if i.chargeReference[0].supSourceCharge == "yes",
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Public water supply"
+             },
+             value: {
+               text: i.chargeReference[0].pubWaterCharge |capitalize
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "Source"
+                 }
+               ]
+             }
+           } if i.chargeReference[0].supSourceCharge == "yes",
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Aggregate factor"
+             },
+             value: {
+               text: i.chargeReference[0].aggregateFactor |capitalize
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "Aggregate factor"
+                 }
+               ]
+             }
+           },
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "EIUC region"
+             },
+             value: {
+               text: i.chargeReference[0].eiucRegion |capitalize
+             }
+           }
+
+         ]
+       }) }}
+
+       <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+
+
 
           {% endif %}
-          <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
-          <h3 class="govuk-heading-m govuk-!-margin-bottom-3" >Element details</h3>
+
+               <h2 class="govuk-heading-m" id="element{{[loop.index]}}">Element {{[loop.index]}}</h2>
+
                 {{ govukSummaryList({
                   classes: 'govuk-!-margin-bottom-2',
                 rows: [
-                {
-                  classes: 'govuk-summary-list__row--no-border',
-                  key: {
-                    text: "Time limit"
-                  },
-                  value: {
-                    text: [timeLimit]
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/bd/charges-2020/add-time-limit?elementNew=false&change=true&elementNumber=" + elementNumber,
-                        text: "Change",
-                        visuallyHiddenText: "Time limit"
-                      }
-                    ]
-                  }
-                },
-                {
-                  classes: 'govuk-summary-list__row--no-border',
-                  key: {
-                    text: "Agreements apply"
-                  },
-                  value: {
-                    text: data['agreementsApply'] | default("Yes, licence agreements apply")
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/bd/charges-2020/agreements-apply?elementNew=false&change=true&elementNumber=" + elementNumber,
-                        text: "Change",
-                        visuallyHiddenText: "Time limit"
-                      }
-                    ]
-                  }
-                },
-                {
-                  classes: 'govuk-summary-list__row--no-border ',
-                  key: {
-                    classes: "govuk-!-padding-bottom-6",
-                    text: "Environmental Improvement Unit Charge"
-                  },
-                  value: {
-                    text: "Other"
-                  }
-                },
+
                   {
                     classes: 'govuk-summary-list__row--no-border',
                     key: {
-                      text: "Purpose 1"
+                      text: "Purpose"
                     },
                     value: {
                       text: [i.purpose]
@@ -173,10 +377,10 @@
                   {
                     classes: 'govuk-summary-list__row--no-border',
                     key: {
-                      text: "Abstraction quantities"
+                      text: "Annual quantities"
                     },
                     value: {
-                      html: [i.authorisedQuantity] + " megalitres per year"
+                      html: [i.authorisedQuantity] + "Ml authorised<br>Billable not set"
                     },
                     actions: {
                       items: [
@@ -184,6 +388,24 @@
                           href: "/bd/charges-2020/add-authorised-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
                           text: "Change",
                           visuallyHiddenText: "Authorised quantity"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Time limit"
+                    },
+                    value: {
+                      text: [timeLimit]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-time-limit?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Time limit"
                         }
                       ]
                     }
@@ -243,13 +465,42 @@
                         }
                       ]
                     }
+                  },
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Agreements apply"
+                    },
+                    value: {
+                      text: data['agreementsApply'] | default("Yes, licence agreements apply")
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/agreements-apply?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Time limit"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border ',
+                    key: {
+                      classes: "govuk-!-padding-bottom-6",
+                      text: "Environmental Improvement Unit Charge"
+                    },
+                    value: {
+                      text: "Other"
+                    }
                   }
 
 
                 ]
               }) }}
 
-                <hr class="govuk-section-break  govuk-!-margin-bottom-6 govuk-section-break--visible">
+                <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break--visible">
 
               {% if numberOfElements > 1 %}
               <span class=" govuk-body  govuk-!-font-size-19">
@@ -272,128 +523,29 @@
             {% set elementNumber = elementNumber %}
 
 
-            {% if i.chargeReference[0].chargeLoss.length %}
 
-           <h3 class="govuk-heading-m govuk-!-margin-bottom-3" >Charge reference details</h3>
-            {{ govukSummaryList({
-            classes: 'govuk-!-margin-bottom-2',
-          rows: [
-          {
-            classes: 'govuk-summary-list__row--no-border',
-            key: {
-              text: "Source"
-            },
-            value: {
-              text: i.chargeReference[0].chargeSource |capitalize
-            },
-            actions: {
-              items: [
-                {
-                  href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                  text: "Change",
-                  visuallyHiddenText: "Source"
-                }
-              ]
-            }
-          },
-          {
-            classes: 'govuk-summary-list__row--no-border',
-            key: {
-              text: "Loss"
-            },
-            value: {
-              text: i.chargeReference[0].chargeLoss |capitalize
-            },
-            actions: {
-              items: [
-                {
-                  href: "charge-reference/select-loss?elementNew=false&change=true&elementNumber=" + elementNumber,
-                  text: "Change",
-                  visuallyHiddenText: "Loss"
-                }
-              ]
-            }
-          },
-            {
-              classes: 'govuk-summary-list__row--no-border',
-              key: {
-                text: "Quantity"
-              },
-              value: {
-                text: i.chargeReference[0].chargeQuantity + " megalitres"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "charge-reference/enter-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
-                    text: "Change",
-                    visuallyHiddenText: "Quantity"
-                  }
-                ]
-              }
-            },
-
-            {
-              classes: 'govuk-summary-list__row--no-border',
-               key: {
-                 text: "Water availability"
-               },
-               value: {
-                 text: i.chargeReference[0].chargeWaterAvailability |capitalize
-               },
-               actions: {
-                 items: [
-                   {
-                     href: "charge-reference/water-availability?elementNew=false&change=true&elementNumber=" + elementNumber,
-                     text: "Change",
-                     visuallyHiddenText: "Water availability"
-                   }
-                 ]
-               }
-             },
-
-
-            {
-              classes: 'govuk-summary-list__row--no-border',
-              key: {
-                text: "Water restrictions"
-              },
-              value: {
-                text: i.chargeReference[0].chargeWaterRestrictions |capitalize
-              },
-              actions: {
-                items: [
-                  {
-                    href: "charge-reference/water-availability?elementNew=false&change=true&elementNumber=" + elementNumber,
-                    text: "Change",
-                    visuallyHiddenText: "Water restrictions"
-                  }
-                ]
-              }
-            }
-
-          ]
-        }) }}
-
-        <hr class="govuk-section-break  govuk-!-margin-bottom-6 govuk-section-break--visible">
-
-
-
+            {% if data['chargeAssigned'].length %}
             {% else %}
 
             {{ govukButton({
             text: "Assign a charge reference",
-            classes: "govuk-button ",
-            href: "/bd/iterations/sroc/create-charge-information/charge-reference/select-source?elementNumber=" + elementNumber
+            classes: "govuk-button   govuk-!-margin-right-3",
+            href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?elementNumber=" + elementNumber
             }) }}
 
             {% endif %}
 
-  <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break">
+  <!--<hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break">-->
 {% set elementNumber = elementNumber + 1 %}
-            <p class="govuk-body ">
+          <!--  <p class="govuk-body ">
             <a class="govuk-link" href="'/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber={{elementNumber}}">Add another charge element</a>
-            </p>
+            </p>-->
+
+            {{ govukButton({
+            text: "Add an element",
+            classes: "govuk-button--secondary",
+            href: "/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=" + elementNumber
+            }) }}
 
 
               {% endif %}
@@ -409,11 +561,11 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 {% set elementNumber = elementNumber + 1 %}
-
+<!--
 <p class="govuk-body">
 <a class="govuk-link" href="'/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=' + elementNumber">Add another charge element</a>
 </p>
-
+-->
 {{ govukButton({
 text: "Add an element",
 classes: "govuk-button--secondary",

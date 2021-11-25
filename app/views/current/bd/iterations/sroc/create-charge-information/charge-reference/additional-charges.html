@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select the water availability" %}
+{% set title = "Do additional charges apply?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -59,8 +59,8 @@
 
 
           {{ govukRadios({
-          idPrefix: "chargeWaterAvailability",
-          name: "chargeWaterAvailability",
+          idPrefix: "addCharges",
+          name: "addCharges",
           fieldset: {
             legend: {
               text: [title],
@@ -70,12 +70,12 @@
           },
           items: [
             {
-              value: "available",
-              text: "Available"
+              value: "yes",
+              text: "Yes"
     },
             {
-              value: "restricted availability or no availability",
-              text: "Restricted availablity or no availability"
+              value: "no",
+              text: "No"
             }
           ]
         }) }}

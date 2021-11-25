@@ -43,6 +43,12 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+
+  //currency filter | toGBP
+  filters.toGBP = function(x) {
+        return x.replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace (/^/,'£');
+      }
+
   //filter for month implment on the page by using "| toMonth"
   filters.toMonth = function(x){
   months = ["January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December "];

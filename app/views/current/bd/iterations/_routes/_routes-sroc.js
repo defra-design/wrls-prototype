@@ -35,6 +35,15 @@ const folder = "current/bd/iterations/sroc/"
 
 ///CREATE CHARGE INFORMATION
 
+/// Enter a description for the charge reference
+router.get('/create-charge-information/charge-reference/enter-description', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/enter-description');
+});
+
+router.post('/create-charge-information/charge-reference/enter-description', function(req, res) {
+res.redirect('select-source');
+});
 
 /// Select the source
 router.get('/create-charge-information/charge-reference/select-source', function(req, res) {
@@ -84,32 +93,53 @@ router.get('/create-charge-information/charge-reference/water-restrictions', fun
 });
 
 router.post('/create-charge-information/charge-reference/water-restrictions', function(req, res) {
+res.redirect('additional-charges');
+});
+
+/// Do additional charges apply?
+router.get('/create-charge-information/charge-reference/additional-charges', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/additional-charges');
+});
+
+router.post('/create-charge-information/charge-reference/additional-charges', function(req, res) {
+
+  let addCharges = req.session.data.addCharges
+
+  if (addCharges == "no") {
 
   //get the element number to assign the charge reference against
   let elementNumber = req.session.data.elementNumber
 
 
-
-
-
   //get all of the data that will go into a charge Reference
+  let appliesTo = "element 1"
+  let lineDescription = req.session.data.lineDescription
   let chargeLoss = req.session.data.chargeLoss
   let chargeSource = req.session.data.chargeSource
   let chargeQuantity = req.session.data.chargeQuantity
   let chargeWaterAvailability = req.session.data.chargeWaterAvailability
   let chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+  let addCharges = req.session.data.addCharges
   let chargeRefNumber = "3.20.23"
   let chargeDescription = chargeLoss + " loss, " + chargeSource + " abstraction, below " + (parseInt(chargeQuantity)+1)   + " megalitres per year"
+  let eiucRegion = "Anglian"
+  let aggregateFactor = "1"
 
   let newChargeReference = {
 
+    appliesTo,
+    lineDescription,
     chargeLoss,
     chargeSource,
     chargeQuantity,
     chargeWaterAvailability,
     chargeWaterRestrictions,
+    addCharges,
     chargeRefNumber,
-    chargeDescription
+    chargeDescription,
+    eiucRegion,
+    aggregateFactor
 
   };
 
@@ -120,14 +150,40 @@ router.post('/create-charge-information/charge-reference/water-restrictions', fu
   //push the charge ref data
   srocElement['chargeReference'].push(newChargeReference);
 
-
   //set variable to say that the charge has been assigned
   req.session.data.chargeAssigned = "true"
 
 
-
 res.redirect('../charge-data-check');
+} else {
+
+  res.redirect('supported-source');
+
+}
+
+
+
 });
+
+/// Select the water availability
+router.get('/create-charge-information/charge-reference/supported-source', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/supported-source');
+});
+
+router.post('/create-charge-information/charge-reference/supported-source', function(req, res) {
+
+  let suppSourceCharge = req.session.data.suppSourceCharge
+
+  if (suppSourceCharge == "yes") {
+    res.redirect('supported-source-name');
+  } else {
+    res.redirect('public-water-supply');
+  }
+
+
+});
+
 
 
 
