@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Is abstraction from a supported source?" %}
+{% set title = "Select the name of the supported source" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -59,8 +59,8 @@
 
 
           {{ govukRadios({
-          idPrefix: "supSourceCharge",
-          name: "supSourceCharge",
+          idPrefix: "supSourceName",
+          name: "supSourceName",
           fieldset: {
             legend: {
               text: [title],

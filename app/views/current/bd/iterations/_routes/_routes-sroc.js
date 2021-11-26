@@ -28,12 +28,79 @@ const today = `${dd} ${mm} ${yyyy}`;
 //Send a water abstraction alert
 const folder = "current/bd/iterations/sroc/"
 
-
+let makeGamePlayer = (name, totalScore, gamesPlayed) => ({
+    name,
+    totalScore,
+    gamesPlayed
+})
 
 
 ///---------------------------------------------------------
 
 ///CREATE CHARGE INFORMATION
+///Create charge function
+function createCharge(req, res){
+
+
+  //get the element number to assign the charge reference against
+  let elementNumber = req.session.data.elementNumber
+
+//get all of the data that will go into a charge Reference
+let appliesTo = "element " + (parseInt(elementNumber)+1)
+let lineDescription = req.session.data.lineDescription
+let chargeLoss = req.session.data.chargeLoss
+let chargeSource = req.session.data.chargeSource
+let chargeQuantity = req.session.data.chargeQuantity
+let chargeWaterAvailability = req.session.data.chargeWaterAvailability
+let chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+let addCharges = req.session.data.addCharges
+let chargeRefNumber = "3.20.23"
+let chargeDescription = chargeLoss + " loss, " + chargeSource + " abstraction, below " + (parseInt(chargeQuantity)+1)   + "ML per year"
+let eiucRegion = "Anglian"
+let aggregateFactor = 1
+let abatementFactor = 1
+let adjustmentFactor = 1
+let chargeFactor = aggregateFactor * abatementFactor * adjustmentFactor
+
+let adjustmentReason = "standard factors applied"
+let winterDiscount = "No"
+
+let newChargeReference = {
+
+  appliesTo,
+  lineDescription,
+  chargeLoss,
+  chargeSource,
+  chargeQuantity,
+  chargeWaterAvailability,
+  chargeWaterRestrictions,
+  addCharges,
+  chargeRefNumber,
+  chargeDescription,
+  eiucRegion,
+  aggregateFactor,
+  abatementFactor,
+  adjustmentFactor,
+  chargeFactor,
+  winterDiscount,
+  adjustmentReason,
+
+};
+
+
+
+//get the sroc element
+let srocElement = req.session.data.srocElements[elementNumber]
+
+//push the charge ref data
+srocElement['chargeReference'].push(newChargeReference);
+
+//set variable to say that the charge has been assigned
+req.session.data.chargeAssigned = "true"
+
+};
+
+
 
 /// Enter a description for the charge reference
 router.get('/create-charge-information/charge-reference/enter-description', function(req, res) {
@@ -108,50 +175,8 @@ router.post('/create-charge-information/charge-reference/additional-charges', fu
 
   if (addCharges == "no") {
 
-  //get the element number to assign the charge reference against
-  let elementNumber = req.session.data.elementNumber
+  createCharge(req, res);
 
-
-  //get all of the data that will go into a charge Reference
-  let appliesTo = "element 1"
-  let lineDescription = req.session.data.lineDescription
-  let chargeLoss = req.session.data.chargeLoss
-  let chargeSource = req.session.data.chargeSource
-  let chargeQuantity = req.session.data.chargeQuantity
-  let chargeWaterAvailability = req.session.data.chargeWaterAvailability
-  let chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
-  let addCharges = req.session.data.addCharges
-  let chargeRefNumber = "3.20.23"
-  let chargeDescription = chargeLoss + " loss, " + chargeSource + " abstraction, below " + (parseInt(chargeQuantity)+1)   + " megalitres per year"
-  let eiucRegion = "Anglian"
-  let aggregateFactor = "1"
-
-  let newChargeReference = {
-
-    appliesTo,
-    lineDescription,
-    chargeLoss,
-    chargeSource,
-    chargeQuantity,
-    chargeWaterAvailability,
-    chargeWaterRestrictions,
-    addCharges,
-    chargeRefNumber,
-    chargeDescription,
-    eiucRegion,
-    aggregateFactor
-
-  };
-
-
-  //get the sroc element
-  let srocElement = req.session.data.srocElements[elementNumber]
-
-  //push the charge ref data
-  srocElement['chargeReference'].push(newChargeReference);
-
-  //set variable to say that the charge has been assigned
-  req.session.data.chargeAssigned = "true"
 
 
 res.redirect('../charge-data-check');
@@ -183,6 +208,8 @@ router.post('/create-charge-information/charge-reference/supported-source', func
 
 
 });
+
+
 
 
 

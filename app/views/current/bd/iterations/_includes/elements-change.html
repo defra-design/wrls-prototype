@@ -55,7 +55,7 @@
 
           {% if data['chargeAssigned'].length %}
 
-           <h3 class="govuk-heading-l govuk-!-margin-bottom-4" ><span class="govuk-caption-l">Charge reference {{i.chargeReference[0].chargeRefNumber}}</span>{{i.chargeReference[0].chargeDescription | capitalize }} </h3>
+           <h2 class="govuk-heading-l govuk-!-margin-bottom-4" ><span class="govuk-caption-l">Charge reference {{i.chargeReference[0].chargeRefNumber}}</span>{{i.chargeReference[0].chargeDescription | capitalize }} </h2>
 
         <!--Action links not needed   <p class="govuk-body"><a class="govuk-link govuk-!-margin-right-3" href="#">Add an aggregate factor</a> <span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a supported source charge</a><span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a public water supply charge</a></p>-->
 
@@ -64,7 +64,7 @@
 
 
 
-          <h3 class="govuk-heading-m govuk-!-margin-bottom-3" >Charge details</h3>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Charge reference details</h2>
            {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-2',
          rows: [
@@ -214,104 +214,214 @@
                  }
                ]
              }
-           },
-
-           {
-             classes: 'govuk-summary-list__row--no-border',
-             key: {
-               text: "Supported source"
-             },
-             value: {
-               text: i.chargeReference[0].supSourceCharge |capitalize
-             },
-             actions: {
-               items: [
-                 {
-                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                   text: "Change",
-                   visuallyHiddenText: "Source"
-                 }
-               ]
-             }
-           } if i.chargeReference[0].supSourceCharge == "yes",
-
-           {
-             classes: 'govuk-summary-list__row--no-border',
-             key: {
-               text: "Supported source name"
-             },
-             value: {
-               text: i.chargeReference[0].supSourceName |capitalize
-             },
-             actions: {
-               items: [
-                 {
-                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                   text: "Change",
-                   visuallyHiddenText: "Source"
-                 }
-               ]
-             }
-           } if i.chargeReference[0].supSourceCharge == "yes",
-
-           {
-             classes: 'govuk-summary-list__row--no-border',
-             key: {
-               text: "Public water supply"
-             },
-             value: {
-               text: i.chargeReference[0].pubWaterCharge |capitalize
-             },
-             actions: {
-               items: [
-                 {
-                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                   text: "Change",
-                   visuallyHiddenText: "Source"
-                 }
-               ]
-             }
-           } if i.chargeReference[0].supSourceCharge == "yes",
-
-           {
-             classes: 'govuk-summary-list__row--no-border',
-             key: {
-               text: "Aggregate factor"
-             },
-             value: {
-               text: i.chargeReference[0].aggregateFactor |capitalize
-             },
-             actions: {
-               items: [
-                 {
-                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                   text: "Change",
-                   visuallyHiddenText: "Aggregate factor"
-                 }
-               ]
-             }
-           },
-
-           {
-             classes: 'govuk-summary-list__row--no-border',
-             key: {
-               text: "EIUC region"
-             },
-             value: {
-               text: i.chargeReference[0].eiucRegion |capitalize
-             }
            }
+
 
          ]
        }) }}
 
+
+      {% if i.chargeReference[0].addCharges == "yes" %}
        <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Additional Charges</h2>
 
+       {{ govukSummaryList({
+       classes: 'govuk-!-margin-bottom-2',
+     rows: [
+     {
+       classes: 'govuk-summary-list__row--no-border',
+       key: {
+         text: "Supported source"
+       },
+       value: {
+         text: i.chargeReference[0].supSourceCharge |capitalize
+       },
+       actions: {
+         items: [
+           {
+             href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+             text: "Change",
+             visuallyHiddenText: "Source"
+           }
+         ]
+       }
+     },
 
+     {
+       classes: 'govuk-summary-list__row--no-border',
+       key: {
+         text: "Supported source name"
+       },
+       value: {
+         text: i.chargeReference[0].supSourceName |capitalize
+       },
+       actions: {
+         items: [
+           {
+             href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+             text: "Change",
+             visuallyHiddenText: "Source"
+           }
+         ]
+       }
+     } if i.chargeReference[0].supSourceCharge == "yes",
 
+     {
+       classes: 'govuk-summary-list__row--no-border',
+       key: {
+         text: "Public water supply"
+       },
+       value: {
+         text: i.chargeReference[0].pubWaterCharge |capitalize
+       },
+       actions: {
+         items: [
+           {
+             href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+             text: "Change",
+             visuallyHiddenText: "Source"
+           }
+         ]
+       }
+     }
+
+     ]
+   }) }}
+   {# end of additional charges if #}
+   {% endif %}
+
+   <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+   <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Adjustments</h2>
+
+   {{ govukSummaryList({
+   classes: 'govuk-!-margin-bottom-2',
+ rows: [
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Overall charge factor"
+   },
+   value: {
+     text: i.chargeReference[0].chargeFactor
+   }
+ },
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Adjustment reason"
+   },
+   value: {
+     text: i.chargeReference[0].adjustmentReason |capitalize
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "Aggregate factor"
+       }
+     ]
+   }
+ },
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Aggregate factor"
+   },
+   value: {
+     text: i.chargeReference[0].aggregateFactor
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "Aggregate factor"
+       }
+     ]
+   }
+ },
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Abatement factor"
+   },
+   value: {
+     text: i.chargeReference[0].abatementFactor
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "Aggregate factor"
+       }
+     ]
+   }
+ },
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Adjustment factor"
+   },
+   value: {
+     text: i.chargeReference[0].adjustmentFactor
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "Aggregate factor"
+       }
+     ]
+   }
+ },
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Winter discount"
+   },
+   value: {
+     text: i.chargeReference[0].winterDiscount |capitalize
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "Aggregate factor"
+       }
+     ]
+   }
+ },
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "EIUC region"
+   },
+   value: {
+     text: i.chargeReference[0].eiucRegion |capitalize
+   }
+ }
+
+ ]
+}) }}
+
+          <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+          {# end of charge cagetgory if #}
           {% endif %}
 
-               <h2 class="govuk-heading-m" id="element{{[loop.index]}}">Element {{[loop.index]}}</h2>
+
+
+               <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[loop.index]}}</span>{{[i.purpose]}}, {{[i.description]}}</h2>
 
                 {{ govukSummaryList({
                   classes: 'govuk-!-margin-bottom-2',
