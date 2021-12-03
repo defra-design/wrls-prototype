@@ -74,6 +74,19 @@ module.exports = function (env) {
            return e.replace(/\,/g,'\n')
           }
 
+          //set colours for status "| tagStatusColour"
+          filters.tagColour = function(e) {
+            if (e == "ready") {
+              return "govuk-tag--blue"
+            } else if (e == "review") {
+              return "govuk-tag--orange"
+            } else if (e == "error") {
+              return "govuk-tag--red"
+            } else {
+              return "govuk-tag--green"
+            }
+          }
+
 
 
     //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}

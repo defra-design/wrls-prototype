@@ -228,6 +228,19 @@ filters.numberToGovukDate = function(x) {
     }
   }
 
+  //set colours for status "| tagStatusColour"
+  filters.tagColour = function(e) {
+    if (e == "ready") {
+      return "govuk-tag--blue"
+    } else if (e == "review") {
+      return "govuk-tag--orange"
+    } else if (e == "error") {
+      return "govuk-tag--red"
+    } else {
+      return "govuk-tag--green"
+    }
+  }
+
   //set units "| units"
   filters.units = function(e) {
     if (e == "cubicMetresPerSecond") {
