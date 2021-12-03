@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select the water model" %}
+{% set title = "Do adjustments apply?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -59,8 +59,8 @@
 
 
           {{ govukRadios({
-          idPrefix: "chargeWaterRestrictions",
-          name: "chargeWaterRestrictions",
+          idPrefix: "adjustmentsApply",
+          name: "adjustmentsApply",
           fieldset: {
             legend: {
               text: [title],
@@ -68,21 +68,19 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+            text: "Adjustments include any discounts or agreements that should apply to this charge"
+          },
           items: [
             {
-              value: "no model",
-              text: "No model",
-              checked: checked("chargeWaterRestrictions", "no model")
+              value: "yes",
+              text: "Yes",
+              checked: checked("adjustmentsApply", "yes")
             },
             {
-              value: "groundwater or surface water tier 1",
-              text: "Groundwater or surface water tier 1",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 1")
-            },
-            {
-              value: "groundwater or surface water tier 2",
-              text: "Groundwater or surface water tier 2",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 2")
+              value: "no",
+              text: "No",
+              checked: checked("adjustmentsApply", "no")
             }
           ]
         }) }}

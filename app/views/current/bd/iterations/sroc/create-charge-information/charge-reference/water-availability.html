@@ -71,11 +71,13 @@
           items: [
             {
               value: "available",
-              text: "Available"
-    },
+              text: "Available",
+              checked: checked("chargeWaterAvailability", "available")
+            },
             {
               value: "restricted availability or no availability",
-              text: "Restricted availablity or no availability"
+              text: "Restricted availablity or no availability",
+              checked: checked("chargeWaterAvailability", "restricted availability or no availability")
             }
           ]
         }) }}

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select the water model" %}
+{% set title = "Add a reason for the adjustments" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -54,38 +54,22 @@
 
 <form method="post" class="form">
 
+  {{ govukCharacterCount({
+  name: "adjustmentReason",
+  id: "adjustmentReason",
+  maxlength: 300,
+  value: data['srocElements'][0].chargeReference[0].adjustmentReason,
+  label: {
+    text: [title],
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Provide a short explanation about the adjustments made to this charge."
+  }
+}) }}
 
 
-
-
-          {{ govukRadios({
-          idPrefix: "chargeWaterRestrictions",
-          name: "chargeWaterRestrictions",
-          fieldset: {
-            legend: {
-              text: [title],
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-            {
-              value: "no model",
-              text: "No model",
-              checked: checked("chargeWaterRestrictions", "no model")
-            },
-            {
-              value: "groundwater or surface water tier 1",
-              text: "Groundwater or surface water tier 1",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 1")
-            },
-            {
-              value: "groundwater or surface water tier 2",
-              text: "Groundwater or surface water tier 2",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 2")
-            }
-          ]
-        }) }}
 
     <button type="submit" class="govuk-button">
       Continue

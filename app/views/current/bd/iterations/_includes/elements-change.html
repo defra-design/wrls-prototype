@@ -75,15 +75,6 @@
            },
            value: {
              text: i.chargeReference[0].appliesTo |capitalize
-           },
-           actions: {
-             items: [
-               {
-                 href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                 text: "Change",
-                 visuallyHiddenText: "Source"
-               }
-             ]
            }
          },
          {
@@ -97,9 +88,9 @@
            actions: {
              items: [
                {
-                 href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 href: "charge-reference/enter-description?elementNew=false&change=true&elementNumber=" + elementNumber,
                  text: "Change",
-                 visuallyHiddenText: "Source"
+                 visuallyHiddenText: "Description"
                }
              ]
            }
@@ -146,7 +137,7 @@
                text: "Quantity"
              },
              value: {
-               text: i.chargeReference[0].chargeQuantity + "Ml"
+               text: i.chargeReference[0].chargeQuantity + "ML"
              },
              actions: {
                items: [
@@ -182,7 +173,7 @@
            {
              classes: 'govuk-summary-list__row--no-border',
              key: {
-               text: "Water restrictions"
+               text: "Water model"
              },
              value: {
                text: i.chargeReference[0].chargeWaterRestrictions |capitalize
@@ -190,9 +181,9 @@
              actions: {
                items: [
                  {
-                   href: "charge-reference/water-availability?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   href: "charge-reference/water-restrictions?elementNew=false&change=true&elementNumber=" + elementNumber,
                    text: "Change",
-                   visuallyHiddenText: "Water restrictions"
+                   visuallyHiddenText: "Water model"
                  }
                ]
              }
@@ -208,11 +199,38 @@
              actions: {
                items: [
                  {
-                   href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   href: "charge-reference/additional-charges?elementNew=false&change=true&elementNumber=" + elementNumber,
                    text: "Change",
-                   visuallyHiddenText: "Source"
+                   visuallyHiddenText: "if additional charges apply"
                  }
                ]
+             }
+           },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Adjustments apply"
+             },
+             value: {
+               text: i.chargeReference[0].adjustmentsApply |capitalize
+             },
+             actions: {
+               items: [
+                 {
+                   href: "charge-reference/do-adjustments-apply?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   text: "Change",
+                   visuallyHiddenText: "if adjustments apply apply"
+                 }
+               ]
+             }
+           },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "EIUC Region"
+             },
+             value: {
+               text: i.chargeReference[0].eiucRegion |capitalize
              }
            }
 
@@ -239,9 +257,9 @@
        actions: {
          items: [
            {
-             href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+             href: "charge-reference/supported-source?elementNew=false&change=true&elementNumber=" + elementNumber,
              text: "Change",
-             visuallyHiddenText: "Source"
+             visuallyHiddenText: "Supported source"
            }
          ]
        }
@@ -258,9 +276,9 @@
        actions: {
          items: [
            {
-             href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+             href: "charge-reference/supported-source-name?elementNew=false&change=true&elementNumber=" + elementNumber,
              text: "Change",
-             visuallyHiddenText: "Source"
+             visuallyHiddenText: "Supported source name"
            }
          ]
        }
@@ -269,17 +287,17 @@
      {
        classes: 'govuk-summary-list__row--no-border',
        key: {
-         text: "Public water supply"
+         text: "Supply public water"
        },
        value: {
-         text: i.chargeReference[0].pubWaterCharge |capitalize
+         text: i.chargeReference[0].supPublicWater |capitalize
        },
        actions: {
          items: [
            {
-             href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+             href: "charge-reference/supply-public-water?elementNew=false&change=true&elementNumber=" + elementNumber,
              text: "Change",
-             visuallyHiddenText: "Source"
+             visuallyHiddenText: "Supply public water"
            }
          ]
        }
@@ -290,22 +308,15 @@
    {# end of additional charges if #}
    {% endif %}
 
+
+
+   {% if i.chargeReference[0].adjustmentsApply == "yes" %}
    <hr class="govuk-section-break  govuk-!-margin-bottom-6">
    <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Adjustments</h2>
 
    {{ govukSummaryList({
    classes: 'govuk-!-margin-bottom-2',
  rows: [
-
- {
-   classes: 'govuk-summary-list__row--no-border',
-   key: {
-     text: "Overall charge factor"
-   },
-   value: {
-     text: i.chargeReference[0].chargeFactor
-   }
- },
 
  {
    classes: 'govuk-summary-list__row--no-border',
@@ -318,9 +329,9 @@
    actions: {
      items: [
        {
-         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         href: "charge-reference/adjustment-reason?elementNew=false&change=true&elementNumber=" + elementNumber,
          text: "Change",
-         visuallyHiddenText: "Aggregate factor"
+         visuallyHiddenText: "Adjustment reason"
        }
      ]
    }
@@ -337,32 +348,13 @@
    actions: {
      items: [
        {
-         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         href: "charge-reference/which-adjustments?elementNew=false&change=true&elementNumber=" + elementNumber,
          text: "Change",
          visuallyHiddenText: "Aggregate factor"
        }
      ]
    }
- },
-
- {
-   classes: 'govuk-summary-list__row--no-border',
-   key: {
-     text: "Abatement factor"
-   },
-   value: {
-     text: i.chargeReference[0].abatementFactor
-   },
-   actions: {
-     items: [
-       {
-         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-         text: "Change",
-         visuallyHiddenText: "Aggregate factor"
-       }
-     ]
-   }
- },
+ } if i.chargeReference[0].adjustments.includes("aggregate"),
 
  {
    classes: 'govuk-summary-list__row--no-border',
@@ -370,18 +362,18 @@
      text: "Adjustment factor"
    },
    value: {
-     text: i.chargeReference[0].adjustmentFactor
+     text: i.chargeReference[0].chargeAdjustmentFactor
    },
    actions: {
      items: [
        {
-         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         href: "charge-reference/which-adjustments?elementNew=false&change=true&elementNumber=" + elementNumber,
          text: "Change",
-         visuallyHiddenText: "Aggregate factor"
+         visuallyHiddenText: "Adjustment factor"
        }
      ]
    }
- },
+ } if i.chargeReference[0].adjustments.includes("charge adjustment"),
 
  {
    classes: 'govuk-summary-list__row--no-border',
@@ -389,31 +381,80 @@
      text: "Winter discount"
    },
    value: {
-     text: i.chargeReference[0].winterDiscount |capitalize
+     text: "Yes"
    },
    actions: {
      items: [
        {
-         href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+         href: "charge-reference/which-adjustments?elementNew=false&change=true&elementNumber=" + elementNumber,
          text: "Change",
-         visuallyHiddenText: "Aggregate factor"
+         visuallyHiddenText: "Winter discount"
        }
      ]
    }
- },
+ } if i.chargeReference[0].adjustments.includes("winter discount"),
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Two-part tariff agreement applies"
+   },
+   value: {
+     text: "Yes"
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/which-adjustments?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "if Two-part tariff agreement applies"
+       }
+     ]
+   }
+ } if i.chargeReference[0].adjustments.includes("two part tariff agreement applies"),
 
  {
    classes: 'govuk-summary-list__row--no-border',
    key: {
-     text: "EIUC region"
+     text: "Abatement agreement applies"
    },
    value: {
-     text: i.chargeReference[0].eiucRegion |capitalize
+     text: "Yes"
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/which-adjustments?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "if Abatement agreement applies"
+       }
+     ]
    }
- }
+ } if i.chargeReference[0].adjustments.includes("abatement agreement applies"),
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Canal and river trust agreement applies"
+   },
+   value: {
+     text: "Yes"
+   },
+   actions: {
+     items: [
+       {
+         href: "charge-reference/which-adjustments?elementNew=false&change=true&elementNumber=" + elementNumber,
+         text: "Change",
+         visuallyHiddenText: "if Canal and river trust agreement applies"
+       }
+     ]
+   }
+ } if i.chargeReference[0].adjustments.includes("canal and river trust agreement applies")
 
  ]
 }) }}
+
+{# end of adjustments if #}
+{% endif %}
 
           <hr class="govuk-section-break  govuk-!-margin-bottom-6">
           {# end of charge cagetgory if #}
@@ -490,7 +531,7 @@
                       text: "Annual quantities"
                     },
                     value: {
-                      html: [i.authorisedQuantity] + "Ml authorised<br>Billable not set"
+                      html: [i.authorisedQuantity] + "ML authorised<br>Billable not set"
                     },
                     actions: {
                       items: [

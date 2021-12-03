@@ -47,15 +47,37 @@ function createCharge(req, res) {
   let chargeWaterAvailability = req.session.data.chargeWaterAvailability
   let chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
   let addCharges = req.session.data.addCharges
+  let supSourceCharge = req.session.data.supSourceCharge
+  let supSourceName = req.session.data.supSourceName
+  let supPublicWater = req.session.data.supPublicWater
+  let adjustmentsApply = req.session.data.adjustmentsApply
   let chargeRefNumber = "3.20.23"
   let chargeDescription = chargeLoss + " loss, " + chargeSource + " abstraction, below " + (parseInt(chargeQuantity) + 1) + "ML per year"
   let eiucRegion = "Anglian"
-  let aggregateFactor = 1
-  let abatementFactor = 1
-  let adjustmentFactor = 1
-  let chargeFactor = aggregateFactor * abatementFactor * adjustmentFactor
-  let adjustmentReason = "standard factors applied"
-  let winterDiscount = "No"
+  let adjustments = ""
+  if (adjustmentsApply == "yes"){
+    adjustments = req.session.data.adjustments
+  }
+  /*
+  adjustments: _unchecked
+  adjustments: aggregate
+  aggregateFactor: 1
+  adjustments: charge adjustment
+  chargeAdjustmentFactor: 1
+  adjustments: winter discount
+  adjustments: two part tariff agreement applies
+  adjustments: abatement agreement applies
+  adjustments: canal and river trust agreement applies
+  */
+  let aggregateFactor = ""
+  if (adjustments.includes("aggregate")) {
+     aggregateFactor = req.session.data.aggregateFactor
+  }
+  let chargeAdjustmentFactor = ""
+  if (adjustments.includes("charge adjustment")) {
+       chargeAdjustmentFactor = req.session.data.chargeAdjustmentFactor
+  }
+  let adjustmentReason = req.session.data.adjustmentReason
 
   let newChargeReference = {
 
@@ -67,17 +89,20 @@ function createCharge(req, res) {
     chargeWaterAvailability,
     chargeWaterRestrictions,
     addCharges,
+    supSourceCharge,
+    supSourceName,
+    supPublicWater,
+    adjustmentsApply,
     chargeRefNumber,
     chargeDescription,
     eiucRegion,
+    adjustments,
     aggregateFactor,
-    abatementFactor,
-    adjustmentFactor,
-    chargeFactor,
-    winterDiscount,
+    chargeAdjustmentFactor,
     adjustmentReason,
 
   };
+
 
   //get the sroc element
   let srocElement = req.session.data.srocElements[elementNumber]
@@ -88,9 +113,24 @@ function createCharge(req, res) {
   //set variable to say that the charge has been assigned
   req.session.data.chargeAssigned = "true"
 
+  console.log("charge created" + srocElement['chargeReference'])
+
 };
 
+ ///Remove charge function
+ function removeCharge(req, res) {
 
+   //get the element number to assign the charge reference against
+   let elementNumber = req.session.data.elementNumber
+
+   //get the sroc element
+   let srocElement = req.session.data.srocElements[elementNumber]
+
+   //delete the object in the array
+   srocElement['chargeReference'].splice(0 ,1);
+
+   console.log("charge removed" + srocElement['chargeReference'])
+}
 
 /// Enter a description for the charge reference
 router.get('/create-charge-information/charge-reference/enter-description', function(req, res) {
@@ -99,7 +139,17 @@ router.get('/create-charge-information/charge-reference/enter-description', func
 });
 
 router.post('/create-charge-information/charge-reference/enter-description', function(req, res) {
-  res.redirect('select-source');
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].lineDescription = req.session.data.lineDescription
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+    res.redirect('select-source');
+  }
+
 });
 
 /// Select the source
@@ -109,7 +159,16 @@ router.get('/create-charge-information/charge-reference/select-source', function
 });
 
 router.post('/create-charge-information/charge-reference/select-source', function(req, res) {
-  res.redirect('select-loss');
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].chargeSource = req.session.data.chargeSource
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+    res.redirect('select-loss');
+  }
 });
 
 /// Select the loss
@@ -119,7 +178,16 @@ router.get('/create-charge-information/charge-reference/select-loss', function(r
 });
 
 router.post('/create-charge-information/charge-reference/select-loss', function(req, res) {
-  res.redirect('enter-quantity');
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].chargeLoss = req.session.data.chargeLoss
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+    res.redirect('enter-quantity');
+  }
 });
 
 /// Enter a volume
@@ -129,7 +197,16 @@ router.get('/create-charge-information/charge-reference/enter-quantity', functio
 });
 
 router.post('/create-charge-information/charge-reference/enter-quantity', function(req, res) {
-  res.redirect('water-availability');
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].chargeQuantity = req.session.data.chargeQuantity
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+      res.redirect('water-availability');
+  }
 });
 
 
@@ -140,7 +217,16 @@ router.get('/create-charge-information/charge-reference/water-availability', fun
 });
 
 router.post('/create-charge-information/charge-reference/water-availability', function(req, res) {
-  res.redirect('water-restrictions');
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].chargeWaterAvailability = req.session.data.chargeWaterAvailability
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+      res.redirect('water-restrictions');
+  }
 });
 
 /// Select the water availability
@@ -150,7 +236,16 @@ router.get('/create-charge-information/charge-reference/water-restrictions', fun
 });
 
 router.post('/create-charge-information/charge-reference/water-restrictions', function(req, res) {
-  res.redirect('additional-charges');
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+      res.redirect('additional-charges');
+  }
 });
 
 /// Do additional charges apply?
@@ -162,25 +257,36 @@ router.get('/create-charge-information/charge-reference/additional-charges', fun
 router.post('/create-charge-information/charge-reference/additional-charges', function(req, res) {
 
   let addCharges = req.session.data.addCharges
-
-  //check for additional charges, if there aren't create the charge reference
+  //check for additional charges, if not then redirect to adjustments question
   if (addCharges == "no") {
-
-    //create charge
-    createCharge(req, res);
-
-    res.redirect('../charge-data-check');
-
+    //check if the route is from changing existing data or not
+    let change = req.session.data.change
+    if (change == "true"){
+      let elementNumber = req.session.data.elementNumber
+      req.session.data.srocElements[elementNumber].chargeReference[0].addCharges = req.session.data.addCharges
+      req.session.data.change = false
+      res.redirect('../charge-data-check');
+    } else {
+        res.redirect('do-adjustments-apply');
+    }
   } else {
 
+    //check to see if answers already exist for sup Source
+    let supSourceCharge = req.session.data.supSourceCharge
+    if (supSourceCharge == undefined){
+    req.session.data.change = false
     res.redirect('supported-source');
+  } else if (supSourceCharge.length){
+    req.session.data.change = false
+    //update charge information
+    removeCharge(req, res);
+    createCharge(req, res);
+    res.redirect('../charge-data-check');
   }
-
-
-
+  }
 });
 
-/// Select the water availability
+/// Select if the supported source charge applies
 router.get('/create-charge-information/charge-reference/supported-source', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'create-charge-information/charge-reference/supported-source');
@@ -188,19 +294,182 @@ router.get('/create-charge-information/charge-reference/supported-source', funct
 
 router.post('/create-charge-information/charge-reference/supported-source', function(req, res) {
 
-  let suppSourceCharge = req.session.data.suppSourceCharge
+  let supSourceCharge = req.session.data.supSourceCharge
 
-  if (suppSourceCharge == "yes") {
+  if (supSourceCharge == "yes") {
+    //if yes redirect to choose the name
+    req.session.data.change = false
     res.redirect('supported-source-name');
   } else {
-    res.redirect('public-water-supply');
+    //if no skip the supported source name question
+
+    //check if the route is from changing existing data or not
+    let change = req.session.data.change
+    if (change == "true"){
+      let elementNumber = req.session.data.elementNumber
+      req.session.data.srocElements[elementNumber].chargeReference[0].supSourceCharge = req.session.data.supSourceCharge
+      req.session.data.change = false
+      res.redirect('../charge-data-check');
+    } else {
+        res.redirect('supply-public-water');
+    }
+  }
+
+});
+
+
+/// Select the supported source name
+router.get('/create-charge-information/charge-reference/supported-source-name', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/supported-source-name');
+});
+
+router.post('/create-charge-information/charge-reference/supported-source-name', function(req, res) {
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].supSourceName = req.session.data.supSourceName
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+      res.redirect('supply-public-water');
+  }
+});
+
+/// Select the supply of public water
+router.get('/create-charge-information/charge-reference/supply-public-water', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/supply-public-water');
+});
+
+router.post('/create-charge-information/charge-reference/supply-public-water', function(req, res) {
+
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].supPublicWater = req.session.data.supPublicWater
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+
+    //check to see if adjustments has already been answered
+    let adjustmentsApply  = req.session.data.adjustmentsApply
+    if (adjustmentsApply  == undefined){
+    req.session.data.change = false
+    res.redirect('do-adjustments-apply');
+  } else if (adjustmentsApply.length){
+    req.session.data.change = false
+    //update charge information
+    removeCharge(req, res);
+    createCharge(req, res);
+    res.redirect('../charge-data-check');
+  }
+
+
+  }
+});
+
+
+
+/// do adjustments apply?
+router.get('/create-charge-information/charge-reference/do-adjustments-apply', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/do-adjustments-apply');
+});
+
+router.post('/create-charge-information/charge-reference/do-adjustments-apply', function(req, res) {
+
+  let adjustmentsApply  = req.session.data.adjustmentsApply
+  //check for adjustments, if there aren't create the charge reference
+  if (adjustmentsApply == "no") {
+
+    //check if the route is from changing existing data or not
+    let change = req.session.data.change
+    if (change == "true"){
+      let elementNumber = req.session.data.elementNumber
+      req.session.data.srocElements[elementNumber].chargeReference[0].adjustmentsApply = req.session.data.adjustmentsApply
+      req.session.data.change = false
+      //update charge
+      removeCharge(req, res);
+      createCharge(req, res);
+      res.redirect('../charge-data-check');
+    } else {
+      //create charge
+      createCharge(req, res);
+      res.redirect('../charge-data-check');
+    }
+
+  } else {
+    //if adjustments Apply
+    //check to see if any adjustments are already there if they are redirect back to the charge version
+    let adjustments = req.session.data.adjustments
+    if (adjustments == undefined) {
+    req.session.data.change = false
+    res.redirect('which-adjustments');
+    }
+    else if (adjustments.length){
+      //update charge
+      removeCharge(req, res);
+      createCharge(req, res);
+      res.redirect('../charge-data-check');
+    }
+  }
+
+});
+
+
+/// Which adjustments
+router.get('/create-charge-information/charge-reference/which-adjustments', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/which-adjustments');
+});
+
+router.post('/create-charge-information/charge-reference/which-adjustments', function(req, res) {
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].adjustments = req.session.data.adjustments
+    req.session.data.change = false
+    //update charge
+    removeCharge(req, res);
+    createCharge(req, res);
+    res.redirect('../charge-data-check');
+  } else {
+    res.redirect('adjustment-reason');
   }
 
 });
 
 
 
+/// Reason for adjustments
+router.get('/create-charge-information/charge-reference/adjustment-reason', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/adjustment-reason');
+});
 
+router.post('/create-charge-information/charge-reference/adjustment-reason', function(req, res) {
 
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.srocElements[elementNumber].chargeReference[0].adjustmentReason = req.session.data.adjustmentReason
+    req.session.data.change = false
+    //update charge
+    removeCharge(req, res);
+    createCharge(req, res);
+    res.redirect('../charge-data-check');
+  } else {
+    //update charge
+    removeCharge(req, res);
+    createCharge(req, res);
+    res.redirect('../charge-data-check');
+  }
+
+});
 
 module.exports = router

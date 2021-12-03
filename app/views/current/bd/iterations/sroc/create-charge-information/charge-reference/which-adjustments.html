@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% set title = "Which adjustments apply?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+  </div>
+</div>
+
+
+<form method="post" class="form">
+
+
+  {% set aggregateFactorHtml %}
+  {{ govukInput({
+    label: {
+      text: "Aggregate factor"
+    },
+    classes: "govuk-input--width-4",
+    id: "aggregateFactor",
+    name: "aggregateFactor",
+    spellcheck: false,
+    value: data['srocElements'][0].chargeReference[0].aggregateFactor
+  }) }}
+  {% endset -%}
+
+  {% set chargeAdjustmentFactorHtml %}
+  {{ govukInput({
+    label: {
+      text: "Charge adjustment factor"
+    },
+    classes: "govuk-input--width-4",
+    id: "chargeAdjustmentFactor",
+    name: "chargeAdjustmentFactor",
+    spellcheck: false,
+    value: data['srocElements'][0].chargeReference[0].chargeAdjustmentFactor
+  }) }}
+  {% endset -%}
+
+
+
+
+          {{ govukCheckboxes({
+          idPrefix: "adjustments",
+          name: "adjustments",
+          fieldset: {
+            legend: {
+              text: [title],
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply"
+          },
+          items: [
+            {
+              value: "aggregate",
+              text: "Aggregate",
+              checked: checked("adjustments", "aggregate"),
+              conditional: {
+                  html: aggregateFactorHtml
+                },
+              hint: {
+                  text: "Licence to licence"
+                }
+            },
+            {
+              value: "charge adjustment",
+              text: "Charge adjustment",
+              checked: checked("adjustments", "charge adjustment"),
+              conditional: {
+                  html: chargeAdjustmentFactorHtml
+                }
+            },
+            {
+              value: "winter discount",
+              text: "Winter discount",
+              checked: checked("adjustments", "winter discount")
+            },
+            {
+              value: "two part tariff agreement applies",
+              text: "Two part tariff agreement applies",
+              checked: checked("adjustments", "two part tariff agreement applies")
+            },
+            {
+              value: "abatement agreement applies",
+              text: "Abatement agreement applies",
+              checked: checked("adjustments", "abatement agreement applies")
+            },
+            {
+              value: "canal and river trust agreement applies",
+              text: "Canal and river trust agreement applies",
+              checked: checked("adjustments", "canal and river trust agreement applies")
+            }
+
+          ]
+        }) }}
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+{% endblock %}

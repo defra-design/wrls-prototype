@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Select the water model" %}
+{% set title = "Is abstraction for the supply of public water?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -59,8 +59,8 @@
 
 
           {{ govukRadios({
-          idPrefix: "chargeWaterRestrictions",
-          name: "chargeWaterRestrictions",
+          idPrefix: "supPublicWater",
+          name: "supPublicWater",
           fieldset: {
             legend: {
               text: [title],
@@ -70,19 +70,12 @@
           },
           items: [
             {
-              value: "no model",
-              text: "No model",
-              checked: checked("chargeWaterRestrictions", "no model")
-            },
+              value: "yes",
+              text: "Yes"
+    },
             {
-              value: "groundwater or surface water tier 1",
-              text: "Groundwater or surface water tier 1",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 1")
-            },
-            {
-              value: "groundwater or surface water tier 2",
-              text: "Groundwater or surface water tier 2",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 2")
+              value: "no",
+              text: "No"
             }
           ]
         }) }}
