@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Enter a quantity" %}
+{% set title = "Assign charge reference to" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -54,24 +54,45 @@
 
 <form method="post" class="form">
 
+  {% set scenario = data['scenario']%}
 
-  {{ govukInput({
-    label: {
-      text: [title],
-      isPageHeading: true,
-      classes: "govuk-label--l"
-    },
-    classes: "govuk-input--width-10",
-    id: "chargeQuantity",
-    name: "chargeQuantity",
-    value: data.chargeReferences[0].chargeQuantity,
-    suffix: {
-      text: "ML"
-    },
-    spellcheck: false
-  }) }}
+  {% if scenario == "b" %}
+  {% set elements = data['srocElements'] %}
+  {% else %}
+  {% set elements = [data.srocElements[0]] %}
+  {% endif %}
+
+  {% set selectItems = [] %}
+
+      {% for i in elements %}
+        {% set selectItems = selectItems | push({
+              value: loop.index0,
+              text: data['srocElements'][loop.index0].description,
+              checked: checked("assignElements", "element " + loop.index),
+              hint: {
+                text: "Element " + loop.index
+              }
+              }) %}
+        {% endfor %}
 
 
+
+
+          {{ govukCheckboxes({
+          idPrefix: "assignElements",
+          name: "assignElements",
+          fieldset: {
+            legend: {
+              text: [title],
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply"
+          },
+          items: selectItems
+                }) }}
 
     <button type="submit" class="govuk-button">
       Continue

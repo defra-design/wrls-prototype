@@ -39,7 +39,20 @@ function createCharge(req, res) {
   let elementNumber = req.session.data.elementNumber
 
   //get all of the data that will go into a charge Reference
-  let appliesTo = "element " + (parseInt(elementNumber) + 1)
+
+
+  let srocElementsAssigned = req.session.data.assignElements
+  let appliesTo = []
+  //check to see which elements are part of the charge category
+  if (srocElementsAssigned == undefined ){
+    srocElementsAssigned = [0]
+    appliesTo = ["Element 1"]
+} else {
+  srocElementsAssigned.forEach((srocElementsAssigned, index) => {
+    let elementName = "Element " + (parseInt(index) + 1)
+    appliesTo.push(elementName)}
+  );
+}
   let lineDescription = req.session.data.lineDescription
   let chargeLoss = req.session.data.chargeLoss
   let chargeSource = req.session.data.chargeSource
@@ -81,6 +94,7 @@ function createCharge(req, res) {
 
   let newChargeReference = {
 
+    srocElementsAssigned,
     appliesTo,
     lineDescription,
     chargeLoss,
@@ -108,12 +122,16 @@ function createCharge(req, res) {
   let srocElement = req.session.data.srocElements[elementNumber]
 
   //push the charge ref data
-  srocElement['chargeReference'].push(newChargeReference);
+  //srocElement['chargeReference'].push(newChargeReference);
+
+
+  //push reference data
+  req.session.data.chargeReferences.push(newChargeReference);
 
   //set variable to say that the charge has been assigned
   req.session.data.chargeAssigned = "true"
 
-  console.log("charge created" + srocElement['chargeReference'])
+  //console.log("charge created" + req.session.data.chargeReferences)
 
 };
 
@@ -127,10 +145,32 @@ function createCharge(req, res) {
    let srocElement = req.session.data.srocElements[elementNumber]
 
    //delete the object in the array
-   srocElement['chargeReference'].splice(0 ,1);
+  // srocElement['chargeReference'].splice(0 ,1);
+   req.session.data.chargeReferences.splice(0 ,1);
 
-   console.log("charge removed" + srocElement['chargeReference'])
+  // console.log("charge removed" + req.session.data.chargeReferences)
 }
+
+
+/// Enter a description for the charge reference
+router.get('/create-charge-information/charge-reference/which-elements', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/charge-reference/which-elements');
+});
+
+router.post('/create-charge-information/charge-reference/which-elements', function(req, res) {
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    let elementNumber = req.session.data.elementNumber
+    req.session.data.chargeReferences[0].assignElements = req.session.data.assignElements
+    req.session.data.change = false
+    res.redirect('../charge-data-check');
+  } else {
+    res.redirect('enter-description');
+  }
+
+});
 
 /// Enter a description for the charge reference
 router.get('/create-charge-information/charge-reference/enter-description', function(req, res) {
@@ -143,7 +183,7 @@ router.post('/create-charge-information/charge-reference/enter-description', fun
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].lineDescription = req.session.data.lineDescription
+    req.session.data.chargeReferences[0].lineDescription = req.session.data.lineDescription
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -163,7 +203,7 @@ router.post('/create-charge-information/charge-reference/select-source', functio
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].chargeSource = req.session.data.chargeSource
+    req.session.data.chargeReferences[0].chargeSource = req.session.data.chargeSource
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -182,7 +222,7 @@ router.post('/create-charge-information/charge-reference/select-loss', function(
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].chargeLoss = req.session.data.chargeLoss
+    req.session.data.chargeReferences[0].chargeLoss = req.session.data.chargeLoss
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -201,7 +241,7 @@ router.post('/create-charge-information/charge-reference/enter-quantity', functi
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].chargeQuantity = req.session.data.chargeQuantity
+    req.session.data.chargeReferences[0].chargeQuantity = req.session.data.chargeQuantity
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -221,7 +261,7 @@ router.post('/create-charge-information/charge-reference/water-availability', fu
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].chargeWaterAvailability = req.session.data.chargeWaterAvailability
+    req.session.data.chargeReferences[0].chargeWaterAvailability = req.session.data.chargeWaterAvailability
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -240,7 +280,7 @@ router.post('/create-charge-information/charge-reference/water-restrictions', fu
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+    req.session.data.chargeReferences[0].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -263,7 +303,7 @@ router.post('/create-charge-information/charge-reference/additional-charges', fu
     let change = req.session.data.change
     if (change == "true"){
       let elementNumber = req.session.data.elementNumber
-      req.session.data.srocElements[elementNumber].chargeReference[0].addCharges = req.session.data.addCharges
+      req.session.data.chargeReferences[0].addCharges = req.session.data.addCharges
       req.session.data.change = false
       res.redirect('../charge-data-check');
     } else {
@@ -307,7 +347,7 @@ router.post('/create-charge-information/charge-reference/supported-source', func
     let change = req.session.data.change
     if (change == "true"){
       let elementNumber = req.session.data.elementNumber
-      req.session.data.srocElements[elementNumber].chargeReference[0].supSourceCharge = req.session.data.supSourceCharge
+      req.session.data.chargeReferences[0].supSourceCharge = req.session.data.supSourceCharge
       req.session.data.change = false
       res.redirect('../charge-data-check');
     } else {
@@ -329,7 +369,7 @@ router.post('/create-charge-information/charge-reference/supported-source-name',
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].supSourceName = req.session.data.supSourceName
+    req.session.data.chargeReferences[0].supSourceName = req.session.data.supSourceName
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -349,7 +389,7 @@ router.post('/create-charge-information/charge-reference/supply-public-water', f
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].supPublicWater = req.session.data.supPublicWater
+    req.session.data.chargeReferences[0].supPublicWater = req.session.data.supPublicWater
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {
@@ -389,7 +429,7 @@ router.post('/create-charge-information/charge-reference/do-adjustments-apply', 
     let change = req.session.data.change
     if (change == "true"){
       let elementNumber = req.session.data.elementNumber
-      req.session.data.srocElements[elementNumber].chargeReference[0].adjustmentsApply = req.session.data.adjustmentsApply
+      req.session.data.chargeReferences[0].adjustmentsApply = req.session.data.adjustmentsApply
       req.session.data.change = false
       //update charge
       removeCharge(req, res);
@@ -431,7 +471,7 @@ router.post('/create-charge-information/charge-reference/which-adjustments', fun
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].adjustments = req.session.data.adjustments
+    req.session.data.chargeReferences[0].adjustments = req.session.data.adjustments
     req.session.data.change = false
     //update charge
     removeCharge(req, res);
@@ -457,7 +497,7 @@ router.post('/create-charge-information/charge-reference/adjustment-reason', fun
   let change = req.session.data.change
   if (change == "true"){
     let elementNumber = req.session.data.elementNumber
-    req.session.data.srocElements[elementNumber].chargeReference[0].adjustmentReason = req.session.data.adjustmentReason
+    req.session.data.chargeReferences[0].adjustmentReason = req.session.data.adjustmentReason
     req.session.data.change = false
     //update charge
     removeCharge(req, res);

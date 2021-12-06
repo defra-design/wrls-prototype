@@ -7,45 +7,20 @@
 
 {% set elementNumber = "" %}
 
+{% set scenario = data['scenario']%}
+
+{% if scenario == "b" %}
 {% set elements = data['srocElements'] %}
+{% else %}
+{% set elements = [data.srocElements[0]] %}
+{% endif %}
+
 
 
 {% set numberOfElements = elements.length %}
 
 
-{% for i in elements %}
 
-<!--formating for the abstraction period dates-->
-      {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-      {% set monthNumber = [i.abstractionStartMonth] %}
-      {% set monthNumberEnd = [i.abstractionEndMonth] %}
-
-      {% set month = monthNames[monthNumber - 1] %}
-      {% set monthEnd = monthNames[monthNumberEnd - 1] %}
-
-      {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
-      {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
-
-
-
-     {% set elementNumber = loop.index0 %}
-
-
-     <!--set billable quanity if needed-->
-     {% if [i.billableQuantityNeeded] == "yes" %}
-     {% set billableQuantity = [i.billableQuantity] + " megalitres per year" %}
-     {% else %}
-     {% set billableQuantity = "Not set" %}
-     {% endif %}
-
-     <!--set time limit if needed-->
-     {% if [i.timeLimit] == "yes" %}
-     {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
-     {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
-     {% set timeLimit = [i.timeLimitStartDay] + " " + [i.timeLimitStartDay] | toMonth + " " + [i.timeLimitStartYear] + " to " + [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear]%}
-     {% else %}
-     {% set timeLimit = "No" %}
-     {% endif %}
 
       <section class="govuk-!-margin-bottom-7">
 
@@ -54,14 +29,14 @@
 
 
           {% if data['chargeAssigned'].length %}
+           {% set chargeReference = data['chargeReferences'] %}
 
-           <h2 class="govuk-heading-l govuk-!-margin-bottom-4" ><span class="govuk-caption-l">Charge reference {{i.chargeReference[0].chargeRefNumber}}</span>{{i.chargeReference[0].chargeDescription | capitalize }} </h2>
+
+           <h2 class="govuk-heading-l govuk-!-margin-bottom-4" ><span class="govuk-caption-l">Charge reference {{chargeReference[0].chargeRefNumber}}</span>{{chargeReference[0].chargeDescription | capitalize }} </h2>
 
         <!--Action links not needed   <p class="govuk-body"><a class="govuk-link govuk-!-margin-right-3" href="#">Add an aggregate factor</a> <span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a supported source charge</a><span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a public water supply charge</a></p>-->
 
            <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
-
-
 
 
           <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Charge reference details</h2>
@@ -74,8 +49,17 @@
              text: "Applies to"
            },
            value: {
-             text: i.chargeReference[0].appliesTo |capitalize
-           }
+             text: chargeReference[0].appliesTo | dump  | stripQuotes  | stripSqBrackets | replaceComma | striptags(true) | escape  | nl2br
+           },
+           actions: {
+             items: [
+               {
+                 href: "charge-reference/which-elements?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 text: "Change",
+                 visuallyHiddenText: "Description"
+               }
+             ]
+           } if data['scenario'] == "b"
          },
          {
            classes: 'govuk-summary-list__row--no-border',
@@ -83,7 +67,7 @@
              text: "Description"
            },
            value: {
-             text: i.chargeReference[0].lineDescription |capitalize
+             text: chargeReference[0].lineDescription |capitalize
            },
            actions: {
              items: [
@@ -101,7 +85,7 @@
              text: "Source"
            },
            value: {
-             text: i.chargeReference[0].chargeSource |capitalize
+             text: chargeReference[0].chargeSource |capitalize
            },
            actions: {
              items: [
@@ -119,7 +103,7 @@
              text: "Loss"
            },
            value: {
-             text: i.chargeReference[0].chargeLoss |capitalize
+             text: chargeReference[0].chargeLoss |capitalize
            },
            actions: {
              items: [
@@ -137,7 +121,7 @@
                text: "Quantity"
              },
              value: {
-               text: i.chargeReference[0].chargeQuantity + "ML"
+               text: chargeReference[0].chargeQuantity + "ML"
              },
              actions: {
                items: [
@@ -156,7 +140,7 @@
                 text: "Water availability"
               },
               value: {
-                text: i.chargeReference[0].chargeWaterAvailability |capitalize
+                text: chargeReference[0].chargeWaterAvailability |capitalize
               },
               actions: {
                 items: [
@@ -176,7 +160,7 @@
                text: "Water model"
              },
              value: {
-               text: i.chargeReference[0].chargeWaterRestrictions |capitalize
+               text: chargeReference[0].chargeWaterRestrictions |capitalize
              },
              actions: {
                items: [
@@ -194,7 +178,7 @@
                text: "Additional charges apply"
              },
              value: {
-               text: i.chargeReference[0].addCharges |capitalize
+               text: chargeReference[0].addCharges |capitalize
              },
              actions: {
                items: [
@@ -212,7 +196,7 @@
                text: "Adjustments apply"
              },
              value: {
-               text: i.chargeReference[0].adjustmentsApply |capitalize
+               text: chargeReference[0].adjustmentsApply |capitalize
              },
              actions: {
                items: [
@@ -230,7 +214,7 @@
                text: "EIUC Region"
              },
              value: {
-               text: i.chargeReference[0].eiucRegion |capitalize
+               text: chargeReference[0].eiucRegion |capitalize
              }
            }
 
@@ -239,7 +223,7 @@
        }) }}
 
 
-      {% if i.chargeReference[0].addCharges == "yes" %}
+      {% if chargeReference[0].addCharges == "yes" %}
        <hr class="govuk-section-break  govuk-!-margin-bottom-6">
        <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Additional Charges</h2>
 
@@ -252,7 +236,7 @@
          text: "Supported source"
        },
        value: {
-         text: i.chargeReference[0].supSourceCharge |capitalize
+         text: chargeReference[0].supSourceCharge |capitalize
        },
        actions: {
          items: [
@@ -271,7 +255,7 @@
          text: "Supported source name"
        },
        value: {
-         text: i.chargeReference[0].supSourceName |capitalize
+         text: chargeReference[0].supSourceName |capitalize
        },
        actions: {
          items: [
@@ -282,7 +266,7 @@
            }
          ]
        }
-     } if i.chargeReference[0].supSourceCharge == "yes",
+     } if chargeReference[0].supSourceCharge == "yes",
 
      {
        classes: 'govuk-summary-list__row--no-border',
@@ -290,7 +274,7 @@
          text: "Supply public water"
        },
        value: {
-         text: i.chargeReference[0].supPublicWater |capitalize
+         text: chargeReference[0].supPublicWater |capitalize
        },
        actions: {
          items: [
@@ -310,7 +294,7 @@
 
 
 
-   {% if i.chargeReference[0].adjustmentsApply == "yes" %}
+   {% if chargeReference[0].adjustmentsApply == "yes" %}
    <hr class="govuk-section-break  govuk-!-margin-bottom-6">
    <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Adjustments</h2>
 
@@ -324,7 +308,7 @@
      text: "Adjustment reason"
    },
    value: {
-     text: i.chargeReference[0].adjustmentReason |capitalize
+     text: chargeReference[0].adjustmentReason |capitalize
    },
    actions: {
      items: [
@@ -343,7 +327,7 @@
      text: "Aggregate factor"
    },
    value: {
-     text: i.chargeReference[0].aggregateFactor
+     text: chargeReference[0].aggregateFactor
    },
    actions: {
      items: [
@@ -354,7 +338,7 @@
        }
      ]
    }
- } if i.chargeReference[0].adjustments.includes("aggregate"),
+ } if chargeReference[0].adjustments.includes("aggregate"),
 
  {
    classes: 'govuk-summary-list__row--no-border',
@@ -362,7 +346,7 @@
      text: "Adjustment factor"
    },
    value: {
-     text: i.chargeReference[0].chargeAdjustmentFactor
+     text: chargeReference[0].chargeAdjustmentFactor
    },
    actions: {
      items: [
@@ -373,7 +357,7 @@
        }
      ]
    }
- } if i.chargeReference[0].adjustments.includes("charge adjustment"),
+ } if chargeReference[0].adjustments.includes("charge adjustment"),
 
  {
    classes: 'govuk-summary-list__row--no-border',
@@ -392,7 +376,7 @@
        }
      ]
    }
- } if i.chargeReference[0].adjustments.includes("winter discount"),
+ } if chargeReference[0].adjustments.includes("winter discount"),
  {
    classes: 'govuk-summary-list__row--no-border',
    key: {
@@ -410,7 +394,7 @@
        }
      ]
    }
- } if i.chargeReference[0].adjustments.includes("two part tariff agreement applies"),
+ } if chargeReference[0].adjustments.includes("two part tariff agreement applies"),
 
  {
    classes: 'govuk-summary-list__row--no-border',
@@ -429,7 +413,7 @@
        }
      ]
    }
- } if i.chargeReference[0].adjustments.includes("abatement agreement applies"),
+ } if chargeReference[0].adjustments.includes("abatement agreement applies"),
 
  {
    classes: 'govuk-summary-list__row--no-border',
@@ -448,7 +432,7 @@
        }
      ]
    }
- } if i.chargeReference[0].adjustments.includes("canal and river trust agreement applies")
+ } if chargeReference[0].adjustments.includes("canal and river trust agreement applies")
 
  ]
 }) }}
@@ -460,9 +444,52 @@
           {# end of charge cagetgory if #}
           {% endif %}
 
+           {#if statement setting whether the elements have been asssigned and whether it is scenario a or b#}
+          {% if data['chargeAssigned'].length %}
+          {% set srocElementsAssigned = chargeReference[0].srocElementsAssigned %}
+          {% else %}
+          {% if scenario == "b" %}
+          {% set srocElementsAssigned = [0,1] %}
+          {% else %}
+          {% set srocElementsAssigned = [0] %}
+          {% endif %}
+          {% endif %}
+
+          {% for i in srocElementsAssigned %}
+          <!--formating for the abstraction period dates-->
+                {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+                {% set monthNumber = [elements[srocElementsAssigned[i]].abstractionStartMonth] %}
+                {% set monthNumberEnd = [elements[srocElementsAssigned[i]].abstractionEndMonth] %}
+
+                {% set month = monthNames[monthNumber - 1] %}
+                {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+
+                {% set abstractionStart = [elements[srocElementsAssigned[i]].abstractionStartDay] + " " + month %}
+                {% set abstractionEnd = [elements[srocElementsAssigned[i]].abstractionEndDay] + " " + monthEnd %}
 
 
-               <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[loop.index]}}</span>{{[i.purpose]}}, {{[i.description]}}</h2>
+
+               {% set elementNumber = loop.index0 %}
+
+
+               <!--set billable quanity if needed-->
+               {% if [elements[srocElementsAssigned[i]].billableQuantityNeeded] == "yes" %}
+               {% set billableQuantity = [elements[srocElementsAssigned[i]].billableQuantity] + " megalitres per year" %}
+               {% else %}
+               {% set billableQuantity = "Not set" %}
+               {% endif %}
+
+               <!--set time limit if needed-->
+               {% if [elements[srocElementsAssigned[i]].timeLimit] == "yes" %}
+               {% set monthNumbertimeLimit = [elements[srocElementsAssigned[i]].timeLimitMonth] %}
+               {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
+               {% set timeLimit = [elements[srocElementsAssigned[i]].timeLimitStartDay] + " " + [elements[srocElementsAssigned[i]].timeLimitStartDay] | toMonth + " " + [elements[srocElementsAssigned[i]].timeLimitStartYear] + " to " + [elements[srocElementsAssigned[i]].timeLimitDay] + " " + monthtimeLimit + " " + [elements[srocElementsAssigned[i]].timeLimitYear]%}
+               {% else %}
+               {% set timeLimit = "No" %}
+               {% endif %}
+
+
+               <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[loop.index]}}</span>{{[elements[srocElementsAssigned[i]].purpose]}}, {{[elements[srocElementsAssigned[i]].description]}}</h2>
 
                 {{ govukSummaryList({
                   classes: 'govuk-!-margin-bottom-2',
@@ -474,7 +501,7 @@
                       text: "Purpose"
                     },
                     value: {
-                      text: [i.purpose]
+                      text: [elements[srocElementsAssigned[i]].purpose]
                     },
                     actions: {
                       items: [
@@ -493,7 +520,7 @@
                        text: "Description"
                      },
                      value: {
-                       text: [i.description]
+                       text: [elements[srocElementsAssigned[i]].description]
                      },
                      actions: {
                        items: [
@@ -531,7 +558,7 @@
                       text: "Annual quantities"
                     },
                     value: {
-                      html: [i.authorisedQuantity] + "ML authorised<br>Billable not set"
+                      html: [elements[srocElementsAssigned[i]].authorisedQuantity] + "ML authorised<br>Billable not set"
                     },
                     actions: {
                       items: [
@@ -569,7 +596,7 @@
                       text: "Source"
                     },
                     value: {
-                      text: [i.source]
+                      text: [elements[srocElementsAssigned[i]].source]
                     },
                     actions: {
                       items: [
@@ -587,7 +614,7 @@
                       text: "Season"
                     },
                     value: {
-                      text: [i.season]
+                      text: [elements[srocElementsAssigned[i]].season]
                     },
                     actions: {
                       items: [
@@ -605,7 +632,7 @@
                       text: "Loss"
                     },
                     value: {
-                      text: [i.loss]
+                      text: [elements[srocElementsAssigned[i]].loss]
                     },
                     actions: {
                       items: [
@@ -624,7 +651,7 @@
                       text: "Agreements apply"
                     },
                     value: {
-                      text: data['agreementsApply'] | default("Yes, licence agreements apply")
+                      text: elements[srocElementsAssigned[i]].agreementsApply | capitalize
                     },
                     actions: {
                       items: [
@@ -635,7 +662,7 @@
                         }
                       ]
                     }
-                  },
+                  } if elements[srocElementsAssigned[i]].agreementsApply.length ,
                   {
                     classes: 'govuk-summary-list__row--no-border ',
                     key: {
@@ -651,12 +678,22 @@
                 ]
               }) }}
 
+              {% if (data['chargeAssigned'].length) and (loop.last) %}
                 <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break--visible">
+              {% elseif (data['chargeAssigned'].length) %}
+              {% else %}
+              <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break--visible">
+              {% endif %}
 
-              {% if numberOfElements > 1 %}
+
+
+                {% endfor %}
+
+
+
               <span class=" govuk-body  govuk-!-font-size-19">
 
-                {% if elementNumber == numberOfElements - 1 %}
+
 
                 {{ govukButton({
                 text: "Add another element",
@@ -664,80 +701,43 @@
                 href: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=" + numberOfElements
                 }) }}
 
-                {% endif %}
-            <!--    <a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}" role="button" draggable="false" class="govuk-button govuk-button--secondary">
-                Copy element</a>
-              <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span> -->
-              <a href="/bd/charges-2020/charge-version/confirm-remove-element?removeElement=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary">Remove element</a></span>
+
+              {% if numberOfElements > 1 %}
+                {{ govukButton({
+                text: "Remove element",
+                classes: "govuk-button--secondary govuk-!-margin-right-6",
+                href: "/bd/charges-2020/charge-version/confirm-remove-element?removeElement=true&elementNumber=" + elementNumber
+                }) }}
+
+
+              <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+              {% if data['chargeAssigned'].length %}
               {% else %}
-            <!--  <span class="govuk-body  govuk-!-font-size-19" ><a href="/bd/charges-2020/charge-version/confirm-copy-element?elementCopy=true&elementNumber={{elementNumber}}"  role="button" draggable="false" class="govuk-button govuk-button--secondary">Copy element</a></span> -->
-            {% set elementNumber = elementNumber %}
+
+              {{ govukButton({
+              text: "Assign a charge reference",
+              classes: "govuk-button   govuk-!-margin-right-3",
+              href: "/bd/iterations/sroc/create-charge-information/charge-reference/which-elements?elementNumber=" + elementNumber
+              }) }}
+                {% endif %}
+
+             {% else %}
+
+             <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+             {% if data['chargeAssigned'].length %}
+             {% else %}
+             {{ govukButton({
+             text: "Assign a charge reference",
+             classes: "govuk-button   govuk-!-margin-right-3",
+             href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?elementNumber=" + elementNumber
+             }) }}
+             {% endif %}
+
+             {% endif %}
 
 
 
-            {% if data['chargeAssigned'].length %}
-            {% else %}
 
-            {{ govukButton({
-            text: "Assign a charge reference",
-            classes: "govuk-button   govuk-!-margin-right-3",
-            href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?elementNumber=" + elementNumber
-            }) }}
-
-            {% endif %}
-
-  <!--<hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break">-->
-{% set elementNumber = elementNumber + 1 %}
-          <!--  <p class="govuk-body ">
-            <a class="govuk-link" href="'/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber={{elementNumber}}">Add another charge element</a>
-            </p>-->
-
-            {{ govukButton({
-            text: "Add an element",
-            classes: "govuk-button--secondary",
-            href: "/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=" + elementNumber
-            }) }}
-
-
-              {% endif %}
       </div>
       </div>
       </section>
-
-    {% endfor %}
-
-
-{% if numberOfElements == 0 %}
-<h2 class="govuk-heading-m">Element</h2>
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
-{% set elementNumber = elementNumber + 1 %}
-<!--
-<p class="govuk-body">
-<a class="govuk-link" href="'/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=' + elementNumber">Add another charge element</a>
-</p>
--->
-{{ govukButton({
-text: "Add an element",
-classes: "govuk-button--secondary",
-href: "/bd/charges-2020/how-to-create-element?elementNew=true&elementNumber=" + elementNumber
-}) }}
-
-</div>
-</div>
-{% else %}
-<!--
-    <div class="govuk-grid-row govuk-!-margin-bottom-6">
-      <div class="govuk-grid-column-full"> -->
-{% set elementNumber = elementNumber + 1 %}
-
-<!--
-    {{ govukButton({
-  text: "Add another element",
-  classes: "govuk-button--secondary",
-  href: "/bd/charges-2020/add-element-purpose?elementNew=true&elementNumber=" + elementNumber
-}) }}
-
-</div>
-</div> -->
-{% endif %}
