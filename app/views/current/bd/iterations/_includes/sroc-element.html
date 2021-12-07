@@ -1,0 +1,218 @@
+
+          <!--formating for the abstraction period dates-->
+                {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+                {% set monthNumber = [i.abstractionStartMonth] %}
+                {% set monthNumberEnd = [i.abstractionEndMonth] %}
+
+                {% set month = monthNames[monthNumber - 1] %}
+                {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+
+                {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
+                {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
+
+
+               <!--set billable quanity if needed-->
+               {% if [i.billableQuantityNeeded] == "yes" %}
+               {% set billableQuantity = [i.billableQuantity] + " megalitres per year" %}
+               {% else %}
+               {% set billableQuantity = "Not set" %}
+               {% endif %}
+
+               <!--set time limit if needed-->
+               {% if [i.timeLimit] == "yes" %}
+               {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
+               {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
+               {% set timeLimit = [i.timeLimitStartDay] + " " + [i.timeLimitStartDay] | toMonth + " " + [i.timeLimitStartYear] + " to " + [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear]%}
+               {% else %}
+               {% set timeLimit = "No" %}
+               {% endif %}
+
+
+               <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[loop.index]}}</span>{{[i.purpose]}}, {{[i.description]}}</h2>
+
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-2',
+                rows: [
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Purpose"
+                    },
+                    value: {
+                      text: [i.purpose]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-element-purpose?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Purpose"
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                     key: {
+                       text: "Description"
+                     },
+                     value: {
+                       text: i.description
+                     },
+                     actions: {
+                       items: [
+                         {
+                           href: "/bd/charges-2020/add-element-description?elementNew=false&change=true&elementNumber=" + elementNumber,
+                           text: "Change",
+                           visuallyHiddenText: "Description"
+                         }
+                       ]
+                     }
+                   },
+
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Abstraction period"
+                    },
+                    value: {
+                      text: [abstractionStart] + " to " + [abstractionEnd]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-abstraction-period?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Abstraction period"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Annual quantities"
+                    },
+                    value: {
+                      html: [i.authorisedQuantity] + "ML authorised<br>Billable not set"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-authorised-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Authorised quantity"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Time limit"
+                    },
+                    value: {
+                      text: [timeLimit]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-time-limit?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Time limit"
+                        }
+                      ]
+                    }
+                  },
+
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Source"
+                    },
+                    value: {
+                      text: [i.source]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Source"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Season"
+                    },
+                    value: {
+                      text: [i.season]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-season?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Season"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Loss"
+                    },
+                    value: {
+                      text: [i.loss]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/add-loss?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Loss"
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Agreements apply"
+                    },
+                    value: {
+                      text: i.agreementsApply | capitalize
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/bd/charges-2020/agreements-apply?elementNew=false&change=true&elementNumber=" + elementNumber,
+                          text: "Change",
+                          visuallyHiddenText: "Time limit"
+                        }
+                      ]
+                    }
+                  } if elementsi.agreementsApply.length ,
+                  {
+                    classes: 'govuk-summary-list__row--no-border ',
+                    key: {
+                      classes: "govuk-!-padding-bottom-6",
+                      text: "Environmental Improvement Unit Charge"
+                    },
+                    value: {
+                      text: "Other"
+                    }
+                  }
+
+
+                ]
+              }) }}

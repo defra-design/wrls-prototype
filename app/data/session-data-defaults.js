@@ -210,7 +210,7 @@ module.exports = {
       "season": "Summer",
       "loss": "High",
       "agreementsApply": "yes",
-      "chargeReference":[],
+      "chargeReference": undefined,
     },
     {
       "purpose": "Spray storage",
@@ -226,7 +226,7 @@ module.exports = {
       "season": "Summer",
       "loss": "High",
       "agreementsApply": "",
-      "chargeReference":[],
+      "chargeReference": undefined,
     }
   ],
 

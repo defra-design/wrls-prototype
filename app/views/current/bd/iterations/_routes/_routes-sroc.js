@@ -36,7 +36,7 @@ const folder = "current/bd/iterations/sroc/"
 function createCharge(req, res) {
 
   //get the element number to assign the charge reference against
-  let elementNumber = req.session.data.elementNumber
+  //let elementNumber = req.session.data.elementNumber
 
   //get all of the data that will go into a charge Reference
 
@@ -47,11 +47,15 @@ function createCharge(req, res) {
   if (srocElementsAssigned == undefined ){
     srocElementsAssigned = [0]
     appliesTo = ["Element 1"]
+    req.session.data.srocElements[0].chargeReference = 0
 } else {
   srocElementsAssigned.forEach((srocElementsAssigned, index) => {
     let elementName = "Element " + (parseInt(index) + 1)
-    appliesTo.push(elementName)}
+    appliesTo.push(elementName)
+    req.session.data.srocElements[index].chargeReference = 0
+    }
   );
+
 }
   let lineDescription = req.session.data.lineDescription
   let chargeLoss = req.session.data.chargeLoss
@@ -119,7 +123,7 @@ function createCharge(req, res) {
 
 
   //get the sroc element
-  let srocElement = req.session.data.srocElements[elementNumber]
+  //let srocElement = req.session.data.srocElements[elementNumber]
 
   //push the charge ref data
   //srocElement['chargeReference'].push(newChargeReference);
@@ -139,10 +143,10 @@ function createCharge(req, res) {
  function removeCharge(req, res) {
 
    //get the element number to assign the charge reference against
-   let elementNumber = req.session.data.elementNumber
+  // let elementNumber = req.session.data.elementNumber
 
    //get the sroc element
-   let srocElement = req.session.data.srocElements[elementNumber]
+   //let srocElement = req.session.data.srocElements[elementNumber]
 
    //delete the object in the array
   // srocElement['chargeReference'].splice(0 ,1);
