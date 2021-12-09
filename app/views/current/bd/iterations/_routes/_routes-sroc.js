@@ -94,7 +94,7 @@ function createCharge(req, res) {
   if (adjustments.includes("charge adjustment")) {
        chargeAdjustmentFactor = req.session.data.chargeAdjustmentFactor
   }
-  let adjustmentReason = req.session.data.adjustmentReason
+
 
   let newChargeReference = {
 
@@ -117,7 +117,6 @@ function createCharge(req, res) {
     adjustments,
     aggregateFactor,
     chargeAdjustmentFactor,
-    adjustmentReason,
 
   };
 
@@ -481,15 +480,18 @@ router.post('/create-charge-information/charge-reference/which-adjustments', fun
     removeCharge(req, res);
     createCharge(req, res);
     res.redirect('../charge-data-check');
-  } else {
-    res.redirect('adjustment-reason');
-  }
-
+      } else {
+        //update charge
+        removeCharge(req, res);
+        createCharge(req, res);
+        res.redirect('../charge-data-check');
+      }
 });
 
 
 
-/// Reason for adjustments
+/// Reason for adjustments - No longer needed
+/*
 router.get('/create-charge-information/charge-reference/adjustment-reason', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'create-charge-information/charge-reference/adjustment-reason');
@@ -515,5 +517,6 @@ router.post('/create-charge-information/charge-reference/adjustment-reason', fun
   }
 
 });
+*/
 
 module.exports = router
