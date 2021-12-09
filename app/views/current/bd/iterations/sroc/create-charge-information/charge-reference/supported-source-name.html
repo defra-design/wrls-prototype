@@ -54,87 +54,6 @@
 
 <form method="post" class="form">
 
-  {% set greatEastAnglianHtml %}
-  {{ govukRadios({
-  idPrefix: "greatEastAnglian",
-  name: "greatEastAnglian",
-  items: [
-    {
-      value: "surface water",
-      text: "Surface water",
-      checked: checked("greatEastAnglian", "surface water")
-    },
-    {
-      value: "groundwater",
-      text: "Ground water",
-      checked: checked("greatEastAnglian", "groundwater")
-    }
-    ]
-}) }}
-{% endset -%}
-
-{% set waveneyHtml %}
-{{ govukRadios({
-idPrefix: "waveney",
-name: "waveney",
-items: [
-  {
-    value: "surface water",
-    text: "Surface water",
-    checked: checked("waveney", "surface water")
-  },
-  {
-    value: "groundwater",
-    text: "Ground water",
-    checked: checked("waveney", "groundwater")
-  }
-  ]
-}) }}
-{% endset -%}
-
-{% set ouseHtml %}
-{{ govukRadios({
-idPrefix: "ouse",
-name: "ouse",
-items: [
-  {
-    value: "eaton socon",
-    text: "Eaton Socon",
-    checked: checked("ouse", "eaton socon")
-  },
-  {
-    value: "hermitage",
-    text: "Hermitage",
-    checked: checked("ouse", "hermitage")
-  },
-  {
-    value: "offord",
-    text: "Offord",
-    checked: checked("ouse", "offord")
-  }
-  ]
-}) }}
-{% endset -%}
-
-{% set neneHtml %}
-{{ govukRadios({
-idPrefix: "nene",
-name: "nene",
-items: [
-  {
-    value: "northampton",
-    text: "Northampton",
-    checked: checked("nene", "northampton")
-  },
-  {
-    value: "water newton",
-    text: "Water Newton",
-    checked: checked("nene", "water newton")
-  }
-  ]
-}) }}
-{% endset -%}
-
           {{ govukRadios({
           idPrefix: "supSourceName",
           name: "supSourceName",
@@ -146,20 +65,44 @@ items: [
             }
           },
           items: [
+
             {
-              value: "kielder",
-              text: "Kielder",
-              checked: checked("supSourceName", "kielder")
+              divider: "<span class='govuk-!-font-weight-bold govuk-!-margin-left-3'>Anglian</span>" | safe
             },
             {
-              value: "severn",
-              text: "Severn",
-              checked: checked("supSourceName", "severn")
+              value: "great east anglian groundwater",
+              text: "Great East Anglian Groundwater",
+              checked: checked("supSourceName", "great east anglian groundwater")
+            },
+            {
+              value: "great east anglian surface water",
+              text: "Great East Anglian Sruface Water",
+              checked: checked("supSourceName", "great east anglian surface water")
             },
             {
               value: "loedes granta groundwater",
               text: "Loedes Granta groundwater",
               checked: checked("supSourceName", "loedes granta groundwater")
+            },
+            {
+              value: "nene - water newton",
+              text: "Nene - Water Newton",
+              checked: checked("supSourceName", "nene - water newton")
+            },
+            {
+              value: "ouse - eaton socon",
+              text: "Ouse - Eaton Socon",
+              checked: checked("supSourceName", "ouse - eaton socon")
+            },
+            {
+              value: "ouse - hermitage",
+              text: "Ouse - Hermitage",
+              checked: checked("supSourceName", "ouse - hermitage")
+            },
+            {
+              value: "ouse - offord",
+              text: "Ouse - Offord",
+              checked: checked("supSourceName", "ouse - offord")
             },
             {
               value: "rhee groundwater",
@@ -172,25 +115,9 @@ items: [
               checked: checked("supSourceName", "thet and little ouse surface water")
             },
             {
-              value: "great east anglian",
-              text: "Great East Anglian",
-              checked: checked("supSourceName", "great east anglian"),
-              conditional: {
-                  html: greatEastAnglianHtml
-              }
-            },
-            {
-              value: "waveney",
-              text: "Waveney",
-              checked: checked("supSourceName", "waveney"),
-              conditional: {
-                  html: waveneyHtml
-              }
-            },
-            {
-              value: "earl soham deben",
-              text: "Earl Soham Deben",
-              checked: checked("supSourceName", "earl soham deben")
+              value: "welland tinwell sluices",
+              text: "Welland Tinwell Sluices",
+              checked: checked("supSourceName", "welland tinwell sluices")
             },
             {
               value: "witham and ancholme",
@@ -198,14 +125,20 @@ items: [
               checked: checked("supSourceName", "witham and ancholme")
             },
             {
-              value: "wye",
-              text: "Wye",
-              checked: checked("supSourceName", "wye")
+              divider: "<span class='govuk-!-font-weight-bold govuk-!-margin-left-3'>Midlands</span>" | safe
             },
             {
-              value: "dee",
-              text: "Dee",
-              checked: checked("supSourceName", "dee")
+              value: "nene - northampton",
+              text: "Nene - Northampton",
+              checked: checked("supSourceName", "nene - northampton")
+            },
+            {
+              divider: "<span class='govuk-!-font-weight-bold govuk-!-margin-left-3'>North&nbsp;East</span>" | safe
+            },
+            {
+              value: "kielder",
+              text: "Kielder",
+              checked: checked("supSourceName", "kielder")
             },
             {
               value: "lower yorkshire derwent",
@@ -213,25 +146,17 @@ items: [
               checked: checked("supSourceName", "lower yorkshire derwent")
             },
             {
-              value: "ouse",
-              text: "Ouse",
-              checked: checked("supSourceName", "ouse"),
-              conditional: {
-                  html: ouseHtml
-              }
+              divider: "<span class='govuk-!-font-weight-bold govuk-!-margin-left-3'>Southern</span>" | safe
             },
             {
-              value: "nene",
-              text: "Nene",
-              checked: checked("supSourceName", "nene"),
-              conditional: {
-                  html: neneHtml
-              }
+              value: "candover",
+              text: "Candover",
+              checked: checked("supSourceName", "candover")
             },
             {
-              value: "welland tinwell sluices",
-              text: "Welland Tinwell Sluices",
-              checked: checked("supSourceName", "welland tinwell sluices")
+              value: "earl soham - deben",
+              text: "Earl Soham - Deben",
+              checked: checked("supSourceName", "earl soham - deben")
             },
             {
               value: "medway allington",
@@ -239,11 +164,43 @@ items: [
               checked: checked("supSourceName", "medway allington")
             },
             {
-              value: "candover",
-              text: "Candover",
-              checked: checked("supSourceName", "candover")
+              value: "waveney groundwater",
+              text: "Waveney Groundwater",
+              checked: checked("supSourceName", "waveney groundwater")
+            },
+            {
+              value: "waveney surface water",
+              text: "Waveney Surface Water",
+              checked: checked("supSourceName", "waveney surface water")
+            },
+            {
+              value: "severn",
+              text: "Severn",
+              checked: checked("supSourceName", "severn")
+            },
+            {
+              divider: "<span class='govuk-!-font-weight-bold govuk-!-margin-left-3'>Thames</span>" | safe
+            },
+            {
+              value: "thames",
+              text: "Thames",
+              checked: checked("supSourceName", "thames")
+            },
+            {
+              divider: "<span class='govuk-!-font-weight-bold govuk-!-margin-left-3'>Wales</span>" | safe
+            },
+            {
+              value: "dee",
+              text: "Dee",
+              checked: checked("supSourceName", "dee")
+            },
+            {
+              value: "wye",
+              text: "Wye",
+              checked: checked("supSourceName", "wye")
             }
-          ]
+
+            ]
         }) }}
 
     <button type="submit" class="govuk-button">
