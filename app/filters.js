@@ -50,12 +50,12 @@ module.exports = function(env) {
     let mm = date.getMonth() + 1;
 
     const yyyy = date.getFullYear();
-    if (dd < 10) {
+  /*  if (dd < 10) {
       dd = `0${dd}`;
     }
     if (mm < 10) {
       mm = `0${mm}`;
-    }
+    } */
 
     //change the month into a name
     let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
