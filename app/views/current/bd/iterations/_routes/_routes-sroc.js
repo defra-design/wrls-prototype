@@ -48,6 +48,10 @@ function createCharge(req, res) {
     srocElementsAssigned = [0]
     appliesTo = ["Element 1"]
     req.session.data.srocElements[0].chargeReference = 0
+} else if (srocElementsAssigned.length == 1) {
+    let elementName = "Element " + (parseInt(srocElementsAssigned) + 1)
+    appliesTo.push(elementName)
+    req.session.data.srocElements[(parseInt(srocElementsAssigned))].chargeReference = 0
 } else {
   srocElementsAssigned.forEach((srocElementsAssigned, index) => {
     let elementName = "Element " + (parseInt(index) + 1)
@@ -55,8 +59,8 @@ function createCharge(req, res) {
     req.session.data.srocElements[index].chargeReference = 0
     }
   );
-
 }
+
   let lineDescription = req.session.data.lineDescription
   let chargeLoss = req.session.data.chargeLoss
   let chargeSource = req.session.data.chargeSource
@@ -133,7 +137,6 @@ function createCharge(req, res) {
 
   //set variable to say that the charge has been assigned
   req.session.data.chargeAssigned = "true"
-
   //console.log("charge created" + req.session.data.chargeReferences)
 
 };

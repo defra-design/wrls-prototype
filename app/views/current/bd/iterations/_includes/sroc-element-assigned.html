@@ -1,34 +1,34 @@
 
           <!--formating for the abstraction period dates-->
                 {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-                {% set monthNumber = [elements[srocElementsAssigned[i]].abstractionStartMonth] %}
-                {% set monthNumberEnd = [elements[srocElementsAssigned[i]].abstractionEndMonth] %}
+                {% set monthNumber = [elements[elementIndex].abstractionStartMonth] %}
+                {% set monthNumberEnd = [elements[elementIndex].abstractionEndMonth] %}
 
                 {% set month = monthNames[monthNumber - 1] %}
                 {% set monthEnd = monthNames[monthNumberEnd - 1] %}
 
-                {% set abstractionStart = [elements[srocElementsAssigned[i]].abstractionStartDay] + " " + month %}
-                {% set abstractionEnd = [elements[srocElementsAssigned[i]].abstractionEndDay] + " " + monthEnd %}
+                {% set abstractionStart = [elements[elementIndex].abstractionStartDay] + " " + month %}
+                {% set abstractionEnd = [elements[elementIndex].abstractionEndDay] + " " + monthEnd %}
 
 
                <!--set billable quanity if needed-->
-               {% if [elements[srocElementsAssigned[i]].billableQuantityNeeded] == "yes" %}
-               {% set billableQuantity = [elements[srocElementsAssigned[i]].billableQuantity] + " megalitres per year" %}
+               {% if [elements[elementIndex].billableQuantityNeeded] == "yes" %}
+               {% set billableQuantity = [elements[elementIndex].billableQuantity] + " megalitres per year" %}
                {% else %}
                {% set billableQuantity = "Not set" %}
                {% endif %}
 
                <!--set time limit if needed-->
-               {% if [elements[srocElementsAssigned[i]].timeLimit] == "yes" %}
-               {% set monthNumbertimeLimit = [elements[srocElementsAssigned[i]].timeLimitMonth] %}
+               {% if [elements[elementIndex].timeLimit] == "yes" %}
+               {% set monthNumbertimeLimit = [elements[elementIndex].timeLimitMonth] %}
                {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
-               {% set timeLimit = [elements[srocElementsAssigned[i]].timeLimitStartDay] + " " + [elements[srocElementsAssigned[i]].timeLimitStartDay] | toMonth + " " + [elements[srocElementsAssigned[i]].timeLimitStartYear] + " to " + [elements[srocElementsAssigned[i]].timeLimitDay] + " " + monthtimeLimit + " " + [elements[srocElementsAssigned[i]].timeLimitYear]%}
+               {% set timeLimit = [elements[elementIndex].timeLimitStartDay] + " " + [elements[elementIndex].timeLimitStartDay] | toMonth + " " + [elements[elementIndex].timeLimitStartYear] + " to " + [elements[elementIndex].timeLimitDay] + " " + monthtimeLimit + " " + [elements[elementIndex].timeLimitYear]%}
                {% else %}
                {% set timeLimit = "No" %}
                {% endif %}
 
 
-               <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[loop.index]}}</span>{{[elements[srocElementsAssigned[i]].purpose]}}, {{[elements[srocElementsAssigned[i]].description]}}</h2>
+               <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[elementIndex]|int + 1}}</span>{{[elements[elementIndex].purpose]}}, {{[elements[elementIndex].description]}}</h2>
 
                 {{ govukSummaryList({
                   classes: 'govuk-!-margin-bottom-2',
@@ -40,7 +40,7 @@
                       text: "Purpose"
                     },
                     value: {
-                      text: [elements[srocElementsAssigned[i]].purpose]
+                      text: [elements[elementIndex].purpose]
                     },
                     actions: {
                       items: [
@@ -59,7 +59,7 @@
                        text: "Description"
                      },
                      value: {
-                       text: [elements[srocElementsAssigned[i]].description]
+                       text: [elements[elementIndex].description]
                      },
                      actions: {
                        items: [
@@ -97,7 +97,7 @@
                       text: "Annual quantities"
                     },
                     value: {
-                      html: [elements[srocElementsAssigned[i]].authorisedQuantity] + "ML authorised<br>Billable not set"
+                      html: [elements[elementIndex].authorisedQuantity] + "ML authorised<br>Billable not set"
                     },
                     actions: {
                       items: [
@@ -135,7 +135,7 @@
                       text: "Source"
                     },
                     value: {
-                      text: [elements[srocElementsAssigned[i]].source]
+                      text: [elements[elementIndex].source]
                     },
                     actions: {
                       items: [
@@ -153,7 +153,7 @@
                       text: "Season"
                     },
                     value: {
-                      text: [elements[srocElementsAssigned[i]].season]
+                      text: [elements[elementIndex].season]
                     },
                     actions: {
                       items: [
@@ -171,7 +171,7 @@
                       text: "Loss"
                     },
                     value: {
-                      text: [elements[srocElementsAssigned[i]].loss]
+                      text: [elements[elementIndex].loss]
                     },
                     actions: {
                       items: [
@@ -190,7 +190,7 @@
                       text: "Agreements apply"
                     },
                     value: {
-                      text: elements[srocElementsAssigned[i]].agreementsApply | capitalize
+                      text: elements[elementIndex].agreementsApply | capitalize
                     },
                     actions: {
                       items: [
@@ -201,7 +201,7 @@
                         }
                       ]
                     }
-                  } if elements[srocElementsAssigned[i]].agreementsApply.length ,
+                  } if elements[elementIndex].agreementsApply.length ,
                   {
                     classes: 'govuk-summary-list__row--no-border ',
                     key: {

@@ -399,7 +399,11 @@
           {# loop through the purposes/elements that are linked to this charge category #}
 
           {% set srocElementsAssigned = i.srocElementsAssigned %}
+
+
           {% for i in srocElementsAssigned %}
+          {% set elementIndex = srocElementsAssigned[loop.index0] %}
+
           <!--formating for the abstraction period dates-->
                {% include "current/bd/iterations/_includes/sroc-element-assigned.html" %}
 
@@ -452,16 +456,11 @@
                {% include "current/bd/iterations/_includes/sroc-element.html" %}
 
 
-              {% if (data['chargeAssigned'].length) and (loop.last) %}
-                <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break--visible">
-              {% elseif (data['chargeAssigned'].length) %}
-              {% else %}
-              <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break--visible">
-              {% endif %}
 
 
            {% endif %}
-                {% endfor %}
+
+          {% endfor %}
 
 
 
@@ -498,7 +497,7 @@
               {{ govukButton({
               text: "Assign a charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
-              href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?elementNumber=" + elementNumber
+              href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?assignElements=0"
               }) }}
                 {% endif %}
                 {% endif %}

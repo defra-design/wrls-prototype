@@ -68,7 +68,7 @@
         {% set selectItems = selectItems | push({
               value: loop.index0,
               text: data['srocElements'][loop.index0].description,
-              checked: checked("assignElements", "element " + loop.index),
+              checked: checked("assignElements", loop.index0|string),
               hint: {
                 text: "Element " + loop.index
               }
