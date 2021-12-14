@@ -54,7 +54,11 @@
 
 <form method="post" class="form">
 
-
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
 
 
 
@@ -72,12 +76,12 @@
             {
               value: "available",
               text: "Available",
-              checked: checked("chargeWaterAvailability", "available")
+              checked: checked("chargeReferences["+ index +"].chargeWaterAvailability", "available")
             },
             {
               value: "restricted availability or no availability",
               text: "Restricted availablity or no availability",
-              checked: checked("chargeWaterAvailability", "restricted availability or no availability")
+              checked: checked("chargeReferences["+ index +"].chargeWaterAvailability", "restricted availability or no availability")
             }
           ]
         }) }}

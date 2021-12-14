@@ -55,7 +55,11 @@
 <form method="post" class="form">
 
 
-
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
 
 
           {{ govukRadios({
@@ -72,12 +76,12 @@
             {
               value: "yes",
               text: "Yes",
-              checked: checked("supSourceCharge", "yes")
+              checked: checked("chargeReferences["+ index +"].supSourceCharge", "yes")
             },
             {
               value: "no",
               text: "No",
-              checked: checked("supSourceCharge", "no")
+              checked: checked("chargeReferences["+ index +"].supSourceCharge", "no")
             }
           ]
         }) }}

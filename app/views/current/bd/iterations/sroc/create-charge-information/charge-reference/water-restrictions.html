@@ -54,7 +54,11 @@
 
 <form method="post" class="form">
 
-
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
 
 
 
@@ -72,17 +76,17 @@
             {
               value: "no model",
               text: "No model",
-              checked: checked("chargeWaterRestrictions", "no model")
+              checked: checked("chargeReferences["+ index +"].chargeWaterRestrictions", "no model")
             },
             {
-              value: "groundwater or surface water tier 1",
-              text: "Groundwater or surface water tier 1",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 1")
+              value: "tier 1",
+              text: "Tier 1",
+              checked: checked("chargeReferences["+ index +"].chargeWaterRestrictions", "tier 1")
             },
             {
-              value: "groundwater or surface water tier 2",
-              text: "Groundwater or surface water tier 2",
-              checked: checked("chargeWaterRestrictions", "groundwater or surface water tier 2")
+              value: "tier 2",
+              text: "Tier 2",
+              checked: checked("chargeReferences["+ index +"].chargeWaterRestrictions", "tier 2")
             }
           ]
         }) }}

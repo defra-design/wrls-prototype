@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Enter a quantity" %}
+{% set title = "Enter a volume" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -54,6 +54,12 @@
 
 <form method="post" class="form">
 
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
+
 
   {{ govukInput({
     label: {
@@ -64,7 +70,7 @@
     classes: "govuk-input--width-10",
     id: "chargeQuantity",
     name: "chargeQuantity",
-    value: data.chargeReferences[0].chargeQuantity,
+    value: data.chargeReferences[index].chargeQuantity,
     suffix: {
       text: "ML"
     },

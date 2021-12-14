@@ -55,7 +55,11 @@
 <form method="post" class="form">
 
 
-
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
 
 
           {{ govukRadios({
@@ -68,16 +72,19 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+             text: "In the case of a permit authorising a water abstraction activity held by a water undertaker carrying out its statutory functions"
+          },
           items: [
             {
               value: "yes",
               text: "Yes",
-              checked: checked("supPublicWater", "yes")
+              checked: checked("chargeReferences["+ index +"].supPublicWater", "yes")
     },
             {
               value: "no",
               text: "No",
-              checked: checked("supPublicWater", "no")
+              checked: checked("chargeReferences["+ index +"].supPublicWater", "no")
             }
           ]
         }) }}

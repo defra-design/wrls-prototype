@@ -54,7 +54,11 @@
 
 <form method="post" class="form">
 
-
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
 
 
 
@@ -75,12 +79,12 @@
             {
               value: "yes",
               text: "Yes",
-              checked: checked("adjustmentsApply", "yes")
+              checked: checked("chargeReferences["+ index +"].adjustmentsApply", "yes")
             },
             {
               value: "no",
               text: "No",
-              checked: checked("adjustmentsApply", "no")
+              checked: checked("chargeReferences["+ index +"].adjustmentsApply", "no")
             }
           ]
         }) }}

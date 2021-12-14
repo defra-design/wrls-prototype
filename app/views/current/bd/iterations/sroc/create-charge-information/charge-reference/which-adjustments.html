@@ -55,6 +55,13 @@
 <form method="post" class="form">
 
 
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
+
+
   {% set aggregateFactorHtml %}
   {{ govukInput({
     label: {
@@ -64,7 +71,7 @@
     id: "aggregateFactor",
     name: "aggregateFactor",
     spellcheck: false,
-    value: data.chargeReferences[0].aggregateFactor
+    value: data.chargeReferences[index ].aggregateFactor
   }) }}
   {% endset -%}
 
@@ -77,10 +84,9 @@
     id: "chargeAdjustmentFactor",
     name: "chargeAdjustmentFactor",
     spellcheck: false,
-    value: data.chargeReferences[0].chargeAdjustmentFactor
+    value: data.chargeReferences[index].chargeAdjustmentFactor
   }) }}
   {% endset -%}
-
 
 
 
@@ -101,7 +107,7 @@
             {
               value: "aggregate",
               text: "Aggregate",
-              checked: checked("adjustments", "aggregate"),
+              checked: checked("chargeReferences["+ index +"].adjustments", "aggregate"),
               conditional: {
                   html: aggregateFactorHtml
                 },
@@ -112,7 +118,7 @@
             {
               value: "charge adjustment",
               text: "Charge adjustment",
-              checked: checked("adjustments", "charge adjustment"),
+              checked: checked("chargeReferences["+ index +"].adjustments", "charge adjustment"),
               conditional: {
                   html: chargeAdjustmentFactorHtml
                 }
@@ -120,22 +126,22 @@
             {
               value: "winter discount",
               text: "Winter discount",
-              checked: checked("adjustments", "winter discount")
+              checked: checked("chargeReferences["+ index +"].adjustments", "winter discount")
             },
             {
               value: "two part tariff agreement applies",
               text: "Two part tariff agreement applies",
-              checked: checked("adjustments", "two part tariff agreement applies")
+              checked: checked("chargeReferences["+ index +"].adjustments", "two part tariff agreement applies")
             },
             {
               value: "abatement agreement applies",
               text: "Abatement agreement applies",
-              checked: checked("adjustments", "abatement agreement applies")
+              checked: checked("chargeReferences["+ index +"].adjustments", "abatement agreement applies")
             },
             {
               value: "canal and river trust agreement applies",
               text: "Canal and river trust agreement applies",
-              checked: checked("adjustments", "canal and river trust agreement applies")
+              checked: checked("chargeReferences["+ index +"].adjustments", "canal and river trust agreement applies")
             }
 
           ]

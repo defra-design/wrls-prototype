@@ -58,7 +58,7 @@
            actions: {
              items: [
                {
-                 href: "charge-reference/which-elements?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 href: "charge-reference/which-elements?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                  text: "Change",
                  visuallyHiddenText: "Description"
                }
@@ -76,7 +76,7 @@
            actions: {
              items: [
                {
-                 href: "charge-reference/enter-description?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 href: "charge-reference/enter-description?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                  text: "Change",
                  visuallyHiddenText: "Description"
                }
@@ -94,7 +94,7 @@
            actions: {
              items: [
                {
-                 href: "charge-reference/select-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 href: "charge-reference/select-source?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                  text: "Change",
                  visuallyHiddenText: "Source"
                }
@@ -112,7 +112,7 @@
            actions: {
              items: [
                {
-                 href: "charge-reference/select-loss?elementNew=false&change=true&elementNumber=" + elementNumber,
+                 href: "charge-reference/select-loss?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                  text: "Change",
                  visuallyHiddenText: "Loss"
                }
@@ -122,7 +122,7 @@
            {
              classes: 'govuk-summary-list__row--no-border',
              key: {
-               text: "Quantity"
+               text: "Volume"
              },
              value: {
                text: i.chargeQuantity + "ML"
@@ -130,7 +130,7 @@
              actions: {
                items: [
                  {
-                   href: "charge-reference/enter-quantity?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   href: "charge-reference/enter-quantity?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                    text: "Change",
                    visuallyHiddenText: "Quantity"
                  }
@@ -149,7 +149,7 @@
               actions: {
                 items: [
                   {
-                    href: "charge-reference/water-availability?elementNew=false&change=true&elementNumber=" + elementNumber,
+                    href: "charge-reference/water-availability?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                     text: "Change",
                     visuallyHiddenText: "Water availability"
                   }
@@ -169,7 +169,7 @@
              actions: {
                items: [
                  {
-                   href: "charge-reference/water-restrictions?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   href: "charge-reference/water-restrictions?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                    text: "Change",
                    visuallyHiddenText: "Water model"
                  }
@@ -187,7 +187,7 @@
              actions: {
                items: [
                  {
-                   href: "charge-reference/additional-charges?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   href: "charge-reference/additional-charges?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                    text: "Change",
                    visuallyHiddenText: "if additional charges apply"
                  }
@@ -205,7 +205,7 @@
              actions: {
                items: [
                  {
-                   href: "charge-reference/do-adjustments-apply?elementNew=false&change=true&elementNumber=" + elementNumber,
+                   href: "charge-reference/do-adjustments-apply?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
                    text: "Change",
                    visuallyHiddenText: "if adjustments apply apply"
                  }
@@ -245,7 +245,7 @@
        actions: {
          items: [
            {
-             href: "charge-reference/supported-source?elementNew=false&change=true&elementNumber=" + elementNumber,
+             href: "charge-reference/supported-source?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
              text: "Change",
              visuallyHiddenText: "Supported source"
            }
@@ -264,7 +264,7 @@
        actions: {
          items: [
            {
-             href: "charge-reference/supported-source-name?elementNew=false&change=true&elementNumber=" + elementNumber,
+             href: "charge-reference/supported-source-name?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
              text: "Change",
              visuallyHiddenText: "Supported source name"
            }
@@ -283,7 +283,7 @@
        actions: {
          items: [
            {
-             href: "charge-reference/supply-public-water?elementNew=false&change=true&elementNumber=" + elementNumber,
+             href: "charge-reference/supply-public-water?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
              text: "Change",
              visuallyHiddenText: "Supply public water"
            }
@@ -298,7 +298,7 @@
 
 
 
-   {% if chargeReference[0].adjustmentsApply == "yes" %}
+   {% if i.adjustmentsApply == "yes" %}
    <hr class="govuk-section-break  govuk-!-margin-bottom-6">
 <!--   <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Adjustments <span style="float:right" class="govuk-!-font-weight-regular govuk-!-font-size-19 govuk-!-text-align-right"><a class="govuk-link" href="charge-reference/which-adjustments?elementNew=false&amp;change=true&elementNumber={{elementNumber}}">
                     Change<span class="govuk-visually-hidden"> adjustments</span>
@@ -320,7 +320,7 @@
    actions: {
      items: [
        {
-         href: "charge-reference/which-adjustments?elementNew=false&change=true&elementNumber=" + elementNumber,
+         href: "charge-reference/which-adjustments?elementNew=false&change=true&chargeReferenceIndex=" + loop.index0,
          text: "Change",
          visuallyHiddenText: "adjustments"
        }

@@ -55,9 +55,10 @@
 <form method="post" class="form">
 
   {# setting the value for the description, first pass uses the description from the element #}
+  {% set index = data.chargeReferenceIndex %}
   {% set value = "" %}
   {% if data['lineDescription'].length %}
-  {% set value = data.chargeReferences[0].lineDescription %}
+  {% set value = data.chargeReferences[index].lineDescription %}
   {% else %}
   {% set value = data['srocElements'][0].description %}
   {% endif %}
