@@ -43,20 +43,32 @@ function createCharge(req, res) {
 
   let srocElementsAssigned = req.session.data.assignElements
   let appliesTo = []
+  console.log(srocElementsAssigned)
+  let chargeReferences = req.session.data.chargeReferences
+  let chargeReferenceIndex = 0
+  if (chargeReferences == []){
+    let chargeReferenceIndex = req.session.data.chargeReferenceIndex
+    if (chargeReferenceIndex == undefined){
+      chargeReferenceIndex = 0
+    }
+  } else {
+    chargeReferenceIndex = chargeReferences.length
+  }
+
   //check to see which elements are part of the charge category
   if (srocElementsAssigned == undefined ){
     srocElementsAssigned = [0]
     appliesTo = ["Element 1"]
-    req.session.data.srocElements[0].chargeReference = 0
+    req.session.data.srocElements[0].chargeReference = chargeReferenceIndex
 } else if (srocElementsAssigned.length == 1) {
     let elementName = "Element " + (parseInt(srocElementsAssigned) + 1)
     appliesTo.push(elementName)
-    req.session.data.srocElements[(parseInt(srocElementsAssigned))].chargeReference = 0
+    req.session.data.srocElements[(parseInt(srocElementsAssigned))].chargeReference = chargeReferenceIndex
 } else {
   srocElementsAssigned.forEach((srocElementsAssigned, index) => {
-    let elementName = "Element " + (parseInt(index) + 1)
+    let elementName = "Element " + (parseInt(srocElementsAssigned) + 1)
     appliesTo.push(elementName)
-    req.session.data.srocElements[index].chargeReference = 0
+    req.session.data.srocElements[srocElementsAssigned].chargeReference = chargeReferenceIndex
     }
   );
 }
@@ -176,8 +188,19 @@ router.post('/create-charge-information/charge-reference/which-elements', functi
   //check if the route is from changing existing data or not
   let change = req.session.data.change
   if (change == "true"){
-    let elementNumber = req.session.data.elementNumber
-    req.session.data.chargeReferences[0].assignElements = req.session.data.assignElements
+    let existingElements = req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].srocElementsAssigned
+    existingElements.forEach((existingElements) => {
+      req.session.data.srocElements[existingElements].chargeReference = undefined
+    });
+    req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].appliesTo = []
+    let srocElementsAssigned = req.session.data.assignElements
+    req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].srocElementsAssigned = req.session.data.assignElements
+    srocElementsAssigned.forEach((srocElementsAssigned) => {
+      let elementName = "Element " + (parseInt(srocElementsAssigned) + 1)
+      req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].appliesTo.push(elementName)
+      req.session.data.srocElements[srocElementsAssigned].chargeReference = req.session.data.chargeReferenceIndex
+      }
+    );
     req.session.data.change = false
     res.redirect('../charge-data-check');
   } else {

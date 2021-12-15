@@ -191,12 +191,14 @@ module.exports = {
 
     //set which SRoC charge creation scenario to go through
     //a = 1 element 1 charge category
-    //b = all elements 1 charge category
+    //b = 2 elements 1 charge category
+    //c = 3 elements 2 charge categories
     "scenario": "a",
 
     //SRoC elements
     "srocElements": [
       {
+      "id": 0,
       "purpose": "Spray irrigation",
       "description": "Otterton borehole 1a",
       "abstractionStartDay": "1",
@@ -213,6 +215,7 @@ module.exports = {
       "chargeReference": undefined,
     },
     {
+      "id": 1,
       "purpose": "Spray storage",
       "description": "Otterton borehole 1b",
       "abstractionStartDay": "1",
@@ -225,6 +228,23 @@ module.exports = {
       "source": "Unsupported",
       "season": "Summer",
       "loss": "High",
+      "agreementsApply": "",
+      "chargeReference": undefined,
+    },
+    {
+      "id": 2,
+      "purpose": "Mineral washing",
+      "description": "Otterton North borehole 32a",
+      "abstractionStartDay": "1",
+      "abstractionStartMonth": "4",
+      "abstractionEndDay": "30",
+      "abstractionEndMonth": "3",
+      "billableQuantity": "",
+      "authorisedQuantity": "300",
+      "timeLimit": "No",
+      "source": "Supported",
+      "season": "Winter/All year",
+      "loss": "Medium",
       "agreementsApply": "",
       "chargeReference": undefined,
     }

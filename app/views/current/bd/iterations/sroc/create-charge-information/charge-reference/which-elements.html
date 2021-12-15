@@ -55,22 +55,58 @@
 <form method="post" class="form">
 
   {% set scenario = data['scenario']%}
-
+  {% set elements = [] %}
   {% if scenario == "b" %}
-  {% set elements = data['srocElements'] %}
+  {% set elements = [data.srocElements[0],data.srocElements[1]] %}
+  {% elif scenario == "c" %}
+  {# if the user is changing there answers #}
+  {% if data['change'] == "true" %}
+  {% set srocElements = data['srocElements'] %}
+  {{srocElements|dump}}
+  {# loop through the elements find the ones that are grouped together under teh same reference #}
+  {% for i in srocElements %}
+
+  {% if i.chargeReference == data.chargeReferenceIndex %}
+
+  {% set elements = elements|push(i) %}
+  {# Add in any other elements that aren't yet assigned to a charge version #}
+  {% elseif i.chargeReference == undefined %}
+  {% set elements = elements|push(i) %}
+  {% endif %}
+  {% endfor %}
+  {% else %}
+  {% set srocElements = data['srocElements'] %}
+  {# loop through the elements find the ones that are grouped together under teh same reference #}
+  {% for i in srocElements %}
+  {# Add in any other elements that aren't yet assigned to a charge version #}
+  {% if i.chargeReference == undefined %}
+
+  {% set elements = elements|push(i) %}
+
+  {% endif %}
+  {% endfor %}
+  {% endif %}
   {% else %}
   {% set elements = [data.srocElements[0]] %}
   {% endif %}
+
+  {# get the index of the charge reference for populating data #}
+  {% set index = data.chargeReferenceIndex %}
+  {% if index == undefined %}
+  {% set index = 0 %}
+  {% endif %}
+
+
 
   {% set selectItems = [] %}
 
       {% for i in elements %}
         {% set selectItems = selectItems | push({
-              value: loop.index0,
-              text: data['srocElements'][loop.index0].description,
-              checked: checked("assignElements", loop.index0|string),
+              value: i.id,
+              text: data['srocElements'][i.id].description,
+              checked: checked("chargeReferences["+ index +"].srocElementsAssigned", i.id|string),
               hint: {
-                text: "Element " + loop.index
+                text: "Element " + (i.id|int +1)
               }
               }) %}
         {% endfor %}

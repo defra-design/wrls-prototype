@@ -10,6 +10,8 @@
 {% set scenario = data['scenario']%}
 
 {% if scenario == "b" %}
+{% set elements = [data.srocElements[0],data.srocElements[1]] %}
+{% elif scenario == "c" %}
 {% set elements = data['srocElements'] %}
 {% else %}
 {% set elements = [data.srocElements[0]] %}
@@ -19,8 +21,13 @@
 
 {% set numberOfElements = elements.length %}
 
-
-
+{# find out if there are any elements not yet assigned#}
+{% set elementsNeedAssigning = ""%}
+{% for i in elements %}
+{% if i.chargeReference == undefined %}
+{% set elementsNeedAssigning = "true"%}
+{% endif %}
+{% endfor %}
 
       <section class="govuk-!-margin-bottom-7">
 
@@ -63,7 +70,7 @@
                  visuallyHiddenText: "Description"
                }
              ]
-           } if data['scenario'] == "b"
+           } if i.appliesTo.length > 1 or elementsNeedAssigning == "true"
          },
          {
            classes: 'govuk-summary-list__row--no-border',
@@ -444,7 +451,7 @@
           {% endfor %}
 
 
-          {% set notAllAssigned = "" %}
+          {% set notAllAssigned = 0 %}
 
           {# loop through all remaining elements #}
           {% for i in elements %}
@@ -452,7 +459,8 @@
 
            {# check to see if a charge reference has been added to the element#}
           {% if i.chargeReference == undefined %}
-           {% set notAllAssigned = loop.index %}
+           {% set notAllAssigned = notAllAssigned + 1 %}
+           {% set elementNumber = loop.index0 %}
                {% include "current/bd/iterations/_includes/sroc-element.html" %}
 
 
@@ -461,7 +469,6 @@
            {% endif %}
 
           {% endfor %}
-
 
 
               <span class=" govuk-body  govuk-!-font-size-19">
@@ -497,7 +504,7 @@
               {{ govukButton({
               text: "Assign a charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
-              href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?assignElements=0"
+              href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?assignElements="  + elementNumber + "&chargeReferenceIndex=" + data.chargeReferences.length|int
               }) }}
                 {% endif %}
                 {% endif %}
