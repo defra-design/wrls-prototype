@@ -43,7 +43,6 @@ function createCharge(req, res) {
 
   let srocElementsAssigned = req.session.data.assignElements
   let appliesTo = []
-  console.log(srocElementsAssigned)
   let chargeReferences = req.session.data.chargeReferences
   let chargeReferenceIndex = 0
   if (chargeReferences == []){
@@ -154,17 +153,6 @@ function createCharge(req, res) {
 
 ///update additional charges
 function updateAdditionalCharges(req, res) {
-
-  //delete the object in the array
-  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].addCharges = req.session.data.addCharges
-  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].supSourceCharge = req.session.data.supSourceCharge
-  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].supSourceName= req.session.data.supSourceName
-  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].supPublicWater = req.session.data.supPublicWater
-
-}
-
-///update adjustments
-function updateAdjustmentsCharges(req, res) {
 
   //delete the object in the array
   req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].addCharges = req.session.data.addCharges
@@ -510,6 +498,16 @@ router.post('/create-charge-information/charge-reference/which-adjustments', fun
   } //if the charge exists, update the answers for the adjustments
   else {
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].adjustments = req.session.data.adjustments
+
+    if (req.session.data.adjustments.includes("aggregate")) {
+      console.log(req.session.data.aggregateFactor);
+       req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].aggregateFactor = req.session.data.aggregateFactor
+    }
+
+    if (req.session.data.adjustments.includes("charge adjustment")) {
+      console.log(req.session.data.chargeAdjustmentFactor);
+         req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeAdjustmentFactor = req.session.data.chargeAdjustmentFactor
+    }
     req.session.data.change = false
   }
     res.redirect('../charge-data-check');
