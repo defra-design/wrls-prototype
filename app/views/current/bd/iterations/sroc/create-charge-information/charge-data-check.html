@@ -27,6 +27,8 @@
 
 {% block beforeContent %}
 
+
+
 <div class="govuk-!-margin-bottom-9">
   <!-- navigation block -->
   {% include "current/includes/nav/nav-bd-view.html" %}
@@ -36,6 +38,26 @@
 {% endblock %}
 
 {% block content %}
+
+<!--
+  If you need to get the charge category on the front end this should be available on the back end though
+
+  {% from "current/bd/iterations/_includes/charge_categories/charge_reference.html" import chargeReferences  %}
+
+  {% for i in chargeReferences %}
+  {{i.resctrictions}}
+  {% if (source == i.source) and (loss == i.loss) and (model == i.model) and (volume >= i.minVolume) and  (volume <= i.maxVolume) and (restriction == i.restriction) %}
+  {{i.chargeNumber}}
+  {{i.chargeDescription}}
+  {# if no match remove the restriction parameter and try and match #}
+  {% elif (source == i.source) and (loss == i.loss) and (model == i.model) and (volume >= i.minVolume) and  (volume <= i.maxVolume)%}
+  {{i.chargeNumber}}
+  {{i.chargeDescription}}
+  {% endif %}
+  {% endfor %}
+-->
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 

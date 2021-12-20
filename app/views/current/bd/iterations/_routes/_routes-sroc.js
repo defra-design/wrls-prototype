@@ -4,6 +4,11 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 
+//get all of the charge category data
+const chargeCategories = require('./data-category.js').chargeCategories;
+
+
+
 //get today's date
 let date = new Date();
 let dd = date.getDate();
@@ -83,8 +88,46 @@ function createCharge(req, res) {
   let supSourceName = req.session.data.supSourceName
   let supPublicWater = req.session.data.supPublicWater
   let adjustmentsApply = req.session.data.adjustmentsApply
+
+  //set variables and ref and description just incase there are no matches
   let chargeRefNumber = "3.20.23"
   let chargeDescription = chargeLoss + " loss, " + chargeSource + " abstraction, below " + (parseInt(chargeQuantity) + 1) + "ML per year"
+
+  //amend references to match chargeCategories for water modelling and availability
+  let waterModel = ""
+  let waterAvailability = ""
+
+  if (chargeWaterRestrictions == "no model") {
+    waterModel = ""
+  } else {
+    waterModel = chargeWaterRestrictions
+  }
+
+  if (chargeWaterAvailability == "available") {
+    waterAvailability = ""
+  } else {
+    waterAvailability = "restricted"
+  }
+
+  //find the charge catergory
+  for (chargeCategory of chargeCategories) {
+    if ((chargeSource == chargeCategory.source) & (chargeLoss == chargeCategory.loss)  & (parseInt(chargeQuantity) >= chargeCategory.minVolume) & (parseInt(chargeQuantity) <= chargeCategory.maxVolume) & (waterAvailability == chargeCategory.restriction) & (waterModel == chargeCategory.model)) {
+    chargeRefNumber = chargeCategory.chargeNumber
+    chargeDescription = chargeCategory.chargeDescription
+  }
+  };
+
+  //If there are no category matches search through the categories without the restriction/availability variable
+  if (chargeRefNumber == "3.20.23") {
+  for (chargeCategory of chargeCategories) {
+  if ((chargeSource == chargeCategory.source) & (chargeLoss == chargeCategory.loss) & (parseInt(chargeQuantity) >= chargeCategory.minVolume) & (parseInt(chargeQuantity) <= chargeCategory.maxVolume) & (waterModel == chargeCategory.model))
+  {
+    chargeRefNumber = chargeCategory.chargeNumber
+    chargeDescription = chargeCategory.chargeDescription
+  }
+  };
+}
+
   let eiucRegion = "Anglian"
   let adjustments = ""
   if (adjustmentsApply == "yes"){
@@ -151,7 +194,64 @@ function createCharge(req, res) {
 
 }
 
-///update additional charges
+///update the charge reference
+function updateChargeReference(req, res) {
+
+  let chargeLoss = req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeLoss
+  let chargeSource = req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeSource
+  let chargeQuantity = req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeQuantity
+  let chargeWaterAvailability = req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterAvailability
+  let chargeWaterRestrictions = req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions
+
+  //set variables and ref and description just incase there are no matches
+  let chargeRefNumber = "3.20.23"
+  let chargeDescription = chargeLoss + " loss, " + chargeSource + " abstraction, below " + (parseInt(chargeQuantity) + 1) + "ML per year"
+
+  //amend references to match chargeCategories for water modelling and availability
+  let waterModel = ""
+  let waterAvailability = ""
+
+  if (chargeWaterRestrictions == "no model") {
+    waterModel = ""
+  } else {
+    waterModel = chargeWaterRestrictions
+  }
+
+  if (chargeWaterAvailability == "available") {
+    waterAvailability = ""
+  } else {
+    waterAvailability = "restricted"
+  }
+  console.log(chargeLoss, chargeSource, chargeQuantity, chargeWaterAvailability, chargeWaterRestrictions)
+  //find the charge catergory
+  for (chargeCategory of chargeCategories) {
+    if ((chargeSource == chargeCategory.source) & (chargeLoss == chargeCategory.loss)  & (parseInt(chargeQuantity) >= chargeCategory.minVolume) & (parseInt(chargeQuantity) <= chargeCategory.maxVolume) & (waterAvailability == chargeCategory.restriction) & (waterModel == chargeCategory.model)) {
+    req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeRefNumber = chargeCategory.chargeNumber
+    req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeDescription = chargeCategory.chargeDescription
+    chargeRefNumber = chargeCategory.chargeNumber
+    chargeDescription = chargeCategory.chargeDescription
+      console.log("exact match")
+  }
+  };
+
+  //If there are no category matches search through the categories without the restriction/availability variable
+  if (chargeRefNumber == "3.20.23") {
+    console.log("no initial match")
+  for (chargeCategory of chargeCategories) {
+  if ((chargeSource == chargeCategory.source) & (chargeLoss == chargeCategory.loss) & (parseInt(chargeQuantity) >= chargeCategory.minVolume) & (parseInt(chargeQuantity) <= chargeCategory.maxVolume) & (waterModel == chargeCategory.model))
+  {
+    console.log("secondary match")
+    req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeRefNumber = chargeCategory.chargeNumber
+    req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeDescription = chargeCategory.chargeDescription
+    chargeRefNumber = chargeCategory.chargeNumber
+    chargeDescription = chargeCategory.chargeDescription
+  }
+  };
+}
+
+}
+
+///update charge reference
 function updateAdditionalCharges(req, res) {
 
   //delete the object in the array
@@ -164,9 +264,7 @@ function updateAdditionalCharges(req, res) {
 
 
 
-
-
-/// Enter a description for the charge reference
+/// Select which elements are part of the charge reference
 router.get('/create-charge-information/charge-reference/which-elements', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'create-charge-information/charge-reference/which-elements');
@@ -230,6 +328,7 @@ router.post('/create-charge-information/charge-reference/select-source', functio
     let elementNumber = req.session.data.elementNumber
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeSource = req.session.data.chargeSource
     req.session.data.change = false
+    updateChargeReference(req, res)
     res.redirect('../charge-data-check');
   } else {
     res.redirect('select-loss');
@@ -249,6 +348,7 @@ router.post('/create-charge-information/charge-reference/select-loss', function(
     let elementNumber = req.session.data.elementNumber
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeLoss = req.session.data.chargeLoss
     req.session.data.change = false
+    updateChargeReference(req, res)
     res.redirect('../charge-data-check');
   } else {
     res.redirect('enter-quantity');
@@ -268,6 +368,7 @@ router.post('/create-charge-information/charge-reference/enter-quantity', functi
     let elementNumber = req.session.data.elementNumber
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeQuantity = req.session.data.chargeQuantity
     req.session.data.change = false
+    updateChargeReference(req, res)
     res.redirect('../charge-data-check');
   } else {
       res.redirect('water-availability');
@@ -288,6 +389,7 @@ router.post('/create-charge-information/charge-reference/water-availability', fu
     let elementNumber = req.session.data.elementNumber
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterAvailability = req.session.data.chargeWaterAvailability
     req.session.data.change = false
+    updateChargeReference(req, res)
     res.redirect('../charge-data-check');
   } else {
       res.redirect('water-restrictions');
@@ -307,6 +409,7 @@ router.post('/create-charge-information/charge-reference/water-restrictions', fu
     let elementNumber = req.session.data.elementNumber
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
     req.session.data.change = false
+    updateChargeReference(req, res)
     res.redirect('../charge-data-check');
   } else {
       res.redirect('additional-charges');
