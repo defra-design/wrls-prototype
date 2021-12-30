@@ -66,10 +66,18 @@
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence 03/28/60/0032</span> {{title}}</h1>
 <p class="govuk-body ">
   {% set status = data.chargeVersions[data.chargeInfoNumber].chargeStatus %}
+  {% if status == "CHANGES" %}
     {{govukTag({
 text: status | chargeStatusText |safe,
 classes: status | chargeStatusColour + ' govuk-!-font-size-27'
-})}} </p>
+})}}
+{% else %}
+{{govukTag({
+text: "NOT APPROVED" | chargeStatusText |safe,
+classes: "NOT APPROVED" | chargeStatusColour + ' govuk-!-font-size-27'
+})}}
+{% endif %}
+</p>
 
 <!--comments from billing and data-->
 {% if ([data.chargeInfoNumber] == "0") and ([data.requestChanges].length) and ([data.chargeVersions[data.chargeInfoNumber].chargeStatus] == "CHANGES") or ([data.chargeVersions[data.chargeInfoNumber].chargeStatus] == "NOT APPROVED") and ([data.changesMade] == "true") %}
