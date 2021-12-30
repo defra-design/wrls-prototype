@@ -2,13 +2,6 @@
 
 <section class="govuk-!-margin-bottom-7">
 
-  {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-
-  {% set monthNumber = data['chargeStart-month'] | default("4") %}
-
-  {% set month = monthNames[monthNumber - 1] %}
-
-  {% set chargeStart = data['chargeStart-day'] | default("22") + " " + month +" "+ data['chargeStart-year'] | default("2019")%}
 
 
   {% set invoiceAddress %}
@@ -24,18 +17,6 @@
   {% endset %}
 
 
-
-   {% set y = data['chargeStart-year'] | int %}
-   {% set m = data['chargeStart-month'] | int %}
-   {% set d = data['chargeStart-day'] | int %}
-   {% set date = y + m + d %}
-   {% if [data.chargeVersions[0].chargeStatus] == "NOT APPROVED" %}
-   {% elif date < 2020 %}
-  {{ govukWarningText({
-    text: "You've entered a start date that will make older charge information invalid.",
-    iconFallbackText: "Warning"
-  }) }}
-  {% endif%}
 
 
 
@@ -65,7 +46,7 @@ rows: [
       text: "Start date"
     },
     value: {
-      text: [chargeStart]
+      text: "1 April 2022"
     },
     actions: {
       items: [

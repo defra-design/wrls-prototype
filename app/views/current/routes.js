@@ -62,7 +62,13 @@ router.post('/bd/charges-2020/charge-version/set-charge-start-date', function(re
 
   //setting the date of charge start incorporating the radio buttons
   let chargeDateConditional = req.session.data['chargeDateConditional'];
-  if (chargeDateConditional != "other") {
+  if (chargeDateConditional == "licenceStart") {
+    req.session.data['chargeStart-day'] = 1
+    req.session.data['chargeStart-month'] = 4
+    req.session.data['chargeStart-year'] = 2022
+  }
+
+  else if (chargeDateConditional != "other") {
 
     let d = new Date();
     let m = new Date();
@@ -444,6 +450,11 @@ router.post('/bd/charges-2020/add-loss', function(req, res) {
 
   let change = req.session.data['change']
   let chargeStatus = req.session.data.chargeVersions[0]['chargeStatus']
+  let sroc = req.session.data['sroc']
+
+  if (sroc == "true") {
+    res.redirect('/bd/iterations/sroc/create-charge-information/charge-data-check?change=false');
+  } else {
 
   if (change == "true") {
     req.session.data.change = "false"
@@ -453,6 +464,8 @@ router.post('/bd/charges-2020/add-loss', function(req, res) {
     res.redirect('/bd/charges-2020/charge-version/charge-data-check?change=false');
   } else {
     res.redirect('/bd/charges-2020/charge-version?chargeInfoNumber=0&change=false');
+  }
+
   }
 
 });

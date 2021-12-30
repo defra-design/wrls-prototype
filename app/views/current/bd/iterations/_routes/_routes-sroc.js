@@ -222,7 +222,6 @@ function updateChargeReference(req, res) {
   } else {
     waterAvailability = "restricted"
   }
-  console.log(chargeLoss, chargeSource, chargeQuantity, chargeWaterAvailability, chargeWaterRestrictions)
   //find the charge catergory
   for (chargeCategory of chargeCategories) {
     if ((chargeSource == chargeCategory.source) & (chargeLoss == chargeCategory.loss)  & (parseInt(chargeQuantity) >= chargeCategory.minVolume) & (parseInt(chargeQuantity) <= chargeCategory.maxVolume) & (waterAvailability == chargeCategory.restriction) & (waterModel == chargeCategory.model)) {
@@ -230,17 +229,14 @@ function updateChargeReference(req, res) {
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeDescription = chargeCategory.chargeDescription
     chargeRefNumber = chargeCategory.chargeNumber
     chargeDescription = chargeCategory.chargeDescription
-      console.log("exact match")
   }
   };
 
   //If there are no category matches search through the categories without the restriction/availability variable
   if (chargeRefNumber == "3.20.23") {
-    console.log("no initial match")
   for (chargeCategory of chargeCategories) {
   if ((chargeSource == chargeCategory.source) & (chargeLoss == chargeCategory.loss) & (parseInt(chargeQuantity) >= chargeCategory.minVolume) & (parseInt(chargeQuantity) <= chargeCategory.maxVolume) & (waterModel == chargeCategory.model))
   {
-    console.log("secondary match")
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeRefNumber = chargeCategory.chargeNumber
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeDescription = chargeCategory.chargeDescription
     chargeRefNumber = chargeCategory.chargeNumber
@@ -603,12 +599,10 @@ router.post('/create-charge-information/charge-reference/which-adjustments', fun
     req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].adjustments = req.session.data.adjustments
 
     if (req.session.data.adjustments.includes("aggregate")) {
-      console.log(req.session.data.aggregateFactor);
        req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].aggregateFactor = req.session.data.aggregateFactor
     }
 
     if (req.session.data.adjustments.includes("charge adjustment")) {
-      console.log(req.session.data.chargeAdjustmentFactor);
          req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeAdjustmentFactor = req.session.data.chargeAdjustmentFactor
     }
     req.session.data.change = false
@@ -629,6 +623,75 @@ router.post('/create-charge-information/charge-reference/add-a-note', function(r
 
     res.redirect('../charge-data-check');
 
+});
+
+
+
+////CHARGE DATA CONFIRMED
+//Charge data check
+router.post('/create-charge-information/charge-data-check', function(req, res) {
+
+
+  req.session.data.chargeVersions[0]['chargeStatus'] = "NOT APPROVED"
+  //reset all the completed flags for the task list
+  req.session.data['reasonNewSet'] = "false"
+  req.session.data['chargeStartSet'] = "false"
+  req.session.data['elementNew'] = "false"
+  req.session.data['createNewContact'] = "false"
+  req.session.data['existingContact'] = "false"
+
+  req.session.data['sroc'] = "true"
+  res.redirect('/bd/charges-2020/charge-version/charge-data-confirmation');
+
+});
+
+
+///chargeVersions - approve or request changes
+router.post('/create-charge-information/charge-version', function(req, res) {
+
+  const approve = req.session.data['approve-charge-information']
+
+  if (approve === 'approve') {
+    req.session.data['changesMade'] = "false"
+    req.session.data.suppBilling = "true"
+    res.redirect('/bd/charges-2020/confirm-approve-charge-information')
+  } else {
+    res.redirect('/bd/charges-2020/confirm-request-changes')
+  }
+
+});
+
+
+///////////CHARGE INFORMATION NOT APPROVED REASON
+router.post('/bd/charges-2020/request-changes', function(req, res) {
+
+  res.redirect('/bd/charges-2020/confirm-request-changes');
+
+});
+
+///////////CHARGE INFORMATION NOT APPROVED CONFIRMATION
+router.post('/bd/charges-2020/confirm-request-changes', function(req, res) {
+
+  //update the element status
+  req.session.data.chargeVersions[0]['chargeStatus'] = "CHANGES"
+
+  res.redirect('/bd/licence-summary#charge');
+
+});
+
+
+
+//REMOVE CHARGE VERSION
+router.post('/bd/charges-2020/charge-version/confirm-remove-charge-information', function(req, res) {
+
+
+  let chargeVersions = req.session.data['chargeVersions']
+
+  chargeVersions.splice(0, 1);
+  req.session.data['chargeVersions'] = chargeVersions
+
+
+  res.redirect('/bd/licence-summary#charge');
 });
 
 /// Reason for adjustments - No longer needed

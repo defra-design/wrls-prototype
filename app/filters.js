@@ -179,7 +179,7 @@ filters.numberToGovukDate = function(x) {
   //set text for status "| chargeStatusText"
   filters.chargeStatusText = function(e) {
     if (e == "CHANGES") {
-      return "CHANGE <br>REQUEST"
+      return "CHANGE<br>REQUEST"
     } else if (e == "INVALID") {
       return "INVALID"
     } else if (e == "NOT APPROVED") {

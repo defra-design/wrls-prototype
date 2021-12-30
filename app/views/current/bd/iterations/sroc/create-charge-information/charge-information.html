@@ -32,8 +32,13 @@
 <div class="govuk-!-margin-bottom-9">
   <!-- navigation block -->
   {% include "current/includes/nav/nav-bd-view.html" %}
-</div>
 
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+</div>
 
 {% endblock %}
 
@@ -65,19 +70,11 @@
 
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence 03/28/60/0032</span> {{title}}</h1>
 <p class="govuk-body ">
-  {% set status = data.chargeVersions[data.chargeInfoNumber].chargeStatus %}
+  {% set status = "active"%}
     {{govukTag({
-text: status | chargeStatusText |safe,
-classes: status | chargeStatusColour + ' govuk-!-font-size-27'
+text: status,
+classes: status | tagColour + ' govuk-!-font-size-27'
 })}} </p>
-
-<!--comments from billing and data-->
-{% if ([data.chargeInfoNumber] == "0") and ([data.requestChanges].length) and ([data.chargeVersions[data.chargeInfoNumber].chargeStatus] == "CHANGES") or ([data.chargeVersions[data.chargeInfoNumber].chargeStatus] == "NOT APPROVED") and ([data.changesMade] == "true") %}
-<h2 class="govuk-heading-m">
-  Change request
-</h2>
-<p class="govuk-body govuk-!-margin-bottom-9">{{data['requestChanges'] | default("Please change the purpose to Spray")}}</p>
-{% endif %}
 
   </div>
 </div>
@@ -88,14 +85,14 @@ classes: status | chargeStatusColour + ' govuk-!-font-size-27'
     <form method="post" class="form" id="charge-information">
 
 <hr class="govuk-section-break ">
-      {% include "current/bd/iterations/_includes/reason-new-charge.html" %}
+      {% include "current/bd/iterations/_includes/reason-new-charge-no-change.html" %}
 
       <hr class="govuk-section-break ">
-            {% include "current/bd/iterations/_includes/notes.html" %}
+            {% include "current/bd/iterations/_includes/notes-no-change.html" %}
 
 
 <hr class="govuk-section-break govuk-section-break govuk-section-break--m">
-      {% include "current/bd/iterations/_includes/elements-change.html" %}
+      {% include "current/bd/iterations/_includes/elements-no-change.html" %}
 
 
 
