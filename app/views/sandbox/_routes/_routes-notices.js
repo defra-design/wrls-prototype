@@ -989,6 +989,8 @@ router.post('/notification-report/apply-filters', function(req, res) {
     req.session.data.sentBy = ""
     req.session.data.filteredResults = ""
     req.session.data.openDetails = true
+    //reset the table caption if the list is cleared
+    req.session.data.filterCaption = "Showing all sent notices."
 //    req.session.data.focus="alert"
 
   } else {
@@ -1009,7 +1011,7 @@ let typeFilters = ""
  }
 
  if (typeof typeFilters.length) {
-   filteredResults = notifications.filter(el => ( typeFilters.indexOf(el.notification) >= 0 ))
+   filteredResults = notifications.filter(el => ( typeFilters.indexOf(el.type) >= 0 ))
  }
 
 
@@ -1038,6 +1040,26 @@ let typeFilters = ""
 req.session.data.openDetails = true
 //req.session.data.focus="alert"
 
+//Create a list formatter
+const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
+//Create the list depending on what filters are selected
+let list = []
+if (typeFilters.length && sentByFilter.length) {
+list = typeFilters
+list.push(sentByFilter)
+} else if (sentByFilter.length){
+list.push(sentByFilter)
+} else if (typeFilters.length){
+  list = typeFilters
+}
+
+//set the dynamic caption for the table
+if (list.length) {
+req.session.data.filterCaption = "Showing sent notices filtered by " + formatter.format(list) + "."
+} else {
+  req.session.data.filterCaption = "Showing all sent notices."
+}
 
 req.session.data.filteredResults = filteredResults
 
@@ -1054,7 +1076,8 @@ req.session.data.filteredResults = filteredResults
 router.post('/notification-report/clear-filters', function(req, res) {
 
 
-
+  //reset the table caption if the list is cleared
+  req.session.data.filterCaption = "Showing all sent notices."
 
   res.redirect('../notification-report#focus');
 });

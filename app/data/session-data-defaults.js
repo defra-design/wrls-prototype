@@ -1312,10 +1312,14 @@ module.exports = {
     //sortby
     "sort": "dateDescending",
 
+    //filtercaption default
+    "filterCaption": "Showing all sent notices.",
+
     //Notification report
     "notifications": [{
                         "date": "20201222",
                         "notification": "Returns: reminder",
+                        "type": "returns",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1329,6 +1333,7 @@ module.exports = {
                       {
                         "date": "20201217",
                         "notification": "Returns: send paper forms",
+                        "type": "returns",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1342,6 +1347,7 @@ module.exports = {
                       {
                         "date": "20201201",
                         "notification": "Returns: send paper forms",
+                        "type": "returns",
                         "sentBy": "rachel.pilkns@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1355,6 +1361,7 @@ module.exports = {
                       {
                         "date": "20201125",
                         "notification": "Returns: send paper forms",
+                        "type": "returns",
                         "sentBy": "jim.pearce@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1369,6 +1376,7 @@ module.exports = {
                       {
                         "date": "20201121",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "ralph.biddwell@defra.gov.uk",
                         "numberOfrecipients": "5",
                         "recipients": [{
@@ -1382,6 +1390,7 @@ module.exports = {
                       {
                         "date": "20201119",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1395,6 +1404,7 @@ module.exports = {
                       {
                         "date": "20201115",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1408,6 +1418,7 @@ module.exports = {
                       {
                         "date": "20201110",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1421,6 +1432,7 @@ module.exports = {
                       {
                         "date": "20201101",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1434,6 +1446,7 @@ module.exports = {
                       {
                         "date": "20201031",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1447,6 +1460,7 @@ module.exports = {
                       {
                         "date": "20201030",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1460,6 +1474,7 @@ module.exports = {
                       {
                         "date": "20201017",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1473,6 +1488,7 @@ module.exports = {
                       {
                         "date": "20201015",
                         "notification": "Expiring licence(s): invitation to renew",
+                        "type": "renewals",
                         "sentBy": "tim.teace@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1486,6 +1502,7 @@ module.exports = {
                       {
                         "date": "20201007",
                         "notification": "Returns: send paper forms",
+                        "type": "returns",
                         "sentBy": "rachel.pilkns@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1499,6 +1516,7 @@ module.exports = {
                       {
                         "date": "20201006",
                         "notification": "Returns: send paper forms",
+                        "type": "returns",
                         "sentBy": "rachel.pilkns@defra.gov.uk",
                         "numberOfrecipients": "1",
                         "recipients": [{
@@ -1512,6 +1530,7 @@ module.exports = {
                         {
                           "date": "20201005",
                           "notification": "Returns: send paper forms",
+                          "type": "returns",
                           "sentBy": "rachel.pilkns@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1525,6 +1544,7 @@ module.exports = {
                         {
                           "date": "20201004",
                           "notification": "Returns: send paper forms",
+                          "type": "returns",
                           "sentBy": "rachel.pilkns@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1538,6 +1558,7 @@ module.exports = {
                         {
                           "date": "20200930",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1551,6 +1572,7 @@ module.exports = {
                         {
                           "date": "20200929",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1564,6 +1586,7 @@ module.exports = {
                         {
                           "date": "20200928",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1577,6 +1600,7 @@ module.exports = {
                         {
                           "date": "20200927",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1590,6 +1614,7 @@ module.exports = {
                         {
                           "date": "20200926",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1603,6 +1628,7 @@ module.exports = {
                         {
                           "date": "20200926",
                           "notification": "Hands off flow: resume abstraction",
+                          "type": "hands off flow notices",
                           "sentBy": "jim.pearce@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1616,6 +1642,7 @@ module.exports = {
                         {
                           "date": "20200920",
                           "notification": "Hands off flow: stop or reduce abstraction",
+                          "type": "hands off flow notices",
                           "sentBy": "jim.pearce@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1629,6 +1656,7 @@ module.exports = {
                         {
                           "date": "20200919",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1642,6 +1670,7 @@ module.exports = {
                         {
                           "date": "20200915",
                           "notification": "Hands off flow: stop or reduce abstraction",
+                          "type": "hands off flow notices",
                           "sentBy": "jim.pearce@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1655,6 +1684,7 @@ module.exports = {
                         {
                           "date": "20200914",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1668,6 +1698,7 @@ module.exports = {
                         {
                           "date": "20200912",
                           "notification": "Returns: reminder",
+                          "type": "returns",
                           "sentBy": "tim.teace@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1681,6 +1712,7 @@ module.exports = {
                         {
                           "date": "20200904",
                           "notification": "Returns: send paper forms",
+                          "type": "returns",
                           "sentBy": "rachel.pilkns@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1694,6 +1726,7 @@ module.exports = {
                         {
                           "date": "20200901",
                           "notification": "Hands off flow: levels warning",
+                          "type": "hands off flow notices",
                           "sentBy": "jim.pearce@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{
@@ -1707,6 +1740,7 @@ module.exports = {
                         {
                           "date": "20200831",
                           "notification": "Returns: invitation",
+                          "type": "returns",
                           "sentBy": "jim.pearce@defra.gov.uk",
                           "numberOfrecipients": "1",
                           "recipients": [{

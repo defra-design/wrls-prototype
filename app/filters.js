@@ -91,7 +91,10 @@ filters.numberToGovukDate = function(x) {
 
 
 
-
+//filter focus " | focus" //can't focus a string
+filters.focus = function(x) {
+  return x.focus()
+}
 
 
 //filter to remove duplicates from an array " | unique"
