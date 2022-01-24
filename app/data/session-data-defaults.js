@@ -91,6 +91,7 @@ module.exports = {
       "agreementEndMonth": "",
       "agreementEndYear": "",
     }],
+    "srocAgreements": [],
     "chargeStart": "1 April 2020",
     "createNewContact": "false",
     "chargeStartSet": "false",

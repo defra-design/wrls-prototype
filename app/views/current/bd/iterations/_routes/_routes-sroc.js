@@ -723,4 +723,132 @@ router.post('/create-charge-information/charge-reference/adjustment-reason', fun
 });
 */
 
+
+//---------------------------------------------------------------------------
+
+// CREATE AN AGGREEMENT //
+
+
+/// Select Aggressment
+router.get('/create-charge-information/create-an-agreement', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/create-an-agreement/select-agreement');
+});
+
+router.post('/create-charge-information/create-an-agreement/select-agreement', function(req, res) {
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+    req.session.data['change'] = "false"
+    res.redirect('check-your-answers');
+  } else {
+    res.redirect('agreement-signed-date');
+  }
+});
+
+/// Add a signed date
+router.get('/create-charge-information/agreement-signed-date', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/create-an-agreement/agreement-signed-date');
+});
+
+router.post('/create-charge-information/create-an-agreement/agreement-signed-date', function(req, res) {
+
+    res.redirect('check-your-answers');
+});
+
+/// Check your answers
+router.get('/create-charge-information/check-your-answers', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/create-an-agreement/check-your-answers');
+});
+
+router.post('/create-charge-information/create-an-agreement/check-your-answers', function(req, res) {
+  let agreementNumber = req.session.data['agreementNumber']
+
+  console.log(agreementNumber)
+  if(agreementNumber == undefined) {
+
+  let agreement = req.session.data['srocAgreement']
+  let agreementSignedStartDay = ""
+  let agreementSignedStartMonth = ""
+  let agreementSignedStartYear = ""
+  let agreementSignedDate = ""
+  let agreementSignedDateConditional = req.session.data['srocAgreementSignedDateConditional']
+
+  if (agreementSignedDateConditional == "no" ){
+    agreementSignedDate = "Not known"
+  } else {
+    agreementSignedStartDay = req.session.data['srocAgreementSignedStart-day']
+    agreementSignedStartMonth = req.session.data['srocAgreementSignedStart-month']
+    agreementSignedStartYear = req.session.data['srocAgreementSignedStart-year']
+    agreementSignedDate = agreementSignedStartYear + (agreementSignedStartMonth.padStart(2, '0')) + (agreementSignedStartDay.padStart(2, '0'))
+    parseInt(agreementSignedDate)
+  }
+
+
+  let newsrocAgreement = {
+
+    agreement,
+    agreementSignedStartDay,
+    agreementSignedStartMonth,
+    agreementSignedStartYear,
+    agreementSignedDate,
+    agreementSignedDateConditional
+
+  };
+
+  //push agreement data
+  req.session.data.srocAgreements.push(newsrocAgreement);
+
+  }
+    else  {
+
+    req.session.data.srocAgreements[agreementNumber].agreement = req.session.data['srocAgreement']
+    req.session.data.srocAgreements[agreementNumber].agreementSignedDateConditional = req.session.data['srocAgreementSignedDateConditional']
+
+    if (req.session.data['srocAgreementSignedDateConditional'] == "no") {
+      req.session.data.srocAgreements[agreementNumber].agreementSignedDate = "Not known"
+      req.session.data.srocAgreements[agreementNumber].agreementSignedStartDay = ""
+      req.session.data.srocAgreements[agreementNumber].agreementSignedStartMonth = ""
+      req.session.data.srocAgreements[agreementNumber].agreementSignedStartYear = ""
+    } else {
+
+      req.session.data.srocAgreements[agreementNumber].agreementSignedStartDay = req.session.data['srocAgreementSignedStart-day']
+      req.session.data.srocAgreements[agreementNumber].agreementSignedStartMonth = req.session.data['srocAgreementSignedStart-month']
+      req.session.data.srocAgreements[agreementNumber].agreementSignedStartYear = req.session.data['srocAgreementSignedStart-year']
+      req.session.data.srocAgreements[agreementNumber].agreementSignedDate = req.session.data['srocAgreementSignedStart-year'] + (req.session.data['srocAgreementSignedStart-month'].padStart(2, '0')) + (req.session.data['srocAgreementSignedStart-day'].padStart(2, '0'))
+      parseInt(req.session.data.srocAgreements[agreementNumber].agreementSignedDate)
+    }
+    }
+
+
+
+  //blank the session data from the flow, once the agreement object has been created
+  req.session.data['srocAgreement'] = ""
+  req.session.data['srocAgreementSignedDateConditional'] = ""
+  req.session.data['srocAgreementSignedStart-day'] = ""
+  req.session.data['srocAgreementSignedStart-month'] = ""
+  req.session.data['srocAgreementSignedStart-year'] = ""
+  req.session.data['agreementNumber'] = undefined
+
+
+
+  res.redirect('../charge-data-check');
+});
+
+
+//Remove an agreement
+router.get('/create-charge-information/remove-agreement-date', function(req, res) {
+
+  let agreements = req.session.data['srocAgreements']
+  let agreementNumber = req.session.data['agreementNumber']
+  agreements.splice(agreementNumber, 1);
+  req.session.data['srocAgreements'] = agreements
+
+  res.render(folder + 'create-charge-information/charge-data-check');
+});
+
+
+
 module.exports = router
