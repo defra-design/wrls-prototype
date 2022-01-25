@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = "Upload charge information" %}
+{% set title = "Uploading " + data['fileUpload'] %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -12,6 +12,8 @@
 <!--header without searchbar-->
 {% include "sandbox/_includes/nav/header.html" %}
 
+{% endblock %}
+{% block breadcrumbs %}
 {% endblock %}
 
 <!--content block-->
@@ -29,31 +31,23 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body-l govuk-!-margin-bottom-6">
-        File uploading
+     please wait...
           </p>
-      
+
         <div class="spinner"></div>
 
-      
-    
+
+
   <!--some content here-->
 
   </div>
 </div>
 
 
-</main>
 
-</div>
-
-{% if data.suppBilling == "true" %}
-<!--<script language="javascript" type="text/javascript">
-    window.setTimeout('location.replace("../iterations/manual-billing/bill-run/review")',4000);
-</script>
-{% else %}-->
  <script language="javascript" type="text/javascript">
-     window.setTimeout('location.replace("upload-charge-information-success")',4000);
+     window.setTimeout('location.replace("upload-charge-information")',4000);
  </script>
- {% endif %}
+
 
 {% endblock %}
