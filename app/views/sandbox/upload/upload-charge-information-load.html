@@ -28,24 +28,14 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-   
-      <p class="govuk-body-l govuk-!-margin-bottom-6">
-        Use a .csv file under 5mb to upload.
+    <p class="govuk-body-l govuk-!-margin-bottom-6">
+        File uploading
           </p>
-    {{ govukFileUpload({
-      id: "file-upload-1",
-      name: "file-upload-1",
-      label: {
-        text: ""
-      }
-    }) }}
-    <form  action="upload-charge-information-load" method="post" novalidate>
-    {{ govukButton({
-      text: "Upload",
-      href: upload-charge-information-load.html
-    }) }}
+      
+        <div class="spinner"></div>
 
-    </form>
+      
+    
   <!--some content here-->
 
   </div>
@@ -55,4 +45,15 @@
 </main>
 
 </div>
+
+{% if data.suppBilling == "true" %}
+<!--<script language="javascript" type="text/javascript">
+    window.setTimeout('location.replace("../iterations/manual-billing/bill-run/review")',4000);
+</script>
+{% else %}-->
+ <script language="javascript" type="text/javascript">
+     window.setTimeout('location.replace("upload-charge-information-success")',4000);
+ </script>
+ {% endif %}
+
 {% endblock %}

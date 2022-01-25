@@ -16,6 +16,17 @@ res.redirect('/sandbox/');
 
 });
 
+//UPLOAD CHARGE INFORMATION
+//router.post('sandbox/upload/upload-charge-information-load', function(req, res) {
+
+ // res.redirect('sandbox/upload/upload-charge-information-load');
+
+//});
+
+
+
+
+
 ////SEARCH RESULTS
 router.get('/search', function(req, res) {
 
@@ -86,9 +97,6 @@ router.use('/customer', require('./_routes-customer'));
 //CREATE BILL RUN
 
 router.use('/bill-runs', require('./_routes-bill-runs'));
-
-
-
 
 
 module.exports = router
