@@ -1,0 +1,53 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Uploading " + data['fileUpload'] %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+
+<!--header without searchbar-->
+{% include "sandbox/_includes/nav/header.html" %}
+
+{% endblock %}
+{% block breadcrumbs %}
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body-l govuk-!-margin-bottom-6">
+     please wait...
+          </p>
+
+        <div class="spinner"></div>
+
+
+
+  <!--some content here-->
+
+  </div>
+</div>
+
+
+
+ <script language="javascript" type="text/javascript">
+     window.setTimeout('location.replace("upload-charge-information")',4000);
+ </script>
+
+
+{% endblock %}

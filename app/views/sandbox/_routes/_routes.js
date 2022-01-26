@@ -16,6 +16,17 @@ res.redirect('/sandbox/');
 
 });
 
+//UPLOAD CHARGE INFORMATION
+//router.post('sandbox/upload/upload-charge-information-load', function(req, res) {
+
+ // res.redirect('sandbox/upload/upload-charge-information-load');
+
+//});
+
+
+
+
+
 ////SEARCH RESULTS
 router.get('/search', function(req, res) {
 
@@ -88,7 +99,34 @@ router.use('/customer', require('./_routes-customer'));
 router.use('/bill-runs', require('./_routes-bill-runs'));
 
 
+//----------------------------------------------------------------
+////UPLOAD CHARGE INFORMATION
+router.get('/upload/upload-charge-information', function(req, res) {
 
+  //blank banner on refresh
+  req.session.data.banner = ""
+
+  res.render('sandbox/upload/upload-charge-information');
+});
+
+
+router.post('/upload/upload-charge-information', function(req, res) {
+
+  //set upload route
+  let route = req.session.data['uploadRoute']
+
+  //check which route for upload
+  if (route == "error") {
+    req.session.data.banner = "error"
+  } else if  (route == "inlineError") {
+    req.session.data.banner = "inlineError"
+    res.redirect('upload-charge-information');
+  } else if (route == "success") {
+    req.session.data.banner = "success"
+  }
+
+  res.redirect('upload-charge-information-load');
+});
 
 
 module.exports = router
