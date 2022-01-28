@@ -121,7 +121,7 @@ router.post('/upload/upload-charge-information', function(req, res) {
   } else if  (route == "inlineError") {
     req.session.data.banner = "inlineError"
     res.redirect('upload-charge-information');
-  } else if (route == "success") {
+  } else  {
     req.session.data.banner = "success"
   }
 
