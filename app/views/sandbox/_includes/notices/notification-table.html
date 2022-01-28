@@ -232,9 +232,9 @@
    </form>
     {% endif %} #}
 -->
-
-<table class="govuk-table" style="{{data['fixTableWidth']}}">
-  <caption class="govuk-table__caption govuk-table__caption--s govuk-!-margin-bottom-3 govuk-!-font-weight-regular" id="focus" ><!--<div class="govuk-!-margin-bottom-3"> View sent notices </div>-->{{data.filterCaption}}
+<div role="region" aria-labelledby="caption" id="focus" tabindex="0">
+<table  class="govuk-table" style="{{data['fixTableWidth']}}">
+  <caption class="govuk-table__caption govuk-table__caption--s govuk-!-margin-bottom-3 govuk-!-font-weight-regular" id="caption" ><!--<div class="govuk-!-margin-bottom-3"> View sent notices </div>-->{{data.filterCaption}}
   </caption>
   <thead class="govuk-table__head" >
     <tr class="govuk-table__row" >
@@ -292,7 +292,7 @@
    {% for i in notifications | sort(reverseOrder, false, sortBy) %}
    <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{i.date | numberToGovukDate}}</td>
-    <td class="govuk-table__cell"><a href="/sandbox/licence-notices/recipient-report?notificationIndex={{loop.index0}}" class="govuk-link"><span class="govuk-visually-hidden"> View recipients report for </span>{{i.notification |capitalize}}<span class="govuk-visually-hidden">, sent by {{i.sentBy}}, on {{i.date | numberToGovukDate}} </span> </a></td>
+    <td class="govuk-table__cell"><a href="/sandbox/licence-notices/recipient-report?notificationIndex={{loop.index0}}" class="govuk-link">{{i.notification |capitalize}}<span class="govuk-visually-hidden">, sent by {{i.sentBy}}, on {{i.date | numberToGovukDate}} </span> </a></td>
     <td class="govuk-table__cell">{{i.sentBy}}</td>
     <td class="govuk-table__cell govuk-table__cell--numeric">{{i.numberOfrecipients}}</td>
     <td class="govuk-table__cell govuk-table__cell--numeric">{{i.problems}}</td>
@@ -302,6 +302,7 @@
 
   </tbody>
 </table>
+</div>
 
 </div>
 </div>
