@@ -88,7 +88,21 @@
   }) }}
   {% endset -%}
 
-
+  {% set abatementFactorHtml %}
+  {{ govukInput({
+    label: {
+      text: "Abatement factor"
+    },
+  hint: {
+      text: "If a licence is abated by 70% it will have an abatement factor of 0.3"
+    },
+    classes: "govuk-input--width-4",
+    id: "abatementFactor",
+    name: "abatementFactor",
+    spellcheck: false,
+    value: data.chargeReferences[index].abatementFactor
+  }) }}
+  {% endset -%}
 
           {{ govukCheckboxes({
           idPrefix: "adjustments",
@@ -110,9 +124,6 @@
               checked: checked("chargeReferences["+ index +"].adjustments", "aggregate"),
               conditional: {
                   html: aggregateFactorHtml
-                },
-              hint: {
-                  text: "Licence to licence"
                 }
             },
             {
@@ -136,7 +147,10 @@
             {
               value: "abatement agreement applies",
               text: "Abatement agreement applies",
-              checked: checked("chargeReferences["+ index +"].adjustments", "abatement agreement applies")
+              checked: checked("chargeReferences["+ index +"].adjustments", "abatement agreement applies"),
+              conditional: {
+                  html: abatementFactorHtml
+                }
             },
             {
               value: "canal and river trust agreement applies",

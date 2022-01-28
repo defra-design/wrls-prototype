@@ -152,6 +152,10 @@ function createCharge(req, res) {
   if (adjustments.includes("charge adjustment")) {
        chargeAdjustmentFactor = req.session.data.chargeAdjustmentFactor
   }
+  let abatementFactor = ""
+  if (adjustments.includes("abatement agreement applies")) {
+       abatementFactor = req.session.data.abatementFactor
+  }
 
 
   let newChargeReference = {
@@ -175,6 +179,7 @@ function createCharge(req, res) {
     adjustments,
     aggregateFactor,
     chargeAdjustmentFactor,
+    abatementFactor,
 
   };
 
