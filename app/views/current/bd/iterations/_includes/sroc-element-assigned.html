@@ -31,7 +31,7 @@
                <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[elementIndex]|int + 1}}</span>{{[elements[elementIndex].purpose]}}, {{[elements[elementIndex].description]}}</h2>
 
                 {{ govukSummaryList({
-                  classes: 'govuk-!-margin-bottom-2',
+                  classes: 'govuk-!-margin-bottom-6',
                 rows: [
 
                   {
@@ -129,42 +129,7 @@
                   },
 
 
-                  {
-                    classes: 'govuk-summary-list__row--no-border',
-                    key: {
-                      text: "Source"
-                    },
-                    value: {
-                      text: [elements[elementIndex].source]
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "/bd/charges-2020/add-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                          text: "Change",
-                          visuallyHiddenText: "Source"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    classes: 'govuk-summary-list__row--no-border',
-                    key: {
-                      text: "Season"
-                    },
-                    value: {
-                      text: [elements[elementIndex].season]
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "/bd/charges-2020/add-season?elementNew=false&change=true&elementNumber=" + elementNumber,
-                          text: "Change",
-                          visuallyHiddenText: "Season"
-                        }
-                      ]
-                    }
-                  },
+
                   {
                     classes: 'govuk-summary-list__row--no-border',
                     key: {
@@ -201,17 +166,7 @@
                         }
                       ]
                     }
-                  } if elements[elementIndex].agreementsApply.length ,
-                  {
-                    classes: 'govuk-summary-list__row--no-border ',
-                    key: {
-                      classes: "govuk-!-padding-bottom-6",
-                      text: "Environmental Improvement Unit Charge"
-                    },
-                    value: {
-                      text: "Other"
-                    }
-                  }
+                  } if elements[elementIndex].agreementsApply.length
 
 
                 ]

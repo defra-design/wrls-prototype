@@ -65,7 +65,7 @@
   {% set aggregateFactorHtml %}
   {{ govukInput({
     label: {
-      text: "Aggregate factor"
+      text: "Factor"
     },
     classes: "govuk-input--width-4",
     id: "aggregateFactor",
@@ -78,7 +78,7 @@
   {% set chargeAdjustmentFactorHtml %}
   {{ govukInput({
     label: {
-      text: "Charge adjustment factor"
+      text: "Factor"
     },
     classes: "govuk-input--width-4",
     id: "chargeAdjustmentFactor",
@@ -91,10 +91,10 @@
   {% set abatementFactorHtml %}
   {{ govukInput({
     label: {
-      text: "Abatement factor"
+      text: "Factor"
     },
   hint: {
-      text: "If a licence is abated by 70% it will have an abatement factor of 0.3"
+      text: "If a licence charge is reduced by 70% the abatement factor is 0.3"
     },
     classes: "govuk-input--width-4",
     id: "abatementFactor",
@@ -141,12 +141,12 @@
             },
             {
               value: "two part tariff agreement applies",
-              text: "Two part tariff agreement applies",
+              text: "Two-part tariff agreement",
               checked: checked("chargeReferences["+ index +"].adjustments", "two part tariff agreement applies")
             },
             {
               value: "abatement agreement applies",
-              text: "Abatement agreement applies",
+              text: "Abatement agreement",
               checked: checked("chargeReferences["+ index +"].adjustments", "abatement agreement applies"),
               conditional: {
                   html: abatementFactorHtml
@@ -154,7 +154,7 @@
             },
             {
               value: "canal and river trust agreement applies",
-              text: "Canal and river trust agreement applies",
+              text: "Canal and River Trust agreement",
               checked: checked("chargeReferences["+ index +"].adjustments", "canal and river trust agreement applies")
             }
 

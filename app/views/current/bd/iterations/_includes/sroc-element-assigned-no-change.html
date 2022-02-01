@@ -31,7 +31,7 @@
                <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[elementIndex]|int + 1}}</span>{{[elements[elementIndex].purpose]}}, {{[elements[elementIndex].description]}}</h2>
 
                 {{ govukSummaryList({
-                  classes: 'govuk-!-margin-bottom-2',
+                  classes: 'govuk-!-margin-bottom-6',
                 rows: [
 
                   {
@@ -84,24 +84,7 @@
                   },
 
 
-                  {
-                    classes: 'govuk-summary-list__row--no-border',
-                    key: {
-                      text: "Source"
-                    },
-                    value: {
-                      text: [elements[elementIndex].source]
-                    }
-                  },
-                  {
-                    classes: 'govuk-summary-list__row--no-border',
-                    key: {
-                      text: "Season"
-                    },
-                    value: {
-                      text: [elements[elementIndex].season]
-                    }
-                  },
+
                   {
                     classes: 'govuk-summary-list__row--no-border',
                     key: {
@@ -116,21 +99,12 @@
                     classes: 'govuk-summary-list__row--no-border',
                     key: {
                       text: "Agreements apply"
+
                     },
                     value: {
                       text: elements[elementIndex].agreementsApply | capitalize
                     }
-                  } if elements[elementIndex].agreementsApply.length ,
-                  {
-                    classes: 'govuk-summary-list__row--no-border ',
-                    key: {
-                      classes: "govuk-!-padding-bottom-6",
-                      text: "Environmental Improvement Unit Charge"
-                    },
-                    value: {
-                      text: "Other"
-                    }
-                  }
+                  } if elements[elementIndex].agreementsApply.length
 
 
                 ]
