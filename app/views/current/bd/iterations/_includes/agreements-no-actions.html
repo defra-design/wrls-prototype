@@ -1,0 +1,46 @@
+
+{% set agreementNumber = "" %}
+{% set agreements = data['srocAgreements'] %}
+{% set numberOfAgreements = agreements.length %}
+
+
+
+
+
+{% if agreements.length %}
+
+<h2 class="govuk-heading-l">Agreements</h2>
+
+<table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Agreement</th>
+      <th scope="col" class="govuk-table__header">Date signed</th>
+    <!--  <th scope="col" class="govuk-table__header govuk-table__cell--numeric">Action</th> -->
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+
+    {% for i in agreements %}
+    {% set agreementNumber = loop.index0 %}
+
+
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">{{[i.agreement]}}</td>
+      <td class="govuk-table__cell">{% if i.agreementSignedDate == "Not known"%}{{i.agreementSignedDate}}{% else %} {{i.agreementSignedDate | numberToGovukDate}} {% endif %}</td>
+    <!--     {% if [i.agreementEnded] == "true" %}
+      <td class="govuk-table__cell"></td>
+      {% else %}
+   <td class="govuk-table__cell govuk-table__cell--numeric"><a href="remove-agreement-date?agreementNumber={{agreementNumber}}">Delete</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a href="create-an-agreement/check-your-answers?agreementNumber={{agreementNumber}}&srocAgreement={{i.agreement}}&srocAgreementSignedStart-day={{i.agreementSignedStartDay}}&srocAgreementSignedStart-month={{i.agreementSignedStartMonth}}&srocAgreementSignedStart-year={{i.agreementSignedStartYear}}&srocAgreementSignedDateConditional={{i.agreementSignedDateConditional}}">Change</a></td>
+      {% endif %} -->
+    </tr>
+
+    {% endfor %}
+
+  </tbody>
+</table>
+{% else %}
+{% endif %}

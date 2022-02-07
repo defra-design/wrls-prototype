@@ -50,6 +50,12 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
+            <hr class="govuk-section-break ">
+                  {% include "current/bd/iterations/_includes/notes-no-change.html" %}
+
+                  <hr class="govuk-section-break ">
+                        {% include "current/bd/iterations/_includes/agreements-no-actions.html" %}
+
             <h2 class="govuk-heading-m" id="element{{[loop.index]}}">Element {{[loop.index]}}
           </h2>
 
@@ -130,6 +136,14 @@
                     },
                     value: {
                       text: [i.loss]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Agreements apply"
+                    },
+                    value: {
+                      text: "No"
                     }
                   },
                   {

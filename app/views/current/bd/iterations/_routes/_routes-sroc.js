@@ -643,7 +643,7 @@ router.post('/create-charge-information/charge-reference/which-adjustments', fun
 
 ///ADD A NOTE
 
-/// Enter a description for the charge reference
+/// Enter a note
 router.get('/create-charge-information/charge-reference/add-a-note', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'create-charge-information/charge-reference/add-a-note');

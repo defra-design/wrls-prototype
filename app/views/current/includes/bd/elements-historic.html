@@ -18,6 +18,12 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
+            <hr class="govuk-section-break ">
+                  {% include "current/bd/iterations/_includes/notes-no-change.html" %}
+
+                  <hr class="govuk-section-break ">
+                        {% include "current/bd/iterations/_includes/agreements-no-actions.html" %}
+
             {{ govukInsetText({
               html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-0">' +
               [i.purpose] + ', ' + [i.description] + '
@@ -103,6 +109,23 @@
             },
             value: {
               text: [i.loss]
+            }
+          },
+          {
+            key: {
+              text: "Agreements apply"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "agreements apply"
+                }
+              ]
             }
           },
           {

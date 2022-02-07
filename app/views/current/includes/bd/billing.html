@@ -132,15 +132,29 @@
         classes: "govuk-button--secondary govuk-!-margin-right-3",
         href: "/bd/charges-2020/add-reason"
       }) }}
+
+      {% if not data.suppBilling.length %}
+      {{ govukButton({
+        text: "Recalculate bills",
+        classes: "govuk-button--secondary govuk-!-margin-right-3",
+        href: "iterations/manual-billing/recalculate-bills"
+      }) }}
+          {% endif %}
+
       {% endif %}
 
 
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
+
+
+<!-- 24 Jan 2022 - Agreements moved to being inside the charge creation process
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
       {% set agreements = data['agreements'] %}
 
       <!--checking to see if this is a new licence-->
+
+      <!--
       {% if [data.newLicence] == "false" %}
       {% set agreementNumber = agreements.length %}
       {% else %}
@@ -148,6 +162,7 @@
       {% endif %}
 
       <!--displaying text if there are no agreements or the table if there are agreements in place-->
+      <!--
       {% if agreementNumber == 0 %}
       <h2 class="govuk-heading-l">
 
@@ -172,6 +187,8 @@
         <tbody class="govuk-table__body">
 
           <!--setting the number of agreements-->
+
+          <!--
           {% set numberOfAgreements = "" %}
           {% set numberOfAgreements = agreements.length %}
 
@@ -179,6 +196,8 @@
           {% set agreementNumber = loop.index0 %}
 
           <!--set last row to remove the bottom border-->
+
+          <!--
           {% if loop.index ==  numberOfAgreements %}
           {% set lastRowAgreements = "govuk-table__cell--no-border" %}
           {% endif %}
@@ -213,3 +232,5 @@
           href: "charges-2020/add-agreement",
           classes: "govuk-button--secondary"
         }) }}
+
+        -->
