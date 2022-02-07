@@ -62,7 +62,7 @@
   {# if the user is changing there answers #}
   {% if data['change'] == "true" %}
   {% set srocElements = data['srocElements'] %}
-  {# loop through the elements find the ones that are grouped together under teh same reference #}
+  {# loop through the elements find the ones that are grouped together under the same reference #}
   {% for i in srocElements %}
 
   {% if i.chargeReference == data.chargeReferenceIndex %}

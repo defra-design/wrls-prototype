@@ -97,7 +97,7 @@
                       text: "Annual quantities"
                     },
                     value: {
-                      html: [i.authorisedQuantity] + "ML authorised<br>Billable not set"
+                      html: [i.authorisedQuantity] + "ML authorised" + [i.billableQuantity]
                     },
                     actions: {
                       items: [
@@ -141,12 +141,12 @@
                       items: [
                         {
                           href: "/bd/charges-2020/add-source?elementNew=false&change=true&elementNumber=" + elementNumber,
-                          text: "Change",
+                          text: "Change" ,
                           visuallyHiddenText: "Source"
                         }
                       ]
                     }
-                  },
+                  } if i.source.length ,
                   {
                     classes: 'govuk-summary-list__row--no-border',
                     key: {
@@ -164,7 +164,7 @@
                         }
                       ]
                     }
-                  },
+                  } if i.season.length ,
                   {
                     classes: 'govuk-summary-list__row--no-border',
                     key: {
@@ -201,7 +201,7 @@
                         }
                       ]
                     }
-                  } if elementsi.agreementsApply.length ,
+                  } if i.agreementsApply.length ,
                   {
                     classes: 'govuk-summary-list__row--no-border ',
                     key: {
@@ -209,9 +209,9 @@
                       text: "Environmental Improvement Unit Charge"
                     },
                     value: {
-                      text: "Other"
+                      text: i.eiuc
                     }
-                  }
+                  } if i.eiuc.length
 
 
                 ]

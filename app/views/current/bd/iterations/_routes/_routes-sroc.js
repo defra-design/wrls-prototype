@@ -64,15 +64,35 @@ function createCharge(req, res) {
     srocElementsAssigned = [0]
     appliesTo = ["Element 1"]
     req.session.data.srocElements[0].chargeReference = chargeReferenceIndex
+
+    //blank out the fields that aren't used on SRoC assigned elements
+    req.session.data.srocElements[srocElementsAssigned].season = ""
+    req.session.data.srocElements[srocElementsAssigned].source = ""
+    req.session.data.srocElements[srocElementsAssigned].eiuc = ""
+    req.session.data.srocElements[srocElementsAssigned].billableQuantity = ""
+
 } else if (srocElementsAssigned.length == 1) {
     let elementName = "Element " + (parseInt(srocElementsAssigned) + 1)
     appliesTo.push(elementName)
     req.session.data.srocElements[(parseInt(srocElementsAssigned))].chargeReference = chargeReferenceIndex
+
+    //blank out the fields that aren't used on SRoC assigned elements
+    req.session.data.srocElements[srocElementsAssigned].season = ""
+    req.session.data.srocElements[srocElementsAssigned].source = ""
+    req.session.data.srocElements[srocElementsAssigned].eiuc = ""
+    req.session.data.srocElements[srocElementsAssigned].billableQuantity = ""
+
 } else {
   srocElementsAssigned.forEach((srocElementsAssigned, index) => {
     let elementName = "Element " + (parseInt(srocElementsAssigned) + 1)
     appliesTo.push(elementName)
     req.session.data.srocElements[srocElementsAssigned].chargeReference = chargeReferenceIndex
+
+    //blank out the fields that aren't used on SRoC assigned elements
+    req.session.data.srocElements[srocElementsAssigned].season = ""
+    req.session.data.srocElements[srocElementsAssigned].source = ""
+    req.session.data.srocElements[srocElementsAssigned].eiuc = ""
+    req.session.data.srocElements[srocElementsAssigned].billableQuantity = ""
     }
   );
 }
@@ -286,6 +306,12 @@ router.post('/create-charge-information/charge-reference/which-elements', functi
       let elementName = "Element " + (parseInt(srocElementsAssigned) + 1)
       req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].appliesTo.push(elementName)
       req.session.data.srocElements[srocElementsAssigned].chargeReference = req.session.data.chargeReferenceIndex
+
+      //blank out the fields that aren't used on SRoC assigned elements
+      req.session.data.srocElements[srocElementsAssigned].season = ""
+      req.session.data.srocElements[srocElementsAssigned].source = ""
+      req.session.data.srocElements[srocElementsAssigned].eiuc = ""
+      req.session.data.srocElements[srocElementsAssigned].billableQuantity = ""
       }
     );
     req.session.data.change = false
