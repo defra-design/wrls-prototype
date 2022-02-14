@@ -23,10 +23,16 @@
 {# check which banner to display #}
 {% if data['banner'] == "success" %}
 {{ govukNotificationBanner({
-html: html,
-type: 'success',
-text: data['fileUpload'] + " uploaded"
+  html: '<p class="govuk-notification-banner__heading">' +  data['fileUpload'] + ' uploaded <br> <br> 180 rows successfully uploaded </p>',
+  type: 'success'
 }) }}
+
+<!-- previous version of banner
+  
+  html: html,
+type: 'success',
+text: data['fileUpload'] + " uploaded"-->
+
 
 {% elseif data['banner'] == "error" %}
 {{ govukErrorSummary({
@@ -87,7 +93,7 @@ text: data['fileUpload'] + " uploaded"
      id: "fileUpload",
      name: "fileUpload",
      label: {
-       text: "Use a .csv file under 5mb to upload."
+       text: "Use a .csv file under 20mb to upload."
      }
    }) }}
 
