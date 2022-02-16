@@ -66,6 +66,10 @@ module.exports = function(env) {
     return x.replace(/\w+/g, today)
   }
 
+//add preceeding 0 |pad
+filters.pad = function(x) {
+ return x.padStart(2, '0')
+}
 
 //filter to change a number string in to the govuk date format. "yyyymmdd" | numberToGovukDate
 filters.numberToGovukDate = function(x) {

@@ -52,6 +52,9 @@
         {{ govukDateInput({
         id: "agreementEnd",
         namePrefix: "agreementEnd",
+        hint: {
+          text: "The end date for the agreement must be the 31 March or match the end date of a piece of charge information"
+        },
         fieldset: {
         legend: {
           text: [title],

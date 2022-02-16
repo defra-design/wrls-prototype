@@ -55,7 +55,7 @@
        }) }}
        {% else %}
       {{ govukInsetText({
-        html: '<p class="govuk-body">This agreement will start on <span class="govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + '. </span></p><p class="govuk-body">This is the start of the new financial year.</p>'
+        html: '<p class="govuk-body">This agreement will start on <span class="govuk-!-font-weight-bold">1 April ' + [data.agreementSignedStartYear] + '. </span></p><p class="govuk-body">This is the start of the financial year.</p>'
       }) }}
       {% endif %}
 
@@ -69,6 +69,9 @@
     {{ govukDateInput({
   id: "agreementStart",
   namePrefix: "agreementStart",
+  hint: {
+    text: "The agreement start date must either be the 1st April or the same start date as a piece of charge information"
+  },
   fieldset: {
     legend: {
       text: 'Start date',
