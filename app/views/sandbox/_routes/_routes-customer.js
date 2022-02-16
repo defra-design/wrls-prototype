@@ -310,8 +310,9 @@ router.post('/notices', function(req, res) {
     }
 
     if (req.session.data.contacts[req.session.data.contactID]['email'].length) {
-      res.redirect('manage-contact');
+      res.redirect('all-licences');
     } else {
+      req.session.data.route = "emailWAA"
       res.redirect('change-email-address');
     }
 
@@ -442,7 +443,23 @@ router.post('/notices', function(req, res) {
 
 });
 
+///WAA for ALL LICENCES?
+router.get('/all-licences', function(req, res) {
 
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + 'all-licences');
+
+});
+
+router.post('/all-licences', function(req, res) {
+
+  if (req.session.data.allLicences = "yes") {
+  res.redirect('manage-contact');
+} else {
+  res.redirect('manage-contact');
+}
+});
 
 ///CHANGE EMAIL ADDRESS
 router.get('/change-email-address', function(req, res) {
@@ -460,9 +477,12 @@ router.post('/change-email-address', function(req, res) {
 
   req.session.data.contacts[contactID].email = req.session.data.emailDetails
 
-
+  if (req.session.data.route = "emailWAA") {
+    req.session.data.route = ""
+    res.redirect('all-licences');
+  } else {
   res.redirect('manage-contact');
-
+  }
 });
 
 

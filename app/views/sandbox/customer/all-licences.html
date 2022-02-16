@@ -1,0 +1,71 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title =  'Should ' + [data.contacts[data.contactID]['name']] + 'get water abstraction alerts for all ' + [data.customers[data.customerID]['name']] + ' licences?' %}
+
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+{% set qTitle = '<span class="govuk-caption-l">' + [data.customers[data.customerID]['name']] + '</span> Should ' + [data.contacts[data.contactID]['name']] + ' get water abstraction alerts for all ' + [data.customers[data.customerID]['name']] + ' licences?' %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+
+    <form method="post" novalidate>
+
+
+
+
+     {{ govukRadios({
+       idPrefix: "allLicences",
+       name: "allLicences",
+       fieldset: {
+         legend: {
+           text: qTitle|safe,
+           isPageHeading: true,
+           classes: "govuk-fieldset__legend--l"
+         }
+       },
+       hint: {
+         text: "This will include any new licences for Bottled Water Plc"
+       },
+       items: [
+         {
+           value: "yes",
+           text: "Yes",
+           checked: checked("allLicences", "yes")
+         },
+         {
+           value: "no",
+           text: "No",
+           checked: checked("allLicences", "no")
+         }
+       ]
+     }) }}
+
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+
+  </div>
+</div>
+
+
+{% endblock %}
