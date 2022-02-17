@@ -1038,7 +1038,7 @@ router.post('/bd/charges-2020/add-agreement-check', function(req, res) {
   let agreements = req.session.data['agreements']
   agreements.unshift(newAgreement);
 
-  res.redirect('/bd/licence-summary?suppBilling=true#charge');
+  res.redirect('/bd/licence-summary#charge');
 });
 
 //END AGREEENT
