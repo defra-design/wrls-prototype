@@ -213,6 +213,8 @@ router.post('/notices', function(req, res) {
 
   if (req.session.data['notices'] === "yes") {
 
+    //Check if the contact is the licence holder, if so delete the WAA notice from the contact
+
     //loop through all contacts and check if the customer is matched
     for (var [contactIndex, contact] of allContacts.entries()) {
 
@@ -252,6 +254,8 @@ router.post('/notices', function(req, res) {
       }
     }
 
+    //
+
     //loop through customers for contact and match the selected customer name if it matches update the notices
     for (var [customerIndex, contactCustomer] of contactCustomers.entries()) {
 
@@ -283,6 +287,7 @@ router.post('/notices', function(req, res) {
           for (var [contactNoticeIndex, contactNotice] of contactNotices.entries()) {
             if (contactNotice.type == "Water abstraction alerts") {
               contactNotice.sendBy = "email"
+              contactNotice.licences = "all"
             }
           }
         } else {
@@ -291,11 +296,13 @@ router.post('/notices', function(req, res) {
           let type = "Water abstraction alerts"
           let sendBy = "email"
           let addressID = ""
+          let licences = "all"
 
           let newNotice = {
             type,
             sendBy,
-            addressID
+            addressID,
+            licences
           };
 
           contactNotices.push(newNotice);
@@ -317,6 +324,7 @@ router.post('/notices', function(req, res) {
     }
 
   }
+
   //if the answer was no to receiving WAA by email
   else {
 
@@ -443,23 +451,6 @@ router.post('/notices', function(req, res) {
 
 });
 
-///WAA for ALL LICENCES?
-router.get('/all-licences', function(req, res) {
-
-  req.session.data.back = req.headers.referer
-
-  res.render(folder + 'all-licences');
-
-});
-
-router.post('/all-licences', function(req, res) {
-
-  if (req.session.data.allLicences = "yes") {
-  res.redirect('manage-contact');
-} else {
-  res.redirect('manage-contact');
-}
-});
 
 ///CHANGE EMAIL ADDRESS
 router.get('/change-email-address', function(req, res) {
@@ -477,13 +468,76 @@ router.post('/change-email-address', function(req, res) {
 
   req.session.data.contacts[contactID].email = req.session.data.emailDetails
 
-  if (req.session.data.route = "emailWAA") {
+  if (req.session.data.route == "emailWAA") {
     req.session.data.route = ""
     res.redirect('all-licences');
   } else {
   res.redirect('manage-contact');
   }
 });
+
+///WAA for ALL LICENCES?
+router.get('/all-licences', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + 'all-licences');
+
+});
+
+router.post('/all-licences', function(req, res) {
+
+
+  if (req.session.data.allLicences == "yes") {
+  req.session.data.route = ""
+  res.redirect('manage-contact');
+} else {
+  res.redirect('select-licences');
+}
+});
+
+
+///WAA for which licences?
+router.get('/select-licences', function(req, res) {
+
+
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + 'select-licences');
+
+});
+
+router.post('/select-licences', function(req, res) {
+  //contact customers
+  let contactCustomers = req.session.data.contacts[req.session.data.contactID]['customers']
+  //selected customer
+  let selectedCustomer = req.session.data.customers[req.session.data.customerID]['name']
+  //loop through customers for contact and match the selected customer name if it matches update the notices
+  for (var [customerIndex, contactCustomer] of contactCustomers.entries()) {
+
+    if (contactCustomer.customer == selectedCustomer) {
+
+
+      //get all the contacts notices
+       let contactNotices = req.session.data.contacts[req.session.data.contactID].customers[customerIndex]['notices']
+       //loop through the contacts notices
+       for (var [contactNoticeIndex, contactNotice] of contactNotices.entries()) {
+
+         //check for the notice that equals type water abstraction alerts
+            if (contactNotice.type == 'Water abstraction alerts') {
+
+              // Set the WAA licences for this contact-
+              contactNotice.licences = req.session.data['waaLicences']
+
+            }
+          }
+        }
+      }
+
+  res.redirect('manage-contact');
+
+});
+
 
 
 ///CHANGE NAME
