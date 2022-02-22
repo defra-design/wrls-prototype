@@ -93,7 +93,12 @@ filters.numberToGovukDate = function(x) {
   // e.g. notifications | sort(false, false, 'sentBy')
   // sort the array of objects notifications, in asc order not case sensitive by sentBy
 
-
+//filter array includes " |arrayIncludes"
+filters.arrayIncludes = function(input, item) {
+  if (input !== undefined){
+    return input.includes(item) | input == "all"
+    }
+}
 
 //filter focus " | focus" //can't focus a string
 filters.focus = function(x) {

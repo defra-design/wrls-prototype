@@ -106,10 +106,10 @@
       {% if i.type == "Water abstraction alerts" %}
         {% if i.sendBy == "email" %}
           {% if i.licences == "all"%}
-          {% set emailAlerts = "Yes,for all licences" %}
+          {% set emailAlerts = "Yes, for all licences" %}
 
           {% else %}
-          {% set emailAlerts = "Yes,for some licences" %}
+          {% set emailAlerts = "Yes, for some licences" %}
           {% set details %}
           {% set licence = [] %}
           {% for i in i.licences %}

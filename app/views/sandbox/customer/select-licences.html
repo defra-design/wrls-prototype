@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title =  'Select the licneces ' + [data.contacts[data.contactID]['name']] + ' should get water abstraction email alerts for' %}
+{% set title =  'Select the licences ' + [data.contacts[data.contactID]['name']] + ' should get water abstraction email alerts for' %}
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-{% set qTitle = '<span class="govuk-caption-l">' + [data.customers[data.customerID]['name']] + '</span> Select the licneces ' + [data.contacts[data.contactID]['name']] + ' should get water abstraction email alerts for' %}
+{% set qTitle = '<span class="govuk-caption-l">' + [data.customers[data.customerID]['name']] + '</span> Select the licences ' + [data.contacts[data.contactID]['name']] + ' should get water abstraction email alerts for' %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
@@ -37,7 +37,8 @@
 
       {% set items = items | push({
         value: [data.licences[loopNumber].number],
-        text: [data.licences[loopNumber].number]
+        text: [data.licences[loopNumber].number],
+        checked: checked("waaLicences", data.licences[loopNumber]['number'])
       }) %}
 
 

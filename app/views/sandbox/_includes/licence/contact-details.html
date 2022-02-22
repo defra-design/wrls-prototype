@@ -53,8 +53,10 @@
   <!--loop through the customer notices-->
   {% for notice in contactCustomer.notices %}
     <!--check to see if the notice is WAA and that the licence is tagged-->
+
+
     {% if [notice.type] == "Water abstraction alerts"  %}
-     {% if licenceTagged == "true" %}
+     {% if licenceTagged == "true" and notice.licences | arrayIncludes(data.licences[data.ID].number) %}
       <!--push the list of notices into the array-->
       {% set notices = notices | push([ notice.type ]) %}
         <!--if the notice is sent by post-->
