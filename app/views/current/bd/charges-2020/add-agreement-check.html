@@ -120,9 +120,13 @@
   }) }}
 
 {% if [data.agreementStartYear]+[data.agreementStartMonth |pad] + [data.agreementStartDay|pad] >= "20220401" %}
-  <p class="govuk-body">This agreement must be applied to a charge category to affect the charge.</p>
+{{ govukInsetText({
+  text: "To affect the charge, this agreement must be applied to a charge category."
+}) }}
  {% elif data['agreement'] ==  "Two-part tariff" %}
-<p class="govuk-body">This agreement must be applied to a charge element to affect the charge.</p>
+ {{ govukInsetText({
+   text: "To affect the charge, this agreement must be applied to a charge element."
+ }) }}
   {% endif %}
 
     <button type="submit" class="govuk-button">

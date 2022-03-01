@@ -56,7 +56,7 @@ module.exports = {
     "tptSeason": "summer",
     "numberofIssues": "3",
     "annualstatus": "ready",
-    "agreement": "Two-part tariff (S127)",
+    "agreement": "Two-part tariff",
     "agreementStart-day": "1",
     "agreementStart-month": "4",
     "agreementStart-year": "2020",
