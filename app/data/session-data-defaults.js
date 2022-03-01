@@ -79,7 +79,7 @@ module.exports = {
     "agreementNew": "false",
     "agreementCount": "0",
     "agreements": [{
-      "agreement": "Two-part tariff (S127)",
+      "agreement": "Two-part tariff",
       "agreementStartDay": "1",
       "agreementStartMonth": "4",
       "agreementStartYear": "2017",
