@@ -10,8 +10,10 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Date</th>
+
       <th scope="col" class="govuk-table__header">Region</th>
       <th scope="col" class="govuk-table__header">Run type</th>
+<th scope="col" class="govuk-table__header govuk-table__header--numeric">Number</th>
       <th scope="col" class="govuk-table__header govuk-table__header--numeric">Bills</th>
       <th scope="col" class="govuk-table__header govuk-table__header--numeric">Values</th>
       <th scope="col" class="govuk-table__header govuk-table__header--numeric">Status</th>
@@ -25,8 +27,10 @@
     {% set loopNumber = loop.index0 %}
     <tr class="govuk-table__row">
       <td class="govuk-table__cell"><a href="#" class="govuk-link">{{[i.date]}}</a></td>
+
       <td class="govuk-table__cell">{{[i.region | capitalize]}}</td>
       <td class="govuk-table__cell">{{[i.runType | capitalize]}}</td>
+  <td class="govuk-table__cell govuk-table__cell--numeric">{{[i.number]}}</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">{{[i.bills]}}</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">{{[i.value]}}</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">
