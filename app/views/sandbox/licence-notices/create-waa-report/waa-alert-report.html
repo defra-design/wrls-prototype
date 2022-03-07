@@ -1,0 +1,76 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Set a date range"%}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% if data['success'] == true %}
+    {% set html %}
+  <h3 class="govuk-notification-banner__heading">
+    Report created
+  </h3>
+  <p class="govuk-body max-width-full">1 stop water abstraction alert was sent between {{data.waaReportStartDate | numberToGovukDate}} and {{data.waaReportEndDate  | numberToGovukDate}} </p>
+  <p class="govuk-body">   <a class="govuk-notification-banner__link" href="/public/files/waaSentAlertReport.csv"><strong>Download report</strong></a> </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+{% endif %}
+
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+
+
+      <form  method="post" class="form">
+
+        {{ govukDateInput({
+        id: "waaReportStartDate",
+        namePrefix: "waaReportStartDate",
+        fieldset: {
+          legend: {
+            text: "Enter start date",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        }
+      }) }}
+        {{ govukDateInput({
+        id: "waaReportEndDate",
+        namePrefix: "waaReportEndDate",
+        fieldset: {
+          legend: {
+            text: "Enter end date",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        }
+      }) }}
+
+
+        <button type="submit" class="govuk-button">
+          Create report
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

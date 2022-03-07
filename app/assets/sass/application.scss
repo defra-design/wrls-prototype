@@ -25,6 +25,10 @@ $govuk-assets-path: '/govuk/assets/';
 // MOJ front end
 //@import "node_modules/@ministryofjustice/frontend/moj/all";
 
+//banner content max-width override
+.max-width-full {
+  max-width: 100% !important;
+}
 
 
 //Contents list styles

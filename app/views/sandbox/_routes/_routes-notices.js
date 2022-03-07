@@ -1082,4 +1082,30 @@ router.post('/notification-report/clear-filters', function(req, res) {
   res.redirect('../notification-report#focus');
 });
 
+
+///////////WAA SENT ALERT REPORT DOWNLOAD/////////////////////
+//////////////////////////////////////////////////////////////
+
+///Set the threshold
+router.get('/create-waa-report/waa-alert-report', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.success = false
+  res.render(folder + 'create-waa-report/waa-alert-report');
+});
+
+router.post('/create-waa-report/waa-alert-report', function(req, res) {
+
+   req.session.data.waaReportStartDate = req.session.data['waaReportStartDate-year'] + req.session.data['waaReportStartDate-month'].padStart(2, '0') + req.session.data['waaReportStartDate-day'].padStart(2, '0')
+   req.session.data.waaReportEndDate = req.session.data['waaReportEndDate-year'] + req.session.data['waaReportEndDate-month'].padStart(2, '0')  + req.session.data['waaReportEndDate-day'].padStart(2, '0')
+
+
+  req.session.data.success = true
+
+  res.redirect('waa-alert-report');
+});
+
+
+
+
+
 module.exports = router
