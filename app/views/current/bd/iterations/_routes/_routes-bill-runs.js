@@ -179,6 +179,20 @@ router.post('/two-part-tariff/set-the-returns-quantity', function(req, res) {
     res.redirect('reviewLicence');
   });
 
+  //Create the transactions for the bill run
+  router.post('/two-part-tariff/create-transactions', function(req, res) {
+    res.redirect('/current/bd/charges-2020/confirm-create-bill-run');
+  });
+
+  //Cancel the bill run
+  router.post('/two-part-tariff/cancel-bill-run', function(req, res) {
+    res.redirect('/current/bd/charges-2020/confirm-cancel-bills?type=Two-part%20tariff');
+  });
+
+  //Download licence review report
+  router.post('/two-part-tariff/download-licence-review-report', function(req, res) {
+    res.redirect('/public/files/licenceReviewReport.csv');
+  });
 
 
 module.exports = router

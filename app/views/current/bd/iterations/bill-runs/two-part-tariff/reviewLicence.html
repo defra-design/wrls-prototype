@@ -42,12 +42,20 @@
 {% block content %}
 
 <!-- page title -->
-<div class="govuk-grid-row govuk-!-margin-bottom-9">
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-full ">
 
 
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff, {{data['tptSeason']}} bill run</span>{{ title }}</h1>
+
+      {% set tptBillRun = data['tptBillRun'] %}
+
+          {% for i in tptBillRun %}
+
+          {% if i.licence == data['licence'] %}
+
+          {% if "Aggregate" in i.licenceAggregate %}
 
       {{ govukDetails({
   summaryText: "Licence details",
@@ -75,7 +83,7 @@
         <dd class="govuk-summary-list__value meta-data__value">
           90 cubic metres per hour<br>
 250 cubic metres per day<br>
-20,000 cubic metres per year
+100,000 cubic metres per year
         </dd>
 
       </div>
@@ -84,6 +92,20 @@
 <a class="govuk-link" href="#">View returns summary</a>
 '
 }) }}
+
+{% else %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" >
+    <p class="govuk-body">
+<a class="govuk-link" href="#">View returns summary</a>
+</p>
+</div>
+</div>
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
 
 {{ govukButton({
   text: "Remove from this bill run",
@@ -137,8 +159,10 @@
 
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-full ">
+<h2 class="govuk-heading-l govuk-!-margin-bottom-7">
+        Financial year 2022 to 2023</h2>
 
-    <h2 class="govuk-heading-l">{{elements.length}} issue to review</h2>
+    <h3 class="govuk-heading-m">{{data.elements[0]['purpose']}}, {{data.elements[0]['description']}}</h3>
 
     {{ govukSummaryList({
   rows: [
@@ -165,7 +189,7 @@
         text: "Billable returns"
       },
       value: {
-       html: billableReturns + 'Ml <div class="govuk-!-font-size-16">' + edited|capitalize + '</div>'
+       html: billableReturns + 'ML <div class="govuk-!-font-size-16">' + edited|capitalize + '</div>'
       },
       actions: {
         items: [
@@ -205,26 +229,10 @@
     },
     {
       key: {
-        text: "Purpose"
-      },
-      value: {
-        html: data.elements[0]['purpose']
-      }
-    },
-    {
-      key: {
-        text: "Description"
-      },
-      value: {
-        html: data.elements[0]['description']
-      }
-    },
-    {
-      key: {
         text: "Charge period"
       },
       value: {
-        text: "1 March 2021 to 30 September 2021"
+        text: "1 April 2022 to 30 September 2022"
       }
     },
     {
@@ -240,25 +248,10 @@
         text: "Annual quantities"
       },
       value: {
-        html: data.elements[0]['authorisedQuantity']+ 'Ml Authorised<br>' + data.elements[0]['billableQuantity'] + 'Ml Billable'
+        html: data.elements[0]['authorisedQuantity']+ 'ML authorised'
       }
     },
-    {
-      key: {
-        text: "Source"
-      },
-      value: {
-        html: data.elements[0]['source']
-      }
-    },
-    {
-      key: {
-        text: "Season"
-      },
-      value: {
-        html: data.elements[0]['season']
-      }
-    },
+
     {
       key: {
         text: "Loss"

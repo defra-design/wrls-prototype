@@ -42,8 +42,8 @@
 {% block content %}
 
 <!-- page title -->
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
 
 
@@ -58,7 +58,7 @@
       })}}
     </p>
 
-    <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-3">
+    <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-4">
 
 
       <div class="govuk-summary-list__row">
@@ -66,7 +66,7 @@
           Date created
         </dt>
         <dd class="govuk-summary-list__value meta-data__value">
-          12 April 2020
+          {{"1" |today}} 
         </dd>
 
       </div>
@@ -78,7 +78,7 @@
           Region
         </dt>
         <dd class="govuk-summary-list__value meta-data__value">
-          Anglian
+          {{data['region'] |default ("Anglian")| firstToUpperCase }}
         </dd>
 
       </div>
@@ -102,7 +102,7 @@
           Financial year
         </dt>
         <dd class="govuk-summary-list__value meta-data__value">
-          2020 to 2021
+          2022 to 2023
         </dd>
 
       </div>
@@ -110,8 +110,20 @@
 
 </dl>
 
+<section class="govuk-!-margin-bottom-0">
+    <form action="download-licence-review-report" method="post" novalidate>
+{{ govukButton({
+  text: "Download licence review report",
+  classes: "govuk-button--secondary govuk-!-margin-bottom-4"
+}) }}
+</form>
+</section>
+
   </div>
 </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
 <!--create the issues list, loop through the TpT bill run data and push those with issues to resolve in to a list-->
 
@@ -121,7 +133,7 @@
     {% for item in tptBillRun %}
     {% if item.ready == "no" %}
         {% set issuesList = issuesList | push([
-          {text: item.licence},
+          {html: item.licenceAggregate},
           {text: item.billingContact},
           {text: item.elements[0].issue|safe},
           {text: item.edited|safe|capitalize},
@@ -132,34 +144,44 @@
         {% endif %}
     {% endfor %}
 
+
+
 {% if issuesList.length %}
-<section class="govuk-!-margin-bottom-9">
+<section class="govuk-!-margin-bottom-7">
+  {{ govukInsetText({
+  text: "You need to review " + issuesList.length + " licences with returns data issues. You can then continue and send the bill run."
+}) }}
+  <form action="cancel-bill-run" method="post" novalidate>
   {{ govukButton({
     text: "Cancel bill run",
     classes: "govuk-button--secondary govuk-!-margin-bottom-0"
   }) }}
+   </form>
 
-  {{ govukInsetText({
-  text: "You need to review " + data['issues'].length + " licences with returns data issues. You can then continue and send the bill run."
-}) }}
 
 </section>
 {% else %}
-<section class="govuk-!-margin-bottom-9">
-  <p class="govuk-body ">You have resolved all returns data issues. Continue to generate bills.</p>
+<section class="govuk-!-margin-bottom-6">
+  {{ govukInsetText({
+  text: "You have resolved all returns data issues. Continue to generate bills."
+}) }}
   <div class="govuk-button-group">
+    <form action="create-transactions" method="post" novalidate>
   {{ govukButton({
     text: "Continue",
     classes: "govuk-button--primary"
   }) }}
+  </form>
+  <form action="cancel-bill-run" method="post" novalidate>
   {{ govukButton({
     text: "Cancel bill run",
     classes: "govuk-button--secondary"
   }) }}
+    </form>
   </div>
+
 </section>
 {% endif %}
-
 
 
 
@@ -201,7 +223,7 @@
   {% for item in tptBillRun %}
   {% if item.ready == "yes" %}
           {% set readyList = readyList | push([
-            {text: item.licence},
+            {html: item.licenceAggregate },
             {text: item.billingContact},
             {text: item.elements[0].issue|safe},
             {text: item.edited|safe|capitalize},
@@ -261,6 +283,9 @@
         }
       ]
     }) }}
+
+    </div>
+    </div>
 
 
 {% endblock %}
