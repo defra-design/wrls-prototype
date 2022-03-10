@@ -1,2 +1,14 @@
-﻿Date issued,Type of alert sent,EA area,Catchment,Monitoring station,Licence number,Licence holder,Abstraction period,Flow or level restriction type and threshold
-01 February 2022,Stop,South West,Bristol,Frenchay,AN/123/123/23,Bottled Water Plc,1 January to 31 March,Stop 175.5 ML/d
+Date issued,Type of alert sent,EA area,Catchment,Monitoring station,Licence number,Licence holder,Abstraction period,Flow or level restriction type and threshold
+01-Feb-22,Warning,South West,Bristol,Frenchay,AN/123/123/23,Bottled Water Plc,1 January to 31 March,Stop 175.5 ML/d
+01-Feb-22,Warning,South West,Bristol,Frenchay,AN/220/293/23,Big Smith Farms Ltd,1 January to 31 March,Stop 175.5 ML/d
+01-Feb-22,Warning,Midlands,Walsall,Ford Brook,M/823/99/932,Trent Springs,1 February to 31 March,Stop 50 ML/d
+01-Feb-22,Warning,Midlands,Walsall,Ford Brook,M/823/99/9323,Trent Springs,1 February to 31 March,Reduce 70Ml/d
+08-Feb-22,Stop,Midlands,Walsall,Ford Brook,M/823/99/932,Trent Springs,1 February to 31 March,Stop 50 ML/d
+08-Feb-22,Reduce,Midlands,Walsall,Ford Brook,M/823/99/9323,Trent Springs,1 February to 31 March,Reduce 70Ml/d
+08-Feb-22,Stop,South West,Bristol,Frenchay,AN/123/123/23,Bottled Water Plc,1 January to 31 March,Stop 175.5 ML/d
+08-Feb-22,Stop,South West,Bristol,Frenchay,AN/220/293/23,Big Smith Farms Ltd,1 January to 31 March,Stop 175.5 ML/d
+15-Feb-22,Stop,Midlands,Walsall,Ford Brook,M/823/99/9323,Trent Springs,1 February to 31 March,Stop 50 Ml/d
+28-Feb-22,Resume,Midlands,Walsall,Ford Brook,M/823/99/9323,Trent Springs,1 February to 31 March,Stop 50 Ml/d
+28-Feb-22,Resume,South West,Bristol,Frenchay,AN/220/293/23,Big Smith Farms Ltd,1 January to 31 March,Stop 175.5 ML/d
+28-Feb-22,Resume,Midlands,Walsall,Ford Brook,M/823/99/932,Trent Springs,1 February to 31 March,Stop 50 ML/d
+28-Feb-22,Resume,South West,Bristol,Frenchay,AN/123/123/23,Bottled Water Plc,1 January to 31 March,Stop 175.5 ML/d
