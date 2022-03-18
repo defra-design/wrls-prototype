@@ -98,7 +98,7 @@
               classes: "meta-data__label "
             },
             value: {
-              text: "Annual",
+              text: "Annual " + data['annualType'],
               classes: "meta-data__value "
             }
           },
@@ -156,7 +156,7 @@
   classes: "govuk-button--secondary govuk-!-margin-bottom-6"
 }) }}
 
-
+{% if data['annualType'] == "all abstractors" %}
 <div class="govuk-tabs" data-module="govuk-tabs">
 
   <h2 class="govuk-tabs__title">
@@ -179,6 +179,8 @@
 
   <!-- tab 1 -->
   <section class="govuk-tabs__panel" id="companies">
+
+    {% endif %}
 
     <h3 class="govuk-heading-l">
       Water companies
@@ -899,6 +901,8 @@
         </div>
       </div>
     </div>
+
+    {% if data['annualType'] == "all abstractors" %}
 
   </section>
 
@@ -2009,5 +2013,5 @@
   </section>
 
 </div>
-
+{% endif %}
 {% endblock %}

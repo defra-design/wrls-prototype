@@ -63,6 +63,24 @@
 }) }}
         {% endset -%}
 
+        {% set annualType %}
+        {{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "annualType",
+  name: "annualType",
+  items: [
+    {
+      value: "all abstractors",
+      text: "All abstractors"
+    },
+    {
+      value: "water companies",
+      text: "Water companies only"
+    }
+  ]
+}) }}
+        {% endset -%}
+
 
         {{ govukRadios({
           idPrefix: "charge-type",
@@ -76,8 +94,11 @@
           },
           items: [
             {
-              value: "pick-annual-region",
-              text: "Annual"
+              value: "pick-annual-region?annualType=",
+              text: "Annual",
+              conditional: {
+                html: annualType
+              }
             },
             {
               value: "pick-supplementary-region?credit=false",
@@ -136,6 +157,22 @@
           window.location.href = newurl;
           return false;
         }
+
+        if( $("#annualType").is(':checked')){
+        let  annualType = "all abstractors"
+        let radioUrl = $(this).find('input:checked').val();
+        const newurl = radioUrl+annualType;
+        ev.preventDefault();
+        window.location.href = newurl;
+        return false;
+      } else if ( $("#annualType-2").is(':checked')){
+        let  annualType = "water companies"
+        let radioUrl = $(this).find('input:checked').val();
+        const newurl = radioUrl+annualType;
+        ev.preventDefault();
+        window.location.href = newurl;
+        return false;
+      }
 
 
           ev.preventDefault();
