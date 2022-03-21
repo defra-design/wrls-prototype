@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+
+{% set title = "Split bill run" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <!-- <span class="govuk-caption-l">Batch 003265 / 12 June 2019</span> -->
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p class="govuk-body">Some licences have transactions that will be billed using the old charging scheme. These are split into a separate bill run.</p>
+<!-- table with four columns -->
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-two-thirds">
+  
+      <div class="table">                                                <!-- a table -->
+  
+        <div class="table__row--head">                                              <!-- the table head -->
+          <div class="table__cell bold-small">
+            Charge scheme
+          </div>
+          <div class="table__cell bold-small">
+            Number
+          </div>
+          <div class="table__cell numbers bold-small column--10">
+            Status
+          </div>
+        </div>
+  
+        <!-- table row -->
+  
+        <div class="table__row govuk-!-margin-bottom-6">
+          <div class="table__cell table__cell--v-middle">
+            <h3 class="screen-reader-only">
+              Row 1
+            </h3>
+            <span class="screen-reader-only">See Anglian Supplementary bill run 12 January 2020</span>
+            <h4 class="table__context">
+              Charge scheme
+            </h4>
+            <span class="table__row--selectable--text">
+              Current scheme
+            </span>
+          </div>
+          <div class="table__cell table__cell--v-middle numbers">
+            <h4 class="table__context">
+              Number
+            </h4>
+            <p class="table__row">
+              880347
+            </p>
+          </div>
+          <div class="table__cell table__cell--v-middle numbers">
+            <h5 class="table__context">
+              Status
+            </h5>
+            {{govukTag({
+            text: "Review",
+            classes: "govuk-tag--blue"
+          })}}
+      <!--      <strong class="table__status table__status--pending">
+              Building
+            </strong> -->
+          </div>
+        </div>
+  
+  
+  
+  
+       
+  
+  
+        <!-- table row -->
+        {% if [data.annualstatus] == "error" %}
+  
+        {% else %}
+          <div class="table__cell table__cell--v-middle">
+            <h3 class="screen-reader-only">
+              Row 2
+            </h3>
+            <h4 class="table__context">
+              Charge scheme
+            </h4>
+            <span class="table__row--selectable--text">
+              Old scheme
+            </span>
+          </div>
+
+          <div class="table__cell table__cell--v-middle">
+            <h4 class="table__context">
+              Number
+            </h4>
+            <p class="table__row">
+              880348
+            </p>
+          </div>
+          <div class="table__cell table__cell--v-middle numbers">
+            <h5 class="table__context">
+              Status
+            </h5>
+            <!-- <strong class="table__status table__status--todo"> -->
+            {% if [data.annualstatus] == "ready" %}
+            {{govukTag({
+            text: "Ready",
+            classes: "govuk-tag--blue"
+          })}}
+            {% else %}
+            {{govukTag({
+            text: "Sent",
+            classes: "govuk-tag--green"
+          })}}
+            {% endif %}
+          </div>
+        </a>
+  
+        {% endif %}
+        </div>
+    </div>
+        <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        </div>
+        <div class="govuk-grid-column-full">
+        <p class="govuk-body">You only need to send one reconcilliation email to SSCL. Use separate tabs for the two bill runs on the billing spreadsheet.</p>
+        {{ govukButton({
+            text: "Continue"
+          }) }}
+        </div>
+    </div>
+
+  {% endblock %}
