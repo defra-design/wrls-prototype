@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% set title = "This bill run type has already been processed for 2022" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-6">{{title}}</h1>
+    </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-0">
+      <div class="govuk-grid-column-full">
+    <section class="govuk-!-margin-bottom-8">
+
+
+      {{ govukWarningText({
+    text: "You can only have one of this bill run type for a region in a financial year",
+    iconFallbackText: "Warning"
+  }) }}
+
+  </section>
+
+  {{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Date created",
+        classes: "meta-data__label"
+      },
+      value: {
+        text: data['dateToday'],
+        classes: "meta-data__value "
+      }
+    },
+    {
+      key: {
+        text: "Region",
+        classes: "meta-data__label "
+      },
+      value: {
+        text: data['region'],
+        classes: "meta-data__value "
+      }
+    },
+    {
+      key: {
+        text: "Bill run type",
+        classes: "meta-data__label "
+      },
+      value: {
+        text: "Annual " + data['annualType'],
+        classes: "meta-data__value "
+      }
+    },
+    {
+      key: {
+        text: "Transaction file",
+        classes: "meta-data__label "
+      },
+      value: {
+        text: "ABC132456BH",
+        classes: "meta-data__value "
+      }
+    }
+  ]
+}) }}
+
+<p class="govuk-body"><a class="govuk-link" href="annual-charges?annualstatus=sent">Go to this bill run</a></p>
+
+</div>
+</div>
+
+
+
+
+{% endblock %}

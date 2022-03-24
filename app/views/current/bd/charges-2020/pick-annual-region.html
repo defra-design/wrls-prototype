@@ -54,49 +54,49 @@
         <div class="govuk-radios">
 
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region-5" name="region" type="radio" value="annual-charges-load?region=Anglian&annualstatus=building">
+            <input class="govuk-radios__input" id="region-5" name="region" type="radio" value="pick-annual-type?region=Anglian&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region-5">
               Anglian
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region-2" name="region" type="radio" value="annual-charges-load?region=North West&annualstatus=building">
+            <input class="govuk-radios__input" id="region-2" name="region" type="radio" value="pick-annual-type?region=North West&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region-2">
               North West
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region-3" name="region" type="radio" value="annual-charges-load?region=North East&annualstatus=building">
+            <input class="govuk-radios__input" id="region-3" name="region" type="radio" value="pick-annual-type?region=North East&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region-3">
               North East
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region-4" name="region" type="radio" value="annual-charges-load?region=Midlands&annualstatus=building">
+            <input class="govuk-radios__input" id="region-4" name="region" type="radio" value="pick-annual-type?region=Midlands&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region-4">
               Midlands
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region-8" name="region" type="radio" value="annual-charges-load?region=South West&annualstatus=building">
+            <input class="govuk-radios__input" id="region-8" name="region" type="radio" value="pick-annual-type?region=South West&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region-8">
               South West
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region-7" name="region" type="radio" value="annual-charges-load?region=Southern&annualstatus=building">
+            <input class="govuk-radios__input" id="region-7" name="region" type="radio" value="pick-annual-type?region=Southern&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region-7">
               Southern
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region-6" name="region" type="radio" value="annual-charges-load?region=Thames&annualstatus=building">
+            <input class="govuk-radios__input" id="region-6" name="region" type="radio" value="pick-annual-type?region=Thames&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region-6">
               Thames
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="region" name="region" type="radio" value="annual-charges-load?region=Wales&annualstatus=building">
+            <input class="govuk-radios__input" id="region" name="region" type="radio" value="pick-annual-type?region=Wales&annualstatus=building">
             <label class="govuk-label govuk-radios__label" for="region">
               Wales
             </label>
@@ -117,13 +117,27 @@
   <script>
     $(function() {
       $('form[data-routing]').on('submit', function(ev) {
-        // FInd selected radio button
+        // Find selected radio button
+        const annualType = "{{data['annualType']}}"
+        const annualBilled = "{{data['annualBilled']}}"
         const url = $(this).find('input:checked').val();
-
+        const region = url .match(/\=(.*?)\&/);
         if(url) {
+          if (annualBilled == "true"){
+            ev.preventDefault();
+            window.location.href = "annual-exists"
+            return false;
+          } else {
+          if(annualType == "water companies") {
+            ev.preventDefault();
+            window.location.href = "annual-charges-load?annualType=all abstractors&annualstatus=building&annualBilled=true&region=" + region[1]
+            return false;
+          } else {
           ev.preventDefault();
-          window.location.href = url;
+          window.location.href = url
           return false;
+          }
+          }
         }
       });
     })
