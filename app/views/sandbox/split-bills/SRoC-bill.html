@@ -94,7 +94,9 @@
                 </dd>
         
               </div>
-        
+              
+              
+                        
         
         
              <!-- <div class="govuk-summary-list__row">
@@ -135,53 +137,53 @@
         {% if issuesList.length %}
 
         
-        <section class="govuk-!-margin-bottom-9">
-          {{ govukButton({
-            text: "Cancel bill run",
-            classes: "govuk-button--secondary govuk-!-margin-bottom-0"
-          }) }}
-        
-          {{ govukInsetText({
-          text: "You need to review " + data['issues'].length + " licences with returns data issues. You can then continue and send the bill run."
-        }) }}
-        
-        <div class="govuk-inset-text">
+        <section class="govuk-!-margin-bottom-3">
+            <div class="govuk-inset-text">
 
-            <h2 class="govuk-heading-m">This bill run is linked to another</h2>
+                <h2 class="govuk-heading-m">This bill run is linked to another</h2>
+            
+                <div class="govuk-grid-row govuk-!-margin-bottom-1">
+                  <div class="govuk-grid-column-full">
+                    <section class="meta-data__row">
+                      <div class="meta-data__container">
+                        <div class="meta-data__label">
+                          Number
+                        </div>
+                        <div class="meta-data__value">
+                          <a href="Pre-SRoC-bill.html">
+                            <span class="screen-reader-only">bill</span>880348 
+                          </a>(Old charge scheme)
+                        </div>
+                        <div>
+                    </section>
+                    <section class="meta-data__row">
+                      <div class="meta-data__container">
+                        <div class="meta-data__label">
+                          Status
+                        </div>
+                        <div class="meta-data__value">
+                            <td class="govuk-table__cell">
+                                {{govukTag({
+                                  text: "Ready",
+                                  classes: "govuk-tag--blue"
+                                })}}
+                              </td>
+                        </div>
         
-            <div class="govuk-grid-row govuk-!-margin-bottom-1">
-              <div class="govuk-grid-column-full">
-                <section class="meta-data__row">
-                  <div class="meta-data__container">
-                    <div class="meta-data__label">
-                      Number
-                    </div>
-                    <div class="meta-data__value">
-                      <a href="Pre-SRoC-bill.html">
-                        <span class="screen-reader-only">bill</span>880348 
-                      </a>(Old charge scheme)
-                    </div>
-                    <div>
-                </section>
-                <section class="meta-data__row">
-                  <div class="meta-data__container">
-                    <div class="meta-data__label">
-                      Status
-                    </div>
-                    <div class="meta-data__value">
-                        <td class="govuk-table__cell">
-                            {{govukTag({
-                              text: "Ready",
-                              classes: "govuk-tag--blue"
-                            })}}
-                          </td>
-                    </div>
-                    <div>
         </section>
 
                 </section>
+                {{ govukButton({
+                    text: "Cancel bill run",
+                    classes: "govuk-button--secondary govuk-!-margin-bottom-0"
+                  }) }}
+                
+                  {{ govukInsetText({
+                  text: "You need to review " + data['issues'].length + " licences with returns data issues. You can then continue and send the bill run."
+                }) }}
         {% else %}
         <section class="govuk-!-margin-bottom-9">
+            
           <p class="govuk-body ">You have resolved all returns data issues. Continue to generate bills.</p>
           <div class="govuk-button-group">
           {{ govukButton({
