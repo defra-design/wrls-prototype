@@ -1,0 +1,236 @@
+{% extends "layout.html" %}
+
+{% set title = data['region'] + " supplementary bill run" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-0">
+    <div class="govuk-grid-column-full">
+
+      <section class="govuk-!-margin-bottom-6">
+        <h1 class="govuk-caption-l">Bill run 880348</h1>
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
+      </section>
+
+      {% if [data.status] == "ready" %}
+      <p class="govuk-body">
+        {{govukTag({
+        text: "Ready",
+        classes: "govuk-tag--blue govuk-!-font-size-27"
+      })}}
+      </p>
+      {% else %}
+      <p class="govuk-body">
+        {{govukTag({
+        text: "Sent",
+        classes: "govuk-tag--green govuk-!-font-size-27"
+      })}}
+      </p>
+      {% endif %}
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-1">
+        <div class="govuk-grid-column-full">
+          {% set date %}
+          {% if data['rebill'] == "true" %}
+          20 April 2020
+          {% else %}
+          5 March 2020
+          {% endif %}
+          {% endset %}
+
+          {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Date created",
+                classes: "meta-data__label"
+              },
+              value: {
+                text: date,
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Region",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: data['region'],
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Bill run type",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: "Supplementary",
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Transaction file",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: "ABC132456BH",
+                classes: "meta-data__value "
+              }
+            } if data.status === 'sent'
+          ]
+        }) }}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- big total and 2 smaller totals -->
+  <!--<div class="govuk-grid-row govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-column-one-half">
+      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£1,105.00{% else %}£11,537.75{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+    <div class="govuk-grid-column-one-half">
+      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£3,002.75{% else %}£92.75{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}1{% else %}1{% endif %} credit note</span></h2>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£4,107.75{% else %}£11,630.55{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}2{% else %}4{% endif %} invoices</span></h2>
+    </div>
+
+  </div> -->
+
+  <div class="govuk-inset-text">
+
+    <h2 class="govuk-heading-m">This bill run is linked to another</h2>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-1">
+      <div class="govuk-grid-column-full">
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Number
+            </div>
+            <div class="meta-data__value">
+              <a href="SRoC-bill.html">
+                <span class="screen-reader-only">bill</span>880347 
+              </a>(Current charge scheme)
+            </div>
+            <div>
+        </section>
+        <section class="meta-data__row">
+          <div class="meta-data__container">
+            <div class="meta-data__label">
+              Status
+            </div>
+            <div class="meta-data__value">
+                <td class="govuk-table__cell">
+                    {{govukTag({
+                      text: "Review",
+                      classes: "govuk-tag--blue"
+                    })}}
+                  </td>
+            </div>
+            <div>
+        </section>
+        
+
+      </div>
+    </div>
+  </div>
+
+  {% if [data.status] == "ready" %}
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <section class="govuk-!-margin-bottom-6">
+        <a href="confirm-approve-bills?type=Supplementary" class="wrls-faux-button">Confirm bill run</a>
+        <a href="confirm-cancel-bills?type=Supplementary" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+      </section>
+
+    </div>
+
+  </div>
+
+  {% endif %}
+
+  <div class="divider govuk-!-margin-bottom-5"></div>
+
+<h2 class="govuk-heading-l" id="bills">
+    {% if (data['rebill'] == "true") %}
+     3 supplementary bills
+     {% else %}
+    {{data['numberBills']}} supplementary bills
+    {% endif %}
+  </h2>
+
+
+  {{ govukButton({
+    text: "Download this bill run",
+    classes: "govuk-button--secondary govuk-!-margin-bottom-6"
+  }) }}
+
+
+
+{% if (data['rebill'] == "true") %}
+{% include "current/includes/bd/bills-table-rebill.html" %}
+{% else %}
+{% include "current/includes/bd/bills-table.html" %}
+{% endif %}
+
+
+{% endblock %}
