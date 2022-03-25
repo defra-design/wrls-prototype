@@ -179,6 +179,167 @@ router.post('/two-part-tariff/set-the-returns-quantity', function(req, res) {
     res.redirect('reviewLicence');
   });
 
+  //Region
+  router.get('/split-bills/bill-runs-filtered', function(req, res) {
+
+    req.session.data.runType = ""
+    req.session.data.region = ""
+    req.session.data.status = ""
+    req.session.data.createdYear = ""
+
+    res.render(folder + 'split-bills/bill-runs-filtered');
+
+  });
+
+
+/////////////////////////Bill runs
+  ///Apply  filters
+
+  router.post('/split-bills/bill-runs-filtered/apply-filters', function(req, res) {
+
+    //check to see if the user is clearing filters
+    if (req.session.data.clearFilters == "true") {
+
+      req.session.data.runType = ""
+      req.session.data.region = ""
+      req.session.data.status = ""
+      req.session.data.createdYear = ""
+     req.session.data.filteredResults = ""
+      req.session.data.openDetails = true
+      //reset the table caption if the list is cleared
+      req.session.data.filterCaption = "Showing all bill runs."
+  //    req.session.data.focus="alert"
+
+    } else {
+
+
+    //get the list of bill runs
+    let  billRuns = req.session.data.billRuns
+
+
+  //set global scope of filteredResults
+  let filteredResults = ""
+
+  //set the type filter
+  let typeFilters = ""
+   typeFilters = req.session.data.runType
+
+   if (typeof typeFilters === 'undefined') {
+     typeFilters= ""
+   }
+
+   if (typeof typeFilters.length) {
+     filteredResults = billRuns.filter(el => ( typeFilters.indexOf(el.runType) >= 0 ))
+   }
+
+   //set the region filter
+   let regionFilters = ""
+    regionFilters = req.session.data.region
+    if (typeof regionFilters === 'undefined') {
+      regionFilters= ""
+    }
+
+   if ((regionFilters.length) && (filteredResults.length)) {
+      filteredResults = filteredResults.filter(el => ( regionFilters.indexOf(el.region) >= 0 ))
+
+    } else if (regionFilters.length) {
+      filteredResults = billRuns.filter(el => ( regionFilters.indexOf(el.region) >= 0 ))
+    }
+
+
+    //set the status filter
+    let statusFilters = ""
+     statusFilters = req.session.data.status
+     if (typeof statusFilters === 'undefined') {
+       statusFilters= ""
+     }
+
+    if ((regionFilters.length || typeFilters.length) && (!filteredResults.length))
+   { } else {
+
+    if ((statusFilters.length) && (filteredResults.length)) {
+       filteredResults = filteredResults.filter(el => ( statusFilters.indexOf(el.status) >= 0 ))
+     } else if (statusFilters.length) {
+       filteredResults = billRuns.filter(el => ( statusFilters.indexOf(el.status) >= 0 ))
+     }
+    }
+
+     //set the created year filter
+      let createdYearFilter = ""
+       createdYearFilter = req.session.data.createdYear
+      if (createdYearFilter === 'undefined') {
+         createdYearFilter = ""
+       }
+
+      if ((createdYearFilter.length) && (filteredResults.length)) {
+        filteredResults = filteredResults.filter(el => (createdYearFilter.indexOf(el.createdYear) >=0 ) );
+      } else if (createdYearFilter.length) {
+        filteredResults = billRuns.filter(el => (createdYearFilter.indexOf(el.createdYear) >=0 ) );
+      }
+
+
+    //set filtered results to empty if filters doesn't return anything
+      if (!Array.isArray(filteredResults) || !filteredResults.length){
+        filteredResults = "empty"
+      }
+
+
+  req.session.data.openDetails = true
+  //req.session.data.focus="alert"
+
+  //Create a list formatter
+  const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
+  //Create the list depending on what filters are selected
+  let list = []
+  if (typeFilters.length && regionFilters.length && statusFilters.length){
+  list = typeFilters.concat(regionFilters,statusFilters);
+  } else if (typeFilters.length && regionFilters.length){
+    list = typeFilters.concat(regionFilters);
+  } else if (typeFilters.length && statusFilters.length){
+    list = typeFilters.concat(statusFilters);
+  } else if (regionFilters.length && statusFilters.length){
+    list = regionFilters.concat(statusFilters);
+  } else if (regionFilters.length){
+    list = regionFilters
+  } else if (typeFilters.length){
+    list = typeFilters
+  } else if (statusFilters.length){
+    list = statusFilters
+  }
+
+  if (createdYearFilter.length) {
+    list.push(createdYearFilter)
+  }
+
+  //set the dynamic caption for the table
+  if (list.length) {
+  req.session.data.filterCaption = "Showing bill runs filtered by " + formatter.format(list) + "."
+  } else {
+    req.session.data.filterCaption = "Showing all bill runs."
+  }
+
+  req.session.data.filteredResults = filteredResults
+
+  }
+
+    req.session.data.clearFilters = ""
+    res.redirect('../bill-runs-filtered#caption');
+
+  });
+
+
+  ///clear filters
+
+  router.post('/bill-runs-filtered/clear-filters', function(req, res) {
+
+
+    //reset the table caption if the list is cleared
+    req.session.data.filterCaption = "Showing all sent notices."
+
+
+    res.redirect('/split-bills/bill-runs-filtered/apply-filters#captions');
+  });
 
 
 module.exports = router

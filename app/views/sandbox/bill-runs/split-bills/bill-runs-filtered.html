@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% set title = "Bill runs" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+
+         <p class="govuk-body">Create a supplementary, annual or two-part tariff bill run.</p>
+
+
+         {{ govukButton({
+               text: "Create a bill run",
+               href: "bill-runs/select-bill-run-type"
+             }) }}
+
+
+       </div>
+     </div>
+
+     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
+
+     <!-- table with four columns -->
+     <div class="govuk-grid-row govuk-!-margin-bottom-9">
+       <div class="govuk-grid-column-full">
+
+         <h2 class="govuk-heading-l"> View a bill run</h2>
+
+         <p class="govuk-body">Select date to see the details of a bill run.</p>
+
+         <!-- bill runs table -->
+         {% include "sandbox/_includes/billing/bill-runs-table.html" %}
+
+       </div>
+     </div>
+
+{% endblock %}

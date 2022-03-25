@@ -4,9 +4,194 @@
 <!--getting the bill runs data-->
 {% set billRuns = data['billRuns'] %}
 
+{% set filtersForm %}
+
+
+
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Filter by</h2>
+
+     <form  method="post" novalidate action="bill-runs-filtered/apply-filters">
+
+
+       {{ govukCheckboxes({
+         idPrefix: 'runType',
+         name: 'runType',
+         classes: "govuk-checkboxes--small",
+         fieldset: {
+           legend: {
+             text: 'Bill run type',
+             classes: 'govuk-fieldset__legend--s'
+           }
+         },
+         items: [
+           {
+             value: 'annual',
+             text: 'Annual',
+             checked:  checked("runType", "annual")
+           },
+           {
+             value: 'supplementary',
+             text: 'Supplementary',
+             checked:  checked("runType", "supplementary")
+           },
+           {
+             value: 'two-part tariff',
+             text: 'Two-part tariff',
+             checked:  checked("runType", "two-part tariff")
+           }
+         ]
+       }) }}
+
+       {{ govukCheckboxes({
+        idPrefix: 'region',
+        name: 'region',
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: 'Region',
+            classes: 'govuk-fieldset__legend--s'
+          }
+        },
+        items: [
+          {
+            value: 'anglian',
+            text: 'Anglian',
+            checked:  checked("region", "anglian")
+          },
+          {
+            value: 'north west',
+            text: 'North West',
+            checked:  checked("region", "north west")
+          },
+          {
+            value: 'north east',
+            text: 'North East',
+            checked:  checked("region", "north east")
+          },
+          {
+            value: 'midlands',
+            text: 'Midlands',
+            checked:  checked("region", "midlands")
+          },
+          {
+            value: 'south west',
+            text: 'South West',
+            checked:  checked("region", "south west")
+          },
+          {
+            value: 'southern',
+            text: 'Southern',
+            checked:  checked("region", "southern")
+          },
+          {
+            value: 'thames',
+            text: 'Thames',
+            checked:  checked("region", "thames")
+          },
+          {
+            value: 'wales',
+            text: 'Wales',
+            checked:  checked("region", "wales")
+          }
+        ]
+      }) }}
+
+      {{ govukCheckboxes({
+        idPrefix: 'status',
+        name: 'status',
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: 'Status',
+            classes: 'govuk-fieldset__legend--s'
+          }
+        },
+        items: [
+          {
+            value: 'building',
+            text: 'Building',
+            checked:  checked("status", "building")
+          },
+          {
+            value: 'cancelled',
+            text: 'Cancelled',
+            checked:  checked("status", "cancelled")
+          },
+          {
+            value: 'empty',
+            text: 'Empty',
+            checked:  checked("status", "empty")
+          },
+          {
+            value: 'error',
+            text: 'Error',
+            checked:  checked("status", "error")
+          },
+          {
+            value: 'ready',
+            text: 'Ready',
+            checked:  checked("status", "ready")
+          },
+          {
+            value: 'review',
+            text: 'Review',
+            checked:  checked("status", "review")
+          },
+          {
+            value: 'sent',
+            text: 'Sent',
+            checked:  checked("status", "sent")
+          }
+        ]
+      }) }}
+
+
+       {{ govukInput({
+         id: 'createdYear',
+         name: 'createdYear',
+         value: data['createdYear'],
+         classes: "govuk-input--width-4",
+         label: {
+           text: 'Created year',
+           classes: 'govuk-label--s'
+         }
+
+       }) }}
+
+       <div class="govuk-button-group">
+           {{ govukButton({
+         text: "Apply filters"
+       }) }}
+
+
+       {{ govukButton({
+           text: "Clear filters",
+           classes: "govuk-button--secondary",
+           name: "clearFilters",
+           value: "true"
+         }) }}
+
+         </div>
+
+
+
+     </form>
+
+
+     {% endset %}
+
+
+
+     {{ govukDetails({
+       summaryText: "Filter bill runs",
+       html: filtersForm | safe,
+       classes: "govuk-!-margin-bottom-4",
+       open: data['openDetails']
+     }) }}
+
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption">Bill runs</caption>
+  <caption class="govuk-table__caption govuk-table__caption--s govuk-!-margin-bottom-3 govuk-!-font-weight-regular" id="caption" >{{data.filterCaption}}</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Date</th>
@@ -20,6 +205,29 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
+
+
+
+    <!--get and loop through the notifications table, check if results are filtered or not-->
+    {% if data['filteredResults'].length %}
+    {% set billRuns = data['filteredResults']  %}
+    {% else %}
+    {% set billRuns = data['billRuns'] %}
+    {% endif %}
+
+
+    {% if billRuns == "empty" %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">No results</td>
+      <td class="govuk-table__cell"></td>
+      <td class="govuk-table__cell"></td>
+      <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+      <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+      </tr>
+
+    {% else %}
+
+
     <!--starting to loop through the bill runs data -->
     {% for i in billRuns %}
 
@@ -43,6 +251,8 @@
 
 
     {% endfor %}
+
+    {% endif %}
 
 
   </tbody>
