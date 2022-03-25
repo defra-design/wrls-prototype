@@ -46,9 +46,11 @@
     <div class="govuk-grid-column-full">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Bill run 880348</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
+        <h1 class="govuk-caption-l">Bill run 880348
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span></h1>
       </section>
+
+    
 
       {% if [data.status] == "ready" %}
       <p class="govuk-body">
@@ -66,7 +68,7 @@
       </p>
       {% endif %}
 
-      <div class="govuk-grid-row govuk-!-margin-bottom-1">
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           {% set date %}
           {% if data['rebill'] == "true" %}
@@ -122,14 +124,61 @@
           ]
         }) }}
 
+
+        <!--linked bill component-->
+        {% set linkedBillTag %}
+        {{govukTag({
+          text: "Review",
+          classes: "govuk-tag--blue"
+        })}}
+        {% endset %}
+
+
+        {% set metaData %}
+        {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Number",
+              classes: "meta-data__label"
+            },
+            value: {
+              html: '<a href="SRoC-bill.html">880347 </a>(Current charge scheme)',
+              classes: "meta-data__value"
+            }
+          },
+          {
+            key: {
+              text: "Status",
+              classes: "meta-data__label"
+            },
+            value: {
+              html: linkedBillTag,
+              classes: "meta-data__value"
+            }
+          }
+        ]
+        }) }}
+        {% endset %}
+
+          {{ govukInsetText({
+            html: '<h2 class="govuk-heading-m">This bill run is linked to another</h2>' + metaData
+          }) }}
+<!--linkedbill component end-->
         </div>
       </div>
+
+
 
     </div>
   </div>
 
+
+
+
   <!-- big total and 2 smaller totals -->
-  <!--<div class="govuk-grid-row govuk-!-margin-bottom-3">
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
       <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£1,105.00{% else %}£11,537.75{% endif %}</span><br>
@@ -137,6 +186,7 @@
     </div>
 
   </div>
+
 
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
@@ -150,46 +200,8 @@
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}2{% else %}4{% endif %} invoices</span></h2>
     </div>
 
-  </div> -->
-
-  <div class="govuk-inset-text">
-
-    <h2 class="govuk-heading-m">This bill run is linked to another</h2>
-
-    <div class="govuk-grid-row govuk-!-margin-bottom-1">
-      <div class="govuk-grid-column-full">
-        <section class="meta-data__row">
-          <div class="meta-data__container">
-            <div class="meta-data__label">
-              Number
-            </div>
-            <div class="meta-data__value">
-              <a href="SRoC-bill.html">
-                <span class="screen-reader-only">bill</span>880347 
-              </a>(Current charge scheme)
-            </div>
-            <div>
-        </section>
-        <section class="meta-data__row">
-          <div class="meta-data__container">
-            <div class="meta-data__label">
-              Status
-            </div>
-            <div class="meta-data__value">
-                <td class="govuk-table__cell">
-                    {{govukTag({
-                      text: "Review",
-                      classes: "govuk-tag--blue"
-                    })}}
-                  </td>
-            </div>
-            <div>
-        </section>
-        
-
-      </div>
-    </div>
   </div>
+
 
   {% if [data.status] == "ready" %}
 

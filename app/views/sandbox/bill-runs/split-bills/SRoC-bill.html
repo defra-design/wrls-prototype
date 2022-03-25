@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
         {% set title = "Review data issues" %}
-        
+
         {% block pageTitle %}
         {{title}} - GOV.UK
         {% endblock %}
-        
+
         {% block header %}
         {{ govukHeader({
            homepageUrl: "/",
@@ -24,43 +24,42 @@
            ]
          }) }}
         {% endblock %}
-        
+
         {% block beforeContent %}
-        
+
         <div class="govuk-!-margin-bottom-3">
           <!-- navigation block -->
-          {% include "current/includes/nav/nav-bd-manage.html" %}
+          {% include "current/includes/nav/nav-bd-bill-runs.html" %}
         </div>
-        
+
         {{ govukBackLink({
               text: "Back",
               href: "javascript:history.back()"
             }) }}
-        
+
         {% endblock %}
-        
+
         {% block content %}
-        
+
         <!-- page title -->
         <div class="govuk-grid-row govuk-!-margin-bottom-6">
           <div class="govuk-grid-column-full">
-        
-        
-            <h1 class="govuk-heading-xl govuk-!-margin-bottom-1"><span class="govuk-caption-l">Bill run 880347</h1>
+
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-6"><span class="govuk-caption-l">Bill run 880347</span>
               <!--<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff {{data['tptSeason']}} bill run</span>{{ title }}</h1>-->
-        
-              <span class="govuk-heading-xl govuk-!-margin-bottom-6">Anglian supplementary bill run</span>
-        
+Anglian supplementary bill run</h1>
+
             <p class="govuk-body">
               {{govukTag({
                 text: "Review",
                 classes: "govuk-tag--blue govuk-!-font-size-27"
               })}}
             </p>
-        
+
             <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-3">
-        
-        
+
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key meta-data__label">
                   Date created
@@ -68,11 +67,11 @@
                 <dd class="govuk-summary-list__value meta-data__value">
                   5 March 2020
                 </dd>
-        
+
               </div>
-        
-        
-        
+
+
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key meta-data__label">
                   Region
@@ -80,11 +79,11 @@
                 <dd class="govuk-summary-list__value meta-data__value">
                   Anglian
                 </dd>
-        
+
               </div>
-        
-        
-        
+
+
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key meta-data__label">
                   Bill run type
@@ -92,13 +91,13 @@
                 <dd class="govuk-summary-list__value meta-data__value">
                   Supplementary
                 </dd>
-        
+
               </div>
-              
-              
-                        
-        
-        
+
+
+
+
+
              <!-- <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key meta-data__label">
                   Financial year
@@ -106,43 +105,18 @@
                 <dd class="govuk-summary-list__value meta-data__value">
                   2020 to 2021
                 </dd>
-        
+
               </div>
             -->
-        
-        </dl>
-        
-          </div>
-        </div>
-        
-        <!--create the issues list, loop through the TpT bill run data and push those with issues to resolve in to a list-->
-        
-        {% set issuesList = [] %}
-        {% set tptBillRun = data['tptBillRun'] %}
-        
-            {% for item in tptBillRun %}
-            {% if item.ready == "no" %}
-                {% set issuesList = issuesList | push([
-                  {text: item.licence},
-                  {text: item.billingContact},
-                  {text: item.elements[0].issue|safe},
-                  {text: item.edited|safe|capitalize},
-                  {html: '<a href="reviewLicence?licence=' + item.licence +'">
-                    Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
-                  </a>'}
-                  ]) %}
-                {% endif %}
-            {% endfor %}
-        
-        {% if issuesList.length %}
 
-        
-        <section class="govuk-!-margin-bottom-3">
+        </dl>
+
+        <section class="govuk-!-margin-bottom-9">
             <div class="govuk-inset-text">
 
                 <h2 class="govuk-heading-m">This bill run is linked to another</h2>
-            
-                <div class="govuk-grid-row govuk-!-margin-bottom-1">
+
+                <div class="govuk-grid-row">
                   <div class="govuk-grid-column-full">
                     <section class="meta-data__row">
                       <div class="meta-data__container">
@@ -151,7 +125,7 @@
                         </div>
                         <div class="meta-data__value">
                           <a href="Pre-SRoC-bill.html">
-                            <span class="screen-reader-only">bill</span>880348 
+                            <span class="screen-reader-only">bill</span>880348
                           </a>(Old charge scheme)
                         </div>
                         <div>
@@ -169,21 +143,51 @@
                                 })}}
                               </td>
                         </div>
-        
+
         </section>
 
-                </section>
+          </div>
+        </div>
+  </div>
+      </section>
+
+
+        <!--create the issues list, loop through the TpT bill run data and push those with issues to resolve in to a list-->
+
+        {% set issuesList = [] %}
+        {% set tptBillRun = data['tptBillRun'] %}
+
+            {% for item in tptBillRun %}
+            {% if item.ready == "no" %}
+                {% set issuesList = issuesList | push([
+                  {text: item.licence},
+                  {text: item.billingContact},
+                  {text: item.elements[0].issue|safe},
+                  {text: item.edited|safe|capitalize},
+                  {html: '<a href="reviewLicence?licence=' + item.licence +'">
+                    Review <span class="screen-reader-only">the bill for licence ' + item.licence + '</span>
+                  </a>'}
+                  ]) %}
+                {% endif %}
+            {% endfor %}
+
+        {% if issuesList.length %}
+
+
+
+
+
                 {{ govukButton({
                     text: "Cancel bill run",
                     classes: "govuk-button--secondary govuk-!-margin-bottom-0"
                   }) }}
-                
+
                   {{ govukInsetText({
                   text: "You need to review " + data['issues'].length + " licences with returns data issues. You can then continue and send the bill run."
                 }) }}
         {% else %}
         <section class="govuk-!-margin-bottom-9">
-            
+
           <p class="govuk-body ">You have resolved all returns data issues. Continue to generate bills.</p>
           <div class="govuk-button-group">
           {{ govukButton({
@@ -197,12 +201,12 @@
           </div>
         </section>
         {% endif %}
-        
-        
-        
-        
+
+
+
+
           {% set issuesHtml %}
-        
+
           {{ govukTable({
             caption: issuesList.length|default ("3") + " licences have data issues",
             captionClasses: "govuk-table__caption--l",
@@ -226,16 +230,16 @@
             ],
             rows:
               issuesList
-        
+
           }) }}
-        
+
           {% endset %}
-        
+
         <!--create the ready list, loop through the bill run data and push those ready in to a list-->
-        
+
           {% set readyList = [] %}
-        
-        
+
+
           {% for item in tptBillRun %}
           {% if item.ready == "yes" %}
                   {% set readyList = readyList | push([
@@ -249,10 +253,10 @@
                     ]) %}
                   {% endif %}
               {% endfor %}
-        
-        
+
+
           {% set readyHtml %}
-        
+
           {{ govukTable({
             caption: readyList.length|default ("3") + " licences are ready for billing",
             captionClasses: "govuk-table__caption--l",
@@ -276,11 +280,11 @@
             ],
             rows:
               readyList
-        
+
           }) }}
-        
+
           {% endset %}
-        
+
             {{ govukTabs({
               items: [
                 {
@@ -299,7 +303,6 @@
                 }
               ]
             }) }}
-        
-        
+
+
         {% endblock %}
-        

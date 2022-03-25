@@ -122,6 +122,45 @@
           ]
         }) }}
 
+        <div class="govuk-inset-text">
+
+          <h2 class="govuk-heading-m">This bill run is linked to another</h2>
+
+          <div class="govuk-grid-row govuk-!-margin-bottom-1">
+            <div class="govuk-grid-column-full">
+              <section class="meta-data__row">
+                <div class="meta-data__container">
+                  <div class="meta-data__label">
+                    Number
+                  </div>
+                  <div class="meta-data__value">
+                    <a href="Pre-SRoC-bill-cancelled.html">
+                      <span class="screen-reader-only">bill</span>880348
+                    </a>(Old charge scheme)
+                  </div>
+                  <div>
+              </section>
+              <section class="meta-data__row">
+                <div class="meta-data__container">
+                  <div class="meta-data__label">
+                    Status
+                  </div>
+                  <div class="meta-data__value">
+                      <td class="govuk-table__cell">
+                          {{govukTag({
+                            text: "Cancelled",
+                            classes: "govuk-tag--red"
+                          })}}
+                        </td>
+                  </div>
+                  <div>
+              </section>
+
+
+            </div>
+          </div>
+        </div>
+
         </div>
       </div>
 
@@ -129,7 +168,7 @@
   </div>
 
   <!-- big total and 2 smaller totals -->
-  <!--<div class="govuk-grid-row govuk-!-margin-bottom-3">
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-column-one-half">
       <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£1,105.00{% else %}£11,537.75{% endif %}</span><br>
@@ -150,46 +189,9 @@
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}2{% else %}4{% endif %} invoices</span></h2>
     </div>
 
-  </div> -->
-
-  <div class="govuk-inset-text">
-
-    <h2 class="govuk-heading-m">This bill run is linked to another</h2>
-
-    <div class="govuk-grid-row govuk-!-margin-bottom-1">
-      <div class="govuk-grid-column-full">
-        <section class="meta-data__row">
-          <div class="meta-data__container">
-            <div class="meta-data__label">
-              Number
-            </div>
-            <div class="meta-data__value">
-              <a href="Pre-SRoC-bill-cancelled.html">
-                <span class="screen-reader-only">bill</span>880348 
-              </a>(Old charge scheme)
-            </div>
-            <div>
-        </section>
-        <section class="meta-data__row">
-          <div class="meta-data__container">
-            <div class="meta-data__label">
-              Status
-            </div>
-            <div class="meta-data__value">
-                <td class="govuk-table__cell">
-                    {{govukTag({
-                      text: "Cancelled",
-                      classes: "govuk-tag--red"
-                    })}}
-                  </td>
-            </div>
-            <div>
-        </section>
-        
-
-      </div>
-    </div>
   </div>
+
+
 
   {% if [data.status] == "ready" %}
 
@@ -275,7 +277,7 @@
     ]
   }) }}
   {% endset -%}
-  
+
   {% set pastWeekHtml %}
   <h2 class="govuk-heading-l">Past week</h2>
   {{ govukTable({
@@ -327,7 +329,7 @@
     ]
   }) }}
   {% endset -%}
-  
+
   {% set pastMonthHtml %}
   <h2 class="govuk-heading-l">Ready</h2>
   {{ govukTable({
@@ -379,7 +381,7 @@
     ]
   }) }}
   {% endset -%}
-  
+
   {% set pastYearHtml %}
   <h2 class="govuk-heading-l">Past year</h2>
   {{ govukTable({
@@ -431,7 +433,7 @@
     ]
   }) }}
   {% endset -%}
-  
+
   {{ govukTabs({
     items: [
       {
