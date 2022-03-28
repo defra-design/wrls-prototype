@@ -55,23 +55,23 @@
 <!-- table with four columns -->
 <div class="govuk-grid-row govuk-!-margin-bottom-9">
     <div class="govuk-grid-column-two-thirds">
-  
+
       <div class="table">                                                <!-- a table -->
-  
+
         <div class="table__row--head">                                              <!-- the table head -->
           <div class="table__cell bold-small">
             Charge scheme
           </div>
           <div class="table__cell bold-small">
-            Number
+            Bill run number
           </div>
           <div class="table__cell numbers bold-small column--10">
             Status
           </div>
         </div>
-  
+
         <!-- table row -->
-  
+
         <div class="table__row govuk-!-margin-bottom-6">
           <div class="table__cell table__cell--v-middle">
             <h3 class="screen-reader-only">
@@ -106,16 +106,16 @@
             </strong> -->
           </div>
         </div>
-  
-  
-  
-  
-       
-  
-  
+
+
+
+
+
+
+
         <!-- table row -->
         {% if [data.annualstatus] == "error" %}
-  
+
         {% else %}
           <div class="table__cell table__cell--v-middle">
             <h3 class="screen-reader-only">
@@ -154,15 +154,15 @@
           })}}
             {% endif %}
           </div>
-        </a>
-  
+
+
         {% endif %}
         </div>
     </div>
         <div class="govuk-grid-row govuk-!-margin-bottom-6">
         </div>
         <div class="govuk-grid-column-full">
-        <p class="govuk-body">You only need to send one reconcilliation email to SSCL. Use separate tabs for the two bill runs on the billing spreadsheet.</p>
+        <p class="govuk-body">You only need to send one reconciliation email to SSCL. Use separate tabs for the two bill runs on the billing spreadsheet.</p>
         {{ govukButton({
             text: "Continue",
             href: "/sandbox/split-bills/bill-runs-test"

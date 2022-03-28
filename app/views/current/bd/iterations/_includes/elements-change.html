@@ -235,7 +235,7 @@
 
       {% if i.addCharges == "yes" %}
        <hr class="govuk-section-break  govuk-!-margin-bottom-6">
-       <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Additional Charges</h2>
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Additional charges</h2>
 
        {{ govukSummaryList({
        classes: 'govuk-!-margin-bottom-2',
@@ -494,14 +494,14 @@
               {% if notAllAssigned > 1 %}
 
               {{ govukButton({
-              text: "Assign a charge reference",
+              text: "Set the charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
               href: "/bd/iterations/sroc/create-charge-information/charge-reference/which-elements?elementNumber=" + elementNumber
               }) }}
               {% else %}
 
               {{ govukButton({
-              text: "Assign a charge reference",
+              text: "Set the charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
               href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?assignElements="  + elementNumber + "&chargeReferenceIndex=" + data.chargeReferences.length|int
               }) }}
