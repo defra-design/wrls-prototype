@@ -460,6 +460,10 @@
           {% if i.chargeReference == undefined %}
            {% set notAllAssigned = notAllAssigned + 1 %}
            {% set elementNumber = loop.index0 %}
+
+           {% if notAllAssigned == 1 %}
+           <h2 class="govuk-heading-l">Elements without a charge reference</h2>
+           {% endif %}
                {% include "current/bd/iterations/_includes/sroc-element.html" %}
 
 
@@ -494,14 +498,14 @@
               {% if notAllAssigned > 1 %}
 
               {{ govukButton({
-              text: "Set the charge reference",
+              text: "Set a charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
               href: "/bd/iterations/sroc/create-charge-information/charge-reference/which-elements?elementNumber=" + elementNumber
               }) }}
               {% else %}
 
               {{ govukButton({
-              text: "Set the charge reference",
+              text: "Set a charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
               href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?assignElements="  + elementNumber + "&chargeReferenceIndex=" + data.chargeReferences.length|int
               }) }}
@@ -510,7 +514,8 @@
 
                 {% if notAllAssigned == 0 %}
 
-                <div class="divider govuk-!-margin-bottom-9"></div>
+                <div class="divider govuk-!-margin-bottom-6"></div>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-6">All elements have a charge reference set, confirm to create the charge.</h3>
 
 
                       {{ govukButton({

@@ -495,14 +495,14 @@
               {% if notAllAssigned > 1 %}
 
               {{ govukButton({
-              text: "Set the charge reference",
+              text: "Set a charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
               href: "/bd/iterations/sroc/create-charge-information/charge-reference/which-elements?elementNumber=" + elementNumber
               }) }}
               {% else %}
 
               {{ govukButton({
-              text: "Set the charge reference",
+              text: "Set a charge reference",
               classes: "govuk-button   govuk-!-margin-right-3",
               href: "/bd/iterations/sroc/create-charge-information/charge-reference/enter-description?assignElements="  + elementNumber + "&chargeReferenceIndex=" + data.chargeReferences.length|int
               }) }}
