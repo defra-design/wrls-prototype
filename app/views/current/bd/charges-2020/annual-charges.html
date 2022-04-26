@@ -54,21 +54,12 @@
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
       <div class="govuk-grid-column-full">
 
-        {% if [data.annualstatus] == "ready" %}
         <p class="govuk-body">
           {{govukTag({
-          text: "Ready",
-          classes: "govuk-tag--blue govuk-!-font-size-27"
-        })}}
+                      text: [data.billRuns[data.billRunIndex]['status']],
+                      classes: data.billRuns[data.billRunIndex]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
+                    })}}
         </p>
-        {% else %}
-        <p class="govuk-body">
-          {{govukTag({
-          text: "Sent",
-          classes: "govuk-tag--green govuk-!-font-size-27"
-        })}}
-        </p>
-        {% endif %}
 
         {{ govukSummaryList({
         classes: 'govuk-summary-list--no-border',
@@ -140,8 +131,8 @@
   <div class="govuk-grid-column-two-thirds">
 
     <section class="govuk-!-margin-bottom-6">
-      <a href="confirm-approve-bills?type=Annual" class="wrls-faux-button">Confirm bill run</a>
-      <a href="confirm-cancel-bills?type=Annual" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+      <a href="confirm-approve-bills?type=Annual&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button">Confirm bill run</a>
+      <a href="confirm-cancel-bills?type=Annual&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
     </section>
 
   </div>

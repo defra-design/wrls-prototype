@@ -1,0 +1,325 @@
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
+  <div class="govuk-grid-column-full ">
+
+    {% set caption = '  <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+Transactions</h4>' %}
+
+
+    {{ govukTable({
+  caption: caption |safe,
+  captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Transaction detail",
+      classes: 'column--40'
+    },
+    {
+      text: "Billable days",
+      format: "numeric",
+      classes: 'column--15'
+    },
+    {
+      text: "Quantity",
+      format: "numeric",
+      classes: 'column--15'
+    },
+    {
+      text: "Credit",
+      format: "numeric",
+      classes: 'column--15'
+    },
+    {
+      text: "Debit",
+      format: "numeric",
+      classes: 'column--15'
+    }
+  ],
+  rows: [
+  [
+    {
+      html: 'Basic water abstraction charge: LAND NR EXETER, JANES - SHEEP LANE DYKE<p class="govuk-body-s"><br><strong>Charge period:</strong> 1 January 2023 to 31 March 2023<br><strong>Charge reference:</strong> 2.1.88 (£513)<br><strong>Charge description:</strong> High loss, tidal , greater than 75 ML/yr, up to and including 250 ML/yr<br><br><strong>Additional charges:</strong> Supported source Dee (£391)<br><strong>Adjustments:</strong> Winter discount (0.5)</p>
+      <details class="govuk-details govuk-!-margin-bottom-0 govuk-!-font-size-16" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+          Charge element details
+          </span>
+        </summary>
+        <div class="govuk-details__text ">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full meta-data_extra-width" >
+
+            <!-- this needs converting to nunjucks-->
+            <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-font-size-16 govuk-!-margin-bottom-0">
+
+              <div class="govuk-summary-list__row">
+              </div>
+              <div class="govuk-summary-list__row">
+                <!--<dt class="govuk-summary-list__key meta-data__label" >
+                  <strong>Charge description:</strong>
+                </dt>
+                <dd class="govuk-summary-list__value meta-data__value">
+                  High loss, tidal , greater than 75 ML/yr, up to and including 250 ML/yr
+                </dd>-->
+        
+              </div>
+              <!-- first purpose-->
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key meta-data__label" >
+                  <strong>Purpose</strong>
+                </dt>
+                <dd class="govuk-summary-list__value meta-data__value">
+                  Spray irrigation - direct
+                </dd>
+        
+              </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label" >
+          <strong>Abstraction period:</strong>
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          1 January to 31 March
+        </dd>
+
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label" >
+          <strong>Volume</strong>
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          22ML authorised
+        </dd>
+
+      </div>
+
+<!-- second purpose-->
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key meta-data__label" >
+    <strong><br>Purpose</strong>
+  </dt>
+  <dd class="govuk-summary-list__value meta-data__value">
+    <br>Trickle irrigation - direct
+  </dd>
+
+</div>
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key meta-data__label" >
+<strong>Abstraction period:</strong>
+</dt>
+<dd class="govuk-summary-list__value meta-data__value">
+1 January to 31 March
+</dd>
+
+</div>
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key meta-data__label" >
+<strong>Volume</strong>
+</dt>
+<dd class="govuk-summary-list__value meta-data__value">
+55ML authorised
+</dd>
+
+</div>
+
+  
+
+
+</dl>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </details>'
+    },
+    {
+      text: "89/89",
+      format: "numeric"
+    },
+    {
+      text: "77ML",
+      format: "numeric"
+    },
+    {
+      text: "",
+      format: "numeric"
+    },
+    {
+      text: "£110.21",
+      format: "numeric"
+    }
+  ],
+  [
+  {
+      html: 'Compensation charge<p class="govuk-body-s"><strong><br>Charge period:</strong> 1 January 2023 to 31 March 2023<strong><br>EIC Region:</strong> Anglian</p>'
+  },
+    {
+      text: "89/89",
+      format: "numeric"
+    },
+    {
+      text: "77ML",
+      format: "numeric"
+    },
+    {
+      text: "",
+      format: "numeric"
+    },
+    {
+      text: "£0.00",
+      format: "numeric"
+    }
+  ],
+  [
+    {
+      html: 'Basic water abstraction charge: LAND NR EXETER, JANES - SHEEP LANE DYKE<p class="govuk-body-s"><br><strong>Charge period:</strong> 1 January 2023 to 31 March 2023<br><strong>Charge reference:</strong> 2.1.85 (£97)<br><strong>Charge description:</strong> High loss, tidal, up to and including 75 ML/yr<br><br><strong>Additional charges:</strong> Supported source Dee (£391)<br><strong>Adjustments:</strong> Winter discount (0.5)</p>
+        <details class="govuk-details govuk-!-margin-bottom-0 govuk-!-font-size-16" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Charge element details
+            </span>
+          </summary>
+          <div class="govuk-details__text ">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full meta-data_extra-width" >
+
+              <!-- this needs converting to nunjucks-->
+              <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-font-size-16 govuk-!-margin-bottom-0">
+
+                <div class="govuk-summary-list__row">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <!--<dt class="govuk-summary-list__key meta-data__label" >
+                    <strong>Charge description:</strong>
+                  </dt>
+                  <dd class="govuk-summary-list__value meta-data__value">
+                    High loss, tidal, up to and including 75 ML/yr
+                  </dd>-->
+          
+                </div>
+                <!-- first purpose-->
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key meta-data__label" >
+                    <strong>Purpose</strong>
+                  </dt>
+                  <dd class="govuk-summary-list__value meta-data__value">
+                    Spray irrigation - direct
+                  </dd>
+          
+                </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key meta-data__label" >
+            <strong>Abstraction period:</strong>
+          </dt>
+          <dd class="govuk-summary-list__value meta-data__value">
+            1 January to 31 March
+          </dd>
+  
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key meta-data__label" >
+            <strong>Volume</strong>
+          </dt>
+          <dd class="govuk-summary-list__value meta-data__value">
+            22ML authorised
+          </dd>
+  
+        </div>
+  
+
+
+  </dl>
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </details>'
+        
+    },
+    {
+      text: "89/89",
+      format: "numeric"
+    },
+    {
+      text: "22ML",
+      format: "numeric"
+    },
+    {
+      text: "£59.50",
+      format: "numeric"
+    },
+    {
+      text: "",
+      format: "numeric"
+    }
+  ],
+  [
+  {
+    html: 'Compensation charge<p class="govuk-body-s"><strong><br>Charge period:</strong> 1 January 2023 to 31 March 2023<strong><br>EIC Region:</strong> Anglian</p>',
+    classes: "govuk-table__cell--thick-border"
+  },
+    {
+      text: "89/89",
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
+    },
+    {
+      text: "22ML",
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
+    },
+    {
+      text: "£0.00",
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
+    },
+    {
+        text: "",
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border"
+    }
+  ],
+    [
+      {
+        text: "Credits total",
+        colspan: "3"
+      },
+      {
+        text: "£59.50",
+        format: "numeric"
+      },
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Debits total",
+        classes: "govuk-table__cell--thick-border",
+        colspan: "4"
+      },
+      {
+        text: "£110.21",
+        format: "numeric",
+        classes: "govuk-table__cell--thick-border"
+      }
+    ],
+    [
+      {
+        text: "Total",
+        classes: "govuk-table__cell--no-border ",
+        colspan: "4"
+      },
+      {
+        text: "£59.71",
+        format: "numeric",
+        classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
+      }
+    ]
+  ]
+}) }}

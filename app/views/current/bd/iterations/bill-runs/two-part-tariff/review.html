@@ -66,7 +66,7 @@
           Date created
         </dt>
         <dd class="govuk-summary-list__value meta-data__value">
-          {{"1" |today}} 
+          {{"1" |today}}
         </dd>
 
       </div>
@@ -166,7 +166,7 @@
   text: "You have resolved all returns data issues. Continue to generate bills."
 }) }}
   <div class="govuk-button-group">
-    <form action="create-transactions" method="post" novalidate>
+    <form action="create-transactions?billRunIndex={{data['billRunIndex']}}" method="post" novalidate>
   {{ govukButton({
     text: "Continue",
     classes: "govuk-button--primary"

@@ -2,7 +2,7 @@
 
 {% set title = "You're about to send this bill run" %}
 
-{% set type = data['type'].toLowerCase() %}
+{% set type = data.billRuns[data.billRunIndex]['runType'].toLowerCase() %}
 
 
 {% block pageTitle %}
@@ -57,7 +57,7 @@
 
     <section class="govuk-!-margin-bottom-6">
   <h2 class="govuk-caption-l">Bill run 1234567890</h2>
-      <span class="govuk-heading-l govuk-!-margin-bottom-0">{{data['region']}} {{type}} {% if type == "two-part tariff" %} {{data['tptSeason']}} {% endif %} bill run</span>
+      <span class="govuk-heading-l govuk-!-margin-bottom-0">{{data['region']|title}} {{type}} {% if type == "two-part tariff" %} {{data['tptSeason']}} {% endif %} bill run</span>
       <!-- <p class="govuk-body-l">
         <a href="ias">
           Invoice account 021545
@@ -73,7 +73,7 @@
               Date created
             </div>
             <div class="meta-data__value">
-              20 April 2020
+              {{[data.billRuns[data.billRunIndex]['date']]}}
             </div>
           <div>
         </section>
@@ -83,7 +83,7 @@
               Region
             </div>
             <div class="meta-data__value">
-              {{data['region']}}
+              {{data.billRuns[data.billRunIndex]['region']|title}}
             </div>
           <div>
         </section>
@@ -104,7 +104,7 @@
 
 
 
-    <a href="sending-bill-run?billRun=sent" class="wrls-faux-button">
+    <a href="sending-bill-run?billRun=sent&billRunIndex{{data.billRunIndex}}" class="wrls-faux-button">
       Send bill run
     </a>
 

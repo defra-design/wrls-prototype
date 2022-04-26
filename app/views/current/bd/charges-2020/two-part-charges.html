@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + " two-part tariff " + data['tptSeason'] + " bill run" %}
+{% set title = data.billRuns[data.billRunIndex]['region'] + " two-part tariff " + data['tptSeason'] + " bill run" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -46,28 +46,21 @@
   <div class="govuk-grid-column-full">
 
     <section class="govuk-!-margin-bottom-6">
-      <h1 class="govuk-caption-l">Bill run 576849</h1>
+      <h1 class="govuk-caption-l">Bill run {{data.billRuns[data.billRunIndex]['number']}}</h1>
       <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
     </section>
 
     <div class="govuk-grid-row govuk-!-margin-bottom-3">
       <div class="govuk-grid-column-full">
 
-        {% if [data.tptstatus] == "ready" %}
+
         <p class="govuk-body">
           {{govukTag({
-          text: "Ready",
-          classes: "govuk-tag--blue govuk-!-font-size-27"
-        })}}
+                      text: [data.billRuns[data.billRunIndex]['status']],
+                      classes: data.billRuns[data.billRunIndex]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
+                    })}}
         </p>
-        {% else %}
-        <p class="govuk-body">
-          {{govukTag({
-          text: "Sent",
-          classes: "govuk-tag--green govuk-!-font-size-27"
-        })}}
-        </p>
-        {% endif %}
+
 
         {{ govukSummaryList({
         classes: 'govuk-summary-list--no-border ',
@@ -78,7 +71,7 @@
               classes: "meta-data__label"
             },
             value: {
-              text: data['dateToday'],
+              text: data.billRuns[data.billRunIndex]['date'],
               classes: "meta-data__value "
             }
           },
@@ -88,7 +81,7 @@
               classes: "meta-data__label "
             },
             value: {
-              text: data['region'],
+              text: data.billRuns[data.billRunIndex]['region'],
               classes: "meta-data__value "
             }
           },
@@ -111,7 +104,7 @@
               text: "ABC132456BH",
               classes: "meta-data__value "
             }
-          } if data.tptstatus === 'sent'
+          } if data.billRuns[data.billRunIndex]['status'] === 'sent'
         ]
       }) }}
 
@@ -132,7 +125,7 @@
 
 </div>
 
-{% if [data.tptstatus] == "ready" %}
+{% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
 
 
 <div class="govuk-grid-row">
@@ -141,8 +134,8 @@
 
     <section class="govuk-!-margin-bottom-6">
       <p class="govuk-body">You can send this bill run on the next page.</p>
-      <a href="confirm-approve-bills?type=Two-part tariff" class="wrls-faux-button">Confirm bill run</a>
-      <a href="confirm-cancel-bills?type=Two-part tariff" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+      <a href="confirm-approve-bills?type=Two-part tariff&billRunIndex={{data['billRunIndex']}}" class="wrls-faux-button">Confirm bill run</a>
+      <a href="confirm-cancel-bills?type=Two-part tariff&billRunIndex={{data['billRunIndex']}}" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
     </section>
 
   </div>

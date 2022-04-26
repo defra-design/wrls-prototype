@@ -2,7 +2,7 @@
 
 {% set title = "You are about to cancel this bill run" %}
 
-{% set type = data['type'].toLowerCase() %}
+{% set type = data.billRuns[data.billRunIndex]['runType'].toLowerCase() %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -52,7 +52,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <!-- page heading -->
-    <h1 class="govuk-heading-l"><span class="govuk-caption-l">Bill run 1234567890</span>{{ title }}</h1>
+    <h1 class="govuk-heading-l"><span class="govuk-caption-l">Bill run {{data.billRuns[data.billRunIndex]['number']}}</span>{{ title }}</h1>
 
   <!--  <section class="govuk-!-margin-bottom-6">
      <h2 class="govuk-caption-l"></h2>
@@ -72,7 +72,7 @@
               Date created
             </div>
             <div class="meta-data__value">
-              5 March 2020
+              {{data.billRuns[data.billRunIndex]['date']}}
             </div>
           <div>
         </section>
@@ -82,7 +82,7 @@
               Region
             </div>
             <div class="meta-data__value">
-              {{data['region']}}
+              {{data.billRuns[data.billRunIndex]['region']|title}}
             </div>
           <div>
         </section>
@@ -92,7 +92,7 @@
               Bill run type
             </div>
             <div class="meta-data__value">
-              {{data['type']}}
+              {{data.billRuns[data.billRunIndex]['runType']|title}}
             </div>
           <div>
         </section>
@@ -102,7 +102,7 @@
               Status
             </div>
             <div class="meta-data__value">
-              {{data['annualstatus'] |capitalize }}
+              {{data.billRuns[data.billRunIndex]['status']|title}}
             </div>
           <div>
         </section>
@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <a href="bill-runs?status=building&billRun=false&tptstatus=error&annualstatus=error&supplementarystatus=error" class="wrls-faux-button">
+    <a href="cancelling-bill-run?status=building&billRun=false&tptstatus=error&annualstatus=error&supplementarystatus=error&billRun=sent&billRunIndex{{data.billRunIndex}}" class="wrls-faux-button">
       Cancel bill run
     </a>
 

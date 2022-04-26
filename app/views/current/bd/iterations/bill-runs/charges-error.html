@@ -1,16 +1,13 @@
 {% extends "layout.html" %}
 
-{% set title = "You're about to generate the two-part tariff bills " + data['tptSeason'] + " bills" %}
-
-
-
+{% set title = data['region']|capitalize + " " + data['runType'] + " bill run" %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -30,46 +27,60 @@
 
 {% block beforeContent %}
 
+<div class="govuk-!-margin-bottom-3">
   <!-- navigation block -->
-  <div class="govuk-!-margin-bottom-3">
-
-    <!-- navigation block -->
   {% include "current/includes/nav/nav-bd-bill-runs.html" %}
-  </div>
+</div>
 
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back()"
-  }) }}
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
 
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-!-margin-bottom-3"></div>
+{{ govukErrorSummary({
+  titleText: "There was a problem generating this bill run",
+  errorList: [
+    {
+      text: "Sorry, there has been a system error.  Please call the IT Service Desk on 0800 014 8255 and give them the error code 10."
+    }
+  ]
+}) }}
 
 <!-- page title -->
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
   <div class="govuk-grid-column-two-thirds">
 
-    <!-- page heading -->
-    <h1 class="govuk-heading-xl">{{ title }}</h1>
-
     <section class="govuk-!-margin-bottom-6">
-  <h2 class="govuk-heading-l">{{data['region']}} two-part tariff {{data['tptSeason']}} bill run</h2>
+      <h1 class="govuk-caption-l">Bill run 576849
+      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span></h1>
     </section>
 
-    <div class="govuk-grid-row govuk-!-margin-bottom-6">
-      <div class="govuk-grid-column-full">
+  </div>
+</div>
+
+    <div class="govuk-grid-row  govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+
+        <p class="govuk-body">
+          {{govukTag({
+        text: "error",
+        classes: "govuk-tag--red govuk-!-font-size-27"
+      })}}
+        </p>
+
         <section class="meta-data__row">
           <div class="meta-data__container">
             <div class="meta-data__label">
               Date created
             </div>
             <div class="meta-data__value">
-              5 March 2020
+              {{data['dateToday']}}
             </div>
-          <div>
+            <div>
         </section>
         <section class="meta-data__row">
           <div class="meta-data__container">
@@ -77,9 +88,9 @@
               Region
             </div>
             <div class="meta-data__value">
-              {{data['region']}}
+              {{data['region']|capitalize}}
             </div>
-          <div>
+            <div>
         </section>
         <section class="meta-data__row">
           <div class="meta-data__container">
@@ -87,18 +98,24 @@
               Bill run type
             </div>
             <div class="meta-data__value">
-              Two-part tariff {{data['tptSeason']}}
+              {{data['runType']|capitalize}}
             </div>
-          <div>
+            <div>
         </section>
-
-      </div>
-    </div>
-
-    <a href="two-part-charges-create-load?billRunIndex={{data.billRunIndex}}" class="wrls-faux-button">
-      Confirm
-    </a>
 
   </div>
 </div>
+<!--
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-two-thirds">
+{#
+{{ govukButton({
+  text: "Delete bill run",
+  classes: "govuk-button--secondary",
+  href: "confirm-delete-bill-run"
+}) }}
+#}
+</div>
+</div>
+-->
 {% endblock %}

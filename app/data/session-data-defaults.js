@@ -271,7 +271,7 @@ module.exports = {
         "runType": "supplementary",
         "bills": "-",
         "value": "-",
-        "status": "building"
+        "status": "error"
       },
       {
         "date": "7 January 2020",
@@ -308,7 +308,7 @@ module.exports = {
         "createdYear": "2020",
         "number": "773483",
         "region": "southern",
-        "runType": "two-part tariff",
+        "runType": "annual",
         "bills": "-",
         "value": "-",
         "status": "error"

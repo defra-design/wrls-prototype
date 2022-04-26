@@ -177,13 +177,13 @@ filters.focus = function(x) {
   //set colours for status "| statusColour"
   filters.statusColour = function(e) {
     if (e === "building") {
-      return "govuk-tag--orange"
+      return "govuk-tag--grey"
     } else if (e === "error") {
       return "govuk-tag--red"
-    } else if (e === "sent") {
-      return "govuk-tag--blue"
-    } else {
+    } else if (e === "sent" | e === " sent" | e === " sent ") {
       return "govuk-tag--green"
+    } else {
+      return "govuk-tag--blue"
     }
   }
 

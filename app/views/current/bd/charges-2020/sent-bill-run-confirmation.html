@@ -2,7 +2,7 @@
 
 {% set title = "Bill run sent" %}
 
-{% set type = data['type'].toLowerCase() %}
+{% set type = data.billRuns[data.billRunIndex]['runType'].toLowerCase() %}
 
 
 {% block pageTitle %}
@@ -54,7 +54,7 @@
 
     {{ govukPanel({
   titleText: [title],
-  html: "You've sent the " + [data.region] + " " + [data.type | lower ]  + " bill run 880347."
+  html: "You've sent the " + data.billRuns[data.billRunIndex]['region'] + " " + [data.type | lower ]  + " bill run " +  data.billRuns[data.billRunIndex]['number'] + "."
 }) }}
 
 

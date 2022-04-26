@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region'] + " supplementary bill run" %}
+{% set title = data.billRuns[data.billRunIndex]['region'] | title + " supplementary bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -46,25 +46,18 @@
     <div class="govuk-grid-column-full">
 
       <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Bill run 1234567890</h1>
+        <h1 class="govuk-caption-l">Bill run {{data.billRuns[data.billRunIndex]['number']}}</h1>
         <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
       </section>
 
-      {% if [data.status] == "ready" %}
+
       <p class="govuk-body">
-        {{govukTag({
-        text: "Ready",
-        classes: "govuk-tag--blue govuk-!-font-size-27"
-      })}}
+      {{govukTag({
+                  text: [data.billRuns[data.billRunIndex]['status']],
+                  classes: data.billRuns[data.billRunIndex]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 " 
+                })}}
       </p>
-      {% else %}
-      <p class="govuk-body">
-        {{govukTag({
-        text: "Sent",
-        classes: "govuk-tag--green govuk-!-font-size-27"
-      })}}
-      </p>
-      {% endif %}
+
 
       <div class="govuk-grid-row govuk-!-margin-bottom-3">
         <div class="govuk-grid-column-full">
@@ -72,7 +65,7 @@
           {% if data['rebill'] == "true" %}
           20 April 2020
           {% else %}
-          5 March 2020
+          {{[data.billRuns[data.billRunIndex]['date']]}}
           {% endif %}
           {% endset %}
 
@@ -95,7 +88,7 @@
                 classes: "meta-data__label "
               },
               value: {
-                text: data['region'],
+                text: [data.billRuns[data.billRunIndex]['region']],
                 classes: "meta-data__value "
               }
             },
@@ -118,7 +111,7 @@
                 text: "ABC132456BH",
                 classes: "meta-data__value "
               }
-            } if data.status === 'sent'
+            } if [data.billRuns[data.billRunIndex]['status']] === 'sent'
           ]
         }) }}
 
@@ -159,8 +152,8 @@
     <div class="govuk-grid-column-two-thirds">
 
       <section class="govuk-!-margin-bottom-6">
-        <a href="confirm-approve-bills?type=Supplementary" class="wrls-faux-button">Confirm bill run</a>
-        <a href="confirm-cancel-bills?type=Supplementary" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+        <a href="confirm-approve-bills?type=Supplementary&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button">Confirm bill run</a>
+        <a href="confirm-cancel-bills?type=Supplementary&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
       </section>
 
     </div>

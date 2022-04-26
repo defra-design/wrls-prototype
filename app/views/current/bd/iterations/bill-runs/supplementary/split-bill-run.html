@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% set title = "Split bill run" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  <!-- {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }} -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-!-margin-bottom-3"></div>
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <!-- <span class="govuk-caption-l">Batch 003265 / 12 June 2019</span> -->
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p class="govuk-body">Some licences have transactions that will be billed using the old charging scheme. These are split into a separate bill run.</p>
+
+    {% set billRuns = data['billRuns'] %}
+    {% set billRun = [] %}
+
+    {% for i in billRuns %}
+        {% if loop.index0 < "2" %}
+        {% set chargeScheme = "" %}
+        {% if loop.index0 == 0 %}
+        {% set chargeScheme = "Current charge scheme" %}
+        {% else %}
+        {% set chargeScheme = "Old charge scheme" %}
+        {% endif %}
+        {% set url = "/current/bd/charges-2020/supplementary-charges?region=" + i.region |urlencode + "&status=" + i.status + "&billRunIndex=" + loop.index0 %}
+          {% set billRun = billRun|push([{
+            html: "<a class='govuk-link' href='" + url + "' >" + i.number + "</a>"
+          },{
+            text : chargeScheme
+          },{
+            html: govukTag({
+                        text: [i.status],
+                        classes: i.status | statusColour
+                      })
+          }]) %}
+
+        {% endif %}
+    {% endfor %}
+
+
+
+    {{ govukTable({
+      caption: "Bill runs",
+      captionClasses: "govuk-table__caption--s",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Number"
+        },
+        {
+          text: "Charge scheme"
+        },
+        {
+          text: "Status"
+        }
+      ],
+      rows: billRun
+    }) }}
+
+
+
+        <p class="govuk-body">You only need to send one reconciliation email to SSCL. Use separate tabs for the two bill runs on the billing spreadsheet.</p>
+        {{ govukButton({
+            text: "Continue",
+            href: "/current/bd/charges-2020/bill-runs"
+          }) }}
+        </div>
+    </div>
+
+  {% endblock %}

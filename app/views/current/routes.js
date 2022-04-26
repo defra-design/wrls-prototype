@@ -3,6 +3,25 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+//get today's date
+let date = new Date();
+let dd = date.getDate();
+let mm = date.getMonth() + 1;
+
+const yyyy = date.getFullYear();
+if (dd < 10) {
+  dd = `0${dd}`;
+}
+if (mm < 10) {
+  mm = `0${mm}`;
+}
+
+//change the month into a name
+let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+mm = monthNames[mm - 1]
+
+const today = `${dd} ${mm} ${yyyy}`;
+
 //----------------------------------------------------------------
 ////BILL RUN ROUTES
 //CREATE BILL RUN
@@ -20,6 +39,330 @@ router.use('/bd/iterations/sroc', require('./bd/iterations/_routes/_routes-sroc'
 
 ///NOTICES ROUTE
 router.use('/bd/iterations/licence-notices', require('./bd/iterations/_routes/_routes-notices'));
+
+
+/////create bill runs
+
+//Create Supplementary
+router.get('/bd/charges-2020/supplementary-charges-load', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  let suppRefresh = req.session.data.suppRefresh
+  let number = ""
+  console.log(suppRefresh)
+  if (suppRefresh == 1) {
+    number = req.session.data.billRunNumber
+    number = number + 1
+    req.session.data.suppRefresh = 0
+    } else {
+      number = Math.floor(100000 + Math.random() * 900000)
+      req.session.data.billRunNumber = number
+      req.session.data.suppRefresh = 1
+    }
+
+
+  let date = today
+  let createdYear = yyyy
+
+  let region = req.originalUrl.split(/(?<==)(.*?)(?=&)/g, )[1].replace("%20", " ")
+  let runType = "supplementary"
+  let bills = "5"
+  let value = "11,537.75"
+  let status = "ready"
+
+  let newBillrun = {
+    date,
+    createdYear,
+    number,
+    region,
+    runType,
+    bills,
+    value,
+    status
+  };
+
+  let billRuns = req.session.data.billRuns
+  billRuns.unshift(newBillrun);
+
+  res.render('current/bd/charges-2020/supplementary-charges-load');
+
+});
+
+//Create Annual
+router.get('/bd/charges-2020/annual-charges-load', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  let date = today
+  let createdYear = yyyy
+  let number = Math.floor(100000 + Math.random() * 900000)
+  req.session.data.billRunNumber = number
+  let region = req.originalUrl.split(/(?<==)(.*?)(?=&)/g, )[1].replace("%20", " ")
+  let runType = "annual"
+  let bills = "857"
+  let value = "512,468.00"
+  let status = "ready"
+
+  let newBillrun = {
+    date,
+    createdYear,
+    number,
+    region,
+    runType,
+    bills,
+    value,
+    status
+  };
+
+  let billRuns = req.session.data.billRuns
+  billRuns.unshift(newBillrun);
+
+  res.render('current/bd/charges-2020/annual-charges-load');
+
+});
+
+
+//Create Two-part tariff
+router.get('/bd/charges-2020/two-part-charges-load', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  let date = today
+  let createdYear = yyyy
+  let number = Math.floor(100000 + Math.random() * 900000)
+  req.session.data.billRunNumber = number
+  let region = req.originalUrl.split(/(?<==)(.*?)(?=&)/g, )[1].replace("%20", " ")
+  let runType = "two-part tariff"
+  let bills = "-"
+  let value = "-"
+  let status = "review"
+
+  let newBillrun = {
+    date,
+    createdYear,
+    number,
+    region,
+    runType,
+    bills,
+    value,
+    status
+  };
+
+  let billRuns = req.session.data.billRuns
+  billRuns.unshift(newBillrun);
+
+  res.render('current/bd/charges-2020/two-part-charges-load');
+
+});
+
+
+//Move Two-part tariff into Ready
+router.get('/bd/charges-2020/two-part-charges-create-load', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+
+
+  function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+
+let billRunIndex = parseInt(req.session.data.billRunIndex)
+let billRun = req.session.data.billRuns[billRunIndex]
+
+billRun.bills = "977"
+billRun.value = "512,460.00"
+billRun.status = "ready"
+
+
+  res.render('current/bd/charges-2020/two-part-charges-create-load');
+
+});
+
+
+
+
+///SENDING BILL RUN
+router.get('/bd/charges-2020/sending-bill-run', function(req, res) {
+
+  billRunIndex = parseInt(req.session.data.billRunIndex)
+
+  billRuns = req.session.data.billRuns
+
+  billRuns[billRunIndex].status = "sent"
+
+  res.render('current/bd/charges-2020/sending-bill-run');
+
+});
+
+
+
+
+///CANCELLING BILL RUN
+router.get('/bd/charges-2020/cancelling-bill-run', function(req, res) {
+
+  billRunIndex = parseInt(req.session.data.billRunIndex)
+
+  billRuns = req.session.data.billRuns
+
+  billRuns[billRunIndex].status = "error"
+
+  res.render('current/bd/charges-2020/cancelling-bill-run');
+
+});
+
+
+/////////////////////////Bill runs
+  ///Apply  filters
+
+  router.post('/bd/charges-2020/bill-runs/apply-filters', function(req, res) {
+
+    //check to see if the user is clearing filters
+    if (req.session.data.clearFilters == "true") {
+
+      req.session.data.runType = ""
+      req.session.data.region = ""
+      req.session.data.status = ""
+      req.session.data.createdYear = ""
+      req.session.data.filteredResults = ""
+      req.session.data.openDetails = true
+      //reset the table caption if the list is cleared
+      req.session.data.filterCaption = "Showing all bill runs."
+  //    req.session.data.focus="alert"
+
+    } else {
+
+
+    //get the list of bill runs
+    let  billRuns = req.session.data.billRuns
+
+
+  //set global scope of filteredResults
+  let filteredResults = ""
+
+  //set the type filter
+  let typeFilters = ""
+   typeFilters = req.session.data.runType
+
+   if (typeof typeFilters === 'undefined') {
+     typeFilters= ""
+   }
+
+   if (typeof typeFilters.length) {
+     filteredResults = billRuns.filter(el => ( typeFilters.indexOf(el.runType) >= 0 ))
+   }
+
+   //set the region filter
+   let regionFilters = ""
+    regionFilters = req.session.data.region
+    if (typeof regionFilters === 'undefined') {
+      regionFilters= ""
+    }
+
+   if ((regionFilters.length) && (filteredResults.length)) {
+      filteredResults = filteredResults.filter(el => ( regionFilters.indexOf(el.region) >= 0 ))
+
+    } else if (regionFilters.length) {
+      filteredResults = billRuns.filter(el => ( regionFilters.indexOf(el.region) >= 0 ))
+    }
+
+
+    //set the status filter
+    let statusFilters = ""
+     statusFilters = req.session.data.status
+     if (typeof statusFilters === 'undefined') {
+       statusFilters= ""
+     }
+
+    if ((regionFilters.length || typeFilters.length) && (!filteredResults.length))
+   { } else {
+
+    if ((statusFilters.length) && (filteredResults.length)) {
+       filteredResults = filteredResults.filter(el => ( statusFilters.indexOf(el.status) >= 0 ))
+     } else if (statusFilters.length) {
+       filteredResults = billRuns.filter(el => ( statusFilters.indexOf(el.status) >= 0 ))
+     }
+    }
+
+     //set the created year filter
+      let createdYearFilter = ""
+       createdYearFilter = req.session.data.createdYear
+      if (createdYearFilter === 'undefined') {
+         createdYearFilter = ""
+       }
+
+      if ((createdYearFilter.length) && (filteredResults.length)) {
+        filteredResults = filteredResults.filter(el => (createdYearFilter.indexOf(el.createdYear) >=0 ) );
+      } else if (createdYearFilter.length) {
+        filteredResults = billRuns.filter(el => (createdYearFilter.indexOf(el.createdYear) >=0 ) );
+      }
+
+
+    //set filtered results to empty if filters doesn't return anything
+      if (!Array.isArray(filteredResults) || !filteredResults.length){
+        filteredResults = "empty"
+      }
+
+
+  req.session.data.openDetails = true
+  //req.session.data.focus="alert"
+
+  //Create a list formatter
+  const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
+  //Create the list depending on what filters are selected
+  let list = []
+  if (typeFilters.length && regionFilters.length && statusFilters.length){
+  list = typeFilters.concat(regionFilters,statusFilters);
+  } else if (typeFilters.length && regionFilters.length){
+    list = typeFilters.concat(regionFilters);
+  } else if (typeFilters.length && statusFilters.length){
+    list = typeFilters.concat(statusFilters);
+  } else if (regionFilters.length && statusFilters.length){
+    list = regionFilters.concat(statusFilters);
+  } else if (regionFilters.length){
+    list = regionFilters
+  } else if (typeFilters.length){
+    list = typeFilters
+  } else if (statusFilters.length){
+    list = statusFilters
+  }
+
+  if (createdYearFilter.length) {
+    list.push(createdYearFilter)
+  }
+
+  //set the dynamic caption for the table
+  if (list.length) {
+  req.session.data.filterCaption = "Showing bill runs filtered by " + formatter.format(list) + "."
+  } else {
+    req.session.data.filterCaption = "Showing all bill runs."
+  }
+
+  req.session.data.filteredResults = filteredResults
+
+  }
+
+    req.session.data.clearFilters = ""
+    res.redirect('../bill-runs#caption');
+
+  });
+
+
+  ///clear filters
+
+  router.post('/bill-runs-filtered/clear-filters', function(req, res) {
+
+
+    //reset the table caption if the list is cleared
+    req.session.data.filterCaption = "Showing all sent notices."
+
+
+    res.redirect('/bd/charges-2020/bill-runs-filtered/apply-filters#captions');
+  });
+
+
 
 
 /////Reason for new charge version
@@ -190,11 +533,11 @@ router.post('/bd/charges-2020/add-element-purpose', function(req, res) {
 
 //description
 //Setting the change element route back
-router.get('/current/bd/charges-2020/add-element-description', function(req, res) {
+router.get('/bd/charges-2020/add-element-description', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('bd/charges-2020/add-element-description');
+  res.render('current/bd/charges-2020/add-element-description');
 
 });
 

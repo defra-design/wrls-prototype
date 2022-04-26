@@ -42,6 +42,7 @@ router.get('/select-bill-run-type', function(req, res) {
   req.session.data.back = req.headers.referer
 
 
+
   res.render(folder + 'select-bill-run-type');
 
 });
@@ -124,6 +125,11 @@ res.redirect("../bill-runs");
 //Review the list of data issues
 router.get('/two-part-tariff/review', function(req, res) {
   req.session.data.back = req.headers.referer
+
+  if (req.session.data.billRunIndex == undefined){
+  req.session.data.billRunIndex = req.originalUrl.split(/(?<==)/g, )[1]
+  }
+  console.log(req.session.data.billRunIndex)
   res.render(folder + 'two-part-tariff/review');
 });
 
@@ -181,6 +187,8 @@ router.post('/two-part-tariff/set-the-returns-quantity', function(req, res) {
 
   //Create the transactions for the bill run
   router.post('/two-part-tariff/create-transactions', function(req, res) {
+
+
     res.redirect('/current/bd/charges-2020/confirm-create-bill-run');
   });
 
@@ -193,6 +201,12 @@ router.post('/two-part-tariff/set-the-returns-quantity', function(req, res) {
   router.post('/two-part-tariff/download-licence-review-report', function(req, res) {
     res.redirect('/public/files/licenceReviewReport.csv');
   });
+
+
+  /////////--------------------------------------------------
+  //Supplementary
+
+
 
 
 module.exports = router

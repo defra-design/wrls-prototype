@@ -59,14 +59,14 @@
           },
   items: [
     {
-      value: "annual-charges-load?annualType=all abstractors&annualBilled=true",
+      value: "annual-charges-load?region=" + data['region'] + "&annualType=all abstractors&annualBilled=true",
       text: "All abstractors",
       hint: {
         text: "You can only have one of this bill run type for a region in a financial year"
       }
     },
     {
-      value: "annual-charges-load?annualType=water companies",
+      value: "annual-charges-load?region=" + data['region'] + "&annualType=water companies",
       text: "Water companies only"
     }
   ]

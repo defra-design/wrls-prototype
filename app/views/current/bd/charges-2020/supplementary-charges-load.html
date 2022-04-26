@@ -67,7 +67,13 @@
       }) }}
 
   <div class="divider"></div>
-  <div class="spinner"></div>
+  <div class="spinner govuk-!-margin-bottom-0"></div>
+  {% if data['suppRefresh'] > 0 %}
+  <p class="govuk-body govuk-!-text-align-centre">Gathering transcations for current charge scheme</p>
+  {% else %}
+  <p class="govuk-body govuk-!-text-align-centre">Gathering transcations for old charge scheme</p>
+  {% endif %}
+
 
   </div>
 </div>
@@ -77,9 +83,19 @@
       window.setTimeout('location.replace("../iterations/manual-billing/bill-run/review")',4000);
   </script>
   {% else %}
-   <script language="javascript" type="text/javascript">
+<!--   <script language="javascript" type="text/javascript">
        window.setTimeout('location.replace("supplementary-charges?status=ready&billRun=created")',4000);
-   </script>
+   </script> -->
+     {# Refresh the page to create two bill runs #}
+     {% if data['suppRefresh'] > 0 %}
+     <script language="javascript" type="text/javascript">
+         window.setTimeout('location.replace("/bd/iterations/bill-runs/supplementary/split-bill-run?status=ready&billRun=created")',4000);
+     </script>
+     {% else %}
+     <script language="javascript" type="text/javascript">
+         window.setTimeout('location.replace("/bd/charges-2020/supplementary-charges-load?region={{data.region}}&status=building")',4000);
+     </script>
+     {% endif %}
    {% endif %}
 
 {% endblock %}
