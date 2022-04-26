@@ -24,7 +24,7 @@ Move the folder into your `prototypes` folder.
 
 ## Terminal basics
 
-The terminal on MacOS and Linux (and Git Bash on Windows, which is part of Git for Windows) lets you type in commands and run programs on your computer.
+The terminal on MacOS and Linux (and Git Bash on Windows, which is part of Git for Windows) lets you type in commands and run programs on your computer. 
 
 The important thing to remember about the terminal is that you‘re working in one directory (folder) at any one time.
 
@@ -35,9 +35,9 @@ There are a few commands you‘ll have to run in the terminal to use the Prototy
 * `cd [name of directory]`  = change to [name of directory]
 * `cd ~`  = go to your home directory
 * `ls` = list all the folders and files in a directory
-* `pwd` = print working directory tells you what directory you’re in
+* `pwd` = print working directory tells you what directory you’re in 
 * press up and down on the keyboard to go through previous commands
-* `npm start`  = start the Prototype Kit (you need to be in your prototype folder)
+* `npm start`  = start the Prototype Kit (you need to be in your prototype folder) 
 
 To quit the kit, in the terminal press the <b>ctrl</b> and <b>c</b> keys together.
 

@@ -21,7 +21,7 @@ In the terminal, enter:
 npm start
 ```
 
-The first time you run `npm start`, the kit will ask you whether you want to send anonymous data to help the team improve the service. Enter `y` or `n` to answer yes or no.
+The first time you run `npm start`, the kit will ask you whether you want to send anonymous data to help the team improve the service. Enter `y` or `n` to answer yes or no. 
 
 After the kit has started, you should see a message telling you that the kit is running:
 ```

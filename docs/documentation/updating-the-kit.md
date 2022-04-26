@@ -52,7 +52,7 @@ It will download a zip file and unzip the latest version of the Prototype Kit in
 
 ### If your prototype does not work
 
-If your prototype does not work, compare the new `package.json` file to the `package.json` file in the backup you made in step 3.
+If your prototype does not work, compare the new `package.json` file to the `package.json` file in the backup you made in step 3. 
 
 Run `npm install PACKAGE-NAME` for each package that's missing in the new file.
 
@@ -77,3 +77,4 @@ If you need to restart the Prototype Kit after the fix:
 
 1. in your [terminal](https://govuk-prototype-kit.herokuapp.com/docs/install/requirements.md#terminal), `cd` to your prototype folder
 2. run `npm start`
+
