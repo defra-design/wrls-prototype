@@ -50,14 +50,22 @@ router.get('/bd/charges-2020/supplementary-charges-load', function(req, res) {
 
   let suppRefresh = req.session.data.suppRefresh
   let number = ""
+  let sroc = ""
+  let bills = ""
+  let value = ""
   console.log(suppRefresh)
   if (suppRefresh == 1) {
     number = req.session.data.billRunNumber
     number = number + 1
+    bills = "5"
+    value = "11,537.75"
     req.session.data.suppRefresh = 0
     } else {
       number = Math.floor(100000 + Math.random() * 900000)
       req.session.data.billRunNumber = number
+      bills = "7"
+      value = "6,537.75"
+      sroc = false
       req.session.data.suppRefresh = 1
     }
 
@@ -67,11 +75,10 @@ router.get('/bd/charges-2020/supplementary-charges-load', function(req, res) {
 
   let region = req.originalUrl.split(/(?<==)(.*?)(?=&)/g, )[1].replace("%20", " ")
   let runType = "supplementary"
-  let bills = "5"
-  let value = "11,537.75"
   let status = "ready"
 
   let newBillrun = {
+    sroc,
     date,
     createdYear,
     number,

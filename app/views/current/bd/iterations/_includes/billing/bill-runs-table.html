@@ -253,9 +253,9 @@
         {% endif %}
     {% endif %}
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell"><a href={{url}} class="govuk-link">{{[i.date]}}</a></td>
+      <td class="govuk-table__cell"><a href={{url}} class="govuk-link">{{[i.date]}}</a>{% if i.sroc === false %}<br><span class="govuk-body-s">Old charge scheme</span>{% endif %}</td>
 
-      <td class="govuk-table__cell">{{[i.region  | safe | title ]}}</td>
+      <td class="govuk-table__cell">{{[i.region  | safe | title ]}}  </td>
       <td class="govuk-table__cell">{{[i.runType | capitalize | safe]}}</td>
   <td class="govuk-table__cell govuk-table__cell--numeric">{{[i.number]}}</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">{{[i.bills]}}</td>
@@ -276,3 +276,5 @@
 
   </tbody>
 </table>
+
+{{data['billRuns'] |dump}}
