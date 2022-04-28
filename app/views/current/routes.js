@@ -48,49 +48,45 @@ router.get('/bd/charges-2020/supplementary-charges-load', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
+  //create a bill run
+  function createBillRun(){
+
+    let billRuns = req.session.data.billRuns
+    let date = today
+    let createdYear = yyyy
+    let region = req.originalUrl.split(/(?<==)(.*?)(?=&)/g, )[1].replace("%20", " ")
+    let runType = "supplementary"
+
+
+    let newBillrun = {
+      sroc,
+      date,
+      createdYear,
+      number,
+      region,
+      runType,
+      bills,
+      value,
+      status
+    };
+    billRuns.unshift(newBillrun);
+  }
+
+
+  //create two bill runs together and on refresh amend the second bill run to ready
   let suppRefresh = req.session.data.suppRefresh
-  let number = ""
-  let sroc = ""
-  let bills = ""
-  let value = ""
-  console.log(suppRefresh)
+
   if (suppRefresh == 1) {
-    number = req.session.data.billRunNumber
-    number = number + 1
-    bills = "5"
-    value = "11,537.75"
     req.session.data.suppRefresh = 0
+    req.session.data.billRuns[0].status = "ready"
+    req.session.data.billRuns[0].bills = "5"
+    req.session.data.billRuns[0].value = "11,537.75"
     } else {
-      number = Math.floor(100000 + Math.random() * 900000)
-      req.session.data.billRunNumber = number
-      bills = "7"
-      value = "6,537.75"
-      sroc = false
       req.session.data.suppRefresh = 1
+      createBillRun(status = "ready", number = Math.floor(100000 + Math.random() * 900000), bills = "7", value = "6,537.75", sroc = false)
+      createBillRun(status = "billing", number = number + 1, bills = "-", value = "-", sroc = true)
     }
 
-
-  let date = today
-  let createdYear = yyyy
-
-  let region = req.originalUrl.split(/(?<==)(.*?)(?=&)/g, )[1].replace("%20", " ")
-  let runType = "supplementary"
-  let status = "ready"
-
-  let newBillrun = {
-    sroc,
-    date,
-    createdYear,
-    number,
-    region,
-    runType,
-    bills,
-    value,
-    status
-  };
-
-  let billRuns = req.session.data.billRuns
-  billRuns.unshift(newBillrun);
 
   res.render('current/bd/charges-2020/supplementary-charges-load');
 
