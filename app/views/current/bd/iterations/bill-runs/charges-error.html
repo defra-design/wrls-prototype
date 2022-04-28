@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = data['region']|capitalize + " " + data['runType'] + " bill run" %}
+{% set title = data.billRuns[data.billRunIndex]['region']|capitalize + " " + data.billRuns[data.billRunIndex]['runType'] + " bill run" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -52,10 +52,10 @@
 
 <!-- page title -->
 <div class="govuk-grid-row govuk-!-margin-bottom-0">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <section class="govuk-!-margin-bottom-6">
-      <h1 class="govuk-caption-l">Bill run 576849
+      <h1 class="govuk-caption-l">Bill run {{data.billRuns[data.billRunIndex]['number']}}
       <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span></h1>
     </section>
 
@@ -78,7 +78,7 @@
               Date created
             </div>
             <div class="meta-data__value">
-              {{data['dateToday']}}
+              {{data.billRuns[data.billRunIndex]['date']}}
             </div>
             <div>
         </section>
@@ -88,7 +88,7 @@
               Region
             </div>
             <div class="meta-data__value">
-              {{data['region']|capitalize}}
+              {{data.billRuns[data.billRunIndex]['region']|title}}
             </div>
             <div>
         </section>
@@ -98,13 +98,92 @@
               Bill run type
             </div>
             <div class="meta-data__value">
-              {{data['runType']|capitalize}}
+              {{data.billRuns[data.billRunIndex]['runType']|capitalize}}
             </div>
             <div>
         </section>
 
+
+
   </div>
 </div>
+
+
+
+{% if data.billRuns[data.billRunIndex]['sroc'] == true or data.billRuns[data.billRunIndex]['sroc'] == false %}
+
+<div class="govuk-grid-row  govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--linked bill component-->
+
+    {% set index = "" %}
+    {% set scheme = "" %}
+    {% set number = "" %}
+    {% if data.billRuns[data.billRunIndex]['sroc'] == true %}
+    {% set index = +data.billRunIndex + 1 %}
+    {% set scheme = "Old charge scheme"%}
+    {% set number = data.billRuns[data.billRunIndex]['number'] - 1%}
+    {% else %}
+    {% set index = data.billRunIndex - 1 %}
+    {% set scheme = "Current charge scheme"%}
+      {% set number = +data.billRuns[data.billRunIndex]['number'] + 1%}
+    {% endif %}
+
+    {% set linkedBillTag %}
+    {{govukTag({
+                text: [data.billRuns[index]['status']],
+                classes: data.billRuns[index]['status'] | replaceWS | statusColour
+              })}}
+    {% endset %}
+
+    {% set url = "" %}
+    {% if data.billRuns[index]['status'] == "error" %}
+    {% set url = "/current/bd/iterations/bill-runs/charges-error?billRunIndex="  %}
+    {% else %}
+    {% set url = "/current/bd/charges-2020/supplementary-charges?billRunIndex=" %}
+    {% endif %}
+
+     {% set html = '<a href="' + url + index + '">'+number+'</a> (' + scheme+ ')' %}
+
+
+    {% set metaData %}
+    {{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+
+    {
+      key: {
+        text: "Number",
+        classes: "meta-data__label line-height"
+      },
+      value: {
+        html: html,
+        classes: "meta-data__value"
+      }
+    },
+    {
+      key: {
+        text: "Status",
+        classes: "meta-data__label"
+      },
+      value: {
+        html: linkedBillTag,
+        classes: "meta-data__value"
+
+      }
+    }
+  ]
+  }) }}
+    {% endset %}
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This bill run is linked to another</h2> {{metaData|safe}}
+
+    <!--linkedbill component end-->
+
+    </div>
+    </div>
+
+{% endif %}
 <!--
 <div class="govuk-grid-row govuk-!-margin-bottom-0">
   <div class="govuk-grid-column-two-thirds">

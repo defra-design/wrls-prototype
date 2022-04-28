@@ -3,11 +3,11 @@
 {% set title = data.billRuns[data.billRunIndex]['region'] | title + " supplementary bill run" %}
 
 {% block pageTitle %}
-   {{title}} - GOV.UK
+{{title}} - GOV.UK
 {% endblock %}
 
 {% block header %}
- {{ govukHeader({
+{{ govukHeader({
    homepageUrl: "/",
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
@@ -27,12 +27,12 @@
 
 {% block beforeContent %}
 
-  <div class="govuk-!-margin-bottom-3">
-    <!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
   {% include "current/includes/nav/nav-bd-bill-runs.html" %}
-  </div>
+</div>
 
-    {{ govukBackLink({
+{{ govukBackLink({
       text: "Back",
       href: "javascript:history.back()"
     }) }}
@@ -41,36 +41,36 @@
 
 {% block content %}
 
-  <!-- page title -->
-  <div class="govuk-grid-row govuk-!-margin-bottom-0">
-    <div class="govuk-grid-column-full">
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-full">
 
-      <section class="govuk-!-margin-bottom-6">
-        <h1 class="govuk-caption-l">Bill run {{data.billRuns[data.billRunIndex]['number']}}</h1>
-        <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
-      </section>
+    <section class="govuk-!-margin-bottom-6">
+      <h1 class="govuk-caption-l">Bill run {{data.billRuns[data.billRunIndex]['number']}}</h1>
+      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{title}}</span>
+    </section>
 
 
-      <p class="govuk-body">
+    <p class="govuk-body">
       {{govukTag({
                   text: [data.billRuns[data.billRunIndex]['status']],
-                  classes: data.billRuns[data.billRunIndex]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 " 
+                  classes: data.billRuns[data.billRunIndex]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
                 })}}
-      </p>
+    </p>
 
 
-      <div class="govuk-grid-row govuk-!-margin-bottom-3">
-        <div class="govuk-grid-column-full">
-          {% set date %}
-          {% if data['rebill'] == "true" %}
-          20 April 2020
-          {% else %}
-          {{[data.billRuns[data.billRunIndex]['date']]}}
-          {% endif %}
-          {% endset %}
+    <div class="govuk-grid-row govuk-!-margin-bottom-3">
+      <div class="govuk-grid-column-full">
+        {% set date %}
+        {% if data['rebill'] == "true" %}
+        20 April 2020
+        {% else %}
+        {{[data.billRuns[data.billRunIndex]['date']]}}
+        {% endif %}
+        {% endset %}
 
-          {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border',
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-6',
           rows: [
             {
               key: {
@@ -115,65 +115,136 @@
           ]
         }) }}
 
-        </div>
-      </div>
 
-    </div>
+
+    {% if data.billRuns[data.billRunIndex]['sroc'] == true or data.billRuns[data.billRunIndex]['sroc'] == false %}
+
+        <!--linked bill component-->
+
+        {% set index = "" %}
+        {% set scheme = "" %}
+        {% set number = "" %}
+        {% if data.billRuns[data.billRunIndex]['sroc'] == true %}
+        {% set index = +data.billRunIndex + 1 %}
+        {% set scheme = "Old charge scheme"%}
+        {% set number = data.billRuns[data.billRunIndex]['number'] - 1%}
+        {% else %}
+        {% set index = data.billRunIndex - 1 %}
+        {% set scheme = "Current charge scheme"%}
+          {% set number = +data.billRuns[data.billRunIndex]['number'] + 1%}
+        {% endif %}
+
+        {% set linkedBillTag %}
+        {{govukTag({
+                    text: [data.billRuns[index]['status']],
+                    classes: data.billRuns[index]['status'] | replaceWS | statusColour
+                  })}}
+        {% endset %}
+
+        {% set url = "" %}
+        {% if data.billRuns[index]['status'] == "error" %}
+        {% set url = "/current/bd/iterations/bill-runs/charges-error?billRunIndex="  %}
+        {% else %}
+        {% set url = "supplementary-charges?billRunIndex=" %}
+        {% endif %}
+
+         {% set html = '<a href="' + url + index + '">'+number+'</a> (' + scheme+ ')' %}
+
+
+        {% set metaData %}
+        {{ govukSummaryList({
+      classes: 'govuk-summary-list--no-border',
+      rows: [
+
+        {
+          key: {
+            text: "Number",
+            classes: "meta-data__label line-height"
+          },
+          value: {
+            html: html,
+            classes: "meta-data__value"
+          }
+        },
+        {
+          key: {
+            text: "Status",
+            classes: "meta-data__label"
+          },
+          value: {
+            html: linkedBillTag,
+            classes: "meta-data__value"
+
+          }
+        }
+      ]
+      }) }}
+        {% endset %}
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This bill run is linked to another</h2> {{metaData|safe}}
+
+        <!--linkedbill component end-->
+
+    {% endif %}
   </div>
+  </div>
+  </div>
+</div>
 
-  <!-- big total and 2 smaller totals -->
-  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+<!--
+classes: "meta-data__value"-->
+<!-- big total and 2 smaller totals -->
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
 
-    <div class="govuk-grid-column-one-half">
-      <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£1,105.00{% else %}£11,537.75{% endif %}</span><br>
+  <div class="govuk-grid-column-one-half">
+    <h2 class="govuk-!-margin-bottom-0"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£1,105.00{% else %}{{data.billRuns[data.billRunIndex]['value']}}{% endif %}</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
-    </div>
-
   </div>
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+</div>
 
-    <div class="govuk-grid-column-one-half">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£3,002.75{% else %}£92.75{% endif %}</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}1{% else %}1{% endif %} credit note</span></h2>
-    </div>
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
 
-    <div class="govuk-grid-column-one-half">
-      <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£4,107.75{% else %}£11,630.55{% endif %}</span><br>
+  <div class="govuk-grid-column-one-half">
+    <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£3,002.75{% else %}{% if data.billRuns[data.billRunIndex]['sroc'] == false %}£5,0922.80{% else %}£92.75{% endif %}{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}1 credit note{% else %}{% if data.billRuns[data.billRunIndex]['sroc'] == false %}3 credit notes{% else %}1 credit note{% endif %}{% endif %} </span></h2>
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+    <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£4,107.75{% else %}£11,630.55{% endif %}</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}2{% else %}4{% endif %} invoices</span></h2>
-    </div>
+  </div>
+
+</div>
+
+{% if [data.status] == "ready" %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-6">
+      <a href="confirm-approve-bills?type=Supplementary&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button">Confirm bill run</a>
+      <a href="confirm-cancel-bills?type=Supplementary&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+    </section>
 
   </div>
 
-  {% if [data.status] == "ready" %}
+</div>
 
-  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+{% endif %}
 
-    <div class="govuk-grid-column-two-thirds">
-
-      <section class="govuk-!-margin-bottom-6">
-        <a href="confirm-approve-bills?type=Supplementary&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button">Confirm bill run</a>
-        <a href="confirm-cancel-bills?type=Supplementary&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
-      </section>
-
-    </div>
-
-  </div>
-
-  {% endif %}
-
-  <div class="divider govuk-!-margin-bottom-5"></div>
+<div class="divider govuk-!-margin-bottom-5"></div>
 
 <h2 class="govuk-heading-l" id="bills">
-    {% if (data['rebill'] == "true") %}
-     3 supplementary bills
-     {% else %}
-    {{data['numberBills']}} supplementary bills
-    {% endif %}
-  </h2>
+  {% if (data['rebill'] == "true") %}
+  3 supplementary bills
+  {% else %}
+  {{data['numberBills']}} supplementary bills
+  {% endif %}
+</h2>
 
 
-  {{ govukButton({
+{{ govukButton({
     text: "Download this bill run",
     classes: "govuk-button--secondary govuk-!-margin-bottom-6"
   }) }}
