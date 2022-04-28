@@ -84,7 +84,7 @@ router.get('/bd/charges-2020/supplementary-charges-load', function(req, res) {
     } else {
       req.session.data.suppRefresh = 1
       createBillRun(status = "ready", number = Math.floor(100000 + Math.random() * 900000), bills = "7", value = "6,537.75", sroc = false)
-      createBillRun(status = "billing", number = number + 1, bills = "-", value = "-", sroc = true)
+      createBillRun(status = "building", number = number + 1, bills = "-", value = "-", sroc = true)
     }
 
 
