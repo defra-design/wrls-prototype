@@ -9,7 +9,7 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
 
-      {% if [data.status] == "sent" %}
+      {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
       <th class="govuk-table__header" scope="col">Bill number</th>
       {% endif %}
 
@@ -23,7 +23,7 @@
 
       <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total</th>
 
-      {% if [data.status] == "ready" %}
+      {% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
       <th class="govuk-table__header govuk-table__header--numeric" scope="col">Action</th>
       {% endif %}
     </tr>
@@ -34,7 +34,7 @@
 {% if data['remove'] == "false" %}
     <tr class="govuk-table__row">
 
-      {% if [data.status] == "sent" %}
+      {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
       <td class="govuk-table__cell">
       <a {% if data['credit'] == "true" %}href="supplementary-bill-credit?bill=I98234873"{% else %}href="../iterations/bills/bill?bill=I98234873"{% endif %}>
         <span class="screen-reader-only">bill</span> I98234873
@@ -61,7 +61,7 @@
       <td class="govuk-table__cell govuk-table__cell--numeric">£3,002.75{% if data['credit'] == "true" %}<br>Credit note{% endif %}</td>
 
 
-{% if [data.status] == "ready" %}
+{% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
       <td class="govuk-table__cell govuk-table__cell--numeric"><a {% if data['credit'] == "true" %}href="supplementary-bill-credit"{% else %}href="../iterations/bills/bill"{% endif%}>
           View <span class="screen-reader-only">bill for billing account AN20392</span>
         </a></td>
@@ -72,7 +72,7 @@
 
     <tr class="govuk-table__row">
 
-      {% if [data.status] == "sent" %}
+      {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
       <td class="govuk-table__cell">
       <a href="supplementary-bill?bill=I9376432">
         <span class="screen-reader-only">bill</span> I9376432
@@ -100,7 +100,7 @@
       <td class="govuk-table__cell govuk-table__cell--numeric">£5,523.50</td>
 
 
-     {% if [data.status] == "ready" %}
+     {% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
       <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
           View <span class="screen-reader-only">bill for billing account AN20392</span>
         </a></td>
@@ -110,7 +110,7 @@
 
     <tr class="govuk-table__row">
 
-      {% if [data.status] == "sent" %}
+      {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
       <td class="govuk-table__cell">
       <a href="supplementary-bill?bill=I0932498">
         <span class="screen-reader-only">bill</span> I0932498
@@ -138,7 +138,7 @@
       <td class="govuk-table__cell govuk-table__cell--numeric">£1,000.00</td>
 
 
-{% if [data.status] == "ready" %}
+{% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
       <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
           View <span class="screen-reader-only">bill for billing account 038745</span>
         </a></td>
@@ -148,7 +148,7 @@
 
     <tr class="govuk-table__row">
 
-      {% if [data.status] == "sent" %}
+      {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
       <td class="govuk-table__cell">
       <a href="supplementary-bill?bill=I0983249">
         <span class="screen-reader-only">bill</span> I0983249
@@ -176,7 +176,7 @@
       <td class="govuk-table__cell govuk-table__cell--numeric">£92.75<br>Credit note</td>
 
 
-{% if [data.status] == "ready" %}
+{% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
       <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
           View <span class="screen-reader-only">bill for billing account 015512</span>
         </a></td>
@@ -186,7 +186,7 @@
 
     <tr class="govuk-table__row">
 
-      {% if [data.status] == "sent" %}
+      {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
       <td class="govuk-table__cell">
       <a href="supplementary-bill?bill=I9328982">
         <span class="screen-reader-only">bill</span> I9328982
@@ -215,7 +215,7 @@
       <td class="govuk-table__cell govuk-table__cell--numeric">£2,104.25</td>
 
 
-{% if [data.status] == "ready" %}
+{% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
       <td class="govuk-table__cell govuk-table__cell--numeric"><a href="supplementary-bill">
           View <span class="screen-reader-only">bill for billing account 016824</span>
         </a></td>

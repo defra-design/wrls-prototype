@@ -22,6 +22,13 @@ mm = monthNames[mm - 1]
 
 const today = `${dd} ${mm} ${yyyy}`;
 
+//Get bills data
+router.get('/bd/charges-2020/supplementary-charges', function (req, res ) {
+    req.session.data.allBills = require('../current/includes/bd/data/bills-data.js').allBills;
+  res.render('current/bd/charges-2020/supplementary-charges')
+})
+
+
 //----------------------------------------------------------------
 ////BILL RUN ROUTES
 //CREATE BILL RUN
@@ -79,11 +86,11 @@ router.get('/bd/charges-2020/supplementary-charges-load', function(req, res) {
   if (suppRefresh == 1) {
     req.session.data.suppRefresh = 0
     req.session.data.billRuns[0].status = "ready"
-    req.session.data.billRuns[0].bills = "5"
-    req.session.data.billRuns[0].value = "11,537.75"
+    req.session.data.billRuns[0].bills = "7"
+    req.session.data.billRuns[0].value = "6,537.75"
     } else {
       req.session.data.suppRefresh = 1
-      createBillRun(status = "ready", number = Math.floor(100000 + Math.random() * 900000), bills = "7", value = "6,537.75", sroc = false)
+      createBillRun(status = "ready", number = Math.floor(100000 + Math.random() * 900000), bills = "5", value = "11,537.75", sroc = false)
       createBillRun(status = "building", number = number + 1, bills = "-", value = "-", sroc = true)
     }
 
@@ -362,7 +369,7 @@ router.get('/bd/charges-2020/cancelling-bill-run', function(req, res) {
     req.session.data.filterCaption = "Showing all sent notices."
 
 
-    res.redirect('/bd/charges-2020/bill-runs-filtered/apply-filters#captions');
+    res.redirect('/bd/charges-2020/bill-runs-filtered/apply-filters#focus');
   });
 
 

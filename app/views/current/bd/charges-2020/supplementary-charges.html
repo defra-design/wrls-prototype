@@ -69,51 +69,7 @@
         {% endif %}
         {% endset %}
 
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-6',
-          rows: [
-            {
-              key: {
-                text: "Date created",
-                classes: "meta-data__label"
-              },
-              value: {
-                text: date,
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Region",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: [data.billRuns[data.billRunIndex]['region']],
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Bill run type",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: "Supplementary",
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Transaction file",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: "ABC132456BH",
-                classes: "meta-data__value "
-              }
-            } if [data.billRuns[data.billRunIndex]['status']] === 'sent'
-          ]
-        }) }}
+
 
 
 
@@ -126,11 +82,11 @@
         {% set number = "" %}
         {% if data.billRuns[data.billRunIndex]['sroc'] == true %}
         {% set index = +data.billRunIndex + 1 %}
-        {% set scheme = "Old charge scheme"%}
+        {% set scheme = "Current"%}
         {% set number = data.billRuns[data.billRunIndex]['number'] - 1%}
         {% else %}
         {% set index = data.billRunIndex - 1 %}
-        {% set scheme = "Current charge scheme"%}
+        {% set scheme = "Old"%}
           {% set number = +data.billRuns[data.billRunIndex]['number'] + 1%}
         {% endif %}
 
@@ -148,8 +104,64 @@
         {% set url = "supplementary-charges?billRunIndex=" %}
         {% endif %}
 
-         {% set html = '<a href="' + url + index + '">'+number+'</a> (' + scheme+ ')' %}
+         {% set html = '<a href="' + url + index + '">'+number+'</a>' %}
 
+
+         {{ govukSummaryList({
+           classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-6',
+           rows: [
+             {
+               key: {
+                 text: "Date created",
+                 classes: "meta-data__label"
+               },
+               value: {
+                 text: date,
+                 classes: "meta-data__value "
+               }
+             },
+             {
+               key: {
+                 text: "Region",
+                 classes: "meta-data__label "
+               },
+               value: {
+                 text: [data.billRuns[data.billRunIndex]['region']],
+                 classes: "meta-data__value "
+               }
+             },
+             {
+               key: {
+                 text: "Bill run type",
+                 classes: "meta-data__label "
+               },
+               value: {
+                 text: "Supplementary",
+                 classes: "meta-data__value "
+               }
+             },
+             {
+               key: {
+                 text: "Charge scheme",
+                 classes: "meta-data__label "
+               },
+               value: {
+                 text: scheme,
+                 classes: "meta-data__value "
+               }
+             },
+             {
+               key: {
+                 text: "Transaction file",
+                 classes: "meta-data__label "
+               },
+               value: {
+                 text: "ABC132456BH",
+                 classes: "meta-data__value "
+               }
+             } if [data.billRuns[data.billRunIndex]['status']] === 'sent'
+           ]
+         }) }}
 
         {% set metaData %}
         {{ govukSummaryList({
@@ -180,7 +192,7 @@
       ]
       }) }}
         {% endset %}
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This bill run is linked to another</h2> {{metaData|safe}}
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This bill run is linked to another one</h2> {{metaData|safe}}
 
         <!--linkedbill component end-->
 
@@ -205,8 +217,8 @@ classes: "meta-data__value"-->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
   <div class="govuk-grid-column-one-half">
-    <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£3,002.75{% else %}{% if data.billRuns[data.billRunIndex]['sroc'] == false %}£5,0922.80{% else %}£92.75{% endif %}{% endif %}</span><br>
-      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}1 credit note{% else %}{% if data.billRuns[data.billRunIndex]['sroc'] == false %}3 credit notes{% else %}1 credit note{% endif %}{% endif %} </span></h2>
+    <h2><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">{% if data['rebill'] == "true" %}£3,002.75{% else %}{% if data.billRuns[data.billRunIndex]['sroc'] == true %}£5,0922.80{% else %}£92.75{% endif %}{% endif %}</span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">{% if data['rebill'] == "true" %}1 credit note{% else %}{% if data.billRuns[data.billRunIndex]['sroc'] == true %}3 credit notes{% else %}1 credit note{% endif %}{% endif %} </span></h2>
   </div>
 
   <div class="govuk-grid-column-one-half">
@@ -239,7 +251,7 @@ classes: "meta-data__value"-->
   {% if (data['rebill'] == "true") %}
   3 supplementary bills
   {% else %}
-  {{data['numberBills']}} supplementary bills
+  {{data.billRuns[data.billRunIndex]['bills']}} supplementary bills
   {% endif %}
 </h2>
 
@@ -254,8 +266,15 @@ classes: "meta-data__value"-->
 {% if (data['rebill'] == "true") %}
 {% include "current/includes/bd/bills-table-rebill.html" %}
 {% else %}
-{% include "current/includes/bd/bills-table.html" %}
+  {% if data.billRuns[data.billRunIndex]['sroc'] == true %}
+  {% include "current/includes/bd/bills-table-sroc.html" %}
+  {% else %}
+  {% include "current/includes/bd/bills-table.html" %}
+  {% endif %}
 {% endif %}
+
+
+
 
 
 {% endblock %}

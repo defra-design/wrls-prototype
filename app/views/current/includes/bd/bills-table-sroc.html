@@ -1,0 +1,106 @@
+
+
+
+
+{% set bills = data['allBills'] %}
+
+{% set bill = [] %}
+
+
+
+{% for i in bills %}
+
+{# set credit total #}
+{% set total %}
+{{i.total | toGBP}}
+{% if i.credit === true %}
+<br><span class="govuk-body-s">credit</span>
+{% endif %}
+{% endset %}
+
+{# set bill #}
+{% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
+{% set bill = bill | push ([
+                            {html: "<a class='govuk-link' href='#' >" + i.number+ "<span class='govuk-visually-hidden'>Bill</span></a>"},
+                            {text: i.billAccount},
+                            {text: i.billingContact},
+                            {text: i.licence | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+                            {text: i.finYear,format: "numeric"},
+                            {text: total |safe,format: "numeric"}
+                            ]) %}
+
+
+
+{% else %}
+{% set bill = bill | push ([
+                            {text: i.billAccount},
+                            {text: i.billingContact},
+                            {text: i.licence | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+                            {text: i.finYear,format: "numeric"},
+                            {text: total |safe,format: "numeric"},
+                            {html: "<a href='#' class='govuk-link'>View<span class='govuk-visually-hidden'>Bill</span></a>",format: "numeric" }
+                            ]) %}
+{% endif %}
+{% endfor %}
+
+{# Display the correct table type depending on whether the invoice number is available or not#}
+{% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
+{{ govukTable({
+  caption: "Bills",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+  {
+    text: "Bill number"
+  },
+    {
+      text: "Billing account"
+    },
+    {
+      text: "Billing contact"
+    },
+    {
+      text: "Licence"
+    },
+    {
+      text: "Financial year",
+      format: "numeric"
+    },
+    {
+      text: "Total",
+      format: "numeric"
+    }
+  ],
+  rows: bill
+}) }}
+{% else %}
+{{ govukTable({
+  caption: "Bills",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Billing account"
+    },
+    {
+      text: "Billing contact"
+    },
+    {
+      text: "Licence"
+    },
+    {
+      text: "Financial year",
+      format: "numeric"
+    },
+    {
+      text: "Total",
+      format: "numeric"
+    },
+    {
+      text: "Action",
+      format: "numeric"
+    }
+  ],
+  rows: bill
+}) }}
+{% endif %}
