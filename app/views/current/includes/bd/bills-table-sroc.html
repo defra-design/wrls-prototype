@@ -21,7 +21,7 @@
 {# set bill #}
 {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
 {% set bill = bill | push ([
-                            {html: "<a class='govuk-link' href='#' >" + i.number+ "<span class='govuk-visually-hidden'>Bill</span></a>"},
+                            {html: "<a class='govuk-link' href='../iterations/bills/bill' >" + i.number + "<span class='govuk-visually-hidden'>View bill</span></a>"},
                             {text: i.billAccount},
                             {text: i.billingContact},
                             {text: i.licence | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
@@ -38,7 +38,7 @@
                             {text: i.licence | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
                             {text: i.finYear,format: "numeric"},
                             {text: total |safe,format: "numeric"},
-                            {html: "<a href='#' class='govuk-link'>View<span class='govuk-visually-hidden'>Bill</span></a>",format: "numeric" }
+                            {html: "<a href='../iterations/bills/bill' class='govuk-link'>View<span class='govuk-visually-hidden'>Bill</span></a>",format: "numeric" }
                             ]) %}
 {% endif %}
 {% endfor %}
