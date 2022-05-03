@@ -22,12 +22,6 @@ mm = monthNames[mm - 1]
 
 const today = `${dd} ${mm} ${yyyy}`;
 
-//Get bills data
-router.get('/bd/charges-2020/supplementary-charges', function (req, res ) {
-    req.session.data.allBills = require('../current/includes/bd/data/bills-data.js').allBills;
-  res.render('current/bd/charges-2020/supplementary-charges')
-})
-
 
 //----------------------------------------------------------------
 ////BILL RUN ROUTES
@@ -93,6 +87,9 @@ router.get('/bd/charges-2020/supplementary-charges-load', function(req, res) {
       createBillRun(status = "ready", number = Math.floor(100000 + Math.random() * 900000), bills = "5", value = "11,537.75", sroc = false)
       createBillRun(status = "building", number = number + 1, bills = "-", value = "-", sroc = true)
     }
+
+  //create SRoC bill data
+  req.session.data.allBills = require('../current/includes/bd/data/bills-data.js').allBills;
 
 
   res.render('current/bd/charges-2020/supplementary-charges-load');
