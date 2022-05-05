@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% set title = "Select the financial year" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <form data-routing="1" method="post" class="form" id="choose-bill-region">
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            {{ title }}
+          </h1>
+        </legend>
+
+        {{ govukInsetText({
+  text: "There are previous returns cycles that have not yet been billed for this season and region"
+}) }}
+
+        <div class="govuk-radios">
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="financialYear" name="financialYear" type="radio" value="two-part-charges-load?region=Anglian&tptstatus=building&financialYear=2022">
+            <label class="govuk-label govuk-radios__label" for="financialYear">
+              2021 to 2022
+            </label>
+            <div id="financialYear" class="govuk-hint govuk-radios__hint">
+          Current year
+        </div>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="financialYear-1" name="financialYear" type="radio" value="two-part-charges-load?region=North West&tptstatus=building&financialYear=2021">
+            <label class="govuk-label govuk-radios__label" for="financialYear-1">
+              2020 to 2021
+            </label>
+          </div>
+
+
+        </div>
+      </fieldset>
+    </div>
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+  <script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

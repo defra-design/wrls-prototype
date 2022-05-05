@@ -102,7 +102,9 @@
           Financial year
         </dt>
         <dd class="govuk-summary-list__value meta-data__value">
-          2022 to 2023
+           {% set financialYear = data['financialYear']-1 + " to " + data['financialYear'] %}
+
+          {{financialYear|default("2022 to 2023")}}
         </dd>
 
       </div>

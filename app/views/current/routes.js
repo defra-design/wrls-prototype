@@ -324,7 +324,7 @@ router.get('/bd/charges-2020/cancelling-bill-run', function(req, res) {
     list.push(typeFilters)
   }
   if (regionFilters.length){
-    list.push(regionFilters)
+    list.push(regionFilters.replace(/\b(\w)/g, s => s.toUpperCase()))
   }
   if (statusFilters.length){
     list.push(statusFilters)
