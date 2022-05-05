@@ -13,10 +13,10 @@
      <form  method="post" novalidate action="bill-runs/apply-filters">
 
 
-       {{ govukCheckboxes({
+       {{ govukRadios({
          idPrefix: 'runType',
          name: 'runType',
-         classes: "govuk-checkboxes--small",
+         classes: "govuk-radios--small",
          fieldset: {
            legend: {
              text: 'Bill run type',
@@ -42,10 +42,10 @@
          ]
        }) }}
 
-       {{ govukCheckboxes({
+       {{ govukRadios({
         idPrefix: 'region',
         name: 'region',
-        classes: "govuk-checkboxes--small",
+        classes: "govuk-radios--small",
         fieldset: {
           legend: {
             text: 'Region',
@@ -96,10 +96,10 @@
         ]
       }) }}
 
-      {{ govukCheckboxes({
+      {{ govukRadios({
         idPrefix: 'status',
         name: 'status',
-        classes: "govuk-checkboxes--small",
+        classes: "govuk-radios--small",
         fieldset: {
           legend: {
             text: 'Status',
@@ -107,26 +107,6 @@
           }
         },
         items: [
-          {
-            value: 'building',
-            text: 'Building',
-            checked:  checked("status", "building")
-          },
-          {
-            value: 'cancelled',
-            text: 'Cancelled',
-            checked:  checked("status", "cancelled")
-          },
-          {
-            value: 'empty',
-            text: 'Empty',
-            checked:  checked("status", "empty")
-          },
-          {
-            value: 'error',
-            text: 'Error',
-            checked:  checked("status", "error")
-          },
           {
             value: 'ready',
             text: 'Ready',

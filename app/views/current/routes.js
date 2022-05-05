@@ -320,22 +320,15 @@ router.get('/bd/charges-2020/cancelling-bill-run', function(req, res) {
 
   //Create the list depending on what filters are selected
   let list = []
-  if (typeFilters.length && regionFilters.length && statusFilters.length){
-  list = typeFilters.concat(regionFilters,statusFilters);
-  } else if (typeFilters.length && regionFilters.length){
-    list = typeFilters.concat(regionFilters);
-  } else if (typeFilters.length && statusFilters.length){
-    list = typeFilters.concat(statusFilters);
-  } else if (regionFilters.length && statusFilters.length){
-    list = regionFilters.concat(statusFilters);
-  } else if (regionFilters.length){
-    list = regionFilters
-  } else if (typeFilters.length){
-    list = typeFilters
-  } else if (statusFilters.length){
-    list = statusFilters
+  if (typeFilters.length){
+    list.push(typeFilters)
   }
-
+  if (regionFilters.length){
+    list.push(regionFilters)
+  }
+  if (statusFilters.length){
+    list.push(statusFilters)
+  }
   if (createdYearFilter.length) {
     list.push(createdYearFilter)
   }
