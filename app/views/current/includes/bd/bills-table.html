@@ -36,7 +36,7 @@
 
       {% if data.billRuns[data.billRunIndex]['status'] == "sent" %}
       <td class="govuk-table__cell">
-      <a {% if data['credit'] == "true" %}href="supplementary-bill-credit?bill=I98234873"{% else %}href="../iterations/bills/bill?bill=I98234873"{% endif %}>
+      <a {% if data['credit'] == "true" %}href="supplementary-bill-credit?bill=I98234873"{% else %}href="supplementary-bill?bill=I98234873"{% endif %}>
         <span class="screen-reader-only">bill</span> I98234873
         </a>
         </td>
@@ -62,7 +62,7 @@
 
 
 {% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
-      <td class="govuk-table__cell govuk-table__cell--numeric"><a {% if data['credit'] == "true" %}href="supplementary-bill-credit"{% else %}href="../iterations/bills/bill"{% endif%}>
+      <td class="govuk-table__cell govuk-table__cell--numeric"><a {% if data['credit'] == "true" %}href="supplementary-bill-credit"{% else %}href="supplementary-bill"{% endif%}>
           View <span class="screen-reader-only">bill for billing account AN20392</span>
         </a></td>
 {% endif %}

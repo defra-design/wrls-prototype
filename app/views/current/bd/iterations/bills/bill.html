@@ -1,12 +1,14 @@
 {% extends "layouts/_manage.html" %}
 
-{% if [data.status] == "ready" %}
-{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account BA1234443S</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
-{% set title = 'Bill for ' + [data.licenceHolder]%}
+{% if data.billRuns[data.billRunIndex]['status'] == "ready" %}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account ' + data.allBills[data.billIndex].billAccount + '</span>Bill for ' + data.allBills[data.billIndex].billingContact + '</h1>'%}
+{% set title = 'Bill for ' + data.allBills[data.billIndex].billingContact%}
 {% else %}
-{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' + data['bill'] | default("OP123344") + '</span>Bill for ' + [data.licenceHolder] + '</h1>'%}
-{% set title = 'Bill ' + data['bill'] | default("OP123344") + 'Bill for ' + [data.licenceHolder]%}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' + data.allBills[data.billIndex].number | default("OP123344") + '</span>Bill for ' + data.allBills[data.billIndex].billingContact + '</h1>'%}
+{% set title = 'Bill ' + data['bill'] | default("OP123344") + 'Bill for ' + data.allBills[data.billIndex].billingContact %}
 {% endif %}
+
+
 
 
 {% block pageTitle %}
@@ -55,24 +57,21 @@
       <!-- billing title-->
       {{ pTitle | safe }}
 
-      {% if [data.status] == "ready" %}
+
       <p class="govuk-body">
         {{govukTag({
-          text: "Ready",
-          classes: "govuk-tag--blue govuk-!-font-size-27"
+          text: data.billRuns[data.billRunIndex]['status'],
+          classes: data.billRuns[data.billRunIndex]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
         })}}
       </p>
-      {% else %}
-      <p class="govuk-body">
-        {{govukTag({
-          text: "Sent",
-          classes: "govuk-tag--green govuk-!-font-size-27"
-        })}}
-      </p>
-      {% endif %}
+
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
+
+          {% set financialYear = data.allBills[data.billIndex]['finYear']-1 + " to " + data.allBills[data.billIndex]['finYear'] %}
+
+
         {{ govukSummaryList({
         classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-3',
         rows: [
@@ -82,7 +81,7 @@
               classes: "meta-data__label"
             },
             value: {
-              text: "12 September 2020",
+              text: data.billRuns[data.billRunIndex]['date'],
               classes: "meta-data__value"
             }
           },
@@ -92,7 +91,7 @@
               classes: "meta-data__label"
             },
             value: {
-              text: "Anglian",
+              text: data.billRuns[data.billRunIndex]['region'],
               classes: "meta-data__value"
             }
           },
@@ -102,7 +101,7 @@
               classes: "meta-data__label"
             },
             value: {
-              text: "Supplementary",
+              text: data.billRuns[data.billRunIndex]['runType'] | capitalize,
               classes: "meta-data__value"
             }
           },
@@ -112,7 +111,7 @@
               classes: "meta-data__label"
             },
             value: {
-              text: "2020 to 2021",
+              text: financialYear|default("2022 to 2023"),
               classes: "meta-data__value"
             }
           }
@@ -131,8 +130,8 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p class="govuk-body "><span class="govuk-!-font-weight-bold">Billing account <a class="govuk-link" href="../billing-account?BAID=0"> BA1234443S</a></span><br>
-            Bottled Water Plc<br>
+          <p class="govuk-body "><span class="govuk-!-font-weight-bold">Billing account <a class="govuk-link" href="../billing-account?BAID=0"> {{data.allBills[data.billIndex].billAccount}}</a></span><br>
+          {{data.allBills[data.billIndex].billingContact}}<br>
             <!-- billing account address -->
             67 Gainsborough<br>Poole<br>BH33 1QE</p>
 
@@ -214,7 +213,7 @@
     <!--  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
         Total
       </h2> -->
-    <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£1,924.94</span><br>
+    <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">£{{data.allBills[data.billIndex].total}}</span><br>
       <!-- <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3> -->
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
   </div>
@@ -224,12 +223,12 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-3">
 
   <div class="govuk-grid-column-one-half">
-    <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£200.56</span><br>
+    <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£{{data.allBills[data.billIndex].credits}}</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Credits</span></h3>
   </div>
 
   <div class="govuk-grid-column-one-half">
-    <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£2,125.50</span><br>
+    <h3><span class="govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold">£{{data.allBills[data.billIndex].debits}}</span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Debits</span></h3>
   </div>
 </div>

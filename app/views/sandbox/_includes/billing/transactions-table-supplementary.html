@@ -61,7 +61,7 @@ Transactions</h4>' %}
                 <dd class="govuk-summary-list__value meta-data__value">
                   High loss, tidal , greater than 75 ML/yr, up to and including 250 ML/yr
                 </dd>-->
-        
+
               </div>
               <!-- first purpose-->
               <div class="govuk-summary-list__row">
@@ -71,7 +71,7 @@ Transactions</h4>' %}
                 <dd class="govuk-summary-list__value meta-data__value">
                   Spray irrigation - direct
                 </dd>
-        
+
               </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key meta-data__label" >
@@ -121,7 +121,7 @@ Transactions</h4>' %}
 
 </div>
 
-  
+
 
 
 </dl>
@@ -147,7 +147,7 @@ Transactions</h4>' %}
       format: "numeric"
     },
     {
-      text: "£110.21",
+      text: data.allBills[data.billIndex].debits,
       format: "numeric"
     }
   ],
@@ -197,7 +197,7 @@ Transactions</h4>' %}
                   <dd class="govuk-summary-list__value meta-data__value">
                     High loss, tidal, up to and including 75 ML/yr
                   </dd>-->
-          
+
                 </div>
                 <!-- first purpose-->
                 <div class="govuk-summary-list__row">
@@ -207,7 +207,7 @@ Transactions</h4>' %}
                   <dd class="govuk-summary-list__value meta-data__value">
                     Spray irrigation - direct
                   </dd>
-          
+
                 </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key meta-data__label" >
@@ -216,7 +216,7 @@ Transactions</h4>' %}
           <dd class="govuk-summary-list__value meta-data__value">
             1 January to 31 March
           </dd>
-  
+
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key meta-data__label" >
@@ -225,9 +225,9 @@ Transactions</h4>' %}
           <dd class="govuk-summary-list__value meta-data__value">
             22ML authorised
           </dd>
-  
+
         </div>
-  
+
 
 
   </dl>
@@ -239,7 +239,7 @@ Transactions</h4>' %}
 
           </div>
         </details>'
-        
+
     },
     {
       text: "89/89",
@@ -250,7 +250,7 @@ Transactions</h4>' %}
       format: "numeric"
     },
     {
-      text: "£59.50",
+      text: data.allBills[data.billIndex].credits,
       format: "numeric"
     },
     {
@@ -290,7 +290,7 @@ Transactions</h4>' %}
         colspan: "3"
       },
       {
-        text: "£59.50",
+        text: data.allBills[data.billIndex].credits,
         format: "numeric"
       },
       {
@@ -304,7 +304,7 @@ Transactions</h4>' %}
         colspan: "4"
       },
       {
-        text: "£110.21",
+        text: data.allBills[data.billIndex].debits,
         format: "numeric",
         classes: "govuk-table__cell--thick-border"
       }
@@ -316,7 +316,7 @@ Transactions</h4>' %}
         colspan: "4"
       },
       {
-        text: "£59.71",
+        text: data.allBills[data.billIndex].total,
         format: "numeric",
         classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
       }

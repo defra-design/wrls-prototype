@@ -81,7 +81,7 @@
         {% set scheme = "" %}
         {% set number = "" %}
         {% if data.billRuns[data.billRunIndex]['sroc'] == true %}
-        {% set index = +data.billRunIndex + 1 %}
+        {% set index = + data.billRunIndex + 1 %}
         {% set scheme = "Current"%}
         {% set number = data.billRuns[data.billRunIndex]['number'] - 1%}
         {% else %}
