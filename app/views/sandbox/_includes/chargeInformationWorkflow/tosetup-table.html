@@ -1,0 +1,54 @@
+
+
+
+
+{% set licences = data['chargeInfoWorkflow'] %}
+
+{% set licence = [] %}
+
+
+
+{% for i in licences %}
+
+
+
+{# set licence #}
+{# check status of licence in workflow #}
+{% if i.status == "to set up" %}
+
+{% set licence = licence | push ([
+                            {text: i.licence},
+                            {text: i.licenceHolder},
+                            {text: i.licenceStartDate | formatDate},
+                            {text: i.billedUpto | formatDate},
+                            {html: "<a href='/current/bd/charges-2020/add-new-reason?licence=" + i.licence + "' class='govuk-link'>Setup<span class='govuk-visually-hidden'>charge information</span></a> | <a href='/current/bd/charges-2020/confirm-remove-licence-charge-information-workflow?index=" + loop.index0 + "' class='govuk-link'>Remove<span class='govuk-visually-hidden'>licence from list</span></a>",format: "numeric" }
+                            ]) %}
+{% endif %}
+{% endfor %}
+
+
+
+{{ govukTable({
+  caption: licence.length + " licences to set up",
+  captionClasses: "govuk-table__caption--l",
+  firstCellIsHeader: false,
+  head: [
+  {
+    text: "Licence"
+  },
+    {
+      text: "Licence holder"
+    },
+    {
+      text: "Licence version <br>start date"|safe
+    },
+    {
+      text: "Billed up to"
+    },
+    {
+      text: "Action",
+      format: "numeric"
+    }
+  ],
+  rows: licence
+}) }}

@@ -23,6 +23,23 @@ res.redirect('/sandbox/');
 
 //});
 
+//Function to create the data
+function createData(req,res){
+  //create SRoC bill data
+  req.session.data.chargeInfoWorkflow = require('../_data/chargeInfoWorkflow-data.js').chargeInfoWorkflow
+  req.session.data.sprint = req.originalUrl.split('/')[1]
+  res.redirect(req.originalUrl)
+};
+
+//Create Sprint data if not already created
+router.use('/', (req, res, next) => {
+  if (req.session.data.sprint !== req.originalUrl.split('/')[1]) {
+  createData(req,res);
+} else {
+  next();
+  }
+});
+
 
 
 
@@ -97,6 +114,15 @@ router.use('/customer', require('./_routes-customer'));
 //CREATE BILL RUN
 
 router.use('/bill-runs', require('./_routes-bill-runs'));
+
+
+//----------------------------------------------------------------
+////CHARGE INFO WORKFLOW ROUTES
+//SET UP NEW CHARGE, REVIEW, REQUEST CHANGES
+
+router.use('/charge-information-workflow', require('./_routes-chargeInfoWorkflow'));
+//create SRoC bill data
+
 
 
 //----------------------------------------------------------------

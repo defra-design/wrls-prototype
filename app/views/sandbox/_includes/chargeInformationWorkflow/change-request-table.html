@@ -1,0 +1,54 @@
+
+
+
+
+{% set licences = data['chargeInfoWorkflow'] %}
+
+{% set licence = [] %}
+
+
+
+{% for i in licences %}
+
+
+
+{# set licence #}
+{# check status of licence in workflow #}
+{% if i.status == "change request" %}
+
+{% set licence = licence | push ([
+                            {text: i.licence},
+                            {text: i.licenceHolder},
+                            {text: i.setUpBy },
+                            {text: i.changeRequest},
+                            {html: "<a href='current/bd/charges-2020/charge-version?licence=" + i.licence + "' class='govuk-link'>View<span class='govuk-visually-hidden'>charge information</span></a>",format: "numeric" }
+                            ]) %}
+{% endif %}
+{% endfor %}
+
+
+
+{{ govukTable({
+  caption: licence.length + " licence with a change request",
+  captionClasses: "govuk-table__caption--l",
+  firstCellIsHeader: false,
+  head: [
+  {
+    text: "Licence"
+  },
+    {
+      text: "Licence holder"
+    },
+    {
+      text: "Set up by"
+    },
+    {
+      text: "Change request"
+    },
+    {
+      text: "Action",
+      format: "numeric"
+    }
+  ],
+  rows: licence
+}) }}

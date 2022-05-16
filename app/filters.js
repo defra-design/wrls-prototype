@@ -330,6 +330,30 @@ filters.focus = function(x) {
    else return ''
  }
 
+ //filter to change a number string in to the govuk date format. "yyyymmdd" | formatDate
+   filters.formatDate = function(x) {
+     let dd = x.slice(-2);
+     dd = parseInt(dd, 10);
+     let mm = x.slice(-4, -2)
+     mm = parseInt(mm, 10);
+     let yyyy = x.slice(0, 4);
+
+     //change the month into a name
+     let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+     mm = monthNames[mm - 1]
+
+     const today = `${dd} ${mm} ${yyyy}`;
+
+     return x.replace(/\w+/g, today)
+   }
+
+//filter object by value param1 = key param2 = variable | countObject("param1","param2")
+
+   filters.countObject = function (x,param1,param2){
+
+    return  x.filter (item => item[param1] === param2).length
+
+   }
 
 
 

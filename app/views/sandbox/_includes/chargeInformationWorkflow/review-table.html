@@ -1,0 +1,54 @@
+
+
+
+
+{% set licences = data['chargeInfoWorkflow'] %}
+
+{% set licence = [] %}
+
+
+
+{% for i in licences %}
+
+
+
+{# set licence #}
+{# check status of licence in workflow #}
+{% if i.status == "review" %}
+
+{% set licence = licence | push ([
+                            {text: i.licence},
+                            {text: i.licenceHolder},
+                            {text: i.setUpBy },
+                            {text: i.chargeInfoStartDate | formatDate},
+                            {html: "<a href='current/bd/charges-2020/charge-version?licence=" + i.licence + "' class='govuk-link'>Review<span class='govuk-visually-hidden'>charge information</span></a>",format: "numeric" }
+                            ]) %}
+{% endif %}
+{% endfor %}
+
+
+
+{{ govukTable({
+  caption: licence.length + " licence to review",
+  captionClasses: "govuk-table__caption--l",
+  firstCellIsHeader: false,
+  head: [
+  {
+    text: "Licence"
+  },
+    {
+      text: "Licence holder"
+    },
+    {
+      text: "Set up by"
+    },
+    {
+      text: "Charge information<br>start date"|safe
+    },
+    {
+      text: "Action",
+      format: "numeric"
+    }
+  ],
+  rows: licence
+}) }}
