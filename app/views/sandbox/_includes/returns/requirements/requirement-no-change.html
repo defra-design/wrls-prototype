@@ -1,0 +1,74 @@
+{% set returnRequirements = data['returnRequirements'] %}
+
+{% for requirement in returnRequirements[0].version[0].requirement %}
+
+<section class="govuk-!-margin-bottom-7">
+
+
+
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-4"><span class="govuk-caption-l ">Return ID {{requirement.id}}</span>Requirement</h2>
+
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+  <!--Setting plurals for the labels-->
+  <!--for purposes-->
+  {% set purposePlural = "" %}
+  {% if requirement.purpose.length <= 2 %}
+  {% set purposePlural = "s" %}
+  {% endif %}
+  <!--for points-->
+  {% set pointPlural = "" %}
+  {% if requirement.points.length <= 2 %}
+  {% set pointPlural = "s" %}
+  {% endif %}
+
+
+
+
+  {{ govukSummaryList({
+  rows: [
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Purpose" + purposePlural
+      },
+      value: {
+        text: requirement.purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Point" + pointPlural
+      },
+      value: {
+        text: requirement.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Description"
+      },
+      value: {
+        text: requirement.description
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Frequency"
+      },
+      value: {
+        text: requirement.frequency | capitalize
+      }
+    }
+  ]
+  }) }}
+
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+
+</section>
+
+{% endfor %}

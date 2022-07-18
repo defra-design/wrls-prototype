@@ -85,6 +85,13 @@ res.redirect('search');
 });
 
 //----------------------------------------------------------------
+////RETURNS ROUTES
+//View a requirement
+//TAG A LICENCE
+//REMOVE A TAG
+router.use('/returns', require('./_routes-returns-requirements'));
+
+//----------------------------------------------------------------
 ////NOTICES ROUTES
 //SEND A WATER ABSTRACTION ALERT
 //TAG A LICENCE

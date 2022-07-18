@@ -1,0 +1,29 @@
+{% set returnRequirements = data['returnRequirements'] %}
+{% if returnRequirements[0].version[0].note.length %}
+
+<section class="govuk-!-margin-bottom-7">
+
+
+
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Notes</h2>
+
+  {{ govukSummaryList({
+  rows: [
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: returnRequirements[0].version[0].setUpBy
+      },
+      value: {
+        text: returnRequirements[0].version[0].note
+      }
+    }
+  ]
+  }) }}
+
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+
+</section>
+
+{% endif %}

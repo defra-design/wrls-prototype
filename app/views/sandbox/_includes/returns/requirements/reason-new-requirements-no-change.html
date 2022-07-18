@@ -1,0 +1,32 @@
+
+
+<section class="govuk-!-margin-bottom-7">
+
+
+{{ govukSummaryList({
+rows: [
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Reason"
+    },
+    value: {
+      text: returnRequirements[0].version[0].reason | capitalize
+    }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: returnRequirements[0].version[0].startDate | formatDate
+    }
+  }
+]
+}) }}
+
+
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+</section>
