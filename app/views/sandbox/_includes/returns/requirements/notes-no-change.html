@@ -1,21 +1,25 @@
 {% set returnRequirements = data['returnRequirements'] %}
-{% if returnRequirements[0].version[0].note.length %}
+{% if returnRequirements[0].versions[0].note.length %}
 
-<section class="govuk-!-margin-bottom-7">
+<section class="govuk-!-margin-bottom-9">
 
 
 
   <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Notes</h2>
 
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
   {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-2',
   rows: [
+
     {
       classes: 'govuk-summary-list govuk-summary-list__row--no-border',
       key: {
-        text: returnRequirements[0].version[0].setUpBy
+        text: returnRequirements[0].versions[0].setUpBy
       },
       value: {
-        text: returnRequirements[0].version[0].note
+        text: returnRequirements[0].versions[0].note
       }
     }
   ]

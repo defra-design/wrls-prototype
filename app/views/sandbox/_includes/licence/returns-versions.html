@@ -1,0 +1,122 @@
+
+
+{# Get the returns versions for this licence
+{% set licenceNumber = data.licences[data.ID].number %} #}
+
+{% set returnRequirements = data.licences[data.ID]['returnsRequirements'] %}
+
+{{returnRequirements}}
+
+
+
+{% set returnVersions = "" %}
+{% for i in returnRequirements %}
+{% if licenceNumber == i.licence %}
+{% set returnVersions = i.versions %}
+{% endif %}
+{% endfor %}
+
+
+<!--check to see if there is any returns versions set up-->
+{% if returnVersions.length  %}
+<!--if so display the table-->
+
+      <table class="govuk-table">
+         <caption class="govuk-table__caption govuk-table__caption--l">Returns requirements</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Start date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">End date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Reason</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Status</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Action</th </tr>
+        </thead>
+
+
+        <tbody class="govuk-table__body">
+
+
+
+
+
+          <!--setting the return version numbers for the individual urls-->
+          {% set returnVersionsNumber = "" %}
+          {% set numberOfRetunrVersions = returnVersions.length %}
+
+          <!--creating rows-->
+          {% for i in returnVersions %}
+
+          <!--set last row to remove the bottom border-->
+          {% if loop.index ==  numberOfRetunrVersions %}
+          {% set lastRow = "govuk-table__cell--no-border" %}
+          {% endif %}
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell {{lastRow}}">{{i.startDate | numberToGovukDate}}</td>
+            <td class="govuk-table__cell {{lastRow}}">{{i.endDate | numberToGovukDate}}</td>
+            <td class="govuk-table__cell {{lastRow}}">{{i.reason | capitalize}}</td>
+            <td class="govuk-table__cell {{lastRow}}">
+
+              {% set status = [i.status] %}
+              {{govukTag({
+              text: status | chargeStatusText | safe,
+              classes: status | chargeStatusColour
+            })}}
+            </td>
+            <td class="govuk-table__cell {{lastRow}}">
+              {% if [i.chargeStatus] == "DRAFT" %}
+              <a href="/bd/charges-2020/charge-version/charge-data-check">Continue<span class="screen-reader-only">setting up returns requirements</span></a>
+              <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
+              <a href="/bd/charges-2020/charge-version/confirm-remove-charge-information">Remove <span class="screen-reader-only">returns requirements</span></a>
+              {% elif [i.chargeStatus] == "NOT APPROVED" %}
+              {% set link = 'licence/charge-information?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">Review <span class="screen-reader-only">returns requirements</span></a>
+              {% elif [i.chargeStatus] == "CHANGES" %}
+              {% set link = 'licence/charge-information?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">Review <span class="screen-reader-only">returns requirements</span></a>
+              {% else %}
+              {% set link = 'licence/returns/requirements?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">View <span class="screen-reader-only">returns requirements</span></a>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+      {% else %}
+      <!--if not display the message-->
+
+      <h2 class="govuk-heading-l">Returns requirements</h2>
+
+      <p class="govuk-body">
+              No returns requirements set up
+              </p>
+
+      {% endif %}
+
+
+      {{ govukButton({
+        text: "Set up new  return requirements",
+        href: "licence/returns/set-up/reason",
+        classes: "govuk-!-margin-right-3"
+      }) }}
+
+      <!-- show button if licence isn't already marked as exempt from charge-->
+      {% set free = [data.chargeVersions[0]['free']]%}
+      {% if free == "true" %}
+      {% else %}
+      {{ govukButton({
+        text: "No returns required",
+        classes: "govuk-button--secondary govuk-!-margin-right-3",
+        href: "/bd/charges-2020/add-reason"
+      }) }}
+      {% endif %}
+
+
+
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">

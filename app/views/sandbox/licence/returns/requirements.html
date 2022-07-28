@@ -3,7 +3,7 @@
 <!--set page title-->
 
 {% set returnRequirements = data['returnRequirements'] %}
-{% set title = "Returns requirements valid from " +  returnRequirements[0].version[0].startDate | formatDate %}
+{% set title = "Returns requirements valid from " +  returnRequirements[0].versions[0].startDate | formatDate %}
 
 
 {% block pageTitle %}
@@ -37,18 +37,10 @@ classes: status | tagColour + ' govuk-!-font-size-27'
 
     <form method="post" class="form" id="charge-information">
 
-
-<hr class="govuk-section-break ">
       {% include "sandbox/_includes/returns/requirements/reason-new-requirements-no-change.html" %}
 
-      <hr class="govuk-section-break ">
             {% include "sandbox/_includes/returns/requirements/notes-no-change.html" %}
 
-        <!--  16 Feb This feature was dropped  <hr class="govuk-section-break ">
-                  {% include "current/bd/iterations/_includes/agreements-no-actions.html" %} -->
-
-
-<hr class="govuk-section-break govuk-section-break govuk-section-break--m">
       {% include "sandbox/_includes/returns/requirements/requirement-no-change.html" %}
 
 

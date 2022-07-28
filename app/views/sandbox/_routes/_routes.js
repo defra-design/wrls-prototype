@@ -27,6 +27,9 @@ res.redirect('/sandbox/');
 function createData(req,res){
   //create SRoC bill data
   req.session.data.chargeInfoWorkflow = require('../_data/chargeInfoWorkflow-data.js').chargeInfoWorkflow
+  //create returns version data
+  req.session.data.returnRequirements = require('../_data/returns-requirements.js').returnsRequirements;
+  //redirect
   req.session.data.sprint = req.originalUrl.split('/')[1]
   res.redirect(req.originalUrl)
 };
@@ -87,9 +90,8 @@ res.redirect('search');
 //----------------------------------------------------------------
 ////RETURNS ROUTES
 //View a requirement
-//TAG A LICENCE
-//REMOVE A TAG
-router.use('/returns', require('./_routes-returns-requirements'));
+
+router.use('/licence/returns', require('./_routes-returns-requirements'));
 
 //----------------------------------------------------------------
 ////NOTICES ROUTES

@@ -12,7 +12,16 @@ rows: [
       text: "Reason"
     },
     value: {
-      text: returnRequirements[0].versions[0].reason | capitalize
+      text: data.licences[data.ID].returnsRequirements[0]['reason'] | capitalize
+    },
+    actions: {
+      items: [
+        {
+          href: "set-up/reason?change=true",
+          text: "Change",
+          visuallyHiddenText: "the reason for the return requirement"
+        }
+      ]
     }
   },
   {
@@ -21,9 +30,19 @@ rows: [
       text: "Start date"
     },
     value: {
-      text: returnRequirements[0].versions[0].startDate | formatDate
+      text: data.licences[data.ID].returnsRequirements[0]['startDate']
+    },
+    actions: {
+      items: [
+        {
+          href: "set-up/start-date?change=true",
+          text: "Change",
+          visuallyHiddenText: "the start date for the return requirement"
+        }
+      ]
     }
   }
+
 ]
 }) }}
 

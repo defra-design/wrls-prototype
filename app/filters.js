@@ -88,6 +88,23 @@ filters.numberToGovukDate = function(x) {
   return x.replace(/\w+/g, today)
 }
 
+//filter to change a mmdd date string in to the govuk date format. "mmdd" | mmddToDate
+filters.mmddToDate = function(x) {
+  let dd = x.slice(-2);
+  dd = parseInt(dd, 10);
+  let mm = x.slice(-4, -2)
+  mm = parseInt(mm, 10);
+
+
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  mm = monthNames[mm - 1]
+
+  const today = `${dd} ${mm}`;
+
+  return x.replace(/\w+/g, today)
+}
+
 
   //Sort an Object | sort(arr, reverse, caseSens, attr))
   // e.g. notifications | sort(false, false, 'sentBy')
@@ -98,6 +115,15 @@ filters.arrayIncludes = function(input, item) {
   if (input !== undefined){
     return input.includes(item) | input == "all"
     }
+}
+
+//filter plural, filter a field and if there is more than one return the title with an S appended, otherwise just return the title " |plura("title")"
+filters.plural = function(input, title) {
+  if (input !== undefined & input.length >= 2){
+    return title + "s"
+  } else {
+    return title
+  }
 }
 
 //filter focus " | focus" //can't focus a string

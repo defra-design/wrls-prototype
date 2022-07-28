@@ -425,6 +425,8 @@ module.exports = {
       }
     ],
 
+    //returns versions
+    "returnVersion": "",
 
     //licence
     "licences": [
@@ -438,12 +440,29 @@ module.exports = {
         "expired": "true",
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
-        "purpose": ["Spray irrigation"],
+        "purpose": ["Spray irrigation","General machine washing"],
         "absPeriod": "1 April to 31 October",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "125",
+              },
+              {
+                "purpose": "General machine washing",
+                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "20",
+              }],
+
+        "returnsRequirements":  [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -532,12 +551,29 @@ module.exports = {
         "expired": "false",
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
-        "purpose": ["Spray irrigation"],
+        "purpose": ["Spray irrigation", "General machine washing"],
         "absPeriod": "1 April to 31 October",
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "125",
+              },
+              {
+                "purpose": "General machine washing",
+                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "20",
+              }],
+
+        "returnsRequirements":  [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2021",
@@ -625,6 +661,16 @@ module.exports = {
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "125",
+              }],
+
+        "returnsRequirements":  [],
+
         "chargeInformation": [
           //newLicence
         ],
@@ -654,6 +700,16 @@ module.exports = {
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "125",
+              }],
+
+        "returnsRequirements":  [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -729,6 +785,16 @@ module.exports = {
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "periodStart": "1101",
+                "periodEnd": "0331",
+                "amount": "125",
+              }],
+
+        "returnsRequirements":  [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -816,6 +882,16 @@ module.exports = {
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "125",
+              }],
+
+        "returnsRequirements":  [],
+
         "chargeInformation": [{
             "chargeStart": "22 April 2016",
             "chargeEnd": "",
@@ -899,6 +975,16 @@ module.exports = {
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "periodStart": "1101",
+                "periodEnd": "0331",
+                "amount": "125",
+              }],
+
+        "returnsRequirements":  [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",

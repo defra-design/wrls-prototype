@@ -1,0 +1,45 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Enter a description for the return requirement" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+    isPageHeading: true
+    },
+    hint: {
+      text: "This is the description that will appear on the return"
+    },
+    classes: "govuk-!-width-three-quarters",
+    id: "description",
+    name: "description",
+    value: data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['description']
+  }) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

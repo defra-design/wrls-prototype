@@ -1,15 +1,22 @@
-{% set returnRequirements = data['returnRequirements'] %}
-
-{% for requirement in returnRequirements[0].versions[0].requirement %}
+{% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
 
 
-{{data.licences[data.ID]['returnsRequirements']|dump}}
+{% for requirement in requirements %}
+
 
 <section class="govuk-!-margin-bottom-9">
 
+<span class="govuk-caption-l ">Return ID {{requirement.id}}</span>
+<div class="govuk-summary-list govuk-!-margin-bottom-2">
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-2 " >{{requirement.season |capitalize}} return requirement, {{requirement.description}}</h2>
 
 
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-4"><span class="govuk-caption-l ">Return ID {{requirement.id}}</span>{{requirement.season |capitalize}} return requirement, {{requirement.description}}</h2>
+<span class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-body"  href="set-up/use?change=true&requirementIndex={{loop.index0}}">
+                Change<span class="govuk-visually-hidden"> the reason for the return requirement</span>
+                </a>
+</span>
+</div>
 
   <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
 
@@ -41,12 +48,14 @@
     }) }}
 
 
-    {% for i in requirement.use %}
+    {% for i in requirement.uses %}
 
     {% set class = "govuk-!-padding-bottom-8" %}
     {% if loop.last %}
     {% set class = "" %}
     {% endif %}
+
+
 
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-2',
@@ -58,16 +67,16 @@
         text: "Purpose"
       },
       value: {
-        text: requirement.use[loop.index0].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+        text: i.purpose
       }
     },
     {
       classes: 'govuk-summary-list govuk-summary-list__row--no-border',
       key: {
-        text: requirement.use[loop.index0].points | plural("Point")
+        text: i.points | plural("Point")
       },
       value: {
-        text: requirement.use[loop.index0].points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+        text: i.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
       }
     },
     {
@@ -76,7 +85,7 @@
         text: "Abstraction period"
       },
       value: {
-        text: requirement.use[loop.index0].periodStart  | mmddToDate + " to " + requirement.use[loop.index0].periodEnd  | mmddToDate
+        text: i.periodStart  | mmddToDate + " to " + i.periodEnd  | mmddToDate
       }
     },
     {
@@ -85,18 +94,36 @@
         text: "Amount"
       },
       value: {
-        text: requirement.use[loop.index0].amount + " Megalitres per year",
+        text: i.amount + " Megalitres per year",
         classes: class
       }
     }
     ]
     }) }}
 
+
+
 {% endfor %}
 
 
-<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+<hr class="govuk-section-break  govuk-!-margin-bottom-4 govuk-section-break--visible">
 
+
+
+{{ govukButton({
+text: "Add another requirement",
+classes: "govuk-button--secondary govuk-!-margin-right-6",
+href: "set-up/use?requirementIndex="
+}) }}
+
+
+{% if requirements.length > 1 %}
+{{ govukButton({
+text: "Remove element",
+classes: "govuk-button--secondary govuk-!-margin-right-6",
+href: "confirm-remove-requirement?requirementIndex=" + loop.index0
+}) }}
+{% endif %}
 
 </section>
 

@@ -1,0 +1,59 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select the frequency for the return requirement" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+  {{ govukRadios({
+    idPrefix: "frequency",
+    name: "frequency",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "daily",
+        text: "Daily",
+        checked: checked("frequency", "daily")
+      },
+      {
+        value: "weekly",
+        text: "Weekly",
+        checked: checked("frequency", "weekly")
+      },
+      {
+        value: "monthly",
+        text: "Monthly",
+        checked: checked("frequency", "monthly")
+      }
+    ]
+  }) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

@@ -1,0 +1,114 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select the use for the return requirement" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+{# get the licence use information #}
+{% set use = data.licences[data.ID]['use'] %}
+
+{# Create the array #}
+{% set selectItems = [] %}
+
+{# loop through the use items #}
+{% for item in use %}
+
+{# create the string of supplementary information to the purpose #}
+{% set useInfo %}
+{# If the use has more than one point show something else and set the conditional reveal #}
+{% if item.points.length >= 2 %}
+At {{item.points.length}} abstraction points<br>{{item.amount}} Megalitres per year<br>{{item.periodStart | mmddToDate}} to {{item.periodEnd | mmddToDate}}
+
+{% set allPoints %}
+{{ govukRadios({
+idPrefix: "allPoints",
+name: "allPoints",
+fieldset: {
+legend: {
+  text: 'Include all points in the return requirement?',
+  isPageHeading: false,
+  classes: "govuk-fieldset__legend--m"
+  }
+},
+items: [
+        {
+          value: "yes",
+          text: "Yes",
+          checked: checked("allPoints", "yes")
+        },
+        {
+          value: loop.index0,
+          text: "Select only some of the points",
+          checked: checked("allPoints", loop.index0.toString())
+
+        }
+      ]
+}) }}
+{% endset -%}
+
+{% set conditionalReveal %}
+, conditional: {
+    html: {{allPoints |safe}}
+  }
+{% endset %}
+
+{% else %}
+{{item.points}}<br>{{item.amount}} Megalitres per year<br>{{item.periodStart | mmddToDate}} to {{item.periodEnd | mmddToDate}}
+{% set allPoints = "" %}
+{% endif %}
+{% endset %}
+
+  {% set selectItems = selectItems | push({
+    value: loop.index0,
+    text: item.purpose,
+    hint: {
+      html: useInfo |safe
+    },
+    conditional: {
+        html: allPoints |safe
+      } if allPoints.length,
+    checked: checked("use", loop.index0.toString())
+
+  }) %}
+{% endfor %}
+
+{{ govukCheckboxes({
+idPrefix: "use",
+name: "use",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+hint: {
+  text: "Select all that apply"
+},
+items: selectItems
+}) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}
