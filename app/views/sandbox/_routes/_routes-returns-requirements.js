@@ -130,6 +130,7 @@ function createVersion(req, res) {
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
+  let status = "active"
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
 
@@ -138,6 +139,7 @@ function createVersion(req, res) {
     startDate,
     endDate,
     reason,
+    status,
     requirements,
 
   };
@@ -176,6 +178,7 @@ function updateReturnRequirement(req, res) {
    let periodEnd = ""
    let amount = ""
    let season = ""
+   let allPointsSelected = false
    //loop through and get the purpose, points, amount, periodStart and periodEnd
    for (i of useIndexes) {
      console.log(i)
@@ -184,8 +187,10 @@ function updateReturnRequirement(req, res) {
     //check to see if specific points specified, if not then use all the points from the use
     if(req.session.data.allPoints == i){
            points = req.session.data.points
+
     } else {
            points = req.session.data.licences[licence].use[i].points
+           allPointsSelected = true
     }
     periodStart = req.session.data.licences[licence].use[i].periodStart
     periodEnd = req.session.data.licences[licence].use[i].periodEnd
@@ -207,6 +212,7 @@ function updateReturnRequirement(req, res) {
      periodStart,
      periodEnd,
      amount,
+     allPointsSelected,
    }
 
    uses.push(selectedUse);
@@ -273,6 +279,28 @@ router.get('/set-up/start-date', function(req, res) {
 });
 
 router.post('/set-up/start-date', function(req, res) {
+
+  if (req.session.data.startDateConditional == "other"){
+
+  console.log(req.session.data.startDate)
+
+  let dd = req.session.data.startDate[0];
+  let mm = req.session.data.startDate[1];
+
+  const yyyy = req.session.data.startDate[2];
+ if (dd < 10) {
+    dd = `0${dd}`;
+  }
+  if (mm < 10) {
+    mm = `0${mm}`;
+  }
+
+  const today = `${yyyy}${mm}${dd}`;
+
+  req.session.data.startDateConditional = today
+  }
+
+
   //check if the route is from changing existing data or not
   let change = req.session.data.change
   if (change == "true"){
@@ -367,6 +395,17 @@ router.get('/confirm-remove-requirement', function(req, res) {
 router.post('/confirm-remove-requirement', function(req, res) {
     removeRequirement(req, res)
     res.redirect('check-your-answers');
+});
+
+
+/////Confirm return version
+router.get('/check-your-answers', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'check-your-answers');
+});
+
+router.post('/check-your-answers', function(req, res) {
+    res.redirect('set-up/requirements-set-up');
 });
 
 

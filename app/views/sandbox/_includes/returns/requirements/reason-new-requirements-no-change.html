@@ -12,7 +12,7 @@ rows: [
       text: "Reason"
     },
     value: {
-      text: returnRequirements[0].versions[0].reason | capitalize
+      text: data.licences[data.ID].returnsRequirements[0]['reason'] | capitalize
     }
   },
   {
@@ -21,9 +21,9 @@ rows: [
       text: "Start date"
     },
     value: {
-      text: returnRequirements[0].versions[0].startDate | formatDate
+      text: data.licences[data.ID].returnsRequirements[0]['startDate'] | numberToGovukDate
     }
-  }
+  }  
 ]
 }) }}
 

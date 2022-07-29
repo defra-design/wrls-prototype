@@ -30,7 +30,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <form method="post" class="form" id="charge-information">
+    <form method="post" class="form">
+
 
       {% include "sandbox/_includes/returns/requirements/reason-new-requirements.html" %}
 
@@ -38,7 +39,7 @@
 
       {% include "sandbox/_includes/returns/requirements/requirement.html" %}
 
-    <div class="divider govuk-!-margin-bottom-6"></div> 
+    <div class="divider govuk-!-margin-bottom-6"></div>
 
             {{ govukButton({
         text: "Confirm",

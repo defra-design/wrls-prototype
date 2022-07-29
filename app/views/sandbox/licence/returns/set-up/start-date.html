@@ -50,6 +50,8 @@ fieldset: {
 }) }}
 {% endset -%}
 
+
+
 {{ govukRadios({
 idPrefix: "startDateConditional",
 name: "startDateConditional",
@@ -62,14 +64,14 @@ fieldset: {
 },
 items: [
   {
-    value: "0" | today,
+    value: "0" | todayNumber,
     html: 'Today<br>' + "0"|today,
-    checked: checked("startDateConditional", "0" | today)
+    checked: checked("startDateConditional", "0" | todayNumber)
   },
   {
-    value: "1 April 2022",
+    value: "20220401",
     html: "Licence start date<br>1 April 2022",
-    checked: checked("startDateConditional", "1 April 2022")
+    checked: checked("startDateConditional", "20220401")
   },
   {
 divider: "or"
@@ -77,7 +79,7 @@ divider: "or"
   {
     value: "other",
     text: "Another date",
-    checked: checked("startDateConditional", "other"),
+    checked: data.startDate.length,
     conditional: {
       html: startDate
     }

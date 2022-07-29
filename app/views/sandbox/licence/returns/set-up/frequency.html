@@ -18,6 +18,18 @@
 
 <form method="post" class="form">
 
+  {# Frequency switch based on the answer for the specific requirement#}
+  {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency'] %}
+      {% case 'daily' %}
+          {% set dailyFrequency = true %}
+      {% case 'weekly' %}
+          {% set weeklyFrequency = true %}
+      {% case 'monthly' %}
+          {% set monthlyFrequency = true %}
+  {% endswitch %}
+
+
+
   {{ govukRadios({
     idPrefix: "frequency",
     name: "frequency",
@@ -32,17 +44,17 @@
       {
         value: "daily",
         text: "Daily",
-        checked: checked("frequency", "daily")
+        checked: dailyFrequency
       },
       {
         value: "weekly",
         text: "Weekly",
-        checked: checked("frequency", "weekly")
+        checked: weeklyFrequency
       },
       {
         value: "monthly",
         text: "Monthly",
-        checked: checked("frequency", "monthly")
+        checked: monthlyFrequency
       }
     ]
   }) }}

@@ -2,9 +2,8 @@
 
 <!--set page title-->
 
-{% set returnRequirements = data.licences[data.ID].returnsRequirements[data.returnVersionNumber] %}
-{% set title = "Returns requirements valid from " +  returnRequirements.startDate | numberToGovukDate %}
-
+{% set returnRequirements = data['returnRequirements'] %}
+{% set title = "Returns requirements valid from " +  returnRequirements[0].versions[0].startDate | formatDate %}
 
 
 {% block pageTitle %}
@@ -22,10 +21,9 @@
 
     <!-- page heading -->
 
-
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{data.licences[data.ID]['number']}}</span> {{title}}</h1>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{returnRequirements[0].licence | capitalize}}</span> {{title}}</h1>
 <p class="govuk-body ">
-  {% set status = returnRequirements.status %}
+  {% set status = "active"%}
     {{govukTag({
 text: status,
 classes: status | tagColour + ' govuk-!-font-size-27'
@@ -39,10 +37,9 @@ classes: status | tagColour + ' govuk-!-font-size-27'
 
     <form method="post" class="form" id="charge-information">
 
-
       {% include "sandbox/_includes/returns/requirements/reason-new-requirements-no-change.html" %}
 
-           {% include "sandbox/_includes/returns/requirements/notes-no-change.html" %}
+            {% include "sandbox/_includes/returns/requirements/notes-no-change.html" %}
 
       {% include "sandbox/_includes/returns/requirements/requirement-no-change.html" %}
 

@@ -5,9 +5,6 @@
 
 {% set returnRequirements = data.licences[data.ID]['returnsRequirements'] %}
 
-{{returnRequirements}}
-
-
 
 {% set returnVersions = "" %}
 {% for i in returnRequirements %}
@@ -18,7 +15,7 @@
 
 
 <!--check to see if there is any returns versions set up-->
-{% if returnVersions.length  %}
+{% if returnRequirements.length  %}
 <!--if so display the table-->
 
       <table class="govuk-table">
@@ -44,7 +41,7 @@
           {% set numberOfRetunrVersions = returnVersions.length %}
 
           <!--creating rows-->
-          {% for i in returnVersions %}
+          {% for i in returnRequirements %}
 
           <!--set last row to remove the bottom border-->
           {% if loop.index ==  numberOfRetunrVersions %}
@@ -76,7 +73,7 @@
               {% set link = 'licence/charge-information?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
               <a href="{{link}}">Review <span class="screen-reader-only">returns requirements</span></a>
               {% else %}
-              {% set link = 'licence/returns/requirements?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              {% set link = 'licence/returns/requirements?returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
               <a href="{{link}}">View <span class="screen-reader-only">returns requirements</span></a>
               {% endif %}
             </td>

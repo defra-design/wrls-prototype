@@ -30,7 +30,7 @@ rows: [
       text: "Start date"
     },
     value: {
-      text: data.licences[data.ID].returnsRequirements[0]['startDate']
+      text: data.licences[data.ID].returnsRequirements[0]['startDate'] | numberToGovukDate
     },
     actions: {
       items: [

@@ -33,6 +33,17 @@
 {% if item.points.length >= 2 %}
 At {{item.points.length}} abstraction points<br>{{item.amount}} Megalitres per year<br>{{item.periodStart | mmddToDate}} to {{item.periodEnd | mmddToDate}}
 
+
+
+
+{# Frequency switch based on the answer for the specific requirement#}
+{% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex].uses[loop.index0]['allPointsSelected'] %}
+    {% case true %}
+        {% set allPointsSelected = true %}
+    {% case false %}
+        {% set somePointsSelected = true %}
+{% endswitch %}
+
 {% set allPoints %}
 {{ govukRadios({
 idPrefix: "allPoints",
@@ -48,12 +59,12 @@ items: [
         {
           value: "yes",
           text: "Yes",
-          checked: checked("allPoints", "yes")
+          checked: allPointsSelected
         },
         {
           value: loop.index0,
           text: "Select only some of the points",
-          checked: checked("allPoints", loop.index0.toString())
+          checked: somePointsSelected
 
         }
       ]
@@ -72,6 +83,13 @@ items: [
 {% endif %}
 {% endset %}
 
+{% set selectedUse = []%}
+{# if use has already been selected push an array of the already selected items and then in the loop compare the array to see if the purpose is a match if so, check the box#}
+{% for i in data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['uses'] %}
+ {% set selectedUse = selectedUse | push (i.purpose)%}
+ {% endfor %}
+
+
   {% set selectItems = selectItems | push({
     value: loop.index0,
     text: item.purpose,
@@ -81,7 +99,7 @@ items: [
     conditional: {
         html: allPoints |safe
       } if allPoints.length,
-    checked: checked("use", loop.index0.toString())
+    checked: selectedUse |arrayIncludes (item.purpose)
 
   }) %}
 {% endfor %}
