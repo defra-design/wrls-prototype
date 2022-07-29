@@ -427,6 +427,8 @@ module.exports = {
 
     //returns versions
     "returnVersion": "",
+    "success" : 0,
+    "successMessage" : "",
 
     //licence
     "licences": [

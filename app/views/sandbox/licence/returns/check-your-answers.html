@@ -17,6 +17,18 @@
 {% block service %}
 
 
+{% if data.success == 1 %}
+
+
+
+{{ govukNotificationBanner({
+  html: data.successMessage,
+  type: 'success'
+}) }}
+
+{% endif %}
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 

@@ -266,6 +266,8 @@ router.post('/set-up/reason', function(req, res) {
   //  let elementNumber = req.session.data.elementNumber
   //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
     req.session.data.change = false
+    req.session.data.success = 1
+    req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement reason updated successfully</h3><p class="govuk-body">Reason: ' + req.session.data.reasonNewRequirements +  '</p>'
     //update with the latest answers
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
@@ -304,11 +306,31 @@ router.post('/set-up/start-date', function(req, res) {
   }
 
 
+  ////function to change a number string in to the govuk date format. "yyyymmdd"
+    let govukDate = ""
+    let dd = req.session.data.startDateConditional.slice(-2);
+    dd = parseInt(dd, 10);
+    let mm = req.session.data.startDateConditional.slice(-4, -2)
+    mm = parseInt(mm, 10);
+    let yyyy = req.session.data.startDateConditional.slice(0, 4);
+    //change the month into a name
+    let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    mm = monthNames[mm - 1]
+    govukDate = `${dd} ${mm} ${yyyy}`;
+
+
+
   //check if the route is from changing existing data or not
   let change = req.session.data.change
   if (change == "true"){
   //  let elementNumber = req.session.data.elementNumber
   //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+
+  //Update the success banner
+  req.session.data.success = 1
+  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement start date updated successfully</h3><p class="govuk-body">Start date: ' + govukDate +  '</p>'
+
+
     req.session.data.change = false
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].startDate = req.session.data.startDateConditional
@@ -371,17 +393,31 @@ router.post('/set-up/frequency', function(req, res) {
 
   //check if the route is from changing existing data or not
   let change = req.session.data.change
+  //get the return requirement
+  let licence = req.session.data.ID
+  let requirementIndex = req.session.data.requirementIndex
+
   if (change == "true"){
 
   //  let elementNumber = req.session.data.elementNumber
   //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
     req.session.data.change = false
     updateReturnRequirement(req, res)
+
+    //updating success banner
+    req.session.data.success = 1
+    req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement updated successfully</h3><p class="govuk-body">ID: ' + req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+
     res.redirect('../check-your-answers');
   } else {
     if (req.session.data.returnVersion !== 1){
     createVersion(req, res) } else {
       createReturnRequirement(req, res)
+      req.session.data.success = 1
+      let newRequirementIndex = req.session.data.licences[licence].returnsRequirements[0].requirements.length
+      console.log(newRequirementIndex -1)
+      req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement created successfully</h3><p class="govuk-body">Return ID: ' + req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
+
     }
 
     res.redirect('../check-your-answers');
@@ -398,7 +434,18 @@ router.get('/confirm-remove-requirement', function(req, res) {
 });
 
 router.post('/confirm-remove-requirement', function(req, res) {
+
+  //get the return requirement
+  let licence = req.session.data.ID
+  let requirementIndex = req.session.data.requirementIndex
+  let removedRequirementID = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id
+
     removeRequirement(req, res)
+
+    //updating success banner
+    req.session.data.success = 1
+    req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement removed successfully</h3><p class="govuk-body">Return ID: ' + removedRequirementID +  '</p>'
+
     res.redirect('check-your-answers');
 });
 
@@ -406,6 +453,7 @@ router.post('/confirm-remove-requirement', function(req, res) {
 /////Confirm return version
 router.get('/check-your-answers', function(req, res) {
   req.session.data.back = req.headers.referer
+  req.session.data.success = 0
   res.render(folder + 'check-your-answers');
 });
 
@@ -449,12 +497,36 @@ router.post('/set-up/add-a-note', function(req, res) {
 
   //get the licence info
   let licence = req.session.data.ID
+
+
+  //updating success banner
+  req.session.data.success = 1
+
+  if (req.session.data.licences[licence].returnsRequirements[0].note.length) {
+  //If there is already a note success banner says updated
   //update the note
   req.session.data.licences[licence].returnsRequirements[0].note = req.session.data.note
+  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement notes updated successfully</h3>'
+} else {
+  //create the note
+  req.session.data.licences[licence].returnsRequirements[0].note = req.session.data.note
 
+  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement notes created successfully</h3>'
+}
 
     res.redirect('../check-your-answers');
 
+});
+
+/////Delete a note
+router.get('/delete-note', function(req, res) {
+  req.session.data.back = req.headers.referer
+
+  //updating success banner -- This doesn't work
+  req.session.data.success = 1
+  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement notes deleted</h3>'
+
+  res.render(folder + 'check-your-answers');
 });
 
 
