@@ -412,7 +412,12 @@ router.get('/check-your-answers', function(req, res) {
 router.post('/check-your-answers', function(req, res) {
 
 
-
+   //end the previous return requirement
+   let licence = req.session.data.ID
+   if (req.session.data.licences[licence].returnsRequirements.length > 1) {
+   let endDate = Number(req.session.data.licences[licence].returnsRequirements[0].startDate) - 1
+   req.session.data.licences[licence].returnsRequirements[1].endDate = endDate.toString();
+   }
 
    //clear all the data
    req.session.data.reasonNewRequirements = ""
@@ -425,6 +430,7 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.change = false
    req.session.data.requirementIndex = ""
    req.session.data.returnVersion = ""
+   req.session.data.note = ""
 
     res.redirect('set-up/requirements-set-up');
 });
