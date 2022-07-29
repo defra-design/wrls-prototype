@@ -62,7 +62,7 @@ function createReturnRequirement(req, res) {
   let season = ""
   //loop through and get the purpose, points, amount, periodStart and periodEnd
   for (i of useIndexes) {
-    console.log(i)
+
    purpose = req.session.data.licences[licence].use[i].purpose
 
    //check to see if specific points specified, if not then use all the points from the use
@@ -148,8 +148,9 @@ function createVersion(req, res) {
 
   };
     //push reference data
-    returnsRequirements.push(versions);
+    returnsRequirements.unshift(versions);
     req.session.data.returnVersion = 1
+    createReturnRequirement(req, res)
 
 }
 
@@ -379,8 +380,10 @@ router.post('/set-up/frequency', function(req, res) {
     res.redirect('../check-your-answers');
   } else {
     if (req.session.data.returnVersion !== 1){
-    createVersion(req, res) }
-    createReturnRequirement(req, res)
+    createVersion(req, res) } else {
+      createReturnRequirement(req, res)
+    }
+
     res.redirect('../check-your-answers');
   }
 
@@ -408,6 +411,9 @@ router.get('/check-your-answers', function(req, res) {
 
 router.post('/check-your-answers', function(req, res) {
 
+
+
+
    //clear all the data
    req.session.data.reasonNewRequirements = ""
    req.session.data.startDateConditional = ""
@@ -418,6 +424,7 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.frequency = ""
    req.session.data.change = false
    req.session.data.requirementIndex = ""
+   req.session.data.returnVersion = ""
 
     res.redirect('set-up/requirements-set-up');
 });
