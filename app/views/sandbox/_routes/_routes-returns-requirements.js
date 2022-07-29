@@ -133,6 +133,8 @@ function createVersion(req, res) {
   let status = "active"
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
+  let username = "username@defra.gov.uk"
+  let note = ""
 
     let versions = {
 
@@ -140,6 +142,8 @@ function createVersion(req, res) {
     endDate,
     reason,
     status,
+    username,
+    note,
     requirements,
 
   };
@@ -181,7 +185,7 @@ function updateReturnRequirement(req, res) {
    let allPointsSelected = false
    //loop through and get the purpose, points, amount, periodStart and periodEnd
    for (i of useIndexes) {
-     console.log(i)
+
     purpose = req.session.data.licences[licence].use[i].purpose
 
     //check to see if specific points specified, if not then use all the points from the use
@@ -281,8 +285,6 @@ router.get('/set-up/start-date', function(req, res) {
 router.post('/set-up/start-date', function(req, res) {
 
   if (req.session.data.startDateConditional == "other"){
-
-  console.log(req.session.data.startDate)
 
   let dd = req.session.data.startDate[0];
   let mm = req.session.data.startDate[1];
@@ -405,6 +407,18 @@ router.get('/check-your-answers', function(req, res) {
 });
 
 router.post('/check-your-answers', function(req, res) {
+
+   //clear all the data
+   req.session.data.reasonNewRequirements = ""
+   req.session.data.startDateConditional = ""
+   req.session.data.startDate = []
+   req.session.data.use = ""
+   req.session.data.allPoints = ""
+   req.session.data.description = ""
+   req.session.data.frequency = ""
+   req.session.data.change = false
+   req.session.data.requirementIndex = ""
+
     res.redirect('set-up/requirements-set-up');
 });
 
@@ -419,6 +433,11 @@ router.get('/set-up/add-a-note', function(req, res) {
 });
 
 router.post('/set-up/add-a-note', function(req, res) {
+
+  //get the licence info
+  let licence = req.session.data.ID
+  //update the note
+  req.session.data.licences[licence].returnsRequirements[0].note = req.session.data.note
 
 
     res.redirect('../check-your-answers');

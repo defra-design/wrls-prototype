@@ -7,8 +7,6 @@
   <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Notes</h2>
 
 
-
-
 {% if data.note.length %}
   <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
 {{ govukSummaryList({
@@ -17,10 +15,10 @@ rows: [
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
-      text: "username@defra.gov.uk"
+      text: data.licences[data.ID].returnsRequirements[0].username
     },
     value: {
-      text: [data.note]
+      text: data.licences[data.ID].returnsRequirements[0].note
     },
     actions: {
       items: [
