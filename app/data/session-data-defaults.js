@@ -431,6 +431,7 @@ module.exports = {
     "successMessage" : "",
 
     //licence
+    "id" : 1,
     "licences": [
       //licence 1
       {

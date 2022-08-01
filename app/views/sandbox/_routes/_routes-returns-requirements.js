@@ -4,7 +4,8 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 
-
+///-----------------------------------------CONSTANTS------------------------------------------///
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -33,8 +34,22 @@ const today = `${dd} ${mm} ${yyyy}`;
 const folder = "sandbox/licence/returns/"
 
 
-///---------------------------------------------------------
-//Functions
+///Success messages///
+//////////////////////
+ const successMessage = {
+   "dynamicContent":      "",
+   "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Return requirement reason updated successfully</h3><p class="govuk-body">Reason: ',
+   "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Return requirement start date updated successfully</h3><p class="govuk-body">Start date: ',
+   "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Return requirement updated successfully</h3><p class="govuk-body">ID: ',
+   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">Return requirement created successfully</h3><p class="govuk-body">Return ID: ',
+   "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Return requirement removed successfully</h3><p class="govuk-body">Return ID: ',
+   "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Return requirement notes updated successfully</h3>',
+   "noteCreate":          '<h3 class="govuk-notification-banner__heading">Return requirement notes created successfully</h3>',
+ }
+
+
+///-----------------------------------------FUNCTIONS------------------------------------------///
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///CREATE CHARGE INFORMATION
@@ -245,6 +260,9 @@ function updateReturnRequirement(req, res) {
 
 
 
+///-----------------------------------------PAGE ROUTES------------------------------------------///
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /// Check the returns requirements
 router.get('/requirements', function(req, res) {
   req.session.data.back = req.headers.referer
@@ -267,7 +285,9 @@ router.post('/set-up/reason', function(req, res) {
   //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
     req.session.data.change = false
     req.session.data.success = 1
-    req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement reason updated successfully</h3><p class="govuk-body">Reason: ' + req.session.data.reasonNewRequirements +  '</p>'
+
+    successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
+    req.session.data.successMessage = successMessage.reasonUpdate + successMessage.dynamicContent
     //update with the latest answers
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
@@ -328,7 +348,11 @@ router.post('/set-up/start-date', function(req, res) {
 
   //Update the success banner
   req.session.data.success = 1
-  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement start date updated successfully</h3><p class="govuk-body">Start date: ' + govukDate +  '</p>'
+
+  successMessage.dynamicContent = govukDate + "</p>"
+  req.session.data.successMessage = successMessage.startDateUpdate + successMessage.dynamicContent
+
+
 
 
     req.session.data.change = false
@@ -406,7 +430,11 @@ router.post('/set-up/frequency', function(req, res) {
 
     //updating success banner
     req.session.data.success = 1
-    req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement updated successfully</h3><p class="govuk-body">ID: ' + req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+
+
+    successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+    req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+
 
     res.redirect('../check-your-answers');
   } else {
@@ -415,8 +443,13 @@ router.post('/set-up/frequency', function(req, res) {
       createReturnRequirement(req, res)
       req.session.data.success = 1
       let newRequirementIndex = req.session.data.licences[licence].returnsRequirements[0].requirements.length
-      console.log(newRequirementIndex -1)
-      req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement created successfully</h3><p class="govuk-body">Return ID: ' + req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
+
+
+
+      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
+      req.session.data.successMessage = successMessage.requirementCreate + successMessage.dynamicContent
+
+
 
     }
 
@@ -444,7 +477,10 @@ router.post('/confirm-remove-requirement', function(req, res) {
 
     //updating success banner
     req.session.data.success = 1
-    req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement removed successfully</h3><p class="govuk-body">Return ID: ' + removedRequirementID +  '</p>'
+
+    //Success message set for removing return requirement
+    successMessage.dynamicContent = removedRequirementID +  '</p>'
+    req.session.data.successMessage = successMessage.requirementRemove + successMessage.dynamicContent
 
     res.redirect('check-your-answers');
 });
@@ -479,6 +515,7 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.requirementIndex = ""
    req.session.data.returnVersion = ""
    req.session.data.note = ""
+   req.session.data.success = 0
 
     res.redirect('set-up/requirements-set-up');
 });
@@ -506,12 +543,15 @@ router.post('/set-up/add-a-note', function(req, res) {
   //If there is already a note success banner says updated
   //update the note
   req.session.data.licences[licence].returnsRequirements[0].note = req.session.data.note
-  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement notes updated successfully</h3>'
+
+  req.session.data.successMessage = successMessage.noteUpdate
+
+
 } else {
   //create the note
   req.session.data.licences[licence].returnsRequirements[0].note = req.session.data.note
-
-  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement notes created successfully</h3>'
+  //create the success banner
+  req.session.data.successMessage = successMessage.noteCreate
 }
 
     res.redirect('../check-your-answers');
@@ -522,11 +562,12 @@ router.post('/set-up/add-a-note', function(req, res) {
 router.get('/delete-note', function(req, res) {
   req.session.data.back = req.headers.referer
 
-  //updating success banner -- This doesn't work
-  req.session.data.success = 1
-  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">Return requirement notes deleted</h3>'
+  //updating success banner -- This is originally done through the URL for deleting a note
+  req.session.data.success = 0
+  //create the success banner - This is set in the URL params for deleting a note, see notes include line 31
 
-  res.render(folder + 'check-your-answers');
+
+  res.render(folder + 'check-your-answers' );
 });
 
 
