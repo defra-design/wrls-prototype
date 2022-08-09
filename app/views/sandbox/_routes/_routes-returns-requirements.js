@@ -38,13 +38,13 @@ const folder = "sandbox/licence/returns/"
 //////////////////////
  const successMessage = {
    "dynamicContent":      "",
-   "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Return requirement reason updated successfully</h3><p class="govuk-body">Reason: ',
-   "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Return requirement start date updated successfully</h3><p class="govuk-body">Start date: ',
-   "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Return requirement updated successfully</h3><p class="govuk-body">ID: ',
-   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">Return requirement created successfully</h3><p class="govuk-body">Return ID: ',
-   "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Return requirement removed successfully</h3><p class="govuk-body">Return ID: ',
-   "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Return requirement notes updated successfully</h3>',
-   "noteCreate":          '<h3 class="govuk-notification-banner__heading">Return requirement notes created successfully</h3>',
+   "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Return requirement reason updated</h3><p class="govuk-body">Reason: ',
+   "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Return requirement start date updated</h3><p class="govuk-body">Start date: ',
+   "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Return requirement updated</h3><p class="govuk-body">ID: ',
+   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">Return requirement created</h3><p class="govuk-body">Return ID: ',
+   "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Return requirement removed</h3><p class="govuk-body">Return ID: ',
+   "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Return requirement note updated</h3>',
+   "noteCreate":          '<h3 class="govuk-notification-banner__heading">Return requirement note added</h3>',
  }
 
 
