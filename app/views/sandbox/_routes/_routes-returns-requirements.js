@@ -66,6 +66,8 @@ function createReturnRequirement(req, res) {
   //assign the indexs of the uses
   let useIndexes = req.session.data.use
 
+  console.log("use index = " + useIndexes)
+
   let uses = []
 
   //set scope of purpose, points, amount, periodStart and periodEnd
@@ -76,9 +78,37 @@ function createReturnRequirement(req, res) {
   let amount = ""
   let season = ""
   //loop through and get the purpose, points, amount, periodStart and periodEnd
-  for (i of useIndexes) {
+  for (const [v, i] of useIndexes.entries()) {
 
    purpose = req.session.data.licences[licence].use[i].purpose
+
+   console.log(purpose)
+
+   //check to see if route 1 or route 2 is being used
+   if (req.session.data.returnsRouteVersion == 2) {
+
+     //check to see if specific points specified, if not then use all the points from the use
+
+
+     //get the index for the individual purpose
+     let allPointsIndex = "allPoints"+i
+     let allPoints = req.session.data[allPointsIndex]
+
+      console.log(allPoints + " == " + i )
+     //Check to see if the loop is on the correct item
+     if(allPoints == i){
+
+       //If so get the answer to the individual points question and add the selected points
+       let pointIndex = "points"+i
+       points = req.session.data[pointIndex]
+       console.log(points)
+
+     } else {
+            points = req.session.data.licences[licence].use[i].points
+         console.log(points)
+     }
+
+   } else {
 
    //check to see if specific points specified, if not then use all the points from the use
    if(req.session.data.allPoints == i){
@@ -86,6 +116,12 @@ function createReturnRequirement(req, res) {
    } else {
           points = req.session.data.licences[licence].use[i].points
    }
+
+   }
+
+
+
+
    periodStart = req.session.data.licences[licence].use[i].periodStart
    periodEnd = req.session.data.licences[licence].use[i].periodEnd
    amount = req.session.data.licences[licence].use[i].amount
@@ -200,18 +236,51 @@ function updateReturnRequirement(req, res) {
    let season = ""
    let allPointsSelected = false
    //loop through and get the purpose, points, amount, periodStart and periodEnd
-   for (i of useIndexes) {
+   for (const [v, i] of useIndexes.entries()) {
 
     purpose = req.session.data.licences[licence].use[i].purpose
+
+
+
+    //check to see if route 1 or route 2 is being used
+    if (req.session.data.returnsRouteVersion == 2) {
+
+      //check to see if specific points specified, if not then use all the points from the use
+
+
+      //get the index for the individual purpose
+      let allPointsIndex = "allPoints"+i
+      let allPoints = req.session.data[allPointsIndex]
+
+
+      //Check to see if the loop is on the correct item
+      if(allPoints == v){
+
+        //If so get the answer to the individual points question and add the selected points
+        let pointIndex = "points"+i
+        points = req.session.data[pointIndex]
+
+
+      } else {
+             points = req.session.data.licences[licence].use[i].points
+             allPointsSelected = true
+
+      }
+
+    } else {
 
     //check to see if specific points specified, if not then use all the points from the use
     if(req.session.data.allPoints == i){
            points = req.session.data.points
-
     } else {
            points = req.session.data.licences[licence].use[i].points
            allPointsSelected = true
     }
+
+    }
+
+
+
     periodStart = req.session.data.licences[licence].use[i].periodStart
     periodEnd = req.session.data.licences[licence].use[i].periodEnd
     amount = req.session.data.licences[licence].use[i].amount
@@ -360,7 +429,12 @@ router.post('/set-up/start-date', function(req, res) {
     req.session.data.licences[licence].returnsRequirements[0].startDate = req.session.data.startDateConditional
     res.redirect('../check-your-answers');
   } else {
-      res.redirect('use');
+          //redirect to specified version of the route e.g. ?returnsRouteVersion=2  //V2 routes near the bottom
+          if ( req.session.data.returnsRouteVersion == 2){
+            res.redirect('V2/purpose');
+          } else {
+            res.redirect('use');
+          }
   }
 
 });
@@ -569,6 +643,136 @@ router.get('/delete-note', function(req, res) {
 
   res.render(folder + 'check-your-answers' );
 });
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////RETURNS VERSION 2 ROUTES////////////////////////////////
+
+/// Select the purpose
+router.get('/set-up/V2/purpose', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/V2/purpose');
+});
+
+router.post('/set-up/V2/purpose', function(req, res) {
+
+/*  if (req.session.data.allPoints == "yes" || req.session.data.allPoints == undefined || req.session.data.allPoints == ""){
+  res.redirect('description');
+  } else {
+  res.redirect('points');
+} */
+
+//assign the indexs of the uses
+let licence = req.session.data.ID
+let useIndexes = req.session.data.use
+
+let redirect = ""
+
+
+function setRedirect(callBack) {
+//loop through and get the purpose, points, amount, periodStart and periodEnd
+for (i of useIndexes) {
+
+ points = req.session.data.licences[licence].use[i].points
+
+     //check to see if specific points specified, if not then use all the points from the use
+     if(points.length >= 2){
+          redirect = "1"
+     }
+
+  }
+
+  callBack();
+}
+
+function purposeRedirect(){
+
+          if (redirect === "1") {
+          res.redirect('all-points');
+        } else {
+          res.redirect('../description');
+        }
+  }
+
+
+setRedirect(purposeRedirect)
+
+
+});
+
+
+
+/// Select whether to include all points, if there is more than one set of points
+router.get('/set-up/V2/all-points', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/V2/all-points');
+});
+
+router.post('/set-up/V2/all-points', function(req, res) {
+
+
+
+//assign the indexs of the uses
+let licence = req.session.data.ID
+let useIndexes = req.session.data.use
+
+console.log("use " + useIndexes)
+
+
+let selectPoints = []
+
+function selectPointsCheck(callBack) {
+//loop through and check whether all points is specified for all answers
+for (const [i, v] of useIndexes.entries()) {
+
+ //points = req.session.data.licences[licence].use[i].points
+ let allPointsIndex = "allPoints"+v
+ let allPoints = req.session.data[allPointsIndex]
+
+  console.log(allPoints)
+ //check to see if specific points specified, if not then use all the points from the use
+ if( v == allPoints ){
+        selectPoints.push(v)
+ }
+}
+
+    req.session.data.selectPoints = selectPoints
+
+    console.log(req.session.data.selectPoints)
+    callBack();
+}
+
+function selectPointsRedirect() {
+
+        //if there are purposes with multiple points where the individual points need to be selected redirect to the points screen other wise select all
+        if (selectPoints.length) {
+
+          res.redirect('points');
+        } else {
+          res.redirect('../description');
+        }
+
+}
+
+
+selectPointsCheck(selectPointsRedirect)
+
+
+});
+
+
+/// Select the points
+router.get('/set-up/V2/points', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/V2/points');
+});
+
+router.post('/set-up/V2/points', function(req, res) {
+
+  res.redirect('../description');
+});
+
+
 
 
 

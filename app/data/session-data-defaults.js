@@ -429,6 +429,7 @@ module.exports = {
     "returnVersion": "",
     "success" : 0,
     "successMessage" : "",
+    "returnsRouteVersion" : 1,
 
     //licence
     "id" : 1,
@@ -568,6 +569,13 @@ module.exports = {
                 "periodEnd": "1031",
                 "amount": "125",
               },
+              {
+                      "purpose": "Spray irrigation - direct",
+                      "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                      "periodStart": "1101",
+                      "periodEnd": "0331",
+                      "amount": "125",
+                    },
               {
                 "purpose": "General machine washing",
                 "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],

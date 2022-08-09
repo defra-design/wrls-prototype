@@ -1,0 +1,86 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select the points for the return requirement" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+
+{% set headingSet = false %}
+
+
+
+{% for selected in data['selectPoints'] %}
+
+{% set points = data.licences[data.ID].use[selected]['points'] %}
+{% set purpose = data.licences[data.ID].use[selected]['purpose'] %}
+{% set absPeriod = data.licences[data.ID].use[selected]['periodStart'] | mmddToDate  + " to " + data.licences[data.ID].use[selected]['periodEnd'] | mmddToDate%}
+
+
+
+{% set qTitle %}
+{% if headingSet == false %}<h1 class="govuk-heading-l">{{title}}</h1><!--<p class="govuk-hint ">Answer for each selected purpose with more than one point</p>-->{% set headingSet = true %}{% endif %}<h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{purpose}}</h2>
+<p class="govuk-hint govuk-!-margin-bottom-0">{{absPeriod}}</p>
+{% endset %}
+
+
+
+{# Create the array #}
+{% set selectItems = [] %}
+
+{# loop through the use items #}
+{% for item in points %}
+
+
+{% set selectItems = selectItems | push({
+  value: item,
+  text: item,
+  checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex].uses[data.allPoints]['points']  | arrayIncludes (item)
+}) %}
+
+{% endfor %}
+
+{{ govukCheckboxes({
+idPrefix: "points" + selected,
+name: "points" + selected,
+fieldset: {
+  legend: {
+    html: qTitle,
+    isPageHeading: false,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+hint: {
+  text: "Select all that apply"
+},
+items: selectItems
+}) }}
+
+
+{% endfor %}
+
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

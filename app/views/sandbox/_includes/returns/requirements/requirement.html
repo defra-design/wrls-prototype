@@ -1,5 +1,12 @@
 {% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
 
+{% if data['returnsRouteVersion'] == 2 %}
+{% set routeFolder = "set-up/V2/purpose" %}
+
+{% else %}
+{% set routeFolder = "set-up/use" %}
+{% endif %}
+
 {% for requirement in requirements %}
 
 
@@ -11,7 +18,7 @@
 
 
 <span class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-body"  href="set-up/use?change=true&requirementIndex={{loop.index0}}">
+              <a class="govuk-link govuk-body"  href="{{routeFolder}}?change=true&requirementIndex={{loop.index0}}">
                 Change<span class="govuk-visually-hidden"> the reason for the return requirement</span>
                 </a>
 </span>
@@ -112,7 +119,7 @@
 {{ govukButton({
 text: "Add another requirement",
 classes: "govuk-button--secondary govuk-!-margin-right-6",
-href: "set-up/use?requirementIndex="
+href: routeFolder + "?requirementIndex="
 }) }}
 
 
