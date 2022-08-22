@@ -108,7 +108,7 @@
 
       {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
       <!--check to see if there is any charge information set up-->
-      {% if chargeVersions.length  %}
+    {#   {% if chargeVersions.length  %} #}
       <!--if so display the table-->
 
 
@@ -118,7 +118,7 @@
       {% set agreements = data.licences[data.ID]['agreements'] %}
 
       <!--displaying text if there are no agreements or the table if there are agreements in place-->
-      {% if agreements.length %}
+     {% if agreements.length %}
 
       <table class="govuk-table govuk-!-margin-bottom-4">
        <caption class="govuk-table__caption govuk-table__caption--m">Agreements</caption>
@@ -184,4 +184,4 @@
           classes: "govuk-button--secondary"
         }) }}
 
-          {% endif %}
+      {#    {% endif %} #}

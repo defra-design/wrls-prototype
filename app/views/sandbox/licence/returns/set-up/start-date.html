@@ -57,7 +57,7 @@ idPrefix: "startDateConditional",
 name: "startDateConditional",
 fieldset: {
   legend: {
-    html: '<span class="govuk-caption-l">Licence 03/28/60/0032</span>' + [title],
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
     isPageHeading: true,
     classes: "govuk-fieldset__legend--l"
   }
@@ -70,7 +70,7 @@ items: [
   },
   {
     value: "20220401",
-    html: "Licence start date<br>1 April 2022",
+    html: "Licence start date<br>" + data.licences[data.ID].startDate,
     checked: checked("startDateConditional", "20220401")
   },
   {

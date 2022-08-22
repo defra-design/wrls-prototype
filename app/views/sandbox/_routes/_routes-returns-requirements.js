@@ -666,6 +666,12 @@ router.post('/set-up/V2/purpose', function(req, res) {
 let licence = req.session.data.ID
 let useIndexes = req.session.data.use
 
+
+//create the session data array if there is only a single use
+if (useIndexes == 0) {
+  req.session.data.use = ['0']
+}
+
 let redirect = ""
 
 

@@ -16,11 +16,29 @@
   <div class="govuk-grid-column-full">
 
 
-<form method="post" class="form">
+
 
 {# get the licence use information #}
 {% set use = data.licences[data.ID]['use'] %}
 
+
+{# If there is only one use play back to the user rather than allowing them to select #}
+
+{% if use.length == 1 %}
+<form action="?use=0" method="post" class="form">
+
+<h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence 03/28/61/029</span>There is 1 purpose for the return requirement
+    </h1>
+
+    <p class="govuk-body-l govuk-!-font-weight-bold">{{use[0].purpose}}</p>
+
+
+
+
+{% else %}
+{# for more than one use display checkboxes #}
+<form method="post" class="form">
 
 {# Create the array #}
 {% set selectItems = [] %}
@@ -81,6 +99,8 @@ hint: {
 },
 items: selectItems
 }) }}
+
+{% endif %}
 
   <button type="submit" class="govuk-button govuk-!-margin-right-1">
     Continue
