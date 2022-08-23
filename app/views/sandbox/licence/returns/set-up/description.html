@@ -18,20 +18,23 @@
 
 <form method="post" class="form">
 
+
   {{ govukInput({
-    label: {
-      text: title,
-      classes: "govuk-label--l",
-      isPageHeading: true
+      label: {
+        text: title,
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+    hint: {
+        html: '<p class="govuk-body">This is the description that will appear on the return</p>'
     },
-  hint: {
-      text: "This is the description that will appear on the return"
-  },
-    classes: "govuk-!-width-three-quarters",
-    id: "description",
-    name: "description",
-    value: data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['description']
-  }) }}
+      classes: "govuk-!-width-three-quarters",
+      id: "description",
+      name: "description",
+      value: data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['description']
+    }) }}
+
+
 
   <button type="submit" class="govuk-button govuk-!-margin-right-1">
     Continue
