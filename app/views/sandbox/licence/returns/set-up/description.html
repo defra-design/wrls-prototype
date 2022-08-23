@@ -15,15 +15,19 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-<p class="govuk-body">This is the description that will appear on the return</p>
+
 <form method="post" class="form">
 
   {{ govukInput({
     label: {
       text: title,
       classes: "govuk-label--l",
-    isPageHeading: true
+      isPageHeading: true
     },
+  p: {
+    text: "This is the description that will appear on the return",
+    classes: "govuk-body"
+  },
     classes: "govuk-!-width-three-quarters",
     id: "description",
     name: "description",
