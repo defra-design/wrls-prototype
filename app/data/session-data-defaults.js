@@ -661,14 +661,14 @@ module.exports = {
         "name": "Honeydew Crescent",
         "holder": "Big Smith Farms Ltd",
         "startDate": "1 April 2022",
-        "endDate": "15 September 2034",
+        "endDate": "31 March 2034",
         "expired": "false",
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
         "absPeriod": "1 April to 31 March",
 
-        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
         "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
