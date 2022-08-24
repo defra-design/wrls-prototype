@@ -66,7 +66,7 @@ function createReturnRequirement(req, res) {
   //assign the indexs of the uses
   let useIndexes = req.session.data.use
 
-  console.log("use index = " + useIndexes)
+
 
   let uses = []
 
@@ -77,12 +77,13 @@ function createReturnRequirement(req, res) {
   let periodEnd = ""
   let amount = ""
   let season = ""
+  let allPointsSelected = false
   //loop through and get the purpose, points, amount, periodStart and periodEnd
   for (const [v, i] of useIndexes.entries()) {
 
    purpose = req.session.data.licences[licence].use[i].purpose
 
-   console.log(purpose)
+
 
    //check to see if route 1 or route 2 is being used
    if (req.session.data.returnsRouteVersion == 2) {
@@ -94,18 +95,19 @@ function createReturnRequirement(req, res) {
      let allPointsIndex = "allPoints"+i
      let allPoints = req.session.data[allPointsIndex]
 
-      console.log(allPoints + " == " + i )
+
      //Check to see if the loop is on the correct item
      if(allPoints == i){
 
        //If so get the answer to the individual points question and add the selected points
        let pointIndex = "points"+i
        points = req.session.data[pointIndex]
-       console.log(points)
+
 
      } else {
             points = req.session.data.licences[licence].use[i].points
-         console.log(points)
+            allPointsSelected = true
+
      }
 
    } else {
@@ -115,6 +117,7 @@ function createReturnRequirement(req, res) {
           points = req.session.data.points
    } else {
           points = req.session.data.licences[licence].use[i].points
+          allPointsSelected = true
    }
 
    }
@@ -125,16 +128,22 @@ function createReturnRequirement(req, res) {
    periodStart = req.session.data.licences[licence].use[i].periodStart
    periodEnd = req.session.data.licences[licence].use[i].periodEnd
    amount = req.session.data.licences[licence].use[i].amount
+   console.log(periodStart)
+   console.log(periodEnd)
+  console.log(periodStart <= "1031")
+    console.log(periodStart >= "0401")
+    console.log(periodEnd <= "1031")
+    console.log(periodEnd >= "0401")
 
   //check to see if the abs period is summer or winter and all year. Only bother to run the code if undefined or summer
   if (season == "" || season == "summer") {
-  if (periodStart <= 1031 && periodStart >= 0401 && periodEnd <= 1031 && periodEnd >= 0401) {
+  if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
     season = "summer"
   } else {
     season = "winter/all year"
     }
   }
-
+  console.log(season)
 
   let selectedUse = {
     purpose,
@@ -142,6 +151,7 @@ function createReturnRequirement(req, res) {
     periodStart,
     periodEnd,
     amount,
+    allPointsSelected,
   }
 
   uses.push(selectedUse);
@@ -285,14 +295,23 @@ function updateReturnRequirement(req, res) {
     periodEnd = req.session.data.licences[licence].use[i].periodEnd
     amount = req.session.data.licences[licence].use[i].amount
 
+    console.log(periodStart)
+    console.log(periodEnd)
+   console.log(periodStart <= "1031")
+     console.log(periodStart >= "0401")
+     console.log(periodEnd <= "1031")
+     console.log(periodEnd >= "0401")
+
    //check to see if the abs period is summer or winter and all year. Only bother to run the code if undefined or summer
    if (season == "" || season == "summer") {
-   if (periodStart <= 1031 && periodStart >= 0401 && periodEnd <= 1031 && periodEnd >= 0401) {
+   if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
      season = "summer"
    } else {
      season = "winter/all year"
      }
    }
+   //update the season
+   returnsRequirements.season = season
 
 
    let selectedUse = {
@@ -722,7 +741,7 @@ router.post('/set-up/V2/all-points', function(req, res) {
 let licence = req.session.data.ID
 let useIndexes = req.session.data.use
 
-console.log("use " + useIndexes)
+
 
 
 let selectPoints = []
@@ -735,7 +754,7 @@ for (const [i, v] of useIndexes.entries()) {
  let allPointsIndex = "allPoints"+v
  let allPoints = req.session.data[allPointsIndex]
 
-  console.log(allPoints)
+
  //check to see if specific points specified, if not then use all the points from the use
  if( v == allPoints ){
         selectPoints.push(v)
@@ -744,7 +763,7 @@ for (const [i, v] of useIndexes.entries()) {
 
     req.session.data.selectPoints = selectPoints
 
-    console.log(req.session.data.selectPoints)
+
     callBack();
 }
 
