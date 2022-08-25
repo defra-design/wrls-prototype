@@ -3,7 +3,11 @@
 <!--set page title-->
 
 {% set returnRequirements = data.licences[data.ID].returnsRequirements[data.returnVersionNumber] %}
+{% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].requirements.length %}
 {% set title = "Returns requirements valid from " +  returnRequirements.startDate | numberToGovukDate %}
+{% else %}
+{% set title = "No returns required valid from " +  returnRequirements.startDate | numberToGovukDate %}
+{% endif %}
 
 
 
@@ -37,19 +41,22 @@ classes: status | tagColour + ' govuk-!-font-size-27'
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <form method="post" class="form" id="charge-information">
+
 
 
       {% include "sandbox/_includes/returns/requirements/reason-new-requirements-no-change.html" %}
+
+
+      {% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].requirements.length %}
 
            {% include "sandbox/_includes/returns/requirements/notes-no-change.html" %}
 
       {% include "sandbox/_includes/returns/requirements/requirement-no-change.html" %}
 
+     {% endif %}
 
 
 
-    </form>
 
   </div>
 </div>

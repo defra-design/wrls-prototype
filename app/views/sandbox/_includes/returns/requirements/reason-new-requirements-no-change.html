@@ -12,7 +12,7 @@ rows: [
       text: "Reason"
     },
     value: {
-      text: data.licences[data.ID].returnsRequirements[0]['reason'] | capitalize
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['reason'] | capitalize
     }
   },
   {
@@ -21,9 +21,18 @@ rows: [
       text: "Start date"
     },
     value: {
-      text: data.licences[data.ID].returnsRequirements[0]['startDate'] | numberToGovukDate
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['startDate'] | numberToGovukDate
     }
-  }  
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "End date"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['endDate'] | numberToGovukDate
+    }
+  } if data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['endDate'].length
 ]
 }) }}
 

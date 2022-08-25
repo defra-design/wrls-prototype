@@ -1,4 +1,9 @@
-
+{# set the URL for the reason question based on whether returns are required or not #}
+{% if data['returnsNotRequired'] == true %}
+{% set reasonURL = "set-up/reason-not-required?change=true"%}
+{% else %}
+{% set reasonURL = "set-up/reason?change=true"%}
+{% endif %}
 
 <section class="govuk-!-margin-bottom-9">
 
@@ -17,7 +22,7 @@ rows: [
     actions: {
       items: [
         {
-          href: "set-up/reason?change=true",
+          href: reasonURL,
           text: "Change",
           visuallyHiddenText: "the reason for the return requirement"
         }

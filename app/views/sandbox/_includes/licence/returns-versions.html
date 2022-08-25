@@ -52,7 +52,7 @@
 
             <td class="govuk-table__cell {{lastRow}}">{{i.startDate | numberToGovukDate}}</td>
             <td class="govuk-table__cell {{lastRow}}">{{i.endDate | numberToGovukDate}}</td>
-            <td class="govuk-table__cell {{lastRow}}">{{i.reason | capitalize}}</td>
+            <td class="govuk-table__cell {{lastRow}}">{% if not data.licences[data.ID].returnsRequirements[loop.index0].requirements.length %} No returns required {% endif %}{{i.reason | capitalize}}</td>
             <td class="govuk-table__cell {{lastRow}}">
 
               {% set status = [i.status] %}
@@ -102,16 +102,21 @@
         classes: "govuk-!-margin-right-3"
       }) }}
 
-      <!-- show button if licence isn't already marked as exempt from charge-->
-      {% set free = [data.chargeVersions[0]['free']]%}
-      {% if free == "true" %}
-      {% else %}
+      <!-- show button if licence isn't already marked as exempt from returns-->
+      {% if not data.licences[data.ID].returnsRequirements.length %}
       {{ govukButton({
         text: "No returns required",
         classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "/bd/charges-2020/add-reason"
+        href: "licence/returns/set-up/reason-not-required"
+      }) }}
+      {% elseif data.licences[data.ID].returnsRequirements[0].requirements.length %}
+      {{ govukButton({
+        text: "No returns required",
+        classes: "govuk-button--secondary govuk-!-margin-right-3",
+        href: "licence/returns/set-up/reason-not-required"
       }) }}
       {% endif %}
+
 
 
 

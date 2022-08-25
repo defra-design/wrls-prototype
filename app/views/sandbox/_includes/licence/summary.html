@@ -76,7 +76,10 @@
       Period of abstraction
     </dt>
     <dd class="govuk-summary-list__value">
-      {{[data.licences[data.ID].absPeriod]}}
+      {% for i in data.licences[data.ID]['absPeriod'] %}
+      {{i}}<br>
+      {% endfor %}
+      <a href="licence/abstraction-details">View details of your purpose, period and amounts</a>
     </dd>
 
   </div>

@@ -128,12 +128,7 @@ function createReturnRequirement(req, res) {
    periodStart = req.session.data.licences[licence].use[i].periodStart
    periodEnd = req.session.data.licences[licence].use[i].periodEnd
    amount = req.session.data.licences[licence].use[i].amount
-   console.log(periodStart)
-   console.log(periodEnd)
-  console.log(periodStart <= "1031")
-    console.log(periodStart >= "0401")
-    console.log(periodEnd <= "1031")
-    console.log(periodEnd >= "0401")
+
 
   //check to see if the abs period is summer or winter and all year. Only bother to run the code if undefined or summer
   if (season == "" || season == "summer") {
@@ -143,7 +138,7 @@ function createReturnRequirement(req, res) {
     season = "winter/all year"
     }
   }
-  console.log(season)
+
 
   let selectedUse = {
     purpose,
@@ -211,7 +206,12 @@ function createVersion(req, res) {
     //push reference data
     returnsRequirements.unshift(versions);
     req.session.data.returnVersion = 1
+
+    if (req.session.data.returnsNotRequired == false) {
+    //if the return version has returns required create the return requirement
     createReturnRequirement(req, res)
+    }
+
 
 }
 
@@ -295,12 +295,6 @@ function updateReturnRequirement(req, res) {
     periodEnd = req.session.data.licences[licence].use[i].periodEnd
     amount = req.session.data.licences[licence].use[i].amount
 
-    console.log(periodStart)
-    console.log(periodEnd)
-   console.log(periodStart <= "1031")
-     console.log(periodStart >= "0401")
-     console.log(periodEnd <= "1031")
-     console.log(periodEnd >= "0401")
 
    //check to see if the abs period is summer or winter and all year. Only bother to run the code if undefined or summer
    if (season == "" || season == "summer") {
@@ -450,10 +444,20 @@ router.post('/set-up/start-date', function(req, res) {
   } else {
           //redirect to specified version of the route e.g. ?returnsRouteVersion=2  //V2 routes near the bottom
           if ( req.session.data.returnsRouteVersion == 2){
-            res.redirect('V2/purpose');
+            if (req.session.data.returnsNotRequired == true) {
+              createVersion(req, res)
+              res.redirect('../check-your-answers');
+            } else {
+              res.redirect('V2/purpose');
+            }
+          } else {
+            if (req.session.data.returnsNotRequired == true) {
+            createVersion(req, res)
+            res.redirect('../check-your-answers');
           } else {
             res.redirect('use');
           }
+        }
   }
 
 });
@@ -609,6 +613,7 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.returnVersion = ""
    req.session.data.note = ""
    req.session.data.success = 0
+   req.session.data.returnsNotRequired = ""
 
     res.redirect('set-up/requirements-set-up');
 });
@@ -663,6 +668,37 @@ router.get('/delete-note', function(req, res) {
   res.render(folder + 'check-your-answers' );
 });
 
+///////////////////////RETURNS NOT REQUIRED////////////////////////////////////
+//Why are returns not required
+router.get('/set-up/reason-not-required', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/reason-not-required');
+});
+
+router.post('/set-up/reason-not-required', function(req, res) {
+  req.session.data.returnsNotRequired = true
+
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  if (change == "true"){
+
+  //  let elementNumber = req.session.data.elementNumber
+  //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+    req.session.data.change = false
+    req.session.data.success = 1
+
+    successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
+    req.session.data.successMessage = successMessage.reasonUpdate + successMessage.dynamicContent
+    //update with the latest answers
+    let licence = req.session.data.ID
+    req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
+
+    res.redirect('../check-your-answers');
+  } else {
+      res.redirect('start-date');
+  }
+
+});
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////RETURNS VERSION 2 ROUTES////////////////////////////////
