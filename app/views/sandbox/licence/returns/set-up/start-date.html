@@ -64,18 +64,10 @@ fieldset: {
 },
 items: [
   {
-    value: "0" | todayNumber,
-    html: 'Today<br>' + "0"|today,
-    checked: checked("startDateConditional", "0" | todayNumber)
-  },
-  {
     value: "20220401",
     html: "Licence version start date<br>" + data.licences[data.ID].startDate,
     checked: checked("startDateConditional", "20220401")
   },
-  {
-divider: "or"
-},
   {
     value: "other",
     text: "Another date",

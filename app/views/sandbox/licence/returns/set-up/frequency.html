@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = "Select the frequency of the return requirement" %}
+{% set title = "Select how often returns are collected and recorded" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -20,12 +20,16 @@
 
   {# Frequency switch based on the answer for the specific requirement#}
   {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency'] %}
-      {% case 'daily' %}
-          {% set dailyFrequency = true %}
-      {% case 'weekly' %}
-          {% set weeklyFrequency = true %}
-      {% case 'monthly' %}
-          {% set monthlyFrequency = true %}
+      {% case 'daily collection, daily recording' %}
+          {% set dailydailyFrequency = true %}
+      {% case 'daily collection, weekly recording' %}
+          {% set dailyweeklyFrequency = true %}
+      {% case 'daily collection, monthly recording' %}
+          {% set dailymonthlyFrequency = true %}
+      {% case 'weekly collection, weekly recording' %}
+          {% set weeklyweeklyFrequency = true %}
+      {% case 'monthly collection, monthly recording' %}
+          {% set monthlymonthlyFrequency = true %}
   {% endswitch %}
 
 
@@ -42,19 +46,29 @@
     },
     items: [
       {
-        value: "daily",
-        text: "Daily",
-        checked: dailyFrequency
+        value: "daily collection, daily recording",
+        text: "Daily collection, daily recording",
+        checked: dailydailyFrequency
       },
       {
-        value: "weekly",
-        text: "Weekly",
-        checked: weeklyFrequency
+        value: "daily collection, weekly recording",
+        text: "Daily collection, weekly recording",
+        checked: dailyweeklyFrequency
       },
       {
-        value: "monthly",
-        text: "Monthly",
-        checked: monthlyFrequency
+        value: "daily collection, monthly recording",
+        text: "Daily collection, monthly recording",
+        checked: dailymonthlyFrequency
+      },
+      {
+        value: "weekly collection, weekly recording",
+        text: "Weekly collection, weekly recording",
+        checked: weeklyweeklyFrequency
+      },
+      {
+        value: "monthly collection, monthly recording",
+        text: "Monthly collection, monthly recording",
+        checked: monthlymonthlyFrequency
       }
     ]
   }) }}

@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = "Enter a description for the return requirement" %}
+{% set title = "Enter a site description for the return requirement" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -25,9 +25,6 @@
         classes: "govuk-label--l",
         isPageHeading: true
       },
-    hint: {
-        html: '<p class="govuk-body">This is the description that will appear on the return</p>'
-    },
       classes: "govuk-!-width-three-quarters",
       id: "description",
       name: "description",
