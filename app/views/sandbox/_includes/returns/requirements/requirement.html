@@ -1,11 +1,23 @@
 {% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
 
+{# if route 2 is chosen #}
 {% if data['returnsRouteVersion'] == 2 %}
+{# if route 2 is chosen, check to see if the licence has more than one use #}
+{% if data.licences[data.ID].use.length == 1 %}
+    {# if there is only 1 use, check to see if there are multiple points #}
+    {% if data.licences[data.ID].use[0].points.length >= 2 %}
+    {% set routeFolder = "set-up/V2/all-points" %}
+    {% else %}
+    {% set routeFolder = "set-up/V2/description" %}
+    {% endif %}
+{% else %}
 {% set routeFolder = "set-up/V2/purpose" %}
+{% endif %}
 
 {% else %}
 {% set routeFolder = "set-up/use" %}
 {% endif %}
+
 
 {% for requirement in requirements %}
 
