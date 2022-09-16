@@ -1,0 +1,72 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Settings" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }}
+      </h1>
+
+
+           {{ govukSummaryList({
+             rows: [
+             {
+               key: {
+                 text: "Licence information"
+               },
+               value: {
+                text: data['confidentiality'] | default ("public") | capitalize
+               },
+               actions: {
+                items: [
+                  {
+                    href: "settings/confidentiality",
+                    text: "Change",
+                    visuallyHiddenText: "licence information confidentiality setting"
+                  }
+                ]
+              }
+             },
+             {
+               key: {
+                 text: "Returns bulk upload"
+               },
+               value: {
+                text: data['bulkUpload'] | default ("off") | capitalize
+               },
+                 actions: {
+                items: [
+                  {
+                    href: "settings/bulk-upload",
+                    text: "Change",
+                    visuallyHiddenText: "bulk upload setting"
+                  }
+                ]
+              }
+             }
+             ]
+           }) }}
+
+       <p class="govuk-body"><a href="../licence?ID={{data['ID']}}#charge">Return to licence</a></p>
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -19,6 +19,10 @@ Example usage:
 
 module.exports = {
 
+    //licence Settings
+    "bulkUpload": "off",
+    "confidentiality": "public",
+
     "number" : 10000000000.68,
     "resultsTable": "sandbox/_includes/stations-table.html",
     "userType": "su",

@@ -164,4 +164,28 @@ router.post('/upload/upload-charge-information', function(req, res) {
 });
 
 
+///////----------------------------------------
+//Licence Settings
+
+
+//Confidentiality
+router.get('/licence/settings/confidentiality', function(req, res) {
+  res.render('sandbox/licence/settings/confidentiality');
+});
+
+
+router.post('/licence/settings/confidentiality', function(req, res) {
+  res.redirect('/sandbox/licence/settings');
+});
+
+//Bulk upload
+router.get('/licence/settings/bulk-upload', function(req, res) {
+  res.render('sandbox/licence/settings/bulk-upload');
+});
+
+
+router.post('/licence/settings/bulk-upload', function(req, res) {
+  res.redirect('/sandbox/licence/settings');
+});
+
 module.exports = router

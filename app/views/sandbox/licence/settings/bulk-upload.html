@@ -1,0 +1,60 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Switch bulk upload for this licence's returns" %}
+{% set qTitle =  '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + data.licences[data.ID].number + '</span>' + title + '</h1>' %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+      <form method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "bulkUpload",
+        name: "bulkUpload",
+        fieldset: {
+          legend: {
+            text: qTitle |safe,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "on",
+            text: "On",
+            checked: checked("bulkUpload", "on")
+          },
+          {
+            value: "off",
+            text: "Off",
+            checked: checked("bulkUpload", "off")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+          text: "Confirm",
+  preventDoubleClick: true,
+  type: "submit"
+        }) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

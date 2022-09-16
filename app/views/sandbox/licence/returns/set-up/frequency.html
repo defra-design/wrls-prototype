@@ -28,6 +28,8 @@
           {% set dailymonthlyFrequency = true %}
       {% case 'weekly collection, weekly recording' %}
           {% set weeklyweeklyFrequency = true %}
+      {% case 'weekly collection, monthly recording' %}
+          {% set weeklymonthlyFrequency = true %}
       {% case 'monthly collection, monthly recording' %}
           {% set monthlymonthlyFrequency = true %}
   {% endswitch %}
@@ -64,6 +66,11 @@
         value: "weekly collection, weekly recording",
         text: "Weekly collection, weekly recording",
         checked: weeklyweeklyFrequency
+      },
+      {
+        value: "weekly collection, monthly recording",
+        text: "Weekly collection, monthly recording",
+        checked: weeklymonthlyFrequency
       },
       {
         value: "monthly collection, monthly recording",
