@@ -22,6 +22,18 @@
   </div>
 </div>
 
+<!-- show confidential warning if licence is marked as confidential-->
+{% if data.licences[data.ID].confidentiality | match("confidential") %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukWarningText({
+  text: "This licence is confidential.",
+  iconFallbackText: "Warning"
+}) }}
+  </div>
+</div>
+{% endif %}
+
 <!-- show expired banner if licence is expired-->
 {% if [data.licences[data.ID].expired] == "true" %}
 <div class="govuk-grid-row">

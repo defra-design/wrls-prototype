@@ -175,16 +175,20 @@ router.get('/licence/settings/confidentiality', function(req, res) {
 
 
 router.post('/licence/settings/confidentiality', function(req, res) {
+  let id = req.session.data.ID
+  req.session.data.licences[id].confidentiality = req.session.data.confidentiality
   res.redirect('/sandbox/licence/settings');
 });
 
 //Bulk upload
-router.get('/licence/settings/bulk-upload', function(req, res) {
-  res.render('sandbox/licence/settings/bulk-upload');
+router.get('/licence/settings/multiple-upload', function(req, res) {
+  res.render('sandbox/licence/settings/multiple-upload');
 });
 
 
-router.post('/licence/settings/bulk-upload', function(req, res) {
+router.post('/licence/settings/multiple-upload', function(req, res) {
+  let id = req.session.data.ID
+  req.session.data.licences[id].multipleUpload = req.session.data.multipleUpload
   res.redirect('/sandbox/licence/settings');
 });
 

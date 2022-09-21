@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title = "Switch bulk upload for this licence's returns" %}
+{% set title = "Do you want to allow multiple uploads for this licence?" %}
 {% set qTitle =  '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + data.licences[data.ID].number + '</span>' + title + '</h1>' %}
 
 {% block pageTitle %}
@@ -18,8 +18,9 @@
       <form method="post" class="form">
 
       {{ govukRadios({
-        idPrefix: "bulkUpload",
-        name: "bulkUpload",
+        classes: "govuk-radios--inline",
+        idPrefix: "multipleUpload",
+        name: "multipleUpload",
         fieldset: {
           legend: {
             text: qTitle |safe,
@@ -29,14 +30,14 @@
         },
         items: [
           {
-            value: "on",
-            text: "On",
-            checked: checked("bulkUpload", "on")
+            value: "yes",
+            text: "Yes",
+            checked: data.licences[data.ID].multipleUpload | match("yes")
           },
           {
-            value: "off",
-            text: "Off",
-            checked: checked("bulkUpload", "off")
+            value: "no",
+            text: "No",
+            checked: data.licences[data.ID].multipleUpload | match("no")
           }
         ]
       }) }}

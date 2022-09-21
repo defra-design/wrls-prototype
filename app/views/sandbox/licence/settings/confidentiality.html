@@ -31,12 +31,12 @@
           {
             value: "confidential",
             text: "Confidential",
-            checked: checked("confidentiality", "confidential")
+            checked: data.licences[data.ID].confidentiality | match("confidential")
           },
           {
             value: "public",
             text: "Public",
-            checked: checked("confidentiality", "public")
+            checked: data.licences[data.ID].confidentiality | match("public")
           }
         ]
       }) }}

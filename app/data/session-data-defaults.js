@@ -19,9 +19,7 @@ Example usage:
 
 module.exports = {
 
-    //licence Settings
-    "bulkUpload": "off",
-    "confidentiality": "public",
+
 
     "number" : 10000000000.68,
     "resultsTable": "sandbox/_includes/stations-table.html",
@@ -448,6 +446,10 @@ module.exports = {
         "endDate": "31 January 2020",
         "expired": "true",
 
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation","General machine washing"],
         "absPeriod": ["1 April to 31 October"],
@@ -559,6 +561,10 @@ module.exports = {
         "endDate": "30 April 2022",
         "expired": "false",
 
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation", "General machine washing"],
         "absPeriod": ["1 April to 31 October", "1 November to 31 March"],
@@ -669,6 +675,10 @@ module.exports = {
         "endDate": "31 March 2034",
         "expired": "false",
 
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
         "absPeriod": ["1 April to 31 March"],
@@ -708,6 +718,10 @@ module.exports = {
         "startDate": "1 June 1985",
         "endDate": "15 September 2022",
         "expired": "false",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
@@ -793,6 +807,10 @@ module.exports = {
         "startDate": "1 September 1990",
         "endDate": "15 September 2022",
         "expired": "false",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
@@ -889,6 +907,10 @@ module.exports = {
         "startDate": "1 April 2015",
         "endDate": "1 March 2023",
         "expired": "false",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
@@ -1004,6 +1026,10 @@ module.exports = {
         "startDate": "1 October 2016",
         "endDate": "30 September 2025",
         "expired": "false",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
 
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],

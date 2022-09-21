@@ -28,7 +28,7 @@
                  text: "Licence information"
                },
                value: {
-                text: data['confidentiality'] | default ("public") | capitalize
+                text: data.licences[data.ID]['confidentiality'] | default ("public") | capitalize
                },
                actions: {
                 items: [
@@ -42,17 +42,17 @@
              },
              {
                key: {
-                 text: "Returns bulk upload"
+                 text: "Returns multiple upload"
                },
                value: {
-                text: data['bulkUpload'] | default ("off") | capitalize
+                text: data.licences[data.ID]['multipleUpload'] | default ("no") | capitalize
                },
                  actions: {
                 items: [
                   {
-                    href: "settings/bulk-upload",
+                    href: "settings/multiple-upload",
                     text: "Change",
-                    visuallyHiddenText: "bulk upload setting"
+                    visuallyHiddenText: "multiple returns upload settings"
                   }
                 ]
               }

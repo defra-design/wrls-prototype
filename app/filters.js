@@ -78,7 +78,7 @@ module.exports = function(env) {
     }
     if (mm < 10) {
       mm = `0${mm}`;
-    } 
+    }
 
     const today = `${yyyy}${mm}${dd}`;
 
@@ -133,6 +133,13 @@ filters.mmddToDate = function(x) {
 filters.arrayIncludes = function(input, item) {
   if (input !== undefined){
     return input.includes(item) | input == "all"
+    }
+}
+
+//filter match " |match"
+filters.match = function(input, item) {
+  if (input !== undefined){
+    return input.match(item)
     }
 }
 
