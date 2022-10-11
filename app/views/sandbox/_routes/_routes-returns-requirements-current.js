@@ -52,8 +52,8 @@ const folder = "sandbox/licence/returns-current/"
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-///CREATE CHARGE INFORMATION
-///Create charge function
+///CREATE RETURNS REQUIREMENTS
+///Create individual requirement
 function createReturnRequirement(req, res) {
 
   //get the licence info
@@ -151,6 +151,116 @@ function createVersion(req, res) {
 
 
 }
+
+
+//////////////////////////
+///create the return requirement from abs data
+function createReturnRequirementsFromAbsData(req, res) {
+
+  //get the licence info
+  let licence = req.session.data.ID
+  let returnsRequirements = req.session.data.licences[licence].returnsRequirements
+
+
+
+  let  id = ""
+  let  description = ""
+  let  purpose = []
+  let  points = []
+  let  frequency = ""
+  let  frequencyCollected = ""
+  let  periodStart = ""
+  let  periodEnd = ""
+  let  returnsCycle = ""
+
+
+//Data for the return requirement, loop through the uses on the licence and create a rquirement for each
+for (const [i, v] of req.session.data.licences[licence].use.entries()) {
+
+  id = Math.floor(100000 + Math.random() * 900000)
+ description =   req.session.data.licences[licence].source
+  purpose = req.session.data.licences[licence].use[i].purpose
+  points = req.session.data.licences[licence].use[i].points
+  frequency = "daily"
+  frequencyCollected = "daily"
+  periodStart = req.session.data.licences[licence].use[i].periodStart
+ periodEnd = req.session.data.licences[licence].use[i].periodEnd
+  returnsCycle = "summer"
+if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
+  returnsCycle = "summer"
+} else {
+  returnsCycle = "winter/all year"
+  }
+
+
+  let newRequirement = {
+    id,
+    description,
+    frequency,
+    frequencyCollected,
+    purpose,
+    points,
+    periodStart,
+    periodEnd,
+    returnsCycle,
+  };
+
+  //push the requirment data
+  returnsRequirements[0].requirements.push(newRequirement);
+
+
+  }
+}
+
+//////////////////////////////////
+///Create Version from Abs Data
+function requirementsFromAbsData(req, res) {
+
+  //get the licence info
+  let licence = req.session.data.ID
+  let returnsRequirements = req.session.data.licences[licence].returnsRequirements
+
+  console.log(returnsRequirements)
+
+  //create vars for the start date and reason
+  let startDate = req.session.data.startDateConditional
+  let endDate = ""
+  let status = "active"
+  let reason = req.session.data.reasonNewRequirements
+  let requirements = []
+  let username = "username@defra.gov.uk"
+  let note = ""
+
+    let versions = {
+
+    startDate,
+    endDate,
+    reason,
+    status,
+    username,
+    note,
+    requirements,
+
+  };
+    //push reference data
+    returnsRequirements.unshift(versions);
+    req.session.data.returnVersion = 1
+
+    if (req.session.data.returnsNotRequired == false) {
+    //if the return version has returns required create the return requirement
+
+    createReturnRequirementsFromAbsData(req, res)
+
+    }
+
+
+}
+
+
+
+
+
+
 
 
 //////////////////////////
@@ -390,6 +500,8 @@ router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
     res.redirect('purpose');
 
   } else {
+
+  requirementsFromAbsData(req,res);
   res.redirect('../check-your-answers');
   }
 
@@ -637,9 +749,15 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.reasonNewRequirements = ""
    req.session.data.startDateConditional = ""
    req.session.data.startDate = []
-   req.session.data.use = ""
-   req.session.data.allPoints = ""
+   req.session.data.purpose = ""
    req.session.data.description = ""
+   req.session.data.points = ""
+   req.session.data.abstractionStartDay = ""
+   req.session.data.abstractionStartMonth = ""
+   req.session.data.abstractionEndDay = ""
+   req.session.data.abstractionEndMonth = ""
+   req.session.data.returnsCycle = ""
+   req.session.data.frequencyCollected = ""
    req.session.data.frequency = ""
    req.session.data.change = false
    req.session.data.requirementIndex = ""
