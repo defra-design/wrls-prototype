@@ -43,12 +43,12 @@ items: [
 },
 {
      divider: "or"
-   },
+   } if data.licences[data.ID].returnsRequirements.length,
 {
   value: "copy an existing return requirement",
   text: "Copy an existing return requirement",
   checked: checked("howToSetUp", "copy an existing return requirement")
-}
+} if data.licences[data.ID].returnsRequirements.length
 ]
 }) }}
 

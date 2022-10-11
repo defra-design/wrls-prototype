@@ -118,7 +118,6 @@ function createVersion(req, res) {
   let licence = req.session.data.ID
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements
 
-  console.log(returnsRequirements)
 
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
@@ -220,8 +219,6 @@ function requirementsFromAbsData(req, res) {
   let licence = req.session.data.ID
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements
 
-  console.log(returnsRequirements)
-
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
@@ -310,7 +307,6 @@ function updateReturnRequirement(req, res) {
 
 /// Check the returns requirements
 router.get('/requirements', function(req, res) {
-  console.log("success");
   req.session.data.back = req.headers.referer
   res.render(folder + 'requirements');
 });
@@ -490,17 +486,19 @@ router.post('/set-up/start-date', function(req, res) {
 /// How do you want to set up abstraction data?
 router.get('/how-do-you-want-to-set-up', function(req, res) {
   req.session.data.back = req.headers.referer
-  req.session.data.allPoints = ""
   res.render(folder + '/set-up/how-do-you-want-to-set-up');
 });
 
 router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
 
+  //routing, manual set up, copy or use abs data
   if (req.session.data.howToSetUp == "create requirement manually"){
     res.redirect('purpose');
-
-  } else {
-
+  }
+  else if (req.session.data.howToSetUp == "copy an existing return requirement") {
+  res.redirect('select-an-existing-return-requirement');
+  }
+  else {
   requirementsFromAbsData(req,res);
   res.redirect('../check-your-answers');
   }
@@ -508,10 +506,42 @@ router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
 });
 
 
+
+/// Select an existing return requirement to copy
+router.get('/select-an-existing-return-requirement', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/select-an-existing-return-requirement');
+});
+
+router.post('/set-up/select-an-existing-return-requirement', function(req, res) {
+
+  //get the return requirement selected
+  let licence = req.session.data.ID
+  let copyRequirements = req.session.data.copyRequirements
+  let returnsRequirementToCopy = req.session.data.licences[licence].returnsRequirements[copyRequirements]
+
+//  console.log(returnsRequirementToCopy);
+
+  //create the copy
+  let newRequirement = { ...returnsRequirementToCopy};
+
+  //update the start date and reason
+  newRequirement.startDate = req.session.data.startDateConditional
+  newRequirement.reason = req.session.data.reasonNewRequirements
+
+  //add the copied object to the returns requirements object
+  req.session.data.licences[licence].returnsRequirements.unshift(newRequirement)
+
+  res.redirect('../check-your-answers');
+
+
+});
+
+
+
 /// Select the use
 router.get('/purpose', function(req, res) {
   req.session.data.back = req.headers.referer
-  req.session.data.allPoints = ""
   res.render(folder + '/set-up/purpose');
 });
 
@@ -741,9 +771,27 @@ router.post('/check-your-answers', function(req, res) {
    //end the previous return requirement
    let licence = req.session.data.ID
    if (req.session.data.licences[licence].returnsRequirements.length > 1) {
-   let endDate = Number(req.session.data.licences[licence].returnsRequirements[0].startDate) - 1
-   req.session.data.licences[licence].returnsRequirements[1].endDate = endDate.toString();
+  let startDate = req.session.data.licences[licence].returnsRequirements[0].startDate;
+  //format the date
+  let day = startDate.substring(6, 8);
+  let month = startDate.substring(4, 6);
+  let year = startDate.substring(0, 4);
+  let dateString = (year) + "-" + (month) + "-" + (day);
+  //get the date
+  let date1 = new Date(dateString);
+  //set the days to subtract
+  let daysPrior = -1;
+  //use the method
+  date1.setDate(date1.getDate() + daysPrior);
+  //format the date
+  year = date1.toISOString().substring(0, 4);
+  month = date1.toISOString().substring(5, 7);
+  day = date1.toISOString().substring(8, 10);
+  //set the variable
+   req.session.data.licences[licence].returnsRequirements[1].endDate = (year)+(month)+(day)
    }
+
+
 
    //clear all the data
    req.session.data.reasonNewRequirements = ""

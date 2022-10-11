@@ -929,9 +929,9 @@ module.exports = {
               }],
 
         "returnsRequirements":  [{
-                                "startDate":"20150401",
+                                "startDate":"20180401",
                                 "endDate":"",
-                                "reason":"New licence",
+                                "reason":"Major change",
                                 "status":"active",
                                 "username":"username@defra.gov.uk",
                                 "note":"",
@@ -946,20 +946,40 @@ module.exports = {
                                                 "periodStart":"0401",
                                                 "periodEnd":"1031",
                                                   }]
-                                    }],
+                                    },
+                                    {
+                                    "startDate":"20150401",
+                                    "endDate":"20180331",
+                                    "reason":"New licence",
+                                    "status":"active",
+                                    "username":"username@defra.gov.uk",
+                                    "note":"",
+                                    "requirements":[{
+                                                    "id":823187,
+                                                    "returnsCycle":"summer",
+                                                    "description":"River Swale - Helperby",
+                                                    "frequencyCollected":"daily",
+                                                    "frequency":"daily",
+                                                    "purpose":["Spray irrigation - direct"],
+                                                    "points":["At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                                                    "periodStart":"0401",
+                                                    "periodEnd":"1031",
+                                                      }]
+                                        }
+                                  ],
 
         "chargeInformation": [{
-            "chargeStart": "22 April 2016",
+            "chargeStart": "1 April 2018",
             "chargeEnd": "",
             "chargeStatus": "CHARGEABLE",
             "chargeBilledDate": "31 March 2021",
             "free": "false",
-            "reasonNewCharge": "Formal variation",
+            "reasonNewCharge": "Major change",
             "setUpBy": "	jo.langton@madeup.com",
           },
           {
             "chargeStart": "1 April 2015",
-            "chargeEnd": "21 April 2019",
+            "chargeEnd": "31 MArch 2018",
             "chargeStatus": "REPLACED",
             "chargeBilledDate": "31 March 2020",
             "free": "false",
