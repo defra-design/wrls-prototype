@@ -31,7 +31,7 @@ const today = `${dd} ${mm} ${yyyy}`;
 
 
 //Send a water abstraction alert
-const folder = "sandbox/licence/returns/"
+const folder = "sandbox/licence/returns-current/"
 
 
 ///Success messages///
@@ -41,7 +41,7 @@ const folder = "sandbox/licence/returns/"
    "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Return requirement reason updated</h3><p class="govuk-body">Reason: ',
    "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Return requirement start date updated</h3><p class="govuk-body">Start date: ',
    "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Return requirement updated</h3><p class="govuk-body">ID: ',
-   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">Return requirement created</h3><p class="govuk-body">Return ID: ',
+   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">Return requirement added</h3><p class="govuk-body">Return ID: ',
    "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Return requirement removed</h3><p class="govuk-body">Return ID: ',
    "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Return requirement note updated</h3>',
    "noteCreate":          '<h3 class="govuk-notification-banner__heading">Return requirement note added</h3>',
@@ -63,73 +63,17 @@ function createReturnRequirement(req, res) {
   //set the ID
   let id = Math.floor(100000 + Math.random() * 900000)
 
-  //assign the indexs of the uses
-  let useIndexes = req.session.data.use
 
-
-
-  let uses = []
 
   //set scope of purpose, points, amount, periodStart and periodEnd
-  let purpose = ""
-  let points = []
-  let periodStart = ""
-  let periodEnd = ""
-  let amount = ""
-  let season = ""
-  let allPointsSelected = false
-  //loop through and get the purpose, points, amount, periodStart and periodEnd
-  for (const [v, i] of useIndexes.entries()) {
-
-   purpose = req.session.data.licences[licence].use[i].purpose
+  let purpose = req.session.data.purpose
+  let points = req.session.data.points
+  let periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0')
+  let periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0')
+  let returnsCycle = req.session.data.returnsCycle
 
 
-
-   //check to see if route 1 or route 2 is being used
-   if (req.session.data.returnsRouteVersion == 2) {
-
-     //check to see if specific points specified, if not then use all the points from the use
-
-
-     //get the index for the individual purpose
-     let allPointsIndex = "allPoints"+i
-     let allPoints = req.session.data[allPointsIndex]
-
-
-     //Check to see if the loop is on the correct item
-     if(allPoints == i){
-
-       //If so get the answer to the individual points question and add the selected points
-       let pointIndex = "points"+i
-       points = req.session.data[pointIndex]
-
-
-     } else {
-            points = req.session.data.licences[licence].use[i].points
-            allPointsSelected = true
-
-     }
-
-   } else {
-
-   //check to see if specific points specified, if not then use all the points from the use
-   if(req.session.data.allPoints == i){
-          points = req.session.data.points
-   } else {
-          points = req.session.data.licences[licence].use[i].points
-          allPointsSelected = true
-   }
-
-   }
-
-
-
-
-   periodStart = req.session.data.licences[licence].use[i].periodStart
-   periodEnd = req.session.data.licences[licence].use[i].periodEnd
-   amount = req.session.data.licences[licence].use[i].amount
-
-
+/*
   //check to see if the abs period is summer or winter and all year. Only bother to run the code if undefined or summer
   if (season == "" || season == "summer") {
   if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
@@ -138,34 +82,25 @@ function createReturnRequirement(req, res) {
     season = "winter/all year"
     }
   }
-
-
-  let selectedUse = {
-    purpose,
-    points,
-    periodStart,
-    periodEnd,
-    amount,
-    allPointsSelected,
-  }
-
-  uses.push(selectedUse);
-
-  }
-
+*/
 
   //set the description and frequency
   let description = req.session.data.description
+  let frequencyCollected = req.session.data.frequencyCollected
   let frequency = req.session.data.frequency
 
 
 
   let newRequirement = {
     id,
-    season,
     description,
     frequency,
-    uses,
+    frequencyCollected,
+    purpose,
+    points,
+    periodStart,
+    periodEnd,
+    returnsCycle,
   };
 
 
@@ -182,6 +117,8 @@ function createVersion(req, res) {
   //get the licence info
   let licence = req.session.data.ID
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements
+
+  console.log(returnsRequirements)
 
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
@@ -228,100 +165,16 @@ function updateReturnRequirement(req, res) {
 
 
 
-   //update the description and frequency
-   returnsRequirements.description = req.session.data.description
-   returnsRequirements.frequency = req.session.data.frequency
-
-   //assign the indexs of the uses
-   let useIndexes = req.session.data.use
-
-   let uses = []
-
-   //set scope of purpose, points, amount, periodStart and periodEnd
-   let purpose = ""
-   let points = []
-   let periodStart = ""
-   let periodEnd = ""
-   let amount = ""
-   let season = ""
-   let allPointsSelected = false
-   //loop through and get the purpose, points, amount, periodStart and periodEnd
-   for (const [v, i] of useIndexes.entries()) {
-
-    purpose = req.session.data.licences[licence].use[i].purpose
+  returnsRequirements.purpose = req.session.data.purpose
+  returnsRequirements.points = req.session.data.points
+  returnsRequirements.periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0')
+  returnsRequirements.periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0')
+  returnsRequirements.returnsCycle = req.session.data.returnsCycle
+  returnsRequirements.description = req.session.data.description
+  returnsRequirements.frequencyCollected = req.session.data.frequencyCollected
+  returnsRequirements.frequency = req.session.data.frequency
 
 
-
-    //check to see if route 1 or route 2 is being used
-    if (req.session.data.returnsRouteVersion == 2) {
-
-      //check to see if specific points specified, if not then use all the points from the use
-
-
-      //get the index for the individual purpose
-      let allPointsIndex = "allPoints"+i
-      let allPoints = req.session.data[allPointsIndex]
-
-
-      //Check to see if the loop is on the correct item
-      if(allPoints == v){
-
-        //If so get the answer to the individual points question and add the selected points
-        let pointIndex = "points"+i
-        points = req.session.data[pointIndex]
-
-
-      } else {
-             points = req.session.data.licences[licence].use[i].points
-             allPointsSelected = true
-
-      }
-
-    } else {
-
-    //check to see if specific points specified, if not then use all the points from the use
-    if(req.session.data.allPoints == i){
-           points = req.session.data.points
-    } else {
-           points = req.session.data.licences[licence].use[i].points
-           allPointsSelected = true
-    }
-
-    }
-
-
-
-    periodStart = req.session.data.licences[licence].use[i].periodStart
-    periodEnd = req.session.data.licences[licence].use[i].periodEnd
-    amount = req.session.data.licences[licence].use[i].amount
-
-
-   //check to see if the abs period is summer or winter and all year. Only bother to run the code if undefined or summer
-   if (season == "" || season == "summer") {
-   if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
-     season = "summer"
-   } else {
-     season = "winter/all year"
-     }
-   }
-   //update the season
-   returnsRequirements.season = season
-
-
-   let selectedUse = {
-     purpose,
-     points,
-     periodStart,
-     periodEnd,
-     amount,
-     allPointsSelected,
-   }
-
-   uses.push(selectedUse);
-
-   }
-
-   returnsRequirements.uses = uses
 
 }
 
@@ -347,14 +200,14 @@ function updateReturnRequirement(req, res) {
 
 /// Check the returns requirements
 router.get('/requirements', function(req, res) {
-
+  console.log("success");
   req.session.data.back = req.headers.referer
   res.render(folder + 'requirements');
 });
 
 
 /// Select  the reason for the return requirement
-router.get('/set-up/reason', function(req, res) {
+router.get('/reason', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + '/set-up/reason');
 });
@@ -444,6 +297,10 @@ router.post('/set-up/start-date', function(req, res) {
     req.session.data.licences[licence].returnsRequirements[0].startDate = req.session.data.startDateConditional
     res.redirect('../check-your-answers');
   } else {
+
+
+//OLD ROUTING
+/*
           //redirect to specified version of the route e.g. ?returnsRouteVersion=2  //V2 routes near the bottom
           if ( req.session.data.returnsRouteVersion == 2){
             if (req.session.data.returnsNotRequired == true) {
@@ -514,10 +371,45 @@ router.post('/set-up/start-date', function(req, res) {
           }
         }
   }
+  */
+
+  res.redirect('how-do-you-want-to-set-up'); }
+
+});
+
+/// How do you want to set up abstraction data?
+router.get('/how-do-you-want-to-set-up', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.allPoints = ""
+  res.render(folder + '/set-up/how-do-you-want-to-set-up');
+});
+
+router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
+
+  if (req.session.data.howToSetUp == "create requirement manually"){
+    res.redirect('purpose');
+
+  } else {
+  res.redirect('../check-your-answers');
+  }
 
 });
 
 
+/// Select the use
+router.get('/purpose', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.allPoints = ""
+  res.render(folder + '/set-up/purpose');
+});
+
+router.post('/set-up/purpose', function(req, res) {
+
+res.redirect('points');
+
+});
+
+/*
 /// Select the use
 router.get('/set-up/use', function(req, res) {
   req.session.data.back = req.headers.referer
@@ -534,6 +426,8 @@ router.post('/set-up/use', function(req, res) {
   }
 
 });
+*/
+
 
 /// Select the points
 router.get('/set-up/points', function(req, res) {
@@ -542,7 +436,28 @@ router.get('/set-up/points', function(req, res) {
 });
 
 router.post('/set-up/points', function(req, res) {
+  res.redirect('abstraction-period');
+});
 
+
+/// Select the abstraction period
+router.get('/set-up/abstraction-period', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/abstraction-period');
+});
+
+router.post('/set-up/abstraction-period', function(req, res) {
+  res.redirect('returns-cycle');
+});
+
+
+/// Select the returns cycle
+router.get('/set-up/returns-cycle', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/returns-cycle');
+});
+
+router.post('/set-up/returns-cycle', function(req, res) {
   res.redirect('description');
 });
 
@@ -555,10 +470,71 @@ router.post('/set-up/points', function(req, res) {
 
 router.post('/set-up/description', function(req, res) {
 
-  res.redirect('frequency');
+  res.redirect('frequency-collected');
 });
 
+/// Enter the frequency collected
+router.get('/set-up/frequency-collected', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/frequency-collected');
+});
 
+router.post('/set-up/frequency-collected', function(req, res) {
+
+res.redirect('frequency');
+});
+
+/// Enter the frequency reported
+router.get('/set-up/frequency', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/frequency');
+});
+
+router.post('/set-up/frequency', function(req, res) {
+
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  //get the return requirement
+  let licence = req.session.data.ID
+  let requirementIndex = req.session.data.requirementIndex
+
+  if (change == "true"){
+
+  //  let elementNumber = req.session.data.elementNumber
+  //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+    req.session.data.change = false
+    updateReturnRequirement(req, res)
+
+    //updating success banner
+    req.session.data.success = 1
+
+
+    successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+    req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+
+
+    res.redirect('../check-your-answers');
+  } else {
+    if (req.session.data.returnVersion !== 1){
+    createVersion(req, res) } else {
+      createReturnRequirement(req, res)
+      req.session.data.success = 1
+      let newRequirementIndex = req.session.data.licences[licence].returnsRequirements[0].requirements.length
+
+
+
+      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
+      req.session.data.successMessage = successMessage.requirementCreate + successMessage.dynamicContent
+
+
+
+    }
+
+    res.redirect('../check-your-answers');
+  }
+});
+
+/*
 /// Enter the frequency
 router.get('/set-up/frequency', function(req, res) {
   req.session.data.back = req.headers.referer
@@ -611,6 +587,8 @@ router.post('/set-up/frequency', function(req, res) {
 
 
 });
+
+*/
 
 ///Remove a requirements
 router.get('/confirm-remove-requirement', function(req, res) {
@@ -753,139 +731,6 @@ router.post('/set-up/reason-not-required', function(req, res) {
       res.redirect('start-date');
   }
 
-});
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////RETURNS VERSION 2 ROUTES////////////////////////////////
-
-/// Select the purpose
-router.get('/set-up/V2/purpose', function(req, res) {
-  req.session.data.back = req.headers.referer
-  res.render(folder + '/set-up/V2/purpose');
-});
-
-router.post('/set-up/V2/purpose', function(req, res) {
-
-/*  if (req.session.data.allPoints == "yes" || req.session.data.allPoints == undefined || req.session.data.allPoints == ""){
-  res.redirect('description');
-  } else {
-  res.redirect('points');
-} */
-
-//assign the indexs of the uses
-let licence = req.session.data.ID
-let useIndexes = req.session.data.use
-
-
-//create the session data array if there is only a single use
-if (useIndexes == 0) {
-  req.session.data.use = ['0']
-}
-
-let redirect = ""
-
-
-function setRedirect(callBack) {
-//loop through and get the purpose, points, amount, periodStart and periodEnd
-for (i of useIndexes) {
-
- points = req.session.data.licences[licence].use[i].points
-
-     //check to see if specific points specified, if not then use all the points from the use
-     if(points.length >= 2){
-          redirect = "1"
-     }
-
-  }
-
-  callBack();
-}
-
-function purposeRedirect(){
-
-          if (redirect === "1") {
-          res.redirect('all-points');
-        } else {
-          res.redirect('../description');
-        }
-  }
-
-
-setRedirect(purposeRedirect)
-
-
-});
-
-
-
-/// Select whether to include all points, if there is more than one set of points
-router.get('/set-up/V2/all-points', function(req, res) {
-  req.session.data.back = req.headers.referer
-  res.render(folder + '/set-up/V2/all-points');
-});
-
-router.post('/set-up/V2/all-points', function(req, res) {
-
-
-
-//assign the indexs of the uses
-let licence = req.session.data.ID
-let useIndexes = req.session.data.use
-
-
-
-
-let selectPoints = []
-
-function selectPointsCheck(callBack) {
-//loop through and check whether all points is specified for all answers
-for (const [i, v] of useIndexes.entries()) {
-
- //points = req.session.data.licences[licence].use[i].points
- let allPointsIndex = "allPoints"+v
- let allPoints = req.session.data[allPointsIndex]
-
-
- //check to see if specific points specified, if not then use all the points from the use
- if( v == allPoints ){
-        selectPoints.push(v)
- }
-}
-
-    req.session.data.selectPoints = selectPoints
-
-
-    callBack();
-}
-
-function selectPointsRedirect() {
-
-        //if there are purposes with multiple points where the individual points need to be selected redirect to the points screen other wise select all
-        if (selectPoints.length) {
-
-          res.redirect('points');
-        } else {
-          res.redirect('../description');
-        }
-
-}
-
-
-selectPointsCheck(selectPointsRedirect)
-
-
-});
-
-
-/// Select the points
-router.get('/set-up/V2/points', function(req, res) {
-  req.session.data.back = req.headers.referer
-  res.render(folder + '/set-up/V2/points');
-});
-
-router.post('/set-up/V2/points', function(req, res) {
-
-  res.redirect('../description');
 });
 
 

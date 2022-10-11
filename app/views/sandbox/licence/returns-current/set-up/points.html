@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = "Select the " + data.licences[data.ID].use[data.allPoints]['purpose'] + " points for the return requirement" %}
+{% set title = "Select the points for the return requirement" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -18,18 +18,27 @@
 
 <form method="post" class="form">
 
-{# get the licence use information #}
-{% set points = data.licences[data.ID].use[data.allPoints]['points'] %}
 
 
-
-
-
-{# Create the array #}
 {% set selectItems = [] %}
+{% set selectPoints = [] %}
+
+
+
+{% set use = data.licences[data.ID]['use'] %}
+
+{% for item in use %}
+{% if item.purpose in data['purpose'] %}
+{% for i in item.points %}
+{% set selectPoints = selectPoints| push(i) %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+
 
 {# loop through the use items #}
-{% for item in points %}
+{% for item in selectPoints | unique %}
 
 
 {% set selectItems = selectItems | push({
@@ -37,6 +46,7 @@
   text: item,
   checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex].uses[data.allPoints]['points']  | arrayIncludes (item)
 }) %}
+
 
 {% endfor %}
 
@@ -46,7 +56,7 @@ name: "points",
 fieldset: {
   legend: {
     html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
-    isPageHeading: true,
+    isPageHeading: false,
     classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
   }
 },
@@ -56,9 +66,12 @@ hint: {
 items: selectItems
 }) }}
 
+
+
 <button type="submit" class="govuk-button govuk-!-margin-right-1">
   Continue
 </button>
+
 
 </form>
 </div>

@@ -463,7 +463,7 @@ module.exports = {
                 "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
-                "amount": "1,250",
+                "amount":"125",
               },
               {
                 "purpose": "General machine washing",
@@ -578,14 +578,14 @@ module.exports = {
                 "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
-                "amount": "1,250",
+                "amount":"125",
               },
               {
                       "purpose": "Spray irrigation - direct",
-                      "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                      "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 345(RIVER SWALE - HELPERBY)"],
                       "periodStart": "1101",
                       "periodEnd": "0331",
-                      "amount": "1,250",
+                      "amount":"125",
                     },
               {
                 "purpose": "General machine washing",
@@ -692,7 +692,7 @@ module.exports = {
                 "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 126(RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "0331",
-                "amount": "1,250",
+                "amount":"125",
               }],
 
         "returnsRequirements":  [],
@@ -736,7 +736,7 @@ module.exports = {
                 "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
-                "amount": "1,250",
+                "amount":"125",
               }],
 
         "returnsRequirements":  [],
@@ -825,7 +825,7 @@ module.exports = {
                 "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                 "periodStart": "1101",
                 "periodEnd": "0331",
-                "amount": "1,250",
+                "amount":"125",
               }],
 
         "returnsRequirements":  [],
@@ -925,7 +925,7 @@ module.exports = {
                 "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
-                "amount": "1,250",
+                "amount":"125",
               }],
 
         "returnsRequirements":  [{
@@ -937,17 +937,14 @@ module.exports = {
                                 "note":"",
                                 "requirements":[{
                                                 "id":823187,
-                                                "season":"summer",
+                                                "returnsCycle":"summer",
                                                 "description":"River Swale - Helperby",
+                                                "frequencyCollected":"daily",
                                                 "frequency":"daily",
-                                                "uses":[{
-                                                          "purpose":"Spray irrigation - direct",
-                                                          "points":["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
-                                                          "periodStart":"0401",
-                                                          "periodEnd":"1031",
-                                                          "amount":"1,250",
-                                                          "allPointsSelected":true,
-                                                        }]
+                                                "purpose":["Spray irrigation - direct"],
+                                                "points":["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                                                "periodStart":"0401",
+                                                "periodEnd":"1031",
                                                   }]
                                     }],
 
@@ -1044,7 +1041,7 @@ module.exports = {
                 "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                 "periodStart": "1101",
                 "periodEnd": "0331",
-                "amount": "1,250",
+                "amount":"125",
               }],
 
         "returnsRequirements":  [],

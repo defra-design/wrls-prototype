@@ -92,6 +92,7 @@ res.redirect('search');
 //View a requirement
 
 router.use('/licence/returns', require('./_routes-returns-requirements'));
+router.use('/licence/returns-current', require('./_routes-returns-requirements-current'));
 
 //----------------------------------------------------------------
 ////NOTICES ROUTES

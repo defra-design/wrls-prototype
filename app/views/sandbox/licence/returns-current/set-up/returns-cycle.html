@@ -1,0 +1,57 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select  the returns cycle for the return requirement" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+
+<form method="post" class="form">
+
+  {{ govukRadios({
+  idPrefix: "returnsCycle",
+  name: "returnsCycle",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
+  },
+  items: [
+  {
+    value: "summer",
+    text: "Summer",
+    checked: checked("returnCycle", "summer")
+  },
+  {
+    value: "winter and all year",
+    text: "Winter and all year",
+    checked: checked("returnCycle", "winter and all year")
+  }
+  ]
+  }) }}
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Continue
+</button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

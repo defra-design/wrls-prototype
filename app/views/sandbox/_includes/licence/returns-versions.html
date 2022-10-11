@@ -73,7 +73,7 @@
               {% set link = 'licence/charge-information?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
               <a href="{{link}}">Review <span class="screen-reader-only">returns requirements</span></a>
               {% else %}
-              {% set link = 'licence/returns/requirements?returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              {% set link = 'licence/returns-current/requirements?returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
               <a href="{{link}}">View <span class="screen-reader-only">returns requirements</span></a>
               {% endif %}
             </td>
@@ -95,10 +95,17 @@
 
       {% endif %}
 
+      {% if data['returnsRouteVersion'] == 3 %}
+      {% set URL = "licence/returns-current/set-up/reason" %}
+      {% else %}
+      {% set URL = "licence/returns/set-up/reason" %}
+      {% endif %}
+
+
 
       {{ govukButton({
         text: "Set up new returns requirement",
-        href: "licence/returns/set-up/reason",
+        href: URL,
         classes: "govuk-button--secondary govuk-!-margin-right-3"
       }) }}
 

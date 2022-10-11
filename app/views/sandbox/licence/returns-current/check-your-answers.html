@@ -46,12 +46,12 @@
     <form method="post" class="form">
 
 
-      {% include "sandbox/_includes/returns/requirements-archive/reason-new-requirements.html" %}
+      {% include "sandbox/_includes/returns/requirements/reason-new-requirements.html" %}
       {% if data['returnsNotRequired'] == true %}
       {% else %}
-        {# Notes removed for roundof UR    {% include "sandbox/_includes/returns/requirements-archive/notes.html" %}   #}
+        {# Notes removed for roundof UR    {% include "sandbox/_includes/returns/requirements/notes.html" %}   #}
 
-      {% include "sandbox/_includes/returns/requirements-archive/requirement.html" %}
+      {% include "sandbox/_includes/returns/requirements/requirement.html" %}
       {% endif %}
 
     <div class="divider govuk-!-margin-bottom-6"></div>
