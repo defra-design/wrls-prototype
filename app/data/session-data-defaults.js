@@ -979,7 +979,7 @@ module.exports = {
           },
           {
             "chargeStart": "1 April 2015",
-            "chargeEnd": "31 MArch 2018",
+            "chargeEnd": "31 March 2018",
             "chargeStatus": "REPLACED",
             "chargeBilledDate": "31 March 2020",
             "free": "false",

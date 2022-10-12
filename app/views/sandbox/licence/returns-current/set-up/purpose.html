@@ -38,11 +38,11 @@
 {% for item in selectUse | unique %}
 
 
-{% set selectedUse = []%}
+
 {# if use has already been selected push an array of the already selected items and then in the loop compare the array to see if the purpose is a match if so, check the box#}
-{% for i in data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['uses'] %}
- {% set selectedUse = selectedUse | push (i.purpose)%}
- {% endfor %}
+ {% set selectedUse = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['purpose']%}
+
+
 
 
   {% set selectItems = selectItems | push({

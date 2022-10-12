@@ -492,7 +492,7 @@ router.get('/how-do-you-want-to-set-up', function(req, res) {
 router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
 
   //routing, manual set up, copy or use abs data
-  if (req.session.data.howToSetUp == "create requirement manually"){
+  if (req.session.data.howToSetUp == "set up requirement manually"){
     res.redirect('purpose');
   }
   else if (req.session.data.howToSetUp == "copy an existing return requirement") {

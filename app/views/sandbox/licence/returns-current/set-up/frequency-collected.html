@@ -19,8 +19,8 @@
 <form method="post" class="form">
 
   {# Frequency switch based on the answer for the specific requirement#}
-  {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency-collected'] %}
-      {% case 'daily ' %}
+  {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequencyCollected'] %}
+      {% case 'daily' %}
           {% set daily = true %}
       {% case 'weekly' %}
           {% set weekly = true %}

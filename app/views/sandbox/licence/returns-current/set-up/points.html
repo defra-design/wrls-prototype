@@ -27,6 +27,19 @@
 
 {% set use = data.licences[data.ID]['use'] %}
 
+
+{% if data['change'] == "true" %}
+
+{% for item in use %}
+{% if item.purpose in data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['purpose'] %}
+{% for i in item.points %}
+{% set selectPoints = selectPoints| push(i) %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+{% else %}
+
 {% for item in use %}
 {% if item.purpose in data['purpose'] %}
 {% for i in item.points %}
@@ -35,16 +48,16 @@
 {% endif %}
 {% endfor %}
 
+{% endif %}
 
 
 {# loop through the use items #}
 {% for item in selectPoints | unique %}
 
-
 {% set selectItems = selectItems | push({
   value: item,
   text: item,
-  checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex].uses[data.allPoints]['points']  | arrayIncludes (item)
+  checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['points']  | arrayIncludes (item)
 }) %}
 
 

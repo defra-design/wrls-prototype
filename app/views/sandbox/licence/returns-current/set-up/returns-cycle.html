@@ -21,6 +21,18 @@
 
 <form method="post" class="form">
 
+
+
+
+{# Frequency switch based on the answer for the specific requirement#}
+{% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['returnsCycle'] %}
+    {% case 'summer' %}
+        {% set summer = true %}
+    {% case 'winter and all year' %}
+        {% set winter = true %}
+{% endswitch %}
+
+
   {{ govukRadios({
   idPrefix: "returnsCycle",
   name: "returnsCycle",
@@ -35,12 +47,12 @@
   {
     value: "summer",
     text: "Summer",
-    checked: checked("returnCycle", "summer")
+    checked: summer
   },
   {
     value: "winter and all year",
     text: "Winter and all year",
-    checked: checked("returnCycle", "winter and all year")
+    checked: winter
   }
   ]
   }) }}

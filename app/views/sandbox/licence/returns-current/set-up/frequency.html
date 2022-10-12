@@ -20,7 +20,7 @@
 
       {# Frequency switch based on the answer for the specific requirement#}
       {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency'] %}
-          {% case 'daily ' %}
+          {% case 'daily' %}
               {% set daily = true %}
           {% case 'weekly' %}
               {% set weekly = true %}
@@ -54,7 +54,7 @@
           {
             value: "monthly",
             text: "Monthly",
-            checked: ymonthly
+            checked: monthly
           }
         ]
       }) }}
