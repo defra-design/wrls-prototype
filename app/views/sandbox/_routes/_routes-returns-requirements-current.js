@@ -269,18 +269,37 @@ function updateReturnRequirement(req, res) {
   let requirementIndex = req.session.data.requirementIndex
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex]
 
+  //set the variables
+  let purpose = req.session.data.purpose
+  let points = req.session.data.points
+  let abstractionStartMonth = req.session.data.abstractionStartMonth
+  let abstractionEndMonth = req.session.data.abstractionEndMonth
+  let returnsCycle = req.session.data.returnsCycle
+  let description = req.session.data.description
+  let frequencyCollected = req.session.data.frequencyCollected
+  let frequency = req.session.data.frequency
+
+  console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
+
+  //if they have data then update
+  if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose }
+  if (points && typeof points !== "undefined") { returnsRequirements.points = req.session.data.points }
+  if (abstractionStartMonth && typeof abstractionStartMonth !== "undefined") { returnsRequirements.periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0') }
+  if (abstractionEndMonth && typeof abstractionEndMonth !== "undefined") { returnsRequirements.periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0') }
+  if (returnsCycle && typeof returnsCycle !== "undefined") { returnsRequirements.returnsCycle = req.session.data.returnsCycle }
+  if (description && typeof description !== "undefined") { returnsRequirements.description = req.session.data.description }
+  if (frequencyCollected && typeof frequencyCollected  !== "undefined") { returnsRequirements.frequencyCollected = req.session.data.frequencyCollected }
+  if (frequency && typeof  frequency !== "undefined") { returnsRequirements.frequency = req.session.data.frequency }
 
 
-
-  returnsRequirements.purpose = req.session.data.purpose
-  returnsRequirements.points = req.session.data.points
-  returnsRequirements.periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0')
-  returnsRequirements.periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0')
-  returnsRequirements.returnsCycle = req.session.data.returnsCycle
-  returnsRequirements.description = req.session.data.description
-  returnsRequirements.frequencyCollected = req.session.data.frequencyCollected
-  returnsRequirements.frequency = req.session.data.frequency
-
+  req.session.data.purpose = ""
+  req.session.data.points = ""
+  req.session.data.abstractionStartMonth = ""
+  req.session.data.abstractionEndMonth = ""
+  req.session.data.returnsCycle = ""
+  req.session.data.description = ""
+  req.session.data.frequencyCollected = ""
+  req.session.data.frequency = ""
 
 
 }
