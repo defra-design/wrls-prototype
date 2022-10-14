@@ -188,7 +188,7 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
 if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
   returnsCycle = "summer"
 } else {
-  returnsCycle = "winter/all year"
+  returnsCycle = "winter and all year"
   }
 
 
@@ -279,7 +279,7 @@ function updateReturnRequirement(req, res) {
   let frequencyCollected = req.session.data.frequencyCollected
   let frequency = req.session.data.frequency
 
-  console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
+  //console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
 
   //if they have data then update
   if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose }
@@ -550,6 +550,9 @@ router.post('/set-up/select-an-existing-return-requirement', function(req, res) 
 
   //add the copied object to the returns requirements object
   req.session.data.licences[licence].returnsRequirements.unshift(newRequirement)
+
+  //set returnVersion to 1 to confirm that the version is created
+  req.session.data.returnVersion = 1
 
   res.redirect('../check-your-answers');
 
