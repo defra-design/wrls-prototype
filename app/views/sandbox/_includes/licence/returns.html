@@ -16,11 +16,9 @@ classes: return.status | returnStatusColour
 })}}
 {% endset %}
 
-{% set rows = rows | push ([{html: '<a href="#?returnIndex='+loop.index0+'">'+return.id+'</a>'},{text: return.purpose},{text: due},{html: status}]) %}
+{% set rows = rows | push ([{html: '<a href="licence/returns-current/return?returnIndex='+loop.index0+'">'+return.id+'</a>'},{text: return.purpose},{text: due},{html: status}]) %}
 
 {% endfor %}
-
-
 
 
 

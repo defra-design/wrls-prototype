@@ -983,7 +983,7 @@ module.exports = {
                                   "returns": [{
                                                 "id":823187,
                                                 "status": "due",
-                                                "due": "20220428",
+                                                "due": "20221128",
                                                 "returnsCycle":"summer",
                                                 "description":"River Swale - Helperby",
                                                 "frequency": "daily",
@@ -991,6 +991,8 @@ module.exports = {
                                                 "points":["At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                                                 "periodStart":"0401",
                                                 "periodEnd":"1031",
+                                                "returnsPeriodStart":"20220401",
+                                                "returnsPeriodEnd":"20221031",
                                               }
                                               ],
 

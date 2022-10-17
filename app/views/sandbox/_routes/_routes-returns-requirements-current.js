@@ -335,6 +335,8 @@ function createReturns(req,res) {
   let points = v.points
   let periodStart = v.periodStart
   let periodEnd = v.periodEnd
+  let returnsPeriodStart = "20220401"
+  let returnsPeriodEnd = "20230331"
 
   let newReturn = {
     id,
@@ -346,7 +348,9 @@ function createReturns(req,res) {
     purpose,
     points,
     periodStart,
-    periodEnd
+    periodEnd,
+    returnsPeriodStart,
+    returnsPeriodEnd
   }
 
   req.session.data.licences[licence].returns.unshift(newReturn)
@@ -859,7 +863,7 @@ router.post('/check-your-answers', function(req, res) {
    if (req.session.data.returnsNotRequired !== true) {
      createReturns(req,res)
    }
-   
+
 
    //clear all the data
    req.session.data.reasonNewRequirements = ""
