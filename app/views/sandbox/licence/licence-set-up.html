@@ -1,0 +1,39 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Licence set up" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }}
+      </h1>
+
+     <p class="govuk-body govuk-!-margin-bottom-6"><a class="govuk-link" href="licence-set-up/returns-requirements">Returns requirements</a>
+     <br>View and set up returns requirements</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-6"><a class="govuk-link" href="licence-set-up/charge-information">Charge information</a>
+    <br>View and set up returns requirements</p>
+
+     <p class="govuk-body govuk-!-margin-bottom-6"><a class="govuk-link" href="licence-set-up/agreements">Agreements</a>
+    <br> View and set up returns requirements</p>
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

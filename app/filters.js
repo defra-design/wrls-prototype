@@ -266,6 +266,36 @@ filters.focus = function(x) {
     }
   }
 
+
+
+
+    //set text for return status "| returnStatusText"
+    filters.returnStatusText = function(e) {
+      if (e == "due") {
+        return "Due"
+      } else if (e == "overdue") {
+        return "OVERDUE"
+      } else if (e == "void") {
+        return "VOID"
+      }  else {
+        return "COMPLETED"
+      }
+    }
+
+
+    //set colours for return status "| returnStatusColour"
+    filters.returnStatusColour = function(e) {
+      if (e == "due") {
+        return "govuk-tag--orange"
+      } else if (e == "overdue") {
+        return "govuk-tag--red"
+      } else if (e == "voide") {
+        return "govuk-tag--grey"
+      } else {
+        return "govuk-tag--green"
+      }
+    }
+
   //set text for status "| tagStatusText"
   filters.tagStatusText = function(e) {
     if (e == "warning") {

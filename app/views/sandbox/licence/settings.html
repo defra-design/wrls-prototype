@@ -6,6 +6,14 @@
 {{title}} - GOV.UK
 {% endblock %}
 
+{% block breadcrumbs %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "licence-set-up/returns-requirements"
+}) }}
+
+{% endblock %}
 
 <!--content block-->
 {% block service %}
@@ -59,8 +67,6 @@
              }
              ]
            }) }}
-
-       <p class="govuk-body"><a href="../licence?ID={{data['ID']}}#charge">Return to licence</a></p>
 
   </div>
 </div>

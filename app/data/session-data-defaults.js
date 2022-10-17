@@ -476,6 +476,8 @@ module.exports = {
 
         "returnsRequirements":  [],
 
+        "returns": [],
+
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
             "chargeEnd": "31 January 2020",
@@ -598,6 +600,8 @@ module.exports = {
 
         "returnsRequirements":  [],
 
+        "returns": [],
+
         "chargeInformation": [{
             "chargeStart": "22 April 2021",
             "chargeEnd": "",
@@ -698,6 +702,8 @@ module.exports = {
 
         "returnsRequirements":  [],
 
+        "returns": [],
+
         "chargeInformation": [
           //newLicence
         ],
@@ -741,6 +747,8 @@ module.exports = {
               }],
 
         "returnsRequirements":  [],
+
+        "returns": [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -830,6 +838,8 @@ module.exports = {
               }],
 
         "returnsRequirements":  [],
+
+        "returns": [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -969,6 +979,21 @@ module.exports = {
                                         }
                                   ],
 
+
+                                  "returns": [{
+                                                "id":823187,
+                                                "status": "due",
+                                                "due": "20220428",
+                                                "returnsCycle":"summer",
+                                                "description":"River Swale - Helperby",
+                                                "frequency": "daily",
+                                                "purpose":["Spray irrigation - direct"],
+                                                "points":["At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                                                "periodStart":"0401",
+                                                "periodEnd":"1031",
+                                              }
+                                              ],
+
         "chargeInformation": [{
             "chargeStart": "1 April 2018",
             "chargeEnd": "",
@@ -1066,6 +1091,8 @@ module.exports = {
               }],
 
         "returnsRequirements":  [],
+
+        "returns": [],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",

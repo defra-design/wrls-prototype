@@ -1,0 +1,62 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Licence set up - Charge information" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "../../licence"
+}) }}
+
+
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+<nav aria-label="Licence views" role="navigation" >
+  <!-- page title -->
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+        Licence set up
+      </h1>
+
+    <ol class="contents-list__list">
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="returns-requirements">Return requirements</a>
+        </li>
+        <li>
+          Charge information
+        </li>
+        <li>
+        <a class="govuk-link govuk-link--no-visited-state" href="agreements">Agreements</a>
+        </li>
+    </ol>
+</nav>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+<section>
+
+    {% include "sandbox/_includes/licence/charge-information.html" %}
+</section>
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

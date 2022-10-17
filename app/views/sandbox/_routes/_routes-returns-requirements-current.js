@@ -254,12 +254,6 @@ function requirementsFromAbsData(req, res) {
 }
 
 
-
-
-
-
-
-
 //////////////////////////
 ///update the requirement
 function updateReturnRequirement(req, res) {
@@ -318,6 +312,49 @@ function updateReturnRequirement(req, res) {
    returnsRequirements.splice(requirementIndex ,1);
 
 }
+
+//////////////////////
+//CREATE RETURNS
+
+function createReturns(req,res) {
+
+  //get the return requirements
+  let licence = req.session.data.ID
+  let requirements = req.session.data.licences[licence].returnsRequirements[0].requirements
+
+  //loop through each requirement and create a return for each
+  for (const [i, v] of requirements.entries()) {
+
+  let id = v.id
+  let status = "due"
+  let due = "20230428"
+  let returnsCycle = v.returnsCycle
+  let description = v.description
+  let frequency = v.frequency
+  let purpose = v.purpose
+  let points = v.points
+  let periodStart = v.periodStart
+  let periodEnd = v.periodEnd
+
+  let newReturn = {
+    id,
+    status,
+    due,
+    returnsCycle,
+    description,
+    frequency,
+    purpose,
+    points,
+    periodStart,
+    periodEnd
+  }
+
+  req.session.data.licences[licence].returns.unshift(newReturn)
+
+};
+
+};
+
 
 
 
@@ -498,7 +535,13 @@ router.post('/set-up/start-date', function(req, res) {
   }
   */
 
-  res.redirect('how-do-you-want-to-set-up'); }
+  if (req.session.data.returnsNotRequired == true) {
+  createVersion(req, res)
+  res.redirect('../check-your-answers');
+} else {
+  res.redirect('how-do-you-want-to-set-up');
+}
+}
 
 });
 
@@ -813,7 +856,10 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.licences[licence].returnsRequirements[1].endDate = (year)+(month)+(day)
    }
 
-
+   if (req.session.data.returnsNotRequired !== true) {
+     createReturns(req,res)
+   }
+   
 
    //clear all the data
    req.session.data.reasonNewRequirements = ""
