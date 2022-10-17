@@ -19,8 +19,8 @@
 <!--if so display the table-->
 
       <table class="govuk-table govuk-!-margin-bottom-4">
-         <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-5">Returns requirements<br>
-         <p class="govuk-body"><a href="../settings">Settings</a></p></caption>
+         <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-5">Returns requirements<!--<br>
+         <p class="govuk-body"><a href="../settings">Settings</a></p>--></caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Start date</th>
@@ -98,9 +98,9 @@
       {% endif %}
 
       {% if data['returnsRouteVersion'] == 3 %}
-      {% set URL = "../../licence/returns-current/set-up/reason" %}
+      {% set URL = "licence/returns-current/set-up/reason" %}
       {% else %}
-      {% set URL = "../../licence/returns/set-up/reason" %}
+      {% set URL = "licence/returns/set-up/reason" %}
       {% endif %}
 
 
@@ -116,12 +116,12 @@
       {{ govukButton({
         text: "No returns required",
         classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "../../licence/returns-current/set-up/reason-not-required"
+        href: "licence/returns-current/set-up/reason-not-required"
       }) }}
       {% elseif data.licences[data.ID].returnsRequirements[0].requirements.length %}
       {{ govukButton({
         text: "No returns required",
         classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "../../licence/returns-current/set-up/reason-not-required"
+        href: "licence/returns-current/set-up/reason-not-required"
       }) }}
       {% endif %}
