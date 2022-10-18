@@ -249,7 +249,7 @@ filters.focus = function(x) {
     } else if (e == "NOT APPROVED") {
       return "REVIEW"
     } else {
-      return "ACTIVE"
+      return "APPROVED"
     }
   }
 
@@ -277,7 +277,9 @@ filters.focus = function(x) {
         return "OVERDUE"
       } else if (e == "void") {
         return "VOID"
-      }  else {
+      }  else if (e == "open") {
+        return "OPEN"
+      } else {
         return "COMPLETED"
       }
     }
@@ -289,8 +291,10 @@ filters.focus = function(x) {
         return "govuk-tag--orange"
       } else if (e == "overdue") {
         return "govuk-tag--red"
-      } else if (e == "voide") {
+      } else if (e == "void") {
         return "govuk-tag--grey"
+      } else if (e == "open") {
+        return "govuk-tag--blue"
       } else {
         return "govuk-tag--green"
       }

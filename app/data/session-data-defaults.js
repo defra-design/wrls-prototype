@@ -1190,6 +1190,149 @@ module.exports = {
 
         ],
 
+      },
+      //licence 8
+      {
+        "number": "03/28/61/033",
+        "name": "Cherry Tree Farm",
+        "holder": "Big Smith Farms Ltd",
+        "startDate": "1 August 2019",
+        "endDate": "31 March 2034",
+        "expired": "false",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of chalk at An-area, A-town.",
+        "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
+        "absPeriod": ["1 April to 31 March"],
+
+        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
+        "absConditions": ["Aggregate condition purpose to purpose within a licence"],
+        "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+
+        "use": [    {
+                      "purpose": "Trickle Irrigation - Storage",
+                      "points": ["At National Grid Reference SK 675 126(Cherry tree farm - BOREHOLE B)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"51,830",
+                    },
+                    {
+                      "purpose": "General Farming & Domestic",
+                      "points": ["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"2,890",
+                    },
+                    {
+                      "purpose": "Spray irrigation - direct",
+                      "points": ["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"2,890",
+                    },
+            ],
+
+            "returnsRequirements":  [{
+                                    "startDate":"20190401",
+                                    "endDate":"",
+                                    "reason":"New licence",
+                                    "status":"approved",
+                                    "username":"username@defra.gov.uk",
+                                    "note":"",
+                                    "requirements":[{
+                                                    "id":823187,
+                                                    "returnsCycle":"winter and all year",
+                                                    "description":"Cherry tree farm - BOREHOLE A",
+                                                    "frequencyCollected":"monthly",
+                                                    "frequency":"monthly",
+                                                    "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
+                                                    "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                                                    "periodStart":"0401",
+                                                    "periodEnd":"1031",
+                                                      }]
+                                        }
+                                      ],
+
+                                      "returns": [
+                                                  {
+                                                    "id":823187,
+                                                    "status": "completed",
+                                                    "due": "20211128",
+                                                    "returnsCycle":"winter and all year",
+                                                    "description":"Cherry tree farm - BOREHOLE A",
+                                                    "frequency": "monthly",
+                                                    "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
+                                                    "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                                                    "periodStart":"0401",
+                                                    "periodEnd":"1031",
+                                                    "returnsPeriodStart":"20210401",
+                                                    "returnsPeriodEnd":"20211031",
+                                                  },
+                                                  {
+                                                    "id":823187,
+                                                    "status": "completed",
+                                                    "due": "20201128",
+                                                    "returnsCycle":"winter and all year",
+                                                    "description":"Cherry tree farm - BOREHOLE A",
+                                                    "frequency": "monthly",
+                                                    "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
+                                                    "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                                                    "periodStart":"0401",
+                                                    "periodEnd":"1031",
+                                                    "returnsPeriodStart":"20200401",
+                                                    "returnsPeriodEnd":"20201031",
+                                                  },
+                                                  {
+                                                    "id":823187,
+                                                    "status": "completed",
+                                                    "due": "20191128",
+                                                    "returnsCycle":"winter and all year",
+                                                    "description":"Cherry tree farm - BOREHOLE A",
+                                                    "frequency": "monthly",
+                                                    "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
+                                                    "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                                                    "periodStart":"0401",
+                                                    "periodEnd":"1031",
+                                                    "returnsPeriodStart":"20190401",
+                                                    "returnsPeriodEnd":"20191031",
+                                                  }
+                                                  ],
+
+        "chargeInformation": [{
+            "chargeStart": "1 April 2019",
+            "chargeEnd": "",
+            "chargeStatus": "CHARGEABLE",
+            "chargeBilledDate": "31 March 2021",
+            "free": "false",
+            "reasonNewCharge": "New licence",
+            "setUpBy": "	jo.langton@madeup.com",
+            "elements": [{
+                          "purpose": "Spray irrigation - direct",
+                          "description": "Borehole A",
+                          "abstractionStartDay": "1",
+                          "abstractionStartMonth": "4",
+                          "abstractionEndDay": "31",
+                          "abstractionEndMonth": "3",
+                          "billableQuantity": "2.89",
+                          "authorisedQuantity": "2.89",
+                          "timeLimit": "No",
+                          "source": "Unsupported",
+                          "season": "Winter and all year",
+                          "loss": "High",
+                          }
+            ],
+          }
+        ],
+
+        "agreements": [],
+
+        "communications": [
+          //newLicence
+        ],
+
       }
     ],
 

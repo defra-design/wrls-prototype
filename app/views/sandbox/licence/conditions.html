@@ -142,17 +142,88 @@
             <div class="govuk-grid-column-full">
           <!-- licence condition title -->
               <h2 class="heading-large govuk-heading-m licence-condition__header">
-                Eel screening condition
+                Aggregate condition purpose to purpose within a licence
               </h2>
 
           {{ govukSummaryList({
             rows: [
               {
                 key: {
-                  text: "Screening"
+                  text: "Abstraction point"
                 },
                 value: {
-                  text: "The Agency may have regard to its best practice guide, the Eel Menual: Screening at intakes and outfalls: measures to protect eel (or equivalent guidance) in agreeing where, how and what type of eel screen should be installed and together with the results of any monitoring in determining whether the eel screen is properly effective and maintained, and in judging whether it is necessary to require or replacement of the eel screen."
+                  text: "At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"
+                }
+              },
+              {
+                key: {
+                  text: "Purpose"
+                },
+                value: {
+                  text: "General Farming & Domestic"
+                }
+              },
+              {
+                key: {
+                  text: "Aggregate quantity"
+                },
+                value: {
+                  text: "2,890 m3/yr, 6 m3/day,  4 m3/hr"
+                }
+              },
+              {
+                key: {
+                  text: "Other information"
+                },
+                value: {
+                  text: "Link between spray irrigation and general agriculture purposes for borehole A"
+                }
+              }
+            ]
+          }) }}
+
+          </div>
+          </div>
+
+          <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-full">
+          <!-- licence condition title -->
+              <h2 class="heading-large govuk-heading-m licence-condition__header">
+                Aggregate condition purpose to purpose within a licence
+              </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Abstraction point"
+                },
+                value: {
+                  text: "At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"
+                }
+              },
+              {
+                key: {
+                  text: "Purpose"
+                },
+                value: {
+                  text: "Spray Irrigation - Direct"
+                }
+              },
+              {
+                key: {
+                  text: "Aggregate quantity"
+                },
+                value: {
+                  text: "2,890 m3/yr, 6 m3/day,  4 m3/hr"
+                }
+              },
+              {
+                key: {
+                  text: "Other information"
+                },
+                value: {
+                  text: "	Link between spray irrigation and general agriculture purposes for borehole A"
                 }
               }
             ]
@@ -164,6 +235,8 @@
           <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-full">
   <!-- licence condition title -->
+
+        {% if "Hands off flow condition" in data.licences[data.ID].absConditions %}
           <h2 class="heading-large govuk-heading-m licence-condition__header">
             Flow cessation condition
           </h2>
@@ -175,7 +248,7 @@
                   text: "Abstraction point"
                 },
                 value: {
-                  html: "At National Grid Reference SK 675124<br>At National Grid Reference SK 675343"|safe
+                  html: "At National Grid Reference SK 675 124<br>At National Grid Reference SK 675 126"|safe
                 }
                 },
                 {
@@ -219,7 +292,7 @@
   </div>
 </div>
 
-
+{% endif %}
 
 
 

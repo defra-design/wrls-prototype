@@ -21,10 +21,10 @@ classes: return.status | returnStatusColour
 {% endfor %}
 
 
-
+{% set caption = 'Returns<p class="govuk-body"><a class="govuk-link" href="#charge">Set up new returns requirement</a></p>' %}
 
 {{ govukTable({
-caption: "Returns",
+caption: caption | safe,
 captionClasses: "govuk-table__caption--l",
 firstCellIsHeader: false,
 head: [

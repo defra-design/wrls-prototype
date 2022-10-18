@@ -122,7 +122,7 @@ function createVersion(req, res) {
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
-  let status = "active"
+  let status = "approved"
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
   let username = "username@defra.gov.uk"
@@ -180,8 +180,8 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
  description =   req.session.data.licences[licence].source
   purpose = req.session.data.licences[licence].use[i].purpose
   points = req.session.data.licences[licence].use[i].points
-  frequency = "daily"
-  frequencyCollected = "daily"
+  frequency = "monthly"
+  frequencyCollected = "monthly"
   periodStart = req.session.data.licences[licence].use[i].periodStart
  periodEnd = req.session.data.licences[licence].use[i].periodEnd
   returnsCycle = "summer"
@@ -222,7 +222,7 @@ function requirementsFromAbsData(req, res) {
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
-  let status = "active"
+  let status = "approved"
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
   let username = "username@defra.gov.uk"
@@ -326,7 +326,7 @@ function createReturns(req,res) {
   for (const [i, v] of requirements.entries()) {
 
   let id = v.id
-  let status = "due"
+  let status = "open"
   let due = "20230428"
   let returnsCycle = v.returnsCycle
   let description = v.description

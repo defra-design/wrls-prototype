@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title = "Abstraction details" %}
+{% set title = "Abstraction points" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -24,41 +24,31 @@
       </div>
 
 
-          {% set uses = data.licences[data.ID].use %}
 
-          {% for use in uses %}
+     {% for i in data.licences[data.ID].absPoints %}
 
           <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-full">
-          <!-- licence purpose -->
+          <!-- licence condition title -->
               <h2 class="heading-large govuk-heading-m licence-condition__header">
-                {{use.purpose}}
-              </h2>
+              Cherry tree farm - Borehole {% set alphabet = ["A","B","C","D","E","F","G"]%} {{alphabet[loop.index0]}}             </h2>
 
           {{ govukSummaryList({
             rows: [
               {
                 key: {
-                  text: use.points | plural ("Point")
+                  text: "Abstraction point"
                 },
                 value: {
-                  text: use.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+                  text: i
                 }
               },
               {
                 key: {
-                  text: "Abstraction period"
+                  text: "Means of abstraction"
                 },
                 value: {
-                  text: use.periodStart | mmddToDate + " to " + use.periodEnd | mmddToDate
-                }
-              },
-              {
-                key: {
-                  text: "Amount"
-                },
-                value: {
-                  text: use.amount + " m3/yr"
+                  text: "Unspecified pump"
                 }
               }
             ]
@@ -68,7 +58,8 @@
           </div>
 
 
- {% endfor %}
+{% endfor %}
+
 
 
 

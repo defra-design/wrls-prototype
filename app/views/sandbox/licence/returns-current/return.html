@@ -99,6 +99,11 @@ rows: [
   </div>
 </div>
 
+{% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue")%}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
       <form action="#" id="return-status"   data-routing="1" method="post" class="form">
 
 
@@ -132,8 +137,12 @@ rows: [
 
       </form>
 
-</div>
-</div>
+    </div>
+    </div>
+
+{% endif %}
+
+
 
 
 {% endblock %}

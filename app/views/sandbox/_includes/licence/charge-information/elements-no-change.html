@@ -1,0 +1,167 @@
+
+<!--{% set elements = [data.elements.element1, data.elements.element2, data.elements.element3] %}
+
+
+
+{% set elements = [data.elements[0],data.elements[1],data.elements[2]] %} -->
+
+
+{% set elementNumber = "" %}
+
+{% set elements = data.licences[data.ID].chargeInformation[chargeInfoNumber].elements %}
+
+
+{% set numberOfElements = elements.length %}
+
+
+{% for i in elements %}
+
+<!--formating for the abstraction period dates-->
+      {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+      {% set monthNumber = [i.abstractionStartMonth] %}
+      {% set monthNumberEnd = [i.abstractionEndMonth] %}
+      {% set month = monthNames[monthNumber - 1] %}
+      {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+      {% set abstractionStart = [i.abstractionStartDay] + " " + month %}
+      {% set abstractionEnd = [i.abstractionEndDay] + " " + monthEnd %}
+
+
+     {% set elementNumber = loop.index0 %}
+
+     <!--set billable quanity if needed-->
+     {% if [i.billableQuantityNeeded] == "yes" %}
+     {% set billableQuantity = [i.billableQuantity] + " megalitres per year" %}
+     {% else %}
+     {% set billableQuantity = "Not set" %}
+     {% endif %}
+
+     <!--set time limit if needed-->
+     {% if [i.timeLimit] == "yes" %}
+     {% set monthNumbertimeLimit = [i.timeLimitMonth] %}
+     {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
+     {% set timeLimit = [i.timeLimitDay] + " " + monthtimeLimit + " " + [i.timeLimitYear] %}
+     {% else %}
+     {% set timeLimit = "No" %}
+     {% endif %}
+
+
+      <section class="govuk-!-margin-bottom-7">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <hr class="govuk-section-break ">
+                  {% include "current/bd/iterations/_includes/notes-no-change.html" %}
+
+          <!-- 16 Feb feature was cut        <hr class="govuk-section-break ">
+                        {% include "current/bd/iterations/_includes/agreements-no-actions.html" %} -->
+
+            <h2 class="govuk-heading-m" id="element{{[loop.index]}}">Element {{[loop.index]}}
+          </h2>
+
+                {{ govukSummaryList({
+                  classes: "govuk-!-margin-bottom-1",
+                rows: [
+                  {
+                    key: {
+                      text: "Purpose"
+                    },
+                    value: {
+                      text: [i.purpose]
+                    }
+                  },
+
+                  {
+                     key: {
+                       text: "Description"
+                     },
+                     value: {
+                       text: [i.description]
+                     }
+                   },
+
+
+                  {
+                    key: {
+                      text: "Abstraction period"
+                    },
+                    value: {
+                      text: [abstractionStart] + " to " + [abstractionEnd]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Authorised quantity"
+                    },
+                    value: {
+                      text: [i.authorisedQuantity] + " megalitres per year"
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Billable quantity"
+                    },
+                    value: {
+                      text: [billableQuantity]
+                    }
+                  } if "Not set" not in billableQuantity,
+
+                  {
+                    key: {
+                      text: "Time limit"
+                    },
+                    value: {
+                      text: [timeLimit]
+                    }
+                  } if "No" not in timeLimit,
+                  {
+                    key: {
+                      text: "Source"
+                    },
+                    value: {
+                      text: [i.source]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Season"
+                    },
+                    value: {
+                      text: [i.season]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Loss"
+                    },
+                    value: {
+                      text: [i.loss]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Agreements apply"
+                    },
+                    value: {
+                      text: "No"
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--last',
+                    key: {
+                      text: "Environmental Improvement Unit Charge"
+                    },
+                    value: {
+                      text: "Other"
+                    }
+                  }
+
+
+                ]
+              }) }}
+
+          </div>
+          </div>
+      </section>
+
+    {% endfor %}
