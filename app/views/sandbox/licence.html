@@ -128,14 +128,16 @@
   <!-- tab 3 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
 
-    {% set returnRequirements = data.licences[data.ID]['returnsRequirements'] %}
+    {% set returns = data.licences[data.ID]['returns'] %}
     <!--check to see if there is any charge information set up-->
-    {% if returnRequirements.length  %}
+    {% if returns.length  %}
     <!--if so display the table-->
     <!-- returns with statuses -->
     {% include "sandbox/_includes/licence/returns.html" %}
 
     {% else %}
+
+    <h2 class="govuk-heading-l">Returns</h2>
 
     <p class="govuk-body">No returns requirements have been set up for this licence.</p>
 

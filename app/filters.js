@@ -248,6 +248,8 @@ filters.focus = function(x) {
       return "INVALID"
     } else if (e == "NOT APPROVED") {
       return "REVIEW"
+    } else if (e == "review") {
+      return "REVIEW"
     } else {
       return "APPROVED"
     }
@@ -256,6 +258,8 @@ filters.focus = function(x) {
   //set colours for status "| chargeStatusColour"
   filters.chargeStatusColour = function(e) {
     if (e == "NOT APPROVED") {
+      return "govuk-tag--orange"
+    } else if (e == "review") {
       return "govuk-tag--orange"
     } else if (e == "INVALID") {
       return "govuk-tag--red"

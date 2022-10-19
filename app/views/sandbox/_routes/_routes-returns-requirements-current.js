@@ -122,7 +122,7 @@ function createVersion(req, res) {
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
-  let status = "approved"
+  let status = "review"
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
   let username = "username@defra.gov.uk"
@@ -222,7 +222,7 @@ function requirementsFromAbsData(req, res) {
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
-  let status = "approved"
+  let status = "review"
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
   let username = "username@defra.gov.uk"
@@ -394,7 +394,11 @@ router.post('/set-up/reason', function(req, res) {
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
 
+    if (req.session.data.returnReview == 1) {
+    res.redirect('../review-returns-requirements');
+    } else {
     res.redirect('../check-your-answers');
+    }
   } else {
       res.redirect('start-date');
   }
@@ -461,7 +465,11 @@ router.post('/set-up/start-date', function(req, res) {
     req.session.data.change = false
 
     req.session.data.licences[licence].returnsRequirements[0].startDate = req.session.data.startDateConditional
+    if (req.session.data.returnReview == 1) {
+    res.redirect('../review-returns-requirements');
+    } else {
     res.redirect('../check-your-answers');
+    }
   } else {
 
 
@@ -541,7 +549,11 @@ router.post('/set-up/start-date', function(req, res) {
 
   if (req.session.data.returnsNotRequired == true) {
   createVersion(req, res)
+  if (req.session.data.returnReview == 1) {
+  res.redirect('../review-returns-requirements');
+  } else {
   res.redirect('../check-your-answers');
+  }
 } else {
   res.redirect('how-do-you-want-to-set-up');
 }
@@ -594,6 +606,7 @@ router.post('/set-up/select-an-existing-return-requirement', function(req, res) 
   //update the start date and reason
   newRequirement.startDate = req.session.data.startDateConditional
   newRequirement.reason = req.session.data.reasonNewRequirements
+  newRequirement.status = "review"
 
   //add the copied object to the returns requirements object
   req.session.data.licences[licence].returnsRequirements.unshift(newRequirement)
@@ -724,9 +737,14 @@ router.post('/set-up/frequency', function(req, res) {
     req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
 
 
+    if (req.session.data.returnReview == 1) {
+    res.redirect('../review-returns-requirements');
+    } else {
     res.redirect('../check-your-answers');
+    }
   } else {
-    if (req.session.data.returnVersion !== 1){
+
+    if (Number(req.session.data.returnVersion) !== 1){
     createVersion(req, res) } else {
       createReturnRequirement(req, res)
       req.session.data.success = 1
@@ -740,8 +758,11 @@ router.post('/set-up/frequency', function(req, res) {
 
 
     }
-
+    if (req.session.data.returnReview == 1) {
+    res.redirect('../review-returns-requirements');
+    } else {
     res.redirect('../check-your-answers');
+    }
   }
 });
 
@@ -823,7 +844,11 @@ router.post('/confirm-remove-requirement', function(req, res) {
     successMessage.dynamicContent = removedRequirementID +  '</p>'
     req.session.data.successMessage = successMessage.requirementRemove + successMessage.dynamicContent
 
+    if (req.session.data.returnReview == 1) {
+    res.redirect('review-returns-requirements');
+    } else {
     res.redirect('check-your-answers');
+    }
 });
 
 
@@ -860,9 +885,7 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.licences[licence].returnsRequirements[1].endDate = (year)+(month)+(day)
    }
 
-   if (req.session.data.returnsNotRequired !== true) {
-     createReturns(req,res)
-   }
+
 
 
    //clear all the data
@@ -888,6 +911,55 @@ router.post('/check-your-answers', function(req, res) {
 
     res.redirect('set-up/requirements-set-up');
 });
+
+
+
+//////REVIEW AND APPROVE RETURN REQUIREMENTS
+//////////////////////////////////
+/////Confirm return version
+router.get('/review-returns-requirements', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.success = 0
+  res.render(folder + 'review-returns-requirements');
+});
+
+router.post('/review-returns-requirements', function(req, res) {
+
+  //end the previous return requirement
+  let licence = req.session.data.ID
+  req.session.data.licences[licence].returnsRequirements[0].status = "approved"
+
+  //CREATE THE RETURNS
+  if (req.session.data.returnsNotRequired !== true) {
+    createReturns(req,res)
+  }
+
+  //clear all the data
+  req.session.data.returnReview = ""
+
+  req.session.data.reasonNewRequirements = ""
+  req.session.data.startDateConditional = ""
+  req.session.data.startDate = []
+  req.session.data.purpose = ""
+  req.session.data.description = ""
+  req.session.data.points = ""
+  req.session.data.abstractionStartDay = ""
+  req.session.data.abstractionStartMonth = ""
+  req.session.data.abstractionEndDay = ""
+  req.session.data.abstractionEndMonth = ""
+  req.session.data.returnsCycle = ""
+  req.session.data.frequencyCollected = ""
+  req.session.data.frequency = ""
+  req.session.data.change = false
+  req.session.data.requirementIndex = ""
+  req.session.data.returnVersion = ""
+  req.session.data.note = ""
+  req.session.data.success = 0
+  req.session.data.returnsNotRequired = ""
+
+  res.redirect('set-up/requirements-approved');
+});
+
 
 
 
@@ -923,7 +995,11 @@ router.post('/set-up/add-a-note', function(req, res) {
   req.session.data.successMessage = successMessage.noteCreate
 }
 
-    res.redirect('../check-your-answers');
+if (req.session.data.returnReview == 1) {
+res.redirect('../review-returns-requirements');
+} else {
+res.redirect('../check-your-answers');
+}
 
 });
 
@@ -964,7 +1040,11 @@ router.post('/set-up/reason-not-required', function(req, res) {
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
 
+    if (req.session.data.returnReview == 1) {
+    res.redirect('../review-returns-requirements');
+    } else {
     res.redirect('../check-your-answers');
+    }
   } else {
       res.redirect('start-date');
   }

@@ -63,16 +63,9 @@
             })}}
             </td>
             <td class="govuk-table__cell {{lastRow}}">
-              {% if [i.chargeStatus] == "DRAFT" %}
-              <a href="/bd/charges-2020/charge-version/charge-data-check">Continue<span class="screen-reader-only">setting up returns requirements</span></a>
-              <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
-              <a href="/bd/charges-2020/charge-version/confirm-remove-charge-information">Remove <span class="screen-reader-only">returns requirements</span></a>
-              {% elif [i.chargeStatus] == "NOT APPROVED" %}
-              {% set link = 'licence/charge-information?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
-              <a href="{{link}}">Review <span class="screen-reader-only">returns requirements</span></a>
-              {% elif [i.chargeStatus] == "CHANGES" %}
-              {% set link = 'licence/charge-information?returnVersionsoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
-              <a href="{{link}}">Review <span class="screen-reader-only">returns requirements</span></a>
+              {% if [status] == "review" %}
+              {% set link = '/sandbox/licence/returns-current/review-returns-requirements?returnReview=1&returnVersion=1&returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">Review<span class="screen-reader-only">returns requirements</span></a>
               {% else %}
               {% set link = '/sandbox/licence/returns-current/requirements?returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
               <a href="{{link}}">View <span class="screen-reader-only">returns requirements</span></a>
