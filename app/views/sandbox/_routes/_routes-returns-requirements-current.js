@@ -415,8 +415,8 @@ router.post('/set-up/start-date', function(req, res) {
 
   if (req.session.data.startDateConditional == "other"){
 
-  let dd = req.session.data.startDate[0];
-  let mm = req.session.data.startDate[1];
+  let dd = +req.session.data.startDate[0];
+  let mm = +req.session.data.startDate[1];
 
   const yyyy = req.session.data.startDate[2];
  if (dd < 10) {
@@ -427,6 +427,8 @@ router.post('/set-up/start-date', function(req, res) {
   }
 
   const today = `${yyyy}${mm}${dd}`;
+
+  //console.log(today)
 
   req.session.data.startDateConditional = today
   }
@@ -861,33 +863,6 @@ router.get('/check-your-answers', function(req, res) {
 
 router.post('/check-your-answers', function(req, res) {
 
-
-   //end the previous return requirement
-   let licence = req.session.data.ID
-   if (req.session.data.licences[licence].returnsRequirements.length > 1) {
-  let startDate = req.session.data.licences[licence].returnsRequirements[0].startDate;
-  //format the date
-  let day = startDate.substring(6, 8);
-  let month = startDate.substring(4, 6);
-  let year = startDate.substring(0, 4);
-  let dateString = (year) + "-" + (month) + "-" + (day);
-  //get the date
-  let date1 = new Date(dateString);
-  //set the days to subtract
-  let daysPrior = -1;
-  //use the method
-  date1.setDate(date1.getDate() + daysPrior);
-  //format the date
-  year = date1.toISOString().substring(0, 4);
-  month = date1.toISOString().substring(5, 7);
-  day = date1.toISOString().substring(8, 10);
-  //set the variable
-   req.session.data.licences[licence].returnsRequirements[1].endDate = (year)+(month)+(day)
-   }
-
-
-
-
    //clear all the data
    req.session.data.reasonNewRequirements = ""
    req.session.data.startDateConditional = ""
@@ -927,6 +902,29 @@ router.post('/review-returns-requirements', function(req, res) {
 
   //end the previous return requirement
   let licence = req.session.data.ID
+  if (req.session.data.licences[licence].returnsRequirements.length > 1) {
+ let startDate = req.session.data.licences[licence].returnsRequirements[0].startDate;
+
+ //format the date
+ let day = startDate.substring(6, 8);
+ let month = startDate.substring(4, 6);
+ let year = startDate.substring(0, 4);
+ let dateString = (year) + "-" + (month) + "-" + (day);
+ //get the date
+ let date1 = new Date(dateString);
+ //set the days to subtract
+ let daysPrior = -1;
+ //use the method
+ date1.setDate(date1.getDate() + daysPrior);
+ //format the date
+ year = date1.toISOString().substring(0, 4);
+ month = date1.toISOString().substring(5, 7);
+ day = date1.toISOString().substring(8, 10);
+ //set the variable
+  req.session.data.licences[licence].returnsRequirements[1].endDate = (year)+(month)+(day)
+  }
+
+  //Update the requirement to approved
   req.session.data.licences[licence].returnsRequirements[0].status = "approved"
 
   //CREATE THE RETURNS
