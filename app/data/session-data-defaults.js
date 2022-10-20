@@ -1251,7 +1251,7 @@ module.exports = {
                                                     "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
                                                     "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
                                                     "periodStart":"0401",
-                                                    "periodEnd":"1031",
+                                                    "periodEnd":"0331",
                                                       }]
                                         }
                                       ],
