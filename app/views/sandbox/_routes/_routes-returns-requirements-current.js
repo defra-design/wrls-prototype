@@ -46,7 +46,7 @@ const folder = "sandbox/licence/returns-current/"
    "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Return requirement note updated</h3>',
    "noteCreate":          '<h3 class="govuk-notification-banner__heading">Return requirement note added</h3>',
  }
-
+let notificationTitle = ""
 
 ///-----------------------------------------FUNCTIONS------------------------------------------///
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -390,6 +390,8 @@ router.post('/set-up/reason', function(req, res) {
 
     successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
     req.session.data.successMessage = successMessage.reasonUpdate + successMessage.dynamicContent
+    notificationTitle = "Updated"
+    req.session.data.notificationTitle = notificationTitle
     //update with the latest answers
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
@@ -460,7 +462,8 @@ router.post('/set-up/start-date', function(req, res) {
 
   successMessage.dynamicContent = govukDate + "</p>"
   req.session.data.successMessage = successMessage.startDateUpdate + successMessage.dynamicContent
-
+  notificationTitle = "Updated"
+  req.session.data.notificationTitle = notificationTitle
 
 
 
@@ -737,7 +740,8 @@ router.post('/set-up/frequency', function(req, res) {
 
     successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
     req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
-
+    notificationTitle = "Updated"
+    req.session.data.notificationTitle = notificationTitle
 
     if (req.session.data.returnReview == 1) {
     res.redirect('../review-returns-requirements');
@@ -756,7 +760,8 @@ router.post('/set-up/frequency', function(req, res) {
 
       successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
       req.session.data.successMessage = successMessage.requirementCreate + successMessage.dynamicContent
-
+      notificationTitle = "Added"
+      req.session.data.notificationTitle = notificationTitle
 
 
     }
@@ -845,6 +850,8 @@ router.post('/confirm-remove-requirement', function(req, res) {
     //Success message set for removing return requirement
     successMessage.dynamicContent = removedRequirementID +  '</p>'
     req.session.data.successMessage = successMessage.requirementRemove + successMessage.dynamicContent
+    notificationTitle = "Removed"
+    req.session.data.notificationTitle = notificationTitle
 
     if (req.session.data.returnReview == 1) {
     res.redirect('review-returns-requirements');
@@ -984,6 +991,8 @@ router.post('/set-up/add-a-note', function(req, res) {
   req.session.data.licences[licence].returnsRequirements[0].note = req.session.data.note
 
   req.session.data.successMessage = successMessage.noteUpdate
+  notificationTitle = "Updated"
+  req.session.data.notificationTitle = notificationTitle
 
 
 } else {
@@ -991,6 +1000,8 @@ router.post('/set-up/add-a-note', function(req, res) {
   req.session.data.licences[licence].returnsRequirements[0].note = req.session.data.note
   //create the success banner
   req.session.data.successMessage = successMessage.noteCreate
+  notificationTitle = "Added"
+  req.session.data.notificationTitle = notificationTitle
 }
 
 if (req.session.data.returnReview == 1) {
@@ -1034,6 +1045,8 @@ router.post('/set-up/reason-not-required', function(req, res) {
 
     successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
     req.session.data.successMessage = successMessage.reasonUpdate + successMessage.dynamicContent
+    notificationTitle = "Updated"
+    req.session.data.notificationTitle = notificationTitle
     //update with the latest answers
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements

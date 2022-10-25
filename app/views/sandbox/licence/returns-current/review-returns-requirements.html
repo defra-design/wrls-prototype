@@ -23,7 +23,8 @@
 
 {{ govukNotificationBanner({
   html: data.successMessage,
-  type: 'success'
+  role: 'alert',
+  titleText : data.notificationTitle
 }) }}
 
 {% endif %}
