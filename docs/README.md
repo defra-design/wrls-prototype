@@ -6,4 +6,5 @@ A prototype for the Manage a water resources licence GOV.UK service
 
 ### Installation
 `npm install`
+
 `npm start`
