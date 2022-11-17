@@ -1,6 +1,6 @@
 {
-  "name": "govuk-prototype-kit",
-  "description": "Rapidly create HTML prototypes of GOV.UK services",
+  "name": "wrls-prototype",
+  "description": "A prototype of the Manage your water resources licence GOV.UK service",
   "version": "12.2.0",
   "private": true,
   "engines": {

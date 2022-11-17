@@ -1,6 +1,9 @@
-# Documentation
+# wrls-prototype
 
-[Documentation and examples](https://govuk-prototype-kit.herokuapp.com/docs)
+A prototype for the Manage a water resources licence GOV.UK service
 
-Documentation is also available when running the app locally at http:localhost:3000/docs
+##Deployed URL: [https://wrls-prototype.herokuapp.com/](https://wrls-prototype.herokuapp.com/)
 
+###Installation
+`npm install`
+`npm start`

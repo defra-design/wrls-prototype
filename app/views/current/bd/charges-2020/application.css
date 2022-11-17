@@ -2749,7 +2749,7 @@ p + .govuk-heading-s,
   .govuk-summary-list {
     display: table;
     width: 100%;
-    table-layout: fixed;
+    table-layout_wrls: fixed;
   }
 }
 
