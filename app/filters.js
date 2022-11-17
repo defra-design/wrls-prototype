@@ -43,6 +43,15 @@ module.exports = function(env) {
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+
+// change and array into a formatted list. | listFormat
+filters.listFormat = function(x) {
+  let formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+  return formatter.format(x)
+}
+
+
+
   //get today's date change any string in to today's date {{ "foo" | today }}
   filters.today = function(x) {
     let date = new Date();

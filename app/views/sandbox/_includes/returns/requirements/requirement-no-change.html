@@ -85,7 +85,17 @@
         classes: 'govuk-!-padding-bottom-3'
       },
       value: {
-        text: requirement.frequency | capitalize,
+        text: requirement.frequency | capitalize
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Additional settings",
+        classes: 'govuk-!-padding-bottom-3'
+      },
+      value: {
+        text: requirement.settings | listFormat | capitalize,
         classes: 'govuk-!-padding-bottom-3'
       }
     }

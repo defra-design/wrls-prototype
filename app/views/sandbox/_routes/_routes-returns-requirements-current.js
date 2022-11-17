@@ -88,7 +88,7 @@ function createReturnRequirement(req, res) {
   let description = req.session.data.description
   let frequencyCollected = req.session.data.frequencyCollected
   let frequency = req.session.data.frequency
-
+  let settings = req.session.data.settings
 
 
   let newRequirement = {
@@ -96,6 +96,7 @@ function createReturnRequirement(req, res) {
     description,
     frequency,
     frequencyCollected,
+    settings,
     purpose,
     points,
     periodStart,
@@ -168,6 +169,7 @@ function createReturnRequirementsFromAbsData(req, res) {
   let  points = []
   let  frequency = ""
   let  frequencyCollected = ""
+  let  settings = []
   let  periodStart = ""
   let  periodEnd = ""
   let  returnsCycle = ""
@@ -182,6 +184,7 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
   points = req.session.data.licences[licence].use[i].points
   frequency = "monthly"
   frequencyCollected = "monthly"
+  settings = ["none"]
   periodStart = req.session.data.licences[licence].use[i].periodStart
  periodEnd = req.session.data.licences[licence].use[i].periodEnd
   returnsCycle = "summer"
@@ -197,6 +200,7 @@ if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && per
     description,
     frequency,
     frequencyCollected,
+    settings,
     purpose,
     points,
     periodStart,
@@ -272,6 +276,7 @@ function updateReturnRequirement(req, res) {
   let description = req.session.data.description
   let frequencyCollected = req.session.data.frequencyCollected
   let frequency = req.session.data.frequency
+  let settings = req.session.data.settings
 
   //console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
 
@@ -284,6 +289,7 @@ function updateReturnRequirement(req, res) {
   if (description && typeof description !== "undefined") { returnsRequirements.description = req.session.data.description }
   if (frequencyCollected && typeof frequencyCollected  !== "undefined") { returnsRequirements.frequencyCollected = req.session.data.frequencyCollected }
   if (frequency && typeof  frequency !== "undefined") { returnsRequirements.frequency = req.session.data.frequency }
+  if (settings && typeof  settings !== "undefined") { returnsRequirements.settings = req.session.data.settings }
 
 
   req.session.data.purpose = ""
@@ -294,6 +300,7 @@ function updateReturnRequirement(req, res) {
   req.session.data.description = ""
   req.session.data.frequencyCollected = ""
   req.session.data.frequency = ""
+  req.session.data.settings = ""
 
 
 }
@@ -331,6 +338,7 @@ function createReturns(req,res) {
   let returnsCycle = v.returnsCycle
   let description = v.description
   let frequency = v.frequency
+  let settings = v.settings
   let purpose = v.purpose
   let points = v.points
   let periodStart = v.periodStart
@@ -345,6 +353,7 @@ function createReturns(req,res) {
     returnsCycle,
     description,
     frequency,
+    settings,
     purpose,
     points,
     periodStart,
@@ -721,6 +730,18 @@ router.get('/set-up/frequency', function(req, res) {
 
 router.post('/set-up/frequency', function(req, res) {
 
+  res.redirect('settings');
+});
+
+
+////Additional settings
+router.get('/set-up/settings', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/settings');
+});
+
+router.post('/set-up/settings', function(req, res) {
+
   //check if the route is from changing existing data or not
   let change = req.session.data.change
   //get the return requirement
@@ -771,63 +792,9 @@ router.post('/set-up/frequency', function(req, res) {
     res.redirect('../check-your-answers');
     }
   }
-});
-
-/*
-/// Enter the frequency
-router.get('/set-up/frequency', function(req, res) {
-  req.session.data.back = req.headers.referer
-  res.render(folder + '/set-up/frequency');
-});
-
-router.post('/set-up/frequency', function(req, res) {
-
-  //check if the route is from changing existing data or not
-  let change = req.session.data.change
-  //get the return requirement
-  let licence = req.session.data.ID
-  let requirementIndex = req.session.data.requirementIndex
-
-  if (change == "true"){
-
-  //  let elementNumber = req.session.data.elementNumber
-  //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
-    req.session.data.change = false
-    updateReturnRequirement(req, res)
-
-    //updating success banner
-    req.session.data.success = 1
-
-
-    successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
-    req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
-
-
-    res.redirect('../check-your-answers');
-  } else {
-    if (req.session.data.returnVersion !== 1){
-    createVersion(req, res) } else {
-      createReturnRequirement(req, res)
-      req.session.data.success = 1
-      let newRequirementIndex = req.session.data.licences[licence].returnsRequirements[0].requirements.length
-
-
-
-      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
-      req.session.data.successMessage = successMessage.requirementCreate + successMessage.dynamicContent
-
-
-
-    }
-
-    res.redirect('../check-your-answers');
-  }
-
-
 
 });
 
-*/
 
 ///Remove a requirements
 router.get('/confirm-remove-requirement', function(req, res) {
@@ -884,6 +851,7 @@ router.post('/check-your-answers', function(req, res) {
    req.session.data.returnsCycle = ""
    req.session.data.frequencyCollected = ""
    req.session.data.frequency = ""
+   req.session.data.settings = ""
    req.session.data.change = false
    req.session.data.requirementIndex = ""
    req.session.data.returnVersion = ""

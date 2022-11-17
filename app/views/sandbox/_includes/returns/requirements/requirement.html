@@ -1,8 +1,6 @@
 {% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
 
 
-
-
 {% set routeFolder = "set-up/purpose" %}
 
 
@@ -148,6 +146,26 @@
               href: "set-up/frequency?change=true&requirementIndex=" + loop.index0,
               text: "Change",
               visuallyHiddenText: "reporting frequency"
+            }
+          ]
+        }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Additional settings",
+        classes: 'govuk-!-padding-bottom-3'
+      },
+      value: {
+        text: requirement.settings | listFormat | capitalize,
+        classes: 'govuk-!-padding-bottom-3'
+      },
+        actions: {
+          items: [
+            {
+              href: "set-up/settings?change=true&requirementIndex=" + loop.index0,
+              text: "Change",
+              visuallyHiddenText: "additional settings"
             }
           ]
         }

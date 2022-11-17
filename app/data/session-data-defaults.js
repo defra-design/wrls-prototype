@@ -956,6 +956,7 @@ module.exports = {
                                                 "points":["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                                                 "periodStart":"0401",
                                                 "periodEnd":"1031",
+                                                "settings":["none"],
                                                   }]
                                     },
                                     {
@@ -975,6 +976,7 @@ module.exports = {
                                                     "points":["At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
                                                     "periodStart":"0401",
                                                     "periodEnd":"1031",
+                                                    "settings":["none"],
                                                       }]
                                         }
                                   ],
@@ -1252,6 +1254,7 @@ module.exports = {
                                                     "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
                                                     "periodStart":"0401",
                                                     "periodEnd":"0331",
+                                                    "settings":["none"],
                                                       }]
                                         }
                                       ],
