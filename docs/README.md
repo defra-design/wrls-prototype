@@ -2,8 +2,8 @@
 
 A prototype for the Manage a water resources licence GOV.UK service
 
-##Deployed URL: [https://wrls-prototype.herokuapp.com/](https://wrls-prototype.herokuapp.com/)
+## Deployed URL: [https://wrls-prototype.herokuapp.com/](https://wrls-prototype.herokuapp.com/)
 
-###Installation
+### Installation
 `npm install`
 `npm start`
