@@ -33,26 +33,21 @@ fieldset: {
 items: [
 {
   value: "use abstraction data",
-  text: "Start by using extraction data",
+  text: "Use abstraction data",
   checked: checked("howToSetUp", "use abstraction data")
 },
 {
-  value: "use abstraction data",
-  text: "Start by using extraction data",
-  checked: checked("howToSetUp", "use abstraction data")
+  value: "set up requirement manually",
+  text: "Set up requirement manually",
+  checked: checked("howToSetUp", "create requirement manually")
 },
+{
+     divider: "or"
+   } if data.licences[data.ID].returnsRequirements.length,
 {
   value: "copy an existing return requirement",
   text: "Copy an existing return requirement",
   checked: checked("howToSetUp", "copy an existing return requirement")
-} 
-
-     divider: "or"
-   } if data.licences[data.ID].returnsRequirements.length,
-{
-  value: "set up requirement manually",
-  text: "Set up a return requirement manually",
-  checked: checked("howToSetUp", "create requirement manually")
 } if data.licences[data.ID].returnsRequirements.length
 ]
 }) }}
