@@ -37,18 +37,19 @@ items: [
   checked: checked("howToSetUp", "use abstraction data")
 },
 {
-  value: "set up requirement manually",
-  text: "Set up a requirement manually",
-  checked: checked("howToSetUp", "create requirement manually")
-},
-{
-     divider: "or"
-   } if data.licences[data.ID].returnsRequirements.length,
-{
   value: "copy an existing return requirement",
   text: "Copy an existing return requirement",
   checked: checked("howToSetUp", "copy an existing return requirement")
-} if data.licences[data.ID].returnsRequirements.length
+} if data.licences[data.ID].returnsRequirements.length,
+{
+     divider: "or"
+   } if data.licences[data.ID].returnsRequirements.length,
+
+{
+  value: "set up requirement manually",
+  text: "Set up a requirement manually",
+  checked: checked("howToSetUp", "create requirement manually")
+}
 ]
 }) }}
 
