@@ -2,7 +2,7 @@
 {% set status = [data.chargeVersions[0].chargeStatus] %}
 {% if (free == "true") and (status == "CHARGEABLE") %}
 {{ govukInsetText({
-       html: 'This licence is non-chargeable.  ' + [data.reason] + '.'
+       html: 'This licence is non-chargeable. ' + [data.reason] + '.'
       }) }}
 {% endif %}
 
@@ -16,7 +16,7 @@
             <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">End date</th>
             <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Reason</th>
             <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Status</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Action</th </tr>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Action</th> </tr>
         </thead>
 
 

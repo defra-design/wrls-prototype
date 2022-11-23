@@ -1,8 +1,8 @@
-const express = require('express')
-const router = express.Router()
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
 //Request module for the station data
-const request = require('request');
+//const request = require('request');
 
 
 

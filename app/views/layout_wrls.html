@@ -1,5 +1,6 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
 
 {% extends "govuk/template.njk" %}
 
@@ -32,7 +33,7 @@
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
 {% block head %}
-  {% include "includes/head.html" %}
+  {% include "current/includes/head.html" %}
 {% endblock %}
 
 {% block pageTitle %}
@@ -93,7 +94,7 @@
             text: "GOV.UK Prototype Kit " + releaseVersion
           },
           {
-            href: "/prototype-admin/clear-data",
+            href: "/manage-prototype/clear-data",
             text: "Clear data"
           }
         ]
@@ -104,7 +105,7 @@
 
 {% block bodyEnd %}
   {% block scripts %}
-    {% include "includes/scripts.html" %}
+    {% include "govuk-prototype-kit/includes/scripts.html" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype Kit {{releaseVersion}} -->

@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here - above the module.exports line
 
@@ -371,7 +371,7 @@ router.get('/current/bd/charges-2020/add-new-reason', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('bd/charges-2020/add-new-reason');
+  res.render('current/bd/charges-2020/add-new-reason');
 
 });
 
