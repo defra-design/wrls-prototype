@@ -2,14 +2,12 @@
 //$govuk-global-styles: true;
 
 // Import GOV.UK Frontend
-//@import "node_modules/govuk-frontend/govuk/all";
-
-
+@import "node_modules/govuk-frontend/govuk/all.scss";
 
 // Patterns that aren't in Frontend
 @import "utilities.scss";
-@import "patterns/check-your-answers";
-@import "patterns/task-list";
+//@import "patterns/check-your-answers";
+//@import "patterns/task-list";
 @import "patterns/related-items";
 @import "patterns/subnav";
 @import "patterns/tables";
@@ -38,7 +36,7 @@
 @import "typography.scss";
 
 // Components that aren't in Frontend
-@import "components/cookie-banner";
+//@import "components/cookie-banner";
 
 
 // ========== ========== ========== ========== ==========
