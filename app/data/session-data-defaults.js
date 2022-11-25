@@ -468,7 +468,7 @@ module.exports = {
               },
               {
                 "purpose": "General machine washing",
-                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount": "20",
@@ -592,7 +592,7 @@ module.exports = {
                     },
               {
                 "purpose": "General machine washing",
-                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount": "20",

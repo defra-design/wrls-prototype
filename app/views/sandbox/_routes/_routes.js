@@ -133,6 +133,7 @@ router.use('/bill-runs', require('./_routes-bill-runs'));
 router.use('/charge-information-workflow', require('./_routes-chargeInfoWorkflow'));
 //create SRoC bill data
 
+router.use('/licence-setup-workflow', require('./_routes-licenceSetupWorkflow'));
 
 
 //----------------------------------------------------------------

@@ -1,0 +1,213 @@
+
+
+
+
+
+
+
+{% if data['filteredResults'].length %}
+{% set licences = data['filteredResults']  %}
+{% else %}
+{% set licences = data['chargeInfoWorkflow'] %}
+{% endif %}
+
+
+{% set licence = [] %}
+
+
+{% for i in licences %}
+
+
+       
+{# set licence #}
+{# check status of licence in workflow #}
+{% if i.status == "to set up" %}
+
+{% set licence = licence | push ([
+                            {html: "<a href='/sandbox/licence?ID=" + i.ID + "#charge' class='govuk-link'>" + i.licence + "<span class='govuk-visually-hidden'>view charge information</span></a>"},
+                            {text: i.licenceHolder},
+                            {text: i.licenceStartDate | formatDate},
+                            {text: i.billedUpto | formatDate},
+                            {html: "<a href='/current/bd/charges-2020/confirm-remove-licence-charge-information-workflow?index=" + loop.index0 + "' class='govuk-link'>Remove<span class='govuk-visually-hidden'>licence from list</span></a>",format: "numeric" }
+                            ]) %}
+{% endif %}
+{% endfor %}
+
+{% if licence.length == 0 %}
+
+{% set licence = licence | push([
+  {text: "No licences to set up"},
+  {text: ""},
+  {text: ""},
+  {text: ""},
+  {text: ""}
+]) %}
+
+{% endif %}
+
+<h2 class="govuk-heading-l">{{licence.length}} {{licence | plural("licence")}} to set up</h2> 
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-full">
+  
+  
+       {% set filtersForm %}
+  
+  
+  
+         <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
+  
+       <form  method="post" novalidate action="to-set-up/apply-filters">
+  
+  
+  
+         {{ govukRadios({
+           idPrefix: 'region',
+           name: 'region',
+           classes: "govuk-radios--small ",
+           formGroup: {
+             classes: "govuk-!-margin-bottom-3"
+           },
+           fieldset: {
+             legend: {
+               text: 'Region',
+               classes: 'govuk-fieldset__legend--s'
+             }
+           },
+           items: [
+             {
+               value: 'anglian',
+               text: 'Anglian',
+               checked:  checked("region", "anglian")
+             },
+             {
+               value: 'north west',
+               text: 'North West',
+               checked:  checked("region", "north west")
+             },
+             {
+              value: 'north east',
+              text: 'North East',
+              checked:  checked("region", "north east")
+            },
+            {
+              value: 'midlands',
+              text: 'Midlands',
+              checked:  checked("region", "midlands")
+            },
+            {
+              value: 'south west',
+              text: 'South West',
+              checked:  checked("region", "south west")
+            },
+            {
+              value: 'southern',
+              text: 'Southern',
+              checked:  checked("region", "southern")
+            },
+            {
+              value: 'thames',
+              text: 'Thames',
+              checked:  checked("region", "thames")
+            },
+            {
+              value: 'wales',
+              text: 'Wales',
+              checked:  checked("region", "wales")
+            }
+           ]
+         }) }}  
+
+
+
+         {#
+          {{ govukDateInput({
+        id: "dateFrom",
+        namePrefix: "dateFrom",
+        fieldset: {
+          legend: {
+            text: "Date from",
+            classes: 'govuk-fieldset__legend--s'
+          }
+        }
+      }) }}
+
+
+      {{ govukDateInput({
+      id: "dateTo",
+      namePrefix: "dateTo",
+      fieldset: {
+      legend: {
+        text: "Date to",
+        classes: 'govuk-fieldset__legend--s'
+      }
+      }
+      }) }}
+
+      #}
+
+         <div class="govuk-button-group">
+             {{ govukButton({
+           text: "Apply filters"
+         }) }}
+  
+  
+         {{ govukButton({
+             text: "Clear filters",
+             classes: "govuk-button--secondary",
+             name: "clearFilters",
+             value: "true"
+           }) }}
+  
+           </div>
+  
+  
+  
+       </form>
+  
+  
+       {% endset %}
+  
+  
+
+  
+       {{ govukDetails({
+         summaryText: "Filter licences to set up",
+         html: filtersForm | safe,
+         classes: "govuk-!-margin-bottom-4",
+         open: data['openDetails']
+       }) }}
+
+      
+
+
+
+{{ govukTable({
+  caption: data.filterCaption,
+  captionClasses: "govuk-table__caption--s",
+  firstCellIsHeader: false,
+  head: [
+  {
+    text: "Licence"
+  },
+    {
+      text: "Licence holder"
+    },
+    {
+      text: "Licence version start date"|safe
+    },
+    {
+      text: "Billed up to"|safe
+    },
+    {
+      text: "Action",
+      format: "numeric"
+    }
+  ],
+  rows: licence
+}) }}
+
+</div>
+</div>

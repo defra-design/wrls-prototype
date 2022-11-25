@@ -1,0 +1,72 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Licence set up workflow - Review" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+
+<!--header without searchbar-->
+{% include "sandbox/_includes/nav/header.html" %}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence set up workflow</span>
+      Review
+    </h1>
+  </div>
+</div>
+
+
+
+
+<nav aria-label="Licence views" role="navigation" >
+    <h2 class="contents-list__title">
+      Workflow
+</h2>
+
+        <ol class="contents-list__list">
+          <li>
+            <a class="govuk-link govuk-link--no-visited-state"  href="to-set-up">To set up ({{data['chargeInfoWorkflow'] | countObject("status","to set up")}})</a>
+
+          </li>
+          <li >
+            Review ({{data['chargeInfoWorkflow'] | countObject("status","review")}})
+          </li>
+              <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="change-request">Change request  ({{data['chargeInfoWorkflow'] | countObject("status","change request")}})</a>
+
+            </li>
+            <!--    <li>
+                <a class="govuk-link govuk-link--no-visited-state" href="suspended">Suspended ({{data['chargeInfoWorkflow'] | countObject("status","suspended")}})</a>
+
+              </li> -->
+        </ol>
+</nav>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+<section>
+
+  <!--New licences -->
+  {% include "sandbox/_includes/licenceSetupWorkflow/review-table.html" %}
+
+</section>
+
+
+
+{% endblock %}
