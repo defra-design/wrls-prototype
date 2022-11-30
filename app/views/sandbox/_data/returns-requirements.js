@@ -24,14 +24,14 @@ module.exports = {
                                                         season: "summer",
                                                         use: [{
                                                                 purpose: "Spray irrigation - direct",
-                                                                points: ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)", "At National Grid Reference SE 437 693 (RIVER SWALE - HELPERBY)"],
+                                                                points: ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)", "At National Grid Reference SE 437 693(RIVER SWALE - HELPERBY)"],
                                                                 periodStart: "0401",
                                                                 periodEnd: "1031",
                                                                 amount: "20",
                                                               },
                                                               {
                                                                 purpose: "General machine washing",
-                                                                points: ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
+                                                                points: ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)"],
                                                                 periodStart: "0401",
                                                                 periodEnd: "1031",
                                                                 amount: "20",
@@ -45,7 +45,7 @@ module.exports = {
                                                         season: "winter",
                                                         use: [{
                                                                 purpose: "Spray irrigation - storage",
-                                                                points: ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)", "At National Grid Reference SE 437 693 (RIVER SWALE - HELPERBY)"],
+                                                                points: ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)", "At National Grid Reference SE 437 693(RIVER SWALE - HELPERBY)"],
                                                                 periodStart: "1101",
                                                                 periodEnd: "0331",
                                                                 amount: "100",

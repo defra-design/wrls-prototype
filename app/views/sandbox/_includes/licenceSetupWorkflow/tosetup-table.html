@@ -122,6 +122,34 @@
 
 
 
+         {{ govukRadios({
+          idPrefix: 'type',
+          name: 'type',
+          classes: "govuk-radios--small ",
+          formGroup: {
+            classes: "govuk-!-margin-bottom-3"
+          },
+          fieldset: {
+            legend: {
+              text: 'Type',
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              value: 'returns requirements',
+              text: 'Returns requirements',
+              checked:  checked("type", "returns requirements")
+            },
+            {
+              value: 'charge information',
+              text: 'Charge information',
+              checked:  checked("type", "charge information")
+            }
+          ]
+        }) }}  
+
+
          {#
           {{ govukDateInput({
         id: "dateFrom",
@@ -183,11 +211,12 @@
       
 
 
-
+<div id="focus">
 {{ govukTable({
   caption: data.filterCaption,
   captionClasses: "govuk-table__caption--s",
   firstCellIsHeader: false,
+
   head: [
   {
     text: "Licence"
@@ -208,6 +237,6 @@
   ],
   rows: licence
 }) }}
-
+</div>
 </div>
 </div>
