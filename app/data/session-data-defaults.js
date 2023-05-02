@@ -454,6 +454,7 @@ module.exports = {
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation","General machine washing"],
         "absPeriod": ["1 April to 31 October"],
+        "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": [
@@ -585,6 +586,7 @@ module.exports = {
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation", "General machine washing"],
         "absPeriod": ["1 April to 31 October", "1 November to 31 March"],
+        "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": [
@@ -715,6 +717,7 @@ module.exports = {
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
         "absPeriod": ["1 April to 31 March"],
+        "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
         "absConditions": [
@@ -775,6 +778,7 @@ module.exports = {
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
         "absPeriod": ["1 April to 31 October"],
+        "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": [
@@ -880,6 +884,7 @@ module.exports = {
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
         "absPeriod": ["1 November to 31 March"],
+        "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": [
@@ -996,6 +1001,7 @@ module.exports = {
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
         "absPeriod": ["1 April to 31 October"],
+        "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": [
@@ -1165,6 +1171,7 @@ module.exports = {
         "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
         "purpose": ["Spray irrigation"],
         "absPeriod": ["1 November to 31 March"],
+        "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
         "absConditions": [
@@ -1309,6 +1316,7 @@ module.exports = {
         "absPeriod": ["1 April to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
+        "means": ["Unspecified pump"],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -1451,8 +1459,10 @@ module.exports = {
               "source": "Surface water",
               "purpose": ["Impounding (for any purpose excluding impounding for HEP)"],
               "absPeriod": ["1 January to 31 December"],
+             
       
               "absPoints": ["At National Grid Reference TF 675124"],
+              "means": ["Unspecified pump"],
               "absConditions": [{"type" : "compensation release flow",
                                  "purposeIndex" : ["0"],
                                  "pointsIndex" : ["0"],

@@ -31,7 +31,7 @@
             <div class="govuk-grid-column-full">
           <!-- licence condition title -->
               <h2 class="heading-large govuk-heading-m licence-condition__header">
-              Cherry tree farm - Borehole {% set alphabet = ["A","B","C","D","E","F","G"]%} {{alphabet[loop.index0]}}             </h2>
+                {{data.licences[data.ID].use[0].points | bracketedText }}          </h2>
 
           {{ govukSummaryList({
             rows: [
@@ -48,7 +48,7 @@
                   text: "Means of abstraction"
                 },
                 value: {
-                  text: "Unspecified pump"
+                  text: data.licences[data.ID].means[0]
                 }
               }
             ]

@@ -204,6 +204,11 @@ filters.focus = function(x) {
     return e.replace(/\((.*?)\)/g, (x) => x.toLocaleUpperCase())
   }
 
+    //only characters  in brackets "| bracketedText"
+    filters.bracketedText = function(e) {
+      return e.toString().replace( /(^.*\(|\).*$)/g, '' );
+    }
+
 
   //filter for replacing commas with line breaks "| replaceComma | striptags(true) | escape | nl2br"
   //This isn't safe for production
