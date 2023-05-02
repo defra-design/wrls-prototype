@@ -476,14 +476,14 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
               },
               {
                 "purpose": "General machine washing",
-                "points": ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount": "20",
@@ -608,21 +608,21 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
               },
               {
                       "purpose": "Spray irrigation - direct",
-                      "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 345(RIVER SWALE - HELPERBY)"],
+                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 345 (RIVER SWALE - HELPERBY)"],
                       "periodStart": "1101",
                       "periodEnd": "0331",
                       "amount":"125",
                     },
               {
                 "purpose": "General machine washing",
-                "points": ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount": "20",
@@ -739,7 +739,7 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 126(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 126 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "0331",
                 "amount":"125",
@@ -800,7 +800,7 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
@@ -906,7 +906,7 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "1101",
                 "periodEnd": "0331",
                 "amount":"125",
@@ -1023,7 +1023,7 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
@@ -1042,8 +1042,8 @@ module.exports = {
                                                 "description":"River Swale - Helperby",
                                                 "frequencyCollected":"daily",
                                                 "frequency":"daily",
-                                                "purpose":["Spray irrigation - direct"],
-                                                "points":["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                                                "purpose":["Spray irrigation - direct"], 
+                                                "points":["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                                 "periodStart":"0401",
                                                 "periodEnd":"1031",
                                                 "settings":["none"],
@@ -1063,7 +1063,7 @@ module.exports = {
                                                     "frequencyCollected":"daily",
                                                     "frequency":"daily",
                                                     "purpose":["Spray irrigation - direct"],
-                                                    "points":["At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                                                    "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                                     "periodStart":"0401",
                                                     "periodEnd":"1031",
                                                     "settings":["none"],
@@ -1080,7 +1080,7 @@ module.exports = {
                                                 "description":"River Swale - Helperby",
                                                 "frequency": "daily",
                                                 "purpose":["Spray irrigation - direct"],
-                                                "points":["At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                                                "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                                 "periodStart":"0401",
                                                 "periodEnd":"1031",
                                                 "returnsPeriodStart":"20220401",
@@ -1193,7 +1193,7 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343(RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "1101",
                 "periodEnd": "0331",
                 "amount":"125",
@@ -1336,21 +1336,21 @@ module.exports = {
 
         "use": [    {
                       "purpose": "Trickle Irrigation - Storage",
-                      "points": ["At National Grid Reference SK 675 126(Cherry tree farm - BOREHOLE B)"],
+                      "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
                       "periodStart": "0401",
                       "periodEnd": "0331",
                       "amount":"51,830",
                     },
                     {
                       "purpose": "General Farming & Domestic",
-                      "points": ["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                      "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
                       "periodStart": "0401",
                       "periodEnd": "0331",
                       "amount":"2,890",
                     },
                     {
                       "purpose": "Spray irrigation - direct",
-                      "points": ["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                      "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
                       "periodStart": "0401",
                       "periodEnd": "0331",
                       "amount":"2,890",
@@ -1371,7 +1371,7 @@ module.exports = {
                                                     "frequencyCollected":"monthly",
                                                     "frequency":"monthly",
                                                     "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
-                                                    "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                                                    "points":["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
                                                     "periodStart":"0401",
                                                     "periodEnd":"0331",
                                                     "settings":["none"],
@@ -1388,7 +1388,7 @@ module.exports = {
                             "description":"Cherry tree farm - BOREHOLE A",
                             "frequency": "monthly",
                             "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
-                            "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                            "points":["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
                             "periodStart":"0401",
                             "periodEnd":"1031",
                             "returnsPeriodStart":"20210401",
@@ -1402,7 +1402,7 @@ module.exports = {
                             "description":"Cherry tree farm - BOREHOLE A",
                             "frequency": "monthly",
                             "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
-                            "points":["At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"],
+                            "points":["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
                             "periodStart":"0401",
                             "periodEnd":"1031",
                             "returnsPeriodStart":"20200401",
@@ -1480,7 +1480,7 @@ module.exports = {
       
               "use": [{
                       "purpose": "Impounding (for any purpose excluding impounding for HEP)",
-                      "points": ["At National Grid Reference TF 675 124(RIVER SWALE - HELPERBY)"],
+                      "points": ["At National Grid Reference TF 675 124 (RIVER SWALE - HELPERBY)"],
                       "periodStart": "0101",
                       "periodEnd": "1231",
                       "amount":"",
