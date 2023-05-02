@@ -162,7 +162,7 @@
     </dt>
     <dd class="govuk-summary-list__value">
       {% for i in data.licences[data.ID]['absConditions'] %}
-      {{i}}<br>
+      {{i.type|default("general condition")|capitalize | bracketsToUpperCase}}<br>
       {% endfor %}<a href="licence/conditions?ID={{data.ID}}">View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} conditions</a>
     </dd>
 

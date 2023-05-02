@@ -456,7 +456,21 @@ module.exports = {
         "absPeriod": ["1 April to 31 October"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
         "use": [{
@@ -573,7 +587,21 @@ module.exports = {
         "absPeriod": ["1 April to 31 October", "1 November to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
         "use": [{
@@ -689,7 +717,21 @@ module.exports = {
         "absPeriod": ["1 April to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
-        "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
         "use": [{
@@ -735,7 +777,21 @@ module.exports = {
         "absPeriod": ["1 April to 31 October"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
         "use": [{
@@ -826,7 +882,21 @@ module.exports = {
         "absPeriod": ["1 November to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
         "use": [{
@@ -928,7 +998,21 @@ module.exports = {
         "absPeriod": ["1 April to 31 October"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
         "use": [{
@@ -1083,7 +1167,21 @@ module.exports = {
         "absPeriod": ["1 November to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "absConditions": ["Eel screening condition", "Chemical cessation condition", "Hands off flow condition"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
 
         "use": [{
@@ -1211,7 +1309,21 @@ module.exports = {
         "absPeriod": ["1 April to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
-        "absConditions": ["Aggregate condition purpose to purpose within a licence"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
         "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
 
         "use": [    {
@@ -1341,7 +1453,19 @@ module.exports = {
               "absPeriod": ["1 January to 31 December"],
       
               "absPoints": ["At National Grid Reference TF 675124"],
-              "absConditions": ["Compensation realease flow"],
+              "absConditions": [{"type" : "compensation release flow",
+                                 "purposeIndex" : ["0"],
+                                 "pointsIndex" : ["0"],
+                                 "param1" : "",
+                                 "text" : "The Licence Holder shall make a continuous release of compensation water of not less than 12.96 megalitres per day from the Helperby reservoir to the River Swale as National Grid Reference SE 437 684."
+                                },
+                                {"type" : "general condition",
+                                 "purposeIndex" : ["0"],
+                                 "pointsIndex" : ["0"],
+                                 "param1" : "",
+                                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+                                }
+                        ],
               "absQuantities": "",
       
               "use": [{

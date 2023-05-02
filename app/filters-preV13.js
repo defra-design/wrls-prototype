@@ -199,6 +199,12 @@ filters.focus = function(x) {
     return e.charAt(0).toUpperCase() + e.slice(1)
   }
 
+  //capitalise the characters in brackets "| bracketsToUpperCase"
+  filters.bracketsToUpperCase = function(e) {
+    return e.replace(/\((.*?)\)/g, (x) => x.toLocaleUpperCase())
+  }
+
+
   //filter for replacing commas with line breaks "| replaceComma | striptags(true) | escape | nl2br"
   //This isn't safe for production
   filters.replaceComma = function(e) {
@@ -233,6 +239,8 @@ filters.focus = function(x) {
   filters.removeNull = function(e) {
     return e.replace(/null/g, '')
   }
+
+
 
 
   //set colours for status "| statusColour"

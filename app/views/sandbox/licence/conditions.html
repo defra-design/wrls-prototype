@@ -138,11 +138,15 @@
           {% endfor %}
           {% endfor %}
 
+
+          {% for i in data.licences[data.ID].absConditions%}
           <div class="govuk-grid-row govuk-!-margin-bottom-9">
             <div class="govuk-grid-column-full">
           <!-- licence condition title -->
+
+          
               <h2 class="heading-large govuk-heading-m licence-condition__header">
-                Aggregate condition purpose to purpose within a licence
+                {{i.type |default("general condition")|capitalize | bracketsToUpperCase}}
               </h2>
 
           {{ govukSummaryList({
@@ -152,7 +156,7 @@
                   text: "Abstraction point"
                 },
                 value: {
-                  text: "At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"
+                  text: data.licences[data.ID].absPoints[i.pointsIndex]
                 }
               },
               {
@@ -160,23 +164,31 @@
                   text: "Purpose"
                 },
                 value: {
-                  text: "General Farming & Domestic"
+                  text: data.licences[data.ID].purpose[i.purposeIndex]
                 }
               },
               {
                 key: {
-                  text: "Aggregate quantity"
+                  text: "Monitoring station"
                 },
                 value: {
-                  text: "2,890 m3/yr, 6 m3/day,  4 m3/hr"
+                  text: i.param1
                 }
-              },
+              } if i.param1.length,
+              {
+                key: {
+                  text: "Threshold"
+                },
+                value: {
+                  text: i.param2
+                }
+              } if i.param2.length,
               {
                 key: {
                   text: "Other information"
                 },
                 value: {
-                  text: "Link between spray irrigation and general agriculture purposes for borehole A"
+                  text: i.text
                 }
               }
             ]
@@ -184,56 +196,9 @@
 
           </div>
           </div>
+          {% endfor %}
 
-          <div class="govuk-grid-row govuk-!-margin-bottom-9">
-            <div class="govuk-grid-column-full">
-          <!-- licence condition title -->
-              <h2 class="heading-large govuk-heading-m licence-condition__header">
-                Aggregate condition purpose to purpose within a licence
-              </h2>
-
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Abstraction point"
-                },
-                value: {
-                  text: "At National Grid Reference SK 675 124(Cherry tree farm - BOREHOLE A)"
-                }
-              },
-              {
-                key: {
-                  text: "Purpose"
-                },
-                value: {
-                  text: "Spray Irrigation - Direct"
-                }
-              },
-              {
-                key: {
-                  text: "Aggregate quantity"
-                },
-                value: {
-                  text: "2,890 m3/yr, 6 m3/day,  4 m3/hr"
-                }
-              },
-              {
-                key: {
-                  text: "Other information"
-                },
-                value: {
-                  text: "	Link between spray irrigation and general agriculture purposes for borehole A"
-                }
-              }
-            ]
-          }) }}
-
-          </div>
-          </div>
-
-          <div class="govuk-grid-row govuk-!-margin-bottom-9">
-            <div class="govuk-grid-column-full">
+         
   <!-- licence condition title -->
 
         {% if "Hands off flow condition" in data.licences[data.ID].absConditions %}
