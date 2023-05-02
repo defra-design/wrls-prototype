@@ -1322,7 +1322,47 @@ module.exports = {
           //newLicence
         ],
 
-      }
+      },
+            //licence 9 //impoundment
+            {
+              "number": "11/22/32/03",
+              "name": "",
+              "holder": "Bottled Water Plc",
+              "startDate": "1 April 2000",
+              "endDate": "",
+              "expired": "false",
+      
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+      
+              "source": "Surface water",
+              "purpose": ["Impounding (for any purpose excluding impounding for HEP)"],
+              "absPeriod": ["1 January to 31 December"],
+      
+              "absPoints": ["At National Grid Reference TF 675124"],
+              "absConditions": ["Compensation realease flow"],
+              "absQuantities": "",
+      
+              "use": [{
+                      "purpose": "Impounding (for any purpose excluding impounding for HEP)",
+                      "points": ["At National Grid Reference TF 675 124(RIVER SWALE - HELPERBY)"],
+                      "periodStart": "0101",
+                      "periodEnd": "1231",
+                      "amount":"",
+                    }],
+      
+              "returnsRequirements":  [],
+      
+              "returns": [],
+      
+              "chargeInformation": [],
+      
+              "agreements": [],
+      
+              "communications": [],
+      
+            }
     ],
 
     //Billinga account ID

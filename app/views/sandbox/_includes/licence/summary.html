@@ -1,5 +1,6 @@
 <dl class="govuk-summary-list">
-
+ 
+  {% if data.licences[data.ID].name.length %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Licence name
@@ -10,7 +11,7 @@
     </dd>
 
   </div>
-
+ {% endif %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Licence holder
@@ -26,7 +27,7 @@
      {% endif %}
      {% endfor %}
 
-      <br><a class="govuk-link" href="customer?customerID={{loopNumber}}">Go to customer profile</a>
+      <br><a class="govuk-link" href="customer?customerID={{loopNumber}}">View contact details</a>
     </dd>
 
   </div>
@@ -41,6 +42,7 @@
 
   </div>
 
+  {% if data.licences[data.ID].endDate.length %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       End date
@@ -50,6 +52,7 @@
     </dd>
 
   </div>
+  {% endif %}
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -66,36 +69,41 @@
       Purpose
     </dt>
     <dd class="govuk-summary-list__value">
+      {% set purpose %}
       {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+      {% endset %}
+      {{purpose|safe}}
     </dd>
 
   </div>
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Period of abstraction
+      Period of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %}
     </dt>
     <dd class="govuk-summary-list__value">
       {% for i in data.licences[data.ID]['absPeriod'] %}
       {{i}}<br>
       {% endfor %}
-      <a href="licence/abstraction-details">View details of your purpose, period and amounts</a>
+      {% if 'Impounding' not in purpose %}<a href="licence/abstraction-details">View details of your purpose, period and amounts</a>{% endif %}
     </dd>
 
   </div>
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Points of abstraction
+      Points of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %}
     </dt>
     <dd class="govuk-summary-list__value">
       {% for i in data.licences[data.ID]['absPoints'] %}
       {{i}}<br>
       {% endfor %}
-      <a href="licence/points">View details of abstraction points</a>
+      <a href="licence/points">View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} points</a>
     </dd>
 
   </div>
+
+
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -146,26 +154,61 @@
 
   </div>
 
-  <div class="govuk-summary-list__row">
+
+
+  <div class="govuk-summary-list__row   {% if data.licences[data.ID]['absQuantities'].length %}{% else %}govuk-summary-list__row--last{% endif %}">
     <dt class="govuk-summary-list__key">
-      Abstraction conditions
+      {% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} conditions
     </dt>
     <dd class="govuk-summary-list__value">
       {% for i in data.licences[data.ID]['absConditions'] %}
       {{i}}<br>
-      {% endfor %}<a href="licence/conditions?ID={{data.ID}}">View details of abstraction conditions</a>
+      {% endfor %}<a href="licence/conditions?ID={{data.ID}}">View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} conditions</a>
     </dd>
 
   </div>
 
+  {% if data.licences[data.ID]['absQuantities'].length %}
   <div class="govuk-summary-list__row govuk-summary-list__row--last">
     <dt class="govuk-summary-list__key">
-      Abstraction amounts
+      {% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} amounts
     </dt>
     <dd class="govuk-summary-list__value">
       {{data.licences[data.ID]['absQuantities'] | replaceTilde | striptags(true) | escape | nl2br}}
     </dd>
 
   </div>
+  {% endif %}
 
 </dl>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+{{ govukInsetText({
+  text: "The information included in this service does not replace or affect the legal (paper) copy of the licence issued to you. The information must be used for reference only. You must refer to and comply with the licence issued to you as a paper copy when you make decisions about abstracting or impounding water."
+}) }}
+
+{{ govukDetails({
+  summaryText: "Is your licence information correct?",
+  html: '
+    <p>
+      To help us improve our new service, please let us know if you find
+      any errors in the licence information we are showing you. You can
+      contact us by:
+    </p>
+    <p>
+   Email: <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a>
+  </p>
+  <p>
+    Telephone: <a href="tel:03708506506">03708 506 506</a>
+  </p>
+  <p>
+    Telephone from outside the UK: <a href="tel:+441142825312">+44 114 282 5312</a>
+  </p>
+  <p>
+    You can call us from 8am to 6pm, Monday to Friday.
+  </p>'
+}) }}
+</div>
+</div>
