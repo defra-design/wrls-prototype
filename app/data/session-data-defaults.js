@@ -1462,7 +1462,7 @@ module.exports = {
              
       
               "absPoints": ["At National Grid Reference TF 675124"],
-              "means": ["Unspecified pump"],
+              "means": ["Fixed weir"],
               "absConditions": [{"type" : "compensation release flow",
                                  "purposeIndex" : ["0"],
                                  "pointsIndex" : ["0"],

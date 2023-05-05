@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "@govuk-prototype-kit/step-by-step": "^2.1.0",
-    "govuk-frontend": "^4.5.0",
-    "govuk-prototype-kit": "^13.3.0",
+    "govuk-frontend": "4.6.0",
+    "govuk-prototype-kit": "^13.6.2",
     "jquery": "^3.6.3",
     "notifications-node-client": "^7.0.0"
   }
