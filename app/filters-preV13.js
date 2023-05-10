@@ -52,6 +52,8 @@ filters.listFormat = function(x) {
 
 
 
+
+
   //get today's date change any string in to today's date {{ "foo" | today }}
   filters.today = function(x) {
     let date = new Date();

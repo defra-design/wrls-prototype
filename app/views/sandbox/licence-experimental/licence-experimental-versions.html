@@ -1,0 +1,27 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = [data.licences[data.ID].name] + " Licence summary" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+{% set purpose %}
+      {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+      {% endset %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "sandbox/_includes/licence/licence-versions-experimental.html" %}
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+
+
+
+
+{# First row is current data #}
+
+{% set rows = []%}
+
+{% set status %}
+{{govukTag({
+text: "Current",
+classes: "govuk-tag--green"
+})}}
+{% endset %}
+
+{% set rows = rows | push ([{text: data.licences[data.ID].startDate},{text: data.licences[data.ID].endDate},{text: data.licences[data.ID].changeLog[0].reasonCreated | capitalize},{text: status|safe},{html: '<a href="../licence?ID='+data.ID+'">'+"View summary"+'</a>'}]) %}
+
+
+
+{# Next rows are from looping through previous versions #}
+
+{% set versions = data.licences[data.ID]['previousVersions'] %}
+
+
+{% for version in versions %}
+
+
+{% set status %}
+{{govukTag({
+text: "Replaced",
+classes: "govuk-tag--grey"
+})}}
+{% endset %}
+
+{% set rows = rows | push ([{text: version.startDate},{text: version.endDate},{text: version.reasonCreated| capitalize},{text: status|safe},{html: '<a href="licence-experimental-prev-version?ID='+data.ID+'&versionIndex='+loop.index0+'">'+"View summary"+'</a>'}]) %}
+
+{% endfor %}
+
+{% set purpose %}
+      {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+      {% endset %}
+
+{% if data.licences[data.ID].name.length %}
+{% set caption %}<h1 class="govuk-heading-l">
+  <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}</span>
+  Versions
+</h1> {% endset %}
+{% else %}
+{% set caption %}<h1 class="govuk-heading-l">
+  <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
+  Versions
+</h1>{% endset %}
+{% endif %}
+
+{{ govukTable({
+caption: caption |safe,
+captionClasses: "govuk-table__caption--l",
+firstCellIsHeader: false,
+head: [
+  {
+    text: "Start date",
+
+    classes: 'govuk-!-width-one-quarter'
+  }
+  ,
+  {
+    text: "End date"
+  }
+  ,
+  {
+    text: "Reason"
+  }
+  ,
+  {
+    text: "Status"
+  }
+  ,
+  {
+    text: "Action"
+  }
+],
+rows: rows
+
+}) }}

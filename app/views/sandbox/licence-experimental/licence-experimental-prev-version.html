@@ -123,8 +123,13 @@
     <h2 class="govuk-heading-l">
       Summary
     </h2>
+    
 
-    <p class="govuk-body">View current information about this licence
+    {{ govukInsetText({
+      html: "This licence was varied on the " + data.licences[data.ID].changeLog[data.versionIndex].changedDate + "<br>" + data.licences[data.ID].changeLog[data.versionIndex].reasonText |safe
+    }) }}
+    
+    <p class="govuk-body">View the information for this licence effective from {{data.licences[data.ID].previousVersions[data.versionIndex].effectiveDate}} until {{data.licences[data.ID].previousVersions[data.versionIndex].endDate}}
     {% if data.licences[data.ID].previousVersions.length %}
     <br>
     <a class="govuk-link--no-visited-state" href="licence-experimental/licence-experimental-versions">
@@ -136,7 +141,7 @@
     {% endif %}
 
     <!--Licence summary -->
-    {% include "sandbox/_includes/licence/summary.html" %}
+    {% include "sandbox/_includes/licence/summary-versions-experimental.html" %}
 
   </section>
 

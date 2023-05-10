@@ -489,6 +489,11 @@ module.exports = {
                 "amount": "20",
               }],
 
+               //Previous versions of the licence data
+               "previousVersions": [
+                { }
+              ],
+
         "returnsRequirements":  [],
 
         "returns": [],
@@ -628,6 +633,11 @@ module.exports = {
                 "amount": "20",
               }],
 
+               //Previous versions of the licence data
+               "previousVersions": [
+                { }
+              ],
+
         "returnsRequirements":  [],
 
         "returns": [],
@@ -745,6 +755,11 @@ module.exports = {
                 "amount":"125",
               }],
 
+               //Previous versions of the licence data
+               "previousVersions": [
+                { }
+              ],
+
         "returnsRequirements":  [],
 
         "returns": [],
@@ -805,6 +820,11 @@ module.exports = {
                 "periodEnd": "1031",
                 "amount":"125",
               }],
+
+               //Previous versions of the licence data
+               "previousVersions": [
+                { }
+              ],
 
         "returnsRequirements":  [],
 
@@ -911,6 +931,11 @@ module.exports = {
                 "periodEnd": "0331",
                 "amount":"125",
               }],
+
+               //Previous versions of the licence data
+               "previousVersions": [
+                { }
+              ],
 
         "returnsRequirements":  [],
 
@@ -1028,6 +1053,11 @@ module.exports = {
                 "periodEnd": "1031",
                 "amount":"125",
               }],
+
+               //Previous versions of the licence data
+               "previousVersions": [
+                { }
+              ],
 
         "returnsRequirements":  [{
                                 "startDate":"20180401",
@@ -1199,6 +1229,11 @@ module.exports = {
                 "amount":"125",
               }],
 
+              //Previous versions of the licence data
+              "previousVersions": [
+                { }
+              ],
+
         "returnsRequirements":  [],
 
         "returns": [],
@@ -1303,7 +1338,8 @@ module.exports = {
         "number": "03/28/61/033",
         "name": "Cherry Tree Farm",
         "holder": "Big Smith Farms Ltd",
-        "startDate": "1 August 2019",
+        "startDate": "1 Aprilt 2017",
+        "effectiveDate": "1 August 2019",
         "endDate": "31 March 2034",
         "expired": "false",
 
@@ -1357,6 +1393,92 @@ module.exports = {
                     },
             ],
 
+            "changeLog": [{
+              "type": "Licence version",
+              "reasonCreated": "minor variation",
+              "reasonText":  "Minor variation reduction of abstraction volume on SK 675124 and SK 675126",
+              "changedDate": "31 July 2019",
+              "changedBy": "admin@gov.uk",
+            },{
+              "type": "Licence version",
+              "reasonCreated": "new Licence",
+              "reasonText":  "",
+              "changeDate": "1 April 2017",
+              "changedBy": "admin@gov.uk",
+            }],
+
+            "previousVersions": [
+                { 
+                  
+                  //Changed
+                  "changed": true,
+                  "reasonCreated": "New Licence",
+                  "reasonText":  "",
+                  "changedDate": "31 July 2019",
+                  "changedBy": "admin@gov.uk",
+
+                  "number": "03/28/61/033",
+                  "name": "Cherry Tree Farm",
+                  "holder": "Big Smith Farms Ltd",
+                  "startDate": "1 April 2017",
+                  "effectiveDate": "1 April 2017",
+                  "endDate": "31 July 2019",
+                  "expired": "false",
+          
+                  //licence Settings
+                  "multipleUpload": "no",
+                  "confidentiality": "public",
+          
+                  "source": "Underground strata comprising of chalk at An-area, A-town.",
+                  "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
+                  "absPeriod": ["1 April to 31 March"],
+          
+                  "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
+                  "means": ["Unspecified pump"],
+                  "absConditions": [
+                    {"type" : "general condition",
+                     "purposeIndex" : ["0"],
+                     "pointsIndex" : ["0"],
+                     "param1" : "",
+                     "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+                   },
+                   {"type" : "hands off flow condition (HOF)",
+                     "purposeIndex" : ["0"],
+                     "pointsIndex" : ["0"],
+                     "param1" : "Bourton Dickler",
+                     "param2" : "180Ml/d",
+                     "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+                   }
+                 ],
+                  "absQuantities": "Borehole A~5 cubic metres per hour~10 cubic metres per day~3,250 cubic metres per year~~Borehole B~30 cubic metres per hour~280 cubic metres per day~72,830 cubic metres per year",
+          
+                  "use": [    {
+                                "purpose": "Trickle Irrigation - Storage",
+                                "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
+                                "periodStart": "0401",
+                                "periodEnd": "0331",
+                                "amount":"51,830",
+                              },
+                              {
+                                "purpose": "General Farming & Domestic",
+                                "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                                "periodStart": "0401",
+                                "periodEnd": "0331",
+                                "amount":"2,890",
+                              },
+                              {
+                                "purpose": "Spray irrigation - direct",
+                                "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                                "periodStart": "0401",
+                                "periodEnd": "0331",
+                                "amount":"2,890",
+                              },
+                      ],
+              }
+            ],
+            
+
+            //return requirements
             "returnsRequirements":  [{
                                     "startDate":"20190401",
                                     "endDate":"",
@@ -1485,6 +1607,8 @@ module.exports = {
                       "periodEnd": "1231",
                       "amount":"",
                     }],
+
+              "previousVersions": [],
       
               "returnsRequirements":  [],
       
