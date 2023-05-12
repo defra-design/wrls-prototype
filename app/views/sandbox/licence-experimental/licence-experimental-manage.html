@@ -109,11 +109,12 @@
       </a>
     </li>
     
+    <!--
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#charge">
         Licence set up
       </a>
-    </li>
+    </li>-->
     {% endif %}
   </ul>
 
@@ -121,19 +122,28 @@
   <section class="govuk-tabs__panel" id="summary">
 
     <h2 class="govuk-heading-l">
-      Summary
+      Summary<p class="govuk-body"><a class="govuk-link" href="licence-management/licence">Manage this licence</a></p>
     </h2>
+  <!-- Not sure about link or button yet
+    <p class="govuk-body">
+      <a class="govuk-link--no-visited-state" href="licence-management/licence">
+        Licence management
+      </a><br>Manage data for this licence
+      </p>
+    -->
 
-    <p class="govuk-body">Viewing current information about this licence
-    {% if data.previousVersionsConcept.length %}
-    <br>
-    <a class="govuk-link--no-visited-state" href="licence-experimental/licence-experimental-versions">
-      View other versions of this licence
-    </a>
-    </p>
-    {% else %}
-  </p>
-    {% endif %}
+    {#
+      {{ govukButton({
+        text: "Licence management",
+        href: "licence-management/licence",
+        classes: "govuk-button--secondary govuk-!-margin-right-3"
+      }) }}
+        #}
+    <p class="govuk-body">Viewing current information about this licence</p>
+   
+    
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+ 
 
     <!--Licence summary -->
     {% include "sandbox/_includes/licence/summary.html" %}

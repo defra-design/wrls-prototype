@@ -1,0 +1,132 @@
+
+
+{# Get the returns versions for this licence
+{% set licenceNumber = data.licences[data.ID].number %} #}
+
+{% set returnRequirements = data.licences[data.ID]['returnsRequirements'] %}
+
+
+{% set returnVersions = "" %}
+{% for i in returnRequirements %}
+{% if licenceNumber == i.licence %}
+{% set returnVersions = i.versions %}
+{% endif %}
+{% endfor %}
+
+{% if data['returnsRouteVersion'] == 3 %}
+{% set URL = "licence/returns-current/set-up/reason" %}
+{% else %}
+{% set URL = "licence/returns/set-up/reason" %}
+{% endif %}
+
+
+{% set tabTitle %}
+<h2 class="govuk-heading-l">Returns requirements</h2>
+{{ govukButton({
+  text: "Set up new returns requirement",
+  href: URL,
+  classes: "govuk-button--secondary govuk-!-margin-right-3"
+}) }}
+
+<!-- show button if licence isn't already marked as exempt from returns-->
+{% if not data.licences[data.ID].returnsRequirements.length %}
+{{ govukButton({
+  text: "No returns required",
+  classes: "govuk-button--secondary govuk-!-margin-right-3",
+  href: "licence/returns-current/set-up/reason-not-required"
+}) }}
+{% elseif data.licences[data.ID].returnsRequirements[0].requirements.length %}
+{{ govukButton({
+  text: "No returns required",
+  classes: "govuk-button--secondary govuk-!-margin-right-3",
+  href: "licence/returns-current/set-up/reason-not-required"
+}) }}
+{% endif %}
+
+<p class="govuk-body">View information about the returns that are required on a licence.</p>
+
+<hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+{% endset %}
+
+
+
+
+
+<!--check to see if there is any returns versions set up-->
+{% if returnRequirements.length  %}
+<!--if so display the table-->
+
+      <table class="govuk-table govuk-!-margin-bottom-4">
+         <caption class="govuk-table__caption govuk-table__caption--l govuk-!-margin-bottom-5">{{tabTitle | safe}}</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Start date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">End date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Reason</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Status</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Action</th>
+        </thead>
+
+
+        <tbody class="govuk-table__body">
+
+
+
+
+
+          <!--setting the return version numbers for the individual urls-->
+          {% set returnVersionsNumber = "" %}
+          {% set numberOfRetunrVersions = returnVersions.length %}
+          
+          
+          <!--creating rows-->
+          {% for i in returnRequirements %}
+
+          <!--set last row to remove the bottom border-->
+          {% if loop.last ==  true%}
+          {% set lastRow = "govuk-table__cell--no-border" %}
+
+          {% endif %}
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell {{lastRow}}">{{i.startDate | numberToGovukDate}}</td>
+            <td class="govuk-table__cell {{lastRow}}">{{i.endDate | numberToGovukDate}}</td>
+            <td class="govuk-table__cell {{lastRow}}">{% if not data.licences[data.ID].returnsRequirements[loop.index0].requirements.length %} No returns required {% endif %}{{i.reason | capitalize}}</td>
+            <td class="govuk-table__cell {{lastRow}}">
+
+              {% set status = [i.status] %}
+              {{govukTag({
+              text: status | chargeStatusText | safe,
+              classes: status | chargeStatusColour
+            })}}
+            </td>
+            <td class="govuk-table__cell {{lastRow}}">
+              {% if [status] == "review" %}
+              {% set link = '/sandbox/licence/returns-current/review-returns-requirements?returnReview=1&returnVersion=1&returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">Review<span class="screen-reader-only">returns requirements</span></a>
+              {% else %}
+              {% set link = '/sandbox/licence/returns-current/requirements?returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">View <span class="screen-reader-only">returns requirements</span></a>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+      {% else %}
+      <!--if not display the message-->
+
+      {{tabTitle | safe}}
+
+      <p class="govuk-body govuk-!-margin-bottom-4">
+              No returns requirements have been set up for this licence.
+              </p>
+
+      {% endif %}
+
+     

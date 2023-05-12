@@ -1,0 +1,117 @@
+{% set free = [data.chargeVersions[0].free] %}
+{% set status = [data.chargeVersions[0].chargeStatus] %}
+{% if (free == "true") and (status == "CHARGEABLE") %}
+{{ govukInsetText({
+       html: 'This licence is non-chargeable. ' + [data.reason] + '.'
+      }) }}
+{% endif %}
+
+{% set tabTitle %}
+<h2 class="govuk-heading-l">Charge information</h2>
+
+
+{{ govukButton({
+  text: "Set up new charge information",
+  href: "/bd/charges-2020/add-new-reason",
+  classes: "govuk-button--secondary govuk-!-margin-right-3"
+}) }}
+
+<!-- show button if licence isn't already marked as exempt from charge-->
+{% set free = [data.chargeVersions[0]['free']]%}
+{% if free == "true" %}
+{% else %}
+{{ govukButton({
+  text: "Make licence non-chargeable",
+  classes: "govuk-button--secondary govuk-!-margin-right-3",
+  href: "/bd/charges-2020/add-reason"
+}) }}
+{% endif %}
+
+<p class="govuk-body">View information used to set charges on this licence.</p>
+
+<hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+{% endset %}
+
+{% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+<!--check to see if there is any charge information set up-->
+{% if chargeVersions.length  %}
+<!--if so display the table-->
+
+      <table class="govuk-table govuk-!-margin-bottom-4">
+         <caption class="govuk-table__caption govuk-table__caption--l govuk-!-margin-bottom-5">{{tabTitle |safe}}</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Start date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">End date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Reason</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Status</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Action</th </tr>
+        </thead>
+
+
+        <tbody class="govuk-table__body">
+
+
+
+
+
+          <!--setting the charge version numbers for the individual urls-->
+          {% set chargeVersionsNumber = "" %}
+          {% set numberOfChargeVersions = chargeVersions.length %}
+
+          <!--creating rows-->
+          {% for i in chargeVersions %}
+
+          <!--set last row to remove the bottom border-->
+          {% if loop.index ==  numberOfChargeVersions %}
+          {% set lastRow = "govuk-table__cell--no-border" %}
+          {% endif %}
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell {{lastRow}}">{{[i.chargeStart]}}</td>
+            <td class="govuk-table__cell {{lastRow}}">{{[i.chargeEnd]}}</td>
+            <td class="govuk-table__cell {{lastRow}}">{{[i.reasonNewCharge]}}</td>
+            <td class="govuk-table__cell {{lastRow}}">
+
+              {% set status = [i.chargeStatus] %}
+              {{govukTag({
+              text: status | chargeStatusText | safe,
+              classes: status | chargeStatusColour
+            })}}
+            </td>
+            <td class="govuk-table__cell {{lastRow}}">
+              {% if [i.chargeStatus] == "DRAFT" %}
+              <a href="/bd/charges-2020/charge-version/charge-data-check">Continue<span class="screen-reader-only">setting up charge information</span></a>
+              <span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span>
+              <a href="/bd/charges-2020/charge-version/confirm-remove-charge-information">Remove <span class="screen-reader-only">charge information</span></a>
+              {% elif [i.chargeStatus] == "NOT APPROVED" %}
+              {% set link = 'licence/charge-information?chargeInfoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">Review <span class="screen-reader-only">charge information</span></a>
+              {% elif [i.chargeStatus] == "CHANGES" %}
+              {% set link = 'licence/charge-information?chargeInfoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">Review <span class="screen-reader-only">charge information</span></a>
+              {% else %}
+              {% set link = 'licence/charge-information?chargeInfoNumber=' + loop.index0 + "&ID=" + data['ID'] %}
+              <a href="{{link}}">View <span class="screen-reader-only">charge information</span></a>
+              {% endif %}
+            </td>
+          </tr>
+
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+      {% else %}
+      <!--if not display the message-->
+
+      {{tabTitle |safe}}
+
+      <p class="govuk-body">No charge information has been set up for this licence.</p>
+
+      {% endif %}
+
+
+
+

@@ -1,0 +1,77 @@
+{% set caption %}
+<h2 class="govuk-heading-l">
+  History
+</h2>
+
+<p class="govuk-body">Viewing information about the changes made to this licence</p>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+{% endset %}
+
+{{ govukTable({
+  caption: caption |safe,
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Date"
+    },
+    {
+      text: "Type"
+    },
+    {
+      text: "Reason"
+    },
+    {
+      text: "By"
+    }
+  ],
+  rows: [
+  [
+  {
+    text: "1 April 2017"
+  },
+  {
+    text: "Charge information created"
+  },
+  {
+    text: "New Licence"
+  },
+  {
+    text: "someoneelse@ea.gov.uk"
+  }
+  ],
+  [
+  {
+    text: "1 April 2017"
+  },
+  {
+    text: "Returns requirements created"
+  },
+  {
+    text: "New Licence"
+  },
+  {
+    text: "someoneelse@ea.gov.uk"
+  }
+  ],
+  [
+  {
+    text: "1 April 2017",
+    classes: "govuk-table__cell--no-border"
+  },
+  {
+    text: "Abstraction data created",
+    classes: "govuk-table__cell--no-border"
+  },
+  {
+    text: "New Licence",
+    classes: "govuk-table__cell--no-border"
+  },
+  {
+    text: "someone@ea.gov.uk",
+    classes: "govuk-table__cell--no-border"
+  }
+  ]
+  ]
+}) }}

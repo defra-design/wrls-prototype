@@ -1338,7 +1338,7 @@ module.exports = {
         "number": "03/28/61/033",
         "name": "Cherry Tree Farm",
         "holder": "Big Smith Farms Ltd",
-        "startDate": "1 Aprilt 2017",
+        "startDate": "1 April 2017",
         "effectiveDate": "1 August 2019",
         "endDate": "31 March 2034",
         "expired": "false",
