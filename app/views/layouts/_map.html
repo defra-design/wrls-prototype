@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+
+
+{% block header %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="true"
+
+
+{% endblock %}
+
+{% set mainClasses = "defra-map-key__container" %}
+
+
+
+{% block footer %}
+{% block scripts %}
+  {{ super() }}
+  <script src="/public/javascripts/map/bundle.js"></script>
+{% endblock %}
+{% endblock %}

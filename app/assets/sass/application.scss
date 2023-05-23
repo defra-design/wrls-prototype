@@ -63,3 +63,13 @@
 
 //old proto custom styles
 @import "archive/previous-proto/sass/application";
+
+
+
+// Tools that aren't in Frontend
+@import "tools/mixins";
+//map styles
+@import "map/map";
+
+
+.map { position:absolute; top:0; bottom:0; width:100%; }
