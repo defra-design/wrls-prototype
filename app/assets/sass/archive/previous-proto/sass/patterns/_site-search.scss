@@ -12,6 +12,7 @@
 
 $icon-size: 40px;
 
+/*
 @include govuk-not-ie8 {
   .app-site-search {
     position: relative;
@@ -225,9 +226,12 @@ $icon-size: 40px;
     margin-left: govuk-spacing(1);
   }
 }
+*/
 
 // on IE8 we show the sitemap link as Accessible autocomplete
 // does not support it
+
+/*
 @include govuk-if-ie8 {
   .app-site-search {
     width: 300px;
@@ -247,3 +251,6 @@ $icon-size: 40px;
     }
   }
 }
+*/
+
+

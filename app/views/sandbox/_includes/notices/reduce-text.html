@@ -17,7 +17,7 @@
 <h3 class="govuk-heading-m">Your hands-off flow licence condition</h3>
 
 <ul class="govuk-list">
- <li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'] %} {% if licenceList[data.licenceListIndex].length %}{{licenceList[data.licenceListIndex]}} {% else %} {{[data.licences[data.ID].number]}} {% endif %} </li>
+<li><span class="govuk-!-font-weight-bold">Licence number:</span> {% set licenceList = data['licenceList'] %} {% if licenceList[data.licenceListIndex].length %}{{licenceList[data.licenceListIndex]}} {% else %} {{[data.licences[data.ID].number]}} {% endif %} </li>
   <li><span class="govuk-!-font-weight-bold">Watercourse:</span> {{data.stations[data.stationID]['catchmentName']}}</li>
   <li><span class="govuk-!-font-weight-bold">Gauging station:</span> {{data.stations[data.stationID]['label']}}</li>
   <li><span class="govuk-!-font-weight-bold">Hands off flow threshold:</span> {% if licenceList[data.licenceListIndex].length %}{{data.waterAbstractionAlert[data.licenceListIndex].tagValues[0].thresholdValue}} {% else %} {% set tags = data.stations[data.stationID]['tags'] %} {% for i in tags %}   {% if data.licences[data.ID].number == i.licenceNumber %} {{i.tagValues[0].thresholdValue}}  {% endif %} {% endfor %} {% endif %} megalitres per day</li>
