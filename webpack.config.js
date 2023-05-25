@@ -7,9 +7,6 @@ dotenv.config({ path: './.env' })
 const nodeEnv = process.env.NODE_ENV
 
 
-
-console.log(nodeEnv)
-
 module.exports = {
   mode: nodeEnv === 'development' ? 'development' : 'production',
 //  devtool: !inDev ? false : 'source-map',
