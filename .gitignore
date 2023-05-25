@@ -10,7 +10,6 @@ lib/extensions/_extensions.scss
 .start.pid
 .port.tmp
 public
-app/assets/javascripts/map/bundle.js
 node_modules/
 .tmuxp.*
 .idea
