@@ -1,14 +1,13 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
-const dotenv = require('dotenv')
 
 
 
-dotenv.config({ path: './.env' })
-const nodeEnv = process.env.NODE_ENV
+const NODE_ENV = 'production'
+
 
 module.exports = {
-  mode: nodeEnv === 'development' ? 'development' : 'production',
+  mode: NODE_ENV  === 'development' ? 'development' : 'production',
   entry: './app/assets/javascripts/map/map.js',
   output: {
     path: __dirname,
@@ -17,7 +16,7 @@ module.exports = {
   plugins: [
     new Dotenv(),
     new webpack.DefinePlugin({
-      'nodeEnv': {
+      'NODE_ENV ': {
         OS_API_KEY: JSON.stringify(process.env.OS_API_KEY)
       }
     }),
