@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "npm run build:maps && govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start",
+    "start": "npm run build:maps govuk-prototype-kit start",
     "build:maps": "webpack --config webpack.config.js"
   },
   "dependencies": {

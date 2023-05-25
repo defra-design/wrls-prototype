@@ -9,13 +9,10 @@ const nodeEnv = process.env.NODE_ENV
 
 module.exports = {
   mode: nodeEnv === 'development' ? 'development' : 'production',
-//  devtool: !inDev ? false : 'source-map',
- 
-  //mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   entry: './app/assets/javascripts/map/map.js',
   output: {
     path: __dirname,
-    filename: './.tmp/public/javascripts/application.js'
+    filename: './.tmp/public/javascripts/map.js'
   },
   plugins: [
     new Dotenv(),
