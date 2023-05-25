@@ -14,7 +14,7 @@ module.exports = {
     filename: './app/assets/javascripts/map/bundle.js'
   },
   plugins: [
-    new Dotenv(),
+    new Dotenv({ systemvars: true }),
     new webpack.DefinePlugin({
       'NODE_ENV ': {
         OS_API_KEY: JSON.stringify(process.env.OS_API_KEY)
