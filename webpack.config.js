@@ -12,7 +12,7 @@ module.exports = {
   entry: './app/assets/javascripts/map/map.js',
   output: {
     path: __dirname,
-    filename: './.tmp/public/javascripts/map.js'
+    filename: './app/assets/javascripts/map/bundle.js'
   },
   plugins: [
     new Dotenv(),
