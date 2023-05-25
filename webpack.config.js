@@ -1,11 +1,11 @@
 const webpack = require('webpack');
-const path = require('path')
+const Dotenv = require('dotenv-webpack');
 const dotenv = require('dotenv')
+
 
 
 dotenv.config({ path: './.env' })
 const nodeEnv = process.env.NODE_ENV
-
 
 module.exports = {
   mode: nodeEnv === 'development' ? 'development' : 'production',
@@ -18,8 +18,9 @@ module.exports = {
     filename: './.tmp/public/javascripts/application.js'
   },
   plugins: [
+    new Dotenv(),
     new webpack.DefinePlugin({
-      'process.env': {
+      'nodeEnv': {
         OS_API_KEY: JSON.stringify(process.env.OS_API_KEY)
       }
     }),
