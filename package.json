@@ -1,19 +1,19 @@
 {
   "scripts": {
-    "dev": "npm run build && govuk-prototype-kit dev",
+    "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start",
-    "build": "webpack --config webpack.config.js"
+    "build:maps": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "@govuk-prototype-kit/step-by-step": "^2.1.0",
+    "dotenv": "^10.0.0",
     "govuk-frontend": "4.6.0",
     "govuk-prototype-kit": "^13.6.2",
     "jquery": "^3.6.3",
     "notifications-node-client": "^7.0.0",
     "ol": "^7.3.0",
     "proj4": "^2.9.0",
-    "dotenv-webpack": "^8.0.1",
     "webpack": "^5.79.0",
     "webpack-cli": "^5.0.1"
   }

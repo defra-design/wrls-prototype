@@ -27,12 +27,11 @@ useGeographic();
  
 //view extent and centre and zoom levels
 const view = new View({
-  center: [ -1.4758,
-    52.9219],
+  center: [ -1.4758, 52.9219 ],
   zoom: 16,
   minZoom: 10,
   maxZoom: 18,
-  extent: [ -5.75447, 49.93027, 1.799683, 55.84093],
+  extent: [ -5.75447, 49.93027, 1.799683, 55.84093 ],
 });
 
 
