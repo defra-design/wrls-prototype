@@ -12,7 +12,7 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
   @include mq ($from: desktop) {
-    padding-right:290px;
+   // padding-right:290px;
   }
   background-color: #A9DDEF;
   &__title {
@@ -299,7 +299,7 @@
   bottom: 0px;
   left: 0px;
   @include mq ($from: desktop) {
-    right:290px;
+   // right:290px;
   }
   pointer-events: none;
 }

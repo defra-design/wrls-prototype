@@ -1,9 +1,14 @@
 
 import Map from 'ol/Map.js';
 import {XYZ, TileArcGISRest} from 'ol/source.js';
-import {Group as LayerGroup, Tile as TileLayer} from 'ol/layer.js'
+import {Group as LayerGroup, Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js'
 import View from 'ol/View.js';
 import {defaults as defaultControls} from 'ol/control.js';
+
+import Feature from 'ol/Feature.js';
+import Point from 'ol/geom/Point.js';
+import VectorSource from 'ol/source/Vector.js';
+import {Circle, Fill, Stroke, Style} from 'ol/style.js';
 
 import TileGrid from 'ol/tilegrid/TileGrid'
 
@@ -24,15 +29,36 @@ useGeographic();
     attribution: false
   })
 
+  //centre of the map
+let mapCenter = []
  
 //view extent and centre and zoom levels
 const view = new View({
-  center: [ -1.4758, 52.9219 ],
+  center: setCenter(),
   zoom: 16,
   minZoom: 10,
   maxZoom: 18,
   extent: [ -5.75447, 49.93027, 1.799683, 55.84093 ],
 });
+
+//set center of map
+function setCenter(){
+
+  //get scenario parameter
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const center = urlParams.get('location')
+  
+  console.log(center)
+  if (center == undefined){
+    mapCenter = [ -2.0159323734242225,53.74123069144088]
+  } else {
+    mapCenter = center.split(',');
+  }
+
+  return mapCenter
+
+};
 
 
 //grab api key
@@ -56,15 +82,67 @@ name: 'base',
 });
 
 
+//the Marker
+
+// radius style
+var rStyle = new Style ({
+  image: new Circle ({
+  radius: 5,
+  fill: new Fill({
+    color: '#d4351c'
+  }),
+  stroke: new Stroke({
+    color: '#d4351c',
+    width: 1
+  }),
+})
+});
+  var marker = new Feature({
+    geometry: new Point(mapCenter),
+    type: 'test',
+    name: 'something'
+  });
+  marker.setStyle(rStyle);
+  var markerLayer = new VectorLayer({
+    title: 'point',
+    source: new VectorSource({
+      features: [marker]
+    })
+  });
+
+
+
 //the map
 const map = new Map({
-  layers: [ base],
+  layers: [ base, markerLayer],
   target: 'maphigh',
   view: view,
   controls: controls
 });
 
 
+//Zoom controls
+let element = $('#zoomIn').length;
+if (element != null) {
+  $('#zoomIn').on('click', function() {
+  map.getView().animate({
+    zoom: map.getView().getZoom() + 1,
+     duration: 200
+   });
+});
+}
+
+let element2 = $('#zoomOut').length;
+if (element2 != null) {
+  $('#zoomOut').on('click', function() {
+  map.getView().animate({
+    zoom: map.getView().getZoom() - 1,
+     duration: 200
+   });
+});
+}
+
+/*
 //Zoom controls
 $('#zoomIn').on('click', function() {
   map.getView().animate({
@@ -80,4 +158,21 @@ $('#zoomOut').on('click', function() {
   });
 });
 
+
+
+
+function zoomIn() {
+  map.getView().animate({
+    zoom: map.getView().getZoom() + 1,
+     duration: 200
+   });
+};
+
+function zoomOut() {
+  map.getView().animate({
+    zoom: map.getView().getZoom() - 1,
+     duration: 200
+   });
+};
+*/
 

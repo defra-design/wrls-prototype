@@ -167,7 +167,16 @@ router.post('/upload/upload-charge-information', function(req, res) {
 
 
 ///////----------------------------------------
+//Licence map
+
+router.get('/licence/points/map', function(req, res) {
+  res.render('sandbox/licence/points/map');
+});
+
+
+//////-----------------------------------------
 //Licence Settings
+
 
 
 //Confidentiality

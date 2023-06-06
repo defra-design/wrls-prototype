@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 
-
+{%- from "sandbox/_includes/map/key/macro.njk" import key -%}
+{%- from "sandbox/_includes/map/menuButton/macro.njk" import menuButton -%}
 
 {% block header %}
-
+<meta name="view-transition" content="same-origin" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
 <meta name="HandheldFriendly" content="true"
 
@@ -15,5 +16,17 @@
 
 
 {% block footer %}
-<script src="/public/javascripts/map/bundle.js"></script>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+<script src="/public/javascripts/map/bundle/map.js"></script>
+
+<script>
+    //Copyright toggle
+    function toggle() {
+      $("#info").toggle();
+    }   
+
+    </script>
 {% endblock %}

@@ -457,6 +457,7 @@ module.exports = {
         "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -594,6 +595,7 @@ module.exports = {
         "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -730,6 +732,7 @@ module.exports = {
         "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -796,6 +799,7 @@ module.exports = {
         "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -907,6 +911,7 @@ module.exports = {
         "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -1029,6 +1034,7 @@ module.exports = {
         "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -1204,6 +1210,7 @@ module.exports = {
         "means": ["Unspecified pump"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -1352,6 +1359,7 @@ module.exports = {
         "absPeriod": ["1 April to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK675124", "SK675126" ], 
         "means": ["Unspecified pump"],
         "absConditions": [
           {"type" : "general condition",
@@ -1584,6 +1592,7 @@ module.exports = {
              
       
               "absPoints": ["At National Grid Reference TF 675124"],
+              "gridRefs": [ 'ST 48373 69070', 'ST 48373 69070' ], 
               "means": ["Fixed weir"],
               "absConditions": [{"type" : "compensation release flow",
                                  "purposeIndex" : ["0"],

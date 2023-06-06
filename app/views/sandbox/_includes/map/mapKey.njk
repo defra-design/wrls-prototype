@@ -1,0 +1,55 @@
+
+{{ govukRadios({
+  name: "scenarios",
+  classes: "govuk-radios--small",
+  fieldset: {
+  legend: {
+  html: '<h3 class="defra-map-key__section-title">Rivers, seas and surface water</h3>',
+  isPageHeading: false,
+  classes: "govuk-fieldset__legend--s"
+  }
+},
+items: [
+{
+  id: "layer10",
+  classes: "visible",
+value: "1",
+html: '<span class="defra-map-key__symbol-container">
+  <span class="defra-map-key__symbol">
+    <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32">
+      <rect x="5" y="5" width="22" height="22" style="fill:#AAC9E4" />
+    </svg>
+  </span>
+  Most likely
+</span>',
+
+checked: true
+},
+{
+  id: "layer11",
+  classes: "visible",
+  value: "2",
+html: '<span class="defra-map-key__symbol-container">
+  <span class="defra-map-key__symbol">
+    <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32">
+      <rect x="5" y="5" width="22" height="22" style="fill:#5694ca" />
+    </svg>
+  </span>
+  Less likely
+</span>'
+},
+{
+  id: "layer12",
+  classes: "visible",
+  value: "3",
+html: '<span class="defra-map-key__symbol-container">
+  <span class="defra-map-key__symbol">
+    <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32">
+      <rect x="5" y="5" width="22" height="22" style="fill:#003078" />
+    </svg>
+  </span>
+  Least Likely
+</span>'
+}
+]
+}) }}

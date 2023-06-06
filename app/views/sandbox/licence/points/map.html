@@ -2,6 +2,15 @@
 
 {% block content %}
 
+
   <div id="maphigh" class="map"></div>
+
+
+  <div class="defra-map-controls" aria-hidden="false">
+      <!--exit map-->
+      {% include "sandbox/_includes/map/exit.html" %}
+      <!--controls on the bottom-->
+      {% include "sandbox/_includes/map/controlsBottom.html" %}
+  </div>
 
 {% endblock %}

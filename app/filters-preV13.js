@@ -1,3 +1,6 @@
+
+
+
 module.exports = function(env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -469,6 +472,50 @@ filters.focus = function(x) {
 
    }
 
+
+   //Convert NGR to easting and northing |convertNGR
+   filters.convertNGR = function (x) {
+
+  let gridRef = x
+  
+  let gridLetters = "VWXYZQRSTULMNOPFGHJKABCDE";
+  
+  let ref = gridRef.toString().replace(/\s/g, '').toUpperCase();
+  
+  let majorEasting = gridLetters.indexOf(ref[0]) % 5  * 500000 - 1000000;
+  let majorNorthing = Math.floor(gridLetters.indexOf(ref[0]) / 5) * 500000 - 500000;
+  
+  let minorEasting = gridLetters.indexOf(ref[1]) % 5  * 100000;
+  let minorNorthing = Math.floor(gridLetters.indexOf(ref[1]) / 5) * 100000;
+  
+  let i = (ref.length-2) / 2;
+  let m = Math.pow(10, 5-i);
+  
+   let easting = majorEasting + minorEasting + (ref.substr(2, i) * m);
+   let northing = majorNorthing + minorNorthing + (ref.substr(i+2, i) * m);
+  
+  return easting + "," + northing
+
+  }
+
+
+
+    /**
+     * Return latlng from an input easting + northing.
+     * @param {object} coordinates - The easting + northing to be transformed.
+     * @param {integer} decimals - [optional] The specified number of decimal places.
+     */
+    filters.toLatLng = function(coordinates, decimals = 7) {
+
+      coordinates = [ "512340", "256780" ]
+
+      var point = proj4('EPSG:27700', 'EPSG:4326', [ coordinates[0], coordinates[1] ]);
+
+      var lng = Number(point[0].toFixed(decimals));
+      var lat = Number(point[1].toFixed(decimals));
+
+      return { lat, lng };
+  }
 
 
   //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
