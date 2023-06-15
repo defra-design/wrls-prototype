@@ -500,22 +500,7 @@ filters.focus = function(x) {
 
 
 
-    /**
-     * Return latlng from an input easting + northing.
-     * @param {object} coordinates - The easting + northing to be transformed.
-     * @param {integer} decimals - [optional] The specified number of decimal places.
-     */
-    filters.toLatLng = function(coordinates, decimals = 7) {
-
-      coordinates = [ "512340", "256780" ]
-
-      var point = proj4('EPSG:27700', 'EPSG:4326', [ coordinates[0], coordinates[1] ]);
-
-      var lng = Number(point[0].toFixed(decimals));
-      var lat = Number(point[1].toFixed(decimals));
-
-      return { lat, lng };
-  }
+   
 
 
   //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}

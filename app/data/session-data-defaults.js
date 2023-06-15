@@ -594,8 +594,8 @@ module.exports = {
         "absPeriod": ["1 April to 31 October", "1 November to 31 March"],
         "means": ["Unspecified pump"],
 
-        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "gridRefs": [ "SK675124", "SK675126" ],
+        "absPoints": ["At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK 67540 12640" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -615,21 +615,21 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
               },
               {
                       "purpose": "Spray irrigation - direct",
-                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 345 (RIVER SWALE - HELPERBY)"],
+                      "points": ["At National Grid Reference SK 675126(RIVER SWALE - HELPERBY)"],
                       "periodStart": "1101",
                       "periodEnd": "0331",
                       "amount":"125",
                     },
               {
                 "purpose": "General machine washing",
-                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount": "20",
@@ -798,8 +798,8 @@ module.exports = {
         "absPeriod": ["1 April to 31 October"],
         "means": ["Unspecified pump"],
 
-        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "gridRefs": [ "SK675124", "SK675126" ],
+        "absPoints": ["At National Grid Reference SU 190683", "At National Grid Reference SU 190679", "At National Grid Reference SU 188678", "At National Grid Reference SU 187680"],
+        "gridRefs": [ "SU 19025 68308", "SU 19047 67983", "SU 18810 67869", "SU 18776 68078" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -819,7 +819,7 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SU 190683 (Marlborough)", "At National Grid Reference SU 190679 (Marlborough)", "At National Grid Reference SU 188678 (Marlborough)", "At National Grid Reference SU 187680 (Marlborough)"],
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
@@ -910,8 +910,8 @@ module.exports = {
         "absPeriod": ["1 November to 31 March"],
         "means": ["Unspecified pump"],
 
-        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
-        "gridRefs": [ "SK675124", "SK675126" ],
+        "absPoints": ["At National Grid Reference SK 674125", "At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK 67443 12554", "SK 67540 12640" ],
         "absConditions": [
           {"type" : "general condition",
            "purposeIndex" : ["0"],
@@ -931,7 +931,7 @@ module.exports = {
 
         "use": [{
                 "purpose": "Spray irrigation - direct",
-                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                "points": ["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
                 "periodStart": "1101",
                 "periodEnd": "0331",
                 "amount":"125",
@@ -1033,7 +1033,7 @@ module.exports = {
         "absPeriod": ["1 April to 31 October"],
         "means": ["Unspecified pump"],
 
-        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
         "gridRefs": [ "SK675124", "SK675126" ],
         "absConditions": [
           {"type" : "general condition",
@@ -1358,8 +1358,8 @@ module.exports = {
         "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
         "absPeriod": ["1 April to 31 March"],
 
-        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
-        "gridRefs": [ "SK675124", "SK675126" ], 
+        "absPoints": ["At National Grid Reference SK 675124"],
+        "gridRefs": [ "SK675124" ], 
         "means": ["Unspecified pump"],
         "absConditions": [
           {"type" : "general condition",
@@ -1591,8 +1591,8 @@ module.exports = {
               "absPeriod": ["1 January to 31 December"],
              
       
-              "absPoints": ["At National Grid Reference TF 675124"],
-              "gridRefs": [ 'ST 48373 69070', 'ST 48373 69070' ], 
+              "absPoints": ["At National Grid Reference SD 728565", "At National Grid Reference SD 717547", "At National Grid Reference SD 719545", "At National Grid Reference SD 736560",],
+              "gridRefs": [ 'SD 72890 56537', 'SD 71770 54730', 'SD 71966 54510', 'SD 73652 56049' ], 
               "means": ["Fixed weir"],
               "absConditions": [{"type" : "compensation release flow",
                                  "purposeIndex" : ["0"],
@@ -1611,7 +1611,7 @@ module.exports = {
       
               "use": [{
                       "purpose": "Impounding (for any purpose excluding impounding for HEP)",
-                      "points": ["At National Grid Reference TF 675 124 (RIVER SWALE - HELPERBY)"],
+                      "points": ["At National Grid Reference SD 728565, SD 717547, SD 719545 and SD 736560 (STOCKS RESERVOIR - LANCASTER)"],
                       "periodStart": "0101",
                       "periodEnd": "1231",
                       "amount":"",

@@ -14,12 +14,10 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
    
-   {% set coordintates = [] %}
+   {% set coordinates = [] %}
    {% for i in data.licences[data.ID].gridRefs %}
-   {% set coordintates = i |convertNGR | toLngLat %}
+   {% set coordinates = coordinates| push(i |convertNGR | toLngLat ) %}
    {% endfor %}
-
-
 
   
 
@@ -27,7 +25,7 @@
 <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
 {{ title }}
       </h1>
-      <p class="govuk-body"><a class="govuk-link" href="points/map?location={{coordintates}}">View these points on a map</a></p>
+      <p class="govuk-body"><a class="govuk-link" href="points/map?location={{coordinates|dump}}&center={{coordinates[0]}}">View these points on a map</a></p>
       
       </div>
       </div>

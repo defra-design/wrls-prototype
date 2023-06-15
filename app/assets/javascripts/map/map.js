@@ -6,7 +6,7 @@ import View from 'ol/View.js';
 import {defaults as defaultControls} from 'ol/control.js';
 
 import Feature from 'ol/Feature.js';
-import Point from 'ol/geom/Point.js';
+import Polygon from 'ol/geom/Polygon.js';
 import VectorSource from 'ol/source/Vector.js';
 import {Circle, Fill, Stroke, Style} from 'ol/style.js';
 
@@ -31,6 +31,8 @@ useGeographic();
 
   //centre of the map
 let mapCenter = []
+  //polygon
+  let polygon = []
  
 //view extent and centre and zoom levels
 const view = new View({
@@ -47,9 +49,9 @@ function setCenter(){
   //get scenario parameter
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const center = urlParams.get('location')
+  const center = urlParams.get('center')
   
-  console.log(center)
+  
   if (center == undefined){
     mapCenter = [ -2.0159323734242225,53.74123069144088]
   } else {
@@ -57,6 +59,25 @@ function setCenter(){
   }
 
   return mapCenter
+
+};
+
+//create the polygon
+function setPolygon(){
+
+  //get scenario parameter
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const location = urlParams.get('location')
+  
+  
+  if (location == undefined){
+    polygon = [ -2.0159323734242225, 53.74123069144088 ]
+  } else {
+    polygon = JSON.parse(location)
+  }
+  
+  return [polygon]
 
 };
 
@@ -86,19 +107,19 @@ name: 'base',
 
 // radius style
 var rStyle = new Style ({
-  image: new Circle ({
-  radius: 5,
+  //image: new Circle ({ })
+  //radius: 5,
   fill: new Fill({
-    color: '#d4351c'
+    color: 'rgb(148, 37, 20, 0.5)'
   }),
   stroke: new Stroke({
-    color: '#d4351c',
-    width: 1
+    color: 'rgb(148, 37, 20, 1)',
+    width: 3
   }),
-})
+
 });
   var marker = new Feature({
-    geometry: new Point(mapCenter),
+    geometry: new Polygon(setPolygon()),
     type: 'test',
     name: 'something'
   });
