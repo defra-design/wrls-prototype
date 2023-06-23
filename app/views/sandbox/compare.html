@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 {% set chargeInfo = data['srocChargeInformation'] %}
-{% set title = "Formal variation charge information change details " + chargeInfo[0].chargeStart %}
+{% set title = "Charge information valid from" + chargeInfo[0].chargeStart %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -17,10 +17,14 @@
 
 
 
-    <h1 class="govuk-heading-l">
+    <h1 class="govuk-heading-l  govuk-!-margin-bottom-2">
       <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
       {{ title }}
     </h1>
+    {{govukTag({
+      text: "ACTIVE" ,
+      classes: "govuk-tag--green govuk-!-font-size-27"
+      })}}
   </div>
 </div>
 
@@ -118,10 +122,33 @@
       </dl>
     </section>
   -->
+
+     
+{{ govukSummaryList({
+  card: {
+    title: {
+      classes: 'govuk-!-font-size-24',
+      text: "Notes"
+    }
+  },
+rows: [
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "username@defra.gov.uk"
+    },
+    value: {
+      text: "Authorised quantity decreased on Otterton borehole 1a "
+    }
+  }
+]
+}) }}
+
+
     {% set changedTag %}
     {{govukTag({
       text: "Changed" ,
-      classes: "govuk-tag--turquoise"
+      classes: "govuk-tag--blue"
       })}}
     {% endset %}
    
@@ -185,26 +212,7 @@
       }) }}
 
 
-   
-{{ govukSummaryList({
-  card: {
-    title: {
-      classes: 'govuk-!-font-size-24',
-      text: "Notes"
-    }
-  },
-rows: [
-  {
-    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
-    key: {
-      text: "username@defra.gov.uk"
-    },
-    value: {
-      text: "Authorised quantity decreased on Otterton borehole 1a "
-    }
-  }
-]
-}) }}
+
 
 
 
