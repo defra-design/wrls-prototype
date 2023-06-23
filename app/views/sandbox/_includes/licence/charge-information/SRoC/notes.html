@@ -1,0 +1,47 @@
+
+
+<section class="govuk-!-margin-bottom-7">
+
+
+
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Notes</h2>
+
+
+{% if data.note.length %}
+{{ govukSummaryList({
+rows: [
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "username@defra.gov.uk"
+    },
+    value: {
+      text: [data.note]
+    },
+    actions: {
+      items: [
+        {
+          href: "charge-reference/add-a-note?change=true",
+          text: "Change",
+          visuallyHiddenText: "the note"
+        },
+        {
+          href: "charge-data-check?note=",
+          text: "Delete",
+          visuallyHiddenText: "the note"
+        }
+      ]
+    }
+  }
+]
+}) }}
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{% else %}
+<p class="govuk-body"><a class="govuk-link govuk-!-margin-right-3" href="charge-reference/add-a-note">Add a note</a></p>
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{% endif %}
+
+
+
+
+</section>

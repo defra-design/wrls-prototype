@@ -29,6 +29,8 @@ function createData(req,res){
   req.session.data.chargeInfoWorkflow = require('../_data/chargeInfoWorkflow-data.js').chargeInfoWorkflow
   //create returns version data
   req.session.data.returnRequirements = require('../_data/returns-requirements.js').returnsRequirements;
+  //create charge information data
+  req.session.data.srocChargeInformation = require('../_data/sroc-charge-information.js').srocChargeInformation;
   //redirect
   req.session.data.sprint = req.originalUrl.split('/')[1]
   res.redirect(req.originalUrl)
@@ -201,6 +203,45 @@ router.post('/licence/settings/multiple-upload', function(req, res) {
   let id = req.session.data.ID
   req.session.data.licences[id].multipleUpload = req.session.data.multipleUpload
   res.redirect('/sandbox/licence/settings');
+});
+
+
+///////////////compare
+
+
+//Function for comparing original and new, this changes the the copy not sure that is the right thing to do. Might be better to put in another array and keep the copy the same
+function compare(original, copy) {
+  for (let [k, v] of Object.entries(original)) {
+    if (typeof v === "object" && v !== null) {
+      if (!copy.hasOwnProperty(k)) {
+        copy[k] = v; // 2
+      } else {
+        compare(v, copy?.[k]);
+      }
+    } else {
+      if (Object.is(v, copy?.[k])) {
+        delete copy?.[k]; // 1
+      }
+    }
+  }
+  return [copy];
+}
+
+
+
+router.get('/compare', function(req, res) {
+
+  let ID = req.session.data.ID
+  let replacement = req.session.data.licences[ID].chargeInformation[0]
+  let original = req.session.data.licences[ID].chargeInformation[1]
+
+  console.log(req.session.data.srocChargeInformation)
+
+    req.session.data.differences = compare(original, replacement)
+    req.session.data.differencesKeys = Object.keys(replacement)
+    req.session.data.differencesValues = Object.values(replacement)
+
+  res.render('sandbox/compare');
 });
 
 module.exports = router

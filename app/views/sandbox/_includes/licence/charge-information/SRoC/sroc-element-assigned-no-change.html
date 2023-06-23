@@ -1,0 +1,111 @@
+
+          <!--formating for the abstraction period dates-->
+                {% set monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+                {% set monthNumber = [elements[elementIndex].abstractionStartMonth] %}
+                {% set monthNumberEnd = [elements[elementIndex].abstractionEndMonth] %}
+
+                {% set month = monthNames[monthNumber - 1] %}
+                {% set monthEnd = monthNames[monthNumberEnd - 1] %}
+
+                {% set abstractionStart = [elements[elementIndex].abstractionStartDay] + " " + month %}
+                {% set abstractionEnd = [elements[elementIndex].abstractionEndDay] + " " + monthEnd %}
+
+
+               <!--set billable quanity if needed-->
+               {% if [elements[elementIndex].billableQuantityNeeded] == "yes" %}
+               {% set billableQuantity = [elements[elementIndex].billableQuantity] + " megalitres per year" %}
+               {% else %}
+               {% set billableQuantity = "Not set" %}
+               {% endif %}
+
+               <!--set time limit if needed-->
+               {% if [elements[elementIndex].timeLimit] == "yes" %}
+               {% set monthNumbertimeLimit = [elements[elementIndex].timeLimitMonth] %}
+               {% set monthtimeLimit = monthNames[monthNumbertimeLimit - 1] %}
+               {% set timeLimit = [elements[elementIndex].timeLimitStartDay] + " " + [elements[elementIndex].timeLimitStartDay] | toMonth + " " + [elements[elementIndex].timeLimitStartYear] + " to " + [elements[elementIndex].timeLimitDay] + " " + monthtimeLimit + " " + [elements[elementIndex].timeLimitYear]%}
+               {% else %}
+               {% set timeLimit = "No" %}
+               {% endif %}
+
+
+               <h2 class="govuk-heading-m" id="element{{[loop.index]}}"><span class="govuk-caption-m">Charge element {{[elementIndex]|int + 1}}</span>{{[elements[elementIndex].purpose]}}, {{[elements[elementIndex].description]}}</h2>
+
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-6',
+                rows: [
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Purpose"
+                    },
+                    value: {
+                      text: [elements[elementIndex].purpose]
+                    }
+                  },
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                     key: {
+                       text: "Description"
+                     },
+                     value: {
+                       text: [elements[elementIndex].description]
+                     }
+                   },
+
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Abstraction period"
+                    },
+                    value: {
+                      text: [abstractionStart] + " to " + [abstractionEnd]
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Annual quantities"
+                    },
+                    value: {
+                      html: [elements[elementIndex].authorisedQuantity] + "ML authorised<br>Billable not set"
+                    }
+                  },
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Time limit"
+                    },
+                    value: {
+                      text: [timeLimit]
+                    }
+                  },
+
+
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Loss"
+                    },
+                    value: {
+                      text: [elements[elementIndex].loss]
+                    }
+                  },
+
+                  {
+                    classes: 'govuk-summary-list__row--no-border',
+                    key: {
+                      text: "Agreements apply"
+
+                    },
+                    value: {
+                      text: elements[elementIndex].agreementsApply | capitalize
+                    }
+                  } if elements[elementIndex].agreementsApply.length
+
+
+                ]
+              }) }}

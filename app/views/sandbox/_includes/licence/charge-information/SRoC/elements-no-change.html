@@ -1,0 +1,326 @@
+
+<!--{% set elements = [data.elements.element1, data.elements.element2, data.elements.element3] %}
+
+
+
+{% set elements = [data.elements[0],data.elements[1],data.elements[2]] %} -->
+
+{% set elementNumber = "" %}
+
+{% set scenario = data['scenario']%}
+
+{% if scenario == "b" %}
+{% set elements = [data.srocElements[0],data.srocElements[1]] %}
+{% elif scenario == "c" %}
+{% set elements = data['srocElements'] %}
+{% else %}
+{% set elements = [data.srocElements[0]] %}
+{% endif %}
+
+
+
+{% set numberOfElements = elements.length %}
+
+{# find out if there are any elements not yet assigned#}
+{% set elementsNeedAssigning = ""%}
+{% for i in elements %}
+{% if i.chargeReference == undefined %}
+{% set elementsNeedAssigning = "true"%}
+{% endif %}
+{% endfor %}
+
+      <section class="govuk-!-margin-bottom-7">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+
+           {% set chargeReference = data['chargeReferences'] %}
+
+           {# loop through the charge references #}
+           {% for i in chargeReference %}
+
+           {% if i.srocElementsAssigned.length %}
+
+
+           <h2 class="govuk-heading-l govuk-!-margin-bottom-4" ><span class="govuk-caption-l">Charge reference {{i.chargeRefNumber}}</span>{{i.chargeDescription }} </h2>
+
+        <!--Action links not needed   <p class="govuk-body"><a class="govuk-link govuk-!-margin-right-3" href="#">Add an aggregate factor</a> <span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a supported source charge</a><span class="govuk-!-margin-right-3">|</span> <a class="govuk-link govuk-!-margin-right-3" href="#">Add a public water supply charge</a></p>-->
+
+           <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Charge reference details</h2>
+           {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-2',
+         rows: [
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Applies to"
+           },
+           value: {
+             text: i.appliesTo | dump  | stripQuotes  | stripSqBrackets | replaceComma | striptags(true) | escape  | nl2br
+           }
+         },
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Description"
+           },
+           value: {
+             text: i.lineDescription |capitalize
+           }
+         },
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Source"
+           },
+           value: {
+             text: i.chargeSource |capitalize
+           }
+         },
+         {
+           classes: 'govuk-summary-list__row--no-border',
+           key: {
+             text: "Loss"
+           },
+           value: {
+             text: i.chargeLoss |capitalize
+           }
+         },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Volume"
+             },
+             value: {
+               text: i.chargeQuantity + "ML"
+             }
+           },
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+              key: {
+                text: "Water availability"
+              },
+              value: {
+                text: i.chargeWaterAvailability |capitalize
+              }
+            },
+
+
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Water model"
+             },
+             value: {
+               text: i.chargeWaterRestrictions |capitalize
+             }
+           },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Additional charges apply"
+             },
+             value: {
+               text: i.addCharges |capitalize
+             }
+           },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "Adjustments apply"
+             },
+             value: {
+               text: i.adjustmentsApply |capitalize
+             }
+           },
+           {
+             classes: 'govuk-summary-list__row--no-border',
+             key: {
+               text: "EIUC Region"
+             },
+             value: {
+               text: i.eiucRegion |capitalize
+             }
+           }
+
+
+         ]
+       }) }}
+
+
+      {% if i.addCharges == "yes" %}
+       <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Additional charges</h2>
+
+       {{ govukSummaryList({
+       classes: 'govuk-!-margin-bottom-2',
+     rows: [
+     {
+       classes: 'govuk-summary-list__row--no-border',
+       key: {
+         text: "Supported source"
+       },
+       value: {
+         text: i.supSourceCharge |capitalize
+       }
+     },
+
+     {
+       classes: 'govuk-summary-list__row--no-border',
+       key: {
+         text: "Supported source name"
+       },
+       value: {
+         text: i.supSourceName |capitalize
+       }
+     } if i.supSourceCharge == "yes",
+
+     {
+       classes: 'govuk-summary-list__row--no-border',
+       key: {
+         text: "Supply public water"
+       },
+       value: {
+         text: i.supPublicWater |capitalize
+       }
+     }
+
+     ]
+   }) }}
+   {# end of additional charges if #}
+   {% endif %}
+
+
+
+   {% if i.adjustmentsApply == "yes" %}
+   <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+<!--   <h2 class="govuk-heading-m govuk-!-margin-bottom-3" >Adjustments <span style="float:right" class="govuk-!-font-weight-regular govuk-!-font-size-19 govuk-!-text-align-right"><a class="govuk-link" href="charge-reference/which-adjustments?elementNew=false&amp;change=true&elementNumber={{elementNumber}}">
+                    Change<span class="govuk-visually-hidden"> adjustments</span>
+                    </a></span></h2> -->
+
+   {{ govukSummaryList({
+   classes: 'govuk-!-margin-bottom-2',
+ rows: [
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Adjustments",
+     classes: "govuk-heading-m govuk-!-margin-bottom-3"
+   },
+   value: {
+     text: ""
+   }
+ },
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Aggregate factor"
+   },
+   value: {
+     text: i.aggregateFactor
+   }
+ } if i.adjustments.includes("aggregate"),
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Adjustment factor"
+   },
+   value: {
+     text: i.chargeAdjustmentFactor
+   }
+ } if i.adjustments.includes("charge adjustment"),
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Winter discount"
+   },
+   value: {
+     text: "Yes"
+   }
+ } if i.adjustments.includes("winter discount"),
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Two-part tariff agreement"
+   },
+   value: {
+     text: "Yes"
+   }
+ } if i.adjustments.includes("two part tariff agreement applies"),
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Abatement agreement factor"
+   },
+   value: {
+     text: i.abatementFactor
+   }
+ } if i.adjustments.includes("abatement agreement applies"),
+
+ {
+   classes: 'govuk-summary-list__row--no-border',
+   key: {
+     text: "Canal and River Trust agreement"
+   },
+   value: {
+     text: "Yes"
+   }
+ } if i.adjustments.includes("canal and river trust agreement applies")
+ ]
+}) }}
+
+
+
+{# end of adjustments if #}
+{% endif %}
+
+          <hr class="govuk-section-break  govuk-!-margin-bottom-6">
+
+          {# loop through the purposes/elements that are linked to this charge category #}
+
+          {% set srocElementsAssigned = i.srocElementsAssigned %}
+
+
+          {% for i in srocElementsAssigned %}
+          {% set elementIndex = srocElementsAssigned[loop.index0] %}
+
+          <!--formating for the abstraction period dates-->
+               {% include "current/bd/iterations/_includes/sroc-element-assigned-no-change.html" %}
+
+
+              {% if (data['chargeAssigned'].length) and (loop.last) %}
+                <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+
+                <hr class="govuk-section-break  govuk-!-margin-bottom-9">
+
+              {% elseif (data['chargeAssigned'].length) %}
+              {% else %}
+              <hr class="govuk-section-break  govuk-!-margin-bottom-9 govuk-section-break--visible">
+              {% endif %}
+
+                {% endfor %}
+
+
+
+          {# end of charge cagetgory if #}
+          {% endif %}
+
+          {# loop through the charge references #}
+          {% endfor %}
+
+
+
+      </div>
+      </div>
+      </section>

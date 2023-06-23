@@ -44,3 +44,81 @@ Object.keys(filters).forEach(function (filterName) {
 
   return [lng, lat ];
 });
+
+
+
+addFilter('diff', function diff (replacement, original) {
+  const result = {};
+  if (Object.is(replacement, original)) {
+      return undefined;
+  }
+  if (!original || typeof original !== 'object') {
+      return original;
+  }
+  Object.keys(replacement || {}).concat(Object.keys(original || {})).forEach(key => {
+      if(original[key] !== replacement[key] && !Object.is(replacement[key], original[key])) {
+          result[key] = original[key];
+      }
+      if(typeof original[key] === 'object' && typeof replacement[key] === 'object') {
+          const value = diff(replacement[key], original[key]);
+          if (value !== undefined) {
+              result[key] = value;
+          }
+      }
+  });
+  return result;
+});
+
+
+addFilter('compare', function compare(original, copy) {
+  for (let [k, v] of Object.entries(original)) {
+    if (typeof v === "object" && v !== null) {
+      if (!copy.hasOwnProperty(k)) {
+        copy[k] = v; // 2
+      } else {
+        compare(v, copy?.[k]);
+      }
+    } else {
+      if (Object.is(v, copy?.[k])) {
+        delete copy?.[k]; // 1
+      }
+    }
+  }
+  return JSON.stringify(copy);
+});
+
+addFilter('toObject', function toObject (x){
+   x = JSON.parse(x)
+   return x
+});
+
+
+addFilter('replaceN', function replaceN (x){
+  return x.replace("\\n","")
+});
+
+addFilter('typeOf', function typeOf (x){
+  return typeof x 
+});
+
+
+
+addFilter('objectToArray', function objectToArray (object) {
+  const objectArray = []
+  Object.keys(object).forEach(key => objectArray.push({
+    ...{ id: key },
+    ...object[key]
+  }))
+
+  return objectArray
+});
+
+
+
+addFilter('objectKeys', function objectKeys (x){
+  return Object.keys(x)
+})
+
+addFilter('objectValues', function objectValues (x){
+  return Object.values(x)
+})

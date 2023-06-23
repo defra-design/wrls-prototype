@@ -61,6 +61,15 @@
   float: right;
 }
 
+//Wide actions in summary list - used when experimenting with comparing changes to charge information
+@media (min-width: 40.0625em) {
+  .govuk-summary-list__actions-wide {
+    width: 30% !important;
+    padding-right: 0;
+    text-align: left;
+  }
+}
+
 //old proto custom styles
 @import "archive/previous-proto/sass/application";
 

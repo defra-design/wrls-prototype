@@ -662,7 +662,9 @@ router.post('/create-charge-information/charge-reference/add-a-note', function(r
 //Charge data check
 router.post('/create-charge-information/charge-data-check', function(req, res) {
 
-
+  console.log(req.session.data.chargeVersions[0])
+  console.log(req.session.data.chargeReferences)
+  console.log(req.session.data.srocElements)
   req.session.data.chargeVersions[0]['chargeStatus'] = "NOT APPROVED"
   //reset all the completed flags for the task list
   req.session.data['reasonNewSet'] = "false"
