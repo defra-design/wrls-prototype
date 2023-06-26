@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 {% set chargeInfo = data['srocChargeInformation'] %}
-{% set title = "Charge information valid from" + chargeInfo[0].chargeStart %}
+{% set title = "Charge information valid from " + chargeInfo[0].chargeStart %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -420,8 +420,11 @@ rows: [
           {
             classes: 'govuk-summary-list__row--no-border ',
             key: {
-              html: "Element 1 of 1",
+              html: 'Element 1 of 1',
               classes: "govuk-!-font-size-19 govuk-!-padding-top-4"
+            },
+            value: {
+              text: [chargeInfo[0].elements[0].purpose] + ', ' + [chargeInfo[0].elements[0].description]
             }
           },
 
