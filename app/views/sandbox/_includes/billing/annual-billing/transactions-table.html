@@ -1,0 +1,193 @@
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
+  <div class="govuk-grid-column-full ">
+
+    {% set transactions = data.billRunData[0].bills[data.ID].licences[data.licenceID].transactions %}
+
+
+
+    {% set caption = ' <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
+      2 Transactions
+    </h4>' %}
+
+
+
+    {# set a blank array for the table rows #}
+
+    {% set rows = [] %}
+
+
+    {# Loop through the rows and push the transactions into the list, this uses a custom filter "push" this is in
+    filters.js#}
+    {# The first column is a little different, as it contains lots of formatting and a details panel. The details panel
+    is created first then assigned to the row#}
+
+    {% for transaction in transactions %}
+
+
+   {# don't show the element details on the compensation charge rows#}
+    {% if transaction.type == "Compensation charge" %}
+
+    {% set details %}
+    {% endset %}
+
+    {% else %}
+
+    {% set details %}
+
+    <details class="govuk-details govuk-!-margin-bottom-0 govuk-!-font-size-16" data-module="govuk-details">
+
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Charge element details
+        </span>
+      </summary>
+      <div class="govuk-details__text ">
+
+
+
+        {{ govukSummaryList({
+        classes: ' govuk-summary-list--no-border govuk-!-font-size-16 govuk-!-margin-bottom-0',
+        rows: [
+        {
+        key: {
+        text: "Purpose",
+        classes: "meta-data__label govuk-!-font-weight-bold widthOverride"
+        },
+        value: {
+        text: transaction.elements[0].purpose,
+        classes: "meta-data__value "
+        }
+        },
+        {
+        key: {
+        text: "Abstraction period",
+        classes: "meta-data__label govuk-!-font-weight-bold"
+        },
+        value: {
+        text: transaction.elements[0].abstractionPeriod,
+        classes: "meta-data__value "
+        }
+        },
+        {
+        key: {
+        text: "Volume",
+        classes: "meta-data__label govuk-!-font-weight-bold"
+        },
+        value: {
+        text: transaction.elements[0].authorisedQuantity + 'ML',
+        classes: "meta-data__value "
+        }
+        }
+        ]
+        }) }}
+
+      </div>
+
+    </details>
+
+    {% endset %}
+
+    {% endif %}
+
+   {#if the last loop add a thick border for the total, this is part of the row above the total #}
+    {% if loop.last %}
+
+    {% set rows = rows | push([
+
+      {html: transaction.type + ': ' + transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
+          period:</strong> ' + transaction.chargePeriod + ' <br><strong>Charge reference:</strong> ' +
+        transaction.chargeRefNumber +'<br><strong>Charge description:</strong> '+ transaction.chargeDescription
+        +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges +'<br><strong>Adjustments:</strong> ' +
+        transaction.adjustments + '<br></p>
+  
+      ' + details,
+      classes: "govuk-table__cell--thick-border" 
+      },
+      {
+      text: transaction.billableDays + "/" + transaction.authorisedDays,
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border" 
+      },
+      {
+      text: transaction.chargeQuantity,
+      format: "numeric",
+      classes: "govuk-table__cell--thick-border" 
+      },
+      {text: transaction.debit | currency,format: "numeric",
+      classes: "govuk-table__cell--thick-border" 
+      }
+      ]) %}
+
+    {% else %}
+
+    {% set rows = rows | push([
+
+    {html: transaction.type + ': ' + transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
+        period:</strong> ' + transaction.chargePeriod + ' <br><strong>Charge reference:</strong> ' +
+      transaction.chargeRefNumber +'<br><strong>Charge description:</strong> '+ transaction.chargeDescription
+      +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges +'<br><strong>Adjustments:</strong> ' +
+      transaction.adjustments + '<br></p>
+
+    ' + details },
+    {
+    text: transaction.billableDays + "/" +transaction.authorisedDays,
+    format: "numeric"
+    },
+    {
+    text: transaction.chargeQuantity,
+    format: "numeric"
+    },
+    {text: transaction.debit | currency,format: "numeric"}
+    ]) %}
+    
+   {% endif %}
+
+
+    {% endfor %}
+
+    {# add the total to the rows #}
+    {% set rows = rows | push([
+    {
+    text: "Total",
+    classes: "govuk-table__cell--no-border ",
+    colspan: "3"
+    },
+    {
+    text: data.billRunData[0].bills[data.ID].licences[data.licenceID].debit | currency,
+    format: "numeric",
+    classes: "govuk-table__cell--no-border govuk-!-font-weight-bold"
+    }
+    ])
+    %}
+
+
+    {{ govukTable({
+    caption: caption |safe,
+    captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-0",
+    firstCellIsHeader: true,
+    head: [
+    {
+    text: "Transaction detail",
+    classes: 'column--40'
+    },
+    {
+    text: "Billable days",
+    format: "numeric",
+    classes: 'column--20'
+    },
+    {
+    text: "Quantity",
+    format: "numeric",
+    classes: 'column--20'
+    },
+    {
+    text: "Debit",
+    format: "numeric",
+    classes: 'column--20'
+    }
+    ],
+    rows: rows
+    }) }}
+
+  </div>
+</div>

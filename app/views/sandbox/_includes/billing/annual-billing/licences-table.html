@@ -1,0 +1,46 @@
+{% set licences = data.billRunData[0].bills[data.ID].licences %}
+
+
+{# set a blank array for the table rows #} 
+{% set rows = [] %} 
+
+{# Loop through the rows and push the bills into the list, this uses a custom filter "push" this is in filters.js#}
+{# The third column is an array of all the licences #} 
+{# The fifth column is a little different, it contains the link to view the bill. We use the bill ID to know which bill the row is for#}
+
+{% for licence in licences %}
+
+
+
+{% set action = '<a class="govuk-link" href="../../bills/annual/transactions?licenceID=' + licence.ID + '">View transactions</a>' %}
+
+
+{% set rows = rows | push([ {text: licence.licence }, {text: licence.debit | currency, format: "numeric"}, {html: action, format: "numeric"} ]) %} 
+
+
+{% endfor %}
+
+
+
+
+
+
+{{ govukTable({
+caption: rows | length + " " + rows | plural("licence"),
+captionClasses: "govuk-table__caption--m",
+firstCellIsHeader: true,
+head: [
+{
+text: "Licence"
+},
+{
+text: "Total",
+format: "numeric"
+},
+{
+text: "Action",
+format: "numeric"
+}
+],
+rows: rows
+}) }}

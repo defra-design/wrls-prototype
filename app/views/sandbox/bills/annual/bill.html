@@ -1,0 +1,182 @@
+{% extends "layouts/_manage.html" %}
+
+{% if data.billRunData[0].status == "ready" %}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account ' + data.billRunData[0].bills[data.ID].account + '</span>Bill for ' +  data.billRunData[0].bills[data.ID].contact + '</h1>'%}
+{% set title = 'Bill for ' + data.billRunData[0].bills[data.ID].contact%}
+{% else %}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' +  data.billRunData[0].bills[data.ID].number | default("OP656544") + '</span>Bill for ' +  data.billRunData[0].bills[data.ID].contact + '</h1>'%}
+{% set title = 'Bill ' + data.billRunData[0].bills[data.ID].number  | default("OP123344") + 'Bill for ' + data.billRunData[0].bills[data.ID].contact %}
+{% endif %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+
+{% if ("true" in data.rebill) and ("false" in data.billRun ) %}
+{{ govukWarningText({
+  text: "This bill is marked for reissue",
+  iconFallbackText: "Warning"
+}) }}
+
+{% elseif ("true" in data.rebill) and ("created" in data.billRun ) %}
+
+{{ govukWarningText({
+  text: "This bill is marked for reissue",
+  iconFallbackText: "Warning"
+}) }}
+
+{% endif %}
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-0">
+        <div class="govuk-grid-column-full">
+        
+              <!-- billing title-->
+      {{ pTitle | safe }}
+  
+          <p class="govuk-body">
+            {{govukTag({
+                        text: [data.billRunData[0]['status']],
+                        classes: data.billRunData[0]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
+                      })}}
+          </p>
+  
+          {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Date created",
+                classes: "meta-data__label"
+              },
+              value: {
+                text: data.billRunData[0].dateCreated  | govukDate,
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Region",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: data['region'] |capitalize,
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Bill run type",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: "Annual",
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Charge scheme",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: data.billRunData[0].chargeScheme | capitalize,
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Financial year",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: data.billRunData[0].financialYear,
+                classes: "meta-data__value "
+              }
+            },
+            {
+              key: {
+                text: "Transaction file",
+                classes: "meta-data__label "
+              },
+              value: {
+                text: "ABC132456BH",
+                classes: "meta-data__value "
+              }
+            } if data.annualstatus === 'sent'
+          ]
+        }) }}
+  
+  
+      <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Billing account details
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body "><span class="govuk-!-font-weight-bold">Billing account <a class="govuk-link" href="#"> {{data.billRunData[0].bills[data.ID].account}}</a></span><br>
+            {{data.billRunData[0].bills[data.ID].contact}}<br>
+            <!-- billing account address -->
+            {{data.billRunData[0].bills[data.ID].accountAddress | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}} </p>
+
+        </div>
+      </details>
+
+
+
+  </div>
+</div>
+
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+
+  <div class="govuk-grid-column-one-half">
+    <!--  <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+        Total
+      </h2> -->
+    <h2><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.billRunData[0].bills[data.ID].debit | currency}}</span><br>
+      <!-- <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Net amount</span></h3> -->
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h2>
+  </div>
+
+</div>
+
+
+
+{% if data.billRunData[0].status == "ready" %}
+
+<!--remove from the bill run button-->
+<p class="govuk-body govuk-!-margin-bottom-0">
+
+  {{ govukButton({
+classes: "govuk-button--secondary",
+text: "Remove bill",
+href: "confirm-remove-bill?runType=supplementary"
+}) }}
+</p>
+
+{% endif %}
+
+
+
+<div class="divider govuk-!-margin-bottom-7"></div>
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-full">
+{% include "sandbox/_includes/billing/annual-billing/licences-table.html" %}
+</div>
+</div>
+
+
+
+  </div>
+  </div>
+
+{% endblock %}

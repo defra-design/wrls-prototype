@@ -31,6 +31,8 @@ function createData(req,res){
   req.session.data.returnRequirements = require('../_data/returns-requirements.js').returnsRequirements;
   //create charge information data
   req.session.data.srocChargeInformation = require('../_data/sroc-charge-information.js').srocChargeInformation;
+  //create bill run data
+  req.session.data.billRunData = require('../_data/billRunData.js').billRunData;
   //redirect
   req.session.data.sprint = req.originalUrl.split('/')[1]
   res.redirect(req.originalUrl)

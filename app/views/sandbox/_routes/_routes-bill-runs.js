@@ -17,6 +17,8 @@ if (mm < 10) {
   mm = `0${mm}`;
 }
 
+const tDate = `${yyyy}-${mm}-${dd}`
+
 //change the month into a name
 let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 mm = monthNames[mm - 1]
@@ -65,24 +67,6 @@ router.get('/select-the-region', function(req, res) {
 router.post('/select-the-region', function(req, res) {
 
 
-      //Date
-      let today = new Date();
-      let dd = today.getDate();
-
-      let mm = today.getMonth();
-      let months = ["January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December "];
-      const yyyy = today.getFullYear();
-      if(dd<10)
-      {
-    dd=`0${dd}`;
-      }
-
-        if(mm<10)
-        {
-          mm=`0${mm}`;
-          }
-          let  monthName =  months[mm];
-        today = `${dd} ${monthName} ${yyyy}`;
 
         //TPT tptSeason
 
@@ -90,6 +74,9 @@ router.post('/select-the-region', function(req, res) {
 
        if(req.session.data['billRunType'] === "two-part tariff"){
          let billRunType = req.session.data['billRunType'] + req.session.data['tptSeason']
+       } else if (req.session.data['billRunType'] === "annual") {
+        req.session.data.billRunData[0].dateCreated = tDate
+        req.session.data.billRunData[0].region = req.session.data.region
        }
 
 
@@ -113,9 +100,22 @@ router.post('/select-the-region', function(req, res) {
       let billRuns= req.session.data['billRuns']
       billRuns.unshift(newBillRun);
 
-res.redirect("../bill-runs");
+res.redirect("charges-load");
 
 });
+
+router.get('/charges-load', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + 'charges-load');
+
+});
+
+///--------------------------------------------------------
+//ANNUAL BILLING
+
+
 
 /////////--------------------------------------------------
 //TPT REVIEW

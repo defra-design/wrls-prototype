@@ -1,0 +1,74 @@
+{% extends "layouts/_manage.html" %}
+
+{% if data.billRunData[0].status == "ready" %}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account ' + data.billRunData[0].bills[data.ID].account + '</span>Transactions for ' +  data.billRunData[0].bills[data.ID].licences[data.licenceID].licence + '</h1>'%}
+{% set title = 'Transactions for licence ' + data.billRunData[0].bills[data.ID].licences[data.licenceID].licence %}
+{% else %}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' +  data.billRunData[0].bills[data.ID].number | default("OP656544") + '</span>Transactions for ' +  data.billRunData[0].bills[data.ID].licences[data.licenceID].licence  + '</h1>'%}
+{% set title = 'Transactions ' + data.billRunData[0].bills[data.ID].number  | default("OP123344") + 'Transactions for ' + data.billRunData[0].bills[data.ID].licences[data.licenceID].licence %}
+{% endif %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+
+{% if ("true" in data.rebill) and ("false" in data.billRun ) %}
+{{ govukWarningText({
+  text: "This bill is marked for reissue",
+  iconFallbackText: "Warning"
+}) }}
+
+{% elseif ("true" in data.rebill) and ("created" in data.billRun ) %}
+
+{{ govukWarningText({
+  text: "This bill is marked for reissue",
+  iconFallbackText: "Warning"
+}) }}
+
+{% endif %}
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-0">
+        <div class="govuk-grid-column-full">
+        
+              <!-- billing title-->
+      {{ pTitle | safe }}
+  </div>
+</div>
+
+
+
+<!-- s table -->
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-full">
+<section>
+
+    <div class="govuk-button-group">
+
+
+
+
+<a class="govuk-link" href="../licence-summary">
+  View licence summary
+</a>
+
+
+    </div>
+</section>
+
+
+
+
+      <!--navigation cards -->
+      {% include "sandbox/_includes/billing/annual-billing/transactions-table.html" %}
+
+  </div>
+  </div>
+
+{% endblock %}

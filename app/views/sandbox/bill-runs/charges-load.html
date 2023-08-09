@@ -1,0 +1,82 @@
+{% extends "layout_wrls.html" %}
+
+{% set title = data['region'] |capitalize +  " " + data['billRunType'] + " bill run" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+{% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- page title -->
+  <div class="govuk-grid-row govuk-!-margin-bottom-0">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{title}}</h1>
+
+      <section class="govuk-!-margin-bottom-8">
+
+
+      {{govukTag({
+        text: "Building",
+        classes: "govuk-tag--grey govuk-!-font-size-27"
+      })}}
+
+    </section>
+
+
+
+      <p class="govuk-body-l govuk-!-margin-bottom-6">
+        The bill run is being created. This can take up to a minute.
+      </p>
+      {{ govukButton({
+        text: "Cancel bill run",
+        classes: "govuk-button--secondary",
+        href: "confirm-cancel-bills"
+      }) }}
+      <div class="divider"></div>
+      <div class="spinner"></div>
+    </div>
+
+
+
+  </div>
+
+
+  <script language="javascript" type="text/javascript">
+    window.setTimeout('location.replace("annual/annual-charges?annualstatus=ready&billRunIndex=0")',8000);
+</script>
+
+{% endblock %}

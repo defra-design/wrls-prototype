@@ -204,6 +204,11 @@ filters.focus = function(x) {
     return e.charAt(0).toUpperCase() + e.slice(1)
   }
 
+  //strip starting character
+  filters.replaceLeadingZero = function(e) {
+    return e.replace(/^0+/,"");
+  }
+
   //capitalise the characters in brackets "| bracketsToUpperCase"
   filters.bracketsToUpperCase = function(e) {
     return e.replace(/\((.*?)\)/g, (x) => x.toLocaleUpperCase())
@@ -499,6 +504,30 @@ filters.focus = function(x) {
   }
 
 
+   //Convert number or string to |currency
+   filters.currency = function (number, kwargs) {
+   // number = normalize(number, '')
+  
+    const options = {
+      display: 'symbol',
+      trailingZeros: true,
+      unit: 'GBP',
+      ...kwargs
+    }
+  
+    let currency = new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: options.unit,
+      currencyDisplay: options.display
+    }).format(number)
+  
+ 
+    if (!options.trailingZeros) {
+      currency = currency.replace(/\.00$/, '')
+    }
+  
+    return currency
+  }
 
  
 

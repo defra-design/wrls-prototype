@@ -1,0 +1,215 @@
+{% extends "layout_wrls.html" %}
+
+{% set title = data.billRunData[0]['region']| capitalize + " annual bill run" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-0">
+  <div class="govuk-grid-column-full">
+
+    
+
+    <section class="govuk-!-margin-bottom-6">
+      <h1 class="govuk-caption-l">Bill run {{data.billRunData[0]['billRunNumber']}}</h1>
+      <span class="govuk-heading-xl govuk-!-margin-bottom-0">{{data.billRunData[0]['region']| capitalize}}  annual bill run</span>
+    </section>
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-3">
+      <div class="govuk-grid-column-full">
+
+        <p class="govuk-body">
+          {{govukTag({
+                      text: [data.billRunData[0]['status']],
+                      classes: data.billRunData[0]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
+                    })}}
+        </p>
+
+        {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Date created",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: data.billRunData[0].dateCreated  | govukDate,
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Region",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: data['region'] |capitalize,
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Bill run type",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: "Annual",
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Charge scheme",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: data.billRunData[0].chargeScheme | capitalize,
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Financial year",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: data.billRunData[0].financialYear,
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Transaction file",
+              classes: "meta-data__label "
+            },
+            value: {
+              text: "ABC132456BH",
+              classes: "meta-data__value "
+            }
+          } if data.annualstatus === 'sent'
+        ]
+      }) }}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- big total and 2 smaller totals -->
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+
+  <div class="govuk-grid-column-one-half">
+    <!-- invoice totals -->
+    <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.billRunData[0].debit | currency}}</span><br>
+    <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total</span></h3>
+  </div>
+
+</div>
+
+{% if [data.annualstatus] == "ready" %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-6">
+      <a href="confirm-approve-bills?type=Annual&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button">Confirm bill run</a>
+      <a href="confirm-cancel-bills?type=Annual&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
+    </section>
+
+  </div>
+
+</div>
+
+{% endif %}
+
+<div class="divider govuk-!-margin-bottom-5"></div>
+
+{{ govukButton({
+  text: "Download this bill run",
+  classes: "govuk-button--secondary govuk-!-margin-bottom-6"
+}) }}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+ 
+
+{% set waterCompanies %}
+
+{% include "sandbox/_includes/billing/annual-billing/bills-table-water-company.html" %}
+
+{% endset -%}
+
+
+{% set otherAbstractors %}
+
+{% include "sandbox/_includes/billing/annual-billing/bills-table.html" %}
+
+{% endset -%}
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "Water companies",
+      id: "water-companies",
+      panel: {
+        html: waterCompanies
+      }
+    },
+    {
+      label: "Other abstractors",
+      id: "other-abstractors",
+      panel: {
+        html: otherAbstractors
+      }
+    }
+  ]
+}) }}
+   
+  </div>
+</div>
+  
+
+{% endblock %}
