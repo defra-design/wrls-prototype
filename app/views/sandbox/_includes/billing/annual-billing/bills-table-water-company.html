@@ -11,16 +11,34 @@
 
 {% for bills in billRunData.bills %}
 
+{# this version of the table is for non-water company transactions #}
 {% if bills.isWaterCompany == true %}
+
+
 {% set licences = [] %}
 {% for i in billRunData.bills[loop.index0].licences %}
 {% set licences = licences | push([ i.licence ]) %}
 {% endfor %}
 
+{% if licences.length > 5 %}
+{% set licences %}
+{{ govukDetails({
+    summaryText:licences.length + " " + licences | plural ("licence"),
+    text: licences.join('<br>') |safe
+  }) }}
+{% endset %}
+{% else %}
+{% set licences = licences.join('<br>') |safe %}
+{% endif %}
+
+
+
+
+
 {% set action = '<a class="govuk-link" href="../../bills/annual/bill?ID=' + bills.ID + '">View bill</a>' %}
 
 
-{% set rows = rows | push([ {text: bills.account}, {text: bills.contact}, {text: licences | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}, {text: bills.debit | currency, format: "numeric"}, {html: action, format: "numeric"} ]) %} 
+{% set rows = rows | push([ {text: bills.account}, {text: bills.contact}, {text: licences |safe }, {text: bills.debit | currency, format: "numeric"}, {html: action, format: "numeric"} ]) %} 
 
 {% endif %}
 {% endfor %}

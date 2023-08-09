@@ -97,8 +97,8 @@
       {html: transaction.type + ': ' + transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
           period:</strong> ' + transaction.chargePeriod + ' <br><strong>Charge reference:</strong> ' +
         transaction.chargeRefNumber +'<br><strong>Charge description:</strong> '+ transaction.chargeDescription
-        +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges +'<br><strong>Adjustments:</strong> ' +
-        transaction.adjustments + '<br></p>
+        +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges.join(', ') +'<br><strong>Adjustments:</strong> ' +
+        transaction.adjustments.join(', ') + '<br></p>
   
       ' + details,
       classes: "govuk-table__cell--thick-border" 
@@ -125,8 +125,8 @@
     {html: transaction.type + ': ' + transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
         period:</strong> ' + transaction.chargePeriod + ' <br><strong>Charge reference:</strong> ' +
       transaction.chargeRefNumber +'<br><strong>Charge description:</strong> '+ transaction.chargeDescription
-      +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges +'<br><strong>Adjustments:</strong> ' +
-      transaction.adjustments + '<br></p>
+      +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges.join(', ') +'<br><strong>Adjustments:</strong> ' +
+      transaction.adjustments.join(', ')  + '<br></p>
 
     ' + details },
     {
