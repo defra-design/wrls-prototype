@@ -40,94 +40,30 @@
               <!-- billing title-->
       {{ pTitle | safe }}
   
-          <p class="govuk-body">
-            {{govukTag({
-                        text: [data.billRunData[0]['status']],
-                        classes: data.billRunData[0]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
-                      })}}
-          </p>
+      <p class="govuk-body">
+        {{govukTag({
+                    text: [data.billRunData[0]['status']],
+                    classes: data.billRunData[0]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
+                  })}}
+      </p>
   
-          {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border',
-          rows: [
-            {
-              key: {
-                text: "Date created",
-                classes: "meta-data__label"
-              },
-              value: {
-                text: data.billRunData[0].dateCreated  | govukDate,
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Region",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: data['region'] |capitalize,
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Bill run type",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: "Annual",
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Charge scheme",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: data.billRunData[0].chargeScheme | capitalize,
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Financial year",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: data.billRunData[0].financialYear,
-                classes: "meta-data__value "
-              }
-            },
-            {
-              key: {
-                text: "Transaction file",
-                classes: "meta-data__label "
-              },
-              value: {
-                text: "ABC132456BH",
-                classes: "meta-data__value "
-              }
-            } if data.annualstatus === 'sent'
-          ]
-        }) }}
+         
+      {% include "sandbox/_includes/billing/meta-data.html" %}
   
-  
-      <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Billing account details
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          <p class="govuk-body "><span class="govuk-!-font-weight-bold">Billing account <a class="govuk-link" href="#"> {{data.billRunData[0].bills[data.ID].account}}</a></span><br>
-            {{data.billRunData[0].bills[data.ID].contact}}<br>
-            <!-- billing account address -->
-            {{data.billRunData[0].bills[data.ID].accountAddress | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}} </p>
-
-        </div>
-      </details>
+          <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Billing account details
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body "><span class="govuk-!-font-weight-bold">Billing account <a class="govuk-link" href="#"> {{data.billRunData[0].bills[data.ID].account}}</a></span><br>
+                {{data.billRunData[0].bills[data.ID].contact}}<br>
+                <!-- billing account address -->
+                {{data.billRunData[0].bills[data.ID].accountAddress.join("<br>") | safe }} </p>
+    
+            </div>
+          </details>
 
 
 

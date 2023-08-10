@@ -5,8 +5,8 @@
 
 
 
-    {% set caption = ' <h4 class="govuk-heading-m govuk-!-margin-bottom-1">
-      2 Transactions
+    {% set caption = ' <h4 class="govuk-heading-m govuk-!-margin-bottom-1">'
+     + transactions.length + " " + transactions | plural ("transaction") + '
     </h4>' %}
 
 
@@ -89,16 +89,38 @@
 
     {% endif %}
 
+
+
+
+    {# if additional charges #}
+    {% if transaction.addCharges.length %}
+    {% set additionalCharges %}
+    <br><br><strong>Additional charges:</strong> {{transaction.addCharges.join(', ')}}
+    {% endset %}
+    {% else %}
+    {% set additionalCharges = "" %}
+    {% endif %}
+    
+
+
+    {# if adjustments #}
+    {% if transaction.adjustments.length %}
+    {% set adjustments %}
+    <br><br><strong>Adjustments:</strong> {{transaction.adjustments.join(', ')}}
+    {% endset %}
+    {% else %}
+    {% set adjustments = "" %}
+    {% endif %}
+
    {#if the last loop add a thick border for the total, this is part of the row above the total #}
     {% if loop.last %}
 
     {% set rows = rows | push([
 
-      {html: transaction.type + ': ' + transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
+      {html: transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
           period:</strong> ' + transaction.chargePeriod + ' <br><strong>Charge reference:</strong> ' +
         transaction.chargeRefNumber +'<br><strong>Charge description:</strong> '+ transaction.chargeDescription
-        +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges.join(', ') +'<br><strong>Adjustments:</strong> ' +
-        transaction.adjustments.join(', ') + '<br></p>
+        + additionalCharges |safe + adjustments |safe + '<br></p>
   
       ' + details,
       classes: "govuk-table__cell--thick-border" 
@@ -122,13 +144,10 @@
 
     {% set rows = rows | push([
 
-    {html: transaction.type + ': ' + transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
+    {html: transaction.lineDescription + '<p class="govuk-body-s"><br><strong>Charge
         period:</strong> ' + transaction.chargePeriod + ' <br><strong>Charge reference:</strong> ' +
       transaction.chargeRefNumber +'<br><strong>Charge description:</strong> '+ transaction.chargeDescription
-      +'<br><br><strong>Additional charges:</strong> '+ transaction.addCharges.join(', ') +'<br><strong>Adjustments:</strong> ' +
-      transaction.adjustments.join(', ')  + '<br></p>
-
-    ' + details },
+      + additionalCharges |safe + adjustments |safe + '<br></p>' + details },
     {
     text: transaction.billableDays + "/" +transaction.authorisedDays,
     format: "numeric"
@@ -145,6 +164,8 @@
 
     {% endfor %}
 
+    {% set rows = rows | arraySortDsc(3)%}
+
     {# add the total to the rows #}
     {% set rows = rows | push([
     {
@@ -160,6 +181,7 @@
     ])
     %}
 
+  
 
     {{ govukTable({
     caption: caption |safe,

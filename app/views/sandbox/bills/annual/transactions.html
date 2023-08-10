@@ -1,10 +1,10 @@
 {% extends "layouts/_manage.html" %}
 
 {% if data.billRunData[0].status == "ready" %}
-{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account ' + data.billRunData[0].bills[data.ID].account + '</span>Transactions for ' +  data.billRunData[0].bills[data.ID].licences[data.licenceID].licence + '</h1>'%}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Billing account ' + data.billRunData[0].bills[data.ID].account + '</span>' + data.billRunData[0].bills[data.ID].licences[data.licenceID].transactions | plural("Transaction") + ' for ' +  data.billRunData[0].bills[data.ID].licences[data.licenceID].licence + '</h1>'%}
 {% set title = 'Transactions for licence ' + data.billRunData[0].bills[data.ID].licences[data.licenceID].licence %}
 {% else %}
-{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' +  data.billRunData[0].bills[data.ID].number | default("OP656544") + '</span>Transactions for ' +  data.billRunData[0].bills[data.ID].licences[data.licenceID].licence  + '</h1>'%}
+{% set pTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Bill ' +  data.billRunData[0].bills[data.ID].number | default("OP656544") + '</span>' + data.billRunData[0].bills[data.ID].licences[data.licenceID].transactions | plural("Transaction") + ' for ' +  data.billRunData[0].bills[data.ID].licences[data.licenceID].licence  + '</h1>'%}
 {% set title = 'Transactions ' + data.billRunData[0].bills[data.ID].number  | default("OP123344") + 'Transactions for ' + data.billRunData[0].bills[data.ID].licences[data.licenceID].licence %}
 {% endif %}
 

@@ -77,6 +77,7 @@ router.post('/select-the-region', function(req, res) {
        } else if (req.session.data['billRunType'] === "annual") {
         req.session.data.billRunData[0].dateCreated = tDate
         req.session.data.billRunData[0].region = req.session.data.region
+        req.session.data.billRunData[0].status = req.session.data.status
        }
 
 

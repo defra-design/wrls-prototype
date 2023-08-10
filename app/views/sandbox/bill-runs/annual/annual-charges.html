@@ -63,71 +63,7 @@
                     })}}
         </p>
 
-        {{ govukSummaryList({
-        classes: 'govuk-summary-list--no-border',
-        rows: [
-          {
-            key: {
-              text: "Date created",
-              classes: "meta-data__label"
-            },
-            value: {
-              text: data.billRunData[0].dateCreated  | govukDate,
-              classes: "meta-data__value "
-            }
-          },
-          {
-            key: {
-              text: "Region",
-              classes: "meta-data__label "
-            },
-            value: {
-              text: data['region'] |capitalize,
-              classes: "meta-data__value "
-            }
-          },
-          {
-            key: {
-              text: "Bill run type",
-              classes: "meta-data__label "
-            },
-            value: {
-              text: "Annual",
-              classes: "meta-data__value "
-            }
-          },
-          {
-            key: {
-              text: "Charge scheme",
-              classes: "meta-data__label "
-            },
-            value: {
-              text: data.billRunData[0].chargeScheme | capitalize,
-              classes: "meta-data__value "
-            }
-          },
-          {
-            key: {
-              text: "Financial year",
-              classes: "meta-data__label "
-            },
-            value: {
-              text: data.billRunData[0].financialYear,
-              classes: "meta-data__value "
-            }
-          },
-          {
-            key: {
-              text: "Transaction file",
-              classes: "meta-data__label "
-            },
-            value: {
-              text: "ABC132456BH",
-              classes: "meta-data__value "
-            }
-          } if data.annualstatus === 'sent'
-        ]
-      }) }}
+        {% include "sandbox/_includes/billing/meta-data.html" %}
 
       </div>
     </div>
@@ -146,14 +82,14 @@
 
 </div>
 
-{% if [data.annualstatus] == "ready" %}
+{% if [data.billRunData[0]['status']] == "ready" %}
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
   <div class="govuk-grid-column-two-thirds">
 
     <section class="govuk-!-margin-bottom-6">
-      <a href="confirm-approve-bills?type=Annual&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button">Confirm bill run</a>
+      <a href="/sandbox/" class="wrls-faux-button">Confirm bill run</a>
       <a href="confirm-cancel-bills?type=Annual&billRunIndex={{data.billRunIndex}}" class="wrls-faux-button wrls-faux-button--inline wrls-faux-button--secondary">Cancel bill run</a>
     </section>
 

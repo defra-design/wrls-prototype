@@ -142,6 +142,24 @@ filters.mmddToDate = function(x) {
   //Sort an Object | sort(arr, reverse, caseSens, attr))
   // e.g. notifications | sort(false, false, 'sentBy')
   // sort the array of objects notifications, in asc order not case sensitive by sentBy
+  filters.arraySort = function(arr, item) {
+     item = item | 0 
+      return arr.sort((a, b) => {
+        const textA = a[item].text;
+        const textB = b[item].text;
+        return textA.localeCompare(textB);
+      });
+    }
+  
+
+    filters.arraySortDsc = function(arr, item) {
+      item = item | 0 
+       return arr.sort((a, b) => {
+         const textA = a[item].text;
+         const textB = b[item].text;
+         return textB.localeCompare(textA);
+       });
+     }
 
 //filter array includes " |arrayIncludes"
 filters.arrayIncludes = function(input, item) {
