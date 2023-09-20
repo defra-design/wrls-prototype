@@ -106,7 +106,13 @@ href: "confirm-remove-bill?runType=supplementary"
 <div class="divider govuk-!-margin-bottom-7"></div>
 <div class="govuk-grid-row govuk-!-margin-bottom-0">
   <div class="govuk-grid-column-full">
+{%if data.billRunData[0].bills[data.ID].licences.length > 1%}
 {% include "sandbox/_includes/billing/annual-billing/licences-table.html" %}
+{% else %}
+<h2 class="govuk-heading-xl govuk-!-margin-bottom-3">{{data.billRunData[0].bills[data.ID].licences[0].transactions | plural("Transaction")}} for {{data.billRunData[0].bills[data.ID].licences[0].licence}}</h2>
+{% set transactions = data.billRunData[0].bills[data.ID].licences[0].transactions %}
+{% include "sandbox/_includes/billing/annual-billing/transactions-table.html" %}
+{% endif %}
 </div>
 </div>
 

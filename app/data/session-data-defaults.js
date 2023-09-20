@@ -434,6 +434,8 @@ module.exports = {
     "returnsRouteVersion" : 1,
     "returnsNotRequired" : false,
 
+"licenceID" : 0,
+
 
     //licence
     "id" : 1,
