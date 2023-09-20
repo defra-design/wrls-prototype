@@ -12,7 +12,7 @@
 
 
 
-{% set action = '<a class="govuk-link" href="../../bills/annual/transactions?licenceID=' + loop.index0 + '">View transactions</a>' %}
+{% set action = '<a class="govuk-link" href="../../bills/annual/transactions?licenceID=' + loop.index0 + '">View transactions<span class="govuk-visually-hidden"> for licence ' + licence.licence + '</span></a>' %}
 
 
 {% set rows = rows | push([ {text: licence.licence }, {text: licence.debit | currency, format: "numeric"}, {html: action, format: "numeric"} ]) %} 
