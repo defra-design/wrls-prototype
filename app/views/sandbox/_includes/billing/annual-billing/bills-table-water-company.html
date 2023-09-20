@@ -35,7 +35,7 @@
 
 
 
-{% set action = '<a class="govuk-link" href="../../bills/annual/bill?ID=' + loop.index0 + '">View bill</a>' %}
+{% set action = '<a class="govuk-link" href="../../bills/annual/bill?ID=' + loop.index0 + '">View bill <span class="govuk-visually-hidden"> for account ' + bills.account + '</span></a>' %}
 
 
 {% set rows = rows | push([ {text: bills.account}, {text: bills.contact}, {text: licences |safe }, {text: bills.debit | currency, format: "numeric"}, {html: action, format: "numeric"} ]) %} 
