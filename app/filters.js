@@ -122,3 +122,37 @@ addFilter('objectKeys', function objectKeys (x){
 addFilter('objectValues', function objectValues (x){
   return Object.values(x)
 })
+
+
+addFilter('year', function year (x){
+      return x.slice(0, 4)
+})
+
+addFilter('yearPlusPlus', function yearPlusPlus (x){
+   x.slice(0, 4)
+   return parseInt(x) + 1
+})
+
+
+addFilter('stringPlusPlus', function stringPlusPlus (x){
+  return parseInt(x) + 1
+})
+
+
+addFilter('arrObDedupe', function arrObDedupe (x){
+  return x = Array.from(new Set(x))
+})
+
+
+addFilter('base64Decode', function base64Decode (x){
+  return x = atob(x);
+})
+
+
+
+
+addFilter('nullInObject', function nullInObject (x){
+Object.keys(x).some(function(k) {
+  return x[k] == null;
+})
+});

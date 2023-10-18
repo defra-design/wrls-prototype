@@ -1,0 +1,59 @@
+
+
+{% set rows = [] %}
+
+
+
+
+
+{# compare to the matched return IDs any successfull matches #}
+{% for matchedReturn in matchedReturns %}
+
+
+
+{# set the dates for the return#}
+{% set returnDates %}
+{{matchedReturn.startDate | govukDate}} to {{matchedReturn.endDate | govukDate}}
+{% endset %}
+
+{# set the status for the return #}
+{% set status %}
+{{govukTag({
+  text: matchedReturn.status,
+  classes: matchedReturn.status | returnStatusColour
+})}}
+{% endset %}
+
+
+{% set rows = rows | push([ {text: returnDates}, {text: matchedReturn.purpose}, {text: matchedReturn.description }, {html: status |safe, format: "numeric"}, {text: matchedReturn.returnsQuantity, format: "numeric"} ]) %} 
+
+
+{% endfor %}
+
+
+{{ govukTable({
+  caption: "Matched returns",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+  {
+  text: "Return dates"
+  },
+  {
+  text: "Purpose"
+  },
+  {
+  text: "Site description"
+  },
+  {
+  text: "Status",
+  format: "numeric"
+  }, 
+  {
+  text: "Return total in FY",
+  format: "numeric"
+  }
+  ],
+  rows: rows
+  }) }}
+

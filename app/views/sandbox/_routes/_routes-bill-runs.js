@@ -31,6 +31,275 @@ const today = `${dd} ${mm} ${yyyy}`;
 const folder = "sandbox/bill-runs/"
 
 
+//Create TpT bill run data
+
+function createTpTData(req,res){
+
+  function getRandomName() {
+    const nameList = [
+      "Bottled Water Plc",
+      "Big Smith Farms Ltd",
+      "Irene Briton",
+      "Robin Vithlhem-Smith",
+      "D.B. Beecham-Smith",
+      "Tech Innovators Inc.",
+      "Tech Innovators Inc.",
+      "Green Energy Solutions",
+      "FreshFoods Grocery Store",
+      "Global Marketing Group",
+      "Sunrise Software Services",
+      "Health & Wellness Institute",
+      "Quantum Logistics Ltd.",
+      "Creative Minds Agency",
+      "Precision Engineering Works",
+      "BlueWave Financial Advisors",
+      "Nature's Bounty Organics",
+      "Swift Courier Services",
+      "Elite Fitness Studios",
+      "SolarPower Solutions Co.",
+      "Infinity Consulting Group",
+      "Streamline Technologies",
+      "Sunset Industries",
+      "Starlight Productions",
+      "EcoTech Innovations",
+      "SolarFlare Energy Inc.",
+      "Quantum Mechanics Ltd.",
+      "Infinite Horizons Ventures",
+      "NexaVision Solutions",
+      "BlueSky Aerospace",
+      "GlobalWave Innovations",
+      "DigitalDreams Media",
+      "EnergyWise Solutions",
+      "FirstClass Airlines",
+      "GoldenHarbor Maritime",
+      "HealthMatters Pharmaceuticals",
+      "PerfectFit Apparel",
+      "VivaCasa Home Furnishings",
+      "SwiftSolutions Logistics",
+      "CloudScape Technologies",
+      "GreenEarth Sustainability",
+      "StarGazers Astronomy Club",
+      "GrandHarbor Resorts",
+      "ApexAutomotive Group",
+      "AquaHarvest Solutions",
+    "MineralFarm Industries",
+    "HydroCultivate Innovations",
+    "TerraDrill Technologies",
+    "AquaGrowth Systems",
+    "AgroMine Dynamics",
+    "WaterRich Resources",
+    "EarthMiner Innovations",
+    "AgriWave Technologies",
+    "HydroStone Enterprises",
+    "FarmWell Innovations",
+    "AquaQuarry Solutions",
+    "HarvestStream Systems",
+    "MineralFusion Enterprises",
+    "AgroFlow Dynamics",
+    "WaterHarvest Innovations",
+    "TerraTrek Technologies",
+    "HydroHaven Farms",
+    "GrowGemstone Labs",
+    "PureFlow Resources",
+    "FarmOre Innovations",
+    "AquaVein Dynamics",
+    "EarthRich Harvesters",
+    "MineralScape Solutions",
+    "HydroSeed Innovations",
+    "AquaBloom Labs",
+    "MineralMeadow Systems",
+    "TerraSprout Dynamics",
+    "AquaGrove Innovations",
+    "FarmOasis Technologies",
+    "WaterBounty Enterprises",
+    "HydroHill Resources",
+    "AgroCrystal Innovations",
+    "HydroCrest Labs",
+    "WaterFertile Farms",
+    "AgriOasis Solutions",
+    "MineralMingle Innovations",
+    "TerraBloom Dynamics",
+    "FarmGleam Technologies",
+    "HydroFlourish Systems",
+    "AquaQuarry Innovations",
+    "WaterMagnet Enterprises",
+    "AgroPure Resources",
+    "TerraTide Innovations",
+    "HarvestFlow Labs",
+    "MineralWave Farms",
+    "AquaBloom Harvesters",
+    "HydroCrest Gems",
+    "AgriGemstone Innovations",
+    "WaterCultivate Solutions",
+    "Sarah Johnson",
+    "Michael Rodriguez",
+    "Emily Davis",
+    "William Smith",
+    "Olivia Brown",
+    "James Wilson",
+    "Sophia Martinez",
+    "Daniel Clark",
+    "Ava Taylor",
+    "Benjamin White",
+    "Mia Anderson",
+    "Ethan Harris",
+    "Isabella Walker",
+    "Alexander Thomas",
+    "Sophia Johnson",
+    "Liam Jackson",
+    "Emma Anderson",
+    "Noah Davis",
+    "Olivia Taylor",
+    "Lucas Robinson",
+    "Charlotte Moore",
+    "Aiden Harris",
+    "Oliver Martin",
+    "Aria Smith",
+    "Mason Lewis",
+    "Harper Turner",
+    "Elijah Baker",
+    "Sophie Mitchell",
+    "Carter Young",
+    "Lily Hall",
+    "Logan Wright",
+    "Ava Davis",
+    "Jackson Harris",
+    ];
+  
+    // Generate a random index
+    const randomIndex = Math.floor(Math.random() * nameList.length);
+  
+    // Return the random name
+    return nameList[randomIndex];
+  }
+
+  function generateRandomNumber() {
+    // Generate random digits for each part
+    const part1 = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const part2 = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const part3 = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const part4 = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  
+    // Combine the parts with slashes
+    const randomNumber = `${part1}/${part2}/${part3}/${part4}`;
+  
+    return randomNumber;
+  }
+
+  // Array of random UK village names (you can add more)
+const ukVillageNames = [
+  "Appleby Magna",
+  "Brockenhurst",
+  "Chipping Norton",
+  "Dunster",
+  "Eynsford",
+  "Fladbury",
+  "Great Missenden",
+  "Haworth",
+  "Ickford",
+  "Jedburgh",
+  "Killearn",
+  "Llandovery",
+  "Marsden",
+  "Nether Stowey",
+  "Ogmore-by-Sea",
+  "Port Sunlight",
+  "Quorn",
+  "Ramsbury",
+  "Steyning",
+  "Tisbury",
+  "Uffculme",
+  "Wincanton",
+  "Xaiborah"
+];
+
+const abstractionType = [
+  "reach",
+  "borehole",
+  "area",
+  "well",
+  "stream",
+  "wier"
+]
+
+ // Original sentence
+ const sentence = "abstraction from";
+
+// Function to create a random ab description
+function createDescription() {
+
+//randomly select an abstraction type
+  const randomAbstractionTypeIndex = Math.floor(Math.random() * abstractionType.length);
+  const randomAbstractionType = abstractionType[randomAbstractionTypeIndex];
+
+  // Randomly select a village name
+  const randomIndex = Math.floor(Math.random() * ukVillageNames.length);
+  const randomVillageName = ukVillageNames[randomIndex];
+ 
+  // Append the random village name
+  const result = sentence + " " + randomAbstractionType + " near " + randomVillageName;
+  
+  return result;
+}
+  
+  function checkForIssues(data) {
+    data.forEach((item, index) => {
+      //create a data field for each licence with all the charge element issues
+      req.session.data.billRunDataTpTReview[index].licenceHolder = getRandomName();
+      req.session.data.billRunDataTpTReview[index].issues = [];
+      req.session.data.billRunDataTpTReview[index].licenceRef = generateRandomNumber()
+      req.session.data.billRunDataTpTReview[index].licenceId = index
+      //const description = createDescription()
+     // console.log(`Licence ${index + 1}:`);
+      item.chargeVersions.forEach((chargeVersion, chargeVersionIndex) => {
+
+      
+
+        chargeVersion.chargeReferences.forEach((chargeReference, chargeReferenceIndex) => {
+
+            //create a random description
+       // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeReferenceIndex].description = description
+
+          chargeReference.chargeElements.forEach((chargeElement, chargeElementIndex) => {
+
+            //create a random description
+            //req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeReferenceIndex].chargeElements[chargeElementIndex].description = description
+           // console.log(`Element ${chargeElementIndex + 1}:`);
+           // console.log(chargeElement.issues)
+           chargeElement.issues.forEach((issue, issueIndex) => {
+            req.session.data.billRunDataTpTReview[index].issues.push(issue);
+           });
+            if( chargeElement.issues.length ){
+              req.session.data.billRunDataTpTReview.erroredLicences.push(req.session.data.billRunDataTpTReview[index]);
+            } else {
+              req.session.data.billRunDataTpTReview.readyLicences.push(req.session.data.billRunDataTpTReview[index]);
+            }
+          });
+        });
+      });
+     
+    //  item.returns.forEach((returnIndex) => {
+    //    req.session.data.billRunDataTpTReview[index].returns[returnIndex].description = description
+    //  });
+
+    });
+  }
+  
+  //add in extra arrays to make it easier to sort errored and ready
+  req.session.data.billRunDataTpTReview.erroredLicences = [];
+  req.session.data.billRunDataTpTReview.readyLicences =[];
+  
+  //check for issues in the returns data
+  checkForIssues(req.session.data.billRunDataTpTReview);
+  
+  //remove duplicates
+  req.session.data.billRunDataTpTReview.erroredLicences = Array.from(new Set(req.session.data.billRunDataTpTReview.erroredLicences))
+  req.session.data.billRunDataTpTReview.readyLicences = Array.from(new Set(req.session.data.billRunDataTpTReview.readyLicences))
+ 
+  
+  
+}
+
 
 
 ///---------------------------------------------------------
@@ -66,7 +335,56 @@ router.get('/select-the-region', function(req, res) {
 
 router.post('/select-the-region', function(req, res) {
 
+  //create made up licence numbers
+  function generateRandomNumber() {
+    // Generate random digits for each part
+    const part1 = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const part2 = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const part3 = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const part4 = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  
+    // Combine the parts with slashes
+    const randomNumber = `${part1}/${part2}/${part3}/${part4}`;
+  
+    return randomNumber;
+  }
 
+  function changeLicenceNumbers(data) {
+    data.forEach((item, index) => { 
+      item.bills.forEach((bill, billIndex) => {
+        bill.licences.forEach((licence, licenceIndex) => {
+      req.session.data.billRunData[index].bills[billIndex].licences[licenceIndex].licence = generateRandomNumber()
+      req.session.data.billRunData[index].bills[billIndex].licences[licenceIndex].id = licenceIndex
+          });
+        });
+      });
+    };
+     
+    //I've updated the base data so no need to run this every time.
+    //  changeLicenceNumbers(req.session.data.billRunData);
+  
+//check for issues in the returns data
+function checkForTPTIssues(data) {
+  data.forEach((item, index) => {
+    req.session.data.billRunDataTpTReview[index].issues = [];
+    item.chargeVersions.forEach((chargeVersion) => {
+      chargeVersion.chargeReferences.forEach((chargeReference) => {
+        chargeReference.chargeElements.forEach((chargeElement) => {
+         chargeElement.issues.forEach((issue) => {
+          console.log(issue)
+          if (issue !== null){
+
+          req.session.data.billRunDataTpTReview[index].issues.push(issue);
+          }; 
+         });
+        });
+      });
+    });
+  });
+}
+
+//Supplement data with issues, i've updated the base data so no need to run this every time.
+checkForTPTIssues(req.session.data.billRunDataTpTReview);
 
         //TPT tptSeason
 
@@ -74,6 +392,10 @@ router.post('/select-the-region', function(req, res) {
 
        if(req.session.data['billRunType'] === "two-part tariff"){
          let billRunType = req.session.data['billRunType'] + req.session.data['tptSeason']
+
+         
+
+
        } else if (req.session.data['billRunType'] === "annual") {
         req.session.data.billRunData[0].dateCreated = tDate
         req.session.data.billRunData[0].region = req.session.data.region
@@ -101,7 +423,9 @@ router.post('/select-the-region', function(req, res) {
       let billRuns= req.session.data['billRuns']
       billRuns.unshift(newBillRun);
 
-res.redirect("charges-load");
+
+     
+      res.redirect("charges-load");
 
 });
 
@@ -117,6 +441,26 @@ router.get('/charges-load', function(req, res) {
 //ANNUAL BILLING
 
 
+
+
+/////////--------------------------------------------------
+//TPT REVIEW (SROC) Oct 2023
+
+//Create TpT bill run data
+
+
+
+
+
+
+
+
+//Review the list of data issues
+router.get('/tpt/review', function(req, res) {
+ // createTpTData(req,res);
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'tpt/review');
+});
 
 /////////--------------------------------------------------
 //TPT REVIEW

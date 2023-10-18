@@ -1,0 +1,66 @@
+
+
+{% set rows = [] %}
+
+
+{# loop through the returns on the licence #}
+{% for return in licence.returns %}
+
+
+{# hacky way of removing duplicate positives for void returns as they have the same ID #}
+{% if return.status == "void" %}
+{% set matchedReturns = matchedReturns | slice(1) %}
+{% endif %}
+
+
+{# compare to the matched return IDs any successfull matches #}
+{% for matchedReturn in matchedReturns %}
+
+
+{% if matchedReturn.returnID == return.returnID %}
+
+
+{# set the dates for the return#}
+{% set returnDates %}
+{{return.startDate | govukDate}} to {{return.endDate | govukDate}}
+{% endset %}
+
+{# set the status for the return #}
+{% set status %}
+{{govukTag({
+  text: return.status,
+  classes: return.status | returnStatusColour
+})}}
+{% endset %}
+
+
+{% set rows = rows | push([ {text: returnDates}, {text: return.alias}, {text: return.description }, {html: status |safe, format: "numeric"} ]) %} 
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+
+{{ govukTable({
+  caption: "Matched returns",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+  {
+  text: "Return dates"
+  },
+  {
+  text: "Purpose"
+  },
+  {
+  text: "Site description"
+  },
+  {
+  text: "Status",
+  format: "numeric"
+  }
+  ],
+  rows: rows
+  }) }}
+

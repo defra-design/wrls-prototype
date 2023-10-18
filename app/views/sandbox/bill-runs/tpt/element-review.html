@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+
+
+{% set billRunDataTpTReview = data.billRunDataTpTReview %}
+{% set licence = billRunDataTpTReview[data.ID]  %}
+
+
+{% set chargeVersion = licence.chargeVersions[data.chargeVersionID]%}
+{% set chargeReference = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID] %}
+{% set chargeElement = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements[data.elementID] %}
+
+
+{% set title = "Element review " + chargeElement.purpose.description + ", " + chargeElement.description %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-full">
+  
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Element {{data.elementID | stringPlusPlus}} of {{licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements.length}}</span>
+       {{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}</h1>
+
+     
+       {% if data.status == "review" %}
+       {% set colour = "govuk-tag--blue" %}
+       {% else %}
+       {% set colour = "govuk-tag--green" %}
+       {% endif %}
+   
+       <p class="govuk-body">
+         {{govukTag({
+           text: data.status,
+           classes: colour
+         })}}
+       </p>
+       
+       {# list of links through to the licence #}
+       {% include "sandbox/_includes/billing/tpt/licence-nav-links.html" %} 
+    
+     </div>
+     </div>
+  
+     
+  
+     
+  
+
+
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-l">1 April {{chargeVersion.startDate | year}} to 31 March {{chargeVersion.startDate | yearPlusPlus}}</span>
+      <h2 class="govuk-heading-l">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</h2>
+
+
+
+      {# setting issues from the element #}
+        {% set issuesText = [] %}
+        {% for issue in chargeElement.issues %}
+        {% if issue.issue.length %}
+        {% set issuesText = issuesText|push(issue.issue ) %}
+        {% endif %}
+        {% endfor %}
+
+
+      </div>
+    </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+         
+            <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.billableReturns | round(3)}}ML</span><br>
+              <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Billable returns</span></h3>
+   
+
+    </div>
+    {% if issuesText.length %}
+     <div class="govuk-grid-column-one-half">
+      {{ govukInsetText({
+        html: '<h4 class="govuk-heading-s govuk-!-font-weight-bold">Issue</h4>' + issuesText | formatList | capitalize
+      }) }}
+    </div>
+    {%endif%}
+  </div>
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+ 
+  
+    {{ govukButton({
+      text: "Edit the billable returns",
+      classes: "govuk-button--secondary"
+    }) }}
+
+</div>
+</div>
+
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-full">
+    
+    {# set the matched return details#}
+    {% set matchedReturns = chargeElement.returns %}
+    
+
+
+    {% if not licence.returns.length %}
+    {% include "sandbox/_includes/billing/tpt/element-match-2.html" %} 
+    {% else %}
+    {% include "sandbox/_includes/billing/tpt/element-match.html" %} 
+    {% endif %}
+    
+    </div>
+  </div>
+ 
+  
+
+
+
+
+
+
+
+
+{% endblock %}

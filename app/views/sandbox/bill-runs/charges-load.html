@@ -74,9 +74,14 @@
 
   </div>
 
-
+{% if data['billRunType'] == "two-part tariff" %}
   <script language="javascript" type="text/javascript">
-    window.setTimeout('location.replace("annual/annual-charges?annualstatus=ready&billRunIndex=0")',8000);
+    window.setTimeout('location.replace("tpt/review?tptstatus=reveiw&billRunIndex=0")',8000);
 </script>
+{% else %}
+<script language="javascript" type="text/javascript">
+  window.setTimeout('location.replace("annual/annual-charges?annualstatus=ready&billRunIndex=0")',8000);
+</script>
+{% endif %}
 
 {% endblock %}

@@ -672,7 +672,7 @@ router.get('/current/bd/charges-2020/add-time-limit', function(req, res) {
 
   req.session.data.back = req.headers.referer
 
-  res.render('bd/charges-2020/add-time-limit');
+  res.render('current/bd/charges-2020/add-time-limit');
 
 });
 

@@ -1,0 +1,95 @@
+
+
+{% set rows = [] %}
+{% set elementHeading = "" %}
+
+
+{#loop through charge references#}
+{% for chargeReference in chargeReferences%}
+
+{% set chargeReferenceID = loop.index0 %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-3">
+  <div class="govuk-grid-column-full">
+
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title"><span class="govuk-!-font-weight-regular">Charge reference {{chargeReference.chargeCategory.reference}}</span><br>{{chargeReference.chargeCategory.shortDescription | base64Decode}}</h3>
+      </div>
+      
+      <div class="govuk-summary-card__content">
+
+
+{#loop through elements in charge references#}
+{% for chargeElement in chargeReference.chargeElements %}
+{% set rows = [] %}
+
+{# setting issues from the element #}
+{% set statusTag = "" %}
+{% set status = "" %}
+{% set issuesText = [] %}
+{% for issue in chargeElement.issues %}
+{% if issue.issue.length %}
+{% set issuesText = issuesText|push(issue.issue ) %}
+{% set status = "review" %}
+{% set statusTag %}
+{{govukTag({
+  text: "Review",
+  classes: "govuk-tag--blue"
+})}}
+{% endset %}
+{% else %}
+{% set status = "Ready" %}
+{% set statusTag %}
+{{govukTag({
+  text: "ready",
+  classes: "govuk-tag--green"
+})}}
+{% endset %}
+{% endif %}
+
+
+
+{% endfor %}
+
+{# set the billable returns#}
+{% set billableReturns = "" %}
+{% if chargeElement.allocatedQuantity == 0 %}
+{% set billableReturns = chargeElement.authorisedAnnualQuantity %}
+{% elseif chargeElement.allocatedQuantity > chargeElement.authorisedAnnualQuantity %}
+{% set billableReturns = chargeElement.authorisedAnnualQuantity%}
+{% else %}
+{% set billableReturns = chargeElement.allocatedQuantity %}
+{% endif %}
+
+{# set the element heading #}
+{% set elementHeading %}
+<span class="govuk-caption-s">Element {{loop.index}} of {{chargeReference.chargeElements.length}}<span style="float:right">{{statusTag|safe}}</span></span>
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1 ">{{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}</h3>
+{% endset %}
+      
+{#set the element rows in the summary list #}
+{% set rows = rows | push( {key: {text: "Issue"},value: {text: issuesText | formatList | capitalize } }  ) %} 
+{% set rows = rows | push( {key: {text: "Billable returns"},value: {text: billableReturns}, actions: {items: [{href: "element-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0 + "&billableReturns=" + billableReturns+ "&status=" + status,text: "View match details"}]} } ) %} 
+{% set rows = rows | push( {key: {text: "Return volume"},value: {text: chargeElement.allocatedQuantity} }  ) %} 
+
+<div class="govuk-!-margin-top-6">
+{{elementHeading |safe }}
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  rows: rows
+}) }}
+</div>
+{% endfor %}
+
+       
+      </div>
+  </div>
+
+</div>
+</div>
+
+{% endfor %}
+
+
