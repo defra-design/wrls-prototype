@@ -72,7 +72,7 @@
 {#set the element rows in the summary list #}
 {% set rows = rows | push( {key: {text: "Issue"},value: {text: issuesText | formatList | capitalize } }  ) %} 
 {% set rows = rows | push( {key: {text: "Billable returns"},value: {text: billableReturns}, actions: {items: [{href: "element-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0 + "&billableReturns=" + billableReturns+ "&status=" + status,text: "View match details"}]} } ) %} 
-{% set rows = rows | push( {key: {text: "Return volume"},value: {text: chargeElement.allocatedQuantity} }  ) %} 
+{% set rows = rows | push( {key: {text: "Return volume"},value: {text: chargeElement.returns[0].returnsQuantity} }  ) %} 
 
 <div class="govuk-!-margin-top-6">
 {{elementHeading |safe }}

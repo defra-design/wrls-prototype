@@ -371,7 +371,7 @@ function checkForTPTIssues(data) {
       chargeVersion.chargeReferences.forEach((chargeReference) => {
         chargeReference.chargeElements.forEach((chargeElement) => {
          chargeElement.issues.forEach((issue) => {
-          console.log(issue)
+         // console.log(issue)
           if (issue !== null){
 
           req.session.data.billRunDataTpTReview[index].issues.push(issue);
@@ -384,7 +384,7 @@ function checkForTPTIssues(data) {
 }
 
 //Supplement data with issues, i've updated the base data so no need to run this every time.
-checkForTPTIssues(req.session.data.billRunDataTpTReview);
+//checkForTPTIssues(req.session.data.billRunDataTpTReview);
 
         //TPT tptSeason
 
