@@ -156,3 +156,40 @@ Object.keys(x).some(function(k) {
   return x[k] == null;
 })
 });
+
+
+addFilter('sortByReviewStatus', function sortByReviewStatus(array) {
+  array.sort((a, b) => {
+    const statusA = a[3].html;
+    const statusB = b[3].html;
+
+
+
+    if (statusA.includes("review") && !statusB.includes("review")) {
+      return -1;
+    } else if (!statusA.includes("review") && statusB.includes("review")) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  return array;
+});
+
+addFilter('sortByLicence', function sortBylicence(array) {
+  array.sort((a, b) => {
+    const licenceNumberA = parseInt(a[0].html.val.match(/<\/span>(\d+)/)[1]);
+    const licenceNumberB = parseInt(b[0].html.val.match(/<\/span>(\d+)/)[1]);
+
+    if (licenceNumberA < licenceNumberB) {
+      return -1;
+    } else if (licenceNumberA > licenceNumberB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  return array;
+});

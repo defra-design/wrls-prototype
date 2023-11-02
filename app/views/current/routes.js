@@ -23,6 +23,35 @@ mm = monthNames[mm - 1]
 const today = `${dd} ${mm} ${yyyy}`;
 
 
+//Function to create the data
+function createData(req,res){
+  //create SRoC bill data
+ // req.session.data.chargeInfoWorkflow = require('../_data/chargeInfoWorkflow-data.js').chargeInfoWorkflow
+  //create returns version data
+ // req.session.data.returnRequirements = require('../_data/returns-requirements.js').returnsRequirements;
+  //create charge information data
+ // req.session.data.srocChargeInformation = require('../_data/sroc-charge-information.js').srocChargeInformation;
+  //create bill run data
+//  req.session.data.billRunData = require('../_data/billRunData.js').billRunData;
+  //create TPT bill run data
+  //req.session.data.billRunDataTpTReview = require('../_data/billRunDataTpTReview.js').billRunDataTpTReview;
+  req.session.data.billRunDataTpTReview = require('../current/bd/iterations/_data/TpT.js').billRunDataTpTReview;
+
+  //redirect
+  req.session.data.sprint = req.originalUrl.split('/')[1]
+  res.redirect(req.originalUrl)
+};
+
+//Create Sprint data if not already created
+router.use('/', (req, res, next) => {
+  if (req.session.data.sprint !== req.originalUrl.split('/')[1]) {
+    console.log(req.originalUrl)
+  createData(req,res);
+} else {
+  next();
+  }
+});
+
 //----------------------------------------------------------------
 ////BILL RUN ROUTES
 //CREATE BILL RUN

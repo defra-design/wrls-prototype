@@ -1,0 +1,88 @@
+
+
+
+
+{# set a blank array for the table rows #} 
+{% set rows = [] %} 
+
+{# Loop through the rows and push the licences into the list, this uses a custom filter "push" this is in filters.js#}
+{# The third column is an array of all the licences if there are more than 5 items in the array display the details component instead #} 
+{# The fifth column is a little different, it contains the link to view the bill. We use the bill ID to know which bill the row is for#}
+
+
+
+{% for licence in billRunDataTpTReview %}
+
+
+{% set licences = [] %}
+
+
+
+{# setting issues from the element #}
+{% set statusTag = "" %}
+{% set status = "" %}
+{% set issuesText = [] %}
+
+{# push issues into text #}
+{% for issue in licence.issues %}
+{% if issue.issue | length %}
+{% set issuesText = issuesText|push(issue.issue | capitalize) %}
+{% endif %}
+{% endfor %}
+
+{% if issuesText.length > 0 %}
+{% set status = "review" %}
+{% else %}
+{% set status = "ready" %}
+{% endif %}
+
+{% if status == "review" %}
+       {% set colour = "govuk-tag--blue" %}
+       {% else %}
+       {% set colour = "govuk-tag--green" %}
+       {% endif %}
+
+{% set statusTag %}
+{{govukTag({
+  text: status,
+  classes: colour
+})}}
+{% endset %}
+
+{% if issuesText.length > 1 %}
+{% set issuesText = "Multiple issues"%}
+{% endif %}
+
+{% set action = '<a class="govuk-link" href="licence-review?ID=' + loop.index0 + '&status='+ status + '"><span class="govuk-visually-hidden">View licence matching for licence </span>' + licence.licenceRef + '</a>' %}
+
+{% set rows = rows | push([{html: action | safe}, {text: licence.licenceHolder}, {text: issuesText }, {html: statusTag |safe,format: "numeric"} ]) %} 
+
+{% endfor %}
+
+
+
+{#{% set rows = rows | arraySort()%}#}
+
+
+
+{{ govukTable({
+caption: rows | length + " " + rows | plural("licence"),
+captionClasses: "govuk-table__caption--m",
+firstCellIsHeader: false,
+head: [
+{
+text: "Licence"
+},
+{
+text: "Licence holder"
+},
+{
+text: "Issue"
+},
+{
+text: "Status",
+format: "numeric"
+}
+],
+rows: rows | sortByLicence | sortByReviewStatus 
+}) }}

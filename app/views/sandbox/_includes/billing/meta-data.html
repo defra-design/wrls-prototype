@@ -27,7 +27,7 @@
           classes: "meta-data__label "
         },
         value: {
-          text: data.billRunType | capitalize,
+          text: data.billRunType | default("two-part tariff") | capitalize,
           classes: "meta-data__value "
         }
       },
