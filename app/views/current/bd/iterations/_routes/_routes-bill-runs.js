@@ -121,6 +121,18 @@ res.redirect("../bill-runs");
 /////////--------------------------------------------------
 //TPT REVIEW
 
+//TPT REVIEW (SROC) Oct 2023
+
+
+//Review the list of data issues
+router.get('/tpt/review', function(req, res) {
+  // createTpTData(req,res);
+   req.session.data.back = req.headers.referer
+   res.render(folder + 'tpt/review');
+ });
+
+ ////////////////////
+
 
 //Review the list of data issues
 router.get('/two-part-tariff/review', function(req, res) {

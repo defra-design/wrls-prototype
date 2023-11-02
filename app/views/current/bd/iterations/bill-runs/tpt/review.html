@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% set title = "Review licenses" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-manage.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff bill run</span>{{ title }}</h1>
+
+
+
+    <p class="govuk-body">
+      {{govukTag({
+        text: "Review",
+        classes: "govuk-tag--blue govuk-!-font-size-27"
+      })}}
+    </p>
+
+    {% include "sandbox/_includes/billing/meta-data.html" %}
+
+   </div>
+   </div>
+
+
+
+   {% set billRunDataTpTReview = data.billRunDataTpTReview %}
+
+
+{% if billRunDataTpTReview.length > 1 %}
+<section class="govuk-!-margin-bottom-9">
+  {{ govukButton({
+    text: "Cancel bill run",
+    classes: "govuk-button--secondary govuk-!-margin-bottom-0"
+  }) }}
+
+{% set errors = 0 %}
+{% for licence in billRunDataTpTReview %}
+{% if licence.issues[0].issue.length %}
+{% set errors = errors + 1 %}
+{% endif %}
+{% endfor %}
+
+  {{ govukInsetText({
+  text: "You need to review " + errors + " licences with returns data issues. You can then continue and send the bill run."
+}) }}
+
+</section>
+{% else %}
+<section class="govuk-!-margin-bottom-9">
+  <p class="govuk-body ">You have resolved all returns data issues. Continue to generate bills.</p>
+  <div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    classes: "govuk-button--primary"
+  }) }}
+  {{ govukButton({
+    text: "Cancel bill run",
+    classes: "govuk-button--secondary"
+  }) }}
+  </div>
+</section>
+{% endif %}
+
+
+
+
+{% include "sandbox/_includes/billing/tpt/review-table.html" %}
+
+
+
+
+{% endblock %}

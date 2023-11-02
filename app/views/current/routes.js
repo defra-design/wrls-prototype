@@ -163,6 +163,40 @@ router.get('/bd/charges-2020/two-part-charges-load', function(req, res) {
 
 });
 
+//Create Two-part tariff SRoC
+
+router.get('/bd/charges-2020/sroc-two-part-charges-load', function(req, res) {
+
+  req.session.data.back = req.headers.referer
+
+  let date = today
+  let createdYear = yyyy
+  let number = Math.floor(100000 + Math.random() * 900000)
+  req.session.data.billRunNumber = number
+  let region = "wales"
+  let runType = "two-part tariff"
+  let bills = "-"
+  let value = "-"
+  let status = "review"
+
+  let newBillrun = {
+    date,
+    createdYear,
+    number,
+    region,
+    runType,
+    bills,
+    value,
+    status
+  };
+
+  let billRuns = req.session.data.billRuns
+  billRuns.unshift(newBillrun);
+
+  res.redirect('/current/bd/charges-2020/bill-runs');
+
+});
+
 
 //Move Two-part tariff into Ready
 router.get('/bd/charges-2020/two-part-charges-create-load', function(req, res) {

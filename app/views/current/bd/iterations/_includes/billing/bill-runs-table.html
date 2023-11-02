@@ -215,12 +215,23 @@
     {% set loopNumber = loop.index0 %}
 
     {# set the URL for the  bill run #}
+ 
+    
 
     {% if i.status == "error" %}
     {% set url = "/current/bd/iterations/bill-runs/charges-error" + "?region=" + i.region + "&runType=" + i.runType + "&billRunIndex=" + loopNumber  %}
     {% else %}
         {% if i.runType.includes("two-part") %}
           {# TpT has its own logic #}
+          {% if i.createdYear == "2023" %}
+            {% if i.status == "review" %}
+            {% set url = "/current/bd/iterations/bill-runs/tpt/review?billRunIndex=" + loopNumber %}
+            {% elseif i.status == "ready" %}
+            {% set url = "two-part-charges?tptstatus=ready&billRunIndex=" + loopNumber %}
+            {% else %}
+            {% set url = "two-part-charges?tptstatus=sen&billRunIndex=" + loopNumber %}
+            {% endif %}
+          {% else %}
             {% if i.status == "review" %}
             {% set url = "/current/bd/iterations/bill-runs/two-part-tariff/review?billRunIndex=" + loopNumber %}
             {% elseif i.status == "ready" %}
@@ -228,6 +239,7 @@
             {% else %}
             {% set url = "two-part-charges?tptstatus=sen&billRunIndex=" + loopNumber %}
             {% endif %}
+          {% endif %}
         {% else %}
         {% set url = i.runType + "-charges?region=" + i.region | urlencode + "&status=" + i.status + "&billRunIndex=" + loop.index0  %}
         {% endif %}
