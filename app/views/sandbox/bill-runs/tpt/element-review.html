@@ -129,7 +129,7 @@
           <div class="govuk-grid-column-full">
             
          <div class="govuk-!-margin-right-6 float-left">
-            <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{{chargeElement.allocatedQuantity | round(3)}}ML</span><br>
+            <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{% if chargeElement.allocatedQuantity | isString%}Not set{% else %}{{chargeElement.allocatedQuantity | round(3)}}ML{% endif %}</span><br>
               <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Billable returns</span></h3>
             </div>
             <div class="govuk-!-margin-right-6 float-left">

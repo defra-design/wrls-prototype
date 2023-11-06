@@ -318,16 +318,16 @@ module.exports = {
                                  "returnRequirement": "1765678",
                                  "description": "Abstraction from reach at Oxford",
                                  "purpose": "Spray irrigation - transfer",
-                                 "status": "completed",
+                                 "status": "received",
                                  "startDate": "2022-04-01",
                                  "endDate": "2023-03-31",
-                                 "returnsQuantity": 96.503
+                                 "returnsQuantity": ""
                               }
                            ],
-                           "allocatedQuantity": 68,
+                           "allocatedQuantity": "not set",
                            "issues": [
                               {
-                                 "issue": "Over abstraction"
+                                 "issue": "Returns received but not processed"
                               }
                            ],
                            "tpt": true
@@ -408,16 +408,16 @@ module.exports = {
                                  "returnRequirement": "1105102",
                                  "description": "Abstraction from reach at Oxford",
                                  "purpose": "Spray Irrigation - direct",
-                                 "status": "completed",
+                                 "status": "query",
                                  "startDate": "2022-04-01",
                                  "endDate": "2023-03-31",
-                                 "returnsQuantity": 51.947
+                                 "returnsQuantity": 38
                               }
                            ],
-                           "allocatedQuantity": 42,
+                           "allocatedQuantity": "not set",
                            "issues": [
                               {
-                                 "issue": "Over abstraction"
+                                 "issue": "Checking query"
                               }
                            ],
                            "tpt": true

@@ -343,7 +343,7 @@ filters.focus = function(x) {
     filters.returnStatusColour = function(e) {
       if (e == "due") {
         return "govuk-tag--orange"
-      } else if (e == "overdue") {
+      } else if (e == "overdue" || e == "query") {
         return "govuk-tag--red"
       } else if (e == "void") {
         return "govuk-tag--grey"
