@@ -69,6 +69,21 @@
 
 {% block content %}
 
+{% set notificationText = "" %}
+
+{% if licence.progress == "complete" %}
+{% set notificationText = "This licence has been marked as complete" %}
+{% else %}
+{% set notificationText = "This licence is no longer marked as complete" %}
+{% endif %}
+
+{% if data.statusBanner == "show" %}
+{{ govukNotificationBanner({
+  titleText: "Progress updated",
+  text: notificationText
+}) }}
+{% endif %}
+
 <!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -100,11 +115,21 @@
          classes: "govuk-!-margin-bottom-6"
        }) }}
         {% endif %}
-     
+        
+
+        <form class="inline" action="progress-update" method="post" novalidate > 
+        {% if licence.progress %}
+        {{ govukButton({
+          text: "Undo mark as complete",
+          classes: "govuk-button--secondary govuk-!-margin-right-2"
+        }) }}
+        {% else %}
         {{ govukButton({
           text: "Mark as complete",
           classes: "govuk-button--primary govuk-!-margin-right-2"
         }) }}
+        {% endif %}
+        </form>
   
         {{ govukButton({
           text: "Remove from bill run",

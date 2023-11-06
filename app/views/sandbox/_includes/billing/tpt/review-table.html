@@ -63,9 +63,14 @@
 {% set issuesText = "Multiple issues"%}
 {% endif %}
 
+{% set progress = "" %}
+{% if licence.progress %}
+{% set progress = "Complete" %}
+{% endif %}
+
 {% set action = '<a class="govuk-link" href="licence-review?ID=' + loop.index0 + '&status='+ status + '"><span class="govuk-visually-hidden">View licence matching for licence </span>' + licence.licenceRef + '</a>' %}
 
-{% set rows = rows | push([ {html: action | safe}, {text: licence.licenceHolder}, {text: issuesText }, {html: statusTag |safe,format: "numeric"} ]) %} 
+{% set rows = rows | push([ {html: action | safe}, {text: licence.licenceHolder}, {text: issuesText }, {text: progress },  {html: statusTag |safe,format: "numeric"} ]) %} 
 
 {% endfor %}
 
@@ -87,6 +92,9 @@ text: "Licence holder"
 },
 {
 text: "Issue"
+},
+{
+  text: "Progress"
 },
 {
 text: "Status",

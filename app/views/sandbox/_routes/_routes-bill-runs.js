@@ -447,14 +447,6 @@ router.get('/charges-load', function(req, res) {
 //TPT REVIEW (SROC) Oct 2023
 
 //Create TpT bill run data
-
-
-
-
-
-
-
-
 //Review the list of data issues
 router.get('/tpt/review', function(req, res) {
  // createTpTData(req,res);
@@ -487,6 +479,22 @@ unmatchedReturns(req.session.data.billRunDataTpTReview);
   req.session.data.back = req.headers.referer
   res.render(folder + 'tpt/review');
 });
+
+///TPT PROGRESS UPDATE FEATURE
+router.post('/sandbox/bill-runs/tpt/progress-update', function(req, res) {
+  req.session.data.statusBanner = "show"
+  if (req.session.data.billRunDataTpTReview[req.session.data.ID].progress == "complete") {
+    req.session.data.billRunDataTpTReview[req.session.data.ID].progress = "" 
+  } else {
+  req.session.data.billRunDataTpTReview[req.session.data.ID].progress = "complete" }
+  res.redirect('/sandbox/bill-runs/tpt/licence-review');
+});
+
+router.get('/tpt/licence-review', function(req, res) {
+  req.session.data.statusBanner = "hide"
+  res.render(folder + 'tpt/licence-review');
+});
+
 
 /////////--------------------------------------------------
 //TPT REVIEW

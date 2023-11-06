@@ -160,8 +160,8 @@ Object.keys(x).some(function(k) {
 
 addFilter('sortByReviewStatus', function sortByReviewStatus(array) {
   array.sort((a, b) => {
-    const statusA = a[3].html;
-    const statusB = b[3].html;
+    const statusA = a[4].html;
+    const statusB = b[4].html;
 
 
 
