@@ -55,14 +55,13 @@
 
 {% set action = '<a class="govuk-link" href="licence-review?ID=' + loop.index0 + '&status='+ status + '"><span class="govuk-visually-hidden">View licence matching for licence </span>' + licence.licenceRef + '</a>' %}
 
-{% set rows = rows | push([{html: action | safe}, {text: licence.licenceHolder}, {text: issuesText }, {html: statusTag |safe,format: "numeric"} ]) %} 
+{% set rows = rows | push([ {html: action | safe}, {text: licence.licenceHolder}, {text: issuesText }, {html: statusTag |safe,format: "numeric"} ]) %} 
 
 {% endfor %}
 
 
 
 {#{% set rows = rows | arraySort()%}#}
-
 
 
 {{ govukTable({
@@ -84,5 +83,5 @@ text: "Status",
 format: "numeric"
 }
 ],
-rows: rows | sortByLicence | sortByReviewStatus 
+rows: rows  | sortByLicence | sortByReviewStatus 
 }) }}

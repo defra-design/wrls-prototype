@@ -40,6 +40,8 @@
     list-style-type: none;
   }
 
+
+
 .contents-list__list li {
     position: relative;
     padding-left: 25px;
@@ -59,6 +61,15 @@
 
 .float-right {
   float: right;
+}
+
+.float-left{
+  float:left;
+}
+
+.govuk-font-size-64{
+  font-size: 64px !important;
+  font-size: 4rem !important;
 }
 
 //Wide actions in summary list - used when experimenting with comparing changes to charge information

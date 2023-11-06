@@ -20,9 +20,33 @@
       
       <div class="govuk-summary-card__content">
 
+{% set rows = []%}
+{# charge reference adjustments, aggregates and additional charges #}
+{% if chargeReference.aggregateFactor.length %}
+{% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}
+{% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor } }  ) %} 
+{% endif %}
+{% if chargeReference.additionalCharges.length %}
+{% set rows = rows | push( {key: {text: "Additional charges"},value: {text: chargeReference.additionalCharges | formatList | capitalize } }  ) %} 
+{% endif %}
+{% if chargeReference.adjustments.length %}
+{% set rows = rows | push( {key: {text: "Adjustments"},value: {text: chargeReference.adjustments | formatList | capitalize } }  ) %} 
+{% endif %}
+
+{% if rows.length %}
+<div class="govuk-!-margin-top-0">
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-9",
+    rows: rows
+  }) }}
+  </div>
+{% endif %}
+
+
 
 {#loop through elements in charge references#}
 {% for chargeElement in chargeReference.chargeElements %}
+{% if chargeElement.tpt == true %}
 {% set rows = [] %}
 
 {# setting issues from the element #}
@@ -71,8 +95,8 @@
       
 {#set the element rows in the summary list #}
 {% set rows = rows | push( {key: {text: "Issue"},value: {text: issuesText | formatList | capitalize } }  ) %} 
-{% set rows = rows | push( {key: {text: "Billable returns"},value: {text: billableReturns}, actions: {items: [{href: "element-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0 + "&billableReturns=" + billableReturns+ "&status=" + status,text: "View match details"}]} } ) %} 
-{% set rows = rows | push( {key: {text: "Return volume"},value: {text: chargeElement.returns[0].returnsQuantity} }  ) %} 
+{% set rows = rows | push( {key: {text: "Billable returns"},value: {text: billableReturns + 'ML / ' + chargeElement.authorisedAnnualQuantity + 'ML'}, actions: {items: [{href: "element-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0 + "&billableReturns=" + billableReturns+ "&status=" + status,text: "View match details",visuallyHiddenText: "for element " + loop.index + " of " +chargeReference.chargeElements.length  + ", " + chargeElement.purpose + ", " + chargeElement.description}]} } ) %} 
+{% set rows = rows | push( {key: {text: "Return volume"},value: {text: chargeElement.returns[0].returnsQuantity + 'ML (return ref ' + chargeElement.returns[0].returnRequirement + ')'} }  ) %} 
 
 <div class="govuk-!-margin-top-6">
 {{elementHeading |safe }}
@@ -81,6 +105,11 @@
   rows: rows
 }) }}
 </div>
+
+{% else %}
+<p class="govuk-body govuk-!-font-weight-bold">Other elements for this charge reference are not marked as two-part tariff</p>
+{% endif %}
+
 {% endfor %}
 
        

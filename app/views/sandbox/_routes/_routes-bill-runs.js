@@ -458,6 +458,32 @@ router.get('/charges-load', function(req, res) {
 //Review the list of data issues
 router.get('/tpt/review', function(req, res) {
  // createTpTData(req,res);
+
+ /* supplementing  dummy data then saved to tpt.js file
+
+ function unmatchedReturns(data) {
+  data.forEach((item, index) => {
+    req.session.data.billRunDataTpTReview[index].unmatchedReturns = [];
+  item.chargeVersions.forEach((chargeVersion, chargeVersionIndex) => {
+    chargeVersion.chargeReferences.forEach((chargeReference, chargeRefencenceIndex) => {
+
+      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].additionalCharges = []
+      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].adjustments = []
+      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].aggregateFactor = ""
+    console.log('success ref')
+        chargeReference.chargeElements.forEach((chargeElement, chargeElementIndex) => {
+          req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].tpt = true
+          console.log('success element')
+        })
+      })
+    })
+  })
+};
+
+unmatchedReturns(req.session.data.billRunDataTpTReview);
+
+*/
+
   req.session.data.back = req.headers.referer
   res.render(folder + 'tpt/review');
 });

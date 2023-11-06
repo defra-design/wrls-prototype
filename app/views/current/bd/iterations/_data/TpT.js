@@ -6,14 +6,159 @@ module.exports = {
          "licenceHolder": "SolarPower Solutions Co.",
          "chargePeriod": [
             {
-               "startDate": "2022-04-01",
+               "startDate": "2023-02-01",
                "endDate": "2023-03-31"
+            },
+            {
+               "startDate": "2022-04-01",
+               "endDate": "2023-01-31"
             }
          ],
          "chargeVersions": [
             {
+               "startDate": "2023-02-01",
+               "status": "current",
+               "reason": "Minor variation",
+               "chargeReferences": [
+                  {
+                     "description": "Abstraction from reach at Minster Lovell",
+                     "s127": "true",
+                     "chargeCategory": {
+                        "reference": "3.4.5",
+                        "shortDescription": "TWVkaXVtIGxvc3MsIHRpZGFsLCBncmVhdGVyIHRoYW4gNTQsMTY3IHVwIHRvIGFuZCBpbmNsdWRpbmcgNzUsMDAwIE1ML3lyLCBUaWVyIDEgbW9kZWw="
+                     },
+                     "chargeElements": [
+                        {
+                           "description": "Abstraction from reach at Minster Lovell",
+                           "purpose": "Trickle irrigation",
+                           "abstractionPeriod": [
+                              {
+                                 "startDate": "2022-08-11",
+                                 "endDate": "2022-11-21"
+                              }
+                           ],
+                           "authorisedAnnualQuantity": 46,
+                           "returns": [
+                              {
+                                 "returnId": "1183389",
+                                 "returnRequirement": "1007594",
+                                 "description": "Abstraction from reach at Minster Lovell",
+                                 "purpose": "Trickle irrigation",
+                                 "status": "completed",
+                                 "startDate": "2023-02-01",
+                                 "endDate": "2023-03-31",
+                                 "returnsQuantity": 53.519
+                              }
+                           ],
+                           "allocatedQuantity": 46,
+                           "issues": [
+                              {
+                                 "issue": "Over abstraction"
+                              }
+                           ],
+                           "tpt": true
+                        },
+                        {
+                           "description": "Abstraction from reach at Minster Lovell",
+                           "purpose": "Trickle irrigation",
+                           "abstractionPeriod": [
+                              {
+                                 "startDate": "2022-04-07",
+                                 "endDate": "2022-11-18"
+                              }
+                           ],
+                           "authorisedAnnualQuantity": 53,
+                           "returns": [
+                              {
+                                 "returnId": "1552073",
+                                 "returnRequirement": "1528815",
+                                 "description": "Abstraction from reach at Minster Lovell",
+                                 "purpose": "Trickle irrigation",
+                                 "status": "completed",
+                                 "startDate": "2023-02-01",
+                                 "endDate": "2023-03-31",
+                                 "returnsQuantity": 34.587
+                              }
+                           ],
+                           "allocatedQuantity": 34.587,
+                           "issues": [
+                              {
+                                 "issue": null
+                              }
+                           ],
+                           "tpt": true
+                        },
+                        {
+                           "description": "Abstraction from reach at Minster Lovell",
+                           "purpose": "Spray irrigation - storage",
+                           "abstractionPeriod": [
+                              {
+                                 "startDate": "2022-09-11",
+                                 "endDate": "2023-01-04"
+                              }
+                           ],
+                           "authorisedAnnualQuantity": 68,
+                           "returns": [
+                              {
+                                 "returnId": "1149384",
+                                 "returnRequirement": "1718957",
+                                 "description": "Abstraction from reach at Minster Lovell",
+                                 "purpose": "Spray irrigation - storage",
+                                 "status": "completed",
+                                 "startDate": "2023-02-01",
+                                 "endDate": "2023-03-31",
+                                 "returnsQuantity": 73.358
+                              }
+                           ],
+                           "allocatedQuantity": 68,
+                           "issues": [
+                              {
+                                 "issue": "Over abstraction"
+                              }
+                           ],
+                           "tpt": true
+                        },
+                        {
+                           "description": "Abstraction from reach at Minster Lovell",
+                           "purpose": "Machine washing",
+                           "abstractionPeriod": [
+                              {
+                                 "startDate": "2022-08-11",
+                                 "endDate": "2022-11-21"
+                              }
+                           ],
+                           "authorisedAnnualQuantity": 46,
+                           "returns": [
+                              {
+                                 "returnId": "1183389",
+                                 "returnRequirement": "1007594",
+                                 "description": "Abstraction from reach at Minster Lovell",
+                                 "purpose": "Trickle irrigation",
+                                 "status": "completed",
+                                 "startDate": "2023-02-01",
+                                 "endDate": "2023-03-31",
+                                 "returnsQuantity": 53.519
+                              }
+                           ],
+                           "allocatedQuantity": 46,
+                           "issues": [
+                              {
+                                 "issue": "Over abstraction"
+                              }
+                           ],
+                           "tpt": false
+                        }
+                     ],
+                     "additionalCharges": ["Supported source Earl soham - deben"],
+                     "adjustments": ["Winter discount (0.5)"],
+                     "aggregateFactor": "0.5"
+                  }
+               ]
+            },
+            {
                "startDate": "2022-04-01",
                "status": "current",
+               "reason": "New licence",
                "chargeReferences": [
                   {
                      "description": "Abstraction from reach at Minster Lovell",
@@ -50,7 +195,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Minster Lovell",
@@ -79,7 +225,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Minster Lovell",
@@ -108,9 +255,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -125,7 +276,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "67/87/36/3539",
@@ -177,7 +329,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -206,7 +359,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -235,7 +389,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -264,9 +419,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -284,7 +443,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "83/85/29/8975",
@@ -336,7 +496,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Goring-on-Thames",
@@ -365,7 +526,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Goring-on-Thames",
@@ -394,7 +556,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Goring-on-Thames",
@@ -423,9 +586,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -443,7 +610,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "81/91/62/5878",
@@ -495,7 +663,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Kidlington",
@@ -524,7 +693,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Kidlington",
@@ -553,7 +723,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Kidlington",
@@ -582,7 +753,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Kidlington",
@@ -611,9 +783,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -634,7 +810,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "17/79/00/9281",
@@ -686,7 +863,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -715,7 +893,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -744,7 +923,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -773,7 +953,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -802,9 +983,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -825,7 +1010,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "89/19/57/0140",
@@ -877,9 +1063,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -888,7 +1078,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "75/26/69/3894",
@@ -940,7 +1131,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -969,7 +1161,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -998,7 +1191,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -1027,7 +1221,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -1056,9 +1251,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -1079,7 +1278,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "77/02/39/2927",
@@ -1131,7 +1331,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Yarnton",
@@ -1160,7 +1361,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Yarnton",
@@ -1189,7 +1391,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Yarnton",
@@ -1218,9 +1421,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -1238,7 +1445,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "41/52/43/1990",
@@ -1290,7 +1498,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -1319,7 +1528,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -1348,9 +1558,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -1365,7 +1579,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "63/36/92/9517",
@@ -1417,7 +1632,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -1446,7 +1662,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -1475,7 +1692,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -1504,7 +1722,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -1533,9 +1752,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -1556,7 +1779,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "30/30/50/0910",
@@ -1608,7 +1832,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -1637,7 +1862,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -1666,9 +1892,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -1683,7 +1913,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "10/52/51/9397",
@@ -1735,7 +1966,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Faringdon",
@@ -1764,7 +1996,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Faringdon",
@@ -1793,9 +2026,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -1810,7 +2047,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "66/21/93/9669",
@@ -1862,7 +2100,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -1891,7 +2130,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -1920,7 +2160,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -1949,7 +2190,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -1978,9 +2220,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2001,7 +2247,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "31/96/07/0241",
@@ -2053,7 +2300,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -2082,7 +2330,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -2111,9 +2360,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2128,7 +2381,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "14/60/16/6949",
@@ -2180,7 +2434,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -2209,9 +2464,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2223,7 +2482,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "85/99/36/6982",
@@ -2275,7 +2535,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -2304,7 +2565,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -2333,7 +2595,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -2362,9 +2625,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2382,7 +2649,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "39/59/13/1131",
@@ -2434,7 +2702,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Abingdon",
@@ -2463,9 +2732,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2477,7 +2750,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "23/86/47/8768",
@@ -2529,7 +2803,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Long Hanborough",
@@ -2558,9 +2833,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2572,7 +2851,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "80/58/24/0508",
@@ -2624,9 +2904,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2635,7 +2919,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "51/52/64/4683",
@@ -2687,7 +2972,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -2716,7 +3002,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -2745,7 +3032,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -2774,7 +3062,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -2803,9 +3092,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2826,7 +3119,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "29/64/83/9550",
@@ -2878,7 +3172,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -2907,7 +3202,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -2936,7 +3232,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -2965,9 +3262,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -2985,7 +3286,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "78/85/56/9747",
@@ -3037,7 +3339,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Jericho",
@@ -3066,7 +3369,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Jericho",
@@ -3095,9 +3399,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3112,7 +3420,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "44/65/60/4512",
@@ -3164,9 +3473,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3175,7 +3488,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "67/13/87/7967",
@@ -3227,9 +3541,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3238,7 +3556,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "72/82/75/1468",
@@ -3290,9 +3609,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3301,7 +3624,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "01/76/09/6240",
@@ -3353,7 +3677,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Chipping Norton",
@@ -3382,7 +3707,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Chipping Norton",
@@ -3411,7 +3737,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Chipping Norton",
@@ -3440,9 +3767,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3460,7 +3791,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "45/23/25/0291",
@@ -3512,7 +3844,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Yarnton",
@@ -3541,9 +3874,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3555,7 +3892,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "07/75/92/5696",
@@ -3607,7 +3945,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -3636,7 +3975,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -3665,7 +4005,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -3694,9 +4035,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3714,7 +4059,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "32/47/37/2457",
@@ -3766,7 +4112,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Long Hanborough",
@@ -3795,9 +4142,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3809,7 +4160,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "32/73/42/1496",
@@ -3861,7 +4213,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -3890,9 +4243,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3904,7 +4261,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "32/77/78/1803",
@@ -3956,7 +4314,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Zouch",
@@ -3985,9 +4344,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -3999,7 +4362,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "75/07/40/5523",
@@ -4051,9 +4415,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4062,7 +4430,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "55/05/68/6499",
@@ -4114,7 +4483,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -4143,9 +4513,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4157,7 +4531,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "28/80/85/4178",
@@ -4209,7 +4584,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -4238,7 +4614,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -4267,7 +4644,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -4296,9 +4674,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4316,7 +4698,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "34/06/20/6620",
@@ -4368,7 +4751,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Goring-on-Thames",
@@ -4397,7 +4781,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Goring-on-Thames",
@@ -4426,9 +4811,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4443,7 +4832,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "57/95/80/9079",
@@ -4495,7 +4885,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -4524,7 +4915,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -4553,9 +4945,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4570,7 +4966,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "84/45/90/6223",
@@ -4622,9 +5019,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4633,7 +5034,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "74/45/74/6455",
@@ -4685,7 +5087,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -4714,9 +5117,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4728,7 +5135,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "63/08/30/2245",
@@ -4780,7 +5188,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -4809,7 +5218,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -4838,7 +5248,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -4867,7 +5278,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -4896,9 +5308,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -4919,7 +5335,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "91/57/54/9480",
@@ -4971,7 +5388,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -5000,9 +5418,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5014,7 +5436,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "78/56/01/6337",
@@ -5066,7 +5489,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -5095,7 +5519,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -5124,9 +5549,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5141,7 +5570,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "94/04/38/8440",
@@ -5193,7 +5623,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Kidlington",
@@ -5222,9 +5653,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5236,7 +5671,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "25/43/86/6169",
@@ -5288,7 +5724,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -5317,7 +5754,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -5346,9 +5784,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5363,7 +5805,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "06/68/30/0033",
@@ -5415,7 +5858,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -5444,7 +5888,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -5473,7 +5918,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -5502,7 +5948,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -5531,9 +5978,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5554,7 +6005,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "22/28/50/9637",
@@ -5606,9 +6058,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5617,7 +6073,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "69/14/53/9430",
@@ -5669,9 +6126,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5680,7 +6141,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "14/06/69/2203",
@@ -5732,7 +6194,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -5761,7 +6224,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -5790,7 +6254,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -5819,9 +6284,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5839,7 +6308,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "50/75/23/9745",
@@ -5891,7 +6361,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -5920,7 +6391,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -5949,9 +6421,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -5966,7 +6442,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "94/02/98/1750",
@@ -6018,7 +6495,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Jericho",
@@ -6047,7 +6525,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Jericho",
@@ -6076,7 +6555,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Jericho",
@@ -6105,7 +6585,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Jericho",
@@ -6134,9 +6615,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6157,7 +6642,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "23/47/26/7698",
@@ -6209,7 +6695,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -6238,7 +6725,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -6267,9 +6755,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6284,7 +6776,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "39/57/65/8015",
@@ -6336,9 +6829,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6347,7 +6844,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "05/92/22/2077",
@@ -6399,9 +6897,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6410,7 +6912,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "43/90/37/1352",
@@ -6462,7 +6965,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -6491,7 +6995,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -6520,7 +7025,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -6549,9 +7055,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6569,7 +7079,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "75/41/82/8457",
@@ -6621,9 +7132,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6632,7 +7147,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "59/18/71/7318",
@@ -6684,7 +7200,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -6713,7 +7230,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -6742,9 +7260,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6759,7 +7281,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "88/76/70/6657",
@@ -6811,7 +7334,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -6840,7 +7364,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -6869,7 +7394,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -6898,7 +7424,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -6927,9 +7454,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -6950,7 +7481,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "59/58/35/7853",
@@ -7002,7 +7534,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -7031,7 +7564,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -7060,7 +7594,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -7089,7 +7624,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -7118,9 +7654,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -7141,7 +7681,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "98/13/05/0290",
@@ -7193,7 +7734,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -7222,7 +7764,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -7251,7 +7794,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -7280,7 +7824,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -7309,9 +7854,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -7332,7 +7881,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "26/91/16/9565",
@@ -7384,7 +7934,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -7413,7 +7964,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -7442,7 +7994,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -7471,9 +8024,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -7491,7 +8048,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "12/16/82/5131",
@@ -7543,7 +8101,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -7572,7 +8131,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -7601,9 +8161,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -7618,7 +8182,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "17/61/57/3829",
@@ -7670,9 +8235,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -7681,7 +8250,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "25/11/34/3619",
@@ -7733,7 +8303,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -7762,7 +8333,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -7791,7 +8363,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at North Leigh",
@@ -7820,9 +8393,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -7840,7 +8417,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "64/11/65/9449",
@@ -7892,9 +8470,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -7903,7 +8485,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "99/35/43/1495",
@@ -7955,7 +8538,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -7984,7 +8568,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -8013,9 +8598,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -8030,7 +8619,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "85/67/96/3368",
@@ -8082,7 +8672,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -8111,9 +8702,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -8125,7 +8720,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "10/42/36/5863",
@@ -8177,7 +8773,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -8206,7 +8803,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -8235,9 +8833,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -8252,7 +8854,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "34/58/96/8534",
@@ -8304,7 +8907,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Abingdon",
@@ -8333,7 +8937,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Abingdon",
@@ -8362,7 +8967,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Abingdon",
@@ -8391,9 +8997,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -8411,7 +9021,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "50/57/13/2090",
@@ -8463,7 +9074,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -8492,7 +9104,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -8521,7 +9134,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -8550,9 +9164,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -8570,7 +9188,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "40/11/55/8547",
@@ -8622,7 +9241,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -8651,7 +9271,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -8680,7 +9301,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -8709,7 +9331,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -8738,9 +9361,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -8761,7 +9388,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "21/19/11/9717",
@@ -8813,7 +9441,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -8842,7 +9471,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -8871,7 +9501,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -8900,7 +9531,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -8929,9 +9561,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -8952,7 +9588,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "63/79/17/4237",
@@ -9004,9 +9641,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9015,7 +9656,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "59/76/92/9995",
@@ -9067,7 +9709,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -9096,7 +9739,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -9125,7 +9769,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Radley",
@@ -9154,9 +9799,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9174,7 +9823,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "22/50/48/4809",
@@ -9226,7 +9876,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Kidlington",
@@ -9255,9 +9906,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9269,7 +9924,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "45/06/46/5865",
@@ -9321,7 +9977,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -9350,7 +10007,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -9379,7 +10037,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -9408,7 +10067,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -9437,9 +10097,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9460,7 +10124,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "89/31/44/0842",
@@ -9512,7 +10177,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Minster Lovell",
@@ -9541,7 +10207,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Minster Lovell",
@@ -9570,7 +10237,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Minster Lovell",
@@ -9599,7 +10267,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Minster Lovell",
@@ -9628,9 +10297,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9651,7 +10324,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "88/93/91/3478",
@@ -9703,9 +10377,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9714,7 +10392,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "46/05/92/7337",
@@ -9766,7 +10445,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -9795,7 +10475,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -9824,7 +10505,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -9853,9 +10535,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9873,7 +10559,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "76/94/88/1170",
@@ -9925,7 +10612,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Chipping Norton",
@@ -9954,9 +10642,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -9968,7 +10660,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "80/21/95/4824",
@@ -10020,7 +10713,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -10049,7 +10743,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -10078,7 +10773,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Deddington",
@@ -10107,9 +10803,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -10127,7 +10827,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "94/75/11/4583",
@@ -10179,7 +10880,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -10208,7 +10910,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -10237,7 +10940,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Thame",
@@ -10266,9 +10970,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -10286,7 +10994,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "82/66/50/6059",
@@ -10338,7 +11047,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Henley-on-Thames",
@@ -10367,7 +11077,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Henley-on-Thames",
@@ -10396,7 +11107,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Henley-on-Thames",
@@ -10425,9 +11137,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -10445,7 +11161,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "37/24/84/7006",
@@ -10497,7 +11214,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Yarnton",
@@ -10526,9 +11244,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -10540,7 +11262,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "22/24/03/7910",
@@ -10592,7 +11315,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Zouch",
@@ -10621,7 +11345,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Zouch",
@@ -10650,7 +11375,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Zouch",
@@ -10679,7 +11405,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Zouch",
@@ -10708,9 +11435,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -10731,7 +11462,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "18/79/46/1699",
@@ -10783,7 +11515,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Long Hanborough",
@@ -10812,7 +11545,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Long Hanborough",
@@ -10841,9 +11575,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -10858,7 +11596,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "95/72/02/8271",
@@ -10910,7 +11649,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -10939,7 +11679,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -10968,7 +11709,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -10997,7 +11739,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -11026,9 +11769,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11049,7 +11796,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "03/07/20/1551",
@@ -11101,7 +11849,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Uffington",
@@ -11130,9 +11879,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11144,7 +11897,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "47/34/25/2263",
@@ -11196,7 +11950,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Abingdon",
@@ -11225,9 +11980,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11239,7 +11998,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "08/63/51/5030",
@@ -11291,7 +12051,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -11320,7 +12081,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -11349,7 +12111,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Eynsham",
@@ -11378,9 +12141,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11398,7 +12165,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "20/19/30/0884",
@@ -11450,9 +12218,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11461,7 +12233,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "27/77/88/7159",
@@ -11513,9 +12286,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11524,7 +12301,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "90/12/27/4703",
@@ -11576,7 +12354,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -11605,7 +12384,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -11634,7 +12414,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Pangbourne",
@@ -11663,9 +12444,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11683,7 +12468,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "73/58/50/9690",
@@ -11735,7 +12521,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -11764,9 +12551,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11778,7 +12569,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "23/43/74/5881",
@@ -11830,7 +12622,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -11859,7 +12652,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from borehole at Bampton",
@@ -11888,9 +12682,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11905,7 +12703,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "96/84/53/5924",
@@ -11957,9 +12756,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -11968,7 +12771,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "69/64/41/8078",
@@ -12020,7 +12824,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -12049,7 +12854,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -12078,7 +12884,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Shipton-under-Wychwood",
@@ -12107,9 +12914,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -12127,7 +12938,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "96/72/96/4292",
@@ -12179,9 +12991,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -12190,7 +13006,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "86/44/89/9144",
@@ -12242,7 +13059,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -12271,7 +13089,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -12300,7 +13119,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -12329,7 +13149,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from area at Quainton",
@@ -12358,9 +13179,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -12381,7 +13206,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "51/34/70/3830",
@@ -12433,7 +13259,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Long Hanborough",
@@ -12462,9 +13289,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -12476,7 +13307,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "52/47/80/9717",
@@ -12528,7 +13360,8 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from river at Faringdon",
@@ -12557,9 +13390,13 @@ module.exports = {
                               {
                                  "issue": null
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -12571,7 +13408,8 @@ module.exports = {
             {
                "issue": null
             }
-         ]
+         ],
+         "unmatchedReturns": []
       },
       {
          "licenceRef": "10/68/75/0339",
@@ -12623,7 +13461,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -12652,7 +13491,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -12681,7 +13521,8 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         },
                         {
                            "description": "Abstraction from reach at Oxford",
@@ -12710,9 +13551,13 @@ module.exports = {
                               {
                                  "issue": "Over abstraction"
                               }
-                           ]
+                           ],
+                           "tpt": true
                         }
-                     ]
+                     ],
+                     "additionalCharges": [],
+                     "adjustments": [],
+                     "aggregateFactor": ""
                   }
                ]
             }
@@ -12730,7 +13575,8 @@ module.exports = {
             {
                "issue": "Over abstraction"
             }
-         ]
+         ],
+         "unmatchedReturns": []
       }
    ]
 }

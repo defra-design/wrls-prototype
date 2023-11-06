@@ -1,0 +1,65 @@
+{{ govukSummaryList({
+    classes: 'govuk-summary-list--no-border',
+    rows: [
+      {
+        key: {
+          text: "Date created",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: data.billRunData[0].dateCreated  | govukDate,
+          classes: "meta-data__value "
+        }
+      },
+      {
+        key: {
+          text: "Region",
+          classes: "meta-data__label "
+        },
+        value: {
+          text: data['region'] |capitalize,
+          classes: "meta-data__value "
+        }
+      },
+      {
+        key: {
+          text: "Bill run type",
+          classes: "meta-data__label "
+        },
+        value: {
+          text: data.billRunType | default("two-part tariff") | capitalize,
+          classes: "meta-data__value "
+        }
+      },
+      {
+        key: {
+          text: "Charge scheme",
+          classes: "meta-data__label "
+        },
+        value: {
+          text: data.billRunData[0].chargeScheme | capitalize,
+          classes: "meta-data__value "
+        }
+      },
+      {
+        key: {
+          text: "Financial year",
+          classes: "meta-data__label "
+        },
+        value: {
+          text: data.billRunData[0].financialYear,
+          classes: "meta-data__value "
+        }
+      },
+      {
+        key: {
+          text: "Transaction file",
+          classes: "meta-data__label "
+        },
+        value: {
+          text: "ABC132456BH",
+          classes: "meta-data__value "
+        }
+      } if data.annualstatus === 'sent'
+    ]
+  }) }}

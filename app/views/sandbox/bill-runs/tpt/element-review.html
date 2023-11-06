@@ -38,15 +38,36 @@
 
 {% block beforeContent %}
 
-<div class="govuk-!-margin-bottom-3">
+<div class="govuk-!-margin-bottom-0">
   <!-- navigation block -->
-  {% include "current/includes/nav/nav-bd-manage.html" %}
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
 </div>
 
+
 {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
-    }) }}
+  text: "Back",
+  href: "licence-review"
+}) }}
+
+{#  experiment with breadcrumbs, opted for fixed back link up a level instead #}
+{#
+{{ govukBreadcrumbs({
+  items: [
+  {
+    text: "Bill runs",
+    href: "/bd/charges-2020/bill-runs"
+  },
+    {
+      text: "Licences review",
+      href: "review"
+    },
+    {
+      text: "Licence "+licence.licenceRef,
+      href: "licence-review"
+    }
+  ]
+}) }}
+#}
 
 {% endblock %}
 
@@ -90,10 +111,8 @@
 
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-full">
-      <span class="govuk-caption-l">1 April {{chargeVersion.startDate | year}} to 31 March {{chargeVersion.startDate | yearPlusPlus}}</span>
-      <h2 class="govuk-heading-l">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</h2>
-
-
+      <span class="govuk-caption-l">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</span>
+      <h2 class="govuk-heading-l" id="{{licence.chargePeriod[data.chargeVersionID].startDate}}-{{licence.chargePeriod[data.chargeVersionID].endDate}}">Charge period {{licence.chargePeriod[data.chargeVersionID].startDate |govukDate}} to {{licence.chargePeriod[data.chargeVersionID].endDate |govukDate}}</h2>
 
       {# setting issues from the element #}
         {% set issuesText = [] %}
@@ -107,20 +126,30 @@
       </div>
     </div>
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-half">
-         
-            <h3><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.billableReturns | round(3)}}ML</span><br>
+          <div class="govuk-grid-column-full">
+            
+         <div class="govuk-!-margin-right-6 float-left">
+            <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{{chargeElement.allocatedQuantity | round(3)}}ML</span><br>
               <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Billable returns</span></h3>
-   
+            </div>
+            <div class="govuk-!-margin-right-6 float-left">
+              <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold"> / </span><br>
+               </h3>
+              </div>
+            <div class="govuk-!-margin-right-6 float-left">
+              <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{{chargeElement.authorisedAnnualQuantity | round(3)}}ML</span><br>
+                <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Authorised volume</span></h3>
+              </div>
 
-    </div>
+              
     {% if issuesText.length %}
-     <div class="govuk-grid-column-one-half">
+    <div class="govuk-!-margin-right-6 float-left">
       {{ govukInsetText({
         html: '<h4 class="govuk-heading-s govuk-!-font-weight-bold">Issue</h4>' + issuesText | formatList | capitalize
       }) }}
     </div>
     {%endif%}
+  </div>
   </div>
 
 
@@ -139,16 +168,16 @@
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-full">
     
-    {# set the matched return details#}
+    {# set the matched return details ***OLD CODE***
     {% set matchedReturns = chargeElement.returns %}
-    
-
-
     {% if not licence.returns.length %}
     {% include "sandbox/_includes/billing/tpt/element-match-2.html" %} 
     {% else %}
     {% include "sandbox/_includes/billing/tpt/element-match.html" %} 
     {% endif %}
+    #}
+ 
+    {% include "sandbox/_includes/billing/tpt/returns-table-element.html" %} 
     
     </div>
   </div>

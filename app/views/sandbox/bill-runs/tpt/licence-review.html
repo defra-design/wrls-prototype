@@ -3,6 +3,9 @@
 
 
 {% set billRunDataTpTReview = data.billRunDataTpTReview %}
+
+
+
 {% set licence = billRunDataTpTReview[data.ID]  %}
 
 
@@ -35,24 +38,40 @@
 
 {% block beforeContent %}
 
-<div class="govuk-!-margin-bottom-3">
+<div class="govuk-!-margin-bottom-0">
   <!-- navigation block -->
-  {% include "current/includes/nav/nav-bd-manage.html" %}
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
 </div>
 
+
 {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.back()"
+  text: "Back",
+  href: "review"
+}) }}
+
+{#  experiment with breadcrumbs, opted for fixed back link up a level instead #}
+{#
+    {{ govukBreadcrumbs({
+      items: [
+      {
+        text: "Bill runs",
+        href: "/bd/charges-2020/bill-runs"
+      },
+        {
+          text: "Review licences",
+          href: "review"
+        }
+      ]
     }) }}
+#}
 
 {% endblock %}
 
 {% block content %}
 
 <!-- page title -->
-<div class="govuk-grid-row govuk-!-margin-bottom-1">
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
-  
 
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff bill run</span>{{ title }}</h1>
@@ -81,30 +100,56 @@
       {% endif %}
   
     
-
+      {{ govukButton({
+        text: "Mark as complete",
+        classes: "govuk-button--primary govuk-!-margin-right-2"
+      }) }}
 
       {{ govukButton({
         text: "Remove from bill run",
         classes: "govuk-button--secondary"
       }) }}
-  
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-2"> Charge periods</h2>
+      <ul class="govuk-list">
+        {% for chargePeriod in licence.chargePeriod %}
+        <li>
+          <a class="govuk-link" href="#{{chargePeriod.startDate}}-{{chargePeriod.endDate}}">{{chargePeriod.startDate | govukDate}} to {{chargePeriod.endDate | govukDate}}{% if not loop.last %} - {{licence.chargeVersions[loop.index0].reason}}{% endif %}</a>
+        </li>
+        {% endfor %}
+      </ul>
     
      </div>
      </div>
+     <div class="divider govuk-!-margin-bottom-6"></div>
+    <!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-2">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-2"> Returns</h2>
+    {% include "sandbox/_includes/billing/tpt/returns-table.html" %} 
+
+    {# include any unmatched returns in another table if there are any#}
+    {% if licence.unmatchedReturns.length %}
+    Unmatched returns
+    {% include "sandbox/_includes/billing/tpt/returns-table.html" %} 
+    {% endif %}
+
+    </div>
+    </div>
   
-     
   
      
   
 
   {#Loop through the chargeVersions#}
+
   {% for chargeVersion in licence.chargeVersions %}
   <!--page divider-->
   <div class="divider govuk-!-margin-bottom-6"></div>
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-full">
-      <span class="govuk-caption-l">1 April {{chargeVersion.startDate | year}} to 31 March {{chargeVersion.startDate | yearPlusPlus}}</span>
-      <h2 class="govuk-heading-l">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</h2>
+      <span class="govuk-caption-l">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</span>
+      <h2 class="govuk-heading-l" id="{{licence.chargePeriod[loop.index0].startDate}}-{{licence.chargePeriod[loop.index0].endDate}}">Charge period {{licence.chargePeriod[loop.index0].startDate |govukDate}} to {{licence.chargePeriod[loop.index0].endDate |govukDate}}</h2>
   
     <span class="govuk-caption-m">{{licence.licenceHolder}}</span>
       <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{chargeVersion.chargeReferences.length}} charge {{chargeVersion.chargeReferences | plural('reference')}} with {{chargeVersion.chargeReferences[0].chargeElements.length}} two-part tariff charge {{chargeVersion.chargeReferences[0].chargeElements | plural("element")}}</h3>
@@ -119,6 +164,7 @@
     </div>
   </div>
   {% endfor %}
+ 
   
 
 
