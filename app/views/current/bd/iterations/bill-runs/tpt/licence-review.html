@@ -70,7 +70,7 @@
 {% block content %}
 
 <!-- page title -->
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
 
@@ -88,27 +88,31 @@
           classes: colour
         })}}
       </p>
-   
+
+    
       {# list of links through to the licence #}
       {% include "current/bd/iterations/_includes/billing/tpt/licence-nav-links.html" %} 
+  
+
+        {% if data.status == "review" %}
+        {{ govukInsetText({
+         text: "You need to review "+ licence.chargeVersions[0].chargeReferences[0].chargeElements.length + " " + licence.chargeVersions[0].chargeReferences[0].chargeElements | plural("element") + " with returns data issues",
+         classes: "govuk-!-margin-bottom-6"
+       }) }}
+        {% endif %}
      
-     {% if data.status == "review" %}
-      {{ govukInsetText({
-       text: "You need to review "+ licence.chargeVersions[0].chargeReferences[0].chargeElements.length + " " + licence.chargeVersions[0].chargeReferences[0].chargeElements | plural("element") + " with returns data issues",
-       classes: "govuk-!-margin-bottom-6"
-     }) }}
-      {% endif %}
+        {{ govukButton({
+          text: "Mark as complete",
+          classes: "govuk-button--primary govuk-!-margin-right-2"
+        }) }}
+  
+        {{ govukButton({
+          text: "Remove from bill run",
+          classes: "govuk-button--secondary"
+        }) }}
   
     
-      {{ govukButton({
-        text: "Mark as complete",
-        classes: "govuk-button--primary govuk-!-margin-right-2"
-      }) }}
-
-      {{ govukButton({
-        text: "Remove from bill run",
-        classes: "govuk-button--secondary"
-      }) }}
+     
 
       <h2 class="govuk-heading-l govuk-!-margin-bottom-2"> Charge periods</h2>
       <ul class="govuk-list">
@@ -130,8 +134,7 @@
 
     {# include any unmatched returns in another table if there are any#}
     {% if licence.unmatchedReturns.length %}
-    Unmatched returns
-    {% include "current/bd/iterations/_includes/billing/tpt/returns-table.html" %} 
+    {% include "current/bd/iterations/_includes/billing/tpt/returns-table-unmatched.html" %} 
     {% endif %}
 
     </div>

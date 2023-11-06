@@ -81,7 +81,7 @@
 
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Element {{data.elementID | stringPlusPlus}} of {{licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements.length}}</span>
-       {{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate}}</h1>
+       {{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate | firstnbsp |safe}}</h1>
 
      
        {% if data.status == "review" %}
@@ -129,7 +129,7 @@
           <div class="govuk-grid-column-full">
             
          <div class="govuk-!-margin-right-6 float-left">
-            <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{{chargeElement.allocatedQuantity | round(3)}}ML</span><br>
+            <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{% if chargeElement.allocatedQuantity | isString%}Not set{% else %}{{chargeElement.allocatedQuantity | round(3)}}ML{% endif %}</span><br>
               <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Billable returns</span></h3>
             </div>
             <div class="govuk-!-margin-right-6 float-left">
@@ -171,13 +171,13 @@
     {# set the matched return details ***OLD CODE***
     {% set matchedReturns = chargeElement.returns %}
     {% if not licence.returns.length %}
-    {% include "sandbox/_includes/billing/tpt/element-match-2.html" %} 
+    {% include "current/bd/iterations/_includes/billing/tpt/element-match-2.html" %} 
     {% else %}
-    {% include "sandbox/_includes/billing/tpt/element-match.html" %} 
+    {% include "current/bd/iterations/_includes/billing/tpt/element-match.html" %} 
     {% endif %}
     #}
  
-    {% include "sandbox/_includes/billing/tpt/returns-table-element.html" %} 
+    {% include "current/bd/iterations/_includes/billing/tpt/returns-table-element.html" %} 
     
     </div>
   </div>

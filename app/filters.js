@@ -200,3 +200,9 @@ addFilter('nbsp', function nbsp(x) {
   return x = x.replace(/\s/g, "&nbsp;")
 
 });
+
+addFilter('firstnbsp', function firstnbsp(x) { 
+
+  return x = x.replace(" ", "&nbsp;")
+
+});

@@ -101,7 +101,7 @@
 
 {# set the element heading #}
 {% set elementHeading %}
-<span class="govuk-caption-s">Element {{loop.index}} of {{chargeReference.chargeElements.length}}<span style="float:right">{{statusTag|safe}}</span></span>
+<span class="govuk-caption-s">Element {{loop.index}} of {{chargeReference.chargeElements.length}}<span class="float-right govuk-!-margin-left-9 govuk-!-margin-top-3">{{statusTag|safe}} </span></span>
       <h3 class="govuk-heading-s govuk-!-margin-bottom-1 ">{{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate  | nbsp |safe}} </h3>
 {% endset %}
       

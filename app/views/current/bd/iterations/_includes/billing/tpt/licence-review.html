@@ -56,13 +56,23 @@
 {% for issue in chargeElement.issues %}
 {% if issue.issue.length %}
 {% set issuesText = issuesText|push(issue.issue ) %}
-{% set status = "review" %}
-{% set statusTag %}
-{{govukTag({
-  text: "Review",
-  classes: "govuk-tag--blue"
-})}}
-{% endset %}
+        {% if issuesText == "returns received late" %}
+        {% set status = "Ready" %}
+        {% set statusTag %}
+        {{govukTag({
+          text: "ready",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset %}
+        {% else %}
+        {% set status = "review" %}
+        {% set statusTag %}
+        {{govukTag({
+          text: "Review",
+          classes: "govuk-tag--blue"
+        })}}
+        {% endset %}
+        {% endif %}
 {% else %}
 {% set status = "Ready" %}
 {% set statusTag %}
@@ -77,25 +87,27 @@
 
 {% endfor %}
 
-{# set the billable returns#}
+{# set the billable returns #}
 {% set billableReturns = "" %}
-{% if chargeElement.allocatedQuantity == 0 %}
-{% set billableReturns = chargeElement.authorisedAnnualQuantity %}
-{% elseif chargeElement.allocatedQuantity > chargeElement.authorisedAnnualQuantity %}
-{% set billableReturns = chargeElement.authorisedAnnualQuantity%}
+{# if the returned quantity is equal or more than  set the billable to the full authorised #}
+{% if chargeElement.allocatedQuantity >= chargeElement.authorisedAnnualQuantity %}
+{% set billableReturns = chargeElement.authorisedAnnualQuantity  + 'ML / ' + chargeElement.authorisedAnnualQuantity + 'ML' %}
+{# if the allocated quantity is not set print the text #}
+{% elseif chargeElement.allocatedQuantity == "not set" %}
+{% set billableReturns = chargeElement.allocatedQuantity |capitalize  + ' / ' + chargeElement.authorisedAnnualQuantity + 'ML'%}
 {% else %}
-{% set billableReturns = chargeElement.allocatedQuantity %}
+{% set billableReturns = chargeElement.allocatedQuantity  + 'ML / ' + chargeElement.authorisedAnnualQuantity + 'ML'%}
 {% endif %}
 
 {# set the element heading #}
 {% set elementHeading %}
-<span class="govuk-caption-s">Element {{loop.index}} of {{chargeReference.chargeElements.length}}<span style="float:right">{{statusTag|safe}}</span></span>
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-1 ">{{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate | nbsp |safe  }}</h3>
+<span class="govuk-caption-s">Element {{loop.index}} of {{chargeReference.chargeElements.length}}<span class="float-right govuk-!-margin-left-9 govuk-!-margin-top-3">{{statusTag|safe}} </span></span>
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1 ">{{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate  | nbsp |safe}} </h3>
 {% endset %}
       
 {#set the element rows in the summary list #}
 {% set rows = rows | push( {key: {text: "Issue"},value: {text: issuesText | formatList | capitalize } }  ) %} 
-{% set rows = rows | push( {key: {text: "Billable returns"},value: {text: billableReturns + 'ML / ' + chargeElement.authorisedAnnualQuantity + 'ML'}, actions: {items: [{href: "element-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0 + "&billableReturns=" + billableReturns+ "&status=" + status,text: "View match details",visuallyHiddenText: "for element " + loop.index + " of " +chargeReference.chargeElements.length  + ", " + chargeElement.purpose + ", " + chargeElement.description}]} } ) %} 
+{% set rows = rows | push( {key: {text: "Billable returns"},value: {text: billableReturns}, actions: {items: [{href: "element-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0 + "&billableReturns=" + billableReturns+ "&status=" + status,text: "View match details",visuallyHiddenText: "for element " + loop.index + " of " +chargeReference.chargeElements.length  + ", " + chargeElement.purpose + ", " + chargeElement.description}]} } ) %} 
 {% set rows = rows | push( {key: {text: "Return volume"},value: {text: chargeElement.returns[0].returnsQuantity + 'ML (return ref ' + chargeElement.returns[0].returnRequirement + ')'} }  ) %} 
 
 <div class="govuk-!-margin-top-6">

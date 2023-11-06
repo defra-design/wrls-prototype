@@ -27,14 +27,18 @@
 {% endset %}
 
 
-{% if chargeElement.allocatedQuantity == return.returnsQuantity %}
-{% set allocationMessage = "Fully allocated" %}
+{% if return.returnsQuantity == "" %}
+{% set allocationMessage = '/ <br>Not processed'%}
+{% elseif chargeElement.allocatedQuantity == return.returnsQuantity %}
+{% set allocationMessage = chargeElement.allocatedQuantity + 'ML / ' + return.returnsQuantity + 'ML<br>Fully allocated'  %}
+{% elseif chargeElement.allocatedQuantity == "not set" %}
+{% set allocationMessage =  return.returnsQuantity + 'ML / ' + return.returnsQuantity + 'ML<br>Fully allocated'  %}
 {% else %}
-{% set allocationMessage = "Over abstraction"%}
+{% set allocationMessage = chargeElement.allocatedQuantity + 'ML / ' + return.returnsQuantity + 'ML<br>Over abstraction' %}
 {% endif %}
 
 
-{% set rows = rows | push([ {html: reference | safe, classes: 'govuk-body-s'}, {html: return.purpose + '<br>' + return.description,classes: 'govuk-body-s' }, {html: statusTag |safe, classes: 'govuk-body-s' }, {html: chargeElement.allocatedQuantity + 'ML / ' + return.returnsQuantity + 'ML<br>' + allocationMessage ,format: "numeric",classes: 'govuk-body-s' } ]) %} 
+{% set rows = rows | push([ {html: reference | safe, classes: 'govuk-body-s'}, {html: return.purpose + '<br>' + return.description,classes: 'govuk-body-s' }, {html: statusTag |safe, classes: 'govuk-body-s' }, {html: allocationMessage,format: 'numeric',classes: 'govuk-body-s' } ]) %} 
 
 
 

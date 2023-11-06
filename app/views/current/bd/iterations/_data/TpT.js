@@ -318,16 +318,16 @@ module.exports = {
                                  "returnRequirement": "1765678",
                                  "description": "Abstraction from reach at Oxford",
                                  "purpose": "Spray irrigation - transfer",
-                                 "status": "completed",
+                                 "status": "received",
                                  "startDate": "2022-04-01",
                                  "endDate": "2023-03-31",
-                                 "returnsQuantity": 96.503
+                                 "returnsQuantity": ""
                               }
                            ],
-                           "allocatedQuantity": 68,
+                           "allocatedQuantity": "not set",
                            "issues": [
                               {
-                                 "issue": "Over abstraction"
+                                 "issue": "Returns received but not processed"
                               }
                            ],
                            "tpt": true
@@ -408,16 +408,16 @@ module.exports = {
                                  "returnRequirement": "1105102",
                                  "description": "Abstraction from reach at Oxford",
                                  "purpose": "Spray Irrigation - direct",
-                                 "status": "completed",
+                                 "status": "query",
                                  "startDate": "2022-04-01",
                                  "endDate": "2023-03-31",
-                                 "returnsQuantity": 51.947
+                                 "returnsQuantity": 38
                               }
                            ],
-                           "allocatedQuantity": 42,
+                           "allocatedQuantity": "not set",
                            "issues": [
                               {
-                                 "issue": "Over abstraction"
+                                 "issue": "Checking query"
                               }
                            ],
                            "tpt": true
@@ -432,7 +432,7 @@ module.exports = {
          ],
          "issues": [
             {
-               "issue": "Over abstraction"
+               "issue": "Returns received but not processed"
             },
             {
                "issue": null
@@ -441,7 +441,7 @@ module.exports = {
                "issue": null
             },
             {
-               "issue": "Over abstraction"
+               "issue": "Checking query"
             }
          ],
          "unmatchedReturns": []
@@ -485,16 +485,16 @@ module.exports = {
                                  "returnRequirement": "1112576",
                                  "description": "Abstraction from river at Goring-on-Thames",
                                  "purpose": "Trickle irrigation",
-                                 "status": "completed",
+                                 "status": "overdue",
                                  "startDate": "2022-04-01",
                                  "endDate": "2023-03-31",
-                                 "returnsQuantity": 26.819
+                                 "returnsQuantity": ""
                               }
                            ],
-                           "allocatedQuantity": 26.819,
+                           "allocatedQuantity": "not set",
                            "issues": [
                               {
-                                 "issue": null
+                                 "issue": "No returns"
                               }
                            ],
                            "tpt": true
@@ -554,7 +554,7 @@ module.exports = {
                            "allocatedQuantity": 86.407,
                            "issues": [
                               {
-                                 "issue": null
+                                 "issue": "returns received late"
                               }
                            ],
                            "tpt": true
@@ -599,7 +599,7 @@ module.exports = {
          ],
          "issues": [
             {
-               "issue": null
+               "issue": "no returns"
             },
             {
                "issue": null
@@ -811,7 +811,26 @@ module.exports = {
                "issue": "Over abstraction"
             }
          ],
-         "unmatchedReturns": []
+         "unmatchedReturns": [{
+            "returnId": "1485103",
+            "returnRequirement": "1463503",
+            "description": "Abstraction from reach at Kidlington",
+            "purpose": "Trickle irrigation - storage",
+            "status": "completed",
+            "startDate": "2022-04-01",
+            "endDate": "2023-03-31",
+            "returnsQuantity": 20
+         },
+         {
+            "returnId": "1485105",
+            "returnRequirement": "1463505",
+            "description": "Abstraction from reach at Kidlington",
+            "purpose": "Trickle irrigation - transfer",
+            "status": "completed",
+            "startDate": "2022-04-01",
+            "endDate": "2023-03-31",
+            "returnsQuantity": 20
+         }]
       },
       {
          "licenceRef": "17/79/00/9281",

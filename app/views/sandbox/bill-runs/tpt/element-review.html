@@ -81,7 +81,7 @@
 
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">Element {{data.elementID | stringPlusPlus}} of {{licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements.length}}</span>
-       {{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate}}</h1>
+       {{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate | firstnbsp |safe}}</h1>
 
      
        {% if data.status == "review" %}

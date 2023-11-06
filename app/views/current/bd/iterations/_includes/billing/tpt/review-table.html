@@ -30,8 +30,18 @@
 {% endif %}
 {% endfor %}
 
+
+
 {% if issuesText.length > 0 %}
-{% set status = "review" %}
+    {# Extra logic not used yet 
+    {% if "Checking query" in issuesText or "Returns received but not processed" in issuesText %}
+    {% set status = "review" %}
+    {% else %}
+    {% set status = "ready" %}
+    {% endif %}
+    #}
+
+{% set status = "review" %}    
 {% else %}
 {% set status = "ready" %}
 {% endif %}
