@@ -56,13 +56,23 @@
 {% for issue in chargeElement.issues %}
 {% if issue.issue.length %}
 {% set issuesText = issuesText|push(issue.issue ) %}
-{% set status = "review" %}
-{% set statusTag %}
-{{govukTag({
-  text: "Review",
-  classes: "govuk-tag--blue"
-})}}
-{% endset %}
+        {% if issuesText == "returns received late" %}
+        {% set status = "Ready" %}
+        {% set statusTag %}
+        {{govukTag({
+          text: "ready",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset %}
+        {% else %}
+        {% set status = "review" %}
+        {% set statusTag %}
+        {{govukTag({
+          text: "Review",
+          classes: "govuk-tag--blue"
+        })}}
+        {% endset %}
+        {% endif %}
 {% else %}
 {% set status = "Ready" %}
 {% set statusTag %}

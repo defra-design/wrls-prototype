@@ -485,16 +485,16 @@ module.exports = {
                                  "returnRequirement": "1112576",
                                  "description": "Abstraction from river at Goring-on-Thames",
                                  "purpose": "Trickle irrigation",
-                                 "status": "completed",
+                                 "status": "overdue",
                                  "startDate": "2022-04-01",
                                  "endDate": "2023-03-31",
-                                 "returnsQuantity": 26.819
+                                 "returnsQuantity": ""
                               }
                            ],
-                           "allocatedQuantity": 26.819,
+                           "allocatedQuantity": "not set",
                            "issues": [
                               {
-                                 "issue": null
+                                 "issue": "no returns"
                               }
                            ],
                            "tpt": true
@@ -554,7 +554,7 @@ module.exports = {
                            "allocatedQuantity": 86.407,
                            "issues": [
                               {
-                                 "issue": null
+                                 "issue": "returns received late"
                               }
                            ],
                            "tpt": true
@@ -599,7 +599,7 @@ module.exports = {
          ],
          "issues": [
             {
-               "issue": null
+               "issue": "no returns"
             },
             {
                "issue": null
