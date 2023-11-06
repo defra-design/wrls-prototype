@@ -432,7 +432,7 @@ module.exports = {
          ],
          "issues": [
             {
-               "issue": "Over abstraction"
+               "issue": "Returns received but not processed"
             },
             {
                "issue": null
@@ -441,7 +441,7 @@ module.exports = {
                "issue": null
             },
             {
-               "issue": "Over abstraction"
+               "issue": "Checking query"
             }
          ],
          "unmatchedReturns": []
@@ -494,7 +494,7 @@ module.exports = {
                            "allocatedQuantity": "not set",
                            "issues": [
                               {
-                                 "issue": "no returns"
+                                 "issue": "No returns"
                               }
                            ],
                            "tpt": true
@@ -811,7 +811,26 @@ module.exports = {
                "issue": "Over abstraction"
             }
          ],
-         "unmatchedReturns": []
+         "unmatchedReturns": [{
+            "returnId": "1485103",
+            "returnRequirement": "1463503",
+            "description": "Abstraction from reach at Kidlington",
+            "purpose": "Trickle irrigation - storage",
+            "status": "completed",
+            "startDate": "2022-04-01",
+            "endDate": "2023-03-31",
+            "returnsQuantity": 20
+         },
+         {
+            "returnId": "1485105",
+            "returnRequirement": "1463505",
+            "description": "Abstraction from reach at Kidlington",
+            "purpose": "Trickle irrigation - transfer",
+            "status": "completed",
+            "startDate": "2022-04-01",
+            "endDate": "2023-03-31",
+            "returnsQuantity": 20
+         }]
       },
       {
          "licenceRef": "17/79/00/9281",

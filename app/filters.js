@@ -193,3 +193,10 @@ addFilter('sortByLicence', function sortBylicence(array) {
 
   return array;
 });
+
+
+addFilter('nbsp', function nbsp(x) { 
+
+  return x = x.replace(/\s/g, "&nbsp;")
+
+});

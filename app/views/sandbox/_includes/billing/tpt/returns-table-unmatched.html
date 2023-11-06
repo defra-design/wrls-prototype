@@ -1,0 +1,57 @@
+
+
+
+
+{# set a blank array for the table rows #} 
+{% set rows = [] %} 
+
+{# Loop through the rows and push the returns into the list, this uses a custom filter "push" this is in filters.js#}
+
+
+
+
+{% for return in licence.unmatchedReturns %}
+
+
+{% set reference = '<a class="govuk-link" href="#"><span class="govuk-visually-hidden">View return for </span>' + return.returnRequirement + '</a><br>' + return.startDate | govukDate + ' to ' + return.endDate | govukDate  %}
+
+
+{% set statusTag %}
+{{govukTag({
+  text: return.status,
+  classes: return.status | returnStatusColour + ' govuk-!-font-size-14'
+})}}
+{% endset %}
+
+
+
+{% set rows = rows | push([ {html: reference | safe, classes: 'govuk-body-s'}, {html: return.purpose + '<br>' + return.description,classes: 'govuk-body-s' }, {html: statusTag |safe, classes: 'govuk-body-s' }, {html: "0ML / " + return.returnsQuantity +  "ML",format: 'numeric',classes: 'govuk-body-s' } ]) %} 
+
+
+
+{% endfor %}
+
+
+
+
+{{ govukTable({
+caption: "Unmatched returns",
+captionClasses: "govuk-table__caption--m",
+firstCellIsHeader: false,
+head: [
+{
+text: "Return reference and dates"
+},
+{
+text: "Purpose and description"
+},
+{
+text: "Status"
+},
+{
+text: "Return totals",
+format: "numeric"
+}
+],
+rows: rows 
+}) }}
