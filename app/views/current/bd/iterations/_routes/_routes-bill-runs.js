@@ -131,6 +131,187 @@ router.get('/tpt/review', function(req, res) {
    res.render(folder + 'tpt/review');
  });
 
+ ///TPT PROGRESS UPDATE FEATURE
+router.post('/tpt/progress-update', function(req, res) {
+  req.session.data.statusBanner = "show"
+  if (req.session.data.billRunDataTpTReview[req.session.data.ID].progress == "&#10003;") {
+    req.session.data.billRunDataTpTReview[req.session.data.ID].progress = "" 
+  } else {
+  req.session.data.billRunDataTpTReview[req.session.data.ID].progress = "&#10003;" }
+  res.redirect('licence-review');
+});
+
+router.get('/tpt/licence-review', function(req, res) {
+  req.session.data.statusBanner = "hide"
+  res.render(folder + 'tpt/licence-review');
+});
+
+
+////TpT REVIEW FILTER LICENCE LIST
+
+
+
+/////////////////////////Bill runs
+///Apply  filters
+
+router.post('/tpt/review/apply-filters', function(req, res) {
+
+  //check to see if the user is clearing filters
+  if (req.session.data.clearFilters == "true") {
+
+    req.session.data.TpTReviewStatus = ""
+   req.session.data.issue = ""
+   req.session.data.licenceHolder = ""
+   req.session.data.filteredResults = ""
+    req.session.data.openDetails = true
+    //reset the table caption if the list is cleared
+    req.session.data.TpTfilterCaption = "Showing all licences."
+//    req.session.data.focus="alert"
+
+  } else {
+    console.log("filtering");
+
+  //get the list of bill runs
+  let  licences = req.session.data.billRunDataTpTReview
+
+//set global scope of filteredResults
+let filteredResults = ""
+
+//set the type filter
+let licenceHolderFilters = ""
+licenceHolderFilters = req.session.data.licenceHolder
+
+
+console.log(licenceHolderFilters.length);
+
+ if (typeof licenceHolderFilters === 'undefined') {
+  licenceHolderFilters= ""
+ }
+
+ if (typeof licenceHolderFilters.length) {
+  console.log('Filtering by licence holder')
+   filteredResults = licences.filter(el => ( licenceHolderFilters.indexOf(el.licenceHolder) >= 0 ))
+ }
+
+
+
+ //set the region filter
+ let issueFilters = ""
+ issueFilters = req.session.data.issue
+  if (typeof issueFilters === 'undefined') {
+    issueFilters= ""
+  }
+
+ if ((issueFilters.length) && (filteredResults.length)) {
+  console.log('Filtering by licence holder and issues')
+  filteredResults = filteredResults.filter(licence =>
+    licence.issues.some(issueObj => issueObj.issue === issueFilters)
+  );
+
+  } else if (issueFilters.length) {
+    console.log('Filtering by issues')
+filteredResults = licences.filter(licence =>
+      licence.issues.some(issueObj => issueObj.issue === issueFilters)
+    );
+
+  }
+
+
+  //set the status filter
+  let statusFilters = ""
+   statusFilters = req.session.data.TpTReviewStatus
+   if (typeof statusFilters === 'undefined') {
+     statusFilters= ""
+   }
+
+  if ((issueFilters.length || licenceHolderFilters.length ) && (!filteredResults.length))
+ { } else {
+
+  if ((statusFilters.length ) && (filteredResults.length)) {
+    console.log('Filtering by either issue or licence holder and status '+ statusFilters)
+    if ( statusFilters == "review" ) {
+      filteredResults = filteredResults.filter(licence =>
+        licence.issues.some(issueObj => issueObj.issue && issueObj )
+      );
+    } else if ( statusFilters == "ready" ) {
+      filteredResults = filteredResults.filter(licence =>
+        licence.issues.every(issueObj => issueObj.issue === null && issueObj)
+      );
+    }
+   
+    } else if (statusFilters.length) {
+
+      console.log('filtering by status ' + statusFilters)
+     
+     if ( statusFilters == "review" ) {
+      filteredResults = licences.filter(licence =>
+        licence.issues.some(issueObj => issueObj.issue && issueObj )
+      );
+    } else if ( statusFilters == "ready" ) {
+      filteredResults = licences.filter(licence =>
+        licence.issues.every(issueObj => issueObj.issue === null && issueObj)
+      );
+    }
+
+   }
+  }
+
+   
+// console.log("Filtered results = " + filteredResults)
+
+  //set filtered results to empty if filters doesn't return anything
+    if (!Array.isArray(filteredResults) || !filteredResults.length){
+      filteredResults = "empty"
+    }
+
+ //   console.log("Filtered results = " + filteredResults)
+req.session.data.openDetails = true
+//req.session.data.focus="alert"
+
+//Create a list formatter
+const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
+
+
+//Create the list depending on what filters are selected
+let list = []
+if (licenceHolderFilters.length && issueFilters.length && statusFilters.length){
+list.push(licenceHolderFilters, issueFilters.toLowerCase(), statusFilters.toLowerCase());
+} else if (licenceHolderFilters.length && issueFilters.length){
+  list.push(licenceHolderFilters, issueFilters.toLowerCase());
+} else if (licenceHolderFilters.length && statusFilters.length){
+  list.push(licenceHolderFilters, statusFilters.toLowerCase());
+} else if (issueFilters.length && statusFilters.length){
+  list.push(issueFilters.toLowerCase(), statusFilters.toLowerCase());
+} else if (issueFilters.length){
+  list.push(issueFilters.toLowerCase())
+} else if (licenceHolderFilters.length){
+  list.push(licenceHolderFilters)
+} else if (statusFilters.length){
+  list.push(statusFilters.toLowerCase())
+}
+
+console.log(list)
+
+
+//set the dynamic caption for the table
+if (list.length) {
+req.session.data.TpTfilterCaption = "Showing licences filtered by " + formatter.format(list) + "."
+} else {
+  req.session.data.TpTfilterCaption = "Showing all licences."
+}
+
+console.log(req.session.data.TpTfilterCaption)
+
+req.session.data.filteredResults = filteredResults
+
+}
+
+  req.session.data.clearFilters = ""
+  res.redirect('/current/bd/iterations/bill-runs/tpt/review#caption');
+
+});
+
  ////////////////////
 
 
