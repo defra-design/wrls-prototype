@@ -1,0 +1,85 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Set a time limit for the return requirement" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+
+
+  {% set timeLimit %}
+  {{ govukDateInput({
+  id: "settimeLimitStart",
+  namePrefix: "timeLimitStart",
+  fieldset: {
+    legend: {
+      text: "Enter start date",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  }
+}) }}
+  {{ govukDateInput({
+  id: "settimeLimit",
+  namePrefix: "timeLimit",
+  fieldset: {
+    legend: {
+      text: "Enter end date",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  }
+}) }}
+  {% endset %}
+
+  {{ govukRadios({
+    idPrefix: "timeLimit",
+    name: "timeLimit",
+    fieldset: {
+      legend: {
+        html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        conditional: {
+          html: timeLimit
+        }
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Continue
+</button>
+
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

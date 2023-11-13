@@ -44,10 +44,12 @@
 </div>
 
 
-{{ govukBackLink({
-  text: "Go back to review licences",
-  href: "review"
-}) }}
+  {{ govukBackLink({
+    text: "Go back to review licences",
+    href: "review"
+  }) }}
+
+
 
 {#  experiment with breadcrumbs, opted for fixed back link up a level instead #}
 {#
@@ -71,10 +73,10 @@
 
 {% set notificationText = "" %}
 
-{% if licence.progress == "complete" %}
-{% set notificationText = "This licence has been marked as complete" %}
+{% if licence.progress == "&#10003;" %}
+{% set notificationText = "This licence has been marked" %}
 {% else %}
-{% set notificationText = "This licence is no longer marked as complete" %}
+{% set notificationText = "This progress mark for this licence has been removed" %}
 {% endif %}
 
 {% if data.statusBanner == "show" %}
@@ -111,7 +113,7 @@
 
         {% if data.status == "review" %}
         {{ govukInsetText({
-         text: "You need to review "+ licence.chargeVersions[0].chargeReferences[0].chargeElements.length + " " + licence.chargeVersions[0].chargeReferences[0].chargeElements | plural("element") + " with returns data issues",
+         text: "You need to review "+ licence.chargeVersions[0].chargeReferences[0].chargeElements | length | plural("element") + " with returns data issues",
          classes: "govuk-!-margin-bottom-6"
        }) }}
         {% endif %}
@@ -120,12 +122,12 @@
         <form class="inline" action="progress-update" method="post" novalidate > 
         {% if licence.progress %}
         {{ govukButton({
-          text: "Undo mark as complete",
+          text: "Remove progress mark",
           classes: "govuk-button--secondary govuk-!-margin-right-2"
         }) }}
         {% else %}
         {{ govukButton({
-          text: "Mark as complete",
+          text: "Mark progress",
           classes: "govuk-button--primary govuk-!-margin-right-2"
         }) }}
         {% endif %}
@@ -180,7 +182,7 @@
       <h2 class="govuk-heading-l" id="{{licence.chargePeriod[loop.index0].startDate}}-{{licence.chargePeriod[loop.index0].endDate}}">Charge period {{licence.chargePeriod[loop.index0].startDate |govukDate}} to {{licence.chargePeriod[loop.index0].endDate |govukDate}}</h2>
   
     <span class="govuk-caption-m">{{licence.licenceHolder}}</span>
-      <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{chargeVersion.chargeReferences.length}} charge {{chargeVersion.chargeReferences | plural('reference')}} with {{chargeVersion.chargeReferences[0].chargeElements.length}} two-part tariff charge {{chargeVersion.chargeReferences[0].chargeElements | plural("element")}}</h3>
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{chargeVersion.chargeReferences | length | plural('charge reference')}} with {{chargeVersion.chargeReferences[0].chargeElements.length | plural("two-part tariff charge element")}}</h3>
       {{ govukDetails({
         classes: "govuk-!-margin-bottom-7",
         summaryText: "Billing account details",

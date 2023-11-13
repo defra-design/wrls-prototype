@@ -27,6 +27,7 @@
 
 {% block beforeContent %}
 
+
 <div class="govuk-!-margin-bottom-0">
   <!-- navigation block -->
   {% include "current/includes/nav/nav-bd-bill-runs.html" %}
@@ -104,7 +105,18 @@
 {% endif %}
 
 
+{% set filteredResults = "" %}
+{% set filteredResults = data.filteredResults | default("")%}
 
+
+
+    <!--get and loop through the notifications table, check if results are filtered or not-->
+    {% if filteredResults.length %}
+    {% set licences  = data.filteredResults  %}
+    {% else %}
+    {% set licences  = data.billRunDataTpTReview  %}
+    {% endif %}
+    <h2 class="govuk-heading-m">{% if licences == "empty" %}0 licences{% else %}{{licences | length  | plural("licence") }}{% endif %}</h2>  
 
 {% include "sandbox/_includes/billing/tpt/review-table.html" %}
 

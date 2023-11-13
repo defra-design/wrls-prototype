@@ -1,6 +1,6 @@
 
 
-
+{% include "sandbox/_includes/billing/tpt/review-table-filters.html" %}
 
 {# set a blank array for the table rows #} 
 {% set rows = [] %} 
@@ -10,8 +10,16 @@
 {# The fifth column is a little different, it contains the link to view the bill. We use the bill ID to know which bill the row is for#}
 
 
+<!--get and loop through the notifications table, check if results are filtered or not-->
 
-{% for licence in billRunDataTpTReview %}
+
+{% if licences == "empty" %}
+
+{% set rows = rows | push([ {text: "No results"}, {text: ""}, {text: "" }, {text: "" },  {text:""} ]) %} 
+{% else %}
+
+
+{% for licence in licences %}
 
 
 {% set licences = [] %}
@@ -65,23 +73,29 @@
 
 {% set progress = "" %}
 {% if licence.progress %}
-{% set progress = "Complete" %}
+{% set progress = '<p class="govuk-body">&#10003;<span class="govuk-visually-hidden">progress marked</span></p>' %}
 {% endif %}
 
 {% set action = '<a class="govuk-link" href="licence-review?ID=' + loop.index0 + '&status='+ status + '"><span class="govuk-visually-hidden">View licence matching for licence </span>' + licence.licenceRef + '</a>' %}
 
-{% set rows = rows | push([ {html: action | safe}, {text: licence.licenceHolder}, {text: issuesText }, {text: progress },  {html: statusTag |safe,format: "numeric"} ]) %} 
+{% set rows = rows | push([ {html: action | safe}, {text: licence.licenceHolder}, {text: issuesText }, {html: progress |safe, classes: "center-text" },  {html: statusTag |safe,format: "numeric"} ]) %} 
 
 {% endfor %}
 
-
-
 {#{% set rows = rows | arraySort()%}#}
+
+{# sort the rows#}
+{% set rows = rows | sortByLicence | sortByReviewStatus%}
+
+{% endif %}
+
+
+{% set caption = '<div id="caption">'+data.TpTfilterCaption|default("Showing all licences")+'</div>' %}
 
 
 {{ govukTable({
-caption: rows | length + " " + rows | plural("licence"),
-captionClasses: "govuk-table__caption--m",
+caption: caption |safe,
+captionClasses: "govuk-table__caption--s",
 firstCellIsHeader: false,
 head: [
 {
@@ -94,12 +108,15 @@ text: "Licence holder"
 text: "Issue"
 },
 {
-  text: "Progress"
+  text: "Progress",
+  classes: "center-text"
 },
 {
 text: "Status",
 format: "numeric"
 }
 ],
-rows: rows  | sortByLicence | sortByReviewStatus 
+rows: rows
 }) }}
+
+

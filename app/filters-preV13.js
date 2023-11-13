@@ -175,7 +175,7 @@ filters.match = function(input, item) {
     }
 }
 
-//filter plural, filter a field and if there is more than one return the title with an S appended, otherwise just return the title " |plura("title")"
+/*filter plural, filter a field and if there is more than one return the title with an S appended, otherwise just return the title " |plura("title")"
 filters.plural = function(input, title) {
   if (input !== undefined & input.length >= 2){
     return title + "s"
@@ -183,6 +183,7 @@ filters.plural = function(input, title) {
     return title
   }
 }
+*/
 
 //filter focus " | focus" //can't focus a string
 filters.focus = function(x) {

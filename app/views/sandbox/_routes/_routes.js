@@ -50,8 +50,25 @@ router.use('/', (req, res, next) => {
   }
 });
 
+//Empty table filters
+function emptyFilters(req,res){
+console.log("emptying filters")
 
+  //empty filters TpT
+req.session.data.status = ""
+req.session.data.issue = ""
+req.session.data.licenceHolder = ""
 
+//Bill runs
+//req.session.data.runType = ""
+//req.session.data.region = ""
+//req.session.data.status = ""
+//req.session.data.createdYear = ""
+
+//generic
+req.session.data.filteredResults = ""
+req.session.data.openDetails = false
+}
 
 
 ////SEARCH RESULTS
@@ -92,6 +109,12 @@ search()
 
 res.redirect('search');
 
+});
+
+// 
+router.get('/sandbox', function(req, res) {
+emptyFilters(req,res)
+res.render('sandbox/index');
 });
 
 //----------------------------------------------------------------

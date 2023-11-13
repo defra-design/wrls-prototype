@@ -1,0 +1,152 @@
+{% set filtersForm %}
+
+
+
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Filter by</h2>
+
+     <form  method="post" novalidate action="review/apply-filters">
+
+
+      {{ govukInput({
+        label: {
+          text: "Licence holder",
+          classes: "govuk-label--s",
+          isPageHeading: false
+        },
+        classes: "govuk-input--width-20",
+        id: "licenceHolder",
+        name: "licenceHolder",
+        value: data.licenceHolder
+      }) }}
+
+{{data.issue}}
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        name: "issue",
+        fieldset: {
+          legend: {
+            text: "Issue",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Abstraction outside period",
+            text: "Abstraction outside period",
+            checked: checked('issue','Abstraction outside period')
+          },
+          {
+            value: "Aggregate",
+            text: "Aggregate",
+            checked: checked('issue','Aggregate')
+          },
+          {
+            value: "Checking query",
+            text: "Checking query",
+            checked:checked('issue','Checking query')
+          },
+          {
+            value: "No returns received",
+            text: "No returns received",
+            checked: checked('issue','No returns received')
+          },
+          {
+            value: "Over abstraction",
+            text: "Over abstraction",
+            checked: checked('issue','Over abstraction')
+          },
+          {
+            value: "Overlap of charge dates",
+            text: "Overlap of charge dates",
+            checked: checked('issue','Overlap of charge dates')
+          },
+          {
+            value: "Returns received but not processed",
+            text: "Returns received but not processed",
+            checked: checked('issue','Returns received but not processed')
+          },
+          {
+            value: "Returns received late",
+            text: "Returns received late",
+            checked: checked('issue','Returns received late')
+          },
+          {
+            value: "Return split over charge references",
+            text: "Return split over charge references",
+            checked: checked('issue','Return split over charge references')
+          },
+          {
+            value: "Some returns IDs not received",
+            text: "Some returns IDs not received",
+            checked: checked('issue','Some returns IDs not received')
+          },
+          {
+            value: "Unable to allocate returns",
+            text: "Unable to allocate returns",
+            checked: checked('issue','Unable to allocate returns')
+          },
+          {
+            value: "Unable to match return",
+            text: "Unable to match return",
+            checked: checked('issue','Unable to match return')
+          }
+        ]
+      }) }}
+
+     
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        name: "TpTReviewStatus",
+        fieldset: {
+          legend: {
+            text: "Status",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "review",
+            text: "Review",
+            checked: checked('TpTReviewStatus','review')
+          },
+          {
+            value: "ready",
+            text: "Ready",
+            checked: checked('TpTReviewStatus','ready')
+          }
+        ]
+      }) }}
+
+       <div class="govuk-button-group">
+           {{ govukButton({
+         text: "Apply filters"
+       }) }}
+
+
+       {{ govukButton({
+           text: "Clear filters",
+           classes: "govuk-button--secondary",
+           name: "clearFilters",
+           value: "true"
+         }) }}
+
+         </div>
+
+
+
+     </form>
+
+
+     {% endset %}
+
+
+
+     {{ govukDetails({
+       summaryText: "Filter licences",
+       html: filtersForm | safe,
+       classes: "govuk-!-margin-bottom-4",
+       open: data['openDetails']
+     }) }}
