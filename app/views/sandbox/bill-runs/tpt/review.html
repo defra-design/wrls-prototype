@@ -116,6 +116,7 @@
     {% else %}
     {% set licences  = data.billRunDataTpTReview  %}
     {% endif %}
+    
     <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{% if licences == "empty" %}0 licences{% else %}{{licences | length  | plural("licence") }}{% endif %}</h2>  
 
 {% include "sandbox/_includes/billing/tpt/review-table.html" %}

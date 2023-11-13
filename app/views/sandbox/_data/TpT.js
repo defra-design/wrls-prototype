@@ -149,9 +149,15 @@ module.exports = {
                            "tpt": false
                         }
                      ],
-                     "additionalCharges": ["Supported source Earl soham - deben"],
-                     "adjustments": ["Winter discount (0.5)"],
-                     "aggregateFactor": "0.5"
+                     "additionalCharges": [
+                        "Supported source Earl soham - deben"
+                     ],
+                     "adjustments": [
+                        "Winter discount (0.5)"
+                     ],
+                     "aggregateFactor": "0.5",
+                     "authorisedVolume": 213,
+                     "totalBillableReturns": 194.587
                   }
                ]
             },
@@ -261,7 +267,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 167,
+                     "totalBillableReturns": 148.587
                   }
                ]
             }
@@ -425,7 +433,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 273,
+                     "totalBillableReturns": "0not set29.54160.1not set"
                   }
                ]
             }
@@ -592,7 +602,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 265,
+                     "totalBillableReturns": "0not set11.98486.40728"
                   }
                ]
             }
@@ -789,7 +801,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 169,
+                     "totalBillableReturns": 131.597
                   }
                ]
             }
@@ -811,26 +825,28 @@ module.exports = {
                "issue": "Over abstraction"
             }
          ],
-         "unmatchedReturns": [{
-            "returnId": "1485103",
-            "returnRequirement": "1463503",
-            "description": "Abstraction from reach at Kidlington",
-            "purpose": "Trickle irrigation - storage",
-            "status": "completed",
-            "startDate": "2022-04-01",
-            "endDate": "2023-03-31",
-            "returnsQuantity": 20
-         },
-         {
-            "returnId": "1485105",
-            "returnRequirement": "1463505",
-            "description": "Abstraction from reach at Kidlington",
-            "purpose": "Trickle irrigation - transfer",
-            "status": "completed",
-            "startDate": "2022-04-01",
-            "endDate": "2023-03-31",
-            "returnsQuantity": 20
-         }]
+         "unmatchedReturns": [
+            {
+               "returnId": "1485103",
+               "returnRequirement": "1463503",
+               "description": "Abstraction from reach at Kidlington",
+               "purpose": "Trickle irrigation - storage",
+               "status": "completed",
+               "startDate": "2022-04-01",
+               "endDate": "2023-03-31",
+               "returnsQuantity": 20
+            },
+            {
+               "returnId": "1485105",
+               "returnRequirement": "1463505",
+               "description": "Abstraction from reach at Kidlington",
+               "purpose": "Trickle irrigation - transfer",
+               "status": "completed",
+               "startDate": "2022-04-01",
+               "endDate": "2023-03-31",
+               "returnsQuantity": 20
+            }
+         ]
       },
       {
          "licenceRef": "17/79/00/9281",
@@ -1008,7 +1024,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 328,
+                     "totalBillableReturns": 213.80100000000002
                   }
                ]
             }
@@ -1088,7 +1106,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 33,
+                     "totalBillableReturns": 31.605
                   }
                ]
             }
@@ -1276,7 +1296,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 248,
+                     "totalBillableReturns": 182.59
                   }
                ]
             }
@@ -1446,7 +1468,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 311,
+                     "totalBillableReturns": 112.944
                   }
                ]
             }
@@ -1583,7 +1607,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 227,
+                     "totalBillableReturns": 121.11500000000001
                   }
                ]
             }
@@ -1777,7 +1803,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 362,
+                     "totalBillableReturns": 271.06399999999996
                   }
                ]
             }
@@ -1917,7 +1945,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 217,
+                     "totalBillableReturns": 129.79
                   }
                ]
             }
@@ -2051,7 +2081,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 200,
+                     "totalBillableReturns": 103.387
                   }
                ]
             }
@@ -2245,7 +2277,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 356,
+                     "totalBillableReturns": 225.286
                   }
                ]
             }
@@ -2385,7 +2419,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 169,
+                     "totalBillableReturns": 83.898
                   }
                ]
             }
@@ -2489,7 +2525,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 142,
+                     "totalBillableReturns": 73.059
                   }
                ]
             }
@@ -2650,7 +2688,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 198,
+                     "totalBillableReturns": 75.215
                   }
                ]
             }
@@ -2757,7 +2797,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 116,
+                     "totalBillableReturns": 116
                   }
                ]
             }
@@ -2858,7 +2900,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 111,
+                     "totalBillableReturns": 37.347
                   }
                ]
             }
@@ -2929,7 +2973,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 89,
+                     "totalBillableReturns": 76.112
                   }
                ]
             }
@@ -3117,7 +3163,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 278,
+                     "totalBillableReturns": 128.97
                   }
                ]
             }
@@ -3287,7 +3335,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 195,
+                     "totalBillableReturns": 140.808
                   }
                ]
             }
@@ -3424,7 +3474,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 114,
+                     "totalBillableReturns": 114
                   }
                ]
             }
@@ -3498,7 +3550,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 36,
+                     "totalBillableReturns": 36
                   }
                ]
             }
@@ -3566,7 +3620,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 46,
+                     "totalBillableReturns": 3.241
                   }
                ]
             }
@@ -3634,7 +3690,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 21,
+                     "totalBillableReturns": 13.419
                   }
                ]
             }
@@ -3792,7 +3850,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 225,
+                     "totalBillableReturns": 174.051
                   }
                ]
             }
@@ -3899,7 +3959,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 103,
+                     "totalBillableReturns": 103
                   }
                ]
             }
@@ -4060,7 +4122,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 252,
+                     "totalBillableReturns": 135.90500000000003
                   }
                ]
             }
@@ -4167,7 +4231,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 166,
+                     "totalBillableReturns": 107.405
                   }
                ]
             }
@@ -4268,7 +4334,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 60,
+                     "totalBillableReturns": 60
                   }
                ]
             }
@@ -4369,7 +4437,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 154,
+                     "totalBillableReturns": 108.986
                   }
                ]
             }
@@ -4440,7 +4510,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 60,
+                     "totalBillableReturns": 7.016
                   }
                ]
             }
@@ -4538,7 +4610,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 64,
+                     "totalBillableReturns": 64
                   }
                ]
             }
@@ -4699,7 +4773,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 253,
+                     "totalBillableReturns": 187.464
                   }
                ]
             }
@@ -4836,7 +4912,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 152,
+                     "totalBillableReturns": 138.42000000000002
                   }
                ]
             }
@@ -4970,7 +5048,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 103,
+                     "totalBillableReturns": 103
                   }
                ]
             }
@@ -5044,7 +5124,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 73,
+                     "totalBillableReturns": 28.396
                   }
                ]
             }
@@ -5142,7 +5224,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 108,
+                     "totalBillableReturns": 105.77799999999999
                   }
                ]
             }
@@ -5333,7 +5417,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 328,
+                     "totalBillableReturns": 259.581
                   }
                ]
             }
@@ -5443,7 +5529,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 129,
+                     "totalBillableReturns": 17.813
                   }
                ]
             }
@@ -5574,7 +5662,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 232,
+                     "totalBillableReturns": 113.06
                   }
                ]
             }
@@ -5678,7 +5768,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 67,
+                     "totalBillableReturns": 36.466
                   }
                ]
             }
@@ -5809,7 +5901,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 204,
+                     "totalBillableReturns": 130.56900000000002
                   }
                ]
             }
@@ -6003,7 +6097,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 243,
+                     "totalBillableReturns": 137.341
                   }
                ]
             }
@@ -6083,7 +6179,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 33,
+                     "totalBillableReturns": 33
                   }
                ]
             }
@@ -6151,7 +6249,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 93,
+                     "totalBillableReturns": 81.692
                   }
                ]
             }
@@ -6309,7 +6409,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 171,
+                     "totalBillableReturns": 162.013
                   }
                ]
             }
@@ -6446,7 +6548,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 244,
+                     "totalBillableReturns": 167.773
                   }
                ]
             }
@@ -6640,7 +6744,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 356,
+                     "totalBillableReturns": 160.43599999999998
                   }
                ]
             }
@@ -6780,7 +6886,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 190,
+                     "totalBillableReturns": 47.21
                   }
                ]
             }
@@ -6854,7 +6962,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 58,
+                     "totalBillableReturns": 15.896
                   }
                ]
             }
@@ -6922,7 +7032,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 98,
+                     "totalBillableReturns": 98
                   }
                ]
             }
@@ -7080,7 +7192,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 212,
+                     "totalBillableReturns": 131.899
                   }
                ]
             }
@@ -7157,7 +7271,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 93,
+                     "totalBillableReturns": 1.099
                   }
                ]
             }
@@ -7285,7 +7401,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 233,
+                     "totalBillableReturns": 104.31899999999999
                   }
                ]
             }
@@ -7479,7 +7597,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 268,
+                     "totalBillableReturns": 215.37800000000001
                   }
                ]
             }
@@ -7679,7 +7799,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 347,
+                     "totalBillableReturns": 162.17700000000002
                   }
                ]
             }
@@ -7879,7 +8001,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 262,
+                     "totalBillableReturns": 117.021
                   }
                ]
             }
@@ -8049,7 +8173,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 230,
+                     "totalBillableReturns": 181.395
                   }
                ]
             }
@@ -8186,7 +8312,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 124,
+                     "totalBillableReturns": 71.541
                   }
                ]
             }
@@ -8260,7 +8388,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 92,
+                     "totalBillableReturns": 34.599
                   }
                ]
             }
@@ -8418,7 +8548,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 252,
+                     "totalBillableReturns": 147.562
                   }
                ]
             }
@@ -8495,7 +8627,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 58,
+                     "totalBillableReturns": 51.218
                   }
                ]
             }
@@ -8623,7 +8757,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 194,
+                     "totalBillableReturns": 103.92600000000002
                   }
                ]
             }
@@ -8727,7 +8863,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 172,
+                     "totalBillableReturns": 18.298000000000002
                   }
                ]
             }
@@ -8858,7 +8996,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 188,
+                     "totalBillableReturns": 88.065
                   }
                ]
             }
@@ -9022,7 +9162,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 218,
+                     "totalBillableReturns": 199.466
                   }
                ]
             }
@@ -9189,7 +9331,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 243,
+                     "totalBillableReturns": 156.412
                   }
                ]
             }
@@ -9386,7 +9530,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 307,
+                     "totalBillableReturns": 171.14
                   }
                ]
             }
@@ -9586,7 +9732,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 361,
+                     "totalBillableReturns": 297.909
                   }
                ]
             }
@@ -9666,7 +9814,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 29,
+                     "totalBillableReturns": 29
                   }
                ]
             }
@@ -9824,7 +9974,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 252,
+                     "totalBillableReturns": 197.19599999999997
                   }
                ]
             }
@@ -9931,7 +10083,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 119,
+                     "totalBillableReturns": 59.614999999999995
                   }
                ]
             }
@@ -10122,7 +10276,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 322,
+                     "totalBillableReturns": 175.644
                   }
                ]
             }
@@ -10322,7 +10478,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 258,
+                     "totalBillableReturns": 227.03300000000002
                   }
                ]
             }
@@ -10402,7 +10560,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 32,
+                     "totalBillableReturns": 32
                   }
                ]
             }
@@ -10560,7 +10720,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 203,
+                     "totalBillableReturns": 169.961
                   }
                ]
             }
@@ -10667,7 +10829,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 101,
+                     "totalBillableReturns": 77.19200000000001
                   }
                ]
             }
@@ -10828,7 +10992,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 283,
+                     "totalBillableReturns": 132.75099999999998
                   }
                ]
             }
@@ -10995,7 +11161,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 193,
+                     "totalBillableReturns": 182.524
                   }
                ]
             }
@@ -11162,7 +11330,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 194,
+                     "totalBillableReturns": 194
                   }
                ]
             }
@@ -11269,7 +11439,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 135,
+                     "totalBillableReturns": 135
                   }
                ]
             }
@@ -11460,7 +11632,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 306,
+                     "totalBillableReturns": 211.537
                   }
                ]
             }
@@ -11600,7 +11774,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 173,
+                     "totalBillableReturns": 134.653
                   }
                ]
             }
@@ -11794,7 +11970,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 294,
+                     "totalBillableReturns": 183.414
                   }
                ]
             }
@@ -11904,7 +12082,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 84,
+                     "totalBillableReturns": 84
                   }
                ]
             }
@@ -12005,7 +12185,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 128,
+                     "totalBillableReturns": 128
                   }
                ]
             }
@@ -12166,7 +12348,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 192,
+                     "totalBillableReturns": 192
                   }
                ]
             }
@@ -12243,7 +12427,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 36,
+                     "totalBillableReturns": 1.775
                   }
                ]
             }
@@ -12311,7 +12497,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 23,
+                     "totalBillableReturns": 6.538
                   }
                ]
             }
@@ -12469,7 +12657,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 310,
+                     "totalBillableReturns": 218.57500000000002
                   }
                ]
             }
@@ -12576,7 +12766,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 114,
+                     "totalBillableReturns": 57.168
                   }
                ]
             }
@@ -12707,7 +12899,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 192,
+                     "totalBillableReturns": 145.79399999999998
                   }
                ]
             }
@@ -12781,7 +12975,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 81,
+                     "totalBillableReturns": 81
                   }
                ]
             }
@@ -12939,7 +13135,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 258,
+                     "totalBillableReturns": 225.79999999999998
                   }
                ]
             }
@@ -13016,7 +13214,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 28,
+                     "totalBillableReturns": 28
                   }
                ]
             }
@@ -13204,7 +13404,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 248,
+                     "totalBillableReturns": 162.842
                   }
                ]
             }
@@ -13314,7 +13516,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 136,
+                     "totalBillableReturns": 67.518
                   }
                ]
             }
@@ -13415,7 +13619,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 151,
+                     "totalBillableReturns": 85.416
                   }
                ]
             }
@@ -13576,7 +13782,9 @@ module.exports = {
                      ],
                      "additionalCharges": [],
                      "adjustments": [],
-                     "aggregateFactor": ""
+                     "aggregateFactor": "",
+                     "authorisedVolume": 232,
+                     "totalBillableReturns": 232
                   }
                ]
             }

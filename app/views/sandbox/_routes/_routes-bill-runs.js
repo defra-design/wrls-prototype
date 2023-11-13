@@ -459,21 +459,25 @@ router.get('/charges-load', function(req, res) {
 router.get('/tpt/review', function(req, res) {
  // createTpTData(req,res);
 
- /* supplementing  dummy data then saved to tpt.js file
+/* //supplementing  dummy data then saved to tpt.js file
 
  function unmatchedReturns(data) {
   data.forEach((item, index) => {
-    req.session.data.billRunDataTpTReview[index].unmatchedReturns = [];
+   // req.session.data.billRunDataTpTReview[index].unmatchedReturns = [];
   item.chargeVersions.forEach((chargeVersion, chargeVersionIndex) => {
     chargeVersion.chargeReferences.forEach((chargeReference, chargeRefencenceIndex) => {
-
-      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].additionalCharges = []
-      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].adjustments = []
-      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].aggregateFactor = ""
+      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].authorisedVolume = 0
+      req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].totalBillableReturns = 0
+     // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].additionalCharges = []
+     // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].adjustments = []
+     // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].aggregateFactor = ""
     console.log('success ref')
         chargeReference.chargeElements.forEach((chargeElement, chargeElementIndex) => {
-          req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].tpt = true
-          console.log('success element')
+         // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].tpt = true
+          
+         req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].authorisedVolume = req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].authorisedVolume + req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].authorisedAnnualQuantity
+         req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].totalBillableReturns = req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].totalBillableReturns + req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].allocatedQuantity
+         console.log('success element')
         })
       })
     })
@@ -481,14 +485,9 @@ router.get('/tpt/review', function(req, res) {
 };
 
 unmatchedReturns(req.session.data.billRunDataTpTReview);
-
 */
 
-//empty filters
-//req.session.data.status = ""
-//req.session.data.issue = ""
-//req.session.data.licenceHolder = ""
-//req.session.data.filteredResults = ""
+
 req.session.data.openDetails = false
 
   req.session.data.back = req.headers.referer
