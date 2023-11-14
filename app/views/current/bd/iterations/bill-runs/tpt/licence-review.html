@@ -121,7 +121,7 @@
 
     
       {# list of links through to the licence #}
-      {% include "sandbox/_includes/billing/tpt/licence-nav-links.html" %} 
+      {% include "current/bd/iterations/_includes/billing/tpt/licence-nav-links.html" %} 
   
 
         {% if data.status == "review" %}
@@ -170,11 +170,11 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-2">
   <div class="govuk-grid-column-full">
     <h2 class="govuk-heading-l govuk-!-margin-bottom-2"> Returns</h2>
-    {% include "sandbox/_includes/billing/tpt/returns-table.html" %} 
+    {% include "current/bd/iterations/_includes/billing/tpt/returns-table.html" %} 
 
     {# include any unmatched returns in another table if there are any#}
     {% if licence.unmatchedReturns.length %}
-    {% include "sandbox/_includes/billing/tpt/returns-table-unmatched.html" %} 
+    {% include "current/bd/iterations/_includes/billing/tpt/returns-table-unmatched.html" %} 
     {% endif %}
 
     </div>
@@ -203,7 +203,7 @@
       }) }}
       {% set chargeReferences = chargeVersion.chargeReferences %}
       {% set chargeVersionID = loop.index0 %}
-    {% include "sandbox/_includes/billing/tpt/licence-review.html" %} 
+    {% include "current/bd/iterations/_includes/billing/tpt/licence-review.html" %} 
     </div>
   </div>
   {% endfor %}
