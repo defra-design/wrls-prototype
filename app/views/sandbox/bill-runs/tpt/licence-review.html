@@ -8,7 +8,9 @@
 
 {% set licence = billRunDataTpTReview[data.ID]  %}
 
-
+{% set chargeVersion = licence.chargeVersions[data.chargeVersionID]%}
+{% set chargeReference = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID] %}
+{% set chargeElement = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements[data.elementID] %}
 
 
 {% set title = "Licence " + licence.licenceRef %}
@@ -72,20 +74,31 @@
 {% block content %}
 
 {% set notificationText = "" %}
-
-{% if licence.progress == "&#10003;" %}
+{% if data.aggregateUpdate == true %}
+{% set notificationText = "The aggregate factor for " + chargeReference.chargeCategory.shortDescription | base64Decode + " has been updated" %}
+{% elseif licence.progress == "&#10003;" %}
 {% set notificationText = "This licence has been marked" %}
 {% else %}
 {% set notificationText = "This progress mark for this licence has been removed" %}
 {% endif %}
-
 {% if data.statusBanner == "show" %}
-{{ govukNotificationBanner({
-  titleText: "Progress updated",
-  text: notificationText
-}) }}
-{% endif %}
 
+<div class="govuk-notification-banner" role="region"
+  aria-labelledby="govuk-notification-banner-title"
+  data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Licence updated
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading max-width-full">
+      {{notificationText}}.
+    </p>
+  </div>
+</div>
+
+{% endif %}
 <!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">

@@ -25,7 +25,11 @@
 {# charge reference adjustments, aggregates and additional charges #}
 {% if chargeReference.aggregateFactor.length %}
 {% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}
-{% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor } }  ) %} 
+  {%if chargeReference.edited == true%}
+  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor + ' (edited)'}, actions: { items: [{href: "change-aggregate-factor",text: "Change factor"}]}  }  ) %} 
+  {% else %}
+  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor }, actions: { items: [{href: "change-aggregate-factor",text: "Change factor"}]}  }  ) %} 
+  {% endif %}
 {% endif %}
 {% if chargeReference.additionalCharges.length %}
 {% set rows = rows | push( {key: {text: "Additional charges"},value: {text: chargeReference.additionalCharges | formatList | capitalize } }  ) %} 
@@ -91,19 +95,28 @@
 {# set the billable returns #}
 {% set billableReturns = "" %}
 {# if the returned quantity is equal or more than  set the billable to the full authorised #}
+
 {% if chargeElement.allocatedQuantity >= chargeElement.authorisedAnnualQuantity %}
+{% if chargeElement.edited == true %}
+    {% set billableReturns = chargeElement.allocatedQuantity  + 'ML (edited) / ' + chargeElement.authorisedAnnualQuantity + 'ML'%}
+  {% else %}
 {% set billableReturns = chargeElement.authorisedAnnualQuantity  + 'ML / ' + chargeElement.authorisedAnnualQuantity + 'ML' %}
+{% endif %}
 {# if the allocated quantity is not set print the text #}
 {% elseif chargeElement.allocatedQuantity == "not set" %}
 {% set billableReturns = chargeElement.allocatedQuantity |capitalize  + ' / ' + chargeElement.authorisedAnnualQuantity + 'ML'%}
 {% else %}
-{% set billableReturns = chargeElement.allocatedQuantity  + 'ML / ' + chargeElement.authorisedAnnualQuantity + 'ML'%}
+  {% if chargeElement.edited == true %}
+    {% set billableReturns = chargeElement.allocatedQuantity  + 'ML (edited) / ' + chargeElement.authorisedAnnualQuantity + 'ML'%}
+  {% else %}
+    {% set billableReturns = chargeElement.allocatedQuantity  + 'ML / ' + chargeElement.authorisedAnnualQuantity + 'ML'%}
+    {% endif %}
 {% endif %}
 
 {# set the element heading #}
 {% set elementHeading %}
 <span class="govuk-caption-s">Element {{loop.index}} of {{chargeReference.chargeElements.length}}<span class="float-right govuk-!-margin-left-9 govuk-!-margin-top-3">{{statusTag|safe}} </span></span>
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-1 ">{{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}, {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate  | nbsp |safe}} </h3>
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1 ">{{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}<br> {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate  | nbsp |safe}} </h3>
 {% endset %}
       
 {#set the element rows in the summary list #}
