@@ -489,7 +489,7 @@ unmatchedReturns(req.session.data.billRunDataTpTReview);
 
 
 req.session.data.openDetails = false
-
+req.session.data.statusBanner = "hide"
   req.session.data.back = req.headers.referer
   res.render(folder + 'tpt/review');
 });
@@ -509,6 +509,26 @@ router.get('/tpt/licence-review', function(req, res) {
   res.render(folder + 'tpt/licence-review');
 });
 
+
+///TPT REMOVE LICENCE FEATURE
+router.post('/sandbox/bill-runs/tpt/remove-licence', function(req, res) {
+  res.redirect('/sandbox/bill-runs/tpt/confirm-remove-licence');
+});
+
+router.get('/tpt/confirm-remove-licence', function(req, res) {
+  req.session.data.statusBanner = "hide"
+  res.render(folder + 'tpt/confirm-remove-licence');
+});
+
+router.post('/sandbox/bill-runs/tpt/confirm-remove-licence', function(req, res) {
+
+console.log("licence removed")
+req.session.data.removedLicence = req.session.data.billRunDataTpTReview[req.session.data.ID].licenceRef
+
+req.session.data.billRunDataTpTReview.splice(req.session.data.ID, 1)
+req.session.data.statusBanner = "show"
+  res.redirect('/sandbox/bill-runs/tpt/review');
+});
 
 ////TpT REVIEW FILTER LICENCE LIST
 

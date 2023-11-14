@@ -42,6 +42,13 @@
 
 {% block content %}
 
+{% if data.statusBanner == "show" %}
+{{ govukNotificationBanner({
+  titleText: "Licence removed",
+  text: 'Licence ' + data.removedLicence |default("32/00/79/0796") + ' removed from the bill run.'
+}) }}
+{% endif %}
+
 <!-- page title -->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">

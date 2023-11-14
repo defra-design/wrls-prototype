@@ -1,0 +1,106 @@
+{% extends "layout_wrls.html" %}
+
+{% set title = "You’re about to remove this licence from the bill run" %}
+
+{% block pageTitle %}
+   {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+    <form method="post" novalidate > 
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff bill run</span>{{ title }}</h1>
+
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Licence",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: data.billRunDataTpTReview[data.ID].licenceRef,
+              classes: "meta-data__value"
+            }
+          },
+          {
+            key: {
+              text: "Financial year",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: data.billRunDataTpTReview[data.ID].chargeVersions[0].startDate | year + " to " + data.billRunDataTpTReview[data.ID].chargeVersions[0].startDate | yearPlusPlus,
+              classes: "meta-data__value "
+            }
+          },
+          {
+            key: {
+              text: "Billing account",
+              classes: "meta-data__label"
+            },
+            value: {
+              text: "A12356642X",
+              classes: "meta-data__value "
+            }
+          }
+          ]
+        })
+      }}
+
+        
+
+    {{ govukButton({
+      text: "Remove licence"
+    }) }}
+
+</form>
+   </div>
+   </div>
+
+
+    
+
+{% endblock %}

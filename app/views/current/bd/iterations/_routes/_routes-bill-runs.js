@@ -147,6 +147,26 @@ router.get('/tpt/licence-review', function(req, res) {
 });
 
 
+///TPT REMOVE LICENCE FEATURE
+router.post('/tpt/remove-licence', function(req, res) {
+  res.redirect('confirm-remove-licence');
+});
+
+router.get('/tpt/confirm-remove-licence', function(req, res) {
+  req.session.data.statusBanner = "hide"
+  res.render(folder + 'tpt/confirm-remove-licence');
+});
+
+router.post('/tpt/confirm-remove-licence', function(req, res) {
+
+console.log("licence removed")
+req.session.data.removedLicence = req.session.data.billRunDataTpTReview[req.session.data.ID].licenceRef
+
+req.session.data.billRunDataTpTReview.splice(req.session.data.ID, 1)
+req.session.data.statusBanner = "show"
+  res.redirect('/tpt/review');
+});
+
 ////TpT REVIEW FILTER LICENCE LIST
 
 

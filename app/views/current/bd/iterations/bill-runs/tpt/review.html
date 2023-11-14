@@ -42,6 +42,13 @@
 
 {% block content %}
 
+{% if data.statusBanner == "show" %}
+{{ govukNotificationBanner({
+  titleText: "Licence removed",
+  text: 'Licence ' + data.removedLicence |default("32/00/79/0796") + ' removed from the bill run.'
+}) }}
+{% endif %}
+
 <!-- page title -->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
@@ -61,7 +68,6 @@
 
     {% include "current/bd/iterations/_includes/billing/meta-data.html" %}
 
-   
    </div>
    </div>
 
@@ -117,6 +123,7 @@
     {% else %}
     {% set licences  = data.billRunDataTpTReview  %}
     {% endif %}
+    
     <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{% if licences == "empty" %}0 licences{% else %}{{licences | length  | plural("licence") }}{% endif %}</h2>  
 
 {% include "current/bd/iterations/_includes/billing/tpt/review-table.html" %}
