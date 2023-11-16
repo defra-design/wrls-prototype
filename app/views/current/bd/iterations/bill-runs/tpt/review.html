@@ -124,7 +124,7 @@
     {% set licences  = data.billRunDataTpTReview  %}
     {% endif %}
     
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{% if licences == "empty" %}0 licences{% else %}{{licences | length  | plural("licence") }}{% endif %}</h2>  
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{% if licences == "empty" %}0{% else %}{{licences | length }}{% endif %} of {{billRunDataTpTReview | length}} licences</h2>  
 
 {% include "current/bd/iterations/_includes/billing/tpt/review-table.html" %}
 

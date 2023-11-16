@@ -27,7 +27,7 @@
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
-      text:  requirement.purpose |plural ("Purpose")
+      text:  requirement.purpose | length | plural ("Purpose", showNumber=false)
     },
     value: {
       text: requirement.purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
@@ -36,7 +36,7 @@
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
-      text: requirement.points |plural ("Point")
+      text: requirement.points | length |plural ("Point", showNumber=false)
     },
     value: {
       text: requirement.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
@@ -51,6 +51,15 @@
       text:  "From " +  requirement.periodStart | mmddToDate + " to " + requirement.periodEnd | mmddToDate
     }
   },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Time limit"
+    },
+    value: {
+      text:  requirement.timeLimit 
+    }
+  } if "From" in requirement.timeLimit,
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {

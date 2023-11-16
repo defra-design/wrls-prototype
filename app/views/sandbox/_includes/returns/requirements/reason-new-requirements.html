@@ -46,6 +46,33 @@ rows: [
         }
       ]
     }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Additional submission options"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions']  | listFormat | capitalize
+    },
+    actions: {
+      items: [
+        {
+          href: "set-up/additional-submission-options?change=true",
+          text: "Change",
+          visuallyHiddenText: "the additional submission options for the return requirement"
+        }
+      ]
+    }
+  } if data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'].length,
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Licence holder"
+    },
+    value: {
+      text: data.licences[data.ID].holder
+    }
   }
 
 ]

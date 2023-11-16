@@ -1114,6 +1114,7 @@ module.exports = {
                                 "endDate":"",
                                 "reason":"Major change",
                                 "status":"active",
+                                "additionalSubmissionOptions": ["none"],
                                 "username":"username@defra.gov.uk",
                                 "note":"",
                                 "requirements":[{
@@ -1126,6 +1127,7 @@ module.exports = {
                                                 "points":["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                                 "periodStart":"0401",
                                                 "periodEnd":"1031",
+                                                "timeLimit": "No",
                                                 "settings":["none"],
                                                   }]
                                     },
@@ -1133,6 +1135,7 @@ module.exports = {
                                     "startDate":"20150401",
                                     "endDate":"20180331",
                                     "reason":"New licence",
+                                    "additionalSubmissionOptions": ["none"],
                                     "status":"active",
                                     "username":"username@defra.gov.uk",
                                     "note":"",
@@ -1146,6 +1149,7 @@ module.exports = {
                                                     "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                                     "periodStart":"0401",
                                                     "periodEnd":"1031",
+                                                    "timeLimit": "No",
                                                     "settings":["none"],
                                                       }]
                                         }
@@ -1536,6 +1540,7 @@ module.exports = {
                                     "endDate":"",
                                     "reason":"New licence",
                                     "status":"approved",
+                                    "additionalSubmissionOptions": ["multiple upload"],
                                     "username":"username@defra.gov.uk",
                                     "note":"",
                                     "requirements":[{
@@ -1548,6 +1553,7 @@ module.exports = {
                                                     "points":["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
                                                     "periodStart":"0401",
                                                     "periodEnd":"0331",
+                                                    "timeLimit": "No",
                                                     "settings":["none"],
                                                       }]
                                         }

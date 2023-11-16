@@ -1,9 +1,6 @@
 {% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
 
 
-{{requirements|dump}}
-
-
 {% set routeFolder = "set-up/purpose" %}
 
 
@@ -28,7 +25,7 @@
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
-      text:  requirement.purpose |plural ("Purpose")
+      text:  requirement.purpose | length | plural ("Purpose", showNumber=false)
     },
     value: {
       text: requirement.purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
@@ -46,7 +43,7 @@
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
-      text: requirement.points |plural ("Point")
+      text: requirement.points | length |plural ("Point", showNumber=false)
     },
     value: {
       text: requirement.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
@@ -75,6 +72,24 @@
             href: "set-up/abstraction-period?change=true&requirementIndex=" + loop.index0,
             text: "Change",
             visuallyHiddenText: "abstraction period"
+          }
+        ]
+      }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Time limit"
+    },
+    value: {
+      text:  requirement.timeLimit 
+    },
+      actions: {
+        items: [
+          {
+            href: "set-up/time-limits?change=true&requirementIndex=" + loop.index0,
+            text: "Change",
+            visuallyHiddenText: "time limit"
           }
         ]
       }

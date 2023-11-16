@@ -23,8 +23,8 @@
 
 
 {{ govukCheckboxes({
-idPrefix: "settings",
-name: "settings",
+idPrefix: "additionalSubmissionOptions",
+name: "additionalSubmissionOptions",
 fieldset: {
   legend: {
     html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
@@ -39,12 +39,12 @@ items: [
     {
       value: "paper forms",
       text: "Paper forms",
-      checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['additional-submission-options'] | arrayIncludes ("paper forms")
+      checked:  data.additionalSubmissionOptions | arrayIncludes ("paper forms")
     },
     {
       value: "multiple upload",
       text: "Multiple upload",
-      checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['additional-submission-options'] | arrayIncludes ("multiple upload")
+      checked:  data.additionalSubmissionOptions | arrayIncludes ("multiple upload")
     },
     {
       divider: "or"
@@ -53,7 +53,7 @@ items: [
       value: "none",
       text: "None",
       behaviour: "exclusive",
-        checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['additional-submission-options'] | arrayIncludes ("none")
+        checked:  data.additionalSubmissionOptions | arrayIncludes ("none")
     }
 ]
 }) }}

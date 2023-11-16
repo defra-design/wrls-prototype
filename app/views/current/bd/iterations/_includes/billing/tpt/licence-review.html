@@ -21,7 +21,7 @@
       <div class="govuk-summary-card__content govuk-!-padding-top-0">
 
 {% set rows = []%}
-{% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"} }  ) %}
+{% set rows = rows | push( {classes: "border-bottom",key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"} }  ) %}
 {# charge reference adjustments, aggregates and additional charges #}
 {% if chargeReference.aggregateFactor.length %}
 {% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}

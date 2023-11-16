@@ -24,7 +24,24 @@
   {% set timeLimit %}
   {{ govukDateInput({
   id: "settimeLimitStart",
-  namePrefix: "timeLimitStart",
+  namePrefix: "[timeLimitStart]",
+  items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data.timeLimitStart[0]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data.timeLimitStart[1]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data.timeLimitStart[2]
+    }
+  ],
   fieldset: {
     legend: {
       text: "Enter start date",
@@ -34,8 +51,25 @@
   }
 }) }}
   {{ govukDateInput({
-  id: "settimeLimit",
-  namePrefix: "timeLimit",
+  id: "settimeLimitEnd",
+  namePrefix: "[timeLimitEnd]",
+  items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data.timeLimitEnd[0]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data.timeLimitEnd[1]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data.timeLimitEnd[2]
+    }
+  ],
   fieldset: {
     legend: {
       text: "Enter end date",
@@ -45,6 +79,20 @@
   }
 }) }}
   {% endset %}
+
+
+
+  {# Frequency switch based on the answer for the specific requirement#}
+      {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['timeLimit'] %}
+          {% case 'no' %}
+              {% set no = true %}
+          {% case 'No' %}
+              {% set no = true %}
+          {% default %}
+              {% set yes = true %}
+      {% endswitch %}
+
+
 
   {{ govukRadios({
     idPrefix: "timeLimit",
@@ -62,11 +110,13 @@
         text: "Yes",
         conditional: {
           html: timeLimit
-        }
+        },
+        checked: yes
       },
       {
-        value: "no",
-        text: "No"
+        value: "No",
+        text: "No",
+        checked: no
       }
     ]
   }) }}

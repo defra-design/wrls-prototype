@@ -15,6 +15,7 @@ module.exports = {
                                         setUpBy: "chris@somewhere.gov.uk",
                                         startDate: "20170401",
                                         endDate: "",
+                                        additionalSubmissionOptions: ['none'],
                                         status: "CHARGEABLE",
                                         reason: "new licence",
                                         requirement: [{
@@ -27,6 +28,7 @@ module.exports = {
                                                                 points: ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)", "At National Grid Reference SE 437 693(RIVER SWALE - HELPERBY)"],
                                                                 periodStart: "0401",
                                                                 periodEnd: "1031",
+                                                                timeLimit: "No",
                                                                 amount: "20",
                                                               },
                                                               {
@@ -34,6 +36,7 @@ module.exports = {
                                                                 points: ["At National Grid Reference SE 437 682(RIVER SWALE - HELPERBY)"],
                                                                 periodStart: "0401",
                                                                 periodEnd: "1031",
+                                                                timeLimit: "No",
                                                                 amount: "20",
                                                               }
                                                             ]

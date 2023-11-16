@@ -50,7 +50,7 @@
       {% include "sandbox/_includes/returns/requirements/reason-new-requirements.html" %}
       {% if data['returnsNotRequired'] == true %}
       {% else %}
-        {# Notes removed for roundof UR    {% include "sandbox/_includes/returns/requirements/notes.html" %}   #}
+          {% include "sandbox/_includes/returns/requirements/notes.html" %}  
 
       {% include "sandbox/_includes/returns/requirements/requirement.html" %}
       {% endif %}
@@ -58,7 +58,7 @@
     <div class="divider govuk-!-margin-bottom-6"></div>
 
             {{ govukButton({
-        text: "Confirm returns requirements",
+        text: "Approve returns requirements",
         classes: "govuk-!-margin-right-6"
         }) }}
 

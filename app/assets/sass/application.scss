@@ -60,6 +60,13 @@
     width: 20px;
     overflow: hidden;
   }
+
+// border bottom override
+
+.border-bottom {
+border-bottom: 1px solid #b1b4b6 !important;;
+}
+
 //End of contents list styles
 
 .float-right {

@@ -29,6 +29,19 @@ mm = monthNames[mm - 1]
 const today = `${dd} ${mm} ${yyyy}`;
 
 
+ ////function to change an date array in to the govuk date format. ["dd", "mm", "yyyy"]
+ function govukDateFormat (x){
+  let dd = x[0];
+  dd = parseInt(dd, 10);
+  let mm = x[1]
+  mm = parseInt(mm, 10);
+  let yyyy = x[2]
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  mm = monthNames[mm - 1]
+  return `${dd} ${mm} ${yyyy}`;
+  }
+
 
 //Send a water abstraction alert
 const folder = "sandbox/licence/returns-current/"
@@ -40,6 +53,7 @@ const folder = "sandbox/licence/returns-current/"
    "dynamicContent":      "",
    "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Return requirement reason updated</h3><p class="govuk-body">Reason: ',
    "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Return requirement start date updated</h3><p class="govuk-body">Start date: ',
+   "additionalSubmissionOptions":     '<h3 class="govuk-notification-banner__heading">Return requirement additional submission options updated</h3><p class="govuk-body">Additional submission options: ',
    "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Return requirement updated</h3><p class="govuk-body">ID: ',
    "requirementCreate":   '<h3 class="govuk-notification-banner__heading">Return requirement added</h3><p class="govuk-body">Return ID: ',
    "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Return requirement removed</h3><p class="govuk-body">Return ID: ',
@@ -70,6 +84,7 @@ function createReturnRequirement(req, res) {
   let points = req.session.data.points
   let periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0')
   let periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0')
+  let timeLimit = req.session.data.timeLimit
   let returnsCycle = req.session.data.returnsCycle
 
 
@@ -101,6 +116,7 @@ function createReturnRequirement(req, res) {
     points,
     periodStart,
     periodEnd,
+    timeLimit,
     returnsCycle,
   };
 
@@ -124,6 +140,7 @@ function createVersion(req, res) {
   let startDate = req.session.data.startDateConditional
   let endDate = ""
   let status = "review"
+  let additionalSubmissionOptions = req.session.data.additionalSubmissionOptions
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
   let username = "username@defra.gov.uk"
@@ -134,6 +151,7 @@ function createVersion(req, res) {
     startDate,
     endDate,
     reason,
+    additionalSubmissionOptions,
     status,
     username,
     note,
@@ -172,10 +190,11 @@ function createReturnRequirementsFromAbsData(req, res) {
   let  settings = []
   let  periodStart = ""
   let  periodEnd = ""
+  let  timeLimit = ""
   let  returnsCycle = ""
 
 
-//Data for the return requirement, loop through the uses on the licence and create a rquirement for each
+//Data for the return requirement, loop through the uses on the licence and create a requirement for each
 for (const [i, v] of req.session.data.licences[licence].use.entries()) {
 
   id = Math.floor(100000 + Math.random() * 900000)
@@ -187,6 +206,7 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
   settings = ["none"]
   periodStart = req.session.data.licences[licence].use[i].periodStart
  periodEnd = req.session.data.licences[licence].use[i].periodEnd
+ timeLimit = "no"
   returnsCycle = "summer"
 if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
   returnsCycle = "summer"
@@ -205,6 +225,7 @@ if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && per
     points,
     periodStart,
     periodEnd,
+    timeLimit,
     returnsCycle,
   };
 
@@ -227,6 +248,7 @@ function requirementsFromAbsData(req, res) {
   let startDate = req.session.data.startDateConditional
   let endDate = ""
   let status = "review"
+  let additionalSubmissionOptions = req.session.data.additionalSubmissionOptions
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
   let username = "username@defra.gov.uk"
@@ -237,6 +259,7 @@ function requirementsFromAbsData(req, res) {
     startDate,
     endDate,
     reason,
+    additionalSubmissionOptions,
     status,
     username,
     note,
@@ -272,6 +295,7 @@ function updateReturnRequirement(req, res) {
   let points = req.session.data.points
   let abstractionStartMonth = req.session.data.abstractionStartMonth
   let abstractionEndMonth = req.session.data.abstractionEndMonth
+  let timeLimit = req.session.data.timeLimit
   let returnsCycle = req.session.data.returnsCycle
   let description = req.session.data.description
   let frequencyCollected = req.session.data.frequencyCollected
@@ -290,12 +314,18 @@ function updateReturnRequirement(req, res) {
   if (frequencyCollected && typeof frequencyCollected  !== "undefined") { returnsRequirements.frequencyCollected = req.session.data.frequencyCollected }
   if (frequency && typeof  frequency !== "undefined") { returnsRequirements.frequency = req.session.data.frequency }
   if (settings && typeof  settings !== "undefined") { returnsRequirements.settings = req.session.data.settings }
+  if (timeLimit && typeof  timeLimit !== "undefined") {  if (req.session.data.timeLimit == "yes"){
+let timeLimitStart = govukDateFormat(req.session.data.timeLimitStart);
+let timeLimitEnd = govukDateFormat(req.session.data.timeLimitEnd);
+    req.session.data.timeLimit = "From " + timeLimitStart + " to " + timeLimitEnd
+ } else {returnsRequirements.timeLimit = req.session.data.timeLimit }}
 
 
   req.session.data.purpose = ""
   req.session.data.points = ""
   req.session.data.abstractionStartMonth = ""
   req.session.data.abstractionEndMonth = ""
+  req.session.data.timeLimit = ""
   req.session.data.returnsCycle = ""
   req.session.data.description = ""
   req.session.data.frequencyCollected = ""
@@ -445,6 +475,9 @@ router.post('/set-up/start-date', function(req, res) {
   }
 
 
+  
+
+
   ////function to change a number string in to the govuk date format. "yyyymmdd"
     let govukDate = ""
     let dd = req.session.data.startDateConditional.slice(-2);
@@ -569,10 +602,48 @@ router.post('/set-up/start-date', function(req, res) {
   res.redirect('../check-your-answers');
   }
 } else {
-  res.redirect('how-do-you-want-to-set-up');
+  res.redirect('additional-submission-options');
 }
 }
 
+});
+
+
+/// Additional submission options
+router.get('/set-up/additional-submission-options', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/additional-submission-options');
+});
+
+router.post('/set-up/additional-submission-options', function(req, res) {
+//check if the route is from changing existing data or not
+let change = req.session.data.change
+let licence = req.session.data.ID
+if (change == "true"){
+//  let elementNumber = req.session.data.elementNumber
+//  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+
+//Update the success banner
+req.session.data.success = 1
+
+
+successMessage.dynamicContent = req.session.data.additionalSubmissionOptions + "</p>"
+req.session.data.successMessage = successMessage.additionalSubmissionOptions + successMessage.dynamicContent
+notificationTitle = "Updated"
+req.session.data.notificationTitle = notificationTitle
+
+
+
+  req.session.data.change = false
+
+  req.session.data.licences[licence].returnsRequirements[0].additionalSubmissionOptions = req.session.data.additionalSubmissionOptions
+  if (req.session.data.returnReview == 1) {
+  res.redirect('../review-returns-requirements');
+  } else {
+  res.redirect('../check-your-answers');
+  } } else{
+  res.redirect('how-do-you-want-to-set-up');
+  }
 });
 
 /// How do you want to set up abstraction data?
@@ -678,6 +749,9 @@ router.post('/set-up/points', function(req, res) {
 });
 
 
+
+
+
 /// Select the abstraction period
 router.get('/set-up/abstraction-period', function(req, res) {
   req.session.data.back = req.headers.referer
@@ -685,6 +759,25 @@ router.get('/set-up/abstraction-period', function(req, res) {
 });
 
 router.post('/set-up/abstraction-period', function(req, res) {
+  res.redirect('time-limits');
+});
+
+  /// Select the time limits
+router.get('/set-up/time-limits', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/time-limits');
+});
+
+router.post('/set-up/time-limits', function(req, res) {
+
+
+ if (req.session.data.timeLimit == "yes"){
+let timeLimitStart = govukDateFormat(req.session.data.timeLimitStart);
+let timeLimitEnd = govukDateFormat(req.session.data.timeLimitEnd);
+    req.session.data.timeLimit = "From " + timeLimitStart + " to " + timeLimitEnd
+ }
+
+
   res.redirect('returns-cycle');
 });
 
@@ -837,33 +930,70 @@ router.get('/check-your-answers', function(req, res) {
 
 router.post('/check-your-answers', function(req, res) {
 
-   //clear all the data
-   req.session.data.reasonNewRequirements = ""
-   req.session.data.startDateConditional = ""
-   req.session.data.startDate = []
-   req.session.data.purpose = ""
-   req.session.data.description = ""
-   req.session.data.points = ""
-   req.session.data.abstractionStartDay = ""
-   req.session.data.abstractionStartMonth = ""
-   req.session.data.abstractionEndDay = ""
-   req.session.data.abstractionEndMonth = ""
-   req.session.data.returnsCycle = ""
-   req.session.data.frequencyCollected = ""
-   req.session.data.frequency = ""
-   req.session.data.settings = ""
-   req.session.data.change = false
-   req.session.data.requirementIndex = ""
-   req.session.data.returnVersion = ""
-   req.session.data.note = ""
-   req.session.data.success = 0
-   req.session.data.returnsNotRequired = ""
+  //end the previous return requirement
+  let licence = req.session.data.ID
+  if (req.session.data.licences[licence].returnsRequirements.length > 1) {
+ let startDate = req.session.data.licences[licence].returnsRequirements[0].startDate;
 
-    res.redirect('set-up/requirements-set-up');
+ //format the date
+ let day = startDate.substring(6, 8);
+ let month = startDate.substring(4, 6);
+ let year = startDate.substring(0, 4);
+ let dateString = (year) + "-" + (month) + "-" + (day);
+ //get the date
+ let date1 = new Date(dateString);
+ //set the days to subtract
+ let daysPrior = -1;
+ //use the method
+ date1.setDate(date1.getDate() + daysPrior);
+ //format the date
+ year = date1.toISOString().substring(0, 4);
+ month = date1.toISOString().substring(5, 7);
+ day = date1.toISOString().substring(8, 10);
+ //set the variable
+  req.session.data.licences[licence].returnsRequirements[1].endDate = (year)+(month)+(day)
+  }
+
+  //Update the requirement to approved
+  req.session.data.licences[licence].returnsRequirements[0].status = "approved"
+
+  //CREATE THE RETURNS
+  if (req.session.data.returnsNotRequired !== true) {
+    createReturns(req,res)
+  }
+
+  //clear all the data
+  req.session.data.returnReview = ""
+
+  req.session.data.reasonNewRequirements = ""
+  req.session.data.additionalSubmissionOptions = []
+  req.session.data.startDateConditional = ""
+  req.session.data.startDate = []
+  req.session.data.purpose = ""
+  req.session.data.description = ""
+  req.session.data.points = ""
+  req.session.data.abstractionStartDay = ""
+  req.session.data.abstractionStartMonth = ""
+  req.session.data.abstractionEndDay = ""
+  req.session.data.abstractionEndMonth = ""
+  req.session.data.timeLimit = ""
+  req.session.data.returnsCycle = ""
+  req.session.data.frequencyCollected = ""
+  req.session.data.frequency = ""
+  req.session.data.change = false
+  req.session.data.requirementIndex = ""
+  req.session.data.returnVersion = ""
+  req.session.data.note = ""
+  req.session.data.success = 0
+  req.session.data.returnsNotRequired = ""
+
+  res.redirect('set-up/requirements-approved');
+
+   // no longer in use res.redirect('set-up/requirements-set-up');
 });
 
 
-
+////////////********NO LONG IN USER V4*********/////////
 //////REVIEW AND APPROVE RETURN REQUIREMENTS
 //////////////////////////////////
 /////Confirm return version
@@ -911,6 +1041,7 @@ router.post('/review-returns-requirements', function(req, res) {
   req.session.data.returnReview = ""
 
   req.session.data.reasonNewRequirements = ""
+  req.session.data.additionalSubmissionOptions = []
   req.session.data.startDateConditional = ""
   req.session.data.startDate = []
   req.session.data.purpose = ""
