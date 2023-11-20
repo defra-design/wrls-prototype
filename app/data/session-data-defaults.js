@@ -482,6 +482,7 @@ module.exports = {
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
+                "timeLimit": "No"
               },
               {
                 "purpose": "General machine washing",
@@ -489,6 +490,7 @@ module.exports = {
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount": "20",
+                "timeLimit": "No"
               }],
 
                //Previous versions of the licence data
@@ -620,6 +622,7 @@ module.exports = {
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
+                "timeLimit": "No"
               },
               {
                       "purpose": "Spray irrigation - direct",
@@ -627,6 +630,7 @@ module.exports = {
                       "periodStart": "1101",
                       "periodEnd": "0331",
                       "amount":"125",
+                      "timeLimit": "No"
                     },
               {
                 "purpose": "General machine washing",
@@ -634,6 +638,7 @@ module.exports = {
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount": "20",
+                "timeLimit": "No"
               }],
 
                //Previous versions of the licence data
@@ -757,6 +762,7 @@ module.exports = {
                 "periodStart": "0401",
                 "periodEnd": "0331",
                 "amount":"125",
+                "timeLimit": "No"
               }],
 
                //Previous versions of the licence data
@@ -824,6 +830,7 @@ module.exports = {
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
+                "timeLimit": "No"
               }],
 
                //Previous versions of the licence data
@@ -979,6 +986,7 @@ module.exports = {
                 "periodStart": "1101",
                 "periodEnd": "0331",
                 "amount":"125",
+                "timeLimit": "No"
               }],
 
                //Previous versions of the licence data
@@ -1102,6 +1110,7 @@ module.exports = {
                 "periodStart": "0401",
                 "periodEnd": "1031",
                 "amount":"125",
+                "timeLimit": "No"
               }],
 
                //Previous versions of the licence data
@@ -1432,6 +1441,7 @@ module.exports = {
                       "periodStart": "0401",
                       "periodEnd": "0331",
                       "amount":"51,830",
+                      "timeLimit": "No"
                     },
                     {
                       "purpose": "General Farming & Domestic",
@@ -1439,6 +1449,7 @@ module.exports = {
                       "periodStart": "0401",
                       "periodEnd": "0331",
                       "amount":"2,890",
+                      "timeLimit": "No"
                     },
                     {
                       "purpose": "Spray irrigation - direct",
@@ -1446,6 +1457,7 @@ module.exports = {
                       "periodStart": "0401",
                       "periodEnd": "0331",
                       "amount":"2,890",
+                      "timeLimit": "No"
                     },
             ],
 
@@ -1514,6 +1526,7 @@ module.exports = {
                                 "periodStart": "0401",
                                 "periodEnd": "0331",
                                 "amount":"51,830",
+                                "timeLimit": "No"
                               },
                               {
                                 "purpose": "General Farming & Domestic",
@@ -1521,6 +1534,7 @@ module.exports = {
                                 "periodStart": "0401",
                                 "periodEnd": "0331",
                                 "amount":"2,890",
+                                "timeLimit": "No"
                               },
                               {
                                 "purpose": "Spray irrigation - direct",
@@ -1528,6 +1542,7 @@ module.exports = {
                                 "periodStart": "0401",
                                 "periodEnd": "0331",
                                 "amount":"2,890",
+                                "timeLimit": "No"
                               },
                       ],
               }
@@ -1665,6 +1680,7 @@ module.exports = {
                       "periodStart": "0101",
                       "periodEnd": "1231",
                       "amount":"",
+                      "timeLimit": "No"
                     }],
 
               "previousVersions": [],
@@ -1679,7 +1695,344 @@ module.exports = {
       
               "communications": [],
       
-            }
+            },
+            //licence 10
+            {
+              "number": "03/28/61/044",
+              "name": "Apple Tree Farm ",
+              "holder": "Big Smith Farms Ltd",
+              "startDate": "1 April 2023",
+              "effectiveDate": "1 April 2023",
+              "endDate": "31 March 2034",
+              "expired": "false",
+      
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+      
+              "source": "Underground strata comprising of chalk at Apple Tree Farm.",
+              "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic", "Spray irrigation - Direct"],
+              "absPeriod": ["1 April to 31 March"],
+      
+              "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675 126 "],
+              "gridRefs": [ "SK675124", "SK675126" ], 
+              "means": ["Unspecified pump"],
+              "absConditions": [
+                {"type" : "general condition",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "",
+                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+               },
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "180Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+               }
+             ],
+              "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+      
+              "use": [    {
+                            "purpose": "Trickle Irrigation - Storage",
+                            "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"51,830",
+                            "timeLimit": "No"
+                          },
+                          {
+                            "purpose": "General Farming & Domestic",
+                            "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"2,890",
+                            "timeLimit": "No"
+                          },
+                          {
+                            "purpose": "Spray irrigation - direct",
+                            "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"2,890",
+                            "timeLimit": "No"
+                          }
+                  ],
+      
+                  "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2022",
+                    "changedBy": "admin@gov.uk",
+                  }],
+      
+                  "previousVersions": [],
+                  
+      
+                  //return requirements
+                  "returnsRequirements":  [],
+      
+                    "returns": [],
+      
+              "chargeInformation": [],
+      
+              "agreements": [],
+      
+              "communications": [],
+      
+            },
+            //licence 11
+            {
+              "number": "03/28/61/055",
+              "name": "Pear Tree Farm",
+              "holder": "Big Smith Farms Ltd",
+              "startDate": "1 April 2019",
+              "effectiveDate": "1 April 2023",
+              "endDate": "31 March 2035",
+              "expired": "false",
+      
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+      
+              "source": "Underground strata comprising of chalk at An-area, A-town.",
+              "purpose": ["Spray irrigation - Direct", "General Farming & Domestic","Spray irrigation - Storage"],
+              "absPeriod": ["1 April to 31 March"],
+      
+              "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675 126"],
+              "gridRefs": [ "SK675124", "SK675126" ], 
+              "means": ["Unspecified pump"],
+              "absConditions": [
+                {"type" : "general condition",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "",
+                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SK 675124 and SK 675126."
+               },
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "180Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+               }
+             ],
+              "absQuantities": "Up to and including 31 March 2028~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~From 1 April 2028~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+      
+              "use": [     {
+                              "purpose": "Spray irrigation - direct",
+                              "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                              "periodStart": "0401",
+                              "periodEnd": "0331",
+                              "amount":"89,000",
+                              "timeLimit": "From 1 April 2023 to 31 March 2028"
+                          },
+                          {
+                            "purpose": "General Farming & Domestic",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"89,000",
+                            "timeLimit": "From 1 April 2023 to 31 March 2028"
+                          },
+                          {
+                            "purpose": "Spray Irrigation - Storage",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)","At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"89,000",
+                            "timeLimit": "From 1 April 2023 to 31 March 2028"
+                          }, {
+                            "purpose": "Spray irrigation - direct",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"51,830",
+                            "timeLimit": "No"
+                        },
+                        {
+                          "purpose": "General Farming & Domestic",
+                          "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                          "periodStart": "0401",
+                          "periodEnd": "0331",
+                          "amount":"51,830",
+                          "timeLimit": "No"
+                        },
+                         
+                  ],
+      
+                  "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "minor variation",
+                    "reasonText":  "Minor variation time limited increase for reservoir storage for subsequent spray irrigation volume on SK 675124 and SK 675126",
+                    "changedDate": "31 March 2023",
+                    "changedBy": "admin@gov.uk",
+                  },{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "changedBy": "admin@gov.uk",
+                  }],
+      
+                  "previousVersions": [
+                      { 
+                        
+                        //Changed
+                        "changed": true,
+                        "reasonCreated": "New Licence",
+                        "reasonText":  "",
+                        "changedDate": "31 March 2023",
+                        "changedBy": "admin@gov.uk",
+      
+                        "number": "03/28/61/055",
+                        "name": "Pear Tree Farm",
+                        "holder": "Big Smith Farms Ltd",
+                        "startDate": "1 April 2019",
+                        "effectiveDate": "1 April 2019",
+                        "endDate": "31 March 2023",
+                        "expired": "false",
+                
+                        //licence Settings
+                        "multipleUpload": "no",
+                        "confidentiality": "public",
+                
+                        "source": "Underground strata comprising of chalk at An-area, A-town.",
+                        "purpose": ["General Farming & Domestic","Spray irrigation - Direct"],
+                        "absPeriod": ["1 April to 31 March"],
+                
+                        "absPoints": ["At National Grid Reference SK 675124"],
+                        "means": ["Unspecified pump"],
+                        "absConditions": [
+                          {"type" : "general condition",
+                           "purposeIndex" : ["0"],
+                           "pointsIndex" : ["0"],
+                           "param1" : "",
+                           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SK 675124."
+                         },
+                         {"type" : "hands off flow condition (HOF)",
+                           "purposeIndex" : ["0"],
+                           "pointsIndex" : ["0"],
+                           "param1" : "Bourton Dickler",
+                           "param2" : "180Ml/d",
+                           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+                         }
+                       ],
+                        "absQuantities": "Borehole A~5 cubic metres per hour~10 cubic metres per day~3,250 cubic metres per year~~Borehole B~30 cubic metres per hour~280 cubic metres per day~72,830 cubic metres per year",
+                
+                        "use": [   
+                                    {
+                                      "purpose": "General Farming & Domestic",
+                                      "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                                      "periodStart": "0401",
+                                      "periodEnd": "0331",
+                                      "amount":"51,830",
+                                      "timeLimit": "No"
+                                    },
+                                    {
+                                      "purpose": "Spray irrigation - direct",
+                                      "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                                      "periodStart": "0401",
+                                      "periodEnd": "0331",
+                                      "amount":"51,830",
+                                      "timeLimit": "No"
+                                    },
+                            ],
+                    }
+                  ],
+                  
+      
+                  //return requirements
+                  "returnsRequirements":  [{
+                                          "startDate":"20190401",
+                                          "endDate":"",
+                                          "reason":"New licence",
+                                          "status":"approved",
+                                          "additionalSubmissionOptions": ["none"],
+                                          "username":"username@defra.gov.uk",
+                                          "note":"",
+                                          "requirements":[{
+                                                          "id":823187,
+                                                          "returnsCycle":"winter and all year",
+                                                          "description":"Pear tree farm - BOREHOLE A and B",
+                                                          "frequencyCollected":"monthly",
+                                                          "frequency":"monthly",
+                                                          "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
+                                                          "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                                                          "periodStart":"0401",
+                                                          "periodEnd":"0331",
+                                                          "timeLimit": "No",
+                                                          "settings":["none"],
+                                                            }]
+                                              }
+                                            ],
+      
+                    "returns": [
+                                {
+                                  "id":823187,
+                                  "status": "completed",
+                                  "due": "20211128",
+                                  "returnsCycle":"winter and all year",
+                                  "description":"Pear tree farm - BOREHOLE A and B",
+                                  "frequency": "monthly",
+                                  "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
+                                  "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                                  "periodStart":"0401",
+                                  "periodEnd":"1031",
+                                  "returnsPeriodStart":"20210401",
+                                  "returnsPeriodEnd":"20211031",
+                                },
+                                {
+                                  "id":823187,
+                                  "status": "completed",
+                                  "due": "20201128",
+                                  "returnsCycle":"winter and all year",
+                                  "description":"Pear tree farm - BOREHOLE A and B",
+                                  "frequency": "monthly",
+                                  "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
+                                  "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                                  "periodStart":"0401",
+                                  "periodEnd":"1031",
+                                  "returnsPeriodStart":"20200401",
+                                  "returnsPeriodEnd":"20201031",
+                                }
+                                ],
+      
+              "chargeInformation": [{
+                  "chargeStart": "1 April 2019",
+                  "chargeEnd": "",
+                  "chargeStatus": "CHARGEABLE",
+                  "chargeBilledDate": "31 March 2023",
+                  "free": "false",
+                  "reasonNewCharge": "New licence",
+                  "setUpBy": "	jo.langton@madeup.com",
+                  "elements": [{
+                                "purpose": "Spray irrigation - direct",
+                                "description": "Borehole A and B",
+                                "abstractionStartDay": "1",
+                                "abstractionStartMonth": "4",
+                                "abstractionEndDay": "31",
+                                "abstractionEndMonth": "3",
+                                "billableQuantity": "51,830",
+                                "authorisedQuantity": "51,830",
+                                "timeLimit": "No",
+                                "source": "Unsupported",
+                                "season": "Winter and all year",
+                                "loss": "High",
+                                }
+                  ],
+                }
+              ],
+      
+              "agreements": [],
+      
+              "communications": [
+                //newLicence
+              ],
+      
+            },
     ],
 
     //Billinga account ID

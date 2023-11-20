@@ -206,7 +206,7 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
   settings = ["none"]
   periodStart = req.session.data.licences[licence].use[i].periodStart
  periodEnd = req.session.data.licences[licence].use[i].periodEnd
- timeLimit = "no"
+ timeLimit = req.session.data.licences[licence].use[i].timeLimit
   returnsCycle = "summer"
 if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
   returnsCycle = "summer"
@@ -315,10 +315,10 @@ function updateReturnRequirement(req, res) {
   if (frequency && typeof  frequency !== "undefined") { returnsRequirements.frequency = req.session.data.frequency }
   if (settings && typeof  settings !== "undefined") { returnsRequirements.settings = req.session.data.settings }
   if (timeLimit && typeof  timeLimit !== "undefined") {  if (req.session.data.timeLimit == "yes"){
-let timeLimitStart = govukDateFormat(req.session.data.timeLimitStart);
-let timeLimitEnd = govukDateFormat(req.session.data.timeLimitEnd);
-    req.session.data.timeLimit = "From " + timeLimitStart + " to " + timeLimitEnd
- } else {returnsRequirements.timeLimit = req.session.data.timeLimit }}
+      let timeLimitStart = govukDateFormat(req.session.data.timeLimitStart);
+      let timeLimitEnd = govukDateFormat(req.session.data.timeLimitEnd);
+      returnsRequirements.timeLimit =  "From " + timeLimitStart + " to " + timeLimitEnd
+      } else {returnsRequirements.timeLimit = req.session.data.timeLimit }}
 
 
   req.session.data.purpose = ""
@@ -714,7 +714,34 @@ router.get('/purpose', function(req, res) {
 
 router.post('/set-up/purpose', function(req, res) {
 
-res.redirect('points');
+
+ //check if the route is from changing existing data or not
+ let change = req.session.data.change
+ //get the return requirement
+ let licence = req.session.data.ID
+ let requirementIndex = req.session.data.requirementIndex
+
+ if (change == "true"){
+
+ //  let elementNumber = req.session.data.elementNumber
+ //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+   req.session.data.change = false
+   updateReturnRequirement(req, res)
+
+   //updating success banner
+   req.session.data.success = 1
+
+
+   successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+   req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+   notificationTitle = "Updated"
+   req.session.data.notificationTitle = notificationTitle
+
+   res.redirect('../check-your-answers');}
+    else {
+      res.redirect('points');
+   }
+
 
 });
 
@@ -745,7 +772,35 @@ router.get('/set-up/points', function(req, res) {
 });
 
 router.post('/set-up/points', function(req, res) {
-  res.redirect('abstraction-period');
+
+  //check if the route is from changing existing data or not
+ let change = req.session.data.change
+ //get the return requirement
+ let licence = req.session.data.ID
+ let requirementIndex = req.session.data.requirementIndex
+
+ if (change == "true"){
+
+ //  let elementNumber = req.session.data.elementNumber
+ //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+   req.session.data.change = false
+   updateReturnRequirement(req, res)
+
+   //updating success banner
+   req.session.data.success = 1
+
+
+   successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+   req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+   notificationTitle = "Updated"
+   req.session.data.notificationTitle = notificationTitle
+
+   res.redirect('../check-your-answers');}
+    else {
+      res.redirect('abstraction-period');
+   }
+
+  
 });
 
 
@@ -759,7 +814,35 @@ router.get('/set-up/abstraction-period', function(req, res) {
 });
 
 router.post('/set-up/abstraction-period', function(req, res) {
-  res.redirect('time-limits');
+
+  //check if the route is from changing existing data or not
+  let change = req.session.data.change
+  //get the return requirement
+  let licence = req.session.data.ID
+  let requirementIndex = req.session.data.requirementIndex
+ 
+  if (change == "true"){
+ 
+  //  let elementNumber = req.session.data.elementNumber
+  //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+    req.session.data.change = false
+    updateReturnRequirement(req, res)
+ 
+    //updating success banner
+    req.session.data.success = 1
+ 
+ 
+    successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+    req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+    notificationTitle = "Updated"
+    req.session.data.notificationTitle = notificationTitle
+ 
+    res.redirect('../check-your-answers');}
+     else {
+      res.redirect('time-limits');
+    }
+
+  
 });
 
   /// Select the time limits
@@ -771,14 +854,43 @@ router.get('/set-up/time-limits', function(req, res) {
 router.post('/set-up/time-limits', function(req, res) {
 
 
- if (req.session.data.timeLimit == "yes"){
-let timeLimitStart = govukDateFormat(req.session.data.timeLimitStart);
-let timeLimitEnd = govukDateFormat(req.session.data.timeLimitEnd);
-    req.session.data.timeLimit = "From " + timeLimitStart + " to " + timeLimitEnd
- }
+ 
+
+   //check if the route is from changing existing data or not
+   let change = req.session.data.change
+   //get the return requirement
+   let licence = req.session.data.ID
+   let requirementIndex = req.session.data.requirementIndex
+  
+   if (change == "true"){
+  
+   //  let elementNumber = req.session.data.elementNumber
+   //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+     req.session.data.change = false
+     updateReturnRequirement(req, res)
+  
+     //updating success banner
+     req.session.data.success = 1
+  
+  
+     successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+     req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+     notificationTitle = "Updated"
+     req.session.data.notificationTitle = notificationTitle
+  
+     res.redirect('../check-your-answers');}
+      else {
+        if (req.session.data.timeLimit == "yes"){
+          let timeLimitStart = govukDateFormat(req.session.data.timeLimitStart);
+          let timeLimitEnd = govukDateFormat(req.session.data.timeLimitEnd);
+              req.session.data.timeLimit = "From " + timeLimitStart + " to " + timeLimitEnd
+           }
+
+           res.redirect('returns-cycle');
+     }
 
 
-  res.redirect('returns-cycle');
+ 
 });
 
 
@@ -789,7 +901,36 @@ router.get('/set-up/returns-cycle', function(req, res) {
 });
 
 router.post('/set-up/returns-cycle', function(req, res) {
-  res.redirect('description');
+
+    //check if the route is from changing existing data or not
+    let change = req.session.data.change
+    //get the return requirement
+    let licence = req.session.data.ID
+    let requirementIndex = req.session.data.requirementIndex
+   
+    if (change == "true"){
+   
+    //  let elementNumber = req.session.data.elementNumber
+    //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+      req.session.data.change = false
+      updateReturnRequirement(req, res)
+   
+      //updating success banner
+      req.session.data.success = 1
+   
+   
+      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+      notificationTitle = "Updated"
+      req.session.data.notificationTitle = notificationTitle
+   
+      res.redirect('../check-your-answers');}
+       else {
+    
+ 
+            res.redirect('description');
+      }
+  
 });
 
 
@@ -801,7 +942,36 @@ router.post('/set-up/returns-cycle', function(req, res) {
 
 router.post('/set-up/description', function(req, res) {
 
-  res.redirect('frequency-collected');
+      //check if the route is from changing existing data or not
+      let change = req.session.data.change
+      //get the return requirement
+      let licence = req.session.data.ID
+      let requirementIndex = req.session.data.requirementIndex
+     
+      if (change == "true"){
+     
+      //  let elementNumber = req.session.data.elementNumber
+      //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+        req.session.data.change = false
+        updateReturnRequirement(req, res)
+     
+        //updating success banner
+        req.session.data.success = 1
+     
+     
+        successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+        req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+        notificationTitle = "Updated"
+        req.session.data.notificationTitle = notificationTitle
+     
+        res.redirect('../check-your-answers');}
+         else {
+      
+   
+          res.redirect('frequency-collected');
+        }
+
+  
 });
 
 /// Enter the frequency collected
@@ -812,7 +982,36 @@ router.get('/set-up/frequency-collected', function(req, res) {
 
 router.post('/set-up/frequency-collected', function(req, res) {
 
-res.redirect('frequency');
+    //check if the route is from changing existing data or not
+    let change = req.session.data.change
+    //get the return requirement
+    let licence = req.session.data.ID
+    let requirementIndex = req.session.data.requirementIndex
+   
+    if (change == "true"){
+   
+    //  let elementNumber = req.session.data.elementNumber
+    //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+      req.session.data.change = false
+      updateReturnRequirement(req, res)
+   
+      //updating success banner
+      req.session.data.success = 1
+   
+   
+      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+      notificationTitle = "Updated"
+      req.session.data.notificationTitle = notificationTitle
+   
+      res.redirect('../check-your-answers');}
+       else {
+    
+ 
+        res.redirect('frequency');
+      }
+
+
 });
 
 /// Enter the frequency reported
@@ -823,7 +1022,36 @@ router.get('/set-up/frequency', function(req, res) {
 
 router.post('/set-up/frequency', function(req, res) {
 
-  res.redirect('settings');
+    //check if the route is from changing existing data or not
+    let change = req.session.data.change
+    //get the return requirement
+    let licence = req.session.data.ID
+    let requirementIndex = req.session.data.requirementIndex
+   
+    if (change == "true"){
+   
+    //  let elementNumber = req.session.data.elementNumber
+    //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+      req.session.data.change = false
+      updateReturnRequirement(req, res)
+   
+      //updating success banner
+      req.session.data.success = 1
+   
+   
+      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+      notificationTitle = "Updated"
+      req.session.data.notificationTitle = notificationTitle
+   
+      res.redirect('../check-your-answers');}
+       else {
+    
+ 
+        res.redirect('settings');
+      }
+
+
 });
 
 

@@ -39,7 +39,7 @@
             rows: [
               {
                 key: {
-                  text: use.points | plural ("Point")
+                  text: use.points | length | plural ("Point", showNumber = false)
                 },
                 value: {
                   text: use.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
