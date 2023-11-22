@@ -1711,7 +1711,7 @@ module.exports = {
               "confidentiality": "public",
       
               "source": "Underground strata comprising of chalk at Apple Tree Farm.",
-              "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic", "Spray irrigation - Direct"],
+              "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic", "Trickle irrigation - Direct"],
               "absPeriod": ["1 April to 31 March"],
       
               "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675 126 "],
@@ -1751,8 +1751,8 @@ module.exports = {
                             "timeLimit": "No"
                           },
                           {
-                            "purpose": "Spray irrigation - direct",
-                            "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                            "purpose": "Trickle irrigation - direct",
+                            "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
                             "periodStart": "0401",
                             "periodEnd": "0331",
                             "amount":"2,890",

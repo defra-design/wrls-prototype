@@ -23,7 +23,7 @@
 {% if licences.length > 5 %}
 {% set licences %}
 {{ govukDetails({
-    summaryText:licences.length + " " + licences | plural ("licence"),
+    summaryText:licences | length | plural ("Licence", showNumber=false),
     text: licences.join('<br>') |safe
   }) }}
 {% endset %}
@@ -51,7 +51,7 @@
 
 
 {{ govukTable({
-caption: rows | length + " " + rows | plural("bill"),
+caption: rows | length | plural("bill"),
 captionClasses: "govuk-table__caption--m",
 firstCellIsHeader: true,
 head: [
