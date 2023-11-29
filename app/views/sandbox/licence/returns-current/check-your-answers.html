@@ -48,9 +48,11 @@
 
 
       {% include "sandbox/_includes/returns/requirements/reason-new-requirements.html" %}
+
+      {% include "sandbox/_includes/returns/requirements/notes.html" %}  
       {% if data['returnsNotRequired'] == true %}
       {% else %}
-          {% include "sandbox/_includes/returns/requirements/notes.html" %}  
+          
 
       {% include "sandbox/_includes/returns/requirements/requirement.html" %}
       {% endif %}
@@ -63,9 +65,9 @@
         }) }}
 
         {{ govukButton({
-        text: "Cancel return requirement",
+        text: "Cancel return requirements",
         classes: "govuk-button--secondary",
-        href: "#"
+        href: "confirm-cancel-return-requirements?returnVersionNumber=0"
         }) }}
 
 

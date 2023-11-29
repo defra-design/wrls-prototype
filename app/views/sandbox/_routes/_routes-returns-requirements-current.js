@@ -179,8 +179,6 @@ function createReturnRequirementsFromAbsData(req, res) {
   let licence = req.session.data.ID
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements
 
-
-
   let  id = ""
   let  description = ""
   let  purpose = []
@@ -192,6 +190,9 @@ function createReturnRequirementsFromAbsData(req, res) {
   let  periodEnd = ""
   let  timeLimit = ""
   let  returnsCycle = ""
+  let amount = ""
+
+
 
 
 //Data for the return requirement, loop through the uses on the licence and create a requirement for each
@@ -199,7 +200,7 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
 
   id = Math.floor(100000 + Math.random() * 900000)
  description =   req.session.data.licences[licence].source
-  purpose = req.session.data.licences[licence].use[i].purpose
+  purpose = [req.session.data.licences[licence].use[i].purpose]
   points = req.session.data.licences[licence].use[i].points
   frequency = "monthly"
   frequencyCollected = "monthly"
@@ -207,6 +208,7 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
   periodStart = req.session.data.licences[licence].use[i].periodStart
  periodEnd = req.session.data.licences[licence].use[i].periodEnd
  timeLimit = req.session.data.licences[licence].use[i].timeLimit
+ amount = req.session.data.licences[licence].use[i].amount
   returnsCycle = "summer"
 if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && periodEnd >= "0401") {
   returnsCycle = "summer"
@@ -227,13 +229,43 @@ if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && per
     periodEnd,
     timeLimit,
     returnsCycle,
+    amount
   };
 
   //push the requirment data
   returnsRequirements[0].requirements.push(newRequirement);
+}
 
+//add on logic merge some requirements together, if they have the same points and auth
+function mergeObjects(oldArray) {
+  const newArray = [];
 
-  }
+  oldArray.forEach((obj) => {
+    const existingObj = newArray.find(
+      (newObj) => (
+        newObj.points.every((point) => obj.points.includes(point)) &&
+        newObj.amount === obj.amount
+      )
+    );
+
+    if (existingObj) {
+      // If an object with the same points and amount exists, merge the purposes
+      existingObj.purpose = [...existingObj.purpose, ...obj.purpose];
+    } else {
+      // If not, add the current object to the newArray
+      newArray.push(JSON.parse(JSON.stringify(obj)));
+    }
+  });
+
+  return newArray;
+}
+
+let oldArray = returnsRequirements[0].requirements
+
+  newArray = mergeObjects(oldArray);
+
+  returnsRequirements[0].requirements = newArray
+
 }
 
 //////////////////////////////////
@@ -1275,6 +1307,7 @@ router.post('/review-returns-requirements', function(req, res) {
   req.session.data.purpose = ""
   req.session.data.description = ""
   req.session.data.points = ""
+  req.session.data.timeLimit = ""
   req.session.data.abstractionStartDay = ""
   req.session.data.abstractionStartMonth = ""
   req.session.data.abstractionEndDay = ""
@@ -1391,6 +1424,42 @@ router.post('/set-up/reason-not-required', function(req, res) {
 
 
 
+/////////////Cancel return requirements///////////////////
 
+
+
+router.post('/confirm-cancel-return-requirements', function(req, res) {
+  req.session.data.back = req.headers.referer
+
+
+//get the licence info and clear the returnRequirements
+let licence = req.session.data.ID
+req.session.data.licences[licence].returnsRequirements.splice(0, 1);
+
+  //clear all the data
+  req.session.data.returnReview = ""
+  req.session.data.reasonNewRequirements = ""
+  req.session.data.additionalSubmissionOptions = []
+  req.session.data.startDateConditional = ""
+  req.session.data.startDate = []
+  req.session.data.purpose = ""
+  req.session.data.description = ""
+  req.session.data.timeLimit = ""
+  req.session.data.points = ""
+  req.session.data.abstractionStartDay = ""
+  req.session.data.abstractionStartMonth = ""
+  req.session.data.abstractionEndDay = ""
+  req.session.data.abstractionEndMonth = ""
+  req.session.data.returnsCycle = ""
+  req.session.data.frequencyCollected = ""
+  req.session.data.frequency = ""
+  req.session.data.change = false
+  req.session.data.requirementIndex = ""
+  req.session.data.returnVersion = ""
+  req.session.data.note = ""
+  req.session.data.success = 0
+  req.session.data.returnsNotRequired = ""
+  res.redirect('/sandbox/licence#charge');
+});
 
 module.exports = router

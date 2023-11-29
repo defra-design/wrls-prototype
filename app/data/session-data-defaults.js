@@ -1735,7 +1735,7 @@ module.exports = {
               "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
       
               "use": [    {
-                            "purpose": "Trickle Irrigation - Storage",
+                            "purpose": "Trickle irrigation - storage",
                             "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
                             "periodStart": "0401",
                             "periodEnd": "0331",
@@ -1755,7 +1755,7 @@ module.exports = {
                             "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
                             "periodStart": "0401",
                             "periodEnd": "0331",
-                            "amount":"2,890",
+                            "amount":"51,830",
                             "timeLimit": "No"
                           }
                   ],
