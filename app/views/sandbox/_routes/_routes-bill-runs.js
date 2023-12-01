@@ -303,6 +303,29 @@ function createDescription() {
   
 }
 
+    //I've updated the base data so no need to run this every time.
+    //  changeLicenceNumbers(req.session.data.billRunData);
+  
+//check for issues in the returns data
+function checkForTPTIssues(data, req) {
+  data.forEach((item, index) => {
+    req.session.data.billRunDataTpTReview[index].issues = [];
+    item.chargeVersions.forEach((chargeVersion) => {
+      chargeVersion.chargeReferences.forEach((chargeReference) => {
+        chargeReference.chargeElements.forEach((chargeElement) => {
+         chargeElement.issues.forEach((issue) => {
+         // console.log(issue)
+          if (issue !== null){
+
+          req.session.data.billRunDataTpTReview[index].issues.push(issue);
+          }; 
+         });
+        });
+      });
+    });
+  });
+}
+
 
 
 ///---------------------------------------------------------
@@ -363,28 +386,7 @@ router.post('/select-the-region', function(req, res) {
       });
     };
      
-    //I've updated the base data so no need to run this every time.
-    //  changeLicenceNumbers(req.session.data.billRunData);
-  
-//check for issues in the returns data
-function checkForTPTIssues(data) {
-  data.forEach((item, index) => {
-    req.session.data.billRunDataTpTReview[index].issues = [];
-    item.chargeVersions.forEach((chargeVersion) => {
-      chargeVersion.chargeReferences.forEach((chargeReference) => {
-        chargeReference.chargeElements.forEach((chargeElement) => {
-         chargeElement.issues.forEach((issue) => {
-         // console.log(issue)
-          if (issue !== null){
 
-          req.session.data.billRunDataTpTReview[index].issues.push(issue);
-          }; 
-         });
-        });
-      });
-    });
-  });
-}
 
 //Supplement data with issues, i've updated the base data so no need to run this every time.
 //checkForTPTIssues(req.session.data.billRunDataTpTReview);
@@ -506,8 +508,61 @@ router.post('/sandbox/bill-runs/tpt/progress-update', function(req, res) {
 
 router.get('/tpt/licence-review', function(req, res) {
   req.session.data.statusBanner = "hide"
+  req.session.data.licenceBanner = "hide"
   req.session.data.aggregateUpdate = false
   res.render(folder + 'tpt/licence-review');
+});
+
+///TPT COMPLETE REVIEW FEATURE
+router.post('/sandbox/bill-runs/tpt/complete-review', function(req, res) {
+  req.session.data.licenceBanner = "show"
+
+  let chargeReferences = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences
+  req.session.data.updateCount = 0
+  chargeReferences.forEach((chargeReference, chargeReferenceIndex) => {
+    chargeReference.chargeElements.forEach((chargeElement, chargeElementIndex) => {
+      chargeElement.issues.forEach((issue, issueIndex) => {
+         if (issue.issue !== null){
+        req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences[chargeReferenceIndex].chargeElements[chargeElementIndex].issues.push("ready");
+        req.session.data.updateCount = req.session.data.updateCount + 1
+      }
+   });
+  });
+});
+
+
+  let issues = req.session.data.billRunDataTpTReview[req.session.data.ID].issues
+  issues.forEach((issue, index) => { 
+    req.session.data.billRunDataTpTReview[req.session.data.ID].issues[index] = ""
+    req.session.data.status = "ready"
+  });
+
+  res.redirect('/sandbox/bill-runs/tpt/licence-review');
+});
+
+//undo route
+router.get('/sandbox/bill-runs/tpt/undo-review', function(req, res) {
+  req.session.data.licenceBanner = "hide"
+  
+  let chargeReferences = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences
+  req.session.data.updateCount = 0
+  chargeReferences.forEach((chargeReference, chargeReferenceIndex) => {
+    chargeReference.chargeElements.forEach((chargeElement, chargeElementIndex) => {
+      chargeElement.issues.forEach((issue, issueIndex) => {
+        console.log(issue + " " + issueIndex)
+         if (issue == "ready"){
+          
+        req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences[chargeReferenceIndex].chargeElements[chargeElementIndex].issues.splice(issueIndex, 1);
+        req.session.data.updateCount = req.session.data.updateCount + 1
+      }
+   });
+  });
+});
+
+  req.session.data.status = "review"
+  checkForTPTIssues(req.session.data.billRunDataTpTReview, req);
+console.log('undone');
+  res.redirect('/sandbox/bill-runs/tpt/licence-review');
 });
 
 
