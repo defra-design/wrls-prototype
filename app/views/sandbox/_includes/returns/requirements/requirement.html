@@ -12,6 +12,18 @@ href: routeFolder + "?requirementIndex=&change="
 {% for requirement in requirements %}
 
 
+{% if requirements.length > 1 %}
+{% set buttonHtml %}
+{{ govukButton({
+text: "Remove requirement",
+classes: "govuk-button--secondary govuk-!-margin-right-6 govuk-!-margin-bottom-0",
+href: "confirm-remove-requirement?requirementIndex=" + loop.index0
+}) }}
+{% endset %}
+{% endif %}
+
+
+
 <section class="govuk-!-margin-bottom-9">
 
 
@@ -19,6 +31,16 @@ href: routeFolder + "?requirementIndex=&change="
   <span class="govuk-caption-l ">Return ID {{requirement.id}}</span>
   <div>
     <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{requirement.returnsCycle |capitalize}}  {{requirement.frequency}} return requirement, {{requirement.description}}</h2>
+   <!--- <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+          Delete choice<span class="govuk-visually-hidden"> of University of Gloucestershire</span>
+        </a>
+      </li>
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+          Withdraw<span class="govuk-visually-hidden"> from University of Gloucestershire</span>
+        </a>
+      </li>
+    </ul> -->
   </div>
   {% endset %}
 
@@ -199,7 +221,16 @@ href: routeFolder + "?requirementIndex=&change="
             }
           ]
         }
-    }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        html: buttonHtml | safe,
+        classes: 'govuk-!-padding-bottom-3'
+      },
+      value: {}
+        
+    } if requirements.length > 1
     ]
     }) }}
 
@@ -207,13 +238,7 @@ href: routeFolder + "?requirementIndex=&change="
 
 
 
-{% if requirements.length > 1 %}
-{{ govukButton({
-text: "Remove requirement",
-classes: "govuk-button--secondary govuk-!-margin-right-6",
-href: "confirm-remove-requirement?requirementIndex=" + loop.index0
-}) }}
-{% endif %}
+
 
 </section>
 

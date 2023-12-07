@@ -206,3 +206,15 @@ addFilter('firstnbsp', function firstnbsp(x) {
   return x = x.replace(" ", "&nbsp;")
 
 });
+
+
+
+addFilter('submissionOptions', function submissionOptions(x) { 
+
+  if (x == "0"){
+    return "No"
+  } else {
+    return "Yes"
+  }
+
+});
