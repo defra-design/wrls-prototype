@@ -16,11 +16,45 @@
   <div class="govuk-grid-column-full">
 
 
-<form method="post" class="form">
+    <form method="post" class="form">
 
+      {% set variationRadios %}
+      {{ govukRadios({
+        name: "variations",
+        items: [
+          {
+            value: "Administrative",
+            text: "Administrative",
+            hint: {
+              text: "To change or correct a name or address or trading title"
+            }
+          },
+          {
+            value: "Minor",
+            text: "Minor",
+            hint: {
+              text: "Does not change the extent of the licence conditions"
+            }
+          },
+          {
+            value: "Normal",
+            text: "Normal",
+            hint: {
+              text: "Changing one or more conditions of the licence"
+            }
+          },
+          {
+            value: "Substantial",
+            text: "Substantial",
+            hint: {
+              text: "Changes that require a full reassessment"
+            }
+          }
+        ]
+      }) }}
+      {% endset -%}
 
-
-{{ govukRadios({
+      {{ govukRadios({
 idPrefix: "reasonNewRequirements",
 name: "reasonNewRequirements",
 fieldset: {
@@ -31,11 +65,6 @@ fieldset: {
   }
 },
 items: [
-{
-  value: "Admin variation",
-  text: "Admin variation",
-  checked: checked("reasonNewRequirements", "Admin variation")
-},
 {
   value: "Change to return requirements",
   text: "Change to return requirements",
@@ -67,11 +96,6 @@ items: [
   checked: checked("reasonNewRequirements", "Limited extension of licence validity (LEV)")
 },
   {
-    value: "Minor variation",
-    text: "Minor variation",
-    checked: checked("reasonNewRequirements", "Minor variation")
-  },
-  {
     value: "New licence",
     text: "New licence",
     checked: checked("reasonNewRequirements", "New licence")
@@ -87,16 +111,6 @@ items: [
     checked: checked("reasonNewRequirements", "New special agreement")
   },
   {
-    value: "Normal variation",
-    text: "Normal variation",
-    checked: checked("reasonNewRequirements", "Normal variation")
-  },
-  {
-    value: "Substantial variation",
-    text: "Substantial variation",
-    checked: checked("reasonNewRequirements", "Substantial variation")
-  },
-  {
     value: "Succession or transfer of licence",
     text: "Succession or transfer of licence",
     checked: checked("reasonNewRequirements", "Succession or transfer of licence")
@@ -105,17 +119,24 @@ items: [
     value: "Succession to a remainder licence or licence apportionment",
     text: "Succession to a remainder licence or licence apportionment",
     checked: checked("reasonNewRequirements", "Succession to a remainder licence or licence apportionment")
+  },
+  {
+    value: "Variation",
+    text: "Variation",
+    conditional: {
+            html: variationRadios
+    }
   }
 ]
 }) }}
 
-  <button type="submit" class="govuk-button govuk-!-margin-right-1">
-    Continue
-  </button>
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
 
-</form>
+    </form>
+  </div>
 </div>
-</div>
 
 
-    {% endblock %}
+{% endblock %}

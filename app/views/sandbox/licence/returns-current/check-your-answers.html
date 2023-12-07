@@ -3,7 +3,7 @@
 <!--set page title-->
 
 {% set returnRequirements = data['returnRequirements'] %}
-{% set title = "Check your answers"%}
+{% set title = "Check the return requirements for "  + data.licences[data.ID].holder %}
 
 
 {% block pageTitle %}
@@ -49,13 +49,74 @@
 
       {% include "sandbox/_includes/returns/requirements/reason-new-requirements.html" %}
 
-      {% include "sandbox/_includes/returns/requirements/notes.html" %}  
+      {% include "sandbox/_includes/returns/requirements/notes.html" %}
+
+      {% set returnsRequiredNum = data.licences[data.ID].returnsRequirements[0]['requirements'].length %}
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >{{ returnsRequiredNum }} returns required</h2>
+
       {% if data['returnsNotRequired'] == true %}
       {% else %}
-          
+
 
       {% include "sandbox/_includes/returns/requirements/requirement.html" %}
       {% endif %}
+
+
+
+
+
+      <!-- additional submission options -->
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-8',
+      rows: [
+
+        {
+          classes: 'govuk-summary-list',
+          key: {
+            text: "Additional submission options",
+            classes: 'govuk-heading-m'
+          },
+
+          actions: {
+            items: [
+              {
+                href: "set-up/additional-submission-options?change=true",
+                text: "Change",
+                visuallyHiddenText: "the additional submission options for the return requirement"
+              }
+            ]
+          }
+        },
+        {
+          classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+          key: {
+            text: "Multiple upload",
+            classes: 'govuk-!-padding-bottom-3'
+          },
+          value: {
+            text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions']  | listFormat | capitalize,
+            classes: 'govuk-!-padding-bottom-3'
+          }
+        },
+        {
+          classes: 'govuk-summary-list',
+          key: {
+            text: "Paper forms",
+            classes: 'govuk-!-padding-bottom-3'
+          },
+          value: {
+            text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions']  | listFormat | capitalize,
+            classes: 'govuk-!-padding-bottom-3'
+          }
+        }
+
+      ]
+      }) }}
+
+      <!-- end additional submission options -->
+
 
     <div class="divider govuk-!-margin-bottom-6"></div>
 
@@ -69,6 +130,10 @@
         classes: "govuk-button--secondary",
         href: "confirm-cancel-return-requirements?returnVersionNumber=0"
         }) }}
+
+
+
+
 
 
     </form>

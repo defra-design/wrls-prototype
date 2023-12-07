@@ -3,24 +3,36 @@
 
 {% set routeFolder = "set-up/purpose" %}
 
+{{ govukButton({
+text: "Add another requirement",
+classes: "govuk-button--secondary govuk-!-margin-right-6",
+href: routeFolder + "?requirementIndex=&change="
+}) }}
 
 {% for requirement in requirements %}
 
 
 <section class="govuk-!-margin-bottom-9">
 
-<span class="govuk-caption-l ">Return ID {{requirement.id}}</span>
-<div class="govuk-summary-list govuk-!-margin-bottom-2">
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-2 " >{{requirement.returnsCycle |capitalize}}  {{requirement.frequency}} return requirement, {{requirement.description}}</h2>
 
+  {% set summaryCardTitles %}
+  <span class="govuk-caption-l ">Return ID {{requirement.id}}</span>
+  <div>
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{requirement.returnsCycle |capitalize}}  {{requirement.frequency}} return requirement, {{requirement.description}}</h2>
+  </div>
+  {% endset %}
 
-</div>
+  {% set returnRequirementBtn %}
 
-  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
-
+  {% endset %}
 
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-2',
+    card: {
+      title: {
+        html: summaryCardTitles
+      }
+    },
   rows: [
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
@@ -82,7 +94,7 @@
       text: "Time limit"
     },
     value: {
-      text:  requirement.timeLimit 
+      text:  requirement.timeLimit
     },
       actions: {
         items: [
@@ -171,7 +183,7 @@
     {
       classes: 'govuk-summary-list govuk-summary-list__row--no-border',
       key: {
-        text: "Additional settings",
+        text: "Agreements and exceptions",
         classes: 'govuk-!-padding-bottom-3'
       },
       value: {
@@ -183,7 +195,7 @@
             {
               href: "set-up/settings?change=true&requirementIndex=" + loop.index0,
               text: "Change",
-              visuallyHiddenText: "additional settings"
+              visuallyHiddenText: "agreements and exceptions"
             }
           ]
         }
@@ -193,15 +205,6 @@
 
 
 
-<hr class="govuk-section-break  govuk-!-margin-bottom-4 govuk-section-break--visible">
-
-
-
-{{ govukButton({
-text: "Add another requirement",
-classes: "govuk-button--secondary govuk-!-margin-right-6",
-href: routeFolder + "?requirementIndex=&change="
-}) }}
 
 
 {% if requirements.length > 1 %}
