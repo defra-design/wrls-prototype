@@ -4,6 +4,7 @@
 
 {% set returnRequirements = data['returnRequirements'] %}
 {% set title = "Check the return requirements for "  + data.licences[data.ID].holder %}
+{% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
 
 
 {% block pageTitle %}
@@ -55,67 +56,23 @@
 
       <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >{{ returnsRequiredNum }} returns required</h2>
 
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        {% for requirement in requirements %}
+        <li>
+          <a class="govuk-link" href="#returnref{{ requirement.id }}">Return reference {{ requirement.id }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+
+
       {% if data['returnsNotRequired'] == true %}
       {% else %}
-
 
       {% include "sandbox/_includes/returns/requirements/requirement.html" %}
       {% endif %}
 
 
-
-
-
-      <!-- additional submission options -->
-
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-8',
-      rows: [
-
-        {
-          classes: 'govuk-summary-list',
-          key: {
-            text: "Additional submission options",
-            classes: 'govuk-heading-m'
-          },
-
-          actions: {
-            items: [
-              {
-                href: "set-up/additional-submission-options?change=true",
-                text: "Change",
-                visuallyHiddenText: "the additional submission options for the return requirement"
-              }
-            ]
-          }
-        },
-        {
-          classes: 'govuk-summary-list govuk-summary-list__row--no-border',
-          key: {
-            text: "Multiple upload",
-            classes: 'govuk-!-padding-bottom-3'
-          },
-          value: {
-            text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("multiple upload") | submissionOptions,
-            classes: 'govuk-!-padding-bottom-3'
-          }
-        },
-        {
-          classes: 'govuk-summary-list',
-          key: {
-            text: "Paper forms",
-            classes: 'govuk-!-padding-bottom-3'
-          },
-          value: {
-            text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions']  | arrayIncludes ("paper forms") | submissionOptions,
-            classes: 'govuk-!-padding-bottom-3'
-          }
-        }
-
-      ]
-      }) }}
-
-      <!-- end additional submission options -->
+      {% include "sandbox/_includes/returns/requirements/additional-subs.html" %}
 
 
     <div class="divider govuk-!-margin-bottom-6"></div>
@@ -130,10 +87,6 @@
         classes: "govuk-button--secondary",
         href: "confirm-cancel-return-requirements?returnVersionNumber=0"
         }) }}
-
-
-
-
 
 
     </form>
