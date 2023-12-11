@@ -75,7 +75,9 @@ function createReturnRequirement(req, res) {
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements[0]
 
   //set the ID
-  let id = Math.floor(100000 + Math.random() * 900000)
+  console.log(returnsRequirements.requirements[1])
+  let idIndex = returnsRequirements.requirements.length - 1
+  let id = returnsRequirements.requirements[idIndex].id + 1
 
 
 
@@ -198,7 +200,12 @@ function createReturnRequirementsFromAbsData(req, res) {
 //Data for the return requirement, loop through the uses on the licence and create a requirement for each
 for (const [i, v] of req.session.data.licences[licence].use.entries()) {
 
+  if (i==0){
   id = Math.floor(100000 + Math.random() * 900000)
+} else { 
+  let loop = i-1
+  id = returnsRequirements[0].requirements[loop].id + 1
+} 
  description =   req.session.data.licences[licence].source
   purpose = [req.session.data.licences[licence].use[i].purpose]
   points = req.session.data.licences[licence].use[i].points

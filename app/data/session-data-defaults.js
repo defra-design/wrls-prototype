@@ -2033,6 +2033,305 @@ module.exports = {
               ],
       
             },
+            {
+              "number": "03/28/61/065",
+              "name": "Lemon Tree Farm",
+              "holder": "Big Smith Farms Ltd",
+              "startDate": "1 April 2019",
+              "effectiveDate": "1 April 2023",
+              "endDate": "31 March 2035",
+              "expired": "false",
+      
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+      
+              "source": "Underground strata comprising of chalk at Lemon Tree Farm.",
+              "purpose":  ["Spray irrigation - Storage", "Spray irrigation - Direct", "General Farming & Domestic"],
+              "absPeriod": ["1 November to 31 March", "1 April to 31 October", "1 April to 31 March"],
+      
+              "absPoints": ["At National Grid Reference SK 675124"],
+              "gridRefs": [ "SK675124" ], 
+              "means": ["Unspecified pump"],
+              "absConditions": [
+                {"type" : "general condition",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "",
+                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SK 675124."
+               },
+             ],
+              "absQuantities": "Spray irrigation - Storage~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~Spray irrigation - Direct~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~General farming and agriculture~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+      
+              "use": [     {
+                              "purpose": "Spray Irrigation - Storage",
+                              "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)"],
+                              "periodStart": "1101",
+                              "periodEnd": "0331",
+                              "amount":"89,000",
+                              "timeLimit": "No",
+                          },
+                          {
+                              "purpose": "Spray irrigation - direct",
+                              "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)",],
+                              "periodStart": "0401",
+                              "periodEnd": "1031",
+                              "amount":"89,000",
+                              "timeLimit": "No",
+                          },
+                          {
+                            "purpose": "General Farming & Domestic",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"51,830",
+                            "timeLimit": "No",
+                          },
+                  ],
+      
+                  "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "Normal variation",
+                    "reasonText":  "Licence varied to add agriculture purpose to the licence",
+                    "changedDate": "1 April 2023",
+                    "changedBy": "admin@gov.uk",
+                  },{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "changedBy": "admin@gov.uk",
+                  }],
+      
+                  "previousVersions": [
+                      { 
+                        
+                        //Changed
+                        "changed": true,
+                        "reasonCreated": "New Licence",
+                        "reasonText":  "",
+                        "changedDate": "1 April 2023",
+                        "changedBy": "admin@gov.uk",
+      
+                        "number": "03/28/61/065",
+                        "name": "Lemon Tree Farm",
+                        "holder": "Big Smith Farms Ltd",
+                        "startDate": "1 April 2019",
+                        "effectiveDate": "1 April 2019",
+                        "endDate": "31 March 2023",
+                        "expired": "false",
+                
+                        //licence Settings
+                        "multipleUpload": "no",
+                        "confidentiality": "public",
+                
+                        "source": "Underground strata comprising of chalk at Lemon Tree Farm.",
+                        "purpose": ["Spray Irrigation - Storage","Spray irrigation - Direct"],
+                        "absPeriod": ["1 November to 31 March", "1 April to 31 October"],
+                
+                        "absPoints": ["At National Grid Reference SK 675124"],
+                        "means": ["Unspecified pump"],
+                        "absConditions": [
+                          {"type" : "general condition",
+                           "purposeIndex" : ["0"],
+                           "pointsIndex" : ["0"],
+                           "param1" : "",
+                           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SK 675124."
+                         },
+                       ],
+                       "absQuantities": "Spray irrigation - Storage~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~Spray irrigation - Direct~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year",
+      
+                        "use": [   
+                                      {
+                                        "purpose": "Spray Irrigation - Storage",
+                                        "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)"],
+                                        "periodStart": "1101",
+                                        "periodEnd": "0331",
+                                        "amount":"89,000",
+                                        "timeLimit": ""
+                                    },
+                                    {
+                                      "purpose": "Spray irrigation - direct",
+                                      "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                                      "periodStart": "0401",
+                                      "periodEnd": "0331",
+                                      "amount":"89,000",
+                                      "timeLimit": "No"
+                                    },
+                            ],
+                    }
+                  ],
+                  
+      
+                  //return requirements
+                  "returnsRequirements":  [{
+                                          "startDate":"20190401",
+                                          "endDate":"",
+                                          "reason":"New licence",
+                                          "status":"approved",
+                                          "additionalSubmissionOptions": ["none"],
+                                          "username":"username@defra.gov.uk",
+                                          "note":"",
+                                          "requirements":[{
+                                                          "id":823187,
+                                                          "returnsCycle":"winter and all year",
+                                                          "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
+                                                          "frequencyCollected":"monthly",
+                                                          "frequency":"monthly",
+                                                          "purpose":["Spray irrigation - storage",],
+                                                          "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                                                          "periodStart":"1101",
+                                                          "periodEnd":"0331",
+                                                          "timeLimit": "No",
+                                                          "settings":["none"],
+                                                            },
+                                                            {
+                                                              "id":823188,
+                                                              "returnsCycle":"summer",
+                                                              "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
+                                                              "frequencyCollected":"monthly",
+                                                              "frequency":"monthly",
+                                                              "purpose":["Spray irrigation - direct"],
+                                                              "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                                                              "periodStart":"0401",
+                                                              "periodEnd":"1031",
+                                                              "timeLimit": "No",
+                                                              "settings":["none"],
+                                                                }]
+                                              }
+                                            ],
+      
+                    "returns": [
+                      {
+                        "id":823187,
+                        "status": "completed",
+                        "due": "20221128",
+                        "returnsCycle":"winter and all year",
+                        "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
+                        "frequency": "monthly",
+                        "purpose":["Spray irrigation - storage"],
+                        "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                        "periodStart":"1101",
+                        "periodEnd":"0331",
+                        "returnsPeriodStart":"20210401",
+                        "returnsPeriodEnd":"20220331",
+                      },{
+                        "id":823188,
+                        "status": "completed",
+                        "due": "20220428",
+                        "returnsCycle":"summer",
+                        "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
+                        "frequency": "monthly",
+                        "purpose":["Spray irrigation - direct"],
+                        "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                        "periodStart":"0401",
+                        "periodEnd":"1031",
+                        "returnsPeriodStart":"20210401",
+                        "returnsPeriodEnd":"20220331",
+                      },
+                      {
+                        "id":823187,
+                        "status": "completed",
+                        "due": "20211128",
+                        "returnsCycle":"winter and all year",
+                        "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
+                        "frequency": "monthly",
+                        "purpose":["Spray irrigation - storage"],
+                        "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                        "periodStart":"1101",
+                        "periodEnd":"0331",
+                        "returnsPeriodStart":"20200401",
+                        "returnsPeriodEnd":"20210331",
+                      },{
+                        "id":823188,
+                        "status": "completed",
+                        "due": "20210428",
+                        "returnsCycle":"summer",
+                        "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
+                        "frequency": "monthly",
+                        "purpose":["Spray irrigation - direct"],
+                        "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                        "periodStart":"0401",
+                        "periodEnd":"1031",
+                        "returnsPeriodStart":"20200401",
+                        "returnsPeriodEnd":"20210331",
+                      },
+                      {
+                        "id":823187,
+                        "status": "completed",
+                        "due": "20201128",
+                        "returnsCycle":"winter and all year",
+                        "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
+                        "frequency": "monthly",
+                        "purpose":["Spray irrigation - storage"],
+                        "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                        "periodStart":"1101",
+                        "periodEnd":"0331",
+                        "returnsPeriodStart":"20190401",
+                        "returnsPeriodEnd":"20200331",
+                      },{
+                        "id":823188,
+                        "status": "completed",
+                        "due": "20200428",
+                        "returnsCycle":"summer",
+                        "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
+                        "frequency": "monthly",
+                        "purpose":["Spray irrigation - direct"],
+                        "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                        "periodStart":"0401",
+                        "periodEnd":"1031",
+                        "returnsPeriodStart":"20190401",
+                        "returnsPeriodEnd":"20200331",
+                      },
+                                ],
+      
+              "chargeInformation": [{
+                  "chargeStart": "1 April 2019",
+                  "chargeEnd": "",
+                  "chargeStatus": "CHARGEABLE",
+                  "chargeBilledDate": "31 March 2023",
+                  "free": "false",
+                  "reasonNewCharge": "New licence",
+                  "setUpBy": "	jo.langton@madeup.com",
+                  "elements": [{
+                                "purpose": "Spray irrigation - storage",
+                                "description": "Borehole A",
+                                "abstractionStartDay": "1",
+                                "abstractionStartMonth": "11",
+                                "abstractionEndDay": "31",
+                                "abstractionEndMonth": "3",
+                                "billableQuantity": "89,000",
+                                "authorisedQuantity": "89,000",
+                                "timeLimit": "No",
+                                "source": "Unsupported",
+                                "season": "Winter and all year",
+                                "loss": "High",
+                                },
+                                {
+                                  "purpose": "Spray irrigation - direct",
+                                  "description": "Borehole A",
+                                  "abstractionStartDay": "1",
+                                  "abstractionStartMonth": "4",
+                                  "abstractionEndDay": "31",
+                                  "abstractionEndMonth": "10",
+                                  "billableQuantity": "89,000",
+                                  "authorisedQuantity": "89,000",
+                                  "timeLimit": "No",
+                                  "source": "Unsupported",
+                                  "season": "Summer",
+                                  "loss": "High",
+                                  }
+                  ],
+                }
+              ],
+      
+              "agreements": [],
+      
+              "communications": [
+                //newLicence
+              ],
+      
+            },
     ],
 
     //Billinga account ID
