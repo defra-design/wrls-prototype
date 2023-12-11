@@ -9,20 +9,38 @@
 {% for requirement in requirements %}
 
 
+
 <section class="govuk-!-margin-bottom-9">
 
-<span class="govuk-caption-l ">Return ID {{requirement.id}}</span>
-<div class="govuk-summary-list govuk-!-margin-bottom-2">
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-2 " >{{requirement.returnsCycle |capitalize}}  {{requirement.frequency}} return requirement, {{requirement.description}}</h2>
 
+  {% set summaryCardTitles %}
+  <span class="govuk-caption-l" id="returnref{{requirement.id}}">Return ID {{requirement.id}}</span>
+  <div>
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{requirement.returnsCycle |capitalize}}  {{requirement.frequency}} return requirement, {{requirement.description}}</h2>
+   <!--- <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+          Delete choice<span class="govuk-visually-hidden"> of University of Gloucestershire</span>
+        </a>
+      </li>
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+          Withdraw<span class="govuk-visually-hidden"> from University of Gloucestershire</span>
+        </a>
+      </li>
+    </ul> -->
+  </div>
+  {% endset %}
 
-</div>
+  {% set returnRequirementBtn %}
 
-  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
-
+  {% endset %}
 
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-2',
+    card: {
+      title: {
+        html: summaryCardTitles
+      }
+    },
   rows: [
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
@@ -57,9 +75,9 @@
       text: "Time limit"
     },
     value: {
-      text:  requirement.timeLimit 
+      text:  requirement.timeLimit
     }
-  } if "From" in requirement.timeLimit,
+  },
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
@@ -94,13 +112,14 @@
         classes: 'govuk-!-padding-bottom-3'
       },
       value: {
-        text: requirement.frequency | capitalize
+        text: requirement.frequency | capitalize,
+        classes: 'govuk-!-padding-bottom-3'
       }
     },
     {
       classes: 'govuk-summary-list govuk-summary-list__row--no-border',
       key: {
-        text: "Additional settings",
+        text: "Agreements and exceptions",
         classes: 'govuk-!-padding-bottom-3'
       },
       value: {
@@ -113,7 +132,6 @@
 
 
 
-<hr class="govuk-section-break  govuk-!-margin-bottom-4 govuk-section-break--visible">
 
 
 

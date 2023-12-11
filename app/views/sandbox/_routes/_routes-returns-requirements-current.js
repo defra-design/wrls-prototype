@@ -237,6 +237,7 @@ if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && per
 }
 
 //add on logic merge some requirements together, if they have the same points and auth
+/*
 function mergeObjects(oldArray) {
   const newArray = [];
 
@@ -265,7 +266,7 @@ let oldArray = returnsRequirements[0].requirements
   newArray = mergeObjects(oldArray);
 
   returnsRequirements[0].requirements = newArray
-
+*/
 }
 
 //////////////////////////////////

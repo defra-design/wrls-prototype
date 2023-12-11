@@ -4,9 +4,9 @@
 
 {% set returnRequirements = data.licences[data.ID].returnsRequirements[data.returnVersionNumber] %}
 {% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].requirements.length %}
-{% set title = "Returns requirements valid from " +  returnRequirements.startDate | numberToGovukDate %}
+{% set title = "Returns requirements valid from " +  returnRequirements.startDate | numberToGovukDate + " for " + data.licences[data.ID].holder %}
 {% else %}
-{% set title = "No returns required valid from " +  returnRequirements.startDate | numberToGovukDate %}
+{% set title = "No returns required valid from " +  returnRequirements.startDate | numberToGovukDate + " for " + data.licences[data.ID].holder %}
 {% endif %}
 
 
@@ -51,7 +51,22 @@ classes: status | tagColour + ' govuk-!-font-size-27'
 
       {% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].requirements.length %}
 
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >{{ returnRequirements.requirements | length | plural ("return") }} required</h2>
+
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        {% for requirement in returnRequirements.requirements %}
+        <li>
+          <a class="govuk-link" href="#returnref{{ requirement.id }}">Return reference {{ requirement.id }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+
       {% include "sandbox/_includes/returns/requirements/requirement-no-change.html" %}
+
+      {% include "sandbox/_includes/returns/requirements/additional-subs-no-change.html" %}
+
+      {% else %}
+      <h3 class="govuk-heading-m">Returns are not required for this licence</h3>
 
      {% endif %}
 

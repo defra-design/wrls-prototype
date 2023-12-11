@@ -52,6 +52,13 @@
 
       {% include "sandbox/_includes/returns/requirements/notes.html" %}
 
+      
+
+      {% if data['returnsNotRequired'] == true %}
+
+      <h3 class="govuk-heading-m">Returns are not required for this licence</h3>
+      {% else %}
+
       {% set returnsRequiredNum = data.licences[data.ID].returnsRequirements[0]['requirements'].length %}
 
       <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >{{ returnsRequiredNum }} returns required</h2>
@@ -64,14 +71,13 @@
         {% endfor %}
       </ul>
 
-      {% if data['returnsNotRequired'] == true %}
-      {% else %}
-
       {% include "sandbox/_includes/returns/requirements/requirement.html" %}
+
+      {% include "sandbox/_includes/returns/requirements/additional-subs.html" %}
       {% endif %}
 
 
-      {% include "sandbox/_includes/returns/requirements/additional-subs.html" %}
+      
 
 
     <div class="divider govuk-!-margin-bottom-6"></div>
