@@ -75,7 +75,6 @@ function createReturnRequirement(req, res) {
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements[0]
 
   //set the ID
-  console.log(returnsRequirements.requirements[1])
   let idIndex = returnsRequirements.requirements.length - 1
   let id = returnsRequirements.requirements[idIndex].id + 1
 
@@ -458,6 +457,12 @@ router.get('/reason', function(req, res) {
 });
 
 router.post('/set-up/reason', function(req, res) {
+
+
+  if (req.session.data.reasonNewRequirements == "variation"){
+    req.session.data.reasonNewRequirements = req.session.data.variations + " " +  req.session.data.reasonNewRequirements 
+  } else { req.session.data.variations = "" }
+
   //check if the route is from changing existing data or not
   let change = req.session.data.change
   if (change == "true"){
@@ -1329,6 +1334,7 @@ router.post('/review-returns-requirements', function(req, res) {
   req.session.data.note = ""
   req.session.data.success = 0
   req.session.data.returnsNotRequired = ""
+  req.session.data.variations = ""
 
   res.redirect('set-up/requirements-approved');
 });

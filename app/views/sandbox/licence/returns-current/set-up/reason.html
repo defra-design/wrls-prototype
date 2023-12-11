@@ -23,29 +23,33 @@
         name: "variations",
         items: [
           {
-            value: "Administrative variation",
+            value: "Administrative",
             text: "Administrative",
+            checked: checked("variations", "Administrative"),
             hint: {
               text: "To change or correct a name or address or trading title"
             }
           },
           {
-            value: "Minor variation",
+            value: "Minor",
             text: "Minor",
+            checked: checked("variations", "Minor"),
             hint: {
               text: "Does not change the extent of the licence conditions"
             }
           },
           {
-            value: "Normal variation",
+            value: "Normal",
             text: "Normal",
+            checked: checked("variations", "Normal"),
             hint: {
               text: "Changing one or more conditions of the licence"
             }
           },
           {
-            value: "Substantial variation",
+            value: "Substantial",
             text: "Substantial",
+            checked: checked("variations", "Substantial"),
             hint: {
               text: "Changes that require a full reassessment"
             }
@@ -53,6 +57,12 @@
         ]
       }) }}
       {% endset -%}
+
+
+      {% set variationsBoolean = false %}
+      {% if "variation" in data.reasonNewRequirements %}
+      {% set variationsBoolean = true %}
+      {% endif %}
 
       {{ govukRadios({
 idPrefix: "reasonNewRequirements",
@@ -121,8 +131,9 @@ items: [
     checked: checked("reasonNewRequirements", "Succession to a remainder licence or licence apportionment")
   },
   {
-    value: "Variation",
+    value: "variation",
     text: "Variation",
+    checked: variationsBoolean,
     conditional: {
             html: variationRadios
     }

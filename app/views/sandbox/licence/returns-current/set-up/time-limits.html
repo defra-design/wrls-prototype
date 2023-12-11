@@ -82,6 +82,9 @@
 
 
 
+  {% set yes = false %}
+  {% set no = false %}
+  {% if  data.change == "true" %}
   {# Frequency switch based on the answer for the specific requirement#}
       {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['timeLimit'] %}
           {% case 'no' %}
@@ -91,7 +94,11 @@
           {% default %}
               {% set yes = true %}
       {% endswitch %}
+{% endif %}
 
+   
+     
+ 
 
 
   {{ govukRadios({
