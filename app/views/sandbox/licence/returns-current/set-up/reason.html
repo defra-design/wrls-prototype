@@ -60,7 +60,7 @@
 
 
       {% set variationsBoolean = false %}
-      {% if "variation" in data.reasonNewRequirements %}
+      {% if data.reasonNewRequirements and "variation" in data.reasonNewRequirements %}
       {% set variationsBoolean = true %}
       {% endif %}
 
