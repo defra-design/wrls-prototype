@@ -21,10 +21,12 @@
 
 {% set selectItems = [] %}
 {% for i in data.licences[data.ID].returnsRequirements %}
+{% if i.status == "approved" and i.requirements.length >= 1 %}
 {% set selectItems = selectItems | push({
   value: loop.index0,
   text: i.startDate | numberToGovukDate
 }) %}
+{% endif %}
 {% endfor %}
 
 {{ govukRadios({

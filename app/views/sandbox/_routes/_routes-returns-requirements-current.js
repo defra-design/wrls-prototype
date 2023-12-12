@@ -1143,10 +1143,8 @@ router.post('/set-up/settings', function(req, res) {
   } else {
 
     if (req.session.data.manualRoute == true){
-      console.log("create version")
     createVersion(req, res)
     req.session.data.manualRoute = false } else {
-      console.log("create requirement")
       createReturnRequirement(req, res)
       req.session.data.success = 1
       let newRequirementIndex = req.session.data.licences[licence].returnsRequirements[0].requirements.length
@@ -1242,10 +1240,10 @@ router.post('/check-your-answers', function(req, res) {
   for(const [i, v] of req.session.data.licences[licence].returnsRequirements.entries()){
     if (v.status == "review"){
       req.session.data.licences[licence].returnsRequirements.splice(i, 1);
-      console.log("return version" + i + "deleted")
+     // console.log("return version" + i + "deleted")
     }
   }
-  
+
   //CREATE THE RETURNS
   if (req.session.data.returnsNotRequired !== true) {
     createReturns(req,res)
