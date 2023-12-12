@@ -75,9 +75,11 @@ function createReturnRequirement(req, res) {
   let returnsRequirements = req.session.data.licences[licence].returnsRequirements[0]
 
   //set the ID
-  let idIndex = returnsRequirements.requirements.length - 1
-  let id = returnsRequirements.requirements[idIndex].id + 1
-
+  let id = Math.floor(100000 + Math.random() * 900000)
+  if (returnsRequirements.requirements.length){
+    let idIndex = returnsRequirements.requirements.length - 1
+    id = returnsRequirements.requirements[idIndex].id + 1
+  }
 
 
   //set scope of purpose, points, amount, periodStart and periodEnd
@@ -141,7 +143,7 @@ function createVersion(req, res) {
   let startDate = req.session.data.startDateConditional
   let endDate = ""
   let status = "review"
-  let additionalSubmissionOptions = req.session.data.additionalSubmissionOptions
+  let additionalSubmissionOptions = ["none"]
   let reason = req.session.data.reasonNewRequirements
   let requirements = []
   let username = "username@defra.gov.uk"
@@ -701,13 +703,16 @@ router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
 
   //routing, manual set up, copy or use abs data
   if (req.session.data.howToSetUp == "set up requirement manually"){
+    req.session.data.manualRoute = true
     res.redirect('purpose');
   }
   else if (req.session.data.howToSetUp == "copy an existing return requirement") {
+    req.session.data.manualRoute = false
   res.redirect('select-an-existing-return-requirement');
   }
   else {
   requirementsFromAbsData(req,res);
+  req.session.data.manualRoute = false
   res.redirect('../check-your-answers');
   }
 
@@ -1137,8 +1142,11 @@ router.post('/set-up/settings', function(req, res) {
     }
   } else {
 
-    if (Number(req.session.data.returnVersion) !== 1){
-    createVersion(req, res) } else {
+    if (req.session.data.manualRoute == true){
+      console.log("create version")
+    createVersion(req, res)
+    req.session.data.manualRoute = false } else {
+      console.log("create requirement")
       createReturnRequirement(req, res)
       req.session.data.success = 1
       let newRequirementIndex = req.session.data.licences[licence].returnsRequirements[0].requirements.length
@@ -1229,7 +1237,15 @@ router.post('/check-your-answers', function(req, res) {
 
   //Update the requirement to approved
   req.session.data.licences[licence].returnsRequirements[0].status = "approved"
-
+  
+  //remove any erroroneous created versions by users navigating back and forth
+  for(const [i, v] of req.session.data.licences[licence].returnsRequirements.entries()){
+    if (v.status == "review"){
+      req.session.data.licences[licence].returnsRequirements.splice(i, 1);
+      console.log("return version" + i + "deleted")
+    }
+  }
+  
   //CREATE THE RETURNS
   if (req.session.data.returnsNotRequired !== true) {
     createReturns(req,res)
