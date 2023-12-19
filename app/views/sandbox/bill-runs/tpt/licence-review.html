@@ -181,13 +181,14 @@
       {% endfor %}
  
       {% set completeButton %}
+      <br><br>
        {{ govukButton({
-        text: "Complete the review",
-        classes: "govuk-button--secondary"
+        text: "Change all elements to ready",
+        classes: "govuk-button--secondary govuk-!-margin-bottom-2"
       }) }}
       {% endset %}
               {{ govukInsetText({
-               html: '<form class="inline" action="complete-review" method="post" novalidate > You need to review '+ count | plural("element") + ' with returns data issues <br><br>' + completeButton + '</form>',
+               html: '<form class="inline" action="complete-review" method="post" novalidate > You need to review '+ count | plural("element") + ' with returns data issues ' + completeButton + '</form>',
                classes: "govuk-!-margin-bottom-6 govuk-!-margin-top-0"
              }) }}
               {% endif %}
