@@ -463,6 +463,11 @@ req.session.data.filteredResults = filteredResults
 
 });
 
+  //Cancel the bill run
+  router.post('/tpt/review/cancel-bill-run', function(req, res) {
+    res.redirect('/current/bd/charges-2020/confirm-cancel-bills?type=Two-part%20tariff');
+  });
+
  ////////////////////
 
 

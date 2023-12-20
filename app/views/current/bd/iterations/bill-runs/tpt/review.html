@@ -78,11 +78,13 @@
 
 {% if billRunDataTpTReview.length > 1 %}
 <section class="govuk-!-margin-bottom-9">
+  <form  method="post" novalidate action="review/apply-filters"></form>
+  <form method="post" action="review/cancel-bill-run" novalidate>
   {{ govukButton({
     text: "Cancel bill run",
     classes: "govuk-button--secondary govuk-!-margin-bottom-0"
   }) }}
-
+</form>
 {% set errors = 0 %}
 {% for licence in billRunDataTpTReview %}
 {% if licence.issues[0].issue.length %}
