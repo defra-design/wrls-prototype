@@ -126,7 +126,7 @@
 
 <!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff bill run</span>{{ title }}</h1>
@@ -179,14 +179,33 @@
       {% set count = count+1 %}
       {% endif %}
       {% endfor %}
- 
+
+     
+    {% set elementNotset = false %}
+    {% set elementNotsetCount = 0 %}
+     {% for chargeVersion in licence.chargeVersions %}
+     {% for chargeReference in chargeVersion.chargeReferences %}
+     {% for chargeElement in chargeReference.chargeElements %}
+     {% if chargeElement.allocatedQuantity == "not set" %}
+     {% set elementNotset = true %}
+     {% set elementNotsetCount = elementNotsetCount + 1%}
+     {% endif %}
+     {% endfor %}
+     {% endfor %}
+     {% endfor %}
+      
+     {# show hide the button based on whether the billable returns are set or not #}
+      {% if elementNotset == false %}
       {% set completeButton %}
       <br><br>
        {{ govukButton({
         text: "Change all elements to ready",
         classes: "govuk-button--secondary govuk-!-margin-bottom-2"
       }) }}
-      {% endset %}
+      {% endset %} 
+      {% else %}
+      {% set completeButton = "and set the billable returns for " + elementNotsetCount | plural ('element')+ " before you can change all elements to ready"%}
+      {% endif %}
               {{ govukInsetText({
                html: '<form class="inline" action="complete-review" method="post" novalidate > You need to review '+ count | plural("element") + ' with returns data issues ' + completeButton + '</form>',
                classes: "govuk-!-margin-bottom-6 govuk-!-margin-top-0"

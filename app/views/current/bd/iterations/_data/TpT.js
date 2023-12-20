@@ -435,7 +435,7 @@ module.exports = {
                      "adjustments": [],
                      "aggregateFactor": "",
                      "authorisedVolume": 273,
-                     "totalBillableReturns": "0not set29.54160.1not set"
+                     "totalBillableReturns": 89.641
                   }
                ]
             }
@@ -604,7 +604,7 @@ module.exports = {
                      "adjustments": [],
                      "aggregateFactor": "",
                      "authorisedVolume": 265,
-                     "totalBillableReturns": "0not set11.98486.40728"
+                     "totalBillableReturns": 126.391
                   }
                ]
             }
