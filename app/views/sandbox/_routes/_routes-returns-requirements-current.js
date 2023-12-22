@@ -203,10 +203,10 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
 
   if (i==0){
   id = Math.floor(100000 + Math.random() * 900000)
-} else { 
+} else {
   let loop = i-1
   id = returnsRequirements[0].requirements[loop].id + 1
-} 
+}
  description =   req.session.data.licences[licence].source
   purpose = [req.session.data.licences[licence].use[i].purpose]
   points = req.session.data.licences[licence].use[i].points
@@ -462,7 +462,7 @@ router.post('/set-up/reason', function(req, res) {
 
 
   if (req.session.data.reasonNewRequirements == "variation"){
-    req.session.data.reasonNewRequirements = req.session.data.variations + " " +  req.session.data.reasonNewRequirements 
+    req.session.data.reasonNewRequirements = req.session.data.variations + " " +  req.session.data.reasonNewRequirements
   } else { req.session.data.variations = "" }
 
   //check if the route is from changing existing data or not
@@ -488,7 +488,7 @@ router.post('/set-up/reason', function(req, res) {
     res.redirect('../check-your-answers');
     }
   } else {
-      res.redirect('start-date');
+      res.redirect('how-do-you-want-to-set-up');
   }
 });
 
@@ -649,7 +649,7 @@ router.post('/set-up/start-date', function(req, res) {
   res.redirect('../check-your-answers');
   }
 } else {
-  res.redirect('how-do-you-want-to-set-up');
+  res.redirect('reason');
 }
 }
 
@@ -1235,7 +1235,7 @@ router.post('/check-your-answers', function(req, res) {
 
   //Update the requirement to approved
   req.session.data.licences[licence].returnsRequirements[0].status = "approved"
-  
+
   //remove any erroroneous created versions by users navigating back and forth
   for(const [i, v] of req.session.data.licences[licence].returnsRequirements.entries()){
     if (v.status == "review"){
@@ -1445,7 +1445,7 @@ router.post('/set-up/reason-not-required', function(req, res) {
     res.redirect('../check-your-answers');
     }
   } else {
-      res.redirect('start-date');
+      res.redirect('how-do-you-want-to-set-up');
   }
 
 });

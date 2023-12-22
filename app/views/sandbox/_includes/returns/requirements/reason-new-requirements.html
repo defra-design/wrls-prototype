@@ -15,24 +15,6 @@ rows: [
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
-      text: "Reason"
-    },
-    value: {
-      text: data.licences[data.ID].returnsRequirements[0]['reason'] | capitalize
-    },
-    actions: {
-      items: [
-        {
-          href: reasonURL,
-          text: "Change",
-          visuallyHiddenText: "the reason for the return requirement"
-        }
-      ]
-    }
-  },
-  {
-    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
-    key: {
       text: "Start date"
     },
     value: {
@@ -47,8 +29,25 @@ rows: [
         }
       ]
     }
-  }
-
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Reason"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[0]['reason'] | capitalize
+    },
+    actions: {
+      items: [
+        {
+          href: reasonURL,
+          text: "Change",
+          visuallyHiddenText: "the reason for the return requirement"
+        }
+      ]
+    }
+  }  
 ]
 }) }}
 

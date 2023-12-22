@@ -91,9 +91,9 @@
       {% endif %}
 
       {% if data['returnsRouteVersion'] == 3 %}
-      {% set URL = "licence/returns-current/set-up/reason" %}
+      {% set URL = "licence/returns-current/set-up/start-date" %}
       {% else %}
-      {% set URL = "licence/returns/set-up/reason" %}
+      {% set URL = "licence/returns/set-up/start-date" %}
       {% endif %}
 
 
@@ -109,12 +109,12 @@
       {{ govukButton({
         text: "No returns required",
         classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "licence/returns-current/set-up/reason-not-required"
+        href: "licence/returns-current/set-up/start-date"
       }) }}
       {% elseif data.licences[data.ID].returnsRequirements[0].requirements.length %}
       {{ govukButton({
         text: "No returns required",
         classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "licence/returns-current/set-up/reason-not-required"
+        href: "licence/returns-current/set-up/start-date"
       }) }}
       {% endif %}
