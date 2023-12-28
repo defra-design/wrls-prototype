@@ -109,12 +109,12 @@
       {{ govukButton({
         text: "No returns required",
         classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "licence/returns-current/set-up/start-date"
+        href: "licence/returns-current/set-up/start-date?returnsNotRequired=true"
       }) }}
       {% elseif data.licences[data.ID].returnsRequirements[0].requirements.length %}
       {{ govukButton({
         text: "No returns required",
         classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "licence/returns-current/set-up/start-date"
+        href: "licence/returns-current/set-up/start-date?returnsNotRequired=true"
       }) }}
       {% endif %}

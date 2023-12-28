@@ -567,88 +567,19 @@ router.post('/set-up/start-date', function(req, res) {
   } else {
 
 
-//OLD ROUTING
-/*
-          //redirect to specified version of the route e.g. ?returnsRouteVersion=2  //V2 routes near the bottom
-          if ( req.session.data.returnsRouteVersion == 2){
-            if (req.session.data.returnsNotRequired == true) {
-              createVersion(req, res)
-              res.redirect('../check-your-answers');
+
+  if (req.session.data.returnsNotRequired == "true" ) {
+
+  
+           /* no more review process
+           if (req.session.data.returnReview == 1) {
+            res.redirect('../review-returns-requirements');
             } else {
-              //This used to redirect to purpose, however in UR we decided to try if only one purpose to skip the purpose question
-              //res.redirect('V2/purpose');
-
-              //use = data.licences[data.ID]['use']
-              let use = req.session.data.licences[licence].use
-              console.log(use);
-
-              if (use.length == 1){
-                 //if there is only 1 use on the licence, check to see if that use has multiple points. If so ask about points, if not skip to description
-
-
-
-                 //create the session data array if there is only a single use
-
-                req.session.data.use = ['0']
-
-
-                 let redirect = ""
-
-
-                 function setRedirect(callBack) {
-                 //loop through and get the purpose, points, amount, periodStart and periodEnd
-                 for (const [i, v] of use.entries()) {
-                    console.log(i)
-                 let  points = req.session.data.licences[licence].use[i].points
-
-                      //check to see if specific points specified, if not then use all the points from the use
-                      if(points.length >= 2){
-                           redirect = "1"
-                      }
-
-                   }
-
-                   callBack();
-                 }
-
-                 function purposeRedirect(){
-
-                           if (redirect === "1") {
-                           res.redirect('V2/all-points');
-                         } else {
-                           res.redirect('../description');
-                         }
-                   }
-
-                   setRedirect(purposeRedirect)
-
-              } else {
-                res.redirect('V2/purpose');
-              }
-
-
-
-
-            }
-          } else {
-            if (req.session.data.returnsNotRequired == true) {
-            createVersion(req, res)
             res.redirect('../check-your-answers');
-          } else {
-            res.redirect('use');
-          }
-        }
-  }
-  */
-
-  if (req.session.data.returnsNotRequired == true) {
-  createVersion(req, res)
-  if (req.session.data.returnReview == 1) {
-  res.redirect('../review-returns-requirements');
+            }
+            */
+            res.redirect('reason-not-required');          
   } else {
-  res.redirect('../check-your-answers');
-  }
-} else {
   res.redirect('reason');
 }
 }
@@ -1438,14 +1369,20 @@ router.post('/set-up/reason-not-required', function(req, res) {
     //update with the latest answers
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
+    
 
+    /* For review not in V5
     if (req.session.data.returnReview == 1) {
     res.redirect('../review-returns-requirements');
     } else {
     res.redirect('../check-your-answers');
     }
+    */
+
+    res.redirect('../check-your-answers');
   } else {
-      res.redirect('how-do-you-want-to-set-up');
+    createVersion(req, res)
+    res.redirect('../check-your-answers');
   }
 
 });
