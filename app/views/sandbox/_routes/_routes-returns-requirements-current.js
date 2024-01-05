@@ -570,7 +570,7 @@ router.post('/set-up/start-date', function(req, res) {
 
   if (req.session.data.returnsNotRequired == "true" ) {
 
-  
+
            /* no more review process
            if (req.session.data.returnReview == 1) {
             res.redirect('../review-returns-requirements');
@@ -578,7 +578,7 @@ router.post('/set-up/start-date', function(req, res) {
             res.redirect('../check-your-answers');
             }
             */
-            res.redirect('reason-not-required');          
+            res.redirect('reason-not-required');
   } else {
   res.redirect('reason');
 }
@@ -820,7 +820,7 @@ router.post('/set-up/abstraction-period', function(req, res) {
 
     res.redirect('../check-your-answers');}
      else {
-      res.redirect('time-limits');
+      res.redirect('returns-cycle');
     }
 
 
@@ -1369,7 +1369,7 @@ router.post('/set-up/reason-not-required', function(req, res) {
     //update with the latest answers
     let licence = req.session.data.ID
     req.session.data.licences[licence].returnsRequirements[0].reason = req.session.data.reasonNewRequirements
-    
+
 
     /* For review not in V5
     if (req.session.data.returnReview == 1) {
