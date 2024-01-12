@@ -65,12 +65,18 @@ fieldset: {
 items: [
   {
     value: "20230401",
-    html: "Licence version start date<br>" + data.licences[data.ID].effectiveDate,
+    html: "Licence version start date",
+    hint: {
+      text:  [data.licences[data.ID].effectiveDate]
+    },
     checked: checked("startDateConditional", "20230401")
   },
   {
     value: "other",
     text: "Another date",
+    hint: {
+      text:  "For example, 27 8 2024"
+    },
     checked: data.startDate.length,
     conditional: {
       html: startDate

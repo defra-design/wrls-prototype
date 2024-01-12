@@ -19,9 +19,6 @@
 <form method="post" class="form">
 
 
-
-
-
 {{ govukCheckboxes({
 idPrefix: "settings",
 name: "settings",
@@ -40,6 +37,11 @@ items: [
       value: "gravity fill",
       text: "Gravity fill",
       checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("gravity fill")
+    },
+    {
+      value: "transfer re-absraction scheme",
+      text: "Transfer re-abstraction scheme",
+      checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("transfer re-abstraction scheme")
     },
     {
       value: "two-part tariff",
