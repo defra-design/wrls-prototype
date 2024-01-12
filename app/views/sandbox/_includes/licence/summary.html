@@ -1,5 +1,5 @@
 <dl class="govuk-summary-list">
- 
+
   {% if data.licences[data.ID].name.length %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -179,6 +179,18 @@
 
   </div>
   {% endif %}
+
+
+
+  <div class="govuk-summary-list__row govuk-summary-list__row--last">
+    <dt class="govuk-summary-list__key">
+      Billing region
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{data.region}}
+    </dd>
+  </div>
+  
 
 </dl>
 

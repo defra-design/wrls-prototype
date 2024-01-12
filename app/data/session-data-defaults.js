@@ -447,6 +447,7 @@ module.exports = {
         "startDate": "1 June 1985",
         "endDate": "31 January 2020",
         "expired": "true",
+        "billingRegion": "Midlands",
 
         //licence Settings
         "multipleUpload": "no",
@@ -587,6 +588,7 @@ module.exports = {
         "startDate": "1 June 1985",
         "endDate": "30 April 2022",
         "expired": "false",
+        "billingRegion": "North West",
 
         //licence Settings
         "multipleUpload": "no",
@@ -727,6 +729,7 @@ module.exports = {
         "startDate": "1 April 2022",
         "endDate": "31 March 2034",
         "expired": "false",
+        "billingRegion": "South West",
 
         //licence Settings
         "multipleUpload": "no",
@@ -795,6 +798,7 @@ module.exports = {
         "startDate": "1 June 1985",
         "endDate": "15 September 2022",
         "expired": "false",
+        "billingRegion": "North East",
 
         //licence Settings
         "multipleUpload": "no",
@@ -951,6 +955,7 @@ module.exports = {
         "startDate": "1 September 1990",
         "endDate": "15 September 2022",
         "expired": "false",
+        "billingRegion": "Anglian",
 
         //licence Settings
         "multipleUpload": "no",
@@ -1075,6 +1080,7 @@ module.exports = {
         "startDate": "1 April 2015",
         "endDate": "1 March 2023",
         "expired": "false",
+        "billingRegion": "Midlands",
 
         //licence Settings
         "multipleUpload": "no",
@@ -1132,7 +1138,7 @@ module.exports = {
                                                 "description":"River Swale - Helperby",
                                                 "frequencyCollected":"daily",
                                                 "frequency":"daily",
-                                                "purpose":["Spray irrigation - direct"], 
+                                                "purpose":["Spray irrigation - direct"],
                                                 "points":["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                                 "periodStart":"0401",
                                                 "periodEnd":"1031",
@@ -1256,6 +1262,7 @@ module.exports = {
         "startDate": "1 October 2016",
         "endDate": "30 September 2025",
         "expired": "false",
+        "billingRegion": "South West",
 
         //licence Settings
         "multipleUpload": "no",
@@ -1406,6 +1413,7 @@ module.exports = {
         "effectiveDate": "1 August 2019",
         "endDate": "31 March 2034",
         "expired": "false",
+        "billingRegion": "Midlands",
 
         //licence Settings
         "multipleUpload": "no",
@@ -1416,7 +1424,7 @@ module.exports = {
         "absPeriod": ["1 April to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124"],
-        "gridRefs": [ "SK675124" ], 
+        "gridRefs": [ "SK675124" ],
         "means": ["Unspecified pump"],
         "absConditions": [
           {"type" : "general condition",
@@ -1476,8 +1484,8 @@ module.exports = {
             }],
 
             "previousVersions": [
-                { 
-                  
+                {
+
                   //Changed
                   "changed": true,
                   "reasonCreated": "New Licence",
@@ -1492,15 +1500,15 @@ module.exports = {
                   "effectiveDate": "1 April 2017",
                   "endDate": "31 July 2019",
                   "expired": "false",
-          
+
                   //licence Settings
                   "multipleUpload": "no",
                   "confidentiality": "public",
-          
+
                   "source": "Underground strata comprising of chalk at An-area, A-town.",
                   "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
                   "absPeriod": ["1 April to 31 March"],
-          
+
                   "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
                   "means": ["Unspecified pump"],
                   "absConditions": [
@@ -1519,7 +1527,7 @@ module.exports = {
                    }
                  ],
                   "absQuantities": "Borehole A~5 cubic metres per hour~10 cubic metres per day~3,250 cubic metres per year~~Borehole B~30 cubic metres per hour~280 cubic metres per day~72,830 cubic metres per year",
-          
+
                   "use": [    {
                                 "purpose": "Trickle Irrigation - Storage",
                                 "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
@@ -1547,7 +1555,7 @@ module.exports = {
                       ],
               }
             ],
-            
+
 
             //return requirements
             "returnsRequirements":  [{
@@ -1646,18 +1654,19 @@ module.exports = {
               "startDate": "1 April 2000",
               "endDate": "",
               "expired": "false",
-      
+              "billingRegion": "North West",
+
               //licence Settings
               "multipleUpload": "no",
               "confidentiality": "public",
-      
+
               "source": "Surface water",
               "purpose": ["Impounding (for any purpose excluding impounding for HEP)"],
               "absPeriod": ["1 January to 31 December"],
-             
-      
+
+
               "absPoints": ["At National Grid Reference SD 728565", "At National Grid Reference SD 717547", "At National Grid Reference SD 719545", "At National Grid Reference SD 736560",],
-              "gridRefs": [ 'SD 72890 56537', 'SD 71770 54730', 'SD 71966 54510', 'SD 73652 56049' ], 
+              "gridRefs": [ 'SD 72890 56537', 'SD 71770 54730', 'SD 71966 54510', 'SD 73652 56049' ],
               "means": ["Fixed weir"],
               "absConditions": [{"type" : "compensation release flow",
                                  "purposeIndex" : ["0"],
@@ -1673,7 +1682,7 @@ module.exports = {
                                 }
                         ],
               "absQuantities": "",
-      
+
               "use": [{
                       "purpose": "Impounding (for any purpose excluding impounding for HEP)",
                       "points": ["At National Grid Reference SD 728565, SD 717547, SD 719545 and SD 736560 (STOCKS RESERVOIR - LANCASTER)"],
@@ -1684,17 +1693,17 @@ module.exports = {
                     }],
 
               "previousVersions": [],
-      
+
               "returnsRequirements":  [],
-      
+
               "returns": [],
-      
+
               "chargeInformation": [],
-      
+
               "agreements": [],
-      
+
               "communications": [],
-      
+
             },
             //licence 10
             {
@@ -1705,17 +1714,18 @@ module.exports = {
               "effectiveDate": "1 April 2023",
               "endDate": "31 March 2034",
               "expired": "false",
-      
+              "billingRegion": "South East",
+
               //licence Settings
               "multipleUpload": "no",
               "confidentiality": "public",
-      
+
               "source": "Underground strata comprising of chalk at Apple Tree Farm.",
               "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic", "Trickle irrigation - Direct"],
               "absPeriod": ["1 April to 31 March"],
-      
+
               "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675 126 "],
-              "gridRefs": [ "SK675124", "SK675126" ], 
+              "gridRefs": [ "SK675124", "SK675126" ],
               "means": ["Unspecified pump"],
               "absConditions": [
                 {"type" : "general condition",
@@ -1733,7 +1743,7 @@ module.exports = {
                }
              ],
               "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
-      
+
               "use": [    {
                             "purpose": "Trickle irrigation - storage",
                             "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
@@ -1759,7 +1769,7 @@ module.exports = {
                             "timeLimit": "No"
                           }
                   ],
-      
+
                   "changeLog": [{
                     "type": "Licence version",
                     "reasonCreated": "new Licence",
@@ -1767,21 +1777,21 @@ module.exports = {
                     "changeDate": "1 April 2022",
                     "changedBy": "admin@gov.uk",
                   }],
-      
+
                   "previousVersions": [],
-                  
-      
+
+
                   //return requirements
                   "returnsRequirements":  [],
-      
+
                     "returns": [],
-      
+
               "chargeInformation": [],
-      
+
               "agreements": [],
-      
+
               "communications": [],
-      
+
             },
             //licence 11
             {
@@ -1792,17 +1802,18 @@ module.exports = {
               "effectiveDate": "1 April 2023",
               "endDate": "31 March 2035",
               "expired": "false",
-      
+              "billingRegion": "Midlands",
+
               //licence Settings
               "multipleUpload": "no",
               "confidentiality": "public",
-      
+
               "source": "Underground strata comprising of chalk at An-area, A-town.",
               "purpose": ["Spray irrigation - Direct", "General Farming & Domestic","Spray irrigation - Storage"],
               "absPeriod": ["1 April to 31 March"],
-      
+
               "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675 126"],
-              "gridRefs": [ "SK675124", "SK675126" ], 
+              "gridRefs": [ "SK675124", "SK675126" ],
               "means": ["Unspecified pump"],
               "absConditions": [
                 {"type" : "general condition",
@@ -1820,7 +1831,7 @@ module.exports = {
                }
              ],
               "absQuantities": "Up to and including 31 March 2028~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~From 1 April 2028~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
-      
+
               "use": [     {
                               "purpose": "Spray irrigation - direct",
                               "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
@@ -1860,9 +1871,9 @@ module.exports = {
                           "amount":"51,830",
                           "timeLimit": "No"
                         },
-                         
+
                   ],
-      
+
                   "changeLog": [{
                     "type": "Licence version",
                     "reasonCreated": "minor variation",
@@ -1876,17 +1887,17 @@ module.exports = {
                     "changeDate": "1 April 2019",
                     "changedBy": "admin@gov.uk",
                   }],
-      
+
                   "previousVersions": [
-                      { 
-                        
+                      {
+
                         //Changed
                         "changed": true,
                         "reasonCreated": "New Licence",
                         "reasonText":  "",
                         "changedDate": "31 March 2023",
                         "changedBy": "admin@gov.uk",
-      
+
                         "number": "03/28/61/055",
                         "name": "Pear Tree Farm",
                         "holder": "Big Smith Farms Ltd",
@@ -1894,15 +1905,15 @@ module.exports = {
                         "effectiveDate": "1 April 2019",
                         "endDate": "31 March 2023",
                         "expired": "false",
-                
+
                         //licence Settings
                         "multipleUpload": "no",
                         "confidentiality": "public",
-                
+
                         "source": "Underground strata comprising of chalk at An-area, A-town.",
                         "purpose": ["General Farming & Domestic","Spray irrigation - Direct"],
                         "absPeriod": ["1 April to 31 March"],
-                
+
                         "absPoints": ["At National Grid Reference SK 675124"],
                         "means": ["Unspecified pump"],
                         "absConditions": [
@@ -1921,8 +1932,8 @@ module.exports = {
                          }
                        ],
                         "absQuantities": "Borehole A~5 cubic metres per hour~10 cubic metres per day~3,250 cubic metres per year~~Borehole B~30 cubic metres per hour~280 cubic metres per day~72,830 cubic metres per year",
-                
-                        "use": [   
+
+                        "use": [
                                     {
                                       "purpose": "General Farming & Domestic",
                                       "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
@@ -1942,8 +1953,8 @@ module.exports = {
                             ],
                     }
                   ],
-                  
-      
+
+
                   //return requirements
                   "returnsRequirements":  [{
                                           "startDate":"20190401",
@@ -1968,7 +1979,7 @@ module.exports = {
                                                             }]
                                               }
                                             ],
-      
+
                     "returns": [
                                 {
                                   "id":823187,
@@ -1999,7 +2010,7 @@ module.exports = {
                                   "returnsPeriodEnd":"20201031",
                                 }
                                 ],
-      
+
               "chargeInformation": [{
                   "chargeStart": "1 April 2019",
                   "chargeEnd": "",
@@ -2025,13 +2036,13 @@ module.exports = {
                   ],
                 }
               ],
-      
+
               "agreements": [],
-      
+
               "communications": [
                 //newLicence
               ],
-      
+
             },
             {
               "number": "03/28/61/065",
@@ -2041,17 +2052,18 @@ module.exports = {
               "effectiveDate": "1 April 2023",
               "endDate": "31 March 2035",
               "expired": "false",
-      
+              "billingRegion": "Anglian",
+
               //licence Settings
               "multipleUpload": "no",
               "confidentiality": "public",
-      
+
               "source": "Underground strata comprising of chalk at Lemon Tree Farm.",
               "purpose":  ["Spray irrigation - Storage", "Spray irrigation - Direct", "General Farming & Domestic"],
               "absPeriod": ["1 November to 31 March", "1 April to 31 October", "1 April to 31 March"],
-      
+
               "absPoints": ["At National Grid Reference SK 675124"],
-              "gridRefs": [ "SK675124" ], 
+              "gridRefs": [ "SK675124" ],
               "means": ["Unspecified pump"],
               "absConditions": [
                 {"type" : "general condition",
@@ -2062,7 +2074,7 @@ module.exports = {
                },
              ],
               "absQuantities": "Spray irrigation - Storage~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~Spray irrigation - Direct~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~General farming and agriculture~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
-      
+
               "use": [     {
                               "purpose": "Spray Irrigation - Storage",
                               "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)"],
@@ -2088,7 +2100,7 @@ module.exports = {
                             "timeLimit": "No",
                           },
                   ],
-      
+
                   "changeLog": [{
                     "type": "Licence version",
                     "reasonCreated": "Normal variation",
@@ -2102,17 +2114,17 @@ module.exports = {
                     "changeDate": "1 April 2019",
                     "changedBy": "admin@gov.uk",
                   }],
-      
+
                   "previousVersions": [
-                      { 
-                        
+                      {
+
                         //Changed
                         "changed": true,
                         "reasonCreated": "New Licence",
                         "reasonText":  "",
                         "changedDate": "1 April 2023",
                         "changedBy": "admin@gov.uk",
-      
+
                         "number": "03/28/61/065",
                         "name": "Lemon Tree Farm",
                         "holder": "Big Smith Farms Ltd",
@@ -2120,15 +2132,15 @@ module.exports = {
                         "effectiveDate": "1 April 2019",
                         "endDate": "31 March 2023",
                         "expired": "false",
-                
+
                         //licence Settings
                         "multipleUpload": "no",
                         "confidentiality": "public",
-                
+
                         "source": "Underground strata comprising of chalk at Lemon Tree Farm.",
                         "purpose": ["Spray Irrigation - Storage","Spray irrigation - Direct"],
                         "absPeriod": ["1 November to 31 March", "1 April to 31 October"],
-                
+
                         "absPoints": ["At National Grid Reference SK 675124"],
                         "means": ["Unspecified pump"],
                         "absConditions": [
@@ -2140,8 +2152,8 @@ module.exports = {
                          },
                        ],
                        "absQuantities": "Spray irrigation - Storage~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~Spray irrigation - Direct~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year",
-      
-                        "use": [   
+
+                        "use": [
                                       {
                                         "purpose": "Spray Irrigation - Storage",
                                         "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)"],
@@ -2161,8 +2173,8 @@ module.exports = {
                             ],
                     }
                   ],
-                  
-      
+
+
                   //return requirements
                   "returnsRequirements":  [{
                                           "startDate":"20190401",
@@ -2200,7 +2212,7 @@ module.exports = {
                                                                 }]
                                               }
                                             ],
-      
+
                     "returns": [
                       {
                         "id":823187,
@@ -2284,7 +2296,7 @@ module.exports = {
                         "returnsPeriodEnd":"20200331",
                       },
                                 ],
-      
+
               "chargeInformation": [{
                   "chargeStart": "1 April 2019",
                   "chargeEnd": "",
@@ -2324,13 +2336,13 @@ module.exports = {
                   ],
                 }
               ],
-      
+
               "agreements": [],
-      
+
               "communications": [
                 //newLicence
               ],
-      
+
             },
     ],
 
