@@ -181,16 +181,16 @@
   {% endif %}
 
 
-
+  {% if data.licences[data.ID]['billingRegion'].length %}
   <div class="govuk-summary-list__row govuk-summary-list__row--last">
     <dt class="govuk-summary-list__key">
       Billing region
     </dt>
     <dd class="govuk-summary-list__value">
-      {{data.region}}
+      {{data.licences[data.ID]['billingRegion']}}
     </dd>
   </div>
-  
+  {% endif %}
 
 </dl>
 
