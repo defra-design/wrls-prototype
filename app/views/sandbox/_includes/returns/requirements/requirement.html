@@ -28,7 +28,7 @@ href: "confirm-remove-requirement?requirementIndex=" + loop.index0
 
 
   {% set summaryCardTitles %}
-  <span class="govuk-caption-l" id="returnref{{requirement.id}}">Return ID {{requirement.id}}</span>
+  <span class="govuk-caption-l" id="returnref{{loop.index}}">Return requirements {{loop.index}}</span>
   <div>
     <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{requirement.returnsCycle |capitalize}}  {{requirement.frequency}} return requirement, {{requirement.description}}</h2>
    <!--- <ul class="govuk-summary-card__actions">
