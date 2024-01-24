@@ -59,6 +59,15 @@
       {% endset -%}
 
 
+
+
+
+
+
+
+
+
+
       {% set variationsBoolean = false %}
       {% if data.reasonNewRequirements and "variation" in data.reasonNewRequirements %}
       {% set variationsBoolean = true %}
@@ -76,24 +85,14 @@ fieldset: {
 },
 items: [
 {
-  value: "Change to return requirements",
-  text: "Change to return requirements",
-  checked: checked("reasonNewRequirements", "Change to return requirements")
+  value: "Change to a special agreement",
+  text: "Change to a special agreement",
+  checked: checked("reasonNewRequirements", "Change to a special agreement")
 },
 {
-  value: "Change to special agreements",
-  text: "Change to special agreements",
-  checked: checked("reasonNewRequirements", "Change to special agreements")
-},
-{
-  value: "Error correction",
-  text: "Error correction",
-  checked: checked("reasonNewRequirements", "Error correction")
-},
-{
-  value: "Format change",
-  text: "Format change",
-  checked: checked("reasonNewRequirements", "Format change")
+  value: "Licence holder name or address change",
+  text: "Licence holder name or address change",
+  checked: checked("reasonNewRequirements", "Licence holder name or address change")
 },
 {
   value: "Licence transferred and now chargeable",
@@ -105,39 +104,41 @@ items: [
   text: "Limited extension of licence validity (LEV)",
   checked: checked("reasonNewRequirements", "Limited extension of licence validity (LEV)")
 },
-  {
-    value: "New licence",
-    text: "New licence",
-    checked: checked("reasonNewRequirements", "New licence")
-  },
-  {
-    value: "New licence in part succession or licence apportionment",
-    text: "New licence in part succession or licence apportionment",
-    checked: checked("reasonNewRequirements", "New licence in part succession or licence apportionment")
-  },
-  {
-    value: "New special agreement",
-    text: "New special agreement",
-    checked: checked("reasonNewRequirements", "New special agreement")
-  },
-  {
-    value: "Succession or transfer of licence",
-    text: "Succession or transfer of licence",
-    checked: checked("reasonNewRequirements", "Succession or transfer of licence")
-  },
-  {
-    value: "Succession to a remainder licence or licence apportionment",
-    text: "Succession to a remainder licence or licence apportionment",
-    checked: checked("reasonNewRequirements", "Succession to a remainder licence or licence apportionment")
-  },
-  {
-    value: "variation",
-    text: "Variation",
-    checked: variationsBoolean,
-    conditional: {
-            html: variationRadios
-    }
-  }
+{
+  value: "Major change",
+  text: "Major change",
+  checked: checked("reasonNewRequirements", "Major change")
+},
+{
+  value: "Minor change",
+  text: "Minor change",
+  checked: checked("reasonNewRequirements", "Minor change")
+},
+{
+  value: "New licence in part succession or licence apportionment",
+  text: "New licence in part succession or licence apportionment",
+  checked: checked("reasonNewRequirements", "New licence in part succession or licence apportionment")
+},
+{
+  value: "New licence",
+  text: "New licence",
+  checked: checked("reasonNewRequirements", "New licence")
+},
+{
+  value: "New special agreement",
+  text: "New special agreement",
+  checked: checked("reasonNewRequirements", "New special agreement")
+},
+{
+  value: "Succession or transfer of licence",
+  text: "Succession or transfer of licence",
+  checked: checked("reasonNewRequirements", "Succession or transfer of licence")
+},
+{
+  value: "Succession to a remainder licence or licence apportionment",
+  text: "Succession to a remainder licence or licence apportionment",
+  checked: checked("reasonNewRequirements", "Succession to a remainder licence or licence apportionment")
+}
 ]
 }) }}
 
