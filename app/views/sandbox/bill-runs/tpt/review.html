@@ -12,6 +12,7 @@
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
    containerClasses: "govuk-width-container",
+   useTudorCrown: true,
    navigation: [
      {
        href: "/bd/account/change-password-check",
@@ -123,8 +124,8 @@
     {% else %}
     {% set licences  = data.billRunDataTpTReview  %}
     {% endif %}
-    
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{% if licences == "empty" %}0 licences{% else %}{{licences | length  | plural("licence") }}{% endif %}</h2>  
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{% if licences == "empty" %}0 licences{% else %}{{licences | length  | plural("licence") }}{% endif %}</h2>
 
 {% include "sandbox/_includes/billing/tpt/review-table.html" %}
 

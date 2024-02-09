@@ -23,6 +23,7 @@
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
    containerClasses: "govuk-width-container",
+   useTudorCrown: true,
    navigation: [
      {
        href: "/bd/account/change-password-check",
@@ -83,40 +84,40 @@
 <!-- page title -->
 <div class="govuk-grid-row govuk-!-margin-bottom-5">
   <div class="govuk-grid-column-full">
-  
+
 
 
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-3"><span class="govuk-caption-l">Element {{data.elementID | stringPlusPlus}} of {{licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements.length}}</span>
        {{chargeElement.purpose.description | default(chargeElement.purpose)}}, {{chargeElement.description}}<br> {{chargeElement.abstractionPeriod[0].startDate |govukDate}} to {{chargeElement.abstractionPeriod[0].endDate |govukDate | firstnbsp |safe}}</h1>
 
-     
+
        {% if data.status == "review" %}
        {% set colour = "govuk-tag--blue" %}
        {% else %}
        {% set colour = "govuk-tag--green" %}
        {% endif %}
-   
+
        <p class="govuk-body">
          {{govukTag({
            text: data.status,
            classes: colour
          })}}
        </p>
-       
+
        {# list of links through to the licence #}
-       {% include "sandbox/_includes/billing/tpt/licence-nav-links.html" %} 
+       {% include "sandbox/_includes/billing/tpt/licence-nav-links.html" %}
 
-      
 
-   
+
+
      </div>
      </div>
-  
-     
-  
-     
-  
+
+
+
+
+
 
 
   <div class="govuk-grid-row ">
@@ -147,7 +148,7 @@
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
-            
+
          <div class="govuk-!-margin-right-6 float-left">
             <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{% if chargeElement.allocatedQuantity | isString%}Not set{% else %}{{chargeElement.allocatedQuantity | round(3)}}ML{% endif %}</span>{%if chargeElement.edited == true%}<span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19"> Edited</span>{% endif %}<br>
               <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Billable returns</span></h3>
@@ -161,7 +162,7 @@
                 <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Authorised volume</span></h3>
               </div>
 
-              
+
     {% if issuesText.length %}
     <div class="govuk-!-margin-right-6 float-left">
       {{ govukInsetText({
@@ -175,8 +176,8 @@
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
- 
-    <form class="inline" action="edit-the-billable-returns" method="post" novalidate > 
+
+    <form class="inline" action="edit-the-billable-returns" method="post" novalidate >
     {{ govukButton({
       text: "Edit the billable returns",
       classes: "govuk-button--secondary"
@@ -188,22 +189,22 @@
 
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-full">
-    
+
     {# set the matched return details ***OLD CODE***
     {% set matchedReturns = chargeElement.returns %}
     {% if not licence.returns.length %}
-    {% include "sandbox/_includes/billing/tpt/element-match-2.html" %} 
+    {% include "sandbox/_includes/billing/tpt/element-match-2.html" %}
     {% else %}
-    {% include "sandbox/_includes/billing/tpt/element-match.html" %} 
+    {% include "sandbox/_includes/billing/tpt/element-match.html" %}
     {% endif %}
     #}
- 
-    {% include "sandbox/_includes/billing/tpt/returns-table-element.html" %} 
-    
+
+    {% include "sandbox/_includes/billing/tpt/returns-table-element.html" %}
+
     </div>
   </div>
- 
-  
+
+
 
 
 

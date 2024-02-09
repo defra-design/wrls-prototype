@@ -21,6 +21,7 @@
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
    containerClasses: "govuk-width-container",
+   useTudorCrown: true,
    navigation: [
      {
        href: "/bd/account/change-password-check",
@@ -60,7 +61,7 @@
         {{ govukInsetText({
     html: '<div>Financial year ' + chargeVersion.startDate | year + ' to ' + chargeVersion.startDate | yearPlusPlus + '</div><div>Charge period ' + licence.chargePeriod[data.chargeVersionID].startDate |govukDate +' to '+ licence.chargePeriod[data.chargeVersionID].endDate |govukDate+'</div>'
   }) }}
-        
+
 {% endset %}
 
         {{ govukInput({
@@ -75,11 +76,11 @@
           spellcheck: false,
           value: chargeReference.aggregateFactor
         }) }}
-    
 
-      
 
-  
+
+
+
 
    {{ govukButton({
   text: "Confirm",

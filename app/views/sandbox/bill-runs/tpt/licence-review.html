@@ -25,6 +25,7 @@
    serviceName: "Manage your water abstraction or impoundment licence",
    serviceUrl: "#",
    containerClasses: "govuk-width-container",
+   useTudorCrown: true,
    navigation: [
      {
        href: "/bd/account/change-password-check",
@@ -136,7 +137,7 @@
       {% else %}
       {% set colour = "govuk-tag--green" %}
       {% endif %}
-  
+
       <p class="govuk-body">
         {{govukTag({
           text: data.status,
@@ -144,15 +145,15 @@
         })}}
       </p>
 
-    
+
       {# list of links through to the licence #}
-      {% include "sandbox/_includes/billing/tpt/licence-nav-links.html" %} 
-  
+      {% include "sandbox/_includes/billing/tpt/licence-nav-links.html" %}
 
- 
-        
 
-        <form class="inline" action="progress-update" method="post" novalidate > 
+
+
+
+        <form class="inline" action="progress-update" method="post" novalidate >
         {% if licence.progress %}
         {{ govukButton({
           text: "Remove progress mark",
@@ -165,13 +166,13 @@
         }) }}
         {% endif %}
         </form>
-        <form class="inline" action="remove-licence" method="post" novalidate > 
+        <form class="inline" action="remove-licence" method="post" novalidate >
         {{ govukButton({
           text: "Remove from bill run",
           classes: "govuk-button--secondary"
         }) }}
       </form>
-    
+
       {% if data.status == "review" %}
       {% set count = 0 %}
       {% for issue in licence.issues %}
@@ -180,7 +181,7 @@
       {% endif %}
       {% endfor %}
 
-     
+
     {% set elementNotset = false %}
     {% set elementNotsetCount = 0 %}
      {% for chargeVersion in licence.chargeVersions %}
@@ -193,7 +194,7 @@
      {% endfor %}
      {% endfor %}
      {% endfor %}
-      
+
      {# show hide the button based on whether the billable returns are set or not #}
       {% if elementNotset == false %}
       {% set completeButton %}
@@ -202,7 +203,7 @@
         text: "Change all elements to ready",
         classes: "govuk-button--secondary govuk-!-margin-bottom-2"
       }) }}
-      {% endset %} 
+      {% endset %}
       {% else %}
       {% set completeButton = "and set the billable returns for " + elementNotsetCount | plural ('element')+ " before you can change all elements to ready"%}
       {% endif %}
@@ -220,7 +221,7 @@
         </li>
         {% endfor %}
       </ul>
-    
+
      </div>
      </div>
      <div class="divider govuk-!-margin-bottom-6"></div>
@@ -228,19 +229,19 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-2">
   <div class="govuk-grid-column-full">
     <h2 class="govuk-heading-l govuk-!-margin-bottom-2"> Returns</h2>
-    {% include "sandbox/_includes/billing/tpt/returns-table.html" %} 
+    {% include "sandbox/_includes/billing/tpt/returns-table.html" %}
 
     {# include any unmatched returns in another table if there are any#}
     {% if licence.unmatchedReturns.length %}
-    {% include "sandbox/_includes/billing/tpt/returns-table-unmatched.html" %} 
+    {% include "sandbox/_includes/billing/tpt/returns-table-unmatched.html" %}
     {% endif %}
 
     </div>
     </div>
-  
-  
-     
-  
+
+
+
+
 
   {#Loop through the chargeVersions#}
 
@@ -251,7 +252,7 @@
     <div class="govuk-grid-column-full">
       <span class="govuk-caption-l">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</span>
       <h2 class="govuk-heading-l" id="{{licence.chargePeriod[loop.index0].startDate}}-{{licence.chargePeriod[loop.index0].endDate}}">Charge period {{licence.chargePeriod[loop.index0].startDate |govukDate}} to {{licence.chargePeriod[loop.index0].endDate |govukDate}}</h2>
-  
+
     <span class="govuk-caption-m">{{licence.licenceHolder}}</span>
       <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{chargeVersion.chargeReferences | length | plural('charge reference')}} with {{chargeVersion.chargeReferences[0].chargeElements.length | plural("two-part tariff charge element")}}</h3>
       {{ govukDetails({
@@ -261,12 +262,12 @@
       }) }}
       {% set chargeReferences = chargeVersion.chargeReferences %}
       {% set chargeVersionID = loop.index0 %}
-    {% include "sandbox/_includes/billing/tpt/licence-review.html" %} 
+    {% include "sandbox/_includes/billing/tpt/licence-review.html" %}
     </div>
   </div>
   {% endfor %}
- 
-  
+
+
 
 
 
