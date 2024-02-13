@@ -408,6 +408,12 @@ filters.focus = function(x) {
       return "mASD"
     } else if (e == "metres") {
       return "m"
+    } else if (e == "cubicFootPerSecond") {
+      return "ft<sup>3</sup>/s"
+    } else if (e == "gallonsPerDay") {
+      return "gpd"
+    } else if (e == "millionGallonsPerDay") {
+      return "Mgpd"
     } else {
       return "Ml/d"
     }
@@ -427,6 +433,12 @@ filters.focus = function(x) {
       return "metres above station datum"
     } else if (e == "metres") {
       return "metres"
+    } else if (e == "cubicFootPerSecond") {
+      return "cubic foot per second"
+    } else if (e == "gallonsPerDay") {
+      return "gallons per day"
+    } else if (e == "millionGallonsPerDay") {
+      return "Million gallons per day"
     } else {
       return "megalitres per day"
     }
