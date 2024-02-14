@@ -107,6 +107,7 @@ function createReturnRequirement(req, res) {
   let frequencyCollected = req.session.data.frequencyCollected
   let frequency = req.session.data.frequency
   let settings = req.session.data.settings
+  let title = req.session.data.purpose + ", " + req.session.data.description
 
 
   let newRequirement = {
@@ -115,6 +116,7 @@ function createReturnRequirement(req, res) {
     frequency,
     frequencyCollected,
     settings,
+    title,
     purpose,
     points,
     periodStart,
@@ -184,6 +186,7 @@ function createReturnRequirementsFromAbsData(req, res) {
 
   let  id = ""
   let  description = ""
+  let  title = ""
   let  purpose = []
   let  points = []
   let  frequency = ""
@@ -208,6 +211,7 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
   id = returnsRequirements[0].requirements[loop].id + 1
 }
  description =   req.session.data.licences[licence].source
+  title = req.session.data.licences[licence].use[i].purpose + ", " + req.session.data.licences[licence].source
   purpose = [req.session.data.licences[licence].use[i].purpose]
   points = req.session.data.licences[licence].use[i].points
   frequency = "monthly"
@@ -228,6 +232,7 @@ if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && per
   let newRequirement = {
     id,
     description,
+    title,
     frequency,
     frequencyCollected,
     settings,
@@ -339,6 +344,7 @@ function updateReturnRequirement(req, res) {
   let timeLimit = req.session.data.timeLimit
   let returnsCycle = req.session.data.returnsCycle
   let description = req.session.data.description
+  let title = req.session.data.title
   let frequencyCollected = req.session.data.frequencyCollected
   let frequency = req.session.data.frequency
   let settings = req.session.data.settings
@@ -352,6 +358,7 @@ function updateReturnRequirement(req, res) {
   if (abstractionEndMonth && typeof abstractionEndMonth !== "undefined") { returnsRequirements.periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0') }
   if (returnsCycle && typeof returnsCycle !== "undefined") { returnsRequirements.returnsCycle = req.session.data.returnsCycle }
   if (description && typeof description !== "undefined") { returnsRequirements.description = req.session.data.description }
+  if (title && typeof title !== "undefined") { returnsRequirements.title = req.session.data.title }
   if (frequencyCollected && typeof frequencyCollected  !== "undefined") { returnsRequirements.frequencyCollected = req.session.data.frequencyCollected }
   if (frequency && typeof  frequency !== "undefined") { returnsRequirements.frequency = req.session.data.frequency }
   if (settings && typeof  settings !== "undefined") { returnsRequirements.settings = req.session.data.settings }
@@ -369,6 +376,7 @@ function updateReturnRequirement(req, res) {
   req.session.data.timeLimit = ""
   req.session.data.returnsCycle = ""
   req.session.data.description = ""
+  req.session.data.title = ""
   req.session.data.frequencyCollected = ""
   req.session.data.frequency = ""
   req.session.data.settings = ""
@@ -408,6 +416,7 @@ function createReturns(req,res) {
   let due = "20230428"
   let returnsCycle = v.returnsCycle
   let description = v.description
+  let title = v.title
   let frequency = v.frequency
   let settings = v.settings
   let purpose = v.purpose
@@ -423,6 +432,7 @@ function createReturns(req,res) {
     due,
     returnsCycle,
     description,
+    title,
     frequency,
     settings,
     purpose,
@@ -954,6 +964,54 @@ router.post('/set-up/description', function(req, res) {
 
 
 });
+
+
+
+
+/// Enter the title
+router.get('/set-up/title', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/set-up/title');
+});
+
+router.post('/set-up/title', function(req, res) {
+
+    //check if the route is from changing existing data or not
+    let change = req.session.data.change
+    //get the return requirement
+    let licence = req.session.data.ID
+    let requirementIndex = req.session.data.requirementIndex
+
+    if (change == "true"){
+
+    //  let elementNumber = req.session.data.elementNumber
+    //  req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].chargeWaterRestrictions = req.session.data.chargeWaterRestrictions
+      req.session.data.change = false
+      updateReturnRequirement(req, res)
+
+      //updating success banner
+      req.session.data.success = 1
+
+
+      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
+      notificationTitle = "Updated"
+      req.session.data.notificationTitle = notificationTitle
+
+      res.redirect('../check-your-answers');}
+       else {
+
+
+        res.redirect('frequency-collected');
+      }
+
+
+});
+
+
+
+
+
 
 /// Enter the frequency collected
 router.get('/set-up/frequency-collected', function(req, res) {

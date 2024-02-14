@@ -2187,6 +2187,7 @@ module.exports = {
                                           "requirements":[{
                                                           "id":823187,
                                                           "returnsCycle":"winter and all year",
+                                                          "title":"Spray irrigation - storage, Reservoir storage at Lemon tree farm - BOREHOLE A",
                                                           "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
                                                           "frequencyCollected":"monthly",
                                                           "frequency":"monthly",
@@ -2200,6 +2201,7 @@ module.exports = {
                                                             {
                                                               "id":823188,
                                                               "returnsCycle":"summer",
+                                                              "title":"Spray irrigation - direct, Spray irrigation at Lemon tree farm - BOREHOLE A",
                                                               "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
                                                               "frequencyCollected":"monthly",
                                                               "frequency":"monthly",
