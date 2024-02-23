@@ -19,9 +19,9 @@
         value: data.licenceHolder
       }) }}
 
-{{data.issue}}
-      {{ govukRadios({
-        classes: "govuk-radios--small",
+
+      {{ govukCheckboxes({
+        classes: "govuk-checkboxes--small",
         name: "issue",
         fieldset: {
           legend: {
@@ -80,11 +80,6 @@
             value: "Some returns IDs not received",
             text: "Some returns IDs not received",
             checked: checked('issue','Some returns IDs not received')
-          },
-          {
-            value: "Unable to allocate returns",
-            text: "Unable to allocate returns",
-            checked: checked('issue','Unable to allocate returns')
           },
           {
             value: "Unable to match return",

@@ -333,7 +333,7 @@ let licenceHolderFilters = ""
 licenceHolderFilters = req.session.data.licenceHolder
 
 
-console.log(licenceHolderFilters.length);
+//console.log(licenceHolderFilters.length);
 
  if (typeof licenceHolderFilters === 'undefined') {
   licenceHolderFilters= ""
@@ -352,21 +352,26 @@ console.log(licenceHolderFilters.length);
   if (typeof issueFilters === 'undefined') {
     issueFilters= ""
   }
-
+//console.log(issueFilters);
  if ((issueFilters.length) && (filteredResults.length)) {
   console.log('Filtering by licence holder and issues')
-  filteredResults = filteredResults.filter(licence =>
+/* filter by string
+ filteredResults = filteredResults.filter(licence =>
     licence.issues.some(issueObj => issueObj.issue === issueFilters)
   );
+*/
+filteredResults = filteredResults.filter(licence =>
+  licence.issues.some(issueObj => issueFilters.some(filter => filter === issueObj.issue))
+);
 
   } else if (issueFilters.length) {
     console.log('Filtering by issues')
-filteredResults = licences.filter(licence =>
-      licence.issues.some(issueObj => issueObj.issue === issueFilters)
-    );
+    filteredResults = licences.filter(licence =>
+      licence.issues.some(issueObj => issueFilters.some(filter => filter === issueObj.issue))
+  );
 
   }
-
+//console.log(filteredResults)
 
   //set the status filter
   let statusFilters = ""
@@ -422,20 +427,23 @@ req.session.data.openDetails = true
 //Create a list formatter
 const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
 
-
+//lower case all the issue filters
+if (issueFilters.length){
+issueFilters = issueFilters.map(issue => issue.toLowerCase());
+}
 
 //Create the list depending on what filters are selected
 let list = []
 if (licenceHolderFilters.length && issueFilters.length && statusFilters.length){
-list.push(licenceHolderFilters, issueFilters.toLowerCase(), statusFilters.toLowerCase());
+list.push(licenceHolderFilters, ...issueFilters, statusFilters.toLowerCase());
 } else if (licenceHolderFilters.length && issueFilters.length){
-  list.push(licenceHolderFilters, issueFilters.toLowerCase());
+  list.push(licenceHolderFilters, ...issueFilters);
 } else if (licenceHolderFilters.length && statusFilters.length){
   list.push(licenceHolderFilters, statusFilters.toLowerCase());
 } else if (issueFilters.length && statusFilters.length){
-  list.push(issueFilters.toLowerCase(), statusFilters.toLowerCase());
+  list.push(...issueFilters, statusFilters.toLowerCase());
 } else if (issueFilters.length){
-  list.push(issueFilters.toLowerCase())
+  list.push(...issueFilters)
 } else if (licenceHolderFilters.length){
   list.push(licenceHolderFilters)
 } else if (statusFilters.length){
