@@ -114,11 +114,13 @@
   </div>
   <div class="govuk-notification-banner__content">
     <p class="govuk-notification-banner__heading max-width-full">
-     {{data.updateCount  | plural("element")}} changed to {{data.status}}.
+    Licence changed to {{data.status}}.
     </p>
+    {# Possibly not needed now
     {% if data.status == "ready"%}
     <p class="govuk-body"><a class="govuk-notification-banner__link" href="undo-review">Undo</a></p>
     {% endif %}
+    #}
   </div>
 </div>
 
@@ -140,74 +142,66 @@
       <p class="govuk-body">
         {{govukTag({
           text: data.status,
-          classes: colour
+          classes: colour + " govuk-!-margin-right-2"
         })}}
+
+        {% set progress = "" %}
+{% if licence.progress %}
+<!--<span class="govuk-body">&#10003;<span class="govuk-visually-hidden">progress marked</span></span>-->
+
+{{govukTag({
+  text: "Marked",
+  classes: "govuk-tag--yellow"
+})}}
+
+{% endif %}
       </p>
 
     
       {# list of links through to the licence #}
       {% include "current/bd/iterations/_includes/billing/tpt/licence-nav-links.html" %} 
 
-      <form class="inline" action="progress-update" method="post" novalidate > 
-        {% if licence.progress %}
-        {{ govukButton({
-          text: "Remove progress mark",
-          classes: "govuk-button--secondary govuk-!-margin-right-2"
-        }) }}
-        {% else %}
-        {{ govukButton({
-          text: "Mark progress",
-          classes: "govuk-button--primary govuk-!-margin-right-2"
-        }) }}
-        {% endif %}
-        </form>
-        <form class="inline" action="remove-licence" method="post" novalidate > 
-        {{ govukButton({
-          text: "Remove from bill run",
-          classes: "govuk-button--secondary"
-        }) }}
-      </form>
+      
+ 
+
   
 
-      {% if data.status == "review" %}
-      {% set count = 0 %}
-      {% for issue in licence.issues %}
-      {% if not issue.issue |length <= 0 %}
-      {% set count = count+1 %}
-      {% endif %}
-      {% endfor %}
-
-     
-    {% set elementNotset = false %}
-    {% set elementNotsetCount = 0 %}
-     {% for chargeVersion in licence.chargeVersions %}
-     {% for chargeReference in chargeVersion.chargeReferences %}
-     {% for chargeElement in chargeReference.chargeElements %}
-     {% if chargeElement.allocatedQuantity == "not set" %}
-     {% set elementNotset = true %}
-     {% set elementNotsetCount = elementNotsetCount + 1%}
-     {% endif %}
-     {% endfor %}
-     {% endfor %}
-     {% endfor %}
-      
-     {# show hide the button based on whether the billable returns are set or not #}
-      {% if elementNotset == false %}
-      {% set completeButton %}
-      <br><br>
-       {{ govukButton({
-        text: "Change all elements to ready",
-        classes: "govuk-button--secondary govuk-!-margin-bottom-2"
-      }) }}
-      {% endset %} 
-      {% else %}
-      {% set completeButton = "and set the billable returns for " + elementNotsetCount | plural ('element')+ " before you can change all elements to ready"%}
-      {% endif %}
               {{ govukInsetText({
-               html: '<form class="inline" action="complete-review" method="post" novalidate > You need to review '+ count | plural("element") + ' with returns data issues ' + completeButton + '</form>',
+               html: 'There are elements and returns with data issues',
                classes: "govuk-!-margin-bottom-6 govuk-!-margin-top-0"
              }) }}
+             
+             {% if data.status == "review" %}
+             <form class="inline" action="complete-review" method="post" novalidate >{{ govukButton({
+              text: "Confirm licence is ready",
+              classes: "govuk-button--primary govuk-!-margin-right-2"
+            }) }}</form>
+            {% else %}
+            <form class="inline" action="undo-review" method="get" novalidate >{{ govukButton({
+              text: "Put licence in review",
+              classes: "govuk-button--secondary govuk-!-margin-right-2"
+            }) }}</form>
               {% endif %}
+             <form class="inline" action="progress-update" method="post" novalidate > 
+              {% if licence.progress %}
+              {{ govukButton({
+                text: "Remove progress mark",
+                classes: "govuk-button--secondary govuk-!-margin-right-2"
+              }) }}
+              {% else %}
+              {{ govukButton({
+                text: "Mark progress",
+                classes: "govuk-button--secondary govuk-!-margin-right-2"
+              }) }}
+              {% endif %}
+              </form>
+              <form class="inline" action="remove-licence" method="post" novalidate > 
+              {{ govukButton({
+                text: "Remove from bill run",
+                classes: "govuk-button--secondary"
+              }) }}
+            </form>
+            
         
 
   

@@ -115,7 +115,7 @@
   </div>
   <div class="govuk-notification-banner__content">
     <p class="govuk-notification-banner__heading max-width-full">
-     {{data.updateCount  | plural("element")}} changed to {{data.status}}.
+     licence changed to {{data.status}}.
     </p>
     {% if data.status == "ready"%}
     <p class="govuk-body"><a class="govuk-notification-banner__link" href="undo-review">Undo</a></p>
@@ -143,6 +143,8 @@
           text: data.status,
           classes: colour
         })}}
+
+        progress |safe
       </p>
 
 

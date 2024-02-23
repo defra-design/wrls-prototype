@@ -170,6 +170,9 @@ router.get('/tpt/licence-review', function(req, res) {
 router.post('/tpt/complete-review', function(req, res) {
   req.session.data.licenceBanner = "show"
 
+
+ //This code is no longer needed as complete-review just switches the licence status and nothing else
+ /* 
   let chargeReferences = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences
   req.session.data.updateCount = 0
   chargeReferences.forEach((chargeReference, chargeReferenceIndex) => {
@@ -189,14 +192,17 @@ router.post('/tpt/complete-review', function(req, res) {
     req.session.data.billRunDataTpTReview[req.session.data.ID].issues[index] = ""
     req.session.data.status = "ready"
   });
-
+*/
+req.session.data.status = "ready"
   res.redirect('/' +folder + 'tpt/licence-review');
 });
 
 //undo route
 router.get('/tpt/undo-review', function(req, res) {
-  req.session.data.licenceBanner = "hide"
-  
+  req.session.data.licenceBanner = "show"
+
+  //code not needed for review switcher as it only changes the licence status rather than each element
+  /*
   let chargeReferences = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences
   req.session.data.updateCount = 0
   chargeReferences.forEach((chargeReference, chargeReferenceIndex) => {
@@ -211,7 +217,7 @@ router.get('/tpt/undo-review', function(req, res) {
    });
   });
 });
-
+*/
 req.session.data.status = "review"
 checkForTPTIssues(req.session.data.billRunDataTpTReview, req);
 console.log('undone');
