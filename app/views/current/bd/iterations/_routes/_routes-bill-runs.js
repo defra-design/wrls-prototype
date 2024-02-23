@@ -186,13 +186,13 @@ router.post('/tpt/complete-review', function(req, res) {
   });
 });
 
-
+*/
   let issues = req.session.data.billRunDataTpTReview[req.session.data.ID].issues
   issues.forEach((issue, index) => { 
     req.session.data.billRunDataTpTReview[req.session.data.ID].issues[index] = ""
     req.session.data.status = "ready"
   });
-*/
+
 req.session.data.status = "ready"
   res.redirect('/' +folder + 'tpt/licence-review');
 });
