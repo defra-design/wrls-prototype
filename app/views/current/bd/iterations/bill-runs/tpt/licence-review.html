@@ -163,13 +163,32 @@
 
       
  
+{% set showInset = "" %}
 
-  
+{#loop through elements in charge references#}    
+{% for chargeVersion in licence.chargeVersions %}
+  {% for chargeReference in chargeVersion.chargeReferences %}
+    {% for chargeElement in chargeReference.chargeElements %}
 
-              {{ govukInsetText({
-               html: 'There are elements and returns with data issues',
-               classes: "govuk-!-margin-bottom-6 govuk-!-margin-top-0"
-             }) }}
+      {% if chargeElement.tpt == true %}
+        {% for issue in chargeElement.issues %}
+          {% if issue.issue.length %}
+           {% set showInset = "true" %}
+          {% endif %}
+        {% endfor %}
+      {% endif%}
+
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
+
+           {% if showInset.length %}
+             {{ govukInsetText({
+              html: 'There are elements in review',
+              classes: "govuk-!-margin-bottom-6 govuk-!-margin-top-0"
+            }) }}
+            {% endif %}
+            
              
              {% if data.status == "review" %}
              <form class="inline" action="complete-review" method="post" novalidate >{{ govukButton({
