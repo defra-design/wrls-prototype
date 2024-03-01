@@ -647,7 +647,7 @@ router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
     req.session.data.manualRoute = true
     res.redirect('purpose');
   }
-  else if (req.session.data.howToSetUp == "copy an existing return requirement") {
+  else if (req.session.data.howToSetUp == "copy an existing requirement for return") {
     req.session.data.manualRoute = false
   res.redirect('select-an-existing-return-requirement');
   }
