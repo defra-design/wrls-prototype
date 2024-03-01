@@ -223,7 +223,7 @@
     {% else %}
         {% if i.runType.includes("two-part") %}
           {# TpT has its own logic #}
-          {% if i.createdYear == "2023" %}
+          {% if i.createdYear >= "2023" %}
             {% if i.status == "review" %}
             {% set url = "/current/bd/iterations/bill-runs/tpt/review?billRunIndex=" + loopNumber %}
             {% elseif i.status == "ready" %}

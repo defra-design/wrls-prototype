@@ -165,7 +165,9 @@ router.get('/bd/charges-2020/two-part-charges-load', function(req, res) {
   req.session.data.back = req.headers.referer
 
   let date = today
+
   let createdYear = yyyy
+  if(req.session.data.chargeScheme == "old"){ createdYear = "2020" }
   let number = Math.floor(100000 + Math.random() * 900000)
   req.session.data.billRunNumber = number
   let region = req.originalUrl.split(/(?<==)(.*?)(?=&)/g, )[1].replace("%20", " ")

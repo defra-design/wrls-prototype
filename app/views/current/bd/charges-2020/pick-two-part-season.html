@@ -1,0 +1,100 @@
+{% extends "layout_wrls.html" %}
+
+{% set title = "Select the season" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+  useTudorCrown: true,
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <form data-routing="1" method="post" class="form" id="choose-bill-region">
+
+
+
+    {{ govukRadios({
+      idPrefix: "tptSeason",
+      name: "tptSeason",
+      fieldset: {
+        legend: {
+          text: [title],
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+
+items: [
+{
+  value: "two-part-charges-load?region=Wales&tptSeason=summer&chargeScheme=old",
+  text: "Summer"
+},
+{
+  value: "two-part-charges-load?region=Wales&tptSeason=winter and all year&chargeScheme=old",
+  text: "Winter and All year"
+}
+]
+}) }}
+
+
+    <button type="submit" class="govuk-button">
+      Continue
+    </button>
+
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+  <script>
+    $(function() {
+      $('form[data-routing]').on('submit', function(ev) {
+        // FInd selected radio button
+        const url = $(this).find('input:checked').val();
+
+        if(url) {
+
+
+
+
+          ev.preventDefault();
+          window.location.href = url;
+          return false;
+        }
+      });
+    })
+  </script>
+
+{% endblock %}

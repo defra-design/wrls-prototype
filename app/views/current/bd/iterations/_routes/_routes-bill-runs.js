@@ -108,11 +108,11 @@ router.post('/select-the-region', function(req, res) {
 
         let billRunType = req.session.data['billRunType']
 
-       if(req.session.data['billRunType'] === "two-part tariff"){
+      /* if(req.session.data['billRunType'] === "two-part tariff"){
          let billRunType = req.session.data['billRunType'] + req.session.data['tptSeason']
        }
-
-
+*/
+console.log(req.session.data['region'])
       //add new bill run to the list
       let date = today
       let region = req.session.data['region']

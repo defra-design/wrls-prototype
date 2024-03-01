@@ -46,23 +46,6 @@
 
 
 
-        {% set tptType %}
-        {{ govukRadios({
-  classes: "govuk-radios",
-  idPrefix: "tptSeason",
-  name: "tptSeason",
-  items: [
-    {
-      value: "summer",
-      text: "Summer"
-    },
-    {
-      value: "winter and all year",
-      text: "Winter and All year"
-    }
-  ]
-}) }}
-        {% endset -%}
 
 
 
@@ -86,7 +69,7 @@
               text: "Supplementary"
             },
             {
-              value: "pick-two-part-region?tptSeason=",
+              value: "pick-two-part-region",
               text: "Two-part tariff",
               conditional: {
                 html: tptType
@@ -123,7 +106,9 @@
         if(url) {
 
 
-          if( $("#tptSeason").is(':checked')){
+                /* TpT season moved onto its own page to accomodate SROC WATER-4284
+                
+                if( $("#tptSeason").is(':checked')){
           let  season = "summer"
           let radioUrl = $(this).find('input:checked').val();
           const newurl = radioUrl+season;
@@ -137,7 +122,7 @@
           ev.preventDefault();
           window.location.href = newurl;
           return false;
-        }
+        }*/
 
 
           ev.preventDefault();

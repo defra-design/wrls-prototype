@@ -1,7 +1,10 @@
 {% extends "layout_wrls.html" %}
 
+{% if data.chargeScheme == "current" %}
+{% set title = data['region'] + " two-part tariff " + " bill run" %}
+{% else %}
 {% set title = data['region'] + " two-part tariff " + data['tptSeason'] + " bill run" %}
-
+{% endif %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -70,11 +73,17 @@
       </script>
     -->
 
+    {% if data.chargeScheme == "current" %}
+    <script language="javascript" type="text/javascript">
+      // console.log("financial year = " + searchParams.get('financialYear'));
+        window.setTimeout('location.replace("/bd/iterations/bill-runs/tpt/review?billRunIndex=0&tptstatus=review")',4000);      
+    </script>
+    {% else %}
     <script language="javascript" type="text/javascript">
       // console.log("financial year = " + searchParams.get('financialYear'));
         window.setTimeout('location.replace("/bd/iterations/bill-runs/two-part-tariff/review?tptIssue=overAbstraction&tptIssueIR=incompleteReturns&tptIssueNP=notProcessed&tptstatus=review")',4000);
-    
     </script>
+    {% endif %}
       <p class="govuk-body-l">
         Please wait. This might take up to a minute.
       </p>
