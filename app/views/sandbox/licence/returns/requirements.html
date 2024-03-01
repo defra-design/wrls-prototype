@@ -4,7 +4,7 @@
 
 {% set returnRequirements = data.licences[data.ID].returnsRequirements[data.returnVersionNumber] %}
 {% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].requirements.length %}
-{% set title = "Returns requirements valid from " +  returnRequirements.startDate | numberToGovukDate %}
+{% set title = "Requirements for returns valid from " +  returnRequirements.startDate | numberToGovukDate %}
 {% else %}
 {% set title = "No returns required valid from " +  returnRequirements.startDate | numberToGovukDate %}
 {% endif %}

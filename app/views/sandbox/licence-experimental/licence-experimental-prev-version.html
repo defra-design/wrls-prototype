@@ -108,7 +108,7 @@
         Bills
       </a>
     </li>
-    
+
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#charge">
         Licence set up
@@ -123,12 +123,12 @@
     <h2 class="govuk-heading-l">
       Summary
     </h2>
-    
+
 
     {{ govukInsetText({
       html: "This licence was varied on the " + data.licences[data.ID].changeLog[data.versionIndex].changedDate + "<br>" + data.licences[data.ID].changeLog[data.versionIndex].reasonText |safe
     }) }}
-    
+
     <p class="govuk-body">View the information for this licence effective from {{data.licences[data.ID].previousVersions[data.versionIndex].effectiveDate}} until {{data.licences[data.ID].previousVersions[data.versionIndex].endDate}}
     {% if data.licences[data.ID].previousVersions.length %}
     <br>
@@ -168,9 +168,9 @@
 
     <h2 class="govuk-heading-l">Returns</h2>
 
-    <p class="govuk-body">No returns requirements have been set up for this licence.</p>
+    <p class="govuk-body">No requirements for returns have been set up for this licence.</p>
 
-    <p class="govuk-body"><a class="govuk-link" href="#charge">Set up new returns requirement</a></p>
+    <p class="govuk-body"><a class="govuk-link" href="#charge">Set up new requirements for returns</a></p>
 
     {% endif %}
 

@@ -18,7 +18,7 @@
 {% for i in licences %}
 
 
-       
+
 {# set licence #}
 {# check status of licence in workflow #}
 {% if i.status == "to set up" %}
@@ -45,24 +45,24 @@
 
 {% endif %}
 
-<h2 class="govuk-heading-l">{{licence.length}} {{licence | plural("licence")}} to set up</h2> 
+<h2 class="govuk-heading-l">{{licence.length}} {{licence | plural("licence")}} to set up</h2>
 
 
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-full">
-  
-  
+
+
        {% set filtersForm %}
-  
-  
-  
+
+
+
          <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
-  
+
        <form  method="post" novalidate action="to-set-up/apply-filters">
-  
-  
-  
+
+
+
          {{ govukRadios({
            idPrefix: 'region',
            name: 'region',
@@ -118,7 +118,7 @@
               checked:  checked("region", "wales")
             }
            ]
-         }) }}  
+         }) }}
 
 
 
@@ -137,9 +137,9 @@
           },
           items: [
             {
-              value: 'returns requirements',
-              text: 'Returns requirements',
-              checked:  checked("type", "returns requirements")
+              value: 'requirements for returns',
+              text: 'requirements for returns',
+              checked:  checked("type", "requirements for returns")
             },
             {
               value: 'charge information',
@@ -147,7 +147,7 @@
               checked:  checked("type", "charge information")
             }
           ]
-        }) }}  
+        }) }}
 
 
          {#
@@ -180,27 +180,27 @@
              {{ govukButton({
            text: "Apply filters"
          }) }}
-  
-  
+
+
          {{ govukButton({
              text: "Clear filters",
              classes: "govuk-button--secondary",
              name: "clearFilters",
              value: "true"
            }) }}
-  
-           </div>
-  
-  
-  
-       </form>
-  
-  
-       {% endset %}
-  
-  
 
-  
+           </div>
+
+
+
+       </form>
+
+
+       {% endset %}
+
+
+
+
        {{ govukDetails({
          summaryText: "Filter licences to set up",
          html: filtersForm | safe,
@@ -208,7 +208,7 @@
          open: data['openDetails']
        }) }}
 
-      
+
 
 
 <div id="focus">

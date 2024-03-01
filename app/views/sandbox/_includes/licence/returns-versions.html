@@ -19,7 +19,7 @@
 <!--if so display the table-->
 
       <table class="govuk-table govuk-!-margin-bottom-4">
-         <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-5">Returns requirements<!--<br>
+         <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-5">Requirements for returns<!--<br>
          <p class="govuk-body"><a href="../settings">Settings</a></p>--></caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
@@ -65,10 +65,10 @@
             <td class="govuk-table__cell {{lastRow}}">
               {% if [status] == "review" %}
               {% set link = '/sandbox/licence/returns-current/review-returns-requirements?returnReview=1&returnVersion=1&returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
-              <a href="{{link}}">Review<span class="screen-reader-only">returns requirements</span></a>
+              <a href="{{link}}">Review<span class="screen-reader-only">requirements for returns</span></a>
               {% else %}
               {% set link = '/sandbox/licence/returns-current/requirements?returnVersionNumber=' + loop.index0 + "&ID=" + data['ID'] %}
-              <a href="{{link}}">View <span class="screen-reader-only">returns requirements</span></a>
+              <a href="{{link}}">View <span class="screen-reader-only">requirements for returns</span></a>
               {% endif %}
             </td>
           </tr>
@@ -81,11 +81,11 @@
       {% else %}
       <!--if not display the message-->
 
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Return requirements</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Requirements for returns</h2>
 
 
       <p class="govuk-body govuk-!-margin-bottom-4">
-              No returns requirements have been set up for this licence.
+              No requirements for returns have been set up for this licence.
               </p>
 
       {% endif %}
@@ -99,7 +99,7 @@
 
 
       {{ govukButton({
-        text: "Set up new returns requirement",
+        text: "Set up new requirements for returns",
         href: URL,
         classes: "govuk-button--secondary govuk-!-margin-right-3"
       }) }}

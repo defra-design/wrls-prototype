@@ -4,7 +4,7 @@
 
 {% set returnRequirements = data.licences[data.ID].returnsRequirements[data.returnVersionNumber] %}
 {% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].requirements.length %}
-{% set title = "Returns requirements valid from " +  returnRequirements.startDate | numberToGovukDate + " for " + data.licences[data.ID].holder %}
+{% set title = "Requirements for returns valid from " +  returnRequirements.startDate | numberToGovukDate + " for " + data.licences[data.ID].holder %}
 {% else %}
 {% set title = "No returns required valid from " +  returnRequirements.startDate | numberToGovukDate + " for " + data.licences[data.ID].holder %}
 {% endif %}
@@ -60,7 +60,9 @@ classes: status | tagColour + ' govuk-!-font-size-27'
 
       {% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].requirements.length %}
 
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >{{ returnRequirements.requirements | length | plural ("return") }} required</h2>
+      <!-- <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >{{ returnRequirements.requirements | length | plural ("return") }} required</h2> -->
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Requirements for returns</h2>
 
       <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
         {% for requirement in returnRequirements.requirements %}

@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = "Select agreements and exceptions for the return requirements" %}
+{% set title = "Select agreements and exceptions for the requirements for returns" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -46,6 +46,9 @@ items: [
     {
       value: "two-part tariff",
       text: "Two-part tariff",
+      hint: {
+        text: "requires daily collection"
+      },
       checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("two-part tariff")
     },
     {
