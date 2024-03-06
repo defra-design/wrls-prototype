@@ -643,11 +643,11 @@ router.get('/how-do-you-want-to-set-up', function(req, res) {
 router.post('/set-up/how-do-you-want-to-set-up', function(req, res) {
 
   //routing, manual set up, copy or use abs data
-  if (req.session.data.howToSetUp == "set up requirement manually"){
+  if (req.session.data.howToSetUp == "set up the requirements manually"){
     req.session.data.manualRoute = true
     res.redirect('purpose');
   }
-  else if (req.session.data.howToSetUp == "copy an existing requirement for return") {
+  else if (req.session.data.howToSetUp == "copy existing requirements") {
     req.session.data.manualRoute = false
   res.redirect('select-an-existing-return-requirement');
   }

@@ -37,17 +37,17 @@ items: [
   checked: checked("howToSetUp", "use abstraction data")
 },
 {
-  value: "copy an existing requirement for return",
-  text: "Copy an existing requirement for return",
-  checked: checked("howToSetUp", "copy an existing requirement for return")
+  value: "copy existing requirements",
+  text: "Copy existing requirements",
+  checked: checked("howToSetUp", "copy existing requirements")
 } if data.licences[data.ID].returnsRequirements.length,
 {
      divider: "or"
    } if data.licences[data.ID].returnsRequirements.length,
 
 {
-  value: "set up requirement manually",
-  text: "Set up the requirement for return manually",
+  value: "set up the requirements manually",
+  text: "Set up the requirements manually",
   checked: checked("howToSetUp", "create requirement manually")
 }
 ]
