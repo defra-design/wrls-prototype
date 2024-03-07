@@ -51,14 +51,14 @@ const folder = "sandbox/licence/returns-current/"
 //////////////////////
  const successMessage = {
    "dynamicContent":      "",
-   "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Return requirement reason updated</h3><p class="govuk-body">Reason: ',
-   "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Return requirement start date updated</h3><p class="govuk-body">Start date: ',
-   "additionalSubmissionOptions":     '<h3 class="govuk-notification-banner__heading">Return requirement additional submission options updated</h3><p class="govuk-body">Additional submission options: ',
-   "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Return requirement updated</h3><p class="govuk-body">ID: ',
-   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">Return requirement added</h3><p class="govuk-body">Return ID: ',
-   "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Return requirement removed</h3><p class="govuk-body">Return ID: ',
-   "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Return requirement note updated</h3>',
-   "noteCreate":          '<h3 class="govuk-notification-banner__heading">Return requirement note added</h3>',
+   "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
+   "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Changes updated</h3>',
+   "additionalSubmissionOptions":     '<h3 class="govuk-notification-banner__heading">Changes updated</h3>',
+   "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
+   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">New requirement added</h3>',
+   "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Requirement removed</h3>',
+   "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
+   "noteCreate":          '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
  }
 let notificationTitle = ""
 
@@ -484,7 +484,7 @@ router.post('/set-up/reason', function(req, res) {
     req.session.data.change = false
     req.session.data.success = 1
 
-    successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
+    // successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
     req.session.data.successMessage = successMessage.reasonUpdate + successMessage.dynamicContent
     notificationTitle = "Updated"
     req.session.data.notificationTitle = notificationTitle
@@ -559,7 +559,7 @@ router.post('/set-up/start-date', function(req, res) {
   //Update the success banner
   req.session.data.success = 1
 
-  successMessage.dynamicContent = govukDate + "</p>"
+  // successMessage.dynamicContent = govukDate + "</p>"
   req.session.data.successMessage = successMessage.startDateUpdate + successMessage.dynamicContent
   notificationTitle = "Updated"
   req.session.data.notificationTitle = notificationTitle
@@ -615,7 +615,7 @@ if (change == "true"){
 req.session.data.success = 1
 
 
-successMessage.dynamicContent = req.session.data.additionalSubmissionOptions + "</p>"
+// successMessage.dynamicContent = req.session.data.additionalSubmissionOptions + "</p>"
 req.session.data.successMessage = successMessage.additionalSubmissionOptions + successMessage.dynamicContent
 notificationTitle = "Updated"
 req.session.data.notificationTitle = notificationTitle
@@ -723,7 +723,7 @@ router.post('/set-up/purpose', function(req, res) {
    req.session.data.success = 1
 
 
-   successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+   // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
    req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
    notificationTitle = "Updated"
    req.session.data.notificationTitle = notificationTitle
@@ -781,7 +781,7 @@ router.post('/set-up/points', function(req, res) {
    req.session.data.success = 1
 
 
-   successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+   // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
    req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
    notificationTitle = "Updated"
    req.session.data.notificationTitle = notificationTitle
@@ -823,7 +823,7 @@ router.post('/set-up/abstraction-period', function(req, res) {
     req.session.data.success = 1
 
 
-    successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+    // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
     req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
     notificationTitle = "Updated"
     req.session.data.notificationTitle = notificationTitle
@@ -864,7 +864,7 @@ router.post('/set-up/time-limits', function(req, res) {
      req.session.data.success = 1
 
 
-     successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+     // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
      req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
      notificationTitle = "Updated"
      req.session.data.notificationTitle = notificationTitle
@@ -910,7 +910,7 @@ router.post('/set-up/returns-cycle', function(req, res) {
       req.session.data.success = 1
 
 
-      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
       req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
       notificationTitle = "Updated"
       req.session.data.notificationTitle = notificationTitle
@@ -950,7 +950,7 @@ router.post('/set-up/description', function(req, res) {
         req.session.data.success = 1
 
 
-        successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+        // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
         req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
         notificationTitle = "Updated"
         req.session.data.notificationTitle = notificationTitle
@@ -993,7 +993,7 @@ router.post('/set-up/title', function(req, res) {
       req.session.data.success = 1
 
 
-      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
       req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
       notificationTitle = "Updated"
       req.session.data.notificationTitle = notificationTitle
@@ -1038,7 +1038,7 @@ router.post('/set-up/frequency-collected', function(req, res) {
       req.session.data.success = 1
 
 
-      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
       req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
       notificationTitle = "Updated"
       req.session.data.notificationTitle = notificationTitle
@@ -1078,7 +1078,7 @@ router.post('/set-up/frequency', function(req, res) {
       req.session.data.success = 1
 
 
-      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+      // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
       req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
       notificationTitle = "Updated"
       req.session.data.notificationTitle = notificationTitle
@@ -1119,7 +1119,7 @@ router.post('/set-up/settings', function(req, res) {
     req.session.data.success = 1
 
 
-    successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
+    // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex].id +  '</p>'
     req.session.data.successMessage = successMessage.requirementUpdate + successMessage.dynamicContent
     notificationTitle = "Updated"
     req.session.data.notificationTitle = notificationTitle
@@ -1140,7 +1140,7 @@ router.post('/set-up/settings', function(req, res) {
 
 
 
-      successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
+      // successMessage.dynamicContent = req.session.data.licences[licence].returnsRequirements[0].requirements[newRequirementIndex -1].id +  '</p>'
       req.session.data.successMessage = successMessage.requirementCreate + successMessage.dynamicContent
       notificationTitle = "Added"
       req.session.data.notificationTitle = notificationTitle
@@ -1176,7 +1176,7 @@ router.post('/confirm-remove-requirement', function(req, res) {
     req.session.data.success = 1
 
     //Success message set for removing return requirement
-    successMessage.dynamicContent = removedRequirementID +  '</p>'
+    // successMessage.dynamicContent = removedRequirementID +  '</p>'
     req.session.data.successMessage = successMessage.requirementRemove + successMessage.dynamicContent
     notificationTitle = "Removed"
     req.session.data.notificationTitle = notificationTitle
@@ -1420,7 +1420,7 @@ router.post('/set-up/reason-not-required', function(req, res) {
     req.session.data.change = false
     req.session.data.success = 1
 
-    successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
+    // successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
     req.session.data.successMessage = successMessage.reasonUpdate + successMessage.dynamicContent
     notificationTitle = "Updated"
     req.session.data.notificationTitle = notificationTitle
