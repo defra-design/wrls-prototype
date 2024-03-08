@@ -29,7 +29,8 @@ href: "confirm-remove-requirement?requirementIndex=" + loop.index0
 
   {% set summaryCardTitles %}
   <div id="returnref{{loop.index}}">
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{requirement.title}}</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{requirement.description}}</h2>
+    <!-- can also use requirement.title here if we want to -->
    <!--- <ul class="govuk-summary-card__actions">
       <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
           Delete choice<span class="govuk-visually-hidden"> of University of Gloucestershire</span>
@@ -56,8 +57,6 @@ href: "confirm-remove-requirement?requirementIndex=" + loop.index0
       actions: {
         items: [
           {
-            href: "set-up/title?change=true&requirementIndex=" + loop.index0,
-            text: "Change",
             visuallyHiddenText: "purpose"
           }
         ]
