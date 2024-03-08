@@ -64,13 +64,14 @@ classes: status | tagColour + ' govuk-!-font-size-27'
 
       <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Requirements for returns</h2>
 
-      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <!-- anchor links to individual cards -->
+      <!-- <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
         {% for requirement in returnRequirements.requirements %}
         <li>
           <a class="govuk-link" href="#returnref{{ requirement.id }}">Return reference {{ requirement.id }}</a>
         </li>
         {% endfor %}
-      </ul>
+      </ul> -->
 
       {% include "sandbox/_includes/returns/requirements/requirement-no-change.html" %}
 
