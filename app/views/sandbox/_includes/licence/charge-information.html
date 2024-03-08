@@ -93,6 +93,8 @@
         classes: "govuk-button--secondary govuk-!-margin-right-3"
       }) }}
 
+      <br>
+
       <!-- show button if licence isn't already marked as exempt from charge-->
       {% set free = [data.chargeVersions[0]['free']]%}
       {% if free == "true" %}

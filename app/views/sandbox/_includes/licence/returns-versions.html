@@ -99,22 +99,24 @@
 
 
       {{ govukButton({
-        text: "Set up new requirements for returns",
+        text: "Set up new requirements",
         href: URL,
-        classes: "govuk-button--secondary govuk-!-margin-right-3"
+        classes: "govuk-button--secondary"
       }) }}
+
+      <br>
 
       <!-- show button if licence isn't already marked as exempt from returns-->
       {% if not data.licences[data.ID].returnsRequirements.length %}
       {{ govukButton({
-        text: "No returns required",
-        classes: "govuk-button--secondary govuk-!-margin-right-3",
+        text: "Mark licence as 'no returns needed'",
+        classes: "govuk-button--secondary",
         href: "licence/returns-current/set-up/start-date?returnsNotRequired=true"
       }) }}
       {% elseif data.licences[data.ID].returnsRequirements[0].requirements.length %}
       {{ govukButton({
-        text: "No returns required",
-        classes: "govuk-button--secondary govuk-!-margin-right-3",
+        text: "Mark licence as 'no returns needed'",
+        classes: "govuk-button--secondary",
         href: "licence/returns-current/set-up/start-date?returnsNotRequired=true"
       }) }}
       {% endif %}
