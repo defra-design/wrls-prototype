@@ -26,9 +26,9 @@
 {% if chargeReference.aggregateFactor.length %}
 {% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}
   {%if chargeReference.edited == true%}
-  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor + ' (edited)'}, actions: { items: [{href: "change-aggregate-factor",text: "Change factor"}]}  }  ) %} 
+  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor + ' (edited)'}, actions: { items: [{href: "change-aggregate-factor?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change factor"}]}  }  ) %} 
   {% else %}
-  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor }, actions: { items: [{href: "change-aggregate-factor",text: "Change factor"}]}  }  ) %} 
+  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor }, actions: { items: [{href: "change-aggregate-factor?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change factor"}]}  }  ) %} 
   {% endif %}
 {% endif %}
 {% if chargeReference.additionalCharges.length %}
