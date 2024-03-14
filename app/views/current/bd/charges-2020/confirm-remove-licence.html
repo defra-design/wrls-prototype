@@ -1,6 +1,6 @@
 {% extends "layout_wrls.html" %}
 
-{% set title = "You’re about to remove this licence  from the " + data['runType'] + " bill run" %}
+{% set title = "You’re about to remove this licence from the " + data['runType'] + " bill run" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -51,7 +51,7 @@
     <span class="govuk-caption-l">Bill run 1234567890</span>
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    <p class="govuk-body">The licence will go into the next supplementary bill run.</p>
+    <p class="govuk-body">The licence will go into the next {{data['runType']}} bill run.</p>
 
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-full">

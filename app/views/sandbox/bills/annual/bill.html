@@ -41,6 +41,9 @@
       {{ pTitle | safe }}
   
       <p class="govuk-body">
+
+
+
         {{govukTag({
                     text: [data.billRunData[0]['status']],
                     classes: data.billRunData[0]['status'] | replaceWS | statusColour + " govuk-!-font-size-27 "
@@ -95,7 +98,7 @@
   {{ govukButton({
 classes: "govuk-button--secondary",
 text: "Remove bill",
-href: "confirm-remove-bill?runType=supplementary"
+href: "confirm-remove-bill?runType=annual"
 }) }}
 </p>
 
@@ -109,10 +112,12 @@ href: "confirm-remove-bill?runType=supplementary"
 {%if data.billRunData[0].bills[data.ID].licences.length > 1%}
 {% include "sandbox/_includes/billing/annual-billing/licences-table.html" %}
 {% else %}
-<h2 class="govuk-heading-xl govuk-!-margin-bottom-3">{{data.billRunData[0].bills[data.ID].licences[0].transactions | plural("Transaction")}} for {{data.billRunData[0].bills[data.ID].licences[0].licence}}</h2>
+<h2 class="govuk-heading-xl govuk-!-margin-bottom-3">{{data.billRunData[0].bills[data.ID].licences[0].transactions.length | plural("Transaction")}} for {{data.billRunData[0].bills[data.ID].licences[0].licence}}</h2>
 {% set transactions = data.billRunData[0].bills[data.ID].licences[0].transactions %}
 {% include "sandbox/_includes/billing/annual-billing/transactions-table.html" %}
 {% endif %}
+
+
 </div>
 </div>
 

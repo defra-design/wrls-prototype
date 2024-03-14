@@ -6,7 +6,7 @@
 
 
     {% set caption = ' <h2 class="govuk-heading-m govuk-!-margin-bottom-1">'
-     + transactions.length + " " + transactions | plural ("transaction") + '
+     + transactions.length | plural ("transaction") + '
     </h2>' %}
 
 
