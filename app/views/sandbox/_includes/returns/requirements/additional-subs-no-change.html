@@ -19,17 +19,6 @@ rows: [
       text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("multiple upload") | submissionOptions,
       classes: 'govuk-!-padding-bottom-3'
     }
-  },
-  {
-    classes: 'govuk-summary-list',
-    key: {
-      text: "Paper forms",
-      classes: 'govuk-!-padding-bottom-3'
-    },
-    value: {
-      text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions']  | arrayIncludes ("paper forms") | submissionOptions,
-      classes: 'govuk-!-padding-bottom-3'
-    }
   }
 
 ]
