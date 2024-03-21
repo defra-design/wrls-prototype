@@ -21,14 +21,15 @@
       <div class="govuk-summary-card__content govuk-!-padding-top-0">
 
 {% set rows = []%}
+{% set rows = rows | push( {key: {text: "Example charge"},value: {text:  range(1000, 99999) | random |currency} }  ) %}
 {% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"} }  ) %}
 {# charge reference adjustments, aggregates and additional charges #}
 {% if chargeReference.aggregateFactor.length %}
-{% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}
+{#{% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}#}
   {%if chargeReference.edited == true%}
-  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor + ' (edited)'}, actions: { items: [{href: "change-aggregate-factor",text: "Change factor"}]}  }  ) %} 
+  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' + chargeReference.aggregateFactor + ') Edited<br> Charge adjustment (' + chargeReference.adjustmentFactor + ') Edited' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change"}]}  }  ) %} 
   {% else %}
-  {% set rows = rows | push( {key: {text: "Aggregate factor"},value: {text: chargeReference.aggregateFactor }, actions: { items: [{href: "change-aggregate-factor",text: "Change factor"}]}  }  ) %} 
+  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' +chargeReference.aggregateFactor + ')<br> Charge adjustment (' + chargeReference.adjustmentFactor + ')' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change"}]}  }  ) %} 
   {% endif %}
 {% endif %}
 {% if chargeReference.additionalCharges.length %}

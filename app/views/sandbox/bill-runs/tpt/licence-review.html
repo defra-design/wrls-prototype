@@ -77,7 +77,7 @@
 
 {% set notificationText = "" %}
 {% if data.aggregateUpdate == true %}
-{% set notificationText = "The aggregate factor for " + chargeReference.chargeCategory.shortDescription | base64Decode + " has been updated" %}
+{% set notificationText = "The adjustment factors for " + chargeReference.chargeCategory.shortDescription | base64Decode + " have been updated" %}
 {% elseif licence.progress == "&#10003;" %}
 {% set notificationText = "This licence has been marked" %}
 {% else %}

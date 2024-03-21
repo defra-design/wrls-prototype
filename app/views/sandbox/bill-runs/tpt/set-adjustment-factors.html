@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% set billRunDataTpTReview = data.billRunDataTpTReview %}
+{% set licence = billRunDataTpTReview[data.ID]  %}
+
+
+{% set chargeVersion = licence.chargeVersions[data.chargeVersionID]%}
+{% set chargeReference = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID] %}
+{% set chargeElement = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements[data.elementID] %}
+
+{% set title = "Set the adjustment factors" %}
+{% set qtitle = '<span class="govuk-caption-l">' + chargeReference.chargeCategory.shortDescription | base64Decode + '</span><h1 class="govuk-heading-xl govuk-!-margin-bottom-3">' + title + '</h1>'%}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   useTudorCrown: true,
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-3">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+</div>
+
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.back()"
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-full ">
+
+
+     {{qtitle|safe}}
+
+        {{ govukInsetText({
+    html: '<div>Financial year ' + chargeVersion.startDate | year + ' to ' + chargeVersion.startDate | yearPlusPlus + '</div><div>Charge period ' + licence.chargePeriod[data.chargeVersionID].startDate |govukDate +' to '+ licence.chargePeriod[data.chargeVersionID].endDate |govukDate+'</div>'
+  }) }}
+
+
+  <form  method="post" action="set-aggregate-factor" novalidate>
+        {{ govukInput({
+          label: {
+            html: "Aggregate factor",
+    isPageHeading: false
+          },
+          classes: "govuk-input--width-10",
+          id: "aggregateFactor",
+          name: "aggregateFactor",
+          spellcheck: false,
+          value: chargeReference.aggregateFactor
+        }) }}
+
+        {{ govukInput({
+          label: {
+            html: "Charge adjustment",
+    isPageHeading: false
+          },
+          classes: "govuk-input--width-10",
+          id: "adjustmentFactor",
+          name: "adjustmentFactor",
+          spellcheck: false,
+          value: chargeReference.adjustmentFactor
+        }) }}
+
+
+
+
+   {{ govukButton({
+  text: "Confirm",
+  type: "submit"
+}) }}
+
+    </form>
+
+</div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

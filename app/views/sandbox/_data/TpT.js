@@ -156,6 +156,7 @@ module.exports = {
                         "Winter discount (0.5)"
                      ],
                      "aggregateFactor": "0.5",
+                     "adjustmentFactor": "1",
                      "authorisedVolume": 213,
                      "totalBillableReturns": 194.587
                   }

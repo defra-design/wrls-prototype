@@ -630,6 +630,7 @@ router.post('/sandbox/bill-runs/tpt/set-aggregate-factor', function(req, res) {
 
    //Set the aggregate factor
    req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].aggregateFactor = req.session.data.aggregateFactor
+   req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].adjustmentFactor = req.session.data.adjustmentFactor
    req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].edited = true
 
    //Show the notification banner
