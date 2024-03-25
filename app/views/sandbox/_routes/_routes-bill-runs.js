@@ -543,8 +543,10 @@ router.post('/sandbox/bill-runs/tpt/complete-review', function(req, res) {
 
 //undo route
 router.get('/sandbox/bill-runs/tpt/undo-review', function(req, res) {
-  req.session.data.licenceBanner = "hide"
+  req.session.data.licenceBanner = "show"
   
+   //code not needed for review switcher as it only changes the licence status rather than each element
+  /*
   let chargeReferences = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences
   req.session.data.updateCount = 0
   chargeReferences.forEach((chargeReference, chargeReferenceIndex) => {
@@ -559,6 +561,7 @@ router.get('/sandbox/bill-runs/tpt/undo-review', function(req, res) {
    });
   });
 });
+*/
 
   req.session.data.status = "review"
   checkForTPTIssues(req.session.data.billRunDataTpTReview, req);

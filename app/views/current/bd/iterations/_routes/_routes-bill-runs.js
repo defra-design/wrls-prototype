@@ -196,7 +196,7 @@ router.post('/tpt/complete-review', function(req, res) {
 req.session.data.status = "ready"
   res.redirect('/' +folder + 'tpt/licence-review');
 });
-
+ 
 //undo route
 router.get('/tpt/undo-review', function(req, res) {
   req.session.data.licenceBanner = "show"
