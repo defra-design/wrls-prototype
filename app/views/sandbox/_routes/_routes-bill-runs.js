@@ -510,6 +510,7 @@ router.get('/tpt/licence-review', function(req, res) {
   req.session.data.statusBanner = "hide"
   req.session.data.licenceBanner = "hide"
   req.session.data.aggregateUpdate = false
+  req.session.data.totalBillableUpdate = false
   res.render(folder + 'tpt/licence-review');
 });
 
@@ -622,6 +623,8 @@ router.post('/sandbox/bill-runs/tpt/set-billable-returns', function(req, res) {
 
 router.get('/tpt/element-review', function(req, res) {
   req.session.data.statusBanner = "hide"
+  req.session.data.aggregateUpdate = false
+  req.session.data.totalBillableUpdate = false
   res.render(folder + 'tpt/element-review');
 });
 
@@ -637,6 +640,20 @@ router.post('/sandbox/bill-runs/tpt/set-aggregate-factor', function(req, res) {
    req.session.data.statusBanner = "show"
    req.session.data.aggregateUpdate = true 
   res.redirect('/'+ folder + '/tpt/licence-review');
+});
+
+////TPT EDIT THE TOTAL BILLABLE RETURNS
+router.post('/sandbox/bill-runs/tpt/set-total-billable-returns', function(req, res) {
+
+  //Set the aggregate factor
+  req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].totalBillableReturns = req.session.data.totalBillableReturns
+  req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].authorisedVolume = req.session.data.authorisedVolume
+  req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].totalEdited = true
+
+  //Show the notification banner
+  req.session.data.statusBanner = "show"
+  req.session.data.totalBillableUpdate = true 
+ res.redirect('/'+ folder + '/tpt/licence-review');
 });
 
 

@@ -22,14 +22,18 @@
 
 {% set rows = []%}
 {% set rows = rows | push( {key: {text: "Example charge"},value: {text:  range(1000, 99999) | random |currency} }  ) %}
-{% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"} }  ) %}
+{%if chargeReference.totalEdited == true%}
+{% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML Edited"},actions: { items: [{href: "set-total-billable-returns?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "total billable returns"}]} }  ) %}
+{% else %}
+{% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"},actions: { items: [{href: "set-total-billable-returns?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "total billable returns"}]} }  ) %}
+{% endif %}
 {# charge reference adjustments, aggregates and additional charges #}
 {% if chargeReference.aggregateFactor.length %}
 {#{% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}#}
   {%if chargeReference.edited == true%}
-  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' + chargeReference.aggregateFactor + ') Edited<br> Charge adjustment (' + chargeReference.adjustmentFactor + ') Edited' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change"}]}  }  ) %} 
+  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' + chargeReference.aggregateFactor + ') Edited<br> Charge adjustment (' + chargeReference.adjustmentFactor + ') Edited' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "aggregate factor"}]}  }  ) %} 
   {% else %}
-  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' +chargeReference.aggregateFactor + ')<br> Charge adjustment (' + chargeReference.adjustmentFactor + ')' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change"}]}  }  ) %} 
+  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' +chargeReference.aggregateFactor + ')<br> Charge adjustment (' + chargeReference.adjustmentFactor + ')' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "aggregate factor"}]}  }  ) %} 
   {% endif %}
 {% endif %}
 {% if chargeReference.additionalCharges.length %}
