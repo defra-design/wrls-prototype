@@ -642,7 +642,7 @@ router.post('/sandbox/bill-runs/tpt/set-aggregate-factor', function(req, res) {
    //Show the notification banner
    req.session.data.statusBanner = "show"
    req.session.data.aggregateUpdate = true 
-  res.redirect('/'+ folder + '/tpt/licence-review');
+  res.redirect('/'+ folder + 'tpt/licence-review');
 });
 
 ////TPT EDIT THE TOTAL BILLABLE RETURNS
@@ -656,7 +656,7 @@ router.post('/sandbox/bill-runs/tpt/set-total-billable-returns', function(req, r
   //Show the notification banner
   req.session.data.statusBanner = "show"
   req.session.data.totalBillableUpdate = true 
- res.redirect('/'+ folder + '/tpt/licence-review');
+ res.redirect('/'+ folder + 'tpt/licence-review');
 });
 
 
