@@ -207,7 +207,9 @@ addFilter('firstnbsp', function firstnbsp(x) {
 
 });
 
-
+addFilter ('stringToNumber', function stringToNumber(x) {
+  return parseInt(x)
+});
 
 addFilter('submissionOptions', function submissionOptions(x) { 
 
