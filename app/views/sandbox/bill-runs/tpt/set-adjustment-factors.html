@@ -59,14 +59,16 @@
      {{qtitle|safe}}
 
         {{ govukInsetText({
-    html: '<div>Financial year ' + chargeVersion.startDate | year + ' to ' + chargeVersion.startDate | yearPlusPlus + '</div><div>Charge period ' + licence.chargePeriod[data.chargeVersionID].startDate |govukDate +' to '+ licence.chargePeriod[data.chargeVersionID].endDate |govukDate+'</div>'
+    html: ' <p class="govuk-body govuk-!-margin-bottom-0"><span class="govuk-!-font-weight-bold">Financial year</span> ' + chargeVersion.startDate | year + ' to ' + chargeVersion.startDate | yearPlusPlus + '</p> <p class="govuk-body"><span class="govuk-!-font-weight-bold">Charge period </span>' + licence.chargePeriod[data.chargeVersionID].startDate |govukDate +' to '+ licence.chargePeriod[data.chargeVersionID].endDate |govukDate+'</p> <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Other adjustments apply:</p>  
+    <ul class="govuk-list"><li>'+chargeReference.adjustments |join("</li><li>")+'</li></ul>'
   }) }}
 
+ 
 
   <form  method="post" action="set-aggregate-factor" novalidate>
         {{ govukInput({
           label: {
-            html: "Aggregate factor",
+            html: "Aggregate factor (optional)",
     isPageHeading: false
           },
           classes: "govuk-input--width-10",
@@ -78,7 +80,7 @@
 
         {{ govukInput({
           label: {
-            html: "Charge adjustment",
+            html: "Charge adjustment (optional)",
     isPageHeading: false
           },
           classes: "govuk-input--width-10",

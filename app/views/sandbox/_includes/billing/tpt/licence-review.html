@@ -19,49 +19,83 @@
       </div>
       
       <div class="govuk-summary-card__content govuk-!-padding-top-0">
-        
-       {% set tptRatio = chargeReference.totalBillableReturns/chargeReference.authorisedVolume %}
-       {% if chargeReference.aggregateFactor.length %}
-       {% set charge = 100000*tptRatio*0.5*chargeReference.aggregateFactor*chargeReference.adjustmentFactor*0.5 %}
-       {% else %}
-      {% set charge = 100000*tptRatio*0.5 %}
-      {% endif %}
 
+{# create the rows for the charge table #}        
 {% set rows = []%}
+
+{# example charge #}
+{# This set of charge calculations is simulating what the charge module api will do #} 
+       
+       {% set tptRatio = chargeReference.totalBillableReturns/chargeReference.authorisedVolume %}
+       {% set charge = 100000*tptRatio*0.5 %}
+
+       {% if chargeReference.aggregateFactor.length %}
+       {% set charge =  charge*chargeReference.aggregateFactor %}
+       {% elseif chargeReference.adjustmentFactor.length %}
+       {% set charge =  charge*chargeReference.adjustmentFactor %}
+       {% elseif chargeReference.adjustments.length %}
+       {% set charge =  charge*0.5%}
+       {% endif %}
+       
 {% set rows = rows | push( {key: {text: "Example charge"},value: {text:  charge |currency} }  ) %}
+
 {# Authorised adjustments #}
 {% if chargeReference.aggregateFactor.length %}
   {% if chargeReference.totalEdited == true%}
-  {% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML Edited"},actions: { items: [{href: "set-total-billable-returns?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "total billable returns"}]} }  ) %}
+  {% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML Edited"},actions: { items: [{href: "set-total-billable-returns?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change authorised amount"}]} }  ) %}
   {% else %}
-  {% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"},actions: { items: [{href: "set-total-billable-returns?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "total billable returns"}]} }  ) %}
+  {% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"},actions: { items: [{href: "set-total-billable-returns?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change authorised amount"}]} }  ) %}
   {% endif %}
 {% else %}
 {% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"} }) %}
 {% endif %}
-{# charge reference adjustments, aggregates and additional charges #}
-{% if chargeReference.aggregateFactor.length %}
-{#{% set rows = rows | push( {key: {text: "Issue"},value: {text: "Aggregates" } }  ) %}#}
-  {%if chargeReference.edited == true%}
-  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' + chargeReference.aggregateFactor + ') Edited<br> Charge adjustment (' + chargeReference.adjustmentFactor + ') Edited' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "aggregate factor"}]}  }  ) %} 
-  {% else %}
-  {% set rows = rows | push( {key: {text: "Adjustment factors"},value: {html: 'Aggregate factor (' +chargeReference.aggregateFactor + ')<br> Charge adjustment (' + chargeReference.adjustmentFactor + ')' }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change",visuallyHiddenText: "aggregate factor"}]}  }  ) %} 
-  {% endif %}
-{% endif %}
+
+{# additional charges#}
 {% if chargeReference.additionalCharges.length %}
 {% set rows = rows | push( {key: {text: "Additional charges"},value: {text: chargeReference.additionalCharges | formatList | capitalize } }  ) %} 
 {% endif %}
-{% if chargeReference.adjustments.length %}
-{% set rows = rows | push( {key: {text: "Adjustments"},value: {text: chargeReference.adjustments | formatList | capitalize } }  ) %} 
+
+{# charge reference adjustments, aggregates and additional charges #}
+{% set adjustments = ""%}
+{% set aggregateFactor = "" %}
+{% set adjustmentFactor = "" %}
+{% set factors = "" %}
+{% if chargeReference.aggregateFactor.length or chargeReference.adjustmentFactor.length or chargeReference.adjustments.length %}
+
+    {% if chargeReference.aggregateFactor.length %}
+    {% set aggregateFactor = 'Aggregate factor (' +chargeReference.aggregateFactor + ')<br>'%}
+      {% if chargeReference.edited == true %}
+      {% set aggregateFactor = 'Aggregate factor (' +chargeReference.aggregateFactor + ') Edited<br>'%}
+      {% endif %}
+    {% endif %}
+    
+    {% if chargeReference.adjustmentFactor.length %}
+    {% set adjustmentFactor = 'Charge adjustment (' + chargeReference.adjustmentFactor + ')<br>'%}
+      {% if chargeReference.edited == true %}
+      {% set adjustmentFactor = 'Charge adjustment (' + chargeReference.adjustmentFactor + ') Edited<br>'%}
+      {% endif %}
+    {% endif %}
+
+    {% if chargeReference.adjustments.length %}
+    {% set adjustments = chargeReference.adjustments |join("<br>")%}
+    {% endif %}
+
+    {% set rows = rows | push( {key: {text: "Adjustments"},value: {html: aggregateFactor + adjustmentFactor + adjustments }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change factors"}]}  }  ) %} 
+
+{% else %}
+{% set setFactors = '<a class="govuk-link" href="set-adjustment-factors?chargeVersionID=' + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0+ '">Set adjustment factors</a>' %}
 {% endif %}
 
+
 {% if rows.length %}
-<div class="govuk-!-margin-top-0">
+<div class="govuk-!-margin-top-0 govuk-!-margin-bottom-9">
   {{ govukSummaryList({
-    classes: "govuk-!-margin-bottom-9",
+    classes: "govuk-!-margin-bottom-0",
     rows: rows
   }) }}
+  {{setFactors |safe}}
   </div>
+  
 {% endif %}
 
 

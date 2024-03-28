@@ -649,7 +649,7 @@ router.post('/sandbox/bill-runs/tpt/set-aggregate-factor', function(req, res) {
 router.post('/sandbox/bill-runs/tpt/set-total-billable-returns', function(req, res) {
 
   //Set the aggregate factor
-  req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].totalBillableReturns = req.session.data.totalBillableReturns
+  //req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].totalBillableReturns = req.session.data.totalBillableReturns
   req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].authorisedVolume = req.session.data.authorisedVolume
   req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].totalEdited = true
 
