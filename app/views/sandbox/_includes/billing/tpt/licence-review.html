@@ -36,8 +36,11 @@
        {% elseif chargeReference.adjustments.length %}
        {% set charge =  charge*0.5%}
        {% endif %}
-       
-{% set rows = rows | push( {key: {text: "Example charge"},value: {text:  charge |currency} }  ) %}
+      
+       {# This is  now based on whether the adjustment factors or actual amount is changed #}
+       {% if chargeReference.edited == true or chargeReference.totalEdited == true %}
+       {% set rows = rows | push( {key: {text: "Example charge"},value: {text:  charge |currency} }  ) %}
+       {% endif %}
 
 {# Authorised adjustments #}
 {% if chargeReference.aggregateFactor.length %}
@@ -82,8 +85,11 @@
 
     {% set rows = rows | push( {key: {text: "Adjustments"},value: {html: aggregateFactor + adjustmentFactor + adjustments }, actions: { items: [{href: "set-adjustment-factors?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change factors"}]}  }  ) %} 
 
-{% else %}
+{# not needed 
+    {% else %}
 {% set setFactors = '<a class="govuk-link" href="set-adjustment-factors?chargeVersionID=' + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0+ '">Set adjustment factors</a>' %}
+#}
+
 {% endif %}
 
 
