@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+
+
+{% set billRunDataTpTReview = data.billRunDataTpTReview %}
+{% set licence = billRunDataTpTReview[data.ID]  %}
+
+
+{% set chargeVersion = licence.chargeVersions[data.chargeVersionID]%}
+{% set chargeReference = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID] %}
+{% set chargeElement = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements[data.elementID] %}
+
+
+{% set title = "Reference review " + chargeElement.purpose.description + ", " + chargeElement.description %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   useTudorCrown: true,
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="govuk-!-margin-bottom-0">
+  <!-- navigation block -->
+  {% include "current/includes/nav/nav-bd-bill-runs.html" %}
+</div>
+
+
+{{ govukBackLink({
+  text: "Go back to licence",
+  href: "licence-review"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+{% set notificationText = "" %}
+{% if data.aggregateUpdate == true %}
+{% set notificationText = "The adjustment factors for " + chargeReference.chargeCategory.shortDescription | base64Decode + " have been updated" %}
+{% elseif data.totalBillableUpdate == true %}
+{% set notificationText = "The authorised volume for " + chargeReference.chargeCategory.shortDescription | base64Decode + " have been updated" %}
+{% elseif data.showCharge == true %}
+{% set notificationText = "Based on this information the example charge is " + data.previewCharge |currency %}
+{% endif %}
+{% if data.statusBanner == "show" %}
+
+<div class="govuk-notification-banner" role="region"
+  aria-labelledby="govuk-notification-banner-title"
+  data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Licence updated
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading max-width-full">
+      {{notificationText}}.
+    </p>
+  </div>
+</div>
+
+{% endif %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Charge reference {{chargeReference.chargeCategory.reference}}</span>
+        {{chargeReference.chargeCategory.shortDescription | base64Decode}}</h1>
+
+             <span class="govuk-caption-m">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</span>
+       <h2 class="govuk-heading-m" id="{{licence.chargePeriod[data.chargeVersionID].startDate}}-{{licence.chargePeriod[data.chargeVersionID].endDate}}">Charge period {{licence.chargePeriod[data.chargeVersionID].startDate |govukDate}} to {{licence.chargePeriod[data.chargeVersionID].endDate |govukDate}}</h2>
+
+      </div>
+    </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+         <div class="govuk-!-margin-right-6 float-left">
+            <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{{chargeReference.totalBillableReturns | round(6) }} ML</span>{%if chargeElement.edited == true%}<span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19"> Edited</span>{% endif %}<br>
+              <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Total billable returns</span></h3>
+            </div>
+            <div class="govuk-!-margin-right-6 float-left">
+              <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold"> / </span><br>
+               </h3>
+              </div>
+            <div class="govuk-!-margin-right-6 float-left">
+              <h3><span class="govuk-body govuk-font-size-64 govuk-!-font-weight-bold">{{chargeReference.authorisedVolume | round(6)}}ML</span><br>
+                <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Authorised volume</span></h3>
+              </div>
+
+  </div>
+  </div>
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+    {% if chargeReference.aggregateFactor.length or chargeReference.adjustmentFactor.length%}
+    <form class="inline govuk-!-margin-right-3"  action="set-total-billable-returns" method="get" novalidate >
+    {{ govukButton({
+      text: "Change the authorised volume",
+      classes: "govuk-button--secondary"
+    }) }}
+    </form>
+    {% endif %}
+
+    <form class="inline" action="preview-charge" method="post" novalidate >
+      {{ govukButton({
+        text: "Preview the charge",
+        classes: "govuk-button--secondary"
+      }) }}
+      </form>
+
+</div>
+</div>
+
+{% if chargeReference.aggregateFactor.length or chargeReference.adjustmentFactor.length or chargeReference.adjustments.length %}
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-full">
+
+
+      {% set chargeReferences = chargeVersion.chargeReferences %}
+      {% set chargeVersionID = loop.index0 %}
+    {% include "sandbox/_includes/billing/tpt/reference-details.html" %}
+
+    </div>
+  </div>
+  {% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -631,6 +631,45 @@ router.get('/tpt/element-review', function(req, res) {
   res.render(folder + 'tpt/element-review');
 });
 
+
+router.get('/tpt/reference-review', function(req, res) {
+  req.session.data.statusBanner = "hide"
+  req.session.data.aggregateUpdate = false
+  req.session.data.totalBillableUpdate = false
+  req.session.data.showCharge = false
+  res.render(folder + 'tpt/reference-review');
+});
+
+
+router.post('/tpt/preview-charge', function(req, res) {
+  req.session.data.statusBanner = "show"
+  req.session.data.aggregateUpdate = false
+  req.session.data.totalBillableUpdate = false
+  
+  baseCharge = 20000 
+
+  aggregateFactor = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].aggregateFactor
+  adjustmentFactor = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].adjustmentFactor
+ 
+  authorisedVolume = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].authorisedVolume
+  totalBillableReturns = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].totalBillableReturns
+  
+  adjustments = req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[req.session.data.chargeVersionID].chargeReferences[req.session.data.chargeReferenceID].adjustments
+
+
+  req.session.data.previewCharge = baseCharge * (totalBillableReturns / authorisedVolume) * aggregateFactor * adjustmentFactor
+
+  //hack
+  if(req.session.data.previewCharge !== req.session.data.previewCharge){
+    req.session.data.previewCharge = baseCharge * (totalBillableReturns / authorisedVolume)
+  }
+
+
+  req.session.data.showCharge = true
+  res.redirect('/'+ folder + 'tpt/reference-review');
+});
+
+
 ////TPT EDIT THE AGGREGATE FACTOR
 router.post('/sandbox/bill-runs/tpt/set-aggregate-factor', function(req, res) {
 
@@ -642,7 +681,7 @@ router.post('/sandbox/bill-runs/tpt/set-aggregate-factor', function(req, res) {
    //Show the notification banner
    req.session.data.statusBanner = "show"
    req.session.data.aggregateUpdate = true 
-  res.redirect('/'+ folder + 'tpt/licence-review');
+  res.redirect('/'+ folder + 'tpt/reference-review');
 });
 
 ////TPT EDIT THE TOTAL BILLABLE RETURNS
@@ -656,7 +695,7 @@ router.post('/sandbox/bill-runs/tpt/set-total-billable-returns', function(req, r
   //Show the notification banner
   req.session.data.statusBanner = "show"
   req.session.data.totalBillableUpdate = true 
- res.redirect('/'+ folder + 'tpt/licence-review');
+ res.redirect('/'+ folder + 'tpt/reference-review');
 });
 
 

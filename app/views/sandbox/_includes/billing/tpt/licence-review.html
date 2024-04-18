@@ -20,6 +20,9 @@
       
       <div class="govuk-summary-card__content govuk-!-padding-top-0">
 
+{# This functionality has been moved to the reference review page #}
+
+
 {# create the rows for the charge table #}        
 {% set rows = []%}
 
@@ -92,6 +95,12 @@
 
 {% endif %}
 
+{% set rows = [] %}
+{% if chargeReference.aggregateFactor.length or chargeReference.adjustmentFactor.length%}
+{% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"}, actions: { items: [{href: "reference-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "Change details"}]}  }  ) %} 
+{% else %}
+{% set rows = rows | push( {key: {text: "Total billable returns"},value: {text: chargeReference.totalBillableReturns + "ML / " +  chargeReference.authorisedVolume + "ML"}, actions: { items: [{href: "reference-review?chargeVersionID=" + chargeVersionID + "&chargeReferenceID=" + chargeReferenceID + "&elementID=" + loop.index0,text: "View details"}]}  }  ) %} 
+{% endif %}
 
 {% if rows.length %}
 <div class="govuk-!-margin-top-0 govuk-!-margin-bottom-9">
