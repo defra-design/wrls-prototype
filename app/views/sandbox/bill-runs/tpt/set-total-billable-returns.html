@@ -8,7 +8,7 @@
 {% set chargeReference = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID] %}
 {% set chargeElement = licence.chargeVersions[data.chargeVersionID].chargeReferences[data.chargeReferenceID].chargeElements[data.elementID] %}
 
-{% set title = "Set the authorised amount" %}
+{% set title = "Set the authorised volume" %}
 {% set qtitle = '<span class="govuk-caption-l">' + chargeReference.chargeCategory.shortDescription | base64Decode + '</span><h1 class="govuk-heading-xl govuk-!-margin-bottom-3">' + title + '</h1>'%}
 
 {% block pageTitle %}
@@ -59,7 +59,7 @@
      {{qtitle|safe}}
 
      {{ govukInsetText({
-      html: ' <p class="govuk-body govuk-!-margin-bottom-0"><span class="govuk-!-font-weight-bold">Financial year</span> ' + chargeVersion.startDate | year + ' to ' + chargeVersion.startDate | yearPlusPlus + '</p> <p class="govuk-body"><span class="govuk-!-font-weight-bold">Charge period </span>' + licence.chargePeriod[data.chargeVersionID].startDate |govukDate +' to '+ licence.chargePeriod[data.chargeVersionID].endDate |govukDate+'</p> <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Actual amount</p>  
+      html: ' <p class="govuk-body govuk-!-margin-bottom-0"><span class="govuk-!-font-weight-bold">Financial year</span> ' + chargeVersion.startDate | year + ' to ' + chargeVersion.startDate | yearPlusPlus + '</p> <p class="govuk-body"><span class="govuk-!-font-weight-bold">Charge period </span>' + licence.chargePeriod[data.chargeVersionID].startDate |govukDate +' to '+ licence.chargePeriod[data.chargeVersionID].endDate |govukDate+'</p> <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Total billable returns</p>  
       <p class="govuk-body govuk-!-margin-bottom-0">'+chargeReference.totalBillableReturns+'</p>'
     }) }}
 
@@ -86,7 +86,7 @@
 
         {{ govukInput({
           label: {
-            html: "Authorised amount",
+            html: "Authorised volume",
     isPageHeading: false
           },
           classes: "govuk-input--width-10",
