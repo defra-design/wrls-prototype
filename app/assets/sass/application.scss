@@ -1,7 +1,7 @@
 //
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-// 
+//
 
 // Add extra styles here
 
@@ -84,6 +84,11 @@ border-bottom: 1px solid #b1b4b6 !important;;
 
 .inline {
   display: inline;
+}
+
+
+.govuk-summary-card__title .govuk-caption-m {
+  color: #0b0c0c;
 }
 
 //Wide actions in summary list - used when experimenting with comparing changes to charge information
