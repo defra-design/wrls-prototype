@@ -22,6 +22,9 @@ if (mm < 10) {
   mm = `0${mm}`;
 }
 
+const todayNoFormat = `${yyyy}${mm}${dd}`;
+console.log(todayNoFormat)
+
 //change the month into a name
 let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 mm = monthNames[mm - 1]
@@ -144,6 +147,7 @@ function createVersion(req, res) {
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
+  let createdDate = todayNoFormat
   let status = "review"
   let additionalSubmissionOptions = ["none"]
   let reason = req.session.data.reasonNewRequirements
@@ -155,6 +159,7 @@ function createVersion(req, res) {
 
     startDate,
     endDate,
+    createdDate,
     reason,
     additionalSubmissionOptions,
     status,
@@ -293,6 +298,7 @@ function requirementsFromAbsData(req, res) {
   //create vars for the start date and reason
   let startDate = req.session.data.startDateConditional
   let endDate = ""
+  let createdDate = todayNoFormat
   let status = "review"
   let additionalSubmissionOptions = ["none"]
   let reason = req.session.data.reasonNewRequirements
@@ -304,6 +310,7 @@ function requirementsFromAbsData(req, res) {
 
     startDate,
     endDate,
+    createdDate,
     reason,
     additionalSubmissionOptions,
     status,

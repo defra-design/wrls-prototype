@@ -1959,6 +1959,7 @@ module.exports = {
                   "returnsRequirements":  [{
                                           "startDate":"20190401",
                                           "endDate":"",
+                                          "createdDate":"20190404",
                                           "reason":"New licence",
                                           "status":"approved",
                                           "additionalSubmissionOptions": ["none"],
