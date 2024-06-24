@@ -53,6 +53,11 @@ router.use('/', (req, res, next) => {
 });
 
 //----------------------------------------------------------------
+////RETURNS ROUTES
+//View a requirement
+router.use('/bd/licence/returns', require('./_routes/_routes-returns-requirements-current'));
+
+//----------------------------------------------------------------
 ////BILL RUN ROUTES
 //CREATE BILL RUN
 

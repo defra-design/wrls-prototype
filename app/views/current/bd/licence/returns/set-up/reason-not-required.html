@@ -1,0 +1,61 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Why are no returns required?" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+
+{{ govukRadios({
+idPrefix: "reasonNewRequirements",
+name: "reasonNewRequirements",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+items: [
+{
+  value: "Abstraction amount below 100 cubic metres per day",
+  text: "Abstraction amount below 100 cubic metres per day",
+  checked: checked("reasonNewRequirements", "Abstraction amount below 100 cubic metres per day")
+},
+{
+  value: "Returns exception",
+  text: "Returns exception",
+  checked: checked("reasonNewRequirements", "Returns exception")
+},
+{
+  value: "Transfer licence",
+  text: "Transfer licence",
+  checked: checked("reasonNewRequirements", "Transfer licence")
+}
+]
+}) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

@@ -23,7 +23,7 @@ if (mm < 10) {
 }
 
 const todayNoFormat = `${yyyy}${mm}${dd}`;
-
+console.log(todayNoFormat)
 
 //change the month into a name
 let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -47,7 +47,7 @@ const today = `${dd} ${mm} ${yyyy}`;
 
 
 //Send a water abstraction alert
-const folder = "sandbox/licence/returns-current/"
+const folder = "current/bd/licence/returns/"
 
 
 ///Success messages///
@@ -1274,82 +1274,6 @@ router.post('/check-your-answers', function(req, res) {
 
    // no longer in use res.redirect('set-up/requirements-set-up');
 });
-
-
-////////////********NO LONG IN USER V4*********/////////
-//////REVIEW AND APPROVE RETURN REQUIREMENTS
-//////////////////////////////////
-/////Confirm return version
-router.get('/review-returns-requirements', function(req, res) {
-  req.session.data.back = req.headers.referer
-  req.session.data.success = 0
-  res.render(folder + 'review-returns-requirements');
-});
-
-router.post('/review-returns-requirements', function(req, res) {
-
-  //end the previous return requirement
-  let licence = req.session.data.ID
-  if (req.session.data.licences[licence].returnsRequirements.length > 1) {
- let startDate = req.session.data.licences[licence].returnsRequirements[0].startDate;
-
- //format the date
- let day = startDate.substring(6, 8);
- let month = startDate.substring(4, 6);
- let year = startDate.substring(0, 4);
- let dateString = (year) + "-" + (month) + "-" + (day);
- //get the date
- let date1 = new Date(dateString);
- //set the days to subtract
- let daysPrior = -1;
- //use the method
- date1.setDate(date1.getDate() + daysPrior);
- //format the date
- year = date1.toISOString().substring(0, 4);
- month = date1.toISOString().substring(5, 7);
- day = date1.toISOString().substring(8, 10);
- //set the variable
-  req.session.data.licences[licence].returnsRequirements[1].endDate = (year)+(month)+(day)
-  }
-
-  //Update the requirement to approved
-  req.session.data.licences[licence].returnsRequirements[0].status = "approved"
-
-  //CREATE THE RETURNS
-  if (req.session.data.returnsNotRequired !== true) {
-    createReturns(req,res)
-  }
-
-  //clear all the data
-  req.session.data.returnReview = ""
-
-  req.session.data.reasonNewRequirements = ""
-  req.session.data.additionalSubmissionOptions = []
-  req.session.data.startDateConditional = ""
-  req.session.data.startDate = []
-  req.session.data.purpose = ""
-  req.session.data.description = ""
-  req.session.data.points = ""
-  req.session.data.timeLimit = ""
-  req.session.data.abstractionStartDay = ""
-  req.session.data.abstractionStartMonth = ""
-  req.session.data.abstractionEndDay = ""
-  req.session.data.abstractionEndMonth = ""
-  req.session.data.returnsCycle = ""
-  req.session.data.frequencyCollected = ""
-  req.session.data.frequency = ""
-  req.session.data.change = false
-  req.session.data.requirementIndex = ""
-  req.session.data.returnVersion = ""
-  req.session.data.note = ""
-  req.session.data.success = 0
-  req.session.data.returnsNotRequired = ""
-  req.session.data.variations = ""
-
-  res.redirect('set-up/requirements-approved');
-});
-
-
 
 
 ///ADD A NOTE

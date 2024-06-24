@@ -1,0 +1,68 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select any additional submission options for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+
+
+
+{{ govukCheckboxes({
+idPrefix: "additionalSubmissionOptions",
+name: "additionalSubmissionOptions",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: false,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+hint: {
+  text: "Select all that apply"
+},
+items: [
+    {
+      value: "multiple upload",
+      text: "Multiple upload",
+      checked:  data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("multiple upload")
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "none",
+      text: "None",
+      behaviour: "exclusive",
+        checked: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("none")
+    }
+]
+}) }}
+
+
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Confirm
+</button>
+
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

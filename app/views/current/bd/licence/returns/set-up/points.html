@@ -1,0 +1,94 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select the points for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+
+{% set selectItems = [] %}
+{% set selectPoints = [] %}
+
+
+
+{% set use = data.licences[data.ID]['use'] %}
+
+
+{% if data['change'] == "true" %}
+
+{% for item in use %}
+{% if item.purpose in data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['purpose'] %}
+{% for i in item.points %}
+{% set selectPoints = selectPoints| push(i) %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+{% else %}
+
+{% for item in use %}
+{% if item.purpose in data['purpose'] %}
+{% for i in item.points %}
+{% set selectPoints = selectPoints| push(i) %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+{% endif %}
+
+
+{# loop through the use items #}
+{% for item in selectPoints | unique %}
+
+{% set selectItems = selectItems | push({
+  value: item,
+  text: item,
+  checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['points']  | arrayIncludes (item)
+}) %}
+
+
+{% endfor %}
+
+{{ govukCheckboxes({
+idPrefix: "points",
+name: "points",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: false,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+hint: {
+  text: "Select all that apply"
+},
+items: selectItems
+}) }}
+
+
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Continue
+</button>
+
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

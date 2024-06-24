@@ -1,0 +1,67 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+
+{% set returnRequirements = data['returnRequirements'] %}
+{% set title = "You are about to cancel these requirements for returns"%}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<!-- page title -->
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-xl"><span class="govuk-caption-l ">Licence {{[data.licences[data.ID].number]}}</span> {{title}}</h1>
+
+
+
+<form method="post" class="form" >
+
+  {% set requirements = data.licences[data.ID].returnsRequirements[0].requirements %}
+
+  {% include "sandbox/_includes/returns/requirements/reason-new-requirements-no-change.html" %}
+
+
+  {% for requirement in requirements %}
+  <div class="govuk-summary-list govuk-!-margin-bottom-4">
+  <!-- <span class="govuk-caption-m ">Return ID {{requirement.id}}</span> -->
+    <h2 class="govuk-heading-m" >{{requirement.returnsCycle |capitalize}}  {{requirement.frequency}} requirements for returns, {{requirement.description}}</h2>
+  </div>
+{% endfor %}
+
+
+      <button type="submit" class="govuk-button">
+       Confirm cancel
+      </button>
+
+    </form>
+
+  </div>
+  </div>
+{% endblock %}

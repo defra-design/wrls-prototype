@@ -1,0 +1,62 @@
+
+
+<section class="govuk-!-margin-bottom-9">
+
+
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-2',
+rows: [
+{
+  classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+  key: {
+    text: "Start date"
+  },
+  value: {
+    text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['startDate'] | numberToGovukDate
+  }
+},
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Reason"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['reason'] | capitalize
+    }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "End date"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['endDate'] | numberToGovukDate
+    }
+  } if data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['endDate'].length
+  ,
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Created date"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['createdDate'] | default(data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['startDate']) | numberToGovukDate
+    }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Created by"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['username']
+    }
+  }
+]
+}) }}
+
+
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+</section>

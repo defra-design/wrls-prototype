@@ -1,0 +1,28 @@
+
+
+<section class="govuk-!-margin-bottom-9">
+
+
+{% if data.licences[data.ID].returnsRequirements[data.returnVersionNumber].note.length %}
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Notes</h2>
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-2',
+rows: [
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber].username
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber].note
+    }
+  }
+]
+}) }}
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{% else %}
+
+{% endif %}
+
+</section>

@@ -1,0 +1,79 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+
+{% set returnRequirements = data['returnRequirements'] %}
+{% set title = "Review requirements for returns"%}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+{% if data.success == 1 %}
+
+
+
+{{ govukNotificationBanner({
+  html: data.successMessage,
+  role: 'alert',
+  titleText : data.notificationTitle
+}) }}
+
+{% endif %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- page heading -->
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{[data.licences[data.ID].number]}}</span> {{title}}</h1>
+
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form method="post" class="form">
+
+
+      {% include "sandbox/_includes/returns/requirements/reason-new-requirements.html" %}
+      {% if data['returnsNotRequired'] == true %}
+      {% else %}
+        {# Notes removed for roundof UR    {% include "sandbox/_includes/returns/requirements/notes.html" %}   #}
+
+      {% include "sandbox/_includes/returns/requirements/requirement.html" %}
+      {% endif %}
+
+    <div class="divider govuk-!-margin-bottom-6"></div>
+
+            {{ govukButton({
+        text: "Approve return requirements",
+        classes: "govuk-!-margin-right-6"
+        }) }}
+
+        {{ govukButton({
+        text: "Cancel return requirement",
+        classes: "govuk-button--secondary",
+        href: "#"
+        }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

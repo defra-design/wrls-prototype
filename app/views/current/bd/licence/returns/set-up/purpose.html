@@ -1,0 +1,84 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select the purpose for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+{# get the licence use information #}
+{% set use = data.licences[data.ID]['use'] %}
+
+{# for more than one use display checkboxes #}
+<form method="post" class="form">
+
+{# Create the array #}
+{% set selectItems = [] %}
+{% set selectUse = [] %}
+
+{# loop through the use items #}
+{% for item in use %}
+{% set selectUse = selectUse | push(item.purpose) %}
+{% endfor %}
+
+
+{# remove any duplicate purposes #}
+{% for item in selectUse | unique %}
+
+
+
+{# if use has already been selected push an array of the already selected items and then in the loop compare the array to see if the purpose is a match if so, check the box#}
+ {% set selectedUse = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['purpose']%}
+
+
+
+
+  {% set selectItems = selectItems | push({
+    value: item,
+    text: item,
+    checked: selectedUse |arrayIncludes (item)
+  }) %}
+
+
+{% endfor %}
+
+
+{{ govukCheckboxes({
+idPrefix: "purpose",
+name: "purpose",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+hint: {
+  text: "Select all that apply"
+},
+items: selectItems
+}) }}
+
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Continue
+</button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

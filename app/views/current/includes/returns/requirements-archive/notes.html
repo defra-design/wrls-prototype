@@ -1,0 +1,58 @@
+
+
+<section class="govuk-!-margin-bottom-9">
+
+
+
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Notes</h2>
+
+
+{% if data.note.length %}
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-2',
+rows: [
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: data.licences[data.ID].returnsRequirements[0].username
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[0].note
+    },
+    actions: {
+      items: [
+        {
+          href: "set-up/add-a-note?change=true",
+          text: "Change",
+          visuallyHiddenText: "the note"
+        },
+        {
+          href: 'delete-note?success=1&successMessage=<h3 class="govuk-notification-banner__heading">Note removed</h3>&note=',
+          text: "Delete",
+          visuallyHiddenText: "the note"
+        }
+      ]
+    }
+  }
+]
+}) }}
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{% else %}
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+  <div class="govuk-summary-list govuk-!-margin-bottom-1">
+    <p class="govuk-body">No notes added</p>
+  <span class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-body"  href="set-up/add-a-note">
+                Add a note
+                  </a>
+  </span>
+  </div>
+<!--<div class="govuk-!-margin-bottom-5"><p class="govuk-body"><a class="govuk-link govuk-!-margin-right-3 " href="set-up/add-a-note">Add a note</a></p></div>-->
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+{% endif %}
+
+
+
+
+</section>

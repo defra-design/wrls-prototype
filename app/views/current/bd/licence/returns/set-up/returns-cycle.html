@@ -1,0 +1,69 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select  the returns cycle for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+
+<form method="post" class="form">
+
+
+
+
+{# Frequency switch based on the answer for the specific requirement#}
+{% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['returnsCycle'] %}
+    {% case 'summer' %}
+        {% set summer = true %}
+    {% case 'winter and all year' %}
+        {% set winter = true %}
+{% endswitch %}
+
+
+  {{ govukRadios({
+  idPrefix: "returnsCycle",
+  name: "returnsCycle",
+  fieldset: {
+    legend: {
+      html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+    }
+  },
+  items: [
+  {
+    value: "summer",
+    text: "Summer",
+    checked: summer
+  },
+  {
+    value: "winter and all year",
+    text: "Winter and all year",
+    checked: winter
+  }
+  ]
+  }) }}
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Continue
+</button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

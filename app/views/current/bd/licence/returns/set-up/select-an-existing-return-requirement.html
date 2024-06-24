@@ -1,0 +1,54 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select existing requirements from" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+{% set selectItems = [] %}
+{% for i in data.licences[data.ID].returnsRequirements %}
+{% if i.status == "approved" and i.requirements.length >= 1 %}
+{% set selectItems = selectItems | push({
+  value: loop.index0,
+  text: i.startDate | numberToGovukDate
+}) %}
+{% endif %}
+{% endfor %}
+
+{{ govukRadios({
+idPrefix: "copyRequirements",
+name: "copyRequirements",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+items: selectItems
+}) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

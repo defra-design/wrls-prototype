@@ -1,0 +1,106 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Enter the abstraction period for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+{% set startDay = "" %}
+{% set startMonth = "" %}
+{% set endtDay = "" %}
+{% set endMonth = "" %}
+{% if data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['periodStart'].length %}
+{% set startDay = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['periodStart'].substring(2,4)%}
+{% set startMonth = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['periodStart'].substring(0,2)%}
+{% set endDay = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['periodEnd'].substring(2,4)%}
+{% set endMonth = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['periodEnd'].substring(0,2)%}
+{% endif %}
+
+
+<form method="post" class="form">
+
+  <!-- effective dates -->
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset"  role="group">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-3">
+        <h1 class="govuk-fieldset__heading">
+          <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}} </span>
+          {{title}}
+        </h1>
+      </legend>
+
+      <div class="govuk-!-margin-bottom-6 ">
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3 ">
+          Start date
+        </h2>
+        <div class="govuk-date-input" id="abstraction-start-date">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="abstractionStartDay">
+                <span class="govuk-visually-hidden">Start date</span>Day
+              </label>
+              <input value="{{startDay}}" class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionStartDay" name="abstractionStartDay" type="number" autocomplete="off" pattern="[0-9]*">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="abstractionStartMonth">
+                <span class="govuk-visually-hidden">Start date</span>Month
+              </label>
+              <input value="{{startMonth}}" class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionStartMonth" name="abstractionStartMonth" type="number" autocomplete="off" pattern="[0-9]*">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="govuk-!-margin-bottom-2 ">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3">
+        End date
+      </h2>
+      <div class="govuk-date-input" id="abstractionEndDate">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="abstractionEndDay">
+              <span class="govuk-visually-hidden">End date</span>Day
+            </label>
+            <input value="{{endDay}}" class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionEndDay" name="abstractionEndDay" type="number" autocomplete="off" pattern="[0-9]*">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="abstractionEndMonth">
+              <span class="govuk-visually-hidden">End date</span>Month
+            </label>
+            <input value="{{endMonth}}" class="govuk-input govuk-date-input__input govuk-input--width-2" id="abstractionEndMonth" name="abstractionEndMonth" type="number" autocomplete="off" pattern="[0-9]*">
+          </div>
+        </div>
+      </div>
+      </div>
+    </fieldset>
+  </div>
+
+
+
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Continue
+</button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

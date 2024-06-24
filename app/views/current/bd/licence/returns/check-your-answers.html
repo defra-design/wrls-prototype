@@ -1,0 +1,106 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+
+{% set returnRequirements = data['returnRequirements'] %}
+{% set title = "Check the requirements for returns for "  + data.licences[data.ID].holder %}
+{% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+{% if data.success == 1 %}
+
+
+
+{{ govukNotificationBanner({
+  html: data.successMessage,
+  role: 'alert',
+  titleText : data.notificationTitle
+}) }}
+
+{% endif %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- page heading -->
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{[data.licences[data.ID].number]}}</span> {{title}}</h1>
+
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form method="post" class="form">
+
+
+      {% include "sandbox/_includes/returns/requirements/reason-new-requirements.html" %}
+
+      {% include "sandbox/_includes/returns/requirements/notes.html" %}
+
+
+
+      {% if data['returnsNotRequired'] == true %}
+
+      <h3 class="govuk-heading-m">Returns are not required for this licence</h3>
+      {% else %}
+
+      {% set returnsRequiredNum = data.licences[data.ID].returnsRequirements[0]['requirements'].length %}
+
+      <!-- <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >{{ returnsRequiredNum }} returns required</h2> -->
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-4" >Requirements for returns</h2>
+
+      <!-- <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        {% for requirement in requirements %}
+        <li>
+          <a class="govuk-link" href="#returnref{{loop.index}}">Requirements for returns {{loop.index}}</a>
+        </li>
+        {% endfor %}
+      </ul> -->
+
+      {% include "sandbox/_includes/returns/requirements/requirement.html" %}
+
+      {% include "sandbox/_includes/returns/requirements/additional-subs.html" %}
+      {% endif %}
+
+
+
+
+
+    <div class="divider govuk-!-margin-bottom-6"></div>
+
+            {{ govukButton({
+        text: "Approve requirements for returns",
+        classes: "govuk-!-margin-right-6"
+        }) }}
+
+        {{ govukButton({
+        text: "Cancel requirements for returns",
+        classes: "govuk-button--secondary",
+        href: "confirm-cancel-return-requirements?returnVersionNumber=0"
+        }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

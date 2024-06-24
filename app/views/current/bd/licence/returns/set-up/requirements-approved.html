@@ -1,0 +1,54 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Requirements for returns approved" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-4">
+  <div class="govuk-grid-column-full">
+
+
+
+    {{ govukPanel({
+      titleText: title,
+      classes: "govuk-!-margin-bottom-4"
+    }) }}
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p class="govuk-body">  These requirements are now active and returns will be opened for this licence in the next returns cycle.</p>
+
+<!--    <h2 class="govuk-heading-m">What happens next</h2>
+
+    </div></div><div class="govuk-grid-row govuk-!-margin-bottom-4"><div class="govuk-grid-column-full">
+
+    <h3 class="govuk-heading-s">New licences</h3>
+
+    <p class="govuk-body">You need to <a href="/current/bd/charges-2020/add-new-reason" class="govuk-link">set up new charge information</a>.</p>
+
+    </div></div><div class="govuk-grid-row govuk-!-margin-bottom-4"><div class="govuk-grid-column-full">
+
+    <h3 class="govuk-heading-s">Existing licences</h3>
+
+    <p class="govuk-body">If this change affects the charge, you need to <a href="/current/bd/charges-2020/add-new-reason" class="govuk-link">set up new charge information</a>.</p>
+
+    </div></div><div class="govuk-grid-row govuk-!-margin-bottom-4"><div class="govuk-grid-column-full"> -->
+
+    <p class="govuk-body"><a href="../../../licence-summary?wid={{data.wid}}ID={{data.ID}}#charge" class="govuk-link">Return to licence set up</a></p>
+
+  </div>
+</div>
+
+
+{% endblock %}

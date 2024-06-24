@@ -1,0 +1,97 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select the start date for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+  {% set startDate %}
+  {{ govukDateInput({
+id: "startDate",
+namePrefix: "[startDate]",
+fieldset: {
+  legend: {
+    text: 'Start date',
+    isPageHeading: false,
+    classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      classes: "govuk-input--width-2",
+      name: "day",
+      value: data['startDate'][0]
+    },
+    {
+      classes: "govuk-input--width-2",
+      name: "month",
+      value: data['startDate'][1]
+    },
+    {
+      classes: "govuk-input--width-4",
+      name: "year",
+      value: data['startDate'][2]
+    }
+  ]
+
+}) }}
+{% endset -%}
+
+
+
+{{ govukRadios({
+idPrefix: "startDateConditional",
+name: "startDateConditional",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l"
+  }
+},
+items: [
+  {
+    value: "20230401",
+    html: "Licence version start date",
+    hint: {
+      text:  [data.licences[data.ID].effectiveDate]
+    },
+    checked: checked("startDateConditional", "20230401")
+  },
+  {
+    value: "other",
+    text: "Another date",
+    hint: {
+      text:  "For example, 27 8 2024"
+    },
+    checked: data.startDate.length,
+    conditional: {
+      html: startDate
+    }
+  }
+]
+}) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

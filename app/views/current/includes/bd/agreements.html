@@ -1,48 +1,87 @@
 
-{% set agreementNumber = "" %}
-{% set agreements = data['agreements'] %}
-{% set numberOfAgreements = agreements.length %}
-
-
-<span class="govuk-caption-l">Licence 03/28/60/0032</span>
-<h1 class="govuk-heading-l">Agreements</h1>
-{{ govukButton({
-  text: "Set up new agreement",
-  href: "add-agreement"
-}) }}
 
 
 
-<table class="govuk-table">
+      {% set agreements = data['agreements'] %}
 
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Agreement type</th>
-      <th scope="col" class="govuk-table__header">Date signed</th>
-      <th scope="col" class="govuk-table__header">Start date</th>
-      <th scope="col" class="govuk-table__header">End date</th>
-      <th scope="col" class="govuk-table__header">Action</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
+      <!--checking to see if this is a new licence-->
 
 
-    {% for i in agreements %}
-    {% set agreementNumber = loop.index0 %}
-
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">{{[i.agreement]}}</td>
-      <td class="govuk-table__cell">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
-      <td class="govuk-table__cell">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
-      <td class="govuk-table__cell">{{[i.agreementEndDay] + " " + [[i.agreementEndMonth] | toMonth] + " " + [i.agreementEndYear]}}</td>
-      {% if [i.agreementEnded] == "true" %}
-      <td class="govuk-table__cell"></td>
+      {% if [data.newLicence] == "false" %}
+      {% set agreementNumber = agreements.length %}
       {% else %}
-      <td class="govuk-table__cell"><a href="remove-agreement-date?agreementNumber={{agreementNumber}}">End agreement</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a href="remove-agreement?agreementNumber={{agreementNumber}}">Remove</a></td>
+      {% set agreementNumber = 0 %}
       {% endif %}
-    </tr>
 
-    {% endfor %}
+      <!--displaying text if there are no agreements or the table if there are agreements in place-->
 
-  </tbody>
-</table>
+      {% if agreementNumber == 0 %}
+      <h2 class="govuk-heading-m">
+
+          Agreements
+
+      </h2>
+      <p class="govuk-body"> There are no agreements set up for this licence</p>
+
+      {% else %}
+
+      <table class="govuk-table govuk-!-margin-bottom-4">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-5">Agreements</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Start date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">End date</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Agreement type</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Date signed</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-fifth width-20">Action</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          <!--setting the number of agreements-->
+
+
+          {% set numberOfAgreements = "" %}
+          {% set numberOfAgreements = agreements.length %}
+
+          {% for i in agreements %}
+          {% set agreementNumber = loop.index0 %}
+
+          <!--set last row to remove the bottom border-->
+
+
+          {% if loop.index ==  numberOfAgreements %}
+          {# {% set lastRow = "govuk-table__cell--no-border" %} #}
+          {% set lastRow = "" %}
+          {% endif %}
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreementStartDay] + " " + [[i.agreementStartMonth] | toMonth] + " " + [i.agreementStartYear]}}</td>
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreementEndDay] + " " + [[i.agreementEndMonth] | toMonth] + " " + [i.agreementEndYear]}}</td>
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreement]}}</td>
+            <td class="govuk-table__cell {{lastRowAgreements}}">{{[i.agreementSignedStartDay] + " " + [[i.agreementSignedStartMonth] | toMonth] + " " + [i.agreementSignedStartYear]}}</td>
+
+            {% if [i.agreementEnded] == "true" %}
+            <td class="govuk-table__cell {{lastRowAgreements}}"><a
+                href="charges-2020/remove-agreement?agreementNumber={{agreementNumber}}">Delete</a></td>
+            {% else %}
+            <td class="govuk-table__cell {{lastRowAgreements}}"><a href="charges-2020/remove-agreement-date?agreementNumber={{agreementNumber}}">End</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">|</span><a
+                href="charges-2020/remove-agreement?agreementNumber={{agreementNumber}}">Delete</a><span class="govuk-!-margin-left-1 govuk-!-margin-right-1">{% if not data.suppBilling.length %}|</span><a
+                    href="iterations/manual-billing/recalculate-bills">Recalculate&nbsp;bills</a></td>{% endif %}
+            {% endif %}
+          </tr>
+
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+
+      {% endif %}
+
+
+      {{ govukButton({
+          text: "Set up new agreement",
+          href: "charges-2020/add-agreement",
+          classes: "govuk-button--secondary"
+        }) }}

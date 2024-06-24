@@ -1,0 +1,234 @@
+{% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
+
+
+{% set routeFolder = "set-up/purpose" %}
+
+{{ govukButton({
+text: "Add another requirement",
+classes: "govuk-button--secondary govuk-!-margin-right-6",
+href: routeFolder + "?requirementIndex=&change="
+}) }}
+
+{% for requirement in requirements %}
+
+
+{% if requirements.length > 1 %}
+{% set buttonHtml %}
+{{ govukButton({
+text: "Remove requirement",
+classes: "govuk-button--secondary govuk-!-margin-right-6 govuk-!-margin-bottom-0",
+href: "confirm-remove-requirement?requirementIndex=" + loop.index0
+}) }}
+{% endset %}
+{% endif %}
+
+
+
+<section class="govuk-!-margin-bottom-9">
+
+
+  {% set summaryCardTitles %}
+  <div id="returnref{{loop.index}}">
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{requirement.description}}</h2>
+    <!-- can also use requirement.title here if we want to -->
+   <!--- <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+          Delete choice<span class="govuk-visually-hidden"> of University of Gloucestershire</span>
+        </a>
+      </li>
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+          Withdraw<span class="govuk-visually-hidden"> from University of Gloucestershire</span>
+        </a>
+      </li>
+    </ul> -->
+  </div>
+  {% endset %}
+
+  {% set returnRequirementBtn %}
+
+  {% endset %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-2',
+    card: {
+      title: {
+        html: summaryCardTitles
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "purpose"
+          }
+        ]
+      }
+    },
+  rows: [
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text:  requirement.purpose | length | plural ("Purpose", showNumber=false)
+    },
+    value: {
+      text: requirement.purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+    },
+      actions: {
+        items: [
+          {
+            href: "set-up/purpose?change=true&requirementIndex=" + loop.index0,
+            text: "Change",
+            visuallyHiddenText: "purpose"
+          }
+        ]
+      }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: requirement.points | length |plural ("Point", showNumber=false)
+    },
+    value: {
+      text: requirement.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+    },
+      actions: {
+        items: [
+          {
+            href: "set-up/points?change=true&requirementIndex=" + loop.index0,
+            text: "Change",
+            visuallyHiddenText: "points"
+          }
+        ]
+      }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Abstraction period"
+    },
+    value: {
+      text:  "From " +  requirement.periodStart | mmddToDate + " to " + requirement.periodEnd | mmddToDate
+    },
+      actions: {
+        items: [
+          {
+            href: "set-up/abstraction-period?change=true&requirementIndex=" + loop.index0,
+            text: "Change",
+            visuallyHiddenText: "abstraction period"
+          }
+        ]
+      }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Returns cycle"
+    },
+    value: {
+      text: requirement.returnsCycle |capitalize
+    },
+      actions: {
+        items: [
+          {
+            href: "set-up/returns-cycle?change=true&requirementIndex=" + loop.index0,
+            text: "Change",
+            visuallyHiddenText: "returns cycle"
+          }
+        ]
+      }
+  },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Site description"
+      },
+      value: {
+        text: requirement.description
+      },
+        actions: {
+          items: [
+            {
+              href: "set-up/description?change=true&requirementIndex=" + loop.index0,
+              text: "Change",
+              visuallyHiddenText: "site description"
+            }
+          ]
+        }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Collection"
+      },
+      value: {
+        text: requirement.frequencyCollected | capitalize
+      },
+        actions: {
+          items: [
+            {
+              href: "set-up/frequency-collected?change=true&requirementIndex=" + loop.index0,
+              text: "Change",
+              visuallyHiddenText: "collection frequency"
+            }
+          ]
+        }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Reporting",
+        classes: 'govuk-!-padding-bottom-3'
+      },
+      value: {
+        text: requirement.frequency | capitalize,
+        classes: 'govuk-!-padding-bottom-3'
+      },
+        actions: {
+          items: [
+            {
+              href: "set-up/frequency?change=true&requirementIndex=" + loop.index0,
+              text: "Change",
+              visuallyHiddenText: "reporting frequency"
+            }
+          ]
+        }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Agreements and exceptions",
+        classes: 'govuk-!-padding-bottom-3'
+      },
+      value: {
+        text: requirement.settings | listFormat | capitalize,
+        classes: 'govuk-!-padding-bottom-3'
+      },
+        actions: {
+          items: [
+            {
+              href: "set-up/settings?change=true&requirementIndex=" + loop.index0,
+              text: "Change",
+              visuallyHiddenText: "agreements and exceptions"
+            }
+          ]
+        }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        html: buttonHtml | safe,
+        classes: 'govuk-!-padding-bottom-3'
+      },
+      value: {}
+
+    } if requirements.length > 1
+    ]
+    }) }}
+
+
+
+
+
+
+
+</section>
+
+{% endfor %}

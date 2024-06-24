@@ -1,0 +1,154 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select the reason for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form method="post" class="form">
+
+      {% set variationRadios %}
+      {{ govukRadios({
+        name: "variations",
+        items: [
+          {
+            value: "Administrative",
+            text: "Administrative",
+            checked: checked("variations", "Administrative"),
+            hint: {
+              text: "To change or correct a name or address or trading title"
+            }
+          },
+          {
+            value: "Minor",
+            text: "Minor",
+            checked: checked("variations", "Minor"),
+            hint: {
+              text: "Does not change the extent of the licence conditions"
+            }
+          },
+          {
+            value: "Normal",
+            text: "Normal",
+            checked: checked("variations", "Normal"),
+            hint: {
+              text: "Changing one or more conditions of the licence"
+            }
+          },
+          {
+            value: "Substantial",
+            text: "Substantial",
+            checked: checked("variations", "Substantial"),
+            hint: {
+              text: "Changes that require a full reassessment"
+            }
+          }
+        ]
+      }) }}
+      {% endset -%}
+
+
+
+
+
+
+
+
+
+
+
+      {% set variationsBoolean = false %}
+      {% if data.reasonNewRequirements and "variation" in data.reasonNewRequirements %}
+      {% set variationsBoolean = true %}
+      {% endif %}
+
+      {{ govukRadios({
+idPrefix: "reasonNewRequirements",
+name: "reasonNewRequirements",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+items: [
+{
+  value: "Change to a special agreement",
+  text: "Change to a special agreement",
+  checked: checked("reasonNewRequirements", "Change to a special agreement")
+},
+{
+  value: "Licence holder name or address change",
+  text: "Licence holder name or address change",
+  checked: checked("reasonNewRequirements", "Licence holder name or address change")
+},
+{
+  value: "Licence transferred and now chargeable",
+  text: "Licence transferred and now chargeable",
+  checked: checked("reasonNewRequirements", "Licence transferred and now chargeable")
+},
+{
+  value: "Limited extension of licence validity (LEV)",
+  text: "Limited extension of licence validity (LEV)",
+  checked: checked("reasonNewRequirements", "Limited extension of licence validity (LEV)")
+},
+{
+  value: "Major change",
+  text: "Major change",
+  checked: checked("reasonNewRequirements", "Major change")
+},
+{
+  value: "Minor change",
+  text: "Minor change",
+  checked: checked("reasonNewRequirements", "Minor change")
+},
+{
+  value: "New licence in part succession or licence apportionment",
+  text: "New licence in part succession or licence apportionment",
+  checked: checked("reasonNewRequirements", "New licence in part succession or licence apportionment")
+},
+{
+  value: "New licence",
+  text: "New licence",
+  checked: checked("reasonNewRequirements", "New licence")
+},
+{
+  value: "New special agreement",
+  text: "New special agreement",
+  checked: checked("reasonNewRequirements", "New special agreement")
+},
+{
+  value: "Succession or transfer of licence",
+  text: "Succession or transfer of licence",
+  checked: checked("reasonNewRequirements", "Succession or transfer of licence")
+},
+{
+  value: "Succession to a remainder licence or licence apportionment",
+  text: "Succession to a remainder licence or licence apportionment",
+  checked: checked("reasonNewRequirements", "Succession to a remainder licence or licence apportionment")
+}
+]
+}) }}
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

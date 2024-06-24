@@ -51,7 +51,7 @@
   <h1 class="govuk-heading-l">  <span class="govuk-caption-l">Licence 03/28/60/0032</span>
      Glindenfold Lake
     </h1>
-
+  
 
 <div class="govuk-!-margin-bottom-6">
   <p class="govuk-body">Registered to <a href="user-status" class="no-break">allthingsbeingeven@gmail.com</a></p>
@@ -90,7 +90,7 @@
     {% endif %}
     <li class="govuk-tabs__list-item" tabindex="0">
       <a class="govuk-tabs__tab" href="#charge">
-        Charge information
+        Licence set up
       </a>
     </li>
   </ul>
@@ -156,15 +156,22 @@
   <!-- tab 5 -->
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="charge">
 
-    <!--<h2 class="govuk-heading-l">
-      Charge information
-    </h2>-->
+   <h2 class="govuk-heading-l">
+      Licence set up
+    </h2>
 
 
 
     <section>
 
-{% include "current/includes/bd/billing.html" %}
+      {% include "current/includes/bd/returns-versions.html" %}
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+{% include "current/includes/bd/charge-information-sroc.html" %}
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+{% include "current/includes/bd/agreements.html" %}
 
     </section>
 

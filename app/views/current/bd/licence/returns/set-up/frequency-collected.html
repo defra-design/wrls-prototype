@@ -1,0 +1,71 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select how often readings or volumes are collected" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+  {# Frequency switch based on the answer for the specific requirement#}
+  {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequencyCollected'] %}
+      {% case 'daily' %}
+          {% set daily = true %}
+      {% case 'weekly' %}
+          {% set weekly = true %}
+      {% case 'monthly' %}
+          {% set monthly = true %}
+  {% endswitch %}
+
+
+
+  {{ govukRadios({
+    idPrefix: "frequencyCollected",
+    name: "frequencyCollected",
+    fieldset: {
+      legend: {
+        html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "daily",
+        text: "Daily",
+        checked: daily
+      },
+      {
+        value: "weekly",
+        text: "Weekly",
+        checked: weekly
+      },
+      {
+        value: "monthly",
+        text: "Monthly",
+        checked: monthly
+      }
+    ]
+  }) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

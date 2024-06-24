@@ -1,0 +1,65 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "How do you want to set up the requirements for returns?" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+
+{{ govukRadios({
+idPrefix: "howToSetUp",
+name: "howToSetUp",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+items: [
+{
+  value: "use abstraction data",
+  text: "Start by using abstraction data",
+  checked: checked("howToSetUp", "use abstraction data")
+},
+{
+  value: "copy existing requirements",
+  text: "Copy existing requirements",
+  checked: checked("howToSetUp", "copy existing requirements")
+} if data.licences[data.ID].returnsRequirements.length,
+{
+     divider: "or"
+   } if data.licences[data.ID].returnsRequirements.length,
+
+{
+  value: "set up the requirements manually",
+  text: "Set up the requirements manually",
+  checked: checked("howToSetUp", "create requirement manually")
+}
+]
+}) }}
+
+  <button type="submit" class="govuk-button govuk-!-margin-right-1">
+    Continue
+  </button>
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

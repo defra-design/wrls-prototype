@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% set title = "Add a note" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   useTudorCrown: true,
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- page heading -->
+    <span class="govuk-caption-l">Licence 03/28/60/0032</span>
+
+  </div>
+</div>
+
+
+<form method="post" class="form">
+
+  {{ govukCharacterCount({
+  name: "note",
+  id: "note",
+  maxlength: 500,
+  value: data.note,
+  label: {
+    text: [title],
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Provide a short explanation about the setup of these requirements for returns."
+  }
+}) }}
+
+
+
+    <button type="submit" class="govuk-button">
+      Confirm
+    </button>
+
+  </form>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Select agreements and exceptions for the requirements for returns" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<form method="post" class="form">
+
+
+{{ govukCheckboxes({
+idPrefix: "settings",
+name: "settings",
+fieldset: {
+  legend: {
+    html: '<span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title],
+    isPageHeading: false,
+    classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+  }
+},
+hint: {
+  text: "Select all that apply"
+},
+items: [
+    {
+      value: "gravity fill",
+      text: "Gravity fill",
+      checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("gravity fill")
+    },
+    {
+      value: "transfer re-absraction scheme",
+      text: "Transfer re-abstraction scheme",
+      checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("transfer re-abstraction scheme")
+    },
+    {
+      value: "two-part tariff",
+      text: "Two-part tariff",
+      hint: {
+        text: "requires daily collection"
+      },
+      checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("two-part tariff")
+    },
+    {
+      value: "56 returns exception",
+      text: "56 returns exception",
+      checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("56 returns exception")
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "none",
+      text: "None",
+      behaviour: "exclusive",
+        checked:  data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['settings'] | arrayIncludes ("none")
+    }
+]
+}) }}
+
+
+
+<button type="submit" class="govuk-button govuk-!-margin-right-1">
+  Continue
+</button>
+
+
+</form>
+</div>
+</div>
+
+
+    {% endblock %}

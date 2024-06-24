@@ -1,0 +1,57 @@
+{# set the URL for the reason question based on whether returns are required or not #}
+{% if data['returnsNotRequired'] == true %}
+{% set reasonURL = "set-up/reason-not-required?change=true"%}
+{% else %}
+{% set reasonURL = "set-up/reason?change=true"%}
+{% endif %}
+
+<section class="govuk-!-margin-bottom-9">
+
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-2',
+rows: [
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[0]['startDate'] | numberToGovukDate
+    },
+    actions: {
+      items: [
+        {
+          href: "set-up/start-date?change=true",
+          text: "Change",
+          visuallyHiddenText: "the start date for the return requirement"
+        }
+      ]
+    }
+  },
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Reason"
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[0]['reason'] | capitalize
+    },
+    actions: {
+      items: [
+        {
+          href: reasonURL,
+          text: "Change",
+          visuallyHiddenText: "the reason for the return requirement"
+        }
+      ]
+    }
+  }   
+]
+}) }}
+
+
+<hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+</section>

@@ -1,0 +1,148 @@
+{% set requirements = data.licences[data.ID].returnsRequirements[0]['requirements'] %}
+
+{# if route 2 is chosen #}
+{% if data['returnsRouteVersion'] == 2 %}
+{# if route 2 is chosen, check to see if the licence has more than one use #}
+{% if data.licences[data.ID].use.length == 1 %}
+    {# if there is only 1 use, check to see if there are multiple points #}
+    {% if data.licences[data.ID].use[0].points.length >= 2 %}
+    {% set routeFolder = "set-up/V2/all-points" %}
+    {% else %}
+    {% set routeFolder = "set-up/V2/description" %}
+    {% endif %}
+{% else %}
+{% set routeFolder = "set-up/V2/purpose" %}
+{% endif %}
+
+{% else %}
+{% set routeFolder = "set-up/use" %}
+{% endif %}
+
+
+{% for requirement in requirements %}
+
+
+<section class="govuk-!-margin-bottom-9">
+
+<span class="govuk-caption-l ">Return ID {{requirement.id}}</span>
+<div class="govuk-summary-list govuk-!-margin-bottom-2">
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-2 " >{{requirement.season |capitalize}} return requirement, {{requirement.description}}</h2>
+
+
+<span class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-body"  href="{{routeFolder}}?change=true&requirementIndex={{loop.index0}}">
+                Change<span class="govuk-visually-hidden"> the return requirement, Return ID {{requirement.id}}</span>
+                </a>
+</span>
+</div>
+
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-2',
+  rows: [
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Description"
+      },
+      value: {
+        text: requirement.description
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Frequency",
+        classes: 'govuk-!-padding-bottom-8'
+      },
+      value: {
+        text: requirement.frequency | capitalize,
+        classes: 'govuk-!-padding-bottom-8'
+      }
+    }
+    ]
+    }) }}
+
+
+    {% for i in requirement.uses %}
+
+    {% set class = "govuk-!-padding-bottom-8" %}
+    {% if loop.last %}
+    {% set class = "" %}
+    {% endif %}
+
+
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-2',
+    rows: [
+
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Purpose"
+      },
+      value: {
+        text: i.purpose
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: i.points | plural("Point")
+      },
+      value: {
+        text: i.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Abstraction period"
+      },
+      value: {
+        text: i.periodStart  | mmddToDate + " to " + i.periodEnd  | mmddToDate
+      }
+    },
+    {
+      classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+      key: {
+        text: "Amount"
+      },
+      value: {
+        text: i.amount + " Cubic metres per day",
+        classes: class
+      }
+    }
+    ]
+    }) }}
+
+
+
+{% endfor %}
+
+
+<hr class="govuk-section-break  govuk-!-margin-bottom-4 govuk-section-break--visible">
+
+
+
+{{ govukButton({
+text: "Add another requirement",
+classes: "govuk-button--secondary govuk-!-margin-right-6",
+href: routeFolder + "?requirementIndex="
+}) }}
+
+
+{% if requirements.length > 1 %}
+{{ govukButton({
+text: "Remove requirement",
+classes: "govuk-button--secondary govuk-!-margin-right-6",
+href: "confirm-remove-requirement?requirementIndex=" + loop.index0
+}) }}
+{% endif %}
+
+</section>
+
+{% endfor %}
