@@ -9,6 +9,9 @@ rows: [
       classes: 'govuk-heading-m govuk-!-width-one-half'
     }
   },
+
+  
+
   {
     classes: 'govuk-summary-list govuk-summary-list__row--no-border',
     key: {
@@ -16,7 +19,19 @@ rows: [
       classes: 'govuk-!-padding-bottom-3'
     },
     value: {
-      text: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("multiple upload") | submissionOptions,
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['additionalSubmissionOptions'] | arrayIncludes ("multiple upload") | submissionOptions,
+      classes: 'govuk-!-padding-bottom-3'
+    }
+  },
+
+  {
+    classes: 'govuk-summary-list govuk-summary-list__row--no-border',
+    key: {
+      text: "Quarterly return submissions",
+      classes: 'govuk-!-padding-bottom-3'
+    },
+    value: {
+      text: data.licences[data.ID].returnsRequirements[data.returnVersionNumber]['additionalSubmissionOptions'] | arrayIncludes ("quarterly return submissions") | submissionOptions,
       classes: 'govuk-!-padding-bottom-3'
     }
   }

@@ -2347,6 +2347,141 @@ module.exports = {
               ],
 
             },
+            //licence 12 
+            //ID11
+            {
+              "number": "100/22/33/0123",
+              "name": "",
+              "holder": "Public Water Plc",
+              "startDate": "19 January 2018",
+              "endDate": "30 March 2030",
+              "effectiveDate": "19 January 2018",
+              "expired": "false",
+              "billingRegion": "Southern",
+      
+              //licence Settings
+              "multipleUpload": "yes",
+              "confidentiality": "public",
+      
+              "source": "Groundwater.",
+              "purpose": ["Potable Water Supply - Direct"],
+              "absPeriod": ["1 April to 31 October"],
+              "means": ["Unspecified pump"],
+      
+              "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126", "At National Grid Reference SK 675130", "At National Grid Reference SK 675135"],
+              "gridRefs": [ "SK675124", "SK675126", "SK 675130", "SK 675135"],
+              "absConditions": [
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0", "1", "2", "3"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "73.4Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 73.4Ml/d."
+               }
+             ],
+              "absQuantities": "6000000.00 cubic metres per year~30000.00 cubic metres per day",
+      
+              "use": [{
+                      "purpose": "Potable Water Supply - Direct",
+                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY SP1)", "At National Grid Reference SK 675 126 (RIVER SWALE - HELPERBY SP2)", "At National Grid Reference SK 675130 (RIVER SWALE - HELPERBY SP3)", "At National Grid Reference SK 675135 (RIVER SWALE - HELPERBY SP4)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"12271.581",
+                      "timeLimit": "No"
+                    }],
+      
+                     //Previous versions of the licence data
+                     "previousVersions": [
+                      { }
+                    ],
+      
+              "returnsRequirements":  [{
+                                      "startDate":"20180119",
+                                      "endDate":"",
+                                      "reason":"New licence",
+                                      "status":"approved",
+                                      "additionalSubmissionOptions": ["multiple upload", "quarterly return submissions"],
+                                      "username":"username@defra.gov.uk",
+                                      "note":"",
+                                      "requirements":[{
+                                                      "id":772318,
+                                                      "returnsCycle":"winter and all year",
+                                                      "description":"River Swale - Helperby SP1,2,3,4,5 (GW)",
+                                                      "frequencyCollected":"daily",
+                                                      "frequency":"daily",
+                                                      "purpose":["Potable Water Supply Direct"],
+                                                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY SP1)", "At National Grid Reference SK 675 126 (RIVER SWALE - HELPERBY SP2)", "At National Grid Reference SK 675130 (RIVER SWALE - HELPERBY SP3)", "At National Grid Reference SK 675135 (RIVER SWALE - HELPERBY SP4)"],
+                                                      "periodStart":"0401",
+                                                      "periodEnd":"0331",
+                                                      "timeLimit": "No",
+                                                      "settings":["none"],
+                                                        }]
+                                          },
+                                        ],
+      
+      
+                                        "returns": [{
+                                                      "id":772318,
+                                                      "status": "due",
+                                                      "due": "20240728",
+                                                      "returnsCycle":"winter and all year",
+                                                      "description":"River Swale - Helperby SP1,2,3,4,5 (GW)",
+                                                      "frequency": "daily",
+                                                      "purpose":["Potable Water Supply Direct"],
+                                                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY SP1)", "At National Grid Reference SK 675 126 (RIVER SWALE - HELPERBY SP2)", "At National Grid Reference SK 675130 (RIVER SWALE - HELPERBY SP3)", "At National Grid Reference SK 675135 (RIVER SWALE - HELPERBY SP4)"],
+                                                      "periodStart":"0401",
+                                                      "periodEnd":"0331",
+                                                      "returnsPeriodStart":"20240401",
+                                                      "returnsPeriodEnd":"20240630",
+                                                    }
+                                                    ],
+      
+              "chargeInformation": [{
+                  "chargeStart": "19 January 2018",
+                  "chargeEnd": "",
+                  "chargeStatus": "CHARGEABLE",
+                  "chargeBilledDate": "31 March 2021",
+                  "free": "false",
+                  "reasonNewCharge": "New licence",
+                  "setUpBy": "	jo.langton@madeup.com",
+                },
+              ],
+      
+              "agreements": [],
+      
+              "communications": [{
+                  "type": "resume - Water abstraction alert",
+                  "sent": "5 June 2020",
+                  "sender": "tim.teace@defra.gov.uk",
+                  "method": "letter",
+                  "watercourse": "Hull",
+                  "gaugingStation": "Helmspholme",
+                  "flowThreshold": "45.5",
+                  "contactEmail": "something@somewhere.co.uk",
+                },
+                {
+                  "type": "stop - Water abstraction alert",
+                  "sent": "17 April 2020",
+                  "sender": "tim.teace@defra.gov.uk",
+                  "method": "letter",
+                  "watercourse": "Hull",
+                  "gaugingStation": "Helmspholme",
+                  "flowThreshold": "45.5",
+                  "contactEmail": "something@somewhere.co.uk",
+                },
+                {
+                  "type": "warning - Water abstraction alert",
+                  "sent": "30 March 2020",
+                  "sender": "tim.teace@defra.gov.uk",
+                  "method": "letter",
+                  "watercourse": "Hull",
+                  "gaugingStation": "Helmspholme",
+                  "flowThreshold": "45.5",
+                  "contactEmail": "something@somewhere.co.uk",
+                },
+      
+              ],
+            },
     ],
 
     //Billinga account ID
@@ -2371,6 +2506,11 @@ module.exports = {
       {
         "number": "BA839340P",
         "customer": "D.B. Beecham-Smith",
+        "billingContact": "",
+      },
+      {
+        "number": "BA1232412",
+        "customer": "Public Water Plc",
         "billingContact": "",
       },
     ],
@@ -2406,6 +2546,10 @@ module.exports = {
       },
       {
         "name": "D.B. Beecham-Smith",
+        "WAA": "post",
+      },
+      {
+        "name": "Public Water Plc",
         "WAA": "post",
       }
     ],

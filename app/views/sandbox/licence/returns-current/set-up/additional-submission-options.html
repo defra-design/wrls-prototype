@@ -36,10 +36,16 @@ hint: {
   text: "Select all that apply"
 },
 items: [
+
     {
       value: "multiple upload",
       text: "Multiple upload",
       checked:  data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("multiple upload")
+    },
+    {
+      value: "quarterly return submissions",
+      text: "Quarterly return submissions",
+      checked:  data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("quarterly return submissions")
     },
     {
       divider: "or"
