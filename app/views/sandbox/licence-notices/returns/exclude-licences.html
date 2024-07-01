@@ -1,0 +1,52 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Do you want to send quarterly returns " + data.returnNotificationType + "?" %}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+      <h1 class="govuk-heading-l">Send returns {{data.returnNotificationType}}</h1>
+
+      {{ govukTextarea({
+      name: "excludeLicences",
+      id: "excludeLicences",
+      label: {
+      text: "Enter the licence numbers which you want to exclude from this mailing list",
+      classes: "govuk-label--s",
+      isPageHeading: true
+      },
+      hint: {
+      text: "Separate the licence numbers with a comma or new line."
+      }
+      }) }}
+
+      <p class="govuk-body">This will assemble the mailing list. It will not send the letters yet.</p>
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

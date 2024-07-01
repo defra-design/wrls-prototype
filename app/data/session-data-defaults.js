@@ -431,7 +431,7 @@ module.exports = {
     "returnVersion": "",
     "success" : 0,
     "successMessage" : "",
-    "returnsRouteVersion" : 1,
+    "returnsRouteVersion" : 3,
     "returnsNotRequired" : false,
 
 "licenceID" : 0,
@@ -2481,6 +2481,89 @@ module.exports = {
                 },
       
               ],
+            },
+            //licence 13 
+            //ID12
+            {
+              "number": "200/20/23/0111",
+              "name": "",
+              "holder": "Public Water Plc",
+              "startDate": "1 April 2024",
+              "endDate": "31 March 2032",
+              "effectiveDate": "1 April 2024",
+              "expired": "false",
+              "billingRegion": "Southern",
+      
+              //licence Settings
+              "multipleUpload": "yes",
+              "confidentiality": "public",
+      
+              "source": "Groundwater.",
+              "purpose": ["Potable Water Supply - Direct"],
+              "absPeriod": ["1 April to 31 October"],
+              "means": ["Unspecified pump"],
+      
+              "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126", "At National Grid Reference SK 675130", "At National Grid Reference SK 675135"],
+              "gridRefs": [ "SK675124", "SK675126", "SK 675130", "SK 675135"],
+              "absConditions": [
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0", "1", "2", "3"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "73.4Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 73.4Ml/d."
+               }
+             ],
+              "absQuantities": "6000000.00 cubic metres per year~30000.00 cubic metres per day",
+      
+              "use": [{
+                      "purpose": "Potable Water Supply - Direct",
+                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY SP1)", "At National Grid Reference SK 675 126 (RIVER SWALE - HELPERBY SP2)", "At National Grid Reference SK 675130 (RIVER SWALE - HELPERBY SP3)", "At National Grid Reference SK 675135 (RIVER SWALE - HELPERBY SP4)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"12271.581",
+                      "timeLimit": "No"
+                    }],
+      
+                     //Previous versions of the licence data
+                     "previousVersions": [
+                      { }
+                    ],
+      
+              "returnsRequirements":  [],
+      
+      
+                                        "returns": [],
+      
+              "chargeInformation": [{
+                  "chargeStart": "1 April 2024",
+                  "chargeEnd": "",
+                  "chargeStatus": "CHARGEABLE",
+                  "chargeBilledDate": "31 March 2025",
+                  "free": "false",
+                  "reasonNewCharge": "New licence",
+                  "setUpBy": "	jo.langton@madeup.com",
+                  "elements": [{
+                                "purpose": "Potable Water Supply - Direct",
+                                "description":"River Swale - Helperby SP1,2,3,4,5 (GW)",
+                                "abstractionStartDay": "1",
+                                "abstractionStartMonth": "4",
+                                "abstractionEndDay": "31",
+                                "abstractionEndMonth": "3",
+                                "billableQuantity": "12271.581",
+                                "authorisedQuantity": "12271.581",
+                                "timeLimit": "No",
+                                "source": "Unsupported",
+                                "season": "Winter and all year",
+                                "loss": "High",
+                                }
+                  ],
+                },
+              ],
+      
+              "agreements": [],
+      
+              "communications": [],
             },
     ],
 

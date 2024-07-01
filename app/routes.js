@@ -24,6 +24,12 @@ console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subf
 });
 */
 
+router.use('/', (req, res, next) => {
+  req.session.data.url = req.url; //current screen
+  //console.log(req.url);
+  next();
+});
+
 // Start folder specific routes
 
 // Sandbox, remember to add older sprint when adding a new folder!

@@ -1,0 +1,57 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Select the type of returns " + data.returnNotificationType + " to send" %}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form method="post" novalidate>
+
+      {{ govukRadios({
+      idPrefix: "returnType",
+      name: "returnType",
+      fieldset: {
+      legend: {
+      text: [qTitle]|safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "quarterly return submissions",
+      text: "Quarterly return submissions"
+      },
+      {
+      value: "summer or winter and all year return submissions",
+      text: "Summer or Winter and all year return submissions"
+      }
+      ]
+      }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

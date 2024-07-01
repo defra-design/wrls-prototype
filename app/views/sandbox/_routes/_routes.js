@@ -52,7 +52,7 @@ router.use('/', (req, res, next) => {
 
 //Empty table filters
 function emptyFilters(req,res){
-console.log("emptying filters")
+//console.log("emptying filters")
 
   //empty filters TpT
 req.session.data.status = ""

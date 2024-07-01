@@ -1,21 +1,36 @@
+{% set "nav-search" = "" %}
+{% set "nav-bill-runs" = "" %}
+{% set "nav-manage" = "" %}
+
+
+{% if  ("manage" in data.url) or ("licence-notices" in data.url)  %}
+{% set "navManage" = "navbar__link--active" %}
+{% elif "bill-runs" in data.url%}
+{% set "navBillRuns" = "navbar__link--active" %}
+{% else %}
+{% set "navSearch" = "navbar__link--active" %}
+{% endif %}
+
+
 <!-- navigation pattern -->
 <nav id="nav" class="navbar">
    <ul class="navbar__list">
 
      <li class="navbar__item">
-       <a class="navbar__link  navbar__link--active govuk-link--no-visited-state" href="/sandbox/home-search" id="view">
+       <a class="navbar__link {{navSearch}} govuk-link--no-visited-state" href="/sandbox/home-search" id="view">
          Search
+        
        </a>
      </li>
 
      <li class="navbar__item">
-      <a class="navbar__link  govuk-link--no-visited-state" href="/sandbox/bill-runs?search=" id="bill-runs">
+      <a class="navbar__link {{navBillRuns}} govuk-link--no-visited-state" href="/sandbox/bill-runs?search=" id="bill-runs">
         Bill runs
       </a>
     </li>
 
      <li class="navbar__item">
-       <a class="navbar__link govuk-link--no-visited-state" href="/sandbox/manage?search=" id="manage">
+       <a class="navbar__link {{navManage}} govuk-link--no-visited-state" href="/sandbox/manage?search=" id="manage">
          Manage
        </a>
      </li>

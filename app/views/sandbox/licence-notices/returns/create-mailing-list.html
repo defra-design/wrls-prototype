@@ -1,0 +1,39 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Do you want to send quarterly returns " + data.returnNotificationType + "?" %}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-l">Send returns {{data.returnNotificationType}}</h1>
+
+    <p class="govuk-body-l">Please wait while the mailing list is assembled. This may take a few minutes. The letters
+      will not be sent yet.</p>
+
+    <div class="spinner govuk-!-margin-bottom-0"></div>
+
+
+  </div>
+</div>
+
+
+<script language="javascript" type="text/javascript">
+  window.setTimeout('location.replace("/sandbox/licence-notices/returns/send-returns")', 4000);
+</script>
+
+{% endblock %}

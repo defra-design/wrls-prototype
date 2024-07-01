@@ -419,8 +419,8 @@ function createReturns(req,res) {
   for (const [i, v] of requirements.entries()) {
 
   let id = v.id
-  let status = "open"
-  let due = "20230428"
+  let status = "due"
+  let due = "20240728"
   let returnsCycle = v.returnsCycle
   let description = v.description
   let title = v.title
@@ -430,8 +430,8 @@ function createReturns(req,res) {
   let points = v.points
   let periodStart = v.periodStart
   let periodEnd = v.periodEnd
-  let returnsPeriodStart = "20220401"
-  let returnsPeriodEnd = "20230331"
+  let returnsPeriodStart = "20240401"
+  let returnsPeriodEnd = "20240630"
 
   let newReturn = {
     id,

@@ -27,14 +27,64 @@ const today = `${dd} ${mm} ${yyyy}`;
 
 
 
+
+
+
+
 //Send a water abstraction alert
 const folder = "sandbox/licence-notices/"
 
 
 
+/////RETURN INVITES AND REMINDERS//////
+//select the type of alert
+router.get('/returns/send-quarterly-returns', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'returns/send-quarterly-returns');
+});
+
+router.post('/returns/send-quarterly-returns', function(req, res) {
+  res.redirect('exclude-licences');
+});
+
+//exclude some licences
+router.get('/returns/exclude-licences', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'returns/exclude-licences');
+});
+
+router.post('/returns/exclude-licences', function(req, res) {
+  res.redirect('create-mailing-list');
+});
+
+//create mailing list
+router.get('/returns/create-mailing-list', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'returns/create-mailing-list');
+});
+
+//send returns
+router.get('/returns/send-returns', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'returns/send-returns');
+});
+
+router.post('/returns/send-returns', function(req, res) {
+  res.redirect('returns-sent');
+});
+
+//returns sent
+router.get('/returns/returns-sent', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'returns/returns-sent');
+});
+
+/////////WATER ABSTRACTION ALERTS//////////////
+
 //select the type of alert
 router.get('/send-a-water-abstraction-alert/select-the-type-of-alert', function(req, res) {
   req.session.data.back = req.headers.referer
+  console.log("something")
   res.render(folder + 'send-a-water-abstraction-alert/select-the-type-of-alert');
 });
 
