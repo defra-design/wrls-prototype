@@ -220,3 +220,28 @@ addFilter('submissionOptions', function submissionOptions(x) {
   }
 
 });
+
+
+
+addFilter('formatDate', function formatDate(dateString) {
+  // Split the date string into components
+  const parts = dateString.split(" ");
+  if (parts.length !== 3) {
+    throw new Error("Invalid date format. Expected 'D Month YYYY'");
+  }
+
+  // Extract day, month (0-indexed), and year
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1; // Months are 0-indexed
+  const year = parseInt(parts[2], 10);
+
+  // Create a Date object
+  const date = new Date(year, month, day);
+
+  // Use toISOString() to format in yyyy-MM-dd (with separator as -)
+  // Split and remove time portion (after 'T')
+  const formattedDate = date.toISOString().split("T")[0];
+
+  // Return the formatted date (yyyymmdd)
+  return formattedDate.replace(/-/g, "");
+});

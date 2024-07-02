@@ -19,11 +19,11 @@ if (mm < 10) {
 
 //change the month into a name
 let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-mm = monthNames[mm - 1]
+monthName = monthNames[mm - 1]
 
-const today = `${dd} ${mm} ${yyyy}`;
+const today = `${dd} ${monthName} ${yyyy}`;
 
-
+const todayNumber = `${yyyy}${mm}${dd}`;
 
 
 
@@ -70,8 +70,121 @@ router.get('/returns/send-returns', function(req, res) {
 });
 
 router.post('/returns/send-returns', function(req, res) {
-  res.redirect('returns-sent');
+
+ 
+
+
+    //getting the notification
+    let notifications = req.session.data['notifications']
+  
+    //getting the contact data
+    let contacts = req.session.data['contacts']
+    //get the licence data
+    let licences = req.session.data['licences']
+    //get the address data
+    let addresses = req.session.data['addresses']
+    // declare recipients
+    let recipients = [];
+    //declare Communications
+    let communications = [];
+  
+    //loop through the licences in the alert and add the recipient details to an object.
+    //licenceList = req.session.data['licenceList']
+  
+  
+    let licenceHolder = ""
+    let address = ""
+    let licenceNumber = ""
+    let method = ""
+    let sentTo = ""
+    let status = "sent"
+  
+  
+    //add details for the notification
+    let type = req.session.data['waaType']
+    let sent = today
+    let sender = "youremailaddress@defra.gov.uk"
+    let contactEmail = req.session.data['contactEmail']
+  
+  
+      //loop through the contacts and set the contact index to the loop index
+      for (var [contactIndex, contact] of contacts.entries()) {
+  
+        let contactCustomers = contact.customers
+
+  
+    }
+  
+  
+  
+    //add details for the notification
+    let date = todayNumber
+    let notification = "Returns: " + req.session.data.returnNotificationType
+    let sentBy = "youremailaddress@defra.gov.uk"
+    let numberOfrecipients = "2"
+    let problems = ""
+  
+   recipients = [{
+        "licenceNumber": "200/20/23/0111, 100/22/33/0123",
+        "sentTo": "Public Water Limited,FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
+        "method": "Letter",
+        "status": "Sent",
+      }]
+
+
+    let newNotification = {
+      date,
+      notification,
+      sentBy,
+      numberOfrecipients,
+      recipients,
+      problems
+    };
+  
+    notifications.unshift(newNotification);
+  
+  
+  
+    //add the communication details to the licences
+
+    let licenceList = [{licenceNumber:"200/20/23/0111"},{licenceNumber:"100/22/33/0123"},]
+  
+    for (i of licenceList) {
+  console.log(i.licenceNumber);
+
+  let type = notification
+  let sent = today
+  let sender =  "youremailaddress@defra.gov.uk"
+  let method = "letter"
+  let sentTo = "Public Water Limited,FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE"
+
+  let newCommunication = {
+    type,  
+    sent,
+    sender,
+    method,
+    sentTo 
+  }
+
+  const index = licences.findIndex(obj => obj.number === i.licenceNumber);
+ console.log(index)
+
+  req.session.data.licences[index].communications.unshift(newCommunication);
+  
+    }
+  
+  
+    //clear selected licences
+    req.session.data.selectedLicences = []
+  
+
+    res.redirect('returns-sent');
+  
+  
 });
+
+
+
 
 //returns sent
 router.get('/returns/returns-sent', function(req, res) {
