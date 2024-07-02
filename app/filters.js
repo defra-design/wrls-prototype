@@ -232,15 +232,24 @@ addFilter('formatDate', function formatDate(dateString) {
 
   // Extract day, month (0-indexed), and year
   const day = parseInt(parts[0], 10);
-  const month = parseInt(parts[1], 10) - 1; // Months are 0-indexed
+  const monthNames = { // Map month names to numeric values (0-indexed)
+    January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
+    July: 6, August: 7, September: 8, October: 9, November: 10, December: 11
+  };
+  console.log(parts[1])
+  const month = monthNames[parts[1]]; // Check for valid month name (-1 for invalid)
   const year = parseInt(parts[2], 10);
 
-  // Create a Date object
-  const date = new Date(year, month, day);
+  // Validate month and year
+  if (month === -1 || year < 1000 || year > 9999) {
+    throw new Error("Invalid date. Check month and year format.");
+  }
 
-  // Use toISOString() to format in yyyy-MM-dd (with separator as -)
-  // Split and remove time portion (after 'T')
-  const formattedDate = date.toISOString().split("T")[0];
+  // Create a Date object with UTC time (avoids time zone issues)
+  const utcDate = new Date(Date.UTC(year, month, day));
+
+  // Use toISOString() to format in yyyy-MM-dd format (handles both valid and invalid dates)
+  const formattedDate = utcDate.toISOString().split("T")[0];
 
   // Return the formatted date (yyyymmdd)
   return formattedDate.replace(/-/g, "");
