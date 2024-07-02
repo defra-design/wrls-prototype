@@ -2498,7 +2498,7 @@ module.exports = {
               "multipleUpload": "yes",
               "confidentiality": "public",
       
-              "source": "Groundwater.",
+              "source": "Inland water known as the River Swale at Helperby",
               "purpose": ["Potable Water Supply - Direct"],
               "absPeriod": ["1 April to 31 October"],
               "means": ["Unspecified pump"],
