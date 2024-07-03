@@ -219,8 +219,8 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
   title = req.session.data.licences[licence].use[i].purpose + ", " + req.session.data.licences[licence].source
   purpose = [req.session.data.licences[licence].use[i].purpose]
   points = req.session.data.licences[licence].use[i].points
-  frequency = "monthly"
-  frequencyCollected = "monthly"
+  frequency = "daily"
+  frequencyCollected = "daily"
   settings = ["none"]
   periodStart = req.session.data.licences[licence].use[i].periodStart
  periodEnd = req.session.data.licences[licence].use[i].periodEnd
