@@ -48,7 +48,7 @@
       text:  requirement.purpose | length | plural ("Purpose", showNumber=false)
     },
     value: {
-      text: requirement.purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+      text: requirement.purposeAndDescription | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
     }
   },
   {

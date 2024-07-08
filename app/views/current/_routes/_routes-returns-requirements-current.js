@@ -87,6 +87,8 @@ function createReturnRequirement(req, res) {
 
   //set scope of purpose, points, amount, periodStart and periodEnd
   let purpose = req.session.data.purpose
+  let purposeDescription = []
+  let purposeAndDescription = req.session.data.purpose
   let points = req.session.data.points
   let periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0')
   let periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0')
@@ -121,6 +123,8 @@ function createReturnRequirement(req, res) {
     settings,
     title,
     purpose,
+    purposeDescription,
+    purposeAndDescription,
     points,
     periodStart,
     periodEnd,
@@ -193,6 +197,8 @@ function createReturnRequirementsFromAbsData(req, res) {
   let  description = ""
   let  title = ""
   let  purpose = []
+  let  purposeDescription = []
+  let  purposeAndDescription = []
   let  points = []
   let  frequency = ""
   let  frequencyCollected = ""
@@ -217,7 +223,9 @@ for (const [i, v] of req.session.data.licences[licence].use.entries()) {
 }
  description =   req.session.data.licences[licence].source
   title = req.session.data.licences[licence].use[i].purpose + ", " + req.session.data.licences[licence].source
+  purposeDescription = []
   purpose = [req.session.data.licences[licence].use[i].purpose]
+  purposeAndDescription = [req.session.data.licences[licence].use[i].purpose]
   points = req.session.data.licences[licence].use[i].points
   frequency = "monthly"
   frequencyCollected = "monthly"
@@ -242,6 +250,8 @@ if (periodStart <= "1031" && periodStart >= "0401" && periodEnd <= "1031" && per
     frequencyCollected,
     settings,
     purpose,
+    purposeDescription,
+    purposeAndDescription,
     points,
     periodStart,
     periodEnd,
@@ -359,7 +369,7 @@ function updateReturnRequirement(req, res) {
   //console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
 
   //if they have data then update
-  if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose }
+  if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose, returnsRequirements.purposeAndDescription = req.session.data.purposeAndDescription, returnsRequirements.purposeDescription = req.session.data.purposeDescription }
   if (points && typeof points !== "undefined") { returnsRequirements.points = req.session.data.points }
   if (abstractionStartMonth && typeof abstractionStartMonth !== "undefined") { returnsRequirements.periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0') }
   if (abstractionEndMonth && typeof abstractionEndMonth !== "undefined") { returnsRequirements.periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0') }
@@ -427,6 +437,7 @@ function createReturns(req,res) {
   let frequency = v.frequency
   let settings = v.settings
   let purpose = v.purpose
+  let purposeDescription = v.purposeDescription
   let points = v.points
   let periodStart = v.periodStart
   let periodEnd = v.periodEnd
@@ -443,6 +454,7 @@ function createReturns(req,res) {
     frequency,
     settings,
     purpose,
+    purposeDescription,
     points,
     periodStart,
     periodEnd,
@@ -713,6 +725,27 @@ router.get('/purpose', function(req, res) {
 router.post('/set-up/purpose', function(req, res) {
 
 
+ 
+  function appendCorrespondingItems(arr1, arr2) {
+    const arr3 = [];
+  // Use a for loop to iterate through the shorter array's length
+  for (let i = 0; i < Math.min(arr1.length, arr2.length); i++) {
+    // Check if the description is empty
+    if (arr2[i] == "") {
+      // If there isn't a description push the purpose only
+    arr3.push(arr1[i]); 
+  } else {
+    //If there is a description
+    arr3.push(arr1[i] + " (" + arr2[i] + ")"); // Combine elements with a space and brackets separator
+  }
+}
+
+  return arr3;
+}
+
+req.session.data.purposeAndDescription = appendCorrespondingItems(req.session.data.purpose, req.session.data.purposeDescription);
+console.log(req.session.data.purpose)
+  
  //check if the route is from changing existing data or not
  let change = req.session.data.change
  //get the return requirement

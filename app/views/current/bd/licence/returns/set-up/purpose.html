@@ -41,18 +41,34 @@
 
 {# if use has already been selected push an array of the already selected items and then in the loop compare the array to see if the purpose is a match if so, check the box#}
  {% set selectedUse = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['purpose']%}
+ {% set selectedUseDescription = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['purposeDescription']%}
 
 
+
+ {% set purposeDescriptionHTML %}
+ {{ govukInput({
+   id: "purposeDescription",
+   name: "purposeDescription",
+   classes: "govuk-!-width-one-third",
+   label: {
+     text: "Add a purpose description (optional)"
+   },
+   value: selectedUseDescription[loop.index0]
+ }) }}
+ {% endset -%}
 
 
   {% set selectItems = selectItems | push({
     value: item,
     text: item,
-    checked: selectedUse |arrayIncludes (item)
+    checked: selectedUse |arrayIncludes (item),
+    conditional: {
+      html: purposeDescriptionHTML
+    }
   }) %}
 
-
 {% endfor %}
+
 
 
 {{ govukCheckboxes({
