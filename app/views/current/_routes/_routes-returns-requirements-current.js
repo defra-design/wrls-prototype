@@ -355,6 +355,7 @@ function updateReturnRequirement(req, res) {
 
   //set the variables
   let purpose = req.session.data.purpose
+  let purposeDescription = req.session.data.purposeDescription
   let points = req.session.data.points
   let abstractionStartMonth = req.session.data.abstractionStartMonth
   let abstractionEndMonth = req.session.data.abstractionEndMonth
@@ -368,8 +369,11 @@ function updateReturnRequirement(req, res) {
 
   //console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
 
+console.log(req.session.data.purposeAndDescription)
+
   //if they have data then update
-  if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose, returnsRequirements.purposeAndDescription = req.session.data.purposeAndDescription, returnsRequirements.purposeDescription = req.session.data.purposeDescription }
+  if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose }
+  if (purposeDescription && typeof purposeDescription !== "undefined")  { console.log("updating purpose description"), returnsRequirements.purposeAndDescription = req.session.data.purposeAndDescription, returnsRequirements.purposeDescription = req.session.data.purposeDescription}
   if (points && typeof points !== "undefined") { returnsRequirements.points = req.session.data.points }
   if (abstractionStartMonth && typeof abstractionStartMonth !== "undefined") { returnsRequirements.periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0') }
   if (abstractionEndMonth && typeof abstractionEndMonth !== "undefined") { returnsRequirements.periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0') }
@@ -387,6 +391,7 @@ function updateReturnRequirement(req, res) {
 
 
   req.session.data.purpose = ""
+  req.session.data.purposeDescription = ""
   req.session.data.points = ""
   req.session.data.abstractionStartMonth = ""
   req.session.data.abstractionEndMonth = ""
@@ -725,26 +730,41 @@ router.get('/purpose', function(req, res) {
 router.post('/set-up/purpose', function(req, res) {
 
 
- 
+
   function appendCorrespondingItems(arr1, arr2) {
     const arr3 = [];
+
+
+    function removeEmptyStrings(arr) {
+      return arr.filter(item => item !== ""); // Keep only items that are not empty strings
+    }
+    //remove empty items from arr2 before appending
+    const newArr2 = removeEmptyStrings(arr2);
+    
+
   // Use a for loop to iterate through the shorter array's length
-  for (let i = 0; i < Math.min(arr1.length, arr2.length); i++) {
+  for (let i = 0; i < Math.min(arr1.length, newArr2.length); i++) {
     // Check if the description is empty
-    if (arr2[i] == "") {
+    if (newArr2[i] == "") {
       // If there isn't a description push the purpose only
     arr3.push(arr1[i]); 
   } else {
     //If there is a description
-    arr3.push(arr1[i] + " (" + arr2[i] + ")"); // Combine elements with a space and brackets separator
+    arr3.push(arr1[i] + " (" + newArr2[i] + ")"); // Combine elements with a space and brackets separator
   }
 }
 
   return arr3;
 }
 
+
+
+
+console.log(req.session.data.purposeDescription)
 req.session.data.purposeAndDescription = appendCorrespondingItems(req.session.data.purpose, req.session.data.purposeDescription);
-console.log(req.session.data.purpose)
+//console.log(req.session.data.purpose)
+//console.log(req.session.data.purposeDescription)
+//console.log(req.session.data.purposeAndDescription)
   
  //check if the route is from changing existing data or not
  let change = req.session.data.change
