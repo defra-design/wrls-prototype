@@ -369,7 +369,7 @@ function updateReturnRequirement(req, res) {
 
   //console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
 
-console.log(req.session.data.purposeAndDescription)
+//console.log(req.session.data.purposeAndDescription)
 
   //if they have data then update
   if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose }
@@ -753,6 +753,11 @@ router.post('/set-up/purpose', function(req, res) {
     arr3.push(arr1[i] + " (" + newArr2[i] + ")"); // Combine elements with a space and brackets separator
   }
 }
+//console.log(arr3)
+    //handles no purpose descriptions
+    if (arr3.length === 0){
+      arr3.push(arr1);
+    }
 
   return arr3;
 }
@@ -760,7 +765,7 @@ router.post('/set-up/purpose', function(req, res) {
 
 
 
-console.log(req.session.data.purposeDescription)
+
 req.session.data.purposeAndDescription = appendCorrespondingItems(req.session.data.purpose, req.session.data.purposeDescription);
 //console.log(req.session.data.purpose)
 //console.log(req.session.data.purposeDescription)
