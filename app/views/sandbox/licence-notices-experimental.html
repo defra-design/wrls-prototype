@@ -1,0 +1,220 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Notices" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+
+
+{% endblock %}
+
+{% set navbarActiveReports = "navbar__link--active" %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- Full screen overlay style - need to sort double scroll bar
+<style>
+
+  .modal-content:focus{
+    border: 8px solid blue;
+  }
+  
+  
+  .modal::backdrop {
+    background: rgb(0 0 0 / 75%);
+  }
+  
+    .modal {
+      position: fixed;
+      min-height: auto;
+      max-height: 100%;
+      overflow-y: auto;
+      height:100%;
+      width: 100%;
+      padding-top:80px;
+      top: 0;
+      left: 0;
+      display: flex;
+      z-index: 2;
+      border: 1px solid #b1b4b6;
+      background: #ffffff;
+    }
+    
+    .modal:not(:target) {
+      display: none;
+    }
+    
+    .modal-overlay {
+      width: 100vw;
+      height: 100%;
+      position: absolute;
+      background-color: rgb(255, 255, 255);
+      left: 0;
+    }
+    
+    .modal-content {
+      transition: transform 1s;
+      background: #ffffff;
+      max-width:960px;
+      width: 100%;
+      position: relative;
+      margin: auto;
+      height: 100%;
+      padding: 20px 26px;
+    }
+    
+    .modal-close {
+      font-size: 36px;
+      text-decoration: none;
+      color: inherit;
+      position: absolute;
+      right: 24px;
+      top: 10px;
+    }
+    
+    </style>
+
+  -->
+    
+<style>
+
+.modal-content:focus{
+  border: 8px solid blue;
+}
+
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 75%);
+}
+
+  .modal {
+    position: fixed;
+    min-height: auto;
+    max-height: 100%;
+    overflow-y: auto;
+    margin:10px;
+    width: auto;
+    top: 0;
+    left: 0;
+    display: flex;
+    z-index: 2;
+    border: 1px solid #b1b4b6;
+    background: #ffffff;
+  }
+  
+  .modal:not(:target) {
+    display: none;
+  }
+  
+  .modal-overlay {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+  }
+  
+  .modal-content {
+    transition: transform 1s;
+    background: #ffffff;
+    max-width:960px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    height: 100%;
+    padding: 20px 26px;
+  }
+  
+  .modal-close {
+    font-size: 36px;
+    text-decoration: none;
+    color: inherit;
+    position: absolute;
+    right: 24px;
+    top: 10px;
+  }
+  
+  </style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+  
+  
+      <h1 class="govuk-heading-xl"> {{ title }}</h1>
+  
+    </div>
+  </div>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+  
+      <p class="govuk-body">Create and send licence renewal notices, returns communications or water abstraction alerts.</p>
+  
+  
+      {{ govukButton({
+            text: "Create a licence notice",
+            href: "licence-notices/select-the-type-of-notice"
+          }) }}
+  
+  
+    </div>
+  </div>
+  
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+  
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
+  
+      <h2 class="govuk-heading-l">
+        View sent notices
+      </h2>
+  
+  
+      <p classs="govuk-body">Select notice type for more details.</p>
+  
+      <!-- Notices table -->
+     {% include "sandbox/_includes/notices/notification-table-filter-popover.html" %} 
+  
+    </div>
+  </div>
+
+
+
+
+  
+
+  <script>
+    
+    // No JavaScript 
+    
+const modal = document.getElementById('modal')
+const modalDiv = document.getElementById('modal-div')
+
+window.addEventListener('popstate', () => {
+  const target = window.location.hash
+  
+  if (target === '#modal') {
+    modalDiv.focus();
+    modal.setAttribute('aria-hidden', false);
+    return
+  }
+  
+  modal.setAttribute('aria-hidden', true)
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key == "Escape" && window.location.hash === '#modal') {
+    window.location.hash = ""
+  }
+}) 
+    </script>
+
+{% endblock %}

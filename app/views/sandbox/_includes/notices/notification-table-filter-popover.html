@@ -1,0 +1,346 @@
+
+
+<div class="govuk-grid-row">
+
+
+
+
+<div class="{{data['table'] | default ('govuk-grid-column-full')}}" style="{{data['overFlow']}} " >
+
+
+
+
+
+  <!--  {# {% if data['showFilters'].length %}  #}
+
+    <form  method="post" novalidate action="notification-report?showFilters=">
+       {{ govukButton({
+        text: "Hide filters",
+        classes: "govuk-button--secondary govuk-!-margin-bottom-1"
+      }) }}
+     </form>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+
+    <div class="govuk-grid-row">
+
+    <div class="{{data['filters'] | default ('hide') }}">
+
+      <!--Not sure this is necessary yet
+        <div class="govuk-!-padding-3 govuk-!-margin-bottom-3" style="background-color: #f3f2f1">
+         <p class="govuk-body govuk-!-font-weight-bold">Selected filters</p>
+        </div>
+
+        {#
+            {{ govukDateInput({
+          id: "dateFrom",
+          namePrefix: "dateFrom",
+          fieldset: {
+            legend: {
+              text: "Date from",
+              classes: 'govuk-fieldset__legend--s'
+            }
+          }
+        }) }}
+
+
+        {{ govukDateInput({
+        id: "dateTo",
+        namePrefix: "dateTo",
+        fieldset: {
+        legend: {
+          text: "Date to",
+          classes: 'govuk-fieldset__legend--s'
+        }
+        }
+        }) }}
+
+        #}
+
+    </div>
+    </div>
+-->
+
+     {% set filtersForm %}
+
+
+
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
+
+     <form  method="post" novalidate action="notification-report/apply-filters">
+
+
+
+
+
+
+{#
+       {{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    text: "Sort by",
+     classes: 'govuk-label--s'
+  },
+  items: [
+    {
+      value: "dateAsscending",
+      text: "Date asscending"
+    },
+    {
+      value: "dateDescending",
+      text: "Date descending"
+    },
+    {
+      value: "notificationAsscending",
+      text: "Notification type asscending"
+    },
+    {
+      value: "notificationDescending",
+      text: "Notification type descending"
+    },
+    {
+      value: "sentByAsscending",
+      text: "Sent by asscending"
+    },
+    {
+      value: "sentByDescending",
+      text: "Sent by descending"
+    }
+  ]
+}) }}
+#}
+
+
+       {{ govukCheckboxes({
+         idPrefix: 'type',
+         name: 'type',
+         classes: "govuk-checkboxes--small ",
+         formGroup: {
+           classes: "govuk-!-margin-bottom-3"
+         },
+         fieldset: {
+           legend: {
+             text: 'Notice type',
+             classes: 'govuk-fieldset__legend--s'
+           }
+         },
+         items: [
+           {
+             value: 'returns',
+             text: 'Returns',
+             checked:  checked("type", "returns")
+           },
+           {
+             value: 'renewals',
+             text: 'Renewals',
+             checked:  checked("type", "renewals")
+           },
+           {
+             value: 'hands off flow notices',
+             text: 'Hands off flow notices',
+             checked:  checked("type", "hands off flow notices")
+           }
+         ]
+       }) }}
+
+
+
+
+       {{ govukInput({
+         formGroup: {
+           classes: "govuk-!-margin-bottom-7"
+         },
+         id: 'sentBy',
+         name: 'sentBy',
+         value: data['sentBy'],
+         classes: "govuk-!-width-full",
+         label: {
+           text: 'Sent by',
+           classes: 'govuk-label--s'
+         }
+       }) }}
+
+
+              {{ govukRadios({
+                idPrefix: "sort",
+                name: "sort",
+                classes: "govuk-radios--small",
+                fieldset: {
+                  legend: {
+                    text: "Sort by date",
+                    classes: "govuk-fieldset__legend--s"
+                  }
+                },
+                items: [
+                  {
+                    value: "dateDescending",
+                    text: "Newest to oldest",
+                    checked:  checked("sort", "dateDescending")
+                  },
+                  {
+                    value: "dateAsscending",
+                    text: "Oldest to newest",
+                    checked:  checked("sort", "dateAsscending")
+                  }
+                ]
+              }) }}
+
+       <div class="govuk-button-group">
+           {{ govukButton({
+         text: "Apply filters"
+       }) }}
+
+
+       {{ govukButton({
+           text: "Clear filters",
+           classes: "govuk-button--secondary",
+           name: "clearFilters",
+           value: "true"
+         }) }}
+
+         </div>
+
+
+
+     </form>
+
+
+     {% endset %}
+
+     
+      
+      <a class="modal-btn" href="#modal" id="modal-link">Filter send notices</a>
+      
+   
+      
+      <section role="dialog" aria-labelledby="modal-title" aria-hidden="true" class="modal" id="modal">
+      <div class="modal-content" id="modal-div">
+        <a title="Close modal" aria-label="Close modal" href="#modal-link" class="modal-close" style="color:black;">&times; </a>
+       
+    
+       {{filtersForm|safe}}
+        
+      </div>
+    </section>
+      {#
+     {{ govukDetails({
+       summaryText: "Filter sent notices",
+       html: filtersForm | safe,
+       classes: "govuk-!-margin-bottom-4",
+       open: data['openDetails']
+     }) }}
+     #}
+<!--
+{#    {% else %}
+
+    <form  method="post" novalidate action="notification-report?showFilters=true">
+
+   {{ govukButton({
+    text: "Show filters",
+    classes: "govuk-button--secondary govuk-!-margin-bottom-1"
+   }) }}
+
+   </form>
+    {% endif %} #}
+-->
+<div role="region" aria-labelledby="caption" id="focus" tabindex="0">
+<table  class="govuk-table" style="{{data['fixTableWidth']}}">
+  <caption class="govuk-table__caption govuk-table__caption--s govuk-!-margin-bottom-3 govuk-!-font-weight-regular" id="caption" ><!--<div class="govuk-!-margin-bottom-3"> View sent notices </div>-->{{data.filterCaption}}
+  </caption>
+  <thead class="govuk-table__head" >
+    <tr class="govuk-table__row" >
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header">Notice type</th>
+      <th scope="col" class="govuk-table__header">Sent by</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Recipients</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Problems</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+
+   <!--get and loop through the notifications table, check if results are filtered or not-->
+   {% if data['filteredResults'].length %}
+   {% set notifications = data['filteredResults']  %}
+   {% else %}
+   {% set notifications = data['notifications'] %}
+   {% endif %}
+
+
+   {% if notifications == "empty" %}
+   <tr class="govuk-table__row">
+     <td class="govuk-table__cell">No results</td>
+     <td class="govuk-table__cell"></td>
+     <td class="govuk-table__cell"></td>
+     <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+     <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+     </tr>
+
+   {% else %}
+
+
+  {# sort by if statement this should be moved to the backend #}
+  {% if data['sort'] == "dateAsscending" %}
+  {% set sortBy = "date" %}
+  {% set reverseOrder = false %}
+  {% elif data['sort'] == "dateDescending" %}
+  {% set sortBy = "date" %}
+  {% set reverseOrder = true %}
+  {% elif data['sort'] == "notificationAsscending" %}
+  {% set sortBy = "notification" %}
+  {% set reverseOrder = false %}
+  {% elif data['sort'] == "notificationDescending" %}
+  {% set sortBy = "notification" %}
+  {% set reverseOrder = true %}
+  {% elif data['sort'] == "sentByAsscending" %}
+  {% set sortBy = "sentBy" %}
+  {% set reverseOrder = false %}
+  {% elif data['sort'] == "sentByDescending" %}
+  {% set sortBy = "sentBy" %}
+  {% set reverseOrder = true %}
+  {% endif %}
+
+   {% for i in notifications | sort(reverseOrder, false, sortBy) %}
+   <tr class="govuk-table__row">
+    <td class="govuk-table__cell">{{i.date | numberToGovukDate}}</td>
+    <td class="govuk-table__cell"><a href="/sandbox/licence-notices/recipient-report?notificationIndex={{loop.index0}}" class="govuk-link">{{i.notification |capitalize}}<span class="govuk-visually-hidden">, sent by {{i.sentBy}}, on {{i.date | numberToGovukDate}} </span> </a></td>
+    <td class="govuk-table__cell">{{i.sentBy}}</td>
+    <td class="govuk-table__cell govuk-table__cell--numeric">{{i.numberOfrecipients}}</td>
+    <td class="govuk-table__cell govuk-table__cell--numeric">{{i.problems}}</td>
+    </tr>
+   {% endfor %}
+     {% endif %}
+
+  </tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+
+
+
+<!-- Notifictions table for ref
+
+     //Notification report
+    "notifications": [{
+          "date": "22 December 2020",
+          "notification": "Paper returns",
+          "sentBy": "tim.teace@defra.gov.uk",
+          "NnmberOfrecipients": "1",
+          "recipients": [{
+            "licenceNumber": "03/28/69/0034",
+            "sentTo": "Anglian Water Services Ltd,FAO D Harker Water Resources,Lancaster House,Lancaster Way,Huntingdon,CAMBRIDGESHIRE,PE29 6XQ",
+            "method": "Letter",
+            "status": "Sent",
+          }
+        ],
+          "problems": "",
+        }
+    ],
+
+    -->
