@@ -1,6 +1,6 @@
 {% extends "layout_wrls.html" %}
 
-{% set title = "Scrifford Pike Licence summary" %}
+{% set title = "Lower Smith Road Licence summary" %}
 
 {% block pageTitle %}
    {{title}} - GOV.UK
@@ -42,19 +42,26 @@
 {% endblock %}
 
 {% block content %}
+    <!--supplementary billing banner-->
+
+    {% set html %}
+      <p class="govuk-notification-banner__heading max-width-inherit">
+        This licence has been marked for the next two-part tariff supplementary bill run.
+      </p>
+    {% endset %}
+    {{ govukNotificationBanner({
+      html: html
+    }) }}
+
+
   <!-- page title -->
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-      <h1 class="govuk-heading-l">Scrifford Pike</h1>
-    </div>
-  </div>
+      <span class="govuk-caption-l">Licence 00/22/001/02</span>
+      <h1 class="govuk-heading-l">Lower Smith Road</h1>
+ 
 
-  <!-- page title -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
-
-      <div class="banner">
+   
         <div class="govuk-warning-text">
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
           <strong class="govuk-warning-text__text">
@@ -62,14 +69,16 @@
             This licence version expired on 31 December 2018.
           </strong>
         </div>
-      </div>
+
+        <div class="govuk-!-margin-bottom-6">
+          <p class="govuk-body">Registered to <a href="user-status no-break">allthingsbeingeven@gmail.com</a></p>
+        </div>
+
 
     </div>
   </div>
 
-  <div class="govuk-!-margin-bottom-6">
-    <p class="govuk-body">Registered to <a href="user-status no-break">allthingsbeingeven@gmail.com</a></p>
-  </div>
+
 
   <div class="govuk-tabs" data-module="govuk-tabs">
     <h2 class="govuk-tabs__title">
@@ -77,6 +86,11 @@
     </h2>
 
     <ul class="govuk-tabs__list">
+      <li class="govuk-tabs__list-item" tabindex="0">
+        <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary">
+          Summary
+        </a>
+      </li>
       <li class="govuk-tabs__list-item" tabindex="0">
         <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#returns">
           Returns
@@ -89,6 +103,18 @@
       </li>
     </ul>
 
+      <!-- tab 1 -->
+  <section class="govuk-tabs__panel" id="summary">
+
+    <h2 class="govuk-heading-l">
+      Summary
+    </h2>
+
+    <!-- returns with statuses -->
+    {% include "current/includes/bd/summary-ended.html" %}
+
+  </section>
+
     <!-- tab 2 -->
     <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
       <h2 class="govuk-heading-m">
@@ -97,6 +123,7 @@
 
       <!-- table with returns with statuses -->
       <div class="table govuk-!-margin-bottom-8">                                                <!-- a table -->
+
 
         <div class="table__row--head">                                              <!-- the table head -->
           <div class="table__cell bold-small column--20">

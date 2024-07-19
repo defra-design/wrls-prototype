@@ -58,6 +58,25 @@
   {% elseif data.returnStatus == "nill" %}
   <p class="govuk-body"><a href="return-status-nill-return-submitted" class="govuk-link">View this return</a></p>
   {% endif %}
+
+
+{# is the return being edited or not #}
+{% if data.editReturn == "true" %}
+<p>or</p>
+
+{# is the return a TpT one #}
+{% set billRunType = "annual" %}
+{% if data.TpTSupplementary == "true" %}
+{% set billRunType = "supplementary" %}
+{% endif %}
+
+{{ govukButton({
+  text: "Mark for two-part tariff " + billRunType + " bill run",
+  href: "/bd/iterations/manual-billing/recalculate-bills?TpTSupplementaryYear=2023"
+}) }}
+
+{% endif %}
+
         </div>
       </div>
 

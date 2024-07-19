@@ -1046,6 +1046,8 @@ router.get('/bd/charges-2020/confirm-approve-charge-information', function(req, 
   req.session.data.chargeVersions[1]['chargeEnd'] = chargeEnd
 
 
+  //console.log(req.session.data.chargeVersions[0])
+
   res.redirect('/bd/licence-summary#charge');
 
 });

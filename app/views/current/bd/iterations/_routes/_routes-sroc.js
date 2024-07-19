@@ -687,12 +687,29 @@ router.post('/create-charge-information/charge-version', function(req, res) {
   if (approve === 'approve') {
     req.session.data['changesMade'] = "false"
     req.session.data.suppBilling = "true"
-    res.redirect('/bd/charges-2020/confirm-approve-charge-information')
+    if(req.session.data.chargeReferences[req.session.data.chargeReferenceIndex].adjustments.includes('two part tariff agreement applies')){
+      res.redirect('/create-charge-information/confirm-tpt-supplementary')
+      console.log('TpT supplementary set')
+    } else { res.redirect('/bd/charges-2020/confirm-approve-charge-information')}
+    
   } else {
     res.redirect('/bd/charges-2020/confirm-request-changes')
   }
 
 });
+
+//TpT supplementary billing route
+router.get('/create-charge-information/confirm-tpt-supplementary', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'create-charge-information/confirm-tpt-supplementary');
+});
+
+router.post('/create-charge-information/confirm-tpt-supplementary', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.redirect('/bd/charges-2020/confirm-approve-charge-information');
+});
+
+
 
 
 ///////////CHARGE INFORMATION NOT APPROVED REASON

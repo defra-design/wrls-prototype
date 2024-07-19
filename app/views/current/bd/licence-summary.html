@@ -43,10 +43,23 @@
         This licence has been marked for the next supplementary bill run
       </p>
     {% endset %}
+    {% if data.TpTSupplementary == "true" %}
+    {% set html %}
+    <p class="govuk-notification-banner__heading max-width-inherit">
+      This licence has been marked for the next two-part tariff supplementary bill run and the supplementary bill run.
+    </p>
+    {% endset %}
+    {% endif %}
+
     {{ govukNotificationBanner({
       html: html
     }) }}
+
     {% endif %}
+
+
+
+
     <!-- page title -->
   <h1 class="govuk-heading-l">  <span class="govuk-caption-l">Licence 03/28/60/0032</span>
      Glindenfold Lake

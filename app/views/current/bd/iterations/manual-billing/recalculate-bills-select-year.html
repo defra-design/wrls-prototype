@@ -1,6 +1,6 @@
 {% extends "layout_wrls.html" %}
 
-{% set title = "You’re about to mark this licence for the next two-part tariff supplementary bill run" %}
+{% set title = "Select which years you need to recalculate bills for" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -47,27 +47,48 @@
 <div class="govuk-!-margin-bottom-3"></div>
 
 <!-- page title -->
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+ {% set qTitle %}
+
 
     <!-- page heading -->
     <span class="govuk-caption-l">Licence 03/28/60/0032</span>
-    <h1 class="govuk-heading-l">{{title}}</h1>
+    {{title}}
+  
 
-  </div>
-</div>
+{% endset %}
 
-
-<form action="recalculate-bills-confirmation?suppBilling=true&TpTSupplementary=true" method="post" class="form">
+<form action="recalculate-bills" method="post" class="form">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+      {{ govukCheckboxes({
+        name: "TpTSupplementaryYear",
+        fieldset: {
+          legend: {
+            text: [qTitle]|safe,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: [
+          {
+            value: "2023",
+            text: "1 April 2023 to 31 March 2024"
+          },
+          {
+            value: "2022",
+            text: "1 April 2022 to 31 March 2023"
+          }
+        ]
+      }) }}
 
-<p class="govuk-body">When you create the bill run, this licence will have bills for the year {{data.TpTSupplementaryYear}}.</p> 
 
 
       <button type="submit" class="govuk-button">
-        Confirm
+        Continue
       </button>
     </div>
   </div>
