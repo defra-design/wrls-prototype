@@ -131,7 +131,8 @@
   <div class="govuk-grid-column-full">
 
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff bill run</span>{{ title }}</h1>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-1"><span class="govuk-caption-l">{{data['region'] |default ("Anglian")| firstToUpperCase }} two-part tariff bill run</span>{{ title }}</h1>
+      <p>Licence holder {{licence.licenceHolder}}</p>
 
       {% if data.status == "review" %}
       {% set colour = "govuk-tag--blue" %}
@@ -267,11 +268,11 @@
       <span class="govuk-caption-l">Financial year {{chargeVersion.startDate | year}} to {{chargeVersion.startDate | yearPlusPlus}}</span>
       <h2 class="govuk-heading-l" id="{{licence.chargePeriod[loop.index0].startDate}}-{{licence.chargePeriod[loop.index0].endDate}}">Charge period {{licence.chargePeriod[loop.index0].startDate |govukDate}} to {{licence.chargePeriod[loop.index0].endDate |govukDate}}</h2>
   
-    <span class="govuk-caption-m">{{licence.licenceHolder}}</span>
+   <!-- <span class="govuk-caption-m">{{licence.licenceHolder}}</span>-->
       <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{chargeVersion.chargeReferences | length | plural('charge reference')}} with {{chargeVersion.chargeReferences[0].chargeElements.length | plural("two-part tariff charge element")}}</h3>
       {{ govukDetails({
         classes: "govuk-!-margin-bottom-7",
-        summaryText: "Billing account details",
+        summaryText: licence.licenceHolder + " billing account details",
         html: "<strong>A12356642X</strong><br>" +licence.licenceHolder + "<br>15 Ward Road<br>Bath<br>BA1 5EH"
       }) }}
       {% set chargeReferences = chargeVersion.chargeReferences %}
