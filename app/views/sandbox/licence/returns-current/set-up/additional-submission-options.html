@@ -40,13 +40,13 @@ items: [
     {
       value: "multiple upload",
       text: "Multiple return upload",
-      hint: {text: "Allow water companies and other large abstractors to submit returns for multiple licences at the same time."},
+      hint: {text: "Allow large abstractors, such as water companies, to submit returns for multiple licences at the same time."},
       checked:  data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("multiple upload")
     },
     {
       value: "quarterly return submissions",
       text: "Quarterly return submissions",
-      hint: {text: "Allow public water companies to submit daily readings each quarter."},
+      hint: {text: "Allow water companies to submit daily readings each quarter."},
       checked:  data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("quarterly return submissions")
     },
     {
@@ -54,7 +54,7 @@ items: [
     },
     {
       value: "none",
-      text: "None",
+      text: "No additional submission options needed",
       behaviour: "exclusive",
         checked: data.licences[data.ID].returnsRequirements[0]['additionalSubmissionOptions'] | arrayIncludes ("none")
     }
