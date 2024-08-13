@@ -1,0 +1,89 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set pageTitle = "Abstraction return - enter date received" %}
+{% set title = "Abstraction return" %}
+
+{% block pageTitle %}
+{{pageTitle}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form method="post" class="form">
+
+      {# Frequency switch based on the answer for the specific requirement
+      {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency'] %}
+          {% case 'daily' %}
+              {% set daily = true %}
+          {% case 'weekly' %}
+              {% set weekly = true %}
+          {% case 'monthly' %}
+              {% set monthly = true %}
+      {% endswitch %}
+      #}
+
+      {% set dateHtml %}
+      {{ govukDateInput({
+        id: "customDateReturnReceived",
+        namePrefix: "customDateReturnReceived",
+        fieldset: {
+          legend: {
+            text: "When was the return received?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "dateReturnReceived",
+        name: "dateReturnReceived",
+        fieldset: {
+          legend: {
+            html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title] + '</h1>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">When was the return received?</legend>',
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "today",
+            text: "Today",
+            checked: today
+          },
+          {
+            value: "yesterday",
+            text: "Yesterday",
+            checked: yesterday
+          },
+          {
+            value: "customDate",
+            text: "Custom date",
+            checked: customDate,
+            conditional: {
+              html: dateHtml
+            }
+          }
+        ]
+      }) }}
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
+
+    </form>
+</div>
+</div>
+
+
+    {% endblock %}

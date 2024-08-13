@@ -99,6 +99,32 @@ filters.listFormat = function(x) {
     return x.replace(/\w+/g, today)
   }
 
+
+
+  //get today's day date {{ "foo" | d }}
+  filters.d = function(x) {
+    let date = new Date();
+    let dd = date.getDate();
+
+    return x.replace(/\w+/g, dd )
+  };
+
+    //get today's day month {{ "foo" | m }}
+    filters.m = function(x) {
+      let date = new Date();
+      let mm = date.getMonth() + 1;
+  
+      return x.replace(/\w+/g, mm )
+    };
+
+      //get today's day date {{ "foo" | y }}
+  filters.y = function(x) {
+    let date = new Date();
+    let yyyy = date.getFullYear();
+
+    return x.replace(/\w+/g, yyyy )
+  };
+
 //add preceeding 0 |pad
 filters.pad = function(x) {
  return x.padStart(2, '0')
@@ -334,6 +360,8 @@ filters.focus = function(x) {
         return "VOID"
       }  else if (e == "open") {
         return "OPEN"
+      }  else if (e == "received") {
+        return "RECEIVED"
       } else {
         return "COMPLETED"
       }

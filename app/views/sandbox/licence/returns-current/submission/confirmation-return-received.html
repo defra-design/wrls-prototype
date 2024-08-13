@@ -1,0 +1,46 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set pageTitle = "Abstraction return - enter date received" %}
+{% set title = "Abstraction return" %}
+
+{% block pageTitle %}
+{{pageTitle}} - GOV.UK
+{% block breadcrumbs %}
+{% endblock %}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+  
+    
+
+                {{ govukPanel({
+                  titleText: "Return received",
+                  classes: "panel__body--small",
+                  html: '<div class="govuk-!-font-size-24">Licence number <strong>' + data.licences[data.ID]['number'] + '</strong><br><br>
+                  Site desctiption <strong>' + data.licences[data.ID].returns[data.returnIndex].description + '</strong><br><br>
+                  Purpose <strong>' + data.licences[data.ID].returns[data.returnIndex].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br + '</strong></div>'
+                  }) }}
+                
+                  <p class="govuk-body"><a href="../../../licence#returns" class="govuk-link">View returns for {{data.licences[data.ID]['number']}}</a></p>
+             
+    
+
+    
+
+    
+ 
+   
+</div>
+</div>
+
+
+    {% endblock %}

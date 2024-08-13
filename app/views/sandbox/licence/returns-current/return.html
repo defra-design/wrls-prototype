@@ -99,14 +99,12 @@ rows: [
   </div>
 </div>
 
-{% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue")%}
+{% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue") or (data.licences[data.ID].returns[data.returnIndex].status == "received")%}
 
 
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-two-thirds">
-      <form action="#" id="return-status"   data-routing="1" method="post" class="form">
-
-
+      <form action="submission/returnStatus" id="return-status"   data-routing="1" method="post" class="form">
 
           {{ govukRadios({
             idPrefix: "returnStatus",
@@ -120,11 +118,11 @@ rows: [
             },
             items: [
               {
-                value: "return-process/when-was-this-return-received",
+                value: "enter",
                 text: "Enter and submit it"
               },
               {
-                value: "return-received/log-receipt",
+                value: "received",
                 text: "Record receipt (and come back to it later)"
               }
             ]

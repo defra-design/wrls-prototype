@@ -7,7 +7,6 @@
 {% set rows = []%}
 
 {% for return in returns %}
-
 {% set due = return.due | numberToGovukDate %}
 {% set status %}
 {{govukTag({

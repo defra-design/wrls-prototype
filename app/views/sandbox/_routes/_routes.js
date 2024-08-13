@@ -123,6 +123,7 @@ res.render('sandbox/index');
 
 router.use('/licence/returns', require('./_routes-returns-requirements'));
 router.use('/licence/returns-current', require('./_routes-returns-requirements-current'));
+router.use('/licence/returns-current/submission', require('./_routes-returns-submission'));
 
 //----------------------------------------------------------------
 ////NOTICES ROUTES
