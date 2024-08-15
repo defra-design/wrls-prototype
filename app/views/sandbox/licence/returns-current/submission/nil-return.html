@@ -1,0 +1,139 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+
+
+{% set title = "Abstraction return" %}
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- page heading -->
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{data.licences[data.ID]['number']}}</span> {{title}}</h1>
+
+
+  </div>
+</div>
+
+{{ govukSummaryList({
+classes: 'govuk-summary-list--no-border',
+rows: [
+  {
+    key: {
+      text: "Return reference",
+      classes: "meta-data__label"
+    },
+    value: {
+      text: data.licences[data.ID].returns[data.returnIndex].id,
+      classes: "meta-data__value"
+    }
+  },
+  {
+    key: {
+      text: "Site description",
+      classes: "meta-data__label"
+    },
+    value: {
+      text: data.licences[data.ID].returns[data.returnIndex].description,
+      classes: "meta-data__value"
+    }
+  },
+  {
+    key: {
+      text: "Purpose",
+      classes: "meta-data__label"
+    },
+    value: {
+      text: data.licences[data.ID].returns[data.returnIndex].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br,
+      classes: "meta-data__value"
+    }
+  },
+  {
+    key: {
+      text: "Returns period",
+      classes: "meta-data__label"
+    },
+    value: {
+      text: "From " + data.licences[data.ID].returns[data.returnIndex].returnsPeriodStart | numberToGovukDate + " to " + data.licences[data.ID].returns[data.returnIndex].returnsPeriodEnd | numberToGovukDate,
+      classes: "meta-data__value"
+    }
+  },
+  {
+    key: {
+      text: "Abstraction period",
+      classes: "meta-data__label"
+    },
+    value: {
+      text: "From " + data.licences[data.ID].returns[data.returnIndex].periodStart | mmddToDate + " to " + data.licences[data.ID].returns[data.returnIndex].periodEnd | mmddToDate,
+      classes: "meta-data__value"
+    }
+  },
+  {
+    key: {
+      text: "Standard tariff",
+      classes: "meta-data__label"
+    }
+  }
+]
+}) }}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
+    <a href="../../licence#returns">View this licence</a>
+  </div>
+</div>
+
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
+      <form  method="post" class="form">
+
+        {{ govukCheckboxes({
+          idPrefix: "underQuery",
+          name: "underQuery",
+          fieldset: {
+            legend: {
+              text: "Nil return",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+          {
+          value: "underQuery",
+          text: "Mark as under query"
+          }
+          ]
+          }) }}
+
+        <button type="submit" class="govuk-button">
+          Submit
+        </button>
+
+      </form>
+
+    </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

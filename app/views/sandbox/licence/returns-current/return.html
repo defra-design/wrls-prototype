@@ -22,10 +22,7 @@
   <div class="govuk-grid-column-full">
 
     <!-- page heading -->
-
-
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{data.licences[data.ID]['number']}}</span> {{title}}</h1>
-
 
   </div>
 </div>
@@ -99,7 +96,46 @@ rows: [
   </div>
 </div>
 
-{% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue") or (data.licences[data.ID].returns[data.returnIndex].status == "received")%}
+
+{% if data.licences[data.ID].returns[data.returnIndex].versions.length and data.edit !== "true" %}
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data.licences[data.ID].returns[data.returnIndex].versions[0].nilReturn == true %}
+    <h2 class="govuk-heading-l">Nil return</h2>
+    {{ govukButton({
+      text: "Edit return",
+      href: "?edit=true#"
+    }) }}
+    {% else %}
+    <h2 class="govuk-heading-l">Abstraction volumes</h2>
+    {{ govukButton({
+      text: "Edit return",
+      href: "?edit=true#"
+    }) }}
+    {% include "sandbox/_includes/returns/submission/returns-table.html" %}
+    {% endif %}
+    
+    <h3 class="govuk-heading-m">Submitted by</h2>
+   
+      {% for version in data.licences[data.ID].returns[data.returnIndex].versions %}
+      {% set loopIndex = loop.index0 %}
+      {% if loopIndex == "0" %}
+      {{ govukInsetText({
+        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate,
+        classes: "govuk-inset-text-blue"
+      }) }}
+      {% else %}
+      {{ govukInsetText({
+        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate
+      }) }}
+      {% endif %}
+      {% endfor %}
+
+</div>
+</div>
+{% endif %}
+
+{% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue") or (data.licences[data.ID].returns[data.returnIndex].status == "received") or data.edit == "true" %}
 
 
 <div class="govuk-grid-row govuk-!-margin-bottom-8">

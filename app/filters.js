@@ -223,7 +223,7 @@ addFilter('submissionOptions', function submissionOptions(x) {
 
 
 
-addFilter('formatDate', function formatDate(dateString) {
+addFilter('formatDateToString', function formatDateToString(dateString) {
   // Split the date string into components
   const parts = dateString.split(" ");
   if (parts.length !== 3) {

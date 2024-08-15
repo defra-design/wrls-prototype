@@ -1,0 +1,106 @@
+
+   <!--create array-->
+   {% set lines = [] %}
+   
+<!--select array to loop through-->
+   {% set selectData = data.returnLines %}
+   
+   {# set global scope #}
+   {% set cubicMetersCalcTotal = 0 %}
+   {% set volCalcTotal = 0 %}
+
+   <!--loop through the data-->
+   {% for item in selectData %}
+   
+
+   <!--calculate the cubic meters if needed-->
+   {% set cubicMetersCalc = "" %}
+  
+   {% if item.volume !== "" and data.units !== "cm3" %}
+   
+   {% if data.units == "ml" %}
+   {% set cubicMetersCalc = item.volume | stringToNumber *  1000 %}
+   {% elseif data.units == "l" %}
+   {% set cubicMetersCalc = item.volume | stringToNumber /  1000 %}
+   {% else %}
+   {% set cubicMetersCalc  = item.volume | stringToNumber /   220 %}
+   {% endif %}
+
+   <!--set cubic meters calc total-->
+   {% set cubicMetersCalcTotal = cubicMetersCalcTotal + cubicMetersCalc %}
+   {% endif %}
+
+   {% if item.volume !== "" %}
+   {% set volCalcTotal = volCalcTotal | stringToNumber + item.volume | stringToNumber %}
+   {% endif %}
+   
+   <!--set the variable using the push filter to set up the rows-->
+   {% set lines = lines | push([{
+    text: item.date  | formatDate,
+      classes: 'govuk-!-width-one-half'
+    },{
+        text: item.reading,
+        format: 'numeric'
+      } if data.readingsOrVolumes == "readings", {
+       text: item.volume,
+      format: 'numeric'
+    },{
+       text: cubicMetersCalc | round(3),
+      format: 'numeric'
+    } if data.units !== "cm3"
+    
+    ])  %}
+  
+  {% endfor %}
+  
+
+  <!--set col span-->
+{% set colSpan = 2 %}  
+{% if data.readingsOrVolumes == "readings" %}
+{% set colSpan = 2 %}
+{% endif %}
+
+
+
+  <!--set total-->
+  {% set lines = lines | push([{ text: "Total volume of water abstracted",
+   colspan: colSpan,
+   classes: "govuk-!-font-weight-bold"
+ },
+ { text: volCalcTotal,
+   format: 'numeric',
+   classes: "govuk-!-font-weight-bold"
+ },
+ { text: cubicMetersCalcTotal | round(3),
+   format: 'numeric',
+   classes: "govuk-!-font-weight-bold"
+ } if data.units !== "cm3"
+ ]
+ )%}
+
+
+
+   {{ govukTable({
+    caption: "",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Day"
+      },
+      {
+        text: "Reading",
+        format: 'numeric'
+      } if data.readingsOrVolumes == "readings",
+      {
+        text: data.units | returnUnitsWords ,
+        format: 'numeric'
+      },
+      {
+        text: "Cubic meters",
+        format: 'numeric'
+      } if data.units !== "cm3"
+    ],
+    rows: lines
+      
+    })  }}

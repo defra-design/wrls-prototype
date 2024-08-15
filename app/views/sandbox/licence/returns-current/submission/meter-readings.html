@@ -1,0 +1,78 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set pageTitle = "Abstraction return - tell us about the meter" %}
+{% set title = "Abstraction return" %}
+
+{% block pageTitle %}
+{{pageTitle}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form method="post" class="form">
+
+      {# Frequency switch based on the answer for the specific requirement
+      {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency'] %}
+          {% case 'daily' %}
+              {% set daily = true %}
+          {% case 'weekly' %}
+              {% set weekly = true %}
+          {% case 'monthly' %}
+              {% set monthly = true %}
+      {% endswitch %}
+      #}
+
+
+      {% call govukFieldset({
+        legend: {
+          html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title] + '</h1>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Meter readings</legend>',
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--l"
+        }
+        }) %}
+      
+
+        {{ govukInput({
+          label: {
+            text: "Start reading"
+          },
+          classes: "govuk-input--width-10",
+          id: "startReading",
+          name: "startReading"
+        }) }}
+
+
+        {% for line in data.returnLines %}
+
+        {{ govukInput({
+          label: {
+            text: line.date | formatDate
+          },
+          classes: "govuk-input--width-10",
+          id: line.date,
+          name: "line"
+        }) }}
+
+        {% endfor %}
+    
+        {% endcall %}
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
+
+    </form>
+</div>
+</div>
+
+
+    {% endblock %}

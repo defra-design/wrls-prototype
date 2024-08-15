@@ -473,6 +473,19 @@ filters.focus = function(x) {
   }
 
 
+  //set returnUnitsWords "| returnUnitsWords"
+  filters.returnUnitsWords = function(e) {
+    if (e == "cm3") {
+      return "Cubic Meters"
+    } else if (e == "l") {
+      return "Litres"
+    } else if (e == "g") {
+      return "Gallons"
+    } else {
+      return "Mega Litres"
+    } 
+  
+  }
 
   //show only results for a certain customer "| customer"
   filters.customer = function(e) {

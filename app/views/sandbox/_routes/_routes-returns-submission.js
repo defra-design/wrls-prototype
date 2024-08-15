@@ -70,170 +70,120 @@ let notificationTitle = ""
 
 
 //////////////////////////////////
-///Create Version
-function createVersion(req, res) {
+///Create lines daily
+function createDailyObjects(startDateStr, endDateStr) {
+  const startDate = new Date(startDateStr);
+  const endDate = new Date(endDateStr);
 
-  //get the licence info
-  let licence = req.session.data.ID
-  let returnsRequirements = req.session.data.licences[licence].returnsRequirements
+  const dateObjects = [];
+
+  while (startDate <= endDate) {
+    const year = startDate.getFullYear();
+    const month = String(startDate.getMonth() + 1).padStart(2, '0');
+    const day = String(startDate.getDate()).padStart(2,   
+ '0');
+    const dateStr = `${year}${month}${day}`;
+
+    dateObjects.push({ date: dateStr, reading: "", volume: "" });
+    startDate.setDate(startDate.getDate() + 1);
+  }
+
+  return dateObjects;
+}
+
+//add readings
+function populateReadings(array, objectofarrays) {
+  array.forEach((reading, index) => {
+    if (reading) {
+      objectofarrays[index].reading = reading;
+    }
+  });
+  return objectofarrays;
+}
+
+//add volumes
+function populateVolumes(array, objectofarrays) {
+  array.forEach((volume, index) => {
+    if (volume) {
+      objectofarrays[index].volume = volume;
+    }
+  });
+  return objectofarrays;
+}
 
 
-  //create vars for the start date and reason
-  let startDate = req.session.data.startDateConditional
-  let endDate = ""
-  let createdDate = todayNoFormat
-  let status = "review"
-  let additionalSubmissionOptions = ["none"]
-  let reason = req.session.data.reasonNewRequirements
-  let requirements = []
-  let username = "username@defra.gov.uk"
-  let note = ""
+//add volumes
 
-    let versions = {
+function calculateVolumes(data, startReading) {
+  let previousReading = startReading
 
-    startDate,
-    endDate,
-    createdDate,
-    reason,
-    additionalSubmissionOptions,
-    status,
-    username,
-    note,
-    requirements,
+  return data.map(obj => {
+    const currentReading = parseInt(obj.reading, 10);
+    const volume = currentReading && previousReading !== null
+      ? currentReading - previousReading
+      : '';
 
-  };
-    //push reference data
-    returnsRequirements.unshift(versions);
-    req.session.data.returnVersion = 1
-
-    if (req.session.data.returnsNotRequired == false) {
-    //if the return version has returns required create the return requirement
-    createReturnRequirement(req, res)
+    if (currentReading) {
+      previousReading = currentReading;
     }
 
-
+    return {
+      ...obj,
+      volume: volume.toString()
+    };
+  });
 }
 
-
-
-//////////////////////////
-///update the requirement
-function updateReturnRequirement(req, res) {
-
-  //get the return requirement
-  let licence = req.session.data.ID
-  let requirementIndex = req.session.data.requirementIndex
-  let returnsRequirements = req.session.data.licences[licence].returnsRequirements[0].requirements[requirementIndex]
-
-  //set the variables
-  let purpose = req.session.data.purpose
-  let points = req.session.data.points
-  let abstractionStartMonth = req.session.data.abstractionStartMonth
-  let abstractionEndMonth = req.session.data.abstractionEndMonth
-  let timeLimit = req.session.data.timeLimit
-  let returnsCycle = req.session.data.returnsCycle
-  let description = req.session.data.description
-  let title = req.session.data.title
-  let frequencyCollected = req.session.data.frequencyCollected
-  let frequency = req.session.data.frequency
-  let settings = req.session.data.settings
-
-  //console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
-
-  //if they have data then update
-  if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose }
-  if (points && typeof points !== "undefined") { returnsRequirements.points = req.session.data.points }
-  if (abstractionStartMonth && typeof abstractionStartMonth !== "undefined") { returnsRequirements.periodStart = req.session.data.abstractionStartMonth.padStart(2, '0') + req.session.data.abstractionStartDay.padStart(2, '0') }
-  if (abstractionEndMonth && typeof abstractionEndMonth !== "undefined") { returnsRequirements.periodEnd = req.session.data.abstractionEndMonth.padStart(2, '0') + req.session.data.abstractionEndDay.padStart(2, '0') }
-  if (returnsCycle && typeof returnsCycle !== "undefined") { returnsRequirements.returnsCycle = req.session.data.returnsCycle }
-  if (description && typeof description !== "undefined") { returnsRequirements.description = req.session.data.description }
-  if (title && typeof title !== "undefined") { returnsRequirements.title = req.session.data.title }
-  if (frequencyCollected && typeof frequencyCollected  !== "undefined") { returnsRequirements.frequencyCollected = req.session.data.frequencyCollected }
-  if (frequency && typeof  frequency !== "undefined") { returnsRequirements.frequency = req.session.data.frequency }
-  if (settings && typeof  settings !== "undefined") { returnsRequirements.settings = req.session.data.settings }
-  if (timeLimit && typeof  timeLimit !== "undefined") {  if (req.session.data.timeLimit == "yes"){
-      let timeLimitStart = govukDateFormat(req.session.data.timeLimitStart);
-      let timeLimitEnd = govukDateFormat(req.session.data.timeLimitEnd);
-      returnsRequirements.timeLimit =  "From " + timeLimitStart + " to " + timeLimitEnd
-      } else {returnsRequirements.timeLimit = req.session.data.timeLimit }}
-
-
-  req.session.data.purpose = ""
-  req.session.data.points = ""
-  req.session.data.abstractionStartMonth = ""
-  req.session.data.abstractionEndMonth = ""
-  req.session.data.timeLimit = ""
-  req.session.data.returnsCycle = ""
-  req.session.data.description = ""
-  req.session.data.title = ""
-  req.session.data.frequencyCollected = ""
-  req.session.data.frequency = ""
-  req.session.data.settings = ""
-
-
-}
-
-
- ///Remove requirement
- function removeRequirement(req, res) {
-
-   //get the return requirement
-   let licence = req.session.data.ID
-   let requirementIndex = req.session.data.requirementIndex
-   let returnsRequirements = req.session.data.licences[licence].returnsRequirements[0].requirements
-
-   //delete the object in the array
-   returnsRequirements.splice(requirementIndex ,1);
-
+//reformat strings to iso date format
+function reformatDate(dateStr) {
+  const year = dateStr.slice(0, 4);
+  const month = dateStr.slice(4, 6);
+  const day = dateStr.slice(6);
+  return `${year}-${month}-${day}`;
 }
 
 //////////////////////
-//CREATE RETURNS
+//CREATE RETURNS VERSION
 
-function createReturns(req,res) {
+function createReturnVersion(req,res) {
 
-  //get the return requirements
+  //get the return
+  
   let licence = req.session.data.ID
-  let requirements = req.session.data.licences[licence].returnsRequirements[0].requirements
+  let returnID = req.session.data.returnIndex
 
-  //loop through each requirement and create a return for each
-  for (const [i, v] of requirements.entries()) {
 
-  let id = v.id
-  let status = "due"
-  let due = "20240728"
-  let returnsCycle = v.returnsCycle
-  let description = v.description
-  let title = v.title
-  let frequency = v.frequency
-  let settings = v.settings
-  let purpose = v.purpose
-  let points = v.points
-  let periodStart = v.periodStart
-  let periodEnd = v.periodEnd
-  let returnsPeriodStart = "20240401"
-  let returnsPeriodEnd = "20240630"
+  let id = req.session.data.licences[licence].returns[returnID].versions.length
+  let nilReturn = false;
+  let lines = req.session.data.returnLines || [];
+  let submittedBy = "testuser@gov.uk";
+  let submittedDate = todayNoFormat;
+ let make = "";
+ let serialNumber = "";
+ let x10 = "";
+  
+  if (req.session.data.meterDetailsProvided == "yes" ) {
+       make = req.session.data.make,
+       serialNumber = req.session.data.serialNumber,
+       x10 = req.session.data.x10
+  };
 
-  let newReturn = {
+  let meterDetails = {
+       make,
+       serialNumber,
+       x10,
+  };
+
+  let newReturnVersion = {
     id,
-    status,
-    due,
-    returnsCycle,
-    description,
-    title,
-    frequency,
-    settings,
-    purpose,
-    points,
-    periodStart,
-    periodEnd,
-    returnsPeriodStart,
-    returnsPeriodEnd
-  }
+    submittedBy,
+    submittedDate,
+    nilReturn,
+    meterDetails,
+    lines
+  };
 
-  req.session.data.licences[licence].returns.unshift(newReturn)
-
-};
+  req.session.data.licences[licence].returns[returnID].versions.unshift(newReturnVersion)
 
 };
 
@@ -247,6 +197,9 @@ function createReturns(req,res) {
 //What to do with the return
 router.post('/returnStatus', function(req, res) {
 
+  req.session.data.edit = "false"
+
+  //if user only wants to mark as received and not enter data route accordingly (this is internal only)
   if(req.session.data.returnStatus == "received"){
     res.redirect('received');
   } else {
@@ -264,7 +217,6 @@ router.get('/received', function(req, res) {
   res.render(folder + '/received');
 });
 
-//adding date
 router.post('/received', function(req, res) {
 
    //Mark the return as received
@@ -272,19 +224,22 @@ router.post('/received', function(req, res) {
    let returnID = req.session.data.returnIndex
    req.session.data.licences[licence].returns[returnID].status = "received" 
 
-  res.redirect('confirmation-return-received');
+   req.session.data.returnSubmissionStatus = "received"
+
+  res.redirect('return-confirmation');
 });
 
 
 ///confirmation return has been received 
-router.get('/confirmation-return-received', function(req, res) {
+router.get('/return-confirmation', function(req, res) {
   req.session.data.back = req.headers.referer
-  res.render(folder + '/confirmation-return-received');
+  res.render(folder + '/return-confirmation');
 });
 
 
 /////////////Submitting a return
 
+////This is quite a confusing flow with routing, see mural for a map of the flow
 
 /// Get the date when the return was received
 router.get('/date-received', function(req, res) {
@@ -292,6 +247,280 @@ router.get('/date-received', function(req, res) {
   res.render(folder + '/date-received');
 });
 
+router.post('/date-received', function(req, res) {
+ res.redirect('amounts-to-report');
+});
+
+
+/// Is this a nill return?
+router.get('/amounts-to-report', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/amounts-to-report');
+});
+
+router.post('/amounts-to-report', function(req, res) {
+
+  //If nill return route accordingly
+  if(req.session.data.amountsToReport == "no"){
+    res.redirect('nil-return');
+  } else {
+    res.redirect('readings-or-volumes');
+  }
+ 
+});
+
+/// submit nill return
+router.get('/nil-return', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/nil-return');
+});
+
+router.post('/nil-return', function(req, res) {
+
+//get the return start and end dates for the period
+let licence = req.session.data.ID
+let returnID = req.session.data.returnIndex
+
+req.session.data.licences[licence].returns[returnID].status = "complete"
+createReturnVersion(req,res);
+
+
+ let versionIndex = req.session.data.licences[licence].returns[returnID].versions.length - 1
+ console.log( req.session.data.licences[licence].returns[returnID].versions);
+ req.session.data.licences[licence].returns[returnID].versions[versionIndex].nilReturn = true
+
+
+    res.redirect('return-confirmation');
+});
+
+
+/// Are readings or volumes being reported?
+router.get('/readings-or-volumes', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/readings-or-volumes');
+});
+
+router.post('/readings-or-volumes', function(req, res) {
+ res.redirect('units');
+});
+
+/// Units used?
+router.get('/units', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/units');
+});
+
+router.post('/units', function(req, res) {
+ res.redirect('meter-details-provided');
+});
+
+
+//Have meter details been provided?
+router.get('/meter-details-provided', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/meter-details-provided');
+});
+
+router.post('/meter-details-provided', function(req, res) {
+
+  //if meter details provided route accordingly
+  if (req.session.data.meterDetailsProvided == "yes"){
+    res.redirect('meter-details');
+  } else if ( req.session.data.readingsOrVolumes == "volumes") {
+    res.redirect('multiple-meters');
+  } else {
+       //get the return start and end dates for the period
+   let licence = req.session.data.ID
+   let returnID = req.session.data.returnIndex
+   
+
+// reformat the dates to iso
+const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
+const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
+
+console.log(startDate + " " + endDate);
+
+
+// generate the lines
+req.session.data.returnLines = createDailyObjects(startDate, endDate);
+console.log(req.session.data.returnLines);
+
+
+ res.redirect('meter-readings');
+  }
+
+
+ 
+});
+
+//Have multiple meters been used in this return period?
+router.get('/multiple-meters', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/multiple-meters');
+});
+
+router.post('/multiple-meters', function(req, res) {
+    res.redirect('single-volume');
+});
+
+//Is it a single volume?
+router.get('/single-volume', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/single-volume');
+});
+
+router.post('/single-volume', function(req, res) {
+
+  if ( req.session.data.singleVolume == "yes") {
+    res.redirect('single-volume-period');
+  } else {
+
+     //get the return start and end dates for the period
+   let licence = req.session.data.ID
+   let returnID = req.session.data.returnIndex
+   
+
+// reformat the dates to iso
+const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
+const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
+
+console.log(startDate + " " + endDate);
+
+
+// generate the lines
+req.session.data.returnLines = createDailyObjects(startDate, endDate);
+console.log(req.session.data.returnLines);
+
+
+    res.redirect('volumes');
+  }
+});
+
+//What period was used for the single volume?
+router.get('/single-volume-period', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/single-volume-period');
+});
+
+router.post('/single-volume-period', function(req, res) {
+      //get the return start and end dates for the period
+   let licence = req.session.data.ID
+   let returnID = req.session.data.returnIndex
+   
+
+// reformat the dates to iso
+const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
+const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
+
+console.log(startDate + " " + endDate);
+
+
+// generate the lines
+req.session.data.returnLines = createDailyObjects(startDate, endDate);
+console.log(req.session.data.returnLines);
+
+
+    res.redirect('volumes');
+});
+
+
+//volumes
+router.get('/volumes', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/volumes');
+});
+
+router.post('/volumes', function(req, res) {
+
+   //add readings from form array
+   req.session.data.returnLines = populateVolumes(req.session.data.line, req.session.data.returnLines);
+   console.log(req.session.data.returnLines);
+
+    res.redirect('check-your-answers');
+});
+
+/// meter details
+router.get('/meter-details', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/meter-details');
+});
+
+router.post('/meter-details', function(req, res) {
+
+//meter readings routes differently for volumes and readings  
+if ( req.session.data.readingsOrVolumes == "readings") {
+
+
+   //get the return start and end dates for the period
+   let licence = req.session.data.ID
+   let returnID = req.session.data.returnIndex
+   
+
+// reformat the dates to iso
+const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
+const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
+
+console.log(startDate + " " + endDate);
+
+
+// generate the lines
+req.session.data.returnLines = createDailyObjects(startDate, endDate);
+console.log(req.session.data.returnLines);
+
+
+ res.redirect('meter-readings');
+} else {
+
+  res.redirect('single-volume');
+
+}
+
+
+});
+
+/// meter readings
+router.get('/meter-readings', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/meter-readings');
+});
+
+router.post('/meter-readings', function(req, res) {
+
+  console.log(req.session.data.line);
+  
+  //add readings from form array
+  req.session.data.returnLines = populateReadings(req.session.data.line, req.session.data.returnLines);
+  console.log(req.session.data.returnLines);
+  
+  
+  let startReading = req.session.data.startReading
+  //calculate volumes
+  req.session.data.returnLines = calculateVolumes(req.session.data.returnLines, startReading);
+
+
+  console.log(req.session.data.returnLines);
+  
+ res.redirect('check-your-answers');
+});
+
+
+/// meter readings
+router.get('/check-your-answers', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/check-your-answers');
+});
+
+router.post('/check-your-answers', function(req, res) {
+
+   
+  let licence = req.session.data.ID
+  let returnID = req.session.data.returnIndex
+
+  req.session.data.licences[licence].returns[returnID].status = "complete"
+  createReturnVersion(req,res);
+
+ res.redirect('return-confirmation');
+});
 
 
 module.exports = router
