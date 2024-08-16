@@ -16,16 +16,21 @@
 
 <!--content block-->
 {% block service %}
-
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
     <!-- page heading -->
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{data.licences[data.ID]['number']}}</span> {{title}}</h1>
-
-  </div>
-</div>
+  </div></div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-4">
+      <div class="govuk-grid-column-full">
+    {{govukTag({
+      text: data.licences[data.ID].returns[data.returnIndex].status | returnStatusText | safe,
+      classes: data.licences[data.ID].returns[data.returnIndex].status | returnStatusColour
+      })}}
+      </div></div>
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+        <div class="govuk-grid-column-full">
 
 {{ govukSummaryList({
 classes: 'govuk-summary-list--no-border',
@@ -88,18 +93,16 @@ rows: [
   }
 ]
 }) }}
-
-
-<div class="govuk-grid-row govuk-!-margin-bottom-8">
-  <div class="govuk-grid-column-two-thirds">
-    <a href="../../licence#returns">View this licence</a>
-  </div>
+<a href="../../licence#returns">View licence</a>
 </div>
+</div>
+
+
 
 
 {% if data.licences[data.ID].returns[data.returnIndex].versions.length and data.edit !== "true" %}
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     {% if data.licences[data.ID].returns[data.returnIndex].versions[0].nilReturn == true %}
     <h2 class="govuk-heading-l">Nil return</h2>
     {{ govukButton({
@@ -107,15 +110,72 @@ rows: [
       href: "?edit=true#"
     }) }}
     {% else %}
-    <h2 class="govuk-heading-l">Abstraction volumes</h2>
+    <h2 class="govuk-heading-l"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.licences[data.ID].returns[data.returnIndex].versions[0].lines | sumVolumes | toGovNumber}} </span><span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">cubic metres</span></span><br>
+      <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total amount of water abstracted</span></h2>
     {{ govukButton({
       text: "Edit return",
       href: "?edit=true#"
     }) }}
-    {% include "sandbox/_includes/returns/submission/returns-table.html" %}
+
+
+    <!--divider-->
+    <div class="divider govuk-!-margin-bottom-7"></div>
+   
+    <!--heading for table based on readings or volumes incorporating frequency from the return-->
+   {% if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings" %}
+    <h3 class="govuk-heading-l">Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency }} meter readings</h3>
+   {% else %}
+    <h3 class="govuk-heading-l">Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency }} abstraction volumes</h3>
+    {% endif %}
+
+
+    <!--meter details if needed-->
+    {% if data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails | objLength !== 0 %}
+    {% set meterDetails = data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails %}
+
+    {% set meterDetailsMetaData %}
+    {{ govukSummaryList({
+      classes: 'govuk-summary-list--no-border',
+      rows: [
+        {
+          key: {
+            text: "Meter type",
+            classes: "meta-data__label"
+          },
+          value: {
+            text: meterDetails.make,
+            classes: "meta-data__value"
+          }
+        },
+        {
+          key: {
+            text: "Meter number",
+            classes: "meta-data__label"
+          },
+          value: {
+            text: meterDetails.serialNumber,
+            classes: "meta-data__value"
+          }
+        }
+        ]
+      })
+    }}
+    {% endset %}
+
+
+    {{ govukDetails({
+      summaryText: "Meter details",
+      html: meterDetailsMetaData
+    }) }}
     {% endif %}
     
-    <h3 class="govuk-heading-m">Submitted by</h2>
+
+   {% include "sandbox/_includes/returns/submission/returns-table-monthly-summary.html" %}
+
+    
+    {% endif %}
+    
+    <h3 class="govuk-heading-m">Submitted by</h3>
    
       {% for version in data.licences[data.ID].returns[data.returnIndex].versions %}
       {% set loopIndex = loop.index0 %}

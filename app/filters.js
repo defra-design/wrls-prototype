@@ -194,6 +194,35 @@ addFilter('sortByLicence', function sortBylicence(array) {
   return array;
 });
 
+//Batch return lines by month | batchByMonth
+addFilter('batchByMonth', function batchByMonth(data) {
+  const groupedData = data.reduce((acc, item) => {
+    const year = item.date.substring(0, 4);
+    const month = item.date.substring(4, 6);
+    const monthName = new Date(year, month - 1, 1).toLocaleString('en-US', { month: 'long' });
+
+    const key = `${month}-${year}`;
+
+    if (!acc[key]) {
+      acc[key] = { month: monthName, year, total: 0 };
+    }
+
+    acc[key].total += parseInt(item.volume);
+    return acc;
+  }, {});
+
+  return Object.values(groupedData);
+});
+
+
+//filter by month | filterByMonth("May")
+addFilter('filterByMonth', function filterByMonth(data, month) {
+  const monthNumber = new Date(`2024-${month}-01`).getMonth() + 1; // Convert month name to number
+  const monthString = monthNumber.toString().padStart(2, '0'); // Pad month with leading zero
+
+  return data.filter(item => item.date.substring(4, 6) === monthString);
+});
+
 
 addFilter('nbsp', function nbsp(x) { 
 
@@ -222,6 +251,18 @@ addFilter('submissionOptions', function submissionOptions(x) {
 });
 
 
+//get the length of an object
+addFilter('objLength', function objLength(x) {
+    return Object.keys(x).length;
+});
+
+//sum volumes 
+addFilter('sumVolumes', function sumVolumes(objects) {
+  return objects.reduce((total, obj) => {
+    const volume = Number(obj.volume); // Convert volume to number
+    return total + (isNaN(volume) ? 0 : volume); // Handle empty or non-numeric values
+  }, 0);
+});
 
 addFilter('formatDateToString', function formatDateToString(dateString) {
   // Split the date string into components

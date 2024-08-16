@@ -154,6 +154,8 @@ function createReturnVersion(req,res) {
 
 
   let id = req.session.data.licences[licence].returns[returnID].versions.length
+  let units = req.session.data.units
+  let readingsOrVolumes = req.session.data.readingsOrVolumes
   let nilReturn = false;
   let lines = req.session.data.returnLines || [];
   let submittedBy = "testuser@gov.uk";
@@ -161,6 +163,7 @@ function createReturnVersion(req,res) {
  let make = "";
  let serialNumber = "";
  let x10 = "";
+
   
   if (req.session.data.meterDetailsProvided == "yes" ) {
        make = req.session.data.make,
@@ -178,6 +181,8 @@ function createReturnVersion(req,res) {
     id,
     submittedBy,
     submittedDate,
+    units,
+    readingsOrVolumes,
     nilReturn,
     meterDetails,
     lines
@@ -187,7 +192,25 @@ function createReturnVersion(req,res) {
 
 };
 
+/////batch by month
+function batchByMonth(data) {
+  const groupedData = data.reduce((acc, item) => {
+    const year = item.date.substring(0, 4);
+    const month = item.date.substring(4, 6);
+    const monthName = new Date(year, month - 1, 1).toLocaleString('en-UK', { month: 'long' });
 
+    const key = `${month}-${year}`;
+
+    if (!acc[key]) {
+      acc[key] = { month: monthName, year, total: 0 };
+    }
+
+    acc[key].total += parseInt(item.volume);
+    return acc;
+  }, {});
+
+  return Object.values(groupedData);
+}
 
 
 ///-----------------------------------------PAGE ROUTES------------------------------------------///
@@ -283,12 +306,9 @@ let returnID = req.session.data.returnIndex
 
 req.session.data.licences[licence].returns[returnID].status = "complete"
 createReturnVersion(req,res);
-
-
- let versionIndex = req.session.data.licences[licence].returns[returnID].versions.length - 1
+ 
+ req.session.data.licences[licence].returns[returnID].versions[0].nilReturn = true
  console.log( req.session.data.licences[licence].returns[returnID].versions);
- req.session.data.licences[licence].returns[returnID].versions[versionIndex].nilReturn = true
-
 
     res.redirect('return-confirmation');
 });
@@ -518,6 +538,9 @@ router.post('/check-your-answers', function(req, res) {
 
   req.session.data.licences[licence].returns[returnID].status = "complete"
   createReturnVersion(req,res);
+
+
+  req.session.data.licences[licence].returns[returnID].versions[0].monthTotals = batchByMonth(req.session.data.licences[licence].returns[returnID].versions[0].lines)
 
  res.redirect('return-confirmation');
 });

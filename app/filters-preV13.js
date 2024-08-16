@@ -524,6 +524,16 @@ filters.focus = function(x) {
    else return ''
  }
 
+
+ //number to gov format | toGovNumber
+ filters.toGovNumber = input => {
+  function toGovNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  if (input) return `${toGovNumber(input)}`
+  else return ''
+}
+
  //filter to change a number string in to the govuk date format. "yyyymmdd" | formatDate
    filters.formatDate = function(x) {
      let dd = x.slice(-2);

@@ -1,0 +1,46 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set selectMonthData = data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals[data.monthID] %}
+
+{% set title = "Water abstracted " + selectMonthData.month + " " + selectMonthData.year %}
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- page heading -->
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Return {{data.licences[data.ID].returns[data.returnIndex].id}}</span> {{title}}</h1>
+  
+</div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+   
+    {% include "sandbox/_includes/returns/submission/returns-table-monthly.html" %}
+
+    
+ 
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

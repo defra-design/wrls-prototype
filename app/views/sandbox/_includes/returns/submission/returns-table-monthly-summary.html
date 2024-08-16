@@ -1,0 +1,51 @@
+
+   <!--create array-->
+   {% set lines = [] %}
+   
+
+   <!--select array to loop through-->
+   {% set selectData = data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals %}
+
+
+   <!--loop through the data-->
+   {% for item in selectData %}
+   
+   <!--set the variable using the push filter to set up the rows-->
+   {% set lines = lines | push([{
+    text: item.month + " " + item.year ,
+      classes: 'govuk-!-width-one-half'
+    },{
+       text: item.total  | toGovNumber ,
+      format: 'numeric'
+    },{
+       html: '<a class="govuk-link" href="water-abstracted?monthID=' + loop.index0 +'">View ' + data.licences[data.ID].returns[data.returnIndex].frequency + ' ' + data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes + '</a>',
+      format: 'numeric'
+    } 
+    
+    ])  %}
+  
+  {% endfor %}
+
+
+
+
+   {{ govukTable({
+    caption: "",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Month"
+      },
+      {
+        text: "Total " + data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords,
+        format: 'numeric'
+      },
+      {
+        text: "Details",
+        format: 'numeric'
+      }
+    ],
+    rows: lines
+      
+    })  }}
