@@ -1,0 +1,48 @@
+{% set returns = data.licences[data.ID]['returns'] %}
+
+
+
+
+
+{% set rows = []%}
+
+{% for return in returns %}
+{% set due = return.due | numberToGovukDate %}
+{% set status %}
+{{govukTag({
+text: return.status | returnStatusText | safe,
+classes: return.status | returnStatusColour
+})}}
+{% endset %}
+
+{% set rows = rows | push ([{html: '<a href="licence/returns/return?returnIndex='+loop.index0+'">'+return.id+'</a>'},{text: return.purpose},{text: due},{html: status}]) %}
+
+{% endfor %}
+
+
+{% set caption = 'Returns <!--<p class="govuk-body"><a class="govuk-link" href="#charge">Set up new requirements for returns</a></p>-->' %}
+
+{{ govukTable({
+caption: caption | safe,
+captionClasses: "govuk-table__caption--l",
+firstCellIsHeader: false,
+head: [
+  {
+    text: "Return reference",
+    classes: 'govuk-!-width-one-quarter'
+  },
+  {
+    text: "Purpose"
+  }
+  ,
+  {
+    text: "Due"
+  }
+  ,
+  {
+    text: "Status"
+  }
+],
+rows: rows
+
+}) }}

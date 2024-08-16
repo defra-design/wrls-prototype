@@ -499,9 +499,69 @@ module.exports = {
                 { }
               ],
 
-        "returnsRequirements":  [],
+              "returnsRequirements":  [{
+                "startDate":"20180401",
+                "endDate":"",
+                "reason":"Major change",
+                "status":"active",
+                "additionalSubmissionOptions": ["none"],
+                "username":"username@defra.gov.uk",
+                "note":"",
+                "requirements":[{
+                                "id":823188,
+                                "returnsCycle":"summer",
+                                "description":"River Swale - Helperby",
+                                "frequencyCollected":"daily",
+                                "frequency":"daily",
+                                "purpose":["Spray irrigation - direct"],
+                                "points":["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                                "periodStart":"0401",
+                                "periodEnd":"1031",
+                                "timeLimit": "No",
+                                "settings":["none"],
+                                  }]
+                    },
+                    {
+                    "startDate":"20150401",
+                    "endDate":"20180331",
+                    "reason":"New licence",
+                    "additionalSubmissionOptions": ["none"],
+                    "status":"active",
+                    "username":"username@defra.gov.uk",
+                    "note":"",
+                    "requirements":[{
+                                    "id":823188,
+                                    "returnsCycle":"summer",
+                                    "description":"River Swale - Helperby",
+                                    "frequencyCollected":"daily",
+                                    "frequency":"daily",
+                                    "purpose":["Spray irrigation - direct"],
+                                    "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                                    "periodStart":"0401",
+                                    "periodEnd":"1031",
+                                    "timeLimit": "No",
+                                    "settings":["none"],
+                                      }]
+                        }
+                  ],
 
-        "returns": [],
+
+                  "returns": [{
+                                "id":823188,
+                                "status": "due",
+                                "due": "20221128",
+                                "returnsCycle":"summer",
+                                "description":"River Swale - Helperby",
+                                "frequency": "daily",
+                                "purpose":["Spray irrigation - direct"],
+                                "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                                "periodStart":"0401",
+                                "periodEnd":"1031",
+                                "returnsPeriodStart":"20220401",
+                                "returnsPeriodEnd":"20221031",
+                                "versions": [],
+                              }
+                              ],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -648,9 +708,69 @@ module.exports = {
                 { }
               ],
 
-        "returnsRequirements":  [],
+              "returnsRequirements":  [{
+                "startDate":"20180401",
+                "endDate":"",
+                "reason":"Major change",
+                "status":"active",
+                "additionalSubmissionOptions": ["none"],
+                "username":"username@defra.gov.uk",
+                "note":"",
+                "requirements":[{
+                                "id":323188,
+                                "returnsCycle":"summer",
+                                "description":"River Swale - Helperby",
+                                "frequencyCollected":"daily",
+                                "frequency":"daily",
+                                "purpose":["Spray irrigation - direct"],
+                                "points":["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                                "periodStart":"0401",
+                                "periodEnd":"1031",
+                                "timeLimit": "No",
+                                "settings":["none"],
+                                  }]
+                    },
+                    {
+                    "startDate":"20150401",
+                    "endDate":"20180331",
+                    "reason":"New licence",
+                    "additionalSubmissionOptions": ["none"],
+                    "status":"active",
+                    "username":"username@defra.gov.uk",
+                    "note":"",
+                    "requirements":[{
+                                    "id":323188,
+                                    "returnsCycle":"summer",
+                                    "description":"River Swale - Helperby",
+                                    "frequencyCollected":"daily",
+                                    "frequency":"daily",
+                                    "purpose":["Spray irrigation - direct"],
+                                    "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                                    "periodStart":"0401",
+                                    "periodEnd":"1031",
+                                    "timeLimit": "No",
+                                    "settings":["none"],
+                                      }]
+                        }
+                  ],
 
-        "returns": [],
+
+                  "returns": [{
+                                "id":323188,
+                                "status": "due",
+                                "due": "20221128",
+                                "returnsCycle":"summer",
+                                "description":"River Swale - Helperby",
+                                "frequency": "daily",
+                                "purpose":["Spray irrigation - direct"],
+                                "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                                "periodStart":"0401",
+                                "periodEnd":"1031",
+                                "returnsPeriodStart":"20220401",
+                                "returnsPeriodEnd":"20221031",
+                                "versions": [],
+                              }
+                              ],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2021",
@@ -1586,7 +1706,7 @@ module.exports = {
               "returns": [
                           {
                             "id":823187,
-                            "status": "completed",
+                            "status": "due",
                             "due": "20211128",
                             "returnsCycle":"winter and all year",
                             "description":"Cherry tree farm - BOREHOLE A",
@@ -1601,7 +1721,7 @@ module.exports = {
                           },
                           {
                             "id":823187,
-                            "status": "completed",
+                            "status": "due",
                             "due": "20201128",
                             "returnsCycle":"winter and all year",
                             "description":"Cherry tree farm - BOREHOLE A",

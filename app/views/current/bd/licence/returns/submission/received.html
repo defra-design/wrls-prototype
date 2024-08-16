@@ -1,0 +1,91 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set pageTitle = "Abstraction return - return received" %}
+{% set title = "Abstraction return" %}
+
+{% block pageTitle %}
+{{pageTitle}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    
+
+    
+                <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+                  <span class="govuk-caption-xl">Licence 03/28/60/0032</span>
+                  Abstraction return
+                </h1>
+    
+
+    
+          <form  method="post" class="form" >
+    
+    
+            {% call govukFieldset({
+              legend: {
+                text: "When was the return received?",
+                classes: "govuk-fieldset__legend--m",
+                isPageHeading: false
+              }
+              }) %}
+              
+              {{ govukDateInput({
+                id: "returnReceivedDate",
+                namePrefix: "returnReceivedDate",
+                items: [{
+                  classes: "govuk-input--width-2",
+                  name: "day",
+                  value: "6"|d
+                },
+                {
+                  classes: "govuk-input--width-2",
+                  name: "month",
+                  value: "3"|m
+                },
+                {
+                  classes: "govuk-input--width-4",
+                  name: "year",
+                  value: "2024"|y
+                }]
+              }) }}
+              
+              {{ govukCheckboxes({
+              idPrefix: "underQuery",
+              name: "underQuery",
+              items: [
+              {
+              value: "underQuery",
+              text: "Mark as under query"
+              }
+              ]
+              }) }}
+              
+              {% endcall %}
+    
+
+    
+            <button type="submit" class="govuk-button">
+              Submit
+            </button>
+    
+          </form>
+    
+
+    
+
+    
+ 
+   
+</div>
+</div>
+
+
+    {% endblock %}

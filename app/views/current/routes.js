@@ -67,6 +67,8 @@ router.use('/bd/iterations/bill-runs', require('./bd/iterations/_routes/_routes-
 router.use('/bd/iterations/manual-billing', require('./bd/iterations/_routes/_routes-manual-billing'));
 
 
+///RETURN SUBMISSIONS ROUTE
+router.use('/bd/licence/returns/submission', require('./bd/iterations/_routes/_routes-returns-submission'));
 
 ///SROC ROUTE
 router.use('/bd/iterations/sroc', require('./bd/iterations/_routes/_routes-sroc'));

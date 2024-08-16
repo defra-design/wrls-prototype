@@ -1,0 +1,64 @@
+{% extends "layouts/_manage.html" %}
+
+{# set the page title #}
+{% if data.returnSubmissionStatus == "received" %}
+{% set pageTitle = "Abstraction return - return received" %}
+{% elseif  data.returnSubmissionStatus == "nil" %}
+{% set pageTitle = "Abstraction return - nill submission" %}
+{% else %}
+{% set pageTitle = "Abstraction return - return submitted" %}
+{% endif %}
+
+{% set title = "Abstraction return" %}
+
+{% block pageTitle %}
+{{pageTitle}} - GOV.UK
+{% block breadcrumbs %}
+{% endblock %}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  
+  {# set the panel title #}
+  {% if data.returnSubmissionStatus == "received" %}
+  {% set titleText = "Return received" %}
+  {% else %}
+  {% set titleText = "Return submitted" %}
+  {% endif %}
+    
+
+                {{ govukPanel({
+                  titleText: titleText,
+                  classes: "panel__body--small",
+                  html: '<div class="govuk-!-font-size-24">Licence number <strong>' + data.licences[data.ID]['number'] + '</strong><br><br>
+                  Site desctiption <strong>' + data.licences[data.ID].returns[data.returnIndex].description + '</strong><br><br>
+                  Purpose <strong>' + data.licences[data.ID].returns[data.returnIndex].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br + '</strong></div>'
+                  }) }}
+                
+                  {% if data.returnSubmissionStatus == "received" %}
+                  <p class="govuk-body"><a href="../../../licence#returns" class="govuk-link">View returns for {{data.licences[data.ID]['number']}}</a></p>
+                  {% else %}
+                  <p class="govuk-body"><a href="../return" class="govuk-link">View this return</a></p>
+                  <p class="govuk-body">or</p>
+                  {{ govukButton({
+                    text: "Mark for supplementary bill run"
+                  }) }}
+                  {% endif %}
+
+    
+
+    
+ 
+   
+</div>
+</div>
+
+
+    {% endblock %}

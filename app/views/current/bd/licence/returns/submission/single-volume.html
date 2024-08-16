@@ -1,0 +1,85 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set pageTitle = "Abstraction return - is it a single abstracted amount?" %}
+{% set title = "Abstraction return" %}
+
+{% block pageTitle %}
+{{pageTitle}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form method="post" class="form">
+
+      {# Frequency switch based on the answer for the specific requirement
+      {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency'] %}
+          {% case 'daily' %}
+              {% set daily = true %}
+          {% case 'weekly' %}
+              {% set weekly = true %}
+          {% case 'monthly' %}
+              {% set monthly = true %}
+      {% endswitch %}
+      #}
+
+      {% set singleVolHtml %}
+      {{ govukInput({
+        label: {
+          text: "Enter the total amount"
+        },
+        classes: "govuk-input--width-10",
+        id: "singleVol",
+        name: "singleVol",
+        suffix: {
+          text: data.units | returnUnitsWords
+        },
+        spellcheck: false
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "singleVolume",
+        name: "singleVolume",
+        fieldset: {
+          legend: {
+            html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title] + '</h1>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Is it a single volume?</legend>',
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+        {
+          value: "yes",
+          text: "Yes",
+          checked: yes,
+          conditional: {
+            html: singleVolHtml
+          }
+        },
+        {
+          value: "no",
+          text: "No",
+          checked: no
+        }
+        ]
+      }) }}
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
+
+    </form>
+</div>
+</div>
+
+
+    {% endblock %}

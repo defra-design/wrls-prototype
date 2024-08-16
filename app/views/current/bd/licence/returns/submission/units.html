@@ -1,0 +1,79 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set pageTitle = "Abstraction return - what is the unit of measurement?" %}
+{% set title = "Abstraction return" %}
+
+{% block pageTitle %}
+{{pageTitle}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <form method="post" class="form">
+
+      {# Frequency switch based on the answer for the specific requirement
+      {% switch data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex]['frequency'] %}
+          {% case 'daily' %}
+              {% set daily = true %}
+          {% case 'weekly' %}
+              {% set weekly = true %}
+          {% case 'monthly' %}
+              {% set monthly = true %}
+      {% endswitch %}
+      #}
+
+      
+
+      {{ govukRadios({
+        idPrefix: "units",
+        name: "units",
+        fieldset: {
+          legend: {
+            html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title] + '</h1>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Which units were used?</legend>',
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+        {
+          value: "cm3",
+          text: "Cubic Meters",
+          checked: cm3
+        },
+        {
+          value: "l",
+          text: "Litres",
+          checked: l
+        },
+        {
+          value: "ml",
+          text: "Mega litres",
+          checked: ml
+        },
+        {
+          value: "g",
+          text: "Gallons",
+          checked: gallons
+        }
+        ]
+      }) }}
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
+
+    </form>
+</div>
+</div>
+
+
+    {% endblock %}
