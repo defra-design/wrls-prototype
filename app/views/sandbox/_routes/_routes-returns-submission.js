@@ -139,6 +139,18 @@ function reformatDate(dateStr) {
 }
 
 
+//reformat strings to gov date format
+function reformatDateGov(dateStr) {
+  const year = dateStr.slice(0, 4);
+  let month = dateStr.slice(4, 6);
+  const day = dateStr.slice(6);
+
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  month = monthNames[month - 1]
+  return `${day} ${month} ${year}`;
+}
+
+
 ////convert string to array
 function convertStringToNumberArray(string) {
   // Split the string into an array based on new line characters
@@ -239,6 +251,45 @@ function arrToObjectData(arrHeader, arrBody) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+////download CSV
+
+
+router.get('/generate-csv', (req, res) => {
+
+   //get the return start and end dates for the period
+ let licence = req.session.data.ID
+ let returnID = req.session.data.returnIndex
+
+ let returnReference = req.session.data.licences[licence].returns[returnID].id
+    
+ console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+
+  const lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
+
+   // Create a header row
+   const header = 'Date,Volume\n';
+
+
+  const dataRows = lines.map((row) => {
+   
+    // Format the date as ISO string
+    const govDate = reformatDateGov(row.date)
+
+    return `${govDate},${row.volume}\n`;
+  });
+
+    // Combine the header and data rows
+    const csvContent = header + dataRows.join('');
+
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Disposition', 'attachment; filename=return-'+returnReference+'.csv');
+  res.send(csvContent);
+
+  res.redirect('return');
+
+});
+
+
 //What to do with the return
 router.post('/returnStatus', function(req, res) {
 
@@ -254,16 +305,38 @@ router.post('/returnStatus', function(req, res) {
  //get the return start and end dates for the period
  let licence = req.session.data.ID
  let returnID = req.session.data.returnIndex
+
+ // reformat the dates to iso
+const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
+const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
+
+console.log(startDate + " " + endDate);
+
+
+
     
- console.log(req.session.data.licences[licence].returns[returnID].versions[0])
+
 
  //copy existing return details to be edited
- req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
- req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
- req.session.data.lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
- req.session.data.readingsOrVolumes = req.session.data.licences[licence].returns[returnID].versions[0].readingsOrVolumes
- req.session.data.units = req.session.data.licences[licence].returns[returnID].versions[0].units
- req.session.data.monthTotals = req.session.data.licences[licence].returns[returnID].versions[0].monthTotals
+ if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === "undefined") {
+ req.session.data.make = ""
+ req.session.data.serialNumber = ""
+ req.session.data.lines = createDailyObjects(startDate, endDate);
+ req.session.data.readingsOrVolumes = "volumes"
+ req.session.data.units = "cm3"
+ req.session.data.monthTotals = []
+} else {
+  req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
+  req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
+  req.session.data.lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
+  req.session.data.readingsOrVolumes = req.session.data.licences[licence].returns[returnID].versions[0].readingsOrVolumes
+  req.session.data.units = req.session.data.licences[licence].returns[returnID].versions[0].units
+  req.session.data.monthTotals = req.session.data.licences[licence].returns[returnID].versions[0].monthTotals
+  req.session.data.meterDetailsProvided = "yes"
+}
+
+
+
 
  
 

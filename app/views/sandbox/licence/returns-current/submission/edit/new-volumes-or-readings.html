@@ -37,13 +37,13 @@
         <!-- page heading -->
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{data.licences[data.ID]['number']}}</span> {{title}}</h1>
       </div></div>
-        <div class="govuk-grid-row govuk-!-margin-bottom-4">
+ <!--     <div class="govuk-grid-row govuk-!-margin-bottom-4">
           <div class="govuk-grid-column-full">
         {{govukTag({
           text: data.licences[data.ID].returns[data.returnIndex].status | returnStatusText | safe,
           classes: data.licences[data.ID].returns[data.returnIndex].status | returnStatusColour
           })}}
-          </div></div>
+          </div></div> -->
           <div class="govuk-grid-row govuk-!-margin-bottom-8">
             <div class="govuk-grid-column-full">
     
@@ -129,7 +129,7 @@
         text: "Reporting figures"
       },
       value: {
-        text: data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes | capitalize
+        text: data.readingsOrVolumes | capitalize
       },
       actions: {
         items: [
@@ -146,7 +146,7 @@
         text: "Meter details"
       },
       value: {
-        html: data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails.make + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails.serialNumber
+        html: data.make + "<br>" + data.serialNumber
       },
       actions: {
         items: [
@@ -163,7 +163,7 @@
         text: "Units"
       },
       value: {
-        html: data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords
+        html: data.units | returnUnitsWords
       },
       actions: {
         items: [
@@ -184,9 +184,9 @@
   <div class="govuk-grid-column-full">
 
 <h2 class="govuk-heading-l govuk-!-margin-bottom-2">
- Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes}}
+ Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}
 </h2>
-<p class="govuk-body" ><a href="multiple" class="govuk-link">Enter multiple {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes}}</a></p>
+<p class="govuk-body" ><a href="multiple" class="govuk-link">Enter multiple {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}</a></p>
 {% include "sandbox/_includes/returns/submission/returns-table-monthly-summary-edit.html" %}
       <form  method="post"  novalidate>
 

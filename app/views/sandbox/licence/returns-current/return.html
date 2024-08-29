@@ -129,8 +129,19 @@ rows: [
     {% endif %}
 
 
+<!--download return data-->
+
+{{ govukButton({
+  text: "Download this return",
+  href: "/generate-csv",
+  classes: "govuk-button--secondary"
+}) }}
+
+
+
+
     <!--meter details if needed-->
-    {% if data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails | objLength !== 0 %}
+    {% if data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails.make !== "" %}
     {% set meterDetails = data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails %}
 
     {% set meterDetailsMetaData %}
@@ -163,16 +174,13 @@ rows: [
     {% endset %}
 
 
-    {{ govukButton({
-      text: "Download this return",
-      href: "/public/files/uploads/return772318.csv",
-      classes: "govuk-button--secondary"
-    }) }}
-
+    
+  
     {{ govukDetails({
       summaryText: "Meter details",
       html: meterDetailsMetaData
     }) }}
+   
     {% endif %}
     
    
