@@ -1,0 +1,70 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set selectMonthData = data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals[data.monthID] %}
+
+{% set title = "Enter multiple " + data.licences[data.ID].returns[data.returnIndex].frequency + " " + data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes %}
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- page heading -->
+   {% set qTitle = '<h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Return ' + data.licences[data.ID].returns[data.returnIndex].id + '</span>' + title + '</h1>' %}
+  
+</div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  
+
+    
+ 
+    <form method="post" novalidate >
+
+
+
+      {{ govukTextarea({
+        name: "multiple",
+        id: "multiple",
+        classes: "govuk-!-width-full",
+        label: {
+          html: qTitle,
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Enter each daily " + data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes + " starting with "+ data.licences[data.ID].returns[data.returnIndex].returnsPeriodStart | numberToGovukDate +". Each entry should either be separated by a comma or on a new line. Any gaps should be represented by a 0."
+        }
+      }) }}
+  
+        <button type="submit" class="govuk-button govuk-!-margin-right-1">
+          Continue
+        </button>
+  
+      </form>
+  
+
+ 
+
+    </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

@@ -163,12 +163,19 @@ rows: [
     {% endset %}
 
 
+    {{ govukButton({
+      text: "Download this return",
+      href: "/public/files/uploads/return772318.csv",
+      classes: "govuk-button--secondary"
+    }) }}
+
     {{ govukDetails({
       summaryText: "Meter details",
       html: meterDetailsMetaData
     }) }}
     {% endif %}
     
+   
 
    {% include "sandbox/_includes/returns/submission/returns-table-monthly-summary.html" %}
 
@@ -218,8 +225,19 @@ rows: [
                 text: "Enter and submit it"
               },
               {
+                value: "nil",
+                text: "Enter a nil return"
+              },
+              {
                 value: "received",
                 text: "Record receipt (and come back to it later)"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "new",
+                text: "Enter new volumes or readings"
               }
             ]
           })

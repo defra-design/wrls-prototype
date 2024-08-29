@@ -1,0 +1,111 @@
+
+   <!--create array-->
+   {% set lines = [] %}
+   
+
+   <!--select array to loop through-->
+   {% set selectData = data.monthTotals %}
+
+   {# set global scope #}
+   {% set cubicMetersCalcTotal = 0 %}
+   {% set volCalcTotal = 0 %}
+
+
+
+   <!--loop through the data-->
+   {% for item in selectData %}
+
+ 
+
+   <!--calculate the cubic meters if needed-->
+   {% set cubicMetersCalc = "" %}
+
+  
+  
+   {% if item.total !== "" and data.units !== "cm3" %}
+   
+   {% if data.units == "ml" %}
+   {% set cubicMetersCalc = item.total| stringToNumber *  1000 %}
+   {% elseif data.units == "l" %}
+   {% set cubicMetersCalc = item.total | stringToNumber /  1000 %}
+   {% else %}
+   {% set cubicMetersCalc  = item.total | stringToNumber /   220 %}
+   {% endif %}
+
+
+
+   <!--set cubic meters calc total-->
+   {% set cubicMetersCalcTotal = cubicMetersCalcTotal + cubicMetersCalc %}
+   {% endif %}
+
+   {% if item.total !== "" %}
+   
+   {% set volCalcTotal = volCalcTotal | stringToNumber + item.total | stringToNumber %}
+
+
+   {% endif %}
+
+   
+   <!--set the variable using the push filter to set up the rows-->
+   {% set lines = lines | push([{
+    text: item.month + " " + item.year ,
+      classes: 'govuk-!-width-one-half'
+    },{
+       text: item.total  | toGovNumber ,
+      format: 'numeric'
+    },{
+       html: '<a class="govuk-link" href="water-abstracted-'+data.readingsOrVolumes+'?monthID=' + loop.index0 +'">Change ' + data.licences[data.ID].returns[data.returnIndex].frequency + ' ' + data.readingsOrVolumes + '</a>',
+      format: 'numeric'
+    } 
+    
+    ])  %}
+  
+  {% endfor %}
+
+   <!--set col span-->
+{% set colSpan = 1 %}  
+{% if data.readingsOrVolumes == "readings" %}
+{% set colSpan = 1 %}
+{% endif %}
+
+
+
+  <!--set total-->
+  {% set lines = lines | push([{ text: "Total volume of water abstracted",
+   colspan: colSpan,
+   classes: "govuk-!-font-weight-bold"
+ },
+ { text: volCalcTotal | toGovNumber ,
+   format: 'numeric',
+   classes: "govuk-!-font-weight-bold"
+ },
+ { text: cubicMetersCalcTotal | round(3),
+   format: 'numeric',
+   classes: "govuk-!-font-weight-bold"
+ } if data.units !== "cm3"
+ ]
+ )%}
+
+
+
+
+   {{ govukTable({
+    caption: "",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Month"
+      },
+      {
+        text: "Total " + data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords,
+        format: 'numeric'
+      },
+      {
+        text: "Details",
+        format: 'numeric'
+      }
+    ],
+    rows: lines
+      
+    })  }}

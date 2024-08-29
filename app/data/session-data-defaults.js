@@ -2682,9 +2682,9 @@ module.exports = {
                                                           {"date":"20240630","reading":"","volume":"5013"}
                                                         ],
                                                         "monthTotals":[
-                                                          {"month":"April","year":"2024","total":"150,388"},
-                                                          {"month":"May","year":"2024","total":"155,403"},
-                                                          {"month":"June","year":"2024","total":"155,403"}
+                                                          {"month":"April","year":"2024","total":"150388"},
+                                                          {"month":"May","year":"2024","total":"155403"},
+                                                          {"month":"June","year":"2024","total":"155403"}
                                                         ]
                                                                     }]
                                                     },

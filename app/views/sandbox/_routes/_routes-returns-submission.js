@@ -3,6 +3,8 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here - above the module.exports line
 
+const fs = require('fs')
+const path = require('path');
 
 ///-----------------------------------------CONSTANTS------------------------------------------///
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,14 +56,8 @@ const folder = "sandbox/licence/returns-current/submission"
 //////////////////////
  const successMessage = {
    "dynamicContent":      "",
-   "reasonUpdate":        '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
-   "startDateUpdate":     '<h3 class="govuk-notification-banner__heading">Changes updated</h3>',
-   "additionalSubmissionOptions":     '<h3 class="govuk-notification-banner__heading">Changes updated</h3>',
-   "requirementUpdate":   '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
-   "requirementCreate":   '<h3 class="govuk-notification-banner__heading">New requirement added</h3>',
-   "requirementRemove":   '<h3 class="govuk-notification-banner__heading">Requirement removed</h3>',
-   "noteUpdate":          '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
-   "noteCreate":          '<h3 class="govuk-notification-banner__heading">Changes made</h3>',
+   "multipleVolumeUpdate":        'daily volumes have been updated</h3>',
+   "singleVolumeUpdate":        'A daily volume has been updated</h3>',
  }
 let notificationTitle = ""
 
@@ -142,6 +138,21 @@ function reformatDate(dateStr) {
   return `${year}-${month}-${day}`;
 }
 
+
+////convert string to array
+function convertStringToNumberArray(string) {
+  // Split the string into an array based on new line characters
+  const lines = string.split('\n');
+
+  // Convert each line to a number and store it in a new array
+  const numberArray = lines.map(line => {
+    // Remove commas and convert the string to a number
+    return Number(line.replace(',', ''));
+  });
+
+  return numberArray;
+}
+
 //////////////////////
 //CREATE RETURNS VERSION
 
@@ -213,6 +224,17 @@ function batchByMonth(data) {
 }
 
 
+//CSV to JSON
+function arrToObjectData(arrHeader, arrBody) {
+  const data = arrHeader.reduce((prevValue, curValue, curIndex, 
+  arr) => {
+    return { ...prevValue, [curValue]: arrBody[curIndex] };
+  }, {});
+
+  return data;
+}
+
+
 ///-----------------------------------------PAGE ROUTES------------------------------------------///
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -225,6 +247,27 @@ router.post('/returnStatus', function(req, res) {
   //if user only wants to mark as received and not enter data route accordingly (this is internal only)
   if(req.session.data.returnStatus == "received"){
     res.redirect('received');
+  } else if (req.session.data.returnStatus == "nil") {
+    res.redirect('nil-return');
+  } else if (req.session.data.returnStatus == "new") {
+
+ //get the return start and end dates for the period
+ let licence = req.session.data.ID
+ let returnID = req.session.data.returnIndex
+    
+ console.log(req.session.data.licences[licence].returns[returnID].versions[0])
+
+ //copy existing return details to be edited
+ req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
+ req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
+ req.session.data.lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
+ req.session.data.readingsOrVolumes = req.session.data.licences[licence].returns[returnID].versions[0].readingsOrVolumes
+ req.session.data.units = req.session.data.licences[licence].returns[returnID].versions[0].units
+ req.session.data.monthTotals = req.session.data.licences[licence].returns[returnID].versions[0].monthTotals
+
+ 
+
+    res.redirect('edit/new-volumes-or-readings');
   } else {
     res.redirect('date-received');
   }
@@ -232,6 +275,199 @@ router.post('/returnStatus', function(req, res) {
 
 });
 
+///enter new volumes or readings
+
+router.get('/edit/new-volumes-or-readings',  function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.success = 0 
+  
+  res.render(folder + '/edit/new-volumes-or-readings');
+});
+
+
+router.post('/edit/new-volumes-or-readings',  function(req, res) {
+  req.session.data.back = req.headers.referer
+
+ 
+  let licence = req.session.data.ID
+  let returnID = req.session.data.returnIndex
+
+  req.session.data.licences[licence].returns[returnID].status = "complete"
+  createReturnVersion(req,res);
+
+
+  console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+
+  req.session.data.licences[licence].returns[returnID].versions[0].monthTotals = batchByMonth(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+  
+  console.log(req.session.data.licences[licence].returns[returnID].versions[0].monthTotals)
+
+
+  //blank flow data
+  req.session.data.amountsToReport = ""
+  req.session.data.dateReturnReceived = ""
+  req.session.data.customDateReturnReceived = ""
+  req.session.data.meterDetailsProvided = ""
+  req.session.data.make = ""
+  req.session.data.serialNumber = ""
+  req.session.data.x10 = ""
+  req.session.data.line = ""
+  req.session.data.lines = ""
+  req.session.data.multipleMeters = ""
+  req.session.data.underQuery = ""
+  req.session.data.readingsOrVolumes = ""
+  req.session.data.returnReceivedDate = ""
+  req.session.data.customAbsStartReceived = ""
+  req.session.data.customAbsEnd = ""
+  req.session.data.singleVolume = ""
+  req.session.data.units = ""
+
+
+
+ res.redirect('../return-confirmation');
+});
+
+
+//enter multiple readings
+router.get('/edit/multiple',  function(req, res) {
+  req.session.data.back = req.headers.referer
+
+  res.render(folder + '/edit/multiple');
+});
+
+router.post('/edit/multiple',  function(req, res) {
+  req.session.data.back = req.headers.referer
+
+
+ //get the return start and end dates for the period
+ let licence = req.session.data.ID
+ let returnID = req.session.data.returnIndex
+ 
+
+// reformat the dates to iso
+const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
+const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
+
+//console.log(startDate + " " + endDate);
+
+
+// generate the lines
+req.session.data.returnLines = createDailyObjects(startDate, endDate);
+//console.log(req.session.data.returnLines);
+
+
+//get the multiple entries and reformat to array
+ // console.log('multiple');
+ // console.log(req.session.data.multiple);
+  req.session.data.line = convertStringToNumberArray(req.session.data.multiple);
+
+
+  //add the new readings to the return lines
+  req.session.data.lines = populateVolumes(req.session.data.line, req.session.data.returnLines);
+
+ // console.log(req.session.data.returnLines);
+
+  //batch the return lines into monthly totals
+  req.session.data.monthTotals = batchByMonth(req.session.data.lines)
+
+  console.log(req.session.data.monthTotals);
+
+  req.session.data.success = 1
+
+    // successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
+    req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">' + req.session.data.returnLines.length + ' ' + successMessage.multipleVolumeUpdate
+    notificationTitle = "Updated"
+    req.session.data.notificationTitle = notificationTitle
+    console.log("success message")
+
+  res.redirect('new-volumes-or-readings');
+});
+
+/////////////////
+///enter new individual volumes
+router.get('/edit/water-abstracted-volumes',  function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.success = 0 
+  
+  res.render(folder + '/edit/water-abstracted-volumes');
+});
+
+router.post('/edit/water-abstracted-volumes',  function(req, res) {
+  req.session.data.back = req.headers.referer
+
+    //add readings from form array
+   //console.log(req.session.data.line);
+   //req.session.data.returnLines = populateVolumes(req.session.data.line, req.session.data.returnLines);
+   //console.log(req.session.data.returnLines);
+
+  req.session.data.success = 1
+
+  // successMessage.dynamicContent = req.session.data.reasonNewRequirements + "</p>"
+  req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">' + successMessage.singleVolumeUpdate
+  notificationTitle = "Updated"
+  req.session.data.notificationTitle = notificationTitle
+  console.log("success message")
+
+res.redirect('new-volumes-or-readings');
+});
+
+/////Edit return through uploading a new version
+
+router.get('/edit/upload',  function(req, res) {
+  req.session.data.back = req.headers.referer
+
+  
+  res.render(folder + '/edit/upload');
+});
+
+
+
+
+
+
+router.post('/edit/upload', function(req, res) {
+
+///I think the prototype kit has a bug where it doesn't handle uploaded files currently
+
+
+
+/*
+
+  const userDataReadStream = fs.createReadStream(`${process.cwd()}/app/assets/files/uploads/return772318.csv`);
+
+// ...
+let rawData = ``;
+
+userDataReadStream.on("data", (data) => {
+   rawData += data;
+});
+
+// ...
+userDataReadStream.on("end", () => {
+  const arrayData = rawData.split("\n");
+  const [stringHeadData, ...arrayBodyData] = arrayData;
+  const arrayHeadData = stringHeadData.split(",");
+  const bodyDatas = arrayBodyData.map((body) => body.split(","));
+
+    // Create empty array to put all our data object
+    const userData = [];
+
+    // Loop through the BODY array and pass the array at each index to our arrToObjectData method then push it back to our userData empty array variable
+    for (let i = 0; i < bodyDatas.length; i++) {
+      userData.push(arrToObjectData(arrayHeadData, bodyDatas[i]));
+    }
+ 
+    req.session.data.returnLines = userData
+
+    // log the array out
+    console.log(req.session.data.returnLines);
+});
+
+*/
+
+
+  res.redirect('../check-your-answers');
+});
 
 /////Marking it as received but not adding readings
 
@@ -453,8 +689,9 @@ router.get('/volumes', function(req, res) {
 router.post('/volumes', function(req, res) {
 
    //add readings from form array
+   //console.log(req.session.data.line);
    req.session.data.returnLines = populateVolumes(req.session.data.line, req.session.data.returnLines);
-   console.log(req.session.data.returnLines);
+   //console.log(req.session.data.returnLines);
 
     res.redirect('check-your-answers');
 });
@@ -540,7 +777,33 @@ router.post('/check-your-answers', function(req, res) {
   createReturnVersion(req,res);
 
 
+  console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+
   req.session.data.licences[licence].returns[returnID].versions[0].monthTotals = batchByMonth(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+  
+  console.log(req.session.data.licences[licence].returns[returnID].versions[0].monthTotals)
+
+
+  //blank flow data
+  req.session.data.amountsToReport = ""
+  req.session.data.dateReturnReceived = ""
+  req.session.data.customDateReturnReceived = ""
+  req.session.data.meterDetailsProvided = ""
+  req.session.data.make = ""
+  req.session.data.serialNumber = ""
+  req.session.data.x10 = ""
+  req.session.data.line = ""
+  req.session.data.lines = ""
+  req.session.data.multipleMeters = ""
+  req.session.data.underQuery = ""
+  req.session.data.readingsOrVolumes = ""
+  req.session.data.returnReceivedDate = ""
+  req.session.data.customAbsStartReceived = ""
+  req.session.data.customAbsEnd = ""
+  req.session.data.singleVolume = ""
+  req.session.data.units = ""
+
+
 
  res.redirect('return-confirmation');
 });

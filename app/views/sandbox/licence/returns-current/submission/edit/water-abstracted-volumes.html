@@ -1,0 +1,174 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set selectMonthData = data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals[data.monthID] %}
+
+{% set title = "Water abstracted " + selectMonthData.month + " " + selectMonthData.year %}
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- page heading -->
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Return {{data.licences[data.ID].returns[data.returnIndex].id}}</span> {{title}}</h1>
+  
+</div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  
+<!--only show if JS enabled-->
+<div id="hint" class="govuk-hint" style="display: none;">
+  To paste across multiple rows each value must be on a new line
+</div>
+    
+ 
+    <form method="post" novalidate>
+
+
+
+
+      {% call govukFieldset({
+        legend: {
+          text: 'Volumes',
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+        }) %}
+      
+        
+
+        {% for line in data.lines | filterByMonth(data.monthTotals[data.monthID].month) %}
+
+        {{ govukInput({
+          label: {
+            text: line.date | formatDate
+          },
+          classes: "govuk-!-width-one-quarter inputText",
+          id: line.date,
+          name: "line",
+          value: line.volume,
+          suffix: {
+            text: data.units | returnUnitsWords
+          }
+        }) }}
+
+        {% endfor %}
+    
+        {% endcall %}
+
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
+
+    </form>
+
+    </div>
+    </div>
+
+
+
+<script>
+  // Get the element with id "event-name-hint"
+const hintElement = document.getElementById("hint");
+
+// Check if the DOM body has the class "js-enabled"
+const hasJSEnabledClass = document.body.classList.contains("js-enabled");
+
+console.log(hintElement)
+
+// Show or hide the element based on the condition
+if (hasJSEnabledClass) {
+  hintElement.style.display = "block"; // Show the element
+} else {
+  hintElement.style.display = "none"; // Hide the element
+}
+
+
+
+
+// Keep track of the currently focused input field index
+let focusedIndex = -1;
+document.addEventListener('DOMContentLoaded', () => {
+
+  
+    // Get all input elements with class "inputText"
+    const inputFields = document.querySelectorAll(".inputText");
+ 
+
+  // Attach focus listener to each input field
+  inputFields.forEach(field => {
+    field.addEventListener("focus", () => {
+      currentlyFocusedInput = field; // Update focused element
+      const name = currentlyFocusedInput?.name; // Get name if it exists
+
+      // Find the index of the matching input field (optional)
+      if (name) {
+        for (let i = 0; i < inputFields.length; i++) {
+          const inputField = inputFields[i];
+          if (inputField.hasAttribute("name") && name.toLowerCase() === inputField.name.toLowerCase()) {
+            focusedIndex = i;
+            break; // Exit loop on first match
+          }
+        }
+      }
+    });
+  });
+  
+  
+  // Attach paste event listener to the document
+  document.addEventListener('paste', handlePaste);
+
+});
+
+function handlePaste(event) {
+  // Check if the pasted target is an input element
+  if (event.target.localName !== 'input') return;
+
+  event.preventDefault(); // Prevent default paste behavior (optional)
+
+  // Get all input elements with class "inputText"
+  const inputFields = document.querySelectorAll(".inputText");
+
+
+  // Get the pasted data
+  const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+  const values = pastedText.toUpperCase().split(/\r?\n/);
+
+
+  // Ensure focusedIndex is within valid range
+  focusedIndex = Math.max(0, Math.min(focusedIndex, inputFields.length - 1)); // Clamp to valid range
+
+  // Loop through values and input fields, starting from focusedIndex
+  for (let i = 0; i < values.length && i + focusedIndex < inputFields.length; i++) {
+    const currentFieldIndex = focusedIndex + i;
+    inputFields[currentFieldIndex].value = values[i].trim(); // Trim leading/trailing whitespace
+  }
+
+  // Set focus to the last pasted field (if any)
+  const lastPastedIndex = Math.min(focusedIndex + values.length - 1, inputFields.length - 1); // Clamp to valid range
+  if (lastPastedIndex >= 0) {
+    inputFields[lastPastedIndex].focus();
+  }
+
+
+}
+
+
+
+</script>
+
+
+{% endblock %}

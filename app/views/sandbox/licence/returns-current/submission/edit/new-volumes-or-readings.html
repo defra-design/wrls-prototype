@@ -1,0 +1,209 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+
+
+{% set title = "Check details and enter new volumes or readings" %}
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+{% if data.success == 1 %}
+
+
+
+{{ govukNotificationBanner({
+  html: data.successMessage,
+  role: 'alert',
+  titleText : data.notificationTitle
+}) }}
+
+{% endif %}
+
+    <!-- page heading -->
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+    
+        <!-- page heading -->
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{data.licences[data.ID]['number']}}</span> {{title}}</h1>
+      </div></div>
+        <div class="govuk-grid-row govuk-!-margin-bottom-4">
+          <div class="govuk-grid-column-full">
+        {{govukTag({
+          text: data.licences[data.ID].returns[data.returnIndex].status | returnStatusText | safe,
+          classes: data.licences[data.ID].returns[data.returnIndex].status | returnStatusColour
+          })}}
+          </div></div>
+          <div class="govuk-grid-row govuk-!-margin-bottom-8">
+            <div class="govuk-grid-column-full">
+    
+    {{ govukSummaryList({
+    classes: 'govuk-summary-list--no-border',
+    rows: [
+      {
+        key: {
+          text: "Return reference",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: data.licences[data.ID].returns[data.returnIndex].id,
+          classes: "meta-data__value"
+        }
+      },
+      {
+        key: {
+          text: "Site description",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: data.licences[data.ID].returns[data.returnIndex].description,
+          classes: "meta-data__value"
+        }
+      },
+      {
+        key: {
+          text: "Purpose",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: data.licences[data.ID].returns[data.returnIndex].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br,
+          classes: "meta-data__value"
+        }
+      },
+      {
+        key: {
+          text: "Returns period",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: "From " + data.licences[data.ID].returns[data.returnIndex].returnsPeriodStart | numberToGovukDate + " to " + data.licences[data.ID].returns[data.returnIndex].returnsPeriodEnd | numberToGovukDate,
+          classes: "meta-data__value"
+        }
+      },
+      {
+        key: {
+          text: "Abstraction period",
+          classes: "meta-data__label"
+        },
+        value: {
+          text: "From " + data.licences[data.ID].returns[data.returnIndex].periodStart | mmddToDate + " to " + data.licences[data.ID].returns[data.returnIndex].periodEnd | mmddToDate,
+          classes: "meta-data__value"
+        }
+      },
+      {
+        key: {
+          text: "Standard tariff",
+          classes: "meta-data__label"
+        }
+      }
+    ]
+    }) }}
+ 
+    </div>
+    </div>
+
+
+
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">
+  Reporting details
+</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Reporting figures"
+      },
+      value: {
+        text: data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes | capitalize
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Meter details"
+      },
+      value: {
+        html: data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails.make + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails.serialNumber
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Units"
+      },
+      value: {
+        html: data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "address"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+</div>
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-full">
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-2">
+ Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes}}
+</h2>
+<p class="govuk-body" ><a href="multiple" class="govuk-link">Enter multiple {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes}}</a></p>
+{% include "sandbox/_includes/returns/submission/returns-table-monthly-summary-edit.html" %}
+      <form  method="post"  novalidate>
+
+       
+
+        <button type="submit" class="govuk-button">
+          Confirm
+        </button>
+
+      </form>
+
+    </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
