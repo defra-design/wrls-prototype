@@ -1,9 +1,9 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set selectMonthData = data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals[data.monthID] %}
 
-{% set title = "Water abstracted " + selectMonthData.month + " " + selectMonthData.year %}
+
+{% set title = "Enter the start meter reading" %}
 
 
 
@@ -17,49 +17,41 @@
 <!--content block-->
 {% block service %}
 
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+    {% set qTitle %}
     <!-- page heading -->
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Return {{data.licences[data.ID].returns[data.returnIndex].id}}</span> {{title}}</h1>
-  
-</div>
-</div>
+    {% endset %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-  
 
     
  
     <form method="post" novalidate>
+
+
+
+
   
-  
-        {% call govukFieldset({
-          legend: {
-            html: 'Meter readings',
-            isPageHeading: false,
-            classes: "govuk-fieldset__legend--m"
-          }
-          }) %}
-      
-  
-  
-          {% for line in data.lines | filterByMonth(data.monthTotals[data.monthID].month) %}
+
+        
   
           {{ govukInput({
             label: {
-              text: line.date | formatDate
+              text: qTitle|safe,
+              classes: "govuk-label--l",
+              isPageHeading: true
             },
             classes: "govuk-input--width-10",
-            id: line.date,
-            name: "line",
-            value: line.reading
+            id: "startReading",
+            name: "startReading",
+            value: data.startReading
           }) }}
   
-          {% endfor %}
       
-          {% endcall %}
+    
   
         <button type="submit" class="govuk-button govuk-!-margin-right-1">
           Continue

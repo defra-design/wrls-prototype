@@ -2089,7 +2089,7 @@ module.exports = {
                                           "username":"username@defra.gov.uk",
                                           "note":"",
                                           "requirements":[{
-                                                          "id":823187,
+                                                          "id":323188,
                                                           "returnsCycle":"winter and all year",
                                                           "description":"Pear tree farm - BOREHOLE A and B",
                                                           "frequencyCollected":"monthly",
@@ -2106,27 +2106,1107 @@ module.exports = {
 
                     "returns": [
                                 {
-                                  "id":823187,
-                                  "status": "completed",
+                                  "id":323188,
+                                  "status": "complete",
                                   "due": "20211128",
                                   "returnsCycle":"winter and all year",
                                   "description":"Pear tree farm - BOREHOLE A and B",
-                                  "frequency": "monthly",
+                                  "frequency": "daily",
                                   "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
                                   "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
                                   "periodStart":"0401",
                                   "periodEnd":"1031",
-                                  "returnsPeriodStart":"20210401",
-                                  "returnsPeriodEnd":"20211031",
-                                  "versions": [],
+                                  "returnsPeriodStart":"20240401",
+                                  "returnsPeriodEnd":"20241031",
+                                  "versions": [{"id":0,
+                                                "submittedBy":"testuser@gov.uk",
+                                                "submittedDate":"20240829",
+                                                "units":"cm3",
+                                                "readingsOrVolumes":"readings",
+                                                "nilReturn":false,
+                                                "meterDetails":{"make":"Powerflow","serialNumber":"7777777", "x10": false, "startReading": "118454", "endReading": "1235920"},
+                                                "lines":[{
+                                                  "date": "20240401",
+                                                  "reading": "123456",
+                                                  "volume": "5002"
+                                                },
+                                                {
+                                                  "date": "20240402",
+                                                  "reading": "128458",
+                                                  "volume": "5022"
+                                                },
+                                                {
+                                                  "date": "20240403",
+                                                  "reading": "133480",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240404",
+                                                  "reading": "138493",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240405",
+                                                  "reading": "143506",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240406",
+                                                  "reading": "148519",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240407",
+                                                  "reading": "153532",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240408",
+                                                  "reading": "158545",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240409",
+                                                  "reading": "163558",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240410",
+                                                  "reading": "168571",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240411",
+                                                  "reading": "173584",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240412",
+                                                  "reading": "178597",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240413",
+                                                  "reading": "183610",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240414",
+                                                  "reading": "188623",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240415",
+                                                  "reading": "193636",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240416",
+                                                  "reading": "198649",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240417",
+                                                  "reading": "203662",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240418",
+                                                  "reading": "208675",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240419",
+                                                  "reading": "213688",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240420",
+                                                  "reading": "218701",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240421",
+                                                  "reading": "223714",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240422",
+                                                  "reading": "228727",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240423",
+                                                  "reading": "233740",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240424",
+                                                  "reading": "238753",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240425",
+                                                  "reading": "243766",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240426",
+                                                  "reading": "248779",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240427",
+                                                  "reading": "253792",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240428",
+                                                  "reading": "258805",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240429",
+                                                  "reading": "263818",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240430",
+                                                  "reading": "268831",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240501",
+                                                  "reading": "344016",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240502",
+                                                  "reading": "349029",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240503",
+                                                  "reading": "354042",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240504",
+                                                  "reading": "359055",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240505",
+                                                  "reading": "364068",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240506",
+                                                  "reading": "369081",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240507",
+                                                  "reading": "374094",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240508",
+                                                  "reading": "379107",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240509",
+                                                  "reading": "384120",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240510",
+                                                  "reading": "389133",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240511",
+                                                  "reading": "394146",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240512",
+                                                  "reading": "399159",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240513",
+                                                  "reading": "404172",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240514",
+                                                  "reading": "409185",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240515",
+                                                  "reading": "414198",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240516",
+                                                  "reading": "419211",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240517",
+                                                  "reading": "424224",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240518",
+                                                  "reading": "429237",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240519",
+                                                  "reading": "434250",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240520",
+                                                  "reading": "439263",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240521",
+                                                  "reading": "444276",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240522",
+                                                  "reading": "449289",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240523",
+                                                  "reading": "454302",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240524",
+                                                  "reading": "459315",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240525",
+                                                  "reading": "464328",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240526",
+                                                  "reading": "469341",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240527",
+                                                  "reading": "474354",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240528",
+                                                  "reading": "479367",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240529",
+                                                  "reading": "484380",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240530",
+                                                  "reading": "489393",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240531",
+                                                  "reading": "494406",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240601",
+                                                  "reading": "494406",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240602",
+                                                  "reading": "499419",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240603",
+                                                  "reading": "504432",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240604",
+                                                  "reading": "509445",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240605",
+                                                  "reading": "514458",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240606",
+                                                  "reading": "519471",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240607",
+                                                  "reading": "524484",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240608",
+                                                  "reading": "529497",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240609",
+                                                  "reading": "534510",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240610",
+                                                  "reading": "539523",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240611",
+                                                  "reading": "544536",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240612",
+                                                  "reading": "549549",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240613",
+                                                  "reading": "554562",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240614",
+                                                  "reading": "559575",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240615",
+                                                  "reading": "564588",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240616",
+                                                  "reading": "569601",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240617",
+                                                  "reading": "574614",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240618",
+                                                  "reading": "579627",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240619",
+                                                  "reading": "584640",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240620",
+                                                  "reading": "589653",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240621",
+                                                  "reading": "594666",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240622",
+                                                  "reading": "599679",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240623",
+                                                  "reading": "604692",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240624",
+                                                  "reading": "609705",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240625",
+                                                  "reading": "614718",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240626",
+                                                  "reading": "619731",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240627",
+                                                  "reading": "624744",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240628",
+                                                  "reading": "629757",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240629",
+                                                  "reading": "634770",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240630",
+                                                  "reading": "639783",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240701",
+                                                  "reading": "639783",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240702",
+                                                  "reading": "644796",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240703",
+                                                  "reading": "649809",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240704",
+                                                  "reading": "654822",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240705",
+                                                  "reading": "659835",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240706",
+                                                  "reading": "664848",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240707",
+                                                  "reading": "669861",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240708",
+                                                  "reading": "674874",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240709",
+                                                  "reading": "679887",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240710",
+                                                  "reading": "684900",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240711",
+                                                  "reading": "689913",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240712",
+                                                  "reading": "694926",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240713",
+                                                  "reading": "699939",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240714",
+                                                  "reading": "704952",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240715",
+                                                  "reading": "709965",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240716",
+                                                  "reading": "714978",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240717",
+                                                  "reading": "719991",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240718",
+                                                  "reading": "724904",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240719",
+                                                  "reading": "729917",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240720",
+                                                  "reading": "734930",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240721",
+                                                  "reading": "739943",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240722",
+                                                  "reading": "744956",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240723",
+                                                  "reading": "749969",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240724",
+                                                  "reading": "754982",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240725",
+                                                  "reading": "759995",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240726",
+                                                  "reading": "764908",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240727",
+                                                  "reading": "769921",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240728",
+                                                  "reading": "774934",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240729",
+                                                  "reading": "779947",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240730",
+                                                  "reading": "784960",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240731",
+                                                  "reading": "789973",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240801",
+                                                  "reading": "789973",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240802",
+                                                  "reading": "794986",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240803",
+                                                  "reading": "799999",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240804",
+                                                  "reading": "805012",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240805",
+                                                  "reading": "810025",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240806",
+                                                  "reading": "815038",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240807",
+                                                  "reading": "820051",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240808",
+                                                  "reading": "825064",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240809",
+                                                  "reading": "830077",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240810",
+                                                  "reading": "835090",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240811",
+                                                  "reading": "840103",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240812",
+                                                  "reading": "845116",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240813",
+                                                  "reading": "850129",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240814",
+                                                  "reading": "855142",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240815",
+                                                  "reading": "860155",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240816",
+                                                  "reading": "865168",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240817",
+                                                  "reading": "870181",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240818",
+                                                  "reading": "875194",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240819",
+                                                  "reading": "880207",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240820",
+                                                  "reading": "885220",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240821",
+                                                  "reading": "890233",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240822",
+                                                  "reading": "895246",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240823",
+                                                  "reading": "900259",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240824",
+                                                  "reading": "905272",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240825",
+                                                  "reading": "910285",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240826",
+                                                  "reading": "915298",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240827",
+                                                  "reading": "920311",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240828",
+                                                  "reading": "925324",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240829",
+                                                  "reading": "930337",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240830",
+                                                  "reading": "935350",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240831",
+                                                  "reading": "940363",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240901",
+                                                  "reading": "940363",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240902",
+                                                  "reading": "945376",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240903",
+                                                  "reading": "950389",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240904",
+                                                  "reading": "955402",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240905",
+                                                  "reading": "960415",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240906",
+                                                  "reading": "965428",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240907",
+                                                  "reading": "970441",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240908",
+                                                  "reading": "975454",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240909",
+                                                  "reading": "980467",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240910",
+                                                  "reading": "985480",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240911",
+                                                  "reading": "990493",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240912",
+                                                  "reading": "995506",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240913",
+                                                  "reading": "1000519",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240914",
+                                                  "reading": "1005532",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240915",
+                                                  "reading": "1010545",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240916",
+                                                  "reading": "1015558",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240917",
+                                                  "reading": "1020571",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240918",
+                                                  "reading": "1025584",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240919",
+                                                  "reading": "1030597",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240920",
+                                                  "reading": "1035610",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240921",
+                                                  "reading": "1040623",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240922",
+                                                  "reading": "1045636",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240923",
+                                                  "reading": "1050649",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240924",
+                                                  "reading": "1055662",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240925",
+                                                  "reading": "1060675",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240926",
+                                                  "reading": "1065688",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240927",
+                                                  "reading": "1070701",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240928",
+                                                  "reading": "1075714",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240929",
+                                                  "reading": "1080727",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20240930",
+                                                  "reading": "1085740",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241001",
+                                                  "reading": "1085740",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241002",
+                                                  "reading": "1090753",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241003",
+                                                  "reading": "1095766",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241004",
+                                                  "reading": "1100779",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241005",
+                                                  "reading": "1105792",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241006",
+                                                  "reading": "1110805",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241007",
+                                                  "reading": "1115818",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241008",
+                                                  "reading": "1120831",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241009",
+                                                  "reading": "1125844",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241010",
+                                                  "reading": "1130857",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241011",
+                                                  "reading": "1135870",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241012",
+                                                  "reading": "1140883",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241013",
+                                                  "reading": "1145896",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241014",
+                                                  "reading": "1150909",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241015",
+                                                  "reading": "1155922",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241016",
+                                                  "reading": "1160935",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241017",
+                                                  "reading": "1165948",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241018",
+                                                  "reading": "1170961",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241019",
+                                                  "reading": "1175974",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241020",
+                                                  "reading": "1180987",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241021",
+                                                  "reading": "1185990",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241022",
+                                                  "reading": "1190903",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241023",
+                                                  "reading": "1195916",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241024",
+                                                  "reading": "1200929",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241025",
+                                                  "reading": "1205942",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241026",
+                                                  "reading": "1210955",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241027",
+                                                  "reading": "1215968",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241028",
+                                                  "reading": "1220981",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241029",
+                                                  "reading": "1225994",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241030",
+                                                  "reading": "1230907",
+                                                  "volume": "5013"
+                                                },
+                                                {
+                                                  "date": "20241031",
+                                                  "reading": "1235920",
+                                                  "volume": "5013"
+                                                }
+                                              ],
+                                                "monthTotals":[{"month":"April","year":"2024","total":"150388"},{"month":"May","year":"2024","total":"155403"},{"month":"June","year":"2024","total":"150390"},{"month":"July","year":"2024","total":"155403"},{"month":"August","year":"2024","total":"155403"},{"month":"September","year":"2024","total":"150390"},{"month":"October","year":"2024","total":"155403"}]
+                                              }
+                                ],
                                 },
                                 {
-                                  "id":823187,
-                                  "status": "completed",
+                                  "id":323188,
+                                  "status": "due",
                                   "due": "20201128",
                                   "returnsCycle":"winter and all year",
                                   "description":"Pear tree farm - BOREHOLE A and B",
-                                  "frequency": "monthly",
+                                  "frequency": "daily",
                                   "purpose":["Spray irrigation - direct", "General Farming & Domestic"],
                                   "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
                                   "periodStart":"0401",
@@ -2587,7 +3667,7 @@ module.exports = {
                                                         "units":"cm3",
                                                         "readingsOrVolumes": "volumes",
                                                         "nilReturn":false,
-                                                        "meterDetails":{"make":"something","serialNumber":"1234567"},
+                                                        "meterDetails":{"make":"Powerflow","serialNumber":"2222222", "x10": false, "startReading": "", "endReading": ""},
                                                         "lines":[
                                                           {"date":"20240401","reading":"","volume":"5002"},
                                                           {"date":"20240402","reading":"","volume":"5022"},

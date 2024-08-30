@@ -7,15 +7,95 @@
    {% set selectData = data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals %}
 
 
+
+   {# show start reading if the return is readings and not volumes #} 
+   {% if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings" %}
+   {% set startReadingHTML %}
+     
+   {{ govukSummaryList({
+     classes: 'govuk-summary-list--no-border govuk-!-margin-top-0 govuk-!-margin-bottom-0',
+     rows: [
+       {
+         key: {
+           text: "Start Reading",
+           classes: "meta-data__label govuk-!-font-weight-bold"
+         },
+         value: {
+           text: data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails.startReading,
+           classes: "width-10"
+         }
+        }
+       ]
+     })
+   }}
+   
+   {% endset%}
+   <div class="govuk-grid-column-one-third govuk-!-padding-left-0">
+   {{ govukInsetText({
+     html: startReadingHTML,
+     classes: "govuk-!-margin-bottom-4 govuk-!-margin-top-2 govuk-!-padding-top-0 govuk-!-padding-bottom-0"
+   }) }}
+   </div>
+   {% endif %}
+
+
+
    <!--loop through the data-->
    {% for item in selectData %}
+
+
+
+     <!--calculate the cubic meters if needed-->
+     {% set cubicMetersCalc = "" %}
+
+
+  
+     {% if item.total !== "" and data.units !== "cm3" %}
+     
+     {% if data.units == "ml" %}
+     {% set cubicMetersCalc = item.total| stringToNumber /  1000 %}
+     {% elseif data.units == "l" %}
+     {% set cubicMetersCalc = item.total | stringToNumber *  1000 %}
+     {% else %}
+     {% set cubicMetersCalc  = item.total | stringToNumber *   220 %}
+     {% endif %}
+  
+  
+  
+     <!--set cubic meters calc total-->
+     {% set cubicMetersCalcTotal = cubicMetersCalcTotal + cubicMetersCalc %}
+     {% endif %}
+
+     {% if item.total !== "" %}
+   
+     {% set volCalcTotal = volCalcTotal | stringToNumber + item.total | stringToNumber %}
+  
+  
+     {% endif %}
+
+
+
+   {# get end reading  #}
+   {% set endReading = "" %}
+   {% for i in data.licences[data.ID].returns[data.returnIndex].versions[0].lines | filterByMonth(item.month)  %}
+   {% if i is defined and i !== '' %}
+     {% set endReading = i.reading %}
+     {% endif %}
+   {% endfor %} 
+
+
    
    <!--set the variable using the push filter to set up the rows-->
    {% set lines = lines | push([{
-    text: item.month + " " + item.year ,
-      classes: 'govuk-!-width-one-half'
+    text: item.month + " " + item.year
     },{
-       text: item.total  | toGovNumber ,
+      text: endReading,
+     format: 'numeric'
+    } if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings",{
+        text:  cubicMetersCalc | toGovNumber ,
+       format: 'numeric'
+     }if data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3",{
+       text:  item.total | toGovNumber ,
       format: 'numeric'
     },{
        html: '<a class="govuk-link" href="water-abstracted?monthID=' + loop.index0 +'">View ' + data.licences[data.ID].returns[data.returnIndex].frequency + ' ' + data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes + '</a>',
@@ -26,7 +106,7 @@
   
   {% endfor %}
 
-
+ 
 
 
    {{ govukTable({
@@ -38,7 +118,15 @@
         text: "Month"
       },
       {
+        text: "End reading",
+        format: 'numeric'
+      } if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings",
+      {
         text: "Total " + data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords,
+        format: 'numeric'
+      }if data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3",
+      {
+        text: "Total cubic meters",
         format: 'numeric'
       },
       {

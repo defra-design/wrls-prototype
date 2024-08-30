@@ -175,17 +175,20 @@ function createReturnVersion(req,res) {
   let licence = req.session.data.ID
   let returnID = req.session.data.returnIndex
 
+ // console.log(req.session.data.returnLines);
 
   let id = req.session.data.licences[licence].returns[returnID].versions.length
   let units = req.session.data.units
   let readingsOrVolumes = req.session.data.readingsOrVolumes
   let nilReturn = false;
-  let lines = req.session.data.returnLines || [];
+  let lines = req.session.data.returnLines || req.session.data.lines || [];
   let submittedBy = "testuser@gov.uk";
   let submittedDate = todayNoFormat;
  let make = "";
  let serialNumber = "";
  let x10 = "";
+ let startReading = "";
+ let endReading = "";
 
   
   if (req.session.data.meterDetailsProvided == "yes" ) {
@@ -194,10 +197,26 @@ function createReturnVersion(req,res) {
        x10 = req.session.data.x10
   };
 
+  if (req.session.data.readingsOrVolumes == "readings" ) {
+    startReading = req.session.data.startReading
+
+   for (const [i, v] of lines.entries()) {
+    //console.log(v)
+    if (v.reading !== ''){
+       endReading = v.reading 
+      }
+      //console.log(endReading)
+    }
+
+   };
+  
+
   let meterDetails = {
        make,
        serialNumber,
        x10,
+       startReading,
+       endReading,
   };
 
   let newReturnVersion = {
@@ -262,21 +281,40 @@ router.get('/generate-csv', (req, res) => {
 
  let returnReference = req.session.data.licences[licence].returns[returnID].id
     
- console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+ console.log(req.session.data.licences[licence].returns[returnID].versions[0])
 
   const lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
 
+let header = ""
+let dataRows = {}
+
    // Create a header row
-   const header = 'Date,Volume\n';
+  if (req.session.data.licences[licence].returns[returnID].versions[0].readingsOrVolumes == "volumes" ) {
+    header = 'Date,Volume\n';
 
 
-  const dataRows = lines.map((row) => {
+   dataRows = lines.map((row) => {
    
     // Format the date as ISO string
-    const govDate = reformatDateGov(row.date)
+    let govDate = reformatDateGov(row.date)
 
     return `${govDate},${row.volume}\n`;
   });
+
+}  else {
+   header = 'Date,Reading,Volume\n';
+
+
+   dataRows = lines.map((row) => {
+   
+    // Format the date as ISO string
+    let govDate = reformatDateGov(row.date)
+
+    return `${govDate},${row.reading},${row.volume}\n`;
+  });
+
+}
+
 
     // Combine the header and data rows
     const csvContent = header + dataRows.join('');
@@ -328,6 +366,9 @@ console.log(startDate + " " + endDate);
 } else {
   req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
   req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
+  req.session.data.x10 = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.x10
+  req.session.data.startReading = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.startReading
+  req.session.data.endReading = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.endReading
   req.session.data.lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
   req.session.data.readingsOrVolumes = req.session.data.licences[licence].returns[returnID].versions[0].readingsOrVolumes
   req.session.data.units = req.session.data.licences[licence].returns[returnID].versions[0].units
@@ -353,6 +394,7 @@ console.log(startDate + " " + endDate);
 router.get('/edit/new-volumes-or-readings',  function(req, res) {
   req.session.data.back = req.headers.referer
   req.session.data.success = 0 
+  req.session.data.change = "false"
   
   res.render(folder + '/edit/new-volumes-or-readings');
 });
@@ -395,9 +437,23 @@ router.post('/edit/new-volumes-or-readings',  function(req, res) {
   req.session.data.singleVolume = ""
   req.session.data.units = ""
 
-
+console.log("return confirmed")
 
  res.redirect('../return-confirmation');
+});
+
+///enter new start reading
+router.get('/edit/water-abstracted-start-reading',  function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.success = 0 
+  req.session.data.change = "false"
+  
+  res.render(folder + '/edit/water-abstracted-start-reading');
+});
+
+
+router.post('/edit/water-abstracted-start-reading',  function(req, res) {
+  res.redirect('new-volumes-or-readings');
 });
 
 
@@ -630,7 +686,11 @@ router.get('/readings-or-volumes', function(req, res) {
 });
 
 router.post('/readings-or-volumes', function(req, res) {
+  if (req.session.data.change == "true"){
+    res.redirect('edit/new-volumes-or-readings');
+  } else {
  res.redirect('units');
+  }
 });
 
 /// Units used?
@@ -640,7 +700,11 @@ router.get('/units', function(req, res) {
 });
 
 router.post('/units', function(req, res) {
+  if (req.session.data.change == "true"){
+    res.redirect('edit/new-volumes-or-readings');
+  } else {
  res.redirect('meter-details-provided');
+  }
 });
 
 
@@ -777,6 +841,10 @@ router.get('/meter-details', function(req, res) {
 
 router.post('/meter-details', function(req, res) {
 
+  if (req.session.data.change == "true"){
+    res.redirect('edit/new-volumes-or-readings');
+  } else {
+
 //meter readings routes differently for volumes and readings  
 if ( req.session.data.readingsOrVolumes == "readings") {
 
@@ -804,7 +872,7 @@ console.log(req.session.data.returnLines);
   res.redirect('single-volume');
 
 }
-
+  }
 
 });
 

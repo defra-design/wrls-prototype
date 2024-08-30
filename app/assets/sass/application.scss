@@ -117,3 +117,14 @@ border-bottom: 1px solid #b1b4b6 !important;;
 
 
 .map { position:absolute; top:0; bottom:0; width:100%; }
+
+
+//width overrides
+.width-10 {
+  width: 10% !important;
+}
+
+//blue border for the header end to end
+.header-border-bottom{
+  border-bottom: 10px solid #1d70b8;
+  };

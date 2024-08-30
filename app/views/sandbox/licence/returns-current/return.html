@@ -22,6 +22,7 @@
     <!-- page heading -->
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Licence {{data.licences[data.ID]['number']}}</span> {{title}}</h1>
   </div></div>
+  {% if data.edit !== "true" %}
     <div class="govuk-grid-row govuk-!-margin-bottom-4">
       <div class="govuk-grid-column-full">
     {{govukTag({
@@ -29,6 +30,7 @@
       classes: data.licences[data.ID].returns[data.returnIndex].status | returnStatusColour
       })}}
       </div></div>
+      {% endif %}
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-full">
 
@@ -120,6 +122,8 @@ rows: [
 
     <!--divider-->
     <div class="divider govuk-!-margin-bottom-7"></div>
+
+
    
     <!--heading for table based on readings or volumes incorporating frequency from the return-->
    {% if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings" %}
@@ -157,7 +161,7 @@ rows: [
             text: meterDetails.make,
             classes: "meta-data__value"
           }
-        },
+        } if meterDetails.make !== "",
         {
           key: {
             text: "Meter number",
@@ -167,7 +171,17 @@ rows: [
             text: meterDetails.serialNumber,
             classes: "meta-data__value"
           }
-        }
+        } if meterDetails.serialNumber !== "",
+        {
+          key: {
+            text: "x10",
+            classes: "meta-data__label"
+          },
+          value: {
+            text: "Yes",
+            classes: "meta-data__value"
+          }
+        } if meterDetails.x10 !== false
         ]
       })
     }}
@@ -178,7 +192,8 @@ rows: [
   
     {{ govukDetails({
       summaryText: "Meter details",
-      html: meterDetailsMetaData
+      html: meterDetailsMetaData,
+      classes: " govuk-!-margin-bottom-2" 
     }) }}
    
     {% endif %}

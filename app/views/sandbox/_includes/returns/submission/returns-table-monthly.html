@@ -46,10 +46,10 @@
         text: item.reading,
         format: 'numeric'
       } if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings", {
-       text: item.volume | toGovNumber,
+       text: cubicMetersCalc | round(3) | toGovNumber,
       format: 'numeric'
     },{
-       text: cubicMetersCalc | round(3),
+       text:  item.volume | toGovNumber,
       format: 'numeric'
     } if data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3"
     
@@ -71,11 +71,11 @@
    colspan: colSpan,
    classes: "govuk-!-font-weight-bold"
  },
- { text: volCalcTotal | toGovNumber,
+ { text: cubicMetersCalcTotal | round(3) | toGovNumber,
    format: 'numeric',
    classes: "govuk-!-font-weight-bold"
  },
- { text: cubicMetersCalcTotal | round(3) ,
+ { text:  volCalcTotal | toGovNumber,
    format: 'numeric',
    classes: "govuk-!-font-weight-bold"
  } if data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3"
@@ -97,7 +97,7 @@
         format: 'numeric'
       } if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings",
       {
-        text: data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords ,
+        text: data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords | capitalize,
         format: 'numeric'
       },
       {

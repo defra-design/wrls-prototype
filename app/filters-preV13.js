@@ -476,13 +476,13 @@ filters.focus = function(x) {
   //set returnUnitsWords "| returnUnitsWords"
   filters.returnUnitsWords = function(e) {
     if (e == "cm3") {
-      return "Cubic Meters"
+      return "cubic Meters"
     } else if (e == "l") {
-      return "Litres"
+      return "litres"
     } else if (e == "g") {
-      return "Gallons"
+      return "gallons"
     } else {
-      return "Mega Litres"
+      return "mega litres"
     } 
   
   }

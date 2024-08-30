@@ -134,7 +134,7 @@
       actions: {
         items: [
           {
-            href: "#",
+            href: "../readings-or-volumes?change=true",
             text: "Change",
             visuallyHiddenText: "name"
           }
@@ -151,7 +151,7 @@
       actions: {
         items: [
           {
-            href: "#",
+            href: "../meter-details?change=true",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -163,12 +163,12 @@
         text: "Units"
       },
       value: {
-        html: data.units | returnUnitsWords
+        html: data.units | returnUnitsWords | capitalize
       },
       actions: {
         items: [
           {
-            href: "#",
+            href: "../units?change=true",
             text: "Change",
             visuallyHiddenText: "address"
           }
