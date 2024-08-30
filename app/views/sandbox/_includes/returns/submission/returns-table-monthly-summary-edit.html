@@ -105,10 +105,10 @@
    } if data.readingsOrVolumes == "readings",{
        text:  cubicMetersCalc | toGovNumber ,
       format: 'numeric'
-    },{
+    }if data.units !== "cm3",{
       text:  item.total | toGovNumber ,
      format: 'numeric'
-   } if data.units !== "cm3",{
+   } ,{
        html: '<a class="govuk-link" href="water-abstracted-'+data.readingsOrVolumes+'?monthID=' + loop.index0 +'">Change ' + data.licences[data.ID].returns[data.returnIndex].frequency + ' ' + data.readingsOrVolumes + '</a>',
       format: 'numeric'
     } 
@@ -133,11 +133,11 @@
  { text: cubicMetersCalcTotal | round(3) | toGovNumber ,
    format: 'numeric',
    classes: "govuk-!-font-weight-bold"
- },
+ }if data.units !== "cm3",
  { text: volCalcTotal | toGovNumber,
    format: 'numeric',
    classes: "govuk-!-font-weight-bold"
- } if data.units !== "cm3",
+ },
  { text: "",
   format: 'numeric',
   classes: "govuk-!-font-weight-bold"
@@ -166,7 +166,7 @@
       {
         text: "Total " + data.units | returnUnitsWords,
         format: 'numeric'
-      },
+      } if data.units !== "cm3",
       {
         text: "Total cubic meters",
         format: 'numeric'
