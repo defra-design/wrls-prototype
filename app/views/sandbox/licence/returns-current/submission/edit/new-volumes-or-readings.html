@@ -118,11 +118,14 @@
 
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-full">
-    <h2 class="govuk-heading-l">
-  Reporting details
-</h2>
 
 {{ govukSummaryList({
+  card: {
+    title: {
+      text: "Reporting details",
+      classes: "govuk-!-font-size-27"
+    }
+  },
   rows: [
     {
       key: {
@@ -183,10 +186,11 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-full">
 
+    <!--
 <h2 class="govuk-heading-l govuk-!-margin-bottom-2">
  Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}
 </h2>
-<p class="govuk-body" ><a href="multiple" class="govuk-link">Enter multiple {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}</a></p>
+<p class="govuk-body" ><a href="multiple" class="govuk-link">Enter multiple {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}</a></p> -->
 {% include "sandbox/_includes/returns/submission/returns-table-monthly-summary-edit.html" %}
       <form  method="post"  novalidate>
 

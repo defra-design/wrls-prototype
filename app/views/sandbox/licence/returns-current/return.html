@@ -16,6 +16,24 @@
 
 <!--content block-->
 {% block service %}
+
+
+<!--success banner-->
+{% if data.versionID !== "0" %}
+
+{{ govukErrorSummary({
+  titleText: "This version of this return has been replaced",
+  errorList: [
+    {
+      text: "The information you are viewing is not the latest information for this return and has been overwritten. ",
+      href: "#submittedBy"
+    }
+  ]
+}) }}
+
+{% endif %}
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
@@ -103,16 +121,17 @@ rows: [
 
 
 {% if data.licences[data.ID].returns[data.returnIndex].versions.length and data.edit !== "true" %}
+{% set versionID = data.versionID | default ("0") %}
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-full">
-    {% if data.licences[data.ID].returns[data.returnIndex].versions[0].nilReturn == true %}
+    {% if data.licences[data.ID].returns[data.returnIndex].versions[versionID].nilReturn == true %}
     <h2 class="govuk-heading-l">Nil return</h2>
     {{ govukButton({
       text: "Edit return",
       href: "?edit=true#"
     }) }}
     {% else %}
-    <h2 class="govuk-heading-l"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.licences[data.ID].returns[data.returnIndex].versions[0].lines | sumVolumes | toGovNumber}} </span><span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">cubic metres</span></span><br>
+    <h2 class="govuk-heading-l"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.licences[data.ID].returns[data.returnIndex].versions[versionID].lines | sumVolumes | toGovNumber}} </span><span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">cubic metres</span></span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total amount of water abstracted</span></h2>
     {{ govukButton({
       text: "Edit return",
@@ -126,7 +145,7 @@ rows: [
 
    
     <!--heading for table based on readings or volumes incorporating frequency from the return-->
-   {% if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings" %}
+   {% if data.licences[data.ID].returns[data.returnIndex].versions[versionID].readingsOrVolumes == "readings" %}
     <h3 class="govuk-heading-l">Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency }} meter readings</h3>
    {% else %}
     <h3 class="govuk-heading-l">Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency }} abstraction volumes</h3>
@@ -145,8 +164,8 @@ rows: [
 
 
     <!--meter details if needed-->
-    {% if data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails.make !== "" %}
-    {% set meterDetails = data.licences[data.ID].returns[data.returnIndex].versions[0].meterDetails %}
+    {% if data.licences[data.ID].returns[data.returnIndex].versions[versionID].meterDetails.make !== "" %}
+    {% set meterDetails = data.licences[data.ID].returns[data.returnIndex].versions[versionID].meterDetails %}
 
     {% set meterDetailsMetaData %}
     {{ govukSummaryList({
@@ -205,18 +224,18 @@ rows: [
     
     {% endif %}
     
-    <h3 class="govuk-heading-m">Submitted by</h3>
+    <h3 class="govuk-heading-m" id="submittedBy">Submitted by</h3>
    
       {% for version in data.licences[data.ID].returns[data.returnIndex].versions %}
       {% set loopIndex = loop.index0 %}
-      {% if loopIndex == "0" %}
+      {% if loopIndex == versionID %}
       {{ govukInsetText({
         html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate,
         classes: "govuk-inset-text-blue"
       }) }}
       {% else %}
       {{ govukInsetText({
-        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate
+        html: "<a class='govuk-link' href='return?returnIndex="+data.returnIndex+"&versionID="+loopIndex+"'>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "</a><br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate
       }) }}
       {% endif %}
       {% endfor %}
