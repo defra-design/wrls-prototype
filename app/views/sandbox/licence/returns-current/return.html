@@ -20,7 +20,12 @@
 
 <!--success banner-->
 {% if data.versionID !== "0" %}
+{{ govukWarningText({
+  html: "This return is not the current version. <br> <a class='govuk-link' href='return?returnIndex=1&versionID=0'>View the current return</a>" ,
+  iconFallbackText: "Warning"
+}) }}
 
+{#
 {{ govukErrorSummary({
   titleText: "This version of this return has been replaced",
   errorList: [
@@ -30,6 +35,7 @@
     }
   ]
 }) }}
+#}
 
 {% endif %}
 
@@ -235,7 +241,7 @@ rows: [
       }) }}
       {% else %}
       {{ govukInsetText({
-        html: "<a class='govuk-link' href='return?returnIndex="+data.returnIndex+"&versionID="+loopIndex+"'>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "</a><br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate
+        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br><a class='govuk-link' href='return?returnIndex="+data.returnIndex+"&versionID="+loopIndex+"'>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "</a>"
       }) }}
       {% endif %}
       {% endfor %}
