@@ -59,6 +59,8 @@
           name: "serialNumber"
         }) }}
 
+       {# Old floating checkbox answer
+        
         {{ govukCheckboxes({
           idPrefix: "x10",
           name: "x10",
@@ -71,6 +73,33 @@
           }
           }
           ]
+          }) }}
+
+          #}
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "x10",
+            fieldset: {
+              legend: {
+                text: "Does this meter have a ×10 display",
+                isPageHeading: false,
+                classes: "govuk-body"
+              }
+            },
+            hint: {
+              text: "This will not recalculate any of the volumes provided"
+            },
+            items: [
+              {
+                value: "true",
+                text: "Yes"
+              },
+              {
+                value: "false",
+                text: "No"
+              }
+            ]
           }) }}
 
         {% endcall %}
