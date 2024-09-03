@@ -4,7 +4,7 @@
    
 
    <!--select array to loop through-->
-   {% set selectData = data.licences[data.ID].returns[data.returnIndex].versions[0].lines | filterByMonth(data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals[data.monthID].month) %}
+   {% set selectData = data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].lines | filterByMonth(data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].monthTotals[data.monthID].month) %}
 
    
 
@@ -20,7 +20,7 @@
    <!--calculate the cubic meters if needed-->
    {% set cubicMetersCalc = item.volume %}
   
-   {% if item.volume !== "" and data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3" %}
+   {% if item.volume !== "" and data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].units !== "cm3" %}
    
    {% if data.units == "ml" %}
    {% set cubicMetersCalc = item.volume | stringToNumber *  1000 %}
@@ -45,13 +45,13 @@
     },{
         text: item.reading,
         format: 'numeric'
-      } if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings", {
+      } if data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].readingsOrVolumes == "readings", {
        text: cubicMetersCalc | round(3) | toGovNumber,
       format: 'numeric'
     },{
        text:  item.volume | toGovNumber,
       format: 'numeric'
-    } if data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3"
+    } if data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].units !== "cm3"
     
     ])  %}
   
@@ -60,7 +60,7 @@
 
   <!--set col span-->
 {% set colSpan = 2 %}  
-{% if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings" %}
+{% if data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].readingsOrVolumes == "readings" %}
 {% set colSpan = 2 %}
 {% endif %}
 
@@ -78,7 +78,7 @@
  { text:  cubicMetersCalcTotal | round(3) | toGovNumber,
    format: 'numeric',
    classes: "govuk-!-font-weight-bold"
- } if data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3"
+ } if data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].units !== "cm3"
  ]
  )%}
 
@@ -95,15 +95,15 @@
       {
         text: "Reading",
         format: 'numeric'
-      } if data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes == "readings",
+      } if data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].readingsOrVolumes == "readings",
       {
-        text: data.licences[data.ID].returns[data.returnIndex].versions[0].units | returnUnitsWords | capitalize,
+        text: data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].units | returnUnitsWords | capitalize,
         format: 'numeric'
       },
       {
         text: "Cubic meters",
         format: 'numeric'
-      } if data.licences[data.ID].returns[data.returnIndex].versions[0].units !== "cm3"
+      } if data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].units !== "cm3"
     ],
     rows: lines
       

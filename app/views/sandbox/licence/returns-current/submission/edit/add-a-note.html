@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% set title = "Add a note" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   useTudorCrown: true,
+   navigation: [
+     {
+       href: "#1",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-view.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <!-- page heading -->
+    {% set qTitle %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><span class="govuk-caption-l ">Return {{data.licences[data.ID].returns[data.returnIndex].id}}</span> {{title}}</h1>
+    {% endset %}
+
+
+
+<form method="post" class="form">
+
+  {{ govukCharacterCount({
+  name: "note",
+  id: "note",
+  maxlength: 500,
+  value: data.note,
+  label: {
+    text: [qTitle]|safe,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Provide a short explanation about the editing of this return."
+  }
+}) }}
+
+
+
+    <button type="submit" class="govuk-button">
+      Confirm
+    </button>
+
+  </form>
+
+{% endblock %}

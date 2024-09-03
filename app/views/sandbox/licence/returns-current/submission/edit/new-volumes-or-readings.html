@@ -17,9 +17,9 @@
 <!--content block-->
 {% block service %}
 
+
+<!--success banner-->
 {% if data.success == 1 %}
-
-
 
 {{ govukNotificationBanner({
   html: data.successMessage,
@@ -28,6 +28,8 @@
 }) }}
 
 {% endif %}
+
+
 
     <!-- page heading -->
 
@@ -112,9 +114,11 @@
     </div>
     </div>
 
-
-
-
+    <div class="govuk-grid-row govuk-!-margin-bottom-8">
+      <div class="govuk-grid-column-full">
+    {% include "sandbox/_includes/returns/submission/notes.html" %}
+</div>
+</div>
 
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-full">

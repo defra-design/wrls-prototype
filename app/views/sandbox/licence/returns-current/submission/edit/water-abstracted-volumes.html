@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set selectMonthData = data.licences[data.ID].returns[data.returnIndex].versions[0].monthTotals[data.monthID] %}
+{% set selectMonthData = data.monthTotals[data.monthID] %}
 
 {% set title = "Water abstracted " + selectMonthData.month + " " + selectMonthData.year %}
 

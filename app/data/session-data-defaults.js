@@ -2124,6 +2124,7 @@ module.exports = {
                                                 "units":"cm3",
                                                 "readingsOrVolumes":"readings",
                                                 "nilReturn":false,
+                                                "notes" : "",
                                                 "meterDetails":{"make":"Powerflow","serialNumber":"7777777", "x10": false, "startReading": "118454", "endReading": "1235920"},
                                                 "lines":[{
                                                   "date": "20240401",
@@ -3665,6 +3666,7 @@ module.exports = {
                                                         "submittedBy":"testuser@gov.uk",
                                                         "submittedDate":"20240816",
                                                         "units":"cm3",
+                                                        "notes" : "",
                                                         "readingsOrVolumes": "volumes",
                                                         "nilReturn":false,
                                                         "meterDetails":{"make":"Powerflow","serialNumber":"2222222", "x10": false, "startReading": "", "endReading": ""},

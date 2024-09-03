@@ -234,15 +234,29 @@ rows: [
    
       {% for version in data.licences[data.ID].returns[data.returnIndex].versions %}
       {% set loopIndex = loop.index0 %}
+
+{% if data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].notes == "" %}  
+{% set notesHTML = "" %}
+{% else %}    
+{% set notesHTML %}
+{{ govukDetails({
+  summaryText: "Notes",
+  text: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].notes
+}) }}
+{% endset %}
+{% endif %}
+
+
       {% if loopIndex == versionID %}
       {{ govukInsetText({
-        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate,
+        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "<br>"+notesHTML,
         classes: "govuk-inset-text-blue"
       }) }}
       {% else %}
       {{ govukInsetText({
-        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br><a class='govuk-link' href='return?returnIndex="+data.returnIndex+"&versionID="+loopIndex+"'>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "</a>"
+        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br><a class='govuk-link' href='return?returnIndex="+data.returnIndex+"&versionID="+loopIndex+"'>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "</a><br>"+notesHTML
       }) }}
+      
       {% endif %}
       {% endfor %}
 
