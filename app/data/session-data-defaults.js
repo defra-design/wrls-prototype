@@ -608,8 +608,9 @@ module.exports = {
 
         "communications": [{
             "type": "resume - Water abstraction alert",
+            "date": "20200605",
             "sent": "5 June 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -618,8 +619,9 @@ module.exports = {
           },
           {
             "type": "stop - Water abstraction alert",
+            "date": "20200417",
             "sent": "17 April 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -628,15 +630,15 @@ module.exports = {
           },
           {
             "type": "warning - Water abstraction alert",
+            "date": "20200330",
             "sent": "30 March 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
             "flowThreshold": "45.5",
             "contactEmail": "something@somewhere.co.uk",
           },
-
         ],
 
       },
@@ -809,8 +811,9 @@ module.exports = {
 
         "communications": [{
             "type": "resume - Water abstraction alert",
+            "date": "20200605",
             "sent": "5 June 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -819,8 +822,9 @@ module.exports = {
           },
           {
             "type": "stop - Water abstraction alert",
+            "date": "20200417",
             "sent": "17 April 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -829,8 +833,9 @@ module.exports = {
           },
           {
             "type": "warning - Water abstraction alert",
+            "date": "20200330",
             "sent": "30 March 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1035,8 +1040,9 @@ module.exports = {
 
         "communications": [{
             "type": "resume - Water abstraction alert",
+            "date": "20200605",
             "sent": "5 June 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1045,8 +1051,9 @@ module.exports = {
           },
           {
             "type": "stop - Water abstraction alert",
+            "date": "20200417",
             "sent": "17 April 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1055,8 +1062,9 @@ module.exports = {
           },
           {
             "type": "warning - Water abstraction alert",
+            "date": "20200330",
             "sent": "30 March 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1160,8 +1168,9 @@ module.exports = {
 
         "communications": [{
             "type": "resume - Water abstraction alert",
+            "date": "20200605",
             "sent": "5 June 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1170,8 +1179,9 @@ module.exports = {
           },
           {
             "type": "stop - Water abstraction alert",
+            "date": "20200417",
             "sent": "17 April 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1180,8 +1190,9 @@ module.exports = {
           },
           {
             "type": "warning - Water abstraction alert",
+            "date": "20200330",
             "sent": "30 March 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1344,8 +1355,9 @@ module.exports = {
 
         "communications": [{
             "type": "resume - Water abstraction alert",
+            "date": "20200605",
             "sent": "5 June 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1354,8 +1366,9 @@ module.exports = {
           },
           {
             "type": "stop - Water abstraction alert",
+            "date": "20200417",
             "sent": "17 April 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1364,8 +1377,9 @@ module.exports = {
           },
           {
             "type": "warning - Water abstraction alert",
+            "date": "20200330",
             "sent": "30 March 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1493,8 +1507,9 @@ module.exports = {
 
         "communications": [{
             "type": "resume - Water abstraction alert",
+            "date": "20200605",
             "sent": "5 June 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1503,8 +1518,9 @@ module.exports = {
           },
           {
             "type": "stop - Water abstraction alert",
+            "date": "20200417",
             "sent": "17 April 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -1513,8 +1529,9 @@ module.exports = {
           },
           {
             "type": "warning - Water abstraction alert",
+            "date": "20200330",
             "sent": "30 March 2020",
-            "sender": "tim.teace@defra.gov.uk",
+            "sentBy": "tim.teace@defra.gov.uk",
             "method": "letter",
             "watercourse": "Hull",
             "gaugingStation": "Helmspholme",
@@ -3787,8 +3804,9 @@ module.exports = {
       
               "communications": [{
                   "type": "resume - Water abstraction alert",
+                  "date": "20200605",
                   "sent": "5 June 2020",
-                  "sender": "tim.teace@defra.gov.uk",
+                  "sentBy": "tim.teace@defra.gov.uk",
                   "method": "letter",
                   "watercourse": "Hull",
                   "gaugingStation": "Helmspholme",
@@ -3797,8 +3815,9 @@ module.exports = {
                 },
                 {
                   "type": "stop - Water abstraction alert",
+                  "date": "20200417",
                   "sent": "17 April 2020",
-                  "sender": "tim.teace@defra.gov.uk",
+                  "sentBy": "tim.teace@defra.gov.uk",
                   "method": "letter",
                   "watercourse": "Hull",
                   "gaugingStation": "Helmspholme",
@@ -3807,8 +3826,9 @@ module.exports = {
                 },
                 {
                   "type": "warning - Water abstraction alert",
+                  "date": "20200330",
                   "sent": "30 March 2020",
-                  "sender": "tim.teace@defra.gov.uk",
+                  "sentBy": "tim.teace@defra.gov.uk",
                   "method": "letter",
                   "watercourse": "Hull",
                   "gaugingStation": "Helmspholme",
@@ -4362,7 +4382,7 @@ module.exports = {
           "licenceNumber": "03/28/61/033",
           "sentTo": "joan.smythe@bigsmithfarms.co.uk",
           "method": "email",
-          "status": ["error", "permanent failure"],
+          "status": ["error", "email address does not exist"],
         }],
         "problems": "1",
       },
@@ -4382,7 +4402,7 @@ module.exports = {
                           "licenceNumber": "03/28/61/033",
                           "sentTo": "joanne.smith@bigsmithfarms.co.uk",
                           "method": "email",
-                          "status": ["error", "temporary failure"],
+                          "status": ["error", "inbox not accepting messages right now"],
                         },
                         {
                           "licenceNumber": "03/28/69/0034",

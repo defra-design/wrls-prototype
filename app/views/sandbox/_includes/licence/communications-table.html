@@ -1,8 +1,303 @@
+<div class="govuk-grid-row">
 
 
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--l">Communications</caption>
+
+  <div class="{{data['table'] | default ('govuk-grid-column-full')}}" style="{{data['overFlow']}} " >
+  
+  <h2 class="govuk-heading-l">Communications</h2>
+  
+  
+  
+    <!--  {# {% if data['showFilters'].length %}  #}
+  
+      <form  method="post" novalidate action="notification-report?showFilters=">
+         {{ govukButton({
+          text: "Hide filters",
+          classes: "govuk-button--secondary govuk-!-margin-bottom-1"
+        }) }}
+       </form>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  
+  
+  
+  
+      <div class="govuk-grid-row">
+  
+      <div class="{{data['filters'] | default ('hide') }}">
+  
+        <!--Not sure this is necessary yet
+          <div class="govuk-!-padding-3 govuk-!-margin-bottom-3" style="background-color: #f3f2f1">
+           <p class="govuk-body govuk-!-font-weight-bold">Selected filters</p>
+          </div>
+  
+          {#
+              {{ govukDateInput({
+            id: "dateFrom",
+            namePrefix: "dateFrom",
+            fieldset: {
+              legend: {
+                text: "Date from",
+                classes: 'govuk-fieldset__legend--s'
+              }
+            }
+          }) }}
+  
+  
+          {{ govukDateInput({
+          id: "dateTo",
+          namePrefix: "dateTo",
+          fieldset: {
+          legend: {
+            text: "Date to",
+            classes: 'govuk-fieldset__legend--s'
+          }
+          }
+          }) }}
+  
+          #}
+  
+      </div>
+      </div>
+  -->
+  
+       {% set filtersForm %}
+  
+  
+  
+         <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
+  
+       <form  method="post" novalidate action="licence-notices/notification-report/apply-filters?communications=true">
+  
+  
+  
+  
+  
+  
+  {#
+         {{ govukSelect({
+    id: "sort",
+    name: "sort",
+    label: {
+      text: "Sort by",
+       classes: 'govuk-label--s govuk-!-margin-bottom-7'
+    },
+    items: [
+      {
+        value: "dateAsscending",
+        text: "Date asscending"
+      },
+      {
+        value: "dateDescending",
+        text: "Date descending"
+      },
+      {
+        value: "notificationAsscending",
+        text: "Notification type asscending"
+      },
+      {
+        value: "notificationDescending",
+        text: "Notification type descending"
+      },
+      {
+        value: "sentByAsscending",
+        text: "Sent by asscending"
+      },
+      {
+        value: "sentByDescending",
+        text: "Sent by descending"
+      }
+    ]
+  }) }}
+  #}
+  
+  
+         {{ govukCheckboxes({
+           idPrefix: 'type',
+           name: 'type',
+           classes: "govuk-checkboxes--small",
+           formGroup: {
+             classes: "govuk-!-margin-bottom-5"
+           },
+           fieldset: {
+             legend: {
+               text: 'Notice type',
+               classes: 'govuk-fieldset__legend--s'
+             }
+           },
+           items: [
+             {
+               value: 'returns',
+               text: 'Returns',
+               checked:  checked("type", "returns")
+             },
+             {
+               value: 'renewals',
+               text: 'Renewals',
+               checked:  checked("type", "renewals")
+             },
+             {
+               value: 'hands off flow notices',
+               text: 'Hands off flow notices',
+               checked:  checked("type", "hands off flow notices")
+             }
+           ]
+         }) }}
+  
+  
+  
+  
+         {{ govukInput({
+          formGroup:{
+            classes: "govuk-!-margin-bottom-7"
+          },
+           id: 'sentBy',
+           name: 'sentBy',
+           value: data['sentBy'],
+           classes: "govuk-input--width-10",
+           label: {
+             text: 'Sent by',
+             classes: 'govuk-label--s'
+           }
+         }) }}
+  
+         {% call govukFieldset({
+  
+          legend: {
+            text: "Sent dates",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        })
+        %}
+  
+  
+  
+        {{ govukDateInput({
+          id: "sentAfter",
+          namePrefix: "sentAfter",
+          formGroup:{
+            classes: "govuk-!-margin-bottom-2",
+            beforeInputs: {
+            html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-1">From</h3>'
+          }
+        },
+          items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["sentAfter-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["sentAfter-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["sentAfter-year"]
+          }
+          ]
+        }) }}
+  
+  
+        {{ govukDateInput({
+          id: "sentBefore",
+          namePrefix: "sentBefore",
+          formGroup:{
+            classes: "govuk-!-margin-bottom-7",
+            beforeInputs: {
+            html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-1">To</h3>'
+          }
+        },
+          items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: data["sentBefore-day"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: data["sentBefore-month"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: data["sentBefore-year"]
+      }
+    ]
+        }) }}
+        {% endcall %}
+  
+  
+  
+   
+  
+  {# not doing sorting for the moment #}
+  {#
+                {{ govukRadios({
+                  idPrefix: "sort",
+                  name: "sort",
+                  classes: "govuk-radios--small",
+                  fieldset: {
+                    legend: {
+                      text: "Sort by date",
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  items: [
+                    {
+                      value: "dateDescending",
+                      text: "Newest to oldest",
+                      checked:  checked("sort", "dateDescending")
+                    },
+                    {
+                      value: "dateAsscending",
+                      text: "Oldest to newest",
+                      checked:  checked("sort", "dateAsscending")
+                    }
+                  ]
+                }) }}
+  #}
+         <div class="govuk-button-group">
+             {{ govukButton({
+           text: "Apply filters"
+         }) }}
+  
+  
+         {{ govukButton({
+             text: "Clear filters",
+             classes: "govuk-button--secondary",
+             name: "clearFilters",
+             value: "true"
+           }) }}
+  
+           </div>
+  
+  
+  
+       </form>
+  
+  
+       {% endset %}
+  
+  
+  
+       {{ govukDetails({
+         summaryText: "Filter sent notices",
+         html: filtersForm | safe,
+         classes: "govuk-!-margin-bottom-4",
+         open: data['openDetails']
+       }) }}
+
+
+
+       <div role="region" aria-labelledby="caption" id="focus" tabindex="0">
+        <table  class="govuk-table" style="{{data['fixTableWidth']}}">
+          <caption class="govuk-table__caption govuk-table__caption--s govuk-!-margin-bottom-3 govuk-!-font-weight-regular" id="caption" ><!--<div class="govuk-!-margin-bottom-3"> View sent notices </div>-->{{data.filterCaption}}
+          </caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Type</th>
@@ -18,18 +313,40 @@
 
   <tbody class="govuk-table__body">
 
+  <!--get and loop through the notifications table, check if results are filtered or not-->
+  {% if data['filteredResults'].length %}
+  {% set notifications = data['filteredResults']  %}
+  {% else %}
+  {% set notifications = communications %}
+  {% endif %}
 
 
-    {% for i in communications %}
+  {% if notifications == "empty" %}
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">No results</td>
+    <td class="govuk-table__cell"></td>
+    <td class="govuk-table__cell"></td>
+    <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+    <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+    </tr>
+
+  {% else %}
+
+    {% for i in notifications %}
     <!--set variable for comms ID-->
     {% set communicationID = loop.index0 %}
     <tr class="govuk-table__row">
       <td class="govuk-table__cell"><a href="licence/communication?communicationID={{communicationID}}&watercourse={{data.licences[data.ID].communications[communicationID]['watercourse']}}&gaugingStation={{data.licences[data.ID].communications[communicationID]['gaugingStation']}}&flowThreshold={{data.licences[data.ID].communications[communicationID]['flowThreshold']}}&contactEmail={{data.licences[data.ID].communications[communicationID]['contactEmail']}}" class="govuk-link">{{i.type | capitalize}}</td>
       <td class="govuk-table__cell">{{i.sent}}</td>
-      <td class="govuk-table__cell">{{i.sender}}</td>
+      <td class="govuk-table__cell">{{i.sentBy}}</td>
       <td class="govuk-table__cell">{{i.method | capitalize}}</td>
     </tr>
     {% endfor %}
 
+    {% endif %}
+
   </tbody>
 </table>
+
+</div>
+</div>

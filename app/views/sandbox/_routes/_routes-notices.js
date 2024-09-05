@@ -1160,6 +1160,8 @@ if (showFilters == "true" ) {
 
 router.post('/notification-report/apply-filters', function(req, res) {
 
+
+
   //check to see if the user is clearing filters
   if (req.session.data.clearFilters == "true") {
 
@@ -1183,6 +1185,19 @@ router.post('/notification-report/apply-filters', function(req, res) {
 
   //get the list of notifications
   let notifications = req.session.data.notifications
+
+  console.log(req.session.data.communications)
+
+//change data to communications if coming from that page
+if (req.session.data.communications == "true"){
+  
+ ID = req.session.data.ID
+  notifications =  req.session.data.licences[ID]['communications']
+} 
+  
+console.log (notifications)
+
+  
 
 
 //set global scope of filteredResults
@@ -1293,7 +1308,7 @@ let rawList = [...typeFilters, sentByFilter, formatDate(startDateString), format
 
 let list =  rawList.filter(string => string !== "");
 
-console.log(list);
+//console.log(list);
 
 //set the dynamic caption for the table
 if (list.length) {
@@ -1307,7 +1322,15 @@ req.session.data.filteredResults = filteredResults
 }
 
   req.session.data.clearFilters = ""
+
+
+  if (req.session.data.communications == "true"){
+    req.session.data.communications = "false"
+    res.redirect('/sandbox/licence?ID=1#communications');
+  }
+  else {
   res.redirect('../notification-report#focus');
+  }
 
 });
 
