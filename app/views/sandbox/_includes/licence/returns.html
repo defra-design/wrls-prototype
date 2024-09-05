@@ -15,7 +15,9 @@ classes: return.status | returnStatusColour
 })}}
 {% endset %}
 
-{% set rows = rows | push ([{html: '<a href="licence/returns-current/return?returnIndex='+loop.index0+'&versionID=0">'+return.id+'</a>'},{text: return.purpose},{text: due},{html: status}]) %}
+{% set rows = rows | push ([{html: '<a href="licence/returns-current/return?returnIndex='+loop.index0+'&versionID=0">'+return.id+'</a><p class="govuk-body-s">From ' + return.returnsPeriodStart | numberToGovukDate + ' to ' + return.returnsPeriodEnd | numberToGovukDate +'</p>'},{html: return.purpose+'<p class="govuk-body-s">'+return.description+'</p>'},{text: due},{html: status}]) %}
+
+
 
 {% endfor %}
 
@@ -30,11 +32,10 @@ captionClasses: "govuk-table__caption--l",
 firstCellIsHeader: false,
 head: [
   {
-    text: "Return reference",
-    classes: 'govuk-!-width-one-quarter'
+    text: "Return reference and dates"
   },
   {
-    text: "Purpose"
+    text: "Purpose and description"
   }
   ,
   {
