@@ -1,0 +1,185 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Notes" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+
+
+{% endblock %}
+
+{% set navbarActiveReports = "navbar__link--active" %}
+
+<!--content block-->
+{% block service %}
+
+
+    
+<style>
+
+
+
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 100%);
+}
+
+  .modal {
+    position: fixed;
+    width: 100%;
+    padding-top:10%;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    display:flexbox;
+    z-index: 2;
+    background: #ffffff
+
+  }
+  
+  .modal:not(:target) {
+    display: none;
+  }
+  
+  .modal-overlay {
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.355);
+      left: 0;
+  }
+
+ 
+
+
+  
+.modal-content {
+    width: 90%;
+    border: 1px solid #b1b4b6;
+    transition: transform 1s;
+    background: #ffffff;
+    max-width:960px;
+    max-height:100%;
+    position: relative;
+    margin: auto;
+    height: auto;
+    padding: 2vw;
+  }
+
+
+@media (max-width: 40.0625em) {
+  .modal-content {
+    width: 95vw;
+    padding: 10px;
+}
+}
+ 
+  
+  .modal-close {
+    font-size: 36px;
+    text-decoration: none;
+    color: inherit;
+    position: absolute;
+    right: 24px;
+    top: 10px;
+  }
+  
+  </style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+  
+  
+      <h1 class="govuk-heading-xl"> {{ title }}</h1>
+  
+    </div>
+  </div>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+  
+      <p class="govuk-body">Experimenting with using pure CSS modal boxes for showing notes that are associated with table rows. Something that is currently happend with the details component</p>
+  
+  
+    </div>
+  </div>
+  
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+  
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
+  
+  
+  
+           
+
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sagittis nisi ac lectus fermentum, vitae condimentum ipsum consequat. Aenean mollis, ipsum eu blandit iaculis, metus odio fermentum lacus, ac egestas erat ante vel tellus. Mauris tempor, arcu nec blandit tristique, quam nibh vestibulum lacus, in vulputate neque magna vel urna. Fusce ut molestie ante. Fusce tempus ultricies ligula, sit amet bibendum odio. Praesent gravida ullamcorper mi quis eleifend. Donec ornare, libero et fermentum bibendum, est ex interdum eros, vitae elementum ante justo id arcu. In sem est, semper euismod est ac, efficitur lacinia eros. Quisque aliquam turpis a massa posuere iaculis.
+</p><p>
+  Nam pulvinar venenatis urna a vulputate. Ut faucibus turpis erat, sit amet dapibus sem tempus vitae. Aliquam placerat magna ut libero tincidunt, ac mollis ipsum consequat. Donec sit amet pharetra dolor. Nulla ultrices vulputate tempor. Nam vel velit id est lacinia venenatis. Nulla in venenatis odio. Nunc non aliquet lacus. Vestibulum sit amet nulla laoreet leo eleifend vestibulum a a massa. Nunc et fermentum diam. Maecenas vehicula nisi suscipit accumsan ullamcorper. Nulla eget felis facilisis, vulputate est eu, dignissim elit. Maecenas a purus vitae risus gravida varius ac a ante.
+</p><p>
+  Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eget massa non libero porttitor ornare. Aliquam eget aliquet neque. Morbi non velit massa. Suspendisse fringilla urna in orci efficitur blandit eu fringilla neque. Pellentesque aliquam facilisis ultrices. Fusce maximus arcu magna, sit amet imperdiet magna interdum nec. Vivamus sed leo quis metus cursus dignissim eu ac odio. Nam eget fringilla quam, vel dapibus mi. Sed lacinia neque eu urna elementum mattis. Aliquam a pretium urna. Suspendisse imperdiet, ex eu tempus vehicula, sapien lacus tristique velit, id mollis nulla augue ultrices orci.
+</p><p>
+  Nam tincidunt nibh at erat volutpat pretium. Praesent ut bibendum tortor. Nam ultricies, enim eget lacinia egestas, elit lorem viverra magna, ac placerat metus neque a turpis. Nulla eu bibendum sem. Phasellus at convallis eros. Suspendisse potenti. Phasellus vestibulum quam turpis, aliquet dignissim ipsum bibendum quis. Suspendisse potenti. Aenean rutrum odio nisi, vel lacinia leo accumsan et. Aliquam vitae diam viverra, euismod justo et, blandit sem. Curabitur enim mi, porttitor vel libero malesuada, gravida pulvinar urna. Aliquam fermentum ex ut massa tincidunt, vitae tincidunt eros volutpat.
+</p><p>
+  Phasellus sodales, nunc quis mattis porta, elit felis pharetra augue, interdum molestie nisl neque eu quam. Aliquam vitae sapien cursus enim dignissim blandit. Pellentesque feugiat sapien dapibus, rutrum nisi vitae, feugiat dui. Ut pellentesque ornare tortor id pulvinar. Donec ut pharetra elit. Quisque ornare turpis sit amet elementum semper. Vivamus mollis enim id tristique faucibus.
+</p>
+
+<a class="modal-btn" href="#modal" id="modal-link">Notes</a>
+      
+   
+      
+<section role="dialog" aria-labelledby="modal-title" aria-hidden="true" class="modal modal-overlay" id="modal">
+
+  
+  <div class="modal-content modal-div " >
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <h2 class="govuk-heading-l" id="modal-title"> Notes</h2>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+  <p class="govuk-body"> <a title="Close modal" aria-label="Close modal" href="#modal-link" class="modal-close" style="color:black;">&times; </a></p>
+  </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+  <p class="govuk-body">This is a note about this licence</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+ 
+
+{% endblock %}
+
+<script>
+    
+  // No JavaScript 
+  
+const modal = document.getElementById('modal')
+const modalDiv = document.getElementById('modal-div')
+
+window.addEventListener('popstate', () => {
+const target = window.location.hash
+
+if (target === '#modal') {
+  modalDiv.focus();
+  modal.setAttribute('aria-hidden', false);
+  return
+}
+
+modal.setAttribute('aria-hidden', true)
+});
+
+window.addEventListener('keydown', (e) => {
+if (e.key == "Escape" && window.location.hash === '#modal') {
+  window.location.hash = ""
+}
+}) 
+  </script>

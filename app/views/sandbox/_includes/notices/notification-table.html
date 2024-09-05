@@ -82,7 +82,7 @@
   name: "sort",
   label: {
     text: "Sort by",
-     classes: 'govuk-label--s'
+     classes: 'govuk-label--s govuk-!-margin-bottom-7'
   },
   items: [
     {
@@ -117,9 +117,9 @@
        {{ govukCheckboxes({
          idPrefix: 'type',
          name: 'type',
-         classes: "govuk-checkboxes--small ",
+         classes: "govuk-checkboxes--small",
          formGroup: {
-           classes: "govuk-!-margin-bottom-3"
+           classes: "govuk-!-margin-bottom-5"
          },
          fieldset: {
            legend: {
@@ -150,9 +150,9 @@
 
 
        {{ govukInput({
-         formGroup: {
-           classes: "govuk-!-margin-bottom-7"
-         },
+        formGroup:{
+          classes: "govuk-!-margin-bottom-7"
+        },
          id: 'sentBy',
          name: 'sentBy',
          value: data['sentBy'],
@@ -162,6 +162,80 @@
            classes: 'govuk-label--s'
          }
        }) }}
+
+       {% call govukFieldset({
+
+        legend: {
+          text: "Sent dates",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--s"
+        }
+      })
+      %}
+
+
+
+      {{ govukDateInput({
+        id: "sentAfter",
+        namePrefix: "sentAfter",
+        formGroup:{
+          classes: "govuk-!-margin-bottom-7",
+          beforeInputs: {
+          html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-1">From</h3>'
+        }
+      },
+        items: [
+        {
+          name: "day",
+          classes: "govuk-input--width-2",
+          value: data["sentAfter-day"]
+        },
+        {
+          name: "month",
+          classes: "govuk-input--width-2",
+          value: data["sentAfter-month"]
+        },
+        {
+          name: "year",
+          classes: "govuk-input--width-4",
+          value: data["sentAfter-year"]
+        }
+        ]
+      }) }}
+
+
+      {{ govukDateInput({
+        id: "sentBefore",
+        namePrefix: "sentBefore",
+        formGroup:{
+          classes: "govuk-!-margin-bottom-2",
+          beforeInputs: {
+          html: '<h3 class="govuk-heading-s govuk-!-margin-bottom-1">To</h3>'
+        }
+      },
+        items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data["sentBefore-day"]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data["sentBefore-month"]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data["sentBefore-year"]
+    }
+  ]
+      }) }}
+      {% endcall %}
+
+
+
+ 
 
 {# not doing sorting for the moment #}
 {#
@@ -232,6 +306,9 @@
    </form>
     {% endif %} #}
 -->
+
+
+
 <div role="region" aria-labelledby="caption" id="focus" tabindex="0">
 <table  class="govuk-table" style="{{data['fixTableWidth']}}">
   <caption class="govuk-table__caption govuk-table__caption--s govuk-!-margin-bottom-3 govuk-!-font-weight-regular" id="caption" ><!--<div class="govuk-!-margin-bottom-3"> View sent notices </div>-->{{data.filterCaption}}
@@ -295,7 +372,10 @@
     <td class="govuk-table__cell"><a href="/sandbox/licence-notices/recipient-report?notificationIndex={{loop.index0}}" class="govuk-link">{{i.notification |capitalize}}<span class="govuk-visually-hidden">, sent by {{i.sentBy}}, on {{i.date | numberToGovukDate}} </span> </a></td>
     <td class="govuk-table__cell">{{i.sentBy}}</td>
     <td class="govuk-table__cell govuk-table__cell--numeric">{{i.numberOfrecipients}}</td>
-    <td class="govuk-table__cell govuk-table__cell--numeric">{{i.problems}}</td>
+    <td class="govuk-table__cell govuk-table__cell--numeric">{% if i.problems.length %}{{ govukTag({
+      text: i.problems,
+      classes: "govuk-tag--red"
+    }) }}{% endif %}</td>
     </tr>
    {% endfor %}
      {% endif %}

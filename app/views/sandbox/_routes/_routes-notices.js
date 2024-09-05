@@ -25,7 +25,22 @@ const today = `${dd} ${monthName} ${yyyy}`;
 
 const todayNumber = `${yyyy}${mm}${dd}`;
 
+//change the string "yyyymmdd" into a gov formated date string
+function formatDate(x) {
+  let dd = x.slice(-2);
+  dd = parseInt(dd, 10);
+  let mm = x.slice(-4, -2)
+  mm = parseInt(mm, 10);
+  let yyyy = x.slice(0, 4);
 
+  //change the month into a name
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  mm = monthNames[mm - 1]
+
+  const today = `${dd} ${mm} ${yyyy}`;
+
+  return x.replace(/\w+/g, today)
+}
 
 
 
@@ -97,7 +112,7 @@ router.post('/returns/send-returns', function(req, res) {
     let licenceNumber = ""
     let method = ""
     let sentTo = ""
-    let status = "sent"
+    let status = ["sent"]
   
   
     //add details for the notification
@@ -128,7 +143,7 @@ router.post('/returns/send-returns', function(req, res) {
         "licenceNumber": "200/20/23/0111, 100/22/33/0123",
         "sentTo": "Public Water Limited,FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
         "method": "Letter",
-        "status": "Sent",
+        "status": ["sent"],
       }]
 
 
@@ -1151,12 +1166,19 @@ router.post('/notification-report/apply-filters', function(req, res) {
     req.session.data.type = ""
     req.session.data.sentBy = ""
     req.session.data.filteredResults = ""
+    req.session.data['sentAfter-day'] = ""
+    req.session.data['sentAfter-month'] = ""
+    req.session.data['sentAfter-year'] = ""
+    req.session.data['sentBefore-day'] = ""
+    req.session.data['sentBefore-month'] = ""
+    req.session.data['sentBefore-year'] = ""
     req.session.data.openDetails = true
     //reset the table caption if the list is cleared
     req.session.data.filterCaption = "Showing all sent notices."
 //    req.session.data.focus="alert"
 
   } else {
+
 
 
   //get the list of notifications
@@ -1194,10 +1216,67 @@ let typeFilters = ""
   }
 
 
+
+
+
+    //date filter
+
+function filterByDateRange(data, startDateString, endDateString) {
+  // Convert date arrays to JavaScript Date objects
+  const startDate = startDateString;
+  const endDate = endDateString;
+
+  // Filter objects based on date
+  return data.filter(obj => {
+    const objectDate = obj.date;
+    return objectDate >= startDate && objectDate < endDate;
+  });
+}
+
+
+
+const data = filteredResults;
+
+
+//sort out formats from date input
+if (req.session.data['sentAfter-month'].length == 1) {
+  req.session.data['sentAfter-month'] = `0${req.session.data['sentAfter-month']}`;
+}
+if (req.session.data['sentAfter-day'].length == 1) {
+  req.session.data['sentAfter-day'] = `0${req.session.data['sentAfter-day']}`;
+}
+
+if (req.session.data['sentBefore-month'].length == 1) {
+  req.session.data['sentBefore-month'] = `0${req.session.data['sentBefore-month']}`;
+}
+if (req.session.data['sentBefore-day'].length == 1) {
+  req.session.data['sentBefore-day'] = `0${req.session.data['sentBefore-day']}`;
+}
+
+
+let startDateString = req.session.data['sentAfter-year']+req.session.data['sentAfter-month']+req.session.data['sentAfter-day']; // April 1, 2021
+if (startDateString === 'undefined') {
+  startDateString = ""
+}
+
+let endDateString = req.session.data['sentBefore-year']+req.session.data['sentBefore-month']+req.session.data['sentBefore-day'] // March 31, 2022 (inclusive)
+
+
+if (endDateString == "" ){
+  endDateString = "21000101"
+}
+
+ filteredResults = filterByDateRange(data, startDateString, endDateString);
+
+ if (endDateString === '21000101') {
+  endDateString = ""
+}
+
   //set filtered results to empty if filters don't return anything
-    if (!filteredResults.length){
-      filteredResults = "empty"
-    }
+  if (!filteredResults.length){
+    filteredResults = "empty"
+  }
+
 
 
 req.session.data.openDetails = true
@@ -1206,16 +1285,15 @@ req.session.data.openDetails = true
 //Create a list formatter
 const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
 
-//Create the list depending on what filters are selected
-let list = []
-if (typeFilters.length && sentByFilter.length) {
-list = typeFilters
-list.push(sentByFilter)
-} else if (sentByFilter.length){
-list.push(sentByFilter)
-} else if (typeFilters.length){
-  list = typeFilters
-}
+//Create the list
+
+let rawList = [...typeFilters, sentByFilter, formatDate(startDateString), formatDate(endDateString)]
+
+
+
+let list =  rawList.filter(string => string !== "");
+
+console.log(list);
 
 //set the dynamic caption for the table
 if (list.length) {

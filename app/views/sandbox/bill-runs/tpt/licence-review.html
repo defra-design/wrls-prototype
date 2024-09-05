@@ -145,7 +145,7 @@
   
       <p class="govuk-body">
         {{govukTag({
-          text: data.status,
+          text: data.status | capitalize,
           classes: colour + " govuk-!-margin-right-2"
         })}}
 

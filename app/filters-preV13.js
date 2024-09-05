@@ -320,15 +320,15 @@ filters.focus = function(x) {
   //set text for status "| chargeStatusText"
   filters.chargeStatusText = function(e) {
     if (e == "CHANGES") {
-      return "CHANGE<br>REQUEST"
+      return "Change<br>request"
     } else if (e == "INVALID") {
-      return "INVALID"
+      return "InvalidD"
     } else if (e == "NOT APPROVED") {
-      return "REVIEW"
+      return "Review"
     } else if (e == "review") {
-      return "REVIEW"
+      return "Review"
     } else {
-      return "APPROVED"
+      return "Approved"
     }
   }
 
@@ -336,7 +336,7 @@ filters.focus = function(x) {
   filters.chargeStatusColour = function(e) {
     if (e == "NOT APPROVED") {
       return "govuk-tag--orange"
-    } else if (e == "review") {
+    } else if (e == "eview") {
       return "govuk-tag--orange"
     } else if (e == "INVALID") {
       return "govuk-tag--red"
@@ -355,15 +355,15 @@ filters.focus = function(x) {
       if (e == "due") {
         return "Due"
       } else if (e == "overdue") {
-        return "OVERDUE"
+        return "Overdue"
       } else if (e == "void") {
-        return "VOID"
+        return "Void"
       }  else if (e == "open") {
-        return "OPEN"
+        return "OpenN"
       }  else if (e == "received") {
-        return "RECEIVED"
+        return "Received"
       } else {
-        return "COMPLETED"
+        return "Completed"
       }
     }
 

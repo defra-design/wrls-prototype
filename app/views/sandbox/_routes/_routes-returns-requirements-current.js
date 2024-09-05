@@ -432,6 +432,7 @@ function createReturns(req,res) {
   let periodEnd = v.periodEnd
   let returnsPeriodStart = "20240401"
   let returnsPeriodEnd = "20240630"
+  let versions = []
 
   let newReturn = {
     id,
@@ -447,7 +448,8 @@ function createReturns(req,res) {
     periodStart,
     periodEnd,
     returnsPeriodStart,
-    returnsPeriodEnd
+    returnsPeriodEnd,
+    versions
   }
 
   req.session.data.licences[licence].returns.unshift(newReturn)

@@ -21,8 +21,18 @@
    <!--get and loop through the notifications table-->
    {% set recipients = data.notifications[notificationIndex]['recipients'] %}
    {% for i in recipients %}
+
+   {% set statusHTML %}
+
+   {{ govukTag({
+    text: i.status[0] | capitalize,
+    classes: i.status[0] | statusColour
+  }) }}
+
+{% if i.status[1].length %}<p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-0">{{i.status[1] | capitalize}}</p>{% endif %}
+  {% endset %}
    <tr class="govuk-table__row">
-    <td class="govuk-table__cell">{{i.sentTo}}</td>
+    <td class="govuk-table__cell">{{i.sentTo | replaceComma | striptags(true) | escape | nl2br}}</td>
     <td class="govuk-table__cell">
       {% for licence in data['licences']%}
       {% if licence.number == i.licenceNumber %}
@@ -31,7 +41,7 @@
          {% endfor %}
       {{i.licenceNumber}}</a></td>
     <td class="govuk-table__cell">{{i.method | capitalize}}</td>
-    <td class="govuk-table__cell">{{i.status | capitalize}}</td>
+    <td class="govuk-table__cell">{{statusHTML | safe}}</td>
     </tr>
    {% endfor %}
 

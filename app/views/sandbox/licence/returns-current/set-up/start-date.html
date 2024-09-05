@@ -52,7 +52,6 @@ fieldset: {
 
 
 
-
 {{ govukRadios({
 idPrefix: "startDateConditional",
 name: "startDateConditional",
@@ -65,12 +64,12 @@ fieldset: {
 },
 items: [
   {
-    value: data.licences[data.ID].effectiveDate | formatDate,
+    value: data.licences[data.ID].effectiveDate | formatDateToString,
     html: "Licence version start date",
     hint: {
-      text:  [data.licences[data.ID].effectiveDate]
+      text:  data.licences[data.ID].effectiveDate
     },
-    checked: checked("startDateConditional", data.licences[data.ID].effectiveDate | formatDate)
+    checked: checked("startDateConditional", data.licences[data.ID].effectiveDate)
   },
   {
     value: "other",
