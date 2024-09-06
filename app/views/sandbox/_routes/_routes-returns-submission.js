@@ -83,11 +83,11 @@ function createDailyObjects(startDateStr, endDateStr) {
     const day = String(startDate.getDate()).padStart(2,
       '0');
     const dateStr = `${year}${month}${day}`;
-
+    
     dateObjects.push({ date: dateStr, reading: "", volume: "" });
     startDate.setDate(startDate.getDate() + 1);
   }
-
+//console.log(dateObjects);
   return dateObjects;
 }
 
@@ -362,13 +362,17 @@ router.post('/returnStatus', function (req, res) {
 
     //copy existing return details to be edited
     if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === "undefined") {
+      console.log("new");
       req.session.data.make = ""
       req.session.data.serialNumber = ""
+     // console.log(startDate + " " + endDate);
       req.session.data.lines = createDailyObjects(startDate, endDate);
+      //console.log(req.session.data.lines);
       req.session.data.readingsOrVolumes = "volumes"
       req.session.data.units = "cm3"
-      req.session.data.monthTotals = []
+      req.session.data.monthTotals = batchByMonth(req.session.data.lines)
     } else {
+      console.log("edit");
       req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
       req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
       req.session.data.x10 = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.x10

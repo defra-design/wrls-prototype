@@ -39,7 +39,7 @@
 <p class="govuk-body ">
   {% set status = returnRequirements.status %}
     {{govukTag({
-text: status,
+text: status | capitalize,
 classes: status | tagColour + ' govuk-!-font-size-27'
 })}} </p>
 

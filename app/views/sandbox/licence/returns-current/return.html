@@ -18,7 +18,15 @@
 {% block service %}
 
 
-<!--success banner-->
+<!--Warning-->
+{% if data.licences[data.ID].returns[data.returnIndex].status == "void"%}
+{{ govukWarningText({
+  html: "This return is void." ,
+  iconFallbackText: "Warning"
+}) }}
+{% endif %}
+
+
 {% if data.versionID !== "0" %}
 {{ govukWarningText({
   html: "This return is not the current version. <br> <a class='govuk-link' href='return?returnIndex=1&versionID=0'>View the current return</a>" ,
@@ -140,7 +148,7 @@ rows: [
     <h2 class="govuk-heading-l"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.licences[data.ID].returns[data.returnIndex].versions[versionID].lines | sumVolumes | toGovNumber}} </span><span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">cubic metres</span></span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total amount of water abstracted</span></h2>
 
-    {% if data.versionID == "0" %}  
+    {% if data.versionID == "0" and data.licences[data.ID].returns[data.returnIndex].status !== "void" %}
     {{ govukButton({
       text: "Edit return",
       href: "?edit=true#"

@@ -446,6 +446,7 @@ module.exports = {
         "holder": "Irene Briton",
         "startDate": "1 June 1985",
         "endDate": "31 January 2020",
+        "effectiveDate": "1 June 1985",
         "expired": "true",
         "billingRegion": "Midlands",
 
@@ -649,6 +650,7 @@ module.exports = {
         "holder": "Bottled Water Plc",
         "startDate": "1 June 1985",
         "endDate": "30 April 2022",
+        "effectiveDate": "1 June 1985",
         "expired": "false",
         "billingRegion": "North West",
 
@@ -853,6 +855,7 @@ module.exports = {
         "holder": "Big Smith Farms Ltd",
         "startDate": "1 April 2022",
         "endDate": "31 March 2034",
+        "effectiveDate": "1 April 2022",
         "expired": "false",
         "billingRegion": "South West",
 
@@ -922,6 +925,7 @@ module.exports = {
         "holder": "Bottled Water Plc",
         "startDate": "1 June 1985",
         "endDate": "15 September 2022",
+        "effectiveDate": "1 June 1985",
         "expired": "false",
         "billingRegion": "North East",
 
@@ -1082,6 +1086,7 @@ module.exports = {
         "holder": "Bottled Water Plc",
         "startDate": "1 September 1990",
         "endDate": "15 September 2022",
+        "effectiveDate": "1 September 1990",
         "expired": "false",
         "billingRegion": "Anglian",
 
@@ -1127,9 +1132,110 @@ module.exports = {
                 { }
               ],
 
-        "returnsRequirements":  [],
+        "returnsRequirements":  [{
+                                "startDate":"19900901",
+                                "endDate":"",
+                                "createdDate":"19900901",
+                                "reason":"Error correction",
+                                "additionalSubmissionOptions":["none"],
+                                "status":"approved",
+                                "username":"username@defra.gov.uk",
+                                "note":"Corrected error in frequency",
+                                  "requirements":[{
+                                                "id":660257,
+                                                "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                                                "title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                                                "frequency":"monthly",
+                                                "frequencyCollected":"monthly",
+                                                "settings":["none"],
+                                                "purpose":["Spray irrigation - direct"],
+                                                "points":["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+                                                "periodStart":"1101",
+                                                "periodEnd":"0331",
+                                                "timeLimit":"No",
+                                                "returnsCycle":"winter and all year",
+                                                "amount":"125"}
+                                                ]},
+                              {"startDate":"19900901",
+                                "endDate":"",
+                                "createdDate":"20240906",
+                                "reason":"New licence",
+                                "additionalSubmissionOptions":["none"],
+                                "status":"replaced",
+                                "username":"username@defra.gov.uk",
+                                "note":"",
+                                  "requirements":[{
+                                                "id":660257,
+                                                "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                                                "title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                                                "frequency":"daily",
+                                                "frequencyCollected":"daily",
+                                                "settings":["none"],
+                                                "purpose":["Spray irrigation - direct"],
+                                                "points":["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+                                                "periodStart":"1101",
+                                                "periodEnd":"0331",
+                                                "timeLimit":"No",
+                                                "returnsCycle":
+                                                "winter and all year",
+                                                "amount":"125"
+                                                }]
+                              }],
 
-        "returns": [],
+        "returns": [{"id":660257,
+                    "status":"due",
+                    "due":"20230728",
+                    "returnsCycle":"winter and all year",
+                    "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                    "title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                    "frequency":"monthly",
+                    "settings":["none"],
+                    "purpose":["Spray irrigation - direct"],
+                    "points":["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+                    "periodStart":"1101",
+                    "periodEnd":"0331",
+                    "returnsPeriodStart":"20221101",
+                    "returnsPeriodEnd":"20230331",
+                    "versions":[]
+                    },
+                    {"id":660257,
+                    "status":"void",
+                    "due":"20230428",
+                    "returnsCycle":"winter and all year",
+                    "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                    "title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+                    "frequency":"daily","settings":["none"],"purpose":["Spray irrigation - direct"],
+                    "points":["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)",
+                      "At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+                      "periodStart":"1101",
+                      "periodEnd":"0331",
+                      "returnsPeriodStart":"20221101",
+                      "returnsPeriodEnd":"20230331",
+                      "versions":[{
+                                  "id":0,
+                                  "submittedBy":
+                                  "testuser@gov.uk",
+                                  "submittedDate":"20230406",
+                                  "notes":"",
+                                  "units":"cm3",
+                                  "readingsOrVolumes":"volumes",
+                                  "nilReturn":false,
+                                  "meterDetails":{"make":"","serialNumber":"","x10":"","startReading":"","endReading":""},
+                                  "lines":[ {"date":"20221101","reading":"","volume":123456},{"date":"20221102","reading":"","volume":""},{"date":"20221103","reading":"","volume":""},{"date":"20221104","reading":"","volume":""},{"date":"20221105","reading":"","volume":""},{"date":"20221106","reading":"","volume":""},{"date":"20221107","reading":"","volume":""},{"date":"20221108","reading":"","volume":""},{"date":"20221109","reading":"","volume":""},{"date":"20221110","reading":"","volume":""},{"date":"20221111","reading":"","volume":""},{"date":"20221112","reading":"","volume":""},{"date":"20221113","reading":"","volume":""},{"date":"20221114","reading":"","volume":""},{"date":"20221115","reading":"","volume":""},{"date":"20221116","reading":"","volume":""},{"date":"20221117","reading":"","volume":""},{"date":"20221118","reading":"","volume":""},{"date":"20221119","reading":"","volume":""},{"date":"20221120","reading":"","volume":""},{"date":"20221121","reading":"","volume":""},{"date":"20221122","reading":"","volume":""},{"date":"20221123","reading":"","volume":""},{"date":"20221124","reading":"","volume":""},{"date":"20221125","reading":"","volume":""},{"date":"20221126","reading":"","volume":""},{"date":"20221127","reading":"","volume":""},{"date":"20221128","reading":"","volume":""},{"date":"20221129","reading":"","volume":""},{"date":"20221130","reading":"","volume":""},
+                                            {"date":"20221201","reading":"","volume":123456},{"date":"20221202","reading":"","volume":""},{"date":"20221203","reading":"","volume":""},{"date":"20221204","reading":"","volume":""},{"date":"20221205","reading":"","volume":""},{"date":"20221206","reading":"","volume":""},{"date":"20221207","reading":"","volume":""},{"date":"20221208","reading":"","volume":""},{"date":"20221209","reading":"","volume":""},{"date":"20221210","reading":"","volume":""},{"date":"20221211","reading":"","volume":""},{"date":"20221212","reading":"","volume":""},{"date":"20221213","reading":"","volume":""},{"date":"20221214","reading":"","volume":""},{"date":"20221215","reading":"","volume":""},{"date":"20221216","reading":"","volume":""},{"date":"20221217","reading":"","volume":""},{"date":"20221218","reading":"","volume":""},{"date":"20221219","reading":"","volume":""},{"date":"20221220","reading":"","volume":""},{"date":"20221221","reading":"","volume":""},{"date":"20221222","reading":"","volume":""},{"date":"20221223","reading":"","volume":""},{"date":"20221224","reading":"","volume":""},{"date":"20221225","reading":"","volume":""},{"date":"20221226","reading":"","volume":""},{"date":"20221227","reading":"","volume":""},{"date":"20221228","reading":"","volume":""},{"date":"20221229","reading":"","volume":""},{"date":"20221230","reading":"","volume":""},{"date":"20221231","reading":"","volume":""},
+                                            {"date":"20230101","reading":"","volume":123456},{"date":"20230102","reading":"","volume":""},{"date":"20230103","reading":"","volume":""},{"date":"20230104","reading":"","volume":""},{"date":"20230105","reading":"","volume":""},{"date":"20230106","reading":"","volume":""},{"date":"20230107","reading":"","volume":""},{"date":"20230108","reading":"","volume":""},{"date":"20230109","reading":"","volume":""},{"date":"20230110","reading":"","volume":""},{"date":"20230111","reading":"","volume":""},{"date":"20230112","reading":"","volume":""},{"date":"20230113","reading":"","volume":""},{"date":"20230114","reading":"","volume":""},{"date":"20230115","reading":"","volume":""},{"date":"20230116","reading":"","volume":""},{"date":"20230117","reading":"","volume":""},{"date":"20230118","reading":"","volume":""},{"date":"20230119","reading":"","volume":""},{"date":"20230120","reading":"","volume":""},{"date":"20230121","reading":"","volume":""},{"date":"20230122","reading":"","volume":""},{"date":"20230123","reading":"","volume":""},{"date":"20230124","reading":"","volume":""},{"date":"20230125","reading":"","volume":""},{"date":"20230126","reading":"","volume":""},{"date":"20230127","reading":"","volume":""},{"date":"20230128","reading":"","volume":""},{"date":"20230129","reading":"","volume":""},{"date":"20230130","reading":"","volume":""},{"date":"20230131","reading":"","volume":""},
+                                            {"date":"20230201","reading":"","volume":123456},{"date":"20230202","reading":"","volume":""},{"date":"20230203","reading":"","volume":""},{"date":"20230204","reading":"","volume":""},{"date":"20230205","reading":"","volume":""},{"date":"20230206","reading":"","volume":""},{"date":"20230207","reading":"","volume":""},{"date":"20230208","reading":"","volume":""},{"date":"20230209","reading":"","volume":""},{"date":"20230210","reading":"","volume":""},{"date":"20230211","reading":"","volume":""},{"date":"20230212","reading":"","volume":""},{"date":"20230213","reading":"","volume":""},{"date":"20230214","reading":"","volume":""},{"date":"20230215","reading":"","volume":""},{"date":"20230216","reading":"","volume":""},{"date":"20230217","reading":"","volume":""},{"date":"20230218","reading":"","volume":""},{"date":"20230219","reading":"","volume":""},{"date":"20230220","reading":"","volume":""},{"date":"20230221","reading":"","volume":""},{"date":"20230222","reading":"","volume":""},{"date":"20230223","reading":"","volume":""},{"date":"20230224","reading":"","volume":""},{"date":"20230225","reading":"","volume":""},{"date":"20230226","reading":"","volume":""},{"date":"20230227","reading":"","volume":""},{"date":"20230228","reading":"","volume":""},
+                                            {"date":"20230301","reading":"","volume":123456},{"date":"20230302","reading":"","volume":""},{"date":"20230303","reading":"","volume":""},{"date":"20230304","reading":"","volume":""},{"date":"20230305","reading":"","volume":""},{"date":"20230306","reading":"","volume":""},{"date":"20230307","reading":"","volume":""},{"date":"20230308","reading":"","volume":""},{"date":"20230309","reading":"","volume":""},{"date":"20230310","reading":"","volume":""},{"date":"20230311","reading":"","volume":""},{"date":"20230312","reading":"","volume":""},{"date":"20230313","reading":"","volume":""},{"date":"20230314","reading":"","volume":""},{"date":"20230315","reading":"","volume":""},{"date":"20230316","reading":"","volume":""},{"date":"20230317","reading":"","volume":""},{"date":"20230318","reading":"","volume":""},{"date":"20230319","reading":"","volume":""},{"date":"20230320","reading":"","volume":""},{"date":"20230321","reading":"","volume":""},{"date":"20230322","reading":"","volume":""},{"date":"20230323","reading":"","volume":""},{"date":"20230324","reading":"","volume":""},{"date":"20230325","reading":"","volume":""},{"date":"20230326","reading":"","volume":""},{"date":"20230327","reading":"","volume":""},{"date":"20230328","reading":"","volume":""},{"date":"20230329","reading":"","volume":""},{"date":"20230330","reading":"","volume":""},{"date":"20230331","reading":"","volume":""}
+                                          ],
+                                          "monthTotals":[
+                                            {"month":"November","year":"2022","total":123456},
+                                            {"month":"December","year":"2022","total":123456},
+                                            {"month":"January","year":"2023","total":123456},
+                                            {"month":"February","year":"2023","total":123456},
+                                            {"month":"March","year":"2023","total":123456}
+                                          ]
+                                }]
+                    }],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -1210,6 +1316,7 @@ module.exports = {
         "holder": "Robin Vithlhem-Smith",
         "startDate": "1 April 2015",
         "endDate": "1 March 2023",
+        "effectiveDate": "1 April 2015",
         "expired": "false",
         "billingRegion": "Midlands",
 
@@ -1396,6 +1503,7 @@ module.exports = {
         "holder": "D.B. Beecham-Smith",
         "startDate": "1 October 2016",
         "endDate": "30 September 2025",
+        "effectiveDate": "1 October 2016",
         "expired": "false",
         "billingRegion": "South West",
 
@@ -1792,6 +1900,7 @@ module.exports = {
               "name": "",
               "holder": "Bottled Water Plc",
               "startDate": "1 April 2000",
+              "effectiveDate": "1 April 2000",
               "endDate": "",
               "expired": "false",
               "billingRegion": "North West",

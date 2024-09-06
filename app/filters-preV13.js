@@ -322,11 +322,13 @@ filters.focus = function(x) {
     if (e == "CHANGES") {
       return "Change<br>request"
     } else if (e == "INVALID") {
-      return "InvalidD"
+      return "Invalid"
     } else if (e == "NOT APPROVED") {
       return "Review"
     } else if (e == "review") {
       return "Review"
+    } else if (e == "replaced") {
+      return "Replaced"
     } else {
       return "Approved"
     }
@@ -342,6 +344,8 @@ filters.focus = function(x) {
       return "govuk-tag--red"
     } else if (e == "CHANGES") {
       return "govuk-tag--blue"
+    } else if (e == "replaced") {
+      return "govuk-tag--grey"
     } else {
       return "govuk-tag--green"
     }
@@ -417,6 +421,8 @@ filters.focus = function(x) {
       return "govuk-tag--orange"
     } else if (e == "error") {
       return "govuk-tag--red"
+      } else if (e == "replaced") {
+      return "govuk-tag--grey"
     } else {
       return "govuk-tag--green"
     }
