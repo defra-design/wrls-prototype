@@ -59,7 +59,18 @@ router.get('/returns/send-quarterly-returns', function(req, res) {
 });
 
 router.post('/returns/send-quarterly-returns', function(req, res) {
-  res.redirect('exclude-licences');
+  res.redirect('enter-returns-period');
+});
+
+
+//Enter the returns period
+router.get('/returns/enter-returns-period', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + 'returns/enter-returns-period');
+});
+
+router.post('/returns/enter-returns-period', function(req, res) {
+  res.redirect('create-mailing-list');
 });
 
 //exclude some licences

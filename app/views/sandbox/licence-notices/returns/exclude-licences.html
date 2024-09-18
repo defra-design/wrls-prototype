@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Do you want to send quarterly returns " + data.returnNotificationType + "?" %}
+{% set title = "Enter the licence numbers to remove from the mailing list"%}
 <!--set question title-->
 {% set qTitle = title %}
 
@@ -21,14 +21,12 @@
 
     <form method="post" novalidate>
 
-      <h1 class="govuk-heading-l">Send returns {{data.returnNotificationType}}</h1>
-
       {{ govukTextarea({
       name: "excludeLicences",
       id: "excludeLicences",
       label: {
-      text: "Enter the licence numbers which you want to exclude from this mailing list",
-      classes: "govuk-label--s",
+      text: title,
+      classes: "govuk-label--l",
       isPageHeading: true
       },
       hint: {

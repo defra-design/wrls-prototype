@@ -1,0 +1,101 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Enter the returns period for the returns " + data.returnNotificationType %}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form method="post" novalidate>
+
+      {% call govukFieldset({
+        legend: {
+          text: title,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+
+      {{ govukDateInput({
+        id: "startDate",
+        namePrefix: "startDate",
+        formGroup:{
+          beforeInputs: {
+          html: '<h2 class="govuk-heading-s govuk-!-margin-bottom-1">Start Date</h2>'
+        }
+      },
+        items: [
+        {
+          name: "day",
+          classes: "govuk-input--width-2",
+          value: data["startDate-day"]
+        },
+        {
+          name: "month",
+          classes: "govuk-input--width-2",
+          value: data["startDate-month"]
+        },
+        {
+          name: "year",
+          classes: "govuk-input--width-4",
+          value: data["startDate-year"]
+        }
+        ]
+      }) }}
+
+
+      {{ govukDateInput({
+        id: "endDate",
+        namePrefix: "endDate",
+        formGroup:{
+          beforeInputs: {
+          html: '<h2 class="govuk-heading-s govuk-!-margin-bottom-1">End date</h2>'
+        }
+      },
+        items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data["endDate-day"]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data["endDate-month"]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data["endDate-year"]
+    }
+  ]
+      }) }}
+
+      {% endcall %}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
