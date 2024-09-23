@@ -59,11 +59,11 @@ router.get('/returns/send-quarterly-returns', function(req, res) {
 });
 
 router.post('/returns/send-quarterly-returns', function(req, res) {
-  res.redirect('enter-returns-period');
+  res.redirect('create-mailing-list');
 });
 
 
-//Enter the returns period
+//Enter the returns period // Skipped this page as it was surplus to requirements
 router.get('/returns/enter-returns-period', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'returns/enter-returns-period');

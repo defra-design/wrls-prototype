@@ -617,8 +617,25 @@ filters.focus = function(x) {
     return currency
   }
 
- 
+  //currentYear 
+  filters.currentYear = function (x) {
+  let currentYear = new Date().getFullYear();
+  return(currentYear);
+  }
 
+//nextYear 
+filters.nextYear = function (x) {
+  let nextYear = new Date().getFullYear();
+  return(nextYear+1);
+  }
+
+  //currentDay and month mmdd
+  filters.getCurrentDayAndMonth = function (x){
+    const today = new Date();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+  return(month + day);
+  }
 
   //filters.statusReview = function(e) { return e.chargeStatus === "CHARGEABLE";}
 

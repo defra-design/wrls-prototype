@@ -148,6 +148,45 @@ module.exports = {
       }
     ],
 
+    "returnsPeriods": [
+      {
+        "title": "Quarterly",
+        "startDate": "1001",
+        "endDate": "1231",
+         "dueDate": "0128"
+      },
+      {
+        "title": "Quarterly",
+        "startDate": "0101",
+        "endDate": "0331",
+         "dueDate": "0428"
+      },
+      {
+      "title": "Winter and all year annual",
+      "startDate": "0401",
+      "endDate": "0331",
+      "dueDate": "0428"
+      },
+      {
+        "title": "Quarterly",
+        "startDate": "0401",
+        "endDate": "0630",
+         "dueDate": "0728"
+      },
+      {
+        "title": "Quarterly",
+        "startDate": "0701",
+        "endDate": "0930",
+         "dueDate": "1028"
+      },
+      {
+        "title": "Summer annual",
+        "startDate": "1101",
+        "endDate": "1031",
+         "dueDate": "1128"
+      }   
+  ],
+
     "chargeVersions": [{
         "chargeStart": "22 April 2019",
         "chargeEnd": "",

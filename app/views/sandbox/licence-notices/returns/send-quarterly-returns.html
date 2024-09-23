@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Select the type of returns " + data.returnNotificationType + " to send" %}
+{% set title = "Select the returns periods for the " + data.returnNotificationType %}
 <!--set question title-->
 {% set qTitle = title %}
 
@@ -21,6 +21,68 @@
 
     <form method="post" novalidate>
 
+ 
+      {% set selectItems = [] %}
+      
+{% for returnsPeriod in data.returnsPeriods %}
+
+{#change currentDayAndMonth | getCurrentDayAndMonth to a mmdd to see what shows at different times of the year#}
+{% if returnsPeriod.dueDate >= currentDayAndMonth | getCurrentDayAndMonth %}
+
+    {# Only put in the next two #}
+    {% if selectItems.length < 2 %}
+
+    {# set the start year for annual submissions to be a year ago #}
+    {% if returnsPeriod.title == "Quarterly" %}
+    {% set startYear = currentYear | currentYear %}
+    {% else %}
+    {% set startYear = currentYear | currentYear |int - 1 %}
+    {% endif %}
+
+    {# Set endYear #}
+    {% set endYear = currentYear | currentYear %}
+
+    {# set the start and end year for quarter 1 October to 31 December to be last year assuming today is past 0101. If before set the dueYear to next year #}
+    {% set dueYear = currentYear | currentYear%}
+    {% if returnsPeriod.dueDate == "0128" and currentDayAndMonth | getCurrentDayAndMonth >= "0101" %}
+    {% set startYear = currentYear | currentYear |int - 1 %}
+    {% set endYear = currentYear | currentYear |int - 1 %}
+    {% endif %}  
+
+    {% set selectItems = selectItems | push({
+  value: returnsPeriod.title,
+  text: returnsPeriod.title + " " + returnsPeriod.startDate | mmddToDate + " " + startYear + " to " + returnsPeriod.endDate | mmddToDate + " " + endYear,
+  hint: { text: "Due " + returnsPeriod.dueDate | mmddToDate + " " + dueYear}
+}) %}
+
+    {% endif %}
+    {% endif %}
+
+{% endfor %}
+
+{# If after looping through there are less than 2 return period options loop through again but starting from the start of next year, I get away with this cos the data is in order in the session data file#}
+{% if selectItems.length < 2 %}
+
+{% for returnsPeriod in data.returnsPeriods %}
+
+    {# Only put in the next two#}
+    {% if selectItems.length < 2 %}
+
+    {% set selectItems = selectItems | push({
+  value: returnsPeriod.title,
+  text: returnsPeriod.title + " " + returnsPeriod.startDate | mmddToDate + " " + startYear + " to " + returnsPeriod.endDate | mmddToDate + " " + currentYear| currentYear,
+  hint: { text: "Due " + returnsPeriod.dueDate | mmddToDate + " " + nextYear | nextYear}
+}) %}
+
+
+{% endif %}
+
+{% endfor %}
+
+{% endif %}
+
+
+
       {{ govukRadios({
       idPrefix: "returnType",
       name: "returnType",
@@ -31,16 +93,7 @@
       classes: "govuk-fieldset__legend--l"
       }
       },
-      items: [
-      {
-      value: "quarterly",
-      text: "Quarterly"
-      },
-      {
-      value: "summer or winter and all year",
-      text: "Summer or Winter and all year"
-      }
-      ]
+      items:  selectItems
       }) }}
 
       <button type="submit" class="govuk-button">
