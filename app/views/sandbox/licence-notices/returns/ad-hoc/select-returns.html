@@ -1,0 +1,63 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Which returns need to be sent?"%}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+      {% set returns = [] %}
+
+      {% for return in data.licences[data.licenceID].returns %}
+
+     {% set returns = returns|push( {
+        value: loop.index0,
+        text: return.id + " Due " + return.due |govukDate
+      })
+      %}  
+
+      {% endfor %}
+
+      {{ govukCheckboxes({
+        name: "selectedReturns",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: returns
+      }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

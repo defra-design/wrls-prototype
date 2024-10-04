@@ -489,6 +489,12 @@ module.exports = {
         "expired": "true",
         "billingRegion": "Midlands",
 
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['6']
+        }],
+
         //licence Settings
         "multipleUpload": "no",
         "confidentiality": "public",
@@ -692,6 +698,12 @@ module.exports = {
         "effectiveDate": "1 June 1985",
         "expired": "false",
         "billingRegion": "North West",
+
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['3']
+        }],
 
         //licence Settings
         "multipleUpload": "no",
@@ -898,6 +910,12 @@ module.exports = {
         "expired": "false",
         "billingRegion": "South West",
 
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['1']
+        }],
+
         //licence Settings
         "multipleUpload": "no",
         "confidentiality": "public",
@@ -967,6 +985,12 @@ module.exports = {
         "effectiveDate": "1 June 1985",
         "expired": "false",
         "billingRegion": "North East",
+
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['3']
+        }],
 
         //licence Settings
         "multipleUpload": "no",
@@ -1128,6 +1152,12 @@ module.exports = {
         "effectiveDate": "1 September 1990",
         "expired": "false",
         "billingRegion": "Anglian",
+
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['3']
+        }],
 
         //licence Settings
         "multipleUpload": "no",
@@ -1359,6 +1389,12 @@ module.exports = {
         "expired": "false",
         "billingRegion": "Midlands",
 
+          //contacts on the licence
+          "contacts": [{
+            "type": "returns",
+            "id": ['8']
+          }],
+
         //licence Settings
         "multipleUpload": "no",
         "confidentiality": "public",
@@ -1546,6 +1582,12 @@ module.exports = {
         "expired": "false",
         "billingRegion": "South West",
 
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['10']
+        }],
+
         //licence Settings
         "multipleUpload": "no",
         "confidentiality": "public",
@@ -1699,6 +1741,12 @@ module.exports = {
         "endDate": "31 March 2034",
         "expired": "false",
         "billingRegion": "Midlands",
+
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['1']
+        }],
 
         //licence Settings
         "multipleUpload": "no",
@@ -1944,6 +1992,13 @@ module.exports = {
               "expired": "false",
               "billingRegion": "North West",
 
+              //contacts on the licence
+              "contacts": [{
+                "type": "returns",
+                "id": ['3']
+              }],
+
+
               //licence Settings
               "multipleUpload": "no",
               "confidentiality": "public",
@@ -2003,6 +2058,12 @@ module.exports = {
               "endDate": "31 March 2034",
               "expired": "false",
               "billingRegion": "South East",
+
+                //contacts on the licence
+                "contacts": [{
+                  "type": "returns",
+                  "id": ['1']
+                }],
 
               //licence Settings
               "multipleUpload": "no",
@@ -2091,6 +2152,12 @@ module.exports = {
               "endDate": "31 March 2035",
               "expired": "false",
               "billingRegion": "Midlands",
+
+              //contacts on the licence
+              "contacts": [{
+                "type": "returns",
+                "id": ['1']
+              }],
 
               //licence Settings
               "multipleUpload": "no",
@@ -3416,6 +3483,9 @@ module.exports = {
               ],
 
             },
+
+
+            //licence 11
             {
               "number": "03/28/61/065",
               "name": "Lemon Tree Farm",
@@ -3425,6 +3495,12 @@ module.exports = {
               "endDate": "31 March 2035",
               "expired": "false",
               "billingRegion": "Anglian",
+
+                            //contacts on the licence
+                            "contacts": [{
+                              "type": "returns",
+                              "id": ['1']
+                            }],
 
               //licence Settings
               "multipleUpload": "no",
@@ -3735,6 +3811,12 @@ module.exports = {
               "effectiveDate": "19 January 2018",
               "expired": "false",
               "billingRegion": "Southern",
+
+              //contacts on the licence
+              "contacts": [{
+                "type": "returns",
+                "id": ['10']
+              }],
       
               //licence Settings
               "multipleUpload": "yes",
@@ -3998,6 +4080,12 @@ module.exports = {
               "expired": "false",
               "billingRegion": "Southern",
       
+              //contacts on the licence
+              "contacts": [{
+                "type": "returns",
+                "id": ['10']
+              }],
+
               //licence Settings
               "multipleUpload": "yes",
               "confidentiality": "public",
@@ -4409,6 +4497,42 @@ module.exports = {
                       }],
           "customer": "D.B. Beecham-Smith",
         }],
+      },
+      {
+        "name": "Public Water Plc",
+        "email": "",
+        "type": "company",
+        "title": "",
+        "firstName": "",
+        "middleInitials": "",
+        "lastName": "",
+        "suffix": "",
+        "department": "",
+        "customers": [{
+          "role": "Licence holder,Billing contact",
+          "notices": [
+                      {
+                        "type": "Water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "6",
+                      },
+                      {
+                        "type": "Renewals",
+                        "sendBy": "post",
+                        "addressID": "6",
+                      },
+                      {
+                        "type": "Returns",
+                        "sendBy": "post",
+                        "addressID": "6",
+                      },
+                      {
+                        "type": "Bills",
+                        "sendBy": "post",
+                        "addressID": "6",
+                      }],
+          "customer": "Public Water Plc",
+        }],
       }
     ],
 
@@ -4468,6 +4592,15 @@ module.exports = {
           "customer": "D.B. Beecham-Smith",
           "role": "Licence holder,Billing,Returns",
         }],
+      },
+      {
+        "address1": "500 Broad street",
+        "city": "London",
+        "postcode": "E13 SWJ",
+        "customers": [{
+          "customer": "Public Water Plc",
+          "role": "Licence holder,Billing,Returns",
+        }]
       }
 
     ],

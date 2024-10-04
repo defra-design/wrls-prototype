@@ -1,0 +1,192 @@
+{% extends "layout_wrls.html" %}
+
+{% set title = "Check returns details" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+ {{ govukHeader({
+  useTudorCrown: true,
+   homepageUrl: "/",
+   serviceName: "Manage your water abstraction or impoundment licence",
+   serviceUrl: "#",
+   containerClasses: "govuk-width-container",
+   navigation: [
+     {
+       href: "/bd/account/change-password-check",
+       text: "Change password"
+     },
+     {
+       href: "/",
+       text: "Sign out"
+     }
+   ]
+ }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div class="govuk-!-margin-bottom-3">
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "enter-licences"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% if data.statusMessage == 1 %}
+
+{{ govukNotificationBanner({
+  html: "<p class='govuk-notification-banner__heading'>There are no returns due for licence " + data.noReturns + "</p>",
+  role: 'alert',
+  titleText : "Important"
+}) }}
+
+{% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+    </div>
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <form method="post" novalidate>
+
+{% for licence in data.adHocLicences%}
+
+{% set licenceIndex = data.licenceIndexes[loop.index0] %}
+
+{# get the returns #}
+{% set selectedReturns = []%}
+{% if licenceIndex == data.licenceID %}
+{% for selectedReturn in data.selectedReturns %}
+{% set selectedReturns = selectedReturns | push(data.licences[licenceIndex].returns[selectedReturn].id|default("None") + "  Due " + data.licences[licenceIndex].returns[selectedReturn].due |govukDate) %}
+{% endfor %}
+{% else %}
+{% set selectedReturns = data.licences[licenceIndex].returns[0].id|default("None") + "  Due " + data.licences[licenceIndex].returns[0].due |govukDate %}
+{% endif %}
+
+{#Get customer contacts first loop through contacts #}
+{% set returnsContacts = []%}
+
+{% for contact in data.contacts %}
+
+{#loop through customers for that contact#}
+{% for customer in contact.customers%}
+
+{# match the customer #}
+{% if data.licences[licenceIndex].holder == customer.customer %}
+
+{#loop through the notices match the contact type for licence holder or returns#}
+{% for notice in customer.notices %}
+{% if notice.type == "Returns" %}
+
+{# get the address for the return contact #}
+{% if notice.sendBy == "post"%}
+
+{% set address %}{{contact.name}}<br>
+{{data.addresses[notice.addressID].address1}}<br>
+{{data.addresses[notice.addressID].city}}<br>
+{{data.addresses[notice.addressID].postcode}}{% endset %}
+
+{% set returnsContacts = returnsContacts | push(address)%}
+
+{% else %}
+
+{% set returnsContacts = returnsContacts | push(contact.email)%}
+
+{% endif %}
+
+
+{% endif %}
+{% endfor %}
+
+
+
+{% endif %}
+
+{% endfor %}
+
+{% endfor %}
+
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Licence " + licence
+          }
+        },
+  rows: [
+    {
+      key: {
+        text: "Licence holder"
+      },
+      value: {
+        html: data.licences[licenceIndex].holder
+      }
+    },
+    {
+      key: {
+        text: "Returns reference number"
+      },
+      value: {html:  selectedReturns | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+      actions: {
+        items: [
+          {
+            href: "select-returns?licenceID=" + [licenceIndex] + "&returnIndex=" + [loop.index0],
+            text: "Change",
+            visuallyHiddenText: "returns"
+          }
+        ]
+      }
+    },
+    {
+      classes: 'govuk-summary-list--no-border',
+      key: {
+        text: "Send to"
+      },
+      value: {
+        html: returnsContacts
+      },
+      actions: {
+        items: [
+          {
+            href: "select-contacts?licenceID=" + [licenceIndex],
+            text: "Change",
+            visuallyHiddenText: "who the return is being sent to"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+{% endfor %}
+
+{{ govukButton({
+  text: "Send returns"
+}) }}
+  
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Enter a licence number"%}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+      {{ govukTextarea({
+      name: "enterLicences",
+      id: "enterLicences",
+      value: data.enterLicences,
+      label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+      },
+      hint: {
+      text: "You can enter more than one licence. You can separate licence numbers using spaces, commas, or by entering them on different lines."
+      }
+      }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

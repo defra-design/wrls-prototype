@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Return " + data.returnNotificationType + " sent" %}
+{% set title = "Return " + data.returnNotificationType|default("invitations") + " sent" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -23,7 +23,8 @@
         html: "Your reference number<br><strong>HDJ2123F</strong>"
       }) }}
 
-      <a class="govuk-body" href="../notification-report">View report</s>
+      <a class="govuk-body" href="../notification-report">View report</a>
+
 
     </form>
 

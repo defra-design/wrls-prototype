@@ -1,0 +1,113 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Select which contacts to send returns to"%}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+      {% set contacts = [] %}
+      {% set returnsContact = "" %}
+
+      {% for contact in data.licences[data.licenceID].contacts %}
+
+
+
+
+      {#loop through customers for that contact#}
+      {% for customer in data.contacts[contact.id].customers %}
+
+     
+   
+
+   
+      {# match the customer #}
+      {% if data.licences[data.licenceID].holder == customer.customer %}
+
+  
+      
+      {#loop through the notices match the contact type for licence holder or returns#}
+      {% for notice in customer.notices %}
+
+
+     
+      {% if notice.type == "Returns" %}
+    
+      {# get the address for the return contact #}
+      {% if notice.sendBy == "post"%}
+
+    
+      {% set address %}{{data.contacts[contact.id].name}}<br>
+      {{data.addresses[notice.addressID].address1}}<br>
+      {{data.addresses[notice.addressID].city}}<br>
+      {{data.addresses[notice.addressID].postcode}}{% endset %}
+      
+      {% set returnsContact = address%}
+
+ 
+      {% else %}
+      
+      {% set returnsContact = contact.email%}
+      
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endfor %}
+      
+
+
+
+      {% set contacts = contacts|push( {
+        value: contact.id,
+        text: returnsContact|safe,
+        checked: contact.id
+      })
+      %} 
+     
+
+      {% endfor %}
+
+      {{ govukCheckboxes({
+        name: "selectedContacts",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: contacts
+      }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

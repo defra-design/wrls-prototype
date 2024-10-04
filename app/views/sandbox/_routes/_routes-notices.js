@@ -176,7 +176,7 @@ router.post('/returns/send-returns', function(req, res) {
     let licenceList = [{licenceNumber:"200/20/23/0111"},{licenceNumber:"100/22/33/0123"},]
   
     for (i of licenceList) {
-  console.log(i.licenceNumber);
+ // console.log(i.licenceNumber);
 
   let type = notification
   let sent = today
@@ -193,7 +193,7 @@ router.post('/returns/send-returns', function(req, res) {
   }
 
   const index = licences.findIndex(obj => obj.number === i.licenceNumber);
- console.log(index)
+ //console.log(index)
 
   req.session.data.licences[index].communications.unshift(newCommunication);
   
@@ -217,6 +217,196 @@ router.get('/returns/returns-sent', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'returns/returns-sent');
 });
+
+
+/////////////////////////////////////////
+/////RETURN SENDING AD-HOC RETURNS //////
+/////////////////////////////////////////
+
+//enter the licence numbers
+router.get('/returns/ad-hoc/enter-licences', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.render(folder + '/returns/ad-hoc/enter-licences');
+});
+
+
+router.post('/returns/ad-hoc/enter-licences', function(req, res) {
+
+
+function splitStringByCommasAndNewlines(str) {
+  const regex = /,|\n/g;
+  return str.replace(/\r/g, "").split(regex);
+}
+
+//dedupe
+function deduplicateSet(array) {
+  return [...new Set(array)];
+}
+
+let resultArray = splitStringByCommasAndNewlines(req.session.data.enterLicences);
+
+resultArray = deduplicateSet(resultArray);
+
+//list of licences entered
+req.session.data.adHocLicences = resultArray
+
+
+
+//get index of those licences so they can be looked up in the data
+function findIndexOfObjectByValue(array, key, value) {
+  /**
+   * Finds the index of the first object in an array that has a specific value for a given key.
+   *
+   * @param {Array} array - The array of objects to search.
+   * @param {string} key - The key of the value to search for.
+   * @param {*} value - The value to search for.
+   * @returns {number} The index of the first object with the specified value, or -1 if not found.
+   */
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i][key] === value) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+let licenceIndexes = []
+
+for(i of req.session.data.adHocLicences){
+
+ let index = findIndexOfObjectByValue(req.session.data.licences, "number", i);
+
+ licenceIndexes.push(index)
+
+} 
+
+//licence indexes
+req.session.data.licenceIndexes = licenceIndexes
+
+
+
+//remove any licences that don't have any returns
+for (var [i, v] of licenceIndexes.entries()) {
+   
+   let returnsPresent = req.session.data.licences[v].returns
+
+
+  if (returnsPresent.length == 0) {
+    let noReturns = []
+    noReturns.push(req.session.data.licences[v].number)
+   // console.log("no returns for " + req.session.data.licences[v].number)
+    req.session.data.noReturns = noReturns
+    req.session.data.licenceIndexes.splice(i, 1)
+    req.session.data.adHocLicences.splice(i, 1)
+
+    req.session.data.statusMessage = 1
+  }
+
+
+}
+
+
+
+//console.log("No returns = " + req.session.data.noReturns + "/n licence Indexes = " + req.session.data.licenceIndexes + "/n Ad hoc licences = " + req.session.data.adHocLicences)
+
+/* test data
+03/28/60/0032
+03/28/60/0035,00/22/001/02,03/28/60/0726,03/28/61/065
+*/
+
+
+  res.redirect('check-returns-details');
+});
+
+
+//change which returns are selected
+router.get('select-returns', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+  res.render(folder + '/returns/ad-hoc/select-returns');
+});
+
+router.post('/returns/ad-hoc/select-returns', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.redirect('check-returns-details');
+});
+
+
+//change which contacts are selected
+router.get('select-returns', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+  res.render(folder + '/returns/ad-hoc/select-contacts');
+});
+
+router.post('/returns/ad-hoc/select-contacts', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.redirect('check-returns-details');
+});
+
+
+
+
+//show the returns and contact details licence by licence
+router.get('check-returns-details', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+  res.render(folder + '/returns/ad-hoc/check-returns-details');
+});
+
+router.post('/returns/ad-hoc/check-returns-details', function(req, res) {
+  req.session.data.back = req.headers.referer
+ 
+
+
+
+ //add details for the notification
+ let date = todayNumber
+ let notification = "Returns: ad-hoc"
+ let sentBy = "youremailaddress@defra.gov.uk"
+ let numberOfrecipients = req.session.data.adHocLicences.length
+ let problems = ""
+ let recipients = []
+
+
+
+for(let [i,v] of req.session.data.adHocLicences.entries()) {
+
+  //console.log(" gathering recipients")
+
+  //contact name
+  let contactID = req.session.data.licences[req.session.data.licenceIndexes[i]].contacts[0].id
+
+
+recipients.push({
+     "licenceNumber": v,
+     "sentTo": req.session.data.licences[req.session.data.licenceIndexes[i]].holder + ",FAO " + req.session.data.contacts[contactID].name + ",67 Gainsborough, Poole, BH33 1QE",
+     "method": "Letter",
+     "status": ["sent"],
+   })
+
+  }
+
+
+ let newNotification = {
+   date,
+   notification,
+   sentBy,
+   numberOfrecipients,
+   recipients,
+   problems
+ };
+
+
+ req.session.data.notifications.unshift(newNotification);
+
+res.redirect('../returns-sent');
+ 
+
+});
+
+
 
 /////////WATER ABSTRACTION ALERTS//////////////
 
