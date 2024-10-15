@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Which returns need to be sent?"%}
+{% set title = "Which return do you want to send?"%}
 <!--set question title-->
 {% set qTitle = title %}
 
@@ -29,6 +29,7 @@
      {% set returns = returns|push( {
         value: loop.index0,
         text: return.id + " Due " + return.due |govukDate
+        
       })
       %}  
 

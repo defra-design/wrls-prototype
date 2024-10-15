@@ -1,6 +1,6 @@
 {% extends "layout_wrls.html" %}
 
-{% set title = "Check returns details" %}
+{% set title = "Check return details" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -144,7 +144,7 @@
     },
     {
       key: {
-        text: "Returns reference number"
+        text: "Return reference number"
       },
       value: {html:  selectedReturns | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
       actions: {
