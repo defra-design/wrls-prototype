@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div class="gem-c-title govuk-!-margin-bottom-8">
+            <span class="govuk-caption-xl gem-c-title__context">
+                Guidance
+            </span>
+            <h1 class="gem-c-title__text govuk-heading-l">
+                Help to enter multiple volumes or readings into a return
+            </h1>
+        </div>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <p class="gem-c-lead-paragraph">
+         You can enter multiple values into a return by copying and pasting from a document on your device. For example, from an Excel spreadsheet or a text file.<p>
+
+        <p> If you're using a spreadsheet, each of the values should be in one column. They should be in date order.   
+
+
+
+        <div>
+          <figure style="margin-left: 0;">
+            <img src="/public/images/example-excel-01.png" width="300px">
+            <br>
+            <figcaption class="govuk-!-font-size-16" style="max-width: 360px;">Example 1: an Excel spreadsheet with 2 columns, one for dates and one for volumes or readings. </figcaption>
+          </figure>
+        </div>
+        </p>
+
+
+        <p>Select and then copy the values column. You do not need the dates. 
+
+        <div>
+          <figure style="margin-left: 0;">
+            <img src="/public/images/example-excel-02.png" width="300px">
+            <br>
+            <figcaption class="govuk-!-font-size-16" style="max-width: 360px;">Example 2: an Excel spreadsheet with the values column selected.</figcaption>
+          </figure>
+        </div>
+        </p>
+
+
+        <p>Paste the values into the box on the form. The values will appear in a column.
+          <div>
+          <figure style="margin-left: 0;">
+            <img src="/public/images/example-input-02.png" width="500px"  style="margin-left: 0;padding: 0.5em; border:2px solid #eee;border-radius: 3px;">
+            <br>
+            <figcaption class="govuk-!-font-size-16" style="max-width: 460px;">Example 3: how readings or volumes look after being pasted into the box.</figcaption>
+          </figure>
+        </div>
+        </p>
+
+        <div>
+       
+          <p>For this form to work, values should: 
+          <ul>
+            <li>either be on separate lines or be separated by a comma</li>
+            <li>cover the entire return period - if a value is missing, use an <span style="padding:0.2em;background-color: #f3f2f1;color:#900"><code>x</code></span> to fill the gap</li>
+            <li>run sequentially to match the return period dates</li>
+          </ul>
+        </p>
+      </div>
+  
+
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+{% endblock %}

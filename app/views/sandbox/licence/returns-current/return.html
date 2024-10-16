@@ -287,7 +287,7 @@ rows: [
             name: "returnStatus",
             fieldset: {
               legend: {
-                text: "What would you like to do with this return?",
+                text: "How would you like to edit this return?",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -295,23 +295,18 @@ rows: [
             items: [
               {
                 value: "enter",
-                text: "Enter and submit it"
+                text: "Enter individual volumes"
+              },
+               {
+                value: "new",
+                text: "Enter new volumes or readings"
               },
               {
                 value: "nil",
                 text: "Enter a nil return"
-              },
-              {
-                value: "received",
-                text: "Record receipt (and come back to it later)"
-              },
-              {
-                divider: "or"
-              },
-              {
-                value: "new",
-                text: "Enter new volumes or readings"
               }
+              
+             
             ]
           })
         }}
