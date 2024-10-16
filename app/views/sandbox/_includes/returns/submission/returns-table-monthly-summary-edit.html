@@ -193,12 +193,16 @@
       <div class="govuk-summary-card__title-wrapper">
         <h2 class="govuk-summary-card__title govuk-!-font-size-27">
           Summary of {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}
+
+          <div >
+            <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">
+              <strong><a class="govuk-link" href="multiple">Enter multiple {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}</a></strong>
+               – paste in values for an entire return period
+            </p>
+
+          </div>
+
         </h2>
-        <ul class="govuk-summary-card__actions">
-          <li class="govuk-summary-card__action">
-            <a class="govuk-link" href="multiple">Enter multiple {{data.licences[data.ID].returns[data.returnIndex].frequency}} {{data.readingsOrVolumes}}</a>
-          </li>
-        </ul>
       </div>
       <div class="govuk-summary-card__content">
         <dl class="govuk-summary-list">

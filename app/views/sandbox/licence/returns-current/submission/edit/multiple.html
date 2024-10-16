@@ -34,27 +34,37 @@
  
     <form method="post" novalidate >
 
+      <!-- not nunjucks form element as it requires a bit more specific layout with the text and a link -->
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <span class="govuk-caption-l ">Return 772318</span>
+          <label class="govuk-label govuk-label--xl" for="more-detail">
+            Enter multiple daily volumes
+          </label>
+        </h1>
+        <div id="more-detail-hint" class="govuk-hint">
+          <p>Enter each daily volume starting with 
+          {{
+            data.licences[data.ID].returns[data.returnIndex].returnsPeriodStart | numberToGovukDate + " and ending with " + data.licences[data.ID].returns[data.returnIndex].returnsPeriodEnd | numberToGovukDate +"."
+          }} 
+        </p>
+          <p>Copy and paste the values into the empty box.</p>
+        </div>
+
+        <p><a href="guidance">Help to enter multiple values (opens in a new tab)</a></p>
 
 
-      {{ govukTextarea({
-        name: "multiple",
-        id: "multiple",
-        classes: "govuk-!-width-full",
-        label: {
-          html: qTitle,
-          classes: "govuk-label--l",
-          isPageHeading: true
-        },
-        hint: {
-          text: "Enter each daily " + data.licences[data.ID].returns[data.returnIndex].versions[0].readingsOrVolumes + " starting with "+ data.licences[data.ID].returns[data.returnIndex].returnsPeriodStart | numberToGovukDate +". Each entry should either be separated by a comma or on a new line. Any gaps should be represented by a 0."
-        }
-      }) }}
+        <textarea class="govuk-textarea" id="multiple" name="multiple" rows="5" aria-describedby="more-detail-hint"></textarea>
+        
+      </div>
+
   
-        <button type="submit" class="govuk-button govuk-!-margin-right-1">
-          Continue
-        </button>
-  
-      </form>
+      <button type="submit" class="govuk-button govuk-!-margin-right-1">
+        Continue
+      </button>
+
+    </form>
   
 
  
