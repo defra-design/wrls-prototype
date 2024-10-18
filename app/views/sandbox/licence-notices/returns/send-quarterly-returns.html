@@ -50,7 +50,7 @@
     {% endif %}  
 
     {% set selectItems = selectItems | push({
-  value: returnsPeriod.title,
+  value: dueYear+returnsPeriod.dueDate,
   text: returnsPeriod.title + " " + returnsPeriod.startDate | mmddToDate + " " + startYear + " to " + returnsPeriod.endDate | mmddToDate + " " + endYear,
   hint: { text: "Due " + returnsPeriod.dueDate | mmddToDate + " " + dueYear}
 }) %}
@@ -69,7 +69,7 @@
     {% if selectItems.length < 2 %}
 
     {% set selectItems = selectItems | push({
-  value: returnsPeriod.title,
+  value: nextYear+returnsPeriod.dueDate,
   text: returnsPeriod.title + " " + returnsPeriod.startDate | mmddToDate + " " + startYear + " to " + returnsPeriod.endDate | mmddToDate + " " + currentYear| currentYear,
   hint: { text: "Due " + returnsPeriod.dueDate | mmddToDate + " " + nextYear | nextYear}
 }) %}

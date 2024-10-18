@@ -86,6 +86,141 @@ router.post('/returns/exclude-licences', function(req, res) {
 //create mailing list
 router.get('/returns/create-mailing-list', function(req, res) {
   req.session.data.back = req.headers.referer
+    
+
+  //get the return period for the notification selected
+  let selectedPeriodDueDate = req.session.data.returnType
+
+
+console.log(selectedPeriodDueDate);
+
+
+  
+    //getting the contact data
+    let contacts = req.session.data['contacts']
+    //get the licence data
+    let licences = req.session.data['licences']
+    //get the address data
+    let addresses = req.session.data['addresses']
+    // declare recipients
+    let recipients = [];
+
+  //declare list of licences for sending to
+ let sendingLicenceNumbers = [];
+
+    //licenceList = req.session.data['licenceList']
+  
+      //loop through the contacts and set the contact index to the loop index
+      for (var [licenceIndex, licence] of licences.entries()) {
+
+         //if the licence has returns, loop through and look for any due returns in the return period
+        if(licence.returns){
+          for (var [returnIndex, returning] of licence.returns.entries()) {
+            //console.log(returning.due + returning.status)
+            if(returning.status == "due" & returning.due == selectedPeriodDueDate){
+              //if there are returns due in the return period add the licenceHolder,Recipient,AddressorEmail,Method to the notifications list 
+              console.log("success add the recipients for this licence")
+
+              console.log(licence.number)
+              licenceContacts = licence.contacts
+             // console.log(contacts)
+             //get all the return contacts for the licence
+              for(licenceContact of licenceContacts){
+                if (licenceContact.type == "returns"){
+
+                            /*"type": "returns",
+                              "id": ['1'],
+                               "method": "letter",
+                              "addressID": "6"*/
+
+                              console.log(licenceContact)
+                  //contact name
+                  let id = licenceContact.id[0]
+                  let contactName = contacts[id].name
+
+                 let sentTo = ""
+                 
+                  //comms method
+                 let method = licenceContact.method
+
+                 if (method == "email"){
+                  sentTo = contacts[id].email
+                 } else {
+
+                  /*
+                  "addresses": [{
+                  "address1": "15 Ward Street",
+                  "city": "Bath",
+                  "postcode": "BA1 5EH",
+                  "customers": [{
+                    "role": "Licence holder",
+                    "customer": "Bottled Water Plc",
+                  }],
+                  },
+                  */
+                  let addressID = licenceContact.addressID
+                  //console.log(addressID)
+                  let address = addresses[addressID].address1 + "," + addresses[addressID].city + "," + addresses[addressID].postcode
+                   sentTo = licence.holder + "," + "FAO " + contactName + ","+ address
+                 }
+                  
+                licenceNumber = licence.number
+                sendingLicenceNumbers.push(licenceNumber)
+
+                sentTo = sentTo
+                method = method
+                let status = []
+
+                 recipient = {
+                  licenceNumber, //AN/123/213/123
+                  sentTo, //Public Water Plc, FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
+                  method, // "Letter"
+                  status
+                }
+
+                console.log(recipient)
+                recipients.push(recipient)
+
+                }
+              }
+
+              
+            }
+          }
+      }
+    }
+
+  
+
+  console.log(recipients)
+  
+  
+    //add details for the notification
+    let date = todayNumber
+    let notification = "Returns: " + req.session.data.returnNotificationType
+    let sentBy = "youremailaddress@defra.gov.uk"
+    let numberOfrecipients = recipients.length
+    let problems = ""
+  
+  
+
+
+
+      let newNotification = {
+        date,
+        notification,
+        sentBy,
+        numberOfrecipients,
+        recipients,
+        problems
+      };
+
+      //the notification
+      req.session.data.newNotification = newNotification
+
+      //list of licences
+      req.session.data.sendingLicenceNumbers = sendingLicenceNumbers
+
   res.render(folder + 'returns/create-mailing-list');
 });
 
@@ -102,87 +237,39 @@ router.post('/returns/send-returns', function(req, res) {
 
     //getting the notification
     let notifications = req.session.data['notifications']
-  
-    //getting the contact data
-    let contacts = req.session.data['contacts']
-    //get the licence data
-    let licences = req.session.data['licences']
-    //get the address data
-    let addresses = req.session.data['addresses']
-    // declare recipients
-    let recipients = [];
-    //declare Communications
-    let communications = [];
-  
-    //loop through the licences in the alert and add the recipient details to an object.
-    //licenceList = req.session.data['licenceList']
-  
-  
-    let licenceHolder = ""
-    let address = ""
-    let licenceNumber = ""
-    let method = ""
-    let sentTo = ""
-    let status = ["sent"]
-  
-  
-    //add details for the notification
-    let type = req.session.data['waaType']
-    let sent = today
-    let sender = "youremailaddress@defra.gov.uk"
-    let contactEmail = req.session.data['contactEmail']
-  
-  
-      //loop through the contacts and set the contact index to the loop index
-      for (var [contactIndex, contact] of contacts.entries()) {
-  
-        let contactCustomers = contact.customers
+
+//mark notifications as sent
+let newNotification = req.session.data.newNotification
+    function markSent(notificationObject) {
+      notificationObject.recipients.forEach(recipient => {
+        recipient.status.push("sent");
+      });
+    }   
+    markSent(newNotification);
 
   
-    }
-  
-  
-  
-    //add details for the notification
-    let date = todayNumber
-    let notification = "Returns: " + req.session.data.returnNotificationType
-    let sentBy = "youremailaddress@defra.gov.uk"
-    let numberOfrecipients = "2"
-    let problems = ""
-  
-   recipients = [{
-        "licenceNumber": "200/20/23/0111, 100/22/33/0123",
-        "sentTo": "Public Water Limited,FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
-        "method": "Letter",
-        "status": ["sent"],
-      }]
-
-
-    let newNotification = {
-      date,
-      notification,
-      sentBy,
-      numberOfrecipients,
-      recipients,
-      problems
-    };
-  
+    //push the new notification in the notifications list
     notifications.unshift(newNotification);
   
   
-  
+    //get the licence data
+    let licences = req.session.data['licences']
+
     //add the communication details to the licences
-
-    let licenceList = [{licenceNumber:"200/20/23/0111"},{licenceNumber:"100/22/33/0123"},]
+    let licenceList = req.session.data.sendingLicenceNumbers
   
-    for (i of licenceList) {
- // console.log(i.licenceNumber);
+ 
+  
 
-  let type = notification
+
+     for  (var [i, value] of licenceList.entries()) {
+
+
+  let type = "Returns: " + req.session.data.returnNotificationType
   let sent = today
   let sender =  "youremailaddress@defra.gov.uk"
-  let method = "letter"
-  let sentTo = "Public Water Limited,FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE"
+  let method = newNotification.recipients[i].method
+  let sentTo = newNotification.recipients[i].sentTo
 
   let newCommunication = {
     type,  
@@ -192,8 +279,8 @@ router.post('/returns/send-returns', function(req, res) {
     sentTo 
   }
 
-  const index = licences.findIndex(obj => obj.number === i.licenceNumber);
- //console.log(index)
+  const index = licences.findIndex(obj => obj.number === value);
+
 
   req.session.data.licences[index].communications.unshift(newCommunication);
   

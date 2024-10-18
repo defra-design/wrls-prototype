@@ -492,7 +492,9 @@ module.exports = {
         //contacts on the licence
         "contacts": [{
           "type": "returns",
-          "id": ['6']
+          "id": ['6'],
+          "method": "letter",
+          "addressID": "6"
         }],
 
         //licence Settings
@@ -702,7 +704,9 @@ module.exports = {
         //contacts on the licence
         "contacts": [{
           "type": "returns",
-          "id": ['3']
+          "id": ['3'],
+          "method": "letter",
+           "addressID": "6"
         }],
 
         //licence Settings
@@ -913,7 +917,9 @@ module.exports = {
         //contacts on the licence
         "contacts": [{
           "type": "returns",
-          "id": ['1']
+          "id": ['1'],
+          "method": "letter",
+          "addressID": "4"
         }],
 
         //licence Settings
@@ -989,7 +995,9 @@ module.exports = {
         //contacts on the licence
         "contacts": [{
           "type": "returns",
-          "id": ['3']
+          "id": ['3'],
+          "method": "letter",
+          "addressID": "1"
         }],
 
         //licence Settings
@@ -1034,9 +1042,24 @@ module.exports = {
                 { }
               ],
 
-        "returnsRequirements":  [],
+        "returnsRequirements":  [{"startDate":"19850601","endDate":"","createdDate":"20241018","reason":"New licence","additionalSubmissionOptions":["none"],"status":"approved","username":"username@defra.gov.uk","note":"","requirements":[{"id":808621,"description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.","title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.","frequency":"monthly","frequencyCollected":"monthly","settings":["none"],"purpose":["Spray irrigation - direct"],"points":["At National Grid Reference SU 190683 (Marlborough)","At National Grid Reference SU 190679 (Marlborough)","At National Grid Reference SU 188678 (Marlborough)","At National Grid Reference SU 187680 (Marlborough)"],"periodStart":"0401","periodEnd":"1031","timeLimit":"No","returnsCycle":"summer","amount":"125"}]}],
 
-        "returns": [],
+        "returns": [{"id":558734,
+          "status":"due",
+          "due":"20241128",
+          "returnsCycle":"summer",
+          "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+          "title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+          "frequency":"monthly",
+          "settings":["none"],
+          "purpose":["Spray irrigation - direct"],
+          "points":["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+          "periodStart":"0401",
+          "periodEnd":"1031",
+          "returnsPeriodStart":"20231101",
+          "returnsPeriodEnd":"20241031",
+          "versions":[]
+          },],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
@@ -1156,7 +1179,9 @@ module.exports = {
         //contacts on the licence
         "contacts": [{
           "type": "returns",
-          "id": ['3']
+          "id": ['3'],
+          "method": "letter",
+          "addressID": "0"
         }],
 
         //licence Settings
@@ -1392,7 +1417,9 @@ module.exports = {
           //contacts on the licence
           "contacts": [{
             "type": "returns",
-            "id": ['8']
+            "id": ['8'],
+            "method": "letter",
+            "addressID": "6"
           }],
 
         //licence Settings
@@ -1585,7 +1612,9 @@ module.exports = {
         //contacts on the licence
         "contacts": [{
           "type": "returns",
-          "id": ['10']
+          "id": ['10'],
+          "method": "letter",
+          "addressID": "6"
         }],
 
         //licence Settings
@@ -1745,7 +1774,9 @@ module.exports = {
         //contacts on the licence
         "contacts": [{
           "type": "returns",
-          "id": ['1']
+          "id": ['1'],
+          "method": "letter",
+          "addressID": "6"
         }],
 
         //licence Settings
@@ -1995,7 +2026,9 @@ module.exports = {
               //contacts on the licence
               "contacts": [{
                 "type": "returns",
-                "id": ['3']
+                "id": ['3'],
+                "method": "letter",
+                "addressID": "6"
               }],
 
 
@@ -2062,7 +2095,9 @@ module.exports = {
                 //contacts on the licence
                 "contacts": [{
                   "type": "returns",
-                  "id": ['1']
+                  "id": ['1'],
+                  "method": "letter",
+                  "addressID": "6"
                 }],
 
               //licence Settings
@@ -2156,7 +2191,9 @@ module.exports = {
               //contacts on the licence
               "contacts": [{
                 "type": "returns",
-                "id": ['1']
+                "id": ['1'],
+                "method": "letter",
+                "addressID": "6"
               }],
 
               //licence Settings
@@ -2340,7 +2377,7 @@ module.exports = {
                                 {
                                   "id":323188,
                                   "status": "complete",
-                                  "due": "20211128",
+                                  "due": "20240428",
                                   "returnsCycle":"winter and all year",
                                   "description":"Pear tree farm - BOREHOLE A and B",
                                   "frequency": "daily",
@@ -3436,7 +3473,7 @@ module.exports = {
                                 {
                                   "id":323188,
                                   "status": "due",
-                                  "due": "20201128",
+                                  "due": "20240428",
                                   "returnsCycle":"winter and all year",
                                   "description":"Pear tree farm - BOREHOLE A and B",
                                   "frequency": "daily",
@@ -3444,8 +3481,8 @@ module.exports = {
                                   "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
                                   "periodStart":"0401",
                                   "periodEnd":"1031",
-                                  "returnsPeriodStart":"20200401",
-                                  "returnsPeriodEnd":"20201031",
+                                  "returnsPeriodStart":"20230401",
+                                  "returnsPeriodEnd":"20241031",
                                   "versions": [],
                                 }
                                 ],
@@ -3499,7 +3536,9 @@ module.exports = {
                             //contacts on the licence
                             "contacts": [{
                               "type": "returns",
-                              "id": ['1']
+                              "id": ['1'],
+                               "method": "letter",
+                              "addressID": "6"
                             }],
 
               //licence Settings
@@ -3663,7 +3702,63 @@ module.exports = {
                                               }
                                             ],
 
-                    "returns": [
+                    "returns": [  {
+                      "id":823187,
+                      "status": "due",
+                      "due": "20241128",
+                      "returnsCycle":"winter and all year",
+                      "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
+                      "frequency": "monthly",
+                      "purpose":["Spray irrigation - storage"],
+                      "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                      "periodStart":"1101",
+                      "periodEnd":"0331",
+                      "returnsPeriodStart":"20230401",
+                      "returnsPeriodEnd":"20240331",
+                      "versions": [],
+                    },{
+                      "id":823188,
+                      "status": "due",
+                      "due": "20240428",
+                      "returnsCycle":"summer",
+                      "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
+                      "frequency": "monthly",
+                      "purpose":["Spray irrigation - direct"],
+                      "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                      "periodStart":"0401",
+                      "periodEnd":"1031",
+                      "returnsPeriodStart":"20230401",
+                      "returnsPeriodEnd":"20240331",
+                      "versions": [],
+                    },   {
+                      "id":823187,
+                      "status": "completed",
+                      "due": "20231128",
+                      "returnsCycle":"winter and all year",
+                      "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
+                      "frequency": "monthly",
+                      "purpose":["Spray irrigation - storage"],
+                      "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                      "periodStart":"1101",
+                      "periodEnd":"0331",
+                      "returnsPeriodStart":"20220401",
+                      "returnsPeriodEnd":"20230331",
+                      "versions": [],
+                    },{
+                      "id":823188,
+                      "status": "completed",
+                      "due": "20230428",
+                      "returnsCycle":"summer",
+                      "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
+                      "frequency": "monthly",
+                      "purpose":["Spray irrigation - direct"],
+                      "points": ["At National Grid Reference SK 675 124 (Lemon tree farm - BOREHOLE A)"],
+                      "periodStart":"0401",
+                      "periodEnd":"1031",
+                      "returnsPeriodStart":"20220401",
+                      "returnsPeriodEnd":"20230331",
+                      "versions": [],
+                    },
                       {
                         "id":823187,
                         "status": "completed",
@@ -3815,7 +3910,9 @@ module.exports = {
               //contacts on the licence
               "contacts": [{
                 "type": "returns",
-                "id": ['10']
+                "id": ['10'],
+                 "method": "letter",
+                "addressID": "6"
               }],
       
               //licence Settings
@@ -4083,7 +4180,9 @@ module.exports = {
               //contacts on the licence
               "contacts": [{
                 "type": "returns",
-                "id": ['10']
+                "id": ['10'],
+                "method": "letter",
+                "addressID": "6"
               }],
 
               //licence Settings
