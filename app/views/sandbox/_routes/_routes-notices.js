@@ -2,7 +2,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here - above the module.exports line
-
+const fs = require('fs');
 
 //get today's date
 let date = new Date();
@@ -92,7 +92,7 @@ router.get('/returns/create-mailing-list', function(req, res) {
   let selectedPeriodDueDate = req.session.data.returnType
 
 
-console.log(selectedPeriodDueDate);
+//console.log(selectedPeriodDueDate);
 
 
   
@@ -105,14 +105,13 @@ console.log(selectedPeriodDueDate);
     // declare recipients
     let recipients = [];
 
-  //declare list of licences for sending to
- let sendingLicenceNumbers = [];
+
 
     //licenceList = req.session.data['licenceList']
   
       //loop through the contacts and set the contact index to the loop index
       for (var [licenceIndex, licence] of licences.entries()) {
-
+        let licenceHolder = licence.holder
          //if the licence has returns, loop through and look for any due returns in the return period
         if(licence.returns){
           for (var [returnIndex, returning] of licence.returns.entries()) {
@@ -120,8 +119,15 @@ console.log(selectedPeriodDueDate);
             if(returning.status == "due" & returning.due == selectedPeriodDueDate){
               //if there are returns due in the return period add the licenceHolder,Recipient,AddressorEmail,Method to the notifications list 
               console.log("success add the recipients for this licence")
+              let returnsRef =[]
+              returnsRef.push(returning.id)
+              returnsPeriodStart = returning.returnsPeriodStart
+              returnsPeriodEnd = returning.returnsPeriodEnd
+              returnsDueDate = returning.due
 
-              console.log(licence.number)
+              //console.log(JSON.stringify(returns))
+
+              //console.log(licence.number)
               licenceContacts = licence.contacts
              // console.log(contacts)
              //get all the return contacts for the licence
@@ -133,7 +139,7 @@ console.log(selectedPeriodDueDate);
                                "method": "letter",
                               "addressID": "6"*/
 
-                              console.log(licenceContact)
+                             // console.log(licenceContact)
                   //contact name
                   let id = licenceContact.id[0]
                   let contactName = contacts[id].name
@@ -143,42 +149,41 @@ console.log(selectedPeriodDueDate);
                   //comms method
                  let method = licenceContact.method
 
-                 if (method == "email"){
-                  sentTo = contacts[id].email
-                 } else {
+                 let email = contacts[id].email
+                 let addressID = licenceContact.addressID
+                 let address = addresses[addressID].address1 + "," + addresses[addressID].city + "," + addresses[addressID].postcode
 
-                  /*
-                  "addresses": [{
-                  "address1": "15 Ward Street",
-                  "city": "Bath",
-                  "postcode": "BA1 5EH",
-                  "customers": [{
-                    "role": "Licence holder",
-                    "customer": "Bottled Water Plc",
-                  }],
-                  },
-                  */
-                  let addressID = licenceContact.addressID
-                  //console.log(addressID)
-                  let address = addresses[addressID].address1 + "," + addresses[addressID].city + "," + addresses[addressID].postcode
+                 if (method == "email"){
+                  sentTo = email
+                 } else {
                    sentTo = licence.holder + "," + "FAO " + contactName + ","+ address
                  }
                   
                 licenceNumber = licence.number
-                sendingLicenceNumbers.push(licenceNumber)
+
 
                 sentTo = sentTo
                 method = method
                 let status = []
 
+          
+
                  recipient = {
                   licenceNumber, //AN/123/213/123
+                  licenceHolder,
+                  returnsRef,
+                  returnsPeriodStart,
+                  returnsPeriodEnd,
+                  returnsDueDate,
+                  email,
+                  address,
+                  contactName,
                   sentTo, //Public Water Plc, FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
                   method, // "Letter"
                   status
                 }
 
-                console.log(recipient)
+                //console.log(recipient)
                 recipients.push(recipient)
 
                 }
@@ -192,9 +197,56 @@ console.log(selectedPeriodDueDate);
 
   
 
-  console.log(recipients)
+ // console.log(recipients)
+
+  //generate CSV
+function generateCSV(data, fileName) {
+  let csvContent = "Licences,Return references,Returns period start date,Returns period end date,Returns due date,Message type,Message reference,Licence holder,Recipient name,Email,Address line 1,Address line 2,Addresss line 3,Address line 4,Address line 5,Address line 6,Postcode\r\n";
+
+  data.forEach(item => {
+    const splitAddress = item.address.split(",");
+    const row = `${item.licenceNumber},${item.returnsRef},${formatDate(item.returnsPeriodStart)},${formatDate(item.returnsPeriodEnd)},${formatDate(item.returnsDueDate)},${item.method},${req.session.data.returnNotificationType},${item.licenceHolder},${item.contactName},${item.email},${splitAddress[0]},${splitAddress[1]},${splitAddress[2]},${splitAddress[3]},${splitAddress[4]},${splitAddress[5]},${splitAddress[6]}\r\n`;
+    csvContent += row;
+  });
+
+  fs.writeFile(fileName, csvContent, (err) => {
+    if (err) throw err;
+    console.log('CSV file saved!');
+  });
+
+}
+
+generateCSV(recipients, 'app/assets/files/returns/Returns'+req.session.data.returnNotificationType+'-RINV-ABCD123.csv');
+
+
+//dedupe and generate notification  
+
+function deduplicateByLicenceAndContact(data) {
+  const seen = new Map();
+
+  return data.reduce((acc, current) => {
+    const key = `${current.licenceNumber}-${current.contactName}`;
+
+    if (!seen.has(key)) {
+      seen.set(key, { ...current }); // Spread current object to avoid mutation
+      acc.push(seen.get(key));
+    } else {
+      seen.get(key).returnsRef.push(...current.returnsRef); // Combine returnsRef
+      // No need to modify existing object in acc, seen handles the update
+    }
+
+    return acc;
+  }, []);
+}
   
-  
+  const deduplicatedData = deduplicateByLicenceAndContact(recipients);
+
+  recipients= deduplicatedData
+
+//console.log(deduplicatedData)
+
+
+
     //add details for the notification
     let date = todayNumber
     let notification = "Returns: " + req.session.data.returnNotificationType
@@ -202,9 +254,6 @@ console.log(selectedPeriodDueDate);
     let numberOfrecipients = recipients.length
     let problems = ""
   
-  
-
-
 
       let newNotification = {
         date,
@@ -218,8 +267,12 @@ console.log(selectedPeriodDueDate);
       //the notification
       req.session.data.newNotification = newNotification
 
-      //list of licences
-      req.session.data.sendingLicenceNumbers = sendingLicenceNumbers
+
+
+
+
+
+
 
   res.render(folder + 'returns/create-mailing-list');
 });
@@ -232,7 +285,21 @@ router.get('/returns/send-returns', function(req, res) {
 
 router.post('/returns/send-returns', function(req, res) {
 
- 
+ //deleteCSV download file
+ function deleteCSV(filename) {
+  fs.unlink(filename, (err) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.error('File not found:', filename);
+      } else {
+        throw err;
+      }
+    } else {
+      console.log('File deleted:', filename);
+    }
+  });
+}
+deleteCSV('app/assets/files/returns/Returns'+req.session.data.returnNotificationType+'-RINV-ABCD123.csv');
 
 
     //getting the notification
@@ -255,14 +322,13 @@ let newNotification = req.session.data.newNotification
     //get the licence data
     let licences = req.session.data['licences']
 
-    //add the communication details to the licences
-    let licenceList = req.session.data.sendingLicenceNumbers
+ 
   
  
   
 
 
-     for  (var [i, value] of licenceList.entries()) {
+     for  (var [i, value] of newNotification.recipients.entries()) {
 
 
   let type = "Returns: " + req.session.data.returnNotificationType
@@ -279,7 +345,9 @@ let newNotification = req.session.data.newNotification
     sentTo 
   }
 
-  const index = licences.findIndex(obj => obj.number === value);
+ let number = newNotification.recipients[i].licenceNumber
+
+  const index = licences.findIndex(obj => obj.number === number);
 
 
   req.session.data.licences[index].communications.unshift(newCommunication);
@@ -500,7 +568,7 @@ res.redirect('../returns-sent');
 //select the type of alert
 router.get('/send-a-water-abstraction-alert/select-the-type-of-alert', function(req, res) {
   req.session.data.back = req.headers.referer
-  console.log("something")
+//  console.log("something")
   res.render(folder + 'send-a-water-abstraction-alert/select-the-type-of-alert');
 });
 
@@ -618,7 +686,7 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
   //get waterAbstractionAlert
   let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
 
-  console.log(selectedThresholds)
+ // console.log(selectedThresholds)
   let op = ""
   //filter licences based on the selected thresholds
   var selectedLicences = req.session.data['selectedLicences']
@@ -656,7 +724,7 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
      return notifications.find(a => a.licenceNumber === licenceNumber)
    }) */
 
-  console.log(waterAbstractionAlert)
+//  console.log(waterAbstractionAlert)
 
   res.redirect('check-the-licences-for-the-selected-thresholds');
 });
@@ -695,7 +763,7 @@ router.post('/send-a-water-abstraction-alert/enter-an-email-address', function(r
 
   //  licenceList.toString()
 
-  console.log("licenceList:" + licenceList)
+  // console.log("licenceList:" + licenceList)
   req.session.data.licenceList = licenceList
 
   res.redirect('check-the-mailing-list');
@@ -946,7 +1014,7 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
   let notification = req.session.data['waaType'] + " - Water abstraction alert"
   let sentBy = "youremailaddress@defra.gov.uk"
   let numberOfrecipients = recipients.length
-  console.log(numberOfrecipients)
+  // console.log(numberOfrecipients)
   let problems = ""
 
   let newNotification = {
@@ -1047,7 +1115,7 @@ router.post('/tagging/enter-the-hands-off-flow-or-level-threshold', function(req
   } else {
     req.session.data.notificationType = "flow"
   }
-  console.log(req.session.data['notificationType'])
+//  console.log(req.session.data['notificationType'])
 
   res.redirect('reduce-or-stop');
 });
@@ -1056,7 +1124,7 @@ router.post('/tagging/enter-the-hands-off-flow-or-level-threshold', function(req
 ///reduce or stop
 router.get('/tagging/reduce-or-stop', function(req, res) {
   req.session.data.back = req.headers.referer
-  console.log(req.session.data['stationID'])
+//  console.log(req.session.data['stationID'])
   res.render(folder + 'tagging/reduce-or-stop');
 });
 
@@ -1149,7 +1217,7 @@ router.post('/tagging/enter-an-abstraction-period', function(req, res) {
   let abstractionPeriod = req.session.data[abstractionStartDay]+ " " + abstractionStartMonth + " to " + req.session.data[abstractionEndDay] + " " + abstractionEndMonth
 
   req.session.data.abstractionPeriod = abstractionPeriod
-  console.log(req.session.data.abstractionPeriod)
+ // console.log(req.session.data.abstractionPeriod)
   res.redirect('check-your-answers');
 });
 
@@ -1391,7 +1459,7 @@ router.post('/tagging/you-are-about-to-remove-tags', function(req, res) {
       if (licence == tag.licenceNumber) {
       tagNumber = tagIndex
 
-      console.log(tagNumber)
+    //  console.log(tagNumber)
 
     }
 
@@ -1474,7 +1542,7 @@ router.post('/notification-report/apply-filters', function(req, res) {
   //get the list of notifications
   let notifications = req.session.data.notifications
 
-  console.log(req.session.data.communications)
+ // console.log(req.session.data.communications)
 
 //change data to communications if coming from that page
 if (req.session.data.communications == "true"){
@@ -1483,7 +1551,7 @@ if (req.session.data.communications == "true"){
   notifications =  req.session.data.licences[ID]['communications']
 } 
   
-console.log (notifications)
+//console.log (notifications)
 
   
 

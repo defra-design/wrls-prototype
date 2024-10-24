@@ -19,11 +19,12 @@
 
     <form method="post" novalidate>
 
+
       <h1 class="govuk-heading-l">Send returns {{data.returnNotificationType}}</h1>
 
       <p class="govuk-body">Returns {{data.returnNotificationType}} are ready to send.</p>
 
-      <p class="govuk-body"><a class="govuk-body" href="/public/files/Returns invitation - RINV-ABCD123.csv">Download recipients as a CSV file</a></p>
+      <p class="govuk-body"><a class="govuk-body" href="/public/files/returns/Returns{{data.returnNotificationType}}-RINV-ABCD123.csv">Download recipients as a CSV file</a></p>
 
       <p class="govuk-body"><a class="govuk-body" href="exclude-licences">Remove licences from the mailing list</a></p>
 

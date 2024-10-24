@@ -998,7 +998,12 @@ module.exports = {
           "id": ['3'],
           "method": "letter",
           "addressID": "1"
-        }],
+        },{
+          "type": "returns",
+          "id": ['2'],
+          "method": "email",
+          "addressID": "1"
+        },],
 
         //licence Settings
         "multipleUpload": "no",
@@ -1059,7 +1064,22 @@ module.exports = {
           "returnsPeriodStart":"20231101",
           "returnsPeriodEnd":"20241031",
           "versions":[]
-          },],
+          },{"id":558735,
+            "status":"due",
+            "due":"20241128",
+            "returnsCycle":"summer",
+            "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+            "title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+            "frequency":"monthly",
+            "settings":["none"],
+            "purpose":["Spray irrigation - direct"],
+            "points":["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)","At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+            "periodStart":"0401",
+            "periodEnd":"1031",
+            "returnsPeriodStart":"20231101",
+            "returnsPeriodEnd":"20241031",
+            "versions":[]
+            }],
 
         "chargeInformation": [{
             "chargeStart": "22 April 2019",
