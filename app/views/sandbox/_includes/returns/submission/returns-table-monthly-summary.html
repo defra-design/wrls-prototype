@@ -100,7 +100,7 @@
     },{
        html: '<a class="govuk-link" href="water-abstracted?monthID=' + loop.index0 +'">View ' + data.licences[data.ID].returns[data.returnIndex].frequency + ' ' + data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].readingsOrVolumes + '</a>',
       format: 'numeric'
-    } 
+    } if data.licences[data.ID].returns[data.returnIndex].frequency !== "monthly" 
     
     ])  %}
   
@@ -132,7 +132,7 @@
       {
         text: "Details",
         format: 'numeric'
-      }
+      } if data.licences[data.ID].returns[data.returnIndex].frequency !== "monthly" 
     ],
     rows: lines
       

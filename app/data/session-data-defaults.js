@@ -801,12 +801,12 @@ module.exports = {
                                     "id":323188,
                                     "returnsCycle":"summer",
                                     "description":"River Swale - Helperby",
-                                    "frequencyCollected":"daily",
-                                    "frequency":"daily",
+                                    "frequencyCollected":"monthly",
+                                    "frequency":"monthly",
                                     "purpose":["Spray irrigation - direct"],
                                     "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                     "periodStart":"0401",
-                                    "periodEnd":"1031",
+                                    "periodEnd":"0331",
                                     "timeLimit": "No",
                                     "settings":["none"],
                                       }]
@@ -816,18 +816,88 @@ module.exports = {
 
                   "returns": [{
                                 "id":323188,
-                                "status": "due",
-                                "due": "20221128",
+                                "status": "completed",
+                                "due": "20230428",
                                 "returnsCycle":"summer",
                                 "description":"River Swale - Helperby",
-                                "frequency": "daily",
+                                "frequency": "monthly",
                                 "purpose":["Spray irrigation - direct"],
                                 "points":["At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
                                 "periodStart":"0401",
-                                "periodEnd":"1031",
+                                "periodEnd":"0331",
                                 "returnsPeriodStart":"20220401",
-                                "returnsPeriodEnd":"20221031",
-                                "versions": [],
+                                "returnsPeriodEnd":"20230331",
+                                "versions": [{"id":0,
+                                  "submittedBy":"testuser@gov.uk",
+                                  "submittedDate":"20230425",
+                                  "units":"cm3",
+                                  "readingsOrVolumes":"volumes",
+                                  "nilReturn":false,
+                                  "notes" : "",
+                                  "meterDetails":{"make":"Powerflow","serialNumber":"7777777", "x10": false, "startReading": "", "endReading": ""},
+                                  "lines":[{
+                                    "date": "20220401",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20220501",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20220601",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20220701",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20220801",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20220901",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "202201001",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20221101",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20221201",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20230101",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20230201",
+                                    "reading": "",
+                                    "volume": "10"
+                                  },
+                                  {
+                                    "date": "20230301",
+                                    "reading": "",
+                                    "volume": "10"
+                                  }
+                                ],
+                                  "monthTotals":[{"month":"April","year":"2022","total":"10"},{"month":"May","year":"2022","total":"10"},{"month":"June","year":"2022","total":"10"},{"month":"July","year":"2022","total":"10"},{"month":"August","year":"2022","total":"10"},{"month":"September","year":"2022","total":"10"},{"month":"October","year":"2022","total":"10"},{"month":"November","year":"2022","total":"10"},{"month":"December","year":"2022","total":"10"},{"month":"January","year":"2023","total":"10"},{"month":"February","year":"2023","total":"10"},{"month":"March","year":"2023","total":"10"}]
+                                }],
                               }
                               ],
 

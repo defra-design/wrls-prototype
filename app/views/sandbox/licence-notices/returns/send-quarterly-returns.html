@@ -27,7 +27,7 @@
 {% for returnsPeriod in data.returnsPeriods %}
 
 {#change currentDayAndMonth | getCurrentDayAndMonth to a mmdd to see what shows at different times of the year#}
-{% if returnsPeriod.dueDate >= currentDayAndMonth | getCurrentDayAndMonth %}
+{% if returnsPeriod.dueDate >= 1201 %}
 
     {# Only put in the next two #}
     {% if selectItems.length < 2 %}
