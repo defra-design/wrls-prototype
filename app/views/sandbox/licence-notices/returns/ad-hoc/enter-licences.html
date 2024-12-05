@@ -22,7 +22,7 @@
     <form method="post" novalidate>
 
 
-      {{ govukTextarea({
+      {{ govukInput({
       name: "enterLicences",
       id: "enterLicences",
       value: data.enterLicences,
@@ -30,9 +30,6 @@
       text: title,
       classes: "govuk-label--l",
       isPageHeading: true
-      },
-      hint: {
-      text: "You can enter more than one licence. Separate licence numbers using spaces, commas, or by entering them on different lines."
       }
       }) }}
 
