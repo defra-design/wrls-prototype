@@ -381,13 +381,16 @@ router.get('/returns/returns-sent', function(req, res) {
 //enter the licence numbers
 router.get('/returns/ad-hoc/enter-licences', function(req, res) {
   req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
   res.render(folder + '/returns/ad-hoc/enter-licences');
 });
 
 
 router.post('/returns/ad-hoc/enter-licences', function(req, res) {
+  req.session.data.adHocLicences = []
+  let noReturns = []
 
-
+/*  
 function splitStringByCommasAndNewlines(str) {
   const regex = /,|\n/g;
   return str.replace(/\r/g, "").split(regex);
@@ -401,9 +404,10 @@ function deduplicateSet(array) {
 let resultArray = splitStringByCommasAndNewlines(req.session.data.enterLicences);
 
 resultArray = deduplicateSet(resultArray);
+*/
 
 //list of licences entered
-req.session.data.adHocLicences = resultArray
+req.session.data.adHocLicences.push(req.session.data.enterLicences)
 
 
 
@@ -448,7 +452,7 @@ for (var [i, v] of licenceIndexes.entries()) {
 
 
   if (returnsPresent.length == 0) {
-    let noReturns = []
+
     noReturns.push(req.session.data.licences[v].number)
    // console.log("no returns for " + req.session.data.licences[v].number)
     req.session.data.noReturns = noReturns
@@ -456,6 +460,9 @@ for (var [i, v] of licenceIndexes.entries()) {
     req.session.data.adHocLicences.splice(i, 1)
 
     req.session.data.statusMessage = 1
+
+    
+
   }
 
 
@@ -469,9 +476,15 @@ for (var [i, v] of licenceIndexes.entries()) {
 03/28/60/0032
 03/28/60/0035,00/22/001/02,03/28/60/0726,03/28/61/065
 */
-
-
+if (noReturns.length) {
+  req.session.data.statusMessage = 1
+  res.redirect('enter-licences');
+} else {
   res.redirect('check-returns-details');
+}
+
+
+  
 });
 
 

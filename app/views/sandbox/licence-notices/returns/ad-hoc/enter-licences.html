@@ -13,7 +13,15 @@
 
 <!--content block-->
 {% block service %}
+{% if data.statusMessage == 1 %}
 
+{{ govukNotificationBanner({
+  html: "<p class='govuk-notification-banner__heading'>There are no returns due for licence " + data.noReturns + "</p>",
+  role: 'alert',
+  titleText : "Important"
+}) }}
+
+{% endif %}
 
 
 <div class="govuk-grid-row">
