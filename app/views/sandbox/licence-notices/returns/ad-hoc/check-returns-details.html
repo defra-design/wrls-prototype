@@ -77,10 +77,11 @@
 {% set selectedReturns = []%}
 {% if licenceIndex == data.licenceID %}
 {% for selectedReturn in data.selectedReturns %}
-{% set selectedReturns = selectedReturns | push(data.licences[licenceIndex].returns[selectedReturn].id|default("None") + "  Due " + data.licences[licenceIndex].returns[selectedReturn].due |govukDate) %}
+
+{% set selectedReturns = selectedReturns | push("<li>" + data.licences[licenceIndex].returns[selectedReturn].id|default("None") + "  Due " + data.licences[licenceIndex].returns[selectedReturn].due |govukDate + "<br> From " + data.licences[licenceIndex].returns[selectedReturn].returnsPeriodStart |govukDate + " to " + data.licences[licenceIndex].returns[selectedReturn].returnsPeriodEnd |govukDate + "</li>") %}
 {% endfor %}
 {% else %}
-{% set selectedReturns = data.licences[licenceIndex].returns[0].id|default("None") + "  Due " + data.licences[licenceIndex].returns[0].due |govukDate %}
+{% set selectedReturns = ["<li>" +data.licences[licenceIndex].returns[0].id|default("None") + "  Due " + data.licences[licenceIndex].returns[0].due |govukDate + "<br> From " + data.licences[licenceIndex].returns[0].returnsPeriodStart |govukDate + " to " + data.licences[licenceIndex].returns[0].returnsPeriodEnd |govukDate + "</li>"]  %}
 {% endif %}
 
 {#Get customer contacts first loop through contacts #}
@@ -146,7 +147,7 @@
       key: {
         text: "Return reference and due date"
       },
-      value: {html:  selectedReturns | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+      value: {html: "<ul class='govuk-list govuk-list--bullet'>" + selectedReturns | dump | stripQuotes | stripSqBrackets | replaceComma  + "</ul>"},
       actions: {
         items: [
           {

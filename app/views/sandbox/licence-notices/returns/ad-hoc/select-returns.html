@@ -21,15 +21,14 @@
 
     <form method="post" novalidate>
 
-
       {% set returns = [] %}
 
       {% for return in data.licences[data.licenceID].returns %}
 
      {% set returns = returns|push( {
         value: loop.index0,
-        text: return.id + " Due " + return.due |govukDate
-        
+        text: return.id + " Due " + return.due |govukDate,
+        hint: { text: " From " + return.returnsPeriodStart |govukDate + " to " + return.returnsPeriodEnd |govukDate}
       })
       %}  
 
