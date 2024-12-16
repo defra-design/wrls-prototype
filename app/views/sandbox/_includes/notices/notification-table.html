@@ -128,19 +128,44 @@
            }
          },
          items: [
+         {
+          value: 'renewals',
+          text: 'Legacy notifications (Hands off flows and expiry notifications)',
+          checked:  checked("type", "renewals")
+        },
+        {
+          value: 'returns',
+          text: 'Returns: Paper form',
+          checked:  checked("type", "returns")
+        },
            {
              value: 'returns',
-             text: 'Returns',
+             text: 'Returns: Reminders',
              checked:  checked("type", "returns")
            },
            {
-             value: 'renewals',
-             text: 'Renewals',
-             checked:  checked("type", "renewals")
+            value: 'returns',
+            text: 'Returns:  Invitation',
+            checked:  checked("type", "returns")
+          },
+           {
+             value: 'hands off flow notices',
+             text: 'Water abstraction alert: Resume',
+             checked:  checked("type", "hands off flow notices")
            },
            {
              value: 'hands off flow notices',
-             text: 'Hands off flow notices',
+             text: 'Water abstraction alert: Stop',
+             checked:  checked("type", "hands off flow notices")
+           },
+           {
+             value: 'hands off flow notices',
+             text: 'Water abstraction alert: Reduce',
+             checked:  checked("type", "hands off flow notices")
+           },
+           {
+             value: 'hands off flow notices',
+             text: 'Water abstraction alert: Warning',
              checked:  checked("type", "hands off flow notices")
            }
          ]

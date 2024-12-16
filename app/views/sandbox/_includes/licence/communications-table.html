@@ -112,37 +112,62 @@
   #}
   
   
-         {{ govukCheckboxes({
-           idPrefix: 'type',
-           name: 'type',
-           classes: "govuk-checkboxes--small",
-           formGroup: {
-             classes: "govuk-!-margin-bottom-5"
-           },
-           fieldset: {
-             legend: {
-               text: 'Notice type',
-               classes: 'govuk-fieldset__legend--s'
-             }
-           },
-           items: [
-             {
-               value: 'returns',
-               text: 'Returns',
-               checked:  checked("type", "returns")
-             },
-             {
-               value: 'renewals',
-               text: 'Renewals',
-               checked:  checked("type", "renewals")
-             },
-             {
-               value: 'hands off flow notices',
-               text: 'Hands off flow notices',
-               checked:  checked("type", "hands off flow notices")
-             }
-           ]
-         }) }}
+  {{ govukCheckboxes({
+    idPrefix: 'type',
+    name: 'type',
+    classes: "govuk-checkboxes--small",
+    formGroup: {
+      classes: "govuk-!-margin-bottom-5"
+    },
+    fieldset: {
+      legend: {
+        text: 'Notice type',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    items: [
+    {
+     value: 'renewals',
+     text: 'Legacy notifications (Hands off flows and expiry notifications)',
+     checked:  checked("type", "renewals")
+   },
+   {
+     value: 'returns',
+     text: 'Returns: Paper form',
+     checked:  checked("type", "returns")
+   },
+      {
+        value: 'returns',
+        text: 'Returns: Reminders',
+        checked:  checked("type", "returns")
+      },
+      {
+       value: 'returns',
+       text: 'Returns:  Invitation',
+       checked:  checked("type", "returns")
+     },
+      {
+        value: 'hands off flow notices',
+        text: 'Water abstraction alert: Resume',
+        checked:  checked("type", "hands off flow notices")
+      },
+      {
+        value: 'hands off flow notices',
+        text: 'Water abstraction alert: Stop',
+        checked:  checked("type", "hands off flow notices")
+      },
+      {
+        value: 'hands off flow notices',
+        text: 'Water abstraction alert: Reduce',
+        checked:  checked("type", "hands off flow notices")
+      },
+      {
+        value: 'hands off flow notices',
+        text: 'Water abstraction alert: Warning',
+        checked:  checked("type", "hands off flow notices")
+      }
+    ]
+  }) }}
   
   
   
