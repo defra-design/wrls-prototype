@@ -308,7 +308,16 @@ rows: [
               {
                 value: "received",
                 text: "Record receipt"
-              }
+              } if data.licences[data.ID].returns[data.returnIndex].status !== 'received' and data.licences[data.ID].returns[data.returnIndex].status !== 'complete',
+              {
+                value: "underQuery",
+                text: "Record under query"
+              } if data.licences[data.ID].returns[data.returnIndex].status == 'received' or data.licences[data.ID].returns[data.returnIndex].status == 'complete',
+              {
+                value: "resolveQuery",
+                text: "Resolve query"
+              } if data.returnStatus == 'underQuery'
+
               
              
             ]
