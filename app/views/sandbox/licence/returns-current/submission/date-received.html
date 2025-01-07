@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set pageTitle = "Abstraction return - enter date received" %}
+{% set pageTitle = "When was the return received?" %}
 {% set title = "Abstraction return" %}
 
 {% block pageTitle %}
@@ -49,8 +49,7 @@
         name: "dateReturnReceived",
         fieldset: {
           legend: {
-            html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title] + '</h1>
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">When was the return received?</legend>',
+            html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Return reference ' + data.licences[data.ID].returns[data.returnIndex].id + '</span>' + [pageTitle] + '</h1>',
             isPageHeading: false,
             classes: "govuk-fieldset__legend--l"
           }

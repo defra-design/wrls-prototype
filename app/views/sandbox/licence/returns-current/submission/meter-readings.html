@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set pageTitle = "Abstraction return - tell us about the meter" %}
+{% set pageTitle = "Enter meter readings" %}
 {% set title = "Abstraction return" %}
 
 {% block pageTitle %}
@@ -33,8 +33,7 @@
 
       {% call govukFieldset({
         legend: {
-          html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title] + '</h1>
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Meter readings</legend>',
+          html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Return reference ' + data.licences[data.ID].returns[data.returnIndex].id + '</span>' + [pageTitle] + '</h1>',
           isPageHeading: false,
           classes: "govuk-fieldset__legend--l"
         }

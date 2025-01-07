@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set pageTitle = "Abstraction return - are meter details provided" %}
+{% set pageTitle = "Have meter details been provided?" %}
 {% set title = "Abstraction return" %}
 
 {% block pageTitle %}
@@ -37,8 +37,7 @@
         name: "meterDetailsProvided",
         fieldset: {
           legend: {
-            html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Licence ' + [data.licences[data.ID].number] + '</span>' + [title] + '</h1>
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Have meter details been provided?</legend>',
+            html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Return reference ' + data.licences[data.ID].returns[data.returnIndex].id + '</span>' + [pageTitle] + '</h1>',
             isPageHeading: false,
             classes: "govuk-fieldset__legend--l"
           }

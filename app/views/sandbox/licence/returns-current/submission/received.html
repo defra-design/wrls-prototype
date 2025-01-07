@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set pageTitle = "Abstraction return - return received" %}
+{% set pageTitle = "When was the return received?" %}
 {% set title = "Abstraction return" %}
 
 {% block pageTitle %}
@@ -18,12 +18,12 @@
 
     
 
-    
+               <!--
                 <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
                   <span class="govuk-caption-xl">Licence 03/28/60/0032</span>
                   Abstraction return
                 </h1>
-    
+    -->
 
     
           <form  method="post" class="form" >
@@ -31,9 +31,9 @@
     
             {% call govukFieldset({
               legend: {
-                text: "When was the return received?",
+                text: pageTitle,
                 classes: "govuk-fieldset__legend--m",
-                isPageHeading: false
+                isPageHeading: true
               }
               }) %}
               

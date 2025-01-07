@@ -242,6 +242,11 @@ function createReturnVersion(req, res) {
 /////batch by month
 function batchByMonth(data) {
   const groupedData = data.reduce((acc, item) => {
+    // Check if volume is null or undefined. If so, skip this item.
+    if (item.volume == "") {
+      return acc; // Return the accumulator unchanged.
+    }
+
     const year = item.date.substring(0, 4);
     const month = item.date.substring(4, 6);
     const monthName = new Date(year, month - 1, 1).toLocaleString('en-UK', { month: 'long' });
@@ -342,7 +347,7 @@ router.post('/returnStatus', function (req, res) {
   if (req.session.data.returnStatus == "received") {
     res.redirect('received');
   } else if (req.session.data.returnStatus == "nil") {
-    res.redirect('nil-return');
+    res.redirect('date-received');
   } else if (req.session.data.returnStatus == "new") {
 
     //get the return start and end dates for the period
@@ -648,7 +653,10 @@ router.get('/date-received', function (req, res) {
 });
 
 router.post('/date-received', function (req, res) {
-  res.redirect('amounts-to-report');
+  if (req.session.data.returnStatus == "nil") {
+    res.redirect('nil-return');
+  } else {
+  res.redirect('readings-or-volumes');}
 });
 
 
@@ -856,7 +864,16 @@ router.post('/volumes', function (req, res) {
   req.session.data.returnLines = populateVolumes(req.session.data.line, req.session.data.returnLines);
   //console.log(req.session.data.returnLines);
 
-  res.redirect('check-your-answers');
+   //new code added to redirect to single check your answers page for all routes
+   req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
+
+   console.log(req.session.data.monthTotals)
+ 
+ 
+   req.session.data.lines = req.session.data.returnLines
+   req.session.data.meterDetailsProvided = "yes"
+ 
+   res.redirect('/edit/new-volumes-or-readings');
 });
 
 /// meter details
@@ -931,7 +948,16 @@ router.post('/meter-readings', function (req, res) {
 
   console.log(req.session.data.returnLines);
 
-  res.redirect('check-your-answers');
+  //new code added to redirect to single check your answers page for all routes
+  req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
+
+  console.log(req.session.data.monthTotals)
+
+
+  req.session.data.lines = req.session.data.returnLines
+  req.session.data.meterDetailsProvided = "yes"
+
+  res.redirect('/edit/new-volumes-or-readings');
 });
 
 
