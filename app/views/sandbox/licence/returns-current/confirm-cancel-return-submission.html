@@ -1,0 +1,67 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+
+{% set returnRequirements = data['returnRequirements'] %}
+{% set title = "You are about to remove these requirements for returns"%}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+  <!-- navigation block -->
+  <div class="govuk-!-margin-bottom-3">
+
+    <!-- navigation block -->
+    {% include "current/includes/nav/nav-bd-manage.html" %}
+  </div>
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-xl"><span class="govuk-caption-l ">Licence {{[data.licences[data.ID].number]}}</span> {{title}}</h1>
+
+
+
+<form method="post" class="form" >
+
+  {% set requirement = data.licences[data.ID].returnsRequirements[0].requirements[data.requirementIndex] %}
+
+
+  <section class="govuk-!-margin-bottom-9">
+
+
+
+  <!-- <span class="govuk-caption-l ">Return ID {{requirement.id}}</span> -->
+    <h2 class="govuk-heading-l  " >{{requirement.returnsCycle|capitalize}} return requirement, {{requirement.description}}</h2>
+
+      <button type="submit" class="govuk-button">
+        Remove
+      </button>
+
+    </form>
+
+  </div>
+  </div>
+
+
+
+{% endblock %}
