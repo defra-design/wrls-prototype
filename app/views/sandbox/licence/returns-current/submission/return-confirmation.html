@@ -45,7 +45,7 @@
                   {% if data.returnSubmissionStatus == "received" %}
                   <p class="govuk-body"><a href="../../../licence#returns" class="govuk-link">View returns for {{data.licences[data.ID]['number']}}</a></p>
                   {% else %}
-                  <p class="govuk-body"><a href="sandbox/licence/returns-current/return" class="govuk-link">View this return</a></p>
+                  <p class="govuk-body"><a href="/sandbox/licence/returns-current/return" class="govuk-link">View this return</a></p>
                   <p class="govuk-body">or</p>
                   {{ govukButton({
                     text: "Mark for supplementary bill run"

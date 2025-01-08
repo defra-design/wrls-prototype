@@ -188,6 +188,7 @@ function createReturnVersion(req, res) {
   let lines = req.session.data.returnLines || req.session.data.lines || [];
   let submittedBy = "testuser@gov.uk";
   let submittedDate = todayNoFormat;
+  let dateReturnReceived = todayNoFormat;
   let make = "";
   let serialNumber = "";
   let x10 = "";
@@ -227,6 +228,7 @@ function createReturnVersion(req, res) {
     id,
     submittedBy,
     submittedDate,
+    dateReturnReceived,
     notes,
     units,
     readingsOrVolumes,
@@ -338,6 +340,49 @@ router.get('/generate-csv', (req, res) => {
 });
 
 
+//route for editing the return
+router.get('/sandbox/licence/returns-current/return-edit', function (req, res) {
+
+//get the return start and end dates for the period
+let licence = req.session.data.ID
+let returnID = req.session.data.returnIndex
+
+// reformat the dates to iso
+const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
+const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
+
+console.log(startDate + " " + endDate);
+
+//copy existing return details to be edited
+if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === "undefined") {
+  console.log("new");
+  req.session.data.make = ""
+  req.session.data.serialNumber = ""
+ // console.log(startDate + " " + endDate);
+  req.session.data.lines = createDailyObjects(startDate, endDate);
+  //console.log(req.session.data.lines);
+  req.session.data.readingsOrVolumes = "volumes"
+  req.session.data.units = "cm3"
+  req.session.data.monthTotals = batchByMonth(req.session.data.lines)
+  req.session.data.dateReturnReceived = todayNoFormat
+} else {
+  console.log("edit");
+  req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
+  req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
+  req.session.data.x10 = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.x10
+  req.session.data.startReading = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.startReading
+  req.session.data.endReading = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.endReading
+  req.session.data.lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
+  req.session.data.readingsOrVolumes = req.session.data.licences[licence].returns[returnID].versions[0].readingsOrVolumes
+  req.session.data.units = req.session.data.licences[licence].returns[returnID].versions[0].units
+  req.session.data.monthTotals = req.session.data.licences[licence].returns[returnID].versions[0].monthTotals
+  req.session.data.meterDetailsProvided = "yes"
+}
+
+res.redirect('submission/edit/new-volumes-or-readings');
+});
+
+
 //What to do with the return
 router.post('/returnStatus', function (req, res) {
 
@@ -376,6 +421,7 @@ router.post('/returnStatus', function (req, res) {
       req.session.data.readingsOrVolumes = "volumes"
       req.session.data.units = "cm3"
       req.session.data.monthTotals = batchByMonth(req.session.data.lines)
+      req.session.data.dateReturnReceived = todayNoFormat
     } else {
       console.log("edit");
       req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
@@ -653,10 +699,22 @@ router.get('/date-received', function (req, res) {
 });
 
 router.post('/date-received', function (req, res) {
+
+  if (req.session.data.change == "true") {
+    //updating success banner
+    req.session.data.success = 1
+    //create the success banner
+    req.session.data.successMessage = successMessage.returnChanged
+    notificationTitle = "Changed"
+    req.session.data.notificationTitle = notificationTitle
+
+    res.redirect('edit/new-volumes-or-readings');
+  } else {
   if (req.session.data.returnStatus == "nil") {
     res.redirect('nil-return');
   } else {
   res.redirect('readings-or-volumes');}
+}
 });
 
 

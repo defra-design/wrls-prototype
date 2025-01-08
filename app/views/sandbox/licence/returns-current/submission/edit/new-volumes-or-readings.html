@@ -131,6 +131,23 @@
     }
   },
   rows: [
+  {
+  key: {
+    text: "Return received date"
+  },
+  value: {
+    text: data.licences[data.ID].returns[data.returnIndex].versions[0].dateReturnReceived |numberToGovukDate
+  },
+  actions: {
+    items: [
+      {
+        href: "../date-received?change=true",
+        text: "Change",
+        visuallyHiddenText: "return received date"
+      }
+    ]
+  }
+},
     {
       key: {
         text: "Reporting figures"
@@ -143,7 +160,7 @@
           {
             href: "../readings-or-volumes?change=true",
             text: "Change",
-            visuallyHiddenText: "name"
+            visuallyHiddenText: "reporting figures"
           }
         ]
       }
@@ -160,7 +177,7 @@
           {
             href: "../meter-details?change=true",
             text: "Change",
-            visuallyHiddenText: "date of birth"
+            visuallyHiddenText: "meter details"
           }
         ]
       }
@@ -177,7 +194,7 @@
           {
             href: "../units?change=true",
             text: "Change",
-            visuallyHiddenText: "address"
+            visuallyHiddenText: "units"
           }
         ]
       }
