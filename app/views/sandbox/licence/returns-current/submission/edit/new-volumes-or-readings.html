@@ -119,9 +119,11 @@
     {% include "sandbox/_includes/returns/submission/notes.html" %}
 </div>
 </div>
-
+   
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-full">
+
+    {{""|today}}
 
 {{ govukSummaryList({
   card: {
@@ -133,17 +135,17 @@
   rows: [
   {
   key: {
-    text: "Return received date"
+    text: "Return received"
   },
   value: {
-    text: data.licences[data.ID].returns[data.returnIndex].versions[0].dateReturnReceived |numberToGovukDate
+    text: data.dateReturnReceived |numberToGovukDate
   },
   actions: {
     items: [
       {
         href: "../date-received?change=true",
         text: "Change",
-        visuallyHiddenText: "return received date"
+        visuallyHiddenText: "return received"
       }
     ]
   }
@@ -204,6 +206,7 @@
 
 </div>
 </div>
+
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-full">
 

@@ -56,17 +56,17 @@
         },
         items: [
           {
-            value: "today",
+            value: "foo" | todayNumber,
             text: "Today",
             checked: today
           },
           {
-            value: "yesterday",
+            value: "foo" | todayNumber -1,
             text: "Yesterday",
             checked: yesterday
           },
           {
-            value: "customDate",
+            value: "foo" | todayNumber,
             text: "Custom date",
             checked: customDate,
             conditional: {

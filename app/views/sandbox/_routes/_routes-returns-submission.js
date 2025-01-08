@@ -347,14 +347,20 @@ router.get('/sandbox/licence/returns-current/return-edit', function (req, res) {
 let licence = req.session.data.ID
 let returnID = req.session.data.returnIndex
 
+
+console.log(req.session.data.licences[licence].returns[returnID].returnsPeriodStart)
+
+
+
+//copy existing return details to be edited
+if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === "undefined") {
+
 // reformat the dates to iso
 const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
 const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
 console.log(startDate + " " + endDate);
 
-//copy existing return details to be edited
-if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === "undefined") {
   console.log("new");
   req.session.data.make = ""
   req.session.data.serialNumber = ""
@@ -367,6 +373,7 @@ if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === 
   req.session.data.dateReturnReceived = todayNoFormat
 } else {
   console.log("edit");
+  req.session.data.dateReturnReceived = todayNoFormat
   req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
   req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
   req.session.data.x10 = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.x10
