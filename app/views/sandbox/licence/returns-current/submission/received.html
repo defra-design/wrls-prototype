@@ -31,9 +31,9 @@
     
             {% call govukFieldset({
               legend: {
-                text: pageTitle,
-                classes: "govuk-fieldset__legend--m",
-                isPageHeading: true
+                html: '<h1 class="govuk-heading-l"><span class="govuk-caption-l">Return reference ' + data.licences[data.ID].returns[data.returnIndex].id + '</span>' + [pageTitle] + '</h1>',
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--l"
               }
               }) %}
               

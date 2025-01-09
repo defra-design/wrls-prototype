@@ -72,7 +72,10 @@
         {
           value: "absPeriod",
           text: "Deafult abstraction period",
-          checked: absPeriod
+          checked: absPeriod,
+          hint: {
+          text: data.licences[data.ID].returns[data.returnIndex].periodStart | mmddToDate + " to " + data.licences[data.ID].returns[data.returnIndex].periodEnd | mmddToDate
+          }
         },
         {
           value: "customDates",

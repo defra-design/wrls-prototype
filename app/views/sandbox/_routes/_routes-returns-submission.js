@@ -819,7 +819,7 @@ router.post('/meter-details-provided', function (req, res) {
   if (req.session.data.meterDetailsProvided == "yes") {
     res.redirect('meter-details');
   } else if (req.session.data.readingsOrVolumes == "volumes") {
-    res.redirect('multiple-meters');
+    res.redirect('single-volume');
   } else {
     //get the return start and end dates for the period
     let licence = req.session.data.ID
@@ -845,7 +845,7 @@ router.post('/meter-details-provided', function (req, res) {
 
 });
 
-//Have multiple meters been used in this return period?
+//Have multiple meters been used in this return period? - NOT NEEDED ANYMORE
 router.get('/multiple-meters', function (req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + '/multiple-meters');
