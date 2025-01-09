@@ -431,6 +431,7 @@ router.post('/returnStatus', function (req, res) {
       req.session.data.dateReturnReceived = todayNoFormat
     } else {
       console.log("edit");
+      req.session.data.dateReturnReceived = todayNoFormat
       req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
       req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
       req.session.data.x10 = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.x10
