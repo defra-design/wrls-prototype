@@ -113,6 +113,17 @@ addFilter('objectToArray', function objectToArray (object) {
   return objectArray
 });
 
+addFilter('booleanToContent', function booleanToContent(boolean, trueContent, falseContent) {
+  console.log(boolean)
+let content = ""
+  if (boolean == "true" ) {
+    content = trueContent
+  } else {
+    content = falseContent
+  }
+  return content
+})
+
 
 
 addFilter('objectKeys', function objectKeys (x){

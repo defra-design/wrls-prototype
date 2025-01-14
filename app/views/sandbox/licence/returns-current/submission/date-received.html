@@ -58,17 +58,19 @@
           {
             value: "foo" | todayNumber,
             text: "Today",
-            checked: today
+            hint: { text: "foo" | todayNumber | numberToGovukDate },
+            checked: checked('dateReturnReceived' , "foo" | todayNumber)
           },
           {
             value: "foo" | todayNumber -1,
             text: "Yesterday",
-            checked: yesterday
+            hint: { text: "foo" | yesterdayNumber | numberToGovukDate},
+            checked: checked('dateReturnReceived' , "foo" | todayNumber -1)
           },
           {
-            value: "foo" | todayNumber,
+            value: "foo" | todayNumber -2,
             text: "Custom date",
-            checked: customDate,
+            checked: checked('dateReturnReceived' , "foo" | todayNumber -2),
             conditional: {
               html: dateHtml
             }

@@ -169,10 +169,27 @@
     },
     {
       key: {
+        text: "Meter details provided"
+      },
+      value: {
+        html: data.meterDetailsProvided | capitalize
+      },
+      actions: {
+        items: [
+          {
+            href: "../meter-details-provided?change=true",
+            text: "Change",
+            visuallyHiddenText: "meter details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
         text: "Meter details"
       },
       value: {
-        html: data.make + "<br>" + data.serialNumber
+        html: data.make + "<br>" + data.serialNumber + "<br>" + data.x10 | booleanToContent ("Has x10 display", "")
       },
       actions: {
         items: [
@@ -183,7 +200,7 @@
           }
         ]
       }
-    },
+    } if data.meterDetailsProvided == "yes",
     {
       key: {
         text: "Units"

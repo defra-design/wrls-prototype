@@ -99,6 +99,25 @@ filters.listFormat = function(x) {
     return x.replace(/\w+/g, today)
   }
 
+  //get today's date change any string in to today's date in a number format {{ "foo" | todayNumber }}
+  filters.yesterdayNumber = function(x) {
+    let date = new Date();
+    let dd = date.getDate() - 1;
+    let mm = date.getMonth() + 1;
+
+    const yyyy = date.getFullYear();
+   if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+
+    const today = `${yyyy}${mm}${dd}`;
+
+    return x.replace(/\w+/g, today)
+  }
+
 
 
   //get today's day date {{ "foo" | d }}

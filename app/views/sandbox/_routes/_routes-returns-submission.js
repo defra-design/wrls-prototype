@@ -828,6 +828,22 @@ router.get('/meter-details-provided', function (req, res) {
 
 router.post('/meter-details-provided', function (req, res) {
 
+  if (req.session.data.change == "true") {
+    //updating success banner
+    req.session.data.success = 1
+    //create the success banner
+    req.session.data.successMessage = successMessage.returnChanged
+    notificationTitle = "Changed"
+    req.session.data.notificationTitle = notificationTitle
+   
+   //route to meter details if chaning to yes, before going back to new-volumes or readings page
+    if (req.session.data.meterDetailsProvided == "yes"){
+    res.redirect('meter-details');
+   } else {
+    res.redirect('edit/new-volumes-or-readings');
+  }
+  } else {
+
   //if meter details provided route accordingly
   if (req.session.data.meterDetailsProvided == "yes") {
     res.redirect('meter-details');
@@ -853,7 +869,7 @@ router.post('/meter-details-provided', function (req, res) {
 
     res.redirect('meter-readings');
   }
-
+}
 
 
 });

@@ -46,7 +46,8 @@
           },
           classes: "govuk-input--width-10",
           id: "make",
-          name: "make"
+          name: "make",
+          value: data.make
         }) }}
 
         {{ govukInput({
@@ -55,7 +56,8 @@
           },
           classes: "govuk-input--width-10",
           id: "serialNumber",
-          name: "serialNumber"
+          name: "serialNumber",
+          value: data.serialNumber
         }) }}
 
        {# Old floating checkbox answer
@@ -76,9 +78,12 @@
 
           #}
 
+
+
           {{ govukRadios({
             classes: "govuk-radios--inline",
             name: "x10",
+            id: "x10",
             fieldset: {
               legend: {
                 text: "Does this meter have a ×10 display",
@@ -92,11 +97,14 @@
             items: [
               {
                 value: "true",
-                text: "Yes"
+                text: "Yes",
+                checked: checked('x10','true')
+
               },
               {
                 value: "false",
-                text: "No"
+                text: "No",
+                checked: checked('x10','false')
               }
             ]
           }) }}
