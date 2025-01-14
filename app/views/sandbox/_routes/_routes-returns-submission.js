@@ -397,7 +397,7 @@ router.post('/returnStatus', function (req, res) {
 
   //if user only wants to mark as received and not enter data route accordingly (this is internal only)
   if (req.session.data.returnStatus == "received") {
-    res.redirect('received');
+    res.redirect('date-received');
   } else if (req.session.data.returnStatus == "nil") {
     res.redirect('date-received');
   } else if (req.session.data.returnStatus == "new") {
@@ -671,6 +671,8 @@ router.post('/edit/upload', function (req, res) {
 
 /////Marking it as received but not adding readings
 
+
+//// /received no longer needed folded into the main route and uses the date-received page
 router.get('/received', function (req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + '/received');
@@ -720,6 +722,16 @@ router.post('/date-received', function (req, res) {
   } else {
   if (req.session.data.returnStatus == "nil") {
     res.redirect('nil-return');
+  } else if (req.session.data.returnStatus == "received") {
+     //Mark the return as received
+  let licence = req.session.data.ID
+  let returnID = req.session.data.returnIndex
+  req.session.data.licences[licence].returns[returnID].status = "received"
+
+  req.session.data.returnSubmissionStatus = "received"
+
+  res.redirect('return-confirmation');
+
   } else {
   res.redirect('readings-or-volumes');}
 }

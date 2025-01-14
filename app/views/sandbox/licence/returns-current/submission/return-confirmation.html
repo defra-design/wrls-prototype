@@ -38,7 +38,7 @@
                   titleText: titleText,
                   classes: "panel__body--small",
                   html: '<div class="govuk-!-font-size-24">Licence number <strong>' + data.licences[data.ID]['number'] + '</strong><br><br>
-                  Site desctiption <strong>' + data.licences[data.ID].returns[data.returnIndex].description + '</strong><br><br>
+                  Site description <strong>' + data.licences[data.ID].returns[data.returnIndex].description + '</strong><br><br>
                   Purpose <strong>' + data.licences[data.ID].returns[data.returnIndex].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br + '</strong></div>'
                   }) }}
                 
