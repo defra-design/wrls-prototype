@@ -455,7 +455,7 @@ router.post('/set-up/start-date', function(req, res) {
 
               //use = data.licences[data.ID]['use']
               let use = req.session.data.licences[licence].use
-              console.log(use);
+              //console.log(use);
 
               if (use.length == 1){
                  //if there is only 1 use on the licence, check to see if that use has multiple points. If so ask about points, if not skip to description
@@ -473,7 +473,7 @@ router.post('/set-up/start-date', function(req, res) {
                  function setRedirect(callBack) {
                  //loop through and get the purpose, points, amount, periodStart and periodEnd
                  for (const [i, v] of use.entries()) {
-                    console.log(i)
+                    //console.log(i)
                  let  points = req.session.data.licences[licence].use[i].points
 
                       //check to see if specific points specified, if not then use all the points from the use

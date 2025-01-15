@@ -114,7 +114,7 @@ addFilter('objectToArray', function objectToArray (object) {
 });
 
 addFilter('booleanToContent', function booleanToContent(boolean, trueContent, falseContent) {
-  console.log(boolean)
+ // console.log(boolean)
 let content = ""
   if (boolean == "true" ) {
     content = trueContent
@@ -288,7 +288,7 @@ addFilter('formatDateToString', function formatDateToString(dateString) {
     January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
     July: 6, August: 7, September: 8, October: 9, November: 10, December: 11
   };
-  console.log(parts[1])
+//  console.log(parts[1])
   const month = monthNames[parts[1]]; // Check for valid month name (-1 for invalid)
   const year = parseInt(parts[2], 10);
 

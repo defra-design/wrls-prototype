@@ -87,7 +87,7 @@ function createDailyObjects(startDateStr, endDateStr) {
     dateObjects.push({ date: dateStr, reading: "", volume: "" });
     startDate.setDate(startDate.getDate() + 1);
   }
-//console.log(dateObjects);
+////console.log(dateObjects);
   return dateObjects;
 }
 
@@ -179,7 +179,7 @@ function createReturnVersion(req, res) {
   let licence = req.session.data.ID
   let returnID = req.session.data.returnIndex
 
-  // console.log(req.session.data.returnLines);
+  // //console.log(req.session.data.returnLines);
 
   let id = req.session.data.licences[licence].returns[returnID].versions.length
   let units = req.session.data.units
@@ -206,11 +206,11 @@ function createReturnVersion(req, res) {
     startReading = req.session.data.startReading
 
     for (const [i, v] of lines.entries()) {
-      //console.log(v)
+      ////console.log(v)
       if (v.reading !== '') {
         endReading = v.reading
       }
-      //console.log(endReading)
+      ////console.log(endReading)
     }
 
   };
@@ -293,7 +293,7 @@ router.get('/generate-csv', (req, res) => {
 
   let returnReference = req.session.data.licences[licence].returns[returnID].id
 
-  console.log(req.session.data.licences[licence].returns[returnID].versions[0])
+  ////console.log(req.session.data.licences[licence].returns[returnID].versions[0])
 
   const lines = req.session.data.licences[licence].returns[returnID].versions[0].lines
 
@@ -348,7 +348,7 @@ let licence = req.session.data.ID
 let returnID = req.session.data.returnIndex
 
 
-console.log(req.session.data.licences[licence].returns[returnID].returnsPeriodStart)
+//console.log(req.session.data.licences[licence].returns[returnID].returnsPeriodStart)
 
 
 
@@ -359,20 +359,20 @@ if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === 
 const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
 const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
-console.log(startDate + " " + endDate);
+////console.log(startDate + " " + endDate);
 
-  console.log("new");
+  //console.log("new");
   req.session.data.make = ""
   req.session.data.serialNumber = ""
- // console.log(startDate + " " + endDate);
+ // //console.log(startDate + " " + endDate);
   req.session.data.lines = createDailyObjects(startDate, endDate);
-  //console.log(req.session.data.lines);
+  ////console.log(req.session.data.lines);
   req.session.data.readingsOrVolumes = "volumes"
   req.session.data.units = "cm3"
   req.session.data.monthTotals = batchByMonth(req.session.data.lines)
   req.session.data.dateReturnReceived = todayNoFormat
 } else {
-  console.log("edit");
+  //console.log("edit");
   req.session.data.dateReturnReceived = todayNoFormat
   req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
   req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
@@ -410,7 +410,7 @@ router.post('/returnStatus', function (req, res) {
     const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
     const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
-    console.log(startDate + " " + endDate);
+  //  //console.log(startDate + " " + endDate);
 
 
 
@@ -419,18 +419,18 @@ router.post('/returnStatus', function (req, res) {
 
     //copy existing return details to be edited
     if (typeof req.session.data.licences[licence].returns[returnID].versions[0] === "undefined") {
-      console.log("new");
+      //console.log("new");
       req.session.data.make = ""
       req.session.data.serialNumber = ""
-     // console.log(startDate + " " + endDate);
+     // //console.log(startDate + " " + endDate);
       req.session.data.lines = createDailyObjects(startDate, endDate);
-      //console.log(req.session.data.lines);
+      ////console.log(req.session.data.lines);
       req.session.data.readingsOrVolumes = "volumes"
       req.session.data.units = "cm3"
       req.session.data.monthTotals = batchByMonth(req.session.data.lines)
       req.session.data.dateReturnReceived = todayNoFormat
     } else {
-      console.log("edit");
+      //console.log("edit");
       req.session.data.dateReturnReceived = todayNoFormat
       req.session.data.make = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.make
       req.session.data.serialNumber = req.session.data.licences[licence].returns[returnID].versions[0].meterDetails.serialNumber
@@ -479,11 +479,11 @@ router.post('/edit/new-volumes-or-readings', function (req, res) {
   createReturnVersion(req, res);
 
 
-  console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+  //console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
 
   req.session.data.licences[licence].returns[returnID].versions[0].monthTotals = batchByMonth(req.session.data.licences[licence].returns[returnID].versions[0].lines)
 
-  console.log(req.session.data.licences[licence].returns[returnID].versions[0].monthTotals)
+  //console.log(req.session.data.licences[licence].returns[returnID].versions[0].monthTotals)
 
 
 
@@ -508,7 +508,7 @@ router.post('/edit/new-volumes-or-readings', function (req, res) {
     req.session.data.note = ""
     req.session.data.edit = ""
 
-  console.log("return confirmed")
+  //console.log("return confirmed")
 
   res.redirect('../return-confirmation');
 });
@@ -548,29 +548,29 @@ router.post('/edit/multiple', function (req, res) {
   const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
   const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
-  //console.log(startDate + " " + endDate);
+  ////console.log(startDate + " " + endDate);
 
 
   // generate the lines
   req.session.data.returnLines = createDailyObjects(startDate, endDate);
-  //console.log(req.session.data.returnLines);
+  ////console.log(req.session.data.returnLines);
 
 
   //get the multiple entries and reformat to array
-  // console.log('multiple');
-  // console.log(req.session.data.multiple);
+  // //console.log('multiple');
+  // //console.log(req.session.data.multiple);
   req.session.data.line = convertStringToNumberArray(req.session.data.multiple);
 
 
   //add the new readings to the return lines
   req.session.data.lines = populateVolumes(req.session.data.line, req.session.data.returnLines);
 
-  // console.log(req.session.data.returnLines);
+  // //console.log(req.session.data.returnLines);
 
   //batch the return lines into monthly totals
   req.session.data.monthTotals = batchByMonth(req.session.data.lines)
 
-  console.log(req.session.data.monthTotals);
+  //console.log(req.session.data.monthTotals);
 
   req.session.data.success = 1
 
@@ -578,7 +578,7 @@ router.post('/edit/multiple', function (req, res) {
   req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">' + req.session.data.returnLines.length + ' ' + successMessage.multipleVolumeUpdate
   notificationTitle = "Updated"
   req.session.data.notificationTitle = notificationTitle
-  console.log("success message")
+  //console.log("success message")
 
   res.redirect('new-volumes-or-readings');
 });
@@ -596,9 +596,9 @@ router.post('/edit/water-abstracted-volumes', function (req, res) {
   req.session.data.back = req.headers.referer
 
   //add readings from form array
-  //console.log(req.session.data.line);
+  ////console.log(req.session.data.line);
   //req.session.data.returnLines = populateVolumes(req.session.data.line, req.session.data.returnLines);
-  //console.log(req.session.data.returnLines);
+  ////console.log(req.session.data.returnLines);
 
   req.session.data.success = 1
 
@@ -606,7 +606,7 @@ router.post('/edit/water-abstracted-volumes', function (req, res) {
   req.session.data.successMessage = '<h3 class="govuk-notification-banner__heading">' + successMessage.singleVolumeUpdate
   notificationTitle = "Updated"
   req.session.data.notificationTitle = notificationTitle
-  console.log("success message")
+  //console.log("success message")
 
   res.redirect('new-volumes-or-readings');
 });
@@ -660,7 +660,7 @@ router.post('/edit/upload', function (req, res) {
       req.session.data.returnLines = userData
   
       // log the array out
-      console.log(req.session.data.returnLines);
+      //console.log(req.session.data.returnLines);
   });
   
   */
@@ -771,7 +771,7 @@ router.post('/nil-return', function (req, res) {
   createReturnVersion(req, res);
 
   req.session.data.licences[licence].returns[returnID].versions[0].nilReturn = true
-  console.log(req.session.data.licences[licence].returns[returnID].versions);
+  //console.log(req.session.data.licences[licence].returns[returnID].versions);
 
   res.redirect('return-confirmation');
 });
@@ -859,12 +859,12 @@ router.post('/meter-details-provided', function (req, res) {
     const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
     const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
-    console.log(startDate + " " + endDate);
+    //console.log(startDate + " " + endDate);
 
 
     // generate the lines
     req.session.data.returnLines = createDailyObjects(startDate, endDate);
-    console.log(req.session.data.returnLines);
+    //console.log(req.session.data.returnLines);
 
 
     res.redirect('meter-readings');
@@ -905,12 +905,12 @@ router.post('/single-volume', function (req, res) {
     const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
     const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
-    console.log(startDate + " " + endDate);
+    //console.log(startDate + " " + endDate);
 
 
     // generate the lines
     req.session.data.returnLines = createDailyObjects(startDate, endDate);
-    console.log(req.session.data.returnLines);
+    ////console.log(req.session.data.returnLines);
 
 
     res.redirect('volumes');
@@ -933,12 +933,12 @@ router.post('/single-volume-period', function (req, res) {
   const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
   const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
-  console.log(startDate + " " + endDate);
+  ////console.log(startDate + " " + endDate);
 
 
   // generate the lines
   req.session.data.returnLines = createDailyObjects(startDate, endDate);
-  console.log(req.session.data.returnLines);
+  ////console.log(req.session.data.returnLines);
 
 
   res.redirect('volumes');
@@ -954,14 +954,14 @@ router.get('/volumes', function (req, res) {
 router.post('/volumes', function (req, res) {
 
   //add readings from form array
-  //console.log(req.session.data.line);
+  ////console.log(req.session.data.line);
   req.session.data.returnLines = populateVolumes(req.session.data.line, req.session.data.returnLines);
-  //console.log(req.session.data.returnLines);
+  ////console.log(req.session.data.returnLines);
 
    //new code added to redirect to single check your answers page for all routes
    req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
 
-   console.log(req.session.data.monthTotals)
+   ////console.log(req.session.data.monthTotals)
  
  
    req.session.data.lines = req.session.data.returnLines
@@ -1002,12 +1002,12 @@ router.post('/meter-details', function (req, res) {
       const startDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodStart);
       const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
-      console.log(startDate + " " + endDate);
+     // //console.log(startDate + " " + endDate);
 
 
       // generate the lines
       req.session.data.returnLines = createDailyObjects(startDate, endDate);
-      console.log(req.session.data.returnLines);
+     // //console.log(req.session.data.returnLines);
 
 
       res.redirect('meter-readings');
@@ -1028,11 +1028,11 @@ router.get('/meter-readings', function (req, res) {
 
 router.post('/meter-readings', function (req, res) {
 
-  console.log(req.session.data.line);
+ // //console.log(req.session.data.line);
 
   //add readings from form array
   req.session.data.returnLines = populateReadings(req.session.data.line, req.session.data.returnLines);
-  console.log(req.session.data.returnLines);
+ // //console.log(req.session.data.returnLines);
 
 
   let startReading = req.session.data.startReading
@@ -1040,12 +1040,12 @@ router.post('/meter-readings', function (req, res) {
   req.session.data.returnLines = calculateVolumes(req.session.data.returnLines, startReading);
 
 
-  console.log(req.session.data.returnLines);
+ // //console.log(req.session.data.returnLines);
 
   //new code added to redirect to single check your answers page for all routes
   req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
 
-  console.log(req.session.data.monthTotals)
+  ////console.log(req.session.data.monthTotals)
 
 
   req.session.data.lines = req.session.data.returnLines
@@ -1071,11 +1071,11 @@ router.post('/check-your-answers', function (req, res) {
   createReturnVersion(req, res);
 
 
-  console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
+  ////console.log(req.session.data.licences[licence].returns[returnID].versions[0].lines)
 
   req.session.data.licences[licence].returns[returnID].versions[0].monthTotals = batchByMonth(req.session.data.licences[licence].returns[returnID].versions[0].lines)
 
-  console.log(req.session.data.licences[licence].returns[returnID].versions[0].monthTotals)
+  ////console.log(req.session.data.licences[licence].returns[returnID].versions[0].monthTotals)
 
 
   //blank flow data
@@ -1103,6 +1103,41 @@ router.post('/check-your-answers', function (req, res) {
 
   res.redirect('return-confirmation');
 });
+
+///////cancel a return submission
+
+router.post('/sandbox/licence/returns-current/confirm-cancel-return-submission', function (req, res) {
+
+
+  let returnID = req.session.data.returnIndex
+
+  //blank flow data
+  req.session.data.amountsToReport = ""
+  req.session.data.dateReturnReceived = ""
+  req.session.data.customDateReturnReceived = ""
+  req.session.data.meterDetailsProvided = ""
+  req.session.data.make = ""
+  req.session.data.serialNumber = ""
+  req.session.data.x10 = ""
+  req.session.data.line = ""
+  req.session.data.lines = ""
+  req.session.data.multipleMeters = ""
+  req.session.data.underQuery = ""
+  req.session.data.readingsOrVolumes = ""
+  req.session.data.returnReceivedDate = ""
+  req.session.data.customAbsStartReceived = ""
+  req.session.data.customAbsEnd = ""
+  req.session.data.singleVolume = ""
+  req.session.data.units = ""
+  req.session.data.note = ""
+  req.session.data.edit = ""
+
+  req.session.data.returnStatus = ""
+
+  res.redirect('return?returnIndex='+returnID+'&versionID=0&returnStatus=due');
+});
+
+
 
 
 ///ADD A NOTE
@@ -1136,7 +1171,7 @@ router.post('/edit/add-a-note', function (req, res) {
   //updating success banner
   req.session.data.success = 1
 
-  //console.log(req.session.data.newNote)
+  ////console.log(req.session.data.newNote)
 
   if (req.session.data.newNote == false) {
     //If there is already a note success banner says updated

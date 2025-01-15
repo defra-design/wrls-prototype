@@ -253,7 +253,7 @@ function createDescription() {
       req.session.data.billRunDataTpTReview[index].licenceRef = generateRandomNumber()
       req.session.data.billRunDataTpTReview[index].licenceId = index
       //const description = createDescription()
-     // console.log(`Licence ${index + 1}:`);
+     // //console.log(`Licence ${index + 1}:`);
       item.chargeVersions.forEach((chargeVersion, chargeVersionIndex) => {
 
       
@@ -267,8 +267,8 @@ function createDescription() {
 
             //create a random description
             //req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeReferenceIndex].chargeElements[chargeElementIndex].description = description
-           // console.log(`Element ${chargeElementIndex + 1}:`);
-           // console.log(chargeElement.issues)
+           // //console.log(`Element ${chargeElementIndex + 1}:`);
+           // //console.log(chargeElement.issues)
            chargeElement.issues.forEach((issue, issueIndex) => {
             req.session.data.billRunDataTpTReview[index].issues.push(issue);
            });
@@ -314,7 +314,7 @@ function checkForTPTIssues(data, req) {
       chargeVersion.chargeReferences.forEach((chargeReference) => {
         chargeReference.chargeElements.forEach((chargeElement) => {
          chargeElement.issues.forEach((issue) => {
-         // console.log(issue)
+         // //console.log(issue)
           if (issue !== null){
 
           req.session.data.billRunDataTpTReview[index].issues.push(issue);
@@ -473,13 +473,13 @@ router.get('/tpt/review', function(req, res) {
      // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].additionalCharges = []
      // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].adjustments = []
      // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].aggregateFactor = ""
-    console.log('success ref')
+    //console.log('success ref')
         chargeReference.chargeElements.forEach((chargeElement, chargeElementIndex) => {
          // req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].tpt = true
           
          req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].authorisedVolume = req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].authorisedVolume + req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].authorisedAnnualQuantity
          req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].totalBillableReturns = req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].totalBillableReturns + req.session.data.billRunDataTpTReview[index].chargeVersions[chargeVersionIndex].chargeReferences[chargeRefencenceIndex].chargeElements[chargeElementIndex].allocatedQuantity
-         console.log('success element')
+         //console.log('success element')
         })
       })
     })
@@ -552,7 +552,7 @@ router.get('/sandbox/bill-runs/tpt/undo-review', function(req, res) {
   chargeReferences.forEach((chargeReference, chargeReferenceIndex) => {
     chargeReference.chargeElements.forEach((chargeElement, chargeElementIndex) => {
       chargeElement.issues.forEach((issue, issueIndex) => {
-        console.log(issue + " " + issueIndex)
+        //console.log(issue + " " + issueIndex)
          if (issue == "ready"){
           
         req.session.data.billRunDataTpTReview[req.session.data.ID].chargeVersions[0].chargeReferences[chargeReferenceIndex].chargeElements[chargeElementIndex].issues.splice(issueIndex, 1);
@@ -565,7 +565,7 @@ router.get('/sandbox/bill-runs/tpt/undo-review', function(req, res) {
 
   req.session.data.status = "review"
   checkForTPTIssues(req.session.data.billRunDataTpTReview, req);
-console.log('undone');
+//console.log('undone');
   res.redirect('/sandbox/bill-runs/tpt/licence-review');
 });
 
@@ -582,7 +582,7 @@ router.get('/tpt/confirm-remove-licence', function(req, res) {
 
 router.post('/sandbox/bill-runs/tpt/confirm-remove-licence', function(req, res) {
 
-console.log("licence removed")
+//console.log("licence removed")
 req.session.data.removedLicence = req.session.data.billRunDataTpTReview[req.session.data.ID].licenceRef
 
 req.session.data.billRunDataTpTReview.splice(req.session.data.ID, 1)
@@ -723,7 +723,7 @@ router.post('/sandbox/bill-runs/tpt/review/apply-filters', function(req, res) {
 //    req.session.data.focus="alert"
 
   } else {
-    console.log("filtering");
+    //console.log("filtering");
 
   //get the list of bill runs
   let  licences = req.session.data.billRunDataTpTReview
@@ -736,14 +736,14 @@ let licenceHolderFilters = ""
 licenceHolderFilters = req.session.data.licenceHolder
 
 
-console.log(licenceHolderFilters.length);
+//console.log(licenceHolderFilters.length);
 
  if (typeof licenceHolderFilters === 'undefined') {
   licenceHolderFilters= ""
  }
 
  if (typeof licenceHolderFilters.length) {
-  console.log('Filtering by licence holder')
+  //console.log('Filtering by licence holder')
    filteredResults = licences.filter(el => ( licenceHolderFilters.indexOf(el.licenceHolder) >= 0 ))
  }
 
@@ -757,13 +757,13 @@ console.log(licenceHolderFilters.length);
   }
 
  if ((issueFilters.length) && (filteredResults.length)) {
-  console.log('Filtering by licence holder and issues')
+  //console.log('Filtering by licence holder and issues')
   filteredResults = filteredResults.filter(licence =>
     licence.issues.some(issueObj => issueObj.issue === issueFilters)
   );
 
   } else if (issueFilters.length) {
-    console.log('Filtering by issues')
+    //console.log('Filtering by issues')
 filteredResults = licences.filter(licence =>
       licence.issues.some(issueObj => issueObj.issue === issueFilters)
     );
@@ -782,7 +782,7 @@ filteredResults = licences.filter(licence =>
  { } else {
 
   if ((statusFilters.length ) && (filteredResults.length)) {
-    console.log('Filtering by either issue or licence holder and status '+ statusFilters)
+    //console.log('Filtering by either issue or licence holder and status '+ statusFilters)
     if ( statusFilters == "review" ) {
       filteredResults = filteredResults.filter(licence =>
         licence.issues.some(issueObj => issueObj.issue && issueObj )
@@ -795,7 +795,7 @@ filteredResults = licences.filter(licence =>
    
     } else if (statusFilters.length) {
 
-      console.log('filtering by status ' + statusFilters)
+      //console.log('filtering by status ' + statusFilters)
      
      if ( statusFilters == "review" ) {
       filteredResults = licences.filter(licence =>
@@ -811,14 +811,14 @@ filteredResults = licences.filter(licence =>
   }
 
    
-// console.log("Filtered results = " + filteredResults)
+// //console.log("Filtered results = " + filteredResults)
 
   //set filtered results to empty if filters doesn't return anything
     if (!Array.isArray(filteredResults) || !filteredResults.length){
       filteredResults = "empty"
     }
 
- //   console.log("Filtered results = " + filteredResults)
+ //   //console.log("Filtered results = " + filteredResults)
 req.session.data.openDetails = true
 //req.session.data.focus="alert"
 
@@ -845,7 +845,7 @@ list.push(licenceHolderFilters, issueFilters.toLowerCase(), statusFilters.toLowe
   list.push(statusFilters.toLowerCase())
 }
 
-console.log(list)
+//console.log(list)
 
 
 //set the dynamic caption for the table
@@ -855,7 +855,7 @@ req.session.data.TpTfilterCaption = "Showing licences filtered by " + formatter.
   req.session.data.TpTfilterCaption = "Showing all licences."
 }
 
-console.log(req.session.data.TpTfilterCaption)
+//console.log(req.session.data.TpTfilterCaption)
 
 req.session.data.filteredResults = filteredResults
 

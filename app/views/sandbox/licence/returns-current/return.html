@@ -12,7 +12,21 @@
 {{title}} - GOV.UK
 {% endblock %}
 
+{% block breadcrumbs %}
+{% if data.versionID == "0" %}
+{{ govukBackLink({
+  text: "Back to licence summary",
+  href: "../../licence?ID="+data.ID+"&returnsRouteVersion=3#returns"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Back to latest return version",
+  href: "return?returnIndex=1&versionID=0"
+}) }}
+{% endif %}
 
+
+{% endblock %}
 
 <!--content block-->
 {% block service %}
@@ -28,7 +42,7 @@
 
 {% if data.versionID !== "0" %}
 {{ govukWarningText({
-  html: "This return is not the current version. <br> <a class='govuk-link' href='return?returnIndex=1&versionID=0'>View the current return</a>" ,
+  html: "This return is not the current version." ,
   iconFallbackText: "Warning"
 }) }}
 
@@ -259,12 +273,12 @@ rows: [
 
       {% if loopIndex == versionID %}
       {{ govukInsetText({
-        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "<br>"+notesHTML,
+        html: "Viewing version "+loopIndex+"<br>"+data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "<br>"+notesHTML,
         classes: "govuk-inset-text-blue"
       }) }}
       {% else %}
       {{ govukInsetText({
-        html: data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br><a class='govuk-link' href='return?returnIndex="+data.returnIndex+"&versionID="+loopIndex+"'>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "</a><br>"+notesHTML
+        html: "Version "+loopIndex+"<br>"+data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br><a class='govuk-link' href='return?returnIndex="+data.returnIndex+"&versionID="+loopIndex+"'>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "</a><br>"+notesHTML
       }) }}
       
       {% endif %}

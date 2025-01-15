@@ -356,7 +356,7 @@ function updateReturnRequirement(req, res) {
   let frequency = req.session.data.frequency
   let settings = req.session.data.settings
 
-  //console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
+  ////console.log(purpose, points, abstractionStartMonth, abstractionEndMonth, returnsCycle, description, frequencyCollected, frequency);
 
   //if they have data then update
   if (purpose && typeof purpose !== "undefined") { returnsRequirements.purpose = req.session.data.purpose }
@@ -535,7 +535,7 @@ router.post('/set-up/start-date', function(req, res) {
 
   const today = `${yyyy}${mm}${dd}`;
 
-  //console.log(today)
+  ////console.log(today)
 
   req.session.data.startDateConditional = today
   }
@@ -683,7 +683,7 @@ router.post('/set-up/select-an-existing-return-requirement', function(req, res) 
   let copyRequirements = req.session.data.copyRequirements
   let returnsRequirementToCopy = req.session.data.licences[licence].returnsRequirements[copyRequirements]
 
-//  console.log(returnsRequirementToCopy);
+//  //console.log(returnsRequirementToCopy);
 
   //create the copy
   let newRequirement = { ...returnsRequirementToCopy};
@@ -1238,7 +1238,7 @@ router.post('/check-your-answers', function(req, res) {
   for(const [i, v] of req.session.data.licences[licence].returnsRequirements.entries()){
     if (v.status == "review"){
       req.session.data.licences[licence].returnsRequirements.splice(i, 1);
-     // console.log("return version" + i + "deleted")
+     // //console.log("return version" + i + "deleted")
     }
   }
 
@@ -1456,42 +1456,6 @@ router.post('/set-up/reason-not-required', function(req, res) {
 
 
 
-/////////////Cancel return requirements///////////////////
 
-
-
-router.post('/confirm-cancel-return-requirements', function(req, res) {
-  req.session.data.back = req.headers.referer
-
-
-//get the licence info and clear the returnRequirements
-let licence = req.session.data.ID
-req.session.data.licences[licence].returnsRequirements.splice(0, 1);
-
-  //clear all the data
-  req.session.data.returnReview = ""
-  req.session.data.reasonNewRequirements = ""
-  req.session.data.additionalSubmissionOptions = []
-  req.session.data.startDateConditional = ""
-  req.session.data.startDate = []
-  req.session.data.purpose = ""
-  req.session.data.description = ""
-  req.session.data.timeLimit = ""
-  req.session.data.points = ""
-  req.session.data.abstractionStartDay = ""
-  req.session.data.abstractionStartMonth = ""
-  req.session.data.abstractionEndDay = ""
-  req.session.data.abstractionEndMonth = ""
-  req.session.data.returnsCycle = ""
-  req.session.data.frequencyCollected = ""
-  req.session.data.frequency = ""
-  req.session.data.change = false
-  req.session.data.requirementIndex = ""
-  req.session.data.returnVersion = ""
-  req.session.data.note = ""
-  req.session.data.success = 0
-  req.session.data.returnsNotRequired = ""
-  res.redirect('/sandbox/licence#charge');
-});
 
 module.exports = router

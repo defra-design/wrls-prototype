@@ -551,7 +551,7 @@ router.get('/change-name', function(req, res) {
   //get contact contact
   let contactType = req.session.data.contacts[contactID].type
 
-  console.log(contactType)
+  //console.log(contactType)
 
   if (contactType === "person") {
   res.render(folder + 'change-name');

@@ -92,7 +92,7 @@ router.get('/returns/create-mailing-list', function(req, res) {
   let selectedPeriodDueDate = req.session.data.returnType
 
 
-//console.log(selectedPeriodDueDate);
+////console.log(selectedPeriodDueDate);
 
 
   
@@ -115,21 +115,21 @@ router.get('/returns/create-mailing-list', function(req, res) {
          //if the licence has returns, loop through and look for any due returns in the return period
         if(licence.returns){
           for (var [returnIndex, returning] of licence.returns.entries()) {
-            //console.log(returning.due + returning.status)
+            ////console.log(returning.due + returning.status)
             if(returning.status == "due" & returning.due == selectedPeriodDueDate){
               //if there are returns due in the return period add the licenceHolder,Recipient,AddressorEmail,Method to the notifications list 
-              console.log("success add the recipients for this licence")
+              //console.log("success add the recipients for this licence")
               let returnsRef =[]
               returnsRef.push(returning.id)
               returnsPeriodStart = returning.returnsPeriodStart
               returnsPeriodEnd = returning.returnsPeriodEnd
               returnsDueDate = returning.due
 
-              //console.log(JSON.stringify(returns))
+              ////console.log(JSON.stringify(returns))
 
-              //console.log(licence.number)
+              ////console.log(licence.number)
               licenceContacts = licence.contacts
-             // console.log(contacts)
+             // //console.log(contacts)
              //get all the return contacts for the licence
               for(licenceContact of licenceContacts){
                 if (licenceContact.type == "returns"){
@@ -139,7 +139,7 @@ router.get('/returns/create-mailing-list', function(req, res) {
                                "method": "letter",
                               "addressID": "6"*/
 
-                             // console.log(licenceContact)
+                             // //console.log(licenceContact)
                   //contact name
                   let id = licenceContact.id[0]
                   let contactName = contacts[id].name
@@ -183,7 +183,7 @@ router.get('/returns/create-mailing-list', function(req, res) {
                   status
                 }
 
-                //console.log(recipient)
+                ////console.log(recipient)
                 recipients.push(recipient)
 
                 }
@@ -197,7 +197,7 @@ router.get('/returns/create-mailing-list', function(req, res) {
 
   
 
- // console.log(recipients)
+ // //console.log(recipients)
 
   //generate CSV
 function generateCSV(data, fileName) {
@@ -211,7 +211,7 @@ function generateCSV(data, fileName) {
 
   fs.writeFile(fileName, csvContent, (err) => {
     if (err) throw err;
-    console.log('CSV file saved!');
+    //console.log('CSV file saved!');
   });
 
 }
@@ -243,7 +243,7 @@ function deduplicateByLicenceAndContact(data) {
 
   recipients= deduplicatedData
 
-//console.log(deduplicatedData)
+////console.log(deduplicatedData)
 
 
 
@@ -290,12 +290,12 @@ router.post('/returns/send-returns', function(req, res) {
   fs.unlink(filename, (err) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        console.error('File not found:', filename);
+        //console.error('File not found:', filename);
       } else {
         throw err;
       }
     } else {
-      console.log('File deleted:', filename);
+      //console.log('File deleted:', filename);
     }
   });
 }
@@ -454,7 +454,7 @@ for (var [i, v] of licenceIndexes.entries()) {
   if (returnsPresent.length == 0) {
 
     noReturns.push(req.session.data.licences[v].number)
-   // console.log("no returns for " + req.session.data.licences[v].number)
+   // //console.log("no returns for " + req.session.data.licences[v].number)
     req.session.data.noReturns = noReturns
     req.session.data.licenceIndexes.splice(i, 1)
     req.session.data.adHocLicences.splice(i, 1)
@@ -470,7 +470,7 @@ for (var [i, v] of licenceIndexes.entries()) {
 
 
 
-//console.log("No returns = " + req.session.data.noReturns + "/n licence Indexes = " + req.session.data.licenceIndexes + "/n Ad hoc licences = " + req.session.data.adHocLicences)
+////console.log("No returns = " + req.session.data.noReturns + "/n licence Indexes = " + req.session.data.licenceIndexes + "/n Ad hoc licences = " + req.session.data.adHocLicences)
 
 /* test data
 03/28/60/0032
@@ -541,7 +541,7 @@ router.post('/returns/ad-hoc/check-returns-details', function(req, res) {
 
 for(let [i,v] of req.session.data.adHocLicences.entries()) {
 
-  //console.log(" gathering recipients")
+  ////console.log(" gathering recipients")
 
   //contact name
   let contactID = req.session.data.licences[req.session.data.licenceIndexes[i]].contacts[0].id
@@ -581,7 +581,7 @@ res.redirect('../returns-sent');
 //select the type of alert
 router.get('/send-a-water-abstraction-alert/select-the-type-of-alert', function(req, res) {
   req.session.data.back = req.headers.referer
-//  console.log("something")
+//  //console.log("something")
   res.render(folder + 'send-a-water-abstraction-alert/select-the-type-of-alert');
 });
 
@@ -699,7 +699,7 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
   //get waterAbstractionAlert
   let waterAbstractionAlert = req.session.data['waterAbstractionAlert']
 
- // console.log(selectedThresholds)
+ // //console.log(selectedThresholds)
   let op = ""
   //filter licences based on the selected thresholds
   var selectedLicences = req.session.data['selectedLicences']
@@ -721,11 +721,11 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
     waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
 
     selectedLicences.push.apply(selectedLicences, licence);
-    //console.log('filtered values -->\n',op)
+    ////console.log('filtered values -->\n',op)
 
   }
 
-//console.log(selectedLicences)
+////console.log(selectedLicences)
   //push them into a notification
   waterAbstractionAlert.push.apply(waterAbstractionAlert, op);
 
@@ -737,7 +737,7 @@ router.post('/send-a-water-abstraction-alert/select-the-thresholds-for-the-alert
      return notifications.find(a => a.licenceNumber === licenceNumber)
    }) */
 
-//  console.log(waterAbstractionAlert)
+//  //console.log(waterAbstractionAlert)
 
   res.redirect('check-the-licences-for-the-selected-thresholds');
 });
@@ -776,7 +776,7 @@ router.post('/send-a-water-abstraction-alert/enter-an-email-address', function(r
 
   //  licenceList.toString()
 
-  // console.log("licenceList:" + licenceList)
+  // //console.log("licenceList:" + licenceList)
   req.session.data.licenceList = licenceList
 
   res.redirect('check-the-mailing-list');
@@ -1027,7 +1027,7 @@ router.post('/send-a-water-abstraction-alert/check-the-mailing-list', function(r
   let notification = req.session.data['waaType'] + " - Water abstraction alert"
   let sentBy = "youremailaddress@defra.gov.uk"
   let numberOfrecipients = recipients.length
-  // console.log(numberOfrecipients)
+  // //console.log(numberOfrecipients)
   let problems = ""
 
   let newNotification = {
@@ -1128,7 +1128,7 @@ router.post('/tagging/enter-the-hands-off-flow-or-level-threshold', function(req
   } else {
     req.session.data.notificationType = "flow"
   }
-//  console.log(req.session.data['notificationType'])
+//  //console.log(req.session.data['notificationType'])
 
   res.redirect('reduce-or-stop');
 });
@@ -1137,7 +1137,7 @@ router.post('/tagging/enter-the-hands-off-flow-or-level-threshold', function(req
 ///reduce or stop
 router.get('/tagging/reduce-or-stop', function(req, res) {
   req.session.data.back = req.headers.referer
-//  console.log(req.session.data['stationID'])
+//  //console.log(req.session.data['stationID'])
   res.render(folder + 'tagging/reduce-or-stop');
 });
 
@@ -1230,7 +1230,7 @@ router.post('/tagging/enter-an-abstraction-period', function(req, res) {
   let abstractionPeriod = req.session.data[abstractionStartDay]+ " " + abstractionStartMonth + " to " + req.session.data[abstractionEndDay] + " " + abstractionEndMonth
 
   req.session.data.abstractionPeriod = abstractionPeriod
- // console.log(req.session.data.abstractionPeriod)
+ // //console.log(req.session.data.abstractionPeriod)
   res.redirect('check-your-answers');
 });
 
@@ -1472,7 +1472,7 @@ router.post('/tagging/you-are-about-to-remove-tags', function(req, res) {
       if (licence == tag.licenceNumber) {
       tagNumber = tagIndex
 
-    //  console.log(tagNumber)
+    //  //console.log(tagNumber)
 
     }
 
@@ -1555,7 +1555,7 @@ router.post('/notification-report/apply-filters', function(req, res) {
   //get the list of notifications
   let notifications = req.session.data.notifications
 
- // console.log(req.session.data.communications)
+ // //console.log(req.session.data.communications)
 
 //change data to communications if coming from that page
 if (req.session.data.communications == "true"){
@@ -1564,7 +1564,7 @@ if (req.session.data.communications == "true"){
   notifications =  req.session.data.licences[ID]['communications']
 } 
   
-//console.log (notifications)
+////console.log (notifications)
 
   
 
@@ -1677,7 +1677,7 @@ let rawList = [...typeFilters, sentByFilter, formatDate(startDateString), format
 
 let list =  rawList.filter(string => string !== "");
 
-//console.log(list);
+////console.log(list);
 
 //set the dynamic caption for the table
 if (list.length) {

@@ -45,7 +45,7 @@ req.session.data.clearFilters = ""
 
 //get the list of notifications
 let licences = req.session.data.chargeInfoWorkflow
-// console.log(licences);
+// //console.log(licences);
 
 
 //set global scope of filteredResults

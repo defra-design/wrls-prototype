@@ -264,7 +264,7 @@ router.get('/compare', function(req, res) {
   let replacement = req.session.data.licences[ID].chargeInformation[0]
   let original = req.session.data.licences[ID].chargeInformation[1]
 
-  console.log(req.session.data.srocChargeInformation)
+  //console.log(req.session.data.srocChargeInformation)
 
     req.session.data.differences = compare(original, replacement)
     req.session.data.differencesKeys = Object.keys(replacement)

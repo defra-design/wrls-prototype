@@ -237,9 +237,17 @@
 
        
 
-        <button type="submit" class="govuk-button">
-          Confirm
-        </button>
+        <div class="govuk-button-group govuk-!-margin-top-9">
+          {{ govukButton({
+            text: "Confirm"
+          }) }}
+        
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "../../confirm-cancel-return-submission"
+          }) }}
+        </div>
 
       </form>
 
