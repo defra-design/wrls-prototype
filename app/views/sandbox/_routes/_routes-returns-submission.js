@@ -243,23 +243,30 @@ function createReturnVersion(req, res) {
 
 /////batch by month
 function batchByMonth(data) {
-  const groupedData = data.reduce((acc, item) => {
-    // Check if volume is null or undefined. If so, skip this item.
-    if (item.volume == "") {
-      return acc; // Return the accumulator unchanged.
-    }
-
+  // Get all unique month-year combinations from the data
+  const allMonthYears = new Set();
+  data.forEach(item => {
     const year = item.date.substring(0, 4);
     const month = item.date.substring(4, 6);
+    allMonthYears.add(`${month}-${year}`);
+  });
+
+  const groupedData = Array.from(allMonthYears).reduce((acc, monthYear) => {
+    const [month, year] = monthYear.split('-');
     const monthName = new Date(year, month - 1, 1).toLocaleString('en-UK', { month: 'long' });
 
-    const key = `${month}-${year}`;
+    // Initialize the month entry with null total
+    acc[monthYear] = { month: monthName, year, total: null };
 
-    if (!acc[key]) {
-      acc[key] = { month: monthName, year, total: 0 };
-    }
+    // Find if any data exists for this month
+    data.forEach(item => {
+      if (item.date.startsWith(year + month)) {
+        if (item.volume != null) {
+          acc[monthYear].total = (acc[monthYear].total || 0) + parseInt(item.volume);
+        }
+      }
+    });
 
-    acc[key].total += parseInt(item.volume);
     return acc;
   }, {});
 
@@ -360,15 +367,15 @@ const startDate = reformatDate(req.session.data.licences[licence].returns[return
 const endDate = reformatDate(req.session.data.licences[licence].returns[returnID].returnsPeriodEnd);
 
 ////console.log(startDate + " " + endDate);
-
+req.session.data.startReading = ""
   //console.log("new");
-  req.session.data.make = ""
-  req.session.data.serialNumber = ""
+ // req.session.data.make = ""
+//  req.session.data.serialNumber = ""
  // //console.log(startDate + " " + endDate);
   req.session.data.lines = createDailyObjects(startDate, endDate);
   ////console.log(req.session.data.lines);
-  req.session.data.readingsOrVolumes = "volumes"
-  req.session.data.units = "cm3"
+ // req.session.data.readingsOrVolumes = "volumes"
+ // req.session.data.units = "cm3"
   req.session.data.monthTotals = batchByMonth(req.session.data.lines)
   req.session.data.dateReturnReceived = todayNoFormat
 } else {
@@ -865,7 +872,16 @@ router.post('/meter-details-provided', function (req, res) {
     //console.log(req.session.data.returnLines);
 
 
-    res.redirect('meter-readings');
+  // generate the lines
+
+
+  req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
+
+  //res.redirect('edit/new-volumes-or-readings');
+
+  res.redirect('/sandbox/licence/returns-current/return-edit');
+
+
   }
 }
 
@@ -908,10 +924,14 @@ router.post('/single-volume', function (req, res) {
 
     // generate the lines
     req.session.data.returnLines = createDailyObjects(startDate, endDate);
-    ////console.log(req.session.data.returnLines);
+    console.log(req.session.data.returnLines);
 
+    req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
+    console.log(req.session.data.monthTotals);
 
-    res.redirect('volumes');
+    //res.redirect('edit/new-volumes-or-readings');
+
+    res.redirect('/sandbox/licence/returns-current/return-edit');
   }
 });
 
@@ -936,10 +956,12 @@ router.post('/single-volume-period', function (req, res) {
 
   // generate the lines
   req.session.data.returnLines = createDailyObjects(startDate, endDate);
-  ////console.log(req.session.data.returnLines);
+  console.log(req.session.data.returnLines);
+  req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
 
+  //res.redirect('edit/new-volumes-or-readings');
 
-  res.redirect('volumes');
+  res.redirect('/sandbox/licence/returns-current/return-edit');
 });
 
 
@@ -1008,7 +1030,11 @@ router.post('/meter-details', function (req, res) {
      // //console.log(req.session.data.returnLines);
 
 
-      res.redirect('meter-readings');
+     req.session.data.monthTotals = batchByMonth(req.session.data.returnLines)
+
+     //res.redirect('edit/new-volumes-or-readings');
+   
+     res.redirect('/sandbox/licence/returns-current/return-edit');
     } else {
 
       res.redirect('single-volume');
