@@ -1,0 +1,52 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "What do you want to do with this return?" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form action="returnStatus" id="return-status"   data-routing="1" method="post" class="form">
+
+          {{ govukRadios({
+            idPrefix: "returnStatus",
+            name: "returnStatus",
+            fieldset: {
+              legend: {
+                text: "What do you want to do with this return?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "enter",
+                text: "Enter and submit"
+              },
+              {
+                value: "nil",
+                text: "Enter a nil return"
+              },
+              {
+                value: "received",
+                text: "Record receipt"
+              } if data.licences[data.ID].returns[data.returnIndex].status !== 'received' and data.licences[data.ID].returns[data.returnIndex].status !== 'complete'
+            ]
+          })
+        }}
+
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+
+      </form>
+  </div>
+</div>
+
+{% endblock %}

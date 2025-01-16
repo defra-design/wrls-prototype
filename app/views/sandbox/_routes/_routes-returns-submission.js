@@ -685,6 +685,8 @@ router.post('/received', function (req, res) {
   let returnID = req.session.data.returnIndex
   req.session.data.licences[licence].returns[returnID].status = "received"
 
+ 
+
   req.session.data.returnSubmissionStatus = "received"
 
   res.redirect('return-confirmation');
@@ -727,6 +729,8 @@ router.post('/date-received', function (req, res) {
   let licence = req.session.data.ID
   let returnID = req.session.data.returnIndex
   req.session.data.licences[licence].returns[returnID].status = "received"
+
+  req.session.data.licences[licence].returns[returnID].dateReturnReceived = req.session.data.dateReturnReceived
 
   req.session.data.returnSubmissionStatus = "received"
 

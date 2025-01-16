@@ -76,7 +76,7 @@
       })}}
       </div></div>
       {% endif %}
-      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+      <div class="govuk-grid-row govuk-!-margin-bottom-4">
         <div class="govuk-grid-column-full">
 
 {{ govukSummaryList({
@@ -134,18 +134,48 @@ rows: [
   },
   {
     key: {
-      text: "Standard tariff",
+      text: "Date received",
       classes: "meta-data__label"
+    },
+    value: {
+      text: data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].dateReturnReceived | numberToGovukDate,
+      classes: "meta-data__value"
+    }
+  } if data.licences[data.ID].returns[data.returnIndex].versions and data.licences[data.ID].returns[data.returnIndex].status !== "received",
+  {
+    key: {
+      text: "Date received",
+      classes: "meta-data__label"
+    },
+    value: {
+      text: data.licences[data.ID].returns[data.returnIndex].dateReturnReceived | numberToGovukDate,
+      classes: "meta-data__value"
+    }
+  } if data.licences[data.ID].returns[data.returnIndex].versions and data.licences[data.ID].returns[data.returnIndex].status == "received",
+  {
+    key: {
+      text: "Tariff",
+      classes: "meta-data__label"
+    },
+    value: {
+      text: "Standard tariff",
+      classes: "meta-data__value"
     }
   }
 ]
 }) }}
 <!--<a href="../../licence#returns">View licence</a>-->
+
+
+{% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue") or (data.licences[data.ID].returns[data.returnIndex].status == "received") or data.edit == "true" %}
+{{ govukButton({
+  text: "Submit return",
+  href: "submission/how-to-submit?edit=false&returnStatus="
+}) }}
+{% endif %}
+
 </div>
 </div>
-
-
-
 
 {% if data.licences[data.ID].returns[data.returnIndex].versions.length and data.edit !== "true" %}
 {% set versionID = data.versionID | default ("0") %}
@@ -168,6 +198,7 @@ rows: [
     }) }}
     {% endif %}
 
+   
 
     <!--divider-->
     <div class="divider govuk-!-margin-bottom-7"></div>
@@ -273,7 +304,7 @@ rows: [
 
       {% if loopIndex == versionID %}
       {{ govukInsetText({
-        html: "Viewing version "+loopIndex+"<br>"+data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "<br>"+notesHTML,
+        html: "<strong>Viewing version "+loopIndex+"</strong><br>"+data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedBy + "<br>" + data.licences[data.ID].returns[data.returnIndex].versions[loop.index0].submittedDate | formatDate + "<br>"+notesHTML,
         classes: "govuk-inset-text-blue"
       }) }}
       {% else %}
@@ -287,6 +318,10 @@ rows: [
 </div>
 </div>
 {% endif %}
+
+
+{# Questions moved onto their own page to separate the task of viewing a return and submitting or editing one - no longer needed after refinement
+
 
 {% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue") or (data.licences[data.ID].returns[data.returnIndex].status == "received") or data.edit == "true" %}
 
@@ -335,7 +370,7 @@ rows: [
     </div>
     </div>
 
-    {# Query options taken out of the above flow - no longer needed after refinement
+    Query options taken out of the above flow - no longer needed after refinement
       
       {
       value: "underQuery",
@@ -346,10 +381,10 @@ rows: [
       text: "Resolve query"
     } if data.returnStatus == 'underQuery'
     
-    #}
+   
 
 {% endif %}
-
+#}
 
 
 
