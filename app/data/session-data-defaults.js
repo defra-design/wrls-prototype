@@ -597,6 +597,7 @@ module.exports = {
                   "returns": [{
                                 "id":823188,
                                 "status": "due",
+                                "underQuery": false,
                                 "due": "20221128",
                                 "returnsCycle":"summer",
                                 "description":"River Swale - Helperby",
@@ -817,6 +818,7 @@ module.exports = {
                   "returns": [{
                                 "id":323188,
                                 "status": "completed",
+                                "underQuery": false,
                                 "due": "20230428",
                                 "returnsCycle":"summer",
                                 "description":"River Swale - Helperby",
@@ -1122,6 +1124,7 @@ module.exports = {
 
         "returns": [{"id":558734,
           "status":"due",
+          "underQuery": false,
           "due":"20241128",
           "returnsCycle":"summer",
           "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
@@ -1137,6 +1140,7 @@ module.exports = {
           "versions":[]
           },{"id":558735,
             "status":"due",
+            "underQuery": false,
             "due":"20241128",
             "returnsCycle":"summer",
             "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
@@ -1369,6 +1373,7 @@ module.exports = {
 
         "returns": [{"id":660257,
                     "status":"due",
+                    "underQuery": false,
                     "due":"20230728",
                     "returnsCycle":"winter and all year",
                     "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
@@ -1385,6 +1390,7 @@ module.exports = {
                     },
                     {"id":660257,
                     "status":"void",
+                    "underQuery": false,
                     "due":"20230428",
                     "returnsCycle":"winter and all year",
                     "description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
@@ -1606,6 +1612,7 @@ module.exports = {
                                   "returns": [{
                                                 "id":823187,
                                                 "status": "due",
+                                                "underQuery": false,
                                                 "due": "20221128",
                                                 "returnsCycle":"summer",
                                                 "description":"River Swale - Helperby",
@@ -2042,6 +2049,7 @@ module.exports = {
                           {
                             "id":823187,
                             "status": "due",
+                            "underQuery": false,
                             "due": "20211128",
                             "returnsCycle":"winter and all year",
                             "description":"Cherry tree farm - BOREHOLE A",
@@ -2057,6 +2065,7 @@ module.exports = {
                           {
                             "id":823187,
                             "status": "due",
+                            "underQuery": false,
                             "due": "20201128",
                             "returnsCycle":"winter and all year",
                             "description":"Cherry tree farm - BOREHOLE A",
@@ -2469,6 +2478,7 @@ module.exports = {
                                 {
                                   "id":323188,
                                   "status": "complete",
+                                  "underQuery": false,
                                   "due": "20240428",
                                   "returnsCycle":"winter and all year",
                                   "description":"Pear tree farm - BOREHOLE A and B",
@@ -3566,6 +3576,7 @@ module.exports = {
                                 {
                                   "id":323188,
                                   "status": "due",
+                                  "underQuery": false,
                                   "due": "20240428",
                                   "returnsCycle":"winter and all year",
                                   "description":"Pear tree farm - BOREHOLE A and B",
@@ -3798,6 +3809,7 @@ module.exports = {
                     "returns": [  {
                       "id":823187,
                       "status": "due",
+                      "underQuery": false,
                       "due": "20241128",
                       "returnsCycle":"winter and all year",
                       "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
@@ -3812,6 +3824,7 @@ module.exports = {
                     },{
                       "id":823188,
                       "status": "due",
+                      "underQuery": false,
                       "due": "20240428",
                       "returnsCycle":"summer",
                       "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
@@ -3826,6 +3839,7 @@ module.exports = {
                     },   {
                       "id":823187,
                       "status": "completed",
+                      "underQuery": false,
                       "due": "20231128",
                       "returnsCycle":"winter and all year",
                       "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
@@ -3840,6 +3854,7 @@ module.exports = {
                     },{
                       "id":823188,
                       "status": "completed",
+                      "underQuery": false,
                       "due": "20230428",
                       "returnsCycle":"summer",
                       "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
@@ -3855,6 +3870,7 @@ module.exports = {
                       {
                         "id":823187,
                         "status": "completed",
+                        "underQuery": false,
                         "due": "20221128",
                         "returnsCycle":"winter and all year",
                         "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
@@ -3869,6 +3885,7 @@ module.exports = {
                       },{
                         "id":823188,
                         "status": "completed",
+                        "underQuery": false,
                         "due": "20220428",
                         "returnsCycle":"summer",
                         "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
@@ -3884,6 +3901,7 @@ module.exports = {
                       {
                         "id":823187,
                         "status": "completed",
+                        "underQuery": false,
                         "due": "20211128",
                         "returnsCycle":"winter and all year",
                         "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
@@ -3898,6 +3916,7 @@ module.exports = {
                       },{
                         "id":823188,
                         "status": "completed",
+                        "underQuery": false,
                         "due": "20210428",
                         "returnsCycle":"summer",
                         "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
@@ -3913,6 +3932,7 @@ module.exports = {
                       {
                         "id":823187,
                         "status": "completed",
+                        "underQuery": false,
                         "due": "20201128",
                         "returnsCycle":"winter and all year",
                         "description":"Reservoir storage at Lemon tree farm - BOREHOLE A",
@@ -3927,6 +3947,7 @@ module.exports = {
                       },{
                         "id":823188,
                         "status": "completed",
+                        "underQuery": false,
                         "due": "20200428",
                         "returnsCycle":"summer",
                         "description":"Spray irrigation at Lemon tree farm - BOREHOLE A",
@@ -4073,6 +4094,7 @@ module.exports = {
                                         "returns": [{
                                                     "id":772318,
                                                     "status": "due",
+                                                    "underQuery": false,
                                                     "due": "20241028",
                                                     "returnsCycle":"winter and all year",
                                                     "description":"River Swale - Helperby SP1,2,3,4,5 (GW)",
@@ -4088,6 +4110,7 @@ module.exports = {
                                                     {
                                                       "id":772318,
                                                       "status": "complete",
+                                                      "underQuery": false,
                                                       "due": "20240728",
                                                       "returnsCycle":"winter and all year",
                                                       "description":"River Swale - Helperby SP1,2,3,4,5 (GW)",

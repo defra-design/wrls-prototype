@@ -289,6 +289,27 @@ function arrToObjectData(arrHeader, arrBody) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+///mark return under query feature
+router.get('/sandbox/licence/returns-current/under-query', (req, res) => {
+
+
+
+  //get the return start and end dates for the period
+  let licence = req.session.data.ID
+  let returnID = req.session.data.returnIndex
+
+  console.log(req.session.data.licences[licence].returns[returnID].underQuery)
+
+  if (req.session.data.licences[licence].returns[returnID].underQuery == false ){
+  req.session.data.licences[licence].returns[returnID].underQuery = true }
+  else {
+    req.session.data.licences[licence].returns[returnID].underQuery = false
+  }
+
+  res.redirect('return');
+});
+
+
 ////download CSV
 
 

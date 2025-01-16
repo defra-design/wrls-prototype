@@ -31,6 +31,16 @@
 <!--content block-->
 {% block service %}
 
+{# is licence under query? #}
+{% if data.licences[data.ID].returns[data.returnIndex].underQuery == true %}
+{{ govukNotificationBanner({
+  text: "This return has been marked under query"
+}) }}
+{% set queryText = "Resolve query" %}
+{% else %}
+{% set queryText = "Mark as under query" %}
+{% endif %}
+
 <!--Warning-->
 {% if data.licences[data.ID].returns[data.returnIndex].status == "void"%}
 {{ govukWarningText({
@@ -164,16 +174,23 @@ rows: [
   }
 ]
 }) }}
-<!--<a href="../../licence#returns">View licence</a>-->
+
 
 
 {% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue") or (data.licences[data.ID].returns[data.returnIndex].status == "received") or data.edit == "true" %}
-{{ govukButton({
-  text: "Submit return",
-  href: "submission/date-received?edit=false&returnStatus="
-}) }}
-{% endif %}
-
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Submit return",
+    href: "submission/date-received?edit=false&returnStatus="
+  }) }}
+  
+    {{ govukButton({
+      text: queryText,
+      classes: "govuk-button--secondary",
+      href: "under-query?edit=false&returnStatus="
+    }) }}
+  </div>
+  {% endif %}
 </div>
 </div>
 
@@ -183,19 +200,34 @@ rows: [
   <div class="govuk-grid-column-full">
     {% if data.licences[data.ID].returns[data.returnIndex].versions[versionID].nilReturn == true %}
     <h2 class="govuk-heading-l">Nil return</h2>
+    <div class="govuk-button-group">
     {{ govukButton({
       text: "Edit return",
-      href: "?edit=true&returnStatus=new#"
+      href: "submission/date-received?edit=true&returnStatus=new#"
     }) }}
+
+    {{ govukButton({
+      text: queryText,
+      classes: "govuk-button--secondary",
+      href: "under-query?edit=false&returnStatus="
+    }) }}
+  </div>
     {% else %}
     <h2 class="govuk-heading-l"><span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">{{data.licences[data.ID].returns[data.returnIndex].versions[versionID].lines | sumVolumes | toGovNumber}} </span><span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">cubic metres</span></span><br>
       <span class="govuk-body govuk-!-font-weight-bold govuk-body govuk-!-font-size-24">Total amount of water abstracted</span></h2>
 
     {% if data.versionID == "0" and data.licences[data.ID].returns[data.returnIndex].status !== "void" %}
+    <div class="govuk-button-group">
     {{ govukButton({
       text: "Edit return",
       href: "return-edit?edit=true&returnStatus=new#"
     }) }}
+    {{ govukButton({
+      text: queryText,
+      classes: "govuk-button--secondary",
+      href: "under-query?edit=false&returnStatus="
+    }) }}
+  </div>
     {% endif %}
 
    
