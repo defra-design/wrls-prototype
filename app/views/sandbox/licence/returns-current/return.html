@@ -141,7 +141,7 @@ rows: [
       text: data.licences[data.ID].returns[data.returnIndex].versions[data.versionID].dateReturnReceived | numberToGovukDate,
       classes: "meta-data__value"
     }
-  } if data.licences[data.ID].returns[data.returnIndex].versions and data.licences[data.ID].returns[data.returnIndex].status !== "received",
+  } if data.licences[data.ID].returns[data.returnIndex].versions and data.licences[data.ID].returns[data.returnIndex].status == "complete",
   {
     key: {
       text: "Date received",
@@ -170,7 +170,7 @@ rows: [
 {% if (data.licences[data.ID].returns[data.returnIndex].status == "due") or (data.licences[data.ID].returns[data.returnIndex].status == "open") or (data.licences[data.ID].returns[data.returnIndex].status == "overdue") or (data.licences[data.ID].returns[data.returnIndex].status == "received") or data.edit == "true" %}
 {{ govukButton({
   text: "Submit return",
-  href: "submission/how-to-submit?edit=false&returnStatus="
+  href: "submission/date-received?edit=false&returnStatus="
 }) }}
 {% endif %}
 

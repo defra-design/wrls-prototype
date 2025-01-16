@@ -91,36 +91,66 @@ rows: [
 ]
 }) }}
 
-
-<div class="govuk-grid-row govuk-!-margin-bottom-8">
-  <div class="govuk-grid-column-two-thirds">
-    <a href="../../licence#returns">View this licence</a>
-  </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+{% include "sandbox/_includes/returns/submission/notes.html" %}
+</div>
 </div>
 
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full govuk-!-margin-bottom-4">
+
+{{""|today}}
+
+{{ govukSummaryList({
+card: {
+title: {
+  text: "Reporting details",
+  classes: "govuk-!-font-size-27"
+}
+},
+rows: [
+{
+key: {
+text: "Return received"
+},
+value: {
+text: data.dateReturnReceived |numberToGovukDate
+},
+actions: {
+items: [
+  {
+    href: "../date-received?change=true",
+    text: "Change",
+    visuallyHiddenText: "return received"
+  }
+]
+}
+}
+]
+}) }}
+
+</div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
 
-<div class="govuk-grid-row govuk-!-margin-bottom-8">
-  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-8">
+      <div class="govuk-summary-list govuk-!-margin-bottom-0">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-0" >Nil return</h2>
+      <span class="govuk-summary-list__actions">
+                    <a class="govuk-link govuk-body"  href="how-to-submit">
+                    Change
+                      </a>
+      </span>
+  </div>
+  <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
+    </section>
+
       <form  method="post" class="form">
-
-        {{ govukCheckboxes({
-          idPrefix: "underQuery",
-          name: "underQuery",
-          fieldset: {
-            legend: {
-              text: "Nil return",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-          {
-          value: "underQuery",
-          text: "Mark as under query"
-          }
-          ]
-          }) }}
 
         <button type="submit" class="govuk-button">
           Submit

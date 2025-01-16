@@ -397,9 +397,15 @@ router.post('/returnStatus', function (req, res) {
 
   //if user only wants to mark as received and not enter data route accordingly (this is internal only)
   if (req.session.data.returnStatus == "received") {
-    res.redirect('date-received');
+   //Mark the return as received
+   let licence = req.session.data.ID
+   let returnID = req.session.data.returnIndex
+   req.session.data.licences[licence].returns[returnID].status = "received"
+   req.session.data.licences[licence].returns[returnID].dateReturnReceived = req.session.data.dateReturnReceived
+   req.session.data.returnSubmissionStatus = "received"
+    res.redirect('return-confirmation');
   } else if (req.session.data.returnStatus == "nil") {
-    res.redirect('date-received');
+    res.redirect('nil-return');
   } else if (req.session.data.returnStatus == "new") {
 
     //get the return start and end dates for the period
@@ -451,7 +457,7 @@ router.post('/returnStatus', function (req, res) {
 
     res.redirect('edit/new-volumes-or-readings');
   } else {
-    res.redirect('date-received');
+    res.redirect('readings-or-volumes');
   }
 
 
@@ -721,24 +727,12 @@ router.post('/date-received', function (req, res) {
     req.session.data.notificationTitle = notificationTitle
 
     res.redirect('edit/new-volumes-or-readings');
-  } else {
-  if (req.session.data.returnStatus == "nil") {
-    res.redirect('nil-return');
-  } else if (req.session.data.returnStatus == "received") {
-     //Mark the return as received
-  let licence = req.session.data.ID
-  let returnID = req.session.data.returnIndex
-  req.session.data.licences[licence].returns[returnID].status = "received"
-
-  req.session.data.licences[licence].returns[returnID].dateReturnReceived = req.session.data.dateReturnReceived
-
-  req.session.data.returnSubmissionStatus = "received"
-
-  res.redirect('return-confirmation');
-
-  } else {
-  res.redirect('readings-or-volumes');}
+  }  else {
+  res.redirect('how-to-submit');
 }
+
+
+
 });
 
 
