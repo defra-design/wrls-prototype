@@ -423,6 +423,17 @@ router.post('/returnStatus', function (req, res) {
 
   req.session.data.edit = "false"
 
+  if (req.session.data.change == "true" && req.session.data.returnStatus == "enter") {
+    //updating success banner
+    req.session.data.success = 1
+    //create the success banner
+    req.session.data.successMessage = successMessage.returnChanged
+    notificationTitle = "Changed"
+    req.session.data.notificationTitle = notificationTitle
+
+    res.redirect('edit/new-volumes-or-readings');
+  }  else {
+
   //if user only wants to mark as received and not enter data route accordingly (this is internal only)
   if (req.session.data.returnStatus == "received") {
    //Mark the return as received
@@ -488,7 +499,7 @@ router.post('/returnStatus', function (req, res) {
     res.redirect('readings-or-volumes');
   }
 
-
+  }
 });
 
 ///enter new volumes or readings

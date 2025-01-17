@@ -126,18 +126,31 @@ items: [
   }
 ]
 }
+},
+{
+key: {
+  text: "Nill return"
+  },
+  value: {
+  text: "Yes"
+  },
+  actions: {
+  items: [
+    {
+      href: "how-to-submit",
+      text: "Change",
+      visuallyHiddenText: "return received"
+    }
+  ]
+  }
 }
 ]
 }) }}
 
-</div>
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
 
 
 
+<!--Not needed 
     <section class="govuk-!-margin-bottom-8">
       <div class="govuk-summary-list govuk-!-margin-bottom-0">
       <h2 class="govuk-heading-l govuk-!-margin-bottom-0" >Nil return</h2>
@@ -149,12 +162,20 @@ items: [
   </div>
   <hr class="govuk-section-break  govuk-!-margin-bottom-2 govuk-section-break--visible">
     </section>
-
+-->
       <form  method="post" class="form">
 
-        <button type="submit" class="govuk-button">
-          Submit
-        </button>
+        <div class="govuk-button-group govuk-!-margin-top-9">
+          {{ govukButton({
+            text: "Confirm"
+          }) }}
+        
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "../confirm-cancel-return-submission"
+          }) }}
+        </div>
 
       </form>
 
