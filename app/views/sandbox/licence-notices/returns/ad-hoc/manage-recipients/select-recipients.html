@@ -1,0 +1,88 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Select recipients"%}
+<!--set question title-->
+{% set qTitle = "<h1 class ='govuk-heading-l'>"+title+"</h1>" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   
+
+<form method="post" novalidate>
+
+
+{% set recipients = data['licenceRecipients'] %}
+{% set contacts = [] %}
+
+
+
+{# loop through recipients and pick out email or address details add them to the contacts array to call later in the checkbox component #}
+{% for recipient in recipients %}
+
+
+
+
+{% if recipient.email.length %}
+ {% set contacts = contacts|push({
+    value: loop.index0,
+    text: recipient.email,
+    checked: data.newNotification.recipients | checkIfValueExists(recipient.email, 'email')
+  })
+  %} 
+  {% else %}
+  {% set address %} {{recipient.contactName}} <br> {{recipient.address | replaceComma | striptags(true) | escape | nl2br}} {% endset %}
+  {% set contacts = contacts|push({
+    value: loop.index0,
+    text: address|safe,
+    checked: data.newNotification.recipients | checkIfValueExists(recipient.address , 'address')
+  })
+  %} 
+
+  {% endif %}
+  {% endfor %}
+
+  <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-fieldset__heading">
+      Select recipients
+    </h1>
+  </legend>
+  <div id="selectedContacts-hint" class="govuk-hint">
+       Select all that apply.
+  </div>
+  <p class="govuk-body"><a class="govuk-link" href="single-use-address/enter-recipients-name-or-email-address">Set up a single use address or email address</a></p>
+
+
+  {{ govukCheckboxes({
+    name: "selectedContacts",
+    items: contacts
+  }) }}
+
+  </fieldset>
+
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  
+    
+  </div>
+
+</form>
+
+</div>
+</div>
+
+
+
+{% endblock %}

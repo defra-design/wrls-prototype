@@ -1,0 +1,63 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Send returns " + data.returnNotificationType %}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+
+{% block service %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form method="post" novalidate>
+
+      <h1 class="govuk-heading-l">{{title}}</h1>
+
+      <p class="govuk-body">Ad-hoc return {{data.returnNotificationType}} are ready to send.</p>
+
+     
+      {{ govukButton({
+        text: "Download recipients",
+        classes: "govuk-button--secondary govuk-!-margin-right-3 ",
+        href: "/public/files/returns/Returns{{data.returnNotificationType}}-RINV-ABCD123.csv"
+      }) }}
+
+      {{ govukButton({
+        text: "Manage recipients",
+        classes: "govuk-button--secondary",
+        href: "manage-recipients/select-recipients"
+      }) }}
+  
+
+      <!--<p class="govuk-body"><a class="govuk-body" href="/public/files/returns/Returns{{data.returnNotificationType}}-RINV-ABCD123.csv">Download recipients as a CSV file</a></p>-->
+
+     
+
+  
+      {% include "sandbox/_includes/notices/recipient-sending-table.html" %} 
+
+
+
+    {{ govukButton({
+      text: "Send " + data.newNotification.recipients|length + " " + data.returnNotificationType,
+      classes: "govuk-button--primary"
+    }) }}
+
+
+
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}

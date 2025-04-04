@@ -325,3 +325,19 @@ addFilter('formatDateToString', function formatDateToString(dateString) {
 
 
 });
+
+
+//Checks if a specific value exists in an array of objects for a given property.
+  /*
+   * Args:
+   * arr: An array of objects.
+   * valueToCheck: The value to search for.
+   * propertyToCheck: The name of the property to check within each object.
+   *
+   * Returns:
+   * true if the value exists in the specified property of at least one object,
+   * false otherwise.
+   */
+addFilter('checkIfValueExists', function checkIfValueExists(arr, valueToCheck, propertyToCheck) {
+  return arr.some(obj => obj[propertyToCheck] === valueToCheck);
+});

@@ -1876,6 +1876,11 @@ module.exports = {
           "id": ['1'],
           "method": "letter",
           "addressID": "6"
+        },{
+          "type": "returns",
+          "id": ['2'],
+          "method": "email",
+          "addressID": ""
         }],
 
         //licence Settings

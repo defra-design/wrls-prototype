@@ -1,0 +1,46 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "Enter recipients name or email address"%}
+<!--set question title-->
+{% set qTitle = title %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+      {{ govukInput({
+      name: "recipientsNameOrEmail",
+      id: "recipientsNameOrEmail",
+      value: data.recipientsNameOrEmail,
+      label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+      }
+      }) }}
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

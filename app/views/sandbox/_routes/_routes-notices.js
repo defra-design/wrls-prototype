@@ -3,6 +3,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here - above the module.exports line
 const fs = require('fs');
+const notification = require('notifications-node-client/client/notification');
 
 //get today's date
 let date = new Date();
@@ -389,7 +390,7 @@ router.get('/returns/ad-hoc/enter-licences', function(req, res) {
 router.post('/returns/ad-hoc/enter-licences', function(req, res) {
   req.session.data.adHocLicences = []
   let noReturns = []
-
+  
 /*  
 function splitStringByCommasAndNewlines(str) {
   const regex = /,|\n/g;
@@ -469,6 +470,174 @@ for (var [i, v] of licenceIndexes.entries()) {
 }
 
 
+//get contacts
+
+    //getting the contact data
+    let contacts = req.session.data['contacts']
+    //get the licence data
+    let licences = req.session.data['licences']
+    //get the address data
+    let addresses = req.session.data['addresses']
+    // declare recipients
+    let recipients = [];
+
+    let lIndex = ""
+
+for (var [licenceIndex, licence] of licences.entries()){
+ 
+  if (licence.number == req.session.data['enterLicences']){
+     lIndex = licenceIndex
+    console.log(lIndex)
+  }
+}
+
+
+
+    //licenceList = req.session.data['licenceList']
+  
+      //loop through the contacts and set the contact index to the loop index
+
+        let licenceHolder = licences[lIndex].holder
+   
+              ////console.log(licence.number)
+              licenceContacts = licences[lIndex].contacts
+
+              
+           console.log(licenceContacts)
+             //get all the return contacts for the licence
+              for(licenceContact of licenceContacts){
+                if (licenceContact.type == "returns"){
+
+                            /*"type": "returns",
+                              "id": ['1'],
+                               "method": "letter",
+                              "addressID": "6"*/
+
+                             // //console.log(licenceContact)
+                  //contact name
+                  let id = licenceContact.id[0]
+                  let contactName = contacts[id].name
+
+                 let sentTo = ""
+                 
+                  //comms method
+                 let method = licenceContact.method
+
+                 let email = contacts[id].email
+                 let addressID = licenceContact.addressID
+                 let address = ""
+                 if(addressID.length){
+                 address = addresses[addressID].address1 + "," + addresses[addressID].city + "," + addresses[addressID].postcode
+                } 
+                
+                 if (method == "email"){
+                  sentTo = email
+                 } else {
+                   sentTo = licence.holder + "," + "FAO " + contactName + ","+ address
+                 }
+                  
+                licenceNumber = licences[lIndex].number
+
+
+                sentTo = sentTo
+                method = method
+                let status = []
+
+          
+
+                 recipient = {
+                  licenceNumber, //AN/123/213/123
+                  licenceHolder,
+                 // returnsRef,
+                 // returnsPeriodStart,
+                 // returnsPeriodEnd,
+                 // returnsDueDate,
+                  email,
+                  address,
+                  contactName,
+                  sentTo, //Public Water Plc, FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
+                  method, // "Letter"
+                  status
+                }
+
+                
+              recipients.push(recipient)
+           
+
+                }
+         
+                console.log(recipients)
+              
+            }
+          
+    //generate CSV
+function generateCSV(data, fileName) {
+  let csvContent = "Licences,Return references,Returns period start date,Returns period end date,Returns due date,Message type,Message reference,Licence holder,Recipient name,Email,Address line 1,Address line 2,Addresss line 3,Address line 4,Address line 5,Address line 6,Postcode\r\n";
+
+  data.forEach(item => {
+    const splitAddress = item.address.split(",");
+    const row = `${item.licenceNumber},${item.method},${req.session.data.returnNotificationType},${item.licenceHolder},${item.contactName},${item.email},${splitAddress[0]},${splitAddress[1]},${splitAddress[2]},${splitAddress[3]},${splitAddress[4]},${splitAddress[5]},${splitAddress[6]}\r\n`;
+    csvContent += row;
+  });
+
+  fs.writeFile(fileName, csvContent, (err) => {
+    if (err) throw err;
+    //console.log('CSV file saved!');
+  });
+
+}
+
+generateCSV(recipients, 'app/assets/files/returns/Returns'+req.session.data.returnNotificationType+'-RINV-ABCD123.csv');
+
+
+//dedupe and generate notification  
+
+function deduplicateByLicenceAndContact(data) {
+  const seen = new Map();
+
+  return data.reduce((acc, current) => {
+    const key = `${current.licenceNumber}-${current.contactName}`;
+
+    if (!seen.has(key)) {
+      seen.set(key, { ...current }); // Spread current object to avoid mutation
+      acc.push(seen.get(key));
+    } else {
+      seen.get(key).returnsRef.push(...current.returnsRef); // Combine returnsRef
+      // No need to modify existing object in acc, seen handles the update
+    }
+
+    return acc;
+  }, []);
+}
+  
+  const deduplicatedData = deduplicateByLicenceAndContact(recipients);
+
+  recipients= deduplicatedData
+
+////console.log(deduplicatedData)
+
+
+
+    //add details for the notification
+    let date = todayNumber
+    let notification = "Returns: " + req.session.data.returnNotificationType
+    let sentBy = "youremailaddress@defra.gov.uk"
+    let numberOfrecipients = recipients.length
+    let problems = ""
+  
+
+      let newNotification = {
+        date,
+        notification,
+        sentBy,
+        numberOfrecipients,
+        recipients,
+        problems
+      };
+
+      //the notification
+      req.session.data.newNotification = newNotification
+      req.session.data.licenceRecipients = recipients
 
 ////console.log("No returns = " + req.session.data.noReturns + "/n licence Indexes = " + req.session.data.licenceIndexes + "/n Ad hoc licences = " + req.session.data.adHocLicences)
 
@@ -480,7 +649,7 @@ if (noReturns.length) {
   req.session.data.statusMessage = 1
   res.redirect('enter-licences');
 } else {
-  res.redirect('check-returns-details');
+  res.redirect('send-returns');
 }
 
 
@@ -501,7 +670,212 @@ router.post('/returns/ad-hoc/select-returns', function(req, res) {
 });
 
 
-//change which contacts are selected
+
+//Manage recipients are selected
+
+router.get('/returns/ad-hoc/manage-recipients/select-recipients', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+
+  res.render(folder + '/returns/ad-hoc/manage-recipients/select-recipients');
+});
+
+router.post('/returns/ad-hoc/manage-recipients/select-recipients', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+   
+  let recipients = req.session.data.licenceRecipients
+  let newRecipients = req.session.data.selectedContacts
+
+  function filterItemsByIndices(arrayOfObjects, indicesToKeep) {
+    if (!Array.isArray(arrayOfObjects) || !Array.isArray(indicesToKeep)) {
+      return "Invalid input. Both inputs must be arrays.";
+    }
+  
+    const filteredArray = [];
+  
+    for (let i = 0; i < arrayOfObjects.length; i++) {
+      if (indicesToKeep.includes(String(i))) {
+        filteredArray.push(arrayOfObjects[i]);
+      }
+    }
+  
+    return filteredArray;
+  }
+
+  req.session.data.newNotification.recipients = filterItemsByIndices(recipients, newRecipients)
+  
+  
+
+  res.redirect('../send-returns');
+});
+
+
+//Single use address
+
+router.get('/returns/ad-hoc/manage-recipients/single-use-address/enter-recipients-name-or-email-address', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+  res.render(folder + '/returns/ad-hoc/manage-recipients/single-use-address/enter-recipients-name-or-email-address');
+});
+
+router.post('/returns/ad-hoc/manage-recipients/single-use-address/enter-recipients-name-or-email-address', function(req, res) {
+  req.session.data.back = req.headers.referer
+
+  if (req.session.data.recipientsNameOrEmail.includes('@')){
+  let recipients = req.session.data.licenceRecipients
+  let notificationRecipients = req.session.data.newNotification.recipients
+
+ let licenceNumber = req.session.data['enterLicences']
+ let licenceHolder = req.session.data.newNotification.recipients[0].licenceNumber
+ let email = req.session.data.recipientsNameOrEmail
+ let address = ""
+ let contactName = ""
+ let sentTo = email
+ let method = "email"
+ let status = []
+
+ let recipient = {
+    licenceNumber, //AN/123/213/123
+    licenceHolder,
+   // returnsRef,
+   // returnsPeriodStart,
+   // returnsPeriodEnd,
+   // returnsDueDate,
+    email,
+    address,
+    contactName,
+    sentTo, //Public Water Plc, FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
+    method, // "Letter"
+    status
+  }
+
+ recipients.push(recipient)
+ notificationRecipients.push(recipient)
+
+ res.redirect('../select-recipients');
+} else {
+
+  res.redirect('enter-the-uk-postcode');
+}
+
+  
+});
+
+
+//Enter the postcode
+router.get('/returns/ad-hoc/manage-recipients/single-use-address/enter-the-uk-postcode', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+
+  res.render(folder + '/returns/ad-hoc/manage-recipients/single-use-address/enter-the-uk-postcode');
+});
+
+router.post('/returns/ad-hoc/manage-recipients/single-use-address/enter-the-uk-postcode', function(req, res) {
+  req.session.data.back = req.headers.referer
+
+  res.redirect('select-the-uk-postcode');
+});
+
+
+//select the uk postcode
+router.get('/returns/ad-hoc/manage-recipients/single-use-address/select-the-uk-postcode', function(req, res) {
+  req.session.data.back = req.headers.referer
+  console.log('get')
+  req.session.data.statusMessage = 0
+  res.render(folder + '/returns/ad-hoc/manage-recipients/single-use-address/select-the-uk-postcode');
+});
+
+router.post('/returns/ad-hoc/manage-recipients/single-use-address/select-the-uk-postcode', function(req, res) {
+  req.session.data.back = req.headers.referer
+  
+  let name = req.session.data.recipientsNameOrEmail
+  let address = req.session.data.address
+
+  let recipients = req.session.data.licenceRecipients
+  let notificationRecipients = req.session.data.newNotification.recipients
+
+ let licenceNumber = req.session.data['enterLicences']
+ let licenceHolder = req.session.data.newNotification.recipients[0].licenceNumber
+ let email = ""
+ let contactName = name
+ let sentTo = name + "," + address
+ let method = "letter"
+ let status = []
+
+ let recipient = {
+    licenceNumber, //AN/123/213/123
+    licenceHolder,
+   // returnsRef,
+   // returnsPeriodStart,
+   // returnsPeriodEnd,
+   // returnsDueDate,
+    email,
+    address,
+    contactName,
+    sentTo, //Public Water Plc, FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
+    method, // "Letter"
+    status
+  }
+
+ recipients.push(recipient)
+ notificationRecipients.push(recipient)
+
+ res.redirect('../select-recipients');
+
+});
+
+
+//Enter the address manually
+router.get('/returns/ad-hoc/manage-recipients/single-use-address/enter-the-address-manually', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+
+  res.render(folder + '/returns/ad-hoc/manage-recipients/single-use-address/enter-the-address-manually');
+});
+
+router.post('/returns/ad-hoc/manage-recipients/single-use-address/enter-the-address-manually', function(req, res) {
+  req.session.data.back = req.headers.referer
+
+  let address = req.session.data.subBuildingName +","+ req.session.data. buildingNumber  +","+ req.session.data. buildingName +","+  req.session.data.streetName +","+ req.session.data.addressTown +","+ req.session.data.addressCounty +","+ req.session.data.addressPostcode +","+ req.session.data.addressCountry
+  address = address.replace(/,,+/g, ',');
+
+  let name = req.session.data.recipientsNameOrEmail
+
+
+  let recipients = req.session.data.licenceRecipients
+  let notificationRecipients = req.session.data.newNotification.recipients
+
+ let licenceNumber = req.session.data['enterLicences']
+ let licenceHolder = req.session.data.newNotification.recipients[0].licenceNumber
+ let email = ""
+ let contactName = name
+ let sentTo = name + "," + address
+ let method = "letter"
+ let status = []
+
+ let recipient = {
+    licenceNumber, //AN/123/213/123
+    licenceHolder,
+   // returnsRef,
+   // returnsPeriodStart,
+   // returnsPeriodEnd,
+   // returnsDueDate,
+    email,
+    address,
+    contactName,
+    sentTo, //Public Water Plc, FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
+    method, // "Letter"
+    status
+  }
+
+ recipients.push(recipient)
+ notificationRecipients.push(recipient)
+
+ res.redirect('../select-recipients');
+});
+
+//change which contacts are selected (old route)
 router.get('select-returns', function(req, res) {
   req.session.data.back = req.headers.referer
   req.session.data.statusMessage = 0
@@ -514,9 +888,13 @@ router.post('/returns/ad-hoc/select-contacts', function(req, res) {
 });
 
 
+router.get('send-returns', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+  res.render(folder + '/returns/ad-hoc/send-returns');
+});
 
-
-//show the returns and contact details licence by licence
+//show the returns and contact details licence by licence (not implemented see send-returns)
 router.get('check-returns-details', function(req, res) {
   req.session.data.back = req.headers.referer
   req.session.data.statusMessage = 0
