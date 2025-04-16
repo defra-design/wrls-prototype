@@ -1,0 +1,173 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Details for " + data.licences[data.ID].number %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+<!--custom back-->
+{{ govukBackLink({
+  text: "Back to monitoring station",
+  href: "../station?stationID="+data.stationID
+}) }}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
+      <span class="govuk-caption-l">{{[data.stations[data.stationID].catchmentName]}}</span>
+      {{title}}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+     <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Last water abstraction alert sent</h2>
+     {% for licence in data['licences']%}
+           {% if licence.number == data.licences[data.ID].number %}
+           {% if data.licences[loop.index0]['communications'].length %}
+           {% set communications = data.licences[loop.index0]['communications'] %}
+           <p class="govuk-body">{{communications[0].type.split(" ")[0] | capitalize}} {{communications[0].method}} on {{communications[0].sent}} sent to {{communications[0].contactEmail}}</p>
+           {% else %}
+           {% set communications = "" %}
+           <p class="govuk-body">No alert sent</p>
+           {% endif %}
+           {% endif %}
+     {% endfor %}
+    
+     </div>
+     </div>
+
+     <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-full">
+        <!--getting the licence data-->
+          <!--set station ID to blank-->
+          {% set stationID = "" %}
+          <!--loop through stations-->
+          {% set stations = data['stations'] %}
+          {% for station in stations %}
+
+          <!--set station number and name-->
+          {% set stationID = loop.index0 %}
+          {% set stationName = station.label %}
+          {% set catchmentName = station.catchmentName %}
+
+          <!--loop through the station tags-->
+          {% set tags = data.stations[stationID]['tags'] %}
+          {% for tag in tags %}
+
+          <!--set tag number-->
+          {% set tagNumber = loop.index0 %}
+          {% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
+
+
+          <!--check for licence number matches-->
+          {% if tagLicenceNumber == data.licences[data.ID].number %}
+
+
+          <!--if matched get tag details loop through the tags for that licence-->
+          {% set tagValues = station.tags[tagNumber]['tagValues'] %}
+
+          {% for i in tagValues %}
+          {% set tagValueNumber = loop.index0 %}
+          {% set thresholdValue = i.thresholdValue %}
+          {% set thresholdUnits = i.thresholdUnits' %}
+
+          {% set notificationType = i.notificationType %}
+          {% set conditionType = i.conditionType %}
+          {% set reductionAmount = i.reductionAmount %}
+          {% set reductionAmountUnits = i.reductionAmountUnits %}
+          {% set maxVolume = i.maxVolumeLimit %}
+          {% if conditionType == "reduce" %}
+          {% if maxVolume == "yes" %}
+          {% set conditionType = conditionType + " with a maximum volume limit"%}
+          {% else %}
+          {% set conditionType = conditionType %}
+          {% endif %}
+          {% endif %}
+          {% set linkedCondition = i.linkedCondtion %}
+
+          <div class="govuk-grid-row govuk-!-margin-bottom-6">
+            <div class="govuk-grid-column-full">
+          <!-- licence condition title -->
+
+
+
+           {{ govukSummaryList({
+            card: {
+              title: {
+                html: conditionType | capitalize + " tag<div class='govuk-body-s govuk-!-margin-bottom-0'>Created on 27 January 2024 by tim.teace@ea.gov.uk</div>"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "../licence-notices/tagging/remove-tag?ID=" + data['ID'] + "&tagNumber=" + tagNumber + "&tagValueNumber=" + tagValueNumber + "&stationID=" + stationID,
+                    text: "Remove tag",
+                    visuallyHiddenText: "of University of Gloucestershire"
+                  }
+                ]
+              }
+            },
+             rows: [
+               {
+                 key: {
+                   text: "Threshold"
+                 },
+                 value: {
+                  html: thresholdValue + thresholdUnits | units | safe
+                 }
+               },
+               {
+                 key: {
+                   text: "Type"
+                 },
+                 value: {
+                  html: conditionType | capitalize
+                 }
+               },
+               {
+                 key: {
+                   text: "Linked condition"
+                 },
+                 value: {
+                  html: linkedCondition
+                 }
+               },
+               {
+                key: {
+                  text: "Effect of restriction"
+                },
+                value: {
+                 html: "Abstraction must " + conditionType + " unless the flow of water in the River Dikler as measured by the Agency at Station reference 1029TH (Bourton Dickler Gauging Station) is equal to or greater than" + thresholdValue + thresholdUnits | units | safe +", and the abstraction shall not cause the flow at the said reference point to fall below that rate."
+                }
+              }
+               
+             ]
+           }) }}
+
+         </div>
+         </div>
+        
+    
+         {% endfor %}
+         {% endif %}
+         {% endfor %}
+         {% endfor %}
+    
+    
+             
+      </div>
+    </div>
+
+    {% endblock %}

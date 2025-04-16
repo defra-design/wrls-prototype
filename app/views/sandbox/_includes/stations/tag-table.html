@@ -5,7 +5,26 @@
 {% set tags = data.stations[data.stationID]['tags'] %}
 {% if tags.length %}
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Licences linked to this monitoring station</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-0">Licences linked to this monitoring station
+
+  <div class="govuk-button-group govuk-!-margin-top-3 govuk-!-margin-bottom-0">
+
+
+    {{ govukButton({
+      text: "Tag a licence",
+      href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
+      classes: "govuk-button--secondary"
+    }) }}
+  
+   {# {{ govukButton({
+      text: "Remove a tag",
+      href: "licence-notices/tagging/which-licence-do-you-want-to-remove-tags-for?stationID=" + [data.stationID],
+      classes: "govuk-button--secondary"
+    }) }} #}
+  </div>
+  
+</caption>
+  
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header ">Licence</th>
@@ -13,7 +32,9 @@
 
   <th scope="col" colspan="3" class="govuk-table__header ">Flow and level restriction<br> type and threshold </th>
 
-      <th scope="col" colspan="2" class="govuk-table__header ">Last type of alert  <br>sent and date issued</th>
+      <th scope="col" colspan="2" class="govuk-table__header ">Last type of alert <br>sent and date issued</th>
+
+      <th scope="col" class="govuk-table__header ">Action</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -86,7 +107,8 @@
            {% endif %}
            {% endfor %}
 
-
+           <td class="govuk-table__cell"> {% for licence in data['licences']%}
+            {% if licence.number == i.licenceNumber %}<a href="station/tag-details?ID={{loop.index0}}" class="govuk-body">Details</a>{% endif %}{% endfor%}</td>
     </tr>
     {% endfor %}
 
@@ -95,30 +117,13 @@
   </tbody>
 </table>
 
-
-<div class="govuk-button-group">
-
-
+{% else %}
+  <p class="govuk-body">There are no licences tagged with restrictions for this monitoring station</p>
+  
   {{ govukButton({
     text: "Tag a licence",
     href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
     classes: "govuk-button--secondary"
   }) }}
-
-  {{ govukButton({
-    text: "Remove a tag",
-    href: "licence-notices/tagging/which-licence-do-you-want-to-remove-tags-for?stationID=" + [data.stationID],
-    classes: "govuk-button--secondary"
-  }) }}
-</div>
-
-{% else %}
-<p class="govuk-body">There are no licences tagged with restrictions for this monitoring station</p>
-
-{{ govukButton({
-  text: "Tag a licence",
-  href: "licence-notices/tagging/enter-the-hands-off-flow-or-level-threshold?stationID=" + [data.stationID],
-  classes: "govuk-button--secondary"
-}) }}
-
-{% endif %}
+  
+  {% endif %}

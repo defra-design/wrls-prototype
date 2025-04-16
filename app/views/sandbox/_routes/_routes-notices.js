@@ -1491,6 +1491,12 @@ router.post('/send-a-water-abstraction-alert/remove-from-the-alert-send-list', f
 
 ////////////////////////////////////////////////////////////////////////////
 ////TAG A LICENCE
+router.get('/sandbox/station', function(req, res) {
+  req.session.data.tagRemoved = 0
+  req.session.data.back = req.headers.referer
+  res.render('/sandbox/station');
+});
+
 
 
 ///Set the threshold
@@ -1738,9 +1744,9 @@ router.post('/tagging/remove-tag', function(req, res) {
     }
   }
 
+ req.session.data.tagRemoved = 1
 
-
-  res.redirect('/sandbox/licence/conditions?ID=' + licenceID);
+  res.redirect('/sandbox/station?stationID=' + stationID);
 
 
 
@@ -1861,8 +1867,9 @@ router.post('/tagging/you-are-about-to-remove-tags', function(req, res) {
  }
  }
 }
-
-
+  
+  console.log("removed")
+  req.session.data.tagRemoved = 1
   res.redirect('/sandbox/station?stationID=' + stationID);
 
 

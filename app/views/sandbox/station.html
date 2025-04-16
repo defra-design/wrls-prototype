@@ -19,7 +19,19 @@
 <!--content block-->
 {% block service %}
 
+<!--removed tag banner-->
+{% if data.tagRemoved == 1 %}
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    Tag removed for {{data.licences[data.ID].number}}.
+  </p>
+{% endset %}
 
+{{ govukNotificationBanner({
+  html: html,
+  titleText: "Updated"
+}) }}
+{% endif %}
 
 <!-- page title -->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -29,7 +41,7 @@
       {{title}}
     </h1>
 
-    {% set metaData %}
+  
     {{ govukSummaryList({
     classes: 'govuk-summary-list--no-border',
     rows: [
@@ -86,12 +98,7 @@
     ]
     }) }}
 
-    {% endset %}
-
-    {{ govukDetails({
-  summaryText: "Station details",
-  html: metaData
-}) }}
+ 
 
 
   </div>
@@ -108,6 +115,9 @@
   </div>
 </div>
 {% endif %}
+
+<!--divider-->
+<div class="divider govuk-!-margin-bottom-7"></div>
 
 <!--
 <div class="govuk-grid-row govuk-!-margin-bottom-9">
@@ -130,7 +140,8 @@
     <!--Licence summary -->
     {% include "sandbox/_includes/stations/tag-table.html" %}
 
-
+</div>
+</div>
 
 
 
