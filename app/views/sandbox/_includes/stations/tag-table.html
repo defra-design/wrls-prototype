@@ -108,7 +108,7 @@
            {% endfor %}
 
            <td class="govuk-table__cell"> {% for licence in data['licences']%}
-            {% if licence.number == i.licenceNumber %}<a href="station/tag-details?ID={{loop.index0}}" class="govuk-body">Details</a>{% endif %}{% endfor%}</td>
+            {% if licence.number == i.licenceNumber %}<a href="station/tag-details?ID={{loop.index0}}&tagSuperseded=false" class="govuk-body">Details</a>{% endif %}{% endfor%}</td>
     </tr>
     {% endfor %}
 

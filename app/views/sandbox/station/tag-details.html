@@ -51,6 +51,14 @@
 
      <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-full">
+       {% if data.tagSuperseded == "true" %}
+        {{ govukWarningText({
+          text: "This tag is linked to a condition that has been superseded.",
+          iconFallbackText: "Warning"
+        }) }}
+        {% endif %}
+ 
+
         <!--getting the licence data-->
           <!--set station ID to blank-->
           {% set stationID = "" %}
