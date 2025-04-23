@@ -649,11 +649,32 @@ if (noReturns.length) {
   req.session.data.statusMessage = 1
   res.redirect('enter-licences');
 } else {
-  res.redirect('send-returns');
+  res.redirect('select-type');
 }
 
 
   
+});
+
+//change which returns are selected
+router.get('select-type', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+  res.render(folder + '/returns/ad-hoc/select-type');
+});
+
+router.post('/returns/ad-hoc/select-type', function(req, res) {
+  req.session.data.back = req.headers.referer
+
+
+  //route for paper forms
+  if (req.session.data.noticeType == "submit using a paper form invitation" ){
+    res.redirect('select-returns');
+  } else {
+    res.redirect('send-returns');
+  }
+
+
 });
 
 
@@ -666,7 +687,7 @@ router.get('select-returns', function(req, res) {
 
 router.post('/returns/ad-hoc/select-returns', function(req, res) {
   req.session.data.back = req.headers.referer
-  res.redirect('check-returns-details');
+  res.redirect('send-returns');
 });
 
 

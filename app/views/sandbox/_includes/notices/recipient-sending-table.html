@@ -8,7 +8,7 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header ">Recipients</th>
-      <th scope="col" class="govuk-table__header ">Licence number</th>
+      <th scope="col" class="govuk-table__header ">Licence number {% if data.noticeType == "submit using a paper form invitation" %} and returns {% endif %}</th>
       <th scope="col" class="govuk-table__header ">Method</th>
 
     </tr>
@@ -33,7 +33,7 @@
   {% endset %}
    <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{i.sentTo | replaceComma | striptags(true) | escape | nl2br}}</td>
-    <td class="govuk-table__cell">{{i.licenceNumber}}</td>
+    <td class="govuk-table__cell">{{i.licenceNumber}}{% if data.noticeType == "submit using a paper form invitation" %}{% for return in data.selectedReturns %}<br>{{data.licences[data.licenceID].returns[return].id + " - " + data.licences[data.licenceID].returns[return].returnsPeriodStart |govukDate + " to " + data.licences[data.licenceID].returns[return].returnsPeriodEnd |govukDate}}{% endfor %}{% endif %}</td>
     <td class="govuk-table__cell">{{i.method | capitalize}}</td>
     </tr>
    {% endfor %}

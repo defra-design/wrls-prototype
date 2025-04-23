@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Which return do you want to send?"%}
+{% set title = "Select the notice type"%}
 <!--set question title-->
 {% set qTitle = title %}
 
@@ -21,25 +21,10 @@
 
     <form method="post" novalidate>
 
-      {% set returns = [] %}
-
-      {% for return in data.licences[data.licenceID].returns %}
-     
 
 
-
-     {% set returns = returns|push( {
-        value: loop.index0,
-        text: return.id + " " +return.purpose,
-        hint: { text: return.returnsPeriodStart |govukDate + " to " + return.returnsPeriodEnd |govukDate},
-        checked: checked("selectedReturns", loop.index0|string)
-      })
-      %}  
-
-      {% endfor %}
-
-      {{ govukCheckboxes({
-        name: "selectedReturns",
+      {{ govukRadios({
+        name: "noticeType",
         fieldset: {
           legend: {
             text: title,
@@ -47,10 +32,18 @@
             classes: "govuk-fieldset__legend--l"
           }
         },
-        hint: {
-          text: "Select all that apply."
+        items: [
+        {
+          value: "standard returns invitation",
+          text: "Standard returns invitation",
+          checked: checked("noticeType", "standard returns invitation")
         },
-        items: returns
+        {
+          value: "submit using a paper form invitation",
+          text: "Submit using a paper form invitation",
+          checked: checked("noticeType", "submit using a paper form invitation")
+        }
+        ]
       }) }}
 
       <button type="submit" class="govuk-button">

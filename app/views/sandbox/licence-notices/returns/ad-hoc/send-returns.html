@@ -21,7 +21,7 @@
 
       <h1 class="govuk-heading-l">{{title}}</h1>
 
-      <p class="govuk-body">Ad-hoc return {{data.returnNotificationType}} are ready to send.</p>
+      <p class="govuk-body govuk-!-margin-bottom-6">Ad-hoc {{data.newNotification.recipients|length |plural (data.noticeType, showNumber=false)}} {{data.newNotification.recipients|length |plural ("is", showNumber=false)}} ready to send.</p>
 
      
       {{ govukButton({
@@ -32,8 +32,14 @@
 
       {{ govukButton({
         text: "Manage recipients",
-        classes: "govuk-button--secondary",
+        classes: "govuk-button--secondary govuk-!-margin-right-3",
         href: "manage-recipients/select-recipients"
+      }) }}
+
+      {{ govukButton({
+        text: "Change notice type",
+        classes: "govuk-button--secondary",
+        href: "select-type"
       }) }}
   
 
