@@ -645,6 +645,8 @@ function deduplicateByLicenceAndContact(data) {
 03/28/60/0032
 03/28/60/0035,00/22/001/02,03/28/60/0726,03/28/61/065
 */
+if (req.session.data.change !== "true" ){
+
 if (noReturns.length) {
   req.session.data.statusMessage = 1
   res.redirect('enter-licences');
@@ -652,8 +654,17 @@ if (noReturns.length) {
   res.redirect('select-type');
 }
 
+} else {
+//was thinking about doing a different route for changing the licence number but realised the returns are conditional on the licence number
+  if (noReturns.length) {
+    req.session.data.statusMessage = 1
+    res.redirect('enter-licences');
+  } else {
+    res.redirect('select-type');
+  }
 
-  
+}
+
 });
 
 //change which returns are selected
@@ -671,7 +682,7 @@ router.post('/returns/ad-hoc/select-type', function(req, res) {
   if (req.session.data.noticeType == "submit using a paper form invitation" ){
     res.redirect('select-returns');
   } else {
-    res.redirect('send-returns');
+    res.redirect('check-notice-type');
   }
 
 
@@ -686,6 +697,19 @@ router.get('select-returns', function(req, res) {
 });
 
 router.post('/returns/ad-hoc/select-returns', function(req, res) {
+  req.session.data.back = req.headers.referer
+  res.redirect('check-notice-type');
+});
+
+//change which returns are selected
+router.get('check-notice-type', function(req, res) {
+  req.session.data.back = req.headers.referer
+  req.session.data.statusMessage = 0
+  req.session.data.change = "false"
+  res.render(folder + '/returns/ad-hoc/check-notice-type');
+});
+
+router.post('/returns/ad-hoc/check-notice-type', function(req, res) {
   req.session.data.back = req.headers.referer
   res.redirect('send-returns');
 });

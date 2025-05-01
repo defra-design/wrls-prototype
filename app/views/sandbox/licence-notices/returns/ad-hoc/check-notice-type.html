@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Check recipients and send" %}
+{% set title = "Check the notice type" %}
 <!--set question title-->
 {% set qTitle = title %}
 
@@ -21,10 +21,7 @@
 
       <h1 class="govuk-heading-l">{{title}}</h1>
 
-      <p class="govuk-body">Ad-hoc {{data.newNotification.recipients|length |plural (data.noticeType, showNumber=false)}} {{data.newNotification.recipients|length |plural ("is", showNumber=false)}} ready to send.</p>
-{#
 {% set returns = [] %}
-{% set summaryClasses = "govuk-summary-list--no-border" %}
 {% if data.noticeType == "submit using a paper form invitation" %}  
 {% set summaryClasses = "" %}
 {% for return in data.selectedReturns %}
@@ -37,11 +34,27 @@ data.licences[data.licenceID].returns[return].id + " - " + data.licences[data.li
 
 
       {{ govukSummaryList({
-        classes: "govuk-!-margin-bottom-7  " + summaryClasses,
   rows: [
+   {
+      key: {
+        text: "Licence number"
+      },
+      value: {
+        text: data.enterLicences
+      },
+      actions: {
+        items: [
+          {
+            href: "enter-licences?change=true",
+            text: "Change",
+            visuallyHiddenText: "licence number"
+          }
+        ]
+      }
+    },
     {
       key: {
-        text: "Notice type"
+        text: "Returns notice type"
       },
       value: {
         text: data.newNotification.recipients|length |plural (data.noticeType, showNumber=false) | capitalize
@@ -57,7 +70,6 @@ data.licences[data.licenceID].returns[return].id + " - " + data.licences[data.li
       }
     },
       {
-      classes: "border-bottom-none",
       key: {
         text: "Returns"
       },
@@ -78,10 +90,6 @@ data.licences[data.licenceID].returns[return].id + " - " + data.licences[data.li
       })
     }}
 
-#}
-    <!--divider
-    <div class="divider govuk-!-margin-bottom-7"></div>-->
-
 
    
 {# 
@@ -90,36 +98,20 @@ data.licences[data.licenceID].returns[return].id + " - " + data.licences[data.li
         classes: "govuk-button--secondary",
         href: "select-type"
       }) }}
-  #}
+ 
 
       <!--<p class="govuk-body"><a class="govuk-body" href="/public/files/returns/Returns{{data.returnNotificationType}}-RINV-ABCD123.csv">Download recipients as a CSV file</a></p>-->
 
-       {{ govukButton({
-        text: "Download recipients",
-        classes: "govuk-button--secondary govuk-!-margin-right-3",
-        href: "/public/files/returns/Returns{{data.returnNotificationType}}-RINV-ABCD123.csv"
-      }) }}
-
-      {{ govukButton({
-        text: "Manage recipients",
-        classes: "govuk-button--secondary",
-        href: "manage-recipients/select-recipients"
-      }) }}
+     
 
   
-      {% include "sandbox/_includes/notices/recipient-sending-table.html" %} 
+      {% include "sandbox/_includes/notices/recipient-sending-table.html" %}  #}
 
 
 
     {{ govukButton({
-      text: "Send",
-      classes: "govuk-button--primary govuk-!-margin-right-3"
-    }) }}
-
-     {{ govukButton({
-      text: "Cancel",
-      href: "../../../manage",
-      classes: "govuk-button--secondary"
+      text: "Continue to check recipients",
+      classes: "govuk-button--primary"
     }) }}
 
 
