@@ -47,6 +47,7 @@ module.exports = {
     "numberBills": "5",
     "remove": "false",
     "removeLicence": "false",
+    "showVoids": "false",
   "region": "Anglian",
     "dateToday": "5 March 2020",
     "tptIssue": "overAbstraction",
