@@ -44,7 +44,7 @@
 <!--Warning-->
 {% if data.licences[data.ID].returns[data.returnIndex].status == "void"%}
 {{ govukWarningText({
-  html: "This return is void." ,
+  html: "This return is void and has been replaced. Do not use this data." ,
   iconFallbackText: "Warning"
 }) }}
 {% endif %}
