@@ -40,7 +40,7 @@ classes: return.status | returnStatusColour
 
 {#change button and caption text based on showing and hiding voids#}
 {% set buttonText = "Show void returns" %}
-{% set caption = 'Showing ' + rows.length + ' returns' %}
+{% set caption = 'Showing ' + rows.length | plural("return") %}
 {% set hrefVoidText = 'true' %}
 {% if data.showVoids == 'true' %}
 {% set buttonText = "Hide void returns" %}
