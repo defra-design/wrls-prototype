@@ -40,12 +40,14 @@ classes: return.status | returnStatusColour
 
 {#change button and caption text based on showing and hiding voids#}
 {% set buttonText = "Show void returns" %}
-{% set caption = 'Showing ' + rows.length | plural("return") %}
+{% set caption = 'Showing returns' %}
+{# count not needed {% set caption = 'Showing ' + rows.length | plural("return", showNumber=false) %} #}
 {% set hrefVoidText = 'true' %}
 {% if data.showVoids == 'true' %}
 {% set buttonText = "Hide void returns" %}
 {% set hrefVoidText = 'false' %}
-{% set caption = 'Showing ' + (rows.length - voidCount)| plural("return") + ' and ' + voidCount | plural("void") %}
+{% set caption = 'Showing returns and voids' %}
+{# Count not needed {% set caption = 'Showing ' + (rows.length - voidCount)| plural("return", showNumber=false) + ' and ' + voidCount | plural("void", showNumber=false) %} #}
 {% endif %}
 
 
