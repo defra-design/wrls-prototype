@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set page title-->
-{% set title = "Enter recipients name or email address"%}
+{% set title = "Select how to contact the recipient"%}
 <!--set question title-->
 {% set qTitle = title %}
 
@@ -20,17 +20,58 @@
 
     <form method="post" novalidate>
 
-
+{% set emailHtml %}
       {{ govukInput({
-      name: "recipientsNameOrEmail",
-      id: "recipientsNameOrEmail",
-      value: data.recipientsNameOrEmail,
+      name: "recipientsEmail",
+      id: "recipientsEmail",
+      value: data.recipientsEmail,
       label: {
-      text: title,
-      classes: "govuk-label--l",
+      text: "Email address",
+      classes: "govuk-label--s",
       isPageHeading: true
       }
       }) }}
+{% endset %}
+
+{% set postHtml %}
+            {{ govukInput({
+      name: "recipientsName",
+      id: "recipientsName",
+      value: data.recipientsName,
+      label: {
+      text: "Recipients name",
+      classes: "govuk-label--s",
+      isPageHeading: true
+      }
+      }) }}
+{% endset %}
+
+      {{ govukRadios({
+  name: "contactMethod",
+  fieldset: {
+    legend: {
+      text: title,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "email",
+      text: "Email",
+      conditional: {
+        html: emailHtml
+      }
+    },
+    {
+      value: "post",
+      text: "Post",
+      conditional: {
+        html: postHtml
+      }
+    }
+  ]
+}) }}
 
       <button type="submit" class="govuk-button">
         Continue

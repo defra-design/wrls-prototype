@@ -767,13 +767,15 @@ router.get('/returns/ad-hoc/manage-recipients/single-use-address/enter-recipient
 router.post('/returns/ad-hoc/manage-recipients/single-use-address/enter-recipients-name-or-email-address', function(req, res) {
   req.session.data.back = req.headers.referer
 
-  if (req.session.data.recipientsNameOrEmail.includes('@')){
+  let contactMethod = req.session.data.contactMethod
+
+  if (contactMethod == 'email'){
   let recipients = req.session.data.licenceRecipients
   let notificationRecipients = req.session.data.newNotification.recipients
 
  let licenceNumber = req.session.data['enterLicences']
  let licenceHolder = req.session.data.newNotification.recipients[0].licenceNumber
- let email = req.session.data.recipientsNameOrEmail
+ let email = req.session.data.recipientsEmail
  let address = ""
  let contactName = ""
  let sentTo = email
@@ -797,6 +799,9 @@ router.post('/returns/ad-hoc/manage-recipients/single-use-address/enter-recipien
 
  recipients.push(recipient)
  notificationRecipients.push(recipient)
+
+ //tidy up
+  req.session.data.recipientsEmail = ""
 
  res.redirect('../select-recipients');
 } else {
@@ -834,7 +839,7 @@ router.get('/returns/ad-hoc/manage-recipients/single-use-address/select-the-uk-p
 router.post('/returns/ad-hoc/manage-recipients/single-use-address/select-the-uk-postcode', function(req, res) {
   req.session.data.back = req.headers.referer
   
-  let name = req.session.data.recipientsNameOrEmail
+  let name = req.session.data.recipientsName
   let address = req.session.data.address
 
   let recipients = req.session.data.licenceRecipients
@@ -865,6 +870,10 @@ router.post('/returns/ad-hoc/manage-recipients/single-use-address/select-the-uk-
 
  recipients.push(recipient)
  notificationRecipients.push(recipient)
+
+ //tidy up
+  req.session.data.recipientsName = ""
+  req.session.data.address = ""
 
  res.redirect('../select-recipients');
 
