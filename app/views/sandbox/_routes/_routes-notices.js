@@ -888,13 +888,57 @@ router.get('/returns/ad-hoc/manage-recipients/single-use-address/enter-the-addre
   res.render(folder + '/returns/ad-hoc/manage-recipients/single-use-address/enter-the-address-manually');
 });
 
+
+router.post('/returns/ad-hoc/manage-recipients/single-use-address/enter-the-non-UK-address', function(req, res) {
+  req.session.data.back = req.headers.referer
+
+  let address = req.session.data.addressLine1 +","+ req.session.data.addressLine2  +","+ req.session.data.addressTown +","+ req.session.data.addressCounty +","+ req.session.data.addressPostcode +","+ req.session.data.addressCountry
+  address = address.replace(/,,+/g, ',');
+
+  let name = req.session.data.recipientsName
+
+
+  let recipients = req.session.data.licenceRecipients
+  let notificationRecipients = req.session.data.newNotification.recipients
+
+ let licenceNumber = req.session.data['enterLicences']
+ let licenceHolder = req.session.data.newNotification.recipients[0].licenceNumber
+ let email = ""
+ let contactName = name
+ let sentTo = name + "," + address
+ let method = "letter"
+ let status = []
+
+ let recipient = {
+    licenceNumber, //AN/123/213/123
+    licenceHolder,
+   // returnsRef,
+   // returnsPeriodStart,
+   // returnsPeriodEnd,
+   // returnsDueDate,
+    email,
+    address,
+    contactName,
+    sentTo, //Public Water Plc, FAO Geoffrey Billington, 67 Gainsborough, Poole, BH33 1QE",
+    method, // "Letter"
+    status
+  }
+
+ recipients.push(recipient)
+ notificationRecipients.push(recipient)
+
+ res.redirect('../select-recipients');
+});
+
+
+
 router.post('/returns/ad-hoc/manage-recipients/single-use-address/enter-the-address-manually', function(req, res) {
   req.session.data.back = req.headers.referer
 
-  let address = req.session.data.subBuildingName +","+ req.session.data. buildingNumber  +","+ req.session.data. buildingName +","+  req.session.data.streetName +","+ req.session.data.addressTown +","+ req.session.data.addressCounty +","+ req.session.data.addressPostcode +","+ req.session.data.addressCountry
+  let address = req.session.data.addressLine1 +","+ req.session.data.addressLine2  +","+ req.session.data.addressTown +","+ req.session.data.addressCounty +","+ req.session.data.addressPostcode
   address = address.replace(/,,+/g, ',');
 
-  let name = req.session.data.recipientsNameOrEmail
+  let name = req.session.data.recipientsName
 
 
   let recipients = req.session.data.licenceRecipients
