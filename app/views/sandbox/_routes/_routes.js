@@ -132,6 +132,10 @@ router.use('/licence/returns-current/submission', require('./_routes-returns-sub
 //REMOVE A TAG
 router.use('/licence-notices', require('./_routes-notices'));
 
+//----------------------------------------------------------------
+
+////Licence routes
+router.use('/licence', require('./_routes-licence'));
 
 
 //----------------------------------------------------------------

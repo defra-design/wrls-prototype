@@ -1,8 +1,23 @@
-{% set returns = data.licences[data.ID]['returns'] %}
 
 
 
 
+<!--check for filtered results-->
+   {% if data['filteredResults'].length %}
+   {% set returns = data['filteredResults']  %}
+
+   {% set type = 'filtered'  %}
+   {% else %}
+   {% set returns = data.licences[data.ID]['returns'] %}
+
+    {% set type = 'not filtered'  %}
+   {% endif %}
+
+
+
+
+
+{% if returns !== 'empty' %}
 {% set rows = []%}
 {% set voidCount = 0 %}
 {% for return in returns %}
@@ -13,19 +28,28 @@ text: return.status | returnStatusText | safe,
 classes: return.status | returnStatusColour
 })}}
 {% endset %}
+{% set rows = rows | push ([{html: '<a href="licence/returns-current/return?returnIndex='+loop.index0+'&versionID=0&returnStatus='+data.licences[data.ID].returns[loop.index0].status+'">'+return.id+'</a><p class="govuk-body-s">From ' + return.returnsPeriodStart | numberToGovukDate + ' to ' + return.returnsPeriodEnd | numberToGovukDate +'</p>'},{html: return.purpose+'<p class="govuk-body-s">'+return.description+'</p>'},{text: due},{html: status}]) %}
+{% endfor %}
+{% else %}
+{% set rows = []%}
+{% set voidCount = 0 %}
+{% endif %}
 
 
+{#
 {% if data.showVoids == 'false' %}
 
-{# if showVoids is false then don't add voids to rows #}
+{# if showVoids is false then don't add voids to rows 
 {% if return.status  == 'void' %}
 {% else %}
 {% set rows = rows | push ([{html: '<a href="licence/returns-current/return?returnIndex='+loop.index0+'&versionID=0&returnStatus='+data.licences[data.ID].returns[loop.index0].status+'">'+return.id+'</a><p class="govuk-body-s">From ' + return.returnsPeriodStart | numberToGovukDate + ' to ' + return.returnsPeriodEnd | numberToGovukDate +'</p>'},{html: return.purpose+'<p class="govuk-body-s">'+return.description+'</p>'},{text: due},{html: status}]) %}
 {% endif %}
-
-
+#}
+{#
 {% else %}
 {# if showVoids and count how many there are is true then add voids to rows #}
+
+{#
 {% if return.status  == 'void' %}
 {% set voidCount = voidCount + 1 %}
 {% endif %}
@@ -35,19 +59,25 @@ classes: return.status | returnStatusColour
 
 
 {% endfor %}
+ #}
 
 <h2 class="govuk-heading-l">Returns</h2>
 
-{#change button and caption text based on showing and hiding voids#}
+
+
+{#
+//feature for showing and hiding void returns no longer needed, we opted to delete void returns that have no data associated with them as a tidier way.  We have then introduced the returns filters
+
+change button and caption text based on showing and hiding voids
 {% set buttonText = "Show void returns" %}
 {% set caption = 'Showing returns' %}
-{# count not needed {% set caption = 'Showing ' + rows.length | plural("return", showNumber=false) %} #}
+{# count not needed {% set caption = 'Showing ' + rows.length | plural("return", showNumber=false) %} 
 {% set hrefVoidText = 'true' %}
 {% if data.showVoids == 'true' %}
 {% set buttonText = "Hide void returns" %}
 {% set hrefVoidText = 'false' %}
 {% set caption = 'Showing returns and voids' %}
-{# Count not needed {% set caption = 'Showing ' + (rows.length - voidCount)| plural("return", showNumber=false) + ' and ' + voidCount | plural("void", showNumber=false) %} #}
+{# Count not needed {% set caption = 'Showing ' + (rows.length - voidCount)| plural("return", showNumber=false) + ' and ' + voidCount | plural("void", showNumber=false) %} 
 {% endif %}
 
 
@@ -56,8 +86,119 @@ classes: return.status | returnStatusColour
   classes: "govuk-button--secondary",
   href: 'licence?ID='+  data.ID + '&showVoids=' + hrefVoidText + '#returns'
 }) }}
+#}
+
+{% set caption = data.returnsFilterCaption %}
 
 
+ {% set filtersForm %}
+
+
+
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
+
+     <form  method="post" novalidate action="licence/returns/apply-filters">
+
+
+       {{ govukInput({
+        formGroup:{
+          classes: "govuk-!-margin-bottom-6"
+        },
+         id: 'returnReference',
+         name: 'returnReference',
+         value: data['returnReference'],
+         classes: "govuk-input--width-10",
+         label: {
+           text: 'Return reference',
+           classes: 'govuk-label--s'
+         }
+       }) }}
+
+
+       {{ govukCheckboxes({
+         idPrefix: 'returnStatus',
+         name: 'returnStatus',
+         classes: "govuk-checkboxes--small",
+         formGroup: {
+           classes: "govuk-!-margin-bottom-5"
+         },
+         fieldset: {
+           legend: {
+             text: 'Status',
+             classes: 'govuk-fieldset__legend--s'
+           }
+         },
+         items: [
+         {
+          value: 'complete',
+          text: 'Complete',
+          checked:  checked("returnStatus", "complete")
+        },
+        {
+          value: 'due',
+          text: 'Due',
+          checked:  checked("returnStatus", "due")
+        },
+           {
+             value: 'notDueYet',
+             text: 'Not due yet',
+             checked:  checked("returnStatus", "notDueYet")
+           },
+           {
+             value: 'overdue',
+             text: 'Overdue',
+             checked:  checked("returnStatus", "overdue")
+           }
+           ,
+           {
+             value: 'void',
+             text: 'Void',
+             checked:  checked("returnStatus", "void")
+           }
+         ]
+       }) }}
+
+
+
+
+
+
+
+
+       <div class="govuk-button-group">
+           {{ govukButton({
+         text: "Apply filters"
+       }) }}
+
+
+       {{ govukButton({
+           text: "Clear filters",
+           classes: "govuk-button--secondary",
+           name: "clearFilters",
+           value: "true"
+         }) }}
+
+         </div>
+
+
+
+     </form>
+
+
+     {% endset %}
+
+
+
+     {{ govukDetails({
+       summaryText: "Filter returns",
+       html: filtersForm | safe,
+       classes: "govuk-!-margin-bottom-4",
+       open: data['openDetails']
+     }) }}
+
+
+
+{% if returns !== 'empty' %}
 {{ govukTable({
 caption: caption | safe,
 captionClasses: "govuk-table__caption--s",
@@ -81,3 +222,11 @@ head: [
 rows: rows
 
 }) }}
+
+{% else %}
+
+<p class="govuk-body"><b>{{caption|safe}}</b><p>
+
+<p class="govuk-body">No results<p>
+
+{% endif %}

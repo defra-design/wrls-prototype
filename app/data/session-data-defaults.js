@@ -4844,6 +4844,7 @@ module.exports = {
 
     //filtercaption default
     "filterCaption": "Showing all sent notices.",
+    "returnsFilterCaption": "Showing all returns",
 
     //Notification report
     "notifications": [
