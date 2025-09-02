@@ -19,15 +19,19 @@
     <dd class="govuk-summary-list__value">
       {{[data.licences[data.ID].holder]}}
 
-     <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
-     {% set loopNumber = "" %}
-     {% for i in data['customers'] %}
-     {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
-     {% set loopNumber = loop.index0 %}
-     {% endif %}
-     {% endfor %}
+      <!-- matching the licence holder name with the customer record -->
+      <!-- and returning the customerID to be used in the link       -->
+      {% set loopNumber = "" %}
+      {% for i in data['customers'] %}
+        {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
+          {% set loopNumber = loop.index0 %}
+        {% endif %}
+      {% endfor %}
 
-      <br><a class="govuk-link" href="customer?customerID={{loopNumber}}">View contact details</a>
+      <br>
+      <!-- TODO create a new as at licence-contact page on live -->
+      <!-- in card boxes with primary user and returns agents   -->
+      <a class="govuk-link" href="customer?customerID={{loopNumber}}">View contact details</a>
     </dd>
 
   </div>
@@ -174,8 +178,12 @@
       {% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} amounts
     </dt>
     <dd class="govuk-summary-list__value">
+      
       {{data.licences[data.ID]['absQuantities'] | replaceTilde | striptags(true) | escape | nl2br}}
     </dd>
+
+    <!-- note TODO if >1 set of amounts, we would no longer list each set of them, -->
+    <!-- just link through to purpose/period/amounts page - as it is on Live  - -  -->
 
   </div>
   {% endif %}
@@ -195,32 +203,10 @@
 </dl>
 
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-{{ govukInsetText({
-  text: "The information included in this service does not replace or affect the legal (paper) copy of the licence issued to you. The information must be used for reference only. You must refer to and comply with the licence issued to you as a paper copy when you make decisions about abstracting or impounding water."
-}) }}
+<!-- hide these elements for INTERNAL USERS as not relevant -->
+<!--
+{% include "sandbox/_includes/licence/inset-does-not-replace-paper-licence.html" %}
 
-{{ govukDetails({
-  summaryText: "Is your licence information correct?",
-  html: '
-    <p>
-      To help us improve our new service, please let us know if you find
-      any errors in the licence information we are showing you. You can
-      contact us by:
-    </p>
-    <p>
-   Email: <a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a>
-  </p>
-  <p>
-    Telephone: <a href="tel:03708506506">03708 506 506</a>
-  </p>
-  <p>
-    Telephone from outside the UK: <a href="tel:+441142825312">+44 114 282 5312</a>
-  </p>
-  <p>
-    You can call us from 8am to 6pm, Monday to Friday.
-  </p>'
-}) }}
-</div>
-</div>
+{% include "sandbox/_includes/licence/details-is-your-licence-information-correct.html" %}
+-->
+

@@ -1,186 +1,32 @@
-//
-// For guidance on how to add CSS and SCSS see:
-// https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-//
-
-// Add extra styles here
-
-
-
-
-// Components that aren't in Frontend
-// @import "components/cookie-banner";
-
-// MOJ front end
-//@import "node_modules/@ministryofjustice/frontend/moj/all";
-
-//banner content max-width override
-.max-width-full {
-  max-width: 100% !important;
-}
-
- .line-height {
-  line-height: 1.5 !important;
-}
-
-.center-text {
-  text-align: center !important;
-}
-
-//Contents list styles
-.contents-list__title {
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 400;
-    margin: 0;
+<style type="text/css">
+  .xtabs .govuk-tabs__list-item {
+    margin-left: 25px;
+    background-color: none !important;
+  }
+  .xtabs .xtabs__list-item::before {
     color: #0b0c0c;
-}
-.contents-list__list {
-    font-size: 16px;
-    line-height: 1.3;
+    content: "—";
+    margin-left: -25px;
+    padding-right: 5px;
+
+  }
+  .xtabs .xtabs__list-item {
+      position: relative;
+      margin-right: 5px;
+      margin-bottom: 0;
+      margin-left: 0;
+      padding: 2px 20px;
+      float: none;
+      background-color: none;
+      text-align: left;
+    }
+
+  .xtabs .xtabs__list {
     margin: 0;
     padding: 0;
-    list-style-type: none;
+    list-style: none;
+    margin-bottom: 20px;
   }
-
-
-
-.contents-list__list li {
-    position: relative;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 7.5px;
-    margin-bottom: 0px !important;
-  }
-
-.contents-list__list li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    width: 20px;
-    overflow: hidden;
-  }
-
-// border bottom override
-
-.border-bottom {
-border-bottom: 1px solid #b1b4b6 !important;
-}
-
-
-.border-bottom-none {
-  border-bottom: none !important;
-  }
-
-//End of contents list styles
-
-.float-right {
-  float: right;
-}
-
-.float-left{
-  float:left;
-}
-
-.govuk-font-size-64{
-  font-size: 64px !important;
-  font-size: 4rem !important;
-}
-
-.inline {
-  display: inline;
-}
-
-
-.govuk-summary-card__title .govuk-caption-m {
-  color: #0b0c0c;
-}
-
-//Wide actions in summary list - used when experimenting with comparing changes to charge information
-@media (min-width: 40.0625em) {
-  .govuk-summary-list__actions-wide {
-    width: 30% !important;
-    padding-right: 0;
-    text-align: left;
-  }
-}
-
-.govuk-inset-text-blue {
-  border-left: 10px solid #1d70b8;
-}
-
-
-//old proto custom styles
-@import "archive/previous-proto/sass/application";
-
-
-
-// Tools that aren't in Frontend
-@import "tools/mixins";
-//map styles
-@import "map/map";
-
-
-.map { position:absolute; top:0; bottom:0; width:100%; }
-
-
-//width overrides
-@media (min-width: 40.0625em) {
-.width-10 {
-  width: 10% !important;
-}
-}
-
-//blue border for the header end to end
-.header-border-bottom{
-  border-bottom: 10px solid #1d70b8;
-  };
-
-// 2025 - new nav, wider screen
-// added for new nav ~paulpod
-.govuk-width-container {
-  max-width: 1100px ;
-}
-
-// fix the header units for the wider layout ~paulpod
-.govuk-header__logo {
-    width: 40%;
-}
- .govuk-header__content {
-    width: 60%;
-}
-
-// all the sidenav styles - adapted from GDS design system site
-// maybe import this as a separate file ... later
-
-.xtabs .govuk-tabs__list-item {
-  margin-left: 25px;
-  background-color: none !important;
-}
-.xtabs .xtabs__list-item::before {
-  color: #0b0c0c;
-  content: "—";
-  margin-left: -25px;
-  padding-right: 5px;
-
-}
-.xtabs .xtabs__list-item {
-    position: relative;
-    margin-right: 5px;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding: 2px 20px;
-    float: none;
-    background-color: none;
-    text-align: left;
-  }
-
-.xtabs .xtabs__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  margin-bottom: 20px;
-}
 
 .x-govuk-sub-navigation {
   font-family: "GDS Transport", arial, sans-serif;
@@ -343,3 +189,4 @@ border-bottom: 1px solid #b1b4b6 !important;
 .version-show-changes {
   display: none;
 }
+</style>
