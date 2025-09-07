@@ -1,0 +1,391 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Abstraction details" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!-- content block-->
+{% block service %}
+
+<!-- added from licence-summary, not sure what it does -->
+
+{% set purpose %}
+      {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+{% endset %}
+
+
+<!--Side nav styles -->
+{% include "/sandbox/side-nav-styles.html" %}
+
+
+<!-- page title -->
+
+<!-- NEW - swaps title/caption round, H1 demoted to H2 as repeated on multiple pages  -->
+<!-- the H1 will be on the title in the _include as this is unique to that page       -->
+<!-- licence number is big (will exist) name is small caption (might not exist)       -->
+<!-- If the name doesn't exist, use that to tell us the type of licence instead       -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- if this licence has a name -->
+    {% if data.licences[data.ID].name.length %}
+    <h2 class="govuk-heading-l">
+      <!-- put the name in the caption above the number -->
+      <span class="govuk-caption-l">{{[data.licences[data.ID].name]}}</span>
+      <!-- and use the H2 for the licence type + licence number -->
+      {% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}
+    </h2>
+    {% else %}
+    <!-- this licence doesn't have a name -->
+    <h2 class="govuk-heading-l">
+      <!-- use the Caption to tell us the type of licence -->
+      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
+      
+      <!-- put the H2 for the licence number -->
+      Licence number {{[data.licences[data.ID].number]}}
+    </h2>
+    {% endif %}
+  </div>
+</div>
+
+
+
+  <!-- show confidential warning if licence is marked as confidential-->
+  {% if data.licences[data.ID].confidentiality | match("confidential") %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukWarningText({
+    text: "This licence is confidential.",
+    iconFallbackText: "Warning"
+  }) }}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- show expired banner if licence is expired-->
+  {% if [data.licences[data.ID].expired] == "true" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
+      {% include "sandbox/_includes/licence/expired-banner.html" %}
+    </div>
+  </div>
+  {% endif %}
+
+
+
+  <!-- this might need to be in a grid-row class set up? doesn't really matter tho -->
+  <div class="govuk-!-margin-bottom-6">
+    <p class="govuk-body">Registered to <a href="user?userID={{data['userID']}}" class="no-break">{{[data.users[data.userID].email]}}</a></p>
+  </div>
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter">
+
+    <!-- Side nav list -->
+    <nav class="x-govuk-sub-navigation" aria-labelledby="sub-navigation-heading">
+      <h2 class="govuk-visually-hidden" id="sub-navigation-heading">Navigation</h2>
+        
+      <ul class="x-govuk-sub-navigation__section">
+        
+        <li class="x-govuk-sub-navigation__section-item x-govuk-sub-navigation__section-item--current">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-summary?ID={{data.ID}}" aria-current="true">
+            Licence details
+          </a>
+
+          <div class="govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+            Effective {{[data.licences[data.ID].effectiveDate]}}
+          </div>
+          <div class="govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+            This is the current version
+          </div>
+        </li>
+
+          <li class="x-govuk-sub-navigation__section--nested x-govuk-sub-navigation__section-item sub-nav-indent ">
+            <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-summary?ID={{data.ID}}">
+              Summary
+            </a>
+          </li>
+
+          <li class="x-govuk-sub-navigation__section--nested x-govuk-sub-navigation__section-item sub-nav-indent sub-nav-selected">
+            <a class="x-govuk-sub-navigation__link" href="/sandbox/licence/abstraction-points?ID={{data.ID}}" aria-current="true">
+              Source and points
+            </a>
+          </li>
+
+          <li class="x-govuk-sub-navigation__section--nested x-govuk-sub-navigation__section-item sub-nav-indent sub-nav-indent ">
+            <a class="x-govuk-sub-navigation__link" href="/sandbox/licence/abstraction-purpose?ID={{data.ID}}">
+              Purpose, period and amounts
+            </a>
+          </li>
+
+          <li class="x-govuk-sub-navigation__section--nested x-govuk-sub-navigation__section-item sub-nav-indent">
+            <a class="x-govuk-sub-navigation__link" href="/sandbox/licence/conditions?ID={{data.ID}}">
+              Conditions
+            </a>
+          </li>
+
+
+          <!-- TODO add code for RouteUsage from the prototype index page -->
+          <li class="x-govuk-sub-navigation__section-item x">
+            <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-history?ID={{data.ID}}">
+             History
+            </a>
+          </li>
+
+
+        <li class="x-govuk-sub-navigation__section-item ">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-contacts-tab?ID={{data.ID}}">
+            <!-- use from include "sandbox/_includes/licence/contact-details.html" -->
+
+            Contact details
+          </a>
+        </li>
+        
+        {% if 'Impounding' not in purpose %}
+        <li class="x-govuk-sub-navigation__section-item ">
+          <a class="x-govuk-sub-navigation__link" href="licence-returns">
+            Returns
+          </a>
+        </li>
+        {% endif %}
+
+
+        <li class="x-govuk-sub-navigation__section-item ">
+          <a class="x-govuk-sub-navigation__link" href="licence-comms">
+            Communications
+          </a>
+        </li>
+
+
+        <li class="x-govuk-sub-navigation__section-item ">
+          <a class="x-govuk-sub-navigation__link" href="licence-bills">
+            Bills
+          </a>
+        </li>
+
+
+        {% if 'Impounding' not in purpose %}
+        <li class="x-govuk-sub-navigation__section-item ">
+          <a class="x-govuk-sub-navigation__link" href="licence-setup">
+            Licence set up
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+        
+    </nav>
+  </div>
+
+
+
+  <div class="govuk-grid-column-three-quarters">
+    <h1 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+      Licence abstraction points
+     
+    </h1>
+
+
+          {% for i in data.licences[data.ID].absPoints %}
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            {{data.licences[data.ID].use[0].points | bracketedText }} 
+          </h2>
+        </div>
+
+        <div class="govuk-summary-card__content">
+          <!-- take some from the default session dummy data and    -->
+          <!-- add a bunch of fake ones to closely match the output -->
+          <!-- on the live service at Sept 2025, ok -->
+
+          {{ govukSummaryList({
+            rows: [
+              { 
+                key: {
+                  text: "BGS reference"
+                },
+                value: {
+                  text: " "}
+              },
+              { 
+                key: {
+                  text: "Category"
+                },
+                value: {
+                  text: "Single Point"}
+              },
+              { 
+                key: {
+                  text: "EA Gauging station"
+                },
+                value: {
+                  text: "Bourton Dicklet"}
+              },
+              {
+                key: {
+                  text: "Grid reference"
+                },
+                value: {
+                  text: i
+                }
+              },
+              {
+                key: {
+                  text: "Means of abstraction"
+                },
+                value: {
+                  text: data.licences[data.ID].means[0]
+                }
+              },
+              { 
+                key: {
+                  text: "Source"
+                },
+                value: {
+                  text: "Groundwater" }
+              },
+              {
+                key: {
+                  text: "Means of abstraction"
+                },
+                value: {
+                  text: data.licences[data.ID].means[0]
+                }
+              },
+              { 
+                key: {
+                  text: "Depth"
+                },
+                value: {
+                  text: "102"}
+              }
+            ]
+          }) }}
+
+          </div>
+          </div>
+
+
+ {% endfor %}
+
+
+
+{% endblock %}
+
+
+
+<div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Single Point
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Depth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              102
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              EA gauging station
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Bourton Dickler
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Nation grid reference
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              At National Grid Reference TF 46879 63326 (Borehole 1 at Lindsey)
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Hydro intercept distance
+            </dt>
+            <dd class="govuk-summary-list__value">
+            0
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Hydro offset distance
+            </dt>
+            <dd class="govuk-summary-list__value">
+            0
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Location note
+            </dt>
+            <dd class="govuk-summary-list__value">
+              East Lindsey, Lincolnshire
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Note
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Diameter 1800mm
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Primary type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Groundwater
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Secondary type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Borehole
+            </dd>
+          </div>
+
+          <<div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Source
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Ground water source of supply
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Source type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Groundwater
+            </dd>
+          </div>
