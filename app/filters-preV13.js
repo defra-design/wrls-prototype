@@ -166,6 +166,30 @@ filters.numberToGovukDate = function(x) {
   return x.replace(/\w+/g, today)
 }
 
+
+//filter to change a number string in to the govuk date format. "yyyymmdd" | numberToGovukShortDate
+// for use in tables where column width is tight especially
+filters.numberToGovukShortDate = function(x) {
+  let dd = x.slice(-2);
+  dd = parseInt(dd, 10);
+  let mm = x.slice(-4, -2)
+  mm = parseInt(mm, 10);
+  let yyyy = x.slice(0, 4);
+
+  //change the month into a name
+  // WAS let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  mm = monthNames[mm - 1]
+
+  
+  // force the short date onto one line using Unicode &nbsp;
+  const nbsp = "\u00A0"
+
+  const today = `${dd}${nbsp}${mm}${nbsp}${yyyy}`;
+
+  return x.replace(/\w+/g, today)
+}
+
 //filter to change a mmdd date string in to the govuk date format. "mmdd" | mmddToDate
 filters.mmddToDate = function(x) {
   let dd = x.slice(-2);

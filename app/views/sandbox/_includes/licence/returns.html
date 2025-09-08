@@ -21,7 +21,7 @@
 {% set rows = []%}
 {% set voidCount = 0 %}
 {% for return in returns %}
-{% set due = return.due | numberToGovukDate %}
+{% set due = return.due | numberToGovukShortDate %}
 {% set status %}
 {{govukTag({
 text: return.status | returnStatusText | safe,

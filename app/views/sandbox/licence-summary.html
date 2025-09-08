@@ -192,7 +192,7 @@
 
 
         <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-contacts-tab">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-contacts-tab?ID={{data.ID}}">
             <!-- use from include "sandbox/_includes/licence/contact-details.html" -->
 
             Contact details
@@ -201,7 +201,7 @@
         
         {% if 'Impounding' not in purpose %}
         <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="licence-returns">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-returns?ID={{data.ID}}">
             Returns
           </a>
         </li>
@@ -209,14 +209,14 @@
 
 
         <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="licence-comms">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-comms?ID={{data.ID}}">
             Communications
           </a>
         </li>
 
 
         <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="licence-bills">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-bills?ID={{data.ID}}">
             Bills
           </a>
         </li>
@@ -224,7 +224,7 @@
 
         {% if 'Impounding' not in purpose %}
         <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="licence-setup">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-setup?ID={{data.ID}}">
             Licence set up
           </a>
         </li>

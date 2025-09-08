@@ -1,20 +1,18 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title = "Abstraction details" %}
+<!--set title-->
+{% set title = [data.licences[data.ID].name] + " Licence summary" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
 {% endblock %}
 
-
-<!-- content block-->
+<!--content block-->
 {% block service %}
-
-<!-- added from licence-summary, not sure what it does -->
 
 {% set purpose %}
       {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
-{% endset %}
+      {% endset %}
 
 
 <!--Side nav styles -->
@@ -27,7 +25,7 @@
 <!-- the H1 will be on the title in the _include as this is unique to that page       -->
 <!-- licence number is big (will exist) name is small caption (might not exist)       -->
 <!-- If the name doesn't exist, use that to tell us the type of licence instead       -->
-<div class="govuk-grid-row">
+ <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- if this licence has a name -->
     {% if data.licences[data.ID].name.length %}
@@ -52,37 +50,91 @@
 
 
 
-  <!-- show confidential warning if licence is marked as confidential-->
-  {% if data.licences[data.ID].confidentiality | match("confidential") %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {{ govukWarningText({
-    text: "This licence is confidential.",
-    iconFallbackText: "Warning"
-  }) }}
-    </div>
+<!-- show confidential warning if licence is marked as confidential-->
+{% if data.licences[data.ID].confidentiality | match("confidential") %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukWarningText({
+  text: "This licence is confidential.",
+  iconFallbackText: "Warning"
+}) }}
   </div>
-  {% endif %}
+</div>
+{% endif %}
 
-  <!-- show expired banner if licence is expired-->
-  {% if [data.licences[data.ID].expired] == "true" %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
-      {% include "sandbox/_includes/licence/expired-banner.html" %}
-    </div>
+<!-- show expired banner if licence is expired-->
+{% if [data.licences[data.ID].expired] == "true" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
+    {% include "sandbox/_includes/licence/expired-banner.html" %}
   </div>
-  {% endif %}
+</div>
+{% endif %}
 
 
+<!--licence set up section experimental
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
+<p class="govuk-body "><a class="govuk-link govuk-link--no-visited-state" href="licence/licence-set-up/returns-requirements">
+  Licence set up
+</a>
+<br> Set up new charge information, agreements and returns requirements
+</p>
+</div>
+</div>
+-->
 
-  <!-- this might need to be in a grid-row class set up? doesn't really matter tho -->
-  <div class="govuk-!-margin-bottom-6">
-    <p class="govuk-body">Registered to <a href="user?userID={{data['userID']}}" class="no-break">{{[data.users[data.userID].email]}}</a></p>
-  </div>
+
+<div class="govuk-!-margin-bottom-6">
+  <p class="govuk-body">Registered to <a href="user?userID={{data['userID']}}" class="no-break">{{[data.users[data.userID].email]}}</a></p>
+</div>
 
 
+<!--<div class="govuk-tabs" data-module="govuk-tabs">
 
+  <h2 class="govuk-tabs__title">
+    Licence views
+  </h2>
 
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item" tabindex="0" >
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="licence-summary" style="view-transition-name: one;">
+        Summary
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="1">
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="licence-contact-details" style="view-transition-name: two;">
+        Contact details
+      </a>
+    </li>
+    {% if 'Impounding' not in purpose %}
+    <li class="govuk-tabs__list-item" tabindex="2">
+      <a class="govuk-tabs__tab" href="licence-returns">
+        Returns
+      </a>
+    </li>
+    {% endif %}
+    <li class="govuk-tabs__list-item" tabindex="3">
+      <a class="govuk-tabs__tab" href="licence-communications">
+        Communications
+      </a>
+    </li>
+    <--if not display the table ->
+    {% if 'Impounding' not in purpose %}
+    <li class="govuk-tabs__list-item" tabindex="4">
+      <a class="govuk-tabs__tab" href="licence-bills">
+        Bills
+      </a>
+    </li>
+
+    <li class="govuk-tabs__list-item" tabindex="5">
+      <a class="govuk-tabs__tab" href="licence-charge">
+        Licence set up
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+  -->
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-quarter">
@@ -118,8 +170,8 @@
             </a>
           </li>
 
-          <li class="x-govuk-sub-navigation__section--nested x-govuk-sub-navigation__section-item sub-nav-indent sub-nav-selected">
-            <a class="x-govuk-sub-navigation__link" href="/sandbox/licence/abstraction-purpose?ID={{data.ID}}" aria-current="true">
+          <li class="x-govuk-sub-navigation__section--nested x-govuk-sub-navigation__section-item sub-nav-indent">
+            <a class="x-govuk-sub-navigation__link" href="/sandbox/licence/abstraction-purpose?ID={{data.ID}}">
               Purpose, period and amounts
             </a>
           </li>
@@ -132,7 +184,7 @@
 
 
           <!-- TODO add code for RouteUsage from the prototype index page -->
-          <li class="x-govuk-sub-navigation__section-item x">
+          <li class="x-govuk-sub-navigation__section-item">
             <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-history?ID={{data.ID}}">
              History
             </a>
@@ -148,8 +200,8 @@
         </li>
         
         {% if 'Impounding' not in purpose %}
-        <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-returns?ID={{data.ID}}">
+        <li class="x-govuk-sub-navigation__section-item x-govuk-sub-navigation__section-item--current">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-returns?ID={{data.ID}}" aria-current="true">
             Returns
           </a>
         </li>
@@ -185,62 +237,22 @@
 
 
   <div class="govuk-grid-column-three-quarters">
-    <h1 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-6">
-      Licence purpose details
-      <!-- Purpose, period and amounts -->
-      
-      <!-- HISTORY TAG TO GO HERE -->
-    </h1>
+
+  {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+  <!--check to see if there is any charge information set up-->
+  {% if chargeVersions.length  %}
+  <!--if so display the table-->
+  <!-- tab 5 -->
 
 
-          {% set uses = data.licences[data.ID].use %}
+      {% include "/sandbox/_includes/licence/bills.html" %}
 
-          {% for use in uses %}
+  {% else %}
 
-      <div class="govuk-summary-card">
-        <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">
-            {{use.purpose}}
-          </h2>
-        </div>
+  <h1 class="govuk-heading-l">Bills</h1>
 
-        <div class="govuk-summary-card__content">
+  <p class="govuk-body">No bills have been sent for this licence.</p>
 
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: use.points | length | plural ("Point", showNumber = false)
-                },
-                value: {
-                  text: use.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
-                }
-              },
-              {
-                key: {
-                  text: "Abstraction period"
-                },
-                value: {
-                  text: use.periodStart | mmddToDate + " to " + use.periodEnd | mmddToDate
-                }
-              },
-              {
-                key: {
-                  text: "Amount"
-                },
-                value: {
-                  text: use.amount + " m3/yr"
-                }
-              }
-            ]
-          }) }}
-
-          </div>
-          </div>
-
-
- {% endfor %}
-
-
+  {% endif %}
 
 {% endblock %}
