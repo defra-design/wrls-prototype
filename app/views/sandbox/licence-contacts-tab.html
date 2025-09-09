@@ -191,10 +191,8 @@
           </li>
 
 
-        <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-contacts-tab?ID={{data.ID}}">
-            <!-- use from include "sandbox/_includes/licence/contact-details.html" -->
-
+        <li class="x-govuk-sub-navigation__section-item x-govuk-sub-navigation__section-item--current">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-contacts-tab?ID={{data.ID}}" aria-current="true">
             Contact details
           </a>
         </li>
@@ -215,8 +213,8 @@
         </li>
 
 
-        <li class="x-govuk-sub-navigation__section-item  x-govuk-sub-navigation__section-item--current">
-          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-bills?ID={{data.ID}}" aria-current="true">
+        <li class="x-govuk-sub-navigation__section-item">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-bills?ID={{data.ID}}">
             Bills
           </a>
         </li>
@@ -238,21 +236,184 @@
 
   <div class="govuk-grid-column-three-quarters">
 
-  {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
-  <!--check to see if there is any charge information set up-->
-  {% if chargeVersions.length  %}
-  <!--if so display the table-->
-  <!-- tab 5 -->
+
+  <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Licence holder
+        </h2>
+
+        <ul class="govuk-summary-card__actions" style="font-weight: normal;">
+          <!--<li class="govuk-summary-card__action" style="height: 1em;">
+            
+            Last changed: 
+            26/08/2015<span class="govuk-visually-hidden"> see this in history view</span>
+          </li>
+          <li class="govuk-summary-card__action">
+            <a class="govuk-link" href="#history">Show all changes<span class="govuk-visually-hidden"> of the history of this licence</span></a>
+          </li>-->
+        </ul>
+
+      </div>
+
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{[data.licences[data.ID].holder]}}
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              
+             
+
+              <div >
+                Chipton House<br>
+                Sheeply Road<br>
+                Cambridge<br>
+                Cambridgeshire<br>
+                CB1 0LM
+              </div>
+
+             
+            </dd>
+          </div>          
+        </dl>
+      </div>
+    </div>
+      <!-- end card -->
 
 
-      {% include "/sandbox/_includes/licence/bills.html" %}
+      <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Licence contact
+        </h2>
 
-  {% else %}
+        <ul class="govuk-summary-card__actions" style="font-weight: normal;">
+          
+          <!--<li class="govuk-summary-card__action">
+            <a class="govuk-link" href="edge">Manage <span class="govuk-visually-hidden"> contact details</span></a>
+          </li>-->
+        </ul>
 
-  <h1 class="govuk-heading-l">Bills</h1>
+      </div>
 
-  <p class="govuk-body">No bills have been sent for this licence.</p>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Alex Appleby<br>
+              Abstraction Licence Coordinator
+            </dd>
+          </div>
 
-  {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              
+              Chipton House<br>
+              Sheeply Road<br>
+              Cambridge<br>
+              Cambridgeshire<br>
+              CB1 0LM<br>
+
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email
+
+              </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="mailtop:aappleby@publicwater.co.uk">
+                {{[data.users[data.userID].email]}}
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone
+
+              </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="mailtop:aappleby@publicwater.co.uk">
+                01234 45768901
+              </a>
+            </dd>
+          </div>               
+        </dl>
+      </div>
+    </div>
+    <!-- end card -->
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Primary user
+        </h2>
+      </div>
+
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{[data.users[data.userID].email]}}
+            </dd>
+          </div>
+
+                 
+        </dl>
+      </div>
+    </div>
+      <!-- end card -->
+
+
+
+
+
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Returns agent
+        </h2>
+
+      </div>
+
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              wr_systems_team@environment-agency.gov.uk
+            </dd>
+          </div>
+
+                  
+        </dl>
+      </div>
+    </div>
+      <!-- end card -->
+
+
 
 {% endblock %}

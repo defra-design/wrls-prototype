@@ -215,16 +215,16 @@
         </li>
 
 
-        <li class="x-govuk-sub-navigation__section-item  x-govuk-sub-navigation__section-item--current">
-          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-bills?ID={{data.ID}}" aria-current="true">
+        <li class="x-govuk-sub-navigation__section-item ">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-bills?ID={{data.ID}}">
             Bills
           </a>
         </li>
 
 
         {% if 'Impounding' not in purpose %}
-        <li class="x-govuk-sub-navigation__section-item ">
-          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-setup?ID={{data.ID}}">
+        <li class="x-govuk-sub-navigation__section-item  x-govuk-sub-navigation__section-item--current">
+          <a class="x-govuk-sub-navigation__link" href="/sandbox/licence-setup?ID={{data.ID}}" aria-current="true">
             Licence set up
           </a>
         </li>
@@ -238,21 +238,17 @@
 
   <div class="govuk-grid-column-three-quarters">
 
-  {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
-  <!--check to see if there is any charge information set up-->
-  {% if chargeVersions.length  %}
-  <!--if so display the table-->
-  <!-- tab 5 -->
+  <h1 class="govuk-heading-l">Licence set up</h1>
 
 
-      {% include "/sandbox/_includes/licence/bills.html" %}
+      {% include "/sandbox/_includes/licence/returns-versions.html" %}
 
-  {% else %}
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-  <h1 class="govuk-heading-l">Bills</h1>
+      {% include "/sandbox/_includes/licence/charge-information.html" %}
 
-  <p class="govuk-body">No bills have been sent for this licence.</p>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-  {% endif %}
+      {% include "/sandbox/_includes/licence/agreements.html" %}
 
 {% endblock %}
