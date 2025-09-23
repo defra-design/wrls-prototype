@@ -1,5 +1,5 @@
+{% set "navReturns" = "" %}
 {% set "navManage" = "" %}
-{% set "navAccess" = "" %}
 {% set "navLicences" = "" %}
 
 
@@ -8,7 +8,7 @@
 {% case "returns" %}
 {% set "navReturns" = "navbar__link--active" %}
 {% case "manage" %}
-  {% set "navAccess" = "navbar__link--active" %}
+  {% set "navManage" = "navbar__link--active" %}
   {% default %}
  {% set "navLicences" = "navbar__link--active" %}
   {% endswitch %}
@@ -32,7 +32,7 @@
     </li>
 
      <li class="navbar__item">
-       <a class="navbar__link {{navAccess}} govuk-link--no-visited-state" href="#?navMenu=access" id="access">
+       <a class="navbar__link {{navManage}} govuk-link--no-visited-state" href="/sandbox/external/manage-licences?navMenu=manage" id="manage">
          Add licences or give access
        </a>
      </li>

@@ -341,3 +341,14 @@ addFilter('formatDateToString', function formatDateToString(dateString) {
 addFilter('checkIfValueExists', function checkIfValueExists(arr, valueToCheck, propertyToCheck) {
   return arr.some(obj => obj[propertyToCheck] === valueToCheck);
 });
+
+
+
+addFilter('flatten', function(arr) {
+  if (!Array.isArray(arr)) {
+    return arr;
+  }
+
+  // You can use arr.flat() for one level, or arr.flat(Infinity) for all levels
+  return arr.flat();
+});
