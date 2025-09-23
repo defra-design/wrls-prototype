@@ -1,0 +1,73 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Abstraction points" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+   
+   {% set coordinates = [] %}
+   {% for i in data.licences[data.ID].gridRefs %}
+   {% set coordinates = coordinates| push(i |convertNGR | toLngLat ) %}
+   {% endfor %}
+
+  
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }}
+      </h1>
+      <p class="govuk-body"><a class="govuk-link" href="points/map?location={{coordinates|dump}}&center={{coordinates[0]}}">View these points on a map</a></p>
+      
+      </div>
+      </div>
+
+
+
+     {% for i in data.licences[data.ID].absPoints %}
+
+          <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-full">
+          <!-- licence condition title -->
+              <h2 class="heading-large govuk-heading-m licence-condition__header">
+                {{data.licences[data.ID].use[0].points | bracketedText }}          </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Abstraction point"
+                },
+                value: {
+                  text: i
+                }
+              },
+              {
+                key: {
+                  text: "Means of abstraction"
+                },
+                value: {
+                  text: data.licences[data.ID].means[0]
+                }
+              }
+            ]
+          }) }}
+
+          </div>
+          </div>
+
+
+{% endfor %}
+
+
+
+
+{% endblock %}

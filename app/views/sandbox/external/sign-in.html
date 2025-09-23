@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% set pageName = "Your licences" %}
+
+{% block beforeContent %}
+
+    <!-- phase banner -->
+    {% include "sandbox/_includes/nav/phase-banner.html" %}
+
+    {% endblock%}
+
+    {% block pageTitle %}
+{{pageName}} - GOV.UK Prototype Kit
+{% endblock %}
+
+    {% block content %}
+
+        <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+                <form method="POST" novalidate="">
+   
+   {{ govukInput({
+  label: {
+    text: "Email address",
+    classes: "govuk-label",
+    isPageHeading: false
+  },
+  classes: "govuk-!-width-one-half",
+  id: "username",
+  name: "username"
+}) }}
+
+{{ govukPasswordInput({
+  label: {
+    text: "Password"
+  },
+  classes: "govuk-!-width-one-half",
+  id: "password-input",
+  name: "password"
+}) }}
+
+
+
+{{ govukButton({
+  text: "Sign in",
+  isStartButton: true
+}) }}
+
+
+<p>
+    <a href="/reset_password">Forgotten your password?</a>
+    <br>
+    <br>
+    <a href="/start">Create an account to use this service</a>
+  </p>
+
+</form>
+            </div>
+        </div>
+
+    {% endblock %}

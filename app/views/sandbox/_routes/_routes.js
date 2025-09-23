@@ -155,6 +155,12 @@ router.use('/customer', require('./_routes-customer'));
 
 
 //----------------------------------------------------------------
+////EXTERNAL SERVICE ROUTES
+
+router.use('/external', require('./_routes-external'));
+
+
+//----------------------------------------------------------------
 ////BILL RUN ROUTES
 //CREATE BILL RUN
 

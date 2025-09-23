@@ -1,0 +1,41 @@
+{% set "navManage" = "" %}
+{% set "navAccess" = "" %}
+{% set "navLicences" = "" %}
+
+
+  
+{% switch data.navMenu %}
+{% case "returns" %}
+{% set "navReturns" = "navbar__link--active" %}
+{% case "manage" %}
+  {% set "navAccess" = "navbar__link--active" %}
+  {% default %}
+ {% set "navLicences" = "navbar__link--active" %}
+  {% endswitch %}
+
+
+<!-- navigation pattern -->
+<nav id="nav" class="navbar">
+   <ul class="navbar__list">
+
+     <li class="navbar__item">
+       <a class="navbar__link {{navLicences}} govuk-link--no-visited-state" href="/sandbox/external/licences?navMenu=licences&customer=" id="view">
+         View licences
+        
+       </a>
+     </li>
+
+     <li class="navbar__item">
+      <a class="navbar__link {{navReturns}} govuk-link--no-visited-state" href="/sandbox/external/returns?navMenu=returns" id="returns">
+        Manage returns
+      </a>
+    </li>
+
+     <li class="navbar__item">
+       <a class="navbar__link {{navAccess}} govuk-link--no-visited-state" href="#?navMenu=access" id="access">
+         Add licences or give access
+       </a>
+     </li>
+
+   </ul>
+ </nav>

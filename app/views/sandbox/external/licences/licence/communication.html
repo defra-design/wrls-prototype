@@ -1,0 +1,113 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = data.licences[data.ID].communications[data.communicationID]['type'] |capitalize %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+      {{ title }}
+    </h1>
+
+<!--Meta data-->
+<dl class="govuk-summary-list govuk-summary-list--no-border">
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+            Sent
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+        {{data.licences[data.ID].communications[data.communicationID]['sent']}}
+        </dd>
+
+      </div>
+
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Sender
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          {{data.licences[data.ID].communications[data.communicationID]['sender']}}
+        </dd>
+
+      </div>
+
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Method
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          {{data.licences[data.ID].communications[data.communicationID]['method']|capitalize}}
+        </dd>
+
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key meta-data__label">
+          Sent to
+        </dt>
+        <dd class="govuk-summary-list__value meta-data__value">
+          <!--get notifications-->
+          {% set notifications = data['notifications'] %}
+          {% for notification in notifications %}
+          <!--check the date matches-->
+          {% if data.licences[data.ID].communications[data.communicationID]['sent'] == notification.date %}
+          <!--if so get the recipients-->
+          {% set recipients = notification.recipients %}
+          {% for recipient in recipients %}
+          <!--check the licence number matches-->
+          {% if [data.licences[data.ID].number] == recipient.licenceNumber %}
+          <!--check the method matches-->
+          {% if data.licences[data.ID].communications[data.communicationID]['method'] == recipient.method %}
+          <!--print who it was sent to-->
+          {{recipient.sentTo}}
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </dd>
+
+      </div>
+
+
+</dl>
+
+
+<div class="notification govuk-!-margin-bottom-6" style="background-color:#f3f2f1;"" >
+  <div class=" govuk-grid-row govuk-!-padding-6">
+  <div class="govuk-grid-column-full">
+    <!-- display the text relevant to the WAA type-->
+    {% if data.licences[data.ID].communications[data.communicationID]['type'].includes("warning") %}
+    {% include "sandbox/_includes/notices/warning-text.html" %}
+    {% elseif data.licences[data.ID].communications[data.communicationID]['type'].includes("reduce") %}
+    {% include "sandbox/_includes/notices/reduce-text.html" %}
+    {% elseif data.licences[data.ID].communications[data.communicationID]['type'].includes("stop") %}
+    {% include "sandbox/_includes/notices/stop-text.html" %}
+    {% elseif  data.licences[data.ID].communications[data.communicationID]['type'].includes("Returns") %}
+    {% include "sandbox/_includes/notices/returns-letter-text.html" %}
+    {% else %}
+    {% include "sandbox/_includes/notices/resume-text.html" %}
+    {% endif %}
+
+  </div>
+</div>
+</div>
+
+{% endblock %}

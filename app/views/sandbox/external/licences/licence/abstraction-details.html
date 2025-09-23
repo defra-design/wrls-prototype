@@ -1,0 +1,75 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Abstraction details" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }}
+      </h1>
+
+      </div>
+      </div>
+
+
+          {% set uses = data.licences[data.ID].use %}
+
+          {% for use in uses %}
+
+          <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-full">
+          <!-- licence purpose -->
+              <h2 class="heading-large govuk-heading-m licence-condition__header">
+                {{use.purpose}}
+              </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: use.points | length | plural ("Point", showNumber = false)
+                },
+                value: {
+                  text: use.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+                }
+              },
+              {
+                key: {
+                  text: "Abstraction period"
+                },
+                value: {
+                  text: use.periodStart | mmddToDate + " to " + use.periodEnd | mmddToDate
+                }
+              },
+              {
+                key: {
+                  text: "Amount"
+                },
+                value: {
+                  text: use.amount + " m3/yr"
+                }
+              }
+            ]
+          }) }}
+
+          </div>
+          </div>
+
+
+ {% endfor %}
+
+
+
+{% endblock %}

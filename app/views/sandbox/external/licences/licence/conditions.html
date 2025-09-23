@@ -1,0 +1,264 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title = "Conditions" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }}
+      </h1>
+
+      </div>
+      </div>
+
+
+          <!--set station ID to blank-->
+          {% set stationID = "" %}
+          <!--loop through stations-->
+          {% set stations = data['stations'] %}
+          {% for station in stations %}
+
+          <!--set station number and name-->
+          {% set stationID = loop.index0 %}
+          {% set stationName = station.label %}
+          {% set catchmentName = station.catchmentName %}
+
+          <!--loop through the station tags-->
+          {% set tags = data.stations[stationID]['tags'] %}
+          {% for tag in tags %}
+
+          <!--set tag number-->
+          {% set tagNumber = loop.index0 %}
+          {% set tagLicenceNumber = station.tags[tagNumber]['licenceNumber'] %}
+
+
+          <!--check for licence number matches-->
+          {% if tagLicenceNumber == data.licences[data.ID].number %}
+
+
+          <!--if matched get tag details loop through the tags for that licence-->
+          {% set tagValues = station.tags[tagNumber]['tagValues'] %}
+          {% for i in tagValues %}
+          {% set tagValueNumber = loop.index0 %}
+          {% set thresholdValue = i.thresholdValue %}
+          {% set thresholdUnits = i.thresholdUnits' %}
+
+          {% set notificationType = i.notificationType %}
+          {% set conditionType = i.conditionType %}
+          {% set reductionAmount = i.reductionAmount %}
+          {% set reductionAmountUnits = i.reductionAmountUnits %}
+          {% set maxVolume = i.maxVolumeLimit %}
+          {% if conditionType == "reduce" %}
+          {% if maxVolume == "yes" %}
+          {% set conditionType = conditionType + " with a maximum volume limit"%}
+          {% else %}
+          {% set conditionType = conditionType %}
+          {% endif %}
+          {% endif %}
+          {% set linkedCondition = i.linkedCondtion %}
+
+          <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-full">
+          <!-- licence condition title -->
+              <h2 class="heading-large govuk-heading-m licence-condition__header">
+                Hands off {{notificationType}} threshold
+              </h2>
+
+
+           {{ govukSummaryList({
+             rows: [
+             {
+               key: {
+                 text: "Watercourse"
+               },
+               value: {
+                text: [catchmentName]
+               }
+             },
+             {
+               key: {
+                 text: "Station"
+               },
+               value: {
+                html: '<a href="../station?stationID=' + stationID + '" class="govuk-link">' +
+                stationName + '</a>'
+               }
+             },
+               {
+                 key: {
+                   text: "Threshold"
+                 },
+                 value: {
+                  html: thresholdValue + thresholdUnits | units | safe
+                 }
+               },
+               {
+                 key: {
+                   text: "Type"
+                 },
+                 value: {
+                  html: conditionType | capitalize
+                 }
+               }
+               ,
+               {
+                 key: {
+                   text: "Linked condition"
+                 },
+                 value: {
+                  html: linkedCondition
+                 }
+               }
+             ]
+           }) }}
+          {# {{ govukButton({
+           text: "Remove tag",
+           classes: "govuk-button--secondary",
+           href:"../licence-notices/tagging/remove-tag?ID=" + data['ID'] + "&tagNumber=" + tagNumber + "&tagValueNumber=" + tagValueNumber + "&stationID=" + stationID
+           }) }} #}
+         </div>
+         </div>
+
+
+
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+
+
+          {% for i in data.licences[data.ID].absConditions%}
+          <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <div class="govuk-grid-column-full">
+          <!-- licence condition title -->
+
+          
+              <h2 class="heading-large govuk-heading-m licence-condition__header">
+                {{i.type |default("general condition")|capitalize | bracketsToUpperCase}}
+              </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Abstraction point"
+                },
+                value: {
+                  text: data.licences[data.ID].absPoints[i.pointsIndex]
+                }
+              },
+              {
+                key: {
+                  text: "Purpose"
+                },
+                value: {
+                  text: data.licences[data.ID].purpose[i.purposeIndex]
+                }
+              },
+              {
+                key: {
+                  text: "Monitoring station"
+                },
+                value: {
+                  text: i.param1
+                }
+              } if i.param1.length,
+              {
+                key: {
+                  text: "Threshold"
+                },
+                value: {
+                  text: i.param2
+                }
+              } if i.param2.length,
+              {
+                key: {
+                  text: "Other information"
+                },
+                value: {
+                  text: i.text
+                }
+              }
+            ]
+          }) }}
+
+          </div>
+          </div>
+          {% endfor %}
+
+         
+  <!-- licence condition title -->
+
+        {% if "Hands off flow condition" in data.licences[data.ID].absConditions %}
+          <h2 class="heading-large govuk-heading-m licence-condition__header">
+            Flow cessation condition
+          </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Abstraction point"
+                },
+                value: {
+                  html: "At National Grid Reference SK 675 124<br>At National Grid Reference SK 675 126"|safe
+                }
+                },
+                {
+                  key: {
+                    text: "Purpose"
+                  },
+                  value: {
+                    text: "Spray Irrigation - Direct"
+                  }
+                  },
+                  {
+                    key: {
+                      text: "EA gauging station"
+                    },
+                    value: {
+                      text: "Bourton Dickler"
+                    }
+                    },
+                    {
+                      key: {
+                        text: "Threshold flow"
+                      },
+                      value: {
+                        text: "180Ml/d"
+                      }
+                    },
+                      {
+                        key: {
+                          text: "Other Information"
+                        },
+                        value: {
+                          text: "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+                      }
+              }
+            ]
+          }) }}
+
+
+
+
+  </div>
+</div>
+
+{% endif %}
+
+
+
+{% endblock %}

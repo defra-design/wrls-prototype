@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set pageName = "Sign in or create an account" %}
+
+{% block beforeContent %}
+
+    <!-- phase banner -->
+    {% include "sandbox/_includes/nav/phase-banner.html" %}
+
+    {% endblock%}
+
+    {% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+    {% block content %}
+
+        <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">Create an account</h2>
+                <p>Select if you have not used this service before.</p>
+
+                {{ govukButton({
+  text: "Create account"
+}) }}
+
+                <br>
+                <br>
+            </div>
+
+            <div class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">Sign in</h2>
+                <p>Select if you already have an account for this service.</p>
+
+                {{ govukButton({
+  text: "Sign in",
+  href: "/sign-in"
+}) }}
+
+            </div>
+        </div>
+
+    {% endblock %}
