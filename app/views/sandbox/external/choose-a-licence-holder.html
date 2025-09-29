@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% set pageName = "Choose a licence holder" %}
+
+{% block beforeContent %}
+
+<!-- phase banner -->
+{% include "sandbox/_includes/nav/phase-banner.html" %}
+
+{% endblock %}
+
+  {% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+  {% block content %}
+    <form novalidate="" method="post" class="form">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+{% set items = []%}
+{% for i in data.customers %}
+{% set items = items | push({value:loop.index0,text:i.name})%}
+{%endfor%}
+
+{{ govukRadios({
+  name: "whichCustomer",
+  fieldset: {
+    legend: {
+      text: pageName,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items:  items 
+}) }}
+
+ {{ govukButton({
+  text: "Continue"
+}) }}
+
+        </div>
+      </div>
+
+    </form>
+
+  {% endblock %}

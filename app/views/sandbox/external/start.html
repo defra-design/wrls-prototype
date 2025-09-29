@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set pageName = "Create an account to manage your water abstraction licence online" %}
+
+{% block beforeContent %}
+
+    <!-- phase banner -->
+    {% include "sandbox/_includes/nav/phase-banner.html" %}
+
+    {% endblock%}
+
+    {% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+    {% block content %}
+
+        <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+                <h1 class="govuk-heading-l">
+      Create an account to manage your water abstraction licence online
+    </h1>
+
+                <p>
+        You must be a licence holder to create an online account.
+        Once registered you will be able to:
+      </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>view your abstraction licence information</li>
+                    <li>submit abstraction returns</li>
+                    <li>give others access to your account and permission to submit returns</li>
+                </ul>
+
+                <p>
+        To protect your data we have to post a security code to the registered
+        address of the licence.
+      </p>
+
+{{ govukInsetText({
+  text: "We will send a security code to you straight away, using first-class mail."
+}) }}
+
+                <p>Impoundment licences are not yet part of this service.</p>
+
+                <h2 class="govuk-heading-m">Before you start</h2>
+
+                <p>You will need:</p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>an email address</li>
+                    <li>your licence numbers</li>
+                </ul>
+
+
+                {{ govukButton({
+  text: "Create account",
+  href: "/register",
+  isStartButton: true
+}) }}
+
+            </div>
+        </div>
+
+    {% endblock %}

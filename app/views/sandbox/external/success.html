@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% set pageName = "Confirm your email address" %}
+
+{% block beforeContent %}
+
+<!-- phase banner -->
+{% include "sandbox/_includes/nav/phase-banner.html" %}
+
+{% endblock %}
+
+  {% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+  {% block content %}
+    <form novalidate="" method="post" class="form">
+
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+<p class="govuk-body">We have sent a link to {{data.registerEmail}}</p>
+
+<p class="govuk-body"><a href="send-again" class="govuk-link">I have not received the email</a>
+ 
+
+        </div>
+      </div>
+
+    </form>
+
+  {% endblock %}
+
+
+{% block footer %}
+{{ govukFooter({
+  meta: {
+    items: [
+      {
+        href: "/manage-prototype",
+        text: "Manage your prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      },
+      {
+        href: "/change-password",
+        text: "Email success"
+      }
+    ]
+  }
+}) }}
+{% endblock %}
