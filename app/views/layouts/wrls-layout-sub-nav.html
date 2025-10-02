@@ -8,6 +8,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 
 {% block beforeContent %}
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  {% include "sandbox/_includes/nav/manage/nav-manage.html" %}
+</div>
+
 {{ govukPhaseBanner({
     tag: {
       text: "Prototype"
