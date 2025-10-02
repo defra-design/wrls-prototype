@@ -42,13 +42,13 @@ function createData(req,res){
 };
 
 //Create Sprint data if not already created
-router.use('/', (req, res, next) => {
-  if (req.session.data.sprint !== req.originalUrl.split('/')[1]) {
-  createData(req,res);
-} else {
-  next();
-  }
-});
+//router.use('/', (req, res, next) => {
+//  if (req.session.data.sprint !== req.originalUrl.split('/')[1]) {
+//  createData(req,res);
+//} else {
+//  next();
+//  }
+// });
 
 //Empty table filters
 function emptyFilters(req,res){

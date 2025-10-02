@@ -44,6 +44,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   {% switch data.url %}
       {% case '/sandbox/licence?ID='+data.ID+'&returnsRouteVersion=3' %}
           {% set licenceSummary = true %}
+      {% case '/sandbox/licence?ID='+data.ID %}
+          {% set licenceSummary = true %}
       {% case '/sandbox/licence/contact-details?ID='+data.ID+'&returnsRouteVersion=3' %}
           {% set contactDetails =  true %}
       {% case '/sandbox/licence/returns?ID='+data.ID+'&returnsRouteVersion=3' %}
