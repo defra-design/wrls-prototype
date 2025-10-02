@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "@govuk-prototype-kit/step-by-step": "^2.1.0",
+    "@x-govuk/govuk-prototype-components": "^5.0.2",
     "@x-govuk/govuk-prototype-filters": "^1.0.0",
     "dotenv-webpack": "^8.0.1",
+    "express": "^4.21.2",
     "govuk-frontend": "^5.6.0",
     "govuk-prototype-kit": "13.16.2",
     "jquery": "^3.6.3",

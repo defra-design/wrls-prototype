@@ -20,7 +20,7 @@ Example usage:
 module.exports = {
 
 
-
+    "returnsRouteVersion": 3,
     "number" : 10000000000.68,
     "resultsTable": "sandbox/_includes/stations-table.html",
     "userType": "su",

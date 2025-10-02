@@ -1,7 +1,7 @@
 {% extends "layouts/wrls-layout-sub-nav.html" %}
 
 <!--set title-->
-{% set title = [data.licences[data.ID].name] + " Licence summary" %}
+{% set title = "Bills" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -21,12 +21,12 @@
     {% if data.licences[data.ID].name.length %}
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}</span>
-      {{[data.licences[data.ID].name]}}
+      {{title}}
     </h1>
     {% else %}
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
-      {{[data.licences[data.ID].number]}}
+      {{title}}
     </h1>
     {% endif %}
 
@@ -47,9 +47,24 @@
 
 {% endif %}
 
-     {% include "sandbox/_includes/licence/summary.html" %}
+  {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+  <!--check to see if there is any charge information set up-->
+  {% if chargeVersions.length  %}
+  <!--if so display the table-->
+  <!-- tab 5 -->
+
+
+      {% include "sandbox/_includes/licence/bills.html" %}
+
+  {% else %}
+
+  <!--<h2 class="govuk-heading-l">Bills</h2>-->
+
+  <p class="govuk-body">No bills have been sent for this licence.</p>
+
+  {% endif %}
   </div>
-   </div>
+  </div>
 
 
 

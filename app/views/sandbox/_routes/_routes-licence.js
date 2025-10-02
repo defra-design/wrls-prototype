@@ -10,11 +10,11 @@ const path = require('path');
 
 
 ///////Show and hide table filters
-router.get('/licence', function(req, res) {
-  req.session.data.openDetails = ""
-req.session.data.back = req.headers.referer
-  res.render(folder + 'returns');
-});
+//router.get('/licence', function(req, res) {
+//  req.session.data.openDetails = ""
+//req.session.data.back = req.headers.referer
+//  res.render(folder + 'returns');
+//});
 
 
 router.post('/returns', function(req, res) {

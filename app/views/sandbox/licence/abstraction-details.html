@@ -1,6 +1,6 @@
-{% extends "layouts/_manage.html" %}
+{% extends "layouts/wrls-layout-sub-nav.html" %}
 
-{% set title = "Abstraction details" %}
+{% set title = "Purpose, periods and amounts" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -11,31 +11,30 @@
 {% block service %}
 
 
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
-
+   
+<div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
 
   <h1 class="govuk-heading-l">
 <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
 {{ title }}
       </h1>
 
-      </div>
-      </div>
+
+     
 
 
           {% set uses = data.licences[data.ID].use %}
 
           {% for use in uses %}
 
-          <div class="govuk-grid-row govuk-!-margin-bottom-9">
-            <div class="govuk-grid-column-full">
+         
           <!-- licence purpose -->
               <h2 class="heading-large govuk-heading-m licence-condition__header">
                 {{use.purpose}}
               </h2>
 
           {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-9",
             rows: [
               {
                 key: {
@@ -64,12 +63,11 @@
             ]
           }) }}
 
-          </div>
-          </div>
 
 
  {% endfor %}
 
-
+ </div>
+    
 
 {% endblock %}

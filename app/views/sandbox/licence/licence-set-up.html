@@ -1,4 +1,4 @@
-{% extends "layouts/_manage.html" %}
+{% extends "layouts/wrls-layout-sub-nav.html" %}
 
 {% set title = "Licence set up" %}
 
@@ -11,8 +11,8 @@
 {% block service %}
 
 
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
 
 
   <h1 class="govuk-heading-l">
@@ -20,14 +20,15 @@
 {{ title }}
       </h1>
 
-     <p class="govuk-body govuk-!-margin-bottom-6"><a class="govuk-link" href="licence-set-up/returns-requirements">Requirements for returns</a>
-     <br>View and set up requirements for returns</p>
+  {% include "sandbox/_includes/licence/returns-versions.html" %}
 
-    <p class="govuk-body govuk-!-margin-bottom-6"><a class="govuk-link" href="licence-set-up/charge-information">Charge information</a>
-    <br>View and set up requirements for returns</p>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-     <p class="govuk-body govuk-!-margin-bottom-6"><a class="govuk-link" href="licence-set-up/agreements">Agreements</a>
-    <br> View and set up requirements for returns</p>
+      {% include "sandbox/_includes/licence/charge-information.html" %}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      {% include "sandbox/_includes/licence/agreements.html" %}
 
   </div>
 </div>

@@ -1,0 +1,250 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = [data.licences[data.ID].name] + " Licence summary" %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+{% set purpose %}
+      {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+      {% endset %}
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data.licences[data.ID].name.length %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}</span>
+      {{[data.licences[data.ID].name]}}
+    </h1>
+    {% else %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
+      {{[data.licences[data.ID].number]}}
+    </h1>
+    {% endif %}
+  </div>
+</div>
+
+<!-- show confidential warning if licence is marked as confidential-->
+{% if data.licences[data.ID].confidentiality | match("confidential") %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukWarningText({
+  text: "This licence is confidential.",
+  iconFallbackText: "Warning"
+}) }}
+  </div>
+</div>
+{% endif %}
+
+<!-- show expired banner if licence is expired-->
+{% if [data.licences[data.ID].expired] == "true" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
+    {% include "sandbox/_includes/licence/expired-banner.html" %}
+  </div>
+</div>
+{% endif %}
+
+
+<!--licence set up section experimental
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
+<p class="govuk-body "><a class="govuk-link govuk-link--no-visited-state" href="licence/licence-set-up/returns-requirements">
+  Licence set up
+</a>
+<br> Set up new charge information, agreements and returns requirements
+</p>
+</div>
+</div>
+-->
+
+
+<!--<div class="govuk-!-margin-bottom-6">
+  <p class="govuk-body">Registered to <a href="user?userID={{data['userID']}}" class="no-break">{{[data.users[data.userID].email]}}</a></p>
+</div>-->
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+
+  <h2 class="govuk-tabs__title">
+    Licence views
+  </h2>
+
+  <!-- tab navigation -->
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item" tabindex="0" >
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#summary" style="view-transition-name: one;">
+        Summary
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item" tabindex="1">
+      <a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#contact-details" style="view-transition-name: two;">
+        Contact details
+      </a>
+    </li>
+    {% if 'Impounding' not in purpose %}
+    <li class="govuk-tabs__list-item" tabindex="2">
+      <a class="govuk-tabs__tab" href="#returns">
+        Returns
+      </a>
+    </li>
+    {% endif %}
+    <li class="govuk-tabs__list-item" tabindex="3">
+      <a class="govuk-tabs__tab" href="#communications">
+        Communications
+      </a>
+    </li>
+    <!--if not display the table-->
+    {% if 'Impounding' not in purpose %}
+    <li class="govuk-tabs__list-item" tabindex="4">
+      <a class="govuk-tabs__tab" href="#bills">
+        Bills
+      </a>
+    </li>
+
+    <li class="govuk-tabs__list-item" tabindex="5">
+      <a class="govuk-tabs__tab" href="#charge">
+        Licence set up
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+
+  <!-- tab 1 -->
+  <section class="govuk-tabs__panel" id="summary" style="view-transition-name: one;">
+
+    <h2 class="govuk-heading-l">
+      Summary
+    </h2>
+
+    <p class="govuk-body">Viewing current information about this licence
+    {% if data.previousVersionsConcept.length %}
+    <br>
+    <a class="govuk-link--no-visited-state" href="licence-experimental/licence-experimental-versions">
+      View other versions of this licence
+    </a>
+    </p>
+    {% else %}
+  </p>
+    {% endif %}
+
+    <!--Licence summary -->
+    {% include "sandbox/_includes/licence/summary.html" %}
+
+  </section>
+
+
+  <!-- tab 2 -->
+  <section class="govuk-tabs__panel" id="contact-details" style="view-transition-name: two;">
+
+    <!--Licence summary -->
+    {% include "sandbox/_includes/licence/contact-details.html" %}
+
+  </section>
+
+  <!-- tab 3 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="returns">
+
+    {% set returns = data.licences[data.ID]['returns'] %}
+    <!--check to see if there is any charge information set up-->
+    {% if returns.length  %}
+    <!--if so display the table-->
+    <!-- returns with statuses -->
+    {% include "sandbox/_includes/licence/returns.html" %}
+
+    {% else %}
+
+    <h2 class="govuk-heading-l">Returns</h2>
+
+    <p class="govuk-body">No requirements for returns have been set up for this licence.</p>
+
+    <!--<p class="govuk-body"><a class="govuk-link" href="#charge">Set up new requirements for returns</a></p>-->
+
+    {% endif %}
+
+  </section>
+
+  <!-- tab 4 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="communications">
+
+    {% set communications = data.licences[data.ID]['communications'] %}
+    <!--check to see if there is any charge information set up-->
+    {% if communications.length  %}
+    <!--if so display the table-->
+
+    {% include "sandbox/_includes/licence/communications-table.html" %}
+
+    {% else %}
+
+    <h2 class="govuk-heading-l">Communications</h2>
+
+    <p class="govuk-body">No communications have been sent for this licence.</p>
+
+    {% endif %}
+
+
+  </section>
+
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="bills">
+
+    <section>
+  {% set chargeVersions = data.licences[data.ID]['chargeInformation'] %}
+  <!--check to see if there is any charge information set up-->
+  {% if chargeVersions.length  %}
+  <!--if so display the table-->
+  <!-- tab 5 -->
+
+
+      {% include "sandbox/_includes/licence/bills.html" %}
+
+  {% else %}
+
+  <h2 class="govuk-heading-l">Bills</h2>
+
+  <p class="govuk-body">No bills have been sent for this licence.</p>
+
+  {% endif %}
+
+    </section>
+
+
+  </section>
+
+
+
+  <!-- tab 6 -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="charge">
+
+
+    <section>
+
+      <h2 class="govuk-heading-l">Licence set up</h2>
+
+    <!--  <p class="govuk-body govuk-!-margin-bottom-8"><a class="govuk-link" href="licence/settings">Settings</a></p> -->
+
+      {% include "sandbox/_includes/licence/returns-versions.html" %}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      {% include "sandbox/_includes/licence/charge-information.html" %}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      {% include "sandbox/_includes/licence/agreements.html" %}
+
+    </section>
+
+
+  </section>
+
+</div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends "layouts/_manage.html" %}
+{% extends "layouts/wrls-layout-sub-nav.html" %}
 
 {% set title = "Conditions" %}
 
@@ -11,8 +11,7 @@
 {% block service %}
 
 
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
 
 
   <h1 class="govuk-heading-l">
@@ -20,8 +19,7 @@
 {{ title }}
       </h1>
 
-      </div>
-      </div>
+   
 
 
           <!--set station ID to blank-->
@@ -140,8 +138,7 @@
 
 
           {% for i in data.licences[data.ID].absConditions%}
-          <div class="govuk-grid-row govuk-!-margin-bottom-9">
-            <div class="govuk-grid-column-full">
+
           <!-- licence condition title -->
 
           
@@ -150,6 +147,7 @@
               </h2>
 
           {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-9",
             rows: [
               {
                 key: {
@@ -194,8 +192,7 @@
             ]
           }) }}
 
-          </div>
-          </div>
+       
           {% endfor %}
 
          
@@ -207,6 +204,7 @@
           </h2>
 
           {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-9",
             rows: [
               {
                 key: {
@@ -254,11 +252,11 @@
 
 
 
-  </div>
-</div>
+ 
 
 {% endif %}
 
-
+ </div>
+</div>
 
 {% endblock %}

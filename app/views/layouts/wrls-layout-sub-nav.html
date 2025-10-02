@@ -1,0 +1,120 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "layouts/_manage.html" %}
+
+
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "Prototype"
+    },
+    html: 'This is a service prototype.'
+  }) }}
+
+{{ govukBackLink({
+    text: "Back to search",
+    href: "javascript:window.history.back()"
+  }) }}
+
+   <div class="govuk-grid-row govuk-!-margin-top-6">
+    <div class="govuk-grid-column-one-quarter">
+
+{% set licenceSummary = false %}
+ {% set contactDetails =  false %}
+{% set history = false %}
+{% set returns = false %}
+{% set communications = false %}
+{% set bills = false %}
+{% set licenceSetup = false%}
+{% set purpose = false%}
+{% set points = false%}
+{% set conditions = false%}
+
+
+
+  {% switch data.url %}
+      {% case '/sandbox/licence?ID='+data.ID+'&returnsRouteVersion=3' %}
+          {% set licenceSummary = true %}
+      {% case '/sandbox/licence/contact-details?ID='+data.ID+'&returnsRouteVersion=3' %}
+          {% set contactDetails =  true %}
+      {% case '/sandbox/licence/returns?ID='+data.ID+'&returnsRouteVersion=3' %}
+          {% set returns =  true %}
+      {% case '/sandbox/licence/communications?ID='+data.ID+'&returnsRouteVersion=3' %}
+          {% set communications =  true %}
+      {% case '/sandbox/licence/bills?ID='+data.ID+'&returnsRouteVersion=3' %}
+          {% set bills =  true %}
+      {% case '/sandbox/licence/licence-set-up?ID='+data.ID+'&returnsRouteVersion=3' %}
+          {% set licenceSetup =  true %}
+       {% case '/sandbox/licence/licence-set-up?ID='+data.ID+'&returnsRouteVersion=3' %}
+          {% set licenceSetup =  true %}
+      {% case '/sandbox/licence/abstraction-details?ID='+data.ID+'&returnsRouteVersion=3' %}
+      {% set licenceSummary = true %}
+          {% set purpose =  true %}
+          {% case '/sandbox/licence/points?ID='+data.ID+'&returnsRouteVersion=3' %}
+      {% set licenceSummary = true %}
+          {% set points =  true %}
+          {% case '/sandbox/licence/conditions?ID='+data.ID+'&returnsRouteVersion=3' %}
+      {% set licenceSummary = true %}
+          {% set conditions =  true %}
+  {% endswitch %}
+
+
+
+ {{ xGovukSubNavigation({
+  items: [{
+    text: "Licence summary",
+    href: "/sandbox/licence?ID="+data.ID+"&returnsRouteVersion=3",
+    current: licenceSummary,
+    parent: licenceSummary,
+    children: [{
+      text: "Purpose, periods and amounts",
+      href: "/sandbox/licence/abstraction-details?ID="+data.ID+"&returnsRouteVersion=3",
+      current: purpose
+    }, {
+      text: "Points",
+      href: "/sandbox/licence/points?ID="+data.ID+"&returnsRouteVersion=3",
+      current: points
+    }, {
+      text: "Conditions",
+      href: "/sandbox/licence/conditions?ID="+data.ID+"&returnsRouteVersion=3",
+      current: conditions
+    }]
+  },
+  {
+    text: "History",
+    href: "history",
+    current: history
+  }, 
+  {
+    text: "Contact details",
+    href: "/sandbox/licence/contact-details?ID="+data.ID+"&returnsRouteVersion=3",
+    current: contactDetails
+  }, 
+  {
+    text: "Returns",
+     href: "/sandbox/licence/returns?ID="+data.ID+"&returnsRouteVersion=3",
+    current: returns
+  }, 
+  {
+    text: "Communications",
+    href: "/sandbox/licence/communications?ID="+data.ID+"&returnsRouteVersion=3",
+     current: communications
+  } , 
+  {
+    text: "Bills",
+    href: "/sandbox/licence/bills?ID="+data.ID+"&returnsRouteVersion=3",
+     current: bills
+  } , 
+  {
+    text: "Licence set up",
+    href: "/sandbox/licence/licence-set-up?ID="+data.ID+"&returnsRouteVersion=3",
+     current: licenceSetup
+  }
+  ]
+}) }}
+</div>
+  {% endblock %}

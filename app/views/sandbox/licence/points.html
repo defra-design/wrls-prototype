@@ -1,6 +1,6 @@
-{% extends "layouts/_manage.html" %}
+{% extends "layouts/wrls-layout-sub-nav.html" %}
 
-{% set title = "Abstraction points" %}
+{% set title = "Points" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -11,8 +11,7 @@
 {% block service %}
 
 
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
    
    {% set coordinates = [] %}
    {% for i in data.licences[data.ID].gridRefs %}
@@ -27,20 +26,19 @@
       </h1>
       <p class="govuk-body"><a class="govuk-link" href="points/map?location={{coordinates|dump}}&center={{coordinates[0]}}">View these points on a map</a></p>
       
-      </div>
-      </div>
+   
 
 
 
      {% for i in data.licences[data.ID].absPoints %}
 
-          <div class="govuk-grid-row govuk-!-margin-bottom-9">
-            <div class="govuk-grid-column-full">
+      
           <!-- licence condition title -->
               <h2 class="heading-large govuk-heading-m licence-condition__header">
                 {{data.licences[data.ID].use[0].points | bracketedText }}          </h2>
 
           {{ govukSummaryList({
+            classes: "govuk-!-margin-bottom-9",
             rows: [
               {
                 key: {
@@ -61,13 +59,12 @@
             ]
           }) }}
 
-          </div>
-          </div>
-
+   
 
 {% endfor %}
 
-
+</div>
+</div>
 
 
 {% endblock %}

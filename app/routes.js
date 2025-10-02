@@ -26,6 +26,8 @@ console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subf
 
 router.use('/', (req, res, next) => {
   req.session.data.url = req.url; //current screen
+
+    res.clearCookie('connect.sid'); // The default cookie name
   //console.log(req.url);
   next();
 });
@@ -59,7 +61,3 @@ router.all(/^\/bd\/.*|^\/ar\/.*|^\/dashboard\/.*|^\/data\/.*|^\/eo\/.*|^\/ex\/.*
  urlEnd = req.originalUrl
  return res.redirect('/current' + urlEnd)
 })
-
-
-
-

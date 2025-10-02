@@ -120,6 +120,13 @@ border-bottom: 1px solid #b1b4b6 !important;
 //map styles
 @import "map/map";
 
+//sub-nav
+@import "sub-nav";
+
+.govuk-width-container {
+   @include govuk-width-container(1300px);
+}
+
 
 .map { position:absolute; top:0; bottom:0; width:100%; }
 
