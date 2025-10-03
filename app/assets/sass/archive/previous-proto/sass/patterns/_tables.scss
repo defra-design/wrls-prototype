@@ -1,5 +1,7 @@
 // flexible tables, present well on mobiles
 // also improved accessibly
+@forward  "node_modules/govuk-frontend/dist/govuk/index.scss";
+@use "node_modules/govuk-frontend/dist/govuk/index.scss";
 
 .table {
   // larger screens
@@ -79,7 +81,7 @@
     display: table-cell;
     min-height: auto;
   }
-  color: $govuk-text-colour;
+  //color: $govuk-text-colour;
 }
 
 .table__cell--v-middle {
@@ -90,12 +92,12 @@
   .table__row--end dt,
   .table__row--end dd,
   .table__row--end div {
-    border-bottom: 2px solid $govuk-text-colour;
+   // border-bottom: 2px solid $govuk-text-colour;
   }
   .table__row--divider dt,
   .table__row--divider dd,
   .table__row--divider div, {
-    border-bottom: 1px solid $govuk-text-colour;
+   // border-bottom: 1px solid $govuk-text-colour;
   }
 }
 
@@ -148,7 +150,7 @@
 }
 
 .table__link {
-  color: $govuk-link-colour;
+ // color: $govuk-link-colour;
   text-decoration: underline;
 }
 

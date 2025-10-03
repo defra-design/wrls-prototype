@@ -28,46 +28,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
    <div class="govuk-grid-row govuk-!-margin-top-6">
     <div class="govuk-grid-column-one-quarter">
 
-{% set licenceSummary = false %}
- {% set contactDetails =  false %}
-{% set history = false %}
-{% set returns = false %}
-{% set communications = false %}
-{% set bills = false %}
-{% set licenceSetup = false%}
-{% set purpose = false%}
-{% set points = false%}
-{% set conditions = false%}
 
-
-
-  {% switch data.url %}
-      {% case '/sandbox/licence?ID='+data.ID+'&returnsRouteVersion=3' %}
-          {% set licenceSummary = true %}
-      {% case '/sandbox/licence?ID='+data.ID %}
-          {% set licenceSummary = true %}
-      {% case '/sandbox/licence/contact-details?ID='+data.ID+'&returnsRouteVersion=3' %}
-          {% set contactDetails =  true %}
-      {% case '/sandbox/licence/returns?ID='+data.ID+'&returnsRouteVersion=3' %}
-          {% set returns =  true %}
-      {% case '/sandbox/licence/communications?ID='+data.ID+'&returnsRouteVersion=3' %}
-          {% set communications =  true %}
-      {% case '/sandbox/licence/bills?ID='+data.ID+'&returnsRouteVersion=3' %}
-          {% set bills =  true %}
-      {% case '/sandbox/licence/licence-set-up?ID='+data.ID+'&returnsRouteVersion=3' %}
-          {% set licenceSetup =  true %}
-       {% case '/sandbox/licence/licence-set-up?ID='+data.ID+'&returnsRouteVersion=3' %}
-          {% set licenceSetup =  true %}
-      {% case '/sandbox/licence/abstraction-details?ID='+data.ID+'&returnsRouteVersion=3' %}
-      {% set licenceSummary = true %}
-          {% set purpose =  true %}
-          {% case '/sandbox/licence/points?ID='+data.ID+'&returnsRouteVersion=3' %}
-      {% set licenceSummary = true %}
-          {% set points =  true %}
-          {% case '/sandbox/licence/conditions?ID='+data.ID+'&returnsRouteVersion=3' %}
-      {% set licenceSummary = true %}
-          {% set conditions =  true %}
-  {% endswitch %}
 
 
 

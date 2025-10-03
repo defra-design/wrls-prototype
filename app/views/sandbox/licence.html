@@ -3,6 +3,9 @@
 <!--set title-->
 {% set title = [data.licences[data.ID].name] + " Licence summary" %}
 
+<!--status for the nav bar-->
+{% set licenceSummary = true %}
+
 {% block pageTitle %}
 {{title}} - GOV.UK
 {% endblock %}
