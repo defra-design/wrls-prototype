@@ -8,10 +8,6 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 
 {% block beforeContent %}
-<!-- navigation block -->
-<div class="govuk-!-margin-bottom-3">
-  {% include "sandbox/_includes/nav/manage/nav-manage.html" %}
-</div>
 
 {{ govukPhaseBanner({
     tag: {
@@ -20,9 +16,17 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     html: 'This is a service prototype.'
   }) }}
 
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  {% include "sandbox/_includes/nav/manage/nav-manage.html" %}
+</div>
+
+
+
 {{ govukBackLink({
     text: "Back to search",
-    href: "javascript:window.history.back()"
+    href: "/sandbox/home-search?returnsRouteVersion=3"
   }) }}
 
    <div class="govuk-grid-row govuk-!-margin-top-6">
@@ -54,7 +58,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   },
   {
     text: "History",
-    href: "history",
+    href: "/sandbox/licence/history?ID="+data.ID+"&returnsRouteVersion=3",
     current: history
   }, 
   {

@@ -1,0 +1,39 @@
+{% extends "layouts/wrls-layout-sub-nav.html" %}
+
+{% set title = "History" %}
+
+<!-- set sub nav -->
+{% set history = true %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
+
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }}
+      </h1>
+
+      <p class="govuk-body-l">Versions of the licence that have been imported into the service.</p>
+
+  {% include "sandbox/_includes/licence/abstraction-versions.html" %}
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

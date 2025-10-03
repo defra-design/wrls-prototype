@@ -543,6 +543,17 @@ module.exports = {
                 "timeLimit": "No"
               }],
 
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "1985-06-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+
                //Previous versions of the licence data
                "previousVersions": [
                 { }
@@ -763,6 +774,17 @@ module.exports = {
                 "amount": "20",
                 "timeLimit": "No"
               }],
+
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "1985-06-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
 
                //Previous versions of the licence data
                "previousVersions": [
@@ -1033,6 +1055,17 @@ module.exports = {
                 "timeLimit": "No"
               }],
 
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2022-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+
                //Previous versions of the licence data
                "previousVersions": [
                 { }
@@ -1115,6 +1148,17 @@ module.exports = {
                 "amount":"125",
                 "timeLimit": "No"
               }],
+
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "1985-06-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
 
                //Previous versions of the licence data
                "previousVersions": [
@@ -1316,6 +1360,18 @@ module.exports = {
                 "amount":"125",
                 "timeLimit": "No"
               }],
+
+
+                  "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "1990-09-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
 
                //Previous versions of the licence data
                "previousVersions": [
@@ -1558,6 +1614,17 @@ module.exports = {
                 "timeLimit": "No"
               }],
 
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2015-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+
                //Previous versions of the licence data
                "previousVersions": [
                 { }
@@ -1753,6 +1820,18 @@ module.exports = {
                 "amount":"125",
               }],
 
+                  "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2016-10-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+
+
               //Previous versions of the licence data
               "previousVersions": [
                 { }
@@ -1865,7 +1944,7 @@ module.exports = {
         "number": "03/28/61/033",
         "name": "Cherry Tree Farm",
         "holder": "Big Smith Farms Ltd",
-        "startDate": "1 April 2017",
+        "startDate": "1 April 2019",
         "effectiveDate": "1 August 2019",
         "endDate": "31 March 2034",
         "expired": "false",
@@ -1938,19 +2017,25 @@ module.exports = {
                     },
             ],
 
-            "changeLog": [{
-              "type": "Licence version",
-              "reasonCreated": "minor variation",
-              "reasonText":  "Minor variation reduction of abstraction volume on SK 675124 and SK 675126",
-              "changedDate": "31 July 2019",
-              "changedBy": "admin@gov.uk",
-            },{
-              "type": "Licence version",
-              "reasonCreated": "new Licence",
-              "reasonText":  "",
-              "changeDate": "1 April 2017",
-              "changedBy": "admin@gov.uk",
-            }],
+                              "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "minor variation",
+                    "reasonText":  "Minor variation time limited increase for reservoir storage for subsequent spray irrigation volume on SK 675124 and SK 675126",
+                    "changedDate": "31 March 2023",
+                    "startDate": "2019-04-01",
+                    "endDate": "",
+                    "changeType": "admin change",
+                    "changedBy": "admin@gov.uk",
+                  },{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2017-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "2019-03-31",
+                    "changedBy": "admin@gov.uk",
+                  }],
 
             "previousVersions": [
                 {
@@ -2175,6 +2260,17 @@ module.exports = {
                       "timeLimit": "No"
                     }],
 
+                                      "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2000-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+
               "previousVersions": [],
 
               "returnsRequirements":  [],
@@ -2261,11 +2357,15 @@ module.exports = {
                           }
                   ],
 
-                  "changeLog": [{
+
+                                    "changeLog": [{
                     "type": "Licence version",
                     "reasonCreated": "new Licence",
                     "reasonText":  "",
-                    "changeDate": "1 April 2022",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2022-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
                     "changedBy": "admin@gov.uk",
                   }],
 
@@ -2378,12 +2478,18 @@ module.exports = {
                     "reasonCreated": "minor variation",
                     "reasonText":  "Minor variation time limited increase for reservoir storage for subsequent spray irrigation volume on SK 675124 and SK 675126",
                     "changedDate": "31 March 2023",
+                    "startDate": "2023-04-01",
+                    "endDate": "",
+                    "changeType": "admin change",
                     "changedBy": "admin@gov.uk",
                   },{
                     "type": "Licence version",
                     "reasonCreated": "new Licence",
                     "reasonText":  "",
                     "changeDate": "1 April 2019",
+                    "startDate": "2019-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "2023-03-31",
                     "changedBy": "admin@gov.uk",
                   }],
 
@@ -3698,17 +3804,23 @@ module.exports = {
                           },
                   ],
 
-                  "changeLog": [{
+                                    "changeLog": [{
                     "type": "Licence version",
                     "reasonCreated": "Normal variation",
                     "reasonText":  "Licence varied to add agriculture purpose to the licence",
-                    "changedDate": "1 April 2023",
+                    "changedDate": "31 March 2023",
+                    "startDate": "2023-04-01",
+                    "endDate": "",
+                    "changeType": "licence issued",
                     "changedBy": "admin@gov.uk",
                   },{
                     "type": "Licence version",
                     "reasonCreated": "new Licence",
                     "reasonText":  "",
                     "changeDate": "1 April 2019",
+                    "startDate": "2019-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "2023-03-31",
                     "changedBy": "admin@gov.uk",
                   }],
 
@@ -4065,6 +4177,17 @@ module.exports = {
                       "amount":"12271.581",
                       "timeLimit": "No"
                     }],
+
+                                     "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2018-01-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
       
                      //Previous versions of the licence data
                      "previousVersions": [
@@ -4338,6 +4461,17 @@ module.exports = {
                       "amount":"12271.581",
                       "timeLimit": "No"
                     }],
+
+                                     "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2024-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
       
                      //Previous versions of the licence data
                      "previousVersions": [

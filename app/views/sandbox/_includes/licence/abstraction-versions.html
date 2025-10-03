@@ -1,0 +1,30 @@
+{% set versions = [] %}
+
+{% for changeLog in data.licences[data.ID]['changeLog'] %}
+{% if changeLog.endDate %}{% set endDate = changeLog.endDate|govukDate%}{% endif %}
+{% set versions = versions | push([{text:changeLog.startDate|govukDate},{text:endDate},{text:changeLog.reasonCreated|capitalize},{text:changeLog.changeType|capitalize},{html:'<a class="govuk-link" href="#">View</a>'}])%}
+{% endfor %}
+
+{{ govukTable({
+  caption: "Showing all licence versions",
+  captionClasses: "govuk-table__caption--s",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Start date"
+    },
+    {
+      text: "End date"
+    },
+    {
+      text: "Reason"
+    },
+    {
+      text: "Type"
+    },
+    {
+      text: "Action"
+    }
+  ],
+  rows: versions
+}) }}
