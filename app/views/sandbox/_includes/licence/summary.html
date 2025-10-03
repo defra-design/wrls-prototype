@@ -1,13 +1,15 @@
 <dl class="govuk-summary-list">
 
-  {% if data.licences[data.ID].name.length %}
+  {% set licenceData =  data.licences[data.ID] %}
+
+  {% if licenceData.name.length %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Licence name
     </dt>
     <dd class="govuk-summary-list__value">
 
-      {{[data.licences[data.ID].name]}}
+      {{[licenceData.name]}}
     </dd>
 
   </div>
@@ -17,12 +19,12 @@
       Licence holder
     </dt>
     <dd class="govuk-summary-list__value">
-      {{[data.licences[data.ID].holder]}}
+      {{[licenceData.holder]}}
 
      <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
      {% set loopNumber = "" %}
      {% for i in data['customers'] %}
-     {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
+     {% if [licenceData.holder] == data.customers[loop.index0]['name'] %}
      {% set loopNumber = loop.index0 %}
      {% endif %}
      {% endfor %}
@@ -37,18 +39,18 @@
       Effective from
     </dt>
     <dd class="govuk-summary-list__value">
-      {{[data.licences[data.ID].effectiveDate]}}
+      {{[licenceData.effectiveDate]}}
     </dd>
 
   </div>
 
-  {% if data.licences[data.ID].endDate.length %}
+  {% if licenceData.endDate.length %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       End date
     </dt>
     <dd class="govuk-summary-list__value">
-      {{[data.licences[data.ID].endDate]}}
+      {{[licenceData.endDate]}}
     </dd>
 
   </div>
@@ -59,7 +61,7 @@
       Source of supply
     </dt>
     <dd class="govuk-summary-list__value">
-      {{[data.licences[data.ID].source]}}
+      {{[licenceData.source]}}
     </dd>
 
   </div>
@@ -70,7 +72,7 @@
     </dt>
     <dd class="govuk-summary-list__value">
       {% set purpose %}
-      {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+      {{licenceData.purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
       {% endset %}
       {{purpose|safe}}
     </dd>
@@ -82,7 +84,7 @@
       Period of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %}
     </dt>
     <dd class="govuk-summary-list__value">
-      {% for i in data.licences[data.ID]['absPeriod'] %}
+      {% for i in licenceData['absPeriod'] %}
       {{i}}<br>
       {% endfor %}
       {% if 'Impounding' not in purpose %}<a href="licence/abstraction-details">View details of your purpose, period and amounts</a>{% endif %}
@@ -95,7 +97,7 @@
       Points of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %}
     </dt>
     <dd class="govuk-summary-list__value">
-      {% for i in data.licences[data.ID]['absPoints'] %}
+      {% for i in licenceData['absPoints'] %}
       {{i}}<br>
       {% endfor %}
       <a href="licence/points" >View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} points</a>
@@ -133,7 +135,7 @@
 
 
       <!--check for licence number matches-->
-      {% if tagLicenceNumber == data.licences[data.ID].number %}
+      {% if tagLicenceNumber == licenceData.number %}
 
 
       <a href="station?stationID={{stationID}}" class="govuk-link">
@@ -156,38 +158,38 @@
 
 
 
-  <div class="govuk-summary-list__row   {% if data.licences[data.ID]['absQuantities'].length %}{% else %}govuk-summary-list__row--last{% endif %}">
+  <div class="govuk-summary-list__row   {% if licenceData['absQuantities'].length %}{% else %}govuk-summary-list__row--last{% endif %}">
     <dt class="govuk-summary-list__key">
       {% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} conditions
     </dt>
     <dd class="govuk-summary-list__value">
-      {% for i in data.licences[data.ID]['absConditions'] %}
+      {% for i in licenceData['absConditions'] %}
       {{i.type|default("general condition")|capitalize | bracketsToUpperCase}}<br>
       {% endfor %}<a href="licence/conditions?ID={{data.ID}}">View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} conditions</a>
     </dd>
 
   </div>
 
-  {% if data.licences[data.ID]['absQuantities'].length %}
+  {% if licenceData['absQuantities'].length %}
   <div class="govuk-summary-list__row govuk-summary-list__row--last">
     <dt class="govuk-summary-list__key">
       {% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} amounts
     </dt>
     <dd class="govuk-summary-list__value">
-      {{data.licences[data.ID]['absQuantities'] | replaceTilde | striptags(true) | escape | nl2br}}
+      {{licenceData['absQuantities'] | replaceTilde | striptags(true) | escape | nl2br}}
     </dd>
 
   </div>
   {% endif %}
 
 
-  {% if data.licences[data.ID]['billingRegion'].length %}
+  {% if licenceData['billingRegion'].length %}
   <div class="govuk-summary-list__row govuk-summary-list__row--last">
     <dt class="govuk-summary-list__key">
       Billing region
     </dt>
     <dd class="govuk-summary-list__value">
-      {{data.licences[data.ID]['billingRegion']}}
+      {{licenceData['billingRegion']}}
     </dd>
   </div>
   {% endif %}

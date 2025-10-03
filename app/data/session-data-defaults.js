@@ -19,7 +19,7 @@ Example usage:
 
 module.exports = {
 
-
+    "versionID": 0,
     "returnsRouteVersion": 3,
     "number" : 10000000000.68,
     "resultsTable": "sandbox/_includes/stations-table.html",
@@ -554,9 +554,75 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-               //Previous versions of the licence data
-               "previousVersions": [
-                { }
+///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                { 
+
+                    "number": "00/22/001/02",
+        "name": "Lower Smith Road",
+        "holder": "Irene Briton",
+        "startDate": "1 June 1985",
+        "endDate": "31 January 2020",
+        "effectiveDate": "1 June 1985",
+        "expired": "true",
+        "billingRegion": "Midlands",
+
+                     //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+        "purpose": ["Spray irrigation","General machine washing"],
+        "absPeriod": ["1 April to 31 October"],
+        "means": ["Unspecified pump"],
+
+        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124(RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount":"125",
+                "timeLimit": "No"
+              },
+              {
+                "purpose": "General machine washing",
+                "points": ["At National Grid Reference SE 437 682 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "20",
+                "timeLimit": "No"
+              }],
+
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "1985-06-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+                }
               ],
 
               "returnsRequirements":  [{
@@ -786,9 +852,71 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-               //Previous versions of the licence data
-               "previousVersions": [
-                { }
+///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                {         
+        "number": "03/28/60/0032",
+        "name": "Glindenfold Lake",
+        "holder": "Bottled Water Plc",
+        "startDate": "1 June 1985",
+        "endDate": "30 April 2022",
+        "effectiveDate": "1 June 1985",
+        "expired": "false",
+        "billingRegion": "North West",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+        "purpose": ["Spray irrigation", "General machine washing"],
+        "absPeriod": ["1 April to 31 October", "1 November to 31 March"],
+        "means": ["Unspecified pump"],
+
+        "absPoints": ["At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK 67540 12640" ],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount":"125",
+                "timeLimit": "No"
+              },
+              {
+                      "purpose": "Spray irrigation - direct",
+                      "points": ["At National Grid Reference SK 675126(RIVER SWALE - HELPERBY)"],
+                      "periodStart": "1101",
+                      "periodEnd": "0331",
+                      "amount":"125",
+                      "timeLimit": "No"
+                    },
+              {
+                "purpose": "General machine washing",
+                "points": ["At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount": "20",
+                "timeLimit": "No"
+              }],
+               }
               ],
 
               "returnsRequirements":  [{
@@ -1066,9 +1194,66 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-               //Previous versions of the licence data
-               "previousVersions": [
-                { }
+///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                { 
+                          "number": "03/28/61/029",
+        "name": "Honeydew Crescent",
+        "holder": "Big Smith Farms Ltd",
+        "startDate": "1 April 2022",
+        "endDate": "31 March 2034",
+        "effectiveDate": "1 April 2022",
+        "expired": "false",
+        "billingRegion": "South West",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+        "purpose": ["Spray irrigation"],
+        "absPeriod": ["1 April to 31 March"],
+        "means": ["Unspecified pump"],
+
+        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK675124", "SK675126" ],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 126 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "0331",
+                "amount":"125",
+                "timeLimit": "No"
+              }],
+
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "2022-04-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+                   }
               ],
 
         "returnsRequirements":  [],
@@ -1160,9 +1345,79 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-               //Previous versions of the licence data
-               "previousVersions": [
-                { }
+///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                { 
+                          "number": "03/28/60/0035",
+        "name": "George Furrow",
+        "holder": "Bottled Water Plc",
+        "startDate": "1 June 1985",
+        "endDate": "15 September 2022",
+        "effectiveDate": "1 June 1985",
+        "expired": "false",
+        "billingRegion": "North East",
+
+        //contacts on the licence
+        "contacts": [{
+          "type": "returns",
+          "id": ['3'],
+          "method": "letter",
+          "addressID": "1"
+        },{
+          "type": "returns",
+          "id": ['2'],
+          "method": "email",
+          "addressID": "1"
+        },],
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+        "purpose": ["Spray irrigation"],
+        "absPeriod": ["1 April to 31 October"],
+        "means": ["Unspecified pump"],
+
+        "absPoints": ["At National Grid Reference SU 190683", "At National Grid Reference SU 190679", "At National Grid Reference SU 188678", "At National Grid Reference SU 187680"],
+        "gridRefs": [ "SU 19025 68308", "SU 19047 67983", "SU 18810 67869", "SU 18776 68078" ],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SU 190683 (Marlborough)", "At National Grid Reference SU 190679 (Marlborough)", "At National Grid Reference SU 188678 (Marlborough)", "At National Grid Reference SU 187680 (Marlborough)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount":"125",
+                "timeLimit": "No"
+              }],
+
+                                "changeLog": [{
+                    "type": "Licence version",
+                    "reasonCreated": "new Licence",
+                    "reasonText":  "",
+                    "changeDate": "1 April 2019",
+                    "startDate": "1985-06-01",
+                    "changeType": "licence issued",
+                    "endDate": "",
+                    "changedBy": "admin@gov.uk",
+                  }],
+                 }
               ],
 
         "returnsRequirements":  [{"startDate":"19850601","endDate":"","createdDate":"20241018","reason":"New licence","additionalSubmissionOptions":["none"],"status":"approved","username":"username@defra.gov.uk","note":"","requirements":[{"id":808621,"description":"Underground strata comprising of Mercia Mudstone at Anarea, Atown.","title":"Spray irrigation - direct, Underground strata comprising of Mercia Mudstone at Anarea, Atown.","frequency":"monthly","frequencyCollected":"monthly","settings":["none"],"purpose":["Spray irrigation - direct"],"points":["At National Grid Reference SU 190683 (Marlborough)","At National Grid Reference SU 190679 (Marlborough)","At National Grid Reference SU 188678 (Marlborough)","At National Grid Reference SU 187680 (Marlborough)"],"periodStart":"0401","periodEnd":"1031","timeLimit":"No","returnsCycle":"summer","amount":"125"}]}],
@@ -1373,9 +1628,55 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-               //Previous versions of the licence data
-               "previousVersions": [
-                { }
+                  ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                { 
+                          "number": "03/28/60/0033",
+        "name": "Dale Barrow",
+        "holder": "Bottled Water Plc",
+        "startDate": "1 September 1990",
+        "endDate": "15 September 2022",
+        "effectiveDate": "1 September 1990",
+        "expired": "false",
+        "billingRegion": "Anglian",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+        "purpose": ["Spray irrigation"],
+        "absPeriod": ["1 November to 31 March"],
+        "means": ["Unspecified pump"],
+
+        "absPoints": ["At National Grid Reference SK 674125", "At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK 67443 12554", "SK 67540 12640" ],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 674125 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675126 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "1101",
+                "periodEnd": "0331",
+                "amount":"125",
+                "timeLimit": "No"
+              }],
+                 }
               ],
 
         "returnsRequirements":  [{
@@ -1625,9 +1926,55 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-               //Previous versions of the licence data
-               "previousVersions": [
-                { }
+                  ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                { 
+        "number": "03/28/60/0726",
+        "name": "River House",
+        "holder": "Robin Vithlhem-Smith",
+        "startDate": "1 April 2015",
+        "endDate": "1 March 2023",
+        "effectiveDate": "1 April 2015",
+        "expired": "false",
+        "billingRegion": "Midlands",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+        "purpose": ["Spray irrigation"],
+        "absPeriod": ["1 April to 31 October"],
+        "means": ["Unspecified pump"],
+
+        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126"],
+        "gridRefs": [ "SK675124", "SK675126" ],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "0401",
+                "periodEnd": "1031",
+                "amount":"125",
+                "timeLimit": "No"
+              }],
+                 }
               ],
 
         "returnsRequirements":  [{
@@ -1832,9 +2179,54 @@ module.exports = {
                   }],
 
 
-              //Previous versions of the licence data
-              "previousVersions": [
-                { }
+                  ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                { 
+                          "number": "11/22/32/02",
+        "name": "",
+        "holder": "D.B. Beecham-Smith",
+        "startDate": "1 October 2016",
+        "endDate": "30 September 2025",
+        "effectiveDate": "1 October 2016",
+        "expired": "false",
+        "billingRegion": "South West",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of Mercia Mudstone at Anarea, Atown.",
+        "purpose": ["Spray irrigation"],
+        "absPeriod": ["1 November to 31 March"],
+        "means": ["Unspecified pump"],
+
+        "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675343"],
+        "gridRefs": [ "SK675124", "SK675126" ],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "900 cubic metres per hour~1,250 cubic metres per day~1,250,000 cubic metres per year",
+
+        "use": [{
+                "purpose": "Spray irrigation - direct",
+                "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY)", "At National Grid Reference SK 675 343 (RIVER SWALE - HELPERBY)"],
+                "periodStart": "1101",
+                "periodEnd": "0331",
+                "amount":"125",
+              }],
+                 }
               ],
 
         "returnsRequirements":  [],
@@ -2037,8 +2429,72 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-            "previousVersions": [
-                {
+                                ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                { 
+                          "number": "03/28/61/033",
+        "name": "Cherry Tree Farm",
+        "holder": "Big Smith Farms Ltd",
+        "startDate": "1 April 2019",
+        "effectiveDate": "1 August 2019",
+        "endDate": "31 March 2034",
+        "expired": "false",
+        "billingRegion": "Midlands",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of chalk at An-area, A-town.",
+        "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
+        "absPeriod": ["1 April to 31 March"],
+
+        "absPoints": ["At National Grid Reference SK 675124"],
+        "gridRefs": [ "SK675124" ],
+        "means": ["Unspecified pump"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+
+        "use": [    {
+                      "purpose": "Trickle Irrigation - Storage",
+                      "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"51,830",
+                      "timeLimit": "No"
+                    },
+                    {
+                      "purpose": "General Farming & Domestic",
+                      "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"2,890",
+                      "timeLimit": "No"
+                    },
+                    {
+                      "purpose": "Spray irrigation - direct",
+                      "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"2,890",
+                      "timeLimit": "No"
+                    },
+            ],},
+            {
 
                   //Changed
                   "changed": true,
@@ -2107,7 +2563,8 @@ module.exports = {
                                 "timeLimit": "No"
                               },
                       ],
-              }
+              },
+
             ],
 
 
@@ -2271,7 +2728,63 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-              "previousVersions": [],
+                                              ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                {              
+                  "number": "11/22/32/03",
+              "name": "",
+              "holder": "Bottled Water Plc",
+              "startDate": "1 April 2000",
+              "effectiveDate": "1 April 2000",
+              "endDate": "",
+              "expired": "false",
+              "billingRegion": "North West",
+
+              //contacts on the licence
+              "contacts": [{
+                "type": "returns",
+                "id": ['3'],
+                "method": "letter",
+                "addressID": "6"
+              }],
+
+
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+
+              "source": "Surface water",
+              "purpose": ["Impounding (for any purpose excluding impounding for HEP)"],
+              "absPeriod": ["1 January to 31 December"],
+
+
+              "absPoints": ["At National Grid Reference SD 728565", "At National Grid Reference SD 717547", "At National Grid Reference SD 719545", "At National Grid Reference SD 736560",],
+              "gridRefs": [ 'SD 72890 56537', 'SD 71770 54730', 'SD 71966 54510', 'SD 73652 56049' ],
+              "means": ["Fixed weir"],
+              "absConditions": [{"type" : "compensation release flow",
+                                 "purposeIndex" : ["0"],
+                                 "pointsIndex" : ["0"],
+                                 "param1" : "",
+                                 "text" : "The Licence Holder shall make a continuous release of compensation water of not less than 12.96 megalitres per day from the Helperby reservoir to the River Swale as National Grid Reference SE 437 684."
+                                },
+                                {"type" : "general condition",
+                                 "purposeIndex" : ["0"],
+                                 "pointsIndex" : ["0"],
+                                 "param1" : "",
+                                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+                                }
+                        ],
+              "absQuantities": "",
+
+              "use": [{
+                      "purpose": "Impounding (for any purpose excluding impounding for HEP)",
+                      "points": ["At National Grid Reference SD 728565, SD 717547, SD 719545 and SD 736560 (STOCKS RESERVOIR - LANCASTER)"],
+                      "periodStart": "0101",
+                      "periodEnd": "1231",
+                      "amount":"",
+                      "timeLimit": "No"
+                    }],}
+               ],
 
               "returnsRequirements":  [],
 
@@ -2369,7 +2882,81 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-                  "previousVersions": [],
+                                                              ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                {  
+                                "number": "03/28/61/044",
+              "name": "Apple Tree Farm ",
+              "holder": "Big Smith Farms Ltd",
+              "startDate": "1 April 2023",
+              "effectiveDate": "1 April 2023",
+              "endDate": "31 March 2034",
+              "expired": "false",
+              "billingRegion": "South East",
+
+                //contacts on the licence
+                "contacts": [{
+                  "type": "returns",
+                  "id": ['1'],
+                  "method": "letter",
+                  "addressID": "6"
+                }],
+
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+
+              "source": "Underground strata comprising of chalk at Apple Tree Farm.",
+              "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic", "Trickle irrigation - Direct"],
+              "absPeriod": ["1 April to 31 March"],
+
+              "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675 126 "],
+              "gridRefs": [ "SK675124", "SK675126" ],
+              "means": ["Unspecified pump"],
+              "absConditions": [
+                {"type" : "general condition",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "",
+                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+               },
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "180Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+               }
+             ],
+              "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+
+              "use": [    {
+                            "purpose": "Trickle irrigation - storage",
+                            "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"51,830",
+                            "timeLimit": "No"
+                          },
+                          {
+                            "purpose": "General Farming & Domestic",
+                            "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"2,890",
+                            "timeLimit": "No"
+                          },
+                          {
+                            "purpose": "Trickle irrigation - direct",
+                            "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"51,830",
+                            "timeLimit": "No"
+                          }
+                  ],
+                }
+              ],
 
 
                   //return requirements
@@ -2493,8 +3080,91 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-                  "previousVersions": [
-                      {
+                                                              ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                {  
+
+                                "number": "03/28/61/055",
+              "name": "Pear Tree Farm",
+              "holder": "Big Smith Farms Ltd",
+              "startDate": "1 April 2019",
+              "effectiveDate": "1 April 2023",
+              "endDate": "31 March 2035",
+              "expired": "false",
+              "billingRegion": "Midlands",
+
+
+
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+
+              "source": "Underground strata comprising of chalk at An-area, A-town.",
+              "purpose": ["Spray irrigation - Direct", "General Farming & Domestic","Spray irrigation - Storage"],
+              "absPeriod": ["1 April to 31 March"],
+
+              "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675 126"],
+              "gridRefs": [ "SK675124", "SK675126" ],
+              "means": ["Unspecified pump"],
+              "absConditions": [
+                {"type" : "general condition",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "",
+                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SK 675124 and SK 675126."
+               },
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "180Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+               }
+             ],
+              "absQuantities": "Up to and including 31 March 2028~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~From 1 April 2028~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+
+              "use": [     {
+                              "purpose": "Spray irrigation - direct",
+                              "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                              "periodStart": "0401",
+                              "periodEnd": "0331",
+                              "amount":"89,000",
+                              "timeLimit": "From 1 April 2023 to 31 March 2028"
+                          },
+                          {
+                            "purpose": "General Farming & Domestic",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"89,000",
+                            "timeLimit": "From 1 April 2023 to 31 March 2028"
+                          },
+                          {
+                            "purpose": "Spray Irrigation - Storage",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)","At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"89,000",
+                            "timeLimit": "From 1 April 2023 to 31 March 2028"
+                          }, {
+                            "purpose": "Spray irrigation - direct",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"51,830",
+                            "timeLimit": "No"
+                        },
+                        {
+                          "purpose": "General Farming & Domestic",
+                          "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)", "At National Grid Reference SK 675 126 (Pear tree farm - BOREHOLE B)"],
+                          "periodStart": "0401",
+                          "periodEnd": "0331",
+                          "amount":"51,830",
+                          "timeLimit": "No"
+                        },
+
+                  ],},
+                  {
 
                         //Changed
                         "changed": true,
@@ -3824,8 +4494,65 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
 
-                  "previousVersions": [
-                      {
+                                                              ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                {  
+              "number": "03/28/61/065",
+              "name": "Lemon Tree Farm",
+              "holder": "Big Smith Farms Ltd",
+              "startDate": "1 April 2023",
+              "effectiveDate": "1 April 2023",
+              "endDate": "31 March 2035",
+              "expired": "false",
+              "billingRegion": "Anglian",
+
+              //licence Settings
+              "multipleUpload": "no",
+              "confidentiality": "public",
+
+              "source": "Underground strata comprising of chalk at Lemon Tree Farm.",
+              "purpose":  ["Spray irrigation - Storage", "Spray irrigation - Direct", "General Farming & Domestic"],
+              "absPeriod": ["1 November to 31 March", "1 April to 31 October", "1 April to 31 March"],
+
+              "absPoints": ["At National Grid Reference SK 675124"],
+              "gridRefs": [ "SK675124" ],
+              "means": ["Unspecified pump"],
+              "absConditions": [
+                {"type" : "general condition",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "",
+                 "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SK 675124."
+               },
+             ],
+              "absQuantities": "Spray irrigation - Storage~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~Spray irrigation - Direct~40 cubic metres per hour~450 cubic metres per day~89,000 cubic metres per year~~General farming and agriculture~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+
+              "use": [     {
+                              "purpose": "Spray Irrigation - Storage",
+                              "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)"],
+                              "periodStart": "1101",
+                              "periodEnd": "0331",
+                              "amount":"89,000",
+                              "timeLimit": "No",
+                          },
+                          {
+                              "purpose": "Spray irrigation - direct",
+                              "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)",],
+                              "periodStart": "0401",
+                              "periodEnd": "1031",
+                              "amount":"89,000",
+                              "timeLimit": "No",
+                          },
+                          {
+                            "purpose": "General Farming & Domestic",
+                            "points": ["At National Grid Reference SK 675 124 (Pear tree farm - BOREHOLE A)"],
+                            "periodStart": "0401",
+                            "periodEnd": "0331",
+                            "amount":"51,830",
+                            "timeLimit": "No",
+                          },
+                  ],
+                },{
 
                         //Changed
                         "changed": true,
@@ -4189,9 +4916,47 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
       
-                     //Previous versions of the licence data
-                     "previousVersions": [
-                      { }
+                                                              ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                {              "number": "100/22/33/0123",
+              "name": "",
+              "holder": "Public Water Plc",
+              "startDate": "19 January 2018",
+              "endDate": "30 March 2030",
+              "effectiveDate": "19 January 2018",
+              "expired": "false",
+              "billingRegion": "Southern",
+      
+              //licence Settings
+              "multipleUpload": "yes",
+              "confidentiality": "public",
+      
+              "source": "Groundwater.",
+              "purpose": ["Potable Water Supply - Direct"],
+              "absPeriod": ["1 April to 31 October"],
+              "means": ["Unspecified pump"],
+      
+              "absPoints": ["At National Grid Reference SK 675124", "At National Grid Reference SK 675126", "At National Grid Reference SK 675130", "At National Grid Reference SK 675135"],
+              "gridRefs": [ "SK675124", "SK675126", "SK 675130", "SK 675135"],
+              "absConditions": [
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0", "1", "2", "3"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "73.4Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 73.4Ml/d."
+               }
+             ],
+              "absQuantities": "6000000.00 cubic metres per year~30000.00 cubic metres per day",
+      
+              "use": [{
+                      "purpose": "Potable Water Supply - Direct",
+                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY SP1)", "At National Grid Reference SK 675 126 (RIVER SWALE - HELPERBY SP2)", "At National Grid Reference SK 675130 (RIVER SWALE - HELPERBY SP3)", "At National Grid Reference SK 675135 (RIVER SWALE - HELPERBY SP4)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"12271.581",
+                      "timeLimit": "No"
+                    }],  }
                     ],
       
               "returnsRequirements":  [{
@@ -4473,9 +5238,47 @@ module.exports = {
                     "changedBy": "admin@gov.uk",
                   }],
       
-                     //Previous versions of the licence data
-                     "previousVersions": [
-                      { }
+                                                              ///////////////////// //All the versions of the licence data ////////////////////////
+               "abstractionVersions": [
+                {                "number": "200/20/23/0111",
+              "name": "",
+              "holder": "Public Water Plc",
+              "startDate": "1 April 2024",
+              "endDate": "31 March 2032",
+              "effectiveDate": "1 April 2024",
+              "expired": "false",
+              "billingRegion": "Southern",
+      
+              //licence Settings
+              "multipleUpload": "yes",
+              "confidentiality": "public",
+      
+              "source": "Inland water known as the River Swale at Helperby",
+              "purpose": ["Potable Water Supply - Direct"],
+              "absPeriod": ["1 April to 31 October"],
+              "means": ["Unspecified pump"],
+      
+              "absPoints": ["At National Grid Reference SK 675124"],
+              "gridRefs": [ "SK675124"],
+              "absConditions": [
+               {"type" : "hands off flow condition (HOF)",
+                 "purposeIndex" : ["0"],
+                 "pointsIndex" : ["0"],
+                 "param1" : "Bourton Dickler",
+                 "param2" : "73.4Ml/d",
+                 "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 73.4Ml/d."
+               }
+             ],
+              "absQuantities": "6000000.00 cubic metres per year~30000.00 cubic metres per day",
+      
+              "use": [{
+                      "purpose": "Potable Water Supply - Direct",
+                      "points": ["At National Grid Reference SK 675 124 (RIVER SWALE - HELPERBY SP1)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"12271.581",
+                      "timeLimit": "No"
+                    }], }
                     ],
       
               "returnsRequirements":  [],

@@ -1,0 +1,69 @@
+<dl class="govuk-summary-list">
+
+  {% set licenceData =  data.licences[data.ID].abstractionVersions[data.versionID] %}
+
+  {% if licenceData.name.length %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Licence name
+    </dt>
+    <dd class="govuk-summary-list__value">
+
+      {{[licenceData.name]}}
+    </dd>
+
+  </div>
+ {% endif %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Licence holder
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[licenceData.holder]}}
+
+     <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
+     {% set loopNumber = "" %}
+     {% for i in data['customers'] %}
+     {% if [licenceData.holder] == data.customers[loop.index0]['name'] %}
+     {% set loopNumber = loop.index0 %}
+     {% endif %}
+     {% endfor %}
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Effective from
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[licenceData.effectiveDate]}}
+    </dd>
+
+  </div>
+
+  {% if licenceData.endDate.length %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      End date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[licenceData.endDate]}}
+    </dd>
+
+  </div>
+  {% endif %}
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Source of supply
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[licenceData.source]}}
+    </dd>
+
+  </div>
+
+</dl>
+
+

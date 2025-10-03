@@ -59,8 +59,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   {
     text: "History",
     href: "/sandbox/licence/history?ID="+data.ID+"&returnsRouteVersion=3",
-    current: history
-  }, 
+    parent: history,
+    current: history,
+    children: [{
+      text: "Licence version",
+      href: "/sandbox/licence/licence-version?ID="+data.ID+"&versionID="+data.versionID+"&returnsRouteVersion=3",
+      current: licenceVersion
+    }]
+  },
   {
     text: "Contact details",
     href: "/sandbox/licence/contact-details?ID="+data.ID+"&returnsRouteVersion=3",

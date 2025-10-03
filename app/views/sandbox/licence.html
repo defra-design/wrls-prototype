@@ -17,21 +17,8 @@
       {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
       {% endset %}
 
-
-<!-- page title -->
-
   <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
-    {% if data.licences[data.ID].name.length %}
-    <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}</span>
-      {{[data.licences[data.ID].name]}}
-    </h1>
-    {% else %}
-    <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
-      {{[data.licences[data.ID].number]}}
-    </h1>
-    {% endif %}
+
 
     <!-- show confidential warning if licence is marked as confidential-->
 {% if data.licences[data.ID].confidentiality | match("confidential") %}
@@ -45,12 +32,31 @@
 
 <!-- show expired banner if licence is expired-->
 {% if [data.licences[data.ID].expired] == "true" %}
-
+<div class="govuk-!-margin-bottom-9">
     {% include "sandbox/_includes/licence/expired-banner.html" %}
-
+</div>
 {% endif %}
 
-    <p class="govuk-body">The current version of the licence information.</p>
+
+
+<!-- page title -->
+
+
+    {% if data.licences[data.ID].name.length %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}</span>
+      {{[data.licences[data.ID].name]}}
+    </h1>
+    {% else %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
+      {{[data.licences[data.ID].number]}}
+    </h1>
+    {% endif %}
+
+
+
+    <p class="govuk-body-l">The current version of the licence information.</p>
 
      {% include "sandbox/_includes/licence/summary.html" %}
   </div>

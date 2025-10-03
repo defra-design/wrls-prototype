@@ -1,0 +1,57 @@
+{% extends "layouts/wrls-layout-sub-nav.html" %}
+
+{% set title = "Licence version" %}
+
+<!-- set sub nav -->
+<!--parent-->
+{% set history = true %}
+<!--child-->
+{% set licenceVersion = true %}
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+<!--content block-->
+{% block service %}
+
+
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
+
+
+
+
+  <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+{{ title }} starting {{data.licences[data.ID].abstractionVersions[data.versionID].startDate}}
+      </h1>
+
+ {% include "sandbox/_includes/licence/versionSummary.html" %}
+
+
+ <h2 class="govuk-heading-m">
+  Points
+  </h2>
+
+  <h2 class="govuk-heading-m">
+  Purpose, periods and amounts
+  </h2>
+
+  <h2 class="govuk-heading-m">
+  Conditions
+  </h2>
+
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
