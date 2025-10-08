@@ -68,7 +68,7 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Purpose
+      Purposes
     </dt>
     <dd class="govuk-summary-list__value">
       {% set purpose %}
@@ -81,13 +81,13 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Period of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %}
+      Periods of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %}
     </dt>
     <dd class="govuk-summary-list__value">
       {% for i in licenceData['absPeriod'] %}
       {{i}}<br>
       {% endfor %}
-      {% if 'Impounding' not in purpose %}<a href="licence/abstraction-details">View details of your purpose, period and amounts</a>{% endif %}
+      {% if 'Impounding' not in purpose %}<a href="licence/abstraction-details">View details of purposes, periods and amounts</a>{% endif %}
     </dd>
 
   </div>
@@ -196,7 +196,7 @@
 
 </dl>
 
-
+<!--
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 {{ govukInsetText({
@@ -226,3 +226,4 @@
 }) }}
 </div>
 </div>
+-->

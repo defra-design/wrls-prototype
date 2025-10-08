@@ -1,6 +1,6 @@
 {% extends "layouts/wrls-layout-sub-nav.html" %}
 
-{% set title = "Purpose, periods and amounts" %}
+{% set title = "Purposes, periods and amounts" %}
 
 <!--set nav menu-->
 <!--parent-->
@@ -26,53 +26,10 @@
 {{ title }}
       </h1>
 
+<p class="govuk-body-l">Showing {{data.licences[data.ID].purpose |length}} purposes</p>
+  
+{% include "/sandbox/_includes/licence/purposes.html" %}
 
-     
-
-
-          {% set uses = data.licences[data.ID].use %}
-
-          {% for use in uses %}
-
-         
-          <!-- licence purpose -->
-              <h2 class="heading-large govuk-heading-m licence-condition__header">
-                {{use.purpose}}
-              </h2>
-
-          {{ govukSummaryList({
-            classes: "govuk-!-margin-bottom-9",
-            rows: [
-              {
-                key: {
-                  text: use.points | length | plural ("Point", showNumber = false)
-                },
-                value: {
-                  text: use.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
-                }
-              },
-              {
-                key: {
-                  text: "Abstraction period"
-                },
-                value: {
-                  text: use.periodStart | mmddToDate + " to " + use.periodEnd | mmddToDate
-                }
-              },
-              {
-                key: {
-                  text: "Amount"
-                },
-                value: {
-                  text: use.amount + " m3/yr"
-                }
-              }
-            ]
-          }) }}
-
-
-
- {% endfor %}
 
  </div>
     </div>

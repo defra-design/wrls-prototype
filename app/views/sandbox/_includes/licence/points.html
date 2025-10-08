@@ -1,0 +1,43 @@
+
+
+     {% for i in data.licences[data.ID].abstractionVersions[data.versionID].absPoints %}
+
+      
+          <!-- licence abstraction point-->
+
+          {{ govukSummaryList({
+            card: {
+    title: {
+      text: data.licences[data.ID].use[0].points | bracketedText
+    }
+  },
+            rows: [
+              {
+                key: {
+                  text: "Abstraction point"
+                },
+                value: {
+                  text: i
+                }
+              },
+              {
+                key: {
+                  text: "Means of abstraction"
+                },
+                value: {
+                  text: data.licences[data.ID].means[0]
+                }
+              }, {
+                key: {
+                  text: "Source type"
+                },
+                value: {
+                  text: data.licences[data.ID].source
+                }
+              }
+            ]
+          }) }}
+
+   
+
+{% endfor %}

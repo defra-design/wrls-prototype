@@ -336,6 +336,16 @@ filters.focus = function(x) {
   }
 
 
+   //set colours for licenceVersion change types "| changeTypeColour"
+  filters.changeTypeColour = function(e) {
+    if (e === "licence issued") {
+      return "govuk-tag--turquoise"
+    }  else {
+      return "govuk-tag--purple"
+    }
+  }
+
+
   //set text for status "| chargeStatusText"
   filters.chargeStatusText = function(e) {
     if (e == "CHANGES") {

@@ -1,0 +1,46 @@
+
+
+          {% set uses = data.licences[data.ID].abstractionVersions[data.versionID].use %}
+
+          {% for use in uses %}
+
+         
+          <!-- licence purpose -->
+
+          {{ govukSummaryList({
+card: {
+    title: {
+      text:  use.purpose
+    }
+  },
+            rows: [
+              {
+                key: {
+                  text: use.points | length | plural ("Point", showNumber = false)
+                },
+                value: {
+                  text: use.points | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br
+                }
+              },
+              {
+                key: {
+                  text: "Abstraction period"
+                },
+                value: {
+                  text: use.periodStart | mmddToDate + " to " + use.periodEnd | mmddToDate
+                }
+              },
+              {
+                key: {
+                  text: "Amount"
+                },
+                value: {
+                  text: use.amount + " m3/yr"
+                }
+              }
+            ]
+          }) }}
+
+
+
+ {% endfor %}

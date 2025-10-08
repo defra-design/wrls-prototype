@@ -149,6 +149,10 @@ addFilter('stringPlusPlus', function stringPlusPlus (x){
   return parseInt(x) + 1
 })
 
+addFilter('stringMinusMinus', function stringMinusMinus (x){
+  return parseInt(x) - 1
+})
+
 
 addFilter('arrObDedupe', function arrObDedupe (x){
   return x = Array.from(new Set(x))

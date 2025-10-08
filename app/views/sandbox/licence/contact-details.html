@@ -24,12 +24,7 @@
   <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
     {% if data.licences[data.ID].name.length %}
     <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}</span>
-      {{title}}
-    </h1>
-    {% else %}
-    <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
+      <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
       {{title}}
     </h1>
     {% endif %}

@@ -44,19 +44,18 @@
 
     {% if data.licences[data.ID].name.length %}
     <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence {{[data.licences[data.ID].number]}}</span>
-      {{[data.licences[data.ID].name]}}
+      <span class="govuk-caption-l">{{[data.licences[data.ID].name]}}</span>
+      Licence summary {{[data.licences[data.ID].number]}}
     </h1>
     {% else %}
     <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{% if 'Impounding' in purpose %}Impoundment{% else %}Abstraction{% endif %} licence </span>
-      {{[data.licences[data.ID].number]}}
+      Licence summary {{[data.licences[data.ID].number]}}
     </h1>
     {% endif %}
 
 
 
-    <p class="govuk-body-l">The current version of the licence information.</p>
+    <p class="govuk-body-l">The current version of the licence starting {{data.licences[data.ID].startDate}}</p>
 
      {% include "sandbox/_includes/licence/summary.html" %}
   </div>

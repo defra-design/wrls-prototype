@@ -9,49 +9,121 @@
 {% set licenceVersion = true %}
 
 
+{% block breadcrumbs %}
+
+{{ govukBackLink({
+  text: "Back to history",
+  href: "history"
+}) }}
+
+
+{% endblock %}
+
 
 
 {% block pageTitle %}
-{{title}} - GOV.UK
+  {{title}} - GOV.UK
 {% endblock %}
-
 
 <!--content block-->
 {% block service %}
 
-
   <div class="govuk-grid-row govuk-!-margin-top-6">
-  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-9">
 
-
-
-
-  <h1 class="govuk-heading-l">
-<span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
-{{ title }} starting {{data.licences[data.ID].abstractionVersions[data.versionID].startDate}}
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+        {{ title }} starting {{data.licences[data.ID].abstractionVersions[data.versionID].startDate}}
       </h1>
+       {{govukTag({
+          text: data.licences[data.ID].changeLog[data.versionID].changeType |capitalize,
+          classes: "govuk-!-margin-bottom-5 " + data.licences[data.ID].changeLog[data.versionID].changeType | changeTypeColour
+        })}}
 
- {% include "sandbox/_includes/licence/versionSummary.html" %}
+       
+      <p class="govuk-body-l ">{{data.licences[data.ID].changeLog[data.versionID].reasonCreated |capitalize}} created on {{data.licences[data.ID].changeLog[data.versionID].changedDate}} by {{data.licences[data.ID].changeLog[data.versionID].changedBy}}</p>
+
+      <ul class="govuk-list govuk-!-margin-bottom-6">
+        <li>
+          <a class="govuk-link" href="#customer">Customer</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#dates">Abstraction details</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#points">Points</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#purposes">Purposes, periods and amounts</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#conditions">Conditions</a>
+        </li>
+      </ul>
 
 
- <h2 class="govuk-heading-m">
+      {{ govukPagination({
+  previous: {
+    labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
+    href: "licence-version?versionID=" + data.versionID|stringPlusPlus
+  } if data.versionID <= 0,
+  next: {
+    labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringMinusMinus].startDate,
+    href: "licence-version?versionID=" + data.versionID|stringMinusMinus
+  } if data.versionID > 0
+}) }}
+
+
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full"id="customer" >
+          <h2 class="govuk-heading-m govuk-!-margin-top-3" >
+  Customer
+  </h2>
+          {% include "sandbox/_includes/licence/versionCustomer.html" %}
+        </div>
+      </div>
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full"id="dates" >
+          <h2 class="govuk-heading-m govuk-!-margin-top-3" >
+  Abstraction details
+  </h2>
+          {% include "sandbox/_includes/licence/versionSummary.html" %}
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full"id="points" >
+          <h2 class="govuk-heading-m govuk-!-margin-top-3" >
   Points
   </h2>
 
-  <h2 class="govuk-heading-m">
-  Purpose, periods and amounts
+          {% include "/sandbox/_includes/licence/points.html" %}
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full"id="purposes" >
+          <h2 class="govuk-heading-m govuk-!-margin-top-3" >
+  Purposes, periods and amounts
   </h2>
 
-  <h2 class="govuk-heading-m">
+          {% include "/sandbox/_includes/licence/purposes.html" %}
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full"id="conditions">
+          <h2 class="govuk-heading-m govuk-!-margin-top-3" >
   Conditions
   </h2>
 
+          {% include "/sandbox/_includes/licence/conditions.html" %}
+        </div>
+      </div>
 
+    </div>
   </div>
-</div>
-
-
-
-
 
 {% endblock %}

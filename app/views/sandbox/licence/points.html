@@ -32,43 +32,9 @@
 {{ title }}
       </h1>
     <!--  <p class="govuk-body"><a class="govuk-link" href="points/map?location={{coordinates|dump}}&center={{coordinates[0]}}">View these points on a map</a></p> -->
-      
+           <p class="govuk-body-l">Showing {{data.licences[data.ID].absPoints |length}} abstraction points</p>
    
-
-
-
-     {% for i in data.licences[data.ID].absPoints %}
-
-      
-          <!-- licence condition title -->
-              <h2 class="heading-large govuk-heading-m licence-condition__header">
-                {{data.licences[data.ID].use[0].points | bracketedText }}          </h2>
-
-          {{ govukSummaryList({
-            classes: "govuk-!-margin-bottom-9",
-            rows: [
-              {
-                key: {
-                  text: "Abstraction point"
-                },
-                value: {
-                  text: i
-                }
-              },
-              {
-                key: {
-                  text: "Means of abstraction"
-                },
-                value: {
-                  text: data.licences[data.ID].means[0]
-                }
-              }
-            ]
-          }) }}
-
-   
-
-{% endfor %}
+{% include "/sandbox/_includes/licence/points.html" %}
 
 </div>
 </div>
