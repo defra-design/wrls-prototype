@@ -62,6 +62,7 @@
       </ul>
 
 
+{% if data.licences[data.ID].abstractionVersions|length  > 1%}
       {{ govukPagination({
   previous: {
     labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
@@ -72,7 +73,7 @@
     href: "licence-version?versionID=" + data.versionID|stringMinusMinus
   } if data.versionID > 0
 }) }}
-
+{% endif %}
 
 
     <div class="govuk-grid-row">
