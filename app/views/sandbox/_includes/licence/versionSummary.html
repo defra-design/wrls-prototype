@@ -3,12 +3,21 @@
   {% set licenceData =  data.licences[data.ID].abstractionVersions[data.versionID] %}
 
 
+{# create an ordinal for the version#}
+{% set ordinal =  data.licences[data.ID].abstractionVersions|length - data.versionID %}
 
+{# set the title #}
+{% set numberOrName = "" %}
+{% if data.licences[data.ID].abstractionVersions[data.versionID].name %}
+{% set numberOrName = data.licences[data.ID].abstractionVersions[data.versionID].name %}
+{% else %}
+{% set numberOrName = data.licences[data.ID].abstractionVersions[data.versionID].number %}
+{% endif %}
 
   {{ govukSummaryList({
   card: {
     title: {
-      text: "Key dates"
+      text: ordinal | ordinal | capitalize + " version of " + numberOrName
     }
   },
   rows: [{
