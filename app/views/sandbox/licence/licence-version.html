@@ -68,7 +68,7 @@
   previous: {
     labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
     href: "licence-version?versionID=" + data.versionID|stringPlusPlus
-  } if data.versionID <= 0,
+  } if data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
   next: {
     labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringMinusMinus].startDate,
     href: "licence-version?versionID=" + data.versionID|stringMinusMinus

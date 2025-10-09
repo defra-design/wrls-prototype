@@ -1,0 +1,37 @@
+
+{%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
+
+{{ mojSubNavigation({
+  label: "Sub navigation",
+  items: [{
+   text: "Licence summary",
+    href: "/sandbox/licence?ID="+data.ID+"&returnsRouteVersion=3",
+    active: licenceSummary
+  }, {
+    text: "History",
+    href: "/sandbox/licence/history?ID="+data.ID+"&returnsRouteVersion=3",
+    active: history
+  }, {
+    text: "Contact details",
+    href: "/sandbox/licence/contact-details?ID="+data.ID+"&returnsRouteVersion=3",
+    active: contactDetails
+  }, {
+    text: "Returns",
+     href: "/sandbox/licence/returns?ID="+data.ID+"&returnsRouteVersion=3",
+     active: returns
+  }, {
+    text: "Communications",
+    href: "/sandbox/licence/communications?ID="+data.ID+"&returnsRouteVersion=3",
+    active: communications
+  }, {
+    text: "Bills",
+    href: "/sandbox/licence/bills?ID="+data.ID+"&returnsRouteVersion=3",
+    active: bills
+  }, {
+    text: "Licence set up",
+    href: "/sandbox/licence/licence-set-up?ID="+data.ID+"&returnsRouteVersion=3",
+    active: licenceSetup
+  }]
+}) }}
+
+

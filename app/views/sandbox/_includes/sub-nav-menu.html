@@ -1,0 +1,61 @@
+
+
+ {{ xGovukSubNavigation({
+  items: [{
+    text: "Licence summary",
+    href: "/sandbox/licence?ID="+data.ID+"&returnsRouteVersion=3",
+    current: licenceSummary,
+    parent: licenceSummary,
+    children: [{
+      text: "Purposes, periods and amounts",
+      href: "/sandbox/licence/abstraction-details?ID="+data.ID+"&returnsRouteVersion=3&versionID=0",
+      current: purpose
+    }, {
+      text: "Points",
+      href: "/sandbox/licence/points?ID="+data.ID+"&returnsRouteVersion=3&versionID=0",
+      current: points
+    }, {
+      text: "Conditions",
+      href: "/sandbox/licence/conditions?ID="+data.ID+"&returnsRouteVersion=3&versionID=0",
+      current: conditions
+    }]
+  },
+  {
+    text: "History",
+    href: "/sandbox/licence/history?ID="+data.ID+"&returnsRouteVersion=3",
+ 
+    current: history,
+    children: [{
+      text: "Licence version",
+      href: "/sandbox/licence/licence-version?ID="+data.ID+"&versionID="+data.versionID+"&returnsRouteVersion=3",
+      current: licenceVersion
+    }]
+  },
+  {
+    text: "Contact details",
+    href: "/sandbox/licence/contact-details?ID="+data.ID+"&returnsRouteVersion=3",
+    current: contactDetails
+  }, 
+  {
+    text: "Returns",
+     href: "/sandbox/licence/returns?ID="+data.ID+"&returnsRouteVersion=3",
+    current: returns
+  }, 
+  {
+    text: "Communications",
+    href: "/sandbox/licence/communications?ID="+data.ID+"&returnsRouteVersion=3",
+     current: communications
+  } , 
+  {
+    text: "Bills",
+    href: "/sandbox/licence/bills?ID="+data.ID+"&returnsRouteVersion=3",
+     current: bills
+  } , 
+  {
+    text: "Licence set up",
+    href: "/sandbox/licence/licence-set-up?ID="+data.ID+"&returnsRouteVersion=3",
+     current: licenceSetup
+  }
+  ]
+}) }}
+

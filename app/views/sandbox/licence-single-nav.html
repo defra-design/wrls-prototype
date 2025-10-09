@@ -1,0 +1,70 @@
+{% extends "layouts/wrls-layout-sub-nav-single.html" %}
+
+<!--set title-->
+{% set title = [data.licences[data.ID].name] + " Licence summary" %}
+
+<!--status for the nav bar-->
+{% set licenceSummary = true %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+{% set purpose %}
+      {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+      {% endset %}
+
+<div class="govuk-grid-row govuk-!-margin-top-6" >
+  <div class="govuk-grid-column-full govuk-!-margin-bottom-9">
+
+    <!-- show confidential warning if licence is marked as confidential-->
+{% if data.licences[data.ID].confidentiality | match("confidential") %}
+
+    {{ govukWarningText({
+  text: "This licence is confidential.",
+  iconFallbackText: "Warning"
+}) }}
+
+{% endif %}
+
+<!-- show expired banner if licence is expired-->
+{% if [data.licences[data.ID].expired] == "true" %}
+<div class="govuk-!-margin-bottom-9">
+    {% include "sandbox/_includes/licence/expired-banner.html" %}
+</div>
+{% endif %}
+
+
+
+<!-- page title -->
+
+
+    {% if data.licences[data.ID].name.length %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">
+      <span class="govuk-caption-l">{{[data.licences[data.ID].name]}}</span>
+      Licence summary {{[data.licences[data.ID].number]}}
+    </h1>
+    {% else %}
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+      Licence summary {{[data.licences[data.ID].number]}}
+    </h1>
+    {% endif %}
+
+    {% include ('/sandbox/_includes/sub-nav-menu-moj') %}
+
+
+
+    <p class="govuk-body-l">The current version of the licence starting {{data.licences[data.ID].startDate}}</p>
+
+      <p class="govuk-body">Registered to <a href="user-status" class="no-break">admin@{{data['customerName'] | lower | replaceWS}}.com</a></p>
+
+     {% include "sandbox/_includes/licence/summary.html" %}
+  </div>
+   </div>
+
+
+
+{% endblock %}

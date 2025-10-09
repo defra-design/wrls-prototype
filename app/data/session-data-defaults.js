@@ -2336,9 +2336,9 @@ module.exports = {
         "number": "03/28/61/033",
         "name": "Cherry Tree Farm",
         "holder": "Big Smith Farms Ltd",
-        "startDate": "1 April 2019",
-        "effectiveDate": "1 August 2019",
-        "endDate": "31 March 2034",
+        "startDate": "1 April 2025",
+        "effectiveDate": "1 August 2025",
+        "endDate": "31 March 2037",
         "expired": "false",
         "billingRegion": "Midlands",
 
@@ -2360,7 +2360,7 @@ module.exports = {
         "confidentiality": "public",
 
         "source": "Underground strata comprising of chalk at An-area, A-town.",
-        "purpose": ["Trickle Irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
+        "purpose": ["Spray irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
         "absPeriod": ["1 April to 31 March"],
 
         "absPoints": ["At National Grid Reference SK 675124"],
@@ -2384,11 +2384,11 @@ module.exports = {
         "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
 
         "use": [    {
-                      "purpose": "Trickle Irrigation - Storage",
+                      "purpose": "Spray Irrigation - Storage",
                       "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
                       "periodStart": "0401",
                       "periodEnd": "0331",
-                      "amount":"51,830",
+                      "amount":"80,000",
                       "timeLimit": "No"
                     },
                     {
@@ -2411,18 +2411,27 @@ module.exports = {
 
                               "changeLog": [{
                     "type": "Licence version",
+                    "reasonCreated": "major variation",
+                    "reasonText":  "Major variation increase to spray irrigation storage volume on SK 675124 and SK 675126",
+                    "changedDate": "31 March 2025",
+                    "startDate": "2025-04-01",
+                    "endDate": "",
+                    "changeType": "licence issued",
+                    "changedBy": "admin@gov.uk",
+                  },{
+                    "type": "Licence version",
                     "reasonCreated": "minor variation",
                     "reasonText":  "Minor variation time limited increase for reservoir storage for subsequent spray irrigation volume on SK 675124 and SK 675126",
-                    "changedDate": "31 March 2023",
+                    "changedDate": "31 March 2019",
                     "startDate": "2019-04-01",
-                    "endDate": "",
+                    "endDate": "2025-03-31",
                     "changeType": "admin change",
                     "changedBy": "admin@gov.uk",
                   },{
                     "type": "Licence version",
                     "reasonCreated": "new Licence",
                     "reasonText":  "",
-                    "changedDate": "1 April 2019",
+                    "changedDate": "1 April 2017",
                     "startDate": "2017-04-01",
                     "changeType": "licence issued",
                     "endDate": "2019-03-31",
@@ -2430,7 +2439,70 @@ module.exports = {
                   }],
 
                                 ///////////////////// //All the versions of the licence data ////////////////////////
-               "abstractionVersions": [
+               "abstractionVersions": [ {
+        "number": "03/28/61/033",
+        "name": "Cherry Tree Farm",
+        "holder": "Big Smith Farms Ltd",
+        "startDate": "1 April 2025",
+        "effectiveDate": "1 August 2025",
+        "endDate": "31 March 2037",
+        "expired": "false",
+        "billingRegion": "Midlands",
+
+        //licence Settings
+        "multipleUpload": "no",
+        "confidentiality": "public",
+
+        "source": "Underground strata comprising of chalk at An-area, A-town.",
+        "purpose": ["Spray irrigation - Storage","General Farming & Domestic","Spray irrigation - Direct"],
+        "absPeriod": ["1 April to 31 March"],
+
+        "absPoints": ["At National Grid Reference SK 675124"],
+        "gridRefs": [ "SK675124" ],
+        "means": ["Unspecified pump"],
+        "absConditions": [
+          {"type" : "general condition",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "",
+           "text" : "The Licence Holder shall use staff gauges to measure the water level in Helperby reservoir at National Grid References  SE 437 680 and SE 437 692."
+         },
+         {"type" : "hands off flow condition (HOF)",
+           "purposeIndex" : ["0"],
+           "pointsIndex" : ["0"],
+           "param1" : "Bourton Dickler",
+           "param2" : "180Ml/d",
+           "text" : "No abstraction shall take place from the River Dikler when the water flow in the Dickler as measured at Bourton Dickler (1029TH) is at or below 180Ml/d."
+         }
+       ],
+        "absQuantities": "Borehole A~4 cubic metres per hour~6 cubic metres per day~2,890 cubic metres per year~~Borehole B~25 cubic metres per hour~230 cubic metres per day~51,830 cubic metres per year",
+
+        "use": [    {
+                      "purpose": "Spray Irrigation - Storage",
+                      "points": ["At National Grid Reference SK 675 126 (Cherry tree farm - BOREHOLE B)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"80,000",
+                      "timeLimit": "No"
+                    },
+                    {
+                      "purpose": "General Farming & Domestic",
+                      "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"2,890",
+                      "timeLimit": "No"
+                    },
+                    {
+                      "purpose": "Spray irrigation - direct",
+                      "points": ["At National Grid Reference SK 675 124 (Cherry tree farm - BOREHOLE A)"],
+                      "periodStart": "0401",
+                      "periodEnd": "0331",
+                      "amount":"2,890",
+                      "timeLimit": "No"
+                    },
+                  ],
+                },
                 { 
                           "number": "03/28/61/033",
         "name": "Cherry Tree Farm",
