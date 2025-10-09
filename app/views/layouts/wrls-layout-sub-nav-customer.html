@@ -1,0 +1,54 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "layouts/_manage.html" %}
+
+
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+    tag: {
+      text: "Prototype"
+    },
+    html: 'This is a service prototype.'
+  }) }}
+
+
+<!-- navigation block -->
+<div class="govuk-!-margin-bottom-3">
+  {% include "sandbox/_includes/nav/manage/nav-manage.html" %}
+</div>
+
+
+
+{{ govukBackLink({
+    text: "Back to search",
+    href: "/sandbox/home-search?returnsRouteVersion=3"
+  }) }}
+
+   <div class="govuk-grid-row govuk-!-margin-top-6">
+    <div class="govuk-grid-column-one-quarter">
+
+ {{ xGovukSubNavigation({
+  items: [{
+    text: "Licences",
+    href: "/sandbox/customer?customerID="+data.customerID,
+    current: licences
+  },
+  {
+    text: "Billing accounts",
+    href: "/sandbox/customer/billing-accounts?customerID="+data.customerID,
+    current: billingAccounts
+  },
+  {
+    text: "Contacts",
+    href: "/sandbox/customer/contacts?customerID="+data.customerID,
+    current: contacts
+  }
+  ]
+}) }}
+</div>
+  {% endblock %}

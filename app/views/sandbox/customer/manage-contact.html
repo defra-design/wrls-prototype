@@ -10,7 +10,15 @@
 {% set title = "Manage contact settings for " + titleName %}
 
 
+{% block breadcrumbs %}
 
+{{ govukBackLink({
+  text: "Back to customer contacts",
+  href: "contacts"
+}) }}
+
+
+{% endblock %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -21,7 +29,7 @@
 
 <!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-full govuk-!-margin-top-6">
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">{{data.customers[data.customerID]['name']}}</span>
       {{title | safe}}
@@ -154,9 +162,6 @@
 
 </div>
 </div>
-
-
-<p class="govuk-body"><a href="../customer?customerID={{data.customerID}}#contacts" class="govuk-link">Back to customer</a></p>
 
 
 {% endblock %}

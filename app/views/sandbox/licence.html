@@ -53,9 +53,9 @@
     </h1>
     {% endif %}
 
-
-
     <p class="govuk-body-l">The current version of the licence starting {{data.licences[data.ID].startDate}}</p>
+
+      <p class="govuk-body">Registered to <a href="user-status" class="no-break">admin@{{data['customerName'] | lower | replaceWS}}.com</a></p>
 
      {% include "sandbox/_includes/licence/summary.html" %}
   </div>

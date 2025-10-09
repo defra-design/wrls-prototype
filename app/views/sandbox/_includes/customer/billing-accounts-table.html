@@ -1,9 +1,22 @@
 <!--setting the loop number to 0-->
 {% set loopNumber = "" %}
+ {% set BA = data['billingAccounts'] %}
+
+   <!--check the billing accounts data for an exact match on the customer name-->
+   {% set customerMatch = false %}
+    {% for i in BA %}
+    {% if i.customer == data.customers[data.customerID]['name'] %}
+  {% set customerMatch = true %}
+{% endif %}
+{% endfor %}
+
+
+{% if customerMatch == true %}
+
 
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-heading-l">Billing accounts</caption>
+  <caption class="govuk-table__caption">Showing all billing accounts</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Account number</th>
@@ -12,7 +25,7 @@
   </thead>
   <tbody class="govuk-table__body">
 
-    {% set BA = data['billingAccounts'] %}
+   
 
     <!--check the billing accounts data for an exact match on the customer name-->
     {% for i in BA %}
@@ -23,7 +36,7 @@
         <td class="govuk-table__cell">
 
          <!--set the link to go to a specific billing account-->
-          <a href="billing-account?BAID={{[loopNumber]}}" class="govuk-link">
+          <a href="../billing-account?BAID={{[loopNumber]}}" class="govuk-link">
 
           {{[data.billingAccounts[loopNumber].number]}}</a></td>
 
@@ -50,7 +63,10 @@
           {% endif %}
     {% endfor %}
 
+ {% else %}
 
+<p class="govuk-body"> No billing accounts have been set up for this customer </p>
+  {% endif %}
 
 
   </tbody>

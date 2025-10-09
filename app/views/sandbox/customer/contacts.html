@@ -1,0 +1,60 @@
+<!--content block-->
+{% extends "layouts/wrls-layout-sub-nav-customer.html" %}
+
+{% set title = [data.customers[data.customerID]['name']] + " contacts" %}
+
+<!-- set the sub nav -->
+<!--parent-->
+{% set contacts = true %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+
+
+
+<!--content block-->
+{% block service %}
+
+<!-- page title -->
+
+  <div class="govuk-grid-column-three-quarters">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Customer</span>
+     {{title}}
+    </h1>
+
+   <!--add a contact-->
+    {{ govukButton({
+    text: "Set up a new contact",
+    href: "add/select-a-contact-type?contactID=",
+    classes: "govuk-!-margin-right-3"
+    }) }}
+
+
+    <!--remove a contact-->
+    {{ govukButton({
+    text: "Remove a contact",
+    href: "remove/select-which-contact-to-remove",
+    classes: "govuk-button--secondary"
+    }) }}
+
+
+  <!-- contacts table -->
+    {% include "sandbox/_includes/customer/contacts-table.html" %}
+
+ 
+
+
+
+
+</div>
+</div>
+
+{% endblock %}
+

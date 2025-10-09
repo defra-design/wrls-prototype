@@ -1,14 +1,22 @@
+<!--content block-->
 {% extends "layouts/wrls-layout-sub-nav-customer.html" %}
 
-<!--set title-->
-{% set title = [data.customers[data.customerID]['name']] + " licences" %}
+{% set title = [data.customers[data.customerID]['name']] + " billing accounts" %}
 
+<!-- set the sub nav -->
 <!--parent-->
-{% set licences = true %}
+{% set billingAccounts = true %}
+
+
 
 {% block pageTitle %}
 {{title}} - GOV.UK
 {% endblock %}
+
+
+
+
+
 
 <!--content block-->
 {% block service %}
@@ -23,18 +31,15 @@
 
 
 
-
-    <!-- licences -->
-    {% include "sandbox/_includes/customer/licences-table.html" %}
-
-
-
-  
+   <!--billing accounts table-->
+   {% include "sandbox/_includes/customer/billing-accounts-table.html" %}
 
 
 
-</div>
+
+
 </div>
 </div>
 
 {% endblock %}
+
