@@ -1,0 +1,64 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = 'Search results for "' + data['search']+ '"' %}
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+
+<!--header without searchbar-->
+{% include "sandbox/_includes/nav/header.html" %}
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl"> {{ title }}</h1>
+
+
+    <!-- search for licences -->
+    <form action="search" method="post" novalidate>
+
+      <label class="govuk-label  " for="search">
+        Enter a licence number, customer name, returns ID, registered email address or monitoring station
+      </label>
+
+      <input class="govuk-input govuk-!-width-one-quarter govuk-!-display-inline-block" id="search" name="search" type="text"  value="{{data['search']}}">
+      {{ govukButton({
+        text: "Search",
+        classes: "govuk-!-display-inline-block govuk-!-padding-right-6 govuk-!-padding-left-6"
+      }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+
+
+<div class="govuk-grid-row govuk-!-margin-top-9">
+  <div class="govuk-grid-column-full">
+
+
+    <!-- find the correct table-->
+    {% set term = data['search'] %}
+
+
+ 
+ {% include ("sandbox/_includes/result-card.html") %}
+
+  </div>
+</div>
+
+
+
+{% endblock %}

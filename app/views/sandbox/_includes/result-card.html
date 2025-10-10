@@ -1,0 +1,61 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set licences = data['licences'] %}
+
+
+<hr class="govuk-section-break govuk-section-break--visible">
+{% for licence in licences %}
+{% set resultType = "licence" %}
+
+<hr class="govuk-section-break govuk-section-break--visible">
+
+<p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-2 govuk-!-margin-bottom-0 "><a class=" govuk-link govuk-link--no-underline govuk-link--no-visited-state" href="#">{{resultType|capitalize}}: {{licence.number}}</a></p>
+
+{% set key1 = "licence holder" %}
+{% set key2 = "End date" %}
+{% set value1 = licence.holder %}
+{% set value2 = licence.endDate %}
+{% set value3 = "" %}
+{% if licence.expired == "true" %}
+{% set value3 %}
+ {{govukTag({
+          text: "Expired",
+          classes: "govuk-tag--grey"
+        })}}
+{% endset %}
+{% endif %}
+
+
+
+
+{{ govukTable({
+  caption: "results",
+  captionClasses: "govuk-table__caption--m govuk-visually-hidden",
+  firstCellIsHeader: false,
+
+  classes: "govuk-!-margin-bottom-0",
+    head: [],
+  rows:[ 
+    [ 
+      {
+        html: key1|capitalize + ": " + value1,
+        classes: "border-bottom-none govuk-!-width-one-third"
+      },
+      {
+        html: key2|capitalize + ": " + value2,
+        classes: "border-bottom-none govuk-!-width-one-third"
+      },
+      {
+        html: value3|safe,
+        classes: "border-bottom-none govuk-!-width-one-third"
+      }
+    ]
+  ]
+}) }}
+
+<hr class="govuk-section-break govuk-section-break--visible">
+
+{% endfor %}
+<hr class="govuk-section-break govuk-section-break--visible">
