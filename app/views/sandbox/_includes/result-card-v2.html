@@ -1,0 +1,45 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set licences = data['licences'] %}
+
+<!--results Extra line break at the top and bottom for symmetry-->
+<hr class="govuk-section-break govuk-section-break--visible">
+{% for licence in licences %}
+{% set resultType = "licence" %}
+
+{% set key1 = "licence holder" %}
+{% set key2 = "End date" %}
+{% set value1 = licence.holder %}
+{% set value2 = licence.endDate %}
+{% set value3 = "" %}
+{% if licence.expired == "true" %}
+{% set value3 %}
+ {{govukTag({
+          text: "Expired",
+          classes: "govuk-tag--grey"
+        })}}
+{% endset %}
+{% endif %}
+
+
+<!--result card-->
+<div class=" govuk-!-margin-top-0">
+  <dl class="govuk-body govuk-!-margin-0 govuk-task-list__item">
+<div class="govuk-grid-column-one-third govuk-body govuk-!-margin-bottom-2 govuk-!-margin-top-2 ">
+<dt class="govuk-!-display-inline-block govuk-!-margin-right-3"> {{resultType|capitalize}}:</dt>  <dd class="govuk-!-display-inline-block govuk-!-margin-left-0">  <a class=" govuk-link govuk-link--no-underline govuk-link--no-visited-state govuk-task-list__link" href="#">{{licence.number}} </a></dd> 
+</div>
+<div class="govuk-grid-column-one-third govuk-body govuk-!-margin-bottom-2 govuk-!-margin-top-2">
+  <dt class="govuk-!-display-inline-block govuk-!-margin-right-3"> {{key1|capitalize}}:</dt>  <dd class="govuk-!-display-inline-block govuk-!-margin-left-0"> {{value1}} </dd> 
+</div>
+<div class="govuk-grid-column-one-third govuk-!-margin-bottom-2 govuk-!-margin-top-2">
+  <dt class="govuk-!-display-inline-block govuk-!-margin-right-3">  {{key2|capitalize}}:</dt>  <dd class="govuk-!-display-inline-block govuk-!-margin-left-0">{{value2}} {% if value3 %}
+{{value3|safe}}
+{% endif %} </dd> 
+</div>
+</dl>
+</div>
+
+{% endfor %}
+<hr class="govuk-section-break govuk-section-break--visible">
