@@ -1,0 +1,57 @@
+<!--setting the loop number to 0-->
+{% set loopNumber = "" %}
+
+<!--getting the licence data-->
+{% set licences = data['licences'] %}
+
+<!--results Extra line break at the top and bottom for symmetry-->
+<hr class="govuk-section-break govuk-section-break--visible">
+{% for licence in licences %}
+  {% set resultType = "licence" %}
+
+  {% set key1 = "licence holder" %}
+  {% set key2 = "End date" %}
+  {% set value1 = licence.holder %}
+  {% set value2 = licence.endDate %}
+  {% set value3 = "" %}
+  {% if licence.expired == "true" %}
+    {% set value3 %}
+    {{govukTag({
+          text: "Expired",
+          classes: "govuk-tag--grey"
+        })}}
+    {% endset %}
+  {% endif %}
+
+  <!--result card-->
+  <hr class="govuk-section-break govuk-section-break--visible">
+
+  <div class="govuk-grid-row govuk-!-margin-top-0">
+
+    <dl class="govuk-body govuk-!-margin-0">
+
+      <div class="govuk-grid-column-one-third govuk-body govuk-!-margin-bottom-2 govuk-!-margin-top-2 ">
+        <dt class="govuk-!-margin-right-3 govuk-!-display-inline-block govuk-!-font-size-16">{{resultType|capitalize}}:</dt><dd class="govuk-!-display-inline-block govuk-!-margin-left-0"><a class="govuk-link govuk-link--no-underline govuk-link--no-visited-state" href="#">{{licence.number}}<a/></dd>
+        </div>
+
+        <div class="govuk-grid-column-one-third govuk-body govuk-!-margin-bottom-2 govuk-!-margin-top-2">
+          <dt class="govuk-!-display-inline-block govuk-!-margin-right-3 govuk-!-font-size-16">{{key1|capitalize}}:</dt>
+          <dd class="govuk-!-display-inline-block govuk-!-margin-left-0 govuk-!-font-size-16">{{value1}}</dd>
+        </div>
+
+        <div class="govuk-grid-column-one-third  govuk-!-margin-bottom-2 govuk-!-margin-top-2">
+          <dt class="govuk-!-display-inline-block govuk-!-margin-right-3 govuk-!-font-size-16">{{key2|capitalize}}:</dt>
+          <dd class="govuk-!-display-inline-block govuk-!-margin-left-0 govuk-!-font-size-16">{{value2}}
+            {% if value3 %}
+              {{value3|safe}}
+            {% endif %}
+          </dd>
+        </div>
+
+      </dl>
+
+    </div>
+    <hr class="govuk-section-break govuk-section-break--visible">
+
+  {% endfor %}
+  <hr class="govuk-section-break govuk-section-break--visible">
