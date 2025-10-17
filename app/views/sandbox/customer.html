@@ -1,7 +1,7 @@
 {% extends "layouts/wrls-layout-sub-nav-customer.html" %}
 
 <!--set title-->
-{% set title = [data.customers[data.customerID]['name']] + " licences" %}
+{% set title ="Licences: " + [data.customers[data.customerID]['name']]  %}
 
 <!--parent-->
 {% set licences = true %}
