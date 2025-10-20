@@ -1,5 +1,7 @@
 
 
+
+
   {% set licenceData =  data.licences[data.ID].abstractionVersions[data.versionID] %}
 
 
@@ -20,10 +22,17 @@
   {{ govukSummaryList({
   card: {
     title: {
-      text: licenceData.holder
+      text: "Licence holder"
     }
   },
   rows: [{
+      key: {
+        text: "Name"
+      },
+      value: {
+        html: licenceData.holder
+      }
+    },{
       key: {
         text: "Address"
       },

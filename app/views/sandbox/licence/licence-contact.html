@@ -1,0 +1,68 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set title-->
+{% set title = "Licence contact details" %}
+
+<!-- set sub nav-->
+{% set contactDetails =  true %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+
+{{ govukBackLink({
+  text: "Back to summary",
+  href: "../licence"
+}) }}
+
+
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+{% set purpose %}
+      {{data.licences[data.ID].purpose | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}}
+      {% endset %}
+
+
+<!-- page title -->
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
+    {% if data.licences[data.ID].name.length %}
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
+      {{title}}
+    </h1>
+    {% endif %}
+
+    <!-- show confidential warning if licence is marked as confidential-->
+{% if data.licences[data.ID].confidentiality | match("confidential") %}
+
+    {{ govukWarningText({
+  text: "This licence is confidential.",
+  iconFallbackText: "Warning"
+}) }}
+
+{% endif %}
+
+<!-- show expired banner if licence is expired-->
+{% if [data.licences[data.ID].expired] == "true" %}
+
+    {% include "sandbox/_includes/licence/expired-banner.html" %}
+
+{% endif %}
+
+       <!--Licence contact-details-->
+          {% include "sandbox/_includes/licence/versionCustomer.html" %}
+
+ 
+  </div>
+  </div>
+
+
+
+{% endblock %}

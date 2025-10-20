@@ -14,13 +14,35 @@
 {% set numberOrName = data.licences[data.ID].abstractionVersions[data.versionID].number %}
 {% endif %}
 
+
+{# Get the address #}
+{% set addressID = "" %}
+{#Get the licence holder address for this customer#}
+{% for address in data.addresses %}
+{% set addressLoop = loop.index0%}
+{% for customer in address.customers%}
+{% if (customer.customer == licenceData.holder) and ("Licence holder" in customer.role) %}
+{% set addressID = addressLoop %}
+{% endif%}
+{% endfor %}
+{% endfor %}
+
+
   {{ govukSummaryList({
   card: {
     title: {
-      text: ordinal | ordinal | capitalize + " version of " + numberOrName
+      text: licenceData.holder
     }
   },
   rows: [{
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: data.addresses[addressID].address1 + "<br>" + data.addresses[addressID].city  + "<br>" + data.addresses[addressID].postcode
+      }
+    },
+    {
       key: {
         text: "Start date"
       },
