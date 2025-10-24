@@ -36,10 +36,20 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Effective from
+      Version start date
     </dt>
     <dd class="govuk-summary-list__value">
-      {{[licenceData.effectiveDate]}}
+      {{[licenceData.startDate]}} {# the start date of the version #}
+    </dd>
+
+  </div>
+
+   <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Licence version issue date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{[licenceData.effectiveDate]}} {# the start date of the last issued licence in NALD you can get a version that doesn't need a licence issued #}
     </dd>
 
   </div>

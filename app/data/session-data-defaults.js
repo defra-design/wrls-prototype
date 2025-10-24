@@ -2425,7 +2425,7 @@ module.exports = {
                     "changedDate": "31 March 2019",
                     "startDate": "2019-04-01",
                     "endDate": "2025-03-31",
-                    "changeType": "admin change",
+                    "changeType": "no licence issued",
                     "changedBy": "admin@gov.uk",
                   },{
                     "type": "Licence version",
@@ -3048,8 +3048,8 @@ module.exports = {
               "number": "03/28/61/055",
               "name": "Pear Tree Farm",
               "holder": "Big Smith Farms Ltd",
-              "startDate": "1 April 2023",
-              "effectiveDate": "1 April 2023",
+              "startDate": "1 April 2023", //the start date of the version
+              "effectiveDate": "1 April 2019", //the start date of the licence that was issued. licence Sig date in NALD. This can be different if the version is an increment.
               "endDate": "31 March 2035",
               "expired": "false",
               "billingRegion": "Midlands",
@@ -3139,7 +3139,8 @@ module.exports = {
                     "changedDate": "31 March 2023",
                     "startDate": "2023-04-01",
                     "endDate": "",
-                    "changeType": "admin change",
+                    "changeType": "no licence issued",
+                     "applicationNumber": "",
                     "changedBy": "admin@gov.uk",
                   },{
                     "type": "Licence version",
@@ -3148,6 +3149,7 @@ module.exports = {
                     "changedDate": "1 April 2019",
                     "startDate": "2019-04-01",
                     "changeType": "licence issued",
+                    "applicationNumber": "9238123",
                     "endDate": "2023-03-31",
                     "changedBy": "admin@gov.uk",
                   }],
@@ -3160,7 +3162,8 @@ module.exports = {
               "name": "Pear Tree Farm",
               "holder": "Big Smith Farms Ltd",
               "startDate": "1 April 2023",
-              "effectiveDate": "1 April 2023",
+              "effectiveDate": "1 April 2019",
+              "applicationNumber": "",
               "endDate": "31 March 2035",
               "expired": "false",
               "billingRegion": "Midlands",
@@ -3250,6 +3253,7 @@ module.exports = {
                         "holder": "Big Smith Farms Ltd",
                         "startDate": "1 April 2019",
                         "effectiveDate": "1 April 2019",
+                        "applicationNumber": "9238123",
                         "endDate": "31 March 2023",
                         "expired": "false",
 

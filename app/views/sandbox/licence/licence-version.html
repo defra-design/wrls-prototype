@@ -40,8 +40,40 @@
           classes: "govuk-!-margin-bottom-5 " + data.licences[data.ID].changeLog[data.versionID].changeType | changeTypeColour
         })}}
 
-       
-      <p class="govuk-body-l ">{{data.licences[data.ID].changeLog[data.versionID].reasonCreated |capitalize}} created on {{data.licences[data.ID].changeLog[data.versionID].changedDate}} by {{data.licences[data.ID].changeLog[data.versionID].changedBy}}</p>
+      {# only show full meta data and notes for billing and data #}
+      {% if data.role == "bd" %} 
+      <p class="govuk-body-l govuk-!-margin-bottom-4">{{data.licences[data.ID].changeLog[data.versionID].reasonCreated |capitalize}} created on {{data.licences[data.ID].changeLog[data.versionID].changedDate}} by {{data.licences[data.ID].changeLog[data.versionID].changedBy}}</p>
+       <p class="govuk-body"><span class="govuk-!-font-weight-bold">Notes:</span> {{data.licences[data.ID].changeLog[data.versionID].reasonText}}</p>
+      {% else %}
+      <p class="govuk-body-l govuk-!-margin-bottom-4">{{data.licences[data.ID].changeLog[data.versionID].reasonCreated |capitalize}}</p>
+      <p class="govuk-body">If there are errors in this data please report them to <a class="gov-link" href="mailto:water_abstractiondigital@environment-agency.gov.uk">water_abstractiondigital@environment-agency.gov.uk</a></p>
+      {% endif %}
+
+
+{% if data.licences[data.ID].abstractionVersions|length  > 1%}
+      {{ govukPagination({
+        classes: "govuk-!-margin-bottom-0",
+  previous: {
+    text: "Previous version",
+    labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
+    href: "licence-version?versionID=" + data.versionID|stringPlusPlus
+  } if data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
+  next: {
+    text: "Next version",
+    labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringMinusMinus].startDate,
+    href: "licence-version?versionID=" + data.versionID|stringMinusMinus
+  } if data.versionID > 0
+}) }}
+
+      {# sorting out spacing when there are previous and next or just previous or next margin top is different#}
+      {% if data.versionID > 0 and data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate %}
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-0">
+      {% else %}
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-4">
+      {% endif %}
+
+
+{% endif %}
 
       <ul class="govuk-list govuk-!-margin-bottom-6">
         <li>
@@ -60,18 +92,6 @@
 
 
 
-{% if data.licences[data.ID].abstractionVersions|length  > 1%}
-      {{ govukPagination({
-  previous: {
-    labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
-    href: "licence-version?versionID=" + data.versionID|stringPlusPlus
-  } if data.licences[data.ID].abstractionVersions[data.versionID|stringPlusPlus].startDate,
-  next: {
-    labelText: "Starting " + data.licences[data.ID].abstractionVersions[data.versionID|stringMinusMinus].startDate,
-    href: "licence-version?versionID=" + data.versionID|stringMinusMinus
-  } if data.versionID > 0
-}) }}
-{% endif %}
 
 
       <div class="govuk-grid-row">

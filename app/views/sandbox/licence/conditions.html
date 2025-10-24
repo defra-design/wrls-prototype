@@ -36,7 +36,7 @@
 {{ title }}
       </h1>
 
-     <p class="govuk-body-l">Showing {{data.licences[data.ID].absConditions |length}} further conditions</p>
+     <p class="govuk-body-l">Showing {{data.licences[data.ID].absConditions |length | plural("type") }} of further conditions</p>
 
 {% include "/sandbox/_includes/licence/conditions.html" %}
 
