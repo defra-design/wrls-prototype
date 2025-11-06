@@ -1,0 +1,102 @@
+ {% set filtersForm %}
+
+
+
+       <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter matches by</h2>
+
+     <form  method="post" novalidate action="notification-report/apply-filters">
+
+
+       {{ govukRadios({
+         idPrefix: 'type',
+         name: 'type',
+         classes: "govuk-checkboxes--small",
+         formGroup: {
+           classes: "govuk-!-margin-bottom-5"
+         },
+         fieldset: {
+           legend: {
+             text: 'Match type',
+             classes: 'govuk-fieldset__legend--s'
+           }
+         },
+         items: [
+                    {
+            value: 'billingAccounts',
+            text: 'Billing accounts',
+            checked:  checked("type", "billingAccounts")
+          },
+                   {
+             value: 'bills',
+             text: 'Bills',
+             checked:  checked("type", "bills")
+           },
+                    {
+             value: 'customer',
+             text: 'Customers',
+             checked:  checked("type", "customer")
+           },
+         {
+          value: 'licences',
+          text: 'Licences',
+          checked:  checked("type", "licence")
+        },
+        {
+          value: 'returns',
+          text: 'Returns references',
+          checked:  checked("type", "returns")
+        },
+           {
+             value: 'stations',
+             text: 'Monitoring stations',
+             checked:  checked("type", "stations")
+           },
+           {
+             value: 'users',
+             text: 'Users',
+             checked:  checked("type", "users")
+           }
+         ]
+       }) }}
+
+
+
+
+
+
+
+
+
+
+ 
+
+       <div class="govuk-button-group">
+           {{ govukButton({
+         text: "Apply filters"
+       }) }}
+
+
+       {{ govukButton({
+           text: "Clear filters",
+           classes: "govuk-button--secondary",
+           name: "clearFilters",
+           value: "true"
+         }) }}
+
+         </div>
+
+
+
+     </form>
+
+
+     {% endset %}
+
+
+
+     {{ govukDetails({
+       summaryText: "Filter matches",
+       html: filtersForm | safe,
+       classes: "govuk-!-margin-bottom-4",
+       open: data['openDetails']
+     }) }}

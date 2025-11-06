@@ -4,6 +4,10 @@
 <!--getting the licence data-->
 {% set licences = data['licences'] %}
 
+<!--filters and caption-->
+{% include ("sandbox/_includes/search-results-filter.html") %}
+  <p class="govuk-body">Showing all matches</p>
+
 <!--results Extra line break at the top and bottom for symmetry-->
 <hr class="govuk-section-break govuk-section-break--visible">
 {% for licence in licences %}
@@ -22,6 +26,8 @@
         })}}
     {% endset %}
   {% endif %}
+
+
 
   <!--result card-->
   <hr class="govuk-section-break govuk-section-break--visible">

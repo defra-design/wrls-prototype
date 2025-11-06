@@ -1,4 +1,4 @@
-{% extends "layouts/_manage.html" %}
+{% extends "layouts/wrls-layout-sub-nav-single.html" %}
 
 <!--set title-->
 {% set title = 'Search results for "' + data['search']+ '"' %}
@@ -14,14 +14,18 @@
 
 {% endblock %}
 
+{% block breadcrumbs %}
+{% endblock %}
+
 <!--content block-->
 {% block service %}
 
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-top-9">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-xl"> {{ title }}</h1>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0"> {{ title }}</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-6">Page 1 of 11</p>
 
 
     <!-- search for licences -->
@@ -45,7 +49,7 @@
 
 
 
-<div class="govuk-grid-row govuk-!-margin-top-9">
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
 

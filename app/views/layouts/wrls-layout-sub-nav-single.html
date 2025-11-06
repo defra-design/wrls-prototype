@@ -23,11 +23,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 </div>
 
 
+{% block breadcrumbs %}
 
 {{ govukBackLink({
     text: "Back to search",
     href: "/sandbox/home-search?returnsRouteVersion=3"
   }) }}
+
+  {% endblock %}
 
 
   {% endblock %}
