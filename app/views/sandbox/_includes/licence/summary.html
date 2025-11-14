@@ -36,7 +36,7 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Version start date
+      Licence version start date
     </dt>
     <dd class="govuk-summary-list__value">
       {{[licenceData.startDate]}} {# the start date of the version #}
@@ -97,7 +97,7 @@
       {% for i in licenceData['absPeriod'] %}
       {{i}}<br>
       {% endfor %}
-      {% if 'Impounding' not in purpose %}<a href="licence/abstraction-details">View details of purposes, periods and amounts</a>{% endif %}
+     {# {% if 'Impounding' not in purpose %}<a href="licence/abstraction-details">View details of purposes, periods and amounts</a>{% endif %} #}
     </dd>
 
   </div>
@@ -110,7 +110,7 @@
       {% for i in licenceData['absPoints'] %}
       {{i}}<br>
       {% endfor %}
-      <a href="licence/points" >View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} points</a>
+     {#  <a href="licence/points" >View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} points</a> #}
     </dd>
 
   </div>
@@ -175,7 +175,7 @@
     <dd class="govuk-summary-list__value">
       {% for i in licenceData['absConditions'] %}
       {{i.type|default("general condition")|capitalize | bracketsToUpperCase}}<br>
-      {% endfor %}<a href="licence/conditions?ID={{data.ID}}">View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} conditions</a>
+      {% endfor %}  {#<a href="licence/conditions?ID={{data.ID}}">View details of {% if 'Impounding' in purpose %}impoundment{% else %}abstraction{% endif %} conditions</a>#}
     </dd>
 
   </div>
