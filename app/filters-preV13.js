@@ -339,9 +339,9 @@ filters.focus = function(x) {
    //set colours for licenceVersion change types "| changeTypeColour"
   filters.changeTypeColour = function(e) {
     if (e === "licence issued") {
-      return "govuk-tag--turquoise"
+      return "govuk-tag--green"
     }  else {
-      return "govuk-tag--purple"
+      return "govuk-tag--blue"
     }
   }
 

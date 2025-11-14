@@ -3134,7 +3134,7 @@ module.exports = {
 
                   "changeLog": [{
                     "type": "Licence version",
-                    "reasonCreated": "minor variation",
+                    "reasonCreated": "Change to return requirements April 2008 (Manual update)",
                     "reasonText":  "Minor variation time limited increase for reservoir storage for subsequent spray irrigation volume on SK 675124 and SK 675126",
                     "changedDate": "31 March 2023",
                     "startDate": "2023-04-01",
