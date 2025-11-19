@@ -132,12 +132,41 @@ border-bottom: 1px solid #b1b4b6 !important;
 .map { position:absolute; top:0; bottom:0; width:100%; }
 
 
-//width overrides
+
+
+// ========== ========== ========== ========== ==========
+// Widths
+// ========== ========== ========== ========== ==========
+.width-one-fifth {
+  width: 100% !important;
+}
 @media (min-width: 40.0625em) {
-.width-10 {
-  width: 10% !important;
+  .width-one-fifth {
+    width: 20% !important;
+  }
 }
+
+.width-one-sixth {
+  width: 100% !important;
 }
+@media (min-width: 40.0625em) {
+  .width-one-sixth {
+    width: 17% !important;
+  }
+}
+
+.width-one-tenth {
+  width: 100% !important;
+}
+@media (min-width: 40.0625em) {
+  .width-one-tenth, .width-10 {
+    width: 10% !important;
+  }
+}
+
+
+
+
 
 //blue border for the header end to end
 .header-border-bottom{
