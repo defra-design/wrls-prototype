@@ -1,7 +1,7 @@
 {% extends "layouts/wrls-layout-sub-nav-customer.html" %}
 
 <!--set title-->
-{% set title ="Licences: " + [data.customers[data.customerID]['name']]  %}
+{% set title ="Licences"%}
 
 <!--parent-->
 {% set licences = true %}
@@ -17,7 +17,7 @@
 
   <div class="govuk-grid-column-three-quarters">
     <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">Customer</span>
+      <span class="govuk-caption-l">Customer {{[data.customers[data.customerID]['name']]}}</span>
      {{title}}
     </h1>
 

@@ -14,9 +14,18 @@
 {% if customerMatch == true %}
 
 
+<!--getting the licence data-->
+{% set numberAccounts = 0 %}
+    {% for i in BA %}
+    {% if i.customer == data.customers[data.customerID]['name'] %}
+{% set numberAccounts = numberAccounts+1 %}
+{% endif %}
+{% endfor %}
+
+
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption">Showing all billing accounts</caption>
+  <caption class="govuk-table__caption">Showing {{numberAccounts}} of {{numberAccounts}} billing accounts</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Account number</th>

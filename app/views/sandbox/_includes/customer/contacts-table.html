@@ -1,12 +1,38 @@
 <!--setting the loop number to 0-->
 {% set loopNumber = "" %}
 
+<!--getting the licence data-->
+{% set numberContacts = 0 %}
 
 
+    <!--set the customer page we are on--> 
+    {% set customer = data.customers[data.customerID].name %}
+<!--getting the contacts data-->
+{% set contacts = data['contacts'] %}
 
+<!--loop through each contact-->
+{% for contact in contacts %}
+
+{% if contact.type == "company" %}
+{% else %}
+<!--set the contact ID -->
+{% set loopNumber = loop.index0 %}
+<!--get the customers for each contact-->
+{% set contactCustomers = data.contacts[loopNumber]['customers'] %}
+<!--loop through each customers contacts-->
+{% for contactCustomer in contactCustomers %}
+<!--if the customer name for the contact matches the customer page we are on set the customer index number-->
+{% if customer == contactCustomer['customer'] %}
+
+{% set numberContacts = numberContacts + 1 %}
+
+ {% endif %}
+  {% endfor %}
+    {% endif %}
+  {% endfor %}
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption">Showing all contacts</caption>
+  <caption class="govuk-table__caption">Showing {{numberContacts}} of {{numberContacts}} contacts</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Name</th>
