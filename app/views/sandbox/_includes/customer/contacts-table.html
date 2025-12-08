@@ -32,11 +32,13 @@
   {% endfor %}
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption">Showing {{numberContacts}} of {{numberContacts}} contacts</caption>
+  <caption class="govuk-table__caption">Showing all contacts</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Communication type</th>
       <th scope="col" class="govuk-table__header">Email address</th>
+      
   <!--    <th scope="col" class="govuk-table__header">Role</th>
       <th scope="col" class="govuk-table__header">Notices</th>-->
  <!-- if the customer is receiving email WAA show this column -->{# {% if data.customers[data.customerID].WAA == "email" %}  <th scope="col" class="govuk-table__header">Water abstraction alerts</th> {% endif %} #}
@@ -71,7 +73,9 @@
 
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
+    <td class="govuk-table__cell">{{contactCustomer.notices[0].type | default('Additional contact')}}</td>
     <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
+    
 {# {% if data.customers[data.customerID].WAA == "email" %}
   <td class="govuk-table__cell">
   {% for notice in data.contacts[loopNumber].customers[index]['notices'] %}
