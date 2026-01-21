@@ -4,6 +4,26 @@
 
 
 {% set contactList = [] %}
+{% set addressID = "" %}
+
+{#Get the licence holder address for this customer#}
+{% for address in addresses %}
+{% set addressLoop = loop.index0%}
+{% for customer in address.customers%}
+{% if (customer.customer == data.licences[data.ID].holder) and ("Licence holder" in customer.role) %}
+{% set addressID = addressLoop %}
+{% endif%}
+{% endfor %}
+{% endfor %}
+
+
+{#Add licence holder to the contacts list#}
+{% set contactList = contactList | push([
+       {text: data.licences[data.ID].holder},
+        {text: "Licence holder"},
+        {text: "Licence holder"},
+        {html: addresses[addressID].address1 + "<br>" + addresses[addressID].city  + "<br>" + addresses[addressID].postcode|safe}
+      ]) %}
 
 <!--get the contacts for the licence-->
 {% for i in contacts %}
@@ -92,6 +112,7 @@
   {% if sendToUnique.length == 1 %}
   {% set contactList = contactList | push([
     {text: contactName},
+    {text: "Contact"},
     {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
     {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
   ]) %}
@@ -103,6 +124,7 @@
       <!--set the contact name rowspan to the be the number of notices for the customer, remove the first item from the notices array (shift)-->
       {% set contactList = contactList | push([
         {text: contactName, rowspan: notices.length},
+        {text: "Contact"},
         {text: notices|shift , classes: "govuk-table__cell--no-border"},
         {text: sendToUnique[loop.index0] |dump | stripQuotes | stripSqBrackets | replaceComma  |safe, classes: "govuk-table__cell--no-border" }
       ]) %}
@@ -135,6 +157,7 @@
           {% if licenceTagged == "true" %}
           {% set contactList = contactList | push([
             {text: contactName},
+            {text: "Contact"},
             {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
             {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
           ]) %}
@@ -143,6 +166,7 @@
       <!--if they have one notice that isn't WAA-->
       {% set contactList = contactList | push([
         {text: contactName},
+        {text: "Contact"},
         {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
         {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
       ]) %}
@@ -155,6 +179,24 @@
 {% endfor %}
 
 
+{#get all registered users#}
+{% for user in data.users %}
+
+{% if data.licences[data.ID].number in user.licences %}
+
+{% set contactList = contactList | push([
+        {text: user.email | split("@") | first | capitalize},
+        {text: user.role|capitalize},
+        {html: "Returns <br> Water abstraction alerts" },
+        {text: user.email}
+      ]) %}
+
+
+{% endif %}
+
+{% endfor %}
+
+
 
 
 <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
@@ -164,60 +206,12 @@
 {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
 {% set loopNumber = loop.index0 %}
 
-{% set caption = 'Customer contacts for this licence <p class="govuk-body"><a class="govuk-link" href="../customer/contacts?customerID=' + loop.index0 + '">Go to customer contacts</a></p>' %}
+{% set caption = 'Contacts for this licence <p class="govuk-body"><a class="govuk-link" href="../customer/contacts?customerID=' + loop.index0 + '">Manage contacts</a></p>' %}
 {% endif %}
 {% endfor %}
 
 
-{# {{contactList[0][0].text}}
-{% for rows in contactList %}
-{{loop.index0}}<br>
-{% for text in rows %}
-{{text.text}} {{loop.index0}} <br>
-{% endfor %}
-{% endfor %} #}
-
-  {% set licenceData =  data.licences[data.ID].abstractionVersions[data.versionID] %}
-
-
-{% set addressID = "" %}
-
-{#Get the licence holder address for this customer#}
-{% for address in data.addresses %}
-{% set addressLoop = loop.index0%}
-{% for customer in address.customers%}
-{% if (customer.customer == licenceData.holder) and ("Licence holder" in customer.role) %}
-{% set addressID = addressLoop %}
-{% endif%}
-{% endfor %}
-{% endfor %}
-
-{{ govukTable({
-  caption: "Licence contacts",
-  captionClasses: "govuk-table__caption--s",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Name",
-      classes: "govuk-!-width-one-third"
-    },
-    {
-      text: "Communication type"
-    },
-    {
-      text: "Send to"
-    }
-  ],
-  rows: [[
-    {text: data.licences[data.ID].holder},
-        {text: "Licence holder"},
-        {html: data.addresses[addressID].address1 + "<br>" + data.addresses[addressID].city  + "<br>" + data.addresses[addressID].postcode|safe}
-  ]]
-
-}) }}
-
-
-
+{#display table#}
 {{ govukTable({
   caption: caption|safe,
   captionClasses: "govuk-table__caption--s",
@@ -225,13 +219,19 @@
   head: [
     {
       text: "Name",
-      classes: "govuk-!-width-one-third"
+      classes: "govuk-!-width-one-quarter"
     },
     {
-      text: "Communication type"
+      text: "Contact type",
+      classes: "govuk-!-width-one-quarter"
     },
     {
-      text: "Send to"
+      text: "Communication type",
+      classes: "govuk-!-width-one-quarter"
+    },
+    {
+      text: "Send to",
+      classes: "govuk-!-width-one-quarter"
     }
   ],
   rows: contactList

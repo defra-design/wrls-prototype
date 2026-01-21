@@ -18,8 +18,7 @@
     <dt class="govuk-summary-list__key">
       Licence holder
     </dt>
-    <dd class="govuk-summary-list__value">
-      {{[licenceData.holder]}}
+
 
      <!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
      {% set loopNumber = "" %}
@@ -28,8 +27,9 @@
      {% set loopNumber = loop.index0 %}
      {% endif %}
      {% endfor %}
+     <a class="govuk-link" href="customer?customerID={{loopNumber}}"> {{[licenceData.holder]}}</a>
 
-      <br><a class="govuk-link" href="licence/licence-contact?customerID={{loopNumber}}">View contact details</a>
+      <!--<br><a class="govuk-link" href="licence/licence-contact?customerID={{loopNumber}}">View contact details</a>-->
     </dd>
 
   </div>

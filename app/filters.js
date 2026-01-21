@@ -356,3 +356,8 @@ addFilter('flatten', function(arr) {
   // You can use arr.flat() for one level, or arr.flat(Infinity) for all levels
   return arr.flat();
 });
+
+
+addFilter('split', function(str, separator) {
+    return str.split(separator);
+});

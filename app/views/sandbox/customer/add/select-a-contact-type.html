@@ -37,6 +37,21 @@
 }) }}
     {% endset %}
 
+        {% set personHtml %}
+
+{{ govukInput({
+  label: {
+    text: "Name",
+    classes: "govuk-label--s",
+
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-20",
+  id: "name",
+  name: "name"
+}) }}
+    {% endset %}
+
 
       {{ govukRadios({
   idPrefix: "contactType",
@@ -52,7 +67,10 @@
   items: [
     {
       value: "person",
-      text: "Add a person"
+      text: "Add a person",
+      conditional: {
+        html: personHtml
+      }
 
     },
     {

@@ -3060,6 +3060,11 @@ module.exports = {
                 "id": ['1'],
                 "method": "letter",
                 "addressID": "6"
+              },
+              {"type": "returns",
+                "id": ['1'],
+                "method": "letter",
+                "addressID": "6"
               }],
 
               //licence Settings
@@ -5431,7 +5436,12 @@ module.exports = {
     //Users
     "users": [{
       "email": "gbillington@bwplc.co.uk",
-      "licences": "03/28/60/0032",
+      "licences": ["03/28/60/0032"],
+      "role": "primary user"
+    },{
+      "email": "atest@bigsmithfarms.co.uk",
+      "licences": ["03/28/61/055"],
+      "role": "primary user"
     }],
 
     //Customer/Company
@@ -5504,6 +5514,26 @@ module.exports = {
                         "type": "Returns",
                         "sendBy": "post",
                         "addressID": "2",
+                      }],
+          "customer": "Big Smith Farms Ltd",
+        }],
+      },
+      {
+        "name": "Admin",
+        "email": "admin@bigsmithfarms.co.uk",
+        "type": "dept",
+        "title": "",
+        "firstName": "",
+        "middleInitials": "",
+        "lastName": "",
+        "suffix": "",
+        "department": "",
+        "customers": [{
+          "role": "Contact",
+          "notices": [{
+                        "type": "Returns",
+                        "sendBy": "email",
+                        "addressID": "",
                       }],
           "customer": "Big Smith Farms Ltd",
         }],
