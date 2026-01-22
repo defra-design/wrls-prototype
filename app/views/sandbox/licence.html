@@ -55,7 +55,18 @@
 
     <p class="govuk-body-l">The current version of the licence starting {{data.licences[data.ID].startDate}}.</p>
 
-      <p class="govuk-body">Registered to <a href="user-status" class="no-break">admin@{{data['customerName'] | lower | replaceWS}}.com</a></p>
+    {#get all registered users#}
+{% for user in data.users %}
+
+{% if data.licences[data.ID].number in user.licences %}
+
+ <p class="govuk-body">Registered to <a href="user?ID=loop.index0" class="no-break">{{user.email}}</a></p>
+
+{% endif %}
+
+{% endfor %}
+
+     
 
      {% include "sandbox/_includes/licence/summary.html" %}
   </div>

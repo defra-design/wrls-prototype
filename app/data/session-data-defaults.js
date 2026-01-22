@@ -5479,6 +5479,7 @@ module.exports = {
     "contactID": "0",
 
     "contacts": [{
+        "wrls": "true",
         "name": "Jim Smith",
         "email": "",
         "type": "person",
@@ -5489,16 +5490,17 @@ module.exports = {
         "suffix": "",
         "department": "",
         "customers": [{
-          "role": "Licence holder",
+          "role": "Contact",
           "notices": [{
-                        "type":"Renewals",
+                        "type":"Returns",
                         "sendBy": "post",
                         "addressID": "2",
                       }],
           "customer": "Big Smith Farms Ltd",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Joanna Southall",
         "email": "",
         "type": "person",
@@ -5518,7 +5520,8 @@ module.exports = {
           "customer": "Big Smith Farms Ltd",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Admin",
         "email": "admin@bigsmithfarms.co.uk",
         "type": "dept",
@@ -5538,7 +5541,8 @@ module.exports = {
           "customer": "Big Smith Farms Ltd",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Frank Thomas",
         "email": "fthomas@bsfarms.co.uk",
         "type": "person",
@@ -5595,7 +5599,8 @@ module.exports = {
           "customer": "Big Smith Farms Ltd",
         }],
       },
-      {
+      { 
+        "wrls": "true", 
         "name": "Geoffrey Billington",
         "email": "",
         "phone": "+4477382932933",
@@ -5615,7 +5620,8 @@ module.exports = {
           "customer": "Bottled Water Plc",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Bottled Water Plc",
         "email": "",
         "type": "company",
@@ -5631,16 +5637,17 @@ module.exports = {
                         "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "0",
-                      },
+                      }/*,
                       {
                         "type": "Bills",
                         "sendBy": "post",
                         "addressID": "1",
-                      }],
+                      }*/],
           "customer": "Bottled Water Plc",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Irene Briton",
         "email": "",
         "type": "person",
@@ -5651,31 +5658,32 @@ module.exports = {
         "suffix": "",
         "department": "",
         "customers": [{
-          "role": "Licence holder,Billing contact",
+          "role": "Contact",
           "notices": [{
                         "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "3",
                       },
-                      {
+                     /* {
                         "type": "Renewals",
                         "sendBy": "post",
                         "addressID": "3",
-                      },
+                      },*/
                       {
                         "type": "Returns",
                         "sendBy": "post",
                         "addressID": "3",
-                      },
+                      }/*,
                       {
                         "type": "Bills",
                         "sendBy": "post",
                         "addressID": "3",
-                      }],
+                      } */],
           "customer": "Irene Briton",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Robin Vithlhem-Smith",
         "email": "",
         "type": "person",
@@ -5686,7 +5694,7 @@ module.exports = {
         "suffix": "",
         "department": "",
         "customers": [{
-          "role": "Licence holder,Billing contact",
+          "role": "Contact",
           "notices": [
                       {
                         "type": "Water abstraction alerts",
@@ -5707,7 +5715,8 @@ module.exports = {
           "customer": "Robin Vithlhem-Smith",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Fiona Thomas",
         "email": "",
         "type": "person",
@@ -5727,7 +5736,8 @@ module.exports = {
           "customer": "Robin Vithlhem-Smith",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "D.B. Beecham-Smith",
         "email": "",
         "type": "person",
@@ -5738,32 +5748,33 @@ module.exports = {
         "suffix": "",
         "department": "",
         "customers": [{
-          "role": "Licence holder,Billing contact",
+          "role": "Contact",
           "notices": [
                       {
                         "type": "Water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "5",
                       },
-                      {
+                    /*  {
                         "type": "Renewals",
                         "sendBy": "post",
                         "addressID": "5",
-                      },
+                      },*/
                       {
                         "type": "Returns",
                         "sendBy": "post",
                         "addressID": "5",
                       },
-                      {
+                  /*    {
                         "type": "Bills",
                         "sendBy": "post",
                         "addressID": "5",
-                      }],
+                      }*/],
           "customer": "D.B. Beecham-Smith",
         }],
       },
-      {
+      { 
+        "wrls": "true",
         "name": "Public Water Plc",
         "email": "",
         "type": "company",

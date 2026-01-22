@@ -21,13 +21,17 @@
 {% set contactList = contactList | push([
        {text: data.licences[data.ID].holder},
         {text: "Licence holder"},
-        {text: "Licence holder"},
+        {text: ""},
         {html: addresses[addressID].address1 + "<br>" + addresses[addressID].city  + "<br>" + addresses[addressID].postcode|safe}
       ]) %}
 
 <!--get the contacts for the licence-->
 {% for i in contacts %}
+{% if i.type == "company" %}
+{% set contactCustomers = "" %}
+{% else %}
 {% set contactCustomers = i['customers'] %}
+{% endif %}
 {% for contactCustomer in contactCustomers %}
 {% if [data.licences[data.ID].holder] == contactCustomer.customer %}
 
@@ -124,7 +128,7 @@
       <!--set the contact name rowspan to the be the number of notices for the customer, remove the first item from the notices array (shift)-->
       {% set contactList = contactList | push([
         {text: contactName, rowspan: notices.length},
-        {text: "Contact"},
+        {text: "Contact", rowspan: notices.length},
         {text: notices|shift , classes: "govuk-table__cell--no-border"},
         {text: sendToUnique[loop.index0] |dump | stripQuotes | stripSqBrackets | replaceComma  |safe, classes: "govuk-table__cell--no-border" }
       ]) %}

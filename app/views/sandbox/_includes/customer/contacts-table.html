@@ -1,14 +1,32 @@
 <!--setting the loop number to 0-->
 {% set loopNumber = "" %}
 
-<!--getting the licence data-->
-{% set numberContacts = 0 %}
 
-
+{% set contactList = [] %}
     <!--set the customer page we are on--> 
     {% set customer = data.customers[data.customerID].name %}
+
 <!--getting the contacts data-->
 {% set contacts = data['contacts'] %}
+
+{#Get the licence holder address for this customer#}
+{% for address in addresses %}
+{% set addressLoop = loop.index0%}
+{% for customer in address.customers%}
+{% if (customer.customer == data.licences[data.ID].holder) and ("Licence holder" in customer.role) %}
+{% set addressID = addressLoop %}
+{% endif%}
+{% endfor %}
+{% endfor %}
+
+
+{#Add licence holder to the contacts list#}
+{% set contactList = contactList | push([
+       {text: data.licences[data.ID].holder},
+        {text: "Licence holder"},
+        {text: ""},
+        {html:""}
+      ]) %}
 
 <!--loop through each contact-->
 {% for contact in contacts %}
@@ -19,105 +37,77 @@
 {% set loopNumber = loop.index0 %}
 <!--get the customers for each contact-->
 {% set contactCustomers = data.contacts[loopNumber]['customers'] %}
+
 <!--loop through each customers contacts-->
 {% for contactCustomer in contactCustomers %}
 <!--if the customer name for the contact matches the customer page we are on set the customer index number-->
 {% if customer == contactCustomer['customer'] %}
 
-{% set numberContacts = numberContacts + 1 %}
+{% set actionHTML %}
+ <ul class="govuk-summary-list__actions-list">
+        <li class="govuk-summary-list__actions-list-item">
+      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contacts notices</span></a>
+    </li>
+    {% endset %}
+
+       {% set contactList = contactList | push([
+            {text: data.contacts[loopNumber].name},
+            {text: contactCustomer.role},
+            {text: contactCustomer.notices[0].type },
+            {html: actionHTML }
+          ]) %}
 
  {% endif %}
   {% endfor %}
     {% endif %}
   {% endfor %}
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption">Showing all contacts</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Name</th>
-      <th scope="col" class="govuk-table__header">Communication type</th>
-      <th scope="col" class="govuk-table__header">Email address</th>
-      
-  <!--    <th scope="col" class="govuk-table__header">Role</th>
-      <th scope="col" class="govuk-table__header">Notices</th>-->
- <!-- if the customer is receiving email WAA show this column -->{# {% if data.customers[data.customerID].WAA == "email" %}  <th scope="col" class="govuk-table__header">Water abstraction alerts</th> {% endif %} #}
-      <th scope="col" class="govuk-table__header">Action</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
 
-    <!--set the customer page we are on-->
-    {% set customer = data.customers[data.customerID].name %}
 
-<!--getting the contacts data-->
-{% set contacts = data['contacts'] %}
+  {#get all registered users#}
+{% for user in data.users %}
 
-<!--loop through each contact-->
-{% for contact in contacts %}
+{% if data.licences[data.ID].number in user.licences %}
 
-{% if contact.type == "company" %}
-{% else %}
-<!--set the contact ID -->
-{% set loopNumber = loop.index0 %}
-<!--get the customers for each contact-->
-{% set contactCustomers = data.contacts[loopNumber]['customers'] %}
-<!--loop through each customers contacts-->
-{% for contactCustomer in contactCustomers %}
-<!--if the customer name for the contact matches the customer page we are on set the customer index number-->
-{% if customer == contactCustomer['customer'] %}
+{% set actionHTML %}
+      <a href="../user?userID={{[loopNumber]}}" class="govuk-link">Manage<span class="govuk-visually-hidden">user</span></a>
+    {% endset %}
+
+{% set contactList = contactList | push([
+        {text: user.email | split("@") | first | capitalize},
+        {text: user.role|capitalize},
+        {html: "Returns <br> Water abstraction alerts" },
+        {html:  actionHTML }
+      ]) %}
+
+
+{% endif %}
+
+{% endfor %}
 
 
 
-{% set index = loop.index0 %}
-
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">{{[data.contacts[loopNumber].name]}}</td>
-    <td class="govuk-table__cell">{{contactCustomer.notices[0].type | default('Additional contact')}}</td>
-    <td class="govuk-table__cell">{{[data.contacts[loopNumber].email]}}</td>
-    
-{# {% if data.customers[data.customerID].WAA == "email" %}
-  <td class="govuk-table__cell">
-  {% for notice in data.contacts[loopNumber].customers[index]['notices'] %}
-  {% if notice.type == "Water abstraction alerts" %}
-  {% if notice.sendBy == "email" %}
-   By email
-   {% endif %}
-   {% endif %}
-   {% endfor %}
-    </td>
-   {% endif %}#}
-  <!--  <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['role']| replaceComma | striptags(true) | escape | nl2br}}</td>
-    <td class="govuk-table__cell">{{data.contacts[loopNumber].customers[index]['notices'] | sort(arr) | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br  }}</td>-->
-    <td class="govuk-table__cell">
-      <ul class="govuk-summary-list__actions-list">
-                      <!--    <li class="govuk-summary-list__actions-list-item">
-    <a href="contact?contactID={{[loopNumber]}}" class="govuk-link">View<span class="govuk-visually-hidden"> contact information</span></a></li>--><li class="govuk-summary-list__actions-list-item">
-      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contacts notices</span></a>
-    </li>
-
-</ul>
-    </td>
-
-
-  <!--  <td class="govuk-table__cell">
-      {% if [data.licences[loopNumber].expired] == "true" %}
-      <strong class="table__status table__status--expired">
-        <span>Expired</span><br>
-        31 January 2020
-      </strong>
-      {% else %}
-      {{[data.licences[loopNumber].endDate]}}
-      {% endif %}
-    </td> -->
-  </tr>
-  {% endif %}
-  {% endfor %}
-    {% endif %}
-  {% endfor %}
-
-
-
-
-  </tbody>
-</table>
+{#display table#}
+{{ govukTable({
+  caption: "Showing all customers",
+  captionClasses: "govuk-table__caption--s",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Name",
+      classes: "govuk-!-width-one-quarter"
+    },
+    {
+      text: "Contact type",
+      classes: "govuk-!-width-one-quarter"
+    },
+    {
+      text: "Communication type",
+      classes: "govuk-!-width-one-quarter"
+    },
+    {
+      text: "Action"
+    }
+  ],
+  rows: contactList
+}) }}
