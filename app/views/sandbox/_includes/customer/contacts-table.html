@@ -46,7 +46,7 @@
 {% set actionHTML %}
  <ul class="govuk-summary-list__actions-list">
         <li class="govuk-summary-list__actions-list-item">
-      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contacts notices</span></a>
+      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contact</span></a>
     </li>
     {% endset %}
 
@@ -89,7 +89,7 @@
 
 {#display table#}
 {{ govukTable({
-  caption: "Showing all customers",
+  caption: "Contacts for this customer",
   captionClasses: "govuk-table__caption--s",
   firstCellIsHeader: false,
   head: [
