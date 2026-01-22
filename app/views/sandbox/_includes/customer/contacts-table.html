@@ -25,7 +25,7 @@
        {text: data.licences[data.ID].holder},
         {text: "Licence holder"},
         {text: ""},
-        {html:""}
+        {html:"", format: "numeric"}
       ]) %}
 
 <!--loop through each contact-->
@@ -54,7 +54,7 @@
             {text: data.contacts[loopNumber].name},
             {text: contactCustomer.role},
             {text: contactCustomer.notices[0].type },
-            {html: actionHTML }
+            {html: actionHTML}
           ]) %}
 
  {% endif %}
@@ -77,7 +77,7 @@
         {text: user.email | split("@") | first | capitalize},
         {text: user.role|capitalize},
         {html: "Returns <br> Water abstraction alerts" },
-        {html:  actionHTML }
+        {html:  actionHTML}
       ]) %}
 
 
@@ -95,7 +95,7 @@
   head: [
     {
       text: "Name",
-      classes: "govuk-!-width-one-quarter"
+      classes: "govuk-!-width-one-third"
     },
     {
       text: "Contact type",
@@ -103,7 +103,7 @@
     },
     {
       text: "Communication type",
-      classes: "govuk-!-width-one-quarter"
+      classes: "govuk-!-width-one-third"
     },
     {
       text: "Action"
