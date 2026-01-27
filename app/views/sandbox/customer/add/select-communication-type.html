@@ -1,0 +1,71 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Select what to send" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Select what to send" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+   
+
+      {{ govukCheckboxes({
+  idPrefix: "communicationType",
+  name: "communicationType",
+  fieldset: {
+    legend: {
+      text: [qTitle]|safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+
+  items: [
+    {
+      value: "returns",
+      text: "Returns"
+    },
+    {
+      value: "water abstraction alerts",
+      text: "Water Abstraction Alerts"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "none",
+      text: "None",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+
+
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

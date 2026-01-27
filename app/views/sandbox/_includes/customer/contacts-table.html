@@ -53,7 +53,7 @@
        {% set contactList = contactList | push([
             {text: data.contacts[loopNumber].name},
             {text: contactCustomer.role},
-            {text: contactCustomer.notices[0].type },
+            {text: contactCustomer.notices | pluck("type") | sortAlpha | formatList | capitalize },
             {html: actionHTML}
           ]) %}
 
@@ -76,7 +76,7 @@
 {% set contactList = contactList | push([
         {text: user.email | split("@") | first | capitalize},
         {text: user.role|capitalize},
-        {html: "Returns <br> Water abstraction alerts" },
+        {html: "Returns and water abstraction alerts" },
         {html:  actionHTML}
       ]) %}
 

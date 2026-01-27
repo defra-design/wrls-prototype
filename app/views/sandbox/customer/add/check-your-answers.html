@@ -25,7 +25,7 @@
      <h2 class="govuk-heading-m">Contact details</h2>
 
     {% if data['contactType'] == "person" %}
-    {% set nameLink = "enter-a-name"%}
+    {% set nameLink = "select-a-contact-type"%}
     {% else %}
     {% set  nameLink = "select-a-contact-type"%}
     {% endif %}
@@ -76,13 +76,98 @@
         actions: {
           items: [
             {
-              href: "enter-an-email-address",
+              href: "select-how-to-contact",
               text: "Change",
               visuallyHiddenText: "email address"
             }
           ]
         }
-      }
+      } if data.emailDetails,
+      {
+        key: {
+          text: "Postal address"
+        },
+        value: {
+          text: data['postAddress']
+        },
+        actions: {
+          items: [
+            {
+              href: "select-how-to-contact",
+              text: "Change",
+              visuallyHiddenText: "postal address"
+            }
+          ]
+        }
+      } if data.postAddress,
+      {
+        key: {
+          text: "Phone number"
+        },
+        value: {
+          text: data['phoneNumber']
+        },
+        actions: {
+          items: [
+            {
+              href: "select-how-to-contact",
+              text: "Change",
+              visuallyHiddenText: "phone number"
+            }
+          ]
+        }
+      } if data.phoneNumber,
+      {
+        key: {
+          text: "Communication types"
+        },
+        value: {
+          text: data['communicationType']  | formatList | capitalize
+        },
+        actions: {
+          items: [
+            {
+              href: "select-communication-type",
+              text: "Change",
+              visuallyHiddenText: "communication type"
+            }
+          ]
+        }
+      },
+          {
+        key: {
+          text: "Communications for all licences"
+        },
+        value: {
+          text: data['allLicences'] | capitalize
+        },
+        actions: {
+          items: [
+            {
+              href: "all-licences",
+              text: "Change",
+              visuallyHiddenText: "communucations for preference"
+            }
+          ]
+        }
+      } if data['allLicences'],
+          {
+        key: {
+          text: "Which licences"
+        },
+        value: {
+          text: data['waaLicences'] | formatList
+        },
+        actions: {
+          items: [
+            {
+              href: "select-licences",
+              text: "Change",
+              visuallyHiddenText: "which licences"
+            }
+          ]
+        }
+          } if data['waaLicences']
     ]
   }) }}
 

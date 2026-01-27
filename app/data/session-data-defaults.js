@@ -5492,9 +5492,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type":"Returns",
+                        "type":"returns",
                         "sendBy": "post",
                         "addressID": "2",
+                        "licences":"all",
                       }],
           "customer": "Big Smith Farms Ltd",
         }],
@@ -5513,9 +5514,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type": "Returns",
+                        "type": "returns",
                         "sendBy": "post",
                         "addressID": "2",
+                        "licences":"all",
                       }],
           "customer": "Big Smith Farms Ltd",
         }],
@@ -5534,9 +5536,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type": "Returns",
+                        "type": "returns",
                         "sendBy": "email",
                         "addressID": "",
+                        "licences":"all",
                       }],
           "customer": "Big Smith Farms Ltd",
         }],
@@ -5555,9 +5558,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type": "Water abstraction alerts",
+                        "type": "water abstraction alerts",
                         "sendBy": "email",
                         "addressID": "2",
+                        "licences":"all",
                       }],
           "customer": "Big Smith Farms Ltd",
         }],
@@ -5578,9 +5582,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type": "Water abstraction alerts",
+                        "type": "water abstraction alerts",
                         "sendBy": "email",
                         "addressID": "2",
+                        "licences":"all",
                       }],
           "customer": "Big Smith Farms Ltd",
         }],
@@ -5603,7 +5608,7 @@ module.exports = {
         "wrls": "true", 
         "name": "Geoffrey Billington",
         "email": "",
-        "phone": "+4477382932933",
+        "phone": "",
         "title": "",
         "firstName": "Geoffrey",
         "middleInitials": "",
@@ -5613,9 +5618,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type": "Returns",
+                        "type": "returns",
                         "sendBy": "post",
                         "addressID": "1",
+                        "licences":"all",
                       }],
           "customer": "Bottled Water Plc",
         }],
@@ -5628,15 +5634,16 @@ module.exports = {
         "department": "Head office",
         "customers": [{
           "role": "Licence holder,Billing contact",
-          "notices": [{
+          "notices": [/*{
                         "type": "Renewals",
                         "sendBy": "post",
                         "addressID": "0",
-                      },
+                      },*/
                       {
-                        "type": "Water abstraction alerts",
+                        "type": "water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "0",
+                        "licences":"all"
                       }/*,
                       {
                         "type": "Bills",
@@ -5660,9 +5667,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type": "Water abstraction alerts",
+                        "type": "water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "3",
+                        "licences":"all",
                       },
                      /* {
                         "type": "Renewals",
@@ -5670,9 +5678,10 @@ module.exports = {
                         "addressID": "3",
                       },*/
                       {
-                        "type": "Returns",
+                        "type": "returns",
                         "sendBy": "post",
                         "addressID": "3",
+                        "licences":"all",
                       }/*,
                       {
                         "type": "Bills",
@@ -5697,11 +5706,12 @@ module.exports = {
           "role": "Contact",
           "notices": [
                       {
-                        "type": "Water abstraction alerts",
+                        "type": "water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "4",
-                      },
-                      {
+                        "licences":"all"
+                      }
+                     /*, {
                         "type": "Renewals",
                         "sendBy": "post",
                         "addressID": "4",
@@ -5711,7 +5721,7 @@ module.exports = {
                         "type": "Bills",
                         "sendBy": "post",
                         "addressID": "4",
-                      }],
+                      }*/],
           "customer": "Robin Vithlhem-Smith",
         }],
       },
@@ -5729,9 +5739,10 @@ module.exports = {
         "customers": [{
           "role": "Contact",
           "notices": [{
-                        "type": "Returns",
+                        "type": "returns",
                         "sendBy": "post",
                         "addressID": "4",
+                        "licences":"all",
                       }],
           "customer": "Robin Vithlhem-Smith",
         }],
@@ -5751,9 +5762,10 @@ module.exports = {
           "role": "Contact",
           "notices": [
                       {
-                        "type": "Water abstraction alerts",
+                        "type": "water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "5",
+                        "licences":"all",
                       },
                     /*  {
                         "type": "Renewals",
@@ -5761,9 +5773,10 @@ module.exports = {
                         "addressID": "5",
                       },*/
                       {
-                        "type": "Returns",
+                        "type": "returns",
                         "sendBy": "post",
                         "addressID": "5",
+                        "licences":"all",
                       },
                   /*    {
                         "type": "Bills",
@@ -5788,25 +5801,27 @@ module.exports = {
           "role": "Licence holder,Billing contact",
           "notices": [
                       {
-                        "type": "Water abstraction alerts",
+                        "type": "water abstraction alerts",
                         "sendBy": "post",
                         "addressID": "6",
-                      },
+                        "licences":"all",
+                      }/*,
                       {
                         "type": "Renewals",
                         "sendBy": "post",
                         "addressID": "6",
-                      },
+                      }*/,
                       {
-                        "type": "Returns",
+                        "type": "returns",
                         "sendBy": "post",
                         "addressID": "6",
-                      },
+                        "licences":"all",
+                      }/*,
                       {
                         "type": "Bills",
                         "sendBy": "post",
                         "addressID": "6",
-                      }],
+                    }*/],
           "customer": "Public Water Plc",
         }],
       }

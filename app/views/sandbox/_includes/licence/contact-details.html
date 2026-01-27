@@ -117,7 +117,7 @@
   {% set contactList = contactList | push([
     {text: contactName},
     {text: "Contact"},
-    {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+    {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br | capitalize},
     {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
   ]) %}
   {% else %}
@@ -136,7 +136,7 @@
       {% elseif loop.last %}
       <!--for the last item, dump everything out-->
       {% set contactList = contactList | push([
-        {text: notices |dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br},
+        {text: notices |dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br | capitalize},
         {text: sendToUnique[loop.index0] |dump | stripQuotes | stripSqBrackets | replaceComma  |safe }
       ]) %}
 
@@ -162,7 +162,7 @@
           {% set contactList = contactList | push([
             {text: contactName},
             {text: "Contact"},
-            {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+            {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br | capitalize},
             {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
           ]) %}
           {% endif %}
@@ -171,7 +171,7 @@
       {% set contactList = contactList | push([
         {text: contactName},
         {text: "Contact"},
-        {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br },
+        {text: notices|dump | removeNull | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br | capitalize},
         {text: sendTo|unique|dump | stripQuotes | stripSqBrackets | replaceComma  |safe}
       ]) %}
       {% endif %}

@@ -1,0 +1,76 @@
+{% extends "layouts/_manage.html" %}
+
+{% set title =  'Select the licences ' + [data.contacts[data.contactID]['name']] + ' should get water abstraction email alerts for' %}
+
+
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+{% set qTitle = '<span class="govuk-caption-l">' + [data.customers[data.customerID]['name']] + '</span> Select the licences ' + [data.contacts[data.contactID]['name']] + ' should get water abstraction email alerts for' %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+
+
+    <form method="post" novalidate>
+
+
+      <!--getting the licence data-->
+      {% set items = [] %}
+      {% set licences = data['licences'] %}
+      {% for i in licences %}
+      {% if i.holder == data.customers[data.customerID]['name'] %}
+      {% set loopNumber = loop.index0 %}
+
+
+      {% set items = items | push({
+        value: [data.licences[loopNumber].number],
+        text: [data.licences[loopNumber].number],
+        checked: checked("waaLicences", data.licences[loopNumber]['number'])
+      }) %}
+
+
+      {% endif %}
+      {% endfor %}
+
+     {{ govukCheckboxes({
+       idPrefix: "waaLicences",
+       name: "waaLicences",
+       fieldset: {
+         legend: {
+           text: qTitle|safe,
+           isPageHeading: true,
+           classes: "govuk-fieldset__legend--l"
+         }
+       },
+       hint: {
+         text: "Select all that apply"
+       },
+       items: items
+     }) }}
+
+
+      {{ govukButton({
+  text: "Confirm"
+}) }}
+
+    </form>
+
+
+  </div>
+</div>
+
+
+{% endblock %}

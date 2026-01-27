@@ -1,0 +1,125 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Select how to contact" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Select how to contact" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+    {% set emailHtml %}
+
+{{ govukInput({
+  label: {
+    text: "Email address",
+    classes: "govuk-label--s",
+
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-20",
+  id: "emailDetails",
+  name: "emailDetails",
+  value: data.emailDetails
+}) }}
+    {% endset %}
+
+        {% set postHtml %}
+
+{{ govukTextarea({ 
+  label: {
+    text: "Postal address",
+    classes: "govuk-label--s",
+
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-20",
+  id: "postAddress",
+  name: "postAddress",
+  value: data.postAddress
+}) }}
+    {% endset %}
+
+
+    {% set phoneHtml %}
+
+{{ govukInput({
+  label: {
+    text: "Phone number",
+    classes: "govuk-label--s",
+
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-20",
+  id: "phoneNumber",
+  name: "phoneNumber",
+  value: data.phoneNumber
+}) }}
+    {% endset %}
+
+
+      {{ govukCheckboxes({
+  idPrefix: "contactPref",
+  name: "contactPref",
+  fieldset: {
+    legend: {
+      text: [qTitle]|safe,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+
+  items: [
+    {
+      value: "emailDetails",
+      text: "Email",
+      conditional: {
+        html: emailHtml
+      }
+
+    },
+    {
+      value: "post",
+      text: "Post",
+      conditional: {
+        html: postHtml
+      }
+    },
+    {
+      value: "phone",
+      text: "Phone",
+      conditional: {
+        html: phoneHtml
+      }
+    }
+  ]
+}) }}
+
+
+
+      {{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

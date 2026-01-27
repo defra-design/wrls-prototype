@@ -361,3 +361,20 @@ addFilter('flatten', function(arr) {
 addFilter('split', function(str, separator) {
     return str.split(separator);
 });
+
+//return an array of values from an array of objects matching a key that is passed as part of the filter | pluck("key")
+addFilter('pluck', function(array, key) {
+    if (!Array.isArray(array)) return [];
+    return array.map(item => item[key]);
+});
+
+
+addFilter('sortAlpha', function(array) {
+    if (!Array.isArray(array)) return [];
+    
+    // We use localeCompare for a natural sort (a-z) 
+    // that isn't tripped up by capital letters or accents.
+    return [...array].sort((a, b) => {
+        return String(a).localeCompare(String(b), undefined, { sensitivity: 'base' });
+    });
+});
