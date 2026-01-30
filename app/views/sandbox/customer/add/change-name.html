@@ -1,0 +1,48 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Enter a name" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter a name" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+{{ govukInput({
+  label: {
+    text: [qTitle] |safe,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  classes: "govuk-input--width-20",
+  id: "fullName",
+  name: "fullName",
+  value: data.contacts[data.contactID].name
+}) }}
+
+      {{ govukButton({
+  text: "Confirm"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

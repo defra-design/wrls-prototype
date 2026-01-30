@@ -1,0 +1,51 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = [data.customers[data.customerID]['name']] + " - Enter a postal address" %}
+<!--set question title-->
+{% set qTitle = "<span class='govuk-caption-l'>" + [data.customers[data.customerID]['name']] + "</span> Enter a postal address" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+
+
+{{ govukTextarea({ 
+  label: {
+    text: [qTitle] |safe,
+    classes: "govuk-label--l",
+
+    isPageHeading: true
+  },
+  classes: "govuk-input--width-20",
+  id: "postAddress",
+  name: "postAddress",
+  value: data.contacts[data.contactID].post
+}) }}
+
+      {{ govukButton({
+  text: "Confirm"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

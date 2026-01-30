@@ -1,0 +1,51 @@
+{% extends "layouts/_manage.html" %}
+
+<!--set page title-->
+{% set title = "You’re about to cancel setting up " + [data.contacts[data.contactID]['name']] + " for " + [data.customers[data.customerID]['name']] %}
+<!--set question title-->
+{% set qTitle = "You’re about to cancel setting up " + [data.contacts[data.contactID]['name']] + " for " + [data.customers[data.customerID]['name']] %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+<!--content block-->
+{% block service %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+     <h1 class="govuk-heading-l">{{qTitle | safe}}</h1>
+
+
+      {# if the contact recieves water abstraction alerts by email show warning #}
+
+      {% if [data.contacts[data.contactID].customers[0].notices[0].type] == "Water abstraction alerts" %}
+      {% if [data.contacts[data.contactID].customers[0].notices[0].sendBy] == "email" %}
+      {{ govukWarningText({
+       text: "You're about to cancel setting up a contact for this customer. ",
+       iconFallbackText: "Warning"
+     }) }}
+      {% endif %}
+        {% endif %}
+
+
+
+
+      {{ govukButton({
+  text: "Cancel"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

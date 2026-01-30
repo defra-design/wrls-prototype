@@ -7,15 +7,15 @@
 {% set titleName = [data.contacts[data.contactID]['email']] %}
 {% endif %}
 <!--set page title-->
-{% set title = "Contact settings for " + titleName %}
+{% set title = "Set up contact" %}
+{% if data.edit == "true" %}
+{% set title = "Edit contact" %}
+{% endif %}
 
 
 {% block breadcrumbs %}
 
-{{ govukBackLink({
-  text: "Back to customer contacts",
-  href: "contacts"
-}) }}
+
 
 
 {% endblock %}
@@ -33,16 +33,6 @@
 <!-- page title -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full govuk-!-margin-top-6">
-
-    {% if data.success == 1 %}
-
-{{ govukNotificationBanner({
-  text: "Contact details updated",
-  type: "success"
-}) }}
-
-{% endif %}
-
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">{{data.customers[data.customerID]['name']}}</span>
       {{title | safe}}
@@ -101,8 +91,10 @@
     },
     value: {
       text: data.contacts[data.contactID].name
+    },
+    actions: {
+      items: nameItem
     }
-
   },
     {
       key: {
@@ -110,8 +102,16 @@
       },
       value: {
         text: data.contacts[data.contactID].email
+      },
+      actions: {
+        items: [
+          {
+            href: "change-email-address",
+            text: actionEmail,
+            visuallyHiddenText: "email address"
+          }
+        ]
       }
-      
     },
       {
         key: {
@@ -119,6 +119,15 @@
         },
         value: {
           text: data.contacts[data.contactID].post
+        },
+        actions: {
+          items: [
+            {
+              href: "change-postal-address",
+              text: actionPost,
+              visuallyHiddenText: "postal address"
+            }
+          ]
         }
       },
       {
@@ -127,6 +136,15 @@
         },
         value: {
           text: data.contacts[data.contactID].phone
+        },
+        actions: {
+          items: [
+            {
+              href: "change-phone-number",
+              text: actionPhone,
+              visuallyHiddenText: "phone number"
+            }
+          ]
         }
       }
   ]
@@ -203,6 +221,15 @@
       },
       value: {
         html: waa + detailsWaa
+      },
+      actions: {
+        items: [
+          {
+            href: "notices?type=water%20abstraction%20alerts",
+            text: "Change",
+            visuallyHiddenText: "Water abstraction alerts"
+          }
+        ]
       }
     },
     {
@@ -211,6 +238,15 @@
       },
       value: {
         html: returns + detailsReturns
+      },
+      actions: {
+        items: [
+          {
+            href: "notices?type=returns",
+            text: "Change",
+            visuallyHiddenText: "Returns invites and reminders"
+          }
+        ]
       }
     }
   ]
@@ -219,21 +255,20 @@
 </div>
 </div>
 
-
+    <form method="post" novalidate>
  <!--add a contact-->
     {{ govukButton({
-    text: "Edit contact",
-    href: "add/create-contact?edit=true&customerID="+ data.customerID,
+    text: "Confirm",
     classes: "govuk-!-margin-right-3"
     }) }}
 
 
     <!--remove a contact-->
     {{ govukButton({
-    text: "Remove contact",
-    href: "remove/check-your-answers",
+    text: "Cancel set up",
+    href: "../cancel/check-your-answers",
     classes: "govuk-button--secondary"
     }) }}
 
+</form>
 {% endblock %}
-

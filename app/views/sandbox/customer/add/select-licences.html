@@ -34,16 +34,34 @@
       {% if i.holder == data.customers[data.customerID]['name'] %}
       {% set loopNumber = loop.index0 %}
 
+{% set licenceBoolean = false %}
+{% set contactCustomers = data.contacts[data.contactID].customers %}
+{% for contactCustomer in contactCustomers %}
+{% if data.customers[data.customerID]['name'] == contactCustomer.customer %}
+{% for notice in contactCustomer.notices %}
+{% if notice.type == data.type %}
+{% for licence in notice.licences %}
+{% if data.licences[loopNumber]['number'] == licence %}
+{% set licenceBoolean = true %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+
 
       {% set items = items | push({
         value: [data.licences[loopNumber].number],
         text: [data.licences[loopNumber].number],
-        checked: checked("waaLicences", data.licences[loopNumber]['number'])
+        checked: licenceBoolean
       }) %}
 
+{% endif %}
+{% endfor %}
 
-      {% endif %}
-      {% endfor %}
+
 
      {{ govukCheckboxes({
        idPrefix: "waaLicences",
@@ -54,7 +72,7 @@
            isPageHeading: true,
            classes: "govuk-fieldset__legend--l"
          }
-       },
+       }, values: licenceNumber,
        hint: {
          text: "Select all that apply"
        },

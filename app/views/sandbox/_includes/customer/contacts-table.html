@@ -46,7 +46,7 @@
 {% set actionHTML %}
  <ul class="govuk-summary-list__actions-list">
         <li class="govuk-summary-list__actions-list-item">
-      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">Manage<span class="govuk-visually-hidden"> contact</span></a>
+      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">View<span class="govuk-visually-hidden"> contact</span></a>
     </li>
     {% endset %}
 
@@ -70,7 +70,7 @@
 {% if data.licences[data.ID].number in user.licences %}
 
 {% set actionHTML %}
-      <a href="../user?userID={{[loopNumber]}}" class="govuk-link">Manage<span class="govuk-visually-hidden">user</span></a>
+      <a href="../user?userID={{[loopNumber]}}" class="govuk-link">View<span class="govuk-visually-hidden">user</span></a>
     {% endset %}
 
 {% set contactList = contactList | push([

@@ -21,10 +21,22 @@
 <!--content block-->
 {% block service %}
 
-<!-- page title -->
+
 
   <div class="govuk-grid-column-three-quarters">
     <h1 class="govuk-heading-l">
+
+      <!-- page title -->
+
+{% if data.success == 1 %}
+
+{{ govukNotificationBanner({
+  text: "New contact set up",
+  type: "success"
+}) }}
+
+{% endif %}
+
       <span class="govuk-caption-l">Customer {{[data.customers[data.customerID]['name']]}}</span>
      {{title}}
     </h1>
@@ -32,17 +44,17 @@
    <!--add a contact-->
     {{ govukButton({
     text: "Set up a new contact",
-    href: "add/select-a-contact-type?contactID=",
+    href: "add/enter-a-name?contactID=",
     classes: "govuk-!-margin-right-3"
     }) }}
 
 
-    <!--remove a contact-->
+    <!--remove a contact
     {{ govukButton({
     text: "Remove a contact",
     href: "remove/select-which-contact-to-remove",
     classes: "govuk-button--secondary"
-    }) }}
+    }) }} -->
 
 
   <!-- contacts table -->

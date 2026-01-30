@@ -1,6 +1,6 @@
 {% extends "layouts/_manage.html" %}
 
-{% set title =  'Should they get ' + data.type + ' for all ' + [data.customers[data.customerID]['name']] + ' licences?' %}
+{% set title =  'Set' + [data.contacts[data.contactID]['name']] + 'to get ' + data.type + '?' %}
 
 
 
@@ -13,28 +13,30 @@
 <!--content block-->
 {% block service %}
 
+{% set warning %}
+   {{ govukWarningText({
+     text:  "The licence holder will not get alerts by post if you set a contact to get email alerts.",
+     iconFallbackText: "Warning",
+     classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-1"
+   }) }}
+{% endset %}
 
-
-{% set qTitle = '<span class="govuk-caption-l">' + [data.customers[data.customerID]['name']] + '</span> Should they get  ' + data.type + '  for all ' + [data.customers[data.customerID]['name']] + ' licences?' %}
+{% set qTitle = '<span class="govuk-caption-l">' + [data.customers[data.customerID]['name']] + '</span> Should ' + [data.contacts[data.contactID]['name']] + ' get ' + data.type + '?'%}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-{% set allLicences = "no" %}
+{% set alreadyGets = "no" %}
 {% set contactCustomers = data.contacts[data.contactID].customers %}
 {% for contactCustomer in contactCustomers %}
 {% if data.customers[data.customerID]['name'] == contactCustomer.customer %}
 {% for notice in contactCustomer.notices %}
 {% if notice.type == data.type %}
-{% if notice.licences == "all" %}
-{% set allLicences = "yes" %}
-{% endif %}
+{% set alreadyGets = "yes" %}
 {% endif %}
 {% endfor %}
 {% endif %}
 {% endfor %}
-
-
 
     <form method="post" novalidate>
 
@@ -42,26 +44,24 @@
 
 
      {{ govukRadios({
-       idPrefix: "allLicences",
-       name: "allLicences",
+       idPrefix: "notices",
+       name: "notices",
        fieldset: {
          legend: {
            text: qTitle|safe,
            isPageHeading: true,
            classes: "govuk-fieldset__legend--l"
          }
-       }, value: allLicences,
-       hint: {
-         text: "This will include any new licences for Bottled Water Plc"
        },
+         value: alreadyGets,
        items: [
          {
            value: "yes",
-           text: "Yes, all licences"
+           text: "Yes"
          },
          {
            value: "no",
-           text: "No, only select licences"
+           text: "No"
          }
        ]
      }) }}

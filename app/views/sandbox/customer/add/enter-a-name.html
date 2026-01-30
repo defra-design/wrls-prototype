@@ -22,7 +22,7 @@
 
     <form method="post" novalidate>
 
-
+{# Old way to add a name
 
       {% call govukFieldset({
   legend: {
@@ -88,6 +88,21 @@
       }) }}
 
 {% endcall %}
+
+#}
+
+{{ govukInput({
+  label: {
+    text: [qTitle] |safe,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  classes: "govuk-input--width-20",
+  id: "fullName",
+  name: "fullName",
+  value: data.fullName
+}) }}
+
 
       {{ govukButton({
   text: "Continue"
