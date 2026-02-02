@@ -14,6 +14,7 @@ const folder = "sandbox/customer/"
 //Create contact hub page
 router.get('/contacts', function(req, res) {
   req.session.data.success = 0
+  req.session.data.removed = 0
   req.session.data.back = req.headers.referer
   res.render(folder + 'contacts');
 });
@@ -126,6 +127,7 @@ let contacts = req.session.data['contacts']
 //Create contact hub page
 router.get('/add/create-contact', function(req, res) {
   req.session.data.back = req.headers.referer
+  req.session.data.changed = 0
   res.render(folder + 'add/create-contact');
 });
 
@@ -163,6 +165,7 @@ router.get('/add/change-email-address', function(req, res) {
 
 router.post('/add/change-email-address', function(req, res) {
   req.session.data.contacts[req.session.data.contactID].email = req.session.data.emailDetails
+  req.session.data.changed = 1
  res.redirect('create-contact')
 });
 
@@ -174,11 +177,12 @@ router.get('/add/change-name', function(req, res) {
 
 router.post('/add/change-name', function(req, res) {
   req.session.data.contacts[req.session.data.contactID].name = req.session.data.fullName
+  req.session.data.changed = 1
  res.redirect('create-contact')
 });
 
 
-//change name
+//change postal address
 router.get('/add/change-postal-address', function(req, res) {
   req.session.data.back = req.headers.referer
   res.render(folder + 'add/change-postal-address');
@@ -186,6 +190,7 @@ router.get('/add/change-postal-address', function(req, res) {
 
 router.post('/add/change-postal-address', function(req, res) {
   req.session.data.contacts[req.session.data.contactID].post = req.session.data.postAddress
+  req.session.data.changed = 1
  res.redirect('create-contact')
 });
 
@@ -198,6 +203,7 @@ router.get('/add/change-phone-number', function(req, res) {
 
 router.post('/add/change-phone-number', function(req, res) {
   req.session.data.contacts[req.session.data.contactID].phone = req.session.data.phoneNumber
+  req.session.data.changed = 1
  res.redirect('create-contact')
 });
 
@@ -233,7 +239,7 @@ console.log(selectedCustomer)
       }
     });
 
-
+   req.session.data.changed = 1
    res.redirect('create-contact');
 
  } else {
@@ -326,6 +332,7 @@ router.post('/add/all-licences', function(req, res) {
   if (req.session.data.allLicences == "yes") {
   req.session.data.route = ""
   req.session.data.waaLicences = ""
+  req.session.data.changed = 1
   res.redirect('create-contact');
 } else {
   res.redirect('select-licences');
@@ -370,7 +377,7 @@ router.post('/add/select-licences', function(req, res) {
           }
         }
       }
-
+  req.session.data.changed = 1
    res.redirect('create-contact');
 
 });
@@ -824,7 +831,8 @@ router.post('/remove/check-your-answers', function(req, res) {
      if (contactID > -1) {
        contacts.splice(contactID, 1);
      }
-
+    
+     req.session.data.removed = 1
     res.redirect('../contacts');
 
 });

@@ -27,7 +27,14 @@
 <!--content block-->
 {% block service %}
 
+{% if data.changed == 1 %}
 
+{{ govukNotificationBanner({
+  text: "Contact details changed",
+  type: "type"
+}) }}
+
+{% endif %}
 
 
 <!-- page title -->

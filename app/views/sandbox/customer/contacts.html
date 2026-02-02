@@ -37,6 +37,17 @@
 
 {% endif %}
 
+
+{% if data.removed == 1 %}
+
+{{ govukNotificationBanner({
+  text: "Contact removed",
+  type: "type"
+}) }}
+
+{% endif %}
+
+
       <span class="govuk-caption-l">Customer {{[data.customers[data.customerID]['name']]}}</span>
      {{title}}
     </h1>
