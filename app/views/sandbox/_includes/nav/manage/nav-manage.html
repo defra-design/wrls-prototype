@@ -1,14 +1,17 @@
-{% set "nav-search" = "" %}
-{% set "nav-bill-runs" = "" %}
-{% set "nav-manage" = "" %}
+{% set "navSearch" = "" %}
+{% set "navBillruns" = "" %}
+{% set "navManage" = "" %}
+{% set "navCustomers" = "" %}
 
 
 {% if  ("manage" in data.url) or ("licence-notices" in data.url)  %}
 {% set "navManage" = "navbar__link--active" %}
 {% elif "bill-runs" in data.url%}
 {% set "navBillRuns" = "navbar__link--active" %}
-{% else %}
-{% set "navSearch" = "navbar__link--active" %}
+{% elif "search" not in data.url%}
+{% set "navCustomers" = "navbar__link--active" %}
+{#{% else %}
+{% set "navSearch" = "navbar__link--active" %}#}
 {% endif %}
 
 
@@ -16,21 +19,28 @@
 <nav id="nav" class="navbar">
    <ul class="navbar__list">
 
-     <li class="navbar__item">
+    <!-- <li class="navbar__item">
        <a class="navbar__link {{navSearch}} govuk-link--no-visited-state" href="/sandbox/home-search" id="view">
          Search
+        
+       </a>
+     </li> -->
+
+          <li class="navbar__item">
+       <a class="navbar__link {{data.navCustomers}} govuk-link--no-visited-state" href="/sandbox/customers?navCustomers=navbar__link--active&navBillRuns=&navManage=" id="view">
+         Customers
         
        </a>
      </li>
 
      <li class="navbar__item">
-      <a class="navbar__link {{navBillRuns}} govuk-link--no-visited-state" href="/sandbox/bill-runs?search=" id="bill-runs">
+      <a class="navbar__link {{data.navBillRuns}} govuk-link--no-visited-state" href="/sandbox/bill-runs?navCustomers=&navBillRuns=navbar__link--active&navManage=" id="bill-runs">
         Bill runs
       </a>
     </li>
 
      <li class="navbar__item">
-       <a class="navbar__link {{navManage}} govuk-link--no-visited-state" href="/sandbox/manage?search=" id="manage">
+       <a class="navbar__link {{data.navManage}} govuk-link--no-visited-state" href="/sandbox/manage?navCustomers=&navBillRuns=&navManage=navbar__link--active" id="manage">
          Manage
        </a>
      </li>

@@ -24,10 +24,18 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 
 
-{{ govukBackLink({
-    text: "Back to search",
-    href: "/sandbox/home-search?returnsRouteVersion=3"
-  }) }}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Search",
+      href: "/sandbox/home-search?navCustomers=&navBillRuns=&navManage="
+    },
+        {
+      text: "Customers",
+      href: "/sandbox/customers?navCustomers=navbar__link--active&navBillRuns=&navManage="
+    }
+  ]
+}) }}
 
    <div class="govuk-grid-row govuk-!-margin-top-6">
     <div class="govuk-grid-column-one-quarter">

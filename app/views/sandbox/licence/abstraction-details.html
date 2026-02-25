@@ -16,9 +16,25 @@
 
 {% block breadcrumbs %}
 
-{{ govukBackLink({
-  text: "Back to summary",
-  href: "../licence"
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Search",
+      href: "/sandbox/home-search?navCustomers=&navBillRuns=&navManage="
+    },
+        {
+      text: "Customers",
+      href: "/sandbox/customers?navCustomers=navbar__link--active&navBillRuns=&navManage="
+    },
+     {
+      text: data.licences[data.ID].holder,
+      href: "/sandbox/customer?customerID="+data.customerID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
+    },
+     {
+      text: "Licence summary",
+      href: "/sandbox/licence?licenceID="+data.ID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
+    }
+  ]
 }) }}
 
 

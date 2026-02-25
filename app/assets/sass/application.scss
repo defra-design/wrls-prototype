@@ -172,3 +172,17 @@ border-bottom: 1px solid #b1b4b6 !important;
 .header-border-bottom{
   border-bottom: 10px solid #1d70b8;
   };
+
+
+
+
+  //nav bottom border colour
+  .navbar__link--active {
+    position: relative;
+    margin: 10px 0;
+    border: 0;
+    border-bottom: 4px solid #1d70b8;
+    border-style: solid;
+    border-color: var(--govuk-link-colour, #1a65a6);
+}
+

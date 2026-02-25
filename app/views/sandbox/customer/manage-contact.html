@@ -12,9 +12,21 @@
 
 {% block breadcrumbs %}
 
-{{ govukBackLink({
-  text: "Back to customer contacts",
-  href: "contacts"
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Search",
+      href: "/sandbox/home-search?navCustomers=&navBillRuns=&navManage="
+    },
+        {
+      text: "Customers",
+      href: "/sandbox/customers?navCustomers=navbar__link--active&navBillRuns=&navManage="
+    },
+     {
+      text: data.licences[data.ID].holder,
+      href: "/sandbox/customer?customerID="+data.customerID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
+    }
+  ]
 }) }}
 
 

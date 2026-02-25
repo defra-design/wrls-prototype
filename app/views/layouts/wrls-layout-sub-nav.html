@@ -24,10 +24,31 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% block breadcrumbs %}
 
-{{ govukBackLink({
-    text: "Back to search",
-    href: "/sandbox/home-search?returnsRouteVersion=3"
-  }) }}
+   {% set loopNumber = "" %}
+     {% for i in data['customers'] %}
+     {% if data.licences[data.ID].holder == data.customers[loop.index0]['name'] %}
+     {% set loopNumber = loop.index0 %}
+     {% endif %}
+     {% endfor %}
+
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Search",
+      href: "/sandbox/home-search?navCustomers=&navBillRuns=&navManage="
+    },
+        {
+      text: "Customers",
+      href: "/sandbox/customers?navCustomers=navbar__link--active&navBillRuns=&navManage="
+    },
+     {
+      text: data.licences[data.ID].holder,
+      href: "/sandbox/customer?customerID="+loopNumber+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
+    }
+  ]
+}) }}
+  
 
   {% endblock %}
 

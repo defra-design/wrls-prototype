@@ -1,7 +1,7 @@
 {% extends "layouts/_manage.html" %}
 
 <!--set title-->
-{% set title = "Bill runs" %}
+{% set title = "Customers" %}
 
 {% block pageTitle %}
 {{title}} - GOV.UK
@@ -18,7 +18,7 @@
 }) }}
 {% endblock %}
 
-{% set navbarActiveBillRuns = "navbar__link--active" %}
+
 
 <!--content block-->
 {% block service %}
@@ -33,34 +33,35 @@
 
   </div>
 </div>
-
+<!--
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <p class="govuk-body">Create a supplementary, annual or two-part tariff bill run.</p>
 
-
+{#
     {{ govukButton({
-          text: "Create a bill run",
-          href: "bill-runs/select-bill-run-type"
+          text: "Create a customer",
+          href: "#"
         }) }}
-
+#}
 
   </div>
 </div>
-
+-->
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-3">
 
 <!-- table with four columns -->
 <div class="govuk-grid-row govuk-!-margin-bottom-9">
   <div class="govuk-grid-column-full">
 
-    <h2 class="govuk-heading-l"> View a bill run</h2>
+    <h2 class="govuk-heading-l"> View customers</h2>
 
-    <p class="govuk-body">Select date to see the details of a bill run.</p>
+    <p class="govuk-body">Select a customer to see their licences, billing accounts and contacts.</p>
 
-    <!-- bill runs table -->
-    {% include "sandbox/_includes/billing/bill-runs-table.html" %}
+
+
+    {% include "sandbox/_includes/customers-table.html" %}
 
   </div>
 </div>
