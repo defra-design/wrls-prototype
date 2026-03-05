@@ -378,3 +378,39 @@ addFilter('sortAlpha', function(array) {
         return String(a).localeCompare(String(b), undefined, { sensitivity: 'base' });
     });
 });
+
+
+//clean the contacts list and apply hierachy rules
+addFilter('cleanContacts', function(arr) {
+  const result = {};
+
+  arr.forEach(item => {
+    const { type, sendTo } = item;
+    const hasAt = sendTo.includes('@');
+
+    // If we haven't seen this type yet, just add it
+    if (!result[type]) {
+      result[type] = sendTo;
+      return;
+    }
+
+    const existingHasAt = result[type].includes('@');
+
+    // Rule 1: Both have @ symbol -> Concatenate
+    if (hasAt && existingHasAt) {
+      result[type] = `${result[type]}<br>${sendTo}`;
+    } 
+    // Rule 2: Current has @ but existing doesn't -> Replace with email
+    else if (hasAt && !existingHasAt) {
+      result[type] = sendTo;
+    }
+    // Rule 3: Existing has @ but current doesn't -> Keep existing (do nothing)
+    // Rule 4: Neither has @ -> Keep the first one found (standard dedupe)
+  });
+
+  // Convert the object back into an array of objects
+  return Object.keys(result).map(key => ({
+    type: key,
+    sendTo: result[key]
+  }));
+});

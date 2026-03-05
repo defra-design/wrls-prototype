@@ -58,11 +58,13 @@
     {#get all registered users#}
 {% for user in data.users %}
 
+{# Moved to the contacts page
 {% if data.licences[data.ID].number in user.licences %}
 
  <p class="govuk-body">Registered to <a href="user?ID=loop.index0" class="no-break">{{user.email}}</a></p>
 
 {% endif %}
+#}
 
 {% endfor %}
 

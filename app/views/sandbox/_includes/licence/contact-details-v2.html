@@ -1,0 +1,120 @@
+{% set contacts = data['contacts']%}
+{% set addresses = data['addresses']%}
+{% set billingAccounts = data['billingAccounts']%}
+{% set users = data['users']%}
+{% set customers = data['customers']%}
+
+
+
+{% set contactList = [] %}
+{% set addressID = "" %}
+
+
+{% set contactRows = [] %}
+{% set customerContacts = [] %}
+
+
+{# get the customerID #}
+{% set customerID = "" %}
+{% for customer in customers %}
+{% if customer.name == data.licences[data.ID].holder %}
+{% set customerID = loop.index0%}
+{% endif %}
+{% endfor%}
+
+
+
+
+{# get the licence holder to be able to link the customer #}
+
+{# get the LH address #}
+{% set lhAddress = "" %}
+{% for address in addresses %}
+  {% for entry in address.customers %}
+    {% if entry.role == "Licence holder" and entry.customer == data.licences[data.ID].holder %}
+      {% set lhAddress = address.address1 + "<br>" + address.city + "<br>" + address.postcode %}
+{#Add licence holder to the contacts list#}
+
+{% set customerContacts = customerContacts| push( {"type": "Licence holder", "sendTo": data.licences[data.ID].holder + '<br>' + lhAddress} )%}       
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+
+{# get the Billing account #}
+{% set billingDetails = [] %}
+{% for billingAccount in billingAccounts %}
+{% if billingAccount.customer == data.licences[data.ID].holder %}
+
+{% set customerContacts = customerContacts| push( {"type": "Bills to", "sendTo": billingAccount.number + "<br> FAO " + data.licences[data.ID].holder  + "<br>" +  lhAddress} )%}       
+{% endif %}
+{% endfor %}
+
+
+
+
+{# loop through all contacts #}
+{% for contact in contacts %}
+
+{# loop through all customers for that contact #}
+{% for contactCustomer in contact.customers %}
+
+{# only return customers that match this licence holder #}
+{% if contactCustomer.customer == data.licences[data.ID].holder %}
+
+{# loop through notices for that customer #}
+{% for notice in contactCustomer.notices %}
+
+{% set sendToAddress = "" %}
+{# check if email or post #}
+{% if notice.sendBy == "post"%}
+{% set sendToAddress = contact.name+"<br>"+addresses[notice.addressID].address1 + "<br>" + addresses[notice.addressID].city  + "<br>" + addresses[notice.addressID].postcode %}
+{% else %}
+{% set sendToAddress = contact.email %}
+{% endif %}
+
+{% set customerContacts = customerContacts| push( {"type": notice.type + " to", "sendTo": sendToAddress} )%}  
+
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+
+{# get the registered users #}
+{% set userDetails = [] %}
+{% for user in users %}
+{% if data.licences[data.ID].number in user.licences %}
+
+{% set customerContacts = customerContacts| push( {"type": user.role , "sendTo": user.email} )%}  
+
+{% endif %}
+{% endfor %}
+
+
+{# apply the sending hierachy to the contact list for this licence #}
+{% for customerContact in customerContacts | cleanContacts %}
+{% set contactRows = contactRows|push({ 
+  key: { text: customerContact.type |capitalize}, value: { html: customerContact.sendTo }
+}) %}
+{% endfor %}
+
+
+{{ govukSummaryList({
+  card: {
+    title: {
+      text: "Communications list"
+    },
+    actions: {
+      items: [
+        {
+          href: "/sandbox/customer/contacts?customerID="+customerID,
+          text: "Manage customer contacts",
+          visuallyHiddenText: "for "+data.licences[data.id].holder
+        }
+      ]
+    }
+  },
+  rows: contactRows
+}) }}
