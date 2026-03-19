@@ -9,7 +9,7 @@
 <!--set page title-->
 {% set title = "Set up contact" %}
 {% if data.edit == "true" %}
-{% set title = "Edit contact" %}
+{% set title = "Check your updates" %}
 {% endif %}
 
 
@@ -26,7 +26,7 @@
 
 <!--content block-->
 {% block service %}
-
+{#
 {% if data.changed == 1 %}
 
 {{ govukNotificationBanner({
@@ -35,7 +35,7 @@
 }) }}
 
 {% endif %}
-
+#}
 
 <!-- page title -->
 <div class="govuk-grid-row">

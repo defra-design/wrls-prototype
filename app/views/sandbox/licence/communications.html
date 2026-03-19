@@ -47,6 +47,22 @@
 
 {% endif %}
 
+<!-- <p class="govuk-body">View contacts that will receive communications and the sent communications for this licence.</p>
+<ul class="govuk-list">
+<li> <a href="#current-contacts" class="govuk-link">Communications list</a></li>
+<li>  <a href="#sent-communications" class="govuk-link">Sent communications</a></li>
+</ul>
+<hr class="govuk-section-break govuk-section-break--m ">
+
+<div id="current-contacts">
+{% include "sandbox/_includes/licence/contact-details-v2.html" %}
+</div>
+<hr class="govuk-section-break govuk-section-break--l">
+  <h2 class="govuk-heading-m" id="sent-communications">
+     Sent communications
+    </h2>-->
+
+
 {% set communications = data.licences[data.ID]['communications'] %}
     <!--check to see if there is any charge information set up-->
     {% if communications.length  %}
@@ -62,8 +78,8 @@
 
     {% endif %}
   </div>
+
   </div>
-
-
+  </div>
 
 {% endblock %}

@@ -228,7 +228,7 @@ console.log(selectedCustomer)
 
 
 
- if (req.session.data.notices == "no") {
+if (req.session.data.notices == "no") {
 
 
     selectedContact.customers.forEach(customer => {
@@ -272,10 +272,18 @@ if (noticeIndex === -1) {
   noticeIndex = targetCustomer.notices.length - 1;
 }
 
+  if (req.session.data.notices == "all") {
+  req.session.data.route = ""
+  req.session.data.waaLicences = ""
+  req.session.data.changed = 1
+  res.redirect('create-contact');
+} else {
+  res.redirect('select-licences');
+}
 
-    res.redirect('all-licences');
+  
+  } 
 
-  }
 
   });
 
