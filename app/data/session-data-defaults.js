@@ -5657,6 +5657,33 @@ module.exports = {
       },
       { 
         "wrls": "true",
+        "name": "Big Smith Farms Ltd",
+        "email": "",
+        "type": "company",
+        "department": "Head office",
+        "customers": [{
+          "role": "Licence holder,Billing contact",
+          "notices": [/*{
+                        "type": "Renewals",
+                        "sendBy": "post",
+                        "addressID": "0",
+                      },*/
+                      {
+                        "type": "water abstraction alerts",
+                        "sendBy": "post",
+                        "addressID": "0",
+                        "licences":"all"
+                      }/*,
+                      {
+                        "type": "Bills",
+                        "sendBy": "post",
+                        "addressID": "1",
+                      }*/],
+          "customer": "Big Smith Farms Ltd",
+        }],
+      },
+      { 
+        "wrls": "true",
         "name": "Irene Briton",
         "email": "",
         "type": "person",

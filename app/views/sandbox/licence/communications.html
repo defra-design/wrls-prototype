@@ -1,15 +1,44 @@
 {% extends "layouts/wrls-layout-sub-nav.html" %}
 
 <!--set title-->
-{% set title = "Communications" %}
+{% set title = "Sent communications" %}
 
-<!-- set nav menu-->
+
+<!-- set sub nav -->
+<!--parent-->
+{% set contactDetails = true %}
+<!--child-->
 {% set communications = true %}
 
 
 
 {% block pageTitle %}
 {{title}} - GOV.UK
+{% endblock %}
+
+{% block breadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Search",
+      href: "/sandbox/home-search?navCustomers=&navBillRuns=&navManage="
+    },
+        {
+      text: "Customers",
+      href: "/sandbox/customers?navCustomers=navbar__link--active&navBillRuns=&navManage="
+    },
+     {
+      text: data.licences[data.ID].holder,
+      href: "/sandbox/customer?customerID="+data.customerID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
+    },
+     {
+      text: "Licence contacts",
+      href: "/sandbox/licence/contact-details?licenceID="+data.ID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
+    }
+  ]
+}) }}
+
 {% endblock %}
 
 <!--content block-->
@@ -23,29 +52,14 @@
 <!-- page title -->
 
   <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-9">
-    {% if data.licences[data.ID].name.length %}
+
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">Licence {{[data.licences[data.ID].number]}}</span>
       {{title}}
     </h1>
-    {% endif %}
+   
 
-    <!-- show confidential warning if licence is marked as confidential-->
-{% if data.licences[data.ID].confidentiality | match("confidential") %}
 
-    {{ govukWarningText({
-  text: "This licence is confidential.",
-  iconFallbackText: "Warning"
-}) }}
-
-{% endif %}
-
-<!-- show expired banner if licence is expired-->
-{% if [data.licences[data.ID].expired] == "true" %}
-
-    {% include "sandbox/_includes/licence/expired-banner.html" %}
-
-{% endif %}
 
 <!-- <p class="govuk-body">View contacts that will receive communications and the sent communications for this licence.</p>
 <ul class="govuk-list">

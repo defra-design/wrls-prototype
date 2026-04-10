@@ -380,6 +380,12 @@ addFilter('sortAlpha', function(array) {
 });
 
 
+//find index of property | findIndexByProp('name', contactName) 
+addFilter('findIndexByProp', function(arr, prop, value) {
+  return arr.findIndex(item => item[prop] === value);
+});
+
+
 //clean the contacts list and apply hierachy rules
 addFilter('cleanContacts', function(arr) {
   const result = {};

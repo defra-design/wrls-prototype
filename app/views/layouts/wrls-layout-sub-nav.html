@@ -91,20 +91,25 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     }]
   },
   {
-    text: "Contact details",
+    text: "Licence contacts",
     href: "/sandbox/licence/contact-details?ID="+data.ID+"&returnsRouteVersion=3",
-    current: contactDetails
+    current: contactDetails,
+        parent: contactDetails,
+    children: [{ 
+    text: "Recipients",
+    href: "/sandbox/licence/recipients?ID="+data.ID+"&returnsRouteVersion=3",
+     current: recipients
+    },{ 
+    text: "Sent communications",
+    href: "/sandbox/licence/communications?ID="+data.ID+"&returnsRouteVersion=3",
+     current: communications
+    }]
   }, 
   {
     text: "Returns",
      href: "/sandbox/licence/returns?ID="+data.ID+"&returnsRouteVersion=3",
     current: returns
   }, 
-  {
-    text: "Communications",
-    href: "/sandbox/licence/communications?ID="+data.ID+"&returnsRouteVersion=3",
-     current: communications
-  } , 
   {
     text: "Bills",
     href: "/sandbox/licence/bills?ID="+data.ID+"&returnsRouteVersion=3",

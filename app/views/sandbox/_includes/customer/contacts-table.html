@@ -9,23 +9,21 @@
 <!--getting the contacts data-->
 {% set contacts = data['contacts'] %}
 
-{#Get the licence holder address for this customer#}
-{% for address in addresses %}
-{% set addressLoop = loop.index0%}
-{% for customer in address.customers%}
-{% if (customer.customer == data.licences[data.ID].holder) and ("Licence holder" in customer.role) %}
-{% set addressID = addressLoop %}
-{% endif%}
-{% endfor %}
-{% endfor %}
 
+
+{# get the index of the licence holder on the contact list #}
+{% set contactIndex = data.contacts | findIndexByProp('name', data.customers[data.customerID].name) %}
+
+
+{% set actionHTML %}
+      <a href="manage-contact?contactID={{contactIndex}}&customerID={{data.customerID}}" class="govuk-link">{{data.customers[data.customerID].name}}<span class="govuk-visually-hidden"> contact page</span></a>
+    {% endset %}
 
 {#Add licence holder to the contacts list#}
 {% set contactList = contactList | push([
-       {text: data.licences[data.ID].holder},
+       {text: actionHTML|safe},
         {text: "Licence holder"},
-        {text: ""},
-        {html:"", format: "numeric"}
+        {text: ""}
       ]) %}
 
 <!--loop through each contact-->
@@ -44,17 +42,29 @@
 {% if customer == contactCustomer['customer'] %}
 
 {% set actionHTML %}
- <ul class="govuk-summary-list__actions-list">
-        <li class="govuk-summary-list__actions-list-item">
-      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">View<span class="govuk-visually-hidden"> contact</span></a>
-    </li>
+      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">{{data.contacts[loopNumber].name}}<span class="govuk-visually-hidden"> contact page</span></a>
     {% endset %}
 
+
+{% set contactNotices = []%}
+{% for notice in contactCustomer.notices %}
+
+{% if notice.licences == "all" %}
+{% set contactNotices = contactNotices | push([
+       notice.type | capitalize + " by " + notice.sendBy + " for all licences"
+      ]) %}
+{% else %}
+{% set contactNotices = contactNotices | push([
+       notice.type | capitalize + " by " + notice.sendBy + " for some licences"
+      ]) %}
+{% endif %}
+
+{% endfor %}
+
        {% set contactList = contactList | push([
-            {text: data.contacts[loopNumber].name},
+            {text: actionHTML|safe},
             {text: contactCustomer.role},
-            {text: contactCustomer.notices | pluck("type") | sortAlpha | formatList | capitalize },
-            {html: actionHTML}
+            {text: contactNotices | sortAlpha | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br }
           ]) %}
 
  {% endif %}
@@ -70,14 +80,13 @@
 {% if data.licences[data.ID].number in user.licences %}
 
 {% set actionHTML %}
-      <a href="../user?userID={{[loopNumber]}}" class="govuk-link">View<span class="govuk-visually-hidden">user</span></a>
+      <a href="../user?userID={{[loopNumber]}}" class="govuk-link">{{user.email | split("@") | first | capitalize}}<span class="govuk-visually-hidden">user</span></a>
     {% endset %}
 
 {% set contactList = contactList | push([
-        {text: user.email | split("@") | first | capitalize},
+        {text: actionHTML|safe},
         {text: user.role|capitalize},
-        {html: "Returns and water abstraction alerts" },
-        {html:  actionHTML}
+        {html: "Returns by email for some licences <br> Water abstraction alerts by email for some licneces" }
       ]) %}
 
 
@@ -94,19 +103,13 @@
   firstCellIsHeader: false,
   head: [
     {
-      text: "Name",
-      classes: "govuk-!-width-one-third"
+      text: "Name"
     },
     {
-      text: "Contact type",
-      classes: "govuk-!-width-one-quarter"
+      text: "Contact type"
     },
     {
-      text: "Communication type",
-      classes: "govuk-!-width-one-third"
-    },
-    {
-      text: "Action"
+      text: "Communication type"
     }
   ],
   rows: contactList

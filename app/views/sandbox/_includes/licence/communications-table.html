@@ -327,7 +327,7 @@
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Type</th>
       <th scope="col" class="govuk-table__header">Sent</th>
-      <th scope="col" class="govuk-table__header">Sender</th>
+      <th scope="col" class="govuk-table__header">Sent to</th>
       <th scope="col" class="govuk-table__header">Method</th>
     </tr>
   </thead>
@@ -363,7 +363,7 @@
     <tr class="govuk-table__row">
       <td class="govuk-table__cell"><a href="licence/communication?communicationID={{communicationID}}&watercourse={{data.licences[data.ID].communications[communicationID]['watercourse']}}&gaugingStation={{data.licences[data.ID].communications[communicationID]['gaugingStation']}}&flowThreshold={{data.licences[data.ID].communications[communicationID]['flowThreshold']}}&contactEmail={{data.licences[data.ID].communications[communicationID]['contactEmail']}}" class="govuk-link">{{i.type | capitalize}}</td>
       <td class="govuk-table__cell">{{i.sent}}</td>
-      <td class="govuk-table__cell">{{i.sentBy}}</td>
+      <td class="govuk-table__cell">{{i.contactEmail}}</td>
       <td class="govuk-table__cell">{{i.method | capitalize}}</td>
     </tr>
     {% endfor %}
