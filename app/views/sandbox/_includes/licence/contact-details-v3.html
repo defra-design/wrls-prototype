@@ -27,8 +27,8 @@
      {% endfor %}
 
 {% set actionHTML %}
-     <!-- <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>-->
-     {{data.contacts[contactIndex].name}}
+      <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
+    {# {{data.contacts[contactIndex].name}} #}
     {% endset %}
 
 {#Add licence holder to the contacts list#}
@@ -52,12 +52,13 @@
 
 {% set contactName = i.name %}
 
+
 {# get the index of the licence holder on the contact list #}
 {% set contactIndex = data.contacts | findIndexByProp('name', contactName) %}
 
 {% set actionHTML %}
-     <!-- <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>-->
-     {{data.contacts[contactIndex].name}}
+     <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
+    {# {{data.contacts[contactIndex].name}} #}
     {% endset %}
 
 {# get the contact notices #}
@@ -75,6 +76,7 @@
 {% endif %}
 
 {% endfor %}
+
 
 
 {#Add licence holder to the contacts list#}
@@ -97,8 +99,12 @@
 
 {% if data.licences[data.ID].number in user.licences %}
 
+{% set actionHTML %}
+      <a href="../user?userID={{[loopNumber]}}" class="govuk-link">{{user.email | split("@") | first | capitalize}}<span class="govuk-visually-hidden">user</span></a>
+    {% endset %}
+
 {% set contactList = contactList | push([
-        {text: user.email | split("@") | first | capitalize},
+        {text: actionHTML|safe},
         {text: user.role|capitalize},
         {html: "Returns by email <br> Water abstraction alerts by email"}
       ]) %}
@@ -118,8 +124,8 @@
 {% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
 {% set loopNumber = loop.index0 %}
 
-{% set caption = 'Contacts assigned to this licence. <p class="govuk-body">Manage which licences contacts are assigned to on the <a class="govuk-link" href="../customer/contacts?customerID=' + loop.index0 + '">customer contacts</a> page.</p>' %}
-{#{% set caption = 'Contacts for this licence' %}#}
+{#{% set caption = 'Contacts assigned to this licence. <p class="govuk-body">Manage which licences contacts are assigned to on the <a class="govuk-link" href="../customer/contacts?customerID=' + loop.index0 + '">customer contacts</a> page.</p>' %}#}
+{% set caption = 'Contacts for this licence' %}
 {% endif %}
 {% endfor %}
 

@@ -6,7 +6,7 @@
 
 <!-- set sub nav -->
 <!--parent-->
-{% set contactDetails = true %}
+{#{% set contactDetails = true %}#}
 <!--child-->
 {% set communications = true %}
 
@@ -31,10 +31,6 @@
      {
       text: data.licences[data.ID].holder,
       href: "/sandbox/customer?customerID="+data.customerID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
-    },
-     {
-      text: "Licence contacts",
-      href: "/sandbox/licence/contact-details?licenceID="+data.ID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
     }
   ]
 }) }}

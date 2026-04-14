@@ -93,18 +93,13 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   {
     text: "Licence contacts",
     href: "/sandbox/licence/contact-details?ID="+data.ID+"&returnsRouteVersion=3",
-    current: contactDetails,
-        parent: contactDetails,
-    children: [{ 
-    text: "Recipients",
-    href: "/sandbox/licence/recipients?ID="+data.ID+"&returnsRouteVersion=3",
-     current: recipients
-    },{ 
+    current: contactDetails
+  },
+  { 
     text: "Sent communications",
     href: "/sandbox/licence/communications?ID="+data.ID+"&returnsRouteVersion=3",
      current: communications
-    }]
-  }, 
+    }, 
   {
     text: "Returns",
      href: "/sandbox/licence/returns?ID="+data.ID+"&returnsRouteVersion=3",
