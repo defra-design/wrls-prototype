@@ -38,10 +38,10 @@
 {% set backText = "" %}
 {% set backHref = "" %}
 {% for i in data.browseHistory %}
-{% if "/licence/contact-details" in i.page %}
+{% if "/licence/contact-details?" in i.page %}
 {% set backText = "Back to licence contacts" %}
   {% set backHref = i.page %}
-{% elif "/customer/contacts" in i.page %}
+{% elif "/customer/contacts?" in i.page %}
   {% set backText = "Back to customer contacts" %}
   {% set backHref = i.page %}
 {% endif %}

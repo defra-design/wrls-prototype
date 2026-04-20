@@ -145,6 +145,9 @@ router.post('/add/create-contact', function(req, res) {
   req.session.data['postAddress'] = ""
   req.session.data['phoneNumber'] = ""
 
+    //make sure filters are empty
+  req.session.data['type'] = []
+
   req.session.data.success = "1"
  if (req.session.data.edit == "true") {
 
@@ -568,6 +571,8 @@ router.post('/cancel/check-your-answers', function(req, res) {
   req.session.data['emailDetails'] = ""
   req.session.data['postAddress'] = ""
   req.session.data['phoneNumber'] = ""
+  //make sure filters are empty
+  req.session.data['type'] = []
 
     res.redirect('../contacts');
 
@@ -841,6 +846,10 @@ router.post('/remove/check-your-answers', function(req, res) {
      }
     
      req.session.data.removed = 1
+
+       //make sure filters are empty
+  req.session.data['type'] = []
+
     res.redirect('../contacts');
 
 });
@@ -859,6 +868,17 @@ router.get('/remove/contact-removed', function(req, res) {
 });
 
 
+//licence contacts apply filters
+router.post('/customer/contacts/apply-filters', function(req, res) {
+
+ //check to see if the user is clearing filters
+  if (req.session.data.clearFilters == "true") {
+    req.session.data.type = []
+  }
+req.session.data.clearFilters = ""
+
+res.redirect('../../contacts');
+});
 
 
 module.exports = router
