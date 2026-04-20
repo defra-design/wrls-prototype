@@ -1,0 +1,228 @@
+{% set contacts = data['contacts']%}
+{% set addresses = data['addresses']%}
+
+
+
+{% set contactList = [] %}
+{% set addressID = "" %}
+
+{#Get the licence holder address for this customer#}
+{% for address in addresses %}
+{% set addressLoop = loop.index0%}
+{% for customer in address.customers%}
+{% if (customer.customer == data.licences[data.ID].holder) and ("Licence holder" in customer.role) %}
+{% set addressID = addressLoop %}
+{% endif%}
+{% endfor %}
+{% endfor %}
+
+{# get the index of the licence holder on the contact list #}
+{% set contactIndex = data.contacts | findIndexByProp('name', data.licences[data.ID].holder) %}
+
+   {% set loopNumber = "" %}
+     {% for i in data['customers'] %}
+     {% if data.licences[data.ID].holder == data.customers[loop.index0]['name'] %}
+     {% set loopNumber = loop.index0 %}
+     {% endif %}
+     {% endfor %}
+
+{% set actionHTML %}
+      <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
+    {# {{data.contacts[contactIndex].name}} #}
+    {% endset %}
+
+{#Add licence holder to the contacts list#}
+{% set contactList = contactList | push([
+       {text: actionHTML|safe},
+        {text: "Licence holder"},
+        {text: "Bills by post"}
+      ]) %}
+
+
+
+<!--get the contacts for the licence-->
+{% for i in contacts %}
+{% if i.type == "company" %}
+{% set contactCustomers = "" %}
+{% else %}
+{% set contactCustomers = i['customers'] %}
+{% endif %}
+{% for contactCustomer in contactCustomers %}
+{% if [data.licences[data.ID].holder] == contactCustomer.customer %}
+
+{% set contactName = i.name %}
+
+
+{# get the index of the licence holder on the contact list #}
+{% set contactIndex = data.contacts | findIndexByProp('name', contactName) %}
+
+{% set actionHTML %}
+     <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
+    {# {{data.contacts[contactIndex].name}} #}
+    {% endset %}
+
+{# get the contact notices #}
+    {% set contactNotices = []%}
+{% for notice in contactCustomer.notices %}
+
+{% if notice.licences == "all" or data.licences[data.ID].number in noitce.licences %}
+{% set contactNotices = contactNotices | push([
+       notice.type | capitalize + " by " + notice.sendBy
+      ]) %}
+{% else %}
+{% set contactNotices = contactNotices | push([
+       notice.type | capitalize + " by " + notice.sendBy
+      ]) %}
+{% endif %}
+
+{% endfor %}
+
+
+
+{#Add licence holder to the contacts list#}
+{% set contactList = contactList | push([
+       {text: actionHTML|safe},
+        {text: "Contact"},
+        {text: contactNotices | sortAlpha | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}
+      ]) %}
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+
+
+
+{#get all registered users#}
+{% for user in data.users %}
+
+{% if data.licences[data.ID].number in user.licences %}
+
+{% set actionHTML %}
+      <a href="../user?userID={{[loopNumber]}}" class="govuk-link">{{user.email | split("@") | first | capitalize}}<span class="govuk-visually-hidden">user</span></a>
+    {% endset %}
+
+{% set contactList = contactList | push([
+        {text: actionHTML|safe},
+        {text: user.role|capitalize},
+        {html: "Returns by email <br> Water abstraction alerts by email"}
+      ]) %}
+
+
+{% endif %}
+
+{% endfor %}
+
+
+
+
+<!--matching the licence holder name with the customer record and returning the customerID to be used in the link-->
+{% set loopNumber = "" %}
+{% set caption = "" %}
+{% for i in data['customers'] %}
+{% if [data.licences[data.ID].holder] == data.customers[loop.index0]['name'] %}
+{% set loopNumber = loop.index0 %}
+
+{#{% set caption = 'Contacts assigned to this licence. <p class="govuk-body">Manage which licences contacts are assigned to on the <a class="govuk-link" href="../customer/contacts?customerID=' + loop.index0 + '">customer contacts</a> page.</p>' %}#}
+{% set caption = 'Contacts for this licence' %}
+{% endif %}
+{% endfor %}
+
+
+
+
+{# Filters for the table #}
+{% set filtersForm %}
+
+         <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
+  
+       <form  method="post" novalidate action="licence/contact-details/apply-filters">
+  
+  {{ govukCheckboxes({
+    idPrefix: 'type',
+    name: 'type',
+    classes: "govuk-checkboxes--small",
+    formGroup: {
+      classes: "govuk-!-margin-bottom-5"
+    },
+    fieldset: {
+      legend: {
+        text: 'Communication type',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    items: [
+    {
+     value: 'bills',
+     text: 'Bills',
+     checked:  checked("type", "bills")
+   },
+   {
+     value: 'returns',
+     text: 'Returns',
+     checked:  checked("type", "returns")
+   },
+      {
+        value: 'alerts',
+        text: 'Water abstraction alerts',
+        checked:  checked("type", "alerts")
+      }
+    ]
+  }) }}
+  
+
+         <div class="govuk-button-group">
+             {{ govukButton({
+           text: "Apply filters"
+         }) }}
+  
+  
+         {{ govukButton({
+             text: "Clear filters",
+             classes: "govuk-button--secondary",
+             name: "clearFilters",
+             value: "true"
+           }) }}
+  
+           </div>
+  
+  
+  
+       </form>
+  
+  
+       {% endset %}
+
+
+{{ govukDetails({
+         summaryText: "Filter contacts",
+         html: filtersForm | safe,
+         classes: "govuk-!-margin-bottom-4",
+         open: data['openDetails']
+       }) }}
+
+
+
+{% set filteredContacts = contactList | filterContacts(data.type) %}
+
+
+
+{#display table#}
+{{ govukTable({
+  caption: caption|safe,
+  captionClasses: "govuk-table__caption--s",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Name"
+    },
+    {
+      text: "Contact type"
+    },
+    {
+      text: "Communication type"
+    }
+  ],
+  rows: filteredContacts 
+}) }}

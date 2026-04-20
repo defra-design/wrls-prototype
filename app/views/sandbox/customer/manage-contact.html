@@ -9,10 +9,10 @@
 <!--set page title-->
 {% set title = "Contact settings for " + titleName %}
 
-{#
+
 {% block breadcrumbs %}
 
-
+{#
 {{ govukBreadcrumbs({
   items: [
     {
@@ -33,10 +33,26 @@
     }
   ]
 }) }}
+#}
 
+{% set backText = "" %}
+{% set backHref = "" %}
+{% for i in data.browseHistory %}
+{% if "/licence/contact-details" in i.page %}
+{% set backText = "Back to licence contacts" %}
+  {% set backHref = i.page %}
+{% elif "/customer/contacts" in i.page %}
+  {% set backText = "Back to customer contacts" %}
+  {% set backHref = i.page %}
+{% endif %}
+{% endfor %}
+{{ govukBackLink({
+  text: backText,
+  href: backHref
+}) }}
 
 {% endblock %}
-#}
+
 {% block pageTitle %}
 {{title}} - GOV.UK
 {% endblock %}
@@ -45,11 +61,9 @@
 {% block service %}
 
 
-
-
 <!-- page title -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full govuk-!-margin-top-6">
+  <div class="govuk-grid-column-full govuk-!-margin-top-6 govuk-!-margin-bottom-4">
 
     {% if data.success == 1 %}
 
@@ -63,10 +77,74 @@
 
 
 
-    <h1 class="govuk-heading-l">
+    <h1 class="govuk-heading-l ">
       <span class="govuk-caption-l">{{data.customers[data.customerID]['name']}}</span>
       {{title | safe}}
     </h1>
+
+            <p class="govuk-body">
+           {{govukTag({
+          html: "Not&nbsp;registered",
+          classes: "govuk-tag--grey govuk-!-font-size-24"
+        })}}
+            </p>
+
+    
+
+
+  {{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Date created",
+        classes: "meta-data__label"
+      },
+      value: {
+        text: "12 January 2020",
+        classes: "meta-data__value"
+      }
+    },
+    {
+      key: {
+        text: "Created by",
+        classes: "meta-data__label"
+      },
+      value: {
+        text: "admin@environment-agency.gov.uk",
+        classes: "meta-data__value"
+      }
+    },
+    {
+      key: {
+        text: "Last updated",
+        classes: "meta-data__label"
+      },
+      value: {
+        text: "20042026" | today(),
+        classes: "meta-data__value"
+      }
+    }
+  ]
+}) }}
+
+
+
+ <!--add a contact-->
+    {{ govukButton({
+    text: "Update contact",
+    href: "add/create-contact?edit=true&customerID="+ data.customerID,
+    classes: "govuk-!-margin-right-3"
+    }) }}
+
+
+    <!--remove a contact-->
+    {{ govukButton({
+    text: "Remove contact",
+    href: "remove/check-your-answers",
+    classes: "govuk-button--secondary"
+    }) }}
+
 </div>
 </div>
 
@@ -236,24 +314,31 @@
   ]
 }) }}
 
+
+
 </div>
 </div>
 
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
 
- <!--add a contact-->
-    {{ govukButton({
-    text: "Update contact",
-    href: "add/create-contact?edit=true&customerID="+ data.customerID,
-    classes: "govuk-!-margin-right-3"
-    }) }}
+{% set communications = data.licences[data.ID]['communications'] %}
+    <!--check to see if there is any charge information set up-->
+    {% if communications.length  %}
+    <!--if so display the table-->
 
+    {% include "sandbox/_includes/licence/communications-table-contact.html" %}
 
-    <!--remove a contact-->
-    {{ govukButton({
-    text: "Remove contact",
-    href: "remove/check-your-answers",
-    classes: "govuk-button--secondary"
-    }) }}
+    {% else %}
+
+    <!--<h2 class="govuk-heading-l">Communications</h2>-->
+
+    <p class="govuk-body">No communications have been sent for this licence.</p>
+
+    {% endif %}
+
+</div>
+</div>
 
 {% endblock %}
 
