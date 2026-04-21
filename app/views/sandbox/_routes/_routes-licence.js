@@ -163,7 +163,17 @@ req.session.data.filteredResults = filteredResults
 
 
 
+//licence contacts apply filters
+router.post('/licence/contact-details/apply-filters', function(req, res) {
 
+ //check to see if the user is clearing filters
+  if (req.session.data.clearFilters == "true") {
+    req.session.data.type = []
+  }
+req.session.data.clearFilters = ""
+
+res.redirect('../../contact-details');
+});
 
 
 

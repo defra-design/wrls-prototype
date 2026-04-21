@@ -94,7 +94,79 @@
 
 {% endfor %}
 
+{# Filters for the table #}
+{% set filtersForm %}
 
+         <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
+  
+       <form  method="post" novalidate action="/customer/contacts/apply-filters">
+  
+  {{ govukCheckboxes({
+    idPrefix: 'type',
+    name: 'type',
+    classes: "govuk-checkboxes--small",
+    formGroup: {
+      classes: "govuk-!-margin-bottom-5"
+    },
+    fieldset: {
+      legend: {
+        text: 'Communication type',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    items: [
+    {
+     value: 'bills',
+     text: 'Bills',
+     checked:  checked("type", "bills")
+   },
+   {
+     value: 'returns',
+     text: 'Returns',
+     checked:  checked("type", "returns")
+   },
+      {
+        value: 'alerts',
+        text: 'Water abstraction alerts',
+        checked:  checked("type", "alerts")
+      }
+    ]
+  }) }}
+  
+
+         <div class="govuk-button-group">
+             {{ govukButton({
+           text: "Apply filters"
+         }) }}
+  
+  
+         {{ govukButton({
+             text: "Clear filters",
+             classes: "govuk-button--secondary",
+             name: "clearFilters",
+             value: "true"
+           }) }}
+  
+           </div>
+  
+  
+  
+       </form>
+  
+  
+       {% endset %}
+
+
+{{ govukDetails({
+         summaryText: "Filter contacts",
+         html: filtersForm | safe,
+         classes: "govuk-!-margin-bottom-4",
+         open: data['openDetails']
+       }) }}
+
+
+
+{% set filteredContacts = contactList | filterContacts(data.type) %}
 
 {#display table#}
 {{ govukTable({
@@ -112,5 +184,5 @@
       text: "Communication type"
     }
   ],
-  rows: contactList
+  rows: filteredContacts
 }) }}

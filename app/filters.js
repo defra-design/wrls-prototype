@@ -385,6 +385,26 @@ addFilter('findIndexByProp', function(arr, prop, value) {
   return arr.findIndex(item => item[prop] === value);
 });
 
+//filter contacts list by keywords from another array
+addFilter('filterContacts', function(contactList, filterKeywords) {
+  if (!Array.isArray(contactList) || !filterKeywords || filterKeywords.length === 0) {
+    return contactList;
+  }
+
+  return contactList.filter(row => {
+    // Check every column in the row
+    return row.some(column => {
+      // Get the text to check (handling both string and nested object structures)
+      const content = column.html || (column.text && column.text.val) || column.text || "";
+      const lowerContent = String(content).toLowerCase();
+
+      // Check if any keyword from the filterArray exists in the content
+      return filterKeywords.some(keyword => 
+        lowerContent.includes(keyword.toLowerCase())
+      );
+    });
+  });
+});
 
 //clean the contacts list and apply hierachy rules
 addFilter('cleanContacts', function(arr) {
