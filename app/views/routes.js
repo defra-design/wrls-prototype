@@ -40,16 +40,17 @@ router.all(/^\/$/, (req, res) => {
  urlEnd = req.originalUrl
  return res.redirect('/archive/previous-proto' + urlEnd)
 })
-*/
+
 
 //Redirect old routes to current page
-router.all(/^\/bd\/.*|^\/ar\/.*|^\/dashboard\/.*|^\/data\/.*|^\/eo\/.*|^\/ex\/.*|^\/includes\/.*|^\/kpi\/.*|^\/nps\/.*|^\/partials\/.*|^\/patterns\/.*|^\/wirs\/.*/, (req, res) => {
+router.all(/^\/bd\/.*|^\/ar\/.*|^\/dashboard\/.*|^\/data\/.*|^\/eo\/.*|^\/ex\/.*|^\/includes\/.*|^\/kpi\/.*|^\/nps\/.*|^\/partials\/.*|^\/patterns\/.*|^\/wirs\/.*/
+/*, (req, res) => {
 
  req.session.data.back = req.headers.referer
  urlEnd = req.originalUrl
  return res.redirect('/current' + urlEnd)
 })
-
+*/
 
 
 
