@@ -165,13 +165,6 @@
          open: data['openDetails']
        }) }}
 
-{% for i in contactList %}
-{{i|dump}}<br><br>
-{% endfor %}
-
-{% for i in data.contacts %}
-{{i|dump}}
-{% endfor%}
 
 
 {% set filteredContacts = contactList | filterContacts(data.type) %}

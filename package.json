@@ -1,24 +1,19 @@
 {
   "scripts": {
-    "dev": "npm run build:maps && govuk-prototype-kit dev",
+    "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start",
     "build:maps": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "@govuk-prototype-kit/step-by-step": "^2.1.0",
-    "@ministryofjustice/frontend": "^6.0.0",
     "@x-govuk/govuk-prototype-components": "^5.0.2",
     "@x-govuk/govuk-prototype-filters": "^1.0.0",
     "dotenv-webpack": "^8.0.1",
     "express": "^4.21.2",
-    "govuk-frontend": "5.11.2",
-    "govuk-prototype-kit": "13.16.2",
+    "govuk-frontend": "6.1.0",
+    "govuk-prototype-kit": "13.20.0",
     "jquery": "^3.6.3",
     "notifications-node-client": "^7.0.0",
-    "ol": "^7.3.0",
-    "proj4": "^2.9.0",
-    "webpack": "^5.79.0",
-    "webpack-cli": "^5.0.1"
+    "ol": "^7.3.0"
   }
 }
