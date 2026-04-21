@@ -23,7 +23,7 @@
 
 @include govuk-media-query($from: tablet) {
   .govuk-summary-list__row--end dt, .govuk-summary-list__row--end dd {
-    border-bottom: 2px solid $govuk-text-colour;
+    border-bottom: 2px solid color: govuk-colour(text)
   }
 }
 */
@@ -235,6 +235,6 @@
 .divider {
   // width: 100%;
   // border-bottom: solid 2px #b1b4b6;
-  border-bottom: solid 2px $govuk-text-colour;
+  border-bottom: solid 2px $govuk-colour(text)
   // color: #bfc1c3;
 }

@@ -81,7 +81,7 @@
     display: table-cell;
     min-height: auto;
   }
-  //color: $govuk-text-colour;
+  //color: $govuk-colour(text);
 }
 
 .table__cell--v-middle {
@@ -92,12 +92,12 @@
   .table__row--end dt,
   .table__row--end dd,
   .table__row--end div {
-   // border-bottom: 2px solid $govuk-text-colour;
+   // border-bottom: 2px solid $govuk-colour(text);
   }
   .table__row--divider dt,
   .table__row--divider dd,
   .table__row--divider div, {
-   // border-bottom: 1px solid $govuk-text-colour;
+   // border-bottom: 1px solid $govuk-colour(text);
   }
 }
 
@@ -192,7 +192,7 @@
 .table__checkbox-label a:hover,
 .table__checkbox-label a:active {
   font-weight: 800;
-  color: $govuk-text-colour;
+  color: $govuk-colour(text);
   text-decoration: none;
 }
 
@@ -259,16 +259,16 @@
 
 .table__status--expired {
   // background-color: $govuk-error-colour;
-  color: $govuk-text-colour;
-  border: 1px solid $govuk-text-colour;
+  color: $govuk-colour(text);
+  border: 1px solid $govuk-colour(text);
   line-height: 18px;
   padding-bottom: 4px;
 }
 
 .table__status--excluded {
   // background-color: $govuk-error-colour;
-  color: $govuk-text-colour;
-  border: 1px solid $govuk-text-colour;
+  color: $govuk-colour(text);
+  border: 1px solid $govuk-colour(text);
 }
 
 .table__status span {
