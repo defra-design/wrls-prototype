@@ -71,7 +71,7 @@ router.post('/add/enter-a-name', function(req, res) {
 let contacts = req.session.data['contacts']
   req.session.data.contactID = contacts.length
 
-
+console.log(req.session.data.contactID)
 
   //add the department to the contact list
   let wrls = "true"
