@@ -15,10 +15,10 @@
 //@use "node_modules/@ministryofjustice/frontend/moj/all";
 
 //old proto custom styles
-@import "archive/previous-proto/sass/application";
+//@import "archive/previous-proto/sass/application";
 
 // Tools that aren't in Frontend
-@import "tools/mixins";
+//@import "tools/mixins";
 
 //map styles
 //@import "map/map";
@@ -123,14 +123,14 @@ border-bottom: 1px solid #b1b4b6 !important;
 
 
 
-
+/*
 .govuk-width-container {
    @include govuk-width-container(1300px);
 }
 
 
 .map { position:absolute; top:0; bottom:0; width:100%; }
-
+*/
 
 
 
@@ -176,13 +176,10 @@ border-bottom: 1px solid #b1b4b6 !important;
 
 
 
-  //nav bottom border colour
-  .navbar__link--active {
-    position: relative;
-    margin: 10px 0;
-    border: 0;
-    border-bottom: 4px solid #1d70b8;
-    border-style: solid;
-    border-color: var(--govuk-link-colour, #1a65a6);
-}
 
+
+
+
+$govuk-suppressed-warnings: (
+  "govuk-text-colour": true
+);
