@@ -60,12 +60,12 @@ router.use((req, res, next) => {
 */
 
 router.use('/', (req, res, next) => {
-  req.session.data.url = req.url; //current screen
+ // req.session.data.url = req.url; //current screen
 
-    res.clearCookie('connect.sid'); // The default cookie name
+ //   res.clearCookie('connect.sid'); // The default cookie name
   //console.log(req.url);
 
-/*
+
     // Ignore static files and API calls so they don't clog up the history
     // (You don't want /styles.css or /favicon.ico in your breadcrumbs)
     if (req.path.match(/\.(css|js|jpg|png|ico)$/) || req.path.startsWith('/api')) {
@@ -92,7 +92,7 @@ router.use('/', (req, res, next) => {
     if (req.session.data.browseHistory.length > 20) {
         req.session.data.browseHistory.shift(); // Removes the oldest entry
     }
-*/
+
 
   next();
 });
