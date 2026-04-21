@@ -129,4 +129,4 @@ router.all(/^\/bd\/.*|^\/ar\/.*|^\/dashboard\/.*|^\/data\/.*|^\/eo\/.*|^\/ex\/.*
  req.session.data.back = req.headers.referer
  urlEnd = req.originalUrl
  return res.redirect('/current' + urlEnd)
-})
+})*/
