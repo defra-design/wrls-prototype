@@ -65,7 +65,7 @@
     {% set contactNotices = []%}
 {% for notice in contactCustomer.notices %}
 
-{% if notice.licences == "all" or data.licences[data.ID].number in noitce.licences %}
+{% if notice.licences == "all" or data.licences[data.ID].number in notice.licences %}
 {% set contactNotices = contactNotices | push([
        notice.type | capitalize + " by " + notice.sendBy
       ]) %}
