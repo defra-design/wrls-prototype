@@ -56,13 +56,13 @@ router.use((req, res, next) => {
 
     next();
 });
-
+*/
 
 
 router.use('/', (req, res, next) => {
- // req.session.data.url = req.url; //current screen
+  req.session.data.url = req.url; //current screen
 
- //   res.clearCookie('connect.sid'); // The default cookie name
+    res.clearCookie('connect.sid'); // The default cookie name
   //console.log(req.url);
 
 
@@ -97,7 +97,7 @@ router.use('/', (req, res, next) => {
   next();
 });
 
-*/
+
 
 // Start folder specific routes
 
