@@ -57,7 +57,7 @@ router.use((req, res, next) => {
     next();
 });
 
-*/
+
 
 router.use('/', (req, res, next) => {
  // req.session.data.url = req.url; //current screen
@@ -96,6 +96,8 @@ router.use('/', (req, res, next) => {
 
   next();
 });
+
+*/
 
 // Start folder specific routes
 
