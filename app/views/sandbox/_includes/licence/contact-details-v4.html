@@ -27,7 +27,7 @@
      {% endfor %}
 
 {% set actionHTML %}
-      <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
+      <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}&referrer={{data.ID}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
     {# {{data.contacts[contactIndex].name}} #}
     {% endset %}
 
@@ -57,35 +57,33 @@
 {% set contactIndex = data.contacts | findIndexByProp('name', contactName) %}
 
 {% set actionHTML %}
-     <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
+     <a href="../customer/manage-contact?contactID={{contactIndex}}&customerID={{loopNumber}}&referrer={{data.ID}}" class="govuk-link">{{data.contacts[contactIndex].name}}</a>
     {# {{data.contacts[contactIndex].name}} #}
     {% endset %}
 
-{# get the contact notices #}
-    {% set contactNotices = []%}
-{% for notice in contactCustomer.notices %}
+{# check that they are a contact for this paricular licence #}
+{% set currentLicenceContact = false %} 
 
+{# get the contact notices #}
+{% set contactNotices = []%}
+{% for notice in contactCustomer.notices %}
 {% if notice.licences == "all" or data.licences[data.ID].number in notice.licences %}
 {% set contactNotices = contactNotices | push([
        notice.type | capitalize + " by " + notice.sendBy
       ]) %}
-{% else %}
-{% set contactNotices = contactNotices | push([
-       notice.type | capitalize + " by " + notice.sendBy
-      ]) %}
+{% set currentLicenceContact = true %}      
 {% endif %}
-
 {% endfor %}
 
 
-
+{% if currentLicenceContact == true %}
 {#Add licence holder to the contacts list#}
 {% set contactList = contactList | push([
        {text: actionHTML|safe},
         {text: "Contact"},
         {text: contactNotices | sortAlpha | dump | stripQuotes | stripSqBrackets | replaceComma | striptags(true) | escape | nl2br}
       ]) %}
-
+{% endif %}
 {% endif %}
 {% endfor %}
 {% endfor %}
@@ -201,6 +199,8 @@
          classes: "govuk-!-margin-bottom-4",
          open: data['openDetails']
        }) }}
+
+
 
 
 

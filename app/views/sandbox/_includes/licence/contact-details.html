@@ -21,7 +21,7 @@
 {% set contactList = contactList | push([
        {text: data.licences[data.ID].holder},
         {text: "Licence holder"},
-        {text: ""},
+        {text: "Bills by post"},
         {html: addresses[addressID].address1 + "<br>" + addresses[addressID].city  + "<br>" + addresses[addressID].postcode|safe}
       ]) %}
 

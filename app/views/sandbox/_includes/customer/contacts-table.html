@@ -16,7 +16,7 @@
 
 
 {% set actionHTML %}
-      <a href="manage-contact?contactID={{contactIndex}}&customerID={{data.customerID}}" class="govuk-link">{{data.customers[data.customerID].name}}<span class="govuk-visually-hidden"> contact page</span></a>
+      <a href="manage-contact?contactID={{contactIndex}}&customerID={{data.customerID}}&referrer=" class="govuk-link">{{data.customers[data.customerID].name}}<span class="govuk-visually-hidden"> contact page</span></a>
     {% endset %}
 
 {#Add licence holder to the contacts list#}
@@ -42,7 +42,7 @@
 {% if customer == contactCustomer['customer'] %}
 
 {% set actionHTML %}
-      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}" class="govuk-link">{{data.contacts[loopNumber].name}}<span class="govuk-visually-hidden"> contact page</span></a>
+      <a href="manage-contact?contactID={{[loopNumber]}}&customerID={{data.customerID}}&referrer=" class="govuk-link">{{data.contacts[loopNumber].name}}<span class="govuk-visually-hidden"> contact page</span></a>
     {% endset %}
 
 

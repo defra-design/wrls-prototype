@@ -9,10 +9,10 @@
 <!--set page title-->
 {% set title = "Contact settings for " + titleName %}
 
-{#
+
 {% block breadcrumbs %}
 
-
+{#
 {{ govukBreadcrumbs({
   items: [
     {
@@ -33,10 +33,23 @@
     }
   ]
 }) }}
+#}
 
+{% if data.referrer.length %}
+
+{{ govukBackLink({
+  text: "Back to licence",
+  href: '/sandbox/licence/contact-details?ID='+data.referrer + '&returnsRouteVersion=3'
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Back to customer",
+  href: "/sandbox/customer/contacts?customerID="+data.customerID+"&navCustomers=navbar__link--active&navBillRuns=&navManage="
+}) }}
+{% endif %}
 
 {% endblock %}
-#}
+
 {% block pageTitle %}
 {{title}} - GOV.UK
 {% endblock %}
