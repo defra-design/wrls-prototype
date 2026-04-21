@@ -22,7 +22,7 @@ res.redirect('/sandbox/');
  // res.redirect('sandbox/upload/upload-charge-information-load');
 
 //});
-
+/*
 //Function to create the data
 function createData(req,res){
   //create SRoC bill data
@@ -40,6 +40,7 @@ function createData(req,res){
   req.session.data.sprint = req.originalUrl.split('/')[1]
   res.redirect(req.originalUrl)
 };
+*/
 
 //Create Sprint data if not already created
 //router.use('/', (req, res, next) => {
