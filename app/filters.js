@@ -385,23 +385,29 @@ addFilter('findIndexByProp', function(arr, prop, value) {
   return arr.findIndex(item => item[prop] === value);
 });
 
-//filter contacts list by keywords from another array
 addFilter('filterContacts', function(contactList, filterKeywords) {
-  if (!Array.isArray(contactList) || !filterKeywords || filterKeywords.length === 0) {
+  // 1. Safety check: If list is empty or no keywords provided, return full list
+  if (!Array.isArray(contactList)) return [];
+  if (!filterKeywords || !Array.isArray(filterKeywords) || filterKeywords.length === 0) {
     return contactList;
   }
 
   return contactList.filter(row => {
-    // Check every column in the row
+
     return row.some(column => {
-      // Get the text to check (handling both string and nested object structures)
-      const content = column.html || (column.text && column.text.val) || column.text || "";
+      // 2. Safely extract content, defaulting to empty string if path is broken
+      let content = "";
+      if (column) {
+        content = column.html || (column.text && column.text.val) || column.text || "";
+      }
+
       const lowerContent = String(content).toLowerCase();
 
-      // Check if any keyword from the filterArray exists in the content
-      return filterKeywords.some(keyword => 
-        lowerContent.includes(keyword.toLowerCase())
-      );
+      // 3. Ensure keyword exists before trying to call .toLowerCase()
+      return filterKeywords.some(keyword => {
+        if (!keyword) return false; 
+        return lowerContent.includes(String(keyword).toLowerCase());
+      });
     });
   });
 });

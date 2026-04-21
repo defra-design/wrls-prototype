@@ -145,6 +145,9 @@ router.post('/add/create-contact', function(req, res) {
   req.session.data['postAddress'] = ""
   req.session.data['phoneNumber'] = ""
 
+    //make sure filters are empty
+  req.session.data['type'] = []
+
   req.session.data.success = "1"
  if (req.session.data.edit == "true") {
 
@@ -569,6 +572,10 @@ router.post('/cancel/check-your-answers', function(req, res) {
   req.session.data['postAddress'] = ""
   req.session.data['phoneNumber'] = ""
 
+  //make sure filters are empty
+  req.session.data['type'] = []
+
+
     res.redirect('../contacts');
 
 });
@@ -840,6 +847,9 @@ router.post('/remove/check-your-answers', function(req, res) {
        contacts.splice(contactID, 1);
      }
     
+       //make sure filters are empty
+  req.session.data['type'] = []
+
      req.session.data.removed = 1
     res.redirect('../contacts');
 
