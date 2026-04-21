@@ -6,8 +6,8 @@
     "build:maps": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "@x-govuk/govuk-prototype-components": "^5.0.2",
-    "@x-govuk/govuk-prototype-filters": "^1.0.0",
+    "@x-govuk/govuk-prototype-components": "6.0.0",
+    "@x-govuk/govuk-prototype-filters": "2.1.0",
     "dotenv-webpack": "^8.0.1",
     "express": "^4.21.2",
     "govuk-frontend": "6.1.0",
