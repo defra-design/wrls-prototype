@@ -16,10 +16,19 @@ setInterval(() => {
 }, 10000); // Logs every minute
 
 
+// Kill the 'undefined' asset loop
+router.get('*undefined*', (req, res) => {
+  res.status(404).send('Asset not found');
+});
+
 // Prevent manifest and source maps from ever hitting the session/password logic
 router.get(['/manifest.json', '/*.map'], (req, res) => {
   res.status(404).end();
 });
+
+
+
+
 
 /*
 // GET SPRINT NAME - useful for relative templates
