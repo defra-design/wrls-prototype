@@ -151,8 +151,9 @@ router.post('/add/create-contact', function(req, res) {
 
   req.session.data.success = "1"
  if (req.session.data.edit == "true") {
-
+  req.session.data.edit = "false"
   res.redirect('../manage-contact')
+  
  } else {
   
   res.redirect('../contacts')
@@ -502,7 +503,16 @@ router.post('/add/check-your-answers', function(req, res) {
 
   req.session.data.back = "customer#contacts"
 
+  req.session.save(function(err) {
+  if (err) {
+    // Handle errors here
+    console.error(err);
+  }
+  // This code only runs AFTER the session is successfully saved
   res.redirect('contact-set-up');
+});
+
+  //res.redirect('contact-set-up');
   //  res.redirect('../../customer#contacts');
 
 });

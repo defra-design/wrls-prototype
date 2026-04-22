@@ -6291,6 +6291,7 @@ module.exports = {
     "lastName": "",
     "suffix": "",
     "department": "",
+    "phone": "012356 1122334",
     "customers": [
       {
         "role": "Contact",
