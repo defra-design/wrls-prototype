@@ -7,7 +7,7 @@
 {% set titleName = [data.contacts[data.contactID]['email']] %}
 {% endif %}
 <!--set page title-->
-{% set title = "Contact settings for " + titleName %}
+{% set title = titleName %}
 
 
 {% block breadcrumbs %}
@@ -132,7 +132,7 @@
  <!--add a contact-->
     {{ govukButton({
     text: "Update contact",
-    href: "add/create-contact?edit=true&customerID="+ data.customerID,
+    href: "add/create-contact?edit=&customerID="+ data.customerID,
     classes: "govuk-!-margin-right-3"
     }) }}
 

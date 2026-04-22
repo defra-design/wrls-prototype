@@ -7,7 +7,7 @@
 {% set titleName = [data.contacts[data.contactID]['email']] %}
 {% endif %}
 <!--set page title-->
-{% set title = "Check your answers" %}
+{% set title = "Update contact" %}
 {% if data.edit == "true" %}
 {% set title = "Check your updates" %}
 {% endif %}
@@ -75,7 +75,7 @@
     {% set nameItem = [] %}
     {% if [data.contacts[data.contactID].wrls] == "true" %}
     {% set nameItem = nameItem | push (
-    { href: "change-name?contactID=" + data.contactID,
+    { href: "change-name?edit=true&contactID=" + data.contactID,
       text: "Change",
      visuallyHiddenText: "name"}
     ) %}
@@ -113,7 +113,7 @@
       actions: {
         items: [
           {
-            href: "change-email-address",
+            href: "change-email-address?edit=true",
             text: actionEmail,
             visuallyHiddenText: "email address"
           }
@@ -130,7 +130,7 @@
         actions: {
           items: [
             {
-              href: "change-postal-address",
+              href: "change-postal-address?edit=true",
               text: actionPost,
               visuallyHiddenText: "postal address"
             }
@@ -147,7 +147,7 @@
         actions: {
           items: [
             {
-              href: "change-phone-number",
+              href: "change-phone-number?edit=true",
               text: actionPhone,
               visuallyHiddenText: "phone number"
             }
@@ -232,7 +232,7 @@
       actions: {
         items: [
           {
-            href: "notices?type=water%20abstraction%20alerts",
+            href: "notices?type=water%20abstraction%20alerts&edit=true",
             text: "Change",
             visuallyHiddenText: "Water abstraction alerts"
           }
@@ -249,7 +249,7 @@
       actions: {
         items: [
           {
-            href: "notices?type=returns",
+            href: "notices?type=returns&edit=true",
             text: "Change",
             visuallyHiddenText: "Returns invites and reminders"
           }
@@ -272,7 +272,7 @@
 
     <!--remove a contact-->
     {{ govukButton({
-    text: "Cancel set up",
+    text: "Cancel",
     href: "../cancel/check-your-answers",
     classes: "govuk-button--secondary"
     }) }}

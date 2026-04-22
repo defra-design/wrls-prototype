@@ -96,8 +96,6 @@
 
 {# Filters for the table #}
 {% set filtersForm %}
-
-         <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
   
        <form  method="post" novalidate action="/customer/contacts/apply-filters">
   
@@ -127,7 +125,7 @@
    },
       {
         value: 'alerts',
-        text: 'Water abstraction alerts',
+        text: 'Alerts',
         checked:  checked("type", "alerts")
       }
     ]
@@ -158,7 +156,7 @@
 
 
 {{ govukDetails({
-         summaryText: "Filter contacts",
+         summaryText: "Filter by",
          html: filtersForm | safe,
          classes: "govuk-!-margin-bottom-4",
          open: data['openDetails']

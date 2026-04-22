@@ -123,7 +123,7 @@
 {% set loopNumber = loop.index0 %}
 
 {#{% set caption = 'Contacts assigned to this licence. <p class="govuk-body">Manage which licences contacts are assigned to on the <a class="govuk-link" href="../customer/contacts?customerID=' + loop.index0 + '">customer contacts</a> page.</p>' %}#}
-{% set caption = 'Contacts for this licence' %}
+{% set caption = 'List of contacts' %}
 {% endif %}
 {% endfor %}
 
@@ -132,8 +132,6 @@
 
 {# Filters for the table #}
 {% set filtersForm %}
-
-         <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Filter by</h2>
   
        <form  method="post" novalidate action="licence/contact-details/apply-filters">
   
@@ -163,7 +161,7 @@
    },
       {
         value: 'alerts',
-        text: 'Water abstraction alerts',
+        text: 'Alerts',
         checked:  checked("type", "alerts")
       }
     ]
@@ -194,7 +192,7 @@
 
 
 {{ govukDetails({
-         summaryText: "Filter contacts",
+         summaryText: "Filter by",
          html: filtersForm | safe,
          classes: "govuk-!-margin-bottom-4",
          open: data['openDetails']
