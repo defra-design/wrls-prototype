@@ -8,6 +8,18 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here
 
+setInterval(() => {
+  const mem = process.memoryUsage();
+  const format = (bytes) => `${Math.round(bytes / 1024 / 1024)}MB`;
+  
+  console.log(`[MEMORY REPORT] RSS: ${format(mem.rss)} | Heap: ${format(mem.heapUsed)}/${format(mem.heapTotal)} | External: ${format(mem.external)} | ArrayBuffers: ${format(mem.arrayBuffers || 0)}`);
+}, 10000); // Logs every minute
+
+
+// Prevent manifest and source maps from ever hitting the session/password logic
+router.get(['/manifest.json', '/*.map'], (req, res) => {
+  res.status(404).end();
+});
 
 /*
 // GET SPRINT NAME - useful for relative templates
@@ -22,15 +34,17 @@ console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subf
   console.log('previous page is: ' + res.locals.prevURL + " and current page is " + req.url + " " + res.locals.currentURL );
   next();
 });
-*/
+
 
 router.use('/', (req, res, next) => {
   req.session.data.url = req.url; //current screen
 
-    res.clearCookie('connect.sid'); // The default cookie name
+   // res.clearCookie('connect.sid'); // The default cookie name
   //console.log(req.url);
   next();
 });
+*/
+
 
 // Start folder specific routes
 
@@ -52,12 +66,14 @@ router.all(/^\/$/, (req, res) => {
  urlEnd = req.originalUrl
  return res.redirect('/archive/previous-proto' + urlEnd)
 })
-*/
+
 
 //Redirect old routes to current page
-router.all(/^\/bd\/.*|^\/ar\/.*|^\/dashboard\/.*|^\/data\/.*|^\/eo\/.*|^\/ex\/.*|^\/includes\/.*|^\/kpi\/.*|^\/nps\/.*|^\/partials\/.*|^\/patterns\/.*|^\/wirs\/.*/, (req, res) => {
+router.all(/^\/bd\/.*|^\/ar\/.*|^\/dashboard\/.*|^\/data\/.*|^\/eo\/.*|^\/ex\/.*|^\/includes\/.*|^\/kpi\/.*|^\/nps\/.*|^\/partials\/.*|^\/patterns\/.*|^\/wirs\/.*/
+/*, (req, res) => {
 
  req.session.data.back = req.headers.referer
  urlEnd = req.originalUrl
  return res.redirect('/current' + urlEnd)
 })
+*/
