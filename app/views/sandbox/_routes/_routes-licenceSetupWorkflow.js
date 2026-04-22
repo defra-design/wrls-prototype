@@ -2,7 +2,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here - above the module.exports line
-
+console.log("route sandbox licence setup workflow")
 
 //get today's date
 let date = new Date();

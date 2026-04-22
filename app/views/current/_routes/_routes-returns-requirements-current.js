@@ -6,7 +6,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 ///-----------------------------------------CONSTANTS------------------------------------------///
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+console.log("route current returns")
 
 
 //get today's date

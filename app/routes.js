@@ -13,7 +13,7 @@ setInterval(() => {
   const format = (bytes) => `${Math.round(bytes / 1024 / 1024)}MB`;
   
   console.log(`[MEMORY REPORT] RSS: ${format(mem.rss)} | Heap: ${format(mem.heapUsed)}/${format(mem.heapTotal)} | External: ${format(mem.external)} | ArrayBuffers: ${format(mem.arrayBuffers || 0)}`);
-}, 10000); // Logs every minute
+}, 60000); // Logs every minute
 
 
 // Kill the 'undefined' asset loop
@@ -26,7 +26,7 @@ router.get(['/manifest.json', '/*.map'], (req, res) => {
   res.status(404).end();
 });
 
-
+console.log("primary route")
 
 
 

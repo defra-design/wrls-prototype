@@ -17,7 +17,7 @@ console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subf
   next();
 });
 */
-
+console.log("secondary route")
 
 
 // Start folder specific routes
