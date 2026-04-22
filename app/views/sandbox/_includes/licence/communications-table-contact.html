@@ -325,28 +325,42 @@
           </caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Type</th>
-      <th scope="col" class="govuk-table__header">Sent</th>
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header">Notice type</th>
       <th scope="col" class="govuk-table__header">Sent by</th>
       <th scope="col" class="govuk-table__header">Method</th>
     </tr>
   </thead>
 
 
-  {% set communications = data.licences[data.ID]['communications'] %}
+  
   <!--check to see if there is any charge information set up-->
+
+
+{% set notificationIndex = ""%}
+{% set contactNotifications = []%}
+{% for notification in data.notifications %}
+
+
+
+{% set notificationIndex = loop.index0%}
+{% for recipient in  notification.recipients %}
+
+{% if recipient.sentTo == data.contacts[data.contactID]['email']%}
+
+{% set contactNotifications = contactNotifications | push (recipient)%}
+
+{% endif %}
+
+{% endfor %}
+{% endfor %}
 
   <tbody class="govuk-table__body">
 
-  <!--get and loop through the notifications table, check if results are filtered or not-->
-  {% if data['filteredResults'].length %}
-  {% set notifications = data['filteredResults']  %}
-  {% else %}
-  {% set notifications = communications %}
-  {% endif %}
+  
 
 
-  {% if notifications == "empty" %}
+  {% if contactNotifications == "empty" %}
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">No results</td>
     <td class="govuk-table__cell"></td>
@@ -357,13 +371,17 @@
 
   {% else %}
 
-    {% for i in notifications %}
+    {% for i in contactNotifications %}
+
     <!--set variable for comms ID-->
     {% set communicationID = loop.index0 %}
+
+
+
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell"><a href="licence/communication?communicationID={{communicationID}}&watercourse={{data.licences[data.ID].communications[communicationID]['watercourse']}}&gaugingStation={{data.licences[data.ID].communications[communicationID]['gaugingStation']}}&flowThreshold={{data.licences[data.ID].communications[communicationID]['flowThreshold']}}&contactEmail={{data.licences[data.ID].communications[communicationID]['contactEmail']}}" class="govuk-link">{{i.type | capitalize}}</td>
-      <td class="govuk-table__cell">{{i.sent}}</td>
-      <td class="govuk-table__cell">{{i.contactEmail}}</td>
+       <td class="govuk-table__cell">{{data.notifications[notificationIndex].date|govukDate}}</td>
+      <td class="govuk-table__cell">{{data.notifications[notificationIndex].notification | capitalize}}</td>
+      <td class="govuk-table__cell">{{data.notifications[notificationIndex].sentBy}}</td>
       <td class="govuk-table__cell">{{i.method | capitalize}}</td>
     </tr>
     {% endfor %}

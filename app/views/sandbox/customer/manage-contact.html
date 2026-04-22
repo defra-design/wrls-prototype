@@ -319,9 +319,27 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
-{% set communications = data.licences[data.ID]['communications'] %}
+
+{% set notificationIndex = ""%}
+{% set contactNotifications = []%}
+{% for notification in data.notifications %}
+
+{% set nIndex = loop.index0%}
+{% for recipient in  notification.recipients %}
+
+{% if recipient.sentTo == data.contacts[data.contactID]['email']%}
+{% set notificationIndex = nIndex%}
+{% set contactNotifications = contactNotifications | push (recipient)%}
+
+{% endif %}
+
+{% endfor %}
+{% endfor %}
+
+
+
     <!--check to see if there is any charge information set up-->
-    {% if communications.length  %}
+    {% if contactNotifications.length  %}
     <!--if so display the table-->
 
 
@@ -330,9 +348,9 @@
 
     {% else %}
 
-    <!--<h2 class="govuk-heading-l">Communications</h2>-->
-
-    <p class="govuk-body">No communications have been sent for this licence.</p>
+    <h2 class="govuk-heading-m">Sent communications</h2>
+    
+    <p class="govuk-body">No communications have been sent to this contact.</p>
 
     {% endif %}
 
