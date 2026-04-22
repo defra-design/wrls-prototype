@@ -41,7 +41,7 @@
           Sender
         </dt>
         <dd class="govuk-summary-list__value meta-data__value">
-          {{data.licences[data.ID].communications[data.communicationID]['sender']}}
+          {{data.licences[data.ID].communications[data.communicationID]['sentBy']}}
         </dd>
 
       </div>
@@ -64,24 +64,7 @@
         </dt>
         <dd class="govuk-summary-list__value meta-data__value">
           <!--get notifications-->
-          {% set notifications = data['notifications'] %}
-          {% for notification in notifications %}
-          <!--check the date matches-->
-          {% if data.licences[data.ID].communications[data.communicationID]['sent'] == notification.date %}
-          <!--if so get the recipients-->
-          {% set recipients = notification.recipients %}
-          {% for recipient in recipients %}
-          <!--check the licence number matches-->
-          {% if [data.licences[data.ID].number] == recipient.licenceNumber %}
-          <!--check the method matches-->
-          {% if data.licences[data.ID].communications[data.communicationID]['method'] == recipient.method %}
-          <!--print who it was sent to-->
-          {{recipient.sentTo}}
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-          {% endif %}
-          {% endfor %}
+        {{data.licences[data.ID].communications[data.communicationID]['contactEmail']}}
         </dd>
 
       </div>
